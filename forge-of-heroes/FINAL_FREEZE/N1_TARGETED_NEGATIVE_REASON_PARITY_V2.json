@@ -1,0 +1,154 @@
+{
+  "rows": [
+    {
+      "rule": "A_LA_CARTE_SKILL_FAKE",
+      "positiveControl": [],
+      "expectedErrorPattern": "/compétence inconnue/i",
+      "actualErrors": [
+        "Capacités à la carte : compétence inconnue."
+      ],
+      "classification": "TARGET_REJECTED",
+      "status": "PASS"
+    },
+    {
+      "rule": "A_LA_CARTE_LANGUAGE_KNOWN",
+      "positiveControl": [],
+      "expectedErrorPattern": "/langue .*déjà connue|langue automatique/i",
+      "actualErrors": [
+        "Capacités à la carte : langue illégale ou déjà connue."
+      ],
+      "classification": "TARGET_REJECTED",
+      "status": "PASS"
+    },
+    {
+      "rule": "PRIEST_MODE_INVALID",
+      "positiveControl": [],
+      "expectedErrorPattern": "/Prêtre : choisir généraliste ou spécialiste/i",
+      "actualErrors": [
+        "Prêtre : choisir généraliste ou spécialiste."
+      ],
+      "classification": "TARGET_REJECTED",
+      "status": "PASS"
+    },
+    {
+      "rule": "RELIGION_INVALID",
+      "positiveControl": [],
+      "expectedErrorPattern": "/religion inconnue/i",
+      "actualErrors": [
+        "Prêtre spécialiste : religion inconnue."
+      ],
+      "classification": "TARGET_REJECTED",
+      "status": "PASS"
+    },
+    {
+      "rule": "REQUIRED_Peau de pierre",
+      "positiveControl": [],
+      "expectedErrorPattern": "/choix obligatoire|requis|minimum|capacité accordée/i",
+      "actualErrors": [
+        "Peau de pierre : choix obligatoire manquant."
+      ],
+      "classification": "TARGET_REJECTED",
+      "status": "PASS"
+    },
+    {
+      "rule": "DOMAIN_Peau de pierre",
+      "positiveControl": [],
+      "expectedErrorPattern": "/choix .*illégal|valeur .*illégale/i",
+      "actualErrors": [
+        "Peau de pierre : valeur de choix illégale."
+      ],
+      "classification": "TARGET_REJECTED",
+      "status": "PASS"
+    },
+    {
+      "rule": "REQUIRED_Armure lourde",
+      "positiveControl": [],
+      "expectedErrorPattern": "/choix obligatoire|requis|minimum|capacité accordée/i",
+      "actualErrors": [
+        "Armure lourde : choix obligatoire manquant."
+      ],
+      "classification": "TARGET_REJECTED",
+      "status": "PASS"
+    },
+    {
+      "rule": "DOMAIN_Armure lourde",
+      "positiveControl": [],
+      "expectedErrorPattern": "/choix .*illégal|valeur .*illégale/i",
+      "actualErrors": [
+        "Armure lourde : valeur de choix illégale."
+      ],
+      "classification": "TARGET_REJECTED",
+      "status": "PASS"
+    },
+    {
+      "rule": "REQUIRED_Arme à répétition",
+      "positiveControl": [],
+      "expectedErrorPattern": "/choix obligatoire|requis|minimum|capacité accordée/i",
+      "actualErrors": [
+        "Arme à répétition : choix obligatoire manquant."
+      ],
+      "classification": "TARGET_REJECTED",
+      "status": "PASS"
+    },
+    {
+      "rule": "DOMAIN_Arme à répétition",
+      "positiveControl": [],
+      "expectedErrorPattern": "/arme .*non possédée|inéligible/i",
+      "actualErrors": [
+        "Arme à répétition : arme non possédée ou inéligible."
+      ],
+      "classification": "TARGET_REJECTED",
+      "status": "PASS"
+    },
+    {
+      "rule": "REQUIRED_Combattant aguerri",
+      "positiveControl": [],
+      "expectedErrorPattern": "/choix obligatoire|requis|minimum|capacité accordée/i",
+      "actualErrors": [
+        "Combattant aguerri : choix obligatoire manquant."
+      ],
+      "classification": "TARGET_REJECTED",
+      "status": "PASS"
+    },
+    {
+      "rule": "DOMAIN_Combattant aguerri",
+      "positiveControl": [],
+      "expectedErrorPattern": "/Combattant aguerri : option illégale|capacité accordée illégale/i",
+      "actualErrors": [
+        "Combattant aguerri : option illégale."
+      ],
+      "classification": "TARGET_REJECTED",
+      "status": "PASS"
+    },
+    {
+      "rule": "REQUIRED_Familier",
+      "positiveControl": [],
+      "expectedErrorPattern": "/choix obligatoire|requis|minimum|capacité accordée/i",
+      "actualErrors": [
+        "Rang 1 — Familier : choix obligatoire manquant.",
+        "Rang 1 — Familier : type obligatoire.",
+        "Rang 1 — Familier : species obligatoire."
+      ],
+      "classification": "TARGET_REJECTED",
+      "status": "PASS"
+    },
+    {
+      "rule": "DOMAIN_Familier",
+      "positiveControl": [],
+      "expectedErrorPattern": "/type obligatoire|species obligatoire|entité/i",
+      "actualErrors": [
+        "Rang 1 — Familier : type obligatoire.",
+        "Rang 1 — Familier : species obligatoire."
+      ],
+      "classification": "TARGET_REJECTED",
+      "status": "PASS"
+    }
+  ],
+  "passed": 14,
+  "total": 14,
+  "wrongReasonRejections": 0,
+  "priestMode": "PASS",
+  "religion": "PASS",
+  "status": "PASS",
+  "finalProductSha": "565cc873e6429ce524fcea371d0a3fe11fe5ab96e6757e4177d4f7d8433b5559"
+}

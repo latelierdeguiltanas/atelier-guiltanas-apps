@@ -1,0 +1,13 @@
+'use strict';
+const fs=require('fs'),path=require('path'),vm=require('vm');
+const ROOT=path.resolve(__dirname,'..'),PRODUCT=path.join(ROOT,'FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html');
+function extract(h,id){const m=h.match(new RegExp(`<script[^>]*id=["']${id}["'][^>]*>([\\s\\S]*?)<\\/script>`));if(!m)throw new Error('missing '+id);return m[1]}
+function load(productPath=PRODUCT){const html=fs.readFileSync(productPath,'utf8'),db=JSON.parse(extract(html,'FOH_DB_JSON')),box={window:{},console};vm.createContext(box);vm.runInContext(extract(html,'FOH_ENGINE_BUNDLE'),box);return{html,db,engine:box.window.__FOH_ENGINE_FACTORY__(db)}}
+function standardState(db,profileId,pathId,peopleId='people:humain:cof2-lb-2024'){
+ const t=db.tables||db,p=t.classes.find(x=>x.id===profileId),paths=t.paths_class.filter(x=>x.classId===profileId&&!x.additionalMagePath),chosen=paths.find(x=>x.id===pathId)||paths[0],second=paths.find(x=>x.id!==chosen.id),rule=t.profile_rules.find(x=>x.profileId===profileId),pack=rule.initialEquipment.packages[0];
+ const peupleChoices={humainStat:'con',bonusStat:peopleId.includes('sylvain')?'agi':'int'};
+ return {identite:{nom:'Convergence produit'},familleId:p.familleId,classeId:p.id,peupleId:peopleId,serieId:'expert',baseCaracs:{for:2,agi:1,con:0,per:1,int:3,vol:0,cha:-1},characteristicMethod:{type:'STANDARD_SERIES',rolls:[2,7,12]},peupleChoices,voies:{peoplePathId:peopleId==='people:humain:cof2-lb-2024'?'path:voie-de-l-humain:cof2-lb-2024':(t.paths_people.find(x=>x.people_id===peopleId)||{}).id,keepPeoplePathId:'',profilePathIds:[chosen.id,second.id],mageRank2PathId:p.familleId==='mage'?chosen.id:''},equip:{initialPackageId:pack.id,armorId:rule.initialEquipment.requiredArmorId||'',shieldId:pack.shieldId||'',weaponIds:[...(pack.weaponIds||[])]},profileChoices:{},abilityChoices:{},options:{},advancedRules:{modelVersion:'FIX78',age:false,histories:false,additionalMagePaths:false},narrative:{ideal:'',flaw:''}}
+}
+function withRank(db,state,pathId,rank){if(rank<=1)return state;state.advancedRules.age=true;state.age={categoryId:rank===2?'mature':'venerable',choice:null,spending:[]};for(let r=2;r<=rank;r++)state.age.spending.push({pathId,rank:r});const budget=rank===2?2:4,spent=rank===2?1:3;if(spent<budget){const other=state.voies.profilePathIds.find(x=>x!==pathId);state.age.spending.push({pathId:other,rank:2})}return state}
+function runState(engine,state){const result=engine.computeCharacterN1(state);return{state,result,characterState:result.sticky&&result.sticky.characterState||null}}
+module.exports={ROOT,PRODUCT,load,standardState,withRank,runState};

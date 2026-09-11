@@ -1,0 +1,3716 @@
+{
+  "results": [
+    {
+      "id": "PEOPLE_0",
+      "category": "PEOPLE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "peopleId",
+          "characteristics"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {
+          "peopleId": "people:elfe-haut:cof2-lb-2024"
+        },
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "characteristics.con",
+          "characteristics.for",
+          "characteristics.int",
+          "derived.ATC",
+          "derived.DR.count",
+          "derived.PC",
+          "derived.PV",
+          "languages.automatic",
+          "languages.choicesAllowed",
+          "languages.remainingSlots",
+          "paths",
+          "peopleId",
+          "permanentChoices.bonusStat",
+          "permanentChoices.humainStat"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "9fab768940bde55e0983894f749179b4fba689eae703585366b44344c73a312e"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PEOPLE_1",
+      "category": "PEOPLE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "peopleId",
+          "characteristics"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {
+          "peopleId": "people:nain:cof2-lb-2024"
+        },
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "characteristics.agi",
+          "derived.ATD",
+          "derived.DEF",
+          "derived.PC",
+          "languages.automatic",
+          "languages.choicesAllowed",
+          "paths",
+          "peopleId",
+          "permanentChoices.bonusStat",
+          "permanentChoices.humainStat"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "6c917e058c0dbcf9f1daab0a6c61cf130b6e4a05c03af19ead4d1e17ac6d36c9"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PEOPLE_2",
+      "category": "PEOPLE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "peopleId",
+          "characteristics"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {
+          "peopleId": "people:demi-orc:cof2-lb-2024"
+        },
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "characteristics.cha",
+          "characteristics.con",
+          "characteristics.for",
+          "derived.ATC",
+          "derived.DR.count",
+          "derived.PC",
+          "derived.PV",
+          "languages.automatic",
+          "languages.choicesAllowed",
+          "paths",
+          "peopleId",
+          "permanentChoices.bonusStat",
+          "permanentChoices.humainStat",
+          "permanentChoices.malusStat"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "637f0cccaead6e896724b2c488534c14a43bb332ad5baee40036b514fb2c5450"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PROFILE_0",
+      "category": "PROFILE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "profileId",
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "characteristics"
+        ],
+        "EXPECTED_VALUES_AFTER": {
+          "profileId": "class:guerrier:cof2-lb-2024"
+        },
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "conditionalEffects",
+          "derived.DEF",
+          "derived.DR.die",
+          "derived.INIT",
+          "derived.PC",
+          "derived.PV",
+          "equipment.armorId",
+          "equipment.initialPackageId",
+          "equipment.shieldId",
+          "equipment.weaponIds",
+          "familyId",
+          "languages.automatic",
+          "languages.choicesAllowed",
+          "masteries.armorMaxDef",
+          "masteries.shields",
+          "masteries.weapons.maxMeleeHands",
+          "paths",
+          "permanentEffects",
+          "profileId"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "a092a0aee32399cdb9e8ccec53df58619b02913a4e5c55309289d04aea248511"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PROFILE_1",
+      "category": "PROFILE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "profileId",
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "characteristics"
+        ],
+        "EXPECTED_VALUES_AFTER": {
+          "profileId": "class:magicien:cof2-lb-2024"
+        },
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "conditionalEffects",
+          "derived.DEF",
+          "derived.DR.die",
+          "derived.PC",
+          "derived.PM",
+          "derived.PV",
+          "equipment.armorId",
+          "equipment.weaponIds",
+          "familyId",
+          "languages.automatic",
+          "languages.choicesAllowed",
+          "masteries.armorMaxDef",
+          "masteries.weaponIds",
+          "masteries.weapons",
+          "paths",
+          "permanentEffects",
+          "profileId",
+          "resources.mana.current",
+          "resources.mana.max",
+          "spells"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "52bf3ac5e2aefe1c88335ddc5ad611864d5854097c6276cfadfbf674892962c9"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PROFILE_2",
+      "category": "PROFILE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "profileId",
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "characteristics"
+        ],
+        "EXPECTED_VALUES_AFTER": {
+          "profileId": "class:rodeur:cof2-lb-2024"
+        },
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "companions",
+          "conditionalEffects",
+          "derived.DEF",
+          "derived.INIT",
+          "equipment.armorId",
+          "equipment.initialPackageId",
+          "equipment.weaponIds",
+          "languages.automatic",
+          "languages.choicesAllowed",
+          "masteries.armorMaxDef",
+          "paths",
+          "permanentEffects",
+          "profileId"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "e2fdc197dc43578c42314c5165b4777457ea433e8f5c748c1dc82a5771c093d7"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PROFILE_3",
+      "category": "PROFILE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "profileId",
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "characteristics"
+        ],
+        "EXPECTED_VALUES_AFTER": {
+          "profileId": "class:arquebusier:cof2-lb-2024"
+        },
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "conditionalEffects",
+          "derived.DEF",
+          "equipment.armorId",
+          "equipment.weaponIds",
+          "languages.automatic",
+          "languages.choicesAllowed",
+          "masteries.armorMaxDef",
+          "paths",
+          "permanentEffects",
+          "profileId"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "568dfc8ed8761ab9132adf74418fd7a43d0fe761d6dd72a5806d8ae6427e1fcb"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "AGE_mature",
+      "category": "AGE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "abilities",
+          "capacityBudget"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "paths",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "additionalMagePath",
+          "advancedRules",
+          "age",
+          "attacks",
+          "capacityBudget",
+          "characteristics.agi",
+          "conditionalEffects",
+          "derived.ATD",
+          "derived.DEF",
+          "historyPath",
+          "pathAssignments",
+          "paths"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "3d58be60c1c8a7dda1722d532d45668aedb46682fe2657eeeff5e1328a227449"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "AGE_venerable",
+      "category": "AGE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "abilities",
+          "capacityBudget"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "paths",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "additionalMagePath",
+          "advancedRules",
+          "age",
+          "attacks",
+          "capacityBudget",
+          "characteristics.agi",
+          "characteristics.con",
+          "conditionalEffects",
+          "derived.ATD",
+          "derived.DEF",
+          "derived.DR.count",
+          "derived.PV",
+          "historyPath",
+          "pathAssignments",
+          "paths"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "08cd65be190558ace3adc1ce657b850223b6da0820b88a959ccbb1800ce60ee3"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "CHAR_FOR_INT",
+      "category": "CHARACTERISTIC",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "characteristics",
+          "derived"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "attacks",
+          "characteristics.for",
+          "characteristics.int",
+          "derived.ATC",
+          "languages.remainingSlots"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "f1c42d1d16cd3820f77ef72f5b17617e7e7a58a9a835abb46b122c1d08a84c43"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PROFILE_PATHS",
+      "category": "PROFILE_PATH",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "conditionalEffects",
+          "derived.DEF",
+          "derived.INIT",
+          "languages.automatic",
+          "languages.choicesAllowed",
+          "paths",
+          "permanentEffects"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "acfc176f991f2a2294897d845006481d92ebe1a96ea2f308793957f30de603ed"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PATH_RANK_2",
+      "category": "PATH_RANK",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities",
+          "capacityBudget"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "additionalMagePath",
+          "advancedRules",
+          "age",
+          "attacks",
+          "capacityBudget",
+          "characteristics.agi",
+          "conditionalEffects",
+          "derived.ATD",
+          "derived.DEF",
+          "historyPath",
+          "pathAssignments",
+          "paths"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "3d58be60c1c8a7dda1722d532d45668aedb46682fe2657eeeff5e1328a227449"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_PATHS_0",
+      "category": "HYBRID_PRIMARY_PATH",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "profileId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "hybrid.primaryPathId",
+          "paths"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "e6b412877c0955ae63d39f9cdf3bc3860c771a6c012b2e75a3cabfddc1844a06",
+        "afterHash": "952b36347c80d4eead1f7ad8bacf2522c8dfed3afea4e9132aa23e5b1694ce87"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_SECONDARY_PATH_0",
+      "category": "HYBRID_SECONDARY_PATH",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "profileId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "hybrid.secondaryPathId",
+          "paths"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "e6b412877c0955ae63d39f9cdf3bc3860c771a6c012b2e75a3cabfddc1844a06",
+        "afterHash": "c0b828a681c83a4e081a98607a80d69f82fbfae381c4b9192ae614582b442245"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_PATHS_1",
+      "category": "HYBRID_PRIMARY_PATH",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "profileId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "hybrid.primaryPathId",
+          "paths",
+          "permanentEffects"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "231f67a2dba455dc72adef5c6b133f59c91fefdcaf609354ffc7ddf6e23f18ac",
+        "afterHash": "243327e3fc42cd084125f7774dd1c89f15c59121e94047462fa64404ca901066"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_SECONDARY_PATH_1",
+      "category": "HYBRID_SECONDARY_PATH",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "profileId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "derived.INIT",
+          "hybrid.secondaryPathId",
+          "paths"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "231f67a2dba455dc72adef5c6b133f59c91fefdcaf609354ffc7ddf6e23f18ac",
+        "afterHash": "0bffe967b26055d4ebdbdda2f35369707d3f47d6c96503bd4630abd921e6453c"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_PATHS_2",
+      "category": "HYBRID_PRIMARY_PATH",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "profileId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "conditionalEffects",
+          "hybrid.primaryPathId",
+          "paths",
+          "spells"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "f9e90b78225386d3036f339f41ed13f5b5f18f6625e06ca52805343ec515558c",
+        "afterHash": "a97eff906c6cbd82fbceddac454780bb771a12a29cf07ae26a2fcfa00cb83e3a"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_SECONDARY_PATH_2",
+      "category": "HYBRID_SECONDARY_PATH",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "profileId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "hybrid.secondaryPathId",
+          "paths"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "f9e90b78225386d3036f339f41ed13f5b5f18f6625e06ca52805343ec515558c",
+        "afterHash": "a7dbe73aaf7bd408171d68d7261cb4ab343b9f426384fb1af7d18e34cec27beb"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_PRIMARY_PROFILE",
+      "category": "HYBRID_PRIMARY_PROFILE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "hybrid",
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "profileId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "companions",
+          "conditionalEffects",
+          "derived.DEF",
+          "derived.INIT",
+          "equipment.armorId",
+          "equipment.initialPackageId",
+          "equipment.weaponIds",
+          "hybrid.armorRestrictions",
+          "hybrid.equipmentOriginProfileId",
+          "hybrid.primaryPathId",
+          "hybrid.primaryProfileId",
+          "languages.automatic",
+          "languages.choicesAllowed",
+          "paths",
+          "permanentEffects",
+          "profileId"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "e6b412877c0955ae63d39f9cdf3bc3860c771a6c012b2e75a3cabfddc1844a06",
+        "afterHash": "d0c1c78f4585bf7b8604b916cbcb2e0359dd3f7c8b0f990ce7c4968f1d0a7813"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_SECONDARY_PROFILE",
+      "category": "HYBRID_SECONDARY_PROFILE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "hybrid",
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "profileId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "derived.PV",
+          "hybrid.armorRestrictions",
+          "hybrid.families",
+          "hybrid.pvContributions",
+          "hybrid.secondaryPathId",
+          "hybrid.secondaryProfileId",
+          "masteries.armorMaxDef",
+          "masteries.shields",
+          "paths",
+          "profileId"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "e6b412877c0955ae63d39f9cdf3bc3860c771a6c012b2e75a3cabfddc1844a06",
+        "afterHash": "2df1f273009acd4f134db25b1e526a3e536a10a55c180f32cc280a9023f9347f"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_APPROVAL",
+      "category": "HYBRID_APPROVAL",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [],
+        "EXPECTED_UNCHANGED_PATHS": [],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "peopleId",
+          "familyId",
+          "profileId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": [
+          "Profil hybride N1 : validation du MJ obligatoire."
+        ]
+      },
+      "evaluation": {
+        "classification": "TARGET_REJECTED",
+        "status": "PASS",
+        "text": "Profil hybride N1 : validation du MJ obligatoire."
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "H_ORIGIN",
+      "category": "HISTORY_ORIGIN",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "abilities",
+          "historyPath"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "profileId",
+          "characteristics",
+          "paths",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "capacityBudget.purchases",
+          "capacityBudget.standard.freeAssignments",
+          "historyPath.geographic.ability.effect.domains",
+          "historyPath.geographic.ability.name",
+          "historyPath.geographic.name",
+          "permanentEffects"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "883240bdabda59c100d56fd51eca7e660d6311d4bcf204dc709488858eb78638",
+        "afterHash": "071b815df49286e9b7dfbac696f8d495758cac02b2d746744393dd1d6dcf6247"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "H_PRO",
+      "category": "HISTORY_PROFESSION",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "abilities",
+          "historyPath"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "profileId",
+          "characteristics",
+          "paths",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "capacityBudget.standard.freeAssignments",
+          "historyPath.professional.ability.effect.domains",
+          "historyPath.professional.ability.effect.languageChoicesPerRank",
+          "historyPath.professional.ability.effect.type",
+          "historyPath.professional.ability.name",
+          "historyPath.professional.name"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "883240bdabda59c100d56fd51eca7e660d6311d4bcf204dc709488858eb78638",
+        "afterHash": "6a5054b0ddaf1a0760f50890d4c499105dee94dda1ceeab54f23138396862ce2"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "H_PATH",
+      "category": "HISTORY_PROFILE_PATH",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "profileId",
+          "characteristics",
+          "paths",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "capacityBudget.standard.freeAssignments",
+          "conditionalEffects",
+          "languages.automatic",
+          "languages.choicesAllowed",
+          "permanentEffects"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "883240bdabda59c100d56fd51eca7e660d6311d4bcf204dc709488858eb78638",
+        "afterHash": "9035a0933f22384b07042d24de88baa0b21b731252d6e68f9df88076d57e003a"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "NP_A_0",
+      "category": "NO_PROFILE_PATH_A",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "profileId",
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {
+          "profileId": null
+        },
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "conditionalEffects",
+          "derived.PC",
+          "derived.PM",
+          "derived.PV",
+          "languages.automatic",
+          "languages.choicesAllowed",
+          "masteries.armorMaxDef",
+          "masteries.weaponIds",
+          "noProfile.families",
+          "noProfile.originProfileIds",
+          "noProfile.pathIds",
+          "paths",
+          "permanentEffects",
+          "resources.mana.current",
+          "resources.mana.max",
+          "spells"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "17b17c3a27ebe6c11d291f223066dbfbd71b5682e9a59536b7fbe83c72b75744",
+        "afterHash": "40b9fd7f142d92a9435edb03e23e1a9e5362389fd6b35a5afe3e87df20816d14"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "NP_B_0",
+      "category": "NO_PROFILE_PATH_B",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "profileId",
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {
+          "profileId": null
+        },
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "conditionalEffects",
+          "derived.DR.die",
+          "derived.INIT",
+          "derived.PM",
+          "derived.PV",
+          "masteries.armorMaxDef",
+          "masteries.weaponIds",
+          "noProfile.families",
+          "noProfile.originProfileIds",
+          "noProfile.pathIds",
+          "paths",
+          "permanentEffects",
+          "resources.mana.current",
+          "resources.mana.max",
+          "spells"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "17b17c3a27ebe6c11d291f223066dbfbd71b5682e9a59536b7fbe83c72b75744",
+        "afterHash": "b879822f7cf342f3d5adc46062783be4f3ab224bfc6187d4db30670788337a7f"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "NP_A_1",
+      "category": "NO_PROFILE_PATH_A",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "profileId",
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {
+          "profileId": null
+        },
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "derived.DR.die",
+          "derived.INIT",
+          "derived.PC",
+          "derived.PV",
+          "noProfile.families",
+          "noProfile.originProfileIds",
+          "noProfile.pathIds",
+          "paths",
+          "permanentEffects"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "cef4a5d8cce600dcc5fe3233650b4e3d68c45509ea3fa624a2e9b436f8b3c672",
+        "afterHash": "3c702cedbd891d6f8185c2130bc9a41ebfbeed46a29c234a98b1c4bc85f97460"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "NP_B_1",
+      "category": "NO_PROFILE_PATH_B",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "profileId",
+          "peopleId"
+        ],
+        "EXPECTED_VALUES_AFTER": {
+          "profileId": null
+        },
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "conditionalEffects",
+          "derived.DR.die",
+          "derived.INIT",
+          "derived.PM",
+          "derived.PV",
+          "masteries.armorMaxDef",
+          "masteries.weaponIds",
+          "noProfile.families",
+          "noProfile.originProfileIds",
+          "noProfile.pathIds",
+          "paths",
+          "permanentEffects",
+          "resources.mana.current",
+          "resources.mana.max",
+          "spells"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "cef4a5d8cce600dcc5fe3233650b4e3d68c45509ea3fa624a2e9b436f8b3c672",
+        "afterHash": "9dfa68ae23024bd61f9efe0bd3510f39cf61ab6bd02746401abd2e66ed58f21e"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "MAGE_R2",
+      "category": "MAGE_R2_PATH",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "abilities",
+          "spells"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "peopleId",
+          "familyId",
+          "characteristics",
+          "paths",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "conditionalEffects",
+          "spells"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "52bf3ac5e2aefe1c88335ddc5ad611864d5854097c6276cfadfbf674892962c9",
+        "afterHash": "aab7d47341f472d11cccb5aa6f8185d6863221af7ae810ecaa8d86efabfa9044"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "ALC_LANGUAGE",
+      "category": "A_LA_CARTE_LANGUAGE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "aLaCarte",
+          "languages"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "aLaCarte.purchases",
+          "languages.selected"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "79ad31128771033da88b8ec6ec0d4a5e63ca38820568ddf87f9537283c019581",
+        "afterHash": "86cbc51e0f76eacdd4ab8b32c892e5bf13cbc4c29de303e26ea63ad0030eb48f"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "ALC_SKILL",
+      "category": "A_LA_CARTE_SKILL",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "aLaCarte",
+          "skillBonuses"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "aLaCarte.purchases",
+          "skillBonuses"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "ed7c87b59dacaa918003f54288b7084d4022ca96a4b34b167b816de8f37ef59d",
+        "afterHash": "f940074e6f220c2967408edc47f21b1e65f7952e0656fa3f7d818c8d70da2b70"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "ALC_ARMOR",
+      "category": "A_LA_CARTE_ARMOR",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "aLaCarte",
+          "permissions"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "aLaCarte.purchases",
+          "permissions.armorLevel",
+          "skillBonuses"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "79ad31128771033da88b8ec6ec0d4a5e63ca38820568ddf87f9537283c019581",
+        "afterHash": "c9556b31bf9d2e26e4fee1205469f943021661b079fb14f45b636600659f09d2"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "ALC_WEAPON",
+      "category": "A_LA_CARTE_WEAPON",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "aLaCarte",
+          "permissions"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "aLaCarte.purchases",
+          "permissions.weaponGroupLevel",
+          "skillBonuses"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "79ad31128771033da88b8ec6ec0d4a5e63ca38820568ddf87f9537283c019581",
+        "afterHash": "a4f85534f3d319019617ac34f0c42020fad89b8a78123382cd1c582d2d9fe50c"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "STONE_CHOICE",
+      "category": "ABILITY_CHOICE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "derived.DEF",
+          "persistentChoices"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId",
+          "languages"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "religion",
+          "hybrid",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "derived.DEF",
+          "persistentChoices.ability:peau-de-pierre:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024.defenseStat"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "c914f5a25237828a40397515908bcaef75187fac4d771a2a3d4fdfd7f6ac912e",
+        "afterHash": "fc4ee62b583f47acfe2d735ab52dd373e1c9efa173670f5f9660e2b478525239"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "GRANT_SWITCH",
+      "category": "GRANT_CHOICE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "persistentChoices"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "persistentChoices.ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024.combattantAguerriAbility"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "b12fa1e8356e51e531216046c9461c928652c5c572b52ad8162d01eb83660a78",
+        "afterHash": "3c32f366bbb4261e0ea5f78ee786300429c61f782e9cce0242702b7459aa861a"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PREFERRED",
+      "category": "PREFERRED_WEAPON_CATEGORY",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "creationDecisions",
+          "attacks"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "derived.PV",
+          "languages"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "peopleId",
+          "familyId",
+          "profileId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "attacks",
+          "creationDecisions.preferredWeaponCategory"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "38568dc2ca28eae9f01cad5c28dd0d39ea751794a75a09ef0ad532ca61b03aff",
+        "afterHash": "28087fbb6e68e92c25587145a70b6762316085612e31afebefb3c31616a60356"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "LANGUAGE",
+      "category": "EXTRA_LANGUAGE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "creationDecisions",
+          "languages"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "derived.PV",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "peopleId",
+          "familyId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "creationDecisions.extraLanguage",
+          "languages.selected"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "8a416c3a6cef93a81782158ff822338f690cf0ae03fe564f413580057127d249",
+        "afterHash": "e08a9bdb2f71697484e24d9147f01bb5a24d1259dcffbfd2e1b01d823a9e5395"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "WEAPON",
+      "category": "WEAPON",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "equipment",
+          "attacks"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "masteries",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "attacks",
+          "derived.DEF",
+          "equipment.initialPackageId",
+          "equipment.shieldId",
+          "equipment.weaponIds"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "55851f289257482f09a157c274ca14037532ee172b16d902591bb38f786a9e23",
+        "afterHash": "099f4a71b2095fdf25617752ea31f6f63759a05cac49cea60cddb7d13a3fa56c"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "SHIELD",
+      "category": "SHIELD",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "equipment",
+          "derived.DEF"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "attacks",
+          "derived.DEF",
+          "equipment.initialPackageId",
+          "equipment.shieldId",
+          "equipment.weaponIds"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "55851f289257482f09a157c274ca14037532ee172b16d902591bb38f786a9e23",
+        "afterHash": "099f4a71b2095fdf25617752ea31f6f63759a05cac49cea60cddb7d13a3fa56c"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "ARMOR_HEAVY_CHOICE",
+      "category": "ARMOR",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "persistentChoices",
+          "permissions"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "creationDecisions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "derived.DEF",
+          "permissions.armor",
+          "persistentChoices.ability:armure-lourde:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024.heavyArmorChoice"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "40c5ca1138d6ae3b2da06e9c7fb77a94e7f4cec73bcc6fff73a20d77bbc0751c",
+        "afterHash": "1098c8fd4a4fb5424737e09e38a6380d256667fd1d112d661443458cd7906353"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "CHAR_SWAP_0",
+      "category": "CHARACTERISTIC",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "characteristics",
+          "derived"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "attacks",
+          "characteristics.agi",
+          "characteristics.for",
+          "derived.ATC",
+          "derived.ATD",
+          "derived.DEF"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "baf6c5e83b5187ea26a6f305140546ca8a5c4c106fa72d8424d323bcb173ef45"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "CHAR_SWAP_1",
+      "category": "CHARACTERISTIC",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "characteristics",
+          "derived"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "attacks",
+          "characteristics.agi",
+          "characteristics.cha",
+          "derived.ATD",
+          "derived.DEF",
+          "derived.PC"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "ef20fe251b26fc91727da98f2fb646b4e0d8b65da5c6e8973a7e9eab52ba422f"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "CHAR_SWAP_2",
+      "category": "CHARACTERISTIC",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "characteristics",
+          "derived"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "characteristics.int",
+          "characteristics.vol",
+          "derived.ATM",
+          "languages.remainingSlots"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "1ebf9e8bf60872243ecd0725a3f32ceeb239e6de418a7cc744102c5868fb91e1"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "CHAR_SWAP_3",
+      "category": "CHARACTERISTIC",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "characteristics",
+          "derived"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "characteristics.cha",
+          "characteristics.per",
+          "derived.INIT",
+          "derived.PC"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "57777a63f7eacd33e9f1312ad2cedf2bd6e1a83dea6d6136e1f2918fc3ec6bd2"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PROFILE_PATH_VARIANT_0",
+      "category": "PROFILE_PATH",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "conditionalEffects",
+          "derived.DEF",
+          "derived.INIT",
+          "paths",
+          "permanentEffects"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "8da36671a41f38d72a7bb5d42591eec3aa80f131d53ba8741d94d640ce82b348"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PROFILE_PATH_VARIANT_1",
+      "category": "PROFILE_PATH",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "conditionalEffects",
+          "paths",
+          "permanentEffects"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "50c35595004c0cdee13bd54ae21526a11d21a03411930bb2d41d745cb86caad3"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PROFILE_PATH_VARIANT_2",
+      "category": "PROFILE_PATH",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "derived.DEF",
+          "derived.INIT",
+          "languages.automatic",
+          "languages.choicesAllowed",
+          "paths",
+          "permanentEffects"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "1d899148d7f1ecbebf18b9ec2f64cd3694ef7932d5b9b07cc7f7f48988656d30"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PROFILE_PATH_VARIANT_3",
+      "category": "PROFILE_PATH",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "paths",
+          "abilities"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "peopleId",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "familyId",
+          "characteristics",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "languages",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "creationDecisions",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "attacks",
+          "languages.automatic",
+          "languages.choicesAllowed",
+          "paths",
+          "permanentEffects"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+        "afterHash": "c598cdee69c934029577db6c41414e356a5b35dd492f8ce22929770312cdcb05"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PREFERRED_VARIANT_0",
+      "category": "PREFERRED_WEAPON_CATEGORY",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "creationDecisions"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "derived.PV",
+          "languages"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "peopleId",
+          "familyId",
+          "profileId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "attacks",
+          "creationDecisions.preferredWeaponCategory"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "38568dc2ca28eae9f01cad5c28dd0d39ea751794a75a09ef0ad532ca61b03aff",
+        "afterHash": "b5ebc478a557546b08628be4ddcb0aad8e0f7f63e69e8499bb5eb09e51b0feb0"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PREFERRED_VARIANT_1",
+      "category": "PREFERRED_WEAPON_CATEGORY",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "creationDecisions"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "derived.PV",
+          "languages"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "peopleId",
+          "familyId",
+          "profileId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "attacks",
+          "creationDecisions.preferredWeaponCategory"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "38568dc2ca28eae9f01cad5c28dd0d39ea751794a75a09ef0ad532ca61b03aff",
+        "afterHash": "06300dfa64283b55d40420c4c7a5e00956b312b95596fe51b84b917bc29f2cae"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "PREFERRED_VARIANT_2",
+      "category": "PREFERRED_WEAPON_CATEGORY",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "creationDecisions"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "derived.PV",
+          "languages"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "peopleId",
+          "familyId",
+          "profileId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "attacks",
+          "creationDecisions.preferredWeaponCategory"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "38568dc2ca28eae9f01cad5c28dd0d39ea751794a75a09ef0ad532ca61b03aff",
+        "afterHash": "ee54c32af9ffbbfc18530e571a05efb12667092c60323ddcfbc89d93b4dfa598"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "LANGUAGE_VARIANT_0",
+      "category": "EXTRA_LANGUAGE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "creationDecisions",
+          "languages"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "derived.PV",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "peopleId",
+          "familyId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "creationDecisions.extraLanguage",
+          "languages.selected"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "8a416c3a6cef93a81782158ff822338f690cf0ae03fe564f413580057127d249",
+        "afterHash": "18006ca843e7ea385b2cfd3e81ce682bf7b9c4943e8fc0aa77d8c6caacc49236"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "LANGUAGE_VARIANT_1",
+      "category": "EXTRA_LANGUAGE",
+      "contract": {
+        "EXPECTED_CHANGED_PATHS": [
+          "creationDecisions",
+          "languages"
+        ],
+        "EXPECTED_UNCHANGED_PATHS": [
+          "derived.PV",
+          "profileId"
+        ],
+        "EXPECTED_VALUES_AFTER": {},
+        "OPTIONAL_ALLOWED_CHANGES": [
+          "peopleId",
+          "familyId",
+          "characteristics",
+          "paths",
+          "abilities",
+          "spells",
+          "resources",
+          "derived",
+          "equipment",
+          "masteries",
+          "attacks",
+          "religion",
+          "hybrid",
+          "persistentChoices",
+          "permissions",
+          "grantedAbilities",
+          "entities",
+          "skillBonuses",
+          "advancedRules",
+          "age",
+          "historyPath",
+          "pathAssignments",
+          "capacityBudget",
+          "permanentEffects",
+          "conditionalEffects",
+          "companions",
+          "additionalMagePath",
+          "permanentChoices",
+          "noProfile",
+          "aLaCarte"
+        ]
+      },
+      "errors": {
+        "A": [],
+        "B": []
+      },
+      "evaluation": {
+        "status": "PASS",
+        "actualChangedPaths": [
+          "creationDecisions.extraLanguage",
+          "languages.selected"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "8a416c3a6cef93a81782158ff822338f690cf0ae03fe564f413580057127d249",
+        "afterHash": "1bda90ce9f83a06d477b60e8b9876084e86fff9053aeabc1b14b38cfa27b3da4"
+      },
+      "status": "PASS"
+    }
+  ],
+  "passed": 53,
+  "total": 53,
+  "missingExpectedChanges": 0,
+  "unexpectedChanges": 0,
+  "exactValueAssertions": {
+    "passed": 11,
+    "total": 11
+  },
+  "status": "PASS",
+  "finalProductSha": "565cc873e6429ce524fcea371d0a3fe11fe5ab96e6757e4177d4f7d8433b5559"
+}

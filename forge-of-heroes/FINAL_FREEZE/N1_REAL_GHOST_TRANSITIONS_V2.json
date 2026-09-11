@@ -1,0 +1,691 @@
+{
+  "rows": [
+    {
+      "scenario": "HEAVY_ARMOR_TO_ROGUE",
+      "transitionOperations": [
+        "profile/family",
+        "selected paths",
+        "equipment",
+        "mode/rules toggles"
+      ],
+      "removedEffectsExpected": [
+        "persistentChoices",
+        "abilities"
+      ],
+      "removedEffectsObserved": [
+        {
+          "path": "persistentChoices",
+          "transitioned": {},
+          "fresh": {},
+          "removed": true
+        },
+        {
+          "path": "abilities",
+          "transitioned": [
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 1,
+              "label": "Discrétion",
+              "spell": false,
+              "origin": null,
+              "sourceRule": null,
+              "grantedByAbilityId": null,
+              "retainedPeopleAbility": false,
+              "divineAbility": false,
+              "replacesPathId": null,
+              "mechanics": {
+                "kind": "passive",
+                "skillBonuses": [
+                  {
+                    "value": 3,
+                    "tests": [
+                      "stealth",
+                      "disguise",
+                      "hide_weapon"
+                    ]
+                  }
+                ],
+                "effects": [
+                  {
+                    "type": "language"
+                  },
+                  {
+                    "type": "conditional_bonus_die",
+                    "target": "attack",
+                    "condition": "target_surprised"
+                  }
+                ]
+              }
+            },
+            {
+              "pathId": "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024",
+              "rank": 1,
+              "label": "Baratin",
+              "spell": false,
+              "origin": null,
+              "sourceRule": null,
+              "grantedByAbilityId": null,
+              "retainedPeopleAbility": false,
+              "divineAbility": false,
+              "replacesPathId": null,
+              "mechanics": {
+                "kind": "active",
+                "action": "L",
+                "skillBonuses": [
+                  {
+                    "value": 3,
+                    "tests": [
+                      "bluff",
+                      "seduce",
+                      "negotiate",
+                      "lie",
+                      "black_market"
+                    ]
+                  }
+                ],
+                "effects": [
+                  {
+                    "type": "use_scroll_or_wand",
+                    "test": "ATM",
+                    "difficultyFormula": "10+2*spell_rank"
+                  }
+                ]
+              }
+            },
+            {
+              "pathId": "path:voie-de-l-humain:cof2-lb-2024",
+              "rank": 1,
+              "label": "Diversité",
+              "spell": false,
+              "origin": null,
+              "sourceRule": null,
+              "grantedByAbilityId": null,
+              "retainedPeopleAbility": false,
+              "divineAbility": false,
+              "replacesPathId": null,
+              "mechanics": null
+            }
+          ],
+          "fresh": [
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 1,
+              "label": "Discrétion",
+              "spell": false,
+              "origin": null,
+              "sourceRule": null,
+              "grantedByAbilityId": null,
+              "retainedPeopleAbility": false,
+              "divineAbility": false,
+              "replacesPathId": null,
+              "mechanics": {
+                "kind": "passive",
+                "skillBonuses": [
+                  {
+                    "value": 3,
+                    "tests": [
+                      "stealth",
+                      "disguise",
+                      "hide_weapon"
+                    ]
+                  }
+                ],
+                "effects": [
+                  {
+                    "type": "language"
+                  },
+                  {
+                    "type": "conditional_bonus_die",
+                    "target": "attack",
+                    "condition": "target_surprised"
+                  }
+                ]
+              }
+            },
+            {
+              "pathId": "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024",
+              "rank": 1,
+              "label": "Baratin",
+              "spell": false,
+              "origin": null,
+              "sourceRule": null,
+              "grantedByAbilityId": null,
+              "retainedPeopleAbility": false,
+              "divineAbility": false,
+              "replacesPathId": null,
+              "mechanics": {
+                "kind": "active",
+                "action": "L",
+                "skillBonuses": [
+                  {
+                    "value": 3,
+                    "tests": [
+                      "bluff",
+                      "seduce",
+                      "negotiate",
+                      "lie",
+                      "black_market"
+                    ]
+                  }
+                ],
+                "effects": [
+                  {
+                    "type": "use_scroll_or_wand",
+                    "test": "ATM",
+                    "difficultyFormula": "10+2*spell_rank"
+                  }
+                ]
+              }
+            },
+            {
+              "pathId": "path:voie-de-l-humain:cof2-lb-2024",
+              "rank": 1,
+              "label": "Diversité",
+              "spell": false,
+              "origin": null,
+              "sourceRule": null,
+              "grantedByAbilityId": null,
+              "retainedPeopleAbility": false,
+              "divineAbility": false,
+              "replacesPathId": null,
+              "mechanics": null
+            }
+          ],
+          "removed": true
+        }
+      ],
+      "unexpectedResiduals": [],
+      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "status": "PASS"
+    },
+    {
+      "scenario": "REPEATING_TO_WARRIOR",
+      "transitionOperations": [
+        "profile/family",
+        "selected paths",
+        "equipment",
+        "mode/rules toggles"
+      ],
+      "removedEffectsExpected": [
+        "persistentChoices",
+        "attacks"
+      ],
+      "removedEffectsObserved": [
+        {
+          "path": "persistentChoices",
+          "transitioned": {},
+          "fresh": {},
+          "removed": true
+        },
+        {
+          "path": "attacks",
+          "transitioned": [
+            {
+              "weaponId": "weapon:long-sword",
+              "label": "Épée longue",
+              "type": "contact",
+              "attackBonus": 3,
+              "damage": "1d8+2",
+              "damageType": "physical",
+              "rangeMeters": null,
+              "hands": 1,
+              "properties": [],
+              "mastered": true,
+              "conditionalBonuses": []
+            },
+            {
+              "weaponId": "weapon:great-sword",
+              "label": "Épée à deux mains",
+              "type": "contact",
+              "attackBonus": 3,
+              "damage": "2d6+2",
+              "damageType": "physical",
+              "rangeMeters": null,
+              "hands": 2,
+              "properties": [
+                "two_handed"
+              ],
+              "mastered": true,
+              "conditionalBonuses": []
+            },
+            {
+              "weaponId": "weapon:dagger",
+              "label": "Dague",
+              "type": "contact",
+              "attackBonus": 3,
+              "damage": "1d4+2",
+              "damageType": "physical",
+              "rangeMeters": null,
+              "hands": 1,
+              "properties": [
+                "light"
+              ],
+              "mastered": true,
+              "conditionalBonuses": []
+            },
+            {
+              "weaponId": "weapon:dagger",
+              "label": "Dague",
+              "type": "distance",
+              "attackBonus": 2,
+              "damage": "1d4",
+              "damageType": "physical",
+              "rangeMeters": 5,
+              "hands": 1,
+              "properties": [
+                "light"
+              ],
+              "mastered": true,
+              "conditionalBonuses": []
+            }
+          ],
+          "fresh": [
+            {
+              "weaponId": "weapon:long-sword",
+              "label": "Épée longue",
+              "type": "contact",
+              "attackBonus": 3,
+              "damage": "1d8+2",
+              "damageType": "physical",
+              "rangeMeters": null,
+              "hands": 1,
+              "properties": [],
+              "mastered": true,
+              "conditionalBonuses": []
+            },
+            {
+              "weaponId": "weapon:great-sword",
+              "label": "Épée à deux mains",
+              "type": "contact",
+              "attackBonus": 3,
+              "damage": "2d6+2",
+              "damageType": "physical",
+              "rangeMeters": null,
+              "hands": 2,
+              "properties": [
+                "two_handed"
+              ],
+              "mastered": true,
+              "conditionalBonuses": []
+            },
+            {
+              "weaponId": "weapon:dagger",
+              "label": "Dague",
+              "type": "contact",
+              "attackBonus": 3,
+              "damage": "1d4+2",
+              "damageType": "physical",
+              "rangeMeters": null,
+              "hands": 1,
+              "properties": [
+                "light"
+              ],
+              "mastered": true,
+              "conditionalBonuses": []
+            },
+            {
+              "weaponId": "weapon:dagger",
+              "label": "Dague",
+              "type": "distance",
+              "attackBonus": 2,
+              "damage": "1d4",
+              "damageType": "physical",
+              "rangeMeters": 5,
+              "hands": 1,
+              "properties": [
+                "light"
+              ],
+              "mastered": true,
+              "conditionalBonuses": []
+            }
+          ],
+          "removed": true
+        }
+      ],
+      "unexpectedResiduals": [],
+      "transitionedMechanicalHash": "a092a0aee32399cdb9e8ccec53df58619b02913a4e5c55309289d04aea248511",
+      "freshMechanicalHash": "a092a0aee32399cdb9e8ccec53df58619b02913a4e5c55309289d04aea248511",
+      "status": "PASS"
+    },
+    {
+      "scenario": "GRANT_TO_ROGUE",
+      "transitionOperations": [
+        "profile/family",
+        "selected paths",
+        "equipment",
+        "mode/rules toggles"
+      ],
+      "removedEffectsExpected": [
+        "grantedAbilities",
+        "persistentChoices"
+      ],
+      "removedEffectsObserved": [
+        {
+          "path": "grantedAbilities",
+          "transitioned": [],
+          "fresh": [],
+          "removed": true
+        },
+        {
+          "path": "persistentChoices",
+          "transitioned": {},
+          "fresh": {},
+          "removed": true
+        }
+      ],
+      "unexpectedResiduals": [],
+      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "status": "PASS"
+    },
+    {
+      "scenario": "MAGE_TO_WARRIOR",
+      "transitionOperations": [
+        "profile/family",
+        "selected paths",
+        "equipment",
+        "mode/rules toggles"
+      ],
+      "removedEffectsExpected": [
+        "spells",
+        "resources.mana"
+      ],
+      "removedEffectsObserved": [
+        {
+          "path": "spells",
+          "transitioned": [],
+          "fresh": [],
+          "removed": true
+        },
+        {
+          "path": "resources.mana",
+          "transitioned": {
+            "max": 0,
+            "current": 0
+          },
+          "fresh": {
+            "max": 0,
+            "current": 0
+          },
+          "removed": true
+        }
+      ],
+      "unexpectedResiduals": [],
+      "transitionedMechanicalHash": "a092a0aee32399cdb9e8ccec53df58619b02913a4e5c55309289d04aea248511",
+      "freshMechanicalHash": "a092a0aee32399cdb9e8ccec53df58619b02913a4e5c55309289d04aea248511",
+      "status": "PASS"
+    },
+    {
+      "scenario": "WARRIOR_TO_MAGE",
+      "transitionOperations": [
+        "profile/family",
+        "selected paths",
+        "equipment",
+        "mode/rules toggles"
+      ],
+      "removedEffectsExpected": [
+        "masteries"
+      ],
+      "removedEffectsObserved": [
+        {
+          "path": "masteries",
+          "transitioned": {
+            "weaponIds": [
+              "weapon:dagger",
+              "weapon:iron-staff"
+            ],
+            "armorMaxDef": 0,
+            "shields": "none"
+          },
+          "fresh": {
+            "weaponIds": [
+              "weapon:dagger",
+              "weapon:iron-staff"
+            ],
+            "armorMaxDef": 0,
+            "shields": "none"
+          },
+          "removed": true
+        }
+      ],
+      "unexpectedResiduals": [],
+      "transitionedMechanicalHash": "52bf3ac5e2aefe1c88335ddc5ad611864d5854097c6276cfadfbf674892962c9",
+      "freshMechanicalHash": "52bf3ac5e2aefe1c88335ddc5ad611864d5854097c6276cfadfbf674892962c9",
+      "status": "PASS"
+    },
+    {
+      "scenario": "HYBRID_TO_STANDARD",
+      "transitionOperations": [
+        "profile/family",
+        "selected paths",
+        "equipment",
+        "mode/rules toggles"
+      ],
+      "removedEffectsExpected": [
+        "hybrid"
+      ],
+      "removedEffectsObserved": [
+        {
+          "path": "hybrid",
+          "transitioned": null,
+          "fresh": null,
+          "removed": true
+        }
+      ],
+      "unexpectedResiduals": [],
+      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "status": "PASS"
+    },
+    {
+      "scenario": "NO_PROFILE_TO_STANDARD",
+      "transitionOperations": [
+        "profile/family",
+        "selected paths",
+        "equipment",
+        "mode/rules toggles"
+      ],
+      "removedEffectsExpected": [
+        "profileId"
+      ],
+      "removedEffectsObserved": [
+        {
+          "path": "profileId",
+          "transitioned": "class:voleur:cof2-lb-2024",
+          "fresh": "class:voleur:cof2-lb-2024",
+          "removed": true
+        }
+      ],
+      "unexpectedResiduals": [],
+      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "status": "PASS"
+    },
+    {
+      "scenario": "HISTORY_TO_STANDARD",
+      "transitionOperations": [
+        "profile/family",
+        "selected paths",
+        "equipment",
+        "mode/rules toggles"
+      ],
+      "removedEffectsExpected": [
+        "historyPath"
+      ],
+      "removedEffectsObserved": [
+        {
+          "path": "historyPath",
+          "removed": true
+        }
+      ],
+      "unexpectedResiduals": [],
+      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "status": "PASS"
+    },
+    {
+      "scenario": "ALC_OFF",
+      "transitionOperations": [
+        "profile/family",
+        "selected paths",
+        "equipment",
+        "mode/rules toggles"
+      ],
+      "removedEffectsExpected": [
+        "languages",
+        "skillBonuses"
+      ],
+      "removedEffectsObserved": [
+        {
+          "path": "languages",
+          "transitioned": {
+            "automatic": [
+              "commun",
+              "argotien"
+            ],
+            "choicesAllowed": [
+              "sylvestre",
+              "runique",
+              "noir-parle",
+              "draconique",
+              "abyssal",
+              "celestien",
+              "profond",
+              "aquarien"
+            ],
+            "selected": [],
+            "literacy": "literate",
+            "remainingSlots": 3
+          },
+          "fresh": {
+            "automatic": [
+              "commun",
+              "argotien"
+            ],
+            "choicesAllowed": [
+              "sylvestre",
+              "runique",
+              "noir-parle",
+              "draconique",
+              "abyssal",
+              "celestien",
+              "profond",
+              "aquarien"
+            ],
+            "selected": [],
+            "literacy": "literate",
+            "remainingSlots": 3
+          },
+          "removed": true
+        },
+        {
+          "path": "skillBonuses",
+          "transitioned": [],
+          "fresh": [],
+          "removed": true
+        }
+      ],
+      "unexpectedResiduals": [],
+      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "status": "PASS"
+    },
+    {
+      "scenario": "EDUQUE_TO_OTHER",
+      "transitionOperations": [
+        "profile/family",
+        "selected paths",
+        "equipment",
+        "mode/rules toggles"
+      ],
+      "removedEffectsExpected": [
+        "creationDecisions.extraLanguage"
+      ],
+      "removedEffectsObserved": [
+        {
+          "path": "creationDecisions.extraLanguage",
+          "removed": true
+        }
+      ],
+      "unexpectedResiduals": [],
+      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "status": "PASS"
+    },
+    {
+      "scenario": "PREFERRED_TO_OTHER",
+      "transitionOperations": [
+        "profile/family",
+        "selected paths",
+        "equipment",
+        "mode/rules toggles"
+      ],
+      "removedEffectsExpected": [
+        "creationDecisions.preferredWeaponCategory"
+      ],
+      "removedEffectsObserved": [
+        {
+          "path": "creationDecisions.preferredWeaponCategory",
+          "removed": true
+        }
+      ],
+      "unexpectedResiduals": [],
+      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "status": "PASS"
+    },
+    {
+      "scenario": "STONE_REMOVED",
+      "transitionOperations": [
+        "profile/family",
+        "selected paths",
+        "equipment",
+        "mode/rules toggles"
+      ],
+      "removedEffectsExpected": [
+        "persistentChoices"
+      ],
+      "removedEffectsObserved": [
+        {
+          "path": "persistentChoices",
+          "transitioned": {},
+          "fresh": {},
+          "removed": true
+        }
+      ],
+      "unexpectedResiduals": [],
+      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "status": "PASS"
+    },
+    {
+      "scenario": "FAMILIAR_REMOVED",
+      "transitionOperations": [
+        "profile/family",
+        "selected paths",
+        "equipment",
+        "mode/rules toggles"
+      ],
+      "removedEffectsExpected": [
+        "entities"
+      ],
+      "removedEffectsObserved": [
+        {
+          "path": "entities",
+          "transitioned": [],
+          "fresh": [],
+          "removed": true
+        }
+      ],
+      "unexpectedResiduals": [],
+      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "status": "PASS"
+    }
+  ],
+  "passed": 13,
+  "total": 13,
+  "status": "PASS",
+  "finalProductSha": "565cc873e6429ce524fcea371d0a3fe11fe5ab96e6757e4177d4f7d8433b5559"
+}

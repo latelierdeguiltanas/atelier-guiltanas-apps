@@ -1,0 +1,158 @@
+{
+  "rows": [
+    {
+      "label": "Peau de pierre",
+      "abilityId": "ability:peau-de-pierre:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+      "rank": 2,
+      "errors": [],
+      "acquired": true,
+      "persistentChoices": {
+        "ability:peau-de-pierre:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024": {
+          "defenseStat": "AGI"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "Armure lourde",
+      "abilityId": "ability:armure-lourde:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "rank": 3,
+      "errors": [],
+      "acquired": true,
+      "persistentChoices": {
+        "ability:armure-lourde:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024": {
+          "heavyArmorChoice": "DEF_PLUS_1"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "Arme à répétition",
+      "abilityId": "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "rank": 2,
+      "errors": [],
+      "acquired": true,
+      "persistentChoices": {
+        "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024": {
+          "repeatingWeapons": [
+            "weapon:powder-pistol"
+          ]
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "Combattant aguerri",
+      "abilityId": "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "rank": 3,
+      "errors": [],
+      "acquired": true,
+      "persistentChoices": {
+        "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024": {
+          "combattantAguerriAbility": "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024"
+        },
+        "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024": {
+          "repeatingWeapons": [
+            "weapon:powder-pistol"
+          ]
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "Familier",
+      "abilityId": "ability:familier:classpath-voie-du-familier-class-invocateur-addon-compagnon-2024:r1",
+      "rank": 1,
+      "errors": [],
+      "acquired": true,
+      "persistentChoices": {
+        "ability:familier:classpath-voie-du-familier-class-invocateur-addon-compagnon-2024:r1": {
+          "familiarChoice": {
+            "type": "animal",
+            "species": "animal familier",
+            "name": "Milo"
+          }
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "Talent pour la magie",
+      "abilityId": "ability:talent-pour-la-magie:path:voie-de-l-elfe-haut:cof2-lb-2024:rank3:cof2-lb-2024",
+      "rank": 3,
+      "errors": [],
+      "acquired": true,
+      "persistentChoices": {
+        "ability:talent-pour-la-magie:path:voie-de-l-elfe-haut:cof2-lb-2024:rank3:cof2-lb-2024": {
+          "talentMagicAbility": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "Enfant de la forêt",
+      "abilityId": "ability:enfant-de-la-for-t:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank2:cof2-lb-2024",
+      "rank": 2,
+      "errors": [],
+      "acquired": true,
+      "persistentChoices": {
+        "ability:enfant-de-la-for-t:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank2:cof2-lb-2024": {
+          "forestChildAbility": "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "Touche-à-tout",
+      "abilityId": "ability:touche-tout:path:voie-de-l-humain:cof2-lb-2024:rank3:cof2-lb-2024",
+      "rank": 3,
+      "errors": [],
+      "acquired": true,
+      "persistentChoices": {
+        "ability:touche-tout:path:voie-de-l-humain:cof2-lb-2024:rank3:cof2-lb-2024": {
+          "jackOfAllTradesAbility": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "Grosse tête",
+      "abilityId": "ability-r1-class-forgesort-golem-grosse-tete-cof2-lb-2024",
+      "rank": 1,
+      "errors": [],
+      "acquired": true,
+      "persistentChoices": {
+        "ability-r1-class-forgesort-golem-grosse-tete-cof2-lb-2024": {
+          "useIntForPV": false
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "Éclaireur",
+      "abilityId": "ability:eclaireur:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "rank": 1,
+      "errors": [],
+      "acquired": true,
+      "persistentChoices": {
+        "ability:eclaireur:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024": {
+          "traqueurSwap": false
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "Spécialisation",
+      "abilityId": "ability:specialisation:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "rank": 3,
+      "errors": [],
+      "acquired": true,
+      "persistentChoices": {},
+      "status": "PASS"
+    }
+  ],
+  "passed": 11,
+  "total": 11,
+  "status": "PASS",
+  "finalProductSha": "565cc873e6429ce524fcea371d0a3fe11fe5ab96e6757e4177d4f7d8433b5559"
+}

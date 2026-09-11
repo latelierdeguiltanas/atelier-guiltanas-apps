@@ -1,0 +1,427 @@
+{
+  "finalProductSha": "565cc873e6429ce524fcea371d0a3fe11fe5ab96e6757e4177d4f7d8433b5559",
+  "canonicalRule": "Sans profil has no primary family; family composition is symmetric and selected-path order is non-mechanical.",
+  "tests": [
+    {
+      "profiles": [
+        "class:voleur:cof2-lb-2024",
+        "class:guerrier:cof2-lb-2024"
+      ],
+      "families": [
+        "aventurier",
+        "combattant"
+      ],
+      "abErrors": [],
+      "baErrors": [],
+      "ab": {
+        "PV": 10,
+        "PC": 2,
+        "PM": 0,
+        "DR": {
+          "count": 3,
+          "die": 10
+        },
+        "DEF": 11,
+        "INIT": 14,
+        "masteries": {
+          "weaponIds": [],
+          "armorIds": [],
+          "armorMaxDef": 2,
+          "shields": "none"
+        },
+        "permissions": {},
+        "resources": {
+          "mana": {
+            "max": 0,
+            "current": 0
+          }
+        },
+        "attacks": [],
+        "abilities": [
+          "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+          "ability:diversite:path-voie-de-l-humain-cof2-lb-2024:r1:cof2-lb-2024",
+          "ability:vivacite:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024"
+        ]
+      },
+      "ba": {
+        "PV": 10,
+        "PC": 2,
+        "PM": 0,
+        "DR": {
+          "count": 3,
+          "die": 10
+        },
+        "DEF": 11,
+        "INIT": 14,
+        "masteries": {
+          "weaponIds": [],
+          "armorIds": [],
+          "armorMaxDef": 2,
+          "shields": "none"
+        },
+        "permissions": {},
+        "resources": {
+          "mana": {
+            "max": 0,
+            "current": 0
+          }
+        },
+        "attacks": [],
+        "abilities": [
+          "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+          "ability:diversite:path-voie-de-l-humain-cof2-lb-2024:r1:cof2-lb-2024",
+          "ability:vivacite:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "profiles": [
+        "class:voleur:cof2-lb-2024",
+        "class:magicien:cof2-lb-2024"
+      ],
+      "families": [
+        "aventurier",
+        "mage"
+      ],
+      "abErrors": [],
+      "baErrors": [],
+      "ab": {
+        "PV": 8,
+        "PC": 2,
+        "PM": 1,
+        "DR": {
+          "count": 3,
+          "die": 8
+        },
+        "DEF": 11,
+        "INIT": 11,
+        "masteries": {
+          "weaponIds": [
+            "weapon:dagger",
+            "weapon:iron-staff"
+          ],
+          "armorIds": [],
+          "armorMaxDef": 0,
+          "shields": "none"
+        },
+        "permissions": {},
+        "resources": {
+          "mana": {
+            "max": 1,
+            "current": 1
+          }
+        },
+        "attacks": [
+          {
+            "id": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+            "abilityId": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+            "label": "Rang 1 — Projectile de mana (A)*",
+            "type": "magique",
+            "attackBonus": null,
+            "damage": "1d4",
+            "damageType": "arcane",
+            "rangeMeters": 30,
+            "cost": {
+              "resource": "PM",
+              "value": 1
+            },
+            "properties": [
+              "ability_attack"
+            ]
+          }
+        ],
+        "abilities": [
+          "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+          "ability:diversite:path-voie-de-l-humain-cof2-lb-2024:r1:cof2-lb-2024",
+          "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1"
+        ]
+      },
+      "ba": {
+        "PV": 8,
+        "PC": 2,
+        "PM": 1,
+        "DR": {
+          "count": 3,
+          "die": 8
+        },
+        "DEF": 11,
+        "INIT": 11,
+        "masteries": {
+          "weaponIds": [
+            "weapon:dagger",
+            "weapon:iron-staff"
+          ],
+          "armorIds": [],
+          "armorMaxDef": 0,
+          "shields": "none"
+        },
+        "permissions": {},
+        "resources": {
+          "mana": {
+            "max": 1,
+            "current": 1
+          }
+        },
+        "attacks": [
+          {
+            "id": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+            "abilityId": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+            "label": "Rang 1 — Projectile de mana (A)*",
+            "type": "magique",
+            "attackBonus": null,
+            "damage": "1d4",
+            "damageType": "arcane",
+            "rangeMeters": 30,
+            "cost": {
+              "resource": "PM",
+              "value": 1
+            },
+            "properties": [
+              "ability_attack"
+            ]
+          }
+        ],
+        "abilities": [
+          "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+          "ability:diversite:path-voie-de-l-humain-cof2-lb-2024:r1:cof2-lb-2024",
+          "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "profiles": [
+        "class:guerrier:cof2-lb-2024",
+        "class:magicien:cof2-lb-2024"
+      ],
+      "families": [
+        "combattant",
+        "mage"
+      ],
+      "abErrors": [],
+      "baErrors": [],
+      "ab": {
+        "PV": 9,
+        "PC": 1,
+        "PM": 1,
+        "DR": {
+          "count": 3,
+          "die": 10
+        },
+        "DEF": 11,
+        "INIT": 14,
+        "masteries": {
+          "weaponIds": [
+            "weapon:dagger",
+            "weapon:iron-staff"
+          ],
+          "armorIds": [],
+          "armorMaxDef": 0,
+          "shields": "none"
+        },
+        "permissions": {},
+        "resources": {
+          "mana": {
+            "max": 1,
+            "current": 1
+          }
+        },
+        "attacks": [
+          {
+            "id": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+            "abilityId": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+            "label": "Rang 1 — Projectile de mana (A)*",
+            "type": "magique",
+            "attackBonus": null,
+            "damage": "1d4",
+            "damageType": "arcane",
+            "rangeMeters": 30,
+            "cost": {
+              "resource": "PM",
+              "value": 1
+            },
+            "properties": [
+              "ability_attack"
+            ]
+          }
+        ],
+        "abilities": [
+          "ability:diversite:path-voie-de-l-humain-cof2-lb-2024:r1:cof2-lb-2024",
+          "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+          "ability:vivacite:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024"
+        ]
+      },
+      "ba": {
+        "PV": 9,
+        "PC": 1,
+        "PM": 1,
+        "DR": {
+          "count": 3,
+          "die": 10
+        },
+        "DEF": 11,
+        "INIT": 14,
+        "masteries": {
+          "weaponIds": [
+            "weapon:dagger",
+            "weapon:iron-staff"
+          ],
+          "armorIds": [],
+          "armorMaxDef": 0,
+          "shields": "none"
+        },
+        "permissions": {},
+        "resources": {
+          "mana": {
+            "max": 1,
+            "current": 1
+          }
+        },
+        "attacks": [
+          {
+            "id": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+            "abilityId": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+            "label": "Rang 1 — Projectile de mana (A)*",
+            "type": "magique",
+            "attackBonus": null,
+            "damage": "1d4",
+            "damageType": "arcane",
+            "rangeMeters": 30,
+            "cost": {
+              "resource": "PM",
+              "value": 1
+            },
+            "properties": [
+              "ability_attack"
+            ]
+          }
+        ],
+        "abilities": [
+          "ability:diversite:path-voie-de-l-humain-cof2-lb-2024:r1:cof2-lb-2024",
+          "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+          "ability:vivacite:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "profiles": [
+        "class:magicien:cof2-lb-2024",
+        "class:moine:cof2-lb-2024"
+      ],
+      "families": [
+        "mage",
+        "mystique"
+      ],
+      "abErrors": [],
+      "baErrors": [],
+      "ab": {
+        "PV": 8,
+        "PC": 1,
+        "PM": 1,
+        "DR": {
+          "count": 4,
+          "die": 8
+        },
+        "DEF": 11,
+        "INIT": 11,
+        "masteries": {
+          "weaponIds": [
+            "weapon:dagger",
+            "weapon:iron-staff"
+          ],
+          "armorIds": [],
+          "armorMaxDef": 0,
+          "shields": "none"
+        },
+        "permissions": {},
+        "resources": {
+          "mana": {
+            "max": 1,
+            "current": 1
+          }
+        },
+        "attacks": [
+          {
+            "id": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+            "abilityId": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+            "label": "Rang 1 — Projectile de mana (A)*",
+            "type": "magique",
+            "attackBonus": null,
+            "damage": "1d4",
+            "damageType": "arcane",
+            "rangeMeters": 30,
+            "cost": {
+              "resource": "PM",
+              "value": 1
+            },
+            "properties": [
+              "ability_attack"
+            ]
+          }
+        ],
+        "abilities": [
+          "ability:diversite:path-voie-de-l-humain-cof2-lb-2024:r1:cof2-lb-2024",
+          "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1",
+          "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1"
+        ]
+      },
+      "ba": {
+        "PV": 8,
+        "PC": 1,
+        "PM": 1,
+        "DR": {
+          "count": 4,
+          "die": 8
+        },
+        "DEF": 11,
+        "INIT": 11,
+        "masteries": {
+          "weaponIds": [
+            "weapon:dagger",
+            "weapon:iron-staff"
+          ],
+          "armorIds": [],
+          "armorMaxDef": 0,
+          "shields": "none"
+        },
+        "permissions": {},
+        "resources": {
+          "mana": {
+            "max": 1,
+            "current": 1
+          }
+        },
+        "attacks": [
+          {
+            "id": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+            "abilityId": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+            "label": "Rang 1 — Projectile de mana (A)*",
+            "type": "magique",
+            "attackBonus": null,
+            "damage": "1d4",
+            "damageType": "arcane",
+            "rangeMeters": 30,
+            "cost": {
+              "resource": "PM",
+              "value": 1
+            },
+            "properties": [
+              "ability_attack"
+            ]
+          }
+        ],
+        "abilities": [
+          "ability:diversite:path-voie-de-l-humain-cof2-lb-2024:r1:cof2-lb-2024",
+          "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1",
+          "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1"
+        ]
+      },
+      "status": "PASS"
+    }
+  ],
+  "passed": 4,
+  "total": 4,
+  "status": "PASS"
+}

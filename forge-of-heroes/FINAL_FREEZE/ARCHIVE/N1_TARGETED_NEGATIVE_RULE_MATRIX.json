@@ -1,0 +1,314 @@
+{
+  "finalProductSha": "002b8e7db665ae6e1f4db0f19fef9a4e7300416651de064374c5638a58406307",
+  "rows": [
+    {
+      "rule": "REQUIRED_Peau de pierre",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "removeChoice",
+      "expectedError": "/choix obligatoire|requis|minimum|capacité accordée/i",
+      "actualErrors": [
+        "Peau de pierre : choix obligatoire manquant."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "DOMAIN_Peau de pierre",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "fakeChoice",
+      "expectedError": "/choix|illégal|arme non possédée|entité|capacité accordée|type obligatoire|species obligatoire/i",
+      "actualErrors": [
+        "Peau de pierre : valeur de choix illégale."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "REQUIRED_Armure lourde",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "removeChoice",
+      "expectedError": "/choix obligatoire|requis|minimum|capacité accordée/i",
+      "actualErrors": [
+        "Armure lourde : choix obligatoire manquant."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "DOMAIN_Armure lourde",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "fakeChoice",
+      "expectedError": "/choix|illégal|arme non possédée|entité|capacité accordée|type obligatoire|species obligatoire/i",
+      "actualErrors": [
+        "Armure lourde : valeur de choix illégale."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "REQUIRED_Arme à répétition",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "removeChoice",
+      "expectedError": "/choix obligatoire|requis|minimum|capacité accordée/i",
+      "actualErrors": [
+        "Arme à répétition : choix obligatoire manquant."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "DOMAIN_Arme à répétition",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "fakeChoice",
+      "expectedError": "/choix|illégal|arme non possédée|entité|capacité accordée|type obligatoire|species obligatoire/i",
+      "actualErrors": [
+        "Arme à répétition : arme non possédée ou inéligible."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "REQUIRED_Combattant aguerri",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "removeChoice",
+      "expectedError": "/choix obligatoire|requis|minimum|capacité accordée/i",
+      "actualErrors": [
+        "Combattant aguerri : choix obligatoire manquant."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "DOMAIN_Combattant aguerri",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "fakeChoice",
+      "expectedError": "/choix|illégal|arme non possédée|entité|capacité accordée|type obligatoire|species obligatoire/i",
+      "actualErrors": [
+        "Combattant aguerri : option illégale."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "REQUIRED_Familier",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "removeChoice",
+      "expectedError": "/choix obligatoire|requis|minimum|capacité accordée/i",
+      "actualErrors": [
+        "Rang 1 — Familier : choix obligatoire manquant.",
+        "Rang 1 — Familier : type obligatoire.",
+        "Rang 1 — Familier : species obligatoire."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "DOMAIN_Familier",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "fakeChoice",
+      "expectedError": "/choix|illégal|arme non possédée|entité|capacité accordée|type obligatoire|species obligatoire/i",
+      "actualErrors": [
+        "Rang 1 — Familier : type obligatoire.",
+        "Rang 1 — Familier : species obligatoire."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "REQUIRED_Talent pour la magie",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "removeChoice",
+      "expectedError": "/choix obligatoire|requis|minimum|capacité accordée/i",
+      "actualErrors": [
+        "Talent pour la magie : choix obligatoire manquant."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "DOMAIN_Talent pour la magie",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "fakeChoice",
+      "expectedError": "/choix|illégal|arme non possédée|entité|capacité accordée|type obligatoire|species obligatoire/i",
+      "actualErrors": [
+        "Talent pour la magie : option illégale."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "REQUIRED_Enfant de la forêt",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "removeChoice",
+      "expectedError": "/choix obligatoire|requis|minimum|capacité accordée/i",
+      "actualErrors": [
+        "Enfant de la forêt : choix obligatoire manquant."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "DOMAIN_Enfant de la forêt",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "fakeChoice",
+      "expectedError": "/choix|illégal|arme non possédée|entité|capacité accordée|type obligatoire|species obligatoire/i",
+      "actualErrors": [
+        "Enfant de la forêt : option illégale."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "REQUIRED_Touche-à-tout",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "removeChoice",
+      "expectedError": "/choix obligatoire|requis|minimum|capacité accordée/i",
+      "actualErrors": [
+        "Touche-à-tout : choix obligatoire manquant."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "DOMAIN_Touche-à-tout",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "fakeChoice",
+      "expectedError": "/choix|illégal|arme non possédée|entité|capacité accordée|type obligatoire|species obligatoire/i",
+      "actualErrors": [
+        "Touche-à-tout : option illégale."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "WEAPON_MULTI_3",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "three",
+      "expectedError": "/entre 1 et 2|max/i",
+      "actualErrors": [
+        "Arme à répétition : choisir entre 1 et 2 armes."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "WEAPON_MULTI_INELIGIBLE",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "fake",
+      "expectedError": "/inéligible|non possédée/i",
+      "actualErrors": [
+        "Arme à répétition : arme non possédée ou inéligible."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "A_LA_CARTE_OVER_BUDGET",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "targeted mutation",
+      "expectedError": "/points|budget|dépens/i",
+      "actualErrors": [
+        "Dépense PCap : tous les points supplémentaires doivent être dépensés entre rangs et capacités à la carte."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "A_LA_CARTE_SKILL_FAKE",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "targeted mutation",
+      "expectedError": "/compétence|catalogue|la carte/i",
+      "actualErrors": [
+        "Dépense PCap : tous les points supplémentaires doivent être dépensés entre rangs et capacités à la carte."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "A_LA_CARTE_LANGUAGE_KNOWN",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "targeted mutation",
+      "expectedError": "/langue|connue|automatique/i",
+      "actualErrors": [
+        "Capacités à la carte : langue illégale ou déjà connue."
+      ],
+      "status": "PASS"
+    },
+    {
+      "rule": "PRIEST_MODE_INVALID",
+      "positiveControl": {
+        "errors": [],
+        "status": "PASS"
+      },
+      "negativeMutation": "targeted mutation",
+      "expectedError": "/Prêtre|mode/i",
+      "actualErrors": [
+        "Prêtre : choisir généraliste ou spécialiste."
+      ],
+      "status": "PASS"
+    }
+  ],
+  "passed": 22,
+  "total": 22,
+  "requiredAbilityChoices": {
+    "passed": 8,
+    "total": 8
+  },
+  "weaponMulti": {
+    "passed": 2,
+    "total": 2,
+    "status": "PASS"
+  },
+  "grantDomain": {
+    "passed": 8,
+    "total": 8,
+    "status": "PASS"
+  },
+  "priestReligion": {
+    "status": "PASS"
+  },
+  "status": "PASS"
+}

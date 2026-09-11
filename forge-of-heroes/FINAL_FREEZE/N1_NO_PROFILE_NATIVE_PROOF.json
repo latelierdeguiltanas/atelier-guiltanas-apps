@@ -1,0 +1,89 @@
+{
+  "implementation": "native path-derived computation; no temporary profile; no dummy path",
+  "sourceContract": {
+    "book": "COF2 Livre de base",
+    "printedPages": "176-178",
+    "pv": "mean of families for mixed-family acquired capacities",
+    "armor": "each capacity retains origin-profile armor restriction",
+    "mastery": "origin-profile mastery requires canonical conditions"
+  },
+  "crossFamilyScenarios": [
+    {
+      "families": [
+        "aventurier",
+        "combattant"
+      ],
+      "paths": [
+        "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+        "classpath:voie-du-combat:class-guerrier:cof2-lb-2024"
+      ],
+      "errors": [],
+      "profileId": null,
+      "dummyProfileEffects": 0,
+      "dummyPathEffects": 0,
+      "status": "PASS"
+    },
+    {
+      "families": [
+        "aventurier",
+        "mage"
+      ],
+      "paths": [
+        "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+        "classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024"
+      ],
+      "errors": [],
+      "profileId": null,
+      "dummyProfileEffects": 0,
+      "dummyPathEffects": 0,
+      "status": "PASS"
+    },
+    {
+      "families": [
+        "combattant",
+        "mage"
+      ],
+      "paths": [
+        "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+        "classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024"
+      ],
+      "errors": [],
+      "profileId": null,
+      "dummyProfileEffects": 0,
+      "dummyPathEffects": 0,
+      "status": "PASS"
+    },
+    {
+      "families": [
+        "mage",
+        "mystique"
+      ],
+      "paths": [
+        "classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024"
+      ],
+      "errors": [],
+      "profileId": null,
+      "dummyProfileEffects": 0,
+      "dummyPathEffects": 0,
+      "status": "PASS"
+    }
+  ],
+  "dummyEffects": 0,
+  "status": "PASS",
+  "orderIndependence": "PASS",
+  "crossFamilyDerivedFields": [
+    "PV",
+    "PC",
+    "PM",
+    "DR",
+    "DEF",
+    "INIT",
+    "masteries",
+    "permissions",
+    "resources",
+    "attacks",
+    "abilities"
+  ],
+  "finalProductSha": "565cc873e6429ce524fcea371d0a3fe11fe5ab96e6757e4177d4f7d8433b5559"
+}

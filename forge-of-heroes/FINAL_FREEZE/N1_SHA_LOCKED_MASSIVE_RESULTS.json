@@ -1,0 +1,253 @@
+{
+  "finalProductSha": "565cc873e6429ce524fcea371d0a3fe11fe5ab96e6757e4177d4f7d8433b5559",
+  "runner": "FINAL_FREEZE_TESTS/trustworthy_massive_runner.js",
+  "seed": "FOH-N1-TRUSTED-0x6f683231",
+  "startedAt": "2026-09-10T07:41:40.682Z",
+  "endedAt": "2026-09-10T07:49:19.619Z",
+  "LEGAL_FUZZ": {
+    "pass": 50000,
+    "total": 50000,
+    "strata": {
+      "standard": {
+        "quota": 20000,
+        "pass": 20000,
+        "attempts": 68996
+      },
+      "advanced-age": {
+        "quota": 5000,
+        "pass": 5000,
+        "attempts": 45566
+      },
+      "hybrid": {
+        "quota": 5000,
+        "pass": 5000,
+        "attempts": 16498
+      },
+      "no-profile": {
+        "quota": 5000,
+        "pass": 5000,
+        "attempts": 15183
+      },
+      "history": {
+        "quota": 5000,
+        "pass": 5000,
+        "attempts": 15794
+      },
+      "a-la-carte": {
+        "quota": 5000,
+        "pass": 5000,
+        "attempts": 40430
+      },
+      "mage-advanced": {
+        "quota": 2500,
+        "pass": 2500,
+        "attempts": 7226
+      },
+      "combined-advanced": {
+        "quota": 2500,
+        "pass": 2500,
+        "attempts": 11725
+      }
+    },
+    "uniqueMechanicalInputs": 46935,
+    "uniqueMechanicalOutputs": 46935,
+    "uniqueBuildSignatures": 47302
+  },
+  "ILLEGAL_TARGETED": {
+    "pass": 50000,
+    "total": 50000,
+    "wrongReason": 0,
+    "unexpectedAccepted": 0,
+    "categories": [
+      {
+        "category": "CHARACTERISTIC_OUT_OF_RANGE",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "PATH_INVALID",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "PATH_COUNT",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "HYBRID_SAME_PROFILE",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "HYBRID_NO_APPROVAL",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "HYBRID_WRONG_PATH_ORIGIN",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "HISTORY_MISSING",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "HISTORY_SECOND_PROFILE_PATH",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "NO_PROFILE_WRONG_PATH_COUNT",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "A_LA_CARTE_OUT_OF_DOMAIN",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "A_LA_CARTE_OVER_BUDGET",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "EXTRA_LANGUAGE_DUPLICATE",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "EXTRA_LANGUAGE_INVALID",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "ARMOR_NOT_MASTERED",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "SHIELD_NOT_MASTERED",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "WEAPON_NOT_MASTERED",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "PREFERRED_WEAPON_INVALID",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "MAGE_R2_INVALID",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "HYBRID_PATH_COUNT",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      },
+      {
+        "category": "NO_PROFILE_DUPLICATE_PATH",
+        "generated": 2500,
+        "rejectedForTargetViolation": 2500,
+        "wrongReason": 0,
+        "unexpectedAccepted": 0,
+        "samples": []
+      }
+    ]
+  },
+  "MECHANICAL_MODIFICATIONS": {
+    "pass": 1000,
+    "total": 1000,
+    "registry": [
+      "CHARACTERISTIC",
+      "PREFERRED_WEAPON_CATEGORY",
+      "EXTRA_LANGUAGE",
+      "WEAPON",
+      "ABILITY_CHOICE",
+      "A_LA_CARTE_PURCHASE",
+      "PATH_ORDER"
+    ]
+  },
+  "MECHANICAL_A_B_A": {
+    "pass": 1000,
+    "total": 1000
+  },
+  "GHOST_TRANSITIONS": 200,
+  "GHOST_DIVERGENCES": 0,
+  "PRODUCT_SAVE_LOAD": {
+    "pass": 1000,
+    "total": 1000,
+    "api": "createHeroSavePayload -> JSON storage -> restoreHeroSavePayload"
+  },
+  "MULTI_HERO_ISOLATION": "PASS",
+  "ORACLE_SCENARIOS": 0,
+  "ORACLE_DIVERGENCES": "NOT_TESTED",
+  "oracleStatus": "NOT_TESTED",
+  "resultSha256": "199d2199bf5ecf6c189f2bda39bfec73069ebd000d1ab544a18291b24a47bff9"
+}

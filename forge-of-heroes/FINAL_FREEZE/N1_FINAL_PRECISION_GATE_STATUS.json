@@ -1,0 +1,45 @@
+{
+  "finalProductSha": "565cc873e6429ce524fcea371d0a3fe11fe5ab96e6757e4177d4f7d8433b5559",
+  "gate": "PASS",
+  "engineFreezeCandidate": "YES",
+  "productMasterModified": true,
+  "broadStratifiedFuzz": "REPLAYED",
+  "precisionTransitionContracts": {
+    "passed": 53,
+    "total": 53
+  },
+  "missingExpectedChanges": 0,
+  "unexpectedChanges": 0,
+  "exactValueAssertions": {
+    "passed": 11,
+    "total": 11
+  },
+  "precisionABA": {
+    "passed": 53,
+    "total": 53
+  },
+  "realGhostTransitions": {
+    "passed": 13,
+    "total": 13
+  },
+  "ghostResidualPaths": 0,
+  "targetedNegativeRules": {
+    "passed": 14,
+    "total": 14
+  },
+  "wrongReasonRejections": 0,
+  "priestMode": "PASS",
+  "religion": "PASS",
+  "antiFalseGreen": {
+    "passed": 10,
+    "total": 10
+  },
+  "manualScenarioAssertions": {
+    "passed": 12,
+    "total": 12
+  },
+  "domClickAutomation": "UNAVAILABLE",
+  "manualUiTestRequired": true,
+  "knownEngineBlockers": 0,
+  "report": "FORGE N1 FINAL PRECISION GATE :\nPASS\n\nN1 ENGINE FREEZE CANDIDATE :\nYES\n\nPRODUCT MASTER MODIFIED :\nYES\n\nFINAL PRODUCT SHA :\n565cc873e6429ce524fcea371d0a3fe11fe5ab96e6757e4177d4f7d8433b5559\n\nBROAD STRATIFIED FUZZ :\nREPLAYED\n\nPRECISION TRANSITION CONTRACTS :\n53 / 53\n\nMISSING EXPECTED CHANGES :\n0\n\nUNEXPECTED CHANGES :\n0\n\nEXACT VALUE ASSERTIONS :\n11 / 11\n\nPRECISION A-B-A :\n53 / 53\n\nREAL GHOST TRANSITIONS :\n13 / 13\n\nGHOST RESIDUAL PATHS :\n0\n\nTARGETED NEGATIVE RULES :\n14 / 14\n\nWRONG-REASON REJECTIONS :\n0\n\nPRIEST MODE :\nPASS\n\nRELIGION :\nPASS\n\nANTI FALSE GREEN :\n10 / 10\n\nMANUAL SCENARIO ASSERTIONS :\n12 / 12\n\nDOM CLICK AUTOMATION :\nUNAVAILABLE\n\nMANUAL UI TEST REQUIRED :\nYES\n\nKNOWN ENGINE BLOCKERS :\n0."
+}

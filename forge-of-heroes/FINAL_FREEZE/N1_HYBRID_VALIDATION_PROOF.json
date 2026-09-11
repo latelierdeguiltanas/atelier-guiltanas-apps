@@ -1,0 +1,92 @@
+{
+  "legalBase": {
+    "errors": []
+  },
+  "rows": [
+    {
+      "id": "HYBRID_NO_PATHS",
+      "legalBasePass": true,
+      "targetMutationOnly": true,
+      "errors": [
+        "Profil hybride N1 : exactement deux voies sont requises."
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_ONE_PATH",
+      "legalBasePass": true,
+      "targetMutationOnly": true,
+      "errors": [
+        "Profil hybride N1 : exactement deux voies sont requises."
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_THREE_PATHS",
+      "legalBasePass": true,
+      "targetMutationOnly": true,
+      "errors": [
+        "Profil hybride N1 : exactement deux voies sont requises."
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_SAME_PROFILE",
+      "legalBasePass": true,
+      "targetMutationOnly": true,
+      "errors": [
+        "Profil hybride N1 : deux profils distincts valides sont obligatoires."
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_NO_APPROVAL",
+      "legalBasePass": true,
+      "targetMutationOnly": true,
+      "errors": [
+        "Profil hybride N1 : validation du MJ obligatoire."
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_WRONG_PRIMARY_PATH",
+      "legalBasePass": true,
+      "targetMutationOnly": true,
+      "errors": [
+        "Profil hybride N1 : les deux voies doivent être distinctes."
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_WRONG_SECONDARY_PATH",
+      "legalBasePass": true,
+      "targetMutationOnly": true,
+      "errors": [
+        "Profil hybride N1 : la voie secondaire ne correspond pas au profil secondaire."
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_DUPLICATE_PATH",
+      "legalBasePass": true,
+      "targetMutationOnly": true,
+      "errors": [
+        "Profil hybride N1 : les deux voies doivent être distinctes."
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "HYBRID_THIRD_PROFILE_PATH",
+      "legalBasePass": true,
+      "targetMutationOnly": true,
+      "errors": [
+        "Profil hybride N1 : voies invalides ou origine falsifiée."
+      ],
+      "status": "PASS"
+    }
+  ],
+  "passed": 9,
+  "total": 9,
+  "status": "PASS",
+  "finalProductSha": "565cc873e6429ce524fcea371d0a3fe11fe5ab96e6757e4177d4f7d8433b5559"
+}
