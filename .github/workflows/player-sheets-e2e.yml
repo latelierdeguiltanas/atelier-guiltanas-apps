@@ -43,12 +43,15 @@ jobs:
           const results=[];
           function ok(pc,test){results.push({pc,test,status:'PASS'}); console.log(`PASS | ${pc} | ${test}`)}
           function fail(pc,test,e){results.push({pc,test,status:'FAIL',error:String(e.message||e)}); console.error(`FAIL | ${pc} | ${test} | ${e.message||e}`)}
-          async function clickByText(page,text){const b=page.getByRole('button',{name:new RegExp(text,'i')}).first(); await b.waitFor({state:'visible',timeout:4000}); await b.click();}
+          async function clickByText(page,text){const b=page.getByRole('button',{name:new RegExp(text,'i')}).first(); await b.waitFor({state:'visible',timeout:5000}); await b.click({timeout:5000});}
+          async function dismissModal(page){const m=page.locator('#modal.show');if(await m.count()){const c=m.locator('.close').first();if(await c.count())await c.click({timeout:3000});else await m.click({position:{x:5,y:5},timeout:3000});await page.waitForTimeout(80)}}
+          async function nav(page,text){await dismissModal(page);const b=page.locator(`.nav[data-page="${text}"]`);if(await b.count())await b.click({timeout:5000});else await clickByText(page,text)}
           (async()=>{
             const browser=await chromium.launch({headless:true});
             for(const pc of pcs){
               const ctx=await browser.newContext({viewport:{width:390,height:844}});
               const page=await ctx.newPage();
+              page.setDefaultTimeout(6000);
               const errors=[];
               page.on('pageerror',e=>errors.push('pageerror:'+e.message));
               page.on('console',m=>{if(m.type()==='error')errors.push('console:'+m.text())});
@@ -70,14 +73,14 @@ jobs:
                 assert(overflow<=2,`débordement horizontal ${overflow}px`);
                 ok(pc.name,'mobile 390px sans débordement horizontal');
               }catch(e){fail(pc.name,'mobile 390px sans débordement horizontal',e)}
-              for(const nav of ['Combat','Tests','Magie','Sac']){
-                try{await clickByText(page,nav); await page.waitForTimeout(100); ok(pc.name,`navigation ${nav}`)}catch(e){fail(pc.name,`navigation ${nav}`,e)}
+              for(const item of [['Combat','combat'],['Tests','tests'],['Magie','magic'],['Sac','bag']]){
+                try{await nav(page,item[1]);await page.locator(`#${item[1]}`).waitFor({state:'visible'});ok(pc.name,`navigation ${item[0]}`)}catch(e){fail(pc.name,`navigation ${item[0]}`,e)}
               }
               try{
-                await clickByText(page,'Accueil');
+                await nav(page,'home');
                 const before=await page.locator('.hpnum').first().innerText();
                 const damage=page.getByRole('button',{name:/DÉGÂTS|−1 PV/i}).first();
-                await damage.click();
+                await damage.click({timeout:5000});
                 if(await page.locator('#hpv,#num').count()){
                   const inp=page.locator('#hpv,#num').first(); await inp.fill('1'); await clickByText(page,'APPLIQUER|VALIDER');
                 }
@@ -85,42 +88,39 @@ jobs:
                 const after=await page.locator('.hpnum').first().innerText();
                 assert.notEqual(after,before,'PV inchangés après clic dégâts');
                 ok(pc.name,'gestion PV par clic');
-              }catch(e){fail(pc.name,'gestion PV par clic',e)}
+              }catch(e){fail(pc.name,'gestion PV par clic',e)}finally{await dismissModal(page)}
               try{
-                await clickByText(page,'Combat');
-                const act=page.getByRole('button',{name:/Choisir mon action|Action/i}).first();
-                await act.click();
+                await nav(page,'combat');
+                const act=page.locator('#combat').getByRole('button',{name:/Choisir mon action|Action/i}).first();
+                await act.waitFor({state:'visible'});await act.click({timeout:5000});
                 await page.waitForTimeout(100);
                 ok(pc.name,'interaction combat/action');
-              }catch(e){fail(pc.name,'interaction combat/action',e)}
+              }catch(e){fail(pc.name,'interaction combat/action',e)}finally{await dismissModal(page)}
               try{
-                await clickByText(page,'Magie');
+                await nav(page,'magic');
                 const card=page.locator('#magic .item').first();
-                await card.waitFor({state:'visible',timeout:4000}); await card.click();
-                await page.locator('.modal.show,.sheet').first().waitFor({state:'visible',timeout:3000});
+                await card.waitFor({state:'visible',timeout:5000}); await card.click({timeout:5000});
+                await page.locator('#modal.show .sheet').waitFor({state:'visible',timeout:3000});
                 ok(pc.name,'ouverture détail de sort');
-                const close=page.locator('.close').first(); if(await close.count()) await close.click();
-              }catch(e){fail(pc.name,'ouverture détail de sort',e)}
+              }catch(e){fail(pc.name,'ouverture détail de sort',e)}finally{await dismissModal(page)}
               try{
-                await clickByText(page,'Sac');
-                const coin=page.locator('.coin').first();
+                await nav(page,'bag');
+                const coin=page.locator('#bag .coin').first();
                 await coin.waitFor({state:'visible',timeout:3000});
                 const before=await coin.locator('b').innerText();
-                await coin.click();
+                await coin.click({timeout:5000});
                 const plus=page.getByRole('button',{name:/\+1|Recevoir/i}).first();
-                if(await plus.count()){
-                  if(await page.locator('#mv').count()) await page.locator('#mv').fill('1');
-                  await plus.click();
-                }
-                await page.waitForTimeout(100);
-                const after=await page.locator('.coin').first().locator('b').innerText();
+                await plus.waitFor({state:'visible',timeout:3000});
+                if(await page.locator('#mv').count()) await page.locator('#mv').fill('1');
+                await plus.click({timeout:5000});
+                await dismissModal(page);
+                const after=await page.locator('#bag .coin').first().locator('b').innerText();
                 assert.notEqual(after,before,'monnaie inchangée');
                 ok(pc.name,'gestion argent par clic');
-              }catch(e){fail(pc.name,'gestion argent par clic',e)}
+              }catch(e){fail(pc.name,'gestion argent par clic',e)}finally{await dismissModal(page)}
               try{
-                const q='perception';
-                const search=page.locator('#search'); await search.fill(q); await page.waitForTimeout(150);
-                const txt=(await page.locator('body').innerText()).toLowerCase(); assert(txt.includes('perception'),'recherche sans résultat perception');
+                const search=page.locator('#search'); await search.fill('perception'); await page.waitForTimeout(150);
+                const visible=(await page.locator('#searchResults').innerText()).toLowerCase();assert(visible.includes('perception'),'recherche sans résultat perception');
                 ok(pc.name,'recherche intégrée');
               }catch(e){fail(pc.name,'recherche intégrée',e)}
               try{
@@ -131,7 +131,6 @@ jobs:
               await page.screenshot({path:`/tmp/${pc.id}.png`,fullPage:true});
               await ctx.close();
             }
-            // Portal: four portraits and four links.
             const ctx=await browser.newContext({viewport:{width:390,height:844}}); const page=await ctx.newPage();
             try{
               await page.goto(`${base}/joueurs/`,{waitUntil:'networkidle'});
