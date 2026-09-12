@@ -63,6 +63,10 @@
 
   save();render();
 
+  // Portrait héroïque commun aux 4 fiches ; les photos de figurines restent conservées comme références.
+  const heroAvatar=document.getElementById('heroAvatar');
+  if(heroAvatar){heroAvatar.src='../../assets/personnages/portraits/'+DATA.id+'.jpg';heroAvatar.alt='Portrait de '+DATA.name;}
+
   // Liens profonds depuis l'espace personnel : ?tab=combat, tests, magic ou bag.
   const requestedTab=new URLSearchParams(location.search).get('tab');
   if(['home','combat','tests','magic','bag'].includes(requestedTab))setTimeout(()=>nav(requestedTab),0);
