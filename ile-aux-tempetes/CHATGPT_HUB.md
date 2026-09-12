@@ -33,6 +33,7 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 
 ### Gestion des personnages joueurs
 - `ile-aux-tempetes/personnages/shared/engine.html` : moteur/interface joueur partagé.
+- Chaque PJ charge ce moteur via son `index.html` et fournit ses spécificités dans son `data.js`.
 - `ile-aux-tempetes/personnages/hammerz/`
 - `ile-aux-tempetes/personnages/lelio/`
 - `ile-aux-tempetes/personnages/loris/`
@@ -61,22 +62,23 @@ Le chantier principal en cours est le gestionnaire / interface des quatre PJ.
 État constaté dans GitHub :
 
 - Un moteur partagé existe dans `personnages/shared/engine.html`.
-- Ce moteur partagé a été construit à partir du modèle Hammerz.
-- Lelio et Loris ont été migrés vers cette interface partagée.
-- Les portraits des quatre personnages sont présents dans `assets/personnages/` et ont été intégrés à l'interface joueur.
+- Hammerz, Lelio, Loris et Vax utilisent désormais tous la même architecture : `index.html` léger + `data.js` spécifique + moteur partagé.
+- Les anciennes charges compressées de Hammerz et Vax peuvent rester en archive dans leurs dossiers mais ne sont plus la voie active de chargement.
+- Les portraits des quatre personnages sont présents dans `assets/personnages/` et intégrés à l'interface joueur.
 - Une passe récente a restauré une interface riche et pensée pour des joueurs débutants.
 - Une passe récente a ajouté la gestion des ressources limitées et des maîtrises sélectionnées.
-- Vax possède encore son propre ensemble de fichiers dans `personnages/vax/` ; ne pas supposer qu'il est déjà totalement convergé avec le moteur partagé sans vérification ciblée.
+- Prochaine étape : audit statique complet puis test navigateur réel des interactions des quatre fiches.
 
 Commits de repère récents :
 
+- `fb010a15550afa55acfee50dd74335d45c182277` — Vax basculé sur le moteur partagé.
+- `b52f32b0903703a025d891122b5b4da54bc9de44` — Hammerz basculé sur le moteur partagé.
+- `ce99eb1320da9bb09e46c56cffcf8d563f5bd27b` — données Vax pour le moteur partagé.
+- `dff646de80cb22a58bc54fa0e22f8f584dbf56c2` — données Hammerz pour le moteur partagé.
 - `e065df3978d6d86c1aefccd1e0bd7e66855ed82a` — ressources limitées et maîtrises sélectionnées.
 - `b5db7f82073d80cfe52364927828f5d86170964f` — restauration du moteur joueur partagé riche.
-- `5f8b78e51479a214a1b9edbebe91e768537af101` — portraits intégrés dans Vax et Hammerz.
 - `80703eb6cfb1f140ac940b1f9d04bac8e081a01c` — Loris migré vers l'interface partagée.
 - `5f890b803d3c925d0ca2aa1e517ac6b7d1f32640` — Lelio migré vers l'interface partagée.
-- `858a9029da060b240eb344628d9e0f964068dde9` — création de l'interface partagée depuis Hammerz.
-- `dac0e13d8768af2a9d93188c9e2e1ab615797622` — publication de l'application joueur Vax complète.
 
 ### Outils MJ déjà publiés
 
@@ -107,15 +109,11 @@ Commits de repère récents :
 
 ## 7. Priorité actuelle
 
-Continuer et finaliser le **gestionnaire PJ / interface joueur des quatre personnages** sans repartir de zéro.
+Finaliser le **gestionnaire PJ / interface joueur des quatre personnages**.
 
-Avant de modifier cette partie, vérifier de façon ciblée :
+Architecture désormais commune : moteur `personnages/shared/engine.html` + un `data.js` par personnage.
 
-- `personnages/shared/engine.html` ;
-- le dossier du PJ concerné ;
-- le dernier commit pertinent si une régression est suspectée.
-
-Objectif de convergence : une expérience cohérente, intuitive et fiable pour Hammerz, Lelio, Loris et Vax, tout en conservant les spécificités de chacun.
+Objectif immédiat : vérifier les données D&D 2024 et toute la logique interactive de chaque PJ, corriger les défauts objectifs, puis réaliser un test navigateur/clic final.
 
 ---
 
