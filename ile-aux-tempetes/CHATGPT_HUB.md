@@ -34,6 +34,13 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 - Depuis l'accueil et l'espace joueurs, cliquer sur un personnage ouvre désormais son espace personnel, pas directement la fiche interactive.
 - Cet espace affiche un instantané de la fiche locale, les ressources, la monnaie, les accès campagne et une zone de notes personnelles saisie uniquement par le joueur, enregistrée localement et imprimable/PDF.
 - Une barre/carrousel de raccourcis est placée en haut de l'espace personnel : Combat, Tests, Magie, Sac, Boutique, Journal, Cartes, Rencontres, Exploits.
+- La navigation basse redondante de cet espace personnel est supprimée dynamiquement.
+
+### Portraits / identité visuelle PJ
+- `ile-aux-tempetes/assets/portrait-loader.js` : chargeur partagé des portraits HQ.
+- Les portraits HQ remplacent les miniatures compressées sur les pages publiques, espaces personnels, fiches et espace MJ.
+- Le chargeur observe aussi les images ajoutées dynamiquement, ce qui corrige le cas de l'espace personnel où le portrait est injecté après chargement.
+- L'identité publique `Loris` est désormais affichée comme `Prométhée`; l'id technique historique `loris` est conservé pour ne pas casser les chemins/localStorage.
 
 ### Statistiques publiques
 - `ile-aux-tempetes/assets/analytics.js` : chargeur GA4 partagé, consentement explicite et suivi des clics.
@@ -48,12 +55,16 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 - `ile-aux-tempetes/personnages/shared/rules-audit-fix.js` : seconde passe de précision + liens profonds `?tab=home|combat|tests|magic|bag`.
 - `ile-aux-tempetes/personnages/shared/rules-audit-daily.js` : choix après repos long du Paladin/Rôdeur.
 - Chaque PJ charge le même empilement de scripts et fournit ses spécificités dans son `data.js`.
-- Portraits : `ile-aux-tempetes/assets/personnages/`.
 
 ### Boutique
 - `ile-aux-tempetes/boutique/index.html` : boutique commune.
 - Depuis l'espace personnel, le lien transmet `?pj=<id>&auto=1` ; la boutique tente de sélectionner automatiquement le bon personnage pour éviter de repasser par l'écran de choix.
 - Prochaine étape : connexion réelle achat ↔ monnaie ↔ inventaire du PJ.
+
+### Cartes
+- `ile-aux-tempetes/cartes/MAPS_SOURCE_AUDIT.md` : audit de la source PDF officielle.
+- Cinq cartes repérées : île générale (p.5), Repos du Dragon (p.11), Grottes de Poussemer (p.18), Rose des Vents (p.25), Observatoire de la Falaise (p.30).
+- Le PDF est un scan raster (~150 ppp par page) : stratégie retenue = extraction/cadrage fidèle puis couche interactive HTML/SVG, plutôt que redessin si l'objectif est la fidélité.
 
 ### Outils MJ
 - `ile-aux-tempetes/mj/index.html`
@@ -71,7 +82,7 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 
 ### Gestion PJ
 
-- Hammerz, Lelio, Loris et Vax utilisent tous la même architecture : `index.html` léger + `data.js` spécifique + moteur partagé.
+- Hammerz, Lelio, Prométhée (id technique `loris`) et Vax utilisent tous la même architecture : `index.html` léger + `data.js` spécifique + moteur partagé.
 - Audit statique D&D 2024 suffisamment avancé pour l'usage campagne ; pas de campagne de test formelle exigée avant de poursuivre l'écosystème joueur.
 - Correctifs majeurs déjà intégrés : magie/slots, réactions hors tour, repos, dés de vie, concentration, préparation Druide, Sorcellerie innée, maîtrises, remplacement de sorts Paladin/Rôdeur, etc.
 
@@ -79,9 +90,10 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 
 - Hub personnel commun `joueurs/aventurier.html` actif.
 - Chaque PJ a son entrée personnalisée avec identité, PV/CA/perception/niveau, monnaie, ressources restantes et raccourcis campagne.
-- Le carrousel supérieur ouvre directement les bons onglets de la fiche via `?tab=` ; plus besoin de descendre jusqu'à la navigation basse pour Combat/Magie/etc.
+- Le carrousel supérieur ouvre directement les bons onglets de la fiche via `?tab=`.
+- La navigation basse redondante est retirée sur l'espace personnel.
+- Le cadrage mobile du portrait personnel a été élargi pour respecter le format vertical 3:4 des visuels générés.
 - La boutique reçoit automatiquement le PJ courant et tente de contourner son écran de sélection.
-- Le visuel de figurine a été réduit et passé en `object-fit: contain` pour limiter recadrage/pixellisation en attendant de meilleurs portraits.
 - Zone « Mes notes personnelles » volontairement libre : aucune connaissance/psychologie du PJ n'est préremplie.
 
 ### Statistiques publiques
@@ -106,8 +118,8 @@ Faire évoluer l'**espace joueur** en véritable compagnon numérique de campagn
 
 Ordre actuel :
 1. connecter boutique ↔ personnage (monnaie + inventaire local) ;
-2. enrichir l'accueil personnel / « La dernière fois… » ;
-3. enrichir cartes & lieux, rencontres et exploits sans spoiler ;
+2. extraire et prototyper la carte générale interactive, puis les cartes de lieux ;
+3. enrichir l'accueil personnel / « La dernière fois… », rencontres et exploits sans spoiler ;
 4. soundboard ensuite.
 
 ---
