@@ -33,6 +33,7 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 - `ile-aux-tempetes/joueurs/aventurier.html` : espace personnel partagé des quatre PJ, chargé via `?pj=vax|hammerz|lelio|loris`.
 - Depuis l'accueil et l'espace joueurs, cliquer sur un personnage ouvre désormais son espace personnel, pas directement la fiche interactive.
 - Cet espace affiche un instantané de la fiche locale, les ressources, la monnaie, les accès campagne et une zone de notes personnelles saisie uniquement par le joueur, enregistrée localement et imprimable/PDF.
+- Une barre/carrousel de raccourcis est placée en haut de l'espace personnel : Combat, Tests, Magie, Sac, Boutique, Journal, Cartes, Rencontres, Exploits.
 
 ### Statistiques publiques
 - `ile-aux-tempetes/assets/analytics.js` : chargeur GA4 partagé, consentement explicite et suivi des clics.
@@ -44,15 +45,15 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 - `ile-aux-tempetes/personnages/shared/engine.html` : moteur/interface joueur partagé.
 - `ile-aux-tempetes/personnages/shared/rules-audit.js` : correctifs communs de règles D&D 2024 audités.
 - `ile-aux-tempetes/personnages/shared/rules-audit-extra.js` : garde-fous ciblés propres aux fiches actuelles.
-- `ile-aux-tempetes/personnages/shared/rules-audit-fix.js` : seconde passe de précision.
-- `ile-aux-tempetes/personnages/shared/rules-audit-daily.js` : choix après repos long du Paladin/Rôdeur (1 remplacement de sort + changement des 2 maîtrises d'armes).
-- Chaque PJ charge le même empilement de scripts ; `rules-audit-daily.js` est sans effet sur Lelio/Loris.
-- Chaque PJ fournit ses spécificités dans son `data.js`.
-- `ile-aux-tempetes/personnages/hammerz/`
-- `ile-aux-tempetes/personnages/lelio/`
-- `ile-aux-tempetes/personnages/loris/`
-- `ile-aux-tempetes/personnages/vax/`
-- Portraits : `ile-aux-tempetes/assets/personnages/`
+- `ile-aux-tempetes/personnages/shared/rules-audit-fix.js` : seconde passe de précision + liens profonds `?tab=home|combat|tests|magic|bag`.
+- `ile-aux-tempetes/personnages/shared/rules-audit-daily.js` : choix après repos long du Paladin/Rôdeur.
+- Chaque PJ charge le même empilement de scripts et fournit ses spécificités dans son `data.js`.
+- Portraits : `ile-aux-tempetes/assets/personnages/`.
+
+### Boutique
+- `ile-aux-tempetes/boutique/index.html` : boutique commune.
+- Depuis l'espace personnel, le lien transmet `?pj=<id>&auto=1` ; la boutique tente de sélectionner automatiquement le bon personnage pour éviter de repasser par l'écran de choix.
+- Prochaine étape : connexion réelle achat ↔ monnaie ↔ inventaire du PJ.
 
 ### Outils MJ
 - `ile-aux-tempetes/mj/index.html`
@@ -61,7 +62,6 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 - Scénario : `ile-aux-tempetes/mj/outils/scenario/`
 
 ### Autres espaces déjà présents
-- `boutique/`
 - `cartes/`
 - `exploits/`
 - `journal/`
@@ -72,58 +72,35 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 ### Gestion PJ
 
 - Hammerz, Lelio, Loris et Vax utilisent tous la même architecture : `index.html` léger + `data.js` spécifique + moteur partagé.
-- Les anciennes charges compressées de Hammerz et Vax restent seulement comme archives.
-- Les portraits des quatre personnages sont intégrés.
 - Audit statique D&D 2024 suffisamment avancé pour l'usage campagne ; pas de campagne de test formelle exigée avant de poursuivre l'écosystème joueur.
-- Correctifs déjà appliqués : limite d'un emplacement de sort dépensé par tour, gestion correcte des réactions lancées pendant le tour d'une autre créature, repos long conforme, repos court pour tous les PJ avec dé de vie, concentration après dégâts et à 0 PV, préparation complète du Druide après repos long, Sorcellerie innée de Loris active et suivie.
-- Hammerz et Vax : après repos long, possibilité réelle de remplacer un seul sort de classe préparé et de rechoisir leurs deux maîtrises d'armes ; listes officielles N1 intégrées dans le moteur partagé pour ces choix.
-- Garde-fous ciblés : descriptions des maîtrises, don Guérisseur de Hammerz masqué sans trousse de soins, rappel du +1d6 de Marque du chasseur sur les attaques de Vax.
+- Correctifs majeurs déjà intégrés : magie/slots, réactions hors tour, repos, dés de vie, concentration, préparation Druide, Sorcellerie innée, maîtrises, remplacement de sorts Paladin/Rôdeur, etc.
 
 ### Espace joueur vivant
 
-- Nouveau hub personnel commun `joueurs/aventurier.html` créé.
-- Chaque PJ a son entrée personnalisée avec portrait, identité, PV/CA/perception/niveau, monnaie, ressources restantes et raccourcis vers fiche, boutique, journal, cartes, rencontres et exploits.
-- Les données d'état sont lues depuis le même `localStorage` que la fiche interactive sur l'appareil courant.
-- Zone « Mes notes personnelles » volontairement libre : aucune connaissance/psychologie du PJ n'est préremplie par le MJ ; le joueur écrit ce qu'il souhaite et peut imprimer/exporter en PDF.
-- L'accueil général et l'espace joueurs pointent désormais vers ces espaces personnels.
-- Prochaine amélioration prioritaire : relier réellement la boutique à la monnaie et à l'inventaire du PJ courant, puis enrichir « La dernière fois… », cartes/lieux, rencontres et exploits.
+- Hub personnel commun `joueurs/aventurier.html` actif.
+- Chaque PJ a son entrée personnalisée avec identité, PV/CA/perception/niveau, monnaie, ressources restantes et raccourcis campagne.
+- Le carrousel supérieur ouvre directement les bons onglets de la fiche via `?tab=` ; plus besoin de descendre jusqu'à la navigation basse pour Combat/Magie/etc.
+- La boutique reçoit automatiquement le PJ courant et tente de contourner son écran de sélection.
+- Le visuel de figurine a été réduit et passé en `object-fit: contain` pour limiter recadrage/pixellisation en attendant de meilleurs portraits.
+- Zone « Mes notes personnelles » volontairement libre : aucune connaissance/psychologie du PJ n'est préremplie.
 
 ### Statistiques publiques
 
 - Infrastructure GA4 commune active sur les pages accessibles aux joueurs.
-- Suivi : pages vues/sessions, temps d'engagement et événement `ui_click` avec page, type d'élément, libellé et lien.
+- Suivi : pages vues/sessions, temps d'engagement et événement `ui_click`.
 - Consentement local obligatoire avant chargement de Google Analytics.
 - Pages MJ/admin volontairement exclues.
-- Temps réel confirmé fonctionnel avec plusieurs pages et utilisateurs actifs visibles dans GA4.
 
-### Outils MJ déjà publiés
-
-- Gestionnaire de combat actif dans `mj/outils/combat/`.
-- Soundboard actif dans `mj/outils/soundboard/`.
-- Portail MJ présent.
-
-## 5. Règles de travail pour éviter les chats qui meurent
+## 5. Règles de travail
 
 - Une passe = un objectif principal clairement défini.
-- Ne pas relire tous les PJ si un seul est concerné.
-- Ne pas relire le combat, le soundboard ou le scénario si la tâche concerne uniquement l'espace joueur.
-- Éviter les audits globaux répétés ; préférer des vérifications ciblées.
-- Réutiliser les fichiers GitHub comme contexte au lieu de recopier de longs blocs dans le chat.
-- Pour une modification importante : lire le fichier cible + éventuellement son commit de référence, modifier, vérifier, pousser.
-- Ne pas reconstruire un fichier complet depuis zéro si une correction locale suffit.
-- Ne pas créer de fichiers temporaires dans le dépôt sauf nécessité réelle.
-- Git sert déjà de journal de versions : ne pas maintenir un deuxième changelog détaillé inutilement.
+- Ne pas relire tout le dépôt par défaut.
+- Ne pas toucher à `forge-of-heroes/`.
+- GitHub/main est la mémoire longue.
+- Pour une modification importante : lire les fichiers directement concernés, modifier, vérifier, pousser.
+- Git sert déjà de journal de versions : éviter un second changelog détaillé.
 
-## 6. Contrat de fin de passe
-
-À la fin d'une passe de développement :
-
-- le code utile est poussé sur GitHub ;
-- le chemin du ou des fichiers modifiés est connu ;
-- le commit final est indiqué ;
-- ce hub n'est mis à jour que si l'architecture, l'état du chantier ou les règles de reprise ont réellement changé.
-
-## 7. Priorité actuelle
+## 6. Priorité actuelle
 
 Faire évoluer l'**espace joueur** en véritable compagnon numérique de campagne, sans automatiser ce que le joueur doit retenir ou interpréter lui-même.
 
@@ -135,4 +112,4 @@ Ordre actuel :
 
 ---
 
-Ce fichier est volontairement compact. S'il devient long, le simplifier plutôt que d'empiler l'historique : l'historique complet existe déjà dans Git.
+Ce fichier est volontairement compact.
