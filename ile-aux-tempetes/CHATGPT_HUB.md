@@ -33,6 +33,8 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 
 ### Gestion des personnages joueurs
 - `ile-aux-tempetes/personnages/shared/engine.html` : moteur/interface joueur partagé.
+- `ile-aux-tempetes/personnages/shared/rules-audit.js` : correctifs communs de règles D&D 2024 audités.
+- `ile-aux-tempetes/personnages/shared/rules-audit-extra.js` : garde-fous ciblés propres aux fiches actuelles.
 - Chaque PJ charge ce moteur via son `index.html` et fournit ses spécificités dans son `data.js`.
 - `ile-aux-tempetes/personnages/hammerz/`
 - `ile-aux-tempetes/personnages/lelio/`
@@ -61,24 +63,24 @@ Le chantier principal en cours est le gestionnaire / interface des quatre PJ.
 
 État constaté dans GitHub :
 
-- Un moteur partagé existe dans `personnages/shared/engine.html`.
-- Hammerz, Lelio, Loris et Vax utilisent désormais tous la même architecture : `index.html` léger + `data.js` spécifique + moteur partagé.
-- Les anciennes charges compressées de Hammerz et Vax peuvent rester en archive dans leurs dossiers mais ne sont plus la voie active de chargement.
-- Les portraits des quatre personnages sont présents dans `assets/personnages/` et intégrés à l'interface joueur.
-- Une passe récente a restauré une interface riche et pensée pour des joueurs débutants.
-- Une passe récente a ajouté la gestion des ressources limitées et des maîtrises sélectionnées.
-- Prochaine étape : audit statique complet puis test navigateur réel des interactions des quatre fiches.
+- Hammerz, Lelio, Loris et Vax utilisent tous la même architecture : `index.html` léger + `data.js` spécifique + moteur partagé.
+- Les anciennes charges compressées de Hammerz et Vax restent seulement comme archives.
+- Les portraits des quatre personnages sont intégrés.
+- Audit statique D&D 2024 en cours sur les quatre fiches.
+- Correctifs déjà appliqués au moteur commun : limite d'un emplacement de sort dépensé par tour, repos long conforme (PV complets, PV temporaires retirés, dés de vie et ressources restaurés), repos court pour tous les PJ avec dépense de dé de vie, rappel de sauvegarde de concentration après dégâts, fin de concentration à 0 PV, préparation du Druide verrouillée à 4 sorts avec un seul remplacement après repos long, Sorcellerie innée de Loris suivie comme effet actif avec DD +1 et Avantage sur ses sorts d'Ensorceleur.
+- Garde-fous ciblés : descriptions des maîtrises d'armes sélectionnées, don Guérisseur de Hammerz masqué tant qu'il ne possède pas de trousse de soins, rappel du +1d6 de Marque du chasseur sur les attaques de Vax quand la concentration est active.
+- Reste à faire avant validation complète : audit statique final des données et interactions restantes des quatre PJ, puis test navigateur/clic réel.
 
 Commits de repère récents :
 
+- `4b379c01744c0ff887f3e8fb1b66cc1f43a13659` — Loris charge les correctifs d'audit communs et ciblés.
+- `e4d7ce6caa1742aca6557fd2078f0da4261593c4` — Lelio charge les correctifs d'audit communs et ciblés.
+- `24f38773c1957cfbe81f1b607de736e7000ec70a` — Vax charge les correctifs d'audit communs et ciblés.
+- `cf8e4629c0a0a4ab08de43005af258c8969056f1` — Hammerz charge les correctifs d'audit communs et ciblés.
+- `8ca21a10f95a1d341cd31d84073e67a41f633ad2` — garde-fous ciblés des quatre fiches.
+- `6600d2230b401d7b51fb25111ea0ede6aa0c1904` — correctifs de règles D&D 2024 communs.
 - `fb010a15550afa55acfee50dd74335d45c182277` — Vax basculé sur le moteur partagé.
 - `b52f32b0903703a025d891122b5b4da54bc9de44` — Hammerz basculé sur le moteur partagé.
-- `ce99eb1320da9bb09e46c56cffcf8d563f5bd27b` — données Vax pour le moteur partagé.
-- `dff646de80cb22a58bc54fa0e22f8f584dbf56c2` — données Hammerz pour le moteur partagé.
-- `e065df3978d6d86c1aefccd1e0bd7e66855ed82a` — ressources limitées et maîtrises sélectionnées.
-- `b5db7f82073d80cfe52364927828f5d86170964f` — restauration du moteur joueur partagé riche.
-- `80703eb6cfb1f140ac940b1f9d04bac8e081a01c` — Loris migré vers l'interface partagée.
-- `5f890b803d3c925d0ca2aa1e517ac6b7d1f32640` — Lelio migré vers l'interface partagée.
 
 ### Outils MJ déjà publiés
 
@@ -111,9 +113,9 @@ Commits de repère récents :
 
 Finaliser le **gestionnaire PJ / interface joueur des quatre personnages**.
 
-Architecture désormais commune : moteur `personnages/shared/engine.html` + un `data.js` par personnage.
+Architecture commune : moteur `personnages/shared/engine.html` + correctifs `rules-audit*.js` + un `data.js` par personnage.
 
-Objectif immédiat : vérifier les données D&D 2024 et toute la logique interactive de chaque PJ, corriger les défauts objectifs, puis réaliser un test navigateur/clic final.
+Objectif immédiat : terminer l'audit statique des quatre PJ, corriger les défauts objectifs restants, puis réaliser un test navigateur/clic final avant de passer au soundboard.
 
 ---
 
