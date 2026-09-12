@@ -30,10 +30,13 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 
 ### Portail joueurs
 - `ile-aux-tempetes/joueurs/index.html`
+- `ile-aux-tempetes/joueurs/aventurier.html` : espace personnel partagé des quatre PJ, chargé via `?pj=vax|hammerz|lelio|loris`.
+- Depuis l'accueil et l'espace joueurs, cliquer sur un personnage ouvre désormais son espace personnel, pas directement la fiche interactive.
+- Cet espace affiche un instantané de la fiche locale, les ressources, la monnaie, les accès campagne et une zone de notes personnelles saisie uniquement par le joueur, enregistrée localement et imprimable/PDF.
 
 ### Statistiques publiques
 - `ile-aux-tempetes/assets/analytics.js` : chargeur GA4 partagé, consentement explicite et suivi des clics.
-- Chargé sur l'accueil public, l'espace joueurs, les quatre fiches PJ, la boutique, le journal, les rencontres, les cartes et les exploits.
+- Chargé sur l'accueil public, l'espace joueurs, l'espace aventurier, les quatre fiches PJ, la boutique, le journal, les rencontres, les cartes et les exploits.
 - Les pages `mj/` / admin ne le chargent pas.
 - GA4 actif avec l'ID `G-5T7R70G1ZG` ; collecte temps réel vérifiée le 12/09/2026.
 
@@ -68,18 +71,22 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 
 ### Gestion PJ
 
-Le chantier principal en cours est le gestionnaire / interface des quatre PJ.
-
-État constaté dans GitHub :
-
 - Hammerz, Lelio, Loris et Vax utilisent tous la même architecture : `index.html` léger + `data.js` spécifique + moteur partagé.
 - Les anciennes charges compressées de Hammerz et Vax restent seulement comme archives.
 - Les portraits des quatre personnages sont intégrés.
-- Audit statique D&D 2024 en cours sur les quatre fiches.
+- Audit statique D&D 2024 suffisamment avancé pour l'usage campagne ; pas de campagne de test formelle exigée avant de poursuivre l'écosystème joueur.
 - Correctifs déjà appliqués : limite d'un emplacement de sort dépensé par tour, gestion correcte des réactions lancées pendant le tour d'une autre créature, repos long conforme, repos court pour tous les PJ avec dé de vie, concentration après dégâts et à 0 PV, préparation complète du Druide après repos long, Sorcellerie innée de Loris active et suivie.
 - Hammerz et Vax : après repos long, possibilité réelle de remplacer un seul sort de classe préparé et de rechoisir leurs deux maîtrises d'armes ; listes officielles N1 intégrées dans le moteur partagé pour ces choix.
 - Garde-fous ciblés : descriptions des maîtrises, don Guérisseur de Hammerz masqué sans trousse de soins, rappel du +1d6 de Marque du chasseur sur les attaques de Vax.
-- Reste à faire avant validation complète : audit final des données/effets spécifiques et cohérence UX, puis test navigateur/clic réel sur les quatre fiches.
+
+### Espace joueur vivant
+
+- Nouveau hub personnel commun `joueurs/aventurier.html` créé.
+- Chaque PJ a son entrée personnalisée avec portrait, identité, PV/CA/perception/niveau, monnaie, ressources restantes et raccourcis vers fiche, boutique, journal, cartes, rencontres et exploits.
+- Les données d'état sont lues depuis le même `localStorage` que la fiche interactive sur l'appareil courant.
+- Zone « Mes notes personnelles » volontairement libre : aucune connaissance/psychologie du PJ n'est préremplie par le MJ ; le joueur écrit ce qu'il souhaite et peut imprimer/exporter en PDF.
+- L'accueil général et l'espace joueurs pointent désormais vers ces espaces personnels.
+- Prochaine amélioration prioritaire : relier réellement la boutique à la monnaie et à l'inventaire du PJ courant, puis enrichir « La dernière fois… », cartes/lieux, rencontres et exploits.
 
 ### Statistiques publiques
 
@@ -99,7 +106,7 @@ Le chantier principal en cours est le gestionnaire / interface des quatre PJ.
 
 - Une passe = un objectif principal clairement défini.
 - Ne pas relire tous les PJ si un seul est concerné.
-- Ne pas relire le combat, le soundboard ou le scénario si la tâche concerne uniquement les fiches PJ.
+- Ne pas relire le combat, le soundboard ou le scénario si la tâche concerne uniquement l'espace joueur.
 - Éviter les audits globaux répétés ; préférer des vérifications ciblées.
 - Réutiliser les fichiers GitHub comme contexte au lieu de recopier de longs blocs dans le chat.
 - Pour une modification importante : lire le fichier cible + éventuellement son commit de référence, modifier, vérifier, pousser.
@@ -118,11 +125,13 @@ Le chantier principal en cours est le gestionnaire / interface des quatre PJ.
 
 ## 7. Priorité actuelle
 
-Finaliser le **gestionnaire PJ / interface joueur des quatre personnages**.
+Faire évoluer l'**espace joueur** en véritable compagnon numérique de campagne, sans automatiser ce que le joueur doit retenir ou interpréter lui-même.
 
-Architecture commune : moteur `personnages/shared/engine.html` + correctifs `rules-audit*.js` + un `data.js` par personnage.
-
-Objectif immédiat : terminer l'audit statique des effets/données spécifiques, vérifier la cohérence UX, puis réaliser un test navigateur/clic final avant de passer au soundboard.
+Ordre actuel :
+1. connecter boutique ↔ personnage (monnaie + inventaire local) ;
+2. enrichir l'accueil personnel / « La dernière fois… » ;
+3. enrichir cartes & lieux, rencontres et exploits sans spoiler ;
+4. soundboard ensuite.
 
 ---
 
