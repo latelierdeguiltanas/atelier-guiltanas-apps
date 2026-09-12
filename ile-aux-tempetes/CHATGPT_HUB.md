@@ -35,14 +35,16 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 - `ile-aux-tempetes/assets/analytics.js` : chargeur GA4 partagé, consentement explicite et suivi des clics.
 - Chargé sur l'accueil public, l'espace joueurs, les quatre fiches PJ, la boutique, le journal, les rencontres, les cartes et les exploits.
 - Les pages `mj/` / admin ne le chargent pas.
-- Collecte inactive tant qu'un identifiant GA4 `G-XXXXXXXXXX` réel n'est pas renseigné dans `IAT_GA_MEASUREMENT_ID`.
+- GA4 actif avec l'ID `G-5T7R70G1ZG` ; collecte temps réel vérifiée le 12/09/2026.
 
 ### Gestion des personnages joueurs
 - `ile-aux-tempetes/personnages/shared/engine.html` : moteur/interface joueur partagé.
 - `ile-aux-tempetes/personnages/shared/rules-audit.js` : correctifs communs de règles D&D 2024 audités.
 - `ile-aux-tempetes/personnages/shared/rules-audit-extra.js` : garde-fous ciblés propres aux fiches actuelles.
-- `ile-aux-tempetes/personnages/shared/rules-audit-fix.js` : seconde passe de précision + branchement analytics commun aux 4 fiches.
-- Chaque PJ charge ce moteur via son `index.html` et fournit ses spécificités dans son `data.js`.
+- `ile-aux-tempetes/personnages/shared/rules-audit-fix.js` : seconde passe de précision.
+- `ile-aux-tempetes/personnages/shared/rules-audit-daily.js` : choix après repos long du Paladin/Rôdeur (1 remplacement de sort + changement des 2 maîtrises d'armes).
+- Chaque PJ charge le même empilement de scripts ; `rules-audit-daily.js` est sans effet sur Lelio/Loris.
+- Chaque PJ fournit ses spécificités dans son `data.js`.
 - `ile-aux-tempetes/personnages/hammerz/`
 - `ile-aux-tempetes/personnages/lelio/`
 - `ile-aux-tempetes/personnages/loris/`
@@ -75,16 +77,17 @@ Le chantier principal en cours est le gestionnaire / interface des quatre PJ.
 - Les portraits des quatre personnages sont intégrés.
 - Audit statique D&D 2024 en cours sur les quatre fiches.
 - Correctifs déjà appliqués : limite d'un emplacement de sort dépensé par tour, gestion correcte des réactions lancées pendant le tour d'une autre créature, repos long conforme, repos court pour tous les PJ avec dé de vie, concentration après dégâts et à 0 PV, préparation complète du Druide après repos long, Sorcellerie innée de Loris active et suivie.
+- Hammerz et Vax : après repos long, possibilité réelle de remplacer un seul sort de classe préparé et de rechoisir leurs deux maîtrises d'armes ; listes officielles N1 intégrées dans le moteur partagé pour ces choix.
 - Garde-fous ciblés : descriptions des maîtrises, don Guérisseur de Hammerz masqué sans trousse de soins, rappel du +1d6 de Marque du chasseur sur les attaques de Vax.
-- Reste à faire avant validation complète : audit final des données et interactions restantes, notamment préparation/remplacement de sorts propres au Paladin et au Rôdeur, puis test navigateur/clic réel.
+- Reste à faire avant validation complète : audit final des données/effets spécifiques et cohérence UX, puis test navigateur/clic réel sur les quatre fiches.
 
 ### Statistiques publiques
 
-- Infrastructure GA4 commune ajoutée aux pages accessibles aux joueurs.
-- Suivi prévu : pages vues/sessions via GA4, temps d'engagement GA4, événement `ui_click` avec page, type d'élément, libellé et lien.
+- Infrastructure GA4 commune active sur les pages accessibles aux joueurs.
+- Suivi : pages vues/sessions, temps d'engagement et événement `ui_click` avec page, type d'élément, libellé et lien.
 - Consentement local obligatoire avant chargement de Google Analytics.
 - Pages MJ/admin volontairement exclues.
-- Il reste uniquement à renseigner l'identifiant de mesure GA4 réel pour démarrer la collecte.
+- Temps réel confirmé fonctionnel avec plusieurs pages et utilisateurs actifs visibles dans GA4.
 
 ### Outils MJ déjà publiés
 
@@ -119,7 +122,7 @@ Finaliser le **gestionnaire PJ / interface joueur des quatre personnages**.
 
 Architecture commune : moteur `personnages/shared/engine.html` + correctifs `rules-audit*.js` + un `data.js` par personnage.
 
-Objectif immédiat : terminer l'audit statique des quatre PJ, corriger les défauts objectifs restants, puis réaliser un test navigateur/clic final avant de passer au soundboard.
+Objectif immédiat : terminer l'audit statique des effets/données spécifiques, vérifier la cohérence UX, puis réaliser un test navigateur/clic final avant de passer au soundboard.
 
 ---
 
