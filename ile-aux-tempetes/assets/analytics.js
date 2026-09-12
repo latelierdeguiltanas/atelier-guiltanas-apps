@@ -1,8 +1,8 @@
 /* Île aux Tempêtes — analytics public (GA4)
-   Renseigner IAT_GA_MEASUREMENT_ID avec l'identifiant G-XXXXXXXXXX pour activer la collecte.
+   Propriété GA4 : L’Île aux Tempêtes — ID de mesure G-5T7R70G1ZG.
    Les pages MJ/admin ne chargent pas ce fichier. */
 (()=>{
-  const ID=(window.IAT_GA_MEASUREMENT_ID||'').trim();
+  const ID=(window.IAT_GA_MEASUREMENT_ID||'G-5T7R70G1ZG').trim();
   if(!/^G-[A-Z0-9]+$/i.test(ID)) return;
 
   const CONSENT_KEY='iat_analytics_consent_v1';
