@@ -31,10 +31,17 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 ### Portail joueurs
 - `ile-aux-tempetes/joueurs/index.html`
 
+### Statistiques publiques
+- `ile-aux-tempetes/assets/analytics.js` : chargeur GA4 partagé, consentement explicite et suivi des clics.
+- Chargé sur l'accueil public, l'espace joueurs, les quatre fiches PJ, la boutique, le journal, les rencontres, les cartes et les exploits.
+- Les pages `mj/` / admin ne le chargent pas.
+- Collecte inactive tant qu'un identifiant GA4 `G-XXXXXXXXXX` réel n'est pas renseigné dans `IAT_GA_MEASUREMENT_ID`.
+
 ### Gestion des personnages joueurs
 - `ile-aux-tempetes/personnages/shared/engine.html` : moteur/interface joueur partagé.
 - `ile-aux-tempetes/personnages/shared/rules-audit.js` : correctifs communs de règles D&D 2024 audités.
 - `ile-aux-tempetes/personnages/shared/rules-audit-extra.js` : garde-fous ciblés propres aux fiches actuelles.
+- `ile-aux-tempetes/personnages/shared/rules-audit-fix.js` : seconde passe de précision + branchement analytics commun aux 4 fiches.
 - Chaque PJ charge ce moteur via son `index.html` et fournit ses spécificités dans son `data.js`.
 - `ile-aux-tempetes/personnages/hammerz/`
 - `ile-aux-tempetes/personnages/lelio/`
@@ -67,20 +74,17 @@ Le chantier principal en cours est le gestionnaire / interface des quatre PJ.
 - Les anciennes charges compressées de Hammerz et Vax restent seulement comme archives.
 - Les portraits des quatre personnages sont intégrés.
 - Audit statique D&D 2024 en cours sur les quatre fiches.
-- Correctifs déjà appliqués au moteur commun : limite d'un emplacement de sort dépensé par tour, repos long conforme (PV complets, PV temporaires retirés, dés de vie et ressources restaurés), repos court pour tous les PJ avec dépense de dé de vie, rappel de sauvegarde de concentration après dégâts, fin de concentration à 0 PV, préparation du Druide verrouillée à 4 sorts avec un seul remplacement après repos long, Sorcellerie innée de Loris suivie comme effet actif avec DD +1 et Avantage sur ses sorts d'Ensorceleur.
-- Garde-fous ciblés : descriptions des maîtrises d'armes sélectionnées, don Guérisseur de Hammerz masqué tant qu'il ne possède pas de trousse de soins, rappel du +1d6 de Marque du chasseur sur les attaques de Vax quand la concentration est active.
-- Reste à faire avant validation complète : audit statique final des données et interactions restantes des quatre PJ, puis test navigateur/clic réel.
+- Correctifs déjà appliqués : limite d'un emplacement de sort dépensé par tour, gestion correcte des réactions lancées pendant le tour d'une autre créature, repos long conforme, repos court pour tous les PJ avec dé de vie, concentration après dégâts et à 0 PV, préparation complète du Druide après repos long, Sorcellerie innée de Loris active et suivie.
+- Garde-fous ciblés : descriptions des maîtrises, don Guérisseur de Hammerz masqué sans trousse de soins, rappel du +1d6 de Marque du chasseur sur les attaques de Vax.
+- Reste à faire avant validation complète : audit final des données et interactions restantes, notamment préparation/remplacement de sorts propres au Paladin et au Rôdeur, puis test navigateur/clic réel.
 
-Commits de repère récents :
+### Statistiques publiques
 
-- `4b379c01744c0ff887f3e8fb1b66cc1f43a13659` — Loris charge les correctifs d'audit communs et ciblés.
-- `e4d7ce6caa1742aca6557fd2078f0da4261593c4` — Lelio charge les correctifs d'audit communs et ciblés.
-- `24f38773c1957cfbe81f1b607de736e7000ec70a` — Vax charge les correctifs d'audit communs et ciblés.
-- `cf8e4629c0a0a4ab08de43005af258c8969056f1` — Hammerz charge les correctifs d'audit communs et ciblés.
-- `8ca21a10f95a1d341cd31d84073e67a41f633ad2` — garde-fous ciblés des quatre fiches.
-- `6600d2230b401d7b51fb25111ea0ede6aa0c1904` — correctifs de règles D&D 2024 communs.
-- `fb010a15550afa55acfee50dd74335d45c182277` — Vax basculé sur le moteur partagé.
-- `b52f32b0903703a025d891122b5b4da54bc9de44` — Hammerz basculé sur le moteur partagé.
+- Infrastructure GA4 commune ajoutée aux pages accessibles aux joueurs.
+- Suivi prévu : pages vues/sessions via GA4, temps d'engagement GA4, événement `ui_click` avec page, type d'élément, libellé et lien.
+- Consentement local obligatoire avant chargement de Google Analytics.
+- Pages MJ/admin volontairement exclues.
+- Il reste uniquement à renseigner l'identifiant de mesure GA4 réel pour démarrer la collecte.
 
 ### Outils MJ déjà publiés
 
