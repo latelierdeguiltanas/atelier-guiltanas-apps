@@ -1,0 +1,71 @@
+name: Fix player rule resources
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-player-rule-resources.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch resource consumption and mastery display
+        shell: python
+        run: |
+          import base64, gzip, pathlib, re
+          root=pathlib.Path('.')
+
+          old="function commitFeature(id,kind){const f=(DATA.features||[]).find(x=>x.id===id);if(!f)return;const key=kind==='bonus'?'bonus':kind==='reaction'?'reaction':'action';if(!consumeTurn(key,f.name))return;closeM();renderCombat();info(f.name,`<b>${esc(f.summary||'')}</b><br><br>${esc(f.detail||'')}`)}"
+          new="""function commitFeature(id,kind){const f=(DATA.features||[]).find(x=>x.id===id);if(!f)return;if(f.resource==='layOnHands')return layOnHandsDialog(f,kind);const key=kind==='bonus'?'bonus':kind==='reaction'?'reaction':'action';const r=f.resource?DATA.resources.find(x=>x.id===f.resource):null;if(r&&remaining(r.id)<=0)return info('Ressource épuisée',`${f.name} n’a plus d’utilisation disponible avant le prochain repos approprié.`);if(!consumeTurn(key,f.name))return;if(r)S.resources[r.id]=(S.resources[r.id]||0)+1;save();closeM();renderCombat();info(f.name,`<b>${esc(f.summary||'')}</b><br><br>${esc(f.detail||'')}${r?`<br><br><b>Ressource restante : ${remaining(r.id)}/${r.max}.</b>`:''}`)}
+          function layOnHandsDialog(f,kind){const rem=remaining('layOnHands');if(rem<=0)return info('Imposition des mains épuisée','Ta réserve de soin est vide. Elle revient après un repos long.');openM(`<h2>⭐ Imposition des mains</h2><div class=\"learn\">Réserve restante : <b>${rem} PV</b>. C’est une <b>action bonus</b> au contact.</div><label class=\"tapnote\" for=\"layAmount\">Combien de PV veux-tu rendre ?</label><input id=\"layAmount\" type=\"number\" min=\"1\" max=\"${rem}\" value=\"1\" inputmode=\"numeric\" style=\"width:100%;font-size:20px;padding:12px;border-radius:12px;margin:8px 0\"><div class=\"btnrow\"><button class=\"btn primary\" onclick=\"commitLayOnHands('${kind}','heal')\">SOIGNER</button>${rem>=5?`<button class=\"btn\" onclick=\"commitLayOnHands('${kind}','poison')\">RETIRER EMPOISONNÉ (5)</button>`:''}<button class=\"btn\" onclick=\"bonusMenu()\">← Retour</button></div>`)}
+          function commitLayOnHands(kind,mode){const rem=remaining('layOnHands');const key=kind==='bonus'?'bonus':kind==='reaction'?'reaction':'action';let n=mode==='poison'?5:Math.max(1,parseInt((document.getElementById('layAmount')||{}).value||1));n=Math.min(n,rem);if(n<=0)return;if(!consumeTurn(key,'Imposition des mains'))return;S.resources.layOnHands=(S.resources.layOnHands||0)+n;save();closeM();renderCombat();if(mode==='poison')info('Imposition des mains','<b>5 points dépensés.</b> Retire l’état Empoisonné de la créature touchée. Ces 5 points ne rendent pas de PV.');else info('Imposition des mains',`La créature touchée récupère <b>${n} PV</b>. Il reste <b>${remaining('layOnHands')}/5</b> dans ta réserve.`)}"""
+
+          # Shared engine used by Lelio and Loris.
+          shared=root/'ile-aux-tempetes/personnages/shared/engine.html'
+          text=shared.read_text()
+          if old not in text: raise RuntimeError('commitFeature introuvable dans le moteur partagé')
+          shared.write_text(text.replace(old,new,1))
+
+          # Hammerz packed rich sheet.
+          d=root/'ile-aux-tempetes/personnages/hammerz'
+          parts=[]
+          for i in (1,2):
+              t=(d/f'p{i}.js').read_text(); m=re.search(r"='([^']*)'",t,re.S)
+              if not m: raise RuntimeError(f'Hammerz p{i} illisible')
+              parts.append(m.group(1))
+          html=gzip.decompress(base64.b64decode(''.join(parts))).decode()
+          if old not in html: raise RuntimeError('commitFeature introuvable chez Hammerz')
+          html=html.replace(old,new,1)
+          # Only Javelin and Longsword are selected masteries on Hammerz's source sheet.
+          html=re.sub(r'(\{"id":"quarterstaff".*?"props":"Courante • Polyvalente")\s*,\s*"mastery":"Renversement"\s*,\s*"masteryText":"[^"]*"',r'\1',html,count=1)
+          b64=base64.b64encode(gzip.compress(html.encode(),compresslevel=9,mtime=0)).decode(); cut=(len(b64)+1)//2
+          (d/'p1.js').write_text("window.__IAT_P1='"+b64[:cut]+"';"); (d/'p2.js').write_text("window.__IAT_P2='"+b64[cut:]+"';")
+
+          # Vax packed sheet: source sheet grants mastery only for Longbow (Slow) and Shortsword (Vex).
+          d=root/'ile-aux-tempetes/personnages/vax'
+          b64=''.join((d/f'payload-{i}.txt').read_text().strip() for i in (1,2,3))
+          html=gzip.decompress(base64.b64decode(b64)).decode()
+          html=re.sub(r"(\{id:'scimitar'.*?props:'Guerre • Finesse • Légère')\s*,mastery:'[^']*',masteryText:'[^']*'",r"\1",html,count=1)
+          html=re.sub(r"(\{id:'shortbow'.*?props:'Courante • Munitions • Deux mains')\s*,mastery:'[^']*',masteryText:'[^']*'",r"\1",html,count=1)
+          b64=base64.b64encode(gzip.compress(html.encode(),compresslevel=9,mtime=0)).decode(); a=(len(b64)+2)//3
+          for i,ch in enumerate((b64[:a],b64[a:2*a],b64[2*a:]),1):(d/f'payload-{i}.txt').write_text(ch)
+
+          # Loris: make Innate Sorcery self-sufficient for a player who does not know the rule.
+          p=root/'ile-aux-tempetes/personnages/loris/data.js'; t=p.read_text()
+          old_detail='Par une action bonus, Loris libère sa magie pendant 1 minute. Sa fiche indique 2 utilisations par repos long. Pendant cet effet, applique les bénéfices de Sorcellerie innée prévus par la capacité d’Ensorceleur.'
+          new_detail='Par une action bonus, Loris libère sa magie pendant 1 minute. Pendant cette minute, le DD de sauvegarde de ses sorts d’Ensorceleur passe de 13 à 14 et Loris a l’Avantage à tous les jets d’attaque de ses sorts d’Ensorceleur. Il dispose de 2 utilisations et les récupère après un repos long.'
+          if old_detail not in t: raise RuntimeError('Détail Sorcellerie innée introuvable')
+          p.write_text(t.replace(old_detail,new_detail,1))
+      - name: Commit fixes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ile-aux-tempetes/personnages/shared/engine.html ile-aux-tempetes/personnages/hammerz/p1.js ile-aux-tempetes/personnages/hammerz/p2.js ile-aux-tempetes/personnages/vax/payload-1.txt ile-aux-tempetes/personnages/vax/payload-2.txt ile-aux-tempetes/personnages/vax/payload-3.txt ile-aux-tempetes/personnages/loris/data.js
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "IAT: enforce limited feature resources and selected masteries"
+          git push
