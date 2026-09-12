@@ -1,4 +1,4 @@
-name: Extract player templates
+name: Build shared player interface
 
 on:
   push:
@@ -7,38 +7,41 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  extract:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Decode Vax and Hammerz source templates
+      - name: Build shared interface from Hammerz reference
         shell: python
         run: |
           import base64, gzip, pathlib, re
           root = pathlib.Path('.')
-          out = pathlib.Path('extracted-player-templates')
-          out.mkdir(exist_ok=True)
-
-          # Vax: three raw base64 chunks.
-          vdir = root / 'ile-aux-tempetes/personnages/vax'
-          b64 = ''.join((vdir / f'payload-{i}.txt').read_text().strip() for i in range(1,4))
-          (out / 'vax.html').write_bytes(gzip.decompress(base64.b64decode(b64)))
-
-          # Hammerz: two JS chunks assigning window.__IAT_P1/P2.
           hdir = root / 'ile-aux-tempetes/personnages/hammerz'
-          parts = []
+          parts=[]
           for i in (1,2):
-              text = (hdir / f'p{i}.js').read_text()
-              m = re.search(r"='([^']*)'", text, re.S)
-              if not m:
-                  raise RuntimeError(f'Cannot extract Hammerz p{i}')
+              text=(hdir/f'p{i}.js').read_text()
+              m=re.search(r"='([^']*)'",text,re.S)
+              if not m: raise RuntimeError(f'Cannot extract Hammerz p{i}')
               parts.append(m.group(1))
-          (out / 'hammerz.html').write_bytes(gzip.decompress(base64.b64decode(''.join(parts))))
-      - name: Upload extracted templates
-        uses: actions/upload-artifact@v4
-        with:
-          name: player-templates
-          path: extracted-player-templates/
+          html=gzip.decompress(base64.b64decode(''.join(parts))).decode('utf-8')
+          html=re.sub(r'<title>.*?</title>','<title>Interface personnage — Île aux Tempêtes</title>',html,count=1)
+          html=html.replace('<div class="name">🐂 Hammerz</div><div class="sub">Minotaure • Paladin niveau 1 • Ermite</div>','<div class="name" id="heroName"></div><div class="sub" id="heroSub"></div>')
+          start=html.index('const DATA=')
+          end=html.index(';\nconst KEY=',start)
+          replacement="const DATA=window.__IAT_PLAYER_DATA;if(!DATA)throw new Error('Données personnage absentes');document.getElementById('heroName').textContent=(DATA.icon||'')+' '+DATA.name;document.getElementById('heroSub').textContent=DATA.species+' • '+DATA.class+' niveau '+DATA.level+' • '+DATA.background"
+          html=html[:start]+replacement+html[end:]
+          html=html.replace('<script>\nconst DATA=', '<script src="data.js"></script><script>\nconst DATA=',1)
+          out=root/'ile-aux-tempetes/personnages/shared'
+          out.mkdir(parents=True,exist_ok=True)
+          (out/'engine.html').write_text(html)
+      - name: Commit shared interface
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ile-aux-tempetes/personnages/shared/engine.html
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "IAT: build shared player interface from Hammerz template"
+          git push
