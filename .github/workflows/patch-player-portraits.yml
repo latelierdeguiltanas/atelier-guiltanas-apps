@@ -1,0 +1,64 @@
+name: Patch player sheet portraits
+
+on:
+  push:
+    paths:
+      - '.github/workflows/patch-player-portraits.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch packed Vax and Hammerz sheets
+        shell: python
+        run: |
+          import base64, gzip, pathlib, re
+          root=pathlib.Path('.')
+          css='.heroid{display:flex;gap:10px;align-items:center;min-width:0}.avatar{width:58px;height:72px;border-radius:14px;object-fit:cover;object-position:center;border:1px solid var(--line);background:var(--panel2);flex:0 0 auto}@media(max-width:390px){.avatar{width:52px;height:66px}}'
+
+          # Hammerz
+          d=root/'ile-aux-tempetes/personnages/hammerz'
+          parts=[]
+          for i in (1,2):
+              t=(d/f'p{i}.js').read_text()
+              m=re.search(r"='([^']*)'",t,re.S)
+              if not m: raise RuntimeError(f'Hammerz p{i} illisible')
+              parts.append(m.group(1))
+          html=gzip.decompress(base64.b64decode(''.join(parts))).decode()
+          if 'assets/personnages/hammerz.jpg' not in html:
+              html=html.replace('</style>',css+'</style>',1)
+              old='<div class="hero"><div><div class="name">🐂 Hammerz</div><div class="sub">Minotaure • Paladin niveau 1 • Ermite</div></div><div class="pill">Niveau 1</div></div>'
+              new='<div class="hero"><div class="heroid"><img class="avatar" src="../../assets/personnages/hammerz.jpg" alt="Figurine de Hammerz"><div><div class="name">Hammerz</div><div class="sub">Minotaure • Paladin niveau 1 • Ermite</div></div></div><div class="pill">Niveau 1</div></div>'
+              if old not in html: raise RuntimeError('En-tête Hammerz introuvable')
+              html=html.replace(old,new,1)
+              b64=base64.b64encode(gzip.compress(html.encode(),compresslevel=9,mtime=0)).decode()
+              cut=(len(b64)+1)//2
+              (d/'p1.js').write_text("window.__IAT_P1='"+b64[:cut]+"';")
+              (d/'p2.js').write_text("window.__IAT_P2='"+b64[cut:]+"';")
+
+          # Vax
+          d=root/'ile-aux-tempetes/personnages/vax'
+          b64=''.join((d/f'payload-{i}.txt').read_text().strip() for i in (1,2,3))
+          html=gzip.decompress(base64.b64decode(b64)).decode()
+          if 'assets/personnages/vax.jpg' not in html:
+              html=html.replace('</style>',css+'</style>',1)
+              old='<div class="hero"><div><div class="name">🏹 Vax\'Ildan</div><div class="sub">Elfe des bois • Rôdeur 1 • Guide</div></div><div class="pill">Niv. 1</div></div>'
+              new='<div class="hero"><div class="heroid"><img class="avatar" src="../../assets/personnages/vax.jpg" alt="Figurine de Vax Ildan"><div><div class="name">Vax\'Ildan</div><div class="sub">Elfe des bois • Rôdeur 1 • Guide</div></div></div><div class="pill">Niv. 1</div></div>'
+              if old not in html: raise RuntimeError('En-tête Vax introuvable')
+              html=html.replace(old,new,1)
+              b64=base64.b64encode(gzip.compress(html.encode(),compresslevel=9,mtime=0)).decode()
+              n=len(b64); a=(n+2)//3; chunks=(b64[:a],b64[a:2*a],b64[2*a:])
+              for i,ch in enumerate(chunks,1):(d/f'payload-{i}.txt').write_text(ch)
+      - name: Commit portrait integration
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ile-aux-tempetes/personnages/hammerz/p1.js ile-aux-tempetes/personnages/hammerz/p2.js ile-aux-tempetes/personnages/vax/payload-1.txt ile-aux-tempetes/personnages/vax/payload-2.txt ile-aux-tempetes/personnages/vax/payload-3.txt
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "IAT: integrate portraits into Vax and Hammerz sheets"
+          git push
