@@ -63,6 +63,10 @@
 
   save();render();
 
+  // Liens profonds depuis l'espace personnel : ?tab=combat, tests, magic ou bag.
+  const requestedTab=new URLSearchParams(location.search).get('tab');
+  if(['home','combat','tests','magic','bag'].includes(requestedTab))setTimeout(()=>nav(requestedTab),0);
+
   // Toutes les fiches PJ partagent ce fichier : on branche donc les statistiques ici une seule fois.
   if(!document.querySelector('script[data-iat-analytics]')){
     const a=document.createElement('script');a.src='../../assets/analytics.js';a.dataset.iatAnalytics='1';document.head.appendChild(a);
