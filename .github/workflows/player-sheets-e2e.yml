@@ -1,0 +1,151 @@
+name: Player sheets E2E
+
+on:
+  push:
+    paths:
+      - 'ile-aux-tempetes/personnages/**'
+      - 'ile-aux-tempetes/joueurs/**'
+      - 'ile-aux-tempetes/assets/personnages/**'
+      - '.github/workflows/player-sheets-e2e.yml'
+  workflow_dispatch:
+
+jobs:
+  chromium-click-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Playwright Chromium
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install playwright@1.55.0 >/dev/null 2>&1
+          npx playwright install --with-deps chromium >/dev/null
+      - name: Start local site
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/iat-http.log 2>&1 &
+          echo $! > /tmp/iat-http.pid
+          sleep 2
+      - name: Real click tests
+        run: |
+          cat > /tmp/iat-e2e.js <<'JS'
+          const { chromium } = require(process.cwd() + '/node_modules/playwright');
+          const assert = require('assert');
+          const base='http://127.0.0.1:4173/ile-aux-tempetes';
+          const pcs=[
+            {id:'vax',name:"Vax'Ildan",portrait:'vax.jpg'},
+            {id:'hammerz',name:'Hammerz',portrait:'hammerz.jpg'},
+            {id:'lelio',name:'Lelio',portrait:'lelio.jpg'},
+            {id:'loris',name:'Loris',portrait:'loris.jpg'}
+          ];
+          const results=[];
+          function ok(pc,test){results.push({pc,test,status:'PASS'}); console.log(`PASS | ${pc} | ${test}`)}
+          function fail(pc,test,e){results.push({pc,test,status:'FAIL',error:String(e.message||e)}); console.error(`FAIL | ${pc} | ${test} | ${e.message||e}`)}
+          async function clickByText(page,text){const b=page.getByRole('button',{name:new RegExp(text,'i')}).first(); await b.waitFor({state:'visible',timeout:4000}); await b.click();}
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            for(const pc of pcs){
+              const ctx=await browser.newContext({viewport:{width:390,height:844}});
+              const page=await ctx.newPage();
+              const errors=[];
+              page.on('pageerror',e=>errors.push('pageerror:'+e.message));
+              page.on('console',m=>{if(m.type()==='error')errors.push('console:'+m.text())});
+              try{
+                await page.goto(`${base}/personnages/${pc.id}/`,{waitUntil:'networkidle',timeout:15000});
+                await page.getByText(pc.name,{exact:false}).first().waitFor({state:'visible',timeout:7000});
+                assert.equal(errors.length,0,errors.join('\n'));
+                ok(pc.name,'chargement sans erreur JS');
+              }catch(e){fail(pc.name,'chargement sans erreur JS',e); await ctx.close(); continue;}
+              try{
+                const img=page.locator('img.avatar, img[alt*="Figurine"]').first();
+                await img.waitFor({state:'visible',timeout:5000});
+                const nat=await img.evaluate(i=>({w:i.naturalWidth,h:i.naturalHeight,src:i.getAttribute('src')}));
+                assert(nat.w>0&&nat.h>0,'portrait non chargé');
+                ok(pc.name,'portrait de figurine chargé');
+              }catch(e){fail(pc.name,'portrait de figurine chargé',e)}
+              try{
+                const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
+                assert(overflow<=2,`débordement horizontal ${overflow}px`);
+                ok(pc.name,'mobile 390px sans débordement horizontal');
+              }catch(e){fail(pc.name,'mobile 390px sans débordement horizontal',e)}
+              for(const nav of ['Combat','Tests','Magie','Sac']){
+                try{await clickByText(page,nav); await page.waitForTimeout(100); ok(pc.name,`navigation ${nav}`)}catch(e){fail(pc.name,`navigation ${nav}`,e)}
+              }
+              try{
+                await clickByText(page,'Accueil');
+                const before=await page.locator('.hpnum').first().innerText();
+                const damage=page.getByRole('button',{name:/DÉGÂTS|−1 PV/i}).first();
+                await damage.click();
+                if(await page.locator('#hpv,#num').count()){
+                  const inp=page.locator('#hpv,#num').first(); await inp.fill('1'); await clickByText(page,'APPLIQUER|VALIDER');
+                }
+                await page.waitForTimeout(100);
+                const after=await page.locator('.hpnum').first().innerText();
+                assert.notEqual(after,before,'PV inchangés après clic dégâts');
+                ok(pc.name,'gestion PV par clic');
+              }catch(e){fail(pc.name,'gestion PV par clic',e)}
+              try{
+                await clickByText(page,'Combat');
+                const act=page.getByRole('button',{name:/Choisir mon action|Action/i}).first();
+                await act.click();
+                await page.waitForTimeout(100);
+                ok(pc.name,'interaction combat/action');
+              }catch(e){fail(pc.name,'interaction combat/action',e)}
+              try{
+                await clickByText(page,'Magie');
+                const card=page.locator('#magic .item').first();
+                await card.waitFor({state:'visible',timeout:4000}); await card.click();
+                await page.locator('.modal.show,.sheet').first().waitFor({state:'visible',timeout:3000});
+                ok(pc.name,'ouverture détail de sort');
+                const close=page.locator('.close').first(); if(await close.count()) await close.click();
+              }catch(e){fail(pc.name,'ouverture détail de sort',e)}
+              try{
+                await clickByText(page,'Sac');
+                const coin=page.locator('.coin').first();
+                await coin.waitFor({state:'visible',timeout:3000});
+                const before=await coin.locator('b').innerText();
+                await coin.click();
+                const plus=page.getByRole('button',{name:/\+1|Recevoir/i}).first();
+                if(await plus.count()){
+                  if(await page.locator('#mv').count()) await page.locator('#mv').fill('1');
+                  await plus.click();
+                }
+                await page.waitForTimeout(100);
+                const after=await page.locator('.coin').first().locator('b').innerText();
+                assert.notEqual(after,before,'monnaie inchangée');
+                ok(pc.name,'gestion argent par clic');
+              }catch(e){fail(pc.name,'gestion argent par clic',e)}
+              try{
+                const q='perception';
+                const search=page.locator('#search'); await search.fill(q); await page.waitForTimeout(150);
+                const txt=(await page.locator('body').innerText()).toLowerCase(); assert(txt.includes('perception'),'recherche sans résultat perception');
+                ok(pc.name,'recherche intégrée');
+              }catch(e){fail(pc.name,'recherche intégrée',e)}
+              try{
+                await page.reload({waitUntil:'networkidle'});
+                await page.getByText(pc.name,{exact:false}).first().waitFor({state:'visible',timeout:5000});
+                ok(pc.name,'rechargement et persistance locale sans crash');
+              }catch(e){fail(pc.name,'rechargement et persistance locale sans crash',e)}
+              await page.screenshot({path:`/tmp/${pc.id}.png`,fullPage:true});
+              await ctx.close();
+            }
+            // Portal: four portraits and four links.
+            const ctx=await browser.newContext({viewport:{width:390,height:844}}); const page=await ctx.newPage();
+            try{
+              await page.goto(`${base}/joueurs/`,{waitUntil:'networkidle'});
+              for(const pc of pcs){
+                const img=page.locator(`img[src*="${pc.portrait}"]`); assert(await img.count()===1,`${pc.name}: portrait portail absent`);
+                assert((await img.evaluate(i=>i.naturalWidth))>0,`${pc.name}: image portail cassée`);
+                const link=page.locator(`a[href*="personnages/${pc.id}"]`); assert(await link.count()===1,`${pc.name}: lien portail absent`);
+              }
+              ok('PORTAIL','4 portraits et 4 liens PJ');
+            }catch(e){fail('PORTAIL','4 portraits et 4 liens PJ',e)}
+            await ctx.close(); await browser.close();
+            const failed=results.filter(r=>r.status==='FAIL');
+            console.log(`\nTOTAL ${results.length} | PASS ${results.length-failed.length} | FAIL ${failed.length}`);
+            if(failed.length){console.error(JSON.stringify(failed,null,2)); process.exit(1)}
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
+          node /tmp/iat-e2e.js
