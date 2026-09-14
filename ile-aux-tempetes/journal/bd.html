@@ -6,32 +6,58 @@
 <meta name="theme-color" content="#081214">
 <title>BD de campagne — Île aux Tempêtes</title>
 <style>
-:root{--paper:#efe6d4;--gold:#d8b36e;--muted:#9eacab;--line:rgba(216,179,110,.26)}
-*{box-sizing:border-box}html,body{margin:0;max-width:100%;background:radial-gradient(circle at 20% -10%,#1f4145,transparent 34%),linear-gradient(#071315,#040b0c);color:var(--paper);font-family:system-ui,-apple-system,Segoe UI,sans-serif;min-height:100%}body{min-height:100vh}.shell{width:min(820px,100%);margin:auto;padding:14px 11px 90px}.back{display:inline-block;color:var(--gold);text-decoration:none;font-weight:850;margin:4px 0 15px}.hero{padding:14px 2px 18px}.eyebrow{color:var(--gold);letter-spacing:.15em;text-transform:uppercase;font-size:.7rem;font-weight:900}.hero h1{font:700 clamp(2rem,9vw,4.2rem) Georgia,serif;margin:6px 0 9px;line-height:1}.hero p{margin:0;color:var(--muted);line-height:1.5;max-width:650px}.status{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}.pill{border:1px solid var(--line);background:#102124;color:#d9dfdc;border-radius:999px;padding:7px 10px;font-size:.72rem;font-weight:800}.card{background:#0d1c1e;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 18px 46px #0007}.readerHead{padding:15px 15px 12px;border-bottom:1px solid rgba(216,179,110,.14)}.readerHead small{display:block;color:var(--gold);font-weight:900;letter-spacing:.11em;text-transform:uppercase;font-size:.66rem}.readerHead h2{font:700 1.35rem Georgia,serif;margin:4px 0 3px}.readerHead p{margin:0;color:var(--muted);font-size:.82rem;line-height:1.45}.stage{background:#050708;display:flex;align-items:center;justify-content:center;overflow:hidden}.stage img{display:block;width:100%;height:auto}.controls{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:10px;background:#0a1719;border-top:1px solid rgba(216,179,110,.14)}button{font:inherit}.btn{min-height:46px;border:1px solid var(--line);border-radius:13px;background:#142629;color:#f2ead9;font-weight:850;padding:10px 12px}.btn.primary{background:linear-gradient(145deg,#d8b36e,#b98d45);color:#14201f;border-color:#e6c98f}.note{padding:13px 14px;color:#8ea09c;font-size:.78rem;line-height:1.45;border-top:1px solid rgba(255,255,255,.05)}.next{margin-top:13px;border:1px dashed rgba(216,179,110,.24);border-radius:16px;padding:13px 14px;color:#80908d;font-size:.8rem}.zoom{position:fixed;inset:0;z-index:9999;background:#050708;display:none;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}.zoom.on{display:block}.zoomBar{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:max(9px,env(safe-area-inset-top)) 10px 9px;background:#081214e8;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.zoomBar strong{font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.close{border:1px solid var(--line);background:#142629;color:#fff;border-radius:11px;min-height:42px;padding:8px 13px;font-weight:900}.zoomCanvas{padding:10px 8px 40px;min-width:1055px}.zoomCanvas img{display:block;width:1055px;max-width:none;height:auto;margin:0 auto}.hint{font-size:.72rem;color:#83928f;margin-top:9px;text-align:center}@media(min-width:680px){.shell{padding-left:16px;padding-right:16px}}
+:root{--bg:#071113;--panel:#0d1b1d;--paper:#efe6d4;--gold:#d8b36e;--muted:#98a7a4;--line:rgba(216,179,110,.24)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:radial-gradient(circle at 20% -8%,#24464a 0,transparent 32%),linear-gradient(#071315,#040b0c 65%);color:var(--paper);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+.shell{width:min(820px,100%);margin:auto;padding:14px 10px 90px}
+.back{display:inline-block;margin:4px 0 14px;color:var(--gold);text-decoration:none;font-weight:850}
+.hero{padding:10px 3px 18px}.eyebrow{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:900}
+h1{font:700 clamp(2rem,9vw,4rem) Georgia,serif;line-height:1;margin:6px 0 10px}.hero p{margin:0;color:var(--muted);line-height:1.5}
+.pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}.pill{border:1px solid var(--line);background:#102124;border-radius:999px;padding:7px 10px;font-size:.72rem;font-weight:850}
+.intro,.overview{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 18px 45px #0007}
+.intro{padding:15px;margin-bottom:12px}.intro small{display:block;color:var(--gold);font-weight:900;letter-spacing:.11em;text-transform:uppercase;font-size:.65rem}.intro h2{font:700 1.4rem Georgia,serif;margin:5px 0 4px}.intro p{margin:0;color:var(--muted);font-size:.84rem;line-height:1.45}
+.reader{display:grid;gap:12px}.panel{margin:0;background:#050708;border:1px solid rgba(216,179,110,.18);border-radius:16px;overflow:hidden;box-shadow:0 12px 28px #0008}.panel img{display:block;width:100%;height:auto}.panel figcaption{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:8px 10px;background:#0b1719;color:#93a29f;font-size:.69rem}.panel figcaption b{color:#d7c49d;font-size:.72rem}
+.tip{margin:12px 0 0;padding:12px 13px;border:1px solid var(--line);border-radius:15px;background:#0b181a;color:#a8b5b1;font-size:.8rem;line-height:1.45}
+.overview{margin-top:14px}.overview summary{cursor:pointer;list-style:none;padding:14px;font-weight:900;color:#e6d5ae}.overview summary::-webkit-details-marker{display:none}.overview summary::after{content:"▾";float:right;color:var(--gold)}.overview[open] summary::after{content:"▴"}.overview img{display:block;width:100%;height:auto;background:#050708}
+.topbtn{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));z-index:20;border:1px solid var(--line);background:#102124e8;color:#f3ead9;border-radius:999px;min-width:48px;min-height:48px;font-size:1.1rem;font-weight:900;box-shadow:0 8px 24px #0008}
+footer{text-align:center;color:#71817e;font-size:.68rem;padding-top:18px}
+@media(min-width:720px){.shell{padding-left:16px;padding-right:16px}.reader{grid-template-columns:1fr 1fr}.panel.wide{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<main class="shell">
+<main class="shell" id="top">
 <a class="back" href="./">← Journal de campagne</a>
 <header class="hero">
 <div class="eyebrow">BD de campagne</div>
 <h1>Revivez l’aventure.</h1>
-<p>La chronique en images, pensée d’abord pour le téléphone. La planche est maintenant préparée en haute définition au déploiement pour éviter la pixellisation du navigateur.</p>
-<div class="status"><span class="pill">Planche 1 / 4</span><span class="pill">Mobile first</span><span class="pill">Version officielle</span><span class="pill">Lecture HD</span></div>
+<p>La planche 1 passe en vrai lecteur mobile par cases : chaque scène est recadrée pour être lisible directement sur téléphone, sans devoir zoomer toute la page.</p>
+<div class="pills"><span class="pill">Planche 1 / 4</span><span class="pill">Lecture mobile</span><span class="pill">15 cadrages</span><span class="pill">Défilement naturel</span></div>
 </header>
-<section class="card" aria-labelledby="bdTitle">
-<div class="readerHead"><small>Prologue · Planche 1</small><h2 id="bdTitle">La Cicatrice du Ciel</h2><p>Le jour où quatre destins convergèrent autour d’un cratère impossible.</p></div>
-<div class="stage"><img src="bd/planche1_reader_hd.webp?v=hd2" alt="BD Île aux Tempêtes — Planche 1 : La Cicatrice du Ciel"></div>
-<div class="controls"><button class="btn primary" type="button" id="openZoom">🔎 Lire en grand</button><button class="btn" type="button" id="backTop">↑ Revenir en haut</button></div>
-<div class="note">Le mode « Lire en grand » affiche la planche sans agrandissement artificiel : elle est rendue en 2110 px de large puis présentée à 1055 px CSS pour garder davantage de netteté sur les écrans mobiles haute densité.</div>
+<section class="intro"><small>Prologue · Planche 1</small><h2>La Cicatrice du Ciel</h2><p>Fais simplement défiler. Les scènes, personnages et textes sont présentés beaucoup plus grands qu’avant. La planche complète reste disponible à la fin.</p></section>
+<section class="reader" aria-label="Lecture mobile de la planche 1">
+<figure class="panel"><img src="bd/mobile/p01-01.webp" alt="La Cicatrice du Ciel — Hammerz" loading="eager" decoding="async"><figcaption><b>01 / 15</b><span>Hammerz protège les siens.</span></figcaption></figure>
+<figure class="panel"><img src="bd/mobile/p01-02.webp" alt="Vax’Ildan traque les ombres" loading="eager" decoding="async"><figcaption><b>02 / 15</b><span>Vax’Ildan.</span></figcaption></figure>
+<figure class="panel"><img src="bd/mobile/p01-03.webp" alt="Prométhée sent le feu faiblir" loading="eager" decoding="async"><figcaption><b>03 / 15</b><span>Prométhée.</span></figcaption></figure>
+<figure class="panel"><img src="bd/mobile/p01-04.webp" alt="Lelio quitte son monde de Theros" loading="lazy" decoding="async"><figcaption><b>04 / 15</b><span>Lelio quitte Theros.</span></figcaption></figure>
+<figure class="panel"><img src="bd/mobile/p01-05.webp" alt="Lelio happé entre les mondes" loading="lazy" decoding="async"><figcaption><b>05 / 15</b><span>Entre les mondes.</span></figcaption></figure>
+<figure class="panel"><img src="bd/mobile/p01-06.webp" alt="Lelio dans la tempête" loading="lazy" decoding="async"><figcaption><b>06 / 15</b><span>Tempête.</span></figcaption></figure>
+<figure class="panel wide"><img src="bd/mobile/p01-07.webp" alt="La cicatrice lumineuse déchire le ciel" loading="lazy" decoding="async"><figcaption><b>07 / 15</b><span>La cicatrice dans le ciel.</span></figcaption></figure>
+<figure class="panel wide"><img src="bd/mobile/p01-08.webp" alt="Quelque chose tombe dans la forêt" loading="lazy" decoding="async"><figcaption><b>08 / 15</b><span>Quelque chose tombe.</span></figcaption></figure>
+<figure class="panel"><img src="bd/mobile/p01-09.webp" alt="Hammerz prend la route" loading="lazy" decoding="async"><figcaption><b>09 / 15</b><span>Hammerz.</span></figcaption></figure>
+<figure class="panel"><img src="bd/mobile/p01-10.webp" alt="Vax’Ildan prend la route" loading="lazy" decoding="async"><figcaption><b>10 / 15</b><span>Vax’Ildan.</span></figcaption></figure>
+<figure class="panel"><img src="bd/mobile/p01-11.webp" alt="Prométhée prend la route" loading="lazy" decoding="async"><figcaption><b>11 / 15</b><span>Prométhée.</span></figcaption></figure>
+<figure class="panel wide"><img src="bd/mobile/p01-12.webp" alt="Le groupe découvre le cratère" loading="lazy" decoding="async"><figcaption><b>12 / 15</b><span>Au cœur de la forêt.</span></figcaption></figure>
+<figure class="panel wide"><img src="bd/mobile/p01-13.webp" alt="Le cratère mystérieux" loading="lazy" decoding="async"><figcaption><b>13 / 15</b><span>Ils ne sont pas seuls.</span></figcaption></figure>
+<figure class="panel wide"><img src="bd/mobile/p01-14.webp" alt="Lelio gît dans le cratère" loading="lazy" decoding="async"><figcaption><b>14 / 15</b><span>Un corps dans les débris.</span></figcaption></figure>
+<figure class="panel wide"><img src="bd/mobile/p01-15.webp" alt="Lelio respire encore" loading="lazy" decoding="async"><figcaption><b>15 / 15</b><span>…et il respire encore.</span></figcaption></figure>
 </section>
-<div class="next">Les planches 2, 3 et 4 restent archivées et seront ajoutées une par une après validation de ce rendu.</div>
-<div class="hint">BD de campagne · Île aux Tempêtes</div>
+<div class="tip">Ce mode privilégie la lecture réelle sur téléphone : chaque zone utile occupe beaucoup plus d’écran et évite le zoom permanent qui dégradait la planche complète.</div>
+<details class="overview"><summary>Voir la planche complète</summary><img src="bd/mobile/p01-full.webp" alt="Planche complète La Cicatrice du Ciel" loading="lazy" decoding="async"></details>
+<footer>BD de campagne · Île aux Tempêtes</footer>
 </main>
-<div class="zoom" id="zoom" aria-hidden="true"><div class="zoomBar"><strong>La Cicatrice du Ciel · Planche 1</strong><button class="close" type="button" id="closeZoom">✕ Fermer</button></div><div class="zoomCanvas"><img src="bd/planche1_reader_hd.webp?v=hd2" alt="Planche 1 agrandie"></div></div>
-<script>
-(()=>{const overlay=document.getElementById('zoom');document.getElementById('openZoom').onclick=()=>{overlay.classList.add('on');overlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';overlay.scrollTop=0};document.getElementById('closeZoom').onclick=()=>{overlay.classList.remove('on');overlay.setAttribute('aria-hidden','true');document.body.style.overflow=''};document.getElementById('backTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('on'))document.getElementById('closeZoom').click()});})();
-</script>
+<button class="topbtn" type="button" aria-label="Revenir en haut" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 <script src="../assets/analytics.js"></script>
 </body>
 </html>
