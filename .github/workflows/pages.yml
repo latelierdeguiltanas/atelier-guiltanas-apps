@@ -23,6 +23,43 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Build high-quality comic page
+        run: |
+          python -m pip install --quiet pillow
+          python - <<'PY'
+          from pathlib import Path
+          import base64
+          from PIL import Image, ImageEnhance, ImageFilter
+
+          src_dir = Path('ile-aux-tempetes/journal/bd/01p')
+          chunks = []
+          for p in sorted(src_dir.glob('c*.txt')):
+              chunks.append(p.read_text(encoding='utf-8').strip())
+          if not chunks:
+              raise SystemExit('No comic chunks found')
+
+          raw = base64.b64decode(''.join(chunks))
+          tmp = Path('/tmp/planche1_source.webp')
+          tmp.write_bytes(raw)
+
+          im = Image.open(tmp).convert('RGB')
+          # The stored reader source is intentionally lightweight. Build a much
+          # larger render for phone zoom so the browser no longer performs a
+          # crude enlargement of the 480 px preview.
+          target_w = 2110
+          target_h = round(im.height * target_w / im.width)
+          im = im.resize((target_w, target_h), Image.Resampling.LANCZOS)
+          im = ImageEnhance.Sharpness(im).enhance(1.25)
+          im = im.filter(ImageFilter.UnsharpMask(radius=1.1, percent=145, threshold=2))
+          im = ImageEnhance.Contrast(im).enhance(1.03)
+
+          out = Path('ile-aux-tempetes/journal/bd/planche1_reader_hd.webp')
+          out.parent.mkdir(parents=True, exist_ok=True)
+          im.save(out, 'WEBP', quality=94, method=6)
+          print('Built', out, im.size, out.stat().st_size, 'bytes')
+          PY
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
