@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#081214">
+<title>BD de campagne — Île aux Tempêtes</title>
+<style>
+:root{--bg:#081214;--panel:#0e1d1f;--paper:#efe6d4;--gold:#d8b36e;--muted:#9eacab;--line:rgba(216,179,110,.26)}
+*{box-sizing:border-box}html,body{margin:0;max-width:100%;background:radial-gradient(circle at 20% -10%,#1f4145,transparent 34%),linear-gradient(#071315,#040b0c);color:var(--paper);font-family:system-ui,-apple-system,Segoe UI,sans-serif;min-height:100%}body{min-height:100vh}.shell{width:min(820px,100%);margin:auto;padding:14px 11px 90px}.back{display:inline-block;color:var(--gold);text-decoration:none;font-weight:850;margin:4px 0 15px}.hero{padding:14px 2px 18px}.eyebrow{color:var(--gold);letter-spacing:.15em;text-transform:uppercase;font-size:.7rem;font-weight:900}.hero h1{font:700 clamp(2rem,9vw,4.2rem) Georgia,serif;margin:6px 0 9px;line-height:1}.hero p{margin:0;color:var(--muted);line-height:1.5;max-width:650px}.status{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}.pill{border:1px solid var(--line);background:#102124;color:#d9dfdc;border-radius:999px;padding:7px 10px;font-size:.72rem;font-weight:800}.card{background:#0d1c1e;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 18px 46px #0007}.readerHead{padding:15px 15px 12px;border-bottom:1px solid rgba(216,179,110,.14)}.readerHead small{display:block;color:#d8b36e;font-weight:900;letter-spacing:.11em;text-transform:uppercase;font-size:.66rem}.readerHead h2{font:700 1.35rem Georgia,serif;margin:4px 0 3px}.readerHead p{margin:0;color:#9eacab;font-size:.82rem;line-height:1.45}.stage{position:relative;background:#050708;min-height:52vh;display:flex;align-items:center;justify-content:center;overflow:hidden}.stage img{display:block;width:100%;height:auto;opacity:0;transition:opacity .25s ease}.stage.ready img{opacity:1}.loading{position:absolute;inset:0;display:grid;place-items:center;padding:30px;text-align:center;color:#aeb9b5;font-size:.9rem}.stage.ready .loading{display:none}.error{color:#efb1a4}.controls{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:10px;background:#0a1719;border-top:1px solid rgba(216,179,110,.14)}button{font:inherit}.btn{min-height:46px;border:1px solid var(--line);border-radius:13px;background:#142629;color:#f2ead9;font-weight:850;padding:10px 12px}.btn.primary{background:linear-gradient(145deg,#d8b36e,#b98d45);color:#14201f;border-color:#e6c98f}.note{padding:13px 14px;color:#8ea09c;font-size:.78rem;line-height:1.45;border-top:1px solid rgba(255,255,255,.05)}.next{margin-top:13px;border:1px dashed rgba(216,179,110,.24);border-radius:16px;padding:13px 14px;color:#80908d;font-size:.8rem}.zoom{position:fixed;inset:0;z-index:9999;background:#050708;display:none;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}.zoom.on{display:block}.zoomBar{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:max(9px,env(safe-area-inset-top)) 10px 9px;background:#081214e8;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.zoomBar strong{font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.close{border:1px solid var(--line);background:#142629;color:#fff;border-radius:11px;min-height:42px;padding:8px 13px;font-weight:900}.zoomCanvas{width:max(100%,760px);padding:10px 8px 40px}.zoomCanvas img{display:block;width:100%;height:auto}.hint{font-size:.72rem;color:#83928f;margin-top:9px;text-align:center}@media(min-width:680px){.shell{padding-left:16px;padding-right:16px}.stage{min-height:620px}.controls{grid-template-columns:1fr 1fr}.zoomCanvas{width:min(1100px,100%);margin:auto}}@media(prefers-reduced-motion:reduce){.stage img{transition:none}}
+</style>
+</head>
+<body>
+<main class="shell">
+<a class="back" href="./">← Journal de campagne</a>
+<header class="hero">
+<div class="eyebrow">BD de campagne</div>
+<h1>Revivez l’aventure.</h1>
+<p>La chronique en images, pensée d’abord pour le téléphone. Une seule planche est chargée pour ce premier test afin de garder une page rapide et agréable.</p>
+<div class="status"><span class="pill">Planche 1 / 4</span><span class="pill">Mobile first</span><span class="pill">Version officielle</span></div>
+</header>
+<section class="card" aria-labelledby="bdTitle">
+<div class="readerHead"><small>Prologue · Planche 1</small><h2 id="bdTitle">La Cicatrice du Ciel</h2><p>Le jour où quatre destins convergèrent autour d’un cratère impossible.</p></div>
+<div class="stage" id="stage"><div class="loading" id="loading">Chargement de la planche…</div><img id="pageImage" alt="BD Île aux Tempêtes — Planche 1 : La Cicatrice du Ciel"></div>
+<div class="controls"><button class="btn primary" type="button" id="openZoom" disabled>🔎 Lire en grand</button><button class="btn" type="button" id="backTop">↑ Revenir en haut</button></div>
+<div class="note">Sur téléphone, touche « Lire en grand », puis déplace la page avec ton doigt. Le zoom du navigateur reste disponible au pincement.</div>
+</section>
+<div class="next">Les planches 2, 3 et 4 restent archivées mais ne sont pas encore chargées ici. Elles seront ajoutées une par une après validation de ce rendu mobile.</div>
+<div class="hint">BD de campagne · Île aux Tempêtes</div>
+</main>
+<div class="zoom" id="zoom" aria-hidden="true"><div class="zoomBar"><strong>La Cicatrice du Ciel · Planche 1</strong><button class="close" type="button" id="closeZoom">✕ Fermer</button></div><div class="zoomCanvas"><img id="zoomImage" alt="Planche 1 agrandie"></div></div>
+<script>
+(()=>{
+ const parts=Array.from({length:8},(_,i)=>`bd/01p/c${String(i+1).padStart(2,'0')}.txt`);
+ const stage=document.getElementById('stage'),img=document.getElementById('pageImage'),zoomImg=document.getElementById('zoomImage'),loading=document.getElementById('loading'),open=document.getElementById('openZoom'),overlay=document.getElementById('zoom');
+ Promise.all(parts.map(p=>fetch(p,{cache:'force-cache'}).then(r=>{if(!r.ok)throw new Error(p);return r.text()}))).then(chunks=>{
+   const src='data:image/webp;base64,'+chunks.join('').replace(/\s+/g,'');
+   img.onload=()=>{stage.classList.add('ready');open.disabled=false};
+   img.src=src;zoomImg.src=src;
+ }).catch(()=>{loading.classList.add('error');loading.textContent='Impossible de charger la planche. Réessaie dans un instant.'});
+ open.onclick=()=>{overlay.classList.add('on');overlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';overlay.scrollTop=0};
+ document.getElementById('closeZoom').onclick=()=>{overlay.classList.remove('on');overlay.setAttribute('aria-hidden','true');document.body.style.overflow=''};
+ document.getElementById('backTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('on'))document.getElementById('closeZoom').click()});
+})();
+</script>
+<script src="../assets/analytics.js"></script>
+</body>
+</html>
