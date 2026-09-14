@@ -29,22 +29,23 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Rebuild comic source
+      - name: Rebuild comic sources
         run: |
           python - <<'PY'
           from pathlib import Path
           import base64
-          src_dir = Path('ile-aux-tempetes/journal/bd/01p')
-          parts = [p.read_text(encoding='utf-8').strip() for p in sorted(src_dir.glob('c*.txt'))]
-          if not parts:
-              raise SystemExit('No comic source chunks found')
-          raw = base64.b64decode(''.join(parts))
-          target = Path('/tmp/planche1_source.webp')
-          target.write_bytes(raw)
-          print('Source rebuilt:', target, len(raw), 'bytes')
+          for page in (1, 2, 3, 4):
+              src_dir = Path(f'ile-aux-tempetes/journal/bd/{page:02d}p')
+              parts = [p.read_text(encoding='utf-8').strip() for p in sorted(src_dir.glob('c*.txt'))]
+              if not parts:
+                  raise SystemExit(f'No comic source chunks found for page {page}')
+              raw = base64.b64decode(''.join(parts))
+              target = Path(f'/tmp/planche{page}_source.webp')
+              target.write_bytes(raw)
+              print('Source rebuilt:', target, len(raw), 'bytes')
           PY
 
-      - name: Restore artwork with Real-ESRGAN
+      - name: Restore page 1 artwork with Real-ESRGAN
         continue-on-error: true
         run: |
           set -eux
@@ -72,52 +73,68 @@ jobs:
           from pathlib import Path
           from PIL import Image, ImageFilter
 
-          restored = Path('/tmp/realesrgan/planche1_source_out.png')
-          original = Path('/tmp/planche1_source.webp')
-          if restored.exists():
-              im = Image.open(restored).convert('RGB')
-              print('Using Real-ESRGAN restoration:', im.size)
-          else:
-              im = Image.open(original).convert('RGB')
-              # Safe fallback only: the mobile crops still avoid pinch-zoom.
-              im = im.resize((im.width * 4, im.height * 4), Image.Resampling.LANCZOS)
-              im = im.filter(ImageFilter.UnsharpMask(radius=1.0, percent=110, threshold=2))
-              print('Real-ESRGAN unavailable; using mobile-reader fallback:', im.size)
-
           reference_w, reference_h = 1055, 1491
-          boxes = [
-              (0,0,365,378),
-              (345,0,695,378),
-              (675,0,1055,378),
-              (0,368,325,633),
-              (305,368,665,633),
-              (645,368,1055,633),
-              (0,623,560,782),
-              (495,623,1055,782),
-              (0,770,370,954),
-              (350,770,690,954),
-              (670,770,1055,954),
-              (0,944,560,1182),
-              (495,944,1055,1182),
-              (0,1173,580,1491),
-              (475,1173,1055,1491),
-          ]
-          sx, sy = im.width / reference_w, im.height / reference_h
           outdir = Path('ile-aux-tempetes/journal/bd/mobile')
           outdir.mkdir(parents=True, exist_ok=True)
 
-          for i, (x1,y1,x2,y2) in enumerate(boxes, 1):
-              box = (round(x1*sx), round(y1*sy), round(x2*sx), round(y2*sy))
-              crop = im.crop(box)
-              crop.save(outdir / f'p01-{i:02d}.webp', 'WEBP', quality=92, method=6)
-              print(f'panel {i:02d}', crop.size)
+          boxes = {
+              1: [
+                  (0,0,365,378),(345,0,695,378),(675,0,1055,378),
+                  (0,368,325,633),(305,368,665,633),(645,368,1055,633),
+                  (0,623,560,782),(495,623,1055,782),
+                  (0,770,370,954),(350,770,690,954),(670,770,1055,954),
+                  (0,944,560,1182),(495,944,1055,1182),
+                  (0,1173,580,1491),(475,1173,1055,1491),
+              ],
+              2: [
+                  (0,0,560,195),(495,0,1055,195),
+                  (0,185,555,400),(505,185,1055,400),
+                  (0,390,1055,585),(0,575,1055,820),
+                  (0,805,605,1010),(555,805,1055,1010),
+                  (0,995,525,1195),(495,995,1055,1195),
+                  (0,1175,1055,1491),
+              ],
+              3: [
+                  (0,0,555,320),(500,0,1055,320),
+                  (0,300,530,565),(495,300,1055,565),
+                  (0,545,555,815),(500,545,1055,815),
+                  (0,795,535,1095),(495,795,1055,1095),
+                  (0,1075,690,1410),(630,1075,1055,1410),
+              ],
+              4: [
+                  (0,0,610,315),(550,0,1055,315),
+                  (0,295,605,595),(545,295,1055,595),
+                  (0,575,700,995),(625,575,1055,995),
+                  (0,970,560,1265),(500,970,1055,1265),
+                  (120,1180,935,1455),
+              ],
+          }
 
-          full = im
-          if full.width > 1920:
-              nh = round(full.height * 1920 / full.width)
-              full = full.resize((1920, nh), Image.Resampling.LANCZOS)
-          full.save(outdir / 'p01-full.webp', 'WEBP', quality=86, method=6)
-          print('Mobile reader built:', len(boxes), 'panels')
+          for page in (1, 2, 3, 4):
+              restored = Path('/tmp/realesrgan/planche1_source_out.png') if page == 1 else None
+              original = Path(f'/tmp/planche{page}_source.webp')
+              if page == 1 and restored and restored.exists():
+                  im = Image.open(restored).convert('RGB')
+                  print('Page 1: using Real-ESRGAN restoration', im.size)
+              else:
+                  im = Image.open(original).convert('RGB')
+                  im = im.resize((im.width * 4, im.height * 4), Image.Resampling.LANCZOS)
+                  im = im.filter(ImageFilter.UnsharpMask(radius=1.0, percent=110, threshold=2))
+                  print(f'Page {page}: using mobile-reader enlargement', im.size)
+
+              sx, sy = im.width / reference_w, im.height / reference_h
+              for i, (x1,y1,x2,y2) in enumerate(boxes[page], 1):
+                  box = (round(x1*sx), round(y1*sy), round(x2*sx), round(y2*sy))
+                  crop = im.crop(box)
+                  crop.save(outdir / f'p{page:02d}-{i:02d}.webp', 'WEBP', quality=92, method=6)
+                  print(f'page {page} panel {i:02d}', crop.size)
+
+              full = im
+              if full.width > 1920:
+                  nh = round(full.height * 1920 / full.width)
+                  full = full.resize((1920, nh), Image.Resampling.LANCZOS)
+              full.save(outdir / f'p{page:02d}-full.webp', 'WEBP', quality=86, method=6)
+              print(f'Page {page} mobile reader built:', len(boxes[page]), 'panels')
           PY
 
       - name: Configure Pages
