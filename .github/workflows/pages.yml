@@ -34,15 +34,26 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           import base64
-          for page in (1, 2, 3, 4):
-              src_dir = Path(f'ile-aux-tempetes/journal/bd/{page:02d}p')
-              parts = [p.read_text(encoding='utf-8').strip() for p in sorted(src_dir.glob('c*.txt'))]
-              if not parts:
-                  raise SystemExit(f'No comic source chunks found for page {page}')
-              raw = base64.b64decode(''.join(parts))
-              target = Path(f'/tmp/planche{page}_source.webp')
+
+          # Planche 1 : source historique en segments texte.
+          src_dir = Path('ile-aux-tempetes/journal/bd/01p')
+          parts = [p.read_text(encoding='utf-8').strip() for p in sorted(src_dir.glob('c*.txt'))]
+          if not parts:
+              raise SystemExit('No comic source chunks found for page 1')
+          raw = base64.b64decode(''.join(parts))
+          target = Path('/tmp/planche1_source.webp')
+          target.write_bytes(raw)
+          print('Page 1 source rebuilt:', target, len(raw), 'bytes')
+
+          # Planches 2 à 4 : sources JPEG encodées en base64 dans le dépôt.
+          for page in (2, 3, 4):
+              source = Path(f'ile-aux-tempetes/journal/bd/sources/p{page:02d}.b64')
+              if not source.exists():
+                  raise SystemExit(f'Missing source file for page {page}: {source}')
+              raw = base64.b64decode(source.read_text(encoding='utf-8').strip())
+              target = Path(f'/tmp/planche{page}_source.jpg')
               target.write_bytes(raw)
-              print('Source rebuilt:', target, len(raw), 'bytes')
+              print(f'Page {page} source rebuilt:', target, len(raw), 'bytes')
           PY
 
       - name: Restore page 1 artwork with Real-ESRGAN
@@ -87,42 +98,57 @@ jobs:
                   (0,1173,580,1491),(475,1173,1055,1491),
               ],
               2: [
-                  (0,0,560,195),(495,0,1055,195),
-                  (0,185,555,400),(505,185,1055,400),
-                  (0,390,1055,585),(0,575,1055,820),
-                  (0,805,605,1010),(555,805,1055,1010),
-                  (0,995,525,1195),(495,995,1055,1195),
+                  (0,0,540,195),(515,0,1055,195),
+                  (0,190,525,390),(515,190,1055,390),
+                  (0,385,1055,570),(0,565,1055,800),
+                  (0,795,580,990),(565,795,1055,990),
+                  (0,985,505,1182),(490,985,1055,1182),
                   (0,1175,1055,1491),
               ],
               3: [
-                  (0,0,555,320),(500,0,1055,320),
-                  (0,300,530,565),(495,300,1055,565),
-                  (0,545,555,815),(500,545,1055,815),
-                  (0,795,535,1095),(495,795,1055,1095),
-                  (0,1075,690,1410),(630,1075,1055,1410),
+                  (0,0,520,300),(500,0,1055,300),
+                  (0,295,520,550),(500,295,1055,550),
+                  (0,545,530,800),(510,545,1055,800),
+                  (0,795,510,1078),(490,795,1055,1078),
+                  (0,1072,535,1390),(515,1072,1055,1390),
               ],
               4: [
-                  (0,0,610,315),(550,0,1055,315),
-                  (0,295,605,595),(545,295,1055,595),
-                  (0,575,700,995),(625,575,1055,995),
-                  (0,970,560,1265),(500,970,1055,1265),
-                  (120,1180,935,1455),
+                  (0,0,585,305),(575,0,1055,305),
+                  (0,300,565,575),(555,300,1055,575),
+                  (0,570,645,980),(635,570,1055,980),
+                  (0,970,430,1390),(360,970,750,1390),(700,970,1055,1390),
               ],
           }
 
-          for page in (1, 2, 3, 4):
-              restored = Path('/tmp/realesrgan/planche1_source_out.png') if page == 1 else None
-              original = Path(f'/tmp/planche{page}_source.webp')
-              if page == 1 and restored and restored.exists():
-                  im = Image.open(restored).convert('RGB')
-                  print('Page 1: using Real-ESRGAN restoration', im.size)
-              else:
+          def load_page(page):
+              if page == 1:
+                  restored = Path('/tmp/realesrgan/planche1_source_out.png')
+                  original = Path('/tmp/planche1_source.webp')
+                  if restored.exists():
+                      im = Image.open(restored).convert('RGB')
+                      print('Page 1: using Real-ESRGAN restoration', im.size)
+                      return im
                   im = Image.open(original).convert('RGB')
                   im = im.resize((im.width * 4, im.height * 4), Image.Resampling.LANCZOS)
                   im = im.filter(ImageFilter.UnsharpMask(radius=1.0, percent=110, threshold=2))
-                  print(f'Page {page}: using mobile-reader enlargement', im.size)
+                  print('Page 1: using safe fallback', im.size)
+                  return im
 
+              im = Image.open(f'/tmp/planche{page}_source.jpg').convert('RGB')
+              # Le lecteur repose surtout sur le recadrage. On agrandit seulement la
+              # source de travail pour obtenir un rendu plus doux à l'écran mobile.
+              target_w = max(1600, im.width)
+              if im.width < target_w:
+                  target_h = round(im.height * target_w / im.width)
+                  im = im.resize((target_w, target_h), Image.Resampling.LANCZOS)
+                  im = im.filter(ImageFilter.UnsharpMask(radius=1.0, percent=105, threshold=2))
+              print(f'Page {page}: mobile source', im.size)
+              return im
+
+          for page in (1, 2, 3, 4):
+              im = load_page(page)
               sx, sy = im.width / reference_w, im.height / reference_h
+
               for i, (x1,y1,x2,y2) in enumerate(boxes[page], 1):
                   box = (round(x1*sx), round(y1*sy), round(x2*sx), round(y2*sy))
                   crop = im.crop(box)
@@ -133,7 +159,7 @@ jobs:
               if full.width > 1920:
                   nh = round(full.height * 1920 / full.width)
                   full = full.resize((1920, nh), Image.Resampling.LANCZOS)
-              full.save(outdir / f'p{page:02d}-full.webp', 'WEBP', quality=86, method=6)
+              full.save(outdir / f'p{page:02d}-full.webp', 'WEBP', quality=88, method=6)
               print(f'Page {page} mobile reader built:', len(boxes[page]), 'panels')
           PY
 
