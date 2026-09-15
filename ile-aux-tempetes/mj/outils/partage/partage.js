@@ -174,13 +174,22 @@
 
   document.getElementById('preparedTemplate').onchange = function (event) {
     const template = preparedTemplates[event.target.value];
-    if (!template) return;
+    const preparedImage = document.getElementById('preparedImage');
+    const customImagePicker = document.getElementById('customImagePicker');
+    if (!template) {
+      preparedImage.classList.add('hidden');
+      customImagePicker.classList.remove('hidden');
+      return;
+    }
     const kindInput = document.querySelector('input[name="kind"][value="' + template.kind + '"]');
     kindInput.checked = true;
     kindInput.dispatchEvent(new Event('change'));
     document.getElementById('title').value = template.title;
     document.getElementById('contentText').value = template.content;
     document.getElementById('imageFile').required = template.kind === 'image' && !template.fileUrl;
+    preparedImage.classList.toggle('hidden', !template.fileUrl);
+    customImagePicker.classList.toggle('hidden', !!template.fileUrl);
+    if (template.fileUrl) document.getElementById('preparedImagePreview').src = template.fileUrl;
     document.getElementById('title').focus();
   };
 
