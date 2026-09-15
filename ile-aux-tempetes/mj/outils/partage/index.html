@@ -29,6 +29,15 @@
       <form class="panel" id="createForm">
         <h2>Nouvelle découverte</h2>
         <p>Elle apparaît sur les appareils des joueurs dès l’attribution.</p>
+        <div class="field"><label for="preparedTemplate">Modèle préparé</label><select id="preparedTemplate">
+          <option value="">Création libre</option>
+          <option value="runara-map">Carte de l’île confiée par Runara</option>
+          <option value="ship-name">Plaque de la Rose des Vents</option>
+          <option value="compass">Boussole ornée du capitaine</option>
+          <option value="portrait">Portrait d’Aleitha et Brastos</option>
+          <option value="captain-log">Journal du capitaine</option>
+          <option value="talisman">Talisman d’Aleitha</option>
+        </select><small style="color:var(--muted)">Le modèle remplit le formulaire. Rien ne part avant ton choix des destinataires.</small></div>
         <div class="field"><label>Type</label><div class="typeRow">
           <label class="choice"><input type="radio" name="kind" value="image" checked><span>Carte / image</span></label>
           <label class="choice"><input type="radio" name="kind" value="object"><span>Objet</span></label>
