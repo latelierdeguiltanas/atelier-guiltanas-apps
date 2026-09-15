@@ -17,8 +17,7 @@
   const linkResult = document.getElementById('linkResult');
   const linkResultValue = document.getElementById('linkResultValue');
   const preparedTemplates = {
-    'runara-map': { kind: 'image', title: 'Carte de l’île confiée par Runara', content: '' },
-    'ship-name': { kind: 'text', title: 'La Rose des Vents', content: 'Une plaque de nacre fixée près du gouvernail porte encore le nom du navire : La Rose des Vents.' },
+    'runara-map': { kind: 'image', title: 'Carte de l’île confiée par Runara', content: '', fileUrl: '../../../assets/cartes/ile-runara-joueurs.png' },
     compass: { kind: 'object', title: 'Boussole ornée de la Rose des Vents', content: 'Une boussole ouvragée, récupérée dans les quartiers du capitaine. Malgré les années et l’eau salée, son aiguille cherche toujours le nord. Valeur estimée : 25 po.' },
     portrait: { kind: 'text', title: 'Portrait d’Aleitha et Brastos', content: 'Un portrait délavé montre un jeune couple enlacé et souriant. Une inscription presque effacée permet encore de lire leurs noms : Aleitha et Brastos. Elle porte l’uniforme d’une officière de marine ; lui, des vêtements de marchand.' },
     'captain-log': { kind: 'text', title: 'Dernière page du journal du capitaine', content: 'La Rose des Vents a sombré sur les récifs au nord de l’île. Aleitha, grièvement blessée, serrait un talisman tressé de ses cheveux et de ceux de Brastos. Elle a prié une puissance nommée Orcus de la ramener à son époux, mais elle est morte avant d’achever sa supplique. Peu après, les morts se sont relevés dans la cale.' },
@@ -181,6 +180,7 @@
     kindInput.dispatchEvent(new Event('change'));
     document.getElementById('title').value = template.title;
     document.getElementById('contentText').value = template.content;
+    document.getElementById('imageFile').required = template.kind === 'image' && !template.fileUrl;
     document.getElementById('title').focus();
   };
 
@@ -199,7 +199,15 @@
         const form = new FormData();
         form.append('title', document.getElementById('title').value.trim());
         form.append('recipients', JSON.stringify(recipients));
-        form.append('file', document.getElementById('imageFile').files[0]);
+        let imageFile = document.getElementById('imageFile').files[0];
+        const selectedTemplate = preparedTemplates[document.getElementById('preparedTemplate').value];
+        if (!imageFile && selectedTemplate && selectedTemplate.fileUrl) {
+          const response = await fetch(selectedTemplate.fileUrl);
+          if (!response.ok) throw new Error('La carte préparée est indisponible.');
+          imageFile = new File([await response.blob()], 'carte-ile-runara.png', { type: 'image/png' });
+        }
+        if (!imageFile) throw new Error('Choisis une image à envoyer.');
+        form.append('file', imageFile);
         await API.request('create', token, { method: 'POST', body: form });
       } else {
         await API.request('create', token, { method: 'POST', body: {
