@@ -12,8 +12,9 @@ Créer un héros simple et vérifier que chaque étape reste lisible.
 4. Active les règles nécessaires puis l’âge standard.
 5. Choisis la méthode STANDARD_SERIES.
 6. Attribue exactement : FOR 2, AGI 1, CON 0, PER 1, INT 3, VOL 0, CHA -1.
-7. Choisis les voies : Voie de l’assassin ; Voie de l’aventurier.
-8. Choisis l’équipement : Rapière, Dague, Dague, Dague, Dague, Dague ; armure armor:cuir-simple:cof2-lb-2024 ; bouclier aucun.
+7. Attribue le bonus humain de +1 à la CON (CON finale +1).
+8. Choisis les voies : Voie de l’assassin ; Voie de l’aventurier.
+9. Choisis l’équipement : Rapière, Dague, Dague, Dague, Dague, Dague ; armure armor:cuir-simple:cof2-lb-2024 ; bouclier aucun.
 
 ## Options et valeurs attendues
 
