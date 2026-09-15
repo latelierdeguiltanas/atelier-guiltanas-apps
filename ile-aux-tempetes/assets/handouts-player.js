@@ -6,7 +6,7 @@
   if (!allowed.includes(playerId) || !window.IAT_HANDOUTS) return;
 
   const style = document.createElement('style');
-  style.textContent = '.discoveries{scroll-margin-top:88px}.discoveriesHead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.liveBadge{border:1px solid rgba(215,177,107,.3);border-radius:999px;color:#d7b16b;padding:6px 9px;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.handoutGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-top:14px}.handoutCard{overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:#081416;color:inherit;text-align:left;padding:0}.handoutCard.image{cursor:pointer}.handoutPreview{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#050b0c}.handoutBody{padding:13px}.handoutType{color:#d7b16b;font-size:.67rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em}.handoutCard h3{font:700 1.05rem Georgia,serif;margin:5px 0}.handoutText{white-space:pre-wrap;color:#c7d1ce;font-size:.87rem;line-height:1.5;margin:8px 0 0}.handoutDate{display:block;color:#748783;font-size:.7rem;margin-top:9px}.emptyFinds{border:1px dashed rgba(215,177,107,.25);border-radius:15px;padding:18px;color:#9eadaa;margin-top:13px}.handoutViewer{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#030708;color:#fff}.handoutViewer::backdrop{background:#030708}.viewerBar{height:58px;display:flex;align-items:center;gap:8px;padding:8px 10px;background:#0b1517;border-bottom:1px solid #ffffff18}.viewerTitle{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:850}.viewerBtn{border:1px solid #ffffff20;border-radius:10px;background:#142326;color:#fff;padding:9px 12px;font-weight:850;text-decoration:none}.viewerStage{height:calc(100% - 58px);overflow:auto;display:flex;align-items:flex-start;justify-content:center;overscroll-behavior:contain;touch-action:pan-x pan-y pinch-zoom}.viewerStage img{display:block;width:100%;height:auto;max-width:none;transform-origin:top center}.viewerHelp{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);padding:6px 10px;border-radius:999px;background:#000a;color:#ddd;font-size:.7rem;pointer-events:none}@media(max-width:760px){.handoutGrid{grid-template-columns:1fr 1fr}}@media(max-width:480px){.handoutGrid{grid-template-columns:1fr}.viewerBtn{padding:9px 10px}.viewerHelp{display:none}}';
+  style.textContent = '.discoveries{scroll-margin-top:88px}.discoveriesHead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.discoveryTools{display:flex;align-items:center;gap:7px}.liveBadge,.alertButton{border:1px solid rgba(215,177,107,.3);border-radius:999px;color:#d7b16b;padding:6px 9px;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.alertButton{background:#102225;cursor:pointer}.alertButton.enabled{border-color:rgba(105,168,126,.55);color:#a9d9b7}.handoutGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-top:14px}.handoutCard{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:#081416;color:inherit;text-align:left;padding:0}.handoutCard.image{cursor:pointer}.newMark{position:absolute;z-index:2;right:9px;top:9px;border-radius:999px;background:#e0ad43;color:#171005;padding:5px 8px;font-size:.64rem;font-weight:950;text-transform:uppercase;letter-spacing:.06em;box-shadow:0 0 18px rgba(255,205,99,.65)}.handoutPreview{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#050b0c}.handoutBody{padding:13px}.handoutType{color:#d7b16b;font-size:.67rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em}.handoutCard h3{font:700 1.05rem Georgia,serif;margin:5px 0}.handoutText{white-space:pre-wrap;color:#c7d1ce;font-size:.87rem;line-height:1.5;margin:8px 0 0}.handoutDate{display:block;color:#748783;font-size:.7rem;margin-top:9px}.emptyFinds{border:1px dashed rgba(215,177,107,.25);border-radius:15px;padding:18px;color:#9eadaa;margin-top:13px}.handoutViewer{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#030708;color:#fff}.handoutViewer::backdrop{background:#030708}.viewerBar{height:58px;display:flex;align-items:center;gap:8px;padding:8px 10px;background:#0b1517;border-bottom:1px solid #ffffff18}.viewerTitle{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:850}.viewerBtn{border:1px solid #ffffff20;border-radius:10px;background:#142326;color:#fff;padding:9px 12px;font-weight:850;text-decoration:none}.viewerStage{height:calc(100% - 58px);overflow:auto;display:flex;align-items:flex-start;justify-content:center;overscroll-behavior:contain;touch-action:pan-x pan-y pinch-zoom}.viewerStage img{display:block;width:100%;height:auto;max-width:none;transform-origin:top center}.viewerHelp{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);padding:6px 10px;border-radius:999px;background:#000a;color:#ddd;font-size:.7rem;pointer-events:none}@media(max-width:760px){.handoutGrid{grid-template-columns:1fr 1fr}.discoveriesHead{align-items:flex-start}.discoveryTools{flex-direction:column;align-items:flex-end}}@media(max-width:480px){.handoutGrid{grid-template-columns:1fr}.viewerBtn{padding:9px 10px}.viewerHelp{display:none}}';
   document.head.appendChild(style);
 
   const grid = document.querySelector('.grid');
@@ -14,7 +14,7 @@
   const panel = document.createElement('section');
   panel.className = 'panel wide discoveries';
   panel.id = 'decouvertes';
-  panel.innerHTML = '<div class="discoveriesHead"><div><h2>Mes découvertes</h2><p>Cartes, objets et fragments confiés par le maître du jeu.</p></div><span class="liveBadge">En direct</span></div><div id="handoutList"><div class="emptyFinds">Ouverture de ton paquetage…</div></div>';
+  panel.innerHTML = '<div class="discoveriesHead"><div><h2>Mes découvertes</h2><p>Cartes, objets et fragments confiés par le maître du jeu.</p></div><div class="discoveryTools"><span class="liveBadge">En direct</span><button class="alertButton" id="enableHandoutAlerts" type="button">Activer les alertes</button></div></div><div id="handoutList"><div class="emptyFinds">Ouverture de ton paquetage…</div></div>';
   grid.insertBefore(panel, grid.firstChild);
 
   const quickNav = document.querySelector('.quickNav');
@@ -64,6 +64,12 @@
     handouts.forEach(function (handout) {
       const card = document.createElement(handout.kind === 'image' ? 'button' : 'article');
       card.className = 'handoutCard ' + handout.kind;
+      if (handout._is_new) {
+        const marker = document.createElement('span');
+        marker.className = 'newMark';
+        marker.textContent = 'Nouveau';
+        card.appendChild(marker);
+      }
       if (handout.kind === 'image') {
         const image = document.createElement('img');
         image.className = 'handoutPreview';
@@ -98,13 +104,41 @@
   }
 
   const tokenKey = 'iat_player_handout_token_' + playerId;
+  const alertsButton = document.getElementById('enableHandoutAlerts');
+  function updateAlertButton() {
+    if (!('Notification' in window) || !('serviceWorker' in navigator)) {
+      alertsButton.hidden = true;
+      return;
+    }
+    if (Notification.permission === 'granted') {
+      alertsButton.textContent = 'Alertes activées';
+      alertsButton.classList.add('enabled');
+    } else if (Notification.permission === 'denied') {
+      alertsButton.textContent = 'Alertes bloquées';
+    }
+  }
+  alertsButton.onclick = async function () {
+    if (!window.IAT_HANDOUT_ALERTS) return;
+    const result = await window.IAT_HANDOUT_ALERTS.enable();
+    updateAlertButton();
+    if (result === 'granted') window.IAT_HANDOUT_ALERTS.refresh();
+  };
+  updateAlertButton();
   const token = window.IAT_HANDOUTS.captureToken(tokenKey);
   if (!token) {
     document.getElementById('handoutList').innerHTML = '<div class="emptyFinds">Ton espace de découvertes n’est pas encore activé sur cet appareil. Ouvre une première fois le lien personnel envoyé par le MJ.</div>';
     return;
   }
   window.IAT_HANDOUTS.request('list', token, { query: { player: playerId } })
-    .then(function (data) { render(data.handouts || []); })
+    .then(function (data) {
+      const seenKey = 'iat_seen_handouts_' + playerId;
+      let seen = [];
+      try { seen = JSON.parse(localStorage.getItem(seenKey) || '[]'); } catch (_) { seen = []; }
+      const seenSet = new Set(seen);
+      const handouts = (data.handouts || []).map(function (item) { return Object.assign({}, item, { _is_new: !seenSet.has(item.id) }); });
+      render(handouts);
+      localStorage.setItem(seenKey, JSON.stringify(handouts.map(function (item) { return item.id; }).slice(-200)));
+    })
     .catch(function (error) {
       if (error.status === 401) localStorage.removeItem(tokenKey);
       document.getElementById('handoutList').innerHTML = '<div class="emptyFinds">' + (error.status === 401 ? 'Ce lien personnel n’est plus valable. Demande au MJ de t’en envoyer un nouveau.' : 'Impossible de charger les découvertes pour le moment.') + '</div>';
