@@ -1,40 +1,22 @@
 (()=>{'use strict';
 const P=window.__FOH_PRODUCT__,E=window.__FOH_ENGINE__,KEY='foh-guiltanas-heroes-v1';
 if(!P||!E)return;
+const DB=JSON.parse(document.getElementById('FOH_DB_JSON')?.textContent||'{}'),T=DB.tables||DB;
 const read=()=>{try{const x=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(x)?x:[]}catch{return[]}};
 const write=x=>localStorage.setItem(KEY,JSON.stringify(x));
-function canonicalStateFromDraft(draft){
-  const current=P.getDraft();
-  try{
-    P.setDraft(draft);
-    const result=E.computeCharacterN1(P.buildState());
-    if((result.errors||[]).length||!result.sticky?.characterState)return null;
-    return JSON.parse(JSON.stringify(result.sticky.characterState));
-  }catch{return null}
-  finally{P.setDraft(current)}
-}
-function repairHero(id){
-  const all=read(),i=all.findIndex(x=>x.id===id);
-  if(i<0)return false;
-  const hero=all[i],schema=hero.characterState?.schemaVersion;
-  if(schema==='foh-character-state-6')return true;
-  if(!hero.draft)return false;
-  const canonical=canonicalStateFromDraft(hero.draft);
-  if(!canonical)return false;
-  hero.characterState=canonical;
-  hero.status='READY';
-  all[i]=hero;write(all);return true;
-}
-function repairCurrent(){
-  const d=P.getDraft(),all=read();
-  const id=d.heroLibraryId||(all.length?all.slice().sort((a,b)=>String(b.updatedAt).localeCompare(String(a.updatedAt)))[0]?.id:'');
-  if(id)repairHero(id);
-}
-document.addEventListener('click',event=>{
-  const saved=event.target.closest?.('[data-hero-id]');
-  const action=event.target.closest?.('[data-action="open"],[data-action="edit"],[data-action="resume"]');
-  if(saved&&action)repairHero(saved.dataset.heroId);
-  if(event.target.closest?.('#save-btn,[data-ux03-save],#reveal-save'))queueMicrotask(repairCurrent);
-},true);
-window.__FOH_SAVE_SCHEMA_PATCH__={version:'FIX84-save-schema',repairHero,repairCurrent};
+function canonicalStateFromDraft(draft){const current=P.getDraft();try{P.setDraft(draft);const result=E.computeCharacterN1(P.buildState());if((result.errors||[]).length||!result.sticky?.characterState)return null;return JSON.parse(JSON.stringify(result.sticky.characterState))}catch{return null}finally{P.setDraft(current)}}
+function repairHero(id){const all=read(),i=all.findIndex(x=>x.id===id);if(i<0)return false;const hero=all[i],schema=hero.characterState?.schemaVersion;if(schema==='foh-character-state-6')return true;if(!hero.draft)return false;const canonical=canonicalStateFromDraft(hero.draft);if(!canonical)return false;hero.characterState=canonical;hero.status='READY';all[i]=hero;write(all);return true}
+function repairCurrent(){const d=P.getDraft(),all=read();const id=d.heroLibraryId||(all.length?all.slice().sort((a,b)=>String(b.updatedAt).localeCompare(String(a.updatedAt)))[0]?.id:'');if(id)repairHero(id)}
+function candidateAbilities(){let st;try{st=P.buildState()}catch{return[]}const ids=new Set;try{for(const a of E.previewAcquiredAbilities(st)||[])ids.add(a.id)}catch{}const ranks=new Map((st.voies?.profilePathIds||[]).filter(Boolean).map(id=>[String(id),1]));for(const x of st.age?.spending||[]){const id=String(x.pathId||'');if(ranks.has(id))ranks.set(id,Math.max(ranks.get(id)||1,Number(x.rank)||1))}if(st.voies?.mageRank2PathId)ranks.set(String(st.voies.mageRank2PathId),Math.max(ranks.get(String(st.voies.mageRank2PathId))||1,2));for(const a of T.abilities_class||[])if((ranks.get(String(a.path_id))||0)>=Number(a.rank||1))ids.add(a.id);const all=[...(T.abilities_class||[]),...(T.abilities_people||[]),...(T.abilities_r1_people||[])];return all.filter(a=>ids.has(a.id))}
+function definitions(){let st;try{st=P.buildState()}catch{return[]}const out=[];for(const a of candidateAbilities())for(const c of E.getPersistentChoicesForAbility(st,a.id)||[])out.push({a,c});return out}
+function valueFor(d,a,c){if(c.id==='preferredWeaponCategory')return d.preferredWeaponCategory||'';if(c.id==='extraLanguage')return d.extraLanguage||'';return d.abilityChoices?.[a.id]?.[c.id]}
+function satisfied(v,c){if(c.type==='boolean')return true;if(c.type==='weapon_multi')return Array.isArray(v)&&v.length>=(c.min||1)&&v.length<=(c.max||Infinity);if(c.type==='entity')return !!v&&typeof v==='object'&&(c.fields||[]).filter(f=>f!=='name').every(f=>String(v[f]||'').trim());return v!==undefined&&v!==null&&v!==''}
+function setChoice(a,c,v){const d=P.getDraft();if(c.id==='preferredWeaponCategory')d.preferredWeaponCategory=v;else if(c.id==='extraLanguage')d.extraLanguage=v;else{d.abilityChoices=d.abilityChoices||{};d.abilityChoices[a.id]=d.abilityChoices[a.id]||{};d.abilityChoices[a.id][c.id]=v}P.setDraft(d);queueMicrotask(ensureChoiceUI)}
+let applying=false;
+function ensureChoiceUI(){if(applying)return;applying=true;try{const panel=document.getElementById('ability-choice-panel'),box=document.getElementById('ability-choice-fields');if(!panel||!box)return;document.getElementById('foh-choice-bridge')?.remove();const d=P.getDraft(),defs=definitions();for(const special of ['preferredWeaponCategory','extraLanguage']){const native=box.querySelector('[data-ability-choice$="|'+special+'"]');if(native)native.closest('label')?.classList.add('hidden');const legacy=document.getElementById(special==='preferredWeaponCategory'?'legacy-preferred-category':'legacy-extra-language'),def=defs.find(x=>x.c.id===special);if(legacy&&def)legacy.onchange=()=>setChoice(def.a,def.c,legacy.value)}const missing=defs.filter(({a,c})=>{if(c.id==='preferredWeaponCategory')return !document.getElementById('legacy-preferred-category');if(c.id==='extraLanguage')return !document.getElementById('legacy-extra-language');const key=a.id+'|'+c.id;return ![...box.querySelectorAll('[data-ability-choice],[data-ability-choice-multi],[data-ability-entity]')].some(el=>(el.dataset.abilityChoice||el.dataset.abilityChoiceMulti||el.dataset.abilityEntity)===key)});if(missing.length){panel.classList.remove('hidden');const host=document.createElement('div');host.id='foh-choice-bridge';for(const {a,c} of missing){const wrap=document.createElement('label');wrap.dataset.fixChoice=a.id+'|'+c.id;wrap.append(document.createTextNode((a.label||a.id)+' — '+c.id+' '));const v=valueFor(d,a,c),opts=c.options||[];if(c.type==='boolean'){const input=document.createElement('input');input.type='checkbox';input.checked=v??c.default??false;input.onchange=()=>setChoice(a,c,input.checked);wrap.prepend(input)}else if(c.type==='entity'){const fs=document.createElement('fieldset');const legend=document.createElement('legend');legend.textContent=a.label+' — '+c.id;fs.append(legend);for(const f of c.fields||[]){const lab=document.createElement('label');lab.textContent=f+' ';const inp=document.createElement('input');inp.value=v?.[f]||'';inp.onchange=()=>{const cur=Object.assign({},valueFor(P.getDraft(),a,c)||{});cur[f]=inp.value;setChoice(a,c,cur)};lab.append(inp);fs.append(lab)}wrap.replaceWith(fs);host.append(fs);continue}else if(c.type==='weapon_multi'){const fs=document.createElement('fieldset');const legend=document.createElement('legend');legend.textContent=a.label+' — '+c.id;fs.append(legend);for(const o of opts){const lab=document.createElement('label'),inp=document.createElement('input');inp.type='checkbox';inp.value=o.id;inp.checked=Array.isArray(v)&&v.includes(o.id);inp.onchange=()=>{const vals=[...fs.querySelectorAll('input:checked')].map(x=>x.value);if(vals.length>(c.max||Infinity)){inp.checked=false;return}setChoice(a,c,vals)};lab.append(inp,document.createTextNode(o.label||o.id));fs.append(lab)}wrap.replaceWith(fs);host.append(fs);continue}else{const sel=document.createElement('select');if(c.id==='preferredWeaponCategory')sel.id='legacy-preferred-category';if(c.id==='extraLanguage')sel.id='legacy-extra-language';sel.innerHTML='<option value="">Choisir…</option>';for(const o of opts){const op=document.createElement('option');op.value=o.id;op.textContent=o.label||o.id;if(v===o.id)op.selected=true;sel.append(op)}sel.onchange=()=>setChoice(a,c,sel.value);wrap.append(sel)}host.append(wrap)}box.append(host)}
+const required=defs.filter(({a,c})=>c.required!==false&&!satisfied(valueFor(d,a,c),c));if(d.step===7&&required.length){const msg=(required[0].a.label||'Capacité')+' : choix obligatoire manquant.',btn=document.getElementById('next-btn');if(btn){btn.disabled=true;btn.setAttribute('aria-disabled','true')}let note=document.getElementById('step-validation-message');if(note){note.textContent=msg;note.classList.remove('hidden')}window.__FOH_STEP_VALIDATION__={step:7,ok:false,message:msg}}
+if(d.step===9){try{const st=P.buildState(),sid=st.equip?.shieldId,shield=(T.shields||[]).find(x=>x.id===sid),el=document.querySelector('[data-summary="shield"]');if(el)el.textContent=shield?.label||shield?.name||'Aucun'}catch{}}
+}finally{applying=false}}
+document.addEventListener('change',()=>queueMicrotask(ensureChoiceUI),true);document.addEventListener('click',event=>{const saved=event.target.closest?.('[data-hero-id]'),action=event.target.closest?.('[data-action="open"],[data-action="edit"],[data-action="resume"]');if(saved&&action)repairHero(saved.dataset.heroId);if(event.target.closest?.('#save-btn,[data-ux03-save],#reveal-save'))queueMicrotask(repairCurrent);queueMicrotask(ensureChoiceUI)},true);queueMicrotask(ensureChoiceUI);
+window.__FOH_SAVE_SCHEMA_PATCH__={version:'FIX85-choice-bridge-save-schema',repairHero,repairCurrent,ensureChoiceUI};
 })();
