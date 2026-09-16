@@ -25230,12 +25230,14 @@ const errors=[];
     const damageStat=d.damageCharacteristic===undefined?(d.mode==='melee'?'for':null):d.damageCharacteristic;
     if(!o&&damageStat){const n=Number(sticky.caracs[damageStat]||0);damage+=n>=0?'+'+n:String(n);}
     if(statBonus)damage+='+'+Number(sticky.caracs[statBonus.stat]||0);if(flat)damage+='+'+Number(flat.value||0);
-    return {id:w.id+(modeDef&&modeDef!==w?':'+d.mode+':'+d.hands+'h':''),weaponId:w.id,label:w.name,type:o?'magique':(d.mode==='ranged'?'distance':'contact'),attackBonus:atkBase+pred,damage,damageType:o&&o.damageType||'physical',rangeMeters:d.rangeMeters||null,hands:d.hands,properties:(w.properties||[]).slice(),mastered:true,conditionalBonuses:pred?[{source:'Armes de prédilection',attack:1}]:[]};
+    const label=w.name+((w.alternateModes||[]).length?' ('+(d.mode==='ranged'?'distance':'contact')+')':'');
+    return {id:w.id+(modeDef&&modeDef!==w?':'+d.mode+':'+d.hands+'h':''),weaponId:w.id,label,type:o?'magique':(d.mode==='ranged'?'distance':'contact'),attackBonus:atkBase+pred,damage,damageType:o&&o.damageType||'physical',rangeMeters:d.rangeMeters||null,hands:d.hands,properties:(w.properties||[]).slice(),mastered:true,conditionalBonuses:pred?[{source:'Armes de prédilection',attack:1}]:[]};
   }
   function buildAttacks(sticky,weapons,acquisitions,state){
     const allEffects=acquisitions.flatMap(a=>(a.ability&&a.ability.mechanics&&a.ability.mechanics.effects)||[]);
     if(sticky.profileId==='class:moine:cof2-lb-2024'&&!weapons.some(w=>w.id==='weapon:unarmed')){const u=Data.getWeapon('weapon:unarmed');if(u)weapons=weapons.concat([u]);}
-    const attacks=[];for(const w of weapons){attacks.push(buildCanonicalAttack(sticky,w,w,allEffects,state));for(const mode of w.alternateModes||[])attacks.push(buildCanonicalAttack(sticky,w,mode,allEffects,state));}
+    const uniqueWeapons=[...new Map(weapons.map(w=>[w.id,w])).values()];
+    const attacks=[];for(const w of uniqueWeapons){attacks.push(buildCanonicalAttack(sticky,w,w,allEffects,state));for(const mode of w.alternateModes||[])attacks.push(buildCanonicalAttack(sticky,w,mode,allEffects,state));}
     for(const a of acquisitions){const mech=a.ability&&a.ability.mechanics;if(!mech)continue;for(const e of mech.effects||[])if(e.type==='damage')attacks.push({id:a.ability.id,abilityId:a.ability.id,label:a.ability.label,type:'magique',attackBonus:e.automatic?null:sticky.ATK_MAGIC,damage:e.formula,damageType:e.damageType||'magic',rangeMeters:mech.rangeMeters||null,cost:mech.cost||null,properties:['ability_attack']});}
     return attacks;
   }
