@@ -33,10 +33,24 @@
     return kind === 'image' ? 'Carte ou image' : kind === 'object' ? 'Objet' : 'Texte ou indice';
   }
 
-  function activePlayers(handoutId) {
-    return new Set(state.assignments.filter(function (row) {
+  function activeAssignments(handoutId) {
+    return new Map(state.assignments.filter(function (row) {
       return row.handout_id === handoutId && !row.revoked_at;
-    }).map(function (row) { return row.player_id; }));
+    }).map(function (row) { return [row.player_id, row]; }));
+  }
+
+  function statusFor(assignment) {
+    if (assignment.viewed_at) return { label: 'Consulté', className: 'viewed', at: assignment.viewed_at };
+    if (assignment.delivered_at) return { label: 'Livré', className: 'delivered', at: assignment.delivered_at };
+    return { label: 'Attribué', className: 'assigned', at: assignment.assigned_at };
+  }
+
+  function formatDate(value) {
+    if (!value) return '';
+    return new Intl.DateTimeFormat('fr-FR', {
+      dateStyle: 'short',
+      timeStyle: 'short'
+    }).format(new Date(value));
   }
 
   function renderRecipients() {
@@ -87,7 +101,7 @@
       return;
     }
     state.handouts.forEach(function (handout) {
-      const active = activePlayers(handout.id);
+      const active = activeAssignments(handout.id);
       const card = document.createElement('article');
       card.className = 'card' + (handout.image_url ? '' : ' noImage');
       if (handout.image_url) {
@@ -116,9 +130,13 @@
       state.players.forEach(function (player) {
         const button = document.createElement('button');
         button.type = 'button';
-        button.className = 'assignment' + (active.has(player.id) ? ' active' : '');
-        button.textContent = (active.has(player.id) ? '✓ ' : '+ ') + player.display_name;
-        button.title = active.has(player.id) ? 'Retirer à ' + player.display_name : 'Attribuer à ' + player.display_name;
+        const assignment = active.get(player.id);
+        const status = assignment ? statusFor(assignment) : null;
+        button.className = 'assignment' + (status ? ' active ' + status.className : '');
+        button.textContent = status ? status.label + ' · ' + player.display_name : '+ ' + player.display_name;
+        button.title = status
+          ? status.label + ' le ' + formatDate(status.at) + ' — cliquer pour retirer à ' + player.display_name
+          : 'Attribuer à ' + player.display_name;
         button.onclick = function () { toggleAssignment(handout.id, player.id, active.has(player.id), button); };
         assignments.appendChild(button);
       });
