@@ -6,7 +6,7 @@
   if (!allowed.includes(playerId) || !window.IAT_HANDOUTS) return;
 
   const style = document.createElement('style');
-  style.textContent = '.discoveries{scroll-margin-top:88px}.discoveriesHead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.discoveryTools{display:flex;align-items:center;gap:7px}.liveBadge,.alertButton{border:1px solid rgba(215,177,107,.3);border-radius:999px;color:#d7b16b;padding:6px 9px;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.alertButton{background:#102225;cursor:pointer}.alertButton.enabled{border-color:rgba(105,168,126,.55);color:#a9d9b7}.handoutGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-top:14px}.handoutCard{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:#081416;color:inherit;text-align:left;padding:0}.handoutCard.image{cursor:pointer}.newMark{position:absolute;z-index:2;right:9px;top:9px;border-radius:999px;background:#e0ad43;color:#171005;padding:5px 8px;font-size:.64rem;font-weight:950;text-transform:uppercase;letter-spacing:.06em;box-shadow:0 0 18px rgba(255,205,99,.65)}.handoutPreview{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#050b0c}.handoutBody{padding:13px}.handoutType{color:#d7b16b;font-size:.67rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em}.handoutCard h3{font:700 1.05rem Georgia,serif;margin:5px 0}.handoutText{white-space:pre-wrap;color:#c7d1ce;font-size:.87rem;line-height:1.5;margin:8px 0 0}.handoutDate{display:block;color:#748783;font-size:.7rem;margin-top:9px}.emptyFinds{border:1px dashed rgba(215,177,107,.25);border-radius:15px;padding:18px;color:#9eadaa;margin-top:13px}.handoutViewer{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#030708;color:#fff}.handoutViewer::backdrop{background:#030708}.viewerBar{height:58px;display:flex;align-items:center;gap:8px;padding:8px 10px;background:#0b1517;border-bottom:1px solid #ffffff18}.viewerTitle{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:850}.viewerBtn{border:1px solid #ffffff20;border-radius:10px;background:#142326;color:#fff;padding:9px 12px;font-weight:850;text-decoration:none}.viewerStage{height:calc(100% - 58px);overflow:auto;display:flex;align-items:flex-start;justify-content:center;overscroll-behavior:contain;touch-action:pan-x pan-y pinch-zoom}.viewerStage img{display:block;width:100%;height:auto;max-width:none;transform-origin:top center}.viewerHelp{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);padding:6px 10px;border-radius:999px;background:#000a;color:#ddd;font-size:.7rem;pointer-events:none}@media(max-width:760px){.handoutGrid{grid-template-columns:1fr 1fr}.discoveriesHead{align-items:flex-start}.discoveryTools{flex-direction:column;align-items:flex-end}}@media(max-width:480px){.handoutGrid{grid-template-columns:1fr}.viewerBtn{padding:9px 10px}.viewerHelp{display:none}}';
+  style.textContent = '.discoveries{scroll-margin-top:88px}.discoveriesHead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.discoveryTools{display:flex;align-items:center;gap:7px}.liveBadge,.alertButton{border:1px solid rgba(215,177,107,.3);border-radius:999px;color:#d7b16b;padding:6px 9px;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.alertButton{background:#102225;cursor:pointer}.alertButton.enabled{border-color:rgba(105,168,126,.55);color:#a9d9b7}.handoutGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-top:14px}.handoutCard{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:#081416;color:inherit;text-align:left;padding:0}.handoutCard.image{cursor:pointer}.newMark{position:absolute;z-index:2;right:9px;top:9px;border-radius:999px;background:#e0ad43;color:#171005;padding:5px 8px;font-size:.64rem;font-weight:950;text-transform:uppercase;letter-spacing:.06em;box-shadow:0 0 18px rgba(255,205,99,.65)}.handoutPreview{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#050b0c}.handoutBody{padding:13px}.handoutType{color:#d7b16b;font-size:.67rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em}.handoutCard h3{font:700 1.05rem Georgia,serif;margin:5px 0}.handoutText{white-space:pre-wrap;color:#c7d1ce;font-size:.87rem;line-height:1.5;margin:8px 0 0}.handoutDate{display:block;color:#748783;font-size:.7rem;margin-top:9px}.readButton{margin-top:10px;border:1px solid rgba(105,168,126,.45);border-radius:10px;background:rgba(105,168,126,.12);color:#bde1c7;padding:8px 10px;font-weight:850;cursor:pointer}.readButton.viewed{cursor:default;opacity:.78}.emptyFinds{border:1px dashed rgba(215,177,107,.25);border-radius:15px;padding:18px;color:#9eadaa;margin-top:13px}.handoutViewer{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#030708;color:#fff}.handoutViewer::backdrop{background:#030708}.viewerBar{height:58px;display:flex;align-items:center;gap:8px;padding:8px 10px;background:#0b1517;border-bottom:1px solid #ffffff18}.viewerTitle{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:850}.viewerBtn{border:1px solid #ffffff20;border-radius:10px;background:#142326;color:#fff;padding:9px 12px;font-weight:850;text-decoration:none}.viewerStage{height:calc(100% - 58px);overflow:auto;display:flex;align-items:flex-start;justify-content:center;overscroll-behavior:contain;touch-action:pan-x pan-y pinch-zoom}.viewerStage img{display:block;width:100%;height:auto;max-width:none;transform-origin:top center}.viewerHelp{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);padding:6px 10px;border-radius:999px;background:#000a;color:#ddd;font-size:.7rem;pointer-events:none}@media(max-width:760px){.handoutGrid{grid-template-columns:1fr 1fr}.discoveriesHead{align-items:flex-start}.discoveryTools{flex-direction:column;align-items:flex-end}}@media(max-width:480px){.handoutGrid{grid-template-columns:1fr}.viewerBtn{padding:9px 10px}.viewerHelp{display:none}}';
   document.head.appendChild(style);
 
   const grid = document.querySelector('.grid');
@@ -42,7 +42,39 @@
   dialog.querySelector('[data-close]').onclick = function () { dialog.close(); };
   dialog.addEventListener('click', function (event) { if (event.target === dialog) dialog.close(); });
 
-  function openImage(handout) {
+  const seenKey = 'iat_seen_handouts_' + playerId;
+
+  function rememberViewed(handout, card) {
+    handout._is_new = false;
+    handout.viewed_at = handout.viewed_at || new Date().toISOString();
+    const marker = card && card.querySelector('.newMark');
+    if (marker) marker.remove();
+    let seen = [];
+    try { seen = JSON.parse(localStorage.getItem(seenKey) || '[]'); } catch (_) { seen = []; }
+    const ids = Array.from(new Set(seen.concat(handout.id))).slice(-200);
+    localStorage.setItem(seenKey, JSON.stringify(ids));
+    if (window.IAT_HANDOUT_ALERTS) window.IAT_HANDOUT_ALERTS.refresh();
+  }
+
+  async function markViewed(handout, card) {
+    if (handout.viewed_at) {
+      rememberViewed(handout, card);
+      return;
+    }
+    try {
+      const data = await window.IAT_HANDOUTS.request('view', token, {
+        method: 'POST',
+        body: { player_id: playerId, handout_id: handout.id }
+      });
+      handout.viewed_at = data.viewed_at || new Date().toISOString();
+      rememberViewed(handout, card);
+    } catch (_) {
+      // L’objet reste visible même si l’accusé de consultation doit être renvoyé plus tard.
+    }
+  }
+
+  function openImage(handout, card) {
+    markViewed(handout, card);
     zoom = 1;
     dialog.querySelector('.viewerTitle').textContent = handout.title;
     dialog.querySelector('.viewerOriginal').href = handout.image_url;
@@ -77,7 +109,7 @@
         image.alt = '';
         image.loading = 'lazy';
         card.appendChild(image);
-        card.onclick = function () { openImage(handout); };
+        card.onclick = function () { openImage(handout, card); };
       }
       const body = document.createElement('div');
       body.className = 'handoutBody';
@@ -97,6 +129,26 @@
       date.className = 'handoutDate';
       date.textContent = 'Reçu le ' + new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' }).format(new Date(handout.assigned_at));
       body.appendChild(date);
+      if (handout.kind !== 'image') {
+        const readButton = document.createElement('button');
+        readButton.type = 'button';
+        readButton.className = 'readButton' + (handout.viewed_at ? ' viewed' : '');
+        readButton.textContent = handout.viewed_at ? '✓ Consulté' : 'Marquer comme consulté';
+        readButton.disabled = Boolean(handout.viewed_at);
+        readButton.onclick = async function () {
+          readButton.disabled = true;
+          readButton.textContent = 'Enregistrement…';
+          await markViewed(handout, card);
+          if (handout.viewed_at) {
+            readButton.classList.add('viewed');
+            readButton.textContent = '✓ Consulté';
+          } else {
+            readButton.disabled = false;
+            readButton.textContent = 'Réessayer';
+          }
+        };
+        body.appendChild(readButton);
+      }
       card.appendChild(body);
       cards.appendChild(card);
     });
@@ -131,13 +183,13 @@
   }
   window.IAT_HANDOUTS.request('list', token, { query: { player: playerId } })
     .then(function (data) {
-      const seenKey = 'iat_seen_handouts_' + playerId;
       let seen = [];
       try { seen = JSON.parse(localStorage.getItem(seenKey) || '[]'); } catch (_) { seen = []; }
       const seenSet = new Set(seen);
-      const handouts = (data.handouts || []).map(function (item) { return Object.assign({}, item, { _is_new: !seenSet.has(item.id) }); });
+      const handouts = (data.handouts || []).map(function (item) {
+        return Object.assign({}, item, { _is_new: !item.viewed_at && !seenSet.has(item.id) });
+      });
       render(handouts);
-      localStorage.setItem(seenKey, JSON.stringify(handouts.map(function (item) { return item.id; }).slice(-200)));
     })
     .catch(function (error) {
       if (error.status === 401) localStorage.removeItem(tokenKey);
