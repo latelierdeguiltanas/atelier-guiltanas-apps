@@ -1,0 +1,1 @@
+window.BASTIDE_ROSTER={version:1,status:'SESSION_ZERO_PENDING',characters:[{id:'demo',name:'Éclaireur test',people:'Humain',profile:'Voleur',level:1,label:'DÉMONSTRATION COF2',sheet:'../personnages/demo/'}]};
