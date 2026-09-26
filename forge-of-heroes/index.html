@@ -25809,5 +25809,15 @@ let pending=false,observer=new MutationObserver(()=>{if(pending)return;pending=t
   .shell{padding-bottom:110px}
 }
 </style>
+<style id="MOBILE_GROUPED_ATTACKS_STYLE">
+.attack-weapon{margin:.55rem 0}.attack-weapon>ul{margin:.35rem 0 .7rem;padding-left:1.15rem}.attack-weapon>ul li{margin:.25rem 0}
+</style>
+<script id="MOBILE_GROUPED_ATTACKS_SCRIPT">(()=>{'use strict';
+const q=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),signed=n=>Number(n)>=0?'+'+Number(n):String(Number(n)),typeLabel=t=>({contact:'Contact',distance:'Distance',magique:'Magique'})[t]||t||'Attaque';
+function baseLabel(a){return String(a.label||'Attaque').replace(/\s+n[°º]\s*\d+$/i,'').replace(/\s*\((contact|distance|magique)\)\s*$/i,'').trim()}
+function detail(a){return typeLabel(a.type)+' · '+(a.attackBonus==null?'automatique':signed(a.attackBonus))+' · '+esc(a.damage||'')+(a.damageType?' · '+esc(a.damageType):'')+(a.rangeMeters?' · '+esc(a.rangeMeters)+' m':a.range?' · '+esc(a.range):'')+(a.magazine?' · Chargeur '+a.magazine.current+'/'+a.magazine.capacity+' munitions':'')}
+function enhance(){const root=q('#summary-content'),s=window.__FOH_LAST_RESULT__?.sticky,st=window.__FOH_LAST_STATE__;if(!root||!s||!st)return;const section=[...root.querySelectorAll('section')].find(x=>x.querySelector('h3')?.textContent==='Attaques'),list=section?.querySelector('.attacks');if(!list)return;const counts=new Map;for(const id of st.equip?.weaponIds||[])counts.set(String(id),(counts.get(String(id))||0)+1);const groups=[],byKey=new Map;for(const a of s.attacks||[]){const key=a.weaponId?'weapon:'+a.weaponId:'attack:'+(a.id||a.abilityId||a.label);if(!byKey.has(key)){const g={key,label:baseLabel(a),quantity:a.weaponId?(counts.get(String(a.weaponId))||1):1,variants:[]};byKey.set(key,g);groups.push(g)}const g=byKey.get(key),sig=[a.type,a.attackBonus,a.damage,a.damageType,a.rangeMeters||a.range||'',JSON.stringify(a.magazine||null)].join('|');if(!g.variants.some(v=>v.sig===sig))g.variants.push({sig,a})}const signature=JSON.stringify(groups.map(g=>[g.key,g.quantity,g.variants.map(v=>v.sig)]));if(list.dataset.groupSignature===signature)return;list.dataset.groupSignature=signature;list.innerHTML=groups.length?groups.map(g=>g.quantity>1?'<li class="attack-weapon"><b>'+esc(g.label)+' (×'+g.quantity+')</b><ul>'+g.variants.map(v=>'<li>'+detail(v.a)+'</li>').join('')+'</ul></li>':'<li><b>'+esc(g.label)+'</b> · '+detail(g.variants[0].a)+'</li>').join(''):'<li>Aucune attaque équipée.</li>'}
+let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;enhance()})}).observe(q('#summary-content'),{childList:true,subtree:true});enhance();window.__FOH_GROUPED_ATTACKS__={enhance};
+})();</script>
 </body>
 </html>
