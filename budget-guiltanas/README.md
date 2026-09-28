@@ -78,3 +78,31 @@ Le rapprochement ne remplace jamais automatiquement un écart important par le s
 - chaque épargne possède banque, nom, usage, solde et objectif optionnel ;
 - regroupement visuel par banque (LCL / Crédit Agricole / Autre) ;
 - total global de l'épargne affiché séparément du budget mensuel.
+
+
+## v0.8 — import Crédit Agricole + épargnes
+Audit des deux classeurs :
+- `Comptes LCL 2026.xlsx` : historique LCL mensuel ; les lignes « Epargne » sont des sorties/virements mensuels, pas un registre autonome de livrets ;
+- `Comptes CA 2026.xlsx` : historique du compte courant Crédit Agricole + onglet `EPARGNE`.
+
+L'import Excel reconnaît automatiquement le type de classeur :
+- fichier LCL → compte courant LCL ;
+- fichier Crédit Agricole → compte courant Crédit Agricole ;
+- fichier Crédit Agricole → import/mise à jour automatique des épargnes suivies dans `EPARGNE`.
+
+Épargnes détectées dans le classeur CA :
+- Crédit Agricole / Johanna / Travaux - charges maison ;
+- Crédit Agricole / Mathieu / Parents Math ;
+- LCL / Johanna / Parents Jo ;
+- LCL / Mathieu / Voyages.
+
+Chaque épargne importée conserve :
+- solde courant ;
+- solde d'ouverture ;
+- titulaire ;
+- banque ;
+- objectif/libellé ;
+- historique des mouvements ;
+- source Excel.
+
+Les réimports mettent à jour les mêmes épargnes au lieu de les dupliquer et conservent les objectifs saisis manuellement.
