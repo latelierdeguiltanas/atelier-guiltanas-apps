@@ -118,7 +118,7 @@
   <div class="dialogHead"><div><p class="eyebrow">Réglages</p><h2>Mois et banque</h2></div><button type="button" class="icon close">✕</button></div>
   <label>Mois<select id="setMonth"></select></label>
   <label>Base de départ du mois<input id="setBase" inputmode="decimal" placeholder="0,00"><small id="baseHelp" class="subtitle"></small></label>
-  <p class="notice">Le solde bancaire réel se contrôle désormais depuis « Contrôler le solde LCL », afin de conserver une référence vérifiée et de détecter les écarts au lieu de les écraser.</p>
+  <p class="notice">Le solde bancaire réel se contrôle désormais depuis « Contrôler le solde », afin de conserver une référence vérifiée et de détecter les écarts au lieu de les écraser.</p>
   <div class="row"><button type="button" class="danger" id="resetBtn">Réinitialiser local</button><button class="primary">Enregistrer</button></div>
 </form></dialog>
 
@@ -143,7 +143,7 @@
     <section id="bankCheckResult" class="hidden">
       <div class="reconcileNumbers">
         <div><span>Solde application</span><strong id="bankCheckExpected">—</strong></div>
-        <div><span>Solde LCL</span><strong id="bankCheckActual">—</strong></div>
+        <div><span id="bankCheckActualLabel">Solde du compte</span><strong id="bankCheckActual">—</strong></div>
         <div><span>Écart</span><strong id="bankCheckDiff">—</strong></div>
       </div>
       <div class="reconcileStatus" id="bankCheckStatus"></div>
