@@ -67,7 +67,7 @@ function renderAccountUI(){
   if($("activeAccountLabel"))$("activeAccountLabel").textContent=name;
   if($("bankLabel"))$("bankLabel").textContent="Dernier solde "+name+" vérifié";
   if($("bankCheckTitle"))$("bankCheckTitle").textContent="Contrôler le solde "+name;
-  if($("bankCheckRealLabel"))$("bankCheckRealLabel").textContent="Solde réel "+name;
+  if($("bankCheckRealLabel"))$("bankCheckRealLabel").textContent="Solde réel "+name;if($("bankCheckActualLabel"))$("bankCheckActualLabel").textContent="Solde "+name;
   if($("bankCheckIntro"))$("bankCheckIntro").textContent="Saisis le solde affiché sur "+name+" à une date donnée. L'application reconstruit son propre solde depuis le dernier point vérifié et cherche des pistes si les deux ne correspondent pas.";
   if($("importAccountName"))$("importAccountName").textContent=name
 }
