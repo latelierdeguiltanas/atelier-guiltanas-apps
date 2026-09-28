@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#16352f">
+<title>Budget — Atelier de Guiltanas</title>
+<style>
+:root{--bg:#f3f1e8;--panel:#fffdf7;--ink:#18231f;--muted:#69736f;--green:#16352f;--green2:#28584e;--gold:#b8892d;--line:#dad7cb;--danger:#9b2c2c;--shadow:0 10px 30px rgba(26,45,38,.08)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:18px 18px 12px;background:rgba(243,241,232,.94);backdrop-filter:blur(12px)}
+h1,h2,h3,p{margin-top:0}.eyebrow{margin:0 0 4px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:.72rem;font-weight:800}
+main{width:min(100%,760px);margin:auto;padding:8px 16px 96px}.hero{background:linear-gradient(145deg,var(--green),#204b42);color:#fff;border-radius:26px;padding:22px;box-shadow:var(--shadow)}
+.hero .eyebrow{color:rgba(255,255,255,.7)}.big{font-size:clamp(2.2rem,12vw,4rem);font-weight:850;letter-spacing:-.05em;margin:6px 0 18px}
+.heroGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.heroGrid div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:10px;border-radius:14px}
+.heroGrid span{display:block;font-size:.72rem;color:rgba(255,255,255,.7);margin-bottom:4px}.heroGrid strong{font-size:.92rem}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 26px}.primary,.secondary,.danger{border:0;min-height:50px;border-radius:15px;font-weight:800;padding:0 16px}
+.primary{background:var(--green);color:#fff}.secondary{background:var(--panel);color:var(--green);border:1px solid var(--line)}.danger{background:#f5dddd;color:var(--danger)}
+.icon{border:0;background:rgba(255,255,255,.65);width:42px;height:42px;border-radius:50%}.textBtn{border:0;background:transparent;color:var(--green2);font-weight:800}
+.head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:24px 2px 10px}.head h2{margin:0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.card,.tx{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:15px;box-shadow:var(--shadow)}.card h3{margin:0;font-size:1rem}.money{margin:8px 0 10px;font-weight:850;font-size:1.25rem}
+.progress{height:8px;background:#e7e3d8;border-radius:999px;overflow:hidden}.progress span{display:block;height:100%;background:var(--gold)}
+.meta{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:.76rem;margin-top:7px}.list{display:grid;gap:8px}.tx{display:grid;grid-template-columns:1fr auto;gap:8px;border-radius:16px}
+.tx p{margin:0}.tx small{color:var(--muted)}.tx .amt{font-weight:850}.income .amt{color:#267044}.empty{text-align:center;color:var(--muted);padding:28px 12px;background:rgba(255,255,255,.5);border-radius:18px}
+dialog{width:min(calc(100% - 20px),560px);border:0;border-radius:24px;padding:0;background:var(--panel);color:var(--ink);box-shadow:0 30px 90px rgba(0,0,0,.22)}dialog::backdrop{background:rgba(9,20,17,.55)}
+form{display:grid;gap:16px;padding:20px}.dialogHead{display:flex;justify-content:space-between;align-items:start}label{display:grid;gap:7px;font-weight:750}input,select{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px;background:#fff;color:var(--ink)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.check{grid-template-columns:auto 1fr;align-items:start;font-weight:600}.check input{width:20px;height:20px}.notice{color:var(--muted);font-size:.8rem;line-height:1.4;background:#f3eee0;border-radius:14px;padding:12px;margin:0}
+@media(max-width:430px){.heroGrid{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div><p class="eyebrow">Atelier de Guiltanas</p><h1>Budget</h1></div>
+  <button class="icon" id="settingsBtn" aria-label="Réglages">⚙</button>
+</header>
+<main>
+  <section class="hero">
+    <p class="eyebrow">Disponible prévisionnel</p>
+    <div class="big" id="forecast">0,00 €</div>
+    <div class="heroGrid">
+      <div><span>Solde banque</span><strong id="bank">0,00 €</strong></div>
+      <div><span>À sortir</span><strong id="out">0,00 €</strong></div>
+      <div><span>Revenus attendus</span><strong id="income">0,00 €</strong></div>
+    </div>
+  </section>
+
+  <section class="actions">
+    <button class="primary" id="expenseBtn">− Dépense</button>
+    <button class="secondary" id="incomeBtn">+ Revenu</button>
+  </section>
+
+  <section class="head">
+    <div><p class="eyebrow">Enveloppes</p><h2>Budgets du mois</h2></div>
+    <button class="textBtn" id="budgetBtn">Ajouter</button>
+  </section>
+  <section class="grid" id="budgets"></section>
+
+  <section class="head"><div><p class="eyebrow">Dernières opérations</p><h2>Historique</h2></div></section>
+  <section class="list" id="transactions"></section>
+</main>
+
+<dialog id="entryDialog">
+<form id="entryForm">
+  <div class="dialogHead"><div><p class="eyebrow" id="kind">Nouvelle dépense</p><h2 id="entryTitle">Ajouter une dépense</h2></div><button type="button" class="icon close">✕</button></div>
+  <label>Montant<input id="amount" inputmode="decimal" placeholder="0,00" required></label>
+  <label>Libellé<input id="label" autocomplete="off" placeholder="Ex. Carrefour, salaire, remboursement…" required></label>
+  <label id="catWrap">Budget / catégorie<select id="category"></select><small id="hint">La catégorie est proposée selon le libellé et vos habitudes.</small></label>
+  <label class="check" id="reservedWrap"><input type="checkbox" id="reserved" checked><span>Cette dépense était déjà réservée dans le budget mensuel</span></label>
+  <div class="row"><button type="button" class="secondary close">Annuler</button><button class="primary">Enregistrer</button></div>
+</form>
+</dialog>
+
+<dialog id="budgetDialog">
+<form id="budgetForm">
+  <div class="dialogHead"><div><p class="eyebrow">Enveloppe</p><h2>Ajouter un budget</h2></div><button type="button" class="icon close">✕</button></div>
+  <label>Nom<input id="budgetName" required placeholder="Ex. Courses"></label>
+  <label>Montant réservé<input id="budgetAmount" inputmode="decimal" placeholder="0,00" required></label>
+  <div class="row"><button type="button" class="secondary close">Annuler</button><button class="primary">Ajouter</button></div>
+</form>
+</dialog>
+
+<dialog id="settingsDialog">
+<form id="settingsForm">
+  <div class="dialogHead"><div><p class="eyebrow">Réglages</p><h2>Mois en cours</h2></div><button type="button" class="icon close">✕</button></div>
+  <label>Solde bancaire actuel<input id="setBank" inputmode="decimal" placeholder="0,00"></label>
+  <label>Charges fixes restant à sortir<input id="setFixed" inputmode="decimal" placeholder="0,00"></label>
+  <label>Revenus encore attendus<input id="setIncome" inputmode="decimal" placeholder="0,00"></label>
+  <p class="notice">Prototype : les données restent uniquement sur ce téléphone/navigateur. La synchronisation entre vos deux téléphones sera ajoutée avec la base privée.</p>
+  <div class="row"><button type="button" class="danger" id="resetBtn">Réinitialiser</button><button class="primary">Enregistrer</button></div>
+</form>
+</dialog>
+
+<script>
+(function(){
+  var KEY="guiltanas-budget-v01";
+  var euro=new Intl.NumberFormat("fr-FR",{style:"currency",currency:"EUR"});
+  var $=function(id){return document.getElementById(id)};
+  var defaultState=function(){return{
+    settings:{bankBalance:0,fixedRemaining:0,expectedIncome:0},
+    budgets:[
+      {id:crypto.randomUUID(),name:"Courses",reserved:0},
+      {id:crypto.randomUUID(),name:"Divers / Joker",reserved:0},
+      {id:crypto.randomUUID(),name:"Enfants",reserved:0},
+      {id:crypto.randomUUID(),name:"Travaux",reserved:0},
+      {id:crypto.randomUUID(),name:"NDF",reserved:0},
+      {id:crypto.randomUUID(),name:"Essence",reserved:0}
+    ],
+    transactions:[],merchantRules:{}
+  }};
+  function load(){try{var x=localStorage.getItem(KEY);return x?JSON.parse(x):defaultState()}catch(e){return defaultState()}}
+  function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+  function money(v){var n=Number(String(v||"").replace(/\s/g,"").replace(",","."));return Number.isFinite(n)?Math.round(n*100)/100:0}
+  function spent(id){return state.transactions.filter(function(t){return t.type==="expense"&&t.categoryId===id}).reduce(function(s,t){return s+t.amount},0)}
+  function reservedTotal(){return state.budgets.reduce(function(s,b){return s+Number(b.reserved||0)},0)}
+  function extraTotal(){return state.transactions.filter(function(t){return t.type==="expense"&&!t.wasReserved}).reduce(function(s,t){return s+t.amount},0)}
+  function escapeHtml(v){return String(v).replace(/[&<>'"]/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"})[c]})}
+  function suggest(label){
+    var key=label.trim().toLowerCase();
+    if(state.merchantRules[key])return state.merchantRules[key];
+    var rules=[
+      [/carrefour|leclerc|lidl|hyper u|super u|auchan|primeur|boucherie|thiriet/i,"courses"],
+      [/essence|avia|total|shell|esso|bp\b/i,"essence"],
+      [/cantine|garderie|centre a[eé]r[eé]|pharmacie|danse|hip hop/i,"enfants"],
+      [/brico|leroy|castorama|manomano|ikea/i,"travaux"]
+    ];
+    for(var i=0;i<rules.length;i++){if(rules[i][0].test(label)){var b=state.budgets.find(function(x){return x.name.toLowerCase().includes(rules[i][1])});if(b)return b.id}}
+    var d=state.budgets.find(function(x){return /divers|joker/i.test(x.name)});return d?d.id:(state.budgets[0]?state.budgets[0].id:"")
+  }
+  function render(){
+    var out=state.settings.fixedRemaining+reservedTotal()+extraTotal();
+    $("forecast").textContent=euro.format(state.settings.bankBalance-out+state.settings.expectedIncome);
+    $("bank").textContent=euro.format(state.settings.bankBalance);
+    $("out").textContent=euro.format(out);
+    $("income").textContent=euro.format(state.settings.expectedIncome);
+    $("budgets").innerHTML="";
+    state.budgets.forEach(function(b){
+      var s=spent(b.id),remaining=Math.round((b.reserved-s)*100)/100,p=b.reserved>0?Math.min(100,Math.max(0,s/b.reserved*100)):(s>0?100:0);
+      var el=document.createElement("article");el.className="card";
+      el.innerHTML="<h3>"+escapeHtml(b.name)+"</h3><div class='money'>"+euro.format(remaining)+"</div><div class='progress'><span style='width:"+p+"%'></span></div><div class='meta'><span>"+euro.format(s)+" dépensés</span><span>"+euro.format(b.reserved)+" réservés</span></div>";
+      $("budgets").appendChild(el);
+    });
+    var tx=[].concat(state.transactions).sort(function(a,b){return b.createdAt.localeCompare(a.createdAt)}).slice(0,20);
+    $("transactions").innerHTML="";
+    if(!tx.length){$("transactions").innerHTML="<div class='empty'>Aucune opération pour le moment.</div>";return}
+    tx.forEach(function(t){
+      var b=state.budgets.find(function(x){return x.id===t.categoryId}),el=document.createElement("article");el.className="tx "+t.type;
+      el.innerHTML="<div><p><strong>"+escapeHtml(t.label)+"</strong></p><small>"+(t.type==="income"?"Revenu":escapeHtml(b?b.name:"Hors budget"))+"</small></div><p class='amt'>"+(t.type==="income"?"+":"−")+euro.format(t.amount)+"</p>";
+      $("transactions").appendChild(el);
+    });
+  }
+  var state=load(),mode="expense";
+  function fillCats(){ $("category").innerHTML=state.budgets.map(function(b){return"<option value='"+b.id+"'>"+escapeHtml(b.name)+"</option>"}).join("") }
+  function openEntry(type){
+    mode=type;$("kind").textContent=type==="expense"?"Nouvelle dépense":"Nouveau revenu";$("entryTitle").textContent=type==="expense"?"Ajouter une dépense":"Ajouter un revenu";
+    $("catWrap").hidden=type==="income";$("reservedWrap").hidden=type==="income";$("amount").value="";$("label").value="";$("reserved").checked=true;fillCats();$("entryDialog").showModal();
+  }
+  $("expenseBtn").onclick=function(){openEntry("expense")};$("incomeBtn").onclick=function(){openEntry("income")};
+  $("label").addEventListener("input",function(){if(mode==="expense")$("category").value=suggest(this.value)});
+  $("entryForm").onsubmit=function(e){
+    e.preventDefault();var a=money($("amount").value),l=$("label").value.trim();if(!a||!l)return;
+    var c=mode==="expense"?$("category").value:null,r=mode==="expense"?$("reserved").checked:false;
+    state.transactions.push({id:crypto.randomUUID(),type:mode,amount:a,label:l,categoryId:c,wasReserved:r,createdAt:new Date().toISOString()});
+    if(mode==="expense"&&c)state.merchantRules[l.toLowerCase()]=c;save();$("entryDialog").close();render()
+  };
+  $("budgetBtn").onclick=function(){$("budgetName").value="";$("budgetAmount").value="";$("budgetDialog").showModal()};
+  $("budgetForm").onsubmit=function(e){e.preventDefault();var n=$("budgetName").value.trim();if(!n)return;state.budgets.push({id:crypto.randomUUID(),name:n,reserved:money($("budgetAmount").value)});save();$("budgetDialog").close();render()};
+  $("settingsBtn").onclick=function(){$("setBank").value=state.settings.bankBalance||"";$("setFixed").value=state.settings.fixedRemaining||"";$("setIncome").value=state.settings.expectedIncome||"";$("settingsDialog").showModal()};
+  $("settingsForm").onsubmit=function(e){e.preventDefault();state.settings.bankBalance=money($("setBank").value);state.settings.fixedRemaining=money($("setFixed").value);state.settings.expectedIncome=money($("setIncome").value);save();$("settingsDialog").close();render()};
+  $("resetBtn").onclick=function(){if(confirm("Réinitialiser les données locales de ce prototype ?")){localStorage.removeItem(KEY);state=defaultState();$("settingsDialog").close();render()}};
+  document.querySelectorAll(".close").forEach(function(b){b.onclick=function(){b.closest("dialog").close()}});
+  render();
+})();
+</script>
+</body>
+</html>
