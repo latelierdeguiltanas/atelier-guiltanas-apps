@@ -120,7 +120,7 @@ function saveSaving(){
   var name=$("savingName").value.trim(),bank=$("savingBank").value,owner=$("savingOwner").value.trim(),purpose=$("savingPurpose").value.trim(),balance=money($("savingBalance").value),target=money($("savingTarget").value);
   if(!name||balance===null)return;
   var item=editSavingId?(state.savings||[]).find(function(x){return x.id===editSavingId}):null;
-  if(item){item.name=name;item.bank=bank;item.owner=owner;item.purpose=purpose;item.balance=balance;item.target=target||0;item.updatedAt=new Date().toISOString()}
+  if(item){if(item.sourceKey&&item.name!==name)item.userRenamed=true;item.name=name;item.bank=bank;item.owner=owner;item.purpose=purpose;item.balance=balance;item.target=target||0;item.updatedAt=new Date().toISOString()}
   else state.savings.push({id:uid(),name:name,bank:bank,owner:owner,purpose:purpose,balance:balance,target:target||0,transactions:[],updatedAt:new Date().toISOString()});
   editSavingId=null;save();$("savingDialog").close();renderSavings()
 }
