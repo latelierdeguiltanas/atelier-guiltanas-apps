@@ -50,12 +50,17 @@
       <div class="mini"><span>Solde banque saisi</span><strong id="bank">—</strong></div>
       <div class="mini"><span>Solde réel prévisionnel</span><strong id="bankForecast">—</strong></div>
     </section>
+    <button class="bankControlCard" id="bankCheckBtn">
+      <span class="bankControlIcon">≠</span>
+      <span><strong>Contrôler le solde LCL</strong><small>Comparer le solde réel au solde de l'application et chercher l'origine d'un écart.</small></span>
+      <b>›</b>
+    </button>
     <section class="actions"><button class="primary" id="expenseBtn">− Dépense</button><button class="secondary" id="incomeBtn">+ Revenu</button></section>
 
     <section class="head"><div><p class="eyebrow">Prélèvements</p><h2>Charges fixes</h2></div><button class="textBtn" id="goChargesBtn">Voir le plan</button></section>
     <section class="list" id="fixedCharges"></section>
 
-    <section class="head"><div><p class="eyebrow">Enveloppes</p><h2>Budgets du mois</h2></div><button class="textBtn" id="goPlanBtn">Paramétrer</button></section>
+    <section class="head"><div><p class="eyebrow">Enveloppes</p><h2>Budgets du mois</h2></div><div class="headActions"><button class="textBtn" id="addBudgetQuickBtn">+ Budget</button><button class="textBtn" id="goPlanBtn">Gérer</button></div></section>
     <div class="budgetLegend"><span class="legendGood">● Confort</span><span class="legendWarn">● ≥ 50 % utilisé</span><span class="legendDanger">● ≤ 50 € restant</span></div>
     <section class="grid" id="budgets"></section>
     <section class="head"><div><p class="eyebrow">Dernières opérations</p><h2>Historique</h2></div></section>
@@ -113,6 +118,28 @@
   <div class="row"><button type="button" class="secondary close">Annuler</button><button class="primary" id="savePlanBtn">Enregistrer</button></div>
 </form></dialog>
 
+<dialog id="bankCheckDialog">
+  <div class="dialogBody">
+    <div class="dialogHead"><div><p class="eyebrow">Rapprochement bancaire</p><h2>Contrôler le solde LCL</h2></div><button type="button" class="icon close">✕</button></div>
+    <p class="notice">Saisis le solde affiché par LCL à une date donnée. L'application reconstruit son propre solde depuis le dernier point vérifié et cherche des pistes si les deux ne correspondent pas.</p>
+    <div class="row">
+      <label>Date du solde réel<input id="bankCheckDate" type="date" required></label>
+      <label>Solde réel LCL<input id="bankCheckReal" inputmode="decimal" placeholder="0,00" required></label>
+    </div>
+    <button class="primary" type="button" id="runBankCheckBtn">Analyser l'écart</button>
+    <section id="bankCheckResult" class="hidden">
+      <div class="reconcileNumbers">
+        <div><span>Solde application</span><strong id="bankCheckExpected">—</strong></div>
+        <div><span>Solde LCL</span><strong id="bankCheckActual">—</strong></div>
+        <div><span>Écart</span><strong id="bankCheckDiff">—</strong></div>
+      </div>
+      <div class="reconcileStatus" id="bankCheckStatus"></div>
+      <div id="bankCheckCandidates"></div>
+      <button class="primary hidden" type="button" id="acceptBankCheckBtn">Valider ce rapprochement</button>
+    </section>
+  </div>
+</dialog>
+
 <dialog id="checkpointDialog"><form id="checkpointForm">
   <div class="dialogHead"><div><p class="eyebrow">Suivi des comptes</p><h2>Point de reprise</h2></div><button type="button" class="icon close">✕</button></div>
   <p class="notice">Cette date signifie : « nous avons vérifié toutes les opérations bancaires jusqu'ici ». La prochaine session reprendra automatiquement au lendemain. Tu peux avancer ou reculer cette date à tout moment.</p>
@@ -142,6 +169,7 @@
 </form></dialog>
 
 <script src="app-core.js"></script>
+<script src="reconciliation.js"></script>
 <script src="excel-import.js"></script>
 <script src="sync.js"></script>
 <script src="app-init.js"></script>
