@@ -41,3 +41,24 @@ Le schéma préparé se trouve dans `supabase/schema.sql`.
 - aucune limite bloquante : une enveloppe peut passer en négatif.
 
 Le parseur a été contrôlé sur le classeur 2026 actuel : 9 mois, janvier à septembre, avec correspondance des budgets, charges et opérations.
+
+
+## v0.6 — rapprochement bancaire
+- création de budget accessible directement depuis l'accueil ;
+- gestion/suppression d'un budget via l'écran Plan > Budgets ;
+- suppression d'un budget sans suppression des opérations déjà saisies ;
+- date réelle obligatoire pour les nouvelles dépenses et nouveaux revenus ;
+- référence bancaire vérifiée conservée séparément du solde théorique ;
+- bouton « Contrôler le solde LCL » ;
+- comparaison solde application / solde LCL à une date choisie ;
+- écart toléré automatiquement : 0,05 € maximum ;
+- recherche déterministe de causes possibles :
+  - charge prévue mais non validée ;
+  - revenu prévu mais non marqué reçu ;
+  - écriture potentiellement en double ;
+  - écriture enregistrée en trop ;
+  - combinaison de 2 ou 3 écritures correspondant exactement à l'écart ;
+- affichage des dates, montants et libellés des pistes ;
+- si aucune piste connue ne correspond, l'application précise qu'une opération peut être absente et qu'un futur import de relevé bancaire sera nécessaire pour l'identifier avec certitude.
+
+Le rapprochement ne remplace jamais automatiquement un écart important par le solde réel : cela éviterait de masquer une erreur de comptes.
