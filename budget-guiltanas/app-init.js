@@ -1,6 +1,10 @@
 "use strict";
 var state=load();initSync();
-$("expenseBtn").onclick=function(){openEntry("expense")};$("incomeBtn").onclick=function(){openEntry("income")};$("settingsBtn").onclick=openSettings;$("reconcileBtn").onclick=openSettings;$("goPlanBtn").onclick=function(){switchView("plan")};$("goChargesBtn").onclick=function(){planTab="charges";document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("active",x.dataset.plan==="charges")});switchView("plan")};
+$("expenseBtn").onclick=function(){openEntry("expense")};$("incomeBtn").onclick=function(){openEntry("income")};$("settingsBtn").onclick=openSettings;$("reconcileBtn").onclick=openSettings;
+$("bankCheckBtn").onclick=openBankCheck;$("runBankCheckBtn").onclick=runBankCheck;$("acceptBankCheckBtn").onclick=acceptBankCheck;
+$("goPlanBtn").onclick=function(){planTab="budgets";document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("active",x.dataset.plan==="budgets")});switchView("plan")};
+$("addBudgetQuickBtn").onclick=function(){planTab="budgets";document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("active",x.dataset.plan==="budgets")});switchView("plan");openPlanDialog()};
+$("goChargesBtn").onclick=function(){planTab="charges";document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("active",x.dataset.plan==="charges")});switchView("plan")};
 $("checkpointBtn").onclick=openCheckpoint;
 $("checkedThroughDate").oninput=updateCheckpointPreview;
 $("checkpointForm").onsubmit=function(e){e.preventDefault();saveCheckpoint()};
@@ -8,7 +12,22 @@ $("prevMonthBtn").onclick=function(){stepMonth(-1)};
 $("nextMonthBtn").onclick=function(){stepMonth(1)};
 $("quickMonthSelect").onchange=function(){switchMonth(this.value)};
 $("label").addEventListener("input",function(){if(mode==="expense")$("category").value=suggest(this.value,currentMonth())});
-$("entryForm").onsubmit=function(e){e.preventDefault();var m=currentMonth(),a=money($("amount").value),l=$("label").value.trim();if(!a||!l)return;var cat=mode==="expense"?$("category").value:null,uses=mode==="expense"?$("reserved").checked:false;m.entries.push({id:uid(),type:mode,amount:a,label:l,categoryId:uses?cat:null,usesBudget:uses,actual:true,reconciled:false,createdAt:new Date().toISOString()});if(mode==="expense"&&cat)state.merchantRules[l.toLowerCase()]=cat;if(mode==="income")m.incomes.push({id:uid(),name:l,amount:a,received:true,oneOff:true});save();$("entryDialog").close();render()};
+$("entryForm").onsubmit=function(e){
+  e.preventDefault();
+  var sourceMonth=currentMonth(),a=money($("amount").value),l=$("label").value.trim(),d=$("entryDate").value;
+  if(!a||!l||!d)return;
+  var mk=d.slice(0,7),m=state.months[mk];
+  if(!m){alert("Le mois correspondant à cette date n'existe pas encore dans l'application.");return}
+  var cat=mode==="expense"?$("category").value:null,uses=mode==="expense"?$("reserved").checked:false,targetCat=null;
+  if(uses&&cat){
+    var sourceBudget=sourceMonth.budgets.find(function(b){return b.id===cat});
+    if(sourceBudget){var targetBudget=m.budgets.find(function(b){return normLabel(b.name)===normLabel(sourceBudget.name)});if(targetBudget)targetCat=targetBudget.id}
+  }
+  m.entries.push({id:uid(),type:mode,amount:a,label:l,categoryId:uses?targetCat:null,usesBudget:uses&&!!targetCat,actual:true,reconciled:false,createdAt:d+"T12:00:00.000Z"});
+  if(mode==="expense"&&targetCat)state.merchantRules[l.toLowerCase()]=targetCat;
+  if(mode==="income")m.incomes.push({id:uid(),name:l,amount:a,received:true,oneOff:true});
+  save();$("entryDialog").close();render()
+};
 $("settingsForm").onsubmit=function(e){e.preventDefault();var chosen=$("setMonth").value;if(chosen==="__new__"){var cur=state.currentMonthKey,p=cur.split("-"),d=new Date(Number(p[0]),Number(p[1]),1),k=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");if(!state.months[k]){var prev=currentMonth(),nm=makeMonth(k);nm.base=totals(prev).planForecast;nm.baseAuto=true;nm.budgets=prev.budgets.map(function(b){return{id:uid(),name:b.name,planned:n(b.planned)}});nm.charges=prev.charges.map(function(c){return{id:uid(),name:c.name,group:c.group,amount:n(c.amount),paid:false,paidAt:null}});nm.incomes=prev.incomes.filter(function(i){return !i.oneOff}).map(function(i){return{id:uid(),name:i.name,amount:n(i.amount),received:false}});state.months[k]=nm}chosen=k}state.currentMonthKey=chosen;var m=currentMonth(),keys=sortedMonthKeys();if(keys.indexOf(m.monthKey)===0)m.base=money($("setBase").value)||0;var newBank=money($("setBank").value);if(newBank!==null){m.bankBalance=newBank;m.entries.forEach(function(x){if(entryActual(x))x.reconciled=true})}save();$("settingsDialog").close();render()};
 $("resetBtn").onclick=function(){if(confirm("Effacer uniquement les données locales de ce gestionnaire ?")){localStorage.removeItem(KEY);state=defaultState();$("settingsDialog").close();render()}};
 document.querySelectorAll(".close").forEach(function(b){b.onclick=function(){b.closest("dialog").close()}});
