@@ -8,43 +8,34 @@ Emplacement GitHub : `latelierdeguiltanas/atelier-guiltanas-apps/budget-guiltana
 Aucune modification hors de `budget-guiltanas/` lors des travaux sur ce projet, sauf demande explicite de l'utilisateur.
 
 ## Source fonctionnelle
-Le classeur personnel `Comptes LCL 2026.xlsx` est l'oracle fonctionnel.
-Formule mensuelle vérifiée : `BASE + TOTAL REVENUS - TOTAL CHARGES - TOTAL BUDGETS = RESTE`.
-Contrôle septembre 2026 : `-1 490,36 €`, identique au classeur.
+Le classeur personnel `Comptes LCL 2026.xlsx` reste l'oracle fonctionnel.
+La continuité mensuelle est désormais automatique : le résultat calculé d'un mois devient la base du mois suivant.
 
-## Statut v0.4 — historique et lecture visuelle
-- thème automne ;
-- import direct du fichier Excel complet `.xlsx` sans upload vers GitHub ;
-- parseur des onglets mensuels JANVIER → DECEMBRE ;
-- classeur actuel contrôlé : 9 mois, janvier à septembre 2026 ;
-- navigation rapide mois précédent / suivant et liste de tous les mois ;
-- mois antérieurs marqués « Clôturé » ;
-- charges fixes toujours comptées dans la projection, qu'elles soient sorties ou non ;
-- charges non sorties grisées ;
-- validation d'une charge avec date réelle et retour possible en attente ;
-- dates historiques récupérées depuis les statuts `ok le …` quand disponibles ;
-- budgets sans blocage de dépassement ;
-- carte budget verte si moins de 50 % consommé ;
-- orange à partir de 50 % consommé ;
-- rouge à 50 € ou moins du plafond, ainsi qu'en dépassement ;
-- annulation des opérations réelles depuis l'historique ;
-- import/export JSON toujours disponible en sauvegarde ;
-- synchronisation Supabase préparée mais pas encore activée.
+## Statut v0.5 — point de reprise des comptes
+- historique mensuel janvier → septembre importable directement depuis Excel ;
+- point global « comptes vérifiés jusqu'au … » ;
+- reprise automatique au lendemain de cette date ;
+- nombre de jours à rattraper visible sur l'accueil ;
+- statut par mois : Vérifié / En reprise / À rattraper / Planifié ;
+- le point de reprise peut être avancé ou reculé à tout moment ;
+- un solde bancaire peut être associé au point de vérification ;
+- les opérations antérieures à ce point sont alors considérées réconciliées ;
+- estimation initiale du point de reprise depuis les mentions Excel `ok le …` quand elles existent ;
+- report automatique du résultat du mois précédent vers la base du mois suivant ;
+- seules les données du premier mois gardent une base manuelle ;
+- les dépassements d'enveloppes réduisent désormais réellement la projection de fin de mois ;
+- aucune limite ne bloque un dépassement.
 
-## Contrôle du parseur Excel
-Sur le fichier 2026 actuel, le mapping retrouve pour chaque mois les mêmes volumes que l'import de référence :
-- janvier : 6 budgets / 16 charges / 48 écritures ;
-- février : 6 / 25 / 41 ;
-- mars : 6 / 26 / 43 ;
-- avril : 6 / 31 / 50 ;
-- mai : 6 / 32 / 60 ;
-- juin : 6 / 30 / 53 ;
-- juillet : 6 / 30 / 96 ;
-- août : 6 / 28 / 80 ;
-- septembre : 6 / 13 / 9.
+## Exemple de fonctionnement attendu
+Si les comptes sont vérifiés jusqu'au 14/08 :
+- août affiche « En reprise » ;
+- l'accueil indique « Reprendre à partir du 15/08 » ;
+- septembre affiche « À rattraper » tant qu'août n'est pas terminé ;
+- lorsque le point passe au 31/08, août devient « Vérifié » et septembre devient le mois à reprendre ;
+- toute correction d'août recalcule automatiquement la base de septembre, puis des mois suivants.
 
-## Synchronisation — étape bloquante restante
-Créer un projet Supabase dédié au budget, appliquer `supabase/schema.sql`, récupérer URL + publishable key et les renseigner dans le frontend.
+## Synchronisation
+La synchronisation Supabase est préparée mais pas encore activée.
 Ne pas réutiliser le projet Supabase `ile-aux-tempetes-hub`.
 
 ## Déploiement
@@ -52,8 +43,8 @@ GitHub Pages :
 `/atelier-guiltanas-apps/budget-guiltanas/`
 
 ## Prochaines validations utilisateur
-1. importer directement `Comptes LCL 2026.xlsx` depuis l'onglet Données ;
-2. parcourir janvier → septembre avec les flèches / la liste ;
-3. comparer visuellement un mois ancien avec l'onglet Excel correspondant ;
-4. contrôler les couleurs vert / orange / rouge des enveloppes ;
-5. ensuite activer la synchronisation privée entre les deux téléphones.
+1. vérifier le point de reprise estimé après rechargement ;
+2. ajuster manuellement la date si nécessaire (ex. 14/08/2026) ;
+3. simuler la reprise au 15/08 et l'avancement jusqu'au 31/08 ;
+4. vérifier que septembre reprend automatiquement le résultat d'août ;
+5. activer ensuite la synchronisation privée des deux téléphones.
