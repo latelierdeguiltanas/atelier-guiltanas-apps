@@ -1,10 +1,14 @@
 "use strict";
-var state=load();initSync();
+var state=ensureMultiAccount(load());localStorage.setItem(KEY,JSON.stringify(state));initSync();
 $("expenseBtn").onclick=function(){openEntry("expense")};$("incomeBtn").onclick=function(){openEntry("income")};$("settingsBtn").onclick=openSettings;$("reconcileBtn").onclick=openBankCheck;
 $("bankCheckBtn").onclick=openBankCheck;$("runBankCheckBtn").onclick=runBankCheck;$("acceptBankCheckBtn").onclick=acceptBankCheck;
 $("goPlanBtn").onclick=function(){planTab="budgets";document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("active",x.dataset.plan==="budgets")});switchView("plan")};
 $("addBudgetQuickBtn").onclick=function(){planTab="budgets";document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("active",x.dataset.plan==="budgets")});switchView("plan");openPlanDialog()};
 $("goChargesBtn").onclick=function(){planTab="charges";document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("active",x.dataset.plan==="charges")});switchView("plan")};
+document.querySelectorAll("[data-account]").forEach(function(b){b.onclick=function(){switchCurrentAccount(b.dataset.account)}});
+$("addSavingBtn").onclick=function(){openSavingDialog()};
+$("savingForm").onsubmit=function(e){e.preventDefault();saveSaving()};
+$("deleteSavingBtn").onclick=deleteSaving;
 $("checkpointBtn").onclick=openCheckpoint;
 $("checkedThroughDate").oninput=updateCheckpointPreview;
 $("checkpointForm").onsubmit=function(e){e.preventDefault();saveCheckpoint()};
@@ -29,7 +33,7 @@ $("entryForm").onsubmit=function(e){
   save();$("entryDialog").close();render()
 };
 $("settingsForm").onsubmit=function(e){e.preventDefault();var chosen=$("setMonth").value;if(chosen==="__new__"){var cur=state.currentMonthKey,p=cur.split("-"),d=new Date(Number(p[0]),Number(p[1]),1),k=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");if(!state.months[k]){var prev=currentMonth(),nm=makeMonth(k);nm.base=totals(prev).planForecast;nm.baseAuto=true;nm.budgets=prev.budgets.map(function(b){return{id:uid(),name:b.name,planned:n(b.planned)}});nm.charges=prev.charges.map(function(c){return{id:uid(),name:c.name,group:c.group,amount:n(c.amount),paid:false,paidAt:null}});nm.incomes=prev.incomes.filter(function(i){return !i.oneOff}).map(function(i){return{id:uid(),name:i.name,amount:n(i.amount),received:false}});state.months[k]=nm}chosen=k}state.currentMonthKey=chosen;var m=currentMonth(),keys=sortedMonthKeys();if(keys.indexOf(m.monthKey)===0)m.base=money($("setBase").value)||0;save();$("settingsDialog").close();render()};
-$("resetBtn").onclick=function(){if(confirm("Effacer uniquement les données locales de ce gestionnaire ?")){localStorage.removeItem(KEY);state=defaultState();$("settingsDialog").close();render()}};
+$("resetBtn").onclick=function(){if(confirm("Effacer uniquement les données locales de ce gestionnaire ?")){localStorage.removeItem(KEY);state=ensureMultiAccount(defaultState());$("settingsDialog").close();render()}};
 document.querySelectorAll(".close").forEach(function(b){b.onclick=function(){b.closest("dialog").close()}});
 document.querySelectorAll("footer [data-view]").forEach(function(b){b.onclick=function(){switchView(b.dataset.view)}});
 document.querySelectorAll(".tab").forEach(function(b){b.onclick=function(){planTab=b.dataset.plan;document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("active",x===b)});renderPlan()}});
