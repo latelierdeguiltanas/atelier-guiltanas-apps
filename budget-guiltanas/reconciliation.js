@@ -145,7 +145,7 @@ function renderBankCheckAnalysis(real,dateKey){
   if(expected===null){
     $("bankCheckExpected").textContent="Référence requise";$("bankCheckDiff").textContent="—";
     status.className="reconcileStatus warning";
-    status.innerHTML="<strong>Il manque un solde de référence vérifié.</strong><span>Pour analyser un écart sans le masquer, enregistre d'abord un « Point de reprise » avec le solde LCL exact à cette date.</span>";
+    status.innerHTML="<strong>Il manque un solde de référence vérifié.</strong><span>Pour analyser un écart sans le masquer, enregistre d'abord un « Point de reprise » avec le solde exact de "+activeCurrentAccountName()+" à cette date.</span>";
     list.innerHTML="<p class='notice'>Une fois cette référence créée, l'application reconstruira automatiquement son solde avec toutes les opérations suivantes.</p>";
     accept.classList.add("hidden");lastBankCheck=null;return
   }
@@ -177,7 +177,7 @@ function renderBankCheckAnalysis(real,dateKey){
   }
   if(!found.singles.length&&!found.combos.length){
     html+="<h3>Pistes les plus proches</h3>"+found.near.slice(0,5).map(candidateHtml).join("");
-    html+="<p class='notice'>Aucune écriture déjà connue ne retombe exactement sur l'écart. Une opération peut être totalement absente de l'application. Pour identifier automatiquement une opération absente avec certitude, il faudra ensuite importer le relevé bancaire LCL (CSV/Excel/OFX si disponible).</p>"
+    html+="<p class='notice'>Aucune écriture déjà connue ne retombe exactement sur l'écart. Une opération peut être totalement absente de l'application. Pour l'identifier avec certitude, il faudra ensuite importer le relevé bancaire de "+activeCurrentAccountName()+" (CSV/Excel/OFX si disponible).</p>"
   }
   list.innerHTML=html
 }
