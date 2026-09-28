@@ -163,7 +163,7 @@ function renderBankCheckAnalysis(real,dateKey){
 
   accept.classList.add("hidden");
   status.className="reconcileStatus danger";
-  status.innerHTML="<strong>Écart de "+euro.format(abs)+" à expliquer.</strong><span>"+(diff<0?"Le solde LCL est plus bas que l'application : cherche plutôt une dépense/prélèvement manquant ou un revenu saisi en trop.":"Le solde LCL est plus haut que l'application : cherche plutôt un revenu manquant ou une dépense saisie en trop.")+"</span>";
+  status.innerHTML="<strong>Écart de "+euro.format(abs)+" à expliquer.</strong><span>"+(diff<0?"Le solde "+activeCurrentAccountName()+" est plus bas que l'application : cherche plutôt une dépense/prélèvement manquant ou un revenu saisi en trop.":"Le solde "+activeCurrentAccountName()+" est plus haut que l'application : cherche plutôt un revenu manquant ou une dépense saisie en trop.")+"</span>";
 
   var found=reconciliationCandidates(diff,dateKey),html="";
   if(found.singles.length){
@@ -188,7 +188,7 @@ function openBankCheck(){
 }
 function runBankCheck(){
   var d=$("bankCheckDate").value,real=money($("bankCheckReal").value),anchor=bankCheckAnchor();
-  if(!d||real===null){alert("Renseigne une date et le solde réel LCL.");return}
+  if(!d||real===null){alert("Renseigne une date et le solde réel "+activeCurrentAccountName()+".");return}
   if(anchor&&d<anchor.date){alert("La date du contrôle doit être postérieure ou égale au dernier solde de référence ("+humanDate(anchor.date)+").");return}
   renderBankCheckAnalysis(real,d)
 }
