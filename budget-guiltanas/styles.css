@@ -113,3 +113,10 @@ footer{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);z-index:9;
 .savingItem p{margin:0}.savingItem small{display:block;color:var(--muted);font-size:.72rem;margin-top:3px}.savingItem>b{white-space:nowrap;font-size:1.05rem;color:#6e512d}
 .savingProgress{height:6px;background:#eee2cc;border-radius:999px;overflow:hidden;margin-top:8px}.savingProgress span{display:block;height:100%;background:linear-gradient(90deg,#a87b3e,#dfad58)}
 @media(max-width:390px){footer button{font-size:.66rem}.accountSwitcher button{padding:10px}.savingItem{grid-template-columns:1fr}}
+
+/* v0.8 — historique d'épargne importé depuis Excel */
+.savingHistory{display:grid;gap:7px;padding-top:4px}
+.savingHistory h3{margin:4px 0 2px;font-size:.9rem;color:var(--wine)}
+.savingHistoryRow{display:grid;grid-template-columns:72px 1fr auto;gap:8px;align-items:center;padding:8px 10px;border-radius:12px;background:#fff8e8;border:1px solid #ead5b0;font-size:.74rem}
+.savingHistoryRow span{color:var(--muted);white-space:nowrap}.savingHistoryRow strong{min-width:0}.savingHistoryRow b{white-space:nowrap;color:var(--ok)}.savingHistoryRow b.negative{color:var(--danger)}
+@media(max-width:390px){.savingHistoryRow{grid-template-columns:64px 1fr}.savingHistoryRow b{grid-column:2}}
