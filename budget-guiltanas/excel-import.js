@@ -102,11 +102,18 @@
     });
     months.sort(function(a,b){return a.monthKey.localeCompare(b.monthKey)});
     if(!months.length)throw new Error("Aucun onglet mensuel reconnu (JANVIER, FEVRIER, MARS…).");
+    var verifiedDates=[];
+    months.forEach(function(m){
+      (m.plannedCharges||[]).forEach(function(c){var d=window.statusDate?statusDate(c.status,m.monthKey):null;if(d)verifiedDates.push(d)});
+      (m.entries||[]).forEach(function(e){var d=window.statusDate?statusDate(e.status,m.monthKey):null;if(d)verifiedDates.push(d)})
+    });
+    verifiedDates.sort();
     return{
       format:"guiltanas-budget-excel-v1",
       source:file.name,
       year:year,
       currentMonthKey:months[months.length-1].monthKey,
+      suggestedCheckedThrough:verifiedDates.length?verifiedDates[verifiedDates.length-1]:null,
       months:months,
       notes:"Import direct du classeur Excel effectué localement dans le navigateur."
     }
