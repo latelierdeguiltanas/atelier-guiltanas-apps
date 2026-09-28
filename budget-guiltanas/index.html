@@ -31,6 +31,10 @@
       <div class="mini"><span>Solde réel prévisionnel</span><strong id="bankForecast">—</strong></div>
     </section>
     <section class="actions"><button class="primary" id="expenseBtn">− Dépense</button><button class="secondary" id="incomeBtn">+ Revenu</button></section>
+
+    <section class="head"><div><p class="eyebrow">Prélèvements</p><h2>Charges fixes</h2></div><button class="textBtn" id="goChargesBtn">Voir le plan</button></section>
+    <section class="list" id="fixedCharges"></section>
+
     <section class="head"><div><p class="eyebrow">Enveloppes</p><h2>Budgets du mois</h2></div><button class="textBtn" id="goPlanBtn">Paramétrer</button></section>
     <section class="grid" id="budgets"></section>
     <section class="head"><div><p class="eyebrow">Dernières opérations</p><h2>Historique</h2></div></section>
@@ -85,6 +89,15 @@
   <label>Montant<input id="planAmount" inputmode="decimal" placeholder="0,00" required></label>
   <button type="button" class="danger hidden" id="deletePlanBtn">Supprimer cet élément</button>
   <div class="row"><button type="button" class="secondary close">Annuler</button><button class="primary" id="savePlanBtn">Enregistrer</button></div>
+</form></dialog>
+
+<dialog id="chargeDialog"><form id="chargeForm">
+  <div class="dialogHead"><div><p class="eyebrow">Charge fixe</p><h2 id="chargeDialogTitle">Valider la sortie</h2></div><button type="button" class="icon close">✕</button></div>
+  <div class="chargeSummary"><strong id="chargeName"></strong><span id="chargeAmount"></span></div>
+  <label>Date réelle de sortie<input id="chargePaidDate" type="date" required></label>
+  <p class="notice" id="chargeHelp">Cette charge est déjà comptée dans la projection du mois. La valider indique seulement qu'elle est réellement sortie du compte.</p>
+  <button type="button" class="danger hidden" id="chargeRevertBtn">Remettre en « pas encore sortie »</button>
+  <div class="row"><button type="button" class="secondary close">Annuler</button><button class="primary" id="chargeConfirmBtn">Valider la sortie</button></div>
 </form></dialog>
 
 <dialog id="authDialog"><form id="authForm">
