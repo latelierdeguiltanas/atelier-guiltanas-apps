@@ -15,6 +15,10 @@
   <button class="icon" id="settingsBtn" aria-label="Réglages">⚙</button>
 </header>
 <main>
+  <section class="accountSwitcher" id="accountSwitcher" aria-label="Compte courant">
+    <button data-account="lcl" class="active"><span>LCL</span><small>Compte courant</small></button>
+    <button data-account="credit_agricole"><span>Crédit Agricole</span><small>Compte courant</small></button>
+  </section>
   <section id="viewHome">
     <div class="statusRow"><span class="pill"><span class="dot" id="syncDot"></span><span id="syncLabel">Mode local</span></span><button class="textBtn" id="reconcileBtn">Contrôler le solde</button></div>
     <section class="monthNavigator" aria-label="Navigation mensuelle">
@@ -47,12 +51,12 @@
       </div>
     </section>
     <section class="bankCard" style="margin-top:12px">
-      <div class="mini"><span>Dernier solde LCL vérifié</span><strong id="bank">—</strong></div>
+      <div class="mini"><span id="bankLabel">Dernier solde LCL vérifié</span><strong id="bank">—</strong></div>
       <div class="mini"><span>Solde application aujourd'hui</span><strong id="bankForecast">—</strong></div>
     </section>
     <button class="bankControlCard" id="bankCheckBtn">
       <span class="bankControlIcon">≠</span>
-      <span><strong>Contrôler le solde LCL</strong><small>Comparer le solde réel au solde de l'application et chercher l'origine d'un écart.</small></span>
+      <span><strong>Contrôler le solde <span id="activeAccountLabel">LCL</span></strong><small>Comparer le solde réel au solde de l'application et chercher l'origine d'un écart.</small></span>
       <b>›</b>
     </button>
     <section class="actions"><button class="primary" id="expenseBtn">− Dépense</button><button class="secondary" id="incomeBtn">+ Revenu</button></section>
@@ -73,11 +77,20 @@
     <section id="planList" class="planGrid"></section>
   </section>
 
+  <section id="viewSavings" class="hidden">
+    <section class="savingsHero">
+      <div><p class="eyebrow">Épargne totale</p><div class="savingsBig" id="savingsTotal">0,00 €</div><p class="subtitle">Toutes vos épargnes, séparées des comptes courants.</p></div>
+      <div class="savingsIcon">◈</div>
+    </section>
+    <section class="head"><div><p class="eyebrow">Poches et livrets</p><h2>Vos épargnes</h2></div><button class="textBtn" id="addSavingBtn">+ Épargne</button></section>
+    <section id="savingsList" class="savingsList"></section>
+  </section>
+
   <section id="viewData" class="hidden">
     <section class="head"><div><p class="eyebrow">Données</p><h2>Import & sauvegarde</h2></div></section>
     <div class="card" style="display:grid;gap:12px">
-      <h3>Importer l'historique complet</h3>
-      <p class="notice">Tu peux sélectionner directement le fichier Excel complet avec ses onglets JANVIER, FEVRIER, MARS… Le classeur est lu localement sur ce téléphone : il n'est pas envoyé sur GitHub.</p>
+      <h3>Importer l'historique du compte <span id="importAccountName">LCL</span></h3>
+      <p class="notice">L'import s'applique uniquement au compte courant sélectionné. Le fichier est lu localement sur ce téléphone : il n'est pas envoyé sur GitHub.</p>
       <label class="fileLabel">Importer Excel (.xlsx) ou une sauvegarde JSON<input id="importFile" type="file"></label>
       <p class="importSummary" id="importSummary">Aucun import lancé sur cet appareil.</p>
       <button class="secondary" id="exportBtn">Exporter une sauvegarde JSON</button>
@@ -89,7 +102,7 @@
     </div>
   </section>
 </main>
-<footer><button data-view="home" class="active">Accueil</button><button data-view="plan">Plan</button><button data-view="data">Données</button></footer>
+<footer><button data-view="home" class="active">Accueil</button><button data-view="plan">Plan</button><button data-view="savings">Épargne</button><button data-view="data">Données</button></footer>
 
 <dialog id="entryDialog"><form id="entryForm">
   <div class="dialogHead"><div><p class="eyebrow" id="kind">Nouvelle dépense</p><h2 id="entryTitle">Ajouter une dépense</h2></div><button type="button" class="icon close">✕</button></div>
@@ -120,11 +133,11 @@
 
 <dialog id="bankCheckDialog">
   <div class="dialogBody">
-    <div class="dialogHead"><div><p class="eyebrow">Rapprochement bancaire</p><h2>Contrôler le solde LCL</h2></div><button type="button" class="icon close">✕</button></div>
-    <p class="notice">Saisis le solde affiché par LCL à une date donnée. L'application reconstruit son propre solde depuis le dernier point vérifié et cherche des pistes si les deux ne correspondent pas.</p>
+    <div class="dialogHead"><div><p class="eyebrow">Rapprochement bancaire</p><h2 id="bankCheckTitle">Contrôler le solde LCL</h2></div><button type="button" class="icon close">✕</button></div>
+    <p class="notice" id="bankCheckIntro">Saisis le solde affiché sur le compte à une date donnée. L'application reconstruit son propre solde depuis le dernier point vérifié et cherche des pistes si les deux ne correspondent pas.</p>
     <div class="row">
       <label>Date du solde réel<input id="bankCheckDate" type="date" required></label>
-      <label>Solde réel LCL<input id="bankCheckReal" inputmode="decimal" placeholder="0,00" required></label>
+      <label><span id="bankCheckRealLabel">Solde réel LCL</span><input id="bankCheckReal" inputmode="decimal" placeholder="0,00" required></label>
     </div>
     <button class="primary" type="button" id="runBankCheckBtn">Analyser l'écart</button>
     <section id="bankCheckResult" class="hidden">
@@ -158,6 +171,17 @@
   <div class="row"><button type="button" class="secondary close">Annuler</button><button class="primary" id="chargeConfirmBtn">Valider la sortie</button></div>
 </form></dialog>
 
+<dialog id="savingDialog"><form id="savingForm">
+  <div class="dialogHead"><div><p class="eyebrow">Épargne</p><h2 id="savingDialogTitle">Ajouter une épargne</h2></div><button type="button" class="icon close">✕</button></div>
+  <label>Nom<input id="savingName" required placeholder="Ex. Vacances, Coup dur, Enfant 1…"></label>
+  <label>Banque<select id="savingBank"><option>LCL</option><option>Crédit Agricole</option><option>Autre</option></select></label>
+  <label>Type / objectif<input id="savingPurpose" placeholder="Ex. Livret enfant, vacances, sécurité…"></label>
+  <label>Solde actuel<input id="savingBalance" inputmode="decimal" required placeholder="0,00"></label>
+  <label>Objectif d'épargne <small class="subtitle">Optionnel.</small><input id="savingTarget" inputmode="decimal" placeholder="0,00"></label>
+  <button type="button" class="danger hidden" id="deleteSavingBtn">Supprimer cette épargne</button>
+  <div class="row"><button type="button" class="secondary close">Annuler</button><button class="primary">Enregistrer</button></div>
+</form></dialog>
+
 <dialog id="authDialog"><form id="authForm">
   <div class="dialogHead"><div><p class="eyebrow">Synchronisation privée</p><h2>Compte du foyer</h2></div><button type="button" class="icon close">✕</button></div>
   <p class="notice">Utilisez le même compte sur vos deux téléphones. Les données sont protégées par votre connexion et ne sont pas stockées dans GitHub.</p>
@@ -169,6 +193,7 @@
 </form></dialog>
 
 <script src="app-core.js"></script>
+<script src="accounts.js"></script>
 <script src="reconciliation.js"></script>
 <script src="excel-import.js"></script>
 <script src="sync.js"></script>
