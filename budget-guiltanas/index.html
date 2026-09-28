@@ -16,7 +16,7 @@
 </header>
 <main>
   <section id="viewHome">
-    <div class="statusRow"><span class="pill"><span class="dot" id="syncDot"></span><span id="syncLabel">Mode local</span></span><button class="textBtn" id="reconcileBtn">Actualiser le solde</button></div>
+    <div class="statusRow"><span class="pill"><span class="dot" id="syncDot"></span><span id="syncLabel">Mode local</span></span><button class="textBtn" id="reconcileBtn">Contrôler le solde</button></div>
     <section class="monthNavigator" aria-label="Navigation mensuelle">
       <button class="monthArrow" id="prevMonthBtn" aria-label="Mois précédent">‹</button>
       <div class="monthSelectWrap">
@@ -47,8 +47,8 @@
       </div>
     </section>
     <section class="bankCard" style="margin-top:12px">
-      <div class="mini"><span>Solde banque saisi</span><strong id="bank">—</strong></div>
-      <div class="mini"><span>Solde réel prévisionnel</span><strong id="bankForecast">—</strong></div>
+      <div class="mini"><span>Dernier solde LCL vérifié</span><strong id="bank">—</strong></div>
+      <div class="mini"><span>Solde application aujourd'hui</span><strong id="bankForecast">—</strong></div>
     </section>
     <button class="bankControlCard" id="bankCheckBtn">
       <span class="bankControlIcon">≠</span>
@@ -105,8 +105,7 @@
   <div class="dialogHead"><div><p class="eyebrow">Réglages</p><h2>Mois et banque</h2></div><button type="button" class="icon close">✕</button></div>
   <label>Mois<select id="setMonth"></select></label>
   <label>Base de départ du mois<input id="setBase" inputmode="decimal" placeholder="0,00"><small id="baseHelp" class="subtitle"></small></label>
-  <label>Solde bancaire actuel<input id="setBank" inputmode="decimal" placeholder="Laisser vide si inconnu"></label>
-  <p class="notice">Quand tu enregistres un nouveau solde bancaire, les opérations déjà saisies sont considérées comme incluses dans ce solde. Cela évite les doubles comptes.</p>
+  <p class="notice">Le solde bancaire réel se contrôle désormais depuis « Contrôler le solde LCL », afin de conserver une référence vérifiée et de détecter les écarts au lieu de les écraser.</p>
   <div class="row"><button type="button" class="danger" id="resetBtn">Réinitialiser local</button><button class="primary">Enregistrer</button></div>
 </form></dialog>
 
