@@ -83,3 +83,19 @@ footer{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);z-index:9;
 .monthStatus.catchup{background:#f8d9cd;color:#9d332b}
 #setBase:disabled{background:#eee9df;color:#756e66}
 @media(max-width:430px){.checkpointCard{grid-template-columns:38px 1fr}.checkpointBtn{grid-column:1/-1;width:100%}}
+
+/* v0.6 — rapprochement bancaire et gestion directe des budgets */
+.headActions{display:flex;align-items:center;gap:2px}
+.bankControlCard{width:100%;display:grid;grid-template-columns:42px 1fr auto;gap:11px;align-items:center;text-align:left;margin:0 0 12px;padding:13px;border:1px solid #dca053;border-radius:18px;background:linear-gradient(145deg,#fffaf0,#ffedc7);color:var(--ink);box-shadow:var(--shadow)}
+.bankControlCard span:nth-child(2){display:grid;gap:3px}.bankControlCard strong{color:var(--wine)}.bankControlCard small{color:var(--muted);line-height:1.35}.bankControlCard b{font-size:1.45rem;color:var(--wine)}
+.bankControlIcon{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:#f6d692;color:#8c4e1b;font-size:1.25rem;font-weight:950}
+.reconcileNumbers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.reconcileNumbers div{padding:12px;border:1px solid var(--line);border-radius:14px;background:#fffaf0}.reconcileNumbers span{display:block;color:var(--muted);font-size:.7rem;margin-bottom:4px}.reconcileNumbers strong{font-size:1rem}
+.okValue{color:var(--ok)}.badValue{color:var(--danger)}
+.reconcileStatus{display:grid;gap:4px;padding:13px;border-radius:15px;border:1px solid var(--line)}.reconcileStatus span{font-size:.78rem;line-height:1.4}
+.reconcileStatus.success{background:#f1f8e9;border-color:#a9c78d;color:#496a35}.reconcileStatus.warning{background:#fff5dc;border-color:#edcf91;color:#78501e}.reconcileStatus.danger{background:#fde9e2;border-color:#d98978;color:#8f312a}
+#bankCheckCandidates{display:grid;gap:8px}#bankCheckCandidates h3{margin:10px 0 1px;font-size:.92rem}
+.reconcileCandidate{display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:center;padding:11px;border:1px solid var(--line);border-radius:14px;background:#fffdf8}.reconcileCandidate small{display:block;color:var(--muted);font-size:.7rem;line-height:1.35;margin-top:2px}.reconcileCandidate b{white-space:nowrap}
+.candidateIcon{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:#f5e6c5;color:var(--wine);font-weight:950}
+.comboCandidate{display:grid;gap:3px;padding:11px;border-radius:14px;background:#fff2d2;border:1px solid #efd39a}.comboCandidate small{color:var(--muted);font-size:.72rem}
+@media(max-width:430px){.reconcileNumbers{grid-template-columns:1fr}.bankControlCard{grid-template-columns:38px 1fr}.bankControlCard>b{display:none}.headActions{gap:0}.headActions .textBtn{padding:7px 5px;font-size:.76rem}}
