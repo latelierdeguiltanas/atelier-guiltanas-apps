@@ -43,3 +43,29 @@ footer{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);z-index:9;
 .planItem.chargePending .planAmt{color:#6f6961}
 .tx{grid-template-columns:1fr auto 34px}
 .undoBtn{width:34px;height:34px;border:1px solid var(--line);border-radius:11px;background:#fff7e5;color:var(--wine);font-weight:900}
+
+/* v0.4 — historique mensuel et état d'urgence des budgets */
+.monthNavigator{display:grid;grid-template-columns:44px 1fr 44px;gap:8px;align-items:center;margin:0 0 12px}
+.monthArrow{height:44px;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--wine);font-size:1.55rem;font-weight:900;box-shadow:var(--shadow)}
+.monthArrow:disabled{opacity:.28;box-shadow:none;cursor:default}
+.monthSelectWrap{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:5px 8px 5px 4px;box-shadow:var(--shadow)}
+.monthSelectWrap select{border:0;background:transparent;font-weight:900;color:var(--ink);padding:8px 10px;min-width:0}
+.monthStatus{white-space:nowrap;font-size:.65rem;font-weight:900;padding:5px 8px;border-radius:999px}
+.monthStatus.closed{background:#e8e3dc;color:#6f6961}.monthStatus.current{background:#e2edcf;color:#526f35}.monthStatus.future{background:#fae6b7;color:#81531c}
+
+.budgetLegend{display:flex;gap:7px;overflow:auto;margin:-2px 2px 10px;padding-bottom:2px;font-size:.66rem;font-weight:850;white-space:nowrap}
+.budgetLegend span{padding:5px 8px;border-radius:999px;background:rgba(255,255,255,.55);border:1px solid var(--line)}
+.legendGood{color:#4e7b3c}.legendWarn{color:#b66a19}.legendDanger{color:#a52d2d}
+.budgetCard{position:relative;border-width:2px!important;transition:border-color .18s,background .18s,box-shadow .18s}
+.budgetCard .budgetStateDot{position:absolute;right:12px;top:12px;width:9px;height:9px;border-radius:50%}
+.budgetCard.budgetGood{border-color:#87ad72!important;background:linear-gradient(145deg,#fffdf7,#f2f8e9)}
+.budgetCard.budgetGood .budgetStateDot{background:#5f8c49;box-shadow:0 0 0 4px rgba(95,140,73,.12)}
+.budgetCard.budgetWarn{border-color:#df9d3f!important;background:linear-gradient(145deg,#fffdf7,#fff2d8)}
+.budgetCard.budgetWarn .budgetStateDot{background:#cf7b21;box-shadow:0 0 0 4px rgba(207,123,33,.12)}
+.budgetCard.budgetDanger{border-color:#c7473d!important;background:linear-gradient(145deg,#fffdf7,#fde5df)}
+.budgetCard.budgetDanger .budgetStateDot{background:#b8322b;box-shadow:0 0 0 4px rgba(184,50,43,.12)}
+.budgetCard.budgetDanger .money{color:#9f2e28}
+.budgetCard.budgetNeutral{border-color:#d8d0c3!important;background:#f5f1e9}
+.budgetCard.budgetNeutral .budgetStateDot{background:#aaa197}
+.importSummary{margin:0;color:var(--muted);font-size:.76rem;text-align:center}
+@media(max-width:390px){.monthSelectWrap{grid-template-columns:1fr}.monthStatus{justify-self:start;margin:-3px 0 4px 9px}}
