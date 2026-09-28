@@ -161,8 +161,10 @@ function importExcel(p){
     monthsObj[m.monthKey]=m
   });
   var target=state.currentAccounts[targetId]||emptyAccountData(targetId,targetId==="credit_agricole"?"Crédit Agricole":"LCL",targetId==="credit_agricole"?"Crédit Agricole":"LCL");
-  target.months=monthsObj;
-  target.currentMonthKey=monthsObj[activeKey]?activeKey:Object.keys(monthsObj).sort().slice(-1)[0];
+  var mergedMonths=Object.assign({},target.months||{},monthsObj);
+  target.months=mergedMonths;
+  var mergedKeys=Object.keys(mergedMonths).sort();
+  target.currentMonthKey=target.currentMonthKey&&mergedMonths[target.currentMonthKey]?target.currentMonthKey:(mergedMonths[activeKey]?activeKey:mergedKeys[mergedKeys.length-1]);
   target.archiveMeta={source:p.source||"Excel",importedAt:new Date().toISOString(),year:p.year||null,workbookType:p.workbookType||null,detectedModules:p.detectedModules||[]};
   target.accounting={checkedThrough:p.suggestedCheckedThrough||inferCheckedThrough({months:monthsObj}),lastSessionAt:null,source:"excel-estimate",anchorBalance:null,anchorDate:null,anchorSource:null};
   ensureAccounting(target);
