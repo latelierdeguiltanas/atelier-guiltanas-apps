@@ -187,8 +187,9 @@ function openBankCheck(){
   $("bankCheckDialog").showModal();setTimeout(function(){$("bankCheckReal").focus()},60)
 }
 function runBankCheck(){
-  var d=$("bankCheckDate").value,real=money($("bankCheckReal").value);
+  var d=$("bankCheckDate").value,real=money($("bankCheckReal").value),anchor=bankCheckAnchor();
   if(!d||real===null){alert("Renseigne une date et le solde réel LCL.");return}
+  if(anchor&&d<anchor.date){alert("La date du contrôle doit être postérieure ou égale au dernier solde de référence ("+humanDate(anchor.date)+").");return}
   renderBankCheckAnalysis(real,d)
 }
 function acceptBankCheck(){
