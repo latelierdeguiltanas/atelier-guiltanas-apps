@@ -175,9 +175,11 @@
   <div class="dialogHead"><div><p class="eyebrow">Épargne</p><h2 id="savingDialogTitle">Ajouter une épargne</h2></div><button type="button" class="icon close">✕</button></div>
   <label>Nom<input id="savingName" required placeholder="Ex. Vacances, Coup dur, Enfant 1…"></label>
   <label>Banque<select id="savingBank"><option>LCL</option><option>Crédit Agricole</option><option>Autre</option></select></label>
+  <label>Titulaire / personne <small class="subtitle">Optionnel.</small><input id="savingOwner" placeholder="Ex. Johanna, Mathieu, enfant…"></label>
   <label>Type / objectif<input id="savingPurpose" placeholder="Ex. Livret enfant, vacances, sécurité…"></label>
   <label>Solde actuel<input id="savingBalance" inputmode="decimal" required placeholder="0,00"></label>
   <label>Objectif d'épargne <small class="subtitle">Optionnel.</small><input id="savingTarget" inputmode="decimal" placeholder="0,00"></label>
+  <section id="savingHistory" class="savingHistory"></section>
   <button type="button" class="danger hidden" id="deleteSavingBtn">Supprimer cette épargne</button>
   <div class="row"><button type="button" class="secondary close">Annuler</button><button class="primary">Enregistrer</button></div>
 </form></dialog>
