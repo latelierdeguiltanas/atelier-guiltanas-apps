@@ -26,3 +26,18 @@ Le fichier d'import personnel reste local à l'utilisateur puis sera synchronis�
 Le frontend utilise `@supabase/supabase-js` **2.117.1**.
 La clé frontend attendue est une **publishable key** ; aucune secret key / service role ne doit être exposée dans le navigateur ou dans GitHub.
 Le schéma préparé se trouve dans `supabase/schema.sql`.
+
+
+## v0.4 — historique mensuel
+- import direct du fichier Excel `.xlsx` complet dans le navigateur ;
+- reconnaissance des onglets mensuels JANVIER → DECEMBRE ;
+- navigation mois précédent / suivant + sélection directe d'un mois ;
+- mois historiques identifiés comme clôturés ;
+- récupération des dates depuis les statuts Excel `ok le …` quand elles existent ;
+- état visuel des enveloppes :
+  - vert : moins de 50 % consommé ;
+  - orange : au moins 50 % consommé ;
+  - rouge : 50 € ou moins restants, ou dépassement ;
+- aucune limite bloquante : une enveloppe peut passer en négatif.
+
+Le parseur a été contrôlé sur le classeur 2026 actuel : 9 mois, janvier à septembre, avec correspondance des budgets, charges et opérations.
