@@ -62,3 +62,19 @@ Le parseur a été contrôlé sur le classeur 2026 actuel : 9 mois, janvier à s
 - si aucune piste connue ne correspond, l'application précise qu'une opération peut être absente et qu'un futur import de relevé bancaire sera nécessaire pour l'identifier avec certitude.
 
 Le rapprochement ne remplace jamais automatiquement un écart important par le solde réel : cela éviterait de masquer une erreur de comptes.
+
+
+## v0.7 — comptes multiples et épargne
+- deux comptes courants totalement séparés :
+  - LCL ;
+  - Crédit Agricole ;
+- le fonctionnement est identique sur les deux : mois, budgets, charges, revenus, point de reprise, rapprochement bancaire et historique ;
+- migration automatique : toutes les données existantes sont conservées sur LCL ;
+- Crédit Agricole démarre avec une comptabilité vierge indépendante ;
+- le choix du compte affiché reste local à chaque téléphone ;
+- l'import Excel s'applique uniquement au compte courant sélectionné ;
+- nouvel onglet Épargne, séparé des comptes courants ;
+- création/modification/suppression de plusieurs épargnes ;
+- chaque épargne possède banque, nom, usage, solde et objectif optionnel ;
+- regroupement visuel par banque (LCL / Crédit Agricole / Autre) ;
+- total global de l'épargne affiché séparément du budget mensuel.
