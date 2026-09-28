@@ -134,6 +134,46 @@ function fillMonthSelect(){var keys=sortedMonthKeys();$("setMonth").innerHTML=ke
 var editPlanId=null;
 function openPlanDialog(id){var m=currentMonth(),arr=planTab==="charges"?m.charges:planTab==="incomes"?m.incomes:m.budgets;editPlanId=id||null;var item=id?arr.find(function(x){return x.id===id}):null;var title=(item?"Modifier ":"Ajouter ")+(planTab==="charges"?"une charge":planTab==="incomes"?"un revenu":"un budget");$("planDialogTitle").textContent=title;$("planName").value=item?item.name:"";$("planGroup").value=item&&item.group?item.group:"";$("planAmount").value=item?n(planTab==="budgets"?item.planned:item.amount):"";$("groupWrap").hidden=planTab!=="charges";$("deletePlanBtn").textContent=planTab==="budgets"?"Supprimer ce budget":planTab==="charges"?"Supprimer cette charge":"Supprimer ce revenu";$("deletePlanBtn").classList.toggle("hidden",!item);$("planDialog").showModal()}
 function switchView(v){["home","plan","savings","data"].forEach(function(x){$("view"+x[0].toUpperCase()+x.slice(1)).classList.toggle("hidden",x!==v)});document.querySelectorAll("footer [data-view]").forEach(function(b){b.classList.toggle("active",b.dataset.view===v)});if($("accountSwitcher"))$("accountSwitcher").classList.toggle("hidden",v==="savings");if(v==="plan")renderPlan();if(v==="savings"&&typeof renderSavings==="function")renderSavings()}
-function importExcel(p){if(!p||p.format!=="guiltanas-budget-excel-v1"||!Array.isArray(p.months))throw new Error("Format d'import Excel non reconnu");var monthsObj={},activeKey=p.currentMonthKey||p.months[p.months.length-1].monthKey;p.months.forEach(function(src){var budgetMap={};var m={monthKey:src.monthKey,base:n(src.base),bankBalance:src.excelTotals&&Number.isFinite(src.excelTotals.bankBalance)?src.excelTotals.bankBalance:null,budgets:[],charges:[],incomes:[],entries:[],excelReference:src.excelTotals||null,closed:src.monthKey<activeKey};(src.budgets||[]).forEach(function(b){var id=uid();budgetMap[String(b.name).toUpperCase()]=id;m.budgets.push({id:id,name:b.name,planned:n(b.planned)})});(src.plannedCharges||[]).forEach(function(c){var paid=isDoneStatus(c.status),d=statusDate(c.status,src.monthKey);m.charges.push({id:uid(),name:c.label,group:c.group||"Autres",amount:n(c.amount),paid:paid,paidAt:paid?d:null})});(src.entries||[]).forEach(function(e){var d=statusDate(e.status,src.monthKey),fallback=src.monthKey+"-15",stamp=(d||fallback)+"T12:00:00.000Z";if(e.type==="income"){var id=uid();m.incomes.push({id:id,name:e.label,amount:n(e.amount),received:!!e.actual});if(e.actual)m.entries.push({id:uid(),type:"income",amount:n(e.amount),label:e.label,incomeId:id,actual:true,reconciled:true,createdAt:stamp})}else{var bid=budgetMap[String(e.category||"").toUpperCase()]||null;m.entries.push({id:uid(),type:"expense",amount:n(e.amount),label:e.label,categoryId:bid,usesBudget:!!bid,actual:!!e.actual,reconciled:true,createdAt:stamp,sourceStatus:e.status||""})}});monthsObj[m.monthKey]=m});state.months=monthsObj;state.currentMonthKey=monthsObj[activeKey]?activeKey:Object.keys(monthsObj).sort().slice(-1)[0];state.archiveMeta={source:p.source||"Excel",importedAt:new Date().toISOString(),year:p.year||null};state.accounting={checkedThrough:p.suggestedCheckedThrough||inferCheckedThrough({months:monthsObj}),lastSessionAt:null,source:"excel-estimate",anchorBalance:null,anchorDate:null,anchorSource:null};ensureAccounting(state);save();render();var count=Object.keys(monthsObj).length;if($("importSummary"))$("importSummary").textContent=count+" mois importés · "+monthName(Object.keys(monthsObj).sort()[0])+" → "+monthName(Object.keys(monthsObj).sort().slice(-1)[0]);alert("Import terminé dans "+activeCurrentAccountName()+" : "+count+" mois chargés. Tu peux maintenant naviguer dans l'historique mois par mois.")}
+function importExcel(p){
+  if(!p||["guiltanas-budget-excel-v1","guiltanas-budget-excel-v2"].indexOf(p.format)===-1||!Array.isArray(p.months))throw new Error("Format d'import Excel non reconnu");
+  if(typeof snapshotActiveAccount==="function")snapshotActiveAccount(state);
+  var targetId=p.accountId&&state.currentAccounts&&state.currentAccounts[p.accountId]?p.accountId:state.currentAccountId;
+  if(!targetId)targetId="lcl";
+  var monthsObj={},activeKey=p.currentMonthKey||p.months[p.months.length-1].monthKey;
+  p.months.forEach(function(src){
+    var budgetMap={},m={monthKey:src.monthKey,base:n(src.base),bankBalance:src.excelTotals&&Number.isFinite(src.excelTotals.bankBalance)?src.excelTotals.bankBalance:null,budgets:[],charges:[],incomes:[],entries:[],excelReference:src.excelTotals||null,closed:src.monthKey<activeKey};
+    (src.budgets||[]).forEach(function(b){var id=uid();budgetMap[String(b.name).toUpperCase()]=id;m.budgets.push({id:id,name:b.name,planned:n(b.planned)})});
+    (src.plannedCharges||[]).forEach(function(c){
+      var paid=isDoneStatus(c.status),d=statusDate(c.status,src.monthKey),id=uid(),stamp=(d||src.monthKey+"-15")+"T12:00:00.000Z";
+      m.charges.push({id:id,name:c.label,group:c.group||"Autres",amount:n(c.amount),paid:paid,paidAt:paid?d:null});
+      if(paid)m.entries.push({id:uid(),type:"expense",amount:n(c.amount),label:c.label,fixedChargeId:id,usesBudget:false,actual:true,reconciled:true,createdAt:stamp,sourceStatus:c.status||""})
+    });
+    (src.entries||[]).forEach(function(e){
+      var d=statusDate(e.status,src.monthKey),fallback=src.monthKey+"-15",stamp=(d||fallback)+"T12:00:00.000Z";
+      if(e.type==="income"){
+        var id=uid();m.incomes.push({id:id,name:e.label,amount:n(e.amount),received:!!e.actual});
+        if(e.actual)m.entries.push({id:uid(),type:"income",amount:n(e.amount),label:e.label,incomeId:id,actual:true,reconciled:true,createdAt:stamp,sourceStatus:e.status||""})
+      }else{
+        var bid=budgetMap[String(e.category||"").toUpperCase()]||null;
+        m.entries.push({id:uid(),type:"expense",amount:n(e.amount),label:e.label,categoryId:bid,usesBudget:!!bid,actual:!!e.actual,reconciled:true,createdAt:stamp,sourceStatus:e.status||""})
+      }
+    });
+    monthsObj[m.monthKey]=m
+  });
+  var target=state.currentAccounts[targetId]||emptyAccountData(targetId,targetId==="credit_agricole"?"Crédit Agricole":"LCL",targetId==="credit_agricole"?"Crédit Agricole":"LCL");
+  target.months=monthsObj;
+  target.currentMonthKey=monthsObj[activeKey]?activeKey:Object.keys(monthsObj).sort().slice(-1)[0];
+  target.archiveMeta={source:p.source||"Excel",importedAt:new Date().toISOString(),year:p.year||null,workbookType:p.workbookType||null,detectedModules:p.detectedModules||[]};
+  target.accounting={checkedThrough:p.suggestedCheckedThrough||inferCheckedThrough({months:monthsObj}),lastSessionAt:null,source:"excel-estimate",anchorBalance:null,anchorDate:null,anchorSource:null};
+  ensureAccounting(target);
+  state.currentAccounts[targetId]=target;
+  applyActiveAccount(state,targetId);
+  var savingsCount=0;
+  if(Array.isArray(p.savings)&&p.savings.length&&typeof mergeImportedSavings==="function")savingsCount=mergeImportedSavings(p.savings,p.source||"Excel");
+  save();render();
+  var keys=Object.keys(monthsObj).sort(),count=keys.length,extra=savingsCount?" · "+savingsCount+" épargnes importées":"";
+  if($("importSummary"))$("importSummary").textContent=count+" mois importés dans "+activeCurrentAccountName()+" · "+monthName(keys[0])+" → "+monthName(keys[keys.length-1])+extra;
+  alert("Import terminé dans "+activeCurrentAccountName()+" : "+count+" mois chargés"+(savingsCount?" et "+savingsCount+" épargnes mises à jour":"")+".")
+}
 function exportBackup(){var blob=new Blob([JSON.stringify({format:"guiltanas-budget-backup-v2",exportedAt:new Date().toISOString(),state:state},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="budget-guiltanas-sauvegarde-"+state.currentMonthKey+".json";a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},1000)}
-function importBackup(p){if(p.format==="guiltanas-budget-excel-v1")return importExcel(p);if(p.format==="guiltanas-budget-backup-v2"&&p.state){state=ensureMultiAccount(p.state);save();render();alert("Sauvegarde restaurée.");return}throw new Error("Fichier non reconnu")}
+function importBackup(p){if(p.format==="guiltanas-budget-excel-v1"||p.format==="guiltanas-budget-excel-v2")return importExcel(p);if(p.format==="guiltanas-budget-backup-v2"&&p.state){state=ensureMultiAccount(p.state);save();render();alert("Sauvegarde restaurée.");return}throw new Error("Fichier non reconnu")}
