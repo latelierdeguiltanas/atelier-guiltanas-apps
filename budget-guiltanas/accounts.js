@@ -1,11 +1,20 @@
 "use strict";
 function cloneJson(v){return JSON.parse(JSON.stringify(v))}
 function emptyAccountData(id,name,bank){
-  var k=monthKeyNow(),months={};months[k]=makeMonth(k);
+  var k=monthKeyNow(),months={},m=makeMonth(k);
+  m.budgets=[];m.charges=[];m.incomes=[];m.entries=[];
+  months[k]=m;
   return{
     id:id,name:name,bank:bank,currentMonthKey:k,months:months,merchantRules:{},archiveMeta:null,
     accounting:{checkedThrough:null,lastSessionAt:null,source:"manual",anchorBalance:null,anchorDate:null,anchorSource:null}
   }
+}
+function accountLooksUntouched(acc){
+  if(!acc||acc.archiveMeta)return false;
+  var keys=Object.keys(acc.months||{});if(keys.length!==1)return false;
+  var m=acc.months[keys[0]],names=(m.budgets||[]).map(function(b){return b.name}).join("|");
+  var defaultNames="Courses|Divers / Joker|Enfants|Travaux|Notes de frais|Essence";
+  return names===defaultNames&&(m.budgets||[]).every(function(b){return n(b.planned)===0})&&!(m.charges||[]).length&&!(m.incomes||[]).length&&!(m.entries||[]).length
 }
 function extractActiveAccount(st,id,name,bank){
   return{
@@ -25,6 +34,7 @@ function ensureMultiAccount(st){
   }
   if(!st.currentAccounts.lcl)st.currentAccounts.lcl=emptyAccountData("lcl","LCL","LCL");
   if(!st.currentAccounts.credit_agricole)st.currentAccounts.credit_agricole=emptyAccountData("credit_agricole","Crédit Agricole","Crédit Agricole");
+  else if(accountLooksUntouched(st.currentAccounts.credit_agricole))st.currentAccounts.credit_agricole=emptyAccountData("credit_agricole","Crédit Agricole","Crédit Agricole");
   if(!st.currentAccountId||!st.currentAccounts[st.currentAccountId])st.currentAccountId="lcl";
   if(!Array.isArray(st.savings))st.savings=[];
   st.version=3;
