@@ -7,54 +7,71 @@ Emplacement GitHub : `latelierdeguiltanas/atelier-guiltanas-apps/budget-guiltana
 ## Règle d'isolation
 Aucune modification hors de `budget-guiltanas/` lors des travaux sur ce projet, sauf demande explicite de l'utilisateur.
 
-## Source fonctionnelle
-Le classeur personnel `Comptes LCL 2026.xlsx` reste l'oracle fonctionnel.
-La continuité mensuelle est automatique : le résultat calculé d'un mois devient la base du mois suivant.
+## Architecture v0.7
+L'application gère maintenant deux domaines distincts :
 
-## Statut v0.6 — rapprochement bancaire
-### Budgets
-- création directe via « + Budget » ;
-- gestion via Plan > Budgets ;
-- modification et suppression ;
-- une suppression conserve les écritures historiques et les bascule hors budget ;
-- dépassements autorisés sans blocage.
+### 1. Comptes courants
+Deux comptabilités indépendantes :
+- **LCL**
+- **Crédit Agricole**
 
-### Point de reprise
-- date globale « comptes vérifiés jusqu'au … » ;
-- reprise au lendemain ;
-- statuts Vérifié / En reprise / À rattraper / Planifié ;
-- solde bancaire optionnel au point de reprise ;
-- ce solde devient une référence bancaire datée.
+Chaque compte courant possède ses propres :
+- mois ;
+- base/report mensuel ;
+- budgets ;
+- charges fixes ;
+- revenus ;
+- opérations ;
+- point de reprise ;
+- référence bancaire ;
+- rapprochement et analyse d'écart ;
+- règles de catégorisation ;
+- historique/import.
 
-### Rapprochement LCL
-- bouton « Contrôler le solde LCL » sur l'accueil ;
-- saisie d'une date et du solde réel LCL ;
-- reconstruction du solde théorique depuis la dernière référence vérifiée ;
-- comparaison sans écraser la référence existante ;
-- tolérance de validation automatique : 0,05 € ;
-- diagnostic des écarts avec dates, montants et libellés ;
-- recherche de :
-  - charges fixes non validées ;
-  - revenus prévus non reçus ;
-  - doublons potentiels ;
-  - écritures potentiellement en trop ;
-  - combinaisons de 2 ou 3 éléments expliquant exactement l'écart ;
-- si aucun candidat ne correspond, l'application signale qu'une opération peut être totalement absente ;
-- futur complément recommandé : import du relevé bancaire LCL (CSV/Excel/OFX si LCL le permet) pour détecter automatiquement les opérations absentes.
+Le moteur est le même pour les deux comptes mais aucune donnée mensuelle n'est partagée entre eux.
 
-### Dates d'opérations
-Les nouvelles dépenses/revenus demandent leur vraie date.
-Une opération saisie pendant un rattrapage d'août reste donc une opération d'août, même si elle est saisie en octobre.
+### Migration
+Au premier chargement de la v0.7 :
+- toutes les données historiques existantes sont automatiquement affectées au compte **LCL** ;
+- le compte **Crédit Agricole** est créé vierge ;
+- aucune donnée LCL n'est copiée dans Crédit Agricole.
 
-## Test technique du moteur de rapprochement
-Cas vérifié :
-- référence bancaire : 1 000 € au 14/08 ;
-- dépense saisie : 100 € le 15/08 ;
-- solde application : 900 € ;
-- solde réel LCL : 850 € ;
-- écart : -50 € ;
-- charge EDF prévue non validée : 50 € ;
-- résultat du diagnostic : EDF est retrouvée comme explication exacte de l'écart.
+Test d'isolation effectué :
+- budget LCL de test : 400 € ;
+- budget Crédit Agricole modifié à 999 € ;
+- retour LCL : budget resté à 400 € ;
+- point de reprise LCL du 14/08 conservé.
+
+### 2. Épargnes
+Nouvel onglet indépendant des comptes courants.
+
+Chaque épargne possède :
+- nom ;
+- banque (LCL / Crédit Agricole / Autre) ;
+- usage / objectif libre ;
+- solde ;
+- objectif financier optionnel.
+
+Exemples prévus :
+- Vacances ;
+- Coup dur ;
+- Enfant 1 ;
+- Enfant 2 ;
+- autres livrets ou poches.
+
+Les épargnes ne participent pas aux calculs de budget mensuel des comptes courants.
+
+## Navigation multi-appareils
+Le compte courant actuellement affiché est un choix local au téléphone.
+La future synchronisation partage les données mais ne doit pas forcer l'autre téléphone à afficher le même compte.
+
+## Import
+L'import Excel s'applique au compte courant actuellement sélectionné.
+Le classeur actuel `Comptes LCL 2026.xlsx` doit donc être importé lorsque **LCL** est sélectionné.
+
+## Rapprochement bancaire
+Le rapprochement fonctionne indépendamment pour LCL et Crédit Agricole.
+Chaque compte conserve sa propre référence bancaire vérifiée et son propre point de reprise.
 
 ## Synchronisation
 La synchronisation Supabase est préparée mais pas encore activée.
@@ -65,9 +82,9 @@ GitHub Pages :
 `/atelier-guiltanas-apps/budget-guiltanas/`
 
 ## Prochaines validations utilisateur
-1. créer puis supprimer un budget de test ;
-2. définir un point de reprise avec un vrai solde LCL ;
-3. ajouter une opération avec sa vraie date ;
-4. lancer « Contrôler le solde LCL » ;
-5. provoquer volontairement un petit écart connu et contrôler les pistes ;
-6. ensuite activer la synchronisation privée des deux téléphones.
+1. vérifier que l'historique importé est toujours présent côté LCL ;
+2. passer sur Crédit Agricole et confirmer qu'il est vierge ;
+3. créer un budget CA et vérifier qu'il n'apparaît pas sur LCL ;
+4. créer plusieurs épargnes (Vacances / enfants / coup dur) ;
+5. vérifier la modification et la suppression d'une épargne ;
+6. poursuivre ensuite avec la synchronisation privée des deux téléphones.
