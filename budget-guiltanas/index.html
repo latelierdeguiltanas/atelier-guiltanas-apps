@@ -25,6 +25,17 @@
       </div>
       <button class="monthArrow" id="nextMonthBtn" aria-label="Mois suivant">›</button>
     </section>
+
+    <section class="checkpointCard" id="checkpointCard">
+      <div class="checkpointIcon">✓</div>
+      <div class="checkpointMain">
+        <p class="eyebrow">Point de reprise des comptes</p>
+        <strong id="checkpointTitle">À définir</strong>
+        <span id="checkpointText">Indique jusqu'à quelle date les opérations ont été vérifiées.</span>
+      </div>
+      <button class="checkpointBtn" id="checkpointBtn">Mettre à jour</button>
+    </section>
+
     <section class="hero">
       <p class="eyebrow">Projection fin de mois · logique Excel</p>
       <div class="big" id="forecast">0,00 €</div>
@@ -87,7 +98,7 @@
 <dialog id="settingsDialog"><form id="settingsForm">
   <div class="dialogHead"><div><p class="eyebrow">Réglages</p><h2>Mois et banque</h2></div><button type="button" class="icon close">✕</button></div>
   <label>Mois<select id="setMonth"></select></label>
-  <label>Base de départ du mois<input id="setBase" inputmode="decimal" placeholder="0,00"></label>
+  <label>Base de départ du mois<input id="setBase" inputmode="decimal" placeholder="0,00"><small id="baseHelp" class="subtitle"></small></label>
   <label>Solde bancaire actuel<input id="setBank" inputmode="decimal" placeholder="Laisser vide si inconnu"></label>
   <p class="notice">Quand tu enregistres un nouveau solde bancaire, les opérations déjà saisies sont considérées comme incluses dans ce solde. Cela évite les doubles comptes.</p>
   <div class="row"><button type="button" class="danger" id="resetBtn">Réinitialiser local</button><button class="primary">Enregistrer</button></div>
@@ -100,6 +111,15 @@
   <label>Montant<input id="planAmount" inputmode="decimal" placeholder="0,00" required></label>
   <button type="button" class="danger hidden" id="deletePlanBtn">Supprimer cet élément</button>
   <div class="row"><button type="button" class="secondary close">Annuler</button><button class="primary" id="savePlanBtn">Enregistrer</button></div>
+</form></dialog>
+
+<dialog id="checkpointDialog"><form id="checkpointForm">
+  <div class="dialogHead"><div><p class="eyebrow">Suivi des comptes</p><h2>Point de reprise</h2></div><button type="button" class="icon close">✕</button></div>
+  <p class="notice">Cette date signifie : « nous avons vérifié toutes les opérations bancaires jusqu'ici ». La prochaine session reprendra automatiquement au lendemain. Tu peux avancer ou reculer cette date à tout moment.</p>
+  <label>Comptes vérifiés jusqu'au<input id="checkedThroughDate" type="date" required></label>
+  <label>Solde bancaire à cette date <small class="subtitle">Optionnel — utile lors d'un vrai pointage du compte.</small><input id="checkpointBank" inputmode="decimal" placeholder="Ex. 1 245,32"></label>
+  <div class="checkpointPreview" id="checkpointPreview"></div>
+  <div class="row"><button type="button" class="secondary close">Annuler</button><button class="primary">Enregistrer le point de reprise</button></div>
 </form></dialog>
 
 <dialog id="chargeDialog"><form id="chargeForm">
