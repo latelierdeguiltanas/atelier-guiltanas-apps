@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10291d">
+  <title>Atelier de Scanlan — Chroniques</title>
+  <link rel="stylesheet" href="../assets/bastide.css">
+  <link rel="stylesheet" href="../journal/chroniques.css">
+  <link rel="stylesheet" href="atelier.css">
+</head>
+<body>
+  <main class="editor-shell">
+    <header class="editor-head"><a href="../journal/">← Voir les chroniques</a><div><small>ESPACE PERSONNEL</small><h1>L’atelier de Scanlan</h1></div><button id="new-entry">+ Nouvelle</button></header>
+    <div id="auth-error" class="editor-alert" hidden></div>
+    <div id="workspace" class="workspace" hidden>
+      <aside class="drafts"><div class="drafts-title"><strong>Mes chroniques</strong><button id="refresh">↻</button></div><div id="draft-list"></div></aside>
+      <section class="editor-panel">
+        <form id="chronicle-form">
+          <input type="hidden" id="entry-id">
+          <div class="form-grid compact"><label>Session<input id="session-number" type="number" min="0" placeholder="1"></label><label>Date<input id="session-date" type="date"></label></div>
+          <label>Titre<input id="title" maxlength="120" required placeholder="La ballade du naufrage glorieux"></label>
+          <label>Sous-titre<input id="subtitle" maxlength="220" placeholder="Ou comment nous avons presque eu un plan"></label>
+          <label>Résumé<textarea id="summary" maxlength="30000" placeholder="Raconte la séance avec ta voix, sérieusement ou pas du tout…"></textarea></label>
+          <label>Paroles de la chanson<textarea id="lyrics" maxlength="30000" placeholder="Couplet, refrain, calomnies diverses…"></textarea></label>
+          <div class="form-actions"><button class="button primary" type="submit">Enregistrer le brouillon</button><button class="button" type="button" id="publish" disabled>Publier pour les joueurs</button><button class="button" type="button" id="unpublish" disabled>Remettre en brouillon</button></div>
+        </form>
+        <section id="media-zone" class="media-zone" hidden>
+          <h2>Images, dessins et musiques</h2><p>Enregistre d’abord la chronique, puis ajoute autant de médias que nécessaire. Limite : 50 Mo par fichier.</p>
+          <div class="upload-grid"><label class="upload-card"><b>Image ou dessin</b><input id="image-file" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple><input id="image-caption" placeholder="Légende facultative"><button class="button" id="upload-image" type="button">Ajouter les images</button></label><label class="upload-card"><b>Musique ou récit audio</b><input id="audio-file" type="file" accept="audio/mpeg,audio/mp4,audio/ogg,audio/wav" multiple><input id="audio-caption" placeholder="Titre de la chanson"><button class="button" id="upload-audio" type="button">Ajouter les pistes</button></label></div>
+          <div id="media-list" class="media-list"></div>
+        </section>
+        <section class="preview-wrap"><div class="preview-title">APERÇU DU PARCHEMIN</div><div id="preview"></div></section>
+        <button id="delete-entry" class="button danger-zone" type="button" hidden>Supprimer cette chronique</button>
+      </section>
+    </div>
+  </main>
+  <div id="toast" class="editor-toast"></div>
+  <script src="../assets/chronicles-api.js"></script>
+  <script src="atelier.js"></script>
+</body>
+</html>
