@@ -1,0 +1,158 @@
+.inventory-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-bottom: 8px;
+}
+
+.inventory-summary div {
+  border: 1px solid #c9b77d;
+  border-radius: 11px;
+  background: #fffdf7;
+  padding: 9px;
+  text-align: center;
+}
+
+.inventory-summary small,
+.inventory-summary b {
+  display: block;
+}
+
+.inventory-summary small {
+  color: #786d57;
+  font-size: .62rem;
+  font-weight: 900;
+}
+
+.inventory-summary b {
+  color: #70551b;
+  font-size: 1.12rem;
+}
+
+.inventory-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 9px;
+}
+
+.inventory-heading .section-title {
+  flex: 1;
+  margin: 0;
+}
+
+.inventory-help {
+  color: #6b6456;
+  font-size: .78rem;
+  line-height: 1.4;
+}
+
+.inventory-list {
+  display: grid;
+  gap: 7px;
+}
+
+.inventory-item {
+  border: 1px solid #c9b77d;
+  border-radius: 12px;
+  background: #fffdf7;
+  overflow: hidden;
+}
+
+.inventory-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  padding: 11px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.inventory-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.inventory-item summary strong,
+.inventory-item summary small {
+  display: block;
+}
+
+.inventory-item summary strong {
+  color: #70551b;
+}
+
+.inventory-item summary small {
+  margin-top: 2px;
+  color: #6b6456;
+  font-size: .7rem;
+}
+
+.inventory-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.tag.equipped {
+  border-color: #287244;
+  background: #e0f1e5;
+  color: #1f653b;
+}
+
+.inventory-editor {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid #ded1ae;
+  background: #f7f1e2;
+}
+
+.inventory-editor label {
+  color: #6d624e;
+  font-size: .7rem;
+  font-weight: 850;
+}
+
+.inventory-editor input,
+.inventory-editor select,
+.inventory-editor textarea {
+  width: 100%;
+  margin-top: 4px;
+  border: 1px solid #c9b77d;
+  border-radius: 9px;
+  background: #fffdf7;
+  padding: 8px;
+  color: #28251f;
+}
+
+.inventory-editor textarea {
+  min-height: 75px;
+}
+
+.inventory-editor .wide {
+  grid-column: 1 / -1;
+}
+
+.inventory-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+@media (max-width: 520px) {
+  .inventory-editor {
+    grid-template-columns: 1fr;
+  }
+
+  .inventory-editor .wide {
+    grid-column: auto;
+  }
+
+  .inventory-item summary {
+    align-items: flex-start;
+  }
+}
