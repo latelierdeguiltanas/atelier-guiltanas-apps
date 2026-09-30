@@ -33,6 +33,15 @@
 - Le gestionnaire de combat D&D a été retiré de Bastide.
 - La distribution en ligne des découvertes doit rester désactivée tant que les destinataires Bastide ne sont pas isolés du groupe Nespresso côté données.
 
+## Chroniques de Scanlan
+
+- Le journal public `journal/` affiche uniquement les chroniques publiées de la Bastide.
+- L’atelier privé `chroniqueur/` permet à Scanlan de créer ses propres brouillons, textes, paroles, images, dessins et pistes audio.
+- L’accès chroniqueur utilise un lien personnel dont la clé est placée dans le fragment `#key=` puis conservée localement ; cette clé ne doit jamais être inscrite dans le dépôt.
+- Les données passent par la fonction Edge `bastide-chronicles` et les tables préfixées `bastide_chronicle_`.
+- Les médias utilisent le bucket privé `bastide-chronicles` et des URL signées temporaires.
+- Cet accès ne donne aucun droit sur les fiches, les outils MJ, le scénario ou les données Nespresso.
+
 ## Import des personnages suivants
 
 1. Exporter chaque héros depuis Forge ou relever la fiche papier.
