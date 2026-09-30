@@ -1,0 +1,74 @@
+.mana-guide {
+  margin: 10px 0;
+  border: 1px solid #8e72b2;
+  border-radius: 13px;
+  background: linear-gradient(145deg, #f2eafa, #fffdf7);
+  padding: 11px;
+  box-shadow: inset 4px 0 #705096;
+}
+
+.mana-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mana-title small {
+  color: #705096;
+  font-size: .62rem;
+  font-weight: 950;
+  letter-spacing: .08em;
+}
+
+.mana-title h3 {
+  margin: 2px 0;
+  color: #50336e;
+}
+
+.mana-tag {
+  border-color: #9c7abb;
+  background: #e9dcf5;
+  color: #553473;
+}
+
+.mana-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 9px;
+}
+
+.mana-steps p {
+  margin: 0;
+  border: 1px solid #d7c6e5;
+  border-radius: 9px;
+  background: #fffefa;
+  padding: 8px;
+  color: #5f5765;
+}
+
+.mana-steps b,
+.mana-steps span {
+  display: block;
+}
+
+.mana-steps b {
+  margin-bottom: 3px;
+  color: #5b3978;
+}
+
+.mana-steps span {
+  font-size: .78rem;
+  line-height: 1.4;
+}
+
+.mana-guide.compact {
+  margin-top: 0;
+}
+
+@media (max-width: 760px) {
+  .mana-steps {
+    grid-template-columns: 1fr;
+  }
+}
