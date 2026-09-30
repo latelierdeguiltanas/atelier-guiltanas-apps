@@ -4,7 +4,7 @@
 (()=>{
   if(!document.querySelector('script[data-bastide-theme-loader]')){
     const theme=document.createElement('script');
-    theme.src=new URL('theme.js?v=1',document.currentScript.src).href;
+    theme.src=new URL('theme.js?v=2',document.currentScript.src).href;
     theme.dataset.bastideThemeLoader='1';
     document.head.appendChild(theme);
   }

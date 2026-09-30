@@ -9,7 +9,7 @@
   if(!document.querySelector('link[data-bastide-theme]')){
     const link=document.createElement('link');
     link.rel='stylesheet';
-    link.href=new URL('theme.css?v=1',own).href;
+    link.href=new URL('theme.css?v=2',own).href;
     link.dataset.bastideTheme='1';
     document.head.appendChild(link);
   }
