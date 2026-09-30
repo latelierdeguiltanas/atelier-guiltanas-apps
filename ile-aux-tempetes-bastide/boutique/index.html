@@ -1,1 +1,156 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10261d"><title>Objets — Île aux Tempêtes · Bastide</title><link rel="stylesheet" href="../assets/bastide.css"></head><body><main class="shell"><nav class="topbar"><a href="../joueurs/">← Espace joueurs</a><span class="brand">LA BASTIDE</span></nav><section class="hero compact"><p class="eyebrow">Objets de campagne</p><h1>Le coffre est fermé pour le moment.</h1><p>Le contenu du scénario est conservé. L’attribution aux personnages sera activée après la Session 0, avec des destinataires propres à la Bastide.</p></section></main><script src="../assets/analytics.js"></script></body></html>
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>La boutique de Mila</title>
+    <link rel="stylesheet" href="../assets/bastide.css" />
+    <style>
+      .shop {
+        width: min(900px, 100%);
+        margin: auto;
+        padding: 14px;
+      }
+      .shopGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .product {
+        display: grid;
+        gap: 8px;
+      }
+      .product footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .product button,
+      .checkout {
+        border: 0;
+        border-radius: 11px;
+        background: var(--gold);
+        color: #142018;
+        padding: 10px;
+        font-weight: 900;
+      }
+      .cart {
+        position: sticky;
+        bottom: 8px;
+        margin-top: 14px;
+      }
+      .cartLine {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+        padding: 7px 0;
+      }
+      .empty {
+        color: var(--muted);
+      }
+      @media (max-width: 620px) {
+        .shopGrid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shop">
+      <a class="back" href="../joueurs/">← Espace joueurs</a>
+      <section class="hero">
+        <div class="eyebrow">Comptoir de l’Île</div>
+        <h1>La boutique de <span>Mila</span></h1>
+        <p id="who">
+          Le catalogue est ouvert. Pour acheter, ouvre d’abord ton lien
+          personnel de personnage sur ce téléphone.
+        </p>
+      </section>
+      <section id="products" class="shopGrid"></section>
+      <section class="panel cart">
+        <h2>Mon panier</h2>
+        <div id="cart"></div>
+        <button id="checkout" class="checkout">Valider l’achat</button>
+        <p id="message"></p>
+      </section>
+    </main>
+    <script src="../assets/inventory-api.js"></script>
+    <script src="../assets/analytics.js"></script>
+    <script>
+      (() => {
+        const A = window.BastideInventory,
+          cart = new Map(),
+          $ = (s) => document.querySelector(s),
+          esc = (s) =>
+            String(s ?? "").replace(
+              /[&<>"']/g,
+              (c) =>
+                ({
+                  "&": "&amp;",
+                  "<": "&lt;",
+                  ">": "&gt;",
+                  '"': "&quot;",
+                  "'": "&#39;",
+                })[c],
+            );
+        let catalog = [];
+        function draw() {
+          const lines = [...cart].map(([id, q]) => {
+            const x = catalog.find((i) => i.id === id);
+            return `<div class="cartLine"><span>${esc(x.name)} × ${q}</span><b>${x.price_silver * q} pa</b></div>`;
+          });
+          $("#cart").innerHTML =
+            lines.join("") || '<p class="empty">Panier vide.</p>';
+          $("#checkout").disabled = !lines.length || !A.hasKey();
+        }
+        async function load() {
+          try {
+            catalog = (await A.call("catalog")).items || [];
+            $("#products").innerHTML =
+              catalog
+                .map(
+                  (x) =>
+                    `<article class="panel product"><div><span class="pill">${esc(x.category)}</span><h2>${esc(x.name)}</h2><p>${esc(x.description)}</p><small>${x.stock == null ? "Disponible" : x.stock + " en stock"}</small></div><footer><b>${x.price_silver} pa</b><button data-add="${x.id}">Ajouter</button></footer></article>`,
+                )
+                .join() || "<p>Aucun article disponible.</p>";
+            if (A.hasKey()) {
+              const s = await A.call("state");
+              $("#who").textContent =
+                `${s.player.display_name} · ${s.player.state.silver || 0} pièces d’argent disponibles.`;
+            }
+            draw();
+          } catch (e) {
+            $("#message").textContent = e.message;
+          }
+        }
+        document.onclick = (e) => {
+          const b = e.target.closest("[data-add]");
+          if (b) {
+            cart.set(b.dataset.add, (cart.get(b.dataset.add) || 0) + 1);
+            draw();
+          }
+        };
+        $("#checkout").onclick = async () => {
+          try {
+            for (const [itemId, quantity] of cart)
+              await A.call("purchase", {
+                method: "POST",
+                body: { itemId, quantity },
+              });
+            cart.clear();
+            $("#message").textContent =
+              "Achat validé : les objets sont dans ton inventaire.";
+            await load();
+          } catch (e) {
+            $("#message").textContent = e.message;
+          }
+        };
+        load();
+      })();
+    </script>
+  </body>
+</html>

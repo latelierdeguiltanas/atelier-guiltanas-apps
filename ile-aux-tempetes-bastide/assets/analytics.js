@@ -2,6 +2,12 @@
    Propriété GA4 : L’Île aux Tempêtes — ID de mesure G-5T7R70G1ZG.
    Les pages MJ/admin ne chargent pas ce fichier. */
 (()=>{
+  if(!document.querySelector('script[data-bastide-theme-loader]')){
+    const theme=document.createElement('script');
+    theme.src=new URL('theme.js?v=1',document.currentScript.src).href;
+    theme.dataset.bastideThemeLoader='1';
+    document.head.appendChild(theme);
+  }
   // Le chargeur de portraits n'est pas un outil de suivi : il est chargé indépendamment du consentement Analytics.
   if(!document.querySelector('script[data-iat-portrait-loader]')){
     const p=document.createElement('script');

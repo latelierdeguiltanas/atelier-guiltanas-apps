@@ -1,0 +1,24 @@
+#bastide-theme-toggle{position:fixed;z-index:2147483000;right:max(8px,env(safe-area-inset-right));top:max(8px,env(safe-area-inset-top));min-width:66px;border:1px solid #d8c88f88;border-radius:999px;background:#10291df2;color:#f5f0df;padding:7px 9px;font:800 .66rem/1 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 5px 18px #0007;cursor:pointer;backdrop-filter:blur(8px)}
+html[data-effective-theme="dark"]{color-scheme:dark}
+html[data-effective-theme="light"]{color-scheme:light;--forest:#e8dfc9;--forest2:#f4ead3;--forest3:#d5c5a5;--gold:#75591d;--gold2:#624716;--wood:#8b6847;--ink:#28231b;--muted:#625c50;--panel:rgba(255,250,237,.95);--line:rgba(91,69,31,.32);--danger:#8d352d;--ok:#287244}
+html[data-effective-theme="light"] body{background:radial-gradient(circle at 12% -5%,#fff8e8 0,transparent 34%),radial-gradient(circle at 100% 0,#d7bd86 0,transparent 25%),linear-gradient(160deg,#eee4cf,#d9c9aa 70%);color:#28231b}
+html[data-effective-theme="light"] body:before{opacity:.045;background-image:repeating-linear-gradient(45deg,#4c371c 0 1px,transparent 1px 8px)}
+html[data-effective-theme="light"] .hero,html[data-effective-theme="light"] .welcome,html[data-effective-theme="light"] .chronicle-hero{background:linear-gradient(125deg,#fffaf0f7,#eadbbcf0),radial-gradient(circle at 85% 20%,#8b681f30,transparent 22%);color:#28231b;box-shadow:0 20px 55px #563b1826}
+html[data-effective-theme="light"] .hero p,html[data-effective-theme="light"] .welcome p,html[data-effective-theme="light"] .chronicle-hero p:last-child,html[data-effective-theme="light"] .panel p,html[data-effective-theme="light"] .card p{color:#625c50}
+html[data-effective-theme="light"] .action,html[data-effective-theme="light"] .button,html[data-effective-theme="light"] .choice{background:#fff9eb;color:#28231b}
+html[data-effective-theme="light"] .choice.primary,html[data-effective-theme="light"] .action.primary,html[data-effective-theme="light"] .button.primary{background:linear-gradient(135deg,#d8c07d,#b39348);color:#201b12}
+html[data-effective-theme="light"] .choice.combat{background:linear-gradient(145deg,#cda876,#9f7348);color:#211b14}
+html[data-effective-theme="light"] .choice small,html[data-effective-theme="light"] .action small{color:#625c50}
+html[data-effective-theme="light"] .carouselWrap,html[data-effective-theme="light"] .tabs-wrap{background:linear-gradient(180deg,#e8dec7 76%,transparent)}
+html[data-effective-theme="light"] .sheet-top .back,html[data-effective-theme="light"] .playerHead .back,html[data-effective-theme="light"] .chronicle-nav,html[data-effective-theme="light"] .chronicle-nav a{color:#5e4516}
+html[data-effective-theme="light"] .tabs button{background:#fff8e8;color:#494239;border-color:#8c713d77}
+html[data-effective-theme="light"] .tabs button.active{background:linear-gradient(135deg,#d8c07d,#a78942);color:#1c1a13}
+html[data-effective-theme="light"] .editor-head,html[data-effective-theme="light"] .editor-head>a,html[data-effective-theme="light"] .editor-head small{color:#5e4516}
+html[data-effective-theme="light"] .drafts,html[data-effective-theme="light"] .editor-panel{background:#fff9eb;color:#28231b;border-color:#8c713d55}
+html[data-effective-theme="light"] .draft-button,html[data-effective-theme="light"] .upload-card{background:#f3e6ca;color:#28231b;border-color:#8c713d55}
+html[data-effective-theme="light"] .draft-button.active{background:#dcc690;border-color:#75591d}
+html[data-effective-theme="light"] .editor-panel label,html[data-effective-theme="light"] .media-zone>p,html[data-effective-theme="light"] .draft-button small{color:#625028}
+html[data-effective-theme="light"] .editor-panel input,html[data-effective-theme="light"] .editor-panel textarea,html[data-effective-theme="light"] .editor-panel select{background:#fffdf7;color:#28231b;border-color:#8c713d77;-webkit-text-fill-color:#28231b}
+html[data-effective-theme="dark"] input,html[data-effective-theme="dark"] textarea,html[data-effective-theme="dark"] select{color-scheme:dark}
+html[data-effective-theme="light"] input,html[data-effective-theme="light"] textarea,html[data-effective-theme="light"] select{color-scheme:light}
+@media(max-width:560px){#bastide-theme-toggle{min-width:35px;width:35px;height:35px;padding:0;overflow:hidden;text-indent:-999px}#bastide-theme-toggle:after{content:"◐";display:grid;place-items:center;position:absolute;inset:0;text-indent:0;font-size:.85rem}html[data-effective-theme="light"] #bastide-theme-toggle:after{content:"☀"}html[data-effective-theme="dark"] #bastide-theme-toggle:after{content:"☾"}html[data-theme="auto"] #bastide-theme-toggle:after{content:"◐"}}

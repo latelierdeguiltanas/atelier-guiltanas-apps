@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Inventaires — MJ Bastide</title>
+    <link rel="stylesheet" href="../../../assets/bastide.css" />
+    <style>
+      .app {
+        width: min(1000px, 100%);
+        margin: auto;
+        padding: 14px;
+      }
+      .cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      label {
+        display: grid;
+        gap: 4px;
+        margin: 8px 0;
+        color: var(--muted);
+        font-weight: 800;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #0a2015;
+        color: var(--ink);
+        padding: 10px;
+      }
+      button {
+        border: 0;
+        border-radius: 10px;
+        background: var(--gold);
+        color: #142018;
+        padding: 11px;
+        font-weight: 900;
+      }
+      .players {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+      .players label {
+        display: flex;
+        align-items: center;
+        background: #10291d;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 7px 10px;
+      }
+      .row {
+        border-bottom: 1px solid var(--line);
+        padding: 9px 0;
+      }
+      @media (max-width: 720px) {
+        .cols {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <a class="back" href="../../">← Table du MJ</a>
+      <section class="hero">
+        <div class="eyebrow">Bastide uniquement</div>
+        <h1>Inventaires et <span>boutique</span></h1>
+        <p>
+          Envoie un objet ou de la monnaie à un ou plusieurs joueurs, et
+          administre le comptoir de Mila.
+        </p>
+      </section>
+      <p id="status"></p>
+      <div class="cols">
+        <section class="panel">
+          <h2>Envoyer aux joueurs</h2>
+          <div id="players" class="players"></div>
+          <label
+            >Objet (vide = monnaie seule)<input
+              id="name"
+              placeholder="Ex. Javelot de Vivelame" /></label
+          ><label
+            >Profil mécanique<input
+              id="base"
+              placeholder="Ex. Épée longue" /></label
+          ><label
+            >Catégorie<select id="category">
+              <option>Arme</option>
+              <option>Protection</option>
+              <option>Consommable</option>
+              <option selected>Équipement</option>
+              <option>Objet spécial</option>
+            </select></label
+          ><label
+            >Quantité<input
+              id="quantity"
+              type="number"
+              value="1"
+              min="1" /></label
+          ><label>Description / effet<textarea id="notes"></textarea></label
+          ><label
+            >Pièces d’argent ajoutées<input
+              id="silver"
+              type="number"
+              value="0"
+              min="0" /></label
+          ><button id="send">Envoyer</button>
+        </section>
+        <section class="panel">
+          <h2>Ajouter chez Mila</h2>
+          <label>Nom<input id="shopName" /></label
+          ><label>Profil mécanique<input id="shopBase" /></label
+          ><label>Catégorie<input id="shopCategory" value="Équipement" /></label
+          ><label>Description<textarea id="shopDescription"></textarea></label
+          ><label>Prix en pa<input id="price" type="number" min="0" /></label
+          ><label
+            >Stock (vide = illimité)<input
+              id="stock"
+              type="number"
+              min="0" /></label
+          ><button id="addShop">Ajouter au catalogue</button>
+          <h2>Catalogue</h2>
+          <div id="catalog"></div>
+        </section>
+      </div>
+      <section class="panel">
+        <h2>État des inventaires</h2>
+        <div id="states"></div>
+      </section>
+    </main>
+    <script src="../../../assets/inventory-api.js"></script>
+    <script src="../../../assets/theme.js"></script>
+    <script>
+      (() => {
+        const A = window.BastideInventory,
+          $ = (s) => document.querySelector(s),
+          esc = (s) =>
+            String(s ?? "").replace(
+              /[&<>"']/g,
+              (c) =>
+                ({
+                  "&": "&amp;",
+                  "<": "&lt;",
+                  ">": "&gt;",
+                  '"': "&quot;",
+                  "'": "&#39;",
+                })[c],
+            );
+        async function load() {
+          try {
+            const d = await A.call("admin");
+            $("#players").innerHTML = d.players
+              .map(
+                (p) =>
+                  `<label><input type="checkbox" value="${p.id}"> ${esc(p.display_name)}</label>`,
+              )
+              .join("");
+            $("#states").innerHTML = d.players
+              .map(
+                (p) =>
+                  `<div class="row"><b>${esc(p.display_name)}</b> · ${p.state.silver || 0} pa · ${(p.state.inventory || []).length} lignes d’objet</div>`,
+              )
+              .join("");
+            $("#catalog").innerHTML = d.items
+              .map(
+                (x) =>
+                  `<div class="row"><b>${esc(x.name)}</b> · ${x.price_silver} pa · ${x.stock == null ? "stock illimité" : x.stock + " restant(s)"}</div>`,
+              )
+              .join("");
+            $("#status").textContent = "Données Bastide synchronisées.";
+          } catch (e) {
+            $("#status").textContent = e.message;
+          }
+        }
+        $("#send").onclick = async () => {
+          try {
+            const playerIds = [
+                ...document.querySelectorAll("#players input:checked"),
+              ].map((x) => x.value),
+              name = $("#name").value.trim();
+            await A.call("send", {
+              method: "POST",
+              body: {
+                playerIds,
+                silver: Number($("#silver").value) || 0,
+                item: name
+                  ? {
+                      name,
+                      base: $("#base").value,
+                      category: $("#category").value,
+                      quantity: Number($("#quantity").value) || 1,
+                      notes: $("#notes").value,
+                    }
+                  : null,
+              },
+            });
+            $("#status").textContent = "Envoi effectué.";
+            await load();
+          } catch (e) {
+            $("#status").textContent = e.message;
+          }
+        };
+        $("#addShop").onclick = async () => {
+          try {
+            await A.call("shop-item", {
+              method: "POST",
+              body: {
+                name: $("#shopName").value,
+                base: $("#shopBase").value,
+                category: $("#shopCategory").value,
+                description: $("#shopDescription").value,
+                price_silver: Number($("#price").value) || 0,
+                stock: $("#stock").value,
+              },
+            });
+            $("#status").textContent = "Article ajouté chez Mila.";
+            await load();
+          } catch (e) {
+            $("#status").textContent = e.message;
+          }
+        };
+        load();
+      })();
+    </script>
+  </body>
+</html>
