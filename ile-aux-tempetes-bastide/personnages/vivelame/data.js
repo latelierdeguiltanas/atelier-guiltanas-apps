@@ -4,10 +4,10 @@ stats:{AGI:2,CON:1,FOR:0,PER:0,CHA:-2,INT:3,VOL:0},
 combat:{pvMax:9,pcMax:1,pmMax:0,recoveryDie:'D8',recoveryMax:3,init:10,def:16,contact:1,distance:3,magic:1,silver:0},
 attacks:[
 {id:'petoire',name:'Pétoire',type:'Distance',attack:3,damage:'1d10',range:'20 m',special:''},
-{id:'epee-longue',name:'Épée longue',type:'Contact',attack:1,damage:'1d8',range:'Contact',special:''},
+{id:'javelot-vivelame',name:'Javelot',baseRule:'Épée longue',type:'Contact',attack:1,damage:'1d8',damageType:'Perforant',range:'Contact',special:'Apparence personnalisée ; profil mécanique de l’épée longue'},
 {id:'dague-contact',name:'Dague',type:'Contact',attack:1,damage:'1d4',range:'Contact',special:''}
 ],
-equipment:['Pétoire','Épée longue','Dague','Cuir renforcé / broigne'],
+equipment:['Pétoire','Javelot (profil mécanique : épée longue)','Dague','Cuir renforcé / broigne'],
 paths:[
 {name:'Voie du peuple - Âme-forgée',ranks:[
 {rank:1,owned:true,name:'Main lourde',text:'À mains nues, l’âme-forgée inflige 1d6 DM létaux.'},

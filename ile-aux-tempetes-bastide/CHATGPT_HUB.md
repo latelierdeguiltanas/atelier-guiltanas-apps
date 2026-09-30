@@ -12,8 +12,17 @@
 - Système cible : Chroniques Oubliées Fantasy 2.
 - Les anciennes fiches D&D/Nespresso ont été supprimées de cette instance.
 - Le personnage `demo` est un test technique fondé sur Forge `MANUAL_02`; il ne doit pas être présenté comme un prétiré officiel BBE.
-- Schéma cible des personnages : `bastide-character-v1`.
+- Schéma courant des personnages : `bastide-character-v2`.
 - Préfixe de sauvegarde : `iot_bastide_cof2_`.
+
+## Fiche interactive commune
+
+- Le moteur partagé se trouve dans `personnages/fiche.js` et sa présentation dans `personnages/fiche.css`.
+- Les pages individuelles ne contiennent que le chargement de leur `data.js` puis du moteur commun.
+- Toute nouvelle page de PJ charge uniquement son `data.js`, puis `../fiche.js` et `../fiche.css` ; une fiche existante sert de squelette minimal.
+- La fiche commune comprend : ressources, attaques, actions propres au héros, états, capacités acquises, règles de combat essentielles, caractéristiques, équipement actuel, monnaie, récupération, usages limités et notes.
+- Les dés restent physiques. Le suivi ne doit jamais lancer automatiquement un dé.
+- Les états, usages, ressources et notes restent locaux jusqu'à la mise en place de l'inventaire partagé Bastide.
 
 ## État après création des premiers personnages
 
@@ -27,7 +36,7 @@
 ## Import des personnages suivants
 
 1. Exporter chaque héros depuis Forge ou relever la fiche papier.
-2. Transformer les données dans le schéma `bastide-character-v1`.
+2. Transformer les données dans le schéma `bastide-character-v2`.
 3. Ajouter le personnage au registre Bastide.
 4. Tester PV, DEF, INIT, PC/PM, attaques, capacités, équipement et sauvegarde locale.
 5. Créer les destinataires Bastide du système de découvertes avant son activation.
