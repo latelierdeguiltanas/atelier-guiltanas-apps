@@ -19,7 +19,7 @@
 
 - Accueil Bastide différencié vert forêt / or.
 - Espace joueurs réorganisé autour d’un accès principal à la fiche.
-- Trois fiches COF2 Bastide sont intégrées : Prépôtante, Scanlan et Wilfried.
+- Cinq fiches COF2 Bastide sont intégrées : Prépôtante, Scanlan, Wilfried, Vivelame et Zepheline.
 - La fiche de démonstration reste présente techniquement mais n’est plus proposée dans le registre joueurs.
 - Le gestionnaire de combat D&D a été retiré de Bastide.
 - La distribution en ligne des découvertes doit rester désactivée tant que les destinataires Bastide ne sont pas isolés du groupe Nespresso côté données.
