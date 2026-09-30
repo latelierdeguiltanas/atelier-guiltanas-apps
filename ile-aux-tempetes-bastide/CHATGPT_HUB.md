@@ -15,15 +15,16 @@
 - Schéma cible des personnages : `bastide-character-v1`.
 - Préfixe de sauvegarde : `iot_bastide_cof2_`.
 
-## État avant session 0
+## État après création des premiers personnages
 
 - Accueil Bastide différencié vert forêt / or.
 - Espace joueurs réorganisé autour d’un accès principal à la fiche.
-- Fiche COF2 de démonstration fonctionnelle.
+- Trois fiches COF2 Bastide sont intégrées : Prépôtante, Scanlan et Wilfried.
+- La fiche de démonstration reste présente techniquement mais n’est plus proposée dans le registre joueurs.
 - Le gestionnaire de combat D&D a été retiré de Bastide.
 - La distribution en ligne des découvertes doit rester désactivée tant que les destinataires Bastide ne sont pas isolés du groupe Nespresso côté données.
 
-## Après session 0
+## Import des personnages suivants
 
 1. Exporter chaque héros depuis Forge ou relever la fiche papier.
 2. Transformer les données dans le schéma `bastide-character-v1`.
