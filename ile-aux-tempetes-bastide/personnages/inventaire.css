@@ -146,6 +146,15 @@
 .money-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:8px }
 .money-grid>label { display:grid;gap:5px;text-align:center;color:#70551b;font-weight:900 }
 .money-grid .money { justify-content:center;border:1px solid var(--line);border-radius:11px;background:#fffdf7;padding:8px }
+.money-grid.readonly>div { display:grid;place-items:center;gap:3px;border:1px solid var(--line);border-radius:11px;background:#fffdf7;padding:10px;color:#70551b }
+.money-grid.readonly small { font-size:.7rem;font-weight:900 }
+.money-grid.readonly b { font-size:1.15rem }
+.money-transfer { margin:9px 0;border:1px solid var(--line);border-radius:12px;background:#fffdf7 }
+.money-transfer summary { padding:11px;color:#70551b;font-weight:900;cursor:pointer }
+.transfer-grid { display:grid;grid-template-columns:1.4fr repeat(3,.65fr);gap:7px;padding:0 10px 10px }
+.transfer-grid label { color:#6d624e;font-size:.7rem;font-weight:850 }
+.transfer-grid input,.transfer-grid select { width:100%;margin-top:4px;border:1px solid var(--line);border-radius:9px;background:#fffdf7;padding:8px;color:var(--ink) }
+.transfer-grid button { align-self:end }
 .media-preview { margin-bottom:4px }
 .media-open { width:100%;display:grid;grid-template-columns:80px 1fr;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;background:#f7edcf;color:#5f4819;padding:8px;text-align:left;font-weight:900 }
 .media-open img { width:80px;height:64px;object-fit:cover;border-radius:8px }
@@ -159,6 +168,9 @@
 @media (max-width: 520px) {
   .money-grid { grid-template-columns:1fr }
   .money-grid>label { grid-template-columns:50px 1fr;align-items:center;text-align:left }
+  .money-grid.readonly { grid-template-columns:repeat(3,1fr) }
+  .transfer-grid { grid-template-columns:repeat(3,1fr) }
+  .transfer-grid label:first-child,.transfer-grid button { grid-column:1/-1 }
   .inventory-editor {
     grid-template-columns: 1fr;
   }
