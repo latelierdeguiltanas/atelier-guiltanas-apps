@@ -78,7 +78,7 @@
         <p id="message"></p>
       </section>
     </main>
-    <script src="../assets/inventory-api.js"></script>
+    <script src="../assets/inventory-api.js?v=2"></script>
     <script src="../assets/analytics.js?v=3"></script>
     <script>
       (() => {
@@ -119,8 +119,9 @@
                 .join() || "<p>Aucun article disponible.</p>";
             if (A.hasKey()) {
               const s = await A.call("state");
+              const m=s.player.state.money||{po:0,pa:s.player.state.silver||0,pc:0};
               $("#who").textContent =
-                `${s.player.display_name} · ${s.player.state.silver || 0} pièces d’argent disponibles.`;
+                `${s.player.display_name} · ${m.po} PO, ${m.pa} PA et ${m.pc} PC disponibles.`;
             }
             draw();
           } catch (e) {
@@ -150,6 +151,7 @@
           }
         };
         load();
+        setInterval(load,15000);
       })();
     </script>
   </body>
