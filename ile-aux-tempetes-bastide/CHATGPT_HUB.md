@@ -49,3 +49,10 @@
 3. Ajouter le personnage au registre Bastide.
 4. Tester PV, DEF, INIT, PC/PM, attaques, capacités, équipement et sauvegarde locale.
 5. Créer les destinataires Bastide du système de découvertes avant son activation.
+
+## Laboratoire des récompenses
+
+- La page MJ `mj/outils/recompenses/` rassemble les créations maison liées aux quatre lieux du scénario.
+- Pas de bonus permanent brut en attaque, DEF ou dégâts pour les héros de niveau 1.
+- Les objets consommables privilégient un seul effet, une scène ou une utilisation.
+- La Voie de la Main du Maestro de Scanlan est un prototype à acheter rang par rang ; elle reste volontairement moins puissante que la Télékinésie de Zepheline.
