@@ -17,3 +17,5 @@ Application HTML autonome destinée au meneur de jeu.
 - *Les Dragons de l’Île aux Tempêtes* pour le rôle narratif et la composition initiale des rencontres.
 
 Les contenus marqués « Adaptation Île aux Tempêtes » ne sont pas présentés comme officiels COF2.
+
+Application publiée : https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/gestionnaire-combat-cof2/
