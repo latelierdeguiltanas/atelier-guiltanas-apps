@@ -27,11 +27,11 @@
 ## État après création des premiers personnages
 
 - Accueil Bastide différencié vert forêt / or.
-- Espace joueurs réorganisé autour d’un accès principal à la fiche.
+- Espace joueurs organisé autour d’un carrousel textuel compact, mobile-first, sans menu inférieur.
 - Cinq fiches COF2 Bastide sont intégrées : Prépôtante, Scanlan, Wilfried, Vivelame et Zepheline.
-- La fiche de démonstration reste présente techniquement mais n’est plus proposée dans le registre joueurs.
+- La fiche de démonstration reste présente techniquement mais n’est plus proposée dans le registre joueurs ni mise en avant dans l’espace MJ.
 - Le gestionnaire de combat D&D a été retiré de Bastide.
-- La distribution en ligne des découvertes doit rester désactivée tant que les destinataires Bastide ne sont pas isolés du groupe Nespresso côté données.
+- Cinq destinataires Bastide isolés sont actifs ; la distribution d’objets, d’indices et de monnaie est opérationnelle.
 
 ## Chroniques de Scanlan
 
