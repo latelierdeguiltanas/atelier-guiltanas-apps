@@ -1,5 +1,5 @@
 window.BASTIDE_CHARACTER={
-schema:'bastide-character-v2',id:'zepheline',name:'Zepheline',status:'BASTIDE_PLAYER_CHARACTER',source:'Export Forge of Heroes - 30 septembre 2026',level:1,people:'Fée',family:'Mage',profile:'Ensorceleur',age:'Vénérable',heroicIdeal:'',flaw:'',
+schema:'bastide-character-v2',id:'zepheline',name:'Zepheline',status:'BASTIDE_PLAYER_CHARACTER',source:'Export Forge of Heroes - 30 septembre 2026',level:1,people:'Fée',family:'',profile:'Ensorceleur',age:'Vénérable',heroicIdeal:'',flaw:'',
 stats:{AGI:1,CON:-2,FOR:-2,PER:0,CHA:2,INT:2,VOL:3},
 combat:{pvMax:4,pcMax:4,pmMax:8,recoveryDie:'D6',recoveryMax:0,init:12,def:14,contact:-1,distance:2,magic:4,silver:0},
 traits:['Vision dans le noir à 30 m','Vol : 10 m par action ; doit rester en mouvement et chute si elle est immobilisée ou incapable d’agir','+3 aux tests de discrétion','+1 en DEF','FOR maximale : -1','Armes limitées au d4','Armure légère ajustée uniquement','Aucun bouclier en vol'],
