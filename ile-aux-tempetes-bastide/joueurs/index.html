@@ -38,31 +38,31 @@
       }
       .carousel {
         display: flex;
-        gap: 9px;
+        gap: 7px;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
-        padding: 1px 0 4px;
+        padding: 1px 0 3px;
       }
       .carousel::-webkit-scrollbar {
         display: none;
       }
       .choice {
-        flex: 0 0 126px;
-        min-height: 92px;
+        flex: 0 0 auto;
+        min-height: 40px;
         scroll-snap-align: start;
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: center;
         border: 1px solid var(--line);
-        border-radius: 17px;
-        padding: 13px;
+        border-radius: 999px;
+        padding: 8px 12px;
         text-decoration: none;
         background: linear-gradient(145deg, #173a27, #0d2418);
-        box-shadow: 0 9px 22px #0005;
+        box-shadow: 0 4px 12px #0004;
       }
       .choice.primary {
-        flex-basis: 176px;
+        flex-basis: auto;
         background: linear-gradient(135deg, #e2d29a, #a98f4e);
         color: #142017;
         border-color: transparent;
@@ -72,18 +72,14 @@
         background: linear-gradient(145deg, #70482b, #2b2118);
       }
       .choiceIcon {
-        font-size: 1.35rem;
+        display: none;
       }
       .choice strong {
         display: block;
-        font-size: 0.92rem;
+        font-size: 0.82rem;
       }
       .choice small {
-        display: block;
-        margin-top: 3px;
-        color: var(--muted);
-        font-size: 0.69rem;
-        line-height: 1.2;
+        display: none;
       }
       .choice.primary small {
         color: #334331;
