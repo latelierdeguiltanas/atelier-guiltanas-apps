@@ -4,11 +4,10 @@ stats:{AGI:1,CON:-2,FOR:-2,PER:0,CHA:2,INT:2,VOL:3},
 combat:{pvMax:4,pcMax:4,pmMax:8,recoveryDie:'D6',recoveryMax:0,init:12,def:14,contact:-1,distance:2,magic:4,silver:0},
 traits:['Vision dans le noir à 30 m','Vol : 10 m par action ; doit rester en mouvement et chute si elle est immobilisée ou incapable d’agir','+3 aux tests de discrétion','+1 en DEF','FOR maximale : -1','Armes limitées au d4','Armure légère ajustée uniquement','Aucun bouclier en vol'],
 attacks:[
-{id:'dague-contact',name:'Dague',type:'Contact',attack:-1,damage:'1d4-2',range:'Contact',special:''},
-{id:'dague-distance',name:'Dague',type:'Distance',attack:2,damage:'1d4',range:'5 m',special:''},
+{id:'arc-feerique',name:'Arc féerique',type:'Distance',attack:2,damage:'1d4',range:'30 m',special:'Arme adaptée à sa taille ; dégâts limités au d4'},
 {id:'sous-tension',name:'Sous tension (M)*',type:'Magique',attack:4,damage:'1d4+CHA',range:'10 m',special:'Pendant CHA minutes : 1d4° DM à qui la blesse ou la touche au contact'}
 ],
-equipment:['Dague'],
+equipment:[{id:'arc-feerique',name:'Arc féerique',base:'Arc adapté à une Fée',category:'Arme',quantity:1,equipped:true,equipment:{slot:'main_hand',effect:'Arc adapté à sa taille.',weapon:{modes:[{label:'Distance',attackType:'distance',damage:'1d4',damageType:'perforant',range:'30 m',attackBonus:0,damageBonus:0}]}}}],
 paths:[
 {name:'Voie du peuple - Être féerique',ranks:[
 {rank:1,owned:true,name:'Langage des animaux',text:'Comprend et parle aux animaux ; +3 pour les comprendre, les calmer ou communiquer avec eux.'},
