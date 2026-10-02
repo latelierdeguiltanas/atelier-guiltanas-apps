@@ -4,9 +4,11 @@ Application HTML autonome destinée au meneur de jeu.
 
 ## Périmètre V1
 
-- équilibrage assisté de rencontres prédéfinies pour 1 à 5 PJ ;
-- initiative COF2 fixe mais entièrement modifiable ;
-- suivi manuel des tours, rounds, PV et états ;
+- proposition ordinaire fondée sur la référence officielle du NC, sans formule additive inventée ;
+- renforts et compositions librement modifiables par le MJ ;
+- initiative officielle conservée, avec variante de table « INIT de base + d10 » entièrement modifiable ;
+- suivi manuel des tours, rounds, dégâts, soins, PV et états ;
+- suivi manuel des poisons, saignements, régénérations et autres effets sur plusieurs tours ;
 - fiches complètes des monstres nécessaires aux premières rencontres ;
 - sauvegarde locale et import/export JSON ;
 - aucune résolution automatique des attaques et aucun passage automatique de tour.
