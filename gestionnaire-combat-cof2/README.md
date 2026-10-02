@@ -14,6 +14,8 @@ Application HTML autonome destinée au meneur de jeu.
 - initiative officielle conservée, avec variante de table « INIT de base + d10 » entièrement modifiable ;
 - suivi manuel des tours, rounds, dégâts, soins, PV et états ;
 - frise d’initiative numérotée distinguant les passages joués, le tour actuel et les passages à venir ;
+- sélection des PJ participants avant chaque rencontre, avec PV, DEF et initiative modifiables ;
+- chargement simultané des PJ sélectionnés et des monstres de la rencontre ;
 - suivi manuel des poisons, saignements, régénérations et autres effets sur plusieurs tours ;
 - fiches de combat complètes pour les créatures et PNJ de l’annexe ;
 - sauvegarde locale et import/export JSON ;
