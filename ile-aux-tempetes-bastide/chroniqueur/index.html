@@ -7,7 +7,7 @@
   <title>Atelier de Scanlan — Chroniques</title>
   <link rel="stylesheet" href="../assets/bastide.css">
   <link rel="stylesheet" href="../journal/chroniques.css">
-  <link rel="stylesheet" href="atelier.css?v=3">
+  <link rel="stylesheet" href="atelier.css?v=4">
 </head>
 <body>
   <main class="editor-shell">
@@ -29,6 +29,13 @@
           <label>Sous-titre<input id="subtitle" maxlength="220" placeholder="Ou comment nous avons presque eu un plan"></label>
           <label>Résumé<textarea id="summary" maxlength="30000" placeholder="Raconte la séance avec ta voix, sérieusement ou pas du tout…"></textarea></label>
           <label>Paroles de la chanson<textarea id="lyrics" maxlength="30000" placeholder="Couplet, refrain, calomnies diverses…"></textarea></label>
+          <section id="hymn-audio-import" class="hymn-audio-import" hidden>
+            <div><strong>♫ Musique de l’hymne</strong><p>Choisis le fichier audio : le brouillon sera créé automatiquement si nécessaire.</p></div>
+            <label>Fichier audio<input id="hymn-audio-file" type="file" accept="audio/mpeg,audio/mp4,audio/ogg,audio/wav,.mp3,.m4a,.ogg,.wav"></label>
+            <label>Titre de la piste<input id="hymn-audio-caption" maxlength="160" placeholder="Ex. L’hymne de Prépôtante"></label>
+            <button class="button primary" id="upload-hymn-audio" type="button">Importer la musique</button>
+            <div id="hymn-audio-status" class="hymn-audio-status"></div>
+          </section>
           <div class="form-actions"><button class="button primary" type="submit" id="save-entry">Créer le brouillon</button><button class="button" type="button" id="publish" disabled>Publier pour les joueurs</button><button class="button" type="button" id="unpublish" disabled>Remettre en brouillon</button></div>
         </form>
         <section id="media-zone" class="media-zone" hidden>
@@ -44,6 +51,6 @@
   <div id="toast" class="editor-toast"></div>
   <script src="../assets/theme.js?v=2"></script>
   <script src="../assets/chronicles-api.js?v=2"></script>
-  <script src="atelier.js?v=4"></script>
+  <script src="atelier.js?v=5"></script>
 </body>
 </html>
