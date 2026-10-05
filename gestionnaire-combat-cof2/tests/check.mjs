@@ -11,6 +11,9 @@ const playerIds=[...playerBlock.matchAll(/id:'([^']+)'/g)].map(m=>m[1]);
 if(playerIds.length!==5)throw new Error(`Équipe prédéfinie incomplète : ${playerIds.length}/5 PJ`);
 const encounterNames=['Plage — Marins noyés','Cloître — Marins noyés évités sur la plage','Île — Chaos aux sources chaudes','Île — Il court, il court, le hibours','Île — Renégats kobolds','B1 — Pieuvre serviteur des spores','B2 — Champignonnière','B3 — Nid de striges','B4 — Défense des myconides','B5 — Sanctuaire de Sinensa','B6 — Cristal : première vague','B6 — Après destruction du cristal','C4 — Quartiers du capitaine','C8 — Pont inférieur','Épave — Retour de la harpie','D2 — Ruines de la rotonde','D3 — Camp des kobolds','D5 — Vrléclair endormi','Final — Rituel de Vrléclair'];
 for(const value of encounterNames){if(!html.includes(value))throw new Error(`Rencontre absente : ${value}`)}
+if(!html.includes('<option>6</option>'))throw new Error('Le mode six PJ est absent');
+if(!/marins:\{[\s\S]*?variants:\{1:\{zombie:1\}/.test(html))throw new Error('La rencontre d’ouverture COF2 doit proposer un zombie au niveau 1');
+if(!html.includes('@media(max-width:620px)'))throw new Error('Le mode panneau PC étroit est absent');
 const encounterBlock=html.match(/const ENCOUNTERS=([\s\S]*?)const DIFF=/)?.[1]||'';
 const encounterIds=[...encounterBlock.matchAll(/^\s*(?:'([^']+)'|([\w-]+)):\{name:/gm)].map(m=>m[1]||m[2]);
 if(encounterIds.length!==19)throw new Error(`Inventaire de rencontres incomplet : ${encounterIds.length}/19`);
