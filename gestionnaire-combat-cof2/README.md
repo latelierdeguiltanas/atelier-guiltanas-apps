@@ -11,6 +11,9 @@ Interface optimisée pour un panneau étroit d’ordinateur d’environ 420 à 5
 - adaptations de campagne explicitement signalées pour les créatures sans équivalent direct ;
 - 19 rencontres prédéfinies localisées couvrant la plage, l’île, les grottes des Pousse-Mers, l’épave et l’observatoire ;
 - compositions et variantes de niveau reprises du gestionnaire final de la campagne, puis reliées aux profils COF2 ;
+- rééquilibrage COF2 spécifique des quantités : les effectifs D&D trop élevés deviennent des renforts facultatifs ;
+- base prudente prévue pour cinq PJ et renfort léger automatique pour un sixième PJ uniquement dans les rencontres de groupe ;
+- aucun doublement automatique des monstres majeurs (goule, hibours, harpie ou dragon) ;
 - éléments de scène non combattants, comme la sculpture du rituel, volontairement exclus de l’initiative ;
 - aucune formule additive de NC présentée comme officielle ;
 - renforts et compositions librement modifiables par le MJ ;
@@ -27,7 +30,7 @@ Interface optimisée pour un panneau étroit d’ordinateur d’environ 420 à 5
 - sauvegarde locale et import/export JSON ;
 - aucune résolution automatique des attaques et aucun passage automatique de tour.
 
-La conversion COF2 de la rencontre d’ouverture charge un zombie NC1 par défaut. Les trois marins noyés appartiennent à la composition D&D d’origine ; les deux suivants sont disponibles comme renforts manuels ou via une difficulté supérieure.
+La conversion COF2 de la rencontre d’ouverture charge un zombie NC1 par défaut. Les trois marins noyés appartiennent à la composition D&D d’origine ; les deux suivants sont disponibles comme renforts manuels ou via une difficulté supérieure. Chaque rencontre affiche sa justification d’équilibrage COF2 dans la proposition et dans « Voir la scène d’origine ».
 
 ## Sources
 
