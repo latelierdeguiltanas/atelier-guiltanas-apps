@@ -22,16 +22,18 @@
 - Toute nouvelle page de PJ charge uniquement son `data.js`, puis `../fiche.js` et `../fiche.css` ; une fiche existante sert de squelette minimal.
 - La fiche commune comprend : ressources, attaques, actions propres au héros, états, capacités acquises, règles de combat essentielles, caractéristiques, équipement actuel, monnaie, récupération, usages limités et notes.
 - Les dés restent physiques. Le suivi ne doit jamais lancer automatiquement un dé.
-- Les états, usages, ressources et notes restent locaux jusqu'à la mise en place de l'inventaire partagé Bastide.
+- Les états, usages, ressources et notes de partie restent locaux. L’inventaire, la monnaie, les achats et les transferts sont synchronisés dans l’inventaire partagé Bastide.
+- Les objets équipables portent un profil mécanique `equipment` ; les armures et boucliers créés par un joueur peuvent recevoir un profil COF2 officiel et modifier réellement la DEF.
 
 ## État après création des premiers personnages
 
 - Accueil Bastide différencié vert forêt / or.
 - Espace joueurs organisé autour d’un carrousel textuel compact, mobile-first, sans menu inférieur.
-- Cinq fiches COF2 Bastide sont intégrées : Prépôtante, Scanlan, Wilfried, Vivelame et Zepheline.
+- Six fiches COF2 Bastide sont intégrées : Prépôtante, Scanlan, Wilfried, Vivelame, Zéphéline et Faëlar.
 - La fiche de démonstration reste présente techniquement mais n’est plus proposée dans le registre joueurs ni mise en avant dans l’espace MJ.
 - Le gestionnaire de combat D&D a été retiré de Bastide.
-- Cinq destinataires Bastide isolés sont actifs ; la distribution d’objets, d’indices et de monnaie est opérationnelle.
+- Six destinataires Bastide isolés sont actifs ; la distribution d’objets, d’indices et de monnaie est opérationnelle.
+- Les six paquetages de départ COF2 sont installés avec 10 pa par héros. Le petit matériel de Mila suit les tarifs usuels du livre de base ; les potions de soins et de mana ordinaires coûtent 10 pa.
 
 ## Chroniques de Scanlan
 
