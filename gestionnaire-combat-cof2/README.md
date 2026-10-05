@@ -4,11 +4,12 @@ Application HTML autonome destinée au meneur de jeu.
 
 ## Périmètre actuel
 
-- 19 profils issus de l’annexe de l’Île aux Tempêtes, convertis en COF2 ;
+- 20 profils de créatures et PNJ utiles à l’Île aux Tempêtes, convertis en COF2, dont la guivre-follette ;
 - profils officiels COF2 repris sans modification lorsqu’un équivalent existe ;
 - adaptations de campagne explicitement signalées pour les créatures sans équivalent direct ;
-- 13 rencontres prédéfinies couvrant la plage, l’île, les grottes, l’épave, le monastère et l’observatoire ;
-- variantes de composition préparées pour les niveaux moyens 1 à 5 ;
+- 19 rencontres prédéfinies localisées couvrant la plage, l’île, les grottes des Pousse-Mers, l’épave et l’observatoire ;
+- compositions et variantes de niveau reprises du gestionnaire final de la campagne, puis reliées aux profils COF2 ;
+- éléments de scène non combattants, comme la sculpture du rituel, volontairement exclus de l’initiative ;
 - aucune formule additive de NC présentée comme officielle ;
 - renforts et compositions librement modifiables par le MJ ;
 - initiative officielle conservée, avec variante de table « INIT de base + d10 » entièrement modifiable ;
