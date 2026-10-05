@@ -2,6 +2,8 @@
 
 Application HTML autonome destinée au meneur de jeu.
 
+Interface optimisée pour un panneau étroit d’ordinateur d’environ 420 à 520 px de large, soit approximativement un quart d’écran Full HD sur un portable 17 pouces.
+
 ## Périmètre actuel
 
 - 20 profils de créatures et PNJ utiles à l’Île aux Tempêtes, convertis en COF2, dont la guivre-follette ;
@@ -16,6 +18,7 @@ Application HTML autonome destinée au meneur de jeu.
 - tableau de bord global du combat, sans combattant actif, validation de tour ni gestion imposée des rounds ;
 - frise d’initiative numérotée affichant en permanence l’ordre, les PV, la DEF et l’initiative de chacun ;
 - sélection des PJ participants avant chaque rencontre, avec PV, DEF et initiative modifiables ;
+- ajout persistant d’un sixième PJ ou de participants supplémentaires ;
 - chargement simultané des PJ sélectionnés et des monstres de la rencontre ;
 - panneaux séparés gardant les PJ et les monstres visibles, avec accès direct aux dégâts, soins, états et effets ;
 - clic sur un monstre pour ouvrir sa fiche de combat complète : statistiques, attaques, capacités et conseils utiles ;
@@ -23,6 +26,8 @@ Application HTML autonome destinée au meneur de jeu.
 - fiches de combat complètes pour les créatures et PNJ de l’annexe ;
 - sauvegarde locale et import/export JSON ;
 - aucune résolution automatique des attaques et aucun passage automatique de tour.
+
+La conversion COF2 de la rencontre d’ouverture charge un zombie NC1 par défaut. Les trois marins noyés appartiennent à la composition D&D d’origine ; les deux suivants sont disponibles comme renforts manuels ou via une difficulté supérieure.
 
 ## Sources
 
