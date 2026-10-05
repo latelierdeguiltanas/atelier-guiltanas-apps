@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
-const required=['Zombie humain','Goule','Guivre-follette','Harpie de l’épave','Hibours contaminé','Kobold ailé','Sinensa','Pieuvre serviteur des spores','Serpent de feu','Strige','Thallophyte violette','Vrléclair','Runara','Tarak','Varnoth','Calculer la composition','Exporter JSON','Initiative','Retarder','Ajouter un renfort','Effets suivis','INIT de base','Variante de campagne préparée','Ordre d’initiative','vue globale','Personnages joueurs','Monstres et adversaires','openCombatant','Gérer les états','Gérer les effets','toucher pour ouvrir la fiche','Personnages participants','Prépôtante','Scanlan','Wilfried','Zéphéline','Vivelame','Charger le combat complet','newPlayerFighter'];
+const required=['Zombie humain','Goule','Guivre-follette','Harpie de l’épave','Hibours contaminé','Kobold ailé','Sinensa','Pieuvre serviteur des spores','Serpent de feu','Strige','Thallophyte violette','Vrléclair','Runara','Tarak','Varnoth','Calculer la composition','Exporter JSON','Initiative','Retarder','Ajouter un renfort','Effets suivis','INIT de base','Variante COF2 prudente','Ordre d’initiative','vue globale','Personnages joueurs','Monstres et adversaires','openCombatant','Gérer les états','Gérer les effets','toucher pour ouvrir la fiche','Personnages participants','Prépôtante','Scanlan','Wilfried','Zéphéline','Vivelame','Charger le combat complet','newPlayerFighter'];
 for(const value of required){if(!html.includes(value))throw new Error(`Élément absent : ${value}`)}
 const monsterBlock=html.match(/const MONSTERS=([\s\S]*?)const ENCOUNTERS=/)?.[1]||'';
 const ids=[...monsterBlock.matchAll(/id:\s*'([^']+)'/g)].map(m=>m[1]);
@@ -14,10 +14,15 @@ for(const value of encounterNames){if(!html.includes(value))throw new Error(`Ren
 if(!html.includes('<option>6</option>'))throw new Error('Le mode six PJ est absent');
 if(!/marins:\{[\s\S]*?variants:\{1:\{zombie:1\}/.test(html))throw new Error('La rencontre d’ouverture COF2 doit proposer un zombie au niveau 1');
 if(!html.includes('@media(max-width:620px)'))throw new Error('Le mode panneau PC étroit est absent');
+if(!html.includes("size>=6&&e.sixth"))throw new Error('L’ajustement du sixième PJ est absent');
+if(/function changeRec\([^\n]+forced/.test(html))throw new Error('La modification manuelle d’une composition est encore verrouillée');
 const encounterBlock=html.match(/const ENCOUNTERS=([\s\S]*?)const DIFF=/)?.[1]||'';
 const encounterIds=[...encounterBlock.matchAll(/^\s*(?:'([^']+)'|([\w-]+)):\{name:/gm)].map(m=>m[1]||m[2]);
 if(encounterIds.length!==19)throw new Error(`Inventaire de rencontres incomplet : ${encounterIds.length}/19`);
+const balanceNotes=[...encounterBlock.matchAll(/balance:'([^']+)'/g)];
+if(balanceNotes.length!==19)throw new Error(`Justifications d’équilibrage incomplètes : ${balanceNotes.length}/19`);
 for(const ref of [...encounterBlock.matchAll(/allowed:\[([^\]]*)\]/g)].flatMap(m=>[...m[1].matchAll(/'([^']+)'/g)].map(x=>x[1]))){if(!ids.includes(ref))throw new Error(`Profil de rencontre absent du bestiaire : ${ref}`)}
+if(!/['"]b3-striges['"]:\{[\s\S]*?variants:\{1:\{stirge:3\},2:\{stirge:4\}/.test(html))throw new Error('Les striges conservent encore les quantités D&D');
 if(/action bonus|jet de sauvegarde contre la mort|facteur de puissance/i.test(html))throw new Error('Résidu D&D détecté');
 if(/function targetBudget/.test(html))throw new Error('Ancienne formule de budget NC encore présente');
 if(/COMBATTANT ACTIF|Nouveau round|Tour suivant|function nextTurn|function newRound|function renderActive/.test(html))throw new Error('Ancien moteur de tours encore présent');
