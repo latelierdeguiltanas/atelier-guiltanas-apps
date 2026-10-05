@@ -12,10 +12,12 @@ Application HTML autonome destinée au meneur de jeu.
 - aucune formule additive de NC présentée comme officielle ;
 - renforts et compositions librement modifiables par le MJ ;
 - initiative officielle conservée, avec variante de table « INIT de base + d10 » entièrement modifiable ;
-- suivi manuel des tours, rounds, dégâts, soins, PV et états ;
-- frise d’initiative numérotée distinguant les passages joués, le tour actuel et les passages à venir ;
+- tableau de bord global du combat, sans combattant actif, validation de tour ni gestion imposée des rounds ;
+- frise d’initiative numérotée affichant en permanence l’ordre, les PV, la DEF et l’initiative de chacun ;
 - sélection des PJ participants avant chaque rencontre, avec PV, DEF et initiative modifiables ;
 - chargement simultané des PJ sélectionnés et des monstres de la rencontre ;
+- panneaux séparés gardant les PJ et les monstres visibles, avec accès direct aux dégâts, soins, états et effets ;
+- clic sur un monstre pour ouvrir sa fiche de combat complète : statistiques, attaques, capacités et conseils utiles ;
 - suivi manuel des poisons, saignements, régénérations et autres effets sur plusieurs tours ;
 - fiches de combat complètes pour les créatures et PNJ de l’annexe ;
 - sauvegarde locale et import/export JSON ;
