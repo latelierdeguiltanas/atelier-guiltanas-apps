@@ -150,6 +150,7 @@ jobs:
           JS
           node /tmp/iat-e2e.js
       - name: Bastide character sheets — real tab clicks
+        if: always()
         run: |
           cat > /tmp/bastide-e2e.js <<'JS'
           const { chromium } = require(process.cwd() + '/node_modules/playwright');
