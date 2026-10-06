@@ -1,7 +1,7 @@
 window.BASTIDE_CHARACTER={
 schema:'bastide-character-v2',id:'vivelame',name:'Vivelame',status:'BASTIDE_PLAYER_CHARACTER',source:'Export Forge of Heroes - 30 septembre 2026',level:1,people:'Âme-forgée',family:'Aventurier',profile:'Arquebusier',age:'Vénérable',heroicIdeal:'',flaw:'',
 stats:{AGI:2,CON:1,FOR:0,PER:0,CHA:-2,INT:3,VOL:0},
-combat:{pvMax:9,pcMax:1,pmMax:0,recoveryDie:'D8',recoveryMax:3,init:10,def:16,contact:1,distance:3,magic:1,silver:0},
+combat:{speedMeters:10,pvMax:9,pcMax:1,pmMax:0,recoveryDie:'D8',recoveryMax:3,init:10,def:16,contact:1,distance:3,magic:1,silver:0},
 attacks:[
 {id:'petoire',name:'Pétoire',type:'Distance',attack:3,damage:'1d10',range:'20 m',special:''},
 {id:'javelot-vivelame',name:'Javelot',baseRule:'Épée longue',type:'Contact',attack:1,damage:'1d8',damageType:'Perforant',range:'Contact',special:'Apparence personnalisée ; profil mécanique de l’épée longue'},

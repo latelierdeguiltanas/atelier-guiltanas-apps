@@ -1,7 +1,7 @@
 window.BASTIDE_CHARACTER={
 schema:'bastide-character-v2',id:'wilfried',name:'Wilfried',status:'BASTIDE_PLAYER_CHARACTER',source:'Export Forge of Heroes - 28 septembre 2026',level:1,people:'Humain',family:'Mystique',profile:'Prêtre',heroicIdeal:'',flaw:'',
 stats:{AGI:2,CON:0,FOR:0,PER:0,CHA:4,INT:-1,VOL:1},
-combat:{pvMax:8,pcMax:7,pmMax:2,recoveryDie:'D8',recoveryMax:3,init:10,def:17,contact:1,distance:3,magic:2,silver:0},
+combat:{speedMeters:10,pvMax:8,pcMax:7,pmMax:2,recoveryDie:'D8',recoveryMax:3,init:10,def:17,contact:1,distance:3,magic:2,silver:0},
 attacks:[{id:'masse',name:'Masse',type:'Contact',attack:1,damage:'1d6',range:'Contact',special:''}],
 equipment:['Masse','Chemise de mailles','Petit bouclier'],
 paths:[

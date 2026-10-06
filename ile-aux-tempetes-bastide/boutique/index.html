@@ -55,6 +55,7 @@
       .empty {
         color: var(--muted);
       }
+      .saleGrid{display:grid;gap:7px}.saleLine{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center;border-bottom:1px solid var(--line);padding:8px 0}.saleLine small{display:block;color:var(--muted)}.saleLine input{width:62px;border:1px solid var(--line);border-radius:8px;background:#0b2117;color:var(--ink);padding:7px}.saleSummary{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px}
       @media (max-width: 420px) { .shop{padding:10px}.hero{padding:22px 18px}.product{padding:9px}.product button{padding:7px 9px;font-size:.75rem} }
     </style>
   </head>
@@ -77,6 +78,13 @@
         <button id="checkout" class="checkout">Valider l’achat</button>
         <p id="message"></p>
       </section>
+      <section class="panel sale">
+        <h2>Vendre à Mila</h2>
+        <p class="productMeta">Mila reprend les articles de son catalogue à la moitié de leur prix, avec un minimum de 1 PA. Les objets inconnus doivent d’abord être estimés par le MJ.</p>
+        <div id="sale-items" class="saleGrid"></div>
+        <div class="saleSummary"><b id="sale-total">0 PA proposés</b><button id="sell" class="checkout">Valider la vente</button></div>
+        <p id="sale-message"></p>
+      </section>
     </main>
     <script src="../assets/inventory-api.js?v=5"></script>
     <script src="../assets/analytics.js?v=3"></script>
@@ -97,14 +105,16 @@
                   "'": "&#39;",
                 })[c],
             );
-        let catalog = [], activeCategory = "Tout";
+        let catalog = [], activeCategory = "Tout", playerState = null;
+        const saleCart = new Map();
+        const openProducts = new Set();
         function drawFilters() {
           const categories = ["Tout", ...new Set(catalog.map((x) => x.category))];
           $("#filters").innerHTML = categories.map((x) => `<button class="${x===activeCategory?'active':''}" data-filter="${esc(x)}">${esc(x)}</button>`).join("");
         }
         function drawProducts() {
           const visible=activeCategory==="Tout"?catalog:catalog.filter(x=>x.category===activeCategory);
-          $("#products").innerHTML = visible.map((x) => `<article class="panel product"><div><span class="pill">${esc(x.category)}</span><h2>${esc(x.name)}</h2><div class="productMeta"><span>${x.stock == null ? "Stock illimité" : x.stock + " en stock"}</span>${x.base?`<span>· ${esc(x.base)}</span>`:""}</div></div><div class="buyBox"><b>${x.price_silver} PA</b><button data-add="${x.id}" ${x.stock===0?'disabled':''}>${x.stock===0?'Épuisé':'Ajouter'}</button></div>${x.description?`<details><summary>Détails</summary><p>${esc(x.description)}</p></details>`:""}</article>`).join("") || "<p>Aucun article dans cette catégorie.</p>";
+          $("#products").innerHTML = visible.map((x) => `<article class="panel product"><div><span class="pill">${esc(x.category)}</span><h2>${esc(x.name)}</h2><div class="productMeta"><span>${x.stock == null ? "Stock illimité" : x.stock + " en stock"}</span>${x.base?`<span>· ${esc(x.base)}</span>`:""}</div></div><div class="buyBox"><b>${x.price_silver} PA</b><button data-add="${x.id}" ${x.stock===0?'disabled':''}>${x.stock===0?'Épuisé':'Ajouter'}</button></div>${x.description?`<details data-product-details="${x.id}" ${openProducts.has(String(x.id))?'open':''}><summary>Détails</summary><p>${esc(x.description)}</p></details>`:""}</article>`).join("") || "<p>Aucun article dans cette catégorie.</p>";
         }
         function draw() {
           const lines = [...cart].map(([id, q]) => {
@@ -115,6 +125,8 @@
             lines.join("") || '<p class="empty">Panier vide.</p>';
           $("#checkout").disabled = !lines.length || !A.hasKey();
         }
+        function saleOffer(item){const match=catalog.find(x=>String(x.id)===String(item.shopItemId)||x.name.toLowerCase()===String(item.name||'').toLowerCase()||(item.base&&x.base&&x.base.toLowerCase()===String(item.base).toLowerCase()));return match?{shop:match,price:Math.max(1,Math.floor(Number(match.price_silver||0)/2))}:null}
+        function drawSales(){const inventory=playerState?.inventory||[],sellable=inventory.filter(x=>Number(x.quantity)>0&&!x.equipped),lines=sellable.map(item=>{const offer=saleOffer(item),q=saleCart.get(item.id)||0;return `<div class="saleLine"><div><strong>${esc(item.name)}</strong><small>${offer?offer.price+' PA pièce':'Estimation du MJ requise'}${item.equipped?' · objet équipé':''}</small></div><input data-sale-qty="${esc(item.id)}" type="number" min="0" max="${Number(item.quantity)||0}" value="${q}" ${offer?'':'disabled'}><b>${offer?offer.price*q+' PA':'—'}</b></div>`}).join('');$("#sale-items").innerHTML=lines||'<p class="empty">Aucun objet disponible à la vente.</p>';let total=0;sellable.forEach(item=>{const offer=saleOffer(item);if(offer)total+=offer.price*(saleCart.get(item.id)||0)});$("#sale-total").textContent=total+' PA proposés';$("#sell").disabled=!total||!A.hasKey()}
         async function load() {
           try {
             catalog = (await A.call("catalog")).items || [];
@@ -122,11 +134,13 @@
             drawProducts();
             if (A.hasKey()) {
               const s = await A.call("state");
+              playerState=s.player.state;
               const m=s.player.state.money||{po:0,pa:s.player.state.silver||0,pc:0};
               $("#who").textContent =
                 `${s.player.display_name} · ${m.po} PO, ${m.pa} PA et ${m.pc} PC disponibles.`;
             }
             draw();
+            drawSales();
           } catch (e) {
             $("#message").textContent = e.message;
           }
@@ -140,6 +154,8 @@
             draw();
           }
         };
+        document.addEventListener("toggle",(e)=>{const d=e.target.closest?.("[data-product-details]");if(!d)return;if(d.open)openProducts.add(String(d.dataset.productDetails));else openProducts.delete(String(d.dataset.productDetails))},true);
+        document.addEventListener("input",e=>{const input=e.target.closest?.("[data-sale-qty]");if(!input)return;const item=(playerState?.inventory||[]).find(x=>x.id===input.dataset.saleQty),q=Math.max(0,Math.min(Number(item?.quantity)||0,Math.floor(Number(input.value)||0)));saleCart.set(input.dataset.saleQty,q);drawSales()});
         $("#checkout").onclick = async () => {
           try {
             for (const [itemId, quantity] of cart)
@@ -155,6 +171,7 @@
             $("#message").textContent = e.message;
           }
         };
+        $("#sell").onclick=async()=>{const lines=[...saleCart].filter(([,quantity])=>quantity>0).map(([itemId,quantity])=>({itemId,quantity}));if(!lines.length)return;if(!confirm('Confirmer la vente à Mila ? Les objets seront retirés de ton inventaire et la monnaie ajoutée immédiatement.'))return;try{const result=await A.call('sell',{method:'POST',body:{lines}});playerState=result.state;saleCart.clear();$("#sale-message").textContent='Vente validée : Mila a repris les objets et versé la monnaie.';await load()}catch(e){$("#sale-message").textContent=e.message}};
         load();
         setInterval(load,15000);
       })();

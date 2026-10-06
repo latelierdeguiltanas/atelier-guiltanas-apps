@@ -1,7 +1,7 @@
 window.BASTIDE_CHARACTER={
 schema:'bastide-character-v2',id:'prepotante',name:'Prépôtante',status:'BASTIDE_PLAYER_CHARACTER',source:'Export Forge of Heroes - 29 septembre 2026',level:1,people:'Gobelin',family:'Aventurier',profile:'Voleur',heroicIdeal:'',flaw:'',
 stats:{AGI:3,CON:1,FOR:1,PER:2,CHA:-2,INT:0,VOL:2},
-combat:{pvMax:9,pcMax:1,pmMax:0,recoveryDie:'D8',recoveryMax:3,init:15,def:16,contact:2,distance:4,magic:3,silver:0},
+combat:{speedMeters:10,pvMax:9,pcMax:1,pmMax:0,recoveryDie:'D8',recoveryMax:3,init:15,def:16,contact:2,distance:4,magic:3,silver:0},
 attacks:[
 {id:'rapiere',name:'Rapière',type:'Contact',attack:2,damage:'1d6+1',range:'Contact',special:''},
 {id:'dague-contact',name:'Dague',type:'Contact',attack:2,damage:'1d4+1',range:'Contact',special:''},

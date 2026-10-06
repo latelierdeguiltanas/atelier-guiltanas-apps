@@ -1,7 +1,7 @@
 window.BASTIDE_CHARACTER={
 schema:'bastide-character-v2',id:'scanlan',name:'Scanlan',status:'BASTIDE_PLAYER_CHARACTER',source:'Export Forge of Heroes - 29 septembre 2026',level:1,people:'Halfelin',family:'Aventurier',profile:'Barde',heroicIdeal:'',flaw:'',
 stats:{AGI:1,CON:1,FOR:-2,PER:0,CHA:3,INT:0,VOL:2},
-combat:{pvMax:9,pcMax:6,pmMax:4,recoveryDie:'D8',recoveryMax:3,init:10,def:14,contact:-1,distance:2,magic:3,silver:0},
+combat:{speedMeters:10,pvMax:9,pcMax:6,pmMax:4,recoveryDie:'D8',recoveryMax:3,init:10,def:14,contact:-1,distance:2,magic:3,silver:0},
 attacks:[
 {id:'rapiere',name:'Rapière',type:'Contact',attack:-1,damage:'1d6-2',range:'Contact',special:''},
 {id:'dague-contact',name:'Dague',type:'Contact',attack:-1,damage:'1d4-2',range:'Contact',special:''},

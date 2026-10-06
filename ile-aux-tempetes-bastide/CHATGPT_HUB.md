@@ -20,10 +20,19 @@
 - Le moteur partagé se trouve dans `personnages/fiche.js` et sa présentation dans `personnages/fiche.css`.
 - Les pages individuelles ne contiennent que le chargement de leur `data.js` puis du moteur commun.
 - Toute nouvelle page de PJ charge uniquement son `data.js`, puis `../fiche.js` et `../fiche.css` ; une fiche existante sert de squelette minimal.
-- La fiche commune comprend : ressources, attaques, actions propres au héros, états, capacités acquises, règles de combat essentielles, caractéristiques, équipement actuel, monnaie, récupération, usages limités et notes.
+- La fiche commune comprend : ressources, vitesse en mètres et en cases de 1,5 m, attaques, actions propres au héros, états, capacités acquises, règles de combat essentielles, caractéristiques, équipement actuel, monnaie, récupération, usages limités et notes.
 - Les dés restent physiques. Le suivi ne doit jamais lancer automatiquement un dé.
 - Les états, usages, ressources et notes de partie restent locaux. L’inventaire, la monnaie, les achats et les transferts sont synchronisés dans l’inventaire partagé Bastide.
 - Les objets équipables portent un profil mécanique `equipment` ; les armures et boucliers créés par un joueur peuvent recevoir un profil COF2 officiel et modifier réellement la DEF.
+- Faëlar dispose d’un onglet synchronisé pour son loup : nom libre, PV, DEF, initiative, attaque, dégâts et progression calculée selon son niveau et son rang de compagnon.
+- Les volets de détail d’inventaire restent ouverts pendant les actualisations automatiques afin de ne pas interrompre la lecture ou l’édition.
+
+## Boutique et espaces personnels
+
+- La boutique permet aux joueurs de revendre à Mila les objets non équipés reconnus dans son catalogue. La reprise est fixée à la moitié du prix courant, avec un minimum de 1 pa ; les objets inconnus nécessitent une estimation du MJ.
+- Une vente crédite la monnaie du joueur, retire l’objet de son inventaire et remet les quantités dans le stock fini de Mila au cours d’une seule transaction.
+- Les détails des produits restent ouverts pendant le rafraîchissement périodique du catalogue.
+- `espaces/?kind=contracts` est la contrathèque privée de Vivelame ; `espaces/?kind=confidences` est l’espace privé de Wilfried. Les contenus sont enregistrés côté serveur et isolés par propriétaire.
 
 ## État après création des premiers personnages
 

@@ -1,8 +1,8 @@
 window.BASTIDE_CHARACTER={
 schema:'bastide-character-v2',id:'faelar',name:'Faëlar',status:'BASTIDE_PLAYER_CHARACTER',source:'Rapport Forge of Heroes FIX135 - 3 octobre 2026',level:1,people:'Elfe sylvain',family:'Aventurier',profile:'Rôdeur',age:'Jeune',heroicIdeal:'',flaw:'',
 stats:{FOR:1,AGI:1,CON:2,PER:3,INT:1,VOL:0,CHA:-1},
-combat:{pvMax:10,pcMax:2,pmMax:0,recoveryDie:'D8',recoveryMax:4,init:14,def:14,contact:2,distance:2,magic:1,silver:0},
-traits:['Lumière des étoiles — capacité de peuple acquise au rang 1'],
+combat:{speedMeters:10,pvMax:10,pcMax:2,pmMax:0,recoveryDie:'D8',recoveryMax:4,init:14,def:14,contact:2,distance:2,magic:1,silver:0},
+traits:['Lumière des étoiles — capacité de peuple acquise au rang 1','Instinct de chasse — Zombies : après le combat de la plage, Faëlar a compris que les armes tranchantes percent leur résistance ; les autres dégâts physiques ont été réduits de moitié.'],
 attacks:[],
 equipment:[
 {id:'epee-longue',name:'Épée longue',base:'Épée longue',category:'Arme',quantity:1,equipped:false,notes:'Attaque au contact : +2 · 1d8+1 DM.',equipment:{slot:'main_hand',effect:'Arme de contact.',weapon:{modes:[{label:'Contact',attackType:'contact',damage:'1d8',damageStat:'FOR',damageType:'tranchant',range:'Contact',attackBonus:0,damageBonus:0}]}}},
