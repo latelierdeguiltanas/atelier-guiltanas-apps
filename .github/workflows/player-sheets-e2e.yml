@@ -6,6 +6,7 @@ on:
       - 'ile-aux-tempetes/personnages/**'
       - 'ile-aux-tempetes/joueurs/**'
       - 'ile-aux-tempetes/assets/personnages/**'
+      - 'ile-aux-tempetes-bastide/personnages/**'
       - '.github/workflows/player-sheets-e2e.yml'
   workflow_dispatch:
 
@@ -148,3 +149,36 @@ jobs:
           })().catch(e=>{console.error(e);process.exit(1)});
           JS
           node /tmp/iat-e2e.js
+      - name: Bastide character sheets — real tab clicks
+        run: |
+          cat > /tmp/bastide-e2e.js <<'JS'
+          const { chromium } = require(process.cwd() + '/node_modules/playwright');
+          const assert = require('assert');
+          const base='http://127.0.0.1:4173/ile-aux-tempetes-bastide/personnages';
+          const heroes=['prepotante','scanlan','wilfried','vivelame','zepheline','faelar'];
+          const common=['play','fight','abilities','stats','bag','rest','notes'];
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            for(const id of heroes){
+              const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];
+              page.on('pageerror',e=>errors.push(e.message));
+              await page.goto(`${base}/${id}/`,{waitUntil:'networkidle'});
+              assert.equal(errors.length,0,`${id}: ${errors.join(' | ')}`);
+              for(const section of common){
+                await page.locator(`[data-page="${section}"]`).click();
+                assert.equal(await page.locator('.page.active').getAttribute('id'),section,`${id}: ${section} non activé`);
+                assert(await page.locator(`#${section}`).isVisible(),`${id}: ${section} invisible`);
+              }
+              if(id==='scanlan'){
+                await page.locator('[data-page="atelier"]').click();
+                assert.equal(await page.locator('.page.active').getAttribute('id'),'atelier','Scanlan : atelier non activé');
+                assert.equal(await page.locator('#atelier a[href*="chroniqueur"]').count(),2,'Scanlan : accès atelier incomplets');
+                assert((await page.locator('#atelier').innerText()).includes('Chroniques et hymnes'),'Scanlan : contenu atelier absent');
+              }
+              await page.close();
+              console.log(`PASS | ${id} | navigation complète`);
+            }
+            await browser.close();
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
+          node /tmp/bastide-e2e.js
