@@ -27,7 +27,9 @@ Interface optimisée pour un panneau étroit d’ordinateur d’environ 420 à 5
 - affichage simultané en deux colonnes sur ordinateur, avec défilement indépendant des deux listes ;
 - priorité aux monstres sur une fenêtre très étroite afin d’éviter de traverser toute la liste des PJ ;
 - buffs de groupe manuels avec nom, description, durée libre, sélection des cibles et surbrillance persistante ;
-- Fylar et son loup chargés par défaut, mais désactivables comme les autres participants ;
+- Faëlar et son loup chargés par défaut, mais désactivables comme les autres participants ;
+- fiche de combat Faëlar issue du rapport Forge FIX135 : 10 PV, DEF 14, INIT 14, attaques et bonus utiles ;
+- loup rang 1 : 4 PV, DEF 13, INIT 14 et morsure affichée dans sa fiche rapide ;
 - le loup est suivi comme combattant sans compter comme un PJ supplémentaire dans l’équilibrage ;
 - clic sur un monstre pour ouvrir sa fiche de combat complète : statistiques, attaques, capacités et conseils utiles ;
 - suivi manuel des poisons, saignements, régénérations et autres effets sur plusieurs tours ;
