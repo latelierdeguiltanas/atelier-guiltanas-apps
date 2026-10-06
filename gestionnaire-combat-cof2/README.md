@@ -24,6 +24,11 @@ Interface optimisée pour un panneau étroit d’ordinateur d’environ 420 à 5
 - ajout persistant d’un sixième PJ ou de participants supplémentaires ;
 - chargement simultané des PJ sélectionnés et des monstres de la rencontre ;
 - panneaux séparés gardant les PJ et les monstres visibles, avec accès direct aux dégâts, soins, états et effets ;
+- affichage simultané en deux colonnes sur ordinateur, avec défilement indépendant des deux listes ;
+- priorité aux monstres sur une fenêtre très étroite afin d’éviter de traverser toute la liste des PJ ;
+- buffs de groupe manuels avec nom, description, durée libre, sélection des cibles et surbrillance persistante ;
+- Fylar et son loup chargés par défaut, mais désactivables comme les autres participants ;
+- le loup est suivi comme combattant sans compter comme un PJ supplémentaire dans l’équilibrage ;
 - clic sur un monstre pour ouvrir sa fiche de combat complète : statistiques, attaques, capacités et conseils utiles ;
 - suivi manuel des poisons, saignements, régénérations et autres effets sur plusieurs tours ;
 - fiches de combat complètes pour les créatures et PNJ de l’annexe ;
