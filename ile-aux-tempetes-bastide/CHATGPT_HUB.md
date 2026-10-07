@@ -72,3 +72,11 @@
 - Pas de bonus permanent brut en attaque, DEF ou dégâts pour les héros de niveau 1.
 - Les objets consommables privilégient un seul effet, une scène ou une utilisation.
 - La Voie de la Main du Maestro de Scanlan est un prototype à acheter rang par rang ; elle reste volontairement moins puissante que la Télékinésie de Zepheline.
+
+## Point de reprise opérationnel
+
+- Incident encore ouvert : les inventaires peuvent afficher « Hors connexion — copie locale conservée » alors que la boutique reste accessible. Ne pas considérer ce point comme résolu tant qu’un test authentifié n’a pas chargé les données Supabase depuis un lien MJ valide puis depuis un lien personnel de joueur valide.
+- Le correctif courant autorise la consultation MJ en lecture d’un inventaire au moyen de `playerId`, sans permettre à ce mode de consultation d’écraser les données du joueur.
+- Les clés d’accès sont conservées uniquement dans le fragment `#key=` et le stockage local. Elles ne doivent jamais être inscrites dans le dépôt ou dans Drive. Ne pas les régénérer sans vérifier les enregistrements Supabase et l’impact sur les liens déjà distribués.
+- Le workflow `Player sheets E2E` peut être globalement rouge à cause des anciens tests D&D de `ile-aux-tempetes/`. Le sous-test Bastide valide actuellement la navigation des six fiches et l’atelier de Scanlan, mais il ne teste pas une session Supabase authentifiée ni le chargement réel des inventaires.
+- Prochaine action prioritaire : diagnostiquer la sélection ou la reconnaissance de la clé utilisée par `bastide-inventory` sur mobile, corriger la cause racine, puis prouver séparément la consultation MJ et le chargement joueur.
