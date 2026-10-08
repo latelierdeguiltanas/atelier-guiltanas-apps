@@ -7,7 +7,7 @@ function setup(path,search='',hash=''){
 (async()=>{
  const s=setup('/atelier-guiltanas-apps/ile-aux-tempetes/inventaire/','?pj=vax','#key=secret-existing-token');
  assert.equal(s.storage.get('iat_player_handout_token_vax'),'secret-existing-token');
- await s.A.call('state');assert.match(s.calls[0].url,/playerId=vax/);assert.equal(s.calls[0].options.headers['x-campaign-token'],'secret-existing-token');
+ await s.A.call('state');const stateCall=s.calls.find(x=>x.url.includes('action=state'));assert.match(stateCall.url,/playerId=vax/);assert.equal(stateCall.options.headers['x-campaign-token'],'secret-existing-token');
  s.queue.push(new Error('timeout'));
  await assert.rejects(s.A.mutate('transfer-money',{recipientId:'hammerz',amount:{PO:1}}));
  const pending=JSON.parse(s.storage.get('iat_nespresso_pending_vax'));

@@ -140,3 +140,15 @@ Ce fichier est volontairement compact.
 - Accès constatés avant intervention : Vax, Hammerz et Lelio ont chacun une utilisation authentifiée enregistrée le 22 septembre ; Prométhée (`loris`) possède un lien actif mais aucune utilisation enregistrée. Le champ ne prouve pas qui a ouvert le lien.
 - Vérification : tests SQL rollback réussis (transactions, bootstrap unique, réceptions différées, idempotence, quantités, stocks, vente, revision, permissions), tests Node API/stockage réussis, service HTTP catalogue 200 (87 articles), accès sans clé 401, conseiller sécurité Supabase sans alertes. Aucun objet/pièce de test persisté.
 - Limite explicite : les liens distribués ne sont pas disponibles en clair dans cette session. Les lectures HTTP avec ces clés existantes et la validation visuelle sur téléphone restent à faire par Math/les joueurs ; aucun test navigateur IA.
+
+
+## Supervision MJ Nespresso
+
+- Tableau MJ `mj/outils/economie/` : accès actif, dernier accès authentifié, activité/dernière sauvegarde de fiche, état de l’import, dernière lecture du sac, incidents de connexion signalés.
+- Bouton « Contrôler les quatre joueurs » : lectures actuelles via le même serveur que les joueurs, structure des sacs et monnaies, registre des clés actives, découvertes attribuées, catalogue Mila et registre des transactions. Contrôle non destructif ; il ne simule pas une connexion avec la clé du joueur et ne change pas son activité.
+- Consultation de chaque joueur en lecture seule, même avant import : inventaire/monnaie serveur (réceptions en attente si non importé), dernière copie de fiche et de notes, découvertes/cartes/documents avec réception/lecture/révocation, historique complet des échanges paginé.
+- Une nouvelle table `nespresso_activity` recueille les activités authentifiées et les copies de fiche/notes à l’usage normal, isolée de Bastide. La consultation MJ ne marque jamais les découvertes ou les échanges comme lus.
+- Reprise automatique du sac à la prochaine lecture joueur si une vraie sauvegarde locale complète existe. Copie avant import, fusion des dons en attente, bootstrap unique et reprise idempotente après timeout. Aucun import MJ à la place du joueur et aucune initialisation automatique à partir des seules données statiques.
+- Sans sauvegarde locale détectable, l’import manuel explicite reste proposé. Sans ouverture ultérieure sur le téléphone, les données restées uniquement locales ne sont pas accessibles au MJ.
+- Le suivi commence avec cette mise à jour. Aucune activité, lecture, erreur, note ou fiche passée n’est inventée. Une date de lecture serveur prouve une requête réussie, pas une consultation attentive du joueur.
+- Contrôle direct actuel : quatre clés actives, quatre inventaires serveur valides, quatre imports encore absents. Supabase : RLS active sans accès direct anonyme, conseiller sécurité sans alertes. Tests de supervision/authentification simulée, pagination, absence d’effets de lecture MJ et reprise automatique réussis ; aucun navigateur IA.
