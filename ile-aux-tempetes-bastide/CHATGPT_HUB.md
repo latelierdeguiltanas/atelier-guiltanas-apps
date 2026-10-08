@@ -83,3 +83,11 @@
 - Correctif `5e2adb8` : `.contains("audience", JSON.stringify([p.id]))`, déployé dans `bastide-inventory` version 16. Le code déployé avant correction était identique au fichier GitHub. Aucun changement de clé ou de données.
 - Vérification effectuée : requête JSONB corrigée exécutée pour les six personnages ; inventaires présents (Faëlar 13, Prépôtante 13, Scanlan 12, Vivelame 11, Wilfried 9, Zéphéline 12 objets). La validation SQL ne remplace pas les deux lectures HTTP authentifiées.
 - Prochaine action prioritaire : prouver le chargement réel depuis les liens MJ et joueur existants. Les accès de gestion GitHub/Supabase sont opérationnels, mais ils ne fournissent pas les clés personnelles en clair, seulement leurs empreintes en base. Ne pas régénérer les clés pour contourner cette limite. Incident maintenu ouvert jusqu’à ces deux vérifications.
+
+## Accès individuel aux fiches
+
+- Le portail joueurs appelle `bastide-inventory?action=identity` et propose uniquement la fiche correspondant à la clé validée ; une clé MJ valide conserve les six liens.
+- Le moteur commun vérifie l’identité avant le chargement des sauvegardes et l’affichage. Un lien vers un autre PJ redirige vers le propriétaire de la clé ; sans clé valide ou en cas d’échec, la fiche reste verrouillée.
+- Le serveur refuse désormais `state` et `bootstrap` si une clé joueur demande un autre `playerId`. L’identité est déterminée par la clé, jamais par un indicateur MJ local.
+- L’attribution automatique d’une clé MJ en clair dans la page MJ a été retirée. Les accès MJ nécessitent la clé existante valide ; aucune rotation effectuée.
+- Limite : les données statiques `data.js` et l’historique GitHub restent publics sur GitHub Pages. Le verrouillage de l’interface ne rend pas ces fichiers confidentiels. Une confidentialité complète exige leur déplacement vers une API authentifiée et la rotation de la clé MJ anciennement publiée, à préparer sans invalider les liens à l’insu du MJ.
