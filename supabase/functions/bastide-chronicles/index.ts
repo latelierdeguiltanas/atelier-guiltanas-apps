@@ -2,7 +2,7 @@ import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "content-type, x-bastide-chronicle-token",
+  "Access-Control-Allow-Headers": "content-type, x-bastide-chronicle-token, x-bastide-key",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
 };
 const db = createClient(
@@ -18,6 +18,14 @@ const json = (body: unknown, status = 200) => new Response(JSON.stringify(body),
 async function digest(value: string) {
   const bytes = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
   return Array.from(new Uint8Array(bytes), x => x.toString(16).padStart(2, "0")).join("");
+}
+
+async function requireAdmin(req: Request) {
+  const key=(req.headers.get("x-bastide-key")??"").replace(/ /g,"+").trim();
+  if(!key)return false;
+  const {data,error}=await db.from("bastide_admin_tokens").select("token_hash").eq("token_hash",await digest(key)).is("revoked_at",null).maybeSingle();
+  if(error)throw error;
+  return !!data;
 }
 
 async function requireEditor(req: Request) {
@@ -51,12 +59,13 @@ async function decorate(rows: Array<Record<string, unknown>>) {
   }));
 }
 
-async function listChronicles(publicOnly: boolean) {
+async function listChronicles(publicOnly: boolean, entryType = "") {
   let query = db.from("bastide_chronicles")
-    .select("id, session_number, session_date, title, subtitle, summary_text, lyrics_text, status, published_at, created_at, updated_at, bastide_chronicle_assets(id, kind, original_name, mime_type, file_size, caption, sort_order, storage_path, created_at)")
+    .select("id, entry_type, character_id, session_number, session_date, title, subtitle, summary_text, lyrics_text, status, published_at, created_at, updated_at, bastide_chronicle_assets(id, kind, original_name, mime_type, file_size, caption, sort_order, storage_path, created_at)")
     .order("session_number", { ascending: false, nullsFirst: false })
     .order("created_at", { ascending: false });
   if (publicOnly) query = query.eq("status", "published");
+  if (entryType) query = query.eq("entry_type", entryType);
   const { data, error } = await query;
   if (error) throw error;
   return await decorate((data ?? []) as Array<Record<string, unknown>>);
@@ -72,8 +81,15 @@ async function saveChronicle(payload: Record<string, unknown>) {
   if (!title) throw new Error("Le titre est obligatoire.");
   const rawSession = payload.session_number;
   const sessionNumber = rawSession === "" || rawSession == null ? null : Math.max(0, Math.min(999, Number(rawSession) || 0));
+  const entryType = payload.entry_type === "hymn" ? "hymn" : "chronicle";
+  const allowedCharacters = new Set(["prepotante", "scanlan", "wilfried", "vivelame", "zepheline", "faelar"]);
+  const requestedCharacter = cleanText(payload.character_id, 40);
+  const characterId = entryType === "hymn" && allowedCharacters.has(requestedCharacter) ? requestedCharacter : null;
+  if (entryType === "hymn" && !characterId) throw new Error("Choisis le personnage de cet hymne.");
   const values = {
-    session_number: sessionNumber,
+    entry_type: entryType,
+    character_id: characterId,
+    session_number: entryType === "chronicle" ? sessionNumber : null,
     session_date: /^\d{4}-\d{2}-\d{2}$/.test(String(payload.session_date ?? "")) ? payload.session_date : null,
     title,
     subtitle: cleanText(payload.subtitle, 220),
@@ -122,11 +138,17 @@ Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
   const action = new URL(req.url).searchParams.get("action") ?? "";
   try {
-    if (req.method === "GET" && action === "published") return json({ chronicles: await listChronicles(true) });
+    if (req.method === "GET" && action === "published") return json({ chronicles: await listChronicles(true, "chronicle") });
+    if (req.method === "GET" && action === "published-hymns") return json({ hymns: await listChronicles(true, "hymn") });
+    if (await requireAdmin(req)) {
+      if(req.method==="GET"&&action==="dashboard")return json({chronicles:await listChronicles(false),access:"admin"});
+      if(req.method==="POST"&&action==="verify")return json({ok:true,access:"admin"});
+      return json({error:"Consultation MJ en lecture seule."},403);
+    }
     if (!await requireEditor(req)) return json({ error: "Lien chroniqueur invalide ou expiré." }, 401);
-    if (req.method === "GET" && action === "dashboard") return json({ chronicles: await listChronicles(false) });
+    if (req.method === "GET" && action === "dashboard") return json({ chronicles: await listChronicles(false), access:"editor" });
     if (req.method !== "POST") return json({ error: "Action inconnue." }, 404);
-    if (action === "verify") return json({ ok: true });
+    if (action === "verify") return json({ ok: true, access:"editor" });
     if (action === "save") return json({ ok: true, id: await saveChronicle(await req.json()) });
     if (action === "upload") return json({ ok: true, id: await uploadAsset(await req.formData()) }, 201);
     const payload = await req.json() as Record<string, unknown>;

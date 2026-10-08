@@ -6,12 +6,12 @@ window.BASTIDE_CHRONICLES_API=(()=>{
   const token=()=>localStorage.getItem(keyName)||'';
   async function request(action,{method='GET',body,editor=false}={}){
     const headers={};
-    if(editor)headers['x-bastide-chronicle-token']=token();
+    if(editor){headers['x-bastide-chronicle-token']=token();headers['x-bastide-key']=(localStorage.getItem('iot_bastide_inventory_key_v1')||'').replace(/ /g,'+').trim()}
     if(body&&!(body instanceof FormData)){headers['content-type']='application/json';body=JSON.stringify(body)}
     const response=await fetch(`${endpoint}?action=${encodeURIComponent(action)}`,{method,headers,body});
     const data=await response.json().catch(()=>({error:'Réponse serveur illisible.'}));
     if(!response.ok)throw new Error(data.error||'La chronique est indisponible.');
     return data;
   }
-  return{request,hasToken:()=>Boolean(token()),forget:()=>localStorage.removeItem(keyName)};
+  return{request,hasToken:()=>Boolean(token()||localStorage.getItem('iot_bastide_inventory_key_v1')),forget:()=>localStorage.removeItem(keyName)};
 })();

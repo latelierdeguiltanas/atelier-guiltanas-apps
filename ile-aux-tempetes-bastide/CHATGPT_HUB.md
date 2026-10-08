@@ -91,3 +91,11 @@
 - Le serveur refuse désormais `state` et `bootstrap` si une clé joueur demande un autre `playerId`. L’identité est déterminée par la clé, jamais par un indicateur MJ local.
 - L’attribution automatique d’une clé MJ en clair dans la page MJ a été retirée. Les accès MJ nécessitent la clé existante valide ; aucune rotation effectuée.
 - Limite : les données statiques `data.js` et l’historique GitHub restent publics sur GitHub Pages. Le verrouillage de l’interface ne rend pas ces fichiers confidentiels. Une confidentialité complète exige leur déplacement vers une API authentifiée et la rotation de la clé MJ anciennement publiée, à préparer sans invalider les liens à l’insu du MJ.
+
+## Supervision MJ des espaces particuliers
+
+- La clé MJ Bastide existante permet une consultation en lecture seule de la Contrathèque et des confidences, y compris brouillons, archives et audiences. Les écritures restent réservées au propriétaire.
+- `bastide-chronicles` reconnaît la même clé MJ via `x-bastide-key` pour `verify` et `dashboard` : toutes les chroniques et tous les hymnes, brouillons et médias signés inclus. Les écritures MJ sont explicitement refusées ; l’éditeur Scanlan conserve ses permissions.
+- La table MJ comporte les raccourcis atelier de Scanlan, Contrathèque, confidences, loup de Faëlar et besace de Zéphéline. Elle lit les fragments des liens MJ existants sans créer ni remplacer de clé.
+- Lors de cette intervention, une divergence a été constatée : le code déployé des chroniques comprenait les hymnes alors que le fichier GitHub était ancien. Le correctif repart de la version déployée et rétablit sa concordance avec GitHub, sans supprimer les hymnes.
+- Les notes et compteurs personnels conservés uniquement sur le téléphone d’un joueur ne sont pas accessibles à distance au MJ ; les données synchronisées sont consultables.
