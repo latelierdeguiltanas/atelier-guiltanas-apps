@@ -1,0 +1,698 @@
+[
+  {
+    "id": "i0",
+    "name": "Club",
+    "category": "Arme",
+    "price_copper": 10,
+    "description": "1d4 contondant • légère • Slow\nArme : 1d4 contondant • légère • Slow.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 0
+  },
+  {
+    "id": "i1",
+    "name": "Dague",
+    "category": "Arme",
+    "price_copper": 200,
+    "description": "1d4 perforant • finesse, légère, jet 6/18 m • Nick\nArme : 1d4 perforant • finesse, légère, jet 6/18 m • Nick.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 1
+  },
+  {
+    "id": "i2",
+    "name": "Gourdin",
+    "category": "Arme",
+    "price_copper": 20,
+    "description": "1d8 contondant • deux mains • Push\nArme : 1d8 contondant • deux mains • Push.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 2
+  },
+  {
+    "id": "i3",
+    "name": "Hachette",
+    "category": "Arme",
+    "price_copper": 500,
+    "description": "1d6 tranchant • légère, jet • Vex\nArme : 1d6 tranchant • légère, jet • Vex.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 3
+  },
+  {
+    "id": "i4",
+    "name": "Javeline",
+    "category": "Arme",
+    "price_copper": 50,
+    "description": "1d6 perforant • jet 9/36 m • Slow\nArme : 1d6 perforant • jet 9/36 m • Slow.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 4
+  },
+  {
+    "id": "i5",
+    "name": "Marteau léger",
+    "category": "Arme",
+    "price_copper": 200,
+    "description": "1d4 contondant • légère, jet • Nick\nArme : 1d4 contondant • légère, jet • Nick.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 5
+  },
+  {
+    "id": "i6",
+    "name": "Masse",
+    "category": "Arme",
+    "price_copper": 500,
+    "description": "1d6 contondant • Sap\nArme : 1d6 contondant • Sap.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 6
+  },
+  {
+    "id": "i7",
+    "name": "Bâton",
+    "category": "Arme",
+    "price_copper": 20,
+    "description": "1d6 contondant • polyvalent 1d8 • Topple\nArme : 1d6 contondant • polyvalent 1d8 • Topple.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 7
+  },
+  {
+    "id": "i8",
+    "name": "Faucille",
+    "category": "Arme",
+    "price_copper": 100,
+    "description": "1d4 tranchant • légère • Nick\nArme : 1d4 tranchant • légère • Nick.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 8
+  },
+  {
+    "id": "i9",
+    "name": "Lance",
+    "category": "Arme",
+    "price_copper": 100,
+    "description": "1d6 perforant • jet, polyvalent • Sap\nArme : 1d6 perforant • jet, polyvalent • Sap.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 9
+  },
+  {
+    "id": "i10",
+    "name": "Arbalète légère",
+    "category": "Arme",
+    "price_copper": 2500,
+    "description": "1d8 perforant • munitions, chargement, deux mains • Slow\nArme : 1d8 perforant • munitions, chargement, deux mains • Slow.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 10
+  },
+  {
+    "id": "i11",
+    "name": "Arc court",
+    "category": "Arme",
+    "price_copper": 2500,
+    "description": "1d6 perforant • munitions, deux mains • Vex\nArme : 1d6 perforant • munitions, deux mains • Vex.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 11
+  },
+  {
+    "id": "i12",
+    "name": "Hache d’armes",
+    "category": "Arme",
+    "price_copper": 1000,
+    "description": "1d8 tranchant • polyvalente • Topple\nArme : 1d8 tranchant • polyvalente • Topple.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 12
+  },
+  {
+    "id": "i13",
+    "name": "Fléau",
+    "category": "Arme",
+    "price_copper": 1000,
+    "description": "1d8 contondant • Sap\nArme : 1d8 contondant • Sap.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 13
+  },
+  {
+    "id": "i14",
+    "name": "Coutille",
+    "category": "Arme",
+    "price_copper": 2000,
+    "description": "1d10 tranchant • lourde, allonge, deux mains • Graze\nArme : 1d10 tranchant • lourde, allonge, deux mains • Graze.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 14
+  },
+  {
+    "id": "i15",
+    "name": "Hache à deux mains",
+    "category": "Arme",
+    "price_copper": 3000,
+    "description": "1d12 tranchant • lourde, deux mains • Cleave\nArme : 1d12 tranchant • lourde, deux mains • Cleave.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 15
+  },
+  {
+    "id": "i16",
+    "name": "Épée à deux mains",
+    "category": "Arme",
+    "price_copper": 5000,
+    "description": "2d6 tranchant • lourde, deux mains • Graze\nArme : 2d6 tranchant • lourde, deux mains • Graze.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 16
+  },
+  {
+    "id": "i17",
+    "name": "Hallebarde",
+    "category": "Arme",
+    "price_copper": 2000,
+    "description": "1d10 tranchant • lourde, allonge, deux mains • Cleave\nArme : 1d10 tranchant • lourde, allonge, deux mains • Cleave.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 17
+  },
+  {
+    "id": "i18",
+    "name": "Lance d’arçon",
+    "category": "Arme",
+    "price_copper": 1000,
+    "description": "1d10 perforant • lourde, allonge • Topple\nArme : 1d10 perforant • lourde, allonge • Topple.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 18
+  },
+  {
+    "id": "i19",
+    "name": "Épée longue",
+    "category": "Arme",
+    "price_copper": 1500,
+    "description": "1d8 tranchant • polyvalente • Sap\nArme : 1d8 tranchant • polyvalente • Sap.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 19
+  },
+  {
+    "id": "i20",
+    "name": "Maillet",
+    "category": "Arme",
+    "price_copper": 1000,
+    "description": "2d6 contondant • lourd, deux mains • Topple\nArme : 2d6 contondant • lourd, deux mains • Topple.\nAction Attaque : fais une attaque avec l’arme si ton personnage peut la manier. Les propriétés et la maîtrise d’arme indiquées s’appliquent selon les règles 2024.",
+    "sort_order": 20
+  },
+  {
+    "id": "i21",
+    "name": "Armure matelassée",
+    "category": "Armure",
+    "price_copper": 500,
+    "description": "CA 11 + Dex • discrétion désavantage\nProtection : CA 11 + Dex • discrétion désavantage.\nÉquipe l’armure ou le bouclier si ton personnage possède l’entraînement requis. La CA indiquée remplace ou modifie ta CA selon le type d’équipement.",
+    "sort_order": 21
+  },
+  {
+    "id": "i22",
+    "name": "Armure de cuir",
+    "category": "Armure",
+    "price_copper": 1000,
+    "description": "CA 11 + Dex\nProtection : CA 11 + Dex.\nÉquipe l’armure ou le bouclier si ton personnage possède l’entraînement requis. La CA indiquée remplace ou modifie ta CA selon le type d’équipement.",
+    "sort_order": 22
+  },
+  {
+    "id": "i23",
+    "name": "Cuir clouté",
+    "category": "Armure",
+    "price_copper": 4500,
+    "description": "CA 12 + Dex\nProtection : CA 12 + Dex.\nÉquipe l’armure ou le bouclier si ton personnage possède l’entraînement requis. La CA indiquée remplace ou modifie ta CA selon le type d’équipement.",
+    "sort_order": 23
+  },
+  {
+    "id": "i24",
+    "name": "Armure de peau",
+    "category": "Armure",
+    "price_copper": 1000,
+    "description": "CA 12 + Dex (max 2)\nProtection : CA 12 + Dex (max 2).\nÉquipe l’armure ou le bouclier si ton personnage possède l’entraînement requis. La CA indiquée remplace ou modifie ta CA selon le type d’équipement.",
+    "sort_order": 24
+  },
+  {
+    "id": "i25",
+    "name": "Chemise de mailles",
+    "category": "Armure",
+    "price_copper": 5000,
+    "description": "CA 13 + Dex (max 2)\nProtection : CA 13 + Dex (max 2).\nÉquipe l’armure ou le bouclier si ton personnage possède l’entraînement requis. La CA indiquée remplace ou modifie ta CA selon le type d’équipement.",
+    "sort_order": 25
+  },
+  {
+    "id": "i26",
+    "name": "Armure d’écailles",
+    "category": "Armure",
+    "price_copper": 5000,
+    "description": "CA 14 + Dex (max 2) • discrétion désavantage\nProtection : CA 14 + Dex (max 2) • discrétion désavantage.\nÉquipe l’armure ou le bouclier si ton personnage possède l’entraînement requis. La CA indiquée remplace ou modifie ta CA selon le type d’équipement.",
+    "sort_order": 26
+  },
+  {
+    "id": "i27",
+    "name": "Cuirasse",
+    "category": "Armure",
+    "price_copper": 40000,
+    "description": "CA 14 + Dex (max 2)\nProtection : CA 14 + Dex (max 2).\nÉquipe l’armure ou le bouclier si ton personnage possède l’entraînement requis. La CA indiquée remplace ou modifie ta CA selon le type d’équipement.",
+    "sort_order": 27
+  },
+  {
+    "id": "i28",
+    "name": "Demi-plate",
+    "category": "Armure",
+    "price_copper": 75000,
+    "description": "CA 15 + Dex (max 2) • discrétion désavantage\nProtection : CA 15 + Dex (max 2) • discrétion désavantage.\nÉquipe l’armure ou le bouclier si ton personnage possède l’entraînement requis. La CA indiquée remplace ou modifie ta CA selon le type d’équipement.",
+    "sort_order": 28
+  },
+  {
+    "id": "i29",
+    "name": "Broigne",
+    "category": "Armure",
+    "price_copper": 3000,
+    "description": "CA 14 • discrétion désavantage\nProtection : CA 14 • discrétion désavantage.\nÉquipe l’armure ou le bouclier si ton personnage possède l’entraînement requis. La CA indiquée remplace ou modifie ta CA selon le type d’équipement.",
+    "sort_order": 29
+  },
+  {
+    "id": "i30",
+    "name": "Cotte de mailles",
+    "category": "Armure",
+    "price_copper": 7500,
+    "description": "CA 16 • For 13 • discrétion désavantage\nProtection : CA 16 • For 13 • discrétion désavantage.\nÉquipe l’armure ou le bouclier si ton personnage possède l’entraînement requis. La CA indiquée remplace ou modifie ta CA selon le type d’équipement.",
+    "sort_order": 30
+  },
+  {
+    "id": "i31",
+    "name": "Clibanion",
+    "category": "Armure",
+    "price_copper": 20000,
+    "description": "CA 17 • For 15 • discrétion désavantage\nProtection : CA 17 • For 15 • discrétion désavantage.\nÉquipe l’armure ou le bouclier si ton personnage possède l’entraînement requis. La CA indiquée remplace ou modifie ta CA selon le type d’équipement.",
+    "sort_order": 31
+  },
+  {
+    "id": "i32",
+    "name": "Harnois",
+    "category": "Armure",
+    "price_copper": 150000,
+    "description": "CA 18 • For 15 • discrétion désavantage\nProtection : CA 18 • For 15 • discrétion désavantage.\nÉquipe l’armure ou le bouclier si ton personnage possède l’entraînement requis. La CA indiquée remplace ou modifie ta CA selon le type d’équipement.",
+    "sort_order": 32
+  },
+  {
+    "id": "i33",
+    "name": "Bouclier",
+    "category": "Armure",
+    "price_copper": 1000,
+    "description": "+2 CA • nécessite entraînement bouclier\nProtection : +2 CA • nécessite entraînement bouclier.\nÉquipe l’armure ou le bouclier si ton personnage possède l’entraînement requis. La CA indiquée remplace ou modifie ta CA selon le type d’équipement.",
+    "sort_order": 33
+  },
+  {
+    "id": "i34",
+    "name": "Acide",
+    "category": "Aventurier",
+    "price_copper": 2500,
+    "description": "Jet à 6 m • 2d6 acide sur échec de sauvegarde Dex\nJet à 6 m • 2d6 acide sur échec de sauvegarde Dex.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 34
+  },
+  {
+    "id": "i35",
+    "name": "Feu grégeois",
+    "category": "Aventurier",
+    "price_copper": 5000,
+    "description": "Jet à 6 m • enflamme la cible\nJet à 6 m • enflamme la cible.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 35
+  },
+  {
+    "id": "i36",
+    "name": "Antitoxine",
+    "category": "Aventurier",
+    "price_copper": 5000,
+    "description": "Consommable contre le poison\nAide temporairement à résister au poison.\nAction bonus : boire la fiole pour obtenir l’Avantage aux jets de sauvegarde visant à éviter ou terminer l’état Empoisonné pendant 1 heure.",
+    "sort_order": 36
+  },
+  {
+    "id": "i37",
+    "name": "Sac à dos",
+    "category": "Aventurier",
+    "price_copper": 200,
+    "description": "Contenant • 5 lb\nContenant • 5 lb.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 37
+  },
+  {
+    "id": "i38",
+    "name": "Billes",
+    "category": "Aventurier",
+    "price_copper": 100,
+    "description": "Contrôle de zone au sol\nCréent une petite zone glissante pouvant faire tomber une créature.\nAction Utiliser : répands-les au sol. Une créature entrant dans la zone peut devoir réussir un JS de Dextérité ou tomber À terre.",
+    "sort_order": 38
+  },
+  {
+    "id": "i39",
+    "name": "Sac de couchage",
+    "category": "Aventurier",
+    "price_copper": 100,
+    "description": "7 lb\n7 lb.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 39
+  },
+  {
+    "id": "i40",
+    "name": "Couverture",
+    "category": "Aventurier",
+    "price_copper": 50,
+    "description": "3 lb\n3 lb.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 40
+  },
+  {
+    "id": "i41",
+    "name": "Chandelle",
+    "category": "Aventurier",
+    "price_copper": 1,
+    "description": "Éclairage\nÉclairage.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 41
+  },
+  {
+    "id": "i42",
+    "name": "Chaîne",
+    "category": "Aventurier",
+    "price_copper": 500,
+    "description": "10 lb • peut entraver une cible déjà contrôlée\n10 lb • peut entraver une cible déjà contrôlée.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 42
+  },
+  {
+    "id": "i43",
+    "name": "Nécessaire d’escalade",
+    "category": "Aventurier",
+    "price_copper": 2500,
+    "description": "Permet de s’ancrer contre les chutes\nEnsemble d’escalade permettant de s’ancrer et de limiter une chute.\nAction Utiliser pour t’ancrer. Tant que tu es ancré, ta chute et ton déplacement depuis l’ancrage sont limités par les règles de l’objet.",
+    "sort_order": 43
+  },
+  {
+    "id": "i44",
+    "name": "Pied-de-biche",
+    "category": "Aventurier",
+    "price_copper": 200,
+    "description": "Avantage aux tests de Force où le levier s’applique\nOutil de levier donnant l’Avantage aux tests de Force lorsque son levier peut réellement s’appliquer.\nUtilise-le sur une porte, caisse ou obstacle adapté ; le MJ décide si le levier est pertinent.",
+    "sort_order": 44
+  },
+  {
+    "id": "i45",
+    "name": "Paquetage d’explorateur",
+    "category": "Aventurier",
+    "price_copper": 1000,
+    "description": "Sac, couchage, huile, 10 jours rations, corde, amadou, 10 torches, outre\nPack regroupant sac à dos, couchage, huile, 10 jours de rations, corde, amadou, 10 torches et outre.\nPas d’action spéciale : ouvre le détail des objets du paquet lorsque tu les utilises.",
+    "sort_order": 45
+  },
+  {
+    "id": "i46",
+    "name": "Grappin",
+    "category": "Aventurier",
+    "price_copper": 200,
+    "description": "S’utilise avec une corde\nCrochet destiné à accrocher une rambarde, corniche ou autre prise, généralement avec une corde.\nAction Utiliser : lancer vers une prise à portée ; un test de Dextérité (Acrobaties) peut être requis.",
+    "sort_order": 46
+  },
+  {
+    "id": "i47",
+    "name": "Trousse de soins",
+    "category": "Aventurier",
+    "price_copper": 500,
+    "description": "10 utilisations • stabilise à 0 PV sans test de Médecine\n10 utilisations. Permet de stabiliser une créature inconsciente à 0 PV sans test de Médecine.\nAction Utiliser : dépense 1 utilisation sur une créature à portée de contact. Hammerz peut aussi en dépenser une avec son don Guérisseur/Médecin de bataille.",
+    "sort_order": 47
+  },
+  {
+    "id": "i48",
+    "name": "Eau bénite",
+    "category": "Aventurier",
+    "price_copper": 2500,
+    "description": "2d8 radiant contre fiélon ou mort-vivant sur échec de Dex\nConsommable particulièrement utile contre certains fiélons et morts-vivants.\nS’utilise selon la règle de l’objet pour asperger/lancer l’eau bénite sur une cible valide.",
+    "sort_order": 48
+  },
+  {
+    "id": "i49",
+    "name": "Piège de chasse",
+    "category": "Aventurier",
+    "price_copper": 500,
+    "description": "Piège physique\nPiège physique.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 49
+  },
+  {
+    "id": "i50",
+    "name": "Lampe",
+    "category": "Aventurier",
+    "price_copper": 50,
+    "description": "Éclairage\nÉclairage.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 50
+  },
+  {
+    "id": "i51",
+    "name": "Lanterne à capote",
+    "category": "Aventurier",
+    "price_copper": 500,
+    "description": "Éclairage réglable\nÉclairage réglable.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 51
+  },
+  {
+    "id": "i52",
+    "name": "Lanterne sourde",
+    "category": "Aventurier",
+    "price_copper": 1000,
+    "description": "Faisceau directionnel\nFaisceau directionnel.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 52
+  },
+  {
+    "id": "i53",
+    "name": "Menottes",
+    "category": "Aventurier",
+    "price_copper": 200,
+    "description": "6 lb\n6 lb.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 53
+  },
+  {
+    "id": "i54",
+    "name": "Miroir",
+    "category": "Aventurier",
+    "price_copper": 500,
+    "description": "1/2 lb\n1/2 lb.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 54
+  },
+  {
+    "id": "i55",
+    "name": "Filet",
+    "category": "Aventurier",
+    "price_copper": 100,
+    "description": "3 lb\n3 lb.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 55
+  },
+  {
+    "id": "i56",
+    "name": "Huile",
+    "category": "Aventurier",
+    "price_copper": 10,
+    "description": "Combustible / usage tactique\nCombustible et ressource tactique inflammable.\nPeut alimenter une lampe ou être utilisée selon les règles de l’huile ; attention au feu et à l’environnement.",
+    "sort_order": 56
+  },
+  {
+    "id": "i57",
+    "name": "Potion de soins",
+    "category": "Aventurier",
+    "price_copper": 5000,
+    "description": "Objet magique commun vendu comme équipement 2024 • rend 2d4+2 PV\nPotion magique. La créature qui la boit récupère 2d4 + 2 PV.\nAction bonus pour la boire ou l’administrer à une autre créature à 1,50 m.",
+    "sort_order": 57
+  },
+  {
+    "id": "i58",
+    "name": "Rations (1 jour)",
+    "category": "Aventurier",
+    "price_copper": 50,
+    "description": "2 lb\nNourriture sèche prévue pour une journée de voyage.\nConsommée pendant les pauses/voyages lorsque la nourriture est suivie.",
+    "sort_order": 58
+  },
+  {
+    "id": "i59",
+    "name": "Corde",
+    "category": "Aventurier",
+    "price_copper": 100,
+    "description": "5 lb\nCorde d’aventurier de 5 lb, utile pour escalade, arrimage, sauvetage et improvisation.\nL’usage dépend de la situation : attacher, sécuriser ou combiner avec un grappin ; le MJ peut demander un test.",
+    "sort_order": 59
+  },
+  {
+    "id": "i60",
+    "name": "Pelle",
+    "category": "Aventurier",
+    "price_copper": 200,
+    "description": "5 lb\n5 lb.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 60
+  },
+  {
+    "id": "i61",
+    "name": "Sifflet",
+    "category": "Aventurier",
+    "price_copper": 5,
+    "description": "Signal\nSignal.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 61
+  },
+  {
+    "id": "i62",
+    "name": "Parchemin de sort (tour de magie)",
+    "category": "Aventurier",
+    "price_copper": 3000,
+    "description": "Parchemin magique 2024\nParchemin magique 2024.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 62
+  },
+  {
+    "id": "i63",
+    "name": "Parchemin de sort (niveau 1)",
+    "category": "Aventurier",
+    "price_copper": 5000,
+    "description": "Parchemin magique 2024\nParchemin magique 2024.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 63
+  },
+  {
+    "id": "i64",
+    "name": "Tente",
+    "category": "Aventurier",
+    "price_copper": 200,
+    "description": "20 lb\n20 lb.\nUtilise cet objet lorsque la situation correspond à son effet. Les actions, tests ou limites éventuels sont détaillés dans les règles D&D 2024.",
+    "sort_order": 64
+  },
+  {
+    "id": "i65",
+    "name": "Boîte à amadou",
+    "category": "Aventurier",
+    "price_copper": 50,
+    "description": "Allumer un feu\nMatériel permettant d’allumer facilement une flamme.\nS’utilise pour allumer torche, feu ou autre combustible lorsque les conditions le permettent.",
+    "sort_order": 65
+  },
+  {
+    "id": "i66",
+    "name": "Torche",
+    "category": "Aventurier",
+    "price_copper": 1,
+    "description": "Éclairage • 1 lb\nSource de lumière portable qui se consume avec le temps.\nAllume-la avec une source de feu ou une boîte à amadou ; elle occupe une main lorsqu’elle est portée.",
+    "sort_order": 66
+  },
+  {
+    "id": "i67",
+    "name": "Outre",
+    "category": "Aventurier",
+    "price_copper": 20,
+    "description": "5 lb pleine\nRécipient pour transporter de l’eau ; 5 lb lorsqu’elle est pleine.\nRemplis-la à une source d’eau et utilise-la pendant les voyages ou repos.",
+    "sort_order": 67
+  },
+  {
+    "id": "i68",
+    "name": "Matériel d’alchimiste",
+    "category": "Outil",
+    "price_copper": 5000,
+    "description": "Artisanat : acide, feu grégeois, huile…\nArtisanat : acide, feu grégeois, huile….\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 68
+  },
+  {
+    "id": "i69",
+    "name": "Matériel de brasseur",
+    "category": "Outil",
+    "price_copper": 2000,
+    "description": "Détecter boisson empoisonnée • fabriquer antitoxine\nDétecter boisson empoisonnée • fabriquer antitoxine.\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 69
+  },
+  {
+    "id": "i70",
+    "name": "Matériel de calligraphe",
+    "category": "Outil",
+    "price_copper": 1000,
+    "description": "Écriture • fabrication de parchemins\nÉcriture • fabrication de parchemins.\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 70
+  },
+  {
+    "id": "i71",
+    "name": "Outils de charpentier",
+    "category": "Outil",
+    "price_copper": 800,
+    "description": "Travail du bois / objets simples\nTravail du bois / objets simples.\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 71
+  },
+  {
+    "id": "i72",
+    "name": "Outils de cartographe",
+    "category": "Outil",
+    "price_copper": 1500,
+    "description": "Tracer une carte\nTracer une carte.\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 72
+  },
+  {
+    "id": "i73",
+    "name": "Outils de cordonnier",
+    "category": "Outil",
+    "price_copper": 500,
+    "description": "Modifier des chaussures / kit d’escalade\nModifier des chaussures / kit d’escalade.\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 73
+  },
+  {
+    "id": "i74",
+    "name": "Ustensiles de cuisinier",
+    "category": "Outil",
+    "price_copper": 100,
+    "description": "Cuisine • rations\nCuisine • rations.\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 74
+  },
+  {
+    "id": "i75",
+    "name": "Outils de souffleur de verre",
+    "category": "Outil",
+    "price_copper": 3000,
+    "description": "Objets en verre\nObjets en verre.\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 75
+  },
+  {
+    "id": "i76",
+    "name": "Outils de joaillier",
+    "category": "Outil",
+    "price_copper": 2500,
+    "description": "Évaluer gemmes • focaliseurs\nÉvaluer gemmes • focaliseurs.\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 76
+  },
+  {
+    "id": "i77",
+    "name": "Outils de tanneur",
+    "category": "Outil",
+    "price_copper": 500,
+    "description": "Cuir, sacs, carquois…\nCuir, sacs, carquois….\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 77
+  },
+  {
+    "id": "i78",
+    "name": "Outils de maçon",
+    "category": "Outil",
+    "price_copper": 1000,
+    "description": "Travail de pierre\nTravail de pierre.\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 78
+  },
+  {
+    "id": "i79",
+    "name": "Trousse d’herboriste",
+    "category": "Outil",
+    "price_copper": 500,
+    "description": "Identifier plantes • fabriquer antitoxine, trousse de soins, potion de soins\nIdentifier plantes • fabriquer antitoxine, trousse de soins, potion de soins.\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 79
+  },
+  {
+    "id": "i80",
+    "name": "Outils de navigateur",
+    "category": "Outil",
+    "price_copper": 2500,
+    "description": "Tracer une route / position aux étoiles\nTracer une route / position aux étoiles.\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 80
+  },
+  {
+    "id": "i81",
+    "name": "Trousse d’empoisonneur",
+    "category": "Outil",
+    "price_copper": 5000,
+    "description": "Détecter / fabriquer poison basique\nDétecter / fabriquer poison basique.\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 81
+  },
+  {
+    "id": "i82",
+    "name": "Outils de voleur",
+    "category": "Outil",
+    "price_copper": 2500,
+    "description": "Crocheter serrure / désamorcer piège\nCrocheter serrure / désamorcer piège.\nUtilise cet outil pour les tâches ou fabrications correspondantes. La maîtrise de l’outil peut être nécessaire ; le MJ fixe les tests et le temps requis.",
+    "sort_order": 82
+  },
+  {
+    "id": "i83",
+    "name": "Flèches (20)",
+    "category": "Aventurier",
+    "price_copper": 100,
+    "description": "20 flèches • 1 lb • munitions pour arcs\nLot de 20 munitions pour les arcs. Une flèche est dépensée à chaque attaque.\nCharge-les dans un carquois. Après un combat, le MJ peut appliquer la règle de récupération des munitions.",
+    "sort_order": 83
+  },
+  {
+    "id": "i84",
+    "name": "Sacoche à composantes",
+    "category": "Aventurier",
+    "price_copper": 2500,
+    "description": "Contient les composantes matérielles gratuites des sorts • 2 lb\nSacoche étanche compartimentée contenant les composantes matérielles gratuites nécessaires aux sorts.\nUn lanceur de sorts peut l’utiliser pour fournir les composantes M sans coût indiqué. Elle ne remplace pas une composante ayant un prix spécifique.",
+    "sort_order": 84
+  },
+  {
+    "id": "i85",
+    "name": "Focaliseur arcanique — cristal",
+    "category": "Aventurier",
+    "price_copper": 1000,
+    "description": "Focaliseur pour ensorceleur, occultiste ou magicien • 1 lb\nObjet permettant à un ensorceleur, occultiste ou magicien de fournir les composantes matérielles gratuites de ses sorts.\nTiens/utilise le focaliseur lorsque le sort exige une composante M sans coût spécifique.",
+    "sort_order": 85
+  },
+  {
+    "id": "i86",
+    "name": "Focaliseur arcanique — bâton",
+    "category": "Aventurier",
+    "price_copper": 500,
+    "description": "Focaliseur arcanique ; peut aussi servir de bâton • 4 lb\nFocaliseur arcanique qui peut aussi servir de bâton.\nUtilise-le comme focaliseur pour les composantes M gratuites ; comme arme, applique les règles du bâton.",
+    "sort_order": 86
+  }
+]

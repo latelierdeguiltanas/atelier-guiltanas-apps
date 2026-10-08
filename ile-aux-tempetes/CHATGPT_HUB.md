@@ -59,7 +59,7 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 ### Boutique
 - `ile-aux-tempetes/boutique/index.html` : boutique commune.
 - Depuis l'espace personnel, le lien transmet `?pj=<id>&auto=1` ; la boutique tente de sélectionner automatiquement le bon personnage pour éviter de repasser par l'écran de choix.
-- Prochaine étape : connexion réelle achat ↔ monnaie ↔ inventaire du PJ.
+- Boutique ↔ monnaie ↔ inventaire synchronisés via `nespresso-inventory` (voir état économie ci-dessous).
 
 ### Cartes
 - `ile-aux-tempetes/cartes/MAPS_SOURCE_AUDIT.md` : audit de la source PDF officielle.
@@ -117,7 +117,7 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 Faire évoluer l'**espace joueur** en véritable compagnon numérique de campagne, sans automatiser ce que le joueur doit retenir ou interpréter lui-même.
 
 Ordre actuel :
-1. connecter boutique ↔ personnage (monnaie + inventaire local) ;
+1. valider en partie la nouvelle économie synchronisée depuis les liens personnels existants ;
 2. extraire et prototyper la carte générale interactive, puis les cartes de lieux ;
 3. enrichir l'accueil personnel / « La dernière fois… », rencontres et exploits sans spoiler ;
 4. soundboard ensuite.
@@ -125,3 +125,18 @@ Ordre actuel :
 ---
 
 Ce fichier est volontairement compact.
+
+## Économie Nespresso — mise à jour du 8 octobre 2026
+
+- Intervention strictement limitée à `ile-aux-tempetes/`. Aucun fichier, service ou donnée Bastide modifié. BD, scénarios, portraits, `data.js` et scripts de règles D&D conservés.
+- Service Edge dédié `nespresso-inventory`, tables `nespresso_*`, identité fondée sur les `campaign_player_tokens` / `campaign_admin_tokens` existants. Aucune rotation des clés.
+- Code serveur et SQL reproductible sous `backend/` : rangés dans le périmètre Nespresso, sans modification du dossier Supabase partagé. Le SQL complet est une installation initiale, pas un script à relancer sur les tables déjà déployées.
+- Sac synchronisé dans la fiche et dans `inventaire/?pj=<id>` : création/modification/suppression, description, quantité, équipement, charges, rangement et illustrations par lien. Équipement descriptif, aucun changement automatique aux calculs D&D.
+- PC/PA/PE/PO/PP conservées. Transferts d’objets et de monnaie entre les quatre PJ, change exact, historique des réceptions et statut lu. Les achats/ventes convertissent la valeur et rendent la monnaie en PP/PO/PA/PC ; aucune valeur perdue.
+- Boutique Mila : les 87 prix/descriptions du catalogue D&D Nespresso ont été repris. Achats en panier atomique, ventes à moitié du prix en PC, stock fini ou illimité, catalogue modifiable par le MJ.
+- `mj/outils/economie/` : tableau des liens actifs/dernières utilisations/sacs, consultation MJ, création et distribution de lots et de monnaie aux joueurs sélectionnés, gestion Mila, historique. Une distribution multiple confirme chaque destinataire séparément et conserve ceux restant à envoyer en cas d’incident.
+- Chaque écriture possède un UUID de transaction. Une réponse réseau perdue peut être rejouée sans doubler l’opération. Les éditions d’objets utilisent une révision pour refuser l’écrasement d’un état plus récent.
+- Les premières synchronisations restent à faire par les joueurs depuis leur téléphone habituel : import explicite de leur inventaire et monnaie locaux, copie locale préalable conservée. Ne jamais initialiser les sacs à partir de fiches statiques à la place de l’état de partie. Les réceptions avant import sont conservées et fusionnées une seule fois.
+- Accès constatés avant intervention : Vax, Hammerz et Lelio ont chacun une utilisation authentifiée enregistrée le 22 septembre ; Prométhée (`loris`) possède un lien actif mais aucune utilisation enregistrée. Le champ ne prouve pas qui a ouvert le lien.
+- Vérification : tests SQL rollback réussis (transactions, bootstrap unique, réceptions différées, idempotence, quantités, stocks, vente, revision, permissions), tests Node API/stockage réussis, service HTTP catalogue 200 (87 articles), accès sans clé 401, conseiller sécurité Supabase sans alertes. Aucun objet/pièce de test persisté.
+- Limite explicite : les liens distribués ne sont pas disponibles en clair dans cette session. Les lectures HTTP avec ces clés existantes et la validation visuelle sur téléphone restent à faire par Math/les joueurs ; aucun test navigateur IA.
