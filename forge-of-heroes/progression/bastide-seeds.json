@@ -1,0 +1,1754 @@
+[
+  {
+    "format": "FOH_CHARACTER_STATE",
+    "formatVersion": 1,
+    "id": "bastide-recovery-prepotante",
+    "name": "Prépôtante",
+    "people": "Gobelin",
+    "profile": "Voleur",
+    "type": "bastide-recovery",
+    "status": "RECOVERED",
+    "updatedAt": "2026-10-12T11:46:03.999Z",
+    "draft": {
+      "heroLibraryId": "bastide-recovery-prepotante"
+    },
+    "recovery": {
+      "schema": "foh-bastide-recovery-1",
+      "sourceId": "prepotante",
+      "reviewed": false,
+      "source": "Hub Bastide — état récupéré le 12 octobre 2026",
+      "character": {
+        "schema": "bastide-character-v2",
+        "id": "prepotante",
+        "name": "Prépôtante",
+        "status": "BASTIDE_PLAYER_CHARACTER",
+        "source": "Export Forge of Heroes - 29 septembre 2026",
+        "level": 1,
+        "people": "Gobelin",
+        "family": "Aventurier",
+        "profile": "Voleur",
+        "heroicIdeal": "",
+        "flaw": "",
+        "stats": {
+          "AGI": 3,
+          "CON": 1,
+          "FOR": 1,
+          "PER": 2,
+          "CHA": -2,
+          "INT": 0,
+          "VOL": 2
+        },
+        "combat": {
+          "speedMeters": 10,
+          "pvMax": 9,
+          "pcMax": 1,
+          "pmMax": 0,
+          "recoveryDie": "D8",
+          "recoveryMax": 3,
+          "init": 15,
+          "def": 16,
+          "contact": 2,
+          "distance": 4,
+          "magic": 3,
+          "silver": 0
+        },
+        "attacks": [
+          {
+            "id": "rapiere",
+            "name": "Rapière",
+            "type": "Contact",
+            "attack": 2,
+            "damage": "1d6+1",
+            "range": "Contact",
+            "special": ""
+          },
+          {
+            "id": "dague-contact",
+            "name": "Dague",
+            "type": "Contact",
+            "attack": 2,
+            "damage": "1d4+1",
+            "range": "Contact",
+            "special": ""
+          },
+          {
+            "id": "dague-distance",
+            "name": "Dague",
+            "type": "Distance",
+            "attack": 4,
+            "damage": "1d4",
+            "range": "5 m",
+            "special": ""
+          }
+        ],
+        "equipment": [
+          "Rapière",
+          "5 dagues",
+          "Armure de cuir simple"
+        ],
+        "paths": [
+          {
+            "name": "Voie du peuple - Gobelin",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Rapide comme son ombre",
+                "text": "+3 aux tests de discrétion et +3 en Initiative.",
+                "abilityId": "ability:rapide:path:voie-du-gobelin:addon-comp2017-cof2:rank1:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": false,
+                "name": "Jeune worg",
+                "text": "Permet de dresser et chevaucher un jeune worg, de le déplacer ou de lui ordonner d’attaquer.",
+                "abilityId": "ability:jeune-worg:path:voie-du-gobelin:addon-comp2017-cof2:rank2:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Miam",
+                "text": "+5 pour résister aux poisons et toxines ingérés ; morsure à 1d4 + FOR DM.",
+                "abilityId": "ability:miam:path:voie-du-gobelin:addon-comp2017-cof2:rank3:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Grand worg",
+                "text": "Le worg devient plus puissant et peut attaquer gratuitement une fois par tour.",
+                "abilityId": "ability:grand:path:voie-du-gobelin:addon-comp2017-cof2:rank4:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Vif et alerte",
+                "text": "+2 en AGI et +2 en CON.",
+                "abilityId": "ability:vif-et:path:voie-du-gobelin:addon-comp2017-cof2:rank5:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "people",
+            "pathId": "path:voie-du-gobelin:addon-comp2017-cof2"
+          },
+          {
+            "name": "Voie de l’assassin",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Discrétion",
+                "text": "+3 aux tests de discrétion, déguisement ou dissimulation d’arme ; argotien et dé bonus contre un adversaire surpris.",
+                "abilityId": "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": false,
+                "name": "Attaque sournoise (L)",
+                "text": "Une fois par round, +2d4° DM contre un adversaire surpris ou de dos avec une arme légère.",
+                "abilityId": "ability:attaque-sournoise-l:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Attaque par surprise (A)",
+                "text": "Contre un adversaire surpris, attaque sournoise en action d’attaque et +2d4° DM.",
+                "abilityId": "ability:attaque-par-surprise-a:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Disparition (M)",
+                "text": "Une fois par combat, disparaît jusqu’au prochain tour puis réapparaît à 20 m maximum.",
+                "abilityId": "ability:disparition-m:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Ouverture mortelle (L)",
+                "text": "Une fois par combat, réussite critique automatique avec attaque sournoise.",
+                "abilityId": "ability:ouverture-mortelle-l:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024"
+          },
+          {
+            "name": "Voie de l’aventurier",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Baratin",
+                "text": "+3 pour baratiner, séduire, négocier, mentir ou trouver au marché noir ; permet d’utiliser parchemins et baguettes sur test d’attaque magique.",
+                "abilityId": "ability:baratin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": false,
+                "name": "Provocation (L)",
+                "text": "Test opposé de CHA contre INT pour forcer un humanoïde à attaquer.",
+                "abilityId": "ability:provocation-l:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Souplesse du félin",
+                "text": "+2 en DEF et Initiative ; se relever ne demande qu’une action de mouvement.",
+                "abilityId": "ability:souplesse-du-felin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Charisme héroïque",
+                "text": "+1 en CHA et dé bonus aux tests de CHA.",
+                "abilityId": "ability:charisme-heroique:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Attaque paralysante (L)",
+                "text": "Une fois par combat, peut immobiliser ou paralyser un humanoïde au contact.",
+                "abilityId": "ability:attaque-paralysante-l:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          },
+          {
+            "name": "Voie du déplacement",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": false,
+                "name": "Agile",
+                "text": "+3 aux tests liés au déplacement ; +1 en DEF et Initiative.",
+                "abilityId": "ability:agile:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": false,
+                "name": "Réflexes félins",
+                "text": "Divise les DM de chute par deux et accorde une action de mouvement supplémentaire une fois par combat.",
+                "abilityId": "ability:reflexes-felins:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Acrobaties (G)",
+                "text": "Test d’AGI difficulté 15 pour franchir un obstacle ou attaquer de dos.",
+                "abilityId": "ability:acrobaties-g:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Agilité héroïque",
+                "text": "+1 en AGI et dé bonus aux tests d’AGI.",
+                "abilityId": "ability:agilite-heroique:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Esquive de la magie (G)",
+                "text": "Test d’attaque à distance opposé pour échapper à un sort infligeant des DM physiques.",
+                "abilityId": "ability:esquive-de-la-magie-g:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-du-deplacement:class-voleur:cof2-lb-2024"
+          },
+          {
+            "name": "Voie du roublard",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": false,
+                "name": "Doigts agiles",
+                "text": "+3 aux tests de précision manuelle et d’estimation ; +1 DM avec dagues et couteaux lancés.",
+                "abilityId": "ability:doigts-agiles:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": false,
+                "name": "Aux aguets",
+                "text": "+4 pour fouiller, détecter pièges, passages secrets ou embuscades ; DM des pièges divisés par deux.",
+                "abilityId": "ability:aux-aguets:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Feindre la mort (G)",
+                "text": "Une fois par combat, feint la mort puis récupère 1d4° PV en se relevant.",
+                "abilityId": "ability:feindre-la-mort-g:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Expert en criminalité",
+                "text": "Dé bonus aux recherches d’indices et possibilité de dépenser 1 PC pour obtenir un indice manqué.",
+                "abilityId": "ability:expert-en-criminalite:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Maître du poison",
+                "text": "Prépare trois doses de poison par jour.",
+                "abilityId": "ability:maitre-du-poison:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-du-roublard:class-voleur:cof2-lb-2024"
+          },
+          {
+            "name": "Voie du spadassin",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": false,
+                "name": "Attaque en finesse",
+                "text": "Ajoute l’AGI à l’Initiative et remplace la FOR par l’AGI pour attaquer avec une arme légère.",
+                "abilityId": "ability:attaque-en-finesse:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": false,
+                "name": "Esquive fatale (G)",
+                "text": "Une fois par combat, détourne une attaque vers un autre adversaire au contact.",
+                "abilityId": "ability:esquive-fatale-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Frappe chirurgicale",
+                "text": "Améliore de 2 la plage de critique avec une arme légère.",
+                "abilityId": "ability:frappe-chirurgicale:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Ambidextrie (G)",
+                "text": "Une attaque gratuite par round avec une dague ou une épée courte.",
+                "abilityId": "ability:ambidextrie-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Botte secrète",
+                "text": "Sur critique, inflige un état préjudiciable ou transforme l’attaque en attaque sournoise.",
+                "abilityId": "ability:botte-secrete:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-du-spadassin:class-voleur:cof2-lb-2024"
+          }
+        ]
+      },
+      "mapping": {
+        "peopleId": "people:gobelin:addon-comp2017-cof2",
+        "profileId": "class:voleur:cof2-lb-2024",
+        "familyId": "aventurier"
+      }
+    }
+  },
+  {
+    "format": "FOH_CHARACTER_STATE",
+    "formatVersion": 1,
+    "id": "bastide-recovery-scanlan",
+    "name": "Scanlan",
+    "people": "Halfelin",
+    "profile": "Barde",
+    "type": "bastide-recovery",
+    "status": "RECOVERED",
+    "updatedAt": "2026-10-12T11:46:04.001Z",
+    "draft": {
+      "heroLibraryId": "bastide-recovery-scanlan"
+    },
+    "recovery": {
+      "schema": "foh-bastide-recovery-1",
+      "sourceId": "scanlan",
+      "reviewed": false,
+      "source": "Hub Bastide — état récupéré le 12 octobre 2026",
+      "character": {
+        "schema": "bastide-character-v2",
+        "id": "scanlan",
+        "name": "Scanlan",
+        "status": "BASTIDE_PLAYER_CHARACTER",
+        "source": "Export Forge of Heroes - 29 septembre 2026",
+        "level": 1,
+        "people": "Halfelin",
+        "family": "Aventurier",
+        "profile": "Barde",
+        "heroicIdeal": "",
+        "flaw": "",
+        "stats": {
+          "AGI": 1,
+          "CON": 1,
+          "FOR": -2,
+          "PER": 0,
+          "CHA": 3,
+          "INT": 0,
+          "VOL": 2
+        },
+        "combat": {
+          "speedMeters": 10,
+          "pvMax": 9,
+          "pcMax": 6,
+          "pmMax": 4,
+          "recoveryDie": "D8",
+          "recoveryMax": 3,
+          "init": 10,
+          "def": 14,
+          "contact": -1,
+          "distance": 2,
+          "magic": 3,
+          "silver": 0
+        },
+        "attacks": [
+          {
+            "id": "rapiere",
+            "name": "Rapière",
+            "type": "Contact",
+            "attack": -1,
+            "damage": "1d6-2",
+            "range": "Contact",
+            "special": ""
+          },
+          {
+            "id": "dague-contact",
+            "name": "Dague",
+            "type": "Contact",
+            "attack": -1,
+            "damage": "1d4-2",
+            "range": "Contact",
+            "special": ""
+          },
+          {
+            "id": "dague-distance",
+            "name": "Dague",
+            "type": "Distance",
+            "attack": 2,
+            "damage": "1d4",
+            "range": "5 m",
+            "special": ""
+          }
+        ],
+        "equipment": [
+          "Rapière",
+          "Dague"
+        ],
+        "paths": [
+          {
+            "name": "Voie du peuple - Halfelin",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Petite taille",
+                "text": "+1 en DEF et +3 aux tests de discrétion et de subtilisation. Restrictions sur les armes lourdes.",
+                "abilityId": "ability:petite-taille:path:voie-du-halfelin:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": false,
+                "name": "Résistance légendaire",
+                "text": "Bonus égal au rang aux tests opposés d’attaque magique pour résister à un sort.",
+                "abilityId": "ability:r-sistance-l-gendaire:path:voie-du-halfelin:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Bon pour le moral",
+                "text": "Un bon repas permet de récupérer 1d4 PV, jusqu’à quatre fois par jour.",
+                "abilityId": "ability:bon-pour-le-moral:path:voie-du-halfelin:cof2-lb-2024:rank3:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Petit veinard",
+                "text": "+1 PC et esquive d’une attaque choisie par combat, hors critique.",
+                "abilityId": "ability:petit-veinard:path:voie-du-halfelin:cof2-lb-2024:rank4:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Vif et bien nourri",
+                "text": "+1 en AGI et +1 en CON.",
+                "abilityId": "ability:vif-et-bien-nourri:path:voie-du-halfelin:cof2-lb-2024:rank5:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "people",
+            "pathId": "path:voie-du-halfelin:cof2-lb-2024"
+          },
+          {
+            "name": "Voie de la séduction",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Charmant",
+                "text": "+3 pour séduire, convaincre, mentir ou baratiner ; 1 PC peut améliorer l’action d’un compagnon de 1d4° + CHA.",
+                "abilityId": "ability:charmant:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": true,
+                "name": "Dentelles et rapière",
+                "text": "Sans armure, ajoute le CHA à la DEF, dans la limite du rang atteint dans la voie.",
+                "abilityId": "ability:dentelles-et-rapiere:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Baratineur de génie",
+                "text": "Après 10 minutes, peut dépenser 1 PC pour charmer un humanoïde de niveau 1 ou moins.",
+                "abilityId": "ability:baratineur-de-genie:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Charisme héroïque",
+                "text": "+1 en CHA, dé bonus aux tests de CHA et possibilité d’utiliser CHA pour calculer les PM.",
+                "abilityId": "ability:charisme-heroique:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Suggestion (A)*",
+                "text": "Test opposé d’attaque magique pour suggérer une action à une créature.",
+                "abilityId": "ability:suggestion-a:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
+                "spell": true
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-de-la-seduction:class-barde:cof2-lb-2024"
+          },
+          {
+            "name": "Voie du musicien",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Chant des héros (L)*",
+                "text": "Pour 1 PM, le barde et ses alliés à portée de voix gagnent +1 à tous leurs tests pendant CHA minutes ; +3 pour jouer ou chanter.",
+                "abilityId": "ability:chant-des-heros-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": true
+              },
+              {
+                "rank": 2,
+                "owned": true,
+                "name": "Chant de réconfort (L)*",
+                "text": "Pendant une récupération rapide, le barde et ses alliés à 10 m récupèrent 1d4° PV.",
+                "abilityId": "ability:chant-de-reconfort-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": true
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Attaque sonore (A)*",
+                "text": "Inflige 2d4° + CHA DM dans un cône de 10 m ; test de CON pour diviser les DM par deux.",
+                "abilityId": "ability:attaque-sonore-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+                "spell": true
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Zone de silence (A)*",
+                "text": "Crée une zone de silence de 5 m de diamètre à 30 m pendant CHA minutes.",
+                "abilityId": "ability:zone-de-silence-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
+                "spell": true
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Danse irrésistible (A)*",
+                "text": "Test opposé d’attaque magique : la cible danse, subit un dé malus aux attaques et -5 en DEF.",
+                "abilityId": "ability:danse-irresistible-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
+                "spell": true
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-du-musicien:class-barde:cof2-lb-2024"
+          },
+          {
+            "name": "Voie de l’escrime",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": false,
+                "name": "Précision",
+                "text": "Remplace la FOR par l’AGI pour les attaques au contact avec une arme légère.",
+                "abilityId": "ability:precision:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": false,
+                "name": "Feinte (L)",
+                "text": "Test opposé de CHA contre PER donnant un bonus d’attaque et +2d4° DM au round suivant.",
+                "abilityId": "ability:feinte-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Intelligence du combat (M)",
+                "text": "Une fois par combat, peut désarmer, renverser ou aveugler un adversaire de NC inférieur.",
+                "abilityId": "ability:intelligence-du-combat-m:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Attaque flamboyante (L)",
+                "text": "Attaque avec une arme légère, avec bonus d’attaque et de DM égal au CHA.",
+                "abilityId": "ability:attaque-flamboyante-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Botte mortelle",
+                "text": "+2d4° DM si le résultat d’attaque dépasse la DEF adverse d’au moins 10.",
+                "abilityId": "ability:botte-mortelle:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-de-l-escrime:class-barde:cof2-lb-2024"
+          },
+          {
+            "name": "Voie du saltimbanque",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": false,
+                "name": "Acrobate",
+                "text": "+3 aux tests d’acrobaties, équilibre, saut et escalade.",
+                "abilityId": "ability:acrobate:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": false,
+                "name": "Grâce féline",
+                "text": "Ajoute le CHA à l’Initiative et +1 en DEF ; +4 aux tests de danse, mime ou jonglerie.",
+                "abilityId": "ability:grace-feline:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Lanceur de couteau (G)",
+                "text": "Une fois par round, lance gratuitement un couteau à 10 m pour 1d4 + AGI DM.",
+                "abilityId": "ability:lanceur-de-couteau-g:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Liberté d’action",
+                "text": "Immunité à la peur, aux sorts d’asservissement et aux états ralenti et immobilisé.",
+                "abilityId": "ability:liberte-daction:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Esquive acrobatique (G)",
+                "text": "Test d’attaque à distance opposé pour esquiver une attaque une fois par round.",
+                "abilityId": "ability:esquive-acrobatique-g:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024"
+          },
+          {
+            "name": "Voie du vagabond",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": false,
+                "name": "Rumeurs et légendes",
+                "text": "+3 aux tests d’INT liés à la culture générale et à l’identification d’objets magiques.",
+                "abilityId": "ability:rumeurs-et-legendes:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": false,
+                "name": "Éclectique",
+                "text": "+1 à tous les tests de compétence, non cumulable sauf avec la voie de peuple.",
+                "abilityId": "ability:eclectique:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Attirail",
+                "text": "Pour 1 PC, sort un objet improbable d’une valeur maximale de 10 pa.",
+                "abilityId": "ability:attirail:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Compréhension des langues (A)*",
+                "text": "Permet de lire, écrire et parler une langue vivante étrangère.",
+                "abilityId": "ability:comprehension-des-langues-a:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
+                "spell": true
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Déguisement (A)*",
+                "text": "Prend l’apparence d’un humanoïde de taille voisine pendant CHA heures.",
+                "abilityId": "ability:deguisement-a:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
+                "spell": true
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-du-vagabond:class-barde:cof2-lb-2024"
+          }
+        ]
+      },
+      "mapping": {
+        "peopleId": "people:halfelin:cof2-lb-2024",
+        "profileId": "class:barde:cof2-lb-2024",
+        "familyId": "aventurier"
+      }
+    }
+  },
+  {
+    "format": "FOH_CHARACTER_STATE",
+    "formatVersion": 1,
+    "id": "bastide-recovery-wilfried",
+    "name": "Wilfried",
+    "people": "Humain",
+    "profile": "Prêtre",
+    "type": "bastide-recovery",
+    "status": "RECOVERED",
+    "updatedAt": "2026-10-12T11:46:04.001Z",
+    "draft": {
+      "heroLibraryId": "bastide-recovery-wilfried"
+    },
+    "recovery": {
+      "schema": "foh-bastide-recovery-1",
+      "sourceId": "wilfried",
+      "reviewed": false,
+      "source": "Hub Bastide — état récupéré le 12 octobre 2026",
+      "character": {
+        "schema": "bastide-character-v2",
+        "id": "wilfried",
+        "name": "Wilfried",
+        "status": "BASTIDE_PLAYER_CHARACTER",
+        "source": "Export Forge of Heroes - 28 septembre 2026",
+        "level": 1,
+        "people": "Humain",
+        "family": "Mystique",
+        "profile": "Prêtre",
+        "heroicIdeal": "",
+        "flaw": "",
+        "stats": {
+          "AGI": 2,
+          "CON": 0,
+          "FOR": 0,
+          "PER": 0,
+          "CHA": 4,
+          "INT": -1,
+          "VOL": 1
+        },
+        "combat": {
+          "speedMeters": 10,
+          "pvMax": 8,
+          "pcMax": 7,
+          "pmMax": 2,
+          "recoveryDie": "D8",
+          "recoveryMax": 3,
+          "init": 10,
+          "def": 17,
+          "contact": 1,
+          "distance": 3,
+          "magic": 2,
+          "silver": 0
+        },
+        "attacks": [
+          {
+            "id": "masse",
+            "name": "Masse",
+            "type": "Contact",
+            "attack": 1,
+            "damage": "1d6",
+            "range": "Contact",
+            "special": ""
+          }
+        ],
+        "equipment": [
+          "Masse",
+          "Chemise de mailles",
+          "Petit bouclier"
+        ],
+        "paths": [
+          {
+            "name": "Voie du peuple - Humain",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Diversité",
+                "text": "+3 aux tests de deux domaines liés à l’origine géographique ou sociale ; +1 PC.",
+                "abilityId": "ability:diversit:path:voie-de-l-humain:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": false,
+                "name": "Instinct de survie",
+                "text": "Une fois par combat, divise par deux les DM qui devraient réduire le héros à 0 PV, puis +2 en DEF.",
+                "abilityId": "ability:instinct-de-survie:path:voie-de-l-humain:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Touche-à-tout",
+                "text": "Accorde une capacité de rang 1 ou 2 de n’importe quel profil, avec restrictions d’armure.",
+                "abilityId": "ability:touche-tout:path:voie-de-l-humain:cof2-lb-2024:rank3:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Loup parmi les loups",
+                "text": "Une fois par round, +1d4 DM contre un humanoïde de taille moyenne.",
+                "abilityId": "ability:loup-parmi-les-loups:path:voie-de-l-humain:cof2-lb-2024:rank4:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Polyvalence",
+                "text": "+1 à la caractéristique la plus faible et +1 en VOL.",
+                "abilityId": "ability:polyvalence:path:voie-de-l-humain:cof2-lb-2024:rank5:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "people",
+            "pathId": "path:voie-de-l-humain:cof2-lb-2024"
+          },
+          {
+            "name": "Voie des soins",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Récupération mineure (A)*",
+                "text": "Pour 1 PM au contact, soigne 1d4° + CHA PV ; +3 aux tests de médecine et premiers soins.",
+                "abilityId": "ability:soins:classpath:voie-des-soins:class-pretre:cof2-lb-2024:r1",
+                "spell": true
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-des-soins:class-pretre:cof2-lb-2024"
+          },
+          {
+            "name": "Voie de la foi",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Prédicateur",
+                "text": "+3 pour convaincre ou convertir ; récupère 1 PC une fois par jour après une conversion réussie.",
+                "abilityId": "ability:foi:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:r1",
+                "spell": false
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024"
+          },
+          {
+            "name": "Voie de la guerre sainte",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": false,
+                "name": "Arme bénie (A)*",
+                "text": "Pour 1 PM, bénit une arme pendant 24 h : relance les 1 aux DM et rend les dégâts magiques.",
+                "abilityId": "ability:guerre-sainte:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:r1",
+                "spell": true
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024"
+          },
+          {
+            "name": "Voie de la prière",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": false,
+                "name": "Bénédiction (L)*",
+                "text": "Pour 1 PM, le prêtre et ses alliés en vue gagnent +1 aux tests pendant CHA minutes ; +3 en théologie et cosmologie.",
+                "abilityId": "ability:priere:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:r1",
+                "spell": true
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024"
+          },
+          {
+            "name": "Voie de la spiritualité",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": false,
+                "name": "Vêtements sacrés",
+                "text": "Sans armure, +2 en DEF et dé bonus pour résister au contrôle mental ; option de maîtrise de la cotte de mailles pour une divinité guerrière.",
+                "abilityId": "ability:spiritualite:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:r1",
+                "spell": false
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024"
+          }
+        ]
+      },
+      "mapping": {
+        "peopleId": "people:humain:cof2-lb-2024",
+        "profileId": "class:pretre:cof2-lb-2024",
+        "familyId": "mystique"
+      }
+    }
+  },
+  {
+    "format": "FOH_CHARACTER_STATE",
+    "formatVersion": 1,
+    "id": "bastide-recovery-vivelame",
+    "name": "Vivelame",
+    "people": "Âme-forgée",
+    "profile": "Arquebusier",
+    "type": "bastide-recovery",
+    "status": "RECOVERED",
+    "updatedAt": "2026-10-12T11:46:04.002Z",
+    "draft": {
+      "heroLibraryId": "bastide-recovery-vivelame"
+    },
+    "recovery": {
+      "schema": "foh-bastide-recovery-1",
+      "sourceId": "vivelame",
+      "reviewed": false,
+      "source": "Hub Bastide — état récupéré le 12 octobre 2026",
+      "character": {
+        "schema": "bastide-character-v2",
+        "id": "vivelame",
+        "name": "Vivelame",
+        "status": "BASTIDE_PLAYER_CHARACTER",
+        "source": "Export Forge of Heroes - 30 septembre 2026",
+        "level": 1,
+        "people": "Âme-forgée",
+        "family": "Aventurier",
+        "profile": "Arquebusier",
+        "age": "Vénérable",
+        "heroicIdeal": "",
+        "flaw": "",
+        "stats": {
+          "AGI": 2,
+          "CON": 1,
+          "FOR": 0,
+          "PER": 0,
+          "CHA": -2,
+          "INT": 3,
+          "VOL": 0
+        },
+        "combat": {
+          "speedMeters": 10,
+          "pvMax": 9,
+          "pcMax": 1,
+          "pmMax": 0,
+          "recoveryDie": "D8",
+          "recoveryMax": 3,
+          "init": 10,
+          "def": 16,
+          "contact": 1,
+          "distance": 3,
+          "magic": 1,
+          "silver": 0
+        },
+        "attacks": [
+          {
+            "id": "petoire",
+            "name": "Pétoire",
+            "type": "Distance",
+            "attack": 3,
+            "damage": "1d10",
+            "range": "20 m",
+            "special": ""
+          },
+          {
+            "id": "javelot-vivelame",
+            "name": "Javelot",
+            "baseRule": "Épée longue",
+            "type": "Contact",
+            "attack": 1,
+            "damage": "1d8",
+            "damageType": "Perforant",
+            "range": "Contact",
+            "special": "Apparence personnalisée ; profil mécanique de l’épée longue"
+          },
+          {
+            "id": "dague-contact",
+            "name": "Dague",
+            "type": "Contact",
+            "attack": 1,
+            "damage": "1d4",
+            "range": "Contact",
+            "special": ""
+          }
+        ],
+        "equipment": [
+          "Pétoire",
+          "Javelot (profil mécanique : épée longue)",
+          "Dague",
+          "Cuir renforcé / broigne"
+        ],
+        "paths": [
+          {
+            "name": "Voie du peuple - Âme-forgée",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Main lourde",
+                "text": "À mains nues, l’âme-forgée inflige 1d6 DM létaux.",
+                "abilityId": "ability:main-lourde:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank1:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": true,
+                "name": "Choc électrique (L)",
+                "text": "Sur une attaque à mains nues réussie, inflige 1d6 DM d’électricité par rang, dégâts de l’attaque inclus.",
+                "abilityId": "ability:choc-lectrique:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank2:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Camouflage",
+                "text": "Une fois par jour, prend l’apparence générique d’un humain pendant une heure.",
+                "abilityId": "ability:camouflage:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank3:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Forgé dans la bataille",
+                "text": "Une fois par combat, ignore totalement les dégâts d’une attaque.",
+                "abilityId": "ability:forg-dans:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank4:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Machine de guerre",
+                "text": "+2 en CON et +2 en FOR.",
+                "abilityId": "ability:machine:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank5:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "people",
+            "pathId": "path:voie-de-lâme-forgée:addon-comp2017-cof2"
+          },
+          {
+            "name": "Voie du pistolero",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Plus vite que son ombre",
+                "text": "Avec une arme à poudre chargée en main, peut tirer avec +5 en Initiative et sans dé malus au contact.",
+                "abilityId": "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": true,
+                "name": "Ajuster le tir",
+                "text": "Après une attaque à distance ratée, +5 au prochain tir contre la même cible avant la fin du round suivant.",
+                "abilityId": "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Tir double (L)",
+                "text": "Tire avec une pétoire dans chaque main ; -2 par attaque, sans malus si les deux tirs visent la même cible.",
+                "abilityId": "ability:tir-double-l:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Agilité héroïque",
+                "text": "+1 en AGI et dé bonus aux tests d’AGI.",
+                "abilityId": "ability:agilite-heroique:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank4:cof2-lb-2024",
+                "spell": false
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "As de la gâchette",
+                "text": "+2d4° DM si le résultat d’attaque dépasse la DEF adverse d’au moins 10.",
+                "abilityId": "ability:as-de-la-gachette:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank5:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024"
+          },
+          {
+            "name": "Voie des montagnes",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Habitant des montagnes",
+                "text": "+3 aux tests de discrétion et de survie en montagne.",
+                "abilityId": "history:mountains:rank:1"
+              },
+              {
+                "rank": 2,
+                "owned": true,
+                "name": "Grimpeur",
+                "text": "+3 aux tests d’escalade et dégâts de chute divisés par deux.",
+                "abilityId": "history:mountains:rank:2"
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Résistance au froid",
+                "text": "RD 3 contre les DM de froid.",
+                "abilityId": "history:mountains:rank:3"
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Terrain de prédilection",
+                "text": "+2 en attaque et en DEF sur une forte déclivité ou dans un escalier.",
+                "abilityId": "history:mountains:rank:4"
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Danger des montagnes",
+                "text": "+2 en DEF contre les géants et +1d4° aux DM contre eux.",
+                "abilityId": "history:mountains:rank:5"
+              }
+            ],
+            "kind": "history",
+            "pathId": "history:mountains",
+            "category": "geographic"
+          },
+          {
+            "name": "Voie du nomade",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Sens de l’orientation",
+                "text": "+3 pour s’orienter et prédire la météo des prochaines 24 heures.",
+                "abilityId": "history:nomad:rank:1"
+              },
+              {
+                "rank": 2,
+                "owned": true,
+                "name": "Voyageur",
+                "text": "+3 aux tests de récupération à la belle étoile et aux tests de survie liés aux événements de voyage.",
+                "abilityId": "history:nomad:rank:2"
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Chasseur-cueilleur",
+                "text": "Peut se nourrir en voyageant normalement et nourrir une personne supplémentaire sur un test de survie.",
+                "abilityId": "history:nomad:rank:3"
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Je suis déjà venu",
+                "text": "Dépense 1 DR ou 1 PC pour connaître une localité, un contact fiable et améliorer la disponibilité commerciale.",
+                "abilityId": "history:nomad:rank:4"
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Attentif",
+                "text": "+1 en PER.",
+                "abilityId": "history:nomad:rank:5"
+              }
+            ],
+            "kind": "history",
+            "pathId": "history:nomad",
+            "category": "professional"
+          }
+        ]
+      },
+      "mapping": {
+        "peopleId": "people:ame-forgee:addon-comp2017-cof2",
+        "profileId": "class:arquebusier:cof2-lb-2024",
+        "familyId": "aventurier"
+      }
+    }
+  },
+  {
+    "format": "FOH_CHARACTER_STATE",
+    "formatVersion": 1,
+    "id": "bastide-recovery-zepheline",
+    "name": "Zepheline",
+    "people": "Fée",
+    "profile": "Ensorceleur",
+    "type": "bastide-recovery",
+    "status": "RECOVERED",
+    "updatedAt": "2026-10-12T11:46:04.005Z",
+    "draft": {
+      "heroLibraryId": "bastide-recovery-zepheline"
+    },
+    "recovery": {
+      "schema": "foh-bastide-recovery-1",
+      "sourceId": "zepheline",
+      "reviewed": false,
+      "source": "Hub Bastide — état récupéré le 12 octobre 2026",
+      "character": {
+        "schema": "bastide-character-v2",
+        "id": "zepheline",
+        "name": "Zepheline",
+        "status": "BASTIDE_PLAYER_CHARACTER",
+        "source": "Export Forge of Heroes - 30 septembre 2026 ; correction MJ : Invocation R1–R2 remplace Divination",
+        "level": 1,
+        "people": "Fée",
+        "family": "",
+        "profile": "Ensorceleur",
+        "age": "Vénérable",
+        "heroicIdeal": "",
+        "flaw": "",
+        "stats": {
+          "AGI": 1,
+          "CON": -2,
+          "FOR": -2,
+          "PER": 0,
+          "CHA": 2,
+          "INT": 2,
+          "VOL": 3
+        },
+        "combat": {
+          "speedMeters": 10,
+          "pvMax": 4,
+          "pcMax": 4,
+          "pmMax": 8,
+          "recoveryDie": "D6",
+          "recoveryMax": 0,
+          "init": 11,
+          "def": 13,
+          "contact": -1,
+          "distance": 2,
+          "magic": 4,
+          "silver": 0
+        },
+        "traits": [
+          "Vision dans le noir à 30 m",
+          "Vol : 10 m par action ; doit rester en mouvement et chute si elle est immobilisée ou incapable d’agir",
+          "+3 aux tests de discrétion",
+          "+1 en DEF",
+          "FOR maximale : -1",
+          "Armes limitées au d4",
+          "Armure légère ajustée uniquement",
+          "Aucun bouclier en vol"
+        ],
+        "attacks": [
+          {
+            "id": "sous-tension",
+            "name": "Sous tension (M)*",
+            "type": "Magique",
+            "attack": 4,
+            "damage": "1d4+CHA",
+            "range": "10 m",
+            "special": "Pendant CHA minutes : 1d4° DM à qui la blesse ou la touche au contact"
+          },
+          {
+            "id": "choc",
+            "name": "Choc (A)*",
+            "type": "Magique",
+            "attack": 4,
+            "damage": "1d4° + CHA",
+            "range": "20 m",
+            "special": "Si le NC de la cible est inférieur à 2 : test de FOR difficulté 10 ou cible renversée."
+          }
+        ],
+        "equipment": [
+          {
+            "id": "arc-feerique",
+            "name": "Arc féerique",
+            "base": "Arc adapté à une Fée",
+            "category": "Arme",
+            "quantity": 1,
+            "equipped": true,
+            "equipment": {
+              "slot": "main_hand",
+              "effect": "Arc adapté à sa taille.",
+              "weapon": {
+                "modes": [
+                  {
+                    "label": "Distance",
+                    "attackType": "distance",
+                    "damage": "1d4",
+                    "damageType": "perforant",
+                    "range": "30 m",
+                    "attackBonus": 0,
+                    "damageBonus": 0
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "paths": [
+          {
+            "name": "Voie du peuple - Être féerique",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Langage des animaux",
+                "text": "Comprend et parle aux animaux ; +3 pour les comprendre, les calmer ou communiquer avec eux.",
+                "abilityId": "ability:langage-des-animaux:path:voie-de-letre-feerique:addon-comp2017-cof2:r1:foh-cof2-v1",
+                "spell": false
+              },
+              {
+                "rank": 2,
+                "owned": true,
+                "name": "Invisibilité (L)",
+                "text": "Se rend invisible une fois par jour par rang atteint dans la voie.",
+                "abilityId": "ability:etre-feerique-r2:path:voie-de-letre-feerique:addon-comp2017-cof2:r2:foh-cof2-v1",
+                "spell": false
+              },
+              {
+                "rank": 3,
+                "owned": false,
+                "name": "Monture féerique",
+                "text": "Apprivoise une monture féerique terrestre ou volante.",
+                "abilityId": "ability:etre-feerique-r3:path:voie-de-letre-feerique:addon-comp2017-cof2:r3:foh-cof2-v1",
+                "spell": false
+              },
+              {
+                "rank": 4,
+                "owned": false,
+                "name": "Grande taille (L)",
+                "text": "Prend une taille humaine trois fois par jour et gagne +2 en FOR sous cette forme.",
+                "abilityId": "ability:etre-feerique-r4:path:voie-de-letre-feerique:addon-comp2017-cof2:r4:foh-cof2-v1",
+                "spell": false
+              },
+              {
+                "rank": 5,
+                "owned": false,
+                "name": "Seigneur féerique",
+                "text": "+2 en PER et +2 en CHA.",
+                "abilityId": "ability:etre-feerique-r5:path:voie-de-letre-feerique:addon-comp2017-cof2:r5:foh-cof2-v1",
+                "spell": false
+              }
+            ],
+            "kind": "people",
+            "pathId": "path:voie-de-letre-feerique:addon-comp2017-cof2"
+          },
+          {
+            "name": "Voie de l’air",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Murmures dans le vent (G)*",
+                "text": "Envoie dix mots à CHA × 100 m et reçoit une réponse immédiate ; +1 permanent en Initiative et DEF.",
+                "abilityId": "ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024",
+                "spell": true
+              },
+              {
+                "rank": 2,
+                "owned": true,
+                "name": "Sous tension (M)*",
+                "text": "Pendant CHA minutes, inflige 1d4° DM à qui la touche au contact ; décharge à 10 m pour 1d4° + CHA DM.",
+                "abilityId": "ability:sous-tension:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": true
+              },
+              {
+                "rank": 3,
+                "owned": true,
+                "name": "Télékinésie (A)*",
+                "text": "Pendant CHA minutes, déplace à 20 m jusqu’à 150 kg à raison de 5 m par action de mouvement.",
+                "abilityId": "ability:telekinesie:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank3:cof2-lb-2024",
+                "spell": true
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024"
+          },
+          {
+            "name": "Voie de la divination",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": false,
+                "name": "Divination (L)*",
+                "text": "Obtient des informations publiques sur une créature ; +1 permanent en Initiative et DEF.",
+                "abilityId": "ability-r1-class-ensorceleur-divination-divination-cof2-lb-2024",
+                "spell": true
+              },
+              {
+                "rank": 2,
+                "owned": false,
+                "name": "Détection de l’invisible (L)*",
+                "text": "Pendant CHA minutes, détecte les créatures invisibles ou cachées à moins de 20 m et la clairvoyance.",
+                "abilityId": "ability:detection-invisible:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": true
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024"
+          },
+          {
+            "name": "Voie de l’envoûteur",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": false,
+                "name": "Injonction (A)*",
+                "text": "Donne un ordre simple pour le prochain tour sur un test opposé d’attaque magique ; +3 en persuasion et séduction.",
+                "abilityId": "ability-r1-class-ensorceleur-envouteur-injonction-cof2-lb-2024",
+                "spell": true
+              },
+              {
+                "rank": 2,
+                "owned": false,
+                "name": "Sommeil (L)*",
+                "text": "Une fois par combat, endort les créatures admissibles dans une zone de 10 m à 20 m.",
+                "abilityId": "ability:sommeil:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": true
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024"
+          },
+          {
+            "name": "Voie des illusions",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": false,
+                "name": "Mirage (L)*",
+                "text": "Crée une illusion visuelle et sonore immobile ; +3 aux tests de supercherie et de mensonge.",
+                "abilityId": "ability-r1-class-ensorceleur-illusions-mirage-cof2-lb-2024",
+                "spell": true
+              },
+              {
+                "rank": 2,
+                "owned": false,
+                "name": "Image décalée (M)*",
+                "text": "Pendant 1d4 + CHA rounds, une attaque réussie n’inflige aucun DM sur 5-6 au d6.",
+                "abilityId": "ability:image-decalee:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": true
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024"
+          },
+          {
+            "name": "Voie de l’invocation",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Choc (A)*",
+                "text": "Si l’ensorceleur réussit un test d’attaque magique réussi contre la DEF de son adversaire situé à une portée de 20 m, il lui inflige [1d4° + CHA] DM. Si la cible a un NC inférieur au rang atteint par l’ensorceleur dans la voie, elle doit réussir un test de FOR difficulté 10 pour ne pas être renversée.",
+                "abilityId": "ability-r1-class-ensorceleur-invocation-choc-cof2-lb-2024",
+                "spell": true
+              },
+              {
+                "rank": 2,
+                "owned": true,
+                "name": "Serviteur invisible (L)*",
+                "text": "Pendant CHA minutes, une force invisible effectue à 20 m des tâches simples sans test avec AGI +0, INT +0 et FOR égale au CHA.",
+                "abilityId": "ability:serviteur-invisible:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+                "spell": true
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024"
+          }
+        ]
+      },
+      "mapping": {
+        "peopleId": "people:fee:addon-comp2017-cof2",
+        "profileId": "class:ensorceleur:cof2-lb-2024",
+        "familyId": "mage"
+      }
+    }
+  },
+  {
+    "format": "FOH_CHARACTER_STATE",
+    "formatVersion": 1,
+    "id": "bastide-recovery-faelar",
+    "name": "Faëlar",
+    "people": "Elfe sylvain",
+    "profile": "Rôdeur",
+    "type": "bastide-recovery",
+    "status": "RECOVERED",
+    "updatedAt": "2026-10-12T11:46:04.005Z",
+    "draft": {
+      "heroLibraryId": "bastide-recovery-faelar"
+    },
+    "recovery": {
+      "schema": "foh-bastide-recovery-1",
+      "sourceId": "faelar",
+      "reviewed": false,
+      "source": "Hub Bastide — état récupéré le 12 octobre 2026",
+      "character": {
+        "schema": "bastide-character-v2",
+        "id": "faelar",
+        "name": "Faëlar",
+        "status": "BASTIDE_PLAYER_CHARACTER",
+        "source": "Rapport Forge of Heroes FIX135 - 3 octobre 2026",
+        "level": 1,
+        "people": "Elfe sylvain",
+        "family": "Aventurier",
+        "profile": "Rôdeur",
+        "age": "Jeune",
+        "heroicIdeal": "",
+        "flaw": "",
+        "stats": {
+          "FOR": 1,
+          "AGI": 1,
+          "CON": 2,
+          "PER": 3,
+          "INT": 1,
+          "VOL": 0,
+          "CHA": -1
+        },
+        "combat": {
+          "speedMeters": 10,
+          "pvMax": 10,
+          "pcMax": 2,
+          "pmMax": 0,
+          "recoveryDie": "D8",
+          "recoveryMax": 4,
+          "init": 14,
+          "def": 14,
+          "contact": 2,
+          "distance": 2,
+          "magic": 1,
+          "silver": 0
+        },
+        "traits": [
+          "Lumière des étoiles — capacité de peuple acquise au rang 1",
+          "Instinct de chasse — Zombies : après le combat de la plage, Faëlar a compris que les armes tranchantes percent leur résistance ; les autres dégâts physiques ont été réduits de moitié."
+        ],
+        "attacks": [],
+        "equipment": [
+          {
+            "id": "epee-longue",
+            "name": "Épée longue",
+            "base": "Épée longue",
+            "category": "Arme",
+            "quantity": 1,
+            "equipped": false,
+            "notes": "Attaque au contact : +2 · 1d8+1 DM.",
+            "equipment": {
+              "slot": "main_hand",
+              "effect": "Arme de contact.",
+              "weapon": {
+                "modes": [
+                  {
+                    "label": "Contact",
+                    "attackType": "contact",
+                    "damage": "1d8",
+                    "damageStat": "FOR",
+                    "damageType": "tranchant",
+                    "range": "Contact",
+                    "attackBonus": 0,
+                    "damageBonus": 0
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "arc-court",
+            "name": "Arc court",
+            "base": "Arc court",
+            "category": "Arme",
+            "quantity": 1,
+            "equipped": true,
+            "notes": "Attaque à distance : +2 · 1d6+3 DM · portée 30 m.",
+            "equipment": {
+              "slot": "main_hand",
+              "effect": "Arme à distance à deux mains.",
+              "weapon": {
+                "modes": [
+                  {
+                    "label": "Distance",
+                    "attackType": "distance",
+                    "damage": "1d6",
+                    "damageStat": "PER",
+                    "damageType": "perforant",
+                    "range": "30 m",
+                    "attackBonus": 0,
+                    "damageBonus": 0
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "dague",
+            "name": "Dague",
+            "base": "Dague",
+            "category": "Arme",
+            "quantity": 1,
+            "equipped": false,
+            "notes": "Contact : +2 · 1d4+1 DM. Lancer : +2 · 1d4 DM · portée 5 m.",
+            "equipment": {
+              "slot": "main_hand",
+              "effect": "Arme légère utilisable au contact ou au lancer.",
+              "weapon": {
+                "modes": [
+                  {
+                    "label": "Contact",
+                    "attackType": "contact",
+                    "damage": "1d4",
+                    "damageStat": "FOR",
+                    "damageType": "perforant",
+                    "range": "Contact",
+                    "attackBonus": 0,
+                    "damageBonus": 0
+                  },
+                  {
+                    "label": "Distance",
+                    "attackType": "distance",
+                    "damage": "1d4",
+                    "damageType": "perforant",
+                    "range": "5 m",
+                    "attackBonus": 0,
+                    "damageBonus": 0
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "cuir-renforce",
+            "name": "Cuir renforcé / broigne",
+            "base": "Cuir renforcé, broigne",
+            "category": "Protection",
+            "quantity": 1,
+            "equipped": true,
+            "notes": "Armure portée à la création.",
+            "equipment": {
+              "slot": "armor",
+              "effect": "Armure équipée : valeur d’armure 3.",
+              "bonuses": {
+                "armorDef": 3
+              }
+            }
+          }
+        ],
+        "paths": [
+          {
+            "name": "Voie de l’elfe sylvain",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Lumière des étoiles",
+                "text": "Capacité de peuple acquise au rang 1. Le rapport Forge fourni ne détaille pas son effet.",
+                "abilityId": "ability:lumi-re-des-toiles:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "people",
+            "pathId": "path:voie-de-l-elfe-sylvain:cof2-lb-2024"
+          },
+          {
+            "name": "Voie de l’archer",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Archer émérite",
+                "text": "Capacité de rôdeur acquise au rang 1. Ses effets sont déjà intégrés aux valeurs finales de la fiche et de l’arc court.",
+                "abilityId": "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024"
+          },
+          {
+            "name": "Voie du compagnon animal",
+            "ranks": [
+              {
+                "rank": 1,
+                "owned": true,
+                "name": "Le loup",
+                "text": "Faëlar dispose d’un loup comme compagnon animal. Le rapport Forge fourni ne contient pas sa fiche technique détaillée.",
+                "abilityId": "ability:le-loup:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+                "spell": false
+              }
+            ],
+            "kind": "profile",
+            "pathId": "classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024"
+          }
+        ]
+      },
+      "mapping": {
+        "peopleId": "people:elfe-sylvain:cof2-lb-2024",
+        "profileId": "class:rodeur:cof2-lb-2024",
+        "familyId": "aventurier"
+      }
+    }
+  }
+]
