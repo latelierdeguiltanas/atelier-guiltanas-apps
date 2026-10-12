@@ -99,3 +99,10 @@
 - La table MJ comporte les raccourcis atelier de Scanlan, Contrathèque, confidences, loup de Faëlar et besace de Zéphéline. Elle lit les fragments des liens MJ existants sans créer ni remplacer de clé.
 - Lors de cette intervention, une divergence a été constatée : le code déployé des chroniques comprenait les hymnes alors que le fichier GitHub était ancien. Le correctif repart de la version déployée et rétablit sa concordance avec GitHub, sans supprimer les hymnes.
 - Les notes et compteurs personnels conservés uniquement sur le téléphone d’un joueur ne sont pas accessibles à distance au MJ ; les données synchronisées sont consultables.
+
+## Correction Zéphéline — Invocation
+
+- À la demande du MJ, Invocation rangs 1 et 2 remplace Divination rangs 1 et 2 ; nombre total de rangs acquis conservé. Divination reste uniquement dans les voies non acquises.
+- Choc et Serviteur invisible repris des données actuelles Forge (lecture seulement de Forge). Choc ajouté aux attaques magiques ; coût PM suivi par le moteur commun.
+- Bonus Divination retiré : initiative 12 → 11, DEF 14 → 13 avant effets d’équipement. Autres voies, caractéristiques, ressources maximales et inventaire inchangés. Aucun accès ni état Supabase modifié.
+- Cache de data.js versionné sur la page Zéphéline ; vérification des données et des changements sans navigateur. Le MJ/joueur doit actualiser sa fiche existante.
