@@ -43,6 +43,36 @@ Deno.serve(async req=>{try{
   const b=await req.json();let q=db.from('bastide_messages').update({seen_at:new Date().toISOString()}).in('id',Array.isArray(b.ids)?b.ids.slice(0,200):[]).eq('direction',user.admin?'player':'mj');if(!user.admin)q=q.eq('player_id',user.id);const{error}=await q;if(error)throw error;return json({ok:true});
  }
  if(action==='return-item'&&req.method==='POST'){if(!user.admin)return json({error:'Accès MJ requis'},403);const b=await req.json();const{data,error}=await db.rpc('bastide_message_return',{p_id:b.id});if(error)throw error;return json(data)}
+ if(action.startsWith('pact')){
+  if(!user.admin&&user.id!=='wilfried')return json({error:'Ce carnet appartient à Wilfried'},403);
+  if(action==='pact'&&req.method==='GET'){
+   let q=db.from('bastide_pact_entries').select('*').eq('player_id','wilfried').order('created_at',{ascending:false});
+   if(!user.admin)q=q.in('status',['published','proposal','rejected']);
+   const{data,error}=await q;if(error)throw error;
+   return json({entries:user.admin?(data||[]):(data||[]).map(e=>({...e,history:(e.history||[]).filter((v:any)=>v.status==='published')})),access:user.admin?'admin':'player'});
+  }
+  if(action==='pact-save'&&req.method==='POST'){
+   const b=await req.json(),title=txt(b.title,161).trim(),content=txt(b.content,20001).trim();
+   if(!title||title.length>160||!content||content.length>20000)return json({error:'Titre ou texte invalide (160 / 20 000 caractères maximum)'},400);
+   const status=user.admin?b.status:'proposal';
+   if(!['proposal','draft','published','rejected'].includes(status))return json({error:'État invalide'},400);
+   if(!user.admin&&b.status&&b.status!=='proposal')return json({error:'Seul le MJ valide une conséquence'},403);
+   if(!/^[0-9a-f-]{36}$/i.test(b.id||''))return json({error:'Identifiant invalide'},400);
+   const{data:old,error:oe}=await db.from('bastide_pact_entries').select('*').eq('id',b.id).maybeSingle();if(oe)throw oe;
+   if(old){
+    if(old.player_id!=='wilfried'||(!user.admin&&(old.author!=='player'||old.status!=='proposal')))return json({error:'Cette entrée ne peut être modifiée que par le MJ'},403);
+    if(old.revision!==Number(b.revision))return json({error:'Cette entrée a changé. Actualise avant de modifier.'},409);
+    const history=[...(old.history||[]),{title:old.title,content:old.content,status:old.status,revision:old.revision,updated_at:old.updated_at,changed_by:user.admin?'mj':'player'}];
+    const{data,error}=await db.from('bastide_pact_entries').update({title,content,status,revision:old.revision+1,history,updated_at:new Date().toISOString()}).eq('id',old.id).eq('revision',old.revision).select('id,revision');if(error)throw error;if(!data?.length)return json({error:'Modification concurrente. Actualise.'},409);return json(data[0]);
+   }
+   if(Number(b.revision)!==0)return json({error:'Entrée inexistante. Actualise.'},409);
+   const{data,error}=await db.from('bastide_pact_entries').insert({id:b.id,player_id:'wilfried',title,content,status,author:user.admin?'mj':'player'}).select('id,revision').single();if(error)return json({error:error.code==='23505'?'Cet envoi existe déjà. Actualise.':error.message},error.code==='23505'?409:400);return json(data);
+  }
+  if(action==='pact-seen'&&req.method==='POST'){
+   if(user.admin)return json({ok:true});const b=await req.json();
+   const{error}=await db.from('bastide_pact_entries').update({seen_revision:Number(b.revision)}).eq('id',b.id).eq('player_id',user.id).eq('status','published').eq('revision',Number(b.revision));if(error)throw error;return json({ok:true});
+  }
+ }
  if(action==='backgrounds'&&req.method==='GET'){
   if(!user.admin)return json({error:'Accès MJ requis'},403);const[{data,error},{data:entries,error:e}]=await Promise.all([db.from('bastide_backgrounds').select('*').order('player_id'),db.from('bastide_personal_entries').select('owner_id,title,content,kind').order('owner_id')]);if(error||e)throw(error||e);return json({backgrounds:data||[],entries:entries||[],heroes:HEROES});
  }
