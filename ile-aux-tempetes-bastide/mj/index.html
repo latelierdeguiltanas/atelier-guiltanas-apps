@@ -94,63 +94,20 @@
         <a class="back" href="../">← Retour</a>
       </form>
     </div>
-    <main id="content" class="shell hidden">
-      <a class="back" href="../">← Accueil de la Bastide</a>
-      <section class="hero">
-        <div class="eyebrow">Poste de commandement</div>
-        <h1>La table du <span>MJ</span></h1>
-        <p>
-          Les outils de campagne, les six personnages COF2 et la
-          distribution des découvertes sont opérationnels pour la table de la
-          Bastide.
-        </p>
-      </section>
-      <section class="grid">
-        <article class="panel">
-          <h2>Outils disponibles</h2>
-          <div class="toolGrid">
-<a class="action" href="../chroniqueur/"><span><strong>Atelier de Scanlan</strong><small>Chroniques, hymnes, brouillons et médias</small></span><b>›</b></a>
-<a class="action" href="../espaces/?kind=contracts"><span><strong>Contrathèque de Vivelame</strong><small>Tous les contrats, même privés</small></span><b>›</b></a>
-<a class="action" href="../espaces/?kind=confidences"><span><strong>Confidences de Wilfried</strong><small>Tous les fragments, même privés</small></span><b>›</b></a>
-<a class="action" href="../personnages/faelar/#companion"><span><strong>Loup de Faëlar</strong><small>Statistiques et suivi synchronisés</small></span><b>›</b></a>
-<a class="action" href="../personnages/zepheline/#bag"><span><strong>Besace de Zéphéline</strong><small>Contenu de la besace et inventaire</small></span><b>›</b></a>
-            <a class="action primary" href="outils/scenario/"
-              ><span
-                ><strong>Scénario et scènes</strong
-                ><small>Préparation et fil narratif</small></span
-              ><b>›</b></a
-            ><a class="action" href="outils/soundboard/"
-              ><span
-                ><strong>Soundboard</strong
-                ><small>Ambiances et musiques</small></span
-              ><b>›</b></a
-            ><a class="action primary" href="outils/inventaires/"
-              ><span
-                ><strong>Inventaires et boutique</strong
-                ><small>Envoyer objets, monnaie et gérer Mila</small></span
-              ><b>›</b></a
-            ><a class="action" href="outils/recompenses/"
-              ><span
-                ><strong>Récompenses &amp; objets magiques</strong
-                ><small>Idées équilibrées, évolutions et voie de Scanlan</small></span
-              ><b>›</b></a
-            ><a class="action" href="../journal/"
-              ><span
-                ><strong>Journal</strong
-                ><small>Chronique de la Bastide</small></span
-              ><b>›</b></a
-            ><a class="action" href="outils/cartes/"
-              ><span
-                ><strong>Cartes et lieux</strong
-                ><small>Ressources de campagne</small></span
-              ><b>›</b></a
-            ><a class="action primary" href="outils/rencontres/"
-              ><span><strong>Rencontres et PNJ</strong><small>Portraits, notes privées et publication joueurs</small></span><b>›</b></a
-            >
-          </div>
-        </article>
-      </section>
-    <section class="panel"><h2>Échanges et histoires privées</h2><p><a href="../messages/">Messages et objets reçus des joueurs →</a></p><p><a href="outils/backgrounds/">Backgrounds, pactes et conséquences →</a></p><p><a href="../../gestionnaire-combat-cof2/">Gestionnaire de combat COF2 →</a></p></section></main>
+    <main id="content" class="mj-home hidden">
+      <header class="mj-heading"><div><small>BASTIDE · COF2</small><h1>Table du MJ</h1></div><a href="../">Accueil de la campagne</a></header>
+      <section data-mj-section="accueil"><h2>Accès rapides</h2><p class="section-intro">Les outils pour jouer, échanger et distribuer.</p><div class="quick-links"><a href="../../gestionnaire-combat-cof2/"><strong>Combat</strong><span>Ouvrir le gestionnaire COF2 →</span></a><a href="../messages/"><strong>Messages des joueurs</strong><span>Lire et répondre en privé →</span></a><a href="outils/inventaires/"><strong>Objets et envois</strong><span>Distribuer et gérer la boutique →</span></a></div></section>
+      <section data-mj-section="personnages" hidden><h2>Personnages</h2><p class="section-intro">Échanges privés, histoires et espaces propres à chaque héros.</p><div class="section-links"><a href="../messages/">Conversations individuelles PJ ↔ MJ →</a><a href="outils/backgrounds/">Backgrounds et décisions du MJ →</a></div><div class="pj-list">
+      <details><summary>Wilfried <span>Pacte et confidences</span></summary><div class="pj-tools"><a href="../pacte/">Carnet du pacte · lire, valider et publier →</a><a href="../espaces/?kind=confidences">Confidences de Wilfried →</a><a href="../personnages/wilfried/">Consulter sa fiche →</a></div></details>
+      <details><summary>Scanlan <span>Chroniques et hymnes</span></summary><div class="pj-tools"><a href="../chroniqueur/">Consulter son atelier →</a><a href="../journal/">Chroniques publiées →</a><a href="../hymnes/">Hymnes publiés →</a><a href="../personnages/scanlan/">Consulter sa fiche →</a></div></details>
+      <details><summary>Vivelame <span>Contrathèque</span></summary><div class="pj-tools"><a href="../espaces/?kind=contracts">Consulter ses contrats →</a><a href="../personnages/vivelame/">Consulter sa fiche →</a></div></details>
+      <details><summary>Zéphéline <span>Fiche et inventaire</span></summary><div class="pj-tools"><a href="../personnages/zepheline/">Consulter sa fiche →</a></div></details>
+      <details><summary>Faëlar <span>Fiche</span></summary><div class="pj-tools"><a href="../personnages/faelar/">Consulter sa fiche →</a></div></details>
+      <details><summary>Prépôtante <span>Fiche</span></summary><div class="pj-tools"><a href="../personnages/prepotante/">Consulter sa fiche →</a></div></details>
+      </div></section>
+      <section data-mj-section="objets" hidden><h2>Objets</h2><p class="section-intro">Tout ce qui concerne l’équipement et les récompenses.</p><div class="tool-list"><a href="outils/inventaires/"><strong>Inventaires, envois et boutique Mila</strong><span>Objets, monnaie, stocks et distribution →</span></a><a href="outils/recompenses/"><strong>Créations et récompenses</strong><span>Objets maison et évolutions →</span></a></div></section>
+      <section data-mj-section="seance" hidden><h2>Séance</h2><p class="section-intro">Les outils à utiliser pendant la partie.</p><div class="tool-list"><a href="../../gestionnaire-combat-cof2/"><strong>Gestionnaire de combat COF2</strong><span>Initiative et suivi du combat →</span></a><a href="outils/cartes/"><strong>Cartes et lieux</strong><span>Ouvrir les cartes →</span></a><a href="outils/rencontres/"><strong>Rencontres et PNJ</strong><span>Portraits, notes privées et publication →</span></a><a href="outils/soundboard/"><strong>Ambiances et musiques</strong><span>Ouvrir le soundboard →</span></a></div></section>
+    </main>
     <script src="../assets/inventory-api.js?v=9"></script>
     <script>
       (() => {
@@ -179,6 +136,6 @@
       })();
     </script>
     <script src="../assets/analytics.js?v=3"></script>
-  <script src="../assets/mj-nav.js?v=1"></script></body>
+  <script src="../assets/mj-nav.js?v=3"></script></body>
 </html>
 

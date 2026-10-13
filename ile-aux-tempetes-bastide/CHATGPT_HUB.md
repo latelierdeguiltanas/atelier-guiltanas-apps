@@ -136,3 +136,10 @@ Vérifications : syntaxe JS des outils, chemins du menu, tests VM recherche/filt
 - Première décision validée par le MJ en conversation : zombie et goule ne rompent pas le pacte, âme conservée et Lyséa vivante ; acharnement = avertissement narratif, aucune pénalité mécanique. Révélation publiée uniquement dans la base privée ; source narrative non inscrite dans Git. Situation MJ actualisée.
 - Chat existant `messages/` conservé pour les six PJ : texte 18 px, interligne 1,85, formulaire non collant, rafraîchissements sans reconstruire les messages inchangés, brouillons préservés lors du changement de conversation et envoi verrouillé pendant la requête. Carnet et chat restent distincts.
 - Vérification sans navigateur : 90 contrôles serveur, syntaxe JS, accès SQL et code déployé. Les sessions réelles MJ/Wilfried et le rendu téléphone restent à vérifier avec les liens existants. Aucun accès régénéré.
+
+## 2026-10-13 — Espace MJ épuré
+- Quatre rubriques permanentes : Accueil, Personnages, Objets, Séance. Plus de carrousel de onze outils ni de menu latéral exhaustif. Navigation par hash dans l’accueil : une rubrique visible à la fois, sans retour arrière requis.
+- Accueil réduit à trois accès rapides : combat, messages, objets/envois. Personnages regroupe messages, backgrounds et six lignes repliées : pacte/confidences Wilfried, atelier/chroniques/hymnes Scanlan, contrathèque Vivelame, fiches des autres PJ.
+- Objets regroupe inventaires/boutique/envois et créations/récompenses. Séance regroupe combat, cartes, rencontres/PNJ et ambiances. Aucun suivi de scénario ni journal de séance MJ.
+- Module MJ Scénario et scènes supprimé à la demande du MJ. Raccourcis loup de Faëlar et besace retirés du tableau de bord ; fonctions des fiches joueurs conservées.
+- Navigation et chemins vérifiés sans navigateur ; rendu réel et préférence ergonomique à confirmer par le MJ.
