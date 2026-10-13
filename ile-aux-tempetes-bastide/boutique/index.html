@@ -120,5 +120,62 @@
           const lines = [...cart].map(([id, q]) => {
             const x = catalog.find((i) => i.id === id);
             return `<div class="cartLine"><span>${esc(x.name)} × ${q}</span><b>${x.price_silver * q} pa</b></div>`;
-        …10877 tokens truncated…s (L)</h3><p>Une attaque avec chaque arme. Les deux attaques subissent un dé malus. L’arme de la main faible ne doit pas dépasser 1d6 DM.</p></article><article class="card"><h3>Dommages temporaires</h3><p>Pour assommer sans tuer : dé malus à l’attaque sauf arme adaptée, puis retranche la FOR de la cible aux DM temporaires.</p></article></div><div class="notice">Les attaques, dégâts et tests sont toujours lancés avec les dés physiques.</div></section><section class="page" id="defend"><div class="goldTitle">Se protéger</div><div class="cardGrid"><article class="card"><h3>Défense partielle (A)</h3><p>+3 en DEF et aux tests opposés pour résister à une attaque ou un effet pendant 1 round.</p></article><article class="card"><h3>Défense totale (L)</h3><p>+5 en DEF et aux tests opposés pour résister à une attaque ou un effet pendant 1 round.</p></article><article class="card"><h3>Riposte (L ou A)</h3><p>Déclare la posture au début du round. Si une créature t’attaque au contact, tu peux prendre immédiatement ton tour pour riposter, une fois dans le round.</p></article><article class="card"><h3>Retarder son tour</h3><p>Tu peux choisir de jouer après une créature ayant une initiative plus faible. Ton initiative normale revient au round suivant.</p></article></div></section><section class="page" id="tactics"><div class="goldTitle">Options tactiques</div><article class="option"><b>Attaque assurée (A)</b><p>+5 en attaque au contact ou à distance, mais les DM sont divisés par deux.</p></article><article class="option"><b>Attaque précise ou violente (A)</b><p>-3 en attaque pour +1d4 DM, ou -7 en attaque pour +2d4 DM.</p></article><article class="option"><b>Soutenir (L)</b><p>Au contact de la cible, sacrifie toutes tes actions pour donner +5 à la prochaine attaque au contact d’un allié contre elle. Le bonus dure au maximum 1 round.</p></article><article class="option"><b>Fuir</b><p>Tu peux utiliser deux mouvements ou Sprinter. Si les deux camps courent, le MJ peut passer aux règles de poursuite.</p></article></section><section class="page" id="magic"><div class="goldTitle">Lancer un sort</div><div class="cardGrid"><article class="card"><h3>Type d’action</h3><p>Chaque sort précise son action : (A), (L), (M) ou (G). Plusieurs sorts sont possibles dans un round seulement si leurs types d’action le permettent.</p></article><article class="card"><h3>Coût en mana</h3><p>Le coût normal est égal au rang du sort. Sans assez de PM, le sort ne peut pas être lancé sauf brûlure de mana.</p></article><article class="card"><h3>Concentration accrue</h3><p>Un sort normalement lancé avec une action d’attaque (A) peut devenir une action limitée (L) pour réduire son coût de 2 PM.</p></article><article class="card"><h3>Brûlure de mana</h3><p>Pour chaque PM manquant, subis des DM égaux à ton dé de récupération. Aucune RD ne s’applique. Impossible pour lancer un sort de soins.</p></article></div><div class="notice"><b>Incantation profane :</b> il faut pouvoir parler et disposer d’au moins une main libre. La magie divine suit les obligations de la voie concernée.</div></section><section class="page maneuvers" id="maneuvers"><div class="goldTitle">Manœuvres (L) - pas de dégâts</div><p class="lead">Fais un test opposé d’attaque contre l’adversaire. Le modificateur indiqué s’applique à ton test. Une manœuvre répétée sur la même cible pendant le combat subit ensuite un malus cumulatif de -5.</p><details><summary>Distraire (+CHA)</summary><p>La cible subit -10 aux tests de PER et -5 en DEF pendant 1 round. Elle est surprise pour les attaques sournoises.</p></details><details><summary>Gêner</summary><p>La cible est ralentie - une seule action M ou A - ou subit -5 en attaque pendant 1 round.</p></details><details><summary>Repousser</summary><p>La cible recule de FOR + 3 mètres. Cette manœuvre peut être précédée d’un déplacement de 10 m vers elle.</p></details><details><summary>Bloquer (-5)</summary><p>La cible est immobilisée pendant 1 round : dé malus en attaque et aucun déplacement.</p></details><details><summary>Désarmer (-5)</summary><p>La cible laisse tomber son arme. Elle peut sacrifier son prochain tour pour la ramasser avant tout le monde.</p></details><details><summary>Aveugler (-5)</summary><p>La cible est aveuglée pendant 1 round : -5 en attaque au contact et en DEF, -10 contre une cible à distance.</p></details><details><summary>Renverser (-5)</summary><p>La cible est renversée : -5 en DEF et elle devra utiliser une action d’attaque pour se relever.</p></details><details><summary>Étourdir (-10)</summary><p>La cible est étourdie pendant 1 round : aucune action et -5 en DEF.</p></details></section><p class="ruleRef">Synthèse du Livre des règles COF2, chapitre « Le combat », pages 209 à 221, et « Magie et sorts », pages 227 à 228. En cas de situation particulière, le texte du livre et la décision du MJ priment.</p></div></main><script>(()=>{document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===b.dataset.page));b.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})})})();</script><script src="../assets/analytics.js?v=3"></script><script src="../assets/session-bar.js?v=3" defer></script></body></html>
+          });
+          $("#cart").innerHTML =
+            lines.join("") || '<p class="empty">Panier vide.</p>';
+          $("#checkout").disabled = !lines.length || !A.hasKey();
+        }
+        function saleOffer(item){const match=catalog.find(x=>String(x.id)===String(item.shopItemId)||x.name.toLowerCase()===String(item.name||'').toLowerCase()||(item.base&&x.base&&x.base.toLowerCase()===String(item.base).toLowerCase()));return match?{shop:match,price:Math.max(1,Math.floor(Number(match.price_silver||0)/2))}:null}
+        function drawSales(){const inventory=playerState?.inventory||[],sellable=inventory.filter(x=>Number(x.quantity)>0&&!x.equipped),lines=sellable.map(item=>{const offer=saleOffer(item),q=saleCart.get(item.id)||0;return `<div class="saleLine"><div><strong>${esc(item.name)}</strong><small>${offer?offer.price+' PA pièce':'Estimation du MJ requise'}${item.equipped?' · objet équipé':''}</small></div><input data-sale-qty="${esc(item.id)}" type="number" min="0" max="${Number(item.quantity)||0}" value="${q}" ${offer?'':'disabled'}><b>${offer?offer.price*q+' PA':'—'}</b></div>`}).join('');$("#sale-items").innerHTML=lines||'<p class="empty">Aucun objet disponible à la vente.</p>';let total=0;sellable.forEach(item=>{const offer=saleOffer(item);if(offer)total+=offer.price*(saleCart.get(item.id)||0)});$("#sale-total").textContent=total+' PA proposés';$("#sell").disabled=!total||!A.hasKey()}
+        async function load() {
+          try {
+            catalog = (await A.call("catalog")).items || [];
+            drawFilters();
+            drawProducts();
+            if (A.hasKey()) {
+              const s = await A.call("state");
+              playerState=s.player.state;
+              const m=s.player.state.money||{po:0,pa:s.player.state.silver||0,pc:0};
+              $("#who").textContent =
+                `${s.player.display_name} · ${m.po} PO, ${m.pa} PA et ${m.pc} PC disponibles.`;
+            }
+            draw();
+            drawSales();
+          } catch (e) {
+            $("#message").textContent = e.message;
+          }
+        }
+        document.onclick = (e) => {
+          const filter=e.target.closest("[data-filter]");
+          if(filter){activeCategory=filter.dataset.filter;drawFilters();drawProducts();return}
+          const b = e.target.closest("[data-add]");
+          if (b) {
+            cart.set(b.dataset.add, (cart.get(b.dataset.add) || 0) + 1);
+            draw();
+          }
+        };
+        document.addEventListener("toggle",(e)=>{const d=e.target.closest?.("[data-product-details]");if(!d)return;if(d.open)openProducts.add(String(d.dataset.productDetails));else openProducts.delete(String(d.dataset.productDetails))},true);
+        document.addEventListener("input",e=>{const input=e.target.closest?.("[data-sale-qty]");if(!input)return;const item=(playerState?.inventory||[]).find(x=>x.id===input.dataset.saleQty),q=Math.max(0,Math.min(Number(item?.quantity)||0,Math.floor(Number(input.value)||0)));saleCart.set(input.dataset.saleQty,q);drawSales()});
+        $("#checkout").onclick = async () => {
+          try {
+            for (const [itemId, quantity] of cart)
+              await A.call("purchase", {
+                method: "POST",
+                body: { itemId, quantity },
+              });
+            cart.clear();
+            $("#message").textContent =
+              "Achat validé : les objets sont dans ton inventaire.";
+            await load();
+          } catch (e) {
+            $("#message").textContent = e.message;
+          }
+        };
+        $("#sell").onclick=async()=>{const lines=[...saleCart].filter(([,quantity])=>quantity>0).map(([itemId,quantity])=>({itemId,quantity}));if(!lines.length)return;if(!confirm('Confirmer la vente à Mila ? Les objets seront retirés de ton inventaire et la monnaie ajoutée immédiatement.'))return;try{const result=await A.call('sell',{method:'POST',body:{lines}});playerState=result.state;saleCart.clear();$("#sale-message").textContent='Vente validée : Mila a repris les objets et versé la monnaie.';await load()}catch(e){$("#sale-message").textContent=e.message}};
+        load();
+        setInterval(load,15000);
+      })();
+    </script>
+  <script src="../assets/session-bar.js?v=3" defer></script></body>
+</html>
 
