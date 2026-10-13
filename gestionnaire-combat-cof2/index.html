@@ -46,6 +46,7 @@ dialog{width:min(94vw,680px);max-height:88vh;overflow:auto;background:var(--pane
 <section id="sauvegarde" class="page"><div class="card"><h2>Sauvegarde</h2><p class="muted">L’état courant est sauvegardé automatiquement sur cet appareil.</p><div class="row"><button onclick="exportJSON()">Exporter JSON</button><label style="border:1px solid var(--line);padding:7px;border-radius:9px;text-align:center;font-weight:700">Importer JSON<input type="file" accept="application/json" onchange="importJSON(this)" style="display:none"></label><button class="danger" onclick="resetAll()">Réinitialiser</button></div></div></section>
 </main>
 <dialog id="modal"><div class="modalHead"><h2 id="modalTitle"></h2><button onclick="modal.close()">Fermer</button></div><div id="modalBody"></div></dialog>
+<script src="../ile-aux-tempetes-bastide/assets/inventory-api.js?v=10"></script><script src="../ile-aux-tempetes-bastide/assets/combat-roster.js?v=1"></script><script src="bridge.js?v=1" defer></script>
 <script>
 const MONSTERS={
  zombie:{id:'zombie',name:'Zombie humain / marin noyé',source:'COF2 Livre de base p. 301',status:'official',nc:1,type:'Créature non vivante',size:'Moyenne',agi:-1,con:1,for:2,per:-2,cha:-4,int:-4,vol:6,def:10,pv:18,init:8,move:'5 m par action M',attacks:[{name:'Coup ou arme',bonus:4,damage:'1d6+3',text:'Une action d’attaque.'}],abilities:[{name:'Résistance aux DM',text:'Diviser par deux les DM infligés par des armes, sauf les armes tranchantes.'},{name:'Sans esprit',text:'Immunisé aux sorts qui affectent l’esprit. Créature non vivante : ne respire pas, immunisée aux maladies, poisons et effets demandant un test de CON.'},{name:'Lenteur',text:'Déplacement limité à 5 m par action de mouvement.'},{name:'Insensible à la douleur',text:'Après avoir été réduit à 0 PV, le zombie peut encore accomplir une action d’attaque ou de mouvement. Validation manuelle du MJ.'}],notes:'Profil officiel intégral. « Marin noyé » est uniquement un habillage narratif.'},
@@ -95,8 +96,8 @@ const PLAYER_PRESETS=[
  {id:'prepotante',name:'Prépôtante',pv:9,def:16,init:15,selected:true},
  {id:'scanlan',name:'Scanlan',pv:9,def:14,init:10,selected:true},
  {id:'wilfried',name:'Wilfried',pv:8,def:17,init:10,selected:true},
- {id:'zepheline',name:'Zéphéline',pv:4,def:14,init:12,selected:true},
- {id:'vivelame',name:'Vivelame',pv:10,def:16,init:10,selected:true},
+ {id:'zepheline',name:'Zéphéline',pv:4,def:13,init:11,selected:true,dataVersion:4,authoritative:true},
+ {id:'vivelame',name:'Vivelame',pv:9,def:16,init:10,selected:true,dataVersion:4,authoritative:true},
  {id:'fylar',name:'Faëlar',pv:10,def:14,init:14,selected:true,dataVersion:3,authoritative:true},
  {id:'fylar-wolf',name:'Loup de Faëlar',pv:4,def:13,init:14,selected:true,role:'companion',dataVersion:3,authoritative:true}
 ];
@@ -126,7 +127,7 @@ function compositionHTML(c,withControls=false){return Object.entries(c).filter((
 function changeRec(id,d){const r=state.lastRecommendation,e=ENCOUNTERS[r.encounter],[min,max]=e.limits[id]||[0,9];r.composition[id]=Math.max(min,Math.min(max,(r.composition[id]||0)+d));r.score=scoreComposition(r.composition);save();recommendation.querySelector('.composition').innerHTML=compositionHTML(r.composition,true);recommendation.querySelector('.why').textContent=`Composition modifiée manuellement · somme indicative des NC : ${r.score}. Le MJ valide la difficulté réelle.`}
 function editRecommendation(){modalTitle.textContent='Composition modifiable';modalBody.innerHTML=`<p>Utilise les boutons +/− directement dans la proposition. Les limites restent propres à la scène.</p><button class="primary" onclick="modal.close()">Compris</button>`;modal.showModal()}
 function showEncounterSource(){const e=ENCOUNTERS[encounter.value];modalTitle.textContent=e.name;modalBody.innerHTML=`<p><b>Zone :</b> ${esc(e.zone)}</p><p>${esc(e.original)}</p>${e.balance?`<p><b>Équilibrage COF2 :</b> ${esc(e.balance)}</p>`:''}<p class="muted">La scène narrative est conservée. Les chiffres D&D ne sont jamais transférés dans les profils COF2.</p>`;modal.showModal()}
-function newMonsterFighter(id,name){const m=MONSTERS[id];return{uid:crypto.randomUUID(),kind:'monster',ref:id,name:name||m.name,initiative:m.init,initBase:m.init,initDie:0,officialInit:m.init,def:m.def,pv:m.pv,maxPv:m.pv,conditions:[],effects:[],side:m.side||'hostile'}}
+function newMonsterFighter(id,name){const m=MONSTERS[id];return{uid:crypto.randomUUID(),kind:'monster',ref:id,name:(name||m.name)+' ['+(1+state.fighters.filter(f=>f.kind==='monster').length)+']',initiative:m.init,initBase:m.init,initDie:0,officialInit:m.init,def:m.def,pv:m.pv,maxPv:m.pv,conditions:[],effects:[],side:m.side||'hostile'}}
 function newPlayerFighter(p){return{uid:crypto.randomUUID(),partyId:p.id,kind:'player',ref:null,name:p.name,initiative:p.init,initBase:p.init,initDie:0,officialInit:p.init,def:p.def,pv:p.pv,maxPv:p.pv,dataVersion:p.dataVersion||1,conditions:[],effects:[],side:'player'}}
 function loadRecommendation(add){const r=state.lastRecommendation,players=selectedParty();if(!r||(!add&&!players.length))return;if(!add){state.fighters=[];state.groupEffects=[];state.log=[];players.forEach(p=>state.fighters.push(newPlayerFighter(p)))}for(const [id,q] of Object.entries(r.composition))for(let n=0;n<q;n++)state.fighters.push(newMonsterFighter(id,q>1?`${MONSTERS[id].name} ${n+1}`:MONSTERS[id].name));logEvent(`Rencontre chargée : ${ENCOUNTERS[r.encounter].name} — ${selectedHeroes().length} PJ${players.length>selectedHeroes().length?' + compagnon':''}, ${plainComposition(r.composition)}.`);sortInitiative(false);save();renderAll();showPage('combat',document.querySelectorAll('nav button')[1])}
 function plainComposition(c){return Object.entries(c).filter(([,q])=>q).map(([id,q])=>`${q} × ${MONSTERS[id].name}`).join(', ')}
@@ -179,3 +180,4 @@ init();
 </script>
 </body>
 </html>
+

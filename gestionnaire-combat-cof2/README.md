@@ -47,3 +47,13 @@ La conversion COF2 de la rencontre d’ouverture charge un zombie NC1 par défau
 Les contenus marqués « Adaptation Île aux Tempêtes » ne sont pas présentés comme officiels COF2.
 
 Application publiée : https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/gestionnaire-combat-cof2/
+
+## Liaison optionnelle avec le Hub Bastide
+
+Ouvrir le lien MJ Bastide existant sur le même navigateur, puis utiliser **Connecter** et **Partager ce combat** dans le gestionnaire. Aucun nouveau compte ni lien joueur n’est nécessaire. **Masquer aux joueurs** retire le combat partagé.
+
+La frise publique comporte seulement les noms et l’ordre. Buffs, états et effets sont filtrés par personnage. Les PV et PM sont synchronisés avec les fiches ; les bonus d’attaque sont rappelés dans les cartes MJ. Les effets restent des rappels manuels, sans ajout automatique aux jets. Les descriptions et les durées doivent être saisies par le MJ.
+
+Le stockage local et l’import/export existants sont conservés. La liaison ne fusionne pas les sites et le gestionnaire reste utilisable sans connexion. Les messages privés et le suivi des backgrounds s’ouvrent depuis le panneau de liaison.
+
+Tests sans navigateur : `node tests/check.mjs`, plus les contrôles de bastide-session et des fiches situés dans leurs dossiers respectifs.
