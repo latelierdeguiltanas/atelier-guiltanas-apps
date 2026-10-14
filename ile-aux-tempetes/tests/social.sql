@@ -1,0 +1,45 @@
+begin;
+do $$
+declare r jsonb; request uuid=gen_random_uuid(); mid uuid; pid uuid; rev bigint; beforestate jsonb; fail boolean; bg_rev bigint;
+begin
+ -- No production inventory or message is kept: all changes roll back.
+ update nespresso_inventories set initialized=true,state='{"money":{"PC":0,"PA":0,"PE":0,"PO":10,"PP":0},"inventory":[{"id":"gem","name":"Pierre","qty":3,"weight":6,"equipped":false},{"id":"armor","name":"Armure","qty":1,"equipped":true},{"id":"bag","name":"Sac","qty":1},{"id":"inside","name":"Lettre","qty":1,"containerId":"bag"}]}' where player_id='vax';
+ r=nespresso_social_mutate('vax',false,'message','{"playerId":"vax","content":"Objet pour le MJ","itemId":"gem","quantity":1}',request);mid=(r->>'id')::uuid;
+ perform nespresso_social_mutate('vax',false,'message','{"playerId":"vax","content":"Objet pour le MJ","itemId":"gem","quantity":1}',request);
+ if (select count(*) from nespresso_messages where id=mid)<>1 then raise exception 'FAIL message idempotency';end if;
+ if (select (value->>'qty')::int from nespresso_inventories,jsonb_array_elements(state->'inventory') where player_id='vax' and value->>'id'='gem')<>2 then raise exception 'FAIL quantity debit';end if;
+ if (select (attachment->>'weight')::numeric from nespresso_messages where id=mid)<>2 then raise exception 'FAIL partial weight';end if;
+ fail=false;begin perform nespresso_social_mutate('vax',false,'message','{"playerId":"hammerz","content":"intrusion"}',gen_random_uuid());exception when others then fail=true;end;if not fail then raise exception 'FAIL thread isolation';end if;
+ fail=false;begin perform nespresso_social_mutate('scanlan',false,'message','{"content":"other campaign"}',gen_random_uuid());exception when others then fail=true;end;if not fail then raise exception 'FAIL Bastide isolation';end if;
+ fail=false;begin perform nespresso_social_mutate('vax',false,'message','{"itemId":"gem","quantity":0.5}',gen_random_uuid());exception when others then fail=true;end;if not fail then raise exception 'FAIL fractional';end if;
+ fail=false;begin perform nespresso_social_mutate('vax',false,'message','{"itemId":"armor","quantity":1}',gen_random_uuid());exception when others then fail=true;end;if not fail then raise exception 'FAIL equipped';end if;
+ fail=false;begin perform nespresso_social_mutate('vax',false,'message','{"itemId":"bag","quantity":1}',gen_random_uuid());exception when others then fail=true;end;if not fail then raise exception 'FAIL nonempty container';end if;
+ fail=false;begin perform nespresso_social_mutate('vax',false,'return-item',jsonb_build_object('id',mid),gen_random_uuid());exception when others then fail=true;end;if not fail then raise exception 'FAIL player return';end if;
+ perform nespresso_social_mutate('mj:test',true,'return-item',jsonb_build_object('id',mid),gen_random_uuid());
+ select state into beforestate from nespresso_inventories where player_id='vax';
+ perform nespresso_social_mutate('mj:test',true,'return-item',jsonb_build_object('id',mid),gen_random_uuid());
+ if (select state from nespresso_inventories where player_id='vax')<>beforestate then raise exception 'FAIL double return';end if;
+ if (select sum((value->>'qty')::int) from nespresso_inventories,jsonb_array_elements(state->'inventory') where player_id='vax' and value->>'name'='Pierre')<>3 then raise exception 'FAIL conservation';end if;
+ perform nespresso_social_mutate('mj:test',true,'message','{"playerId":"vax","content":"Bien reçu"}',gen_random_uuid());
+ if (select seen_at from nespresso_messages where id=mid) is not null then raise exception 'FAIL read mutated by consultation';end if;
+ perform nespresso_social_mutate('mj:test',true,'messages-seen',jsonb_build_object('playerId','vax','ids',jsonb_build_array(mid)),gen_random_uuid());
+ if (select seen_at from nespresso_messages where id=mid) is null then raise exception 'FAIL explicit seen';end if;
+ fail=false;begin perform nespresso_social_mutate('vax',false,'message','{"content":"x","link":"javascript:bad"}',gen_random_uuid());exception when others then fail=true;end;if not fail then raise exception 'FAIL unsafe link';end if;
+ r=nespresso_social_mutate('mj:test',true,'post-save','{"title":"Annonce test","content":"Texte","status":"published","audience":["vax"]}',gen_random_uuid());pid=(r->>'id')::uuid;rev=(r->>'revision')::bigint;
+ perform nespresso_social_mutate('vax',false,'post-seen',jsonb_build_object('id',pid,'revision',rev),gen_random_uuid());
+ fail=false;begin perform nespresso_social_mutate('hammerz',false,'post-seen',jsonb_build_object('id',pid,'revision',rev),gen_random_uuid());exception when others then fail=true;end;if not fail then raise exception 'FAIL post audience';end if;
+ fail=false;begin perform nespresso_social_mutate('vax',false,'post-save',jsonb_build_object('id',pid,'revision',rev,'title','Hijack','status','published','audience',jsonb_build_array('vax')),gen_random_uuid());exception when others then fail=true;end;if not fail then raise exception 'FAIL post author';end if;
+ r=nespresso_social_mutate('mj:test',true,'post-save',jsonb_build_object('id',pid,'revision',rev,'title','Annonce modifiée','content','nouveau','status','published','audience',jsonb_build_array('hammerz')),gen_random_uuid());
+ if (r->>'revision')::bigint<>rev+1 then raise exception 'FAIL post revision';end if;
+ fail=false;begin perform nespresso_social_mutate('vax',false,'post-seen',jsonb_build_object('id',pid,'revision',rev),gen_random_uuid());exception when others then fail=true;end;if not fail then raise exception 'FAIL audience revocation';end if;
+ fail=false;begin perform nespresso_social_mutate('mj:test',true,'post-save',jsonb_build_object('id',pid,'revision',rev,'title','stale','status','draft'),gen_random_uuid());exception when others then fail=true;end;if not fail then raise exception 'FAIL post conflict';end if;
+ fail=false;begin perform nespresso_social_mutate('mj:test',true,'post-save','{"title":"Bad","status":"published","audience":["scanlan"]}',gen_random_uuid());exception when others then fail=true;end;if not fail then raise exception 'FAIL post campaign';end if;
+ select revision into bg_rev from nespresso_backgrounds where player_id='vax';
+ r=nespresso_social_mutate('mj:test',true,'background-save',jsonb_build_object('playerId','vax','revision',bg_rev,'history','Histoire fournie de test'),gen_random_uuid());
+ if (r->>'revision')::bigint<>bg_rev+1 then raise exception 'FAIL background revision';end if;
+ fail=false;begin perform nespresso_social_mutate('vax',false,'background-save','{"playerId":"vax","revision":0}',gen_random_uuid());exception when others then fail=true;end;if not fail then raise exception 'FAIL background private';end if;
+ fail=false;begin perform nespresso_social_mutate('mj:test',true,'background-save',jsonb_build_object('playerId','vax','revision',bg_rev),gen_random_uuid());exception when others then fail=true;end;if not fail then raise exception 'FAIL background conflict';end if;
+ if has_function_privilege('anon','nespresso_social_mutate(text,boolean,text,jsonb,uuid)','execute') or has_table_privilege('anon','nespresso_messages','select') then raise exception 'FAIL public privileges';end if;
+end;$$;
+select 'PASS: message/transfer idempotency, partial quantities and weight, campaign isolation, private threads, empty-container/equipment checks, single return, explicit reads, safe links, post audience/revision/revocation, private backgrounds and permissions' as result;
+rollback;
