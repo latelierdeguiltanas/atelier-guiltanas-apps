@@ -1,0 +1,5 @@
+let opened;
+function db(){if(!opened)opened=new Promise((resolve,reject)=>{const r=indexedDB.open('guiltanas-hub-configurable-v2',1);r.onupgradeneeded=()=>r.result.createObjectStore('spaces',{keyPath:'id'});r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(Error('Le stockage local est indisponible. Autorisez le stockage du navigateur.'));});return opened;}
+async function request(mode,fn){const d=await db();return new Promise((resolve,reject)=>{const tx=d.transaction('spaces',mode);const r=fn(tx.objectStore('spaces'));let result;r.onsuccess=()=>result=r.result;tx.oncomplete=()=>resolve(result);tx.onerror=()=>reject(tx.error||Error('Enregistrement local impossible. Exportez votre sauvegarde.'));tx.onabort=()=>reject(tx.error||Error('Stockage local saturé. Exportez votre sauvegarde.'));});}
+export const storage={get:id=>request('readonly',s=>s.get(id)),all:()=>request('readonly',s=>s.getAll()),put:value=>request('readwrite',s=>s.put(value)),remove:id=>request('readwrite',s=>s.delete(id))};
+export function lock(id,fn){return navigator.locks?navigator.locks.request('hcfg-v2-'+id,fn):fn();}

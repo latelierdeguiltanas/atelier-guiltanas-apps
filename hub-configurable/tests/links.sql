@@ -1,0 +1,33 @@
+begin;
+create temp table hcfg_link_test(key text primary key,value text);
+grant all on hcfg_link_test to anon;
+insert into hcfg_link_test values('a',gen_random_uuid()::text),('b',gen_random_uuid()::text),('char',gen_random_uuid()::text),('other',gen_random_uuid()::text),('note',gen_random_uuid()::text),('op',gen_random_uuid()::text);
+set local role anon;
+select public.hcfg_link_api('create',(select value::uuid from hcfg_link_test where key='a'),repeat('a',64),'{"name":"Test campagne","format":"campaign"}');
+select public.hcfg_link_api('create',(select value::uuid from hcfg_link_test where key='b'),repeat('b',64),'{"name":"Test one-shot","format":"oneshot"}');
+select public.hcfg_link_api('save',(select value::uuid from hcfg_link_test where key='a'),repeat('a',64),jsonb_build_object('op_id',gen_random_uuid(),'expected',0,'record',jsonb_build_object('id',(select value from hcfg_link_test where key='char'),'kind','character','title','Mon héros','body','','data','{}'::jsonb,'visibility','group','owner_id','mj')));
+select public.hcfg_link_api('save',(select value::uuid from hcfg_link_test where key='a'),repeat('a',64),jsonb_build_object('op_id',gen_random_uuid(),'expected',0,'record',jsonb_build_object('id',(select value from hcfg_link_test where key='other'),'kind','character','title','Autre héros','body','','data','{}'::jsonb,'visibility','group','owner_id','mj')));
+select public.hcfg_link_api('save',(select value::uuid from hcfg_link_test where key='a'),repeat('a',64),jsonb_build_object('op_id',gen_random_uuid(),'expected',0,'record',jsonb_build_object('id',(select value from hcfg_link_test where key='note'),'kind','note','title','SECRET MJ','body','','data','{}'::jsonb,'visibility','mj','owner_id','mj')));
+select public.hcfg_link_api('link',(select value::uuid from hcfg_link_test where key='a'),repeat('a',64),jsonb_build_object('op_id',gen_random_uuid(),'character_id',(select value from hcfg_link_test where key='char'),'token',repeat('c',64)));
+do $$declare a uuid; b uuid; result jsonb;rec jsonb;payload jsonb; begin
+ select value::uuid into a from hcfg_link_test where key='a';select value::uuid into b from hcfg_link_test where key='b';
+ result=public.hcfg_link_api('get',a,repeat('c',64),'{}');
+ if result->>'role'<>'pj' or jsonb_array_length(result#>'{state,records}')<>1 or result#>>'{state,records,0,title}'<>'Mon héros' then raise exception 'FAIL: private notes or other character exposed'; end if;
+ if public.hcfg_link_api('get',b,repeat('b',64),'{}')#>>'{state,campaign,format}'<>'oneshot' then raise exception 'FAIL: one-shot format'; end if;
+ begin perform public.hcfg_link_api('get',b,repeat('a',64),'{}');raise exception 'FAIL: cross-space access'; exception when raise_exception then if sqlerrm like 'FAIL:%' then raise; end if;end;
+ rec=result#>'{state,records,0}';rec=jsonb_set(rec,'{body}','"Updated by PJ"');
+ payload=jsonb_build_object('op_id',(select value from hcfg_link_test where key='op'),'expected',1,'record',rec);
+ perform public.hcfg_link_api('save',a,repeat('c',64),payload);
+ perform public.hcfg_link_api('save',a,repeat('c',64),payload); -- network retry is idempotent
+ result=public.hcfg_link_api('get',a,repeat('c',64),'{}');
+ if result#>>'{state,records,0,revision}'<>'2' then raise exception 'FAIL: retry double-applied';end if;
+ begin perform public.hcfg_link_api('save',a,repeat('c',64),payload||jsonb_build_object('op_id',gen_random_uuid()));raise exception 'FAIL: stale overwrite';exception when raise_exception then if sqlerrm like 'FAIL:%' then raise;end if;end;
+ rec=rec||jsonb_build_object('id',(select value from hcfg_link_test where key='other'));
+ begin perform public.hcfg_link_api('save',a,repeat('c',64),jsonb_build_object('op_id',gen_random_uuid(),'expected',1,'record',rec));raise exception 'FAIL: other character edit';exception when raise_exception then if sqlerrm like 'FAIL:%' then raise;end if;end;
+ begin perform public.hcfg_link_api('settings',a,repeat('c',64),jsonb_build_object('op_id',gen_random_uuid(),'expected',1,'campaign',result#>'{state,campaign}'));raise exception 'FAIL: player MJ privileges';exception when raise_exception then if sqlerrm like 'FAIL:%' then raise;end if;end;
+ perform public.hcfg_link_api('revoke',a,repeat('a',64),jsonb_build_object('op_id',gen_random_uuid(),'character_id',(select value from hcfg_link_test where key='char')));
+ begin perform public.hcfg_link_api('get',a,repeat('c',64),'{}');raise exception 'FAIL: revoked link accepted';exception when raise_exception then if sqlerrm like 'FAIL:%' then raise;end if;end;
+ if has_table_privilege('anon','hcfg_private.link_spaces','SELECT') then raise exception 'FAIL: raw private access';end if;
+end$$;
+select 'PASS: no account, campaign/one-shot, per-character links, cross-space denial, MJ secrets, player writes, stale-write rejection, retry deduplication, link revocation' as result;
+rollback;

@@ -1,36 +1,44 @@
-# Hub configurable — bêta 1
-
-Projet indépendant dans le dépôt `latelierdeguiltanas/atelier-guiltanas-apps`, dossier `hub-configurable/`.
+# Hub configurable — bêta 2, sans inscription
 
 Adresse : https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/hub-configurable/
 
-## Prise en main
+## Pour chaque MJ
 
-1. Créer un compte avec une adresse e-mail et un mot de passe, puis confirmer l’adresse. Pour rester dans ce hub sans changer les redirections des autres applications, copier le lien reçu dans « Valider un lien reçu par e-mail ».
-2. Créer une campagne COF2 et choisir son nom de MJ.
-3. Dans Réglages & invitations, personnaliser la campagne et les outils visibles.
-4. Générer et envoyer soi-même le lien d’invitation. Chaque joueur crée son compte, rejoint le groupe et choisit son nom.
-5. Ajouter les personnages, documents par lien, chroniques, catalogue d’objets et notes MJ. Les joueurs peuvent écrire des messages et des retours et gérer leurs propres fiches.
-6. Exporter régulièrement une sauvegarde complète. Un modèle exclut personnages, échanges, chroniques et retours. L’import crée une nouvelle campagne et ne reprend aucun accès.
+1. Ouvrir le lien commun et choisir **Créer mon espace MJ**.
+2. Nommer l’aventure et choisir **Campagne** ou **One-shot**. Les deux formats disposent des mêmes outils et ce choix reste modifiable.
+3. Conserver le **lien MJ** proposé : ouvrir ce lien sur un autre téléphone ou PC retrouve le même espace synchronisé, sans compte.
+4. Dans **Personnages**, créer une fiche manuelle ou **Importer une fiche PDF / JSON**.
+5. Sur chaque personnage, utiliser **Lien joueur**, puis envoyer soi-même le lien au joueur. Celui-ci ouvre directement son personnage et les contenus partagés, sans inscription ni activation par Math.
+6. Dans **Réglages & accès**, choisir les outils affichés et la présentation de l’aventure.
 
-## État et limites
+## Liens et synchronisation
 
-- Campagnes et droits séparés côté PostgreSQL ; propriétaire MJ et membres par campagne.
-- Les secrets MJ ne sont pas transmis au navigateur des joueurs.
-- Fiches COF2 manuelles : caractéristiques, PV, DEF, INIT, attaques, voies, inventaire et ressources. Aucun calcul automatique ni moteur de règles officiel embarqué.
-- Vue simplifiée/complète, navigation haute sur mobile, synchronisation par interrogation toutes les 30 secondes (en pause pendant une saisie).
-- Contrôle de révision sur les mises à jour pour refuser les écritures périmées.
-- Documents ajoutés par URL. Pas d’hébergement de fichiers, ni de soundboard, boutique transactionnelle, combat avancé ou interludes dans cette bêta.
-- Ce socle n’est pas une copie fonctionnelle intégrale de Bastide. Son identité visuelle dérive de la base générique G1 ; les accès et la logique multicampagne sont nouveaux.
-- Inscription standard Supabase activée et confirmation obligatoire. La livraison des e-mails externes n’a pas été vérifiée. Si le projet utilise le SMTP par défaut, un service SMTP dédié sera nécessaire avant l’inscription autonome des testeurs. Aucun paramètre Auth global n’a été modifié.
-- Aucune donnée de Bastide ou Nespresso importée. Les futurs droits commerciaux sur le contenu ajouté restent à vérifier avant vente ; aucun texte des livres de règles n’est fourni.
+- Le lien MJ donne accès à l’administration de son aventure. Le lien joueur donne accès à un seul personnage, aux échanges et aux contenus partagés. Les notes MJ et les autres fiches ne sont pas renvoyées avec ce lien.
+- Chaque espace et lien disposent d’une copie locale séparée dans IndexedDB. Aucune adresse e-mail, aucun mot de passe et aucun compte Supabase Auth ne sont demandés ou créés.
+- Les données se synchronisent à l’ouverture et après une modification, puis toutes les 30 secondes tant que le hub est visible et qu’aucun formulaire n’est ouvert.
+- Les modifications hors connexion sont conservées en file locale. Elles sont envoyées au retour du réseau. La première synchronisation est nécessaire avant de pouvoir ouvrir l’espace sur un autre appareil ou créer un lien joueur.
+- Les conflits sur une même fiche ne sont pas écrasés : exporter les saisies locales puis récupérer la version en ligne pour reporter les changements utiles.
+- Une opération réémise après un problème réseau n’est appliquée qu’une fois côté serveur.
+- « Désactiver le lien » révoque l’ancien accès joueur. Le MJ peut ensuite en créer un nouveau. Une copie déjà téléchargée sur un appareil ne peut pas être effacée à distance.
+- L’application peut être rouverte hors ligne après une première visite en ligne complète et l’installation automatique de son cache. Le service worker est limité à `hub-configurable/`.
 
-## Structure
+## Fiches et sauvegardes
 
-- `index.html`, `assets/` : interface statique et client REST, sans dépendance CDN.
-- `supabase/schema.sql` : schéma additif déployé, tables `hcfg_*` et schéma privé `hcfg_private`.
-- `tests/access.sql` : intégration des droits avec utilisateurs synthétiques et transaction annulée.
-- `tests/*.test.mjs` : contrôles du modèle, des liens et du client API (`node --test hub-configurable/tests/*.test.mjs`).
-- `docs/ETAT_DU_PROJET.md` : passation et limites de validation.
+- PDF jusqu’à 2 Mo : document original conservé. Les champs de formulaire sont récupérés, éditables, synchronisés et exportables dans le PDF rempli.
+- Les valeurs manuelles COF2 et les champs du PDF restent deux ensembles indépendants : pas de calcul des règles ni de correspondance automatique supposée.
+- Un PDF figé est consultable ; ses valeurs doivent être renseignées manuellement. Aucun OCR automatique n’est annoncé.
+- JSON accepté : fiche exportée par ce hub ou personnage générique avec nom, données/champs et PDF éventuel. Les autres formats nécessitent un adaptateur.
+- **Sauvegarde complète** : conserve l’espace, ses liens et ses modifications en attente. Importer cette sauvegarde sur un autre appareil restaure le même accès.
+- **Modèle** : réglages, notes, documents et objets ; sans personnage, conversation, accès ou retour. L’import crée un nouvel espace indépendant.
+- Les sauvegardes de la bêta 1 peuvent être importées en tant que nouveaux espaces sans inscription.
 
-Le site est hébergé par le déploiement GitHub Pages existant. Il a sa propre URL mais partage le dépôt, le déploiement Pages et le projet Supabase existants ; ses fichiers et ses tables sont indépendants. Pour une isolation d’infrastructure complète, il faudra ultérieurement un hébergement et un projet de données dédiés.
+## Technique et périmètre
+
+- Nouveau dossier indépendant du dépôt `latelierdeguiltanas/atelier-guiltanas-apps`. Aucun fichier de Bastide ou Nespresso modifié.
+- Projet Supabase existant, nouvelles tables privées `hcfg_private.link_*` et RPC `hcfg_link_api`. Autorisation par liens aléatoires 256 bits dont seul le hachage est conservé côté serveur. Aucune clé service-role utilisée par l’application.
+- Le serveur valide le rôle et le personnage du lien pour chaque lecture/écriture ; aucune table privée directement accessible aux visiteurs.
+- La migration `hcfg_beta2_bearer_links_no_accounts` est additive. Le schéma de la bêta 1 reste en place mais n’est plus utilisé par le site. Les réglages Auth et les fonctions des autres hubs ne changent pas.
+- Style dérivé de la base générique G1/Bastide. Pas encore de soundboard, boutique transactionnelle, gestionnaire de combat avancé ou interludes intégrés. Cette bêta n’est pas une reprise intégrale de toutes les fonctions Bastide.
+- Hébergement GitHub Pages et projet de données partagés, avec fichiers, tables et autorisations séparés.
+
+Tests : `node --test hub-configurable/tests/*.test.mjs`. Tests de droits sans compte : `tests/links.sql` (transaction annulée). La bibliothèque PDF-lib est vendue dans `assets/`, avec sa licence dans `docs/`.

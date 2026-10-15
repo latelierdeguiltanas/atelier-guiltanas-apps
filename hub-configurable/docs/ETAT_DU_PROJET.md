@@ -1,31 +1,33 @@
-# État du projet — 15 octobre 2026
+# État du projet — 15 octobre 2026 — bêta 2
 
-## Périmètre autorisé
+## Décision utilisateur faisant autorité
 
-Créer le troisième dossier parallèle `hub-configurable/`, sans modifier `ile-aux-tempetes/`, `ile-aux-tempetes-bastide/`, Forge ou les outils de combat. Premier socle pour deux MJ testeurs, COF2, campagnes configurables et indépendantes.
+Aucune inscription, aucun e-mail, aucun mot de passe. Les MJ ouvrent le lien commun, créent leur espace local puis peuvent retrouver le même espace sur un autre appareil grâce à un lien MJ et/ou une sauvegarde. Chaque MJ importe/crée ses personnages et génère lui-même un lien individuel à envoyer au joueur. Campagne et one-shot sont distingués par un réglage ; outils identiques, configuration indépendante.
+
+Le remplacement de l’accès par comptes est explicitement demandé le 15/10 à 09:46 (Europe/Paris). Il n’utilise ni comptes cachés, ni privilèges Supabase Auth, ni Edge Function service-role. L’ancien refus automatique de service de comptes pseudonymes concernait une autre conception ; cette conception n’a jamais été installée.
 
 ## Implémentation
 
-Compte e-mail/mot de passe Supabase standard ; confirmation par collage du lien reçu pour préserver les redirections Auth existantes. Création de campagne, invitations 256 bits hachées côté serveur (30 jours, révocables), gestion des membres, configuration des outils, fiches manuelles, notes MJ, documents par lien, chroniques, catalogue, messages, retours exportables, sauvegarde et modèle/import dans une nouvelle campagne.
-
-Migration Supabase `hcfg_configurable_beta_1` appliquée au projet `jitatmdbipjkvjstcgdc`. Aucun objet des hubs existants modifié. Clé frontale publique publishable, jamais de clé secrète. RLS sur toutes les tables. Fonctions privilégiées internes avec vérification de `auth.uid()` ; les fonctions publiques sont invoker et réservées aux utilisateurs connectés.
-
-La tentative de service de comptes par pseudonyme/récupération a été refusée par le contrôle automatique d’approbation : changement d’authentification sensible avec accès service-role non explicitement autorisé. Elle n’a pas été appliquée ni déployée. Les fichiers de cette tentative ont été retirés ; l’application utilise l’authentification standard.
+- Création immédiate dans IndexedDB, sans requête d’authentification ; identifiant d’espace UUID et secret MJ 256 bits produits par le navigateur.
+- Synchronisation via `public.hcfg_link_api`, wrapper invoker vers la fonction interne `hcfg_private.link_api`. Tables privées `link_spaces`, `link_keys`, `link_operations`, RLS activée et droits directs révoqués. Autorisation à chaque opération par hachage du lien. Fonctions avec search_path vide.
+- Liens MJ et PJ distincts ; un lien PJ est limité à sa fiche et aux contenus partagés. Les autres fiches et les notes MJ sont filtrées avant transmission. Révocation/renouvellement par le MJ.
+- Journaux, documents par URL, catalogue d’objets, échanges et retours de test. Vue simplifiée/complète.
+- File d’attente locale persistante, révisions par fiche, opérations idempotentes et résolution explicite des conflits avec export préalable.
+- Copie locale par identité de lien : un cache PJ et un cache MJ ne sont pas mélangés, même pour la même aventure sur un appareil.
+- PDF-lib local : champs AcroForm importés, modifiables, synchronisés et réexportés ; PDF original conservé. PDF figé : consultation et saisie manuelle. Fiche JSON export/import ; support du format générique G1. Aucun moteur automatique de règles ni OCR.
+- Sauvegarde complète contenant les liens ; restauration du même espace. Modèles sans accès ni joueurs, importés dans un nouvel espace.
+- Service worker limité au nouveau dossier pour rouvrir l’application hors ligne après préparation initiale en ligne.
 
 ## Validation
 
-- Intégration SQL sur le serveur : deux MJ et un PJ synthétiques, chacun dans son rôle ; isolation des campagnes, confidentialité MJ, refus d’écriture dans une autre campagne, propriété des fiches, refus des écritures périmées, retrait de membre, révocation d’invitation et refus des visiteurs anonymes : PASS. Transaction annulée, aucun compte ou campagne de test conservé.
-- Six tests Node sur l’échappement HTML, les liens, les autorisations UI, l’import sans identités, le renouvellement de session, les révisions et la vérification des liens : PASS.
-- Syntaxe des trois modules JS vérifiée.
-- Conseiller sécurité Supabase : aucun avertissement/erreur concernant les objets créés. Information attendue « RLS sans politique » sur `hcfg_private.invites`, table volontairement inaccessible aux clients et utilisée uniquement par les fonctions internes. Les autres informations concernent les tables préexistantes, non modifiées.
-- Pas de navigation ni de test visuel par IA, conformément à la méthode de travail de Math. Le parcours téléphone et les e-mails réels restent à vérifier.
+Tests SQL en rôle anon, sans utilisateur Auth, dans une transaction annulée : création campagne et one-shot, lien MJ, lien par personnage, accès à l’espace correct, secrets et autres fiches absents de la réponse PJ, modification de sa fiche par PJ, refus des modifications d’un autre personnage ou des réglages MJ, rejet d’une écriture périmée, idempotence après réémission et révocation de lien : PASS.
 
-## Prochaine validation utilisateur
+Tests Node : espaces indépendants sans requête Auth, récupération des liens, conservation hors ligne, réémission du même op_id, conflits sans perte, caches MJ/PJ séparés, échappement des textes/liens, import/export PDF à champs et conservation du PDF figé : PASS.
 
-1. Créer un compte et confirmer l’adresse : si SMTP bloque, configurer un fournisseur d’envoi sans modifier les mécanismes des autres hubs.
-2. Créer une campagne et ajouter un personnage.
-3. Inviter un second compte : vérifier fiche propre, notes MJ absentes, échanges synchronisés.
-4. Faire créer une autre campagne au second MJ : vérifier l’absence de contenus de la première.
-5. Recueillir les retours ; planifier la reprise graduelle des fonctions avancées de Bastide, puis les interludes.
+Conseiller sécurité : uniquement informations RLS sans politique pour les nouvelles tables privées, volontairement fermées aux clients directs et consultées par les fonctions vérifiant les liens. Aucun changement apporté aux objets Bastide/Nespresso.
 
-Cette bêta est un nouveau socle connecté. Elle ne doit pas être présentée comme un hub Bastide intégral, un produit prêt à vendre ou une infrastructure physiquement séparée.
+Aucune navigation ni test visuel par IA. Le rendu sur téléphone et l’ergonomie des fiches réelles restent à valider par Math et les deux MJ. Ne pas annoncer toutes les fonctions Bastide comme déjà reprises : combat avancé, soundboard, boutique et interludes restent hors de cette bêta.
+
+## Point de reprise
+
+Dossier `hub-configurable/`, même adresse publique, nouvelle interface sans inscription. Relire ce fichier et README avant toute reprise. Tester avec deux MJ : chacun crée une aventure différente, importe un personnage, ouvre son lien MJ sur un autre appareil puis transmet le lien PJ à son joueur.

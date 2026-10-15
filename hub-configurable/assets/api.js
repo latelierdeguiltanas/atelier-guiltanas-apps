@@ -1,38 +1,31 @@
-// Public publishable key only. Access is enforced by PostgreSQL RLS.
-const URL='https://jitatmdbipjkvjstcgdc.supabase.co';
+import {storage,lock} from './storage.js';
+const URL='https://jitatmdbipjkvjstcgdc.supabase.co/rest/v1/rpc/hcfg_link_api';
 const KEY='sb_publishable_XKVr4_kE2qsywCTgurH0CQ_GTXrEFeU';
-const SESSION='guiltanas.hub-configurable.session.v1';
-export class HubAPI {
- constructor(){this.session=this.read();this.refreshing=null;}
- read(){try{return JSON.parse(localStorage.getItem(SESSION)||'null');}catch{return null;}}
- save(s){if(s?.access_token){s.expires_at=s.expires_at||Math.floor(Date.now()/1000)+(s.expires_in||3600);this.session=s;localStorage.setItem(SESSION,JSON.stringify(s));}else{this.session=null;localStorage.removeItem(SESSION);}}
- async raw(path,{method='GET',body,token,headers={}}={}){
-  const res=await fetch(URL+path,{method,headers:{apikey:KEY,...(token?{Authorization:`Bearer ${token}`} : {}),...(body!==undefined?{'Content-Type':'application/json'}:{}),...headers},...(body!==undefined?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(25000)});
-  const text=await res.text();let data;try{data=text?JSON.parse(text):null;}catch{throw Error('Réponse inattendue du serveur. Réessayez dans quelques instants.');}
-  if(!res.ok){const error=new Error(data?.msg||data?.message||data?.error_description||data?.error||`Erreur serveur ${res.status}`);error.status=res.status;throw error;}return data;
- }
- async token(){
-  this.session=this.read();if(!this.session)throw Error('Connectez-vous pour ouvrir votre campagne.');
-  if(this.session.expires_at>Date.now()/1000+60)return this.session.access_token;
-  if(!this.refreshing){const refresh=async()=>{this.session=this.read();if(this.session?.expires_at>Date.now()/1000+60)return this.session.access_token;try{const s=await this.raw('/auth/v1/token?grant_type=refresh_token',{method:'POST',body:{refresh_token:this.session?.refresh_token}});this.save(s);return s.access_token;}catch(e){if(e.status===400||e.status===401)this.save(null);throw e;}};
-   this.refreshing=(navigator.locks?navigator.locks.request('hcfg-session-refresh',refresh):refresh()).finally(()=>this.refreshing=null);
-  }return this.refreshing;
- }
- async rest(path,options={}){return this.raw('/rest/v1/'+path,{...options,token:await this.token()});}
- async rpc(name,body){return this.rest('rpc/hcfg_'+name,{method:'POST',body});}
- async login(email,password){const s=await this.raw('/auth/v1/token?grant_type=password',{method:'POST',body:{email,password}});this.save(s);return s;}
- async signup(email,password){const s=await this.raw('/auth/v1/signup',{method:'POST',body:{email,password}});if(s.access_token)this.save(s);return s;}
- async verifyLink(link){const u=new globalThis.URL(link);if(u.origin!==URL||u.pathname!='/auth/v1/verify')throw Error('Collez le lien de confirmation Supabase reçu par e-mail.');const type=u.searchParams.get('type');if(!['signup','recovery','email','magiclink'].includes(type))throw Error('Type de lien non pris en charge.');const token_hash=u.searchParams.get('token_hash')||u.searchParams.get('token');if(!token_hash)throw Error('Lien incomplet.');const s=await this.raw('/auth/v1/verify',{method:'POST',body:{token_hash,type}});this.save(s);return type;}
- async recover(email){return this.raw('/auth/v1/recover',{method:'POST',body:{email}});}
- async password(password){return this.raw('/auth/v1/user',{method:'PUT',token:await this.token(),body:{password}});}
- async logout(){try{await this.raw('/auth/v1/logout',{method:'POST',token:await this.token()});}finally{this.save(null);}}
- async user(){const u=await this.raw('/auth/v1/user',{token:await this.token()});this.session.user=u;return u;}
- campaigns(){return this.rest('hcfg_campaigns?select=*&order=created_at.desc&limit=100');}
- async records(cid){const all=[];for(let offset=0;offset<10000;offset+=1000){const rows=await this.rest(`hcfg_records?campaign_id=eq.${encodeURIComponent(cid)}&select=*&order=created_at.asc,id.asc&limit=1000&offset=${offset}`);all.push(...rows);if(rows.length<1000)return all;}throw Error('Campagne très volumineuse : contactez Math pour augmenter la capacité de cette bêta. Aucun export incomplet ne sera produit.');}
- members(cid){return this.rest(`hcfg_members?campaign_id=eq.${encodeURIComponent(cid)}&select=*&order=joined_at.asc&limit=200`);}
- create(record){return this.rest('hcfg_records',{method:'POST',body:record,headers:{Prefer:'return=representation'}});}
- async updateRecord(record,changes){const rows=await this.rest(`hcfg_records?id=eq.${record.id}&revision=eq.${record.revision}`,{method:'PATCH',body:changes,headers:{Prefer:'return=representation'}});if(!rows.length)throw Error('Cette fiche a changé ou votre accès a été retiré. Fermez le formulaire puis actualisez avant de recommencer.');return rows[0];}
- async updateCampaign(c,changes){const rows=await this.rest(`hcfg_campaigns?id=eq.${c.id}&revision=eq.${c.revision}`,{method:'PATCH',body:changes,headers:{Prefer:'return=representation'}});if(!rows.length)throw Error('La campagne a changé. Actualisez avant de recommencer.');return rows[0];}
- async remove(record){const rows=await this.rest(`hcfg_records?id=eq.${record.id}&revision=eq.${record.revision}`,{method:'DELETE',headers:{Prefer:'return=representation'}});if(!rows.length)throw Error('Suppression impossible : actualisez la campagne.');}
- async removeMember(cid,uid){await this.rest(`hcfg_members?campaign_id=eq.${cid}&user_id=eq.${uid}`,{method:'DELETE'});}
+export function secret(){return Array.from(crypto.getRandomValues(new Uint8Array(32)),b=>b.toString(16).padStart(2,'0')).join('');}
+export function accessLink(space,token){return location.origin+location.pathname+'#space='+space+'&key='+token;}
+export function parseLink(text){let hash;try{hash=new globalThis.URL(text,location.href).hash.slice(1);}catch{throw Error('Lien incomplet.');}const p=new URLSearchParams(hash),id=p.get('space'),token=p.get('key');if(!/^[a-f0-9-]{36}$/.test(id||'')||!/^[a-f0-9]{64}$/.test(token||''))throw Error('Ce lien d’accès est incomplet.');return {id,token};}
+export class HubAPI{
+ constructor(store=storage){this.store=store;}
+ async call(w,action,data={}){const r=await fetch(URL,{method:'POST',headers:{apikey:KEY,'Content-Type':'application/json'},body:JSON.stringify({p_action:action,p_space:w.id,p_token:w.token,p_data:data}),signal:AbortSignal.timeout(25000)});const d=await r.json();if(!r.ok)throw Error(d.message||'Le serveur ne répond pas correctement.');return d;}
+ async create(name,format){const id=crypto.randomUUID(),token=secret();const w={id,token,role:'mj',character_id:null,remote:false,seed:{name,format},queue:[],state:{campaign:{id,name,format,description:'',settings:{},revision:1,owner_id:'mj'},records:[]}};await this.persist(w);return w;}
+ async openLink(text){const {id,token}=parseLink(text);let w=await this.store.get(id+'-'+token.slice(0,12));if(w)return this.normal(w);w={id,token,role:null,remote:true,queue:[]};const d=await this.call(w,'get');Object.assign(w,d);await this.persist(w);return w;}
+ // The local database key includes the link identity: PJ and MJ caches never mix.
+ key(w){return w.id+'-'+w.token.slice(0,12);}
+ async persist(w){const value={...w,space_id:w.id,id:this.key(w)};await this.store.put(value);}
+ normal(w){if(w.space_id)return {...w,id:w.space_id};return w;}
+ async all(){return (await this.store.all()).map(w=>this.normal(w)).filter((w,i,a)=>a.findIndex(v=>this.key(v)===this.key(w))===i);}
+ async load(w){return this.normal(await this.store.get(this.key(w))||w);}
+ async save(w,action,data){return lock(this.key(w),async()=>{w=await this.load(w);const op={action,data:{...data,op_id:crypto.randomUUID()}};
+  if(action==='save'){const old=w.state.records.find(r=>r.id===data.record.id);if((old?.revision||0)!==data.expected)throw Error('Cette fiche a changé sur cet appareil. Rouvrez-la avant de modifier.');const record={...data.record,revision:data.expected+1,created_at:old?.created_at||new Date().toISOString(),updated_at:new Date().toISOString()};w.state.records=w.state.records.filter(r=>r.id!==record.id).concat(record);}
+  else if(action==='delete')w.state.records=w.state.records.filter(r=>r.id!==data.id);
+  else if(action==='settings'){if(w.state.campaign.revision!==data.expected)throw Error('Réglages modifiés dans un autre onglet. Actualisez.');w.state.campaign={...data.campaign,revision:data.expected+1};}
+  w.queue.push(op);await this.persist(w);return w;
+ });}
+ async sync(input){return lock(this.key(input),async()=>{let w=await this.load(input);if(!w.remote){await this.call(w,'create',w.seed);w.remote=true;await this.persist(w);}
+  while(w.queue.length){const op=w.queue[0];await this.call(w,op.action,op.data);w.queue.shift();await this.persist(w);}
+  const d=await this.call(w,'get');Object.assign(w,d);w.syncedAt=new Date().toISOString();await this.persist(w);return w;
+ });}
+ async playerLink(input,character_id){let w=await this.sync(input);const token=secret();await this.call(w,'link',{character_id,token,op_id:crypto.randomUUID()});w.links={...w.links,[character_id]:token};await this.persist(w);return {workspace:w,link:accessLink(w.id,token)};}
+ async revoke(w,character_id){await this.call(w,'revoke',{character_id,op_id:crypto.randomUUID()});w=await this.load(w);if(w.links)delete w.links[character_id];await this.persist(w);return w;}
+ async serverVersion(input){return lock(this.key(input),async()=>{let w=await this.load(input);const d=await this.call(w,'get');Object.assign(w,d,{queue:[]});await this.persist(w);return w;});}
 }
