@@ -1,0 +1,11 @@
+const ENDPOINT='https://jitatmdbipjkvjstcgdc.supabase.co/rest/v1/rpc/hcfg_track_usage';
+const KEY='sb_publishable_XKVr4_kE2qsywCTgurH0CQ_GTXrEFeU',QUEUE='hcfg.usage.queue.v1';
+const EVENTS=new Set(['open','tool','character_open','import_success','import_error','sync_error','sync_conflict','backup','link_created']);
+const TOOLS=new Set(['overview','settings','character','journal','document','message','note','item','feedback']);
+export class UsageTracker{
+ constructor(api){this.api=api;this.sending=false;this.throttles=new Map();}
+ queue(){try{return JSON.parse(localStorage.getItem(QUEUE)||'[]');}catch{return [];}}
+ session(w){const key='hcfg.usage.session.'+this.api.key(w),now=Date.now();let s;try{s=JSON.parse(sessionStorage.getItem(key)||'null');}catch{}if(!s||now-s.last>30*60*1000)s={id:crypto.randomUUID(),last:now,opened:false};s.last=now;sessionStorage.setItem(key,JSON.stringify(s));return {key,value:s};}
+ record(w,event,tool){try{if(!w||!EVENTS.has(event))return;const {key,value:s}=this.session(w);if(event==='open'&&s.opened)return;if(event==='open'){s.opened=true;sessionStorage.setItem(key,JSON.stringify(s));}const throttle=this.api.key(w)+':'+event;if(event.startsWith('sync_')){if(Date.now()-(this.throttles.get(throttle)||0)<300000)return;this.throttles.set(throttle,Date.now());}const q=this.queue();q.push({workspace:this.api.key(w),id:crypto.randomUUID(),session:s.id,event,...(TOOLS.has(tool)?{tool}:{})});localStorage.setItem(QUEUE,JSON.stringify(q.slice(-300)));}catch{/* Measurement cannot interrupt the game. */}}
+ async flush(){if(this.sending)return;this.sending=true;try{const spaces=await this.api.all();for(const w of spaces.filter(s=>s.remote)){const events=this.queue().filter(e=>e.workspace===this.api.key(w)).slice(0,50);if(!events.length)continue;const r=await fetch(ENDPOINT,{method:'POST',headers:{apikey:KEY,'Content-Type':'application/json'},body:JSON.stringify({p_space:w.id,p_token:w.token,p_events:events.map(({workspace,...e})=>e)}),signal:AbortSignal.timeout(12000)});if(!r.ok)continue;const ids=new Set(events.map(e=>e.id));localStorage.setItem(QUEUE,JSON.stringify(this.queue().filter(e=>!ids.has(e.id))));}}catch{}finally{this.sending=false;}}
+}

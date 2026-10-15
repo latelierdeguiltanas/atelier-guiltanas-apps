@@ -31,3 +31,6 @@ Aucune navigation ni test visuel par IA. Le rendu sur téléphone et l’ergonom
 ## Point de reprise
 
 Dossier `hub-configurable/`, même adresse publique, nouvelle interface sans inscription. Relire ce fichier et README avant toute reprise. Tester avec deux MJ : chacun crée une aventure différente, importe un personnage, ouvre son lien MJ sur un autre appareil puis transmet le lien PJ à son joueur.
+
+## Suivi bêta — reprise 15 octobre 2026
+Interface privée ajoutée dans suivi/. Événements anonymisés, conservation 90 jours, accès par clé privée. Les fonctions serveur sont installées et refusent une clé invalide ; les tables ne sont pas lisibles directement par anon. Tests Node existants : 9/9. Autorisation explicite de Math reçue le 15/10 à 10:59 (Europe/Paris) pour la publication et l’accès administrateur. Clé administrateur activée ; lecture du rapport avec cette clé vérifiée côté serveur. La clé privée n’est jamais publiée dans le dépôt. Aucun changement Bastide/Nespresso.
