@@ -159,3 +159,7 @@ Nouvel outil MJ dans mj/outils/critiques/, lien rubrique Séance. Deux résultat
 
 ## 2026-10-15 — Orthographe de la marque
 Accueil Bastide : « L’Atelier de Guiltanas » corrigé (U manquant). Modification de libellé uniquement.
+
+
+## 2026-10-15 — Fil rouge MJ, essai
+Séance → Fil rouge — test : résumé connu des PJ, reprise, pistes, contributions, notes MJ locales. Prérempli avec le compte rendu du MJ ; aucune nouvelle scène considérée comme canon. Rappel joueur ne reprend que recap et reste à relire/copier manuellement. Autosauvegarde locale, archives (100 max), export/import JSON avec validation et confirmation. Pas de synchronisation ni envoi automatique. Tests sans navigateur : séparation rappel/notes MJ, roundtrip JSON, versions/types/limites d’import. Les notes saisies ne sont pas publiées dans GitHub. Rendu et utilité à confirmer par Math.
