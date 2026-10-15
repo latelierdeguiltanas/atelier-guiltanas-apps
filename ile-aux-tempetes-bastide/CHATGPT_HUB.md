@@ -155,3 +155,7 @@ Vérifications : syntaxe JS des outils, chemins du menu, tests VM recherche/filt
 
 ## 2026-10-14 — Critiques, essai pour le 19 octobre
 Nouvel outil MJ dans mj/outils/critiques/, lien rubrique Séance. Deux résultats, neuf catégories, trois suggestions immédiates ; filtres discrétion/matériel, renouvellement sans répétition quand le pool le permet, choix sans conséquence, édition libre, historique local limité à 100 décisions et export JSON. Aucune API ni modification de fiche, aucun envoi joueur ; idées narratives de campagne, non règles officielles. Réinitialiser les circonstances avec Nouvelle situation. Stockage indisponible signalé ; export possible pendant la session. Tests sans navigateur : 72 combinaisons catégories/résultats/filtres, syntaxe JS et renouvellement. Test réel lundi 19 octobre 2026 ; pas de synchronisation de l’historique entre appareils.
+
+
+## 2026-10-15 — Orthographe de la marque
+Accueil Bastide : « L’Atelier de Guiltanas » corrigé (U manquant). Modification de libellé uniquement.
