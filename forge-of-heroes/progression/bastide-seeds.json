@@ -76,9 +76,9 @@
             "name": "Dague",
             "type": "Distance",
             "attack": 4,
-            "damage": "1d4",
+            "damage": "1d4+1",
             "range": "5 m",
-            "special": ""
+            "special": "Doigts agiles : +1 DM aux dagues et couteaux lancés."
           }
         ],
         "equipment": [
@@ -94,44 +94,139 @@
                 "rank": 1,
                 "owned": true,
                 "name": "Rapide comme son ombre",
-                "text": "+3 aux tests de discrétion et +3 en Initiative.",
-                "abilityId": "ability:rapide:path:voie-du-gobelin:addon-comp2017-cof2:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Le gobelin obtient un bonus +3 à tous les tests de discrétion et en initiative.",
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 15,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie-du-gobelin — rang 1",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "n1_extension",
+                  "sourceStatus": "official_cof1_source_located",
+                  "ruleTextStatus": "present_non_certified",
+                  "conversionStatus": "FOH_VALIDATED",
+                  "functionalStatus": "tested_n1",
+                  "enabledInCertifiedN1": true,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "validated_lot_a_fix67",
+                  "validatedBy": "FIX67"
+                },
+                "spell": false,
+                "abilityId": "ability:rapide:path:voie-du-gobelin:addon-comp2017-cof2:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": false,
                 "name": "Jeune worg",
-                "text": "Permet de dresser et chevaucher un jeune worg, de le déplacer ou de lui ordonner d’attaquer.",
-                "abilityId": "ability:jeune-worg:path:voie-du-gobelin:addon-comp2017-cof2:rank2:cof2-lb-2024",
-                "spell": false
+                "text": "Le gobelin dresse un jeune worg et il peut le chevaucher. À dos de worg, il peut agir normalement sans pénalité. Il peut donner l’ordre à sa monture d’attaquer au prix d’une action de mouvement (il peut utiliser sa seconde action pour la faire se déplacer de 20 mètres ou pour faire lui-même une action d’attaque). Jeune worg : Init [= gobelin], DEF 14, PV [niveau × 4], attaque au contact = [niveau du gobelin], DM 1d6+1, FOR +1, DEX +1, CON +1*, INT -3, SAG +2*, CHA -3",
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 15,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie-du-gobelin — rang 2",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "n1_extension",
+                  "sourceStatus": "official_cof1_source_located",
+                  "ruleTextStatus": "present_non_certified",
+                  "conversionStatus": "pending_individual_analysis",
+                  "functionalStatus": "not_tested",
+                  "enabledInCertifiedN1": false,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "not_validated"
+                },
+                "spell": false,
+                "abilityId": "ability:jeune-worg:path:voie-du-gobelin:addon-comp2017-cof2:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Miam",
-                "text": "+5 pour résister aux poisons et toxines ingérés ; morsure à 1d4 + FOR DM.",
-                "abilityId": "ability:miam:path:voie-du-gobelin:addon-comp2017-cof2:rank3:cof2-lb-2024",
-                "spell": false
+                "text": "Un gobelin est capable de manger tout et n’importe quoi, une chaussure, une armure de cuir, l’écorce d’un arbre et, bien entendu, des mets avariés. Il obtient un bonus de +5 à tous les tests pour résister aux poisons et aux toxines ingérées et il ne souffre de pénalité pour cause de faim que si aucune matière organique n’est disponible. Enfin, à la place d’une attaque à mains nues, il peut infliger une attaque de morsure qui inflige [1d4 + Mod. de FOR] DM létaux.",
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 15,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie-du-gobelin — rang 3",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "n1_extension",
+                  "sourceStatus": "official_cof1_source_located",
+                  "ruleTextStatus": "present_non_certified",
+                  "conversionStatus": "pending_individual_analysis",
+                  "functionalStatus": "not_tested",
+                  "enabledInCertifiedN1": false,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "not_validated"
+                },
+                "spell": false,
+                "abilityId": "ability:miam:path:voie-du-gobelin:addon-comp2017-cof2:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Grand worg",
-                "text": "Le worg devient plus puissant et peut attaquer gratuitement une fois par tour.",
-                "abilityId": "ability:grand:path:voie-du-gobelin:addon-comp2017-cof2:rank4:cof2-lb-2024",
-                "spell": false
+                "text": "Le worg devient plus grand et puissant. Désormais, lorsqu’il est en selle, le gobelin peut faire attaquer son worg une fois par tour en action gratuite, à la même initiative que lui. Grand worg : Init [= gobelin], DEF 17, PV [niveau × 4], attaque au contact = [niveau du gobelin+2], DM 1d6+5, FOR +1, DEX +1, CON +1*, INT -3, SAG +2*, CHA -3",
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 15,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie-du-gobelin — rang 4",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "n1_extension",
+                  "sourceStatus": "official_cof1_source_located",
+                  "ruleTextStatus": "present_non_certified",
+                  "conversionStatus": "pending_individual_analysis",
+                  "functionalStatus": "not_tested",
+                  "enabledInCertifiedN1": false,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "not_validated"
+                },
+                "spell": false,
+                "abilityId": "ability:grand:path:voie-du-gobelin:addon-comp2017-cof2:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Vif et alerte",
-                "text": "+2 en AGI et +2 en CON.",
-                "abilityId": "ability:vif-et:path:voie-du-gobelin:addon-comp2017-cof2:rank5:cof2-lb-2024",
-                "spell": false
+                "text": "Le gobelin est plus agile et résistant aux mauvais traitements que jamais. Il pousse son instinct de survie à son paroxysme et augmente ses valeurs de DEX et de CON de +2.",
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 15,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie-du-gobelin — rang 5",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "n1_extension",
+                  "sourceStatus": "official_cof1_source_located",
+                  "ruleTextStatus": "present_non_certified",
+                  "conversionStatus": "pending_individual_analysis",
+                  "functionalStatus": "not_tested",
+                  "enabledInCertifiedN1": false,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "not_validated"
+                },
+                "spell": false,
+                "abilityId": "ability:vif-et:path:voie-du-gobelin:addon-comp2017-cof2:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "people",
             "pathId": "path:voie-du-gobelin:addon-comp2017-cof2"
           },
           {
@@ -139,46 +234,120 @@
             "ranks": [
               {
                 "rank": 1,
-                "owned": true,
+                "owned": false,
                 "name": "Discrétion",
-                "text": "+3 aux tests de discrétion, déguisement ou dissimulation d’arme ; argotien et dé bonus contre un adversaire surpris.",
-                "abilityId": "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Le voleur ajoute son rang + 2 à tous les tests de discrétion, de déguisement ou pour cacher une arme sur lui. Il apprend le langage silencieux à base de signe des voleurs (argotien) et enfin il obtient un dé bonus en attaque lorsqu’il attaque un adversaire surpris.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 74,
+                  "chapter": "Profils",
+                  "section": "Voie de l’assassin - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": false,
+                "abilityId": "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": false,
                 "name": "Attaque sournoise (L)",
-                "text": "Une fois par round, +2d4° DM contre un adversaire surpris ou de dos avec une arme légère.",
-                "abilityId": "ability:attaque-sournoise-l:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": false
+                "text": "Une fois par round, quand il attaque un adversaire surpris ou de dos** avec une arme légère, le voleur inflige +2d4° DM supplémentaires. Les DM infligés par cette capacité augmentent de 1d4° à chaque fois qu’il atteint le rang 4 dans une voie de voleur (pour un maximum de 7d4°). Cette capacité nécessite l’utilisation d’une arme légère (dague, éventuellement lancée, épée courte, rapière) dans tous les autres cas, le bonus aux DM est divisé par deux (cela comprend les armes à distance).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 74,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie de l’assassin — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:attaque-sournoise-l:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Attaque par surprise (A)",
-                "text": "Contre un adversaire surpris, attaque sournoise en action d’attaque et +2d4° DM.",
-                "abilityId": "ability:attaque-par-surprise-a:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
-                "spell": false
+                "text": "Contre un adversaire surpris, le voleur peut réaliser une attaque sournoise en utilisant une action d’attaque plutôt qu’une action limitée et il augmente les DM de son attaque sournoise de 2d4°.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 75,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie de l’assassin — rang 3",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:attaque-par-surprise-a:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Disparition (M)",
-                "text": "Une fois par combat, disparaît jusqu’au prochain tour puis réapparaît à 20 m maximum.",
-                "abilityId": "ability:disparition-m:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
-                "spell": false
+                "text": "Une fois par combat, le voleur peut disparaître dans un flash lumineux et un nuage de fumée. Aucun adversaire ne peut l’attaquer pendant qu’il a disparu, mais il peut subir des DM de zone. Il ne réapparaît qu’au début de son prochain tour à une distance maximale de 20 m de sa position initiale. À ce moment, si le voleur a l’initiative, il peut réaliser une attaque sournoise.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 75,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie de l’assassin — rang 4",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:disparition-m:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Ouverture mortelle (L)",
-                "text": "Une fois par combat, réussite critique automatique avec attaque sournoise.",
-                "abilityId": "ability:ouverture-mortelle-l:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
-                "spell": false
+                "text": "Une fois par combat, le voleur obtient une réussite critique automatique contre la cible de son choix. Il profite donc d’une réussite automatique, des dommages multipliés par 2 prévus dans ce cas et d’une attaque sournoise (dont les DM ne sont pas doublés).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 75,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie de l’assassin — rang 5",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:ouverture-mortelle-l:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024"
           },
           {
@@ -188,44 +357,118 @@
                 "rank": 1,
                 "owned": true,
                 "name": "Baratin",
-                "text": "+3 pour baratiner, séduire, négocier, mentir ou trouver au marché noir ; permet d’utiliser parchemins et baguettes sur test d’attaque magique.",
-                "abilityId": "ability:baratin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Le voleur ajoute son rang + 2 aux tests destinés à baratiner, séduire, négocier, mentir ou pour trouver un objet au marché noir. De plus, il devient capable d’utiliser les parchemins ou les baguettes magiques en réussissant un test d’attaque magique (L) contre une difficulté de (10 + (2 x rang du sort inscrit)). En cas d’échec, le sort n’est pas lancé et le voleur peut faire une nouvelle tentative.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 75,
+                  "chapter": "Profils",
+                  "section": "Voie de l’aventurier - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": false,
+                "abilityId": "ability:baratin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": false,
                 "name": "Provocation (L)",
-                "text": "Test opposé de CHA contre INT pour forcer un humanoïde à attaquer.",
-                "abilityId": "ability:provocation-l:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": false
+                "text": "Le voleur maîtrise l’art de se rendre désagréable, voire insupportable. S’il emporte un test opposé de CHA contre INT d’un adversaire humanoïde à moins de 10 m, il force la cible à l’attaquer à son prochain tour. À ce moment-là, si le voleur est au contact, il peut riposter par une attaque de contact gratuite pour laquelle il bénéficie au choix d’une attaque sournoise ou d’un bonus de 1d4° aux DM.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 75,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie de l’aventurier — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:provocation-l:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Souplesse du félin",
-                "text": "+2 en DEF et Initiative ; se relever ne demande qu’une action de mouvement.",
-                "abilityId": "ability:souplesse-du-felin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
-                "spell": false
+                "text": "Le voleur possède une démarche et une façon de se déplacer à la fois élégante, féline et souple. Il ajoute +2 en DEF et en Initiative. Ce bonus passe à +3 au rang 5. Il lui faut seulement une action de mouvement pour se relever.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 75,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie de l’aventurier — rang 3",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:souplesse-du-felin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Charisme héroïque",
-                "text": "+1 en CHA et dé bonus aux tests de CHA.",
-                "abilityId": "ability:charisme-heroique:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
-                "spell": false
+                "text": "Le voleur augmente sa valeur de CHA de +1. Désormais, il obtient un dé bonus aux tests de CHA.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 75,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie de l’aventurier — rang 4",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:charisme-heroique:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Attaque paralysante (L)",
-                "text": "Une fois par combat, peut immobiliser ou paralyser un humanoïde au contact.",
-                "abilityId": "ability:attaque-paralysante-l:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
-                "spell": false
+                "text": "Une fois par combat, le voleur peut, en réussissant une attaque de contact, paralyser un adversaire humanoïde de douleur. La cible ne subit aucun DM, mais elle est immobilisée pendant 1d4 rounds ou, si son NC est inférieur à la moitié du niveau du voleur, elle est paralysée. De plus, le voleur peut désormais utiliser au choix l’attaque sournoise (s’il détient cette capacité) ou infliger +1d4° DM contre tout adversaire immobilisé ou paralysé.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 75,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie de l’aventurier — rang 5",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:attaque-paralysante-l:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
           },
           {
@@ -235,44 +478,118 @@
                 "rank": 1,
                 "owned": false,
                 "name": "Agile",
-                "text": "+3 aux tests liés au déplacement ; +1 en DEF et Initiative.",
-                "abilityId": "ability:agile:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Le voleur ajoute son rang + 2 à tous tests liés à un déplacement (esquive, saut, course, équilibre, escalade, se glisser entre des barreaux ou échapper à une créature qui l’agrippe). De plus, il bénéficie d’un bonus de +1 en DEF et en Initiative. Ce bonus passe à +2 au rang 3 et +3 au rang 5.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 75,
+                  "chapter": "Profils",
+                  "section": "Voie du déplacement - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": false,
+                "abilityId": "ability:agile:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": false,
                 "name": "Réflexes félins",
-                "text": "Divise les DM de chute par deux et accorde une action de mouvement supplémentaire une fois par combat.",
-                "abilityId": "ability:reflexes-felins:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": false
+                "text": "Le voleur divise par 2 tous les DM de chute. De plus, une fois par combat, il obtient une action de mouvement supplémentaire à son tour. Au rang 5, il peut réaliser cet exploit 2 fois par combat (mais pas plus d’une fois par round).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 76,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie du déplacement — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:reflexes-felins:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Acrobaties (G)",
-                "text": "Test d’AGI difficulté 15 pour franchir un obstacle ou attaquer de dos.",
-                "abilityId": "ability:acrobaties-g:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
-                "spell": false
+                "text": "Une fois par round, si le voleur réussit un test d’AGI difficulté 15, il peut effectuer une acrobatie pour franchir un obstacle (qui peut être un adversaire) ou attaquer de dos un adversaire au contact. Il peut alors au choix utiliser l’attaque sournoise ou infliger +1d4° DM.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 76,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie du déplacement — rang 3",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:acrobaties-g:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Agilité héroïque",
-                "text": "+1 en AGI et dé bonus aux tests d’AGI.",
-                "abilityId": "ability:agilite-heroique:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
-                "spell": false
+                "text": "Le voleur augmente sa valeur d’AGI de +1. Désormais, il obtient un dé bonus aux tests d’AGI.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 76,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie du déplacement — rang 4",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:agilite-heroique:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Esquive de la magie (G)",
-                "text": "Test d’attaque à distance opposé pour échapper à un sort infligeant des DM physiques.",
-                "abilityId": "ability:esquive-de-la-magie-g:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
-                "spell": false
+                "text": "Une fois par round, lorsqu’un sort qui inflige des DM physiques (feu, froid, projectile magique, etc.) le prend pour cible (y compris un sort de zone ou l’affectant en plus de la personne visée), le voleur peut effectuer un test d’attaque à distance opposé à un test d’attaque magique du lanceur sort. S’il réussit, il échappe au sort. S’il échoue, il subit les DM normaux.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 76,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie du déplacement — rang 5",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:esquive-de-la-magie-g:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-du-deplacement:class-voleur:cof2-lb-2024"
           },
           {
@@ -280,46 +597,120 @@
             "ranks": [
               {
                 "rank": 1,
-                "owned": false,
+                "owned": true,
                 "name": "Doigts agiles",
-                "text": "+3 aux tests de précision manuelle et d’estimation ; +1 DM avec dagues et couteaux lancés.",
-                "abilityId": "ability:doigts-agiles:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Le voleur ajoute son rang + 2 aux tests liés à la précision manuelle (crocheter une serrure, désamorcer un piège, pickpocket…) ainsi qu’aux tests pour évaluer un objet précieux (joyaux, bijoux, etc.). De plus il obtient +1 aux DM des attaques à distance avec les dagues et couteaux. Ce bonus passe à +2 au rang 3 de la voie et +3 au rang 5.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 76,
+                  "chapter": "Profils",
+                  "section": "Voie du roublard - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": false,
+                "abilityId": "ability:doigts-agiles:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": false,
                 "name": "Aux aguets",
-                "text": "+4 pour fouiller, détecter pièges, passages secrets ou embuscades ; DM des pièges divisés par deux.",
-                "abilityId": "ability:aux-aguets:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": false
+                "text": "Le voleur ajoute son rang + 2 aux tests effectués pour fouiller une pièce à la recherche d’un trésor, détecter un piège (même magique), un passage secret ou même une embuscade (Vigilance). De plus, il divise par 2 les DM infligés par des pièges.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 76,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie du roublard — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:aux-aguets:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Feindre la mort (G)",
-                "text": "Une fois par combat, feint la mort puis récupère 1d4° PV en se relevant.",
-                "abilityId": "ability:feindre-la-mort-g:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
-                "spell": false
+                "text": "Une fois par combat, le voleur peut feindre la mort après avoir reçu une blessure (même à 0 PV). Il peut ainsi passer pour mort aussi longtemps qu’il le souhaite et un test d’INT difficulté 20 est nécessaire pour révéler la supercherie. Lorsqu’il décide de se relever (action gratuite), le voleur récupère immédiatement 1d4° PV et s’il est au contact d’un adversaire, celui-ci est surpris. Un adversaire qui a déjà été victime de cette stratégie du voleur lors d’un précédent combat ne se laisse pas surprendre une seconde fois (sauf si son INT est de -4).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 76,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie du roublard — rang 3",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:feindre-la-mort-g:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Expert en criminalité",
-                "text": "Dé bonus aux recherches d’indices et possibilité de dépenser 1 PC pour obtenir un indice manqué.",
-                "abilityId": "ability:expert-en-criminalite:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
-                "spell": false
+                "text": "Le voleur obtient un dé bonus sur tous les tests de recherche d’indice (Trouver une preuve [PER], Faire une déduction [INT] et Obtenir un aveu [CHA]) ainsi que pour tous les tests réalisés pour brouiller des pistes, réaliser de faux indices ou de faux documents. De plus, lorsqu’il est dans un lieu, s’il dépense 1 PC, le MJ devra lui donner un indice qui lui a échappé jusque-là. S’il n’y a pas d’indice, le PC n’est pas dépensé.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 76,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie du roublard — rang 4",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:expert-en-criminalite:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Maître du poison",
-                "text": "Prépare trois doses de poison par jour.",
-                "abilityId": "ability:maitre-du-poison:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
-                "spell": false
+                "text": "Le voleur peut utiliser 3 doses de poison par jour sans risque de s’empoisonner lui-même. Une dose permet d’enduire une dague, une flèche ou un carreau pour infliger +2d4° DM supplémentaire et demande un test de CON difficulté (10 + INT du voleur) ou une cible vivante est affaiblie pour le reste du combat. Alternativement, une dose peut être versée dans les aliments pour une personne ; si la cible rate son test de CON, elle sombre dans l’inconscience pour 2d6 min (4d6 min pour 2 doses, etc.).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 76,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie du roublard — rang 5",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:maitre-du-poison:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-du-roublard:class-voleur:cof2-lb-2024"
           },
           {
@@ -329,47 +720,122 @@
                 "rank": 1,
                 "owned": false,
                 "name": "Attaque en finesse",
-                "text": "Ajoute l’AGI à l’Initiative et remplace la FOR par l’AGI pour attaquer avec une arme légère.",
-                "abilityId": "ability:attaque-en-finesse:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Le voleur ajoute son AGI à son Init. et peut remplacer sa FOR par son AGI pour ses tests d’attaque au contact (mais pas aux DM) lorsqu’il utilise une arme légère à une main (dague, épée courte ou rapière). Enf in, il obtient un bonus égal à son rang + 2 aux tests d’intimidation.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 77,
+                  "chapter": "Profils",
+                  "section": "Voie du spadassin - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": false,
+                "abilityId": "ability:attaque-en-finesse:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": false,
                 "name": "Esquive fatale (G)",
-                "text": "Une fois par combat, détourne une attaque vers un autre adversaire au contact.",
-                "abilityId": "ability:esquive-fatale-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": false
+                "text": "Une fois par combat, le voleur peut esquiver une attaque et s’arranger pour que celle-ci affecte un autre adversaire à son contact. Comparez le test d’attaque à la DEF de la nouvelle cible pour savoir si celle-ci subit des DM. Cette capacité ne peut pas être utilisée si le voleur n’a qu’un seul adversaire au contact et jamais contre une réussite critique (un critique touche toujours sa cible).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 77,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie du spadassin — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:esquive-fatale-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Frappe chirurgicale",
-                "text": "Améliore de 2 la plage de critique avec une arme légère.",
-                "abilityId": "ability:frappe-chirurgicale:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
-                "spell": false
+                "text": "Par sa science de l’escrime (et de la fourberie), le voleur augmente ses chances de faire des coups critiques avec une arme légère de 2 points (ainsi, au lieu de 20, le critique standard est obtenu entre 18 et 20). Toutefois, la valeur minimale requise pour obtenir un critique ne peut être inférieure à 16 (voir page 213).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 77,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie du spadassin — rang 3",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:frappe-chirurgicale:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Ambidextrie (G)",
-                "text": "Une attaque gratuite par round avec une dague ou une épée courte.",
-                "abilityId": "ability:ambidextrie-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
-                "spell": false
+                "text": "Avec sa main gauche, le voleur peut effectuer une attaque au contact gratuite avec une dague ou une épée courte à chaque round. Cette attaque ne peut pas bénéficier des avantages d’une attaque sournoise.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 77,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie du spadassin — rang 4",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:ambidextrie-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Botte secrète",
-                "text": "Sur critique, inflige un état préjudiciable ou transforme l’attaque en attaque sournoise.",
-                "abilityId": "ability:botte-secrete:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
-                "spell": false
+                "text": "Lorsque le voleur obtient un critique sur le dé d’une attaque au contact de sa main principale avec une arme légère (mais pas sur une ouverture mortelle), il inflige à sa cible un état préjudiciable au choix parmi affaibli, aveuglé, étourdi, immobilisé ou ralenti pendant 1 round. Vous ne pouvez infliger chaque état préjudiciable qu’une seule fois par combat. Alternativement, le voleur peut choisir que l’attaque devienne une attaque sournoise dont les DM s’ajoutent au critique (au lieu d’infliger un état préjudiciable).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 77,
+                  "chapter": "Profils",
+                  "section": "Voleur — Voie du spadassin — rang 5",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:botte-secrete:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-du-spadassin:class-voleur:cof2-lb-2024"
           }
-        ]
+        ],
+        "rulesAudit": "Textes COF2 confrontés au PDF officiel fourni ; historique relu sur son PDF. Les peuples Compagnon restent des conversions COF1 identifiées par leur source."
       },
       "mapping": {
         "peopleId": "people:gobelin:addon-comp2017-cof2",
@@ -472,44 +938,108 @@
                 "rank": 1,
                 "owned": true,
                 "name": "Petite taille",
-                "text": "+1 en DEF et +3 aux tests de discrétion et de subtilisation. Restrictions sur les armes lourdes.",
-                "abilityId": "ability:petite-taille:path:voie-du-halfelin:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Le halfelin obtient un bonus de +1 en DEF et de +3 à tous les tests de discrétion ainsi qu’à tous les tests effectués pour subtiliser quelque chose (pickpocket, vol à l’étalage, etc.). En revanche, un halfelin ne peut pas utiliser à une main une arme dont les DM dépassent 1d6 (épée courte, masse, etc., mais pas rapière). Il lui faut utiliser les deux mains pour les armes qui infligent 1d8 à 1d10 de DM (épée longue) et il lui est interdit d’utiliser les armes qui infligent plus de 1d10 DM. Il ne peut pas utiliser d’arc long ni d’arbalète lourde.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 55,
+                  "chapter": "Création du personnage",
+                  "section": "Capacité de voie-du-halfelin",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_content_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:petite-taille:path:voie-du-halfelin:cof2-lb-2024:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": false,
                 "name": "Résistance légendaire",
-                "text": "Bonus égal au rang aux tests opposés d’attaque magique pour résister à un sort.",
-                "abilityId": "ability:r-sistance-l-gendaire:path:voie-du-halfelin:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": false
+                "text": "Le halfelin obtient un bonus égal à son rang à tous les tests opposés d’attaque magique effectués pour résister à un sort.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 55,
+                  "chapter": "Création du personnage",
+                  "section": "Capacité de voie-du-halfelin",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_content_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:r-sistance-l-gendaire:path:voie-du-halfelin:cof2-lb-2024:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Bon pour le moral",
-                "text": "Un bon repas permet de récupérer 1d4 PV, jusqu’à quatre fois par jour.",
-                "abilityId": "ability:bon-pour-le-moral:path:voie-du-halfelin:cof2-lb-2024:rank3:cof2-lb-2024",
-                "spell": false
+                "text": "Un halfelin qui mange bien est un halfelin heureux. À chaque repas (jusqu’à 4 fois par jour, espacés d’au moins 3 h) au cours duquel le personnage boit et mange des mets de qualité et en quantité, il récupère 1d4° PV.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 55,
+                  "chapter": "Création du personnage",
+                  "section": "Capacité de voie-du-halfelin",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_content_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:bon-pour-le-moral:path:voie-du-halfelin:cof2-lb-2024:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Petit veinard",
-                "text": "+1 PC et esquive d’une attaque choisie par combat, hors critique.",
-                "abilityId": "ability:petit-veinard:path:voie-du-halfelin:cof2-lb-2024:rank4:cof2-lb-2024",
-                "spell": false
+                "text": "Le halfelin gagne 1 PC supplémentaire. De plus, il peut esquiver une attaque de son choix par combat (avant d’avoir pris connaissance des DM, mais pas un critique).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 56,
+                  "chapter": "Création du personnage",
+                  "section": "Capacité de voie-du-halfelin",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_content_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:petit-veinard:path:voie-du-halfelin:cof2-lb-2024:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Vif et bien nourri",
-                "text": "+1 en AGI et +1 en CON.",
-                "abilityId": "ability:vif-et-bien-nourri:path:voie-du-halfelin:cof2-lb-2024:rank5:cof2-lb-2024",
-                "spell": false
+                "text": "Le halfelin augmente ses valeurs d’AGI et de CON de +1.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 56,
+                  "chapter": "Création du personnage",
+                  "section": "Capacité de voie-du-halfelin",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_content_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:vif-et-bien-nourri:path:voie-du-halfelin:cof2-lb-2024:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "people",
             "pathId": "path:voie-du-halfelin:cof2-lb-2024"
           },
           {
@@ -519,44 +1049,120 @@
                 "rank": 1,
                 "owned": true,
                 "name": "Charmant",
-                "text": "+3 pour séduire, convaincre, mentir ou baratiner ; 1 PC peut améliorer l’action d’un compagnon de 1d4° + CHA.",
-                "abilityId": "ability:charmant:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Le barde ajoute son rang + 2 aux tests effectués pour séduire, convaincre, mentir ou baratiner. Désormais, il peut dépenser 1 point de chance pour améliorer l’action d’un compagnon en vue, ce PC permet d’ajouter [1d4° + CHA] sur le résultat du test (au lieu de +10).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 68,
+                  "chapter": "Profils",
+                  "section": "Voie de la séduction - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": false,
+                "abilityId": "ability:charmant:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": true,
                 "name": "Dentelles et rapière",
-                "text": "Sans armure, ajoute le CHA à la DEF, dans la limite du rang atteint dans la voie.",
-                "abilityId": "ability:dentelles-et-rapiere:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": false
+                "text": "Le barde ne met pas d’armure, cela ne sied point en société. Sa seule armure est la dentelle, sa seule défense, la rapière. Lorsqu’il ne porte aucune armure, le barde ajoute son CHA en DEF (en plus de son AGI), toutefois ce bonus ne peut pas dépasser le rang atteint dans la voie.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 68,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie de la séduction — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true,
+                  "semanticEngine": "N1_SEMANTIC_ENGINE_REPAIR",
+                  "engineConnected": true
+                },
+                "spell": false,
+                "abilityId": "ability:dentelles-et-rapiere:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Baratineur de génie",
-                "text": "Après 10 minutes, peut dépenser 1 PC pour charmer un humanoïde de niveau 1 ou moins.",
-                "abilityId": "ability:baratineur-de-genie:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
-                "spell": false
+                "text": "Si le barde peut passer 10 minutes avec un humanoïde dont le niveau est inférieur ou égal à 1 (NC 1), il peut dépenser un 1 PC pour le charmer. La cible répond favorablement à vos requêtes dans la limite de ce que ferait un ami et ce lien peut se renforcer avec le temps. Si vous ne partagez pas une langue commune, cela vous coûte 2 PC.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 68,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie de la séduction — rang 3",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:baratineur-de-genie:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Charisme héroïque",
-                "text": "+1 en CHA, dé bonus aux tests de CHA et possibilité d’utiliser CHA pour calculer les PM.",
-                "abilityId": "ability:charisme-heroique:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
-                "spell": false
+                "text": "Le barde augmente sa valeur de CHA de +1. Désormais, il obtient un dé bonus aux tests de CHA. De plus, le barde peut désormais utiliser son CHA au lieu de sa VOL pour calculer le nombre de PM dont il dispose.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 68,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie de la séduction — rang 4",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:charisme-heroique:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Suggestion (A)*",
-                "text": "Test opposé d’attaque magique pour suggérer une action à une créature.",
-                "abilityId": "ability:suggestion-a:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
-                "spell": true
+                "text": "Le barde peut suggérer une action à une créature en réussissant un test opposé d’attaque magique. En cas de réussite, la créature fera tout son possible pour satisfaire cette demande pendant 1 heure ou jusqu’à avoir réussi. Elle évitera les actions suicidaires (ce qui lui donnerait immédiatement un test d’INT difficulté 10 pour échapper au sort). Le sort ne peut pas affecter une créature de niveau supérieur ou égal à celui du lanceur.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 68,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie de la séduction — rang 5",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": true,
+                "abilityId": "ability:suggestion-a:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-de-la-seduction:class-barde:cof2-lb-2024"
           },
           {
@@ -566,44 +1172,118 @@
                 "rank": 1,
                 "owned": true,
                 "name": "Chant des héros (L)*",
-                "text": "Pour 1 PM, le barde et ses alliés à portée de voix gagnent +1 à tous leurs tests pendant CHA minutes ; +3 pour jouer ou chanter.",
-                "abilityId": "ability:chant-des-heros-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": true
+                "text": "Le barde peut chanter et inspirer ses compagnons, tous ses alliés à portée de voix et lui obtiennent un bonus de +1 à tous leurs tests pendant un nombre de minutes égal à sa valeur de CHA. Pendant toute la durée du sort, il fredonne (action gratuite qui ne l’empêche pas de lancer d’autres sorts de barde). Le bonus passe à +2 au rang 5. En plus de ce sort, le barde ajoute son rang + 2 aux tests pour jouer d’un instrument de musique ou chanter.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 67,
+                  "chapter": "Profils",
+                  "section": "Voie du musicien - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": true,
+                "abilityId": "ability:chant-des-heros-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": true,
                 "name": "Chant de réconfort (L)*",
-                "text": "Pendant une récupération rapide, le barde et ses alliés à 10 m récupèrent 1d4° PV.",
-                "abilityId": "ability:chant-de-reconfort-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": true
+                "text": "Le barde chante ou joue de la musique pendant toute la durée d’une récupération rapide (30 min). Le barde et ses alliés dans un rayon de 10 m, récupèrent 1d4° PV. Les soins passent à 2d4° au rang 4.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 67,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie du musicien — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": true,
+                "abilityId": "ability:chant-de-reconfort-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Attaque sonore (A)*",
-                "text": "Inflige 2d4° + CHA DM dans un cône de 10 m ; test de CON pour diviser les DM par deux.",
-                "abilityId": "ability:attaque-sonore-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
-                "spell": true
+                "text": "Le barde pousse un cri dont les effets sont dévastateurs (ou produit un son avec un instrument à cette même fin). Il inflige [2d4° + CHA] DM à toutes les cibles dans un cône de 10 m (de long et de large). Les cibles peuvent diviser les DM par 2 si elles réussissent un test de CON difficulté [10 + CHA du barde].",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 67,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie du musicien — rang 3",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": true,
+                "abilityId": "ability:attaque-sonore-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Zone de silence (A)*",
-                "text": "Crée une zone de silence de 5 m de diamètre à 30 m pendant CHA minutes.",
-                "abilityId": "ability:zone-de-silence-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
-                "spell": true
+                "text": "Le barde crée une zone de silence fixe de 5 m de diamètre, jusqu’à une portée de 30 m, pendant un nombre de minutes égal à sa valeur de CHA. Tous les sons émis dans cette sphère sont annulés. Dans cette zone, il faut réussir un test d’INT difficulté 10 pour lancer un sort.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 67,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie du musicien — rang 4",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": true,
+                "abilityId": "ability:zone-de-silence-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Danse irrésistible (A)*",
-                "text": "Test opposé d’attaque magique : la cible danse, subit un dé malus aux attaques et -5 en DEF.",
-                "abilityId": "ability:danse-irresistible-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
-                "spell": true
+                "text": "Le barde joue une gigue endiablée aux effets magiques. S’il réussit un test d’attaque magique opposé contre sa cible (portée 10 m), celle-ci se met à danser pendant [1d4° + CHA] rounds, elle subit un dé malus aux tests d’attaque et -5 en DEF. Si la cible est d’un niveau (NC) supérieur ou égal au barde, elle ne danse qu’un seul round.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 67,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie du musicien — rang 5",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": true,
+                "abilityId": "ability:danse-irresistible-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-du-musicien:class-barde:cof2-lb-2024"
           },
           {
@@ -613,44 +1293,118 @@
                 "rank": 1,
                 "owned": false,
                 "name": "Précision",
-                "text": "Remplace la FOR par l’AGI pour les attaques au contact avec une arme légère.",
-                "abilityId": "ability:precision:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Le barde peut remplacer sa FOR par son AGI pour ses tests d’attaque au contact (mais pas aux DM) lorsqu’il emploie une arme légère à une main (les armes légères sont la dague, l’épée courte et la rapière).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 66,
+                  "chapter": "Profils",
+                  "section": "Voie de l’escrime - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": false,
+                "abilityId": "ability:precision:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": false,
                 "name": "Feinte (L)",
-                "text": "Test opposé de CHA contre PER donnant un bonus d’attaque et +2d4° DM au round suivant.",
-                "abilityId": "ability:feinte-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": false
+                "text": "Le barde effectue une attaque fictive pour déséquilibrer son adversaire et réalise ensuite une attaque mortelle. Faites un test opposé de CHA contre la PER de votre adversaire à ce round. Au round suivant, vous obtenez un bonus en attaque égal au double de votre rang dans la voie de l’escrime (+4 au rang 2, par exemple) sur votre première attaque au contact contre cet adversaire et, si votre feinte a réussi, +2d4° aux DM.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 66,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie de l’escrime — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:feinte-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Intelligence du combat (M)",
-                "text": "Une fois par combat, peut désarmer, renverser ou aveugler un adversaire de NC inférieur.",
-                "abilityId": "ability:intelligence-du-combat-m:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
-                "spell": false
+                "text": "Une fois par combat, le barde peut au choix désarmer, renverser ou aveugler pour une durée de 1 round un adversaire dont le NC est inférieur au sien en emportant un test opposé d’INT. S’il a réussi une feinte contre cet adversaire à son tour précédent, il bénéficie d’un bonus de +5 au test d’INT.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 67,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie de l’escrime — rang 3",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:intelligence-du-combat-m:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Attaque flamboyante (L)",
-                "text": "Attaque avec une arme légère, avec bonus d’attaque et de DM égal au CHA.",
-                "abilityId": "ability:attaque-flamboyante-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
-                "spell": false
+                "text": "Le style de combat du barde est flamboyant et surprenant : Il effectue une attaque de contact avec une arme légère et obtient un bonus d’attaque et de DM égal à son CHA (en plus de sa FOR ou de son AGI).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 67,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie de l’escrime — rang 4",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:attaque-flamboyante-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Botte mortelle",
-                "text": "+2d4° DM si le résultat d’attaque dépasse la DEF adverse d’au moins 10.",
-                "abilityId": "ability:botte-mortelle:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
-                "spell": false
+                "text": "Lors d’une attaque au contact avec une arme légère, s’il obtient un résultat d’attaque supérieur ou égal à (la DEF de son adversaire + 10 points), le barde obtient un bonus de +2d4° aux DM de son attaque (les dés bonus ne sont jamais multipliés en cas de critique).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 67,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie de l’escrime — rang 5",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:botte-mortelle:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-de-l-escrime:class-barde:cof2-lb-2024"
           },
           {
@@ -660,44 +1414,118 @@
                 "rank": 1,
                 "owned": false,
                 "name": "Acrobate",
-                "text": "+3 aux tests d’acrobaties, équilibre, saut et escalade.",
-                "abilityId": "ability:acrobate:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Le barde ajoute son rang + 2 à tous les tests qu’il effectue pour réaliser des acrobaties, tenir en équilibre, faire des sauts ou de l’escalade.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 67,
+                  "chapter": "Profils",
+                  "section": "Voie du saltimbanque - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": false,
+                "abilityId": "ability:acrobate:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": false,
                 "name": "Grâce féline",
-                "text": "Ajoute le CHA à l’Initiative et +1 en DEF ; +4 aux tests de danse, mime ou jonglerie.",
-                "abilityId": "ability:grace-feline:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": false
+                "text": "Le barde gagne son CHA en Initiative et +1 en DEF (+2 au rang 4). De plus, le barde ajoute son rang + 2 aux tests de danse, de mime ou de jonglerie.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 68,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie du saltimbanque — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:grace-feline:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Lanceur de couteau (G)",
-                "text": "Une fois par round, lance gratuitement un couteau à 10 m pour 1d4 + AGI DM.",
-                "abilityId": "ability:lanceur-de-couteau-g:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
-                "spell": false
+                "text": "Une fois par round, en plus de ses autres actions, le barde peut lancer un couteau sur une cible à distance (portée 10 m) en réussissant un test d’attaque à distance. Cette attaque occasionne [1d4 + AGI] DM. Il peut exécuter cette action sans pénalité, même s’il est engagé en combat au contact avec un autre adversaire. Les DM passent à 1d4° au rang 5.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 68,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie du saltimbanque — rang 3",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:lanceur-de-couteau-g:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Liberté d’action",
-                "text": "Immunité à la peur, aux sorts d’asservissement et aux états ralenti et immobilisé.",
-                "abilityId": "ability:liberte-daction:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
-                "spell": false
+                "text": "Le barde est immunisé à la peur et à tous les sorts qui asservissent l’esprit (possession, charme), il est immunisé aux états ralenti et immobilisé.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 68,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie du saltimbanque — rang 4",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:liberte-daction:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Esquive acrobatique (G)",
-                "text": "Test d’attaque à distance opposé pour esquiver une attaque une fois par round.",
-                "abilityId": "ability:esquive-acrobatique-g:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
-                "spell": false
+                "text": "Une fois par round, le barde peut réaliser une esquive en réussissant un test d’attaque à distance contre une difficulté égale au résultat obtenu par son adversaire, lors de son attaque. En cas de réussite, le barde ne subit aucun DM. Si cette attaque était un critique, il subit tout de même des DM normaux (il annule donc l’effet critique « dommages doublés »).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 68,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie du saltimbanque — rang 5",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:esquive-acrobatique-g:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024"
           },
           {
@@ -707,47 +1535,124 @@
                 "rank": 1,
                 "owned": false,
                 "name": "Rumeurs et légendes",
-                "text": "+3 aux tests d’INT liés à la culture générale et à l’identification d’objets magiques.",
-                "abilityId": "ability:rumeurs-et-legendes:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "À force de voyager, le barde possède une culture générale très vaste, il ajoute son rang + 2 aux tests d’INT pour se « souvenir » d’une information historique, politique, géographique ou occulte ou encore pour identifier un objet magique difficulté (25 – (2 x niveau de magie de l’objet)).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 68,
+                  "chapter": "Profils",
+                  "section": "Voie du vagabond - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": false,
+                "abilityId": "ability:rumeurs-et-legendes:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": false,
                 "name": "Éclectique",
-                "text": "+1 à tous les tests de compétence, non cumulable sauf avec la voie de peuple.",
-                "abilityId": "ability:eclectique:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": false
+                "text": "Le barde obtient un bonus de +1 à tous les tests de compétence (absolument tous, de se cacher dans les ombres jusqu’à forger une épée, en passant par traduire une langue ancienne). Ce bonus ne peut se cumuler à aucun autre bonus de compétence sauf celui du rang 1 de la voie de peuple. Il augmente de +1 chaque fois qu’il atteint le rang 4 dans une voie de barde.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 69,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie du vagabond — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true,
+                  "semanticEngine": "N1_SEMANTIC_ENGINE_REPAIR",
+                  "engineConnected": true
+                },
+                "spell": false,
+                "abilityId": "ability:eclectique:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Attirail",
-                "text": "Pour 1 PC, sort un objet improbable d’une valeur maximale de 10 pa.",
-                "abilityId": "ability:attirail:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
-                "spell": false
+                "text": "Le barde possède toutes sortes de choses dans son sac ou ses poches. En dépensant 1 PC, il peut sortir un objet improbable qu’il avait sur lui, mais qui n’est pas inscrit sur sa fiche de PJ, par exemple un livre de poésie, une bouteille d’un excellent vin, un jouet pour enfant, un os pour le chien, une lettre de recommandation, etc. (pour une valeur maximale de 10 pa). Il peut aussi bricoler un objet avec trois bouts de ficelles et un clou (système D).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 69,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie du vagabond — rang 3",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:attirail:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Compréhension des langues (A)*",
-                "text": "Permet de lire, écrire et parler une langue vivante étrangère.",
-                "abilityId": "ability:comprehension-des-langues-a:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
-                "spell": true
+                "text": "Ce sort permet au barde de lire, écrire et parler une langue vivante étrangère. Le sort a une durée maximale de CHA heures, mais il peut aussi être lancé sur un allié au contact et dans ce cas, il ne dure que CHA minutes. À partir du rang 5, il peut aussi déchiffrer une inscription dans une langue morte.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 69,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie du vagabond — rang 4",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": true,
+                "abilityId": "ability:comprehension-des-langues-a:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Déguisement (A)*",
-                "text": "Prend l’apparence d’un humanoïde de taille voisine pendant CHA heures.",
-                "abilityId": "ability:deguisement-a:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
-                "spell": true
+                "text": "Ce sort permet au barde de prendre l’apparence de n’importe quelle humanoïde de taille à peu près équivalente (avec une marge d’environ 50 cm). S’il veut imiter une personne en particulier, il lui faudra réussir un test de CHA difficulté 15 (20 s’il ne la connaît pas mais l’a seulement vue, 10 s’il la connaît très bien). Le sort a une durée maximale de CHA heures, mais il peut aussi être lancé sur un allié au contact et dans ce cas, il ne dure que CHA minutes.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 69,
+                  "chapter": "Profils",
+                  "section": "Barde — Voie du vagabond — rang 5",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": true,
+                "abilityId": "ability:deguisement-a:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-du-vagabond:class-barde:cof2-lb-2024"
           }
-        ]
+        ],
+        "rulesAudit": "Textes COF2 confrontés au PDF officiel fourni ; historique relu sur son PDF. Les peuples Compagnon restent des conversions COF1 identifiées par leur source."
       },
       "mapping": {
         "peopleId": "people:halfelin:cof2-lb-2024",
@@ -833,44 +1738,111 @@
                 "rank": 1,
                 "owned": true,
                 "name": "Diversité",
-                "text": "+3 aux tests de deux domaines liés à l’origine géographique ou sociale ; +1 PC.",
-                "abilityId": "ability:diversit:path:voie-de-l-humain:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Un humain obtient un bonus de +3 aux tests de deux domaines associés à son origine géographique ou sociale (voir ci-dessous). De plus, il gagne 1 PC supplémentaire.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 57,
+                  "chapter": "Création du personnage",
+                  "section": "Capacité de voie-de-l-humain",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_content_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:diversit:path:voie-de-l-humain:cof2-lb-2024:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": false,
                 "name": "Instinct de survie",
-                "text": "Une fois par combat, divise par deux les DM qui devraient réduire le héros à 0 PV, puis +2 en DEF.",
-                "abilityId": "ability:instinct-de-survie:path:voie-de-l-humain:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": false
+                "text": "Une fois par combat, lorsqu’une attaque devrait amener l’humain à 0 PV, les DM qu’elle inflige sont divisés par 2 (minimum 1). Après avoir bénéficié de cette capacité, l’humain gagne pour le reste du combat un bonus de +2 en DEF.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 57,
+                  "chapter": "Création du personnage",
+                  "section": "Capacité de voie-de-l-humain",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_content_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:instinct-de-survie:path:voie-de-l-humain:cof2-lb-2024:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Touche-à-tout",
-                "text": "Accorde une capacité de rang 1 ou 2 de n’importe quel profil, avec restrictions d’armure.",
-                "abilityId": "ability:touche-tout:path:voie-de-l-humain:cof2-lb-2024:rank3:cof2-lb-2024",
-                "spell": false
+                "text": "Le personnage obtient une capacité de rang 1 ou 2 de n’importe quel profil au choix du joueur. Si la capacité est de rang 2 ou accorde un bonus de DEF, il doit respecter les limitations d’armure.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 57,
+                  "chapter": "Création du personnage",
+                  "section": "Capacité de voie-de-l-humain",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_content_pending",
+                  "functionalStatus": "not_tested",
+                  "semanticEngine": "N1_SEMANTIC_ENGINE_REPAIR",
+                  "structured": true,
+                  "engineConnected": true
+                },
+                "spell": false,
+                "abilityId": "ability:touche-tout:path:voie-de-l-humain:cof2-lb-2024:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Loup parmi les loups",
-                "text": "Une fois par round, +1d4 DM contre un humanoïde de taille moyenne.",
-                "abilityId": "ability:loup-parmi-les-loups:path:voie-de-l-humain:cof2-lb-2024:rank4:cof2-lb-2024",
-                "spell": false
+                "text": "Une fois par round, l’humain gagne +1d4° aux DM qu’il inflige lorsqu’il combat un adversaire humanoïde de taille moyenne. Ce bonus ne s’applique qu’aux DM initiaux d’une attaque, pas aux DM sur la durée.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 57,
+                  "chapter": "Création du personnage",
+                  "section": "Capacité de voie-de-l-humain",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_content_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:loup-parmi-les-loups:path:voie-de-l-humain:cof2-lb-2024:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Polyvalence",
-                "text": "+1 à la caractéristique la plus faible et +1 en VOL.",
-                "abilityId": "ability:polyvalence:path:voie-de-l-humain:cof2-lb-2024:rank5:cof2-lb-2024",
-                "spell": false
+                "text": "Le personnage augmente sa caractéristique la plus faible de +1 et sa Volonté de +1.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 57,
+                  "chapter": "Création du personnage",
+                  "section": "Capacité de voie-de-l-humain",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_content_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:polyvalence:path:voie-de-l-humain:cof2-lb-2024:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "people",
             "pathId": "path:voie-de-l-humain:cof2-lb-2024"
           },
           {
@@ -879,13 +1851,31 @@
               {
                 "rank": 1,
                 "owned": true,
-                "name": "Récupération mineure (A)*",
-                "text": "Pour 1 PM au contact, soigne 1d4° + CHA PV ; +3 aux tests de médecine et premiers soins.",
-                "abilityId": "ability:soins:classpath:voie-des-soins:class-pretre:cof2-lb-2024:r1",
-                "spell": true
+                "name": "Rang 1 — Récupération mineure (A)*",
+                "text": "Le prêtre peut apposer les mains sur un allié au contact (ou sur lui-même) pour le soigner. Le patient récupère [1d4°+CHA du prêtre] PV. Ce sort peut être lancé une fois par jour par rang atteint dans la voie, plus une fois supplémentaire chaque fois que le personnage atteint le rang 3 dans une autre voie de prêtre. En plus de ce sort, le prêtre ajoute son rang + 2 à tous les tests de médecine et de premiers soins.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 124,
+                  "chapter": "Profils",
+                  "section": "Voie des soins - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": true,
+                "abilityId": "ability:soins:classpath:voie-des-soins:class-pretre:cof2-lb-2024:r1"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-des-soins:class-pretre:cof2-lb-2024"
           },
           {
@@ -894,13 +1884,31 @@
               {
                 "rank": 1,
                 "owned": true,
-                "name": "Prédicateur",
-                "text": "+3 pour convaincre ou convertir ; récupère 1 PC une fois par jour après une conversion réussie.",
-                "abilityId": "ability:foi:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:r1",
-                "spell": false
+                "name": "Rang 1 — Prédicateur",
+                "text": "Le prêtre ajoute son rang + 2 aux tests visant à convaincre ou convertir son auditoire. De plus, une fois par jour, il récupère 1 PC s’il réussit à convertir une créature (ou un groupe) à sa religion ou à convaincre une créature peu encline à le faire à suivre ses préceptes.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 122,
+                  "chapter": "Profils",
+                  "section": "Voie de la foi - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": false,
+                "abilityId": "ability:foi:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:r1"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024"
           },
           {
@@ -909,13 +1917,31 @@
               {
                 "rank": 1,
                 "owned": false,
-                "name": "Arme bénie (A)*",
-                "text": "Pour 1 PM, bénit une arme pendant 24 h : relance les 1 aux DM et rend les dégâts magiques.",
-                "abilityId": "ability:guerre-sainte:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:r1",
-                "spell": true
+                "name": "Rang 1 — Arme bénie (A)*",
+                "text": "Le prêtre effectue un court rituel et son arme est bénie pour une durée de 24 h. Lorsqu’il obtient un résultat de 1 sur son dé de DM, il relance le dé et garde le second résultat. Les DM de l’arme sont considérés comme magiques. L’arme n’est plus bénie si une autre créature l’utilise.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 123,
+                  "chapter": "Profils",
+                  "section": "Voie de la guerre sainte - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": true,
+                "abilityId": "ability:guerre-sainte:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:r1"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024"
           },
           {
@@ -924,13 +1950,31 @@
               {
                 "rank": 1,
                 "owned": false,
-                "name": "Bénédiction (L)*",
-                "text": "Pour 1 PM, le prêtre et ses alliés en vue gagnent +1 aux tests pendant CHA minutes ; +3 en théologie et cosmologie.",
-                "abilityId": "ability:priere:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:r1",
-                "spell": true
+                "name": "Rang 1 — Bénédiction (L)*",
+                "text": "Le prêtre entonne un chant pour encourager ses compagnons en vue. Ses alliés et lui bénéficient d’un bonus de +1 à tous leurs tests de caractéristique et d’attaque pendant CHA minutes. Ce bonus passe à +2 au rang 5. De plus, le prêtre obtient un bonus égal à son rang + 2 à tous les tests de théologie ou de cosmologie.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 124,
+                  "chapter": "Profils",
+                  "section": "Voie de la prière - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": true,
+                "abilityId": "ability:priere:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:r1"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024"
           },
           {
@@ -939,16 +1983,35 @@
               {
                 "rank": 1,
                 "owned": false,
-                "name": "Vêtements sacrés",
-                "text": "Sans armure, +2 en DEF et dé bonus pour résister au contrôle mental ; option de maîtrise de la cotte de mailles pour une divinité guerrière.",
-                "abilityId": "ability:spiritualite:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:r1",
-                "spell": false
+                "name": "Rang 1 — Vêtements sacrés",
+                "text": "La tenue religieuse du prêtre est bénie et le protège. Lorsqu’il ne porte aucune armure (bouclier autorisé), il obtient un dé bonus à tous les tests pour résister à un contrôle mental (injonction, charme, domination…) et +2 en DEF. Ce bonus passe à +3 au rang 3 et +4 au rang 5. Éventuellement, si le prêtre prie une divinité guerrière, il peut choisir d’obtenir la maîtrise de la cotte de mailles (DEF +5) et l’autorisation d’utiliser les capacités des voies de prêtre avec cette armure (dans le cas d’un profil hybride, la maîtrise de la chemise de mailles est un prérequis pour bénéficier de cette variante).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 125,
+                  "chapter": "Profils",
+                  "section": "Voie de la spiritualité - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": false,
+                "abilityId": "ability:spiritualite:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:r1"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024"
           }
-        ]
+        ],
+        "rulesAudit": "Textes COF2 confrontés au PDF officiel fourni ; historique relu sur son PDF. Les peuples Compagnon restent des conversions COF1 identifiées par leur source."
       },
       "mapping": {
         "peopleId": "people:humain:cof2-lb-2024",
@@ -1057,43 +2120,138 @@
                 "owned": true,
                 "name": "Main lourde",
                 "text": "À mains nues, l’âme-forgée inflige 1d6 DM létaux.",
-                "abilityId": "ability:main-lourde:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank1:cof2-lb-2024",
-                "spell": false
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 9,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie-de-lâme-forgée — rang 1",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "n1_extension",
+                  "sourceStatus": "official_cof1_source_located",
+                  "ruleTextStatus": "present_non_certified",
+                  "conversionStatus": "FOH_VALIDATED",
+                  "functionalStatus": "tested_n1",
+                  "enabledInCertifiedN1": true,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "validated_lot_a_fix67",
+                  "validatedBy": "FIX67"
+                },
+                "spell": false,
+                "abilityId": "ability:main-lourde:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": true,
                 "name": "Choc électrique (L)",
-                "text": "Sur une attaque à mains nues réussie, inflige 1d6 DM d’électricité par rang, dégâts de l’attaque inclus.",
-                "abilityId": "ability:choc-lectrique:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank2:cof2-lb-2024",
-                "spell": false
+                "text": "Sur une attaque à mains nues réussie, l’âme forgée inflige 1d6 DM d’électricité par rang dans cette voie (dégâts de l’attaque à mains nues inclus).",
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 9,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie-de-lâme-forgée — rang 2",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "n1_extension",
+                  "sourceStatus": "official_cof1_source_located",
+                  "ruleTextStatus": "present_non_certified",
+                  "conversionStatus": "pending_individual_analysis",
+                  "functionalStatus": "not_tested",
+                  "enabledInCertifiedN1": false,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "not_validated"
+                },
+                "spell": false,
+                "abilityId": "ability:choc-lectrique:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Camouflage",
-                "text": "Une fois par jour, prend l’apparence générique d’un humain pendant une heure.",
-                "abilityId": "ability:camouflage:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank3:cof2-lb-2024",
-                "spell": false
+                "text": "Vous pouvez faire croire à ceux qui vous entourent que vous êtes un humain pendant 1 heure. Vous ne pouvez utiliser cette capacité qu’une fois par jour. Vous ne pouvez pas prendre l’apparence d’une personne en particulier.",
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 9,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie-de-lâme-forgée — rang 3",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "n1_extension",
+                  "sourceStatus": "official_cof1_source_located",
+                  "ruleTextStatus": "present_non_certified",
+                  "conversionStatus": "pending_individual_analysis",
+                  "functionalStatus": "not_tested",
+                  "enabledInCertifiedN1": false,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "not_validated"
+                },
+                "spell": false,
+                "abilityId": "ability:camouflage:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Forgé dans la bataille",
-                "text": "Une fois par combat, ignore totalement les dégâts d’une attaque.",
-                "abilityId": "ability:forg-dans:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank4:cof2-lb-2024",
-                "spell": false
+                "text": "Une fois par combat, l’âme-forgée peut totalement ignorer les dégâts subis par une attaque.",
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 9,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie-de-lâme-forgée — rang 4",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "n1_extension",
+                  "sourceStatus": "official_cof1_source_located",
+                  "ruleTextStatus": "present_non_certified",
+                  "conversionStatus": "pending_individual_analysis",
+                  "functionalStatus": "not_tested",
+                  "enabledInCertifiedN1": false,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "not_validated"
+                },
+                "spell": false,
+                "abilityId": "ability:forg-dans:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Machine de guerre",
-                "text": "+2 en CON et +2 en FOR.",
-                "abilityId": "ability:machine:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank5:cof2-lb-2024",
-                "spell": false
+                "text": "L’âme-forgée devient une force impossible à ignorer sur le champ de bataille, elle augmente ses scores de CON et de FOR de +2",
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 9,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie-de-lâme-forgée — rang 5",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "n1_extension",
+                  "sourceStatus": "official_cof1_source_located",
+                  "ruleTextStatus": "present_non_certified",
+                  "conversionStatus": "pending_individual_analysis",
+                  "functionalStatus": "not_tested",
+                  "enabledInCertifiedN1": false,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "not_validated"
+                },
+                "spell": false,
+                "abilityId": "ability:machine:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "people",
             "pathId": "path:voie-de-lâme-forgée:addon-comp2017-cof2"
           },
           {
@@ -1103,44 +2261,118 @@
                 "rank": 1,
                 "owned": true,
                 "name": "Plus vite que son ombre",
-                "text": "Avec une arme à poudre chargée en main, peut tirer avec +5 en Initiative et sans dé malus au contact.",
-                "abilityId": "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Si son arme à poudre est chargée et tenue en main, l’arquebusier peut tirer avec un bonus de +5 à son Initiative. De plus, il ne subit plus de dé malus lorsqu’il tire avec une arme à poudre ou une arbalète en étant engagé en combat au contact (sauf avec la couleuvrine).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 65,
+                  "chapter": "Profils",
+                  "section": "Voie du pistolero - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": false,
+                "abilityId": "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": true,
                 "name": "Ajuster le tir",
-                "text": "Après une attaque à distance ratée, +5 au prochain tir contre la même cible avant la fin du round suivant.",
-                "abilityId": "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": false
+                "text": "Après avoir raté une attaque à distance, l’arquebusier déclare qu’il s’agissait d’un tir de réglage. Il obtient +5 sur le test de sa prochaine attaque à distance, si son prochain tir vise la même cible avant la fin du prochain round.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 65,
+                  "chapter": "Profils",
+                  "section": "Arquebusier — Voie du pistolero — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Tir double (L)",
-                "text": "Tire avec une pétoire dans chaque main ; -2 par attaque, sans malus si les deux tirs visent la même cible.",
-                "abilityId": "ability:tir-double-l:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
-                "spell": false
+                "text": "L’arquebusier est capable de tirer simultanément avec une pétoire (ou une arbalète de poing) dans chaque main avec un malus de -2 à chaque attaque. S’il décharge ses deux armes sur la même cible, il ne subit aucun malus.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 65,
+                  "chapter": "Profils",
+                  "section": "Arquebusier — Voie du pistolero — rang 3",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "ADVANCED_N1_CONNECTED",
+                  "structured": true,
+                  "ageAccessibleN1": true
+                },
+                "spell": false,
+                "abilityId": "ability:tir-double-l:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Agilité héroïque",
-                "text": "+1 en AGI et dé bonus aux tests d’AGI.",
-                "abilityId": "ability:agilite-heroique:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank4:cof2-lb-2024",
-                "spell": false
+                "text": "L’arquebusier augmente sa valeur d’AGI de +1 et il obtient un dé bonus aux tests d’AGI.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 65,
+                  "chapter": "Profils",
+                  "section": "Arquebusier — Voie du pistolero — rang 4",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:agilite-heroique:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank4:cof2-lb-2024"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "As de la gâchette",
-                "text": "+2d4° DM si le résultat d’attaque dépasse la DEF adverse d’au moins 10.",
-                "abilityId": "ability:as-de-la-gachette:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank5:cof2-lb-2024",
-                "spell": false
+                "text": "Lors d’une attaque à distance avec une arme à poudre ou une arbalète, s’il obtient un résultat d’attaque supérieur ou égal à la DEF de son adversaire +10 points, l’arquebusier obtient un bonus de +2d4° aux DM de son attaque.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 65,
+                  "chapter": "Profils",
+                  "section": "Arquebusier — Voie du pistolero — rang 5",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:as-de-la-gachette:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank5:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024"
           },
           {
@@ -1150,41 +2382,84 @@
                 "rank": 1,
                 "owned": true,
                 "name": "Habitant des montagnes",
-                "text": "+3 aux tests de discrétion et de survie en montagne.",
+                "text": "Le personnage obtient un bonus de +3 aux tests de discrétion et de survie en montagne.",
+                "source": {
+                  "document": "Voies d'historique",
+                  "printedPage": 174,
+                  "pdfPage": null,
+                  "scope": "Voie complète",
+                  "status": "SOURCE_VERIFIED",
+                  "textStatus": "PHOTO_TRANSCRIPTION"
+                },
+                "spell": false,
                 "abilityId": "history:mountains:rank:1"
               },
               {
                 "rank": 2,
                 "owned": true,
                 "name": "Grimpeur",
-                "text": "+3 aux tests d’escalade et dégâts de chute divisés par deux.",
+                "text": "Le personnage obtient un bonus de +3 à tous les tests d’escalade et divise par deux tous les DM de chute.",
+                "source": {
+                  "document": "Voies d'historique",
+                  "printedPage": 174,
+                  "pdfPage": null,
+                  "scope": "Voie complète",
+                  "status": "SOURCE_VERIFIED",
+                  "textStatus": "PHOTO_TRANSCRIPTION"
+                },
+                "spell": false,
                 "abilityId": "history:mountains:rank:2"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Résistance au froid",
-                "text": "RD 3 contre les DM de froid.",
+                "text": "Le personnage gagne une RD 3 contre les DM de froid.",
+                "source": {
+                  "document": "Voies d'historique",
+                  "printedPage": 174,
+                  "pdfPage": null,
+                  "scope": "Voie complète",
+                  "status": "SOURCE_VERIFIED",
+                  "textStatus": "PHOTO_TRANSCRIPTION"
+                },
+                "spell": false,
                 "abilityId": "history:mountains:rank:3"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Terrain de prédilection",
-                "text": "+2 en attaque et en DEF sur une forte déclivité ou dans un escalier.",
+                "text": "Le personnage gagne +2 en attaque et en DEF lorsqu’il combat sur une forte déclivité. Cette capacité fonctionne aussi dans un escalier.",
+                "source": {
+                  "document": "Voies d'historique",
+                  "printedPage": 174,
+                  "pdfPage": null,
+                  "scope": "Voie complète",
+                  "status": "SOURCE_VERIFIED",
+                  "textStatus": "PHOTO_TRANSCRIPTION"
+                },
+                "spell": false,
                 "abilityId": "history:mountains:rank:4"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Danger des montagnes",
-                "text": "+2 en DEF contre les géants et +1d4° aux DM contre eux.",
+                "text": "Le personnage obtient un bonus de +2 en DEF contre les attaques des géants et +1d4° aux DM de ses attaques.",
+                "source": {
+                  "document": "Voies d'historique",
+                  "printedPage": 174,
+                  "pdfPage": null,
+                  "scope": "Voie complète",
+                  "status": "SOURCE_VERIFIED",
+                  "textStatus": "PHOTO_TRANSCRIPTION"
+                },
+                "spell": false,
                 "abilityId": "history:mountains:rank:5"
               }
             ],
-            "kind": "history",
-            "pathId": "history:mountains",
-            "category": "geographic"
+            "pathId": "history:mountains"
           },
           {
             "name": "Voie du nomade",
@@ -1193,43 +2468,87 @@
                 "rank": 1,
                 "owned": true,
                 "name": "Sens de l’orientation",
-                "text": "+3 pour s’orienter et prédire la météo des prochaines 24 heures.",
+                "text": "Le personnage obtient un bonus de +3 pour s’orienter ainsi que pour prédire la météo dans les prochaines 24 h.",
+                "source": {
+                  "document": "Voies d'historique",
+                  "printedPage": 180,
+                  "pdfPage": null,
+                  "scope": "Voie complète",
+                  "status": "SOURCE_VERIFIED",
+                  "textStatus": "PHOTO_TRANSCRIPTION"
+                },
+                "spell": false,
                 "abilityId": "history:nomad:rank:1"
               },
               {
                 "rank": 2,
                 "owned": true,
                 "name": "Voyageur",
-                "text": "+3 aux tests de récupération à la belle étoile et aux tests de survie liés aux événements de voyage.",
+                "text": "Le personnage gagne un bonus de +3 aux tests de récupération lorsqu’il dort à la belle étoile et au test de PER (Survie) pour déterminer les événements (voir les règles de voyage, COF, page 233).",
+                "source": {
+                  "document": "Voies d'historique",
+                  "printedPage": 180,
+                  "pdfPage": null,
+                  "scope": "Voie complète",
+                  "status": "SOURCE_VERIFIED",
+                  "textStatus": "PHOTO_TRANSCRIPTION"
+                },
+                "spell": false,
                 "abilityId": "history:nomad:rank:2"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Chasseur-cueilleur",
-                "text": "Peut se nourrir en voyageant normalement et nourrir une personne supplémentaire sur un test de survie.",
+                "text": "Le personnage peut se nourrir tout en progressant à un rythme de déplacement normal. S’il réussit un test de PER (Survie) dont la difficulté dépend de la dangerosité de la région (voir les règles de voyage COF, page 233), il peut nourrir une autre personne en plus de lui.",
+                "source": {
+                  "document": "Voies d'historique",
+                  "printedPage": 180,
+                  "pdfPage": null,
+                  "scope": "Voie complète",
+                  "status": "SOURCE_VERIFIED",
+                  "textStatus": "PHOTO_TRANSCRIPTION"
+                },
+                "spell": false,
                 "abilityId": "history:nomad:rank:3"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Je suis déjà venu",
-                "text": "Dépense 1 DR ou 1 PC pour connaître une localité, un contact fiable et améliorer la disponibilité commerciale.",
+                "text": "Lorsque le personnage arrive dans une localité, le joueur peut choisir de dépenser 1 DR ou 1 PC pour y être déjà venu. Dans ce cas le MJ lui indique les lieux les plus connus et lui fournit un contact de confiance dans la place. De plus, lorsqu’il fait du commerce dans cette localité, il réduit d’un niveau la rareté des objets qu’il recherche (par exemple, un objet très rare devient seulement rare). La dépense du DR ou du PC est valable pour toute l’aventure en cours.",
+                "source": {
+                  "document": "Voies d'historique",
+                  "printedPage": 180,
+                  "pdfPage": null,
+                  "scope": "Voie complète",
+                  "status": "SOURCE_VERIFIED",
+                  "textStatus": "PHOTO_TRANSCRIPTION"
+                },
+                "spell": false,
                 "abilityId": "history:nomad:rank:4"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Attentif",
-                "text": "+1 en PER.",
+                "text": "Les routes sont parfois dangereuses et éviter les combats est la meilleure façon de survivre au voyage. Le personnage gagne +1 en PER.",
+                "source": {
+                  "document": "Voies d'historique",
+                  "printedPage": 180,
+                  "pdfPage": null,
+                  "scope": "Voie complète",
+                  "status": "SOURCE_VERIFIED",
+                  "textStatus": "PHOTO_TRANSCRIPTION"
+                },
+                "spell": false,
                 "abilityId": "history:nomad:rank:5"
               }
             ],
-            "kind": "history",
-            "pathId": "history:nomad",
-            "category": "professional"
+            "pathId": "history:nomad"
           }
-        ]
+        ],
+        "rulesAudit": "Textes COF2 confrontés au PDF officiel fourni ; historique relu sur son PDF. Les peuples Compagnon restent des conversions COF1 identifiées par leur source."
       },
       "mapping": {
         "peopleId": "people:ame-forgee:addon-comp2017-cof2",
@@ -1357,44 +2676,148 @@
                 "rank": 1,
                 "owned": true,
                 "name": "Langage des animaux",
-                "text": "Comprend et parle aux animaux ; +3 pour les comprendre, les calmer ou communiquer avec eux.",
-                "abilityId": "ability:langage-des-animaux:path:voie-de-letre-feerique:addon-comp2017-cof2:r1:foh-cof2-v1",
-                "spell": false
+                "text": "Le personnage obtient la capacité de druide langage des animaux (Voie des animaux). S’il possède déjà cette capacité, il obtient une capacité de rôdeur de rang 1 de son choix.",
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 19,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie de l’être féerique — rang 1",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "n1_extension",
+                  "sourceStatus": "official_cof1_source_extracted",
+                  "ruleTextStatus": "certified_source_text",
+                  "conversionStatus": "FOH_VALIDATED",
+                  "functionalStatus": "tested_n1",
+                  "enabledInCertifiedN1": true,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "validated_lot_b_fix68",
+                  "legacyAdaptationStatus": "replaced",
+                  "validatedBy": "FIX68"
+                },
+                "spell": false,
+                "abilityId": "ability:langage-des-animaux:path:voie-de-letre-feerique:addon-comp2017-cof2:r1:foh-cof2-v1"
               },
               {
                 "rank": 2,
                 "owned": true,
                 "name": "Invisibilité (L)",
-                "text": "Se rend invisible une fois par jour par rang atteint dans la voie.",
-                "abilityId": "ability:etre-feerique-r2:path:voie-de-letre-feerique:addon-comp2017-cof2:r2:foh-cof2-v1",
-                "spell": false
+                "text": "Le personnage peut se rendre invisible comme s’il utilisait la capacité de magicien du même nom (Voie de la magie universelle) une fois par jour par rang atteint dans la Voie. S’il possède déjà cette capacité, il obtient une capacité d’ensorceleur de rang 1 de son choix.",
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 19,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie de l’être féerique — rang 2",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "future_progression",
+                  "sourceStatus": "official_cof1_source_extracted",
+                  "ruleTextStatus": "certified_source_text",
+                  "conversionStatus": "ANALYSIS_PENDING",
+                  "functionalStatus": "not_tested",
+                  "enabledInCertifiedN1": false,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "not_validated",
+                  "legacyAdaptationStatus": "replaced",
+                  "validatedBy": "FIX68_SOURCE_ONLY"
+                },
+                "spell": false,
+                "abilityId": "ability:etre-feerique-r2:path:voie-de-letre-feerique:addon-comp2017-cof2:r2:foh-cof2-v1"
               },
               {
                 "rank": 3,
                 "owned": false,
                 "name": "Monture féerique",
-                "text": "Apprivoise une monture féerique terrestre ou volante.",
-                "abilityId": "ability:etre-feerique-r3:path:voie-de-letre-feerique:addon-comp2017-cof2:r3:foh-cof2-v1",
-                "spell": false
+                "text": "Le personnage apprivoise un animal qui lui sert de monture, souvent une monture volante comme un aigle pour un lutin et une monture terrestre comme un loup ou une panthère pour une fée. Monture : Init 16, DEF 16, PV [niveau × 4], attaque au contact = [niveau du personnage +1], DM 1d6+2, FOR +2, DEX +2*, CON +2*, INT -2, SAG+2*, CHA -2. La monture volante inflige seulement 1d6 DM avec une FOR de +0.",
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 19,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie de l’être féerique — rang 3",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "future_progression",
+                  "sourceStatus": "official_cof1_source_extracted",
+                  "ruleTextStatus": "certified_source_text",
+                  "conversionStatus": "ANALYSIS_PENDING",
+                  "functionalStatus": "not_tested",
+                  "enabledInCertifiedN1": false,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "not_validated",
+                  "legacyAdaptationStatus": "replaced",
+                  "validatedBy": "FIX68_SOURCE_ONLY"
+                },
+                "spell": false,
+                "abilityId": "ability:etre-feerique-r3:path:voie-de-letre-feerique:addon-comp2017-cof2:r3:foh-cof2-v1"
               },
               {
                 "rank": 4,
                 "owned": false,
                 "name": "Grande taille (L)",
-                "text": "Prend une taille humaine trois fois par jour et gagne +2 en FOR sous cette forme.",
-                "abilityId": "ability:etre-feerique-r4:path:voie-de-letre-feerique:addon-comp2017-cof2:r4:foh-cof2-v1",
-                "spell": false
+                "text": "Le lutin ou la fée est capable de prendre une taille humaine pendant [1d6 + Mod. de CHA] minutes trois fois par jour. Sous cette forme, il obtient un bonus de +2 au Mod. de FOR (et donc en attaque et aux DM) et il peut infliger des DM normalement selon l’arme utilisée.",
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 19,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie de l’être féerique — rang 4",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "future_progression",
+                  "sourceStatus": "official_cof1_source_extracted",
+                  "ruleTextStatus": "certified_source_text",
+                  "conversionStatus": "ANALYSIS_PENDING",
+                  "functionalStatus": "not_tested",
+                  "enabledInCertifiedN1": false,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "not_validated",
+                  "legacyAdaptationStatus": "replaced",
+                  "validatedBy": "FIX68_SOURCE_ONLY"
+                },
+                "spell": false,
+                "abilityId": "ability:etre-feerique-r4:path:voie-de-letre-feerique:addon-comp2017-cof2:r4:foh-cof2-v1"
               },
               {
                 "rank": 5,
                 "owned": false,
                 "name": "Seigneur féerique",
-                "text": "+2 en PER et +2 en CHA.",
-                "abilityId": "ability:etre-feerique-r5:path:voie-de-letre-feerique:addon-comp2017-cof2:r5:foh-cof2-v1",
-                "spell": false
+                "text": "le personnage devient plus sage et charismatique, il est considéré parmi les siens comme un individu de haut rang. Il augmente ses valeurs de SAG et de CHA de +2.",
+                "source": {
+                  "bookId": "cof1-compagnon-2017",
+                  "edition": "Chroniques Oubliées Fantasy 1re édition",
+                  "printedPage": 19,
+                  "chapter": "Nouveaux peuples",
+                  "section": "voie de l’être féerique — rang 5",
+                  "textStatus": "COF1_FULL_TEXT_TABLE_CONVERSION"
+                },
+                "certification": {
+                  "scope": "future_progression",
+                  "sourceStatus": "official_cof1_source_extracted",
+                  "ruleTextStatus": "certified_source_text",
+                  "conversionStatus": "ANALYSIS_PENDING",
+                  "functionalStatus": "not_tested",
+                  "enabledInCertifiedN1": false,
+                  "origin": "official_cof1",
+                  "conversion": "foh_cof2_canonical",
+                  "balanceStatus": "not_validated",
+                  "legacyAdaptationStatus": "replaced",
+                  "validatedBy": "FIX68_SOURCE_ONLY"
+                },
+                "spell": false,
+                "abilityId": "ability:etre-feerique-r5:path:voie-de-letre-feerique:addon-comp2017-cof2:r5:foh-cof2-v1"
               }
             ],
-            "kind": "people",
             "pathId": "path:voie-de-letre-feerique:addon-comp2017-cof2"
           },
           {
@@ -1404,28 +2827,81 @@
                 "rank": 1,
                 "owned": true,
                 "name": "Murmures dans le vent (G)*",
-                "text": "Envoie dix mots à CHA × 100 m et reçoit une réponse immédiate ; +1 permanent en Initiative et DEF.",
-                "abilityId": "ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024",
-                "spell": true
+                "text": "L’ensorceleur chuchote un message d’une dizaine de mots qui voyage jusqu’à son destinataire. Il peut entendre sa réponse immédiatement. La portée est de CHA × 100 m et le personnage doit connaître la cible ou la voir. En plus de ce sort, l’ensorceleur gagne un bonus permanent de +1 en Init. et en DEF, car parfois une bourrasque venue de nulle part vient gêner son attaquant, dévier un projectile ou lui permettre d’entendre un adversaire.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 93,
+                  "chapter": "Profils",
+                  "section": "Ensorceleur — Voie de l’air — rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "structuredStatus": "STRUCTURED",
+                  "engineStatus": "ENGINE_CONNECTED",
+                  "oracleStatus": "ORACLE_TESTED",
+                  "negativeStatus": "NEGATIVE_TESTED",
+                  "crossStatus": "CROSS_TESTED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "certifiedIn": "FIX70"
+                },
+                "spell": true,
+                "abilityId": "ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": true,
                 "name": "Sous tension (M)*",
-                "text": "Pendant CHA minutes, inflige 1d4° DM à qui la touche au contact ; décharge à 10 m pour 1d4° + CHA DM.",
-                "abilityId": "ability:sous-tension:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": true
+                "text": "L’ensorceleur se charge d’énergie électrique pour CHA minutes. Pendant toute la durée du sort, une créature qui le blesse par une attaque de contact ou le touche reçoit une décharge infligeant 1d4° DM. De plus, il peut utiliser une action d’attaque à chaque round pour délivrer une décharge électrique (test d’attaque magique contre DEF de la cible, portée 10 m) infligeant [1d4°+CHA] DM.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 93,
+                  "chapter": "Famille des mages",
+                  "section": "Ensorceleur — Voie de l’air — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "structuredStatus": "STRUCTURED",
+                  "engineStatus": "ENGINE_CONNECTED",
+                  "oracleStatus": "ORACLE_TESTED",
+                  "negativeStatus": "NEGATIVE_TESTED",
+                  "crossStatus": "CROSS_TESTED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "certifiedIn": "FIX70"
+                },
+                "spell": true,
+                "abilityId": "ability:sous-tension:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024"
               },
               {
                 "rank": 3,
                 "owned": true,
                 "name": "Télékinésie (A)*",
-                "text": "Pendant CHA minutes, déplace à 20 m jusqu’à 150 kg à raison de 5 m par action de mouvement.",
-                "abilityId": "ability:telekinesie:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank3:cof2-lb-2024",
-                "spell": true
+                "text": "L’ensorceleur peut déplacer dans les airs un objet inerte (qui n’est pas tenu par un adversaire) ou une cible volontaire (par exemple lui-même) dont le poids n’excède pas 50 kg par rang, à une portée de 20 m et pendant CHA minutes. L’objet peut être maintenu en l’air ou déplacé de 5 m par action de mouvement. Il est possible de faire tomber un objet sur une cible surprise (test d’attaque magique, DM 1d6 par tranche de 50 kg).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 93,
+                  "chapter": "Famille des mages",
+                  "section": "Ensorceleur — Voie de l’air — rang 3",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "advanced_creation",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "structuredStatus": "STRUCTURED",
+                  "engineStatus": "ENGINE_CONNECTED",
+                  "functionalStatus": "ADVANCED_CREATION_CERTIFIED",
+                  "certifiedIn": "FIX125"
+                },
+                "spell": true,
+                "abilityId": "ability:telekinesie:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank3:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024"
           },
           {
@@ -1435,20 +2911,57 @@
                 "rank": 1,
                 "owned": false,
                 "name": "Divination (L)*",
-                "text": "Obtient des informations publiques sur une créature ; +1 permanent en Initiative et DEF.",
-                "abilityId": "ability-r1-class-ensorceleur-divination-divination-cof2-lb-2024",
-                "spell": true
+                "text": "S’il emporte un test opposé d’attaque magique contre une créature de NC inférieur à son niveau (portée 10 m), l’ensorceleur devine son nom d’usage, son métier et quelques autres renseignements, tous de notoriété publique (si la cible agit sous couverture, ce sont les informations qui concernent la couverture que l’ensorceleur apprend). Si la cible du sort est volontaire et qu’il lit les lignes de sa main, il n’y a pas besoin de test et l’ensorceleur peut utiliser ce sort sur une créature de NC supérieur ou égal à son niveau. En plus de ce sort, l’ensorceleur gagne +1 en Init. et en DEF. Ce bonus augmente de +1 au rang 3 de la voie et de +1 chaque fois que le personnage atteint le rang 5 dans une voie d’ensorceleur.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 93,
+                  "chapter": "Profils",
+                  "section": "Ensorceleur — Voie de la divination — rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "structuredStatus": "STRUCTURED",
+                  "engineStatus": "ENGINE_CONNECTED",
+                  "oracleStatus": "ORACLE_TESTED",
+                  "negativeStatus": "NEGATIVE_TESTED",
+                  "crossStatus": "CROSS_TESTED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "certifiedIn": "FIX70"
+                },
+                "spell": true,
+                "abilityId": "ability-r1-class-ensorceleur-divination-divination-cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": false,
                 "name": "Détection de l’invisible (L)*",
-                "text": "Pendant CHA minutes, détecte les créatures invisibles ou cachées à moins de 20 m et la clairvoyance.",
-                "abilityId": "ability:detection-invisible:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": true
+                "text": "Pendant CHA minutes, l’ensorceleur détecte les créatures invisibles (le sort révèle une silhouette, mais pas l’apparence exacte de la créature) ou cachées à moins de 20 m et si un sort de Clairvoyance affecte l’endroit. Aveuglé (par magie ou dans l’obscurité), ce sort lui permet de détecter les créatures présentes (et donc d’attaquer sans malus), mais pas de distinguer son environnement.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 93,
+                  "chapter": "Famille des mages",
+                  "section": "Ensorceleur — Voie de la divination — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "structuredStatus": "STRUCTURED",
+                  "engineStatus": "ENGINE_CONNECTED",
+                  "oracleStatus": "ORACLE_TESTED",
+                  "negativeStatus": "NEGATIVE_TESTED",
+                  "crossStatus": "CROSS_TESTED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "certifiedIn": "FIX70"
+                },
+                "spell": true,
+                "abilityId": "ability:detection-invisible:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024"
           },
           {
@@ -1458,20 +2971,57 @@
                 "rank": 1,
                 "owned": false,
                 "name": "Injonction (A)*",
-                "text": "Donne un ordre simple pour le prochain tour sur un test opposé d’attaque magique ; +3 en persuasion et séduction.",
-                "abilityId": "ability-r1-class-ensorceleur-envouteur-injonction-cof2-lb-2024",
-                "spell": true
+                "text": "L’ensorceleur donne un ordre simple (mais pas suicidaire) de deux ou trois mots que la cible doit pouvoir comprendre. S’il réussit un test opposé d’attaque magique contre une cible à une portée de 20 m, la victime doit exécuter l’ordre pendant son prochain tour. En plus de ce sort, l’ensorceleur ajoute son rang + 2 aux tests de persuasion ou de séduction.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 94,
+                  "chapter": "Profils",
+                  "section": "Ensorceleur — Voie de l’envoûteur — rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "structuredStatus": "STRUCTURED",
+                  "engineStatus": "ENGINE_CONNECTED",
+                  "oracleStatus": "ORACLE_TESTED",
+                  "negativeStatus": "NEGATIVE_TESTED",
+                  "crossStatus": "CROSS_TESTED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "certifiedIn": "FIX70"
+                },
+                "spell": true,
+                "abilityId": "ability-r1-class-ensorceleur-envouteur-injonction-cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": false,
                 "name": "Sommeil (L)*",
-                "text": "Une fois par combat, endort les créatures admissibles dans une zone de 10 m à 20 m.",
-                "abilityId": "ability:sommeil:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": true
+                "text": "Une fois par combat, l’ensorceleur vise une zone de 10 m de diamètre à une portée maximale de 20 m. Le sort affecte jusqu’à [1d4° + CHA] créatures vivantes de NC inférieur à 1. Le sort affecte les créatures de NC inférieur à 2 au rang 4 puis à 3 au rang 5. Les créatures perdent conscience pendant CHA minutes. Il est possible de les réveiller en les cognant violemment (action d’attaque, 1 DM).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 94,
+                  "chapter": "Famille des mages",
+                  "section": "Ensorceleur — Voie de l’envoûteur — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "structuredStatus": "STRUCTURED",
+                  "engineStatus": "ENGINE_CONNECTED",
+                  "oracleStatus": "ORACLE_TESTED",
+                  "negativeStatus": "NEGATIVE_TESTED",
+                  "crossStatus": "CROSS_TESTED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "certifiedIn": "FIX70"
+                },
+                "spell": true,
+                "abilityId": "ability:sommeil:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024"
           },
           {
@@ -1481,20 +3031,57 @@
                 "rank": 1,
                 "owned": false,
                 "name": "Mirage (L)*",
-                "text": "Crée une illusion visuelle et sonore immobile ; +3 aux tests de supercherie et de mensonge.",
-                "abilityId": "ability-r1-class-ensorceleur-illusions-mirage-cof2-lb-2024",
-                "spell": true
+                "text": "L’ensorceleur crée une illusion visuelle et sonore immobile d’une durée de CHA minutes. Le volume maximal de l’illusion est de 2 m de côté par rang dans la voie (portée 50 m). À partir du rang 4, l’illusion peut être animée, mais dans ce cas sa durée est exprimée en rounds. En plus de ce sort, l’ensorceleur ajoute son rang + 2 aux tests de supercherie ou à tout test qui lui servirait à mentir.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 95,
+                  "chapter": "Profils",
+                  "section": "Ensorceleur — Voie des illusions — rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "structuredStatus": "STRUCTURED",
+                  "engineStatus": "ENGINE_CONNECTED",
+                  "oracleStatus": "ORACLE_TESTED",
+                  "negativeStatus": "NEGATIVE_TESTED",
+                  "crossStatus": "CROSS_TESTED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "certifiedIn": "FIX70"
+                },
+                "spell": true,
+                "abilityId": "ability-r1-class-ensorceleur-illusions-mirage-cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": false,
                 "name": "Image décalée (M)*",
-                "text": "Pendant 1d4 + CHA rounds, une attaque réussie n’inflige aucun DM sur 5-6 au d6.",
-                "abilityId": "ability:image-decalee:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": true
+                "text": "L’ensorceleur crée des images décalées qui se superposent à sa silhouette pendant [1d4 + CHA] rounds. Lorsqu’une attaque au contact ou à distance le touche, l’ensorceleur lance 1d6 : sur 5-6, il ne subit pas les DM.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 95,
+                  "chapter": "Famille des mages",
+                  "section": "Ensorceleur — Voie des illusions — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "structuredStatus": "STRUCTURED",
+                  "engineStatus": "ENGINE_CONNECTED",
+                  "oracleStatus": "ORACLE_TESTED",
+                  "negativeStatus": "NEGATIVE_TESTED",
+                  "crossStatus": "CROSS_TESTED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "certifiedIn": "FIX70"
+                },
+                "spell": true,
+                "abilityId": "ability:image-decalee:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024"
           },
           {
@@ -1505,22 +3092,60 @@
                 "owned": true,
                 "name": "Choc (A)*",
                 "text": "Si l’ensorceleur réussit un test d’attaque magique réussi contre la DEF de son adversaire situé à une portée de 20 m, il lui inflige [1d4° + CHA] DM. Si la cible a un NC inférieur au rang atteint par l’ensorceleur dans la voie, elle doit réussir un test de FOR difficulté 10 pour ne pas être renversée.",
-                "abilityId": "ability-r1-class-ensorceleur-invocation-choc-cof2-lb-2024",
-                "spell": true
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 96,
+                  "chapter": "Profils",
+                  "section": "Ensorceleur — Voie de l’invocation — rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "structuredStatus": "STRUCTURED",
+                  "engineStatus": "ENGINE_CONNECTED",
+                  "oracleStatus": "ORACLE_TESTED",
+                  "negativeStatus": "NEGATIVE_TESTED",
+                  "crossStatus": "CROSS_TESTED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "certifiedIn": "FIX70"
+                },
+                "spell": true,
+                "abilityId": "ability-r1-class-ensorceleur-invocation-choc-cof2-lb-2024"
               },
               {
                 "rank": 2,
                 "owned": true,
                 "name": "Serviteur invisible (L)*",
-                "text": "Pendant CHA minutes, une force invisible effectue à 20 m des tâches simples sans test avec AGI +0, INT +0 et FOR égale au CHA.",
-                "abilityId": "ability:serviteur-invisible:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
-                "spell": true
+                "text": "Ce sort crée une force invisible pendant CHA minutes. Le serviteur peut effectuer à distance des tâches simples ne nécessitant pas de test de réussite avec une AGI et une INT de +0 et une FOR égale au CHA de l’ensorceleur (portée 20 m). Il peut par exemple rapporter un objet ou actionner un levier, voire faire la vaisselle. Le serviteur invisible se déplace à la même vitesse que l’ensorceleur, ne pèse rien, ne parle pas, n’a pas vraiment d’existence et peut se déplacer dans toutes les directions. Concevez-le davantage comme une force qui obéit aux injonctions télépathiques de son créateur que comme une créature. Il n’attaque pas et ne peut pas être combattu, mais il peut être dissipé grâce au sort de maîtrise de la magie.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 96,
+                  "chapter": "Famille des mages",
+                  "section": "Ensorceleur — Voie de l’invocation — rang 2",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "structuredStatus": "STRUCTURED",
+                  "engineStatus": "ENGINE_CONNECTED",
+                  "oracleStatus": "ORACLE_TESTED",
+                  "negativeStatus": "NEGATIVE_TESTED",
+                  "crossStatus": "CROSS_TESTED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "certifiedIn": "FIX70"
+                },
+                "spell": true,
+                "abilityId": "ability:serviteur-invisible:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024"
           }
-        ]
+        ],
+        "rulesAudit": "Textes COF2 confrontés au PDF officiel fourni ; historique relu sur son PDF. Les peuples Compagnon restent des conversions COF1 identifiées par leur source."
       },
       "mapping": {
         "peopleId": "people:fee:addon-comp2017-cof2",
@@ -1704,12 +3329,24 @@
                 "rank": 1,
                 "owned": true,
                 "name": "Lumière des étoiles",
-                "text": "Capacité de peuple acquise au rang 1. Le rapport Forge fourni ne détaille pas son effet.",
-                "abilityId": "ability:lumi-re-des-toiles:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Pour un elfe sylvain, l’obscurité de la nuit sous la lumière des étoiles est considérée comme de la pénombre. De plus, l’elfe gagne un bonus de +3 à tous les tests de survie en forêt (escalade, discrétion, chasse, etc.).",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 52,
+                  "chapter": "Création du personnage",
+                  "section": "Capacité de voie-de-l-elfe-sylvain",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "reference_migrated_content_pending",
+                  "functionalStatus": "not_tested"
+                },
+                "spell": false,
+                "abilityId": "ability:lumi-re-des-toiles:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank1:cof2-lb-2024"
               }
             ],
-            "kind": "people",
             "pathId": "path:voie-de-l-elfe-sylvain:cof2-lb-2024"
           },
           {
@@ -1719,12 +3356,30 @@
                 "rank": 1,
                 "owned": true,
                 "name": "Archer émérite",
-                "text": "Capacité de rôdeur acquise au rang 1. Ses effets sont déjà intégrés aux valeurs finales de la fiche et de l’arc court.",
-                "abilityId": "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Le rôdeur ajoute sa PER aux DM qu’il inflige à l’arc et +1 par rang dans la voie en initiative. Le joueur peut souhaiter une variante de cette capacité s’appliquant aux armes de jet (dague, hachette, javelot) plutôt qu’à l’arc (rebaptisez-la voie du lancer). Dans ce cas, le PJ ajoute sa FOR aux DM qu’il inflige et double la portée de jet (pas de bonus d’Init.). Par ailleurs, toutes les capacités de la voie qui suivent s’appliquent aux armes de jet plutôt qu’à l’arc.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 70,
+                  "chapter": "Profils",
+                  "section": "Voie de l’archer - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": false,
+                "abilityId": "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024"
           },
           {
@@ -1734,15 +3389,34 @@
                 "rank": 1,
                 "owned": true,
                 "name": "Le loup",
-                "text": "Faëlar dispose d’un loup comme compagnon animal. Le rapport Forge fourni ne contient pas sa fiche technique détaillée.",
-                "abilityId": "ability:le-loup:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
-                "spell": false
+                "text": "Le rôdeur obtient un loup pour compagnon animal. En combat, le loup attaque en même temps que le rôdeur. Le loup comprend des ordres simples comme : garde, reste, apporte, attaque, etc. W W LOUP CRÉATURE VIVANTE | AGI +1 | CON +1* | FOR +2 | PER +2* | | CHA -2 | INT -3 | VOL +2 | (S) Défense [12 + rang dans la voie] (V) Points de vigueur [niv. du rôdeur × 4] (I) Initiative [Init. du rôdeur] Attaque au contact [attaque magique du rôdeur] DM 1d4+2 *Le loup obtient un dé bonus sur ses tests.",
+                "source": {
+                  "bookId": "cof2-livre-base-2024",
+                  "edition": "Chroniques Oubliées Fantasy 2e édition",
+                  "printedPage": 71,
+                  "chapter": "Profils",
+                  "section": "Voie du compagnon animal - rang 1",
+                  "textStatus": "PDF_FULL_TEXT"
+                },
+                "certification": {
+                  "scope": "n1",
+                  "sourceStatus": "SOURCE_VERIFIED",
+                  "functionalStatus": "N1_CERTIFIED",
+                  "structured": true,
+                  "engineConnected": true,
+                  "oracleTested": true,
+                  "negativeTested": true,
+                  "crossTested": true,
+                  "validatedBy": "FIX73"
+                },
+                "spell": false,
+                "abilityId": "ability:le-loup:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024"
               }
             ],
-            "kind": "profile",
             "pathId": "classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024"
           }
-        ]
+        ],
+        "rulesAudit": "Textes COF2 confrontés au PDF officiel fourni ; historique relu sur son PDF. Les peuples Compagnon restent des conversions COF1 identifiées par leur source."
       },
       "mapping": {
         "peopleId": "people:elfe-sylvain:cof2-lb-2024",

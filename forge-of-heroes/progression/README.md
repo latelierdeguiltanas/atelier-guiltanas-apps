@@ -1,33 +1,33 @@
-# Le Carnet des héros — progression COF2
+# Carnet des héros — passage N1 → N2
 
-Independent static page at `forge-of-heroes/progression/`, first release PROGRESSION-1 (12 October 2026). The Forge N1 engine, database, seeds and recovery calculation core are unchanged. The parent page only adds a link and local progression locks.
+Version du 16 octobre 2026. Six héros Bastide : Prépotante, Scanlan, Wilfried, Vivelame, Zéphéline et Faëlar. Les créations génériques et les niveaux 3+ ne sont pas couverts.
 
-## Supported scope
+## Parcours joueur
 
-Six Bastide recovered N1 heroes. Existing local `foh-guiltanas-heroes-v1` snapshots take priority over reference seeds; multiple conflicting local snapshots require an explicit import. The displayed N1 snapshot is frozen on **Figer et préparer le niveau 2**, after confirmation. Selection of N2 gains remains editable and persists across reloads. Final N2 validation consumes exactly two points and appends an immutable ledger row. N1 and validated choices have no edit/delete UI.
+1. Dans Forge, ouvrir le héros récupéré et « Niveau suivant », ou importer son JSON dans le Carnet.
+2. Vérifier la base. « Utiliser la fiche actuelle du hub » permet de choisir explicitement la référence Bastide si la sauvegarde locale est ancienne. Prépotante utilise Roublard, conformément au hub.
+3. Figer la base, dépenser les deux points et lire le bilan. Les textes complets sont dépliables ; les rangs futurs inaccessibles sont masqués.
+4. Valider le niveau 2 et exporter **Fiche niveau 2 pour le hub**. La sauvegarde du carnet reste un fichier distinct.
+5. Dans la fiche Bastide, **Importer mon niveau 2**. Le service vérifie l’identité et rejoue la progression avant enregistrement. La fiche est partagée entre les appareils via l’accès habituel. Objets, messages et notes ne sont pas remplacés.
 
-The progression library has its own single storage key `foh-progression-v1`. All records contain the original hero, canonical base, locked timestamp, validated levels, pending picks and recomputed head. Load/import replays the validated choices; inconsistent totals and histories are rejected. Imports may extend a matching ledger but never replace its base, earlier choices or higher level. A stale-tab write and storage failure produce an error instead of success. This does not provide a server transaction or cryptographic signature.
+## Sources
 
-Exports are `FOH_PROGRESSION` or `FOH_PROGRESSION_LIBRARY`, **not** N1 Forge transfer files. Players import these in the Carnet. Printing uses the browser's print/PDF workflow; it is not the official fillable PDF export.
+43 voies, 195 rangs : 170 entrées du livre COF2 (dont cinq dons de druide R1), 15 du Compagnon COF1 et 10 rangs d’historique transcrits des photos fournies. Les résumés d’ensorceleur et de prêtre sont remplacés par les paragraphes complets. Les renvois utiles de la fée et du loup sont inclus. Espaces, césures et mise en page sont normalisés. Le fichier text-audit.json répertorie provenance et empreintes.
 
-## Data and calculation
+Les trois voies Compagnon restent étiquetées COF1/adaptation de table. Elles ne sont pas des voies officielles COF2. Les valeurs N1 de la table sont conservées : cette livraison ne certifie pas rétroactivement tous les choix avancés de création.
 
-43 paths / 195 ranks: all five base paths of each of the six profiles (150 ranks), six people paths (30), the two histories actually chosen by Vivelame (10), plus five druid R1 gifts available through Enfant de la forêt. Missing priest and sorcerer entries were supplemented with summaries from the provided COF2 base book, pages 93–96 and 122–125. History summaries were checked against the attached history pages 174 and 180. Goblin, forged soul and fairy data retain the existing COF1 table adaptations.
+## Calculs et transfert
 
-This is exhaustive for that **defined catalogue**, not all COF2 profiles, prestige paths, multiclassing or optional advanced paths. Only N1→N2 is open. N3+ remains closed until the complete data/mechanics audit, including retrospective CON changes, heroic attributes, spell resource modifiers, equipment choices and cross-path formulas. Do not remove the level gate merely because later texts are present.
+PV de famille + CON, +1 aux attaques, PM des nouveaux sorts, nouveaux bonus permanents et progression Archer/loup. Les effets conditionnels restent dans les textes. Les historiques sont rejoués à l’import ; actualiser les textes ne permet pas de modifier chiffres ou choix. L’équipement exporté reste celui de référence ; l’inventaire de partie reste dans le hub.
 
-N2 adds family PV + CON, +1 base attacks, and PM for newly acquired spells. Permanent effects added this level and archer path growth are applied as deltas to the frozen totals, without reapplying N1 effects. Temporary/conditional combat bonuses remain in capability text; they are not permanent sheet bonuses. Equipment remains reference inventory. Existing wolf and acquired young worg are derived from the new owner's level and final totals. Optional Éclaireur resource exchange and sylvan R1 gift are recorded in the acquisition row.
+Le service isolé bastide-character utilise les accès MJ/PJ existants et une table sans lecture publique. Il accepte uniquement FOH_HUB_CHARACTER niveau 2, contrôle les chiffres et refuse les conflits d’historique. Un import identique ne redonne pas les gains. Maxima PV/PM et ressources partagées sont enregistrés dans une transaction, en conservant les ressources déjà dépensées. Le déploiement ne passe automatiquement aucun personnage au niveau 2.
 
-No N1 legal certification is added: absent creation choices remain absent, and the existing snapshots and MJ adjustments are preserved.
+## Vérifications et limites
 
-## Verification
+- 226 plans ordonnés N2 : calculs, budgets, prérequis, sauvegardes et corruptions.
+- Six parcours de progression et six imports Forge/carnet sur stockage neuf.
+- Six exports → handler serveur → relecture ; faux chiffres/mauvais héros refusés ; imports identiques sans double gain.
+- Rendu JS des six fiches Bastide en vues simplifiée/complète et avec niveau 2 synchronisé.
+- Transaction SQL avec rollback : ressources dépensées et concurrence. HTTP sans clé refusé (401).
 
-`node forge-of-heroes/FINAL_FREEZE_TESTS/progression_runner.js`: 13 groups, including 226 ordered N2 plans, ledger replay, exact independent totals, invalid choices, import rollback, storage failures and parent Forge guard.
-
-`node forge-of-heroes/FINAL_FREEZE_TESTS/progression_ui_journey_runner.js`: six production UI journeys (freeze → select → fresh JS session → validate → export → fresh session) and one quota failure. These use minimal DOM/storage fixtures, **not a real browser or phones**.
-
-Existing storage, budget, equipment, calculation trace, recovery and persistence runners continue passing (76 checks). No browser screenshots or official editable PDF visual verification in this release.
-
-## Trust boundary
-
-Local locks stop normal interface changes and stale imports on the same origin/device. A user who clears browser data, edits JSON deliberately, or opens a fresh device can create another baseline. Canonical base comparison is an integrity check, not an unforgeable signature. Strict campaign enforcement requires a future MJ-controlled server baseline/approval. Do not claim anti-cheat guarantees from local storage.
+Fixtures DOM/stockage et serveur simulé : aucune validation visuelle ni test au clic sur téléphone. L’impression utilise le navigateur, pas le formulaire officiel interactif. Les verrous et le rejeu ne constituent pas une signature cryptographique du MJ.
