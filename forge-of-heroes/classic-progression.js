@@ -16,6 +16,6 @@ const open=R.open;R.open=hero=>{open(hero);if(panel.hidden===false)return;const 
 // Register exactly one separate test hero; preserve every existing hero unchanged.
 try{const heroes=U.loadHeroes(true);if(!heroes.some(h=>h.id===TEST)){U.storeHeroes([...heroes,test]);U.renderHeroes();}if(N.current.startsWith('hero:')){const id=N.current.slice(5),h=U.loadHeroes(true).find(h=>h.id===id);if(h)N.openHero(h);}}catch(e){const notice=document.createElement('p');notice.className='notice error';notice.textContent='Personnage de test non ajouté : '+e.message;q('#heroes-list').before(notice);}
 // All navigation away from the level panel returns to the normal Forge screens.
-document.addEventListener('click',e=>{if(e.target.closest('[data-foh-route],#open-heroes,#open-heroes-home,#return-home'))close();},true);
+document.addEventListener('click',e=>{if(e.target.closest('a[href="progression/#mes-heros"],a[href="progression/"]')){e.preventDefault();e.stopImmediatePropagation();close();N.go('heroes');return;}if(e.target.closest('[data-foh-route],#open-heroes,#open-heroes-home,#return-home'))close();},true);
 window.addEventListener('hashchange',close);
 })();
