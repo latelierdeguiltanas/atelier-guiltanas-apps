@@ -1,4 +1,4 @@
-export const MODULES={character:['Personnages','Les héros de votre campagne'],journal:['Chroniques','La mémoire de vos aventures'],document:['Documents','Cartes, lettres et ressources'],message:['Échanges','Les conversations du groupe'],note:['Notes MJ','Votre préparation confidentielle'],item:['Objets','Le catalogue de votre campagne'],feedback:['Retours bêta','Améliorons le hub ensemble']};
+export const MODULES={npc:['PNJ','Préparez les personnages rencontrés dans votre aventure'],character:['Personnages','Les héros de votre campagne'],journal:['Chroniques','La mémoire de vos aventures'],document:['Documents','Cartes, lettres et ressources'],message:['Échanges','Les conversations du groupe'],note:['Notes MJ','Votre préparation confidentielle'],item:['Objets','Le catalogue de votre campagne'],feedback:['Retours bêta','Améliorons le hub ensemble']};
 export const STATS=['FOR','AGI','CON','INT','PER','CHA'];
 export const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function safeLink(value){try{const u=new URL(value);return ['https:','http:'].includes(u.protocol)?u.href:null;}catch{return null;}}
@@ -16,3 +16,6 @@ export function validateBackup(b){
  if(b.campaign.description!=null&&(typeof b.campaign.description!=='string'||b.campaign.description.length>4000))throw Error('Description de campagne invalide.');
  return {campaign:{name:b.campaign.name,description:b.campaign.description||'',settings:b.campaign.settings||{}},records:b.records.map(validateRecord)};
 }
+
+export const isNPC=r=>r?.kind==='item'&&r.data?.recordType==='npc';
+export const NPC_FIELDS=[['role','Rôle / métier'],['location','Lieu habituel'],['appearance','Apparence'],['manner','Personnalité / façon de parler'],['motivation','Objectif / motivation'],['status','Situation actuelle']];

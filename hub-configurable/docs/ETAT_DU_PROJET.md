@@ -34,3 +34,6 @@ Dossier `hub-configurable/`, même adresse publique, nouvelle interface sans ins
 
 ## Suivi bêta — reprise 15 octobre 2026
 Interface privée ajoutée dans suivi/. Événements anonymisés, conservation 90 jours, accès par clé privée. Les fonctions serveur sont installées et refusent une clé invalide ; les tables ne sont pas lisibles directement par anon. Tests Node existants : 9/9. Autorisation explicite de Math reçue le 15/10 à 10:59 (Europe/Paris) pour la publication et l’accès administrateur. Clé administrateur activée ; lecture du rapport avec cette clé vérifiée côté serveur. La clé privée n’est jamais publiée dans le dépôt. Aucun changement Bastide/Nespresso.
+
+## 16 octobre 2026 — Gestion des PNJ
+Rubrique PNJ distincte des objets et PJ : création, modification, suppression, export JSON et inclusion dans sauvegardes/modèles. Champs rôle, lieu, apparence, personnalité/voix, motivation, situation et histoire. Privé MJ par défaut, partage volontaire de la fiche entière ; secrets à conserver dans Notes MJ. Stockage compatible avec le serveur existant : item avec data.recordType=npc, sans lien joueur ni modification du schéma. Aucun changement des hubs existants.
