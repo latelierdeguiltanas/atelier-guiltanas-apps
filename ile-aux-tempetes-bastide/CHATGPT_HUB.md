@@ -163,3 +163,9 @@ Accueil Bastide : « L’Atelier de Guiltanas » corrigé (U manquant). Modifica
 
 ## 2026-10-15 — Fil rouge MJ, essai
 Séance → Fil rouge — test : résumé connu des PJ, reprise, pistes, contributions, notes MJ locales. Prérempli avec le compte rendu du MJ ; aucune nouvelle scène considérée comme canon. Rappel joueur ne reprend que recap et reste à relire/copier manuellement. Autosauvegarde locale, archives (100 max), export/import JSON avec validation et confirmation. Pas de synchronisation ni envoi automatique. Tests sans navigateur : séparation rappel/notes MJ, roundtrip JSON, versions/types/limites d’import. Les notes saisies ne sont pas publiées dans GitHub. Rendu et utilité à confirmer par Math.
+
+
+## 2026-10-16 — Icônes et raccourcis transversaux
+Demande explicite tous les outils GitHub : icônes SVG/PNG, manifest statique par page et bouton Installer / Créer un raccourci (installation native si disponible, aide sinon). 69 pages dans trois dépôts ; code métier et accès conservés, aucun nouveau cache/SW. Voir guiltanas-install/INTEGRATION.md et inventory.json. Recréer les anciens raccourcis peut être nécessaire. Aucun navigateur utilisé.
+
+Publication : 66 pages du dépôt principal prêtes. Les trois pages des deux anciens dépôts soundboard et Soundboard_final sont préparées mais non publiées : GitHub retourne 403 Resource not accessible by integration sur les écritures. Aucun accès n’a été remplacé.
