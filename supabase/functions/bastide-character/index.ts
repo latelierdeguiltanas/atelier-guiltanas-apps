@@ -19,7 +19,7 @@ Deno.serve(async req=>{try{
  if(!ids.includes(requested)||(!user.admin&&requested!==user.id))return json({error:'Ce personnage ne correspond pas à ton accès.'},403);
  if(!['GET','POST'].includes(req.method))return json({error:'Méthode refusée.'},405);
  const {data:old,error:oe}=await db.from('bastide_character_levels').select('payload,revision,updated_at').eq('player_id',requested).maybeSingle();if(oe)throw oe;
- if(req.method==='GET')return json({character:old?.payload.character||null,revision:old?.revision||0});
+ if(req.method==='GET')return json({character:old?.payload.character||null,progression:old?.payload.progression||null,revision:old?.revision||0});
  if(Number(req.headers.get('content-length')||0)>1000000)return json({error:'Fichier trop volumineux.'},413);
  const raw=await req.text();if(raw.length>1000000)return json({error:'Fichier trop volumineux.'},413);
  const body=JSON.parse(raw),value=body.transfer;

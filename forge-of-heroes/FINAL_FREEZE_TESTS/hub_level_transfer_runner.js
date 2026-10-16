@@ -23,6 +23,8 @@ for(const h of seeds){
  console.log('PASS '+h.name+' / level 2 export → server replay → import → reload; altered/wrong hero refused');
 }
 assert.equal(writes,6);
+for(const h of seeds){activeId=h.recovery.sourceId;const old=rows.get(activeId).payload.progression,changed=C.revise(old,old.levels[0].picks),out=C.exportHub(changed),response=await request(activeId,{transfer:out,revision:1});assert.equal(response.status,200);assert.equal((await request(activeId)).data.progression.correctionVersion,1);assert.equal(response.data.character.combat.pvMax,old.head.combat.pvMax);}
+assert.equal(writes,12);console.log('PASS six corrected N2 imports keep PV and are returned for another device');
 identity='admin';assert.equal((await request('scanlan')).status,200);assert.equal((await request('unknown')).status,403);
 const r=plan(seeds[0]),old=clone(r);for(const p of old.head.paths)for(const a of p.ranks)a.text='Ancien résumé';assert.equal(C.validate(old),true);assert.ok(old.head.paths.some(p=>p.ranks.some(a=>a.text!=='Ancien résumé')));
 console.log('PASS repeated imports do not apply gains twice; admin access restricted to six IDs; old descriptions refresh without numerical changes');
