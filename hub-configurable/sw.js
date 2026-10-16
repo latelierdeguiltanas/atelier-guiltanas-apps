@@ -1,5 +1,5 @@
-const CACHE='guiltanas-hcfg-beta2-npc1';
-const ASSETS=['./','./index.html','./assets/app.css?v=2.2.0','./assets/bastide-base.css','./assets/app.js?v=2.2.0','./assets/api.js?v=2.0.0','./assets/usage.js?v=2.2.0','./assets/storage.js','./assets/model.js?v=2.2.0','./assets/pdf.js?v=2.0.0','./assets/pdf-lib.min.js'];
+const CACHE='guiltanas-hcfg-beta2-tools1';
+const ASSETS=['./','./index.html','./assets/app.css?v=2.3.0','./assets/bastide-base.css','./assets/app.js?v=2.3.0','./assets/api.js?v=2.0.0','./assets/usage.js?v=2.3.0','./assets/storage.js','./assets/model.js?v=2.3.0','./assets/pdf.js?v=2.0.0','./assets/pdf-lib.min.js'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('guiltanas-hcfg-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET'||u.origin!==self.location.origin||!u.href.startsWith(self.registration.scope))return;e.respondWith(fetch(e.request).then(r=>{if(r.ok){const clone=r.clone();e.waitUntil(caches.open(CACHE).then(c=>c.put(e.request,clone)));}return r;}).catch(()=>caches.match(e.request).then(r=>r||(e.request.mode==='navigate'?caches.match('./index.html'):Response.error()))));});
