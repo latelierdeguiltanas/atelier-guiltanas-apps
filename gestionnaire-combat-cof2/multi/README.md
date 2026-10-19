@@ -16,6 +16,7 @@
 - Cache local séparé par UUID d’espace hub, complété par une synchronisation distante lorsqu’on ouvre l’outil depuis un lien MJ du hub. Audio du Soundboard indépendant. Aucun jet automatique.
 - Sauvegarde JSON complète des campagnes de cet espace, incluant monstres et états. Import validé en nouvelles copies ; aucun écrasement. Les exports historiques du gestionnaire voisin restent à utiliser avec sa propre URL.
 - Le même lien MJ retrouve les campagnes, bestiaires personnels, rencontres, PJ et combats en cours sur téléphone et ordinateur. Une copie locale reste disponible en cas de coupure et l’export JSON demeure recommandé avant une modification importante.
+- À la première ouverture depuis le hub sur l’appareil qui possède déjà les préparations historiques, la bibliothèque autonome est reprise dans l’espace synchronisé avant son premier envoi.
 - Un conflit entre deux appareils modifiant simultanément le même espace n’est jamais écrasé silencieusement : les données locales sont conservées et l’outil demande un export avant rechargement.
 - Gestionnaire historique et données Bastide inchangés.
 
