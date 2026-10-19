@@ -13,9 +13,10 @@
 - Monstres personnalisés : caractéristiques, PV, DEF, initiative, NC, attaques, capacités, source et notes. Variantes copiées sans altérer les profils de base.
 - Préparations personnalisées : composition manuelle, notes et niveau de référence ; aucun équilibrage automatique garanti.
 - Import explicite des valeurs essentielles des PJ du cache local du hub, sans mise à jour des fiches ni du combat déjà chargé.
-- localStorage séparé par UUID d’espace hub. Audio du Soundboard indépendant. Aucun jet automatique.
+- Cache local séparé par UUID d’espace hub, complété par une synchronisation distante lorsqu’on ouvre l’outil depuis un lien MJ du hub. Audio du Soundboard indépendant. Aucun jet automatique.
 - Sauvegarde JSON complète des campagnes de cet espace, incluant monstres et états. Import validé en nouvelles copies ; aucun écrasement. Les exports historiques du gestionnaire voisin restent à utiliser avec sa propre URL.
-- Pas de synchronisation distante dans cette édition : exporter/importer pour changer d’appareil. Pas de service worker autonome pour les combats.
+- Le même lien MJ retrouve les campagnes, bestiaires personnels, rencontres, PJ et combats en cours sur téléphone et ordinateur. Une copie locale reste disponible en cas de coupure et l’export JSON demeure recommandé avant une modification importante.
+- Un conflit entre deux appareils modifiant simultanément le même espace n’est jamais écrasé silencieusement : les données locales sont conservées et l’outil demande un export avant rechargement.
 - Gestionnaire historique et données Bastide inchangés.
 
 Tests : `node tests/campaigns.test.mjs` ; pas de test navigateur IA.
