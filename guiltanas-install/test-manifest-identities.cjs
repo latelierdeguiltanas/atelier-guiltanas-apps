@@ -1,0 +1,4 @@
+const fs=require('fs'),path=require('path'),assert=require('assert');
+const root=path.resolve(__dirname,'..'),ids=new Map();
+function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){if(e.name==='.git')continue;const file=path.join(dir,e.name);if(e.isDirectory())walk(file);else if(e.name.endsWith('.webmanifest')){const rel=path.relative(root,file).split(path.sep).join('/');const m=JSON.parse(fs.readFileSync(file,'utf8'));const start=new URL(m.start_url,'https://example.org/atelier-guiltanas-apps/'+rel);const id=new URL(m.id,start.origin+'/').href;assert(!ids.has(id),'Identite partagee : '+rel+' et '+ids.get(id));ids.set(id,rel);assert(m.id.startsWith('/'),'Identifiant non explicite : '+rel);}}}
+walk(root);assert(ids.size>=66);console.log(ids.size+' identifiants uniques : OK');
