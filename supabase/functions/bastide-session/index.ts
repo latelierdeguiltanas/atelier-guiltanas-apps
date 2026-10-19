@@ -14,6 +14,21 @@ Deno.serve(async req=>{try{
  const url=new URL(req.url),action=url.searchParams.get('action')||'battle';
  const requested=url.searchParams.get('playerId')||'',pid=user.admin?requested:user.id;
  if(!user.admin&&requested&&requested!==user.id)return json({error:'Accès refusé'},403);
+ if(action==='combat-library'){
+  if(!user.admin)return json({error:'Accès MJ requis'},403);
+  if(req.method==='GET'){
+   const{data,error}=await db.from('bastide_combat_library').select('library,revision,updated_at').eq('id','island').maybeSingle();if(error)throw error;
+   return json(data||{library:null,revision:0,updated_at:null});
+  }
+  if(req.method==='POST'){
+   const b=await req.json(),library=b.library,expected=Number(b.expected);
+   if(!library||typeof library!=='object'||!Array.isArray(library.campaigns)||library.campaigns.length<1||library.campaigns.length>100||JSON.stringify(library).length>12000000)return json({error:'Bibliothèque de combat invalide'},400);
+   const{data:old,error:readError}=await db.from('bastide_combat_library').select('revision').eq('id','island').maybeSingle();if(readError)throw readError;
+   if(!old){if(expected!==0)return json({error:'CONFLICT: les combats ont été créés sur un autre appareil'},409);const{data,error}=await db.from('bastide_combat_library').insert({id:'island',library,revision:1}).select('revision').single();if(error)return json({error:error.code==='23505'?'CONFLICT: les combats ont été créés sur un autre appareil':error.message},error.code==='23505'?409:400);return json(data);}
+   if(old.revision!==expected)return json({error:'CONFLICT: les combats ont été modifiés sur un autre appareil'},409);
+   const{data,error}=await db.from('bastide_combat_library').update({library,revision:old.revision+1,updated_at:new Date().toISOString()}).eq('id','island').eq('revision',old.revision).select('revision');if(error)throw error;if(!data?.length)return json({error:'CONFLICT: les combats ont été modifiés sur un autre appareil'},409);return json(data[0]);
+  }
+ }
  if(action==='battle'&&req.method==='GET'){
   const{data:r,error}=await db.from('bastide_battle').select('payload,revision,updated_at').eq('id','current').single();if(error)throw error;
   let q=db.from('bastide_resources').select('*');if(!user.admin)q=q.eq('player_id',user.id);const{data:resources,error:re}=await q;if(re)throw re;
