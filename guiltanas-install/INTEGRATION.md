@@ -9,3 +9,7 @@ Périmètre : toutes les 69 pages HTML existantes de atelier-guiltanas-apps, Sou
 Vérifications sans navigateur : comparaison du code hors déclarations icônes et bloc ajouté ; existence des chemins ; manifests sans paramètres privés ; dimensions PNG ; événements natifs/refus/acceptation/mode standalone/aides par appareil en VM. Le comportement d’ajout réel reste à vérifier sur téléphone par Math. Recréer les anciens raccourcis peut être nécessaire pour rafraîchir leurs icônes.
 
 Publication : 66 pages du dépôt principal prêtes. Les trois pages des deux anciens dépôts soundboard et Soundboard_final sont préparées mais non publiées : GitHub retourne 403 Resource not accessible by integration sur les écritures. Aucun accès n’a été remplacé.
+
+
+## 19 octobre 2026 — Bouton limité aux accueils
+Bouton uniquement aux accueils Forge, gestionnaires COF2 principal/multi, hub configurable et son suivi, budget, hubs Bastide et D&D (URL dossier ou index.html). Aucun bouton sur fiches, onglets et sous-outils. Les icônes/manifests restent présents. Installation uniquement sur clic puis confirmation du navigateur ; aucune création silencieuse sur bureau/écran d’accueil. Aide adaptée si installation native indisponible, dont iPad avec agent desktop. Tests VM : 16 URL d’accueil, 7 pages internes et parcours installation conservés. Aucun navigateur utilisé.

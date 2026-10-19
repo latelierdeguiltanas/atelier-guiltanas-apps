@@ -169,3 +169,7 @@ Séance → Fil rouge — test : résumé connu des PJ, reprise, pistes, contrib
 Demande explicite tous les outils GitHub : icônes SVG/PNG, manifest statique par page et bouton Installer / Créer un raccourci (installation native si disponible, aide sinon). 69 pages dans trois dépôts ; code métier et accès conservés, aucun nouveau cache/SW. Voir guiltanas-install/INTEGRATION.md et inventory.json. Recréer les anciens raccourcis peut être nécessaire. Aucun navigateur utilisé.
 
 Publication : 66 pages du dépôt principal prêtes. Les trois pages des deux anciens dépôts soundboard et Soundboard_final sont préparées mais non publiées : GitHub retourne 403 Resource not accessible by integration sur les écritures. Aucun accès n’a été remplacé.
+
+
+## 19 octobre 2026 — Bouton limité aux accueils
+Bouton uniquement aux accueils Forge, gestionnaires COF2 principal/multi, hub configurable et son suivi, budget, hubs Bastide et D&D (URL dossier ou index.html). Aucun bouton sur fiches, onglets et sous-outils. Les icônes/manifests restent présents. Installation uniquement sur clic puis confirmation du navigateur ; aucune création silencieuse sur bureau/écran d’accueil. Aide adaptée si installation native indisponible, dont iPad avec agent desktop. Tests VM : 16 URL d’accueil, 7 pages internes et parcours installation conservés. Aucun navigateur utilisé.
