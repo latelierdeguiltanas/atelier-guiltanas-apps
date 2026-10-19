@@ -104,7 +104,7 @@
     </div>
     <main id="content" class="mj-home hidden">
       <header class="mj-heading"><div><small>BASTIDE · COF2</small><h1>Table du MJ</h1></div><a href="../">Accueil de la campagne</a></header>
-      <section data-mj-section="accueil"><h2>Accès rapides</h2><p class="section-intro">Les outils pour jouer, échanger et distribuer.</p><div class="quick-links"><a href="#" data-combat-link><strong>Combat</strong><span>Ouvrir mon espace Île aux Tempêtes synchronisé →</span></a><a href="../messages/"><strong>Messages des joueurs</strong><span>Lire et répondre en privé →</span></a><a href="outils/inventaires/"><strong>Objets et envois</strong><span>Distribuer et gérer la boutique →</span></a></div></section>
+      <section data-mj-section="accueil"><h2>Accès rapides</h2><p class="section-intro">Les outils pour jouer, échanger et distribuer.</p><div class="quick-links"><a href="#" data-combat-link><strong>Combat</strong><span>Ouvrir mon espace Île aux Tempêtes synchronisé →</span></a><a href="#" data-pair-device><strong>Connecter un autre appareil</strong><span>Partager mon accès privé vers un PC ou un téléphone →</span></a><a href="../messages/"><strong>Messages des joueurs</strong><span>Lire et répondre en privé →</span></a><a href="outils/inventaires/"><strong>Objets et envois</strong><span>Distribuer et gérer la boutique →</span></a></div></section>
       <section data-mj-section="personnages" hidden><h2>Personnages</h2><p class="section-intro">Échanges privés, histoires et espaces propres à chaque héros.</p><div class="section-links"><a href="../messages/">Conversations individuelles PJ ↔ MJ →</a><a href="outils/backgrounds/">Backgrounds et décisions du MJ →</a></div><div class="pj-list">
       <details><summary>Wilfried <span>Pacte et confidences</span></summary><div class="pj-tools"><a href="../pacte/">Carnet du pacte · lire, valider et publier →</a><a href="../espaces/?kind=confidences">Confidences de Wilfried →</a><a href="../personnages/wilfried/">Consulter sa fiche →</a></div></details>
       <details><summary>Scanlan <span>Chroniques et hymnes</span></summary><div class="pj-tools"><a href="../chroniqueur/">Consulter son atelier →</a><a href="../journal/">Chroniques publiées →</a><a href="../hymnes/">Hymnes publiés →</a><a href="../personnages/scanlan/">Consulter sa fiche →</a></div></details>
@@ -143,6 +143,23 @@
         };
       })();
       document.querySelectorAll('[data-combat-link]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault();const key=window.BastideInventory?.accessKey?.();if(!key)return alert('Ouvre d’abord ton lien MJ Bastide sur cet appareil pour activer l’accès synchronisé.');const target='../../gestionnaire-combat-cof2/multi/?space=ba571de0-0000-4000-8000-000000000001&name=%C3%8Ele%20aux%20Temp%C3%AAtes&format=campaign&pack=island&source=bastide#key='+encodeURIComponent(key);window.open(target,'_blank','noopener');}));
+      document.querySelectorAll('[data-pair-device]').forEach(link=>link.addEventListener('click',async e=>{
+        e.preventDefault();
+        const key=window.BastideInventory?.accessKey?.();
+        if(!key)return alert('Cet appareil ne possède pas encore ton accès privé MJ.');
+        const privateUrl=new URL(location.href);
+        privateUrl.hash='key='+encodeURIComponent(key);
+        const url=privateUrl.toString();
+        const message='Lien privé Table du MJ — Bastide. Ouvre-le une seule fois sur ton autre appareil. Ne le partage avec personne.';
+        try{
+          if(navigator.share){await navigator.share({title:'Accès MJ Bastide',text:message,url});return}
+          await navigator.clipboard.writeText(url);
+          alert('Lien privé copié. Envoie-le uniquement à ton autre appareil puis ouvre-le une fois sur le PC.');
+        }catch(error){
+          if(error?.name==='AbortError')return;
+          prompt('Copie ce lien privé et ouvre-le une seule fois sur ton autre appareil :',url);
+        }
+      }));
     </script>
     <script src="../assets/analytics.js?v=3"></script>
   <script src="../assets/mj-nav.js?v=3"></script></body>
