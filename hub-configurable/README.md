@@ -16,6 +16,7 @@ Adresse : https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/hub-confi
 - Le lien MJ donne accès à l’administration de son aventure. Le lien joueur donne accès à un seul personnage, aux échanges et aux contenus partagés. Les notes MJ et les autres fiches ne sont pas renvoyées avec ce lien.
 - Chaque espace et lien disposent d’une copie locale séparée dans IndexedDB. Aucune adresse e-mail, aucun mot de passe et aucun compte Supabase Auth ne sont demandés ou créés.
 - Les données se synchronisent à l’ouverture et après une modification, puis toutes les 30 secondes tant que le hub est visible et qu’aucun formulaire n’est ouvert.
+- Depuis **Outils de séance**, le gestionnaire de combat reçoit le même accès MJ. Ses campagnes, rencontres, monstres personnels, PJ et combats sont synchronisés dans un stockage séparé du hub, mais protégé par le même lien.
 - Les modifications hors connexion sont conservées en file locale. Elles sont envoyées au retour du réseau. La première synchronisation est nécessaire avant de pouvoir ouvrir l’espace sur un autre appareil ou créer un lien joueur.
 - Les conflits sur une même fiche ne sont pas écrasés : exporter les saisies locales puis récupérer la version en ligne pour reporter les changements utiles.
 - Une opération réémise après un problème réseau n’est appliquée qu’une fois côté serveur.
@@ -38,7 +39,7 @@ Adresse : https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/hub-confi
 - Projet Supabase existant, nouvelles tables privées `hcfg_private.link_*` et RPC `hcfg_link_api`. Autorisation par liens aléatoires 256 bits dont seul le hachage est conservé côté serveur. Aucune clé service-role utilisée par l’application.
 - Le serveur valide le rôle et le personnage du lien pour chaque lecture/écriture ; aucune table privée directement accessible aux visiteurs.
 - La migration `hcfg_beta2_bearer_links_no_accounts` est additive. Le schéma de la bêta 1 reste en place mais n’est plus utilisé par le site. Les réglages Auth et les fonctions des autres hubs ne changent pas.
-- Style dérivé de la base générique G1/Bastide. Pas encore de soundboard, boutique transactionnelle, gestionnaire de combat avancé ou interludes intégrés. Cette bêta n’est pas une reprise intégrale de toutes les fonctions Bastide.
+- Style dérivé de la base générique G1/Bastide. Le Soundboard reste indépendant ; le gestionnaire de combat COF2 est relié à chaque espace MJ. Cette bêta n’est pas une reprise intégrale de toutes les fonctions Bastide.
 - Hébergement GitHub Pages et projet de données partagés, avec fichiers, tables et autorisations séparés.
 
 Tests : `node --test hub-configurable/tests/*.test.mjs`. Tests de droits sans compte : `tests/links.sql` (transaction annulée). La bibliothèque PDF-lib est vendue dans `assets/`, avec sa licence dans `docs/`.
