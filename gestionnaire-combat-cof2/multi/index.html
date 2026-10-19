@@ -178,6 +178,7 @@ function importJSON(input){const file=input.files[0];if(!file)return;const r=new
 function resetAll(){if(!confirm('Réinitialiser toutes les données locales ?'))return;localStorage.removeItem(STATE_KEY);state={version:5,fighters:[],log:[],groupEffects:[],lastRecommendation:null,party:PLAYER_PRESETS.map(p=>({...p}))};renderPartyPicker();renderAll();recommend()}
 </script>
 <script src="campaigns.js?v=1"></script>
+<script src="sync.js?v=1"></script>
 </body>
 </html>
 
