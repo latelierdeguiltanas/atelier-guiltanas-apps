@@ -16,6 +16,8 @@ function blankCombat(){return {version:5,fighters:[],log:[],groupEffects:[],last
 function newCampaign(name,format='campaign',pack=false){return {id:crypto.randomUUID(),name:String(name).slice(0,100),format,pack,monsters:{},encounters:{},state:blankCombat()};}
 let library;
 try{const raw=localStorage.getItem(LIBRARY_KEY);library=raw?JSON.parse(raw):null;}catch(e){alert('Les préparations locales sont illisibles. Aucune donnée ne sera écrasée.');throw e;}
+// Première ouverture depuis un hub sur l'appareil déjà utilisé : reprendre la bibliothèque autonome.
+if(!library&&scope!=='standalone'){try{const previous=JSON.parse(localStorage.getItem('guiltanas_cof2_campaigns_v1_standalone')||'null');if(previous?.version===1&&Array.isArray(previous.campaigns)&&previous.campaigns.length)library=structuredClone(previous);}catch{/* Une ancienne copie illisible ne remplace jamais un espace hub. */}}
 if(!library){const c=newCampaign(query.get('name')||'Ma campagne',query.get('format')==='oneshot'?'oneshot':'campaign');library={version:1,selected:c.id,campaigns:[c]};}
 if(!Array.isArray(library.campaigns)||!library.campaigns.length)throw Error('Bibliothèque de combat invalide.');
 let current=library.campaigns.find(c=>c.id===library.selected)||library.campaigns[0],blocked=false;
