@@ -14,7 +14,7 @@ for(const h of seeds){
  assert.equal(out.character.level,2);assert.equal(out.character.id,id);
  assert.deepEqual(out.character.combat,rec.head.combat);
  assert.deepEqual(out.character.equipment,rec.head.equipment);
- for(const p of C.allowed(rec)){const cp=out.character.paths.find(a=>a.pathId===p.id);assert.ok(cp);assert.equal(cp.kind,p.kind);assert.equal(cp.ranks.length,p.ranks.length);for(const a of cp.ranks)assert.equal(a.text,C.ability(p.id,a.rank).text);}
+ for(const p of C.allowed(rec)){const cp=out.character.paths.find(a=>a.pathId===p.id);assert.ok(cp);assert.equal(cp.kind,p.kind);assert.equal(cp.ranks.length,p.ranks.length);for(const a of cp.ranks)assert.equal(a.text,C.flavour({id,paths:[{pathId:p.id,name:p.name,ranks:[C.clone(C.ability(p.id,a.rank))]}]}).paths[0].ranks[0].text);}
  const post=await request(id,{transfer:out,revision:0});assert.equal(post.status,200,JSON.stringify(post));assert.deepEqual(post.data.character,out.character);
  const get=await request(id);assert.deepEqual(get.data.character,out.character);assert.equal(get.data.revision,1);
  const repeat=await request(id,{transfer:out,revision:1});assert.equal(repeat.data.unchanged,true);

@@ -7,8 +7,9 @@ Version du 16 octobre 2026. Six héros Bastide : Prépotante, Scanlan, Wilfried,
 1. Dans Forge, ouvrir le héros récupéré et « Niveau suivant », ou importer son JSON dans le Carnet.
 2. Vérifier la base. « Utiliser la fiche actuelle du hub » permet de choisir explicitement la référence Bastide si la sauvegarde locale est ancienne. Prépotante utilise Roublard, conformément au hub.
 3. Figer la base, dépenser les deux points et lire le bilan. Les textes complets sont dépliables ; les rangs futurs inaccessibles sont masqués.
-4. Importer une fois le modèle officiel éditable ou sa fiche N1 déjà exportée (les annexes existantes sont retirées en mémoire). Valider N2 : le PDF officiel est préparé, le niveau sauvegardé, puis le téléchargement déclenché. Un échec de modèle ou de génération empêche la validation. Le bouton de retéléchargement reste disponible.
-5. Depuis le lien « Passage de niveau » placé en haut de la fiche Bastide, le carnet récupère le niveau serveur et synchronise la validation automatiquement. Le JSON pour le hub et son import manuel restent disponibles. Le service contrôle l’identité et rejoue les choix. Objets, messages et notes ne sont pas remplacés.
+4. Cliquer « Valider le niveau 2 ». Le PDF est facultatif : sans cocher l’option, aucun modèle ni téléchargement n’est requis. Depuis la fiche du hub, la validation est enregistrée directement sur le serveur avant la sauvegarde locale ; un échec serveur ne donne pas de faux succès.
+5. Revenir à la fiche par le lien direct. Le PDF reste téléchargeable plus tard : son modèle n’est demandé que pour générer ce fichier. Son échec n’annule jamais un niveau validé. Les exports JSON restent disponibles comme sauvegarde.
+6. Le MJ dispose du même accès direct depuis Personnages → le héros → Passage de niveau, avec sa clé habituelle. Les deux validations Prépotente/Scanlan du 24 octobre sont enregistrées côté hub ; aucun nouveau passage n’est à effectuer par les joueurs.
 
 ## Sources
 
@@ -40,3 +41,9 @@ Les six PDF ont été générés avec un véritable formulaire officiel à 163 c
 Les choix N2 restent corrigeables pendant 14 jours à compter de la première validation. Une correction rejoue les nouveaux choix depuis N1, conserve la date de départ, enregistre une chaîne de corrections et redéclenche le PDF. Le serveur accepte cette chaîne pendant la fenêtre ; une ancienne correction ne peut pas remplacer la plus récente. N3+ reste fermé.
 
 Tests complémentaires : six PDF officiels, six corrections avec contrôle du délai et absence de double gain ; 16 parcours UI dont refus sans modèle/échec PDF sans validation, un téléchargement par validation/correction, récupération depuis un autre appareil et synchronisation automatique. Aucun test au clic réel sur téléphone : le navigateur peut demander d’autoriser le téléchargement ; le bouton PDF permet de réessayer.
+
+## 24 octobre — Corrections de parcours et adaptation Scanlan
+- Suppression de l’obligation PDF et du gel intermédiaire en venant d’un lien authentifié du hub ; récupération du niveau serveur prioritaire sur une ancienne copie locale. Bouton retour direct à la fiche.
+- Dialogue Mes héros : neutralisation de l’événement close programmatique qui renvoyait à l’accueil après un changement de route. Récupération des six références Bastide sur les appareils déjà liés, sans écraser les sauvegardes existantes.
+- Scanlan : Voie de la main = habillage narratif de l’Escrime ; identifiants mécaniques, coûts, actions, dégâts, portée et conditions conservés. La main utilise la rapière au contact, sans nouveau sort ni PM. Textes des rangs et intitulés PDF adaptés uniquement pour Scanlan ; les autres bardes gardent l’Escrime officielle.
+- Niveaux 3+ restent fermés et ne sont pas annoncés comme prêts.

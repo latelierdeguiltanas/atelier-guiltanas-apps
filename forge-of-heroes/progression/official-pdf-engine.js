@@ -1,5 +1,5 @@
 (function(root){'use strict';root.FOHOfficialPDF={create({PDFLib,DB,overrides=[]}){const P={},E={};const T=DB.tables||DB,all=[...(T.peoples||[]),...(T.classes||[]),...(T.paths_class||[]),...(T.paths_people||[]),...(T.history_paths||[]),...(T.weapons_n1||[]),...(T.armors||[]),...(T.shields||[])];
-const label=id=>{const x=all.find(v=>v.id===id);return x?.label||x?.name||id||'—'},family=id=>({aventurier:'Aventurier',combattant:'Combattant',mage:'Mage',mystique:'Mystique'})[id]||id||'—',signed=v=>Number(v)>=0?'+'+Number(v):String(Number(v));
+const label=id=>{const x=all.find(v=>v.id===id);return overrides.find(p=>p.id===id)?.name||x?.label||x?.name||id||'—'},family=id=>({aventurier:'Aventurier',combattant:'Combattant',mage:'Mage',mystique:'Mystique'})[id]||id||'—',signed=v=>Number(v)>=0?'+'+Number(v):String(Number(v));
 const abilities=[...(T.abilities_people||[]),...(T.abilities_class||[]),...(T.abilities_history||[])];
 const futureRanks={
 'classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024':[
