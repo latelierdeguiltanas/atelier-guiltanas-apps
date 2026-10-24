@@ -1,0 +1,24 @@
+{
+  "version": "FOH_PATH_RULES_2",
+  "scope": "N1 : attaques modifiées, capacités accordées par peuple, compagnons et conditions d'équipement",
+  "overallChantierComplete": false,
+  "creationReplayCasesPerProduct": 78,
+  "sorcererMonkPairingsIncluded": 50,
+  "productsTested": ["index.html", "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html"],
+  "verified": [
+    "Les dégâts magiques ou une formule d'arme modifiée ne changent pas le jet de contact en attaque magique.",
+    "FOR/AGI en attaque à mains nues : meilleur choix par défaut, choix explicite conservé ; FOR/VOL aux DM de Mains d'énergie.",
+    "Les dés des Poings de fer suivent les rangs 1 à 3 accessibles à la création.",
+    "Talent pour la violence, Enfant de la forêt et Touche-à-tout accordent une capacité de profil distincte, sans duplication ni coût supplémentaire.",
+    "Les restrictions d'armure des dons sont vérifiées. Les choix obligatoires de la capacité accordée sont visibles et persistants.",
+    "Les sorts accordés contribuent au nombre de sorts et aux PM.",
+    "Loup, fidèle monture, golem, familier de magicien, petit compagnon de druide, panthère, jeune worg et écuyer ont des valeurs calculées depuis leur maître.",
+    "Les familiers trop petits n'obtiennent pas d'attaque. Les deux bonus de DEF de familier ne se cumulent pas.",
+    "Les avantages du moine sont désactivés avec armure ou bouclier dans un hybride.",
+    "Changer un don ou une condition puis le rétablir restitue exactement les valeurs initiales.",
+    "Le bonus de PV d'Argument de taille utilise correctement la FOR, y compris la casse de la clé de caractéristique.",
+    "L'ancien état de sauvegarde n'est remplacé que si le recalcul aboutit ; les bases illisibles ou en erreur restent préservées."
+  ],
+  "regressionSuites": ["calculation_trace_runner.js", "equipment_condition_runner.js", "no_profile_budget_runner.js", "native_progression_runner.cjs", "path_calculations_runner.cjs", "forgesort_paths_runner.cjs", "hybrid_point_buy_runner.cjs", "path_descriptions_runner.cjs", "storage_safety_runner.js", "progression_runner.js"],
+  "notClaimed": ["Validation de tous les effets des 520 rangs", "Tous les pouvoirs activés et transformations", "Tous les compagnons et choix des profils du Compagnon", "Progression générique de tous les profils jusqu'au rang 5", "Validation en navigateur ou sur téléphone"]
+}
