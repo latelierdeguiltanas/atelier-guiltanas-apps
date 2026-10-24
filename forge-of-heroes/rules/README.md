@@ -35,3 +35,16 @@ node forge-of-heroes/FINAL_FREEZE_TESTS/storage_safety_runner.js
 ```
 
 Ces contrôles couvrent les ajouts ciblés, les 75 textes de peuple, la résolution sûre des formules, le rendu des cinq rangs, les sauvegardes et les régressions de progression. Ils ne constituent pas une certification de 520 effets mécaniques.
+
+## Lot 1 — dons, attaques et compagnons
+
+`validation-lot1.json` borne la validation du premier lot. Le nouveau scénario `grants_attacks_companions_runner.cjs` couvre 78 créations/rechargements sur chaque produit, dont 50 combinaisons sorcier/moine. Il vérifie des valeurs attendues indépendantes, les changements aller/retour, les restrictions et les choix persistants ; il ne prend pas un simple nombre de capacités comme preuve mécanique.
+
+Les attaques de contact du moine et du bâton de mage sont corrigées : le caractère magique des DM ne transforme pas leur jet en attaque magique. Les capacités accordées par peuple sont intégrées avant les calculs sémantiques, une seule fois, avec leurs choix, leurs sorts et leur coût nul en points de capacité. Les huit types de compagnons visés par ce lot sont calculés depuis les valeurs finales du maître et apparaissent dans le récapitulatif. Les bonus de familier restent conditionnels et leur DEF ne se cumule pas.
+
+La version de règles `FOH_PATH_RULES_2` permet de recalculer les anciennes sauvegardes lorsqu'elles sont ouvertes ; une erreur de choix ou de stockage ne remplace pas la sauvegarde existante par un état incomplet.
+
+```
+node forge-of-heroes/FINAL_FREEZE_TESTS/grants_attacks_companions_runner.cjs
+node forge-of-heroes/FINAL_FREEZE_TESTS/grants_attacks_companions_runner.cjs FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html
+```
