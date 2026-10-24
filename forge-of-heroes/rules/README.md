@@ -1,75 +1,68 @@
 # Couverture des règles de Forge
 
-Ce lot ne certifie pas l'intégralité du moteur. `completion-audit.json` indique explicitement les sources disponibles, les données manquantes et la validation partielle des calculs.
+Le catalogue des textes est complet sur le périmètre inventorié ; le moteur de calcul ne l'est pas encore. Le bilan actuel est `completeness.json`, consultable dans `coverage.html`. La version de règles est `FOH_PATH_RULES_4`.
 
-## Textes
+## Catalogue de sources
 
-- 100 voies principales : 85 de profil et 15 de peuple, soit 500 rangs avec texte source conservé.
-- Les quatre voies d'arcanes supplémentaires ont 20 descriptions encore incomplètes. Les trois photographies du PDF fourni ne contiennent pas l'intégralité des quatre voies ; leur contenu ne doit pas être inventé.
-- Les textes COF2 conservent leur édition. Les 110 capacités issues du Compagnon ont leur texte original COF1 et une conversion Forge séparée, explicitement non officielle.
-- Le guide de conversion fourni vise principalement les PNJ/créatures. Ses augmentations de PV/DM ne sont pas appliquées aux PJ.
-- Les anciennes données corrompues du kobold sont remplacées, y compris le véritable rang 4 « Attaque vicieuse ».
+| Groupe | Voies | Rangs renseignés |
+| --- | ---: | ---: |
+| Profils, Compagnon et options | 90 | 450 |
+| Peuples et voie du mage | 15 | 75 |
+| Historiques | 17 | 85 |
+| Total | 122 | 610 |
 
-## Conversion du Compagnon
+Les sources ont été lues dans les fichiers fournis. Les 110 capacités du Compagnon conservent leur original COF1 et une adaptation Forge séparée, explicitement non officielle. Les quinze rangs 1 de profil du Compagnon ont leur description complète, y compris la construction de l'entité et les caractéristiques du familier.
 
-La politique `companion-conversion-policy.json` trace la conversion DEX→AGI, SAG→PER, les gains de score COF1 +2 devenant un gain de modificateur COF2 +1, les dés bonus et les coûts de sorts de profil. Les quotas raciaux restent distincts des PM. Les adaptations de rang 1 déjà utilisées sont conservées ; il n'existe pas de validation exhaustive d'équilibrage en partie.
+**Correction du précédent bilan :** les vingt rangs d'arcanes étaient bien présents, répartis entre les trois photographies. Leur classement comme sources incomplètes était une erreur de repérage. Ces mêmes photos contiennent aussi la voie de la corruption, ajoutée au catalogue. `advanced-source-transcriptions.json` conserve ces 25 rangs, la table de Métamorphe et leurs pages. `history-source-transcriptions.json` conserve les 75 transcriptions d'historique ajoutées au lot 2 ; les dix textes montagne/nomade déjà vérifiés sont conservés.
 
-## Calculs de ce lot
+`completion-audit.json` garde un périmètre plus restreint : profils et peuples, soit 525 rangs. Le bilan global avec les historiques est `completeness.json` (610 rangs). Les anciens fichiers `validation-lot1.json` et `validation-lot2.json` décrivent leurs lots historiques ; leurs anciens décomptes de sources ne constituent pas l'état actuel.
 
-`path-calculations.js` ajoute uniquement des règles permanentes explicitement définies à la base, sans réappliquer les effets historiques : Peau de fer, Maîtrise du ki, Course du vent, Écailles du kobold, Petit pote, Petit veinard et les bonus permanents du rang 3 de la voie du mage.
+## Calculs et interactions intégrés
 
-Les expressions entre crochets sont exposées dans `sticky.abilityCalculations` et `characterState.abilityCalculations`. Les dés ne sont pas lancés. Une variable inconnue de cible reste `CONTEXT_REQUIRED` ; elle n'est jamais remplacée arbitrairement par zéro. L'arithmétique ne fait appel ni à `eval` ni à `Function`.
+`permanent-rules.js` traite les gains héroïques, les caractéristiques de peuple, les PV rétroactifs liés à CON, plusieurs bonus dépendant du rang, les seuils de critique et les dépendances après gain de caractéristique. Les gains sont exposés dans `statGainLedger` et `ruleCompletionLedger`. Les substitutions FOR/AGI et rang aux DM du sabre du samouraï sont effectives et réversibles ; empathie et ki suivent leur rang.
 
-Les pouvoirs activés, compagnons, choix et augmentations de caractéristiques des rangs élevés qui ne disposent pas encore d'un traitement spécialisé ne sont pas certifiés par ce lot. Le moteur de passage de niveau reste limité à son périmètre déjà testé ; cette modification ne débloque pas tous les profils ou tous les niveaux.
+La maîtrise de l'armure est distincte de la limite d'armure de chaque profil. Les capacités incompatibles sont signalées ; les sorts autorisés calculent leur surcoût en PM. Tour de force, Armure lourde, Autorité naturelle, Armure d'os et Seconde peau sont pris en compte. Formation martiale et Seconde peau ont des choix persistants. Les restrictions de petite taille restent appliquées après les maîtrises.
+
+Les dons de peuple appartenant au profil peuvent servir de prérequis gratuit, quel que soit l'ordre des achats. Un don provenant d'un profil extérieur n'ouvre pas automatiquement ses rangs suivants. Les calculs des attaques de moine et de bâton de mage distinguent le jet d'attaque du type de DM.
+
+Les deux produits partagent maintenant le même bloc moteur, y compris le contexte sémantique de rang. La synchronisation ne se limite plus aux trois modules ajoutés. Les sauvegardes antérieures peuvent être recalculées avec la nouvelle version ; un échec ne doit pas écraser l'état existant.
+
+## Actions et ressources
+
+`ability-runtime.js` expose les actions, les coûts, les quotas usuels et leurs contrôles atomiques. Les quotas par cible sont séparés de ceux du lanceur. Rage et furie utilisent une réserve partagée, dépendant des voies de barbare au rang 4 ; la furie consomme deux utilisations. Les six vies du druide ne se réinitialisent pas au repos.
+
+Concentration accrue, entretien de Strangulation, hausse du coût des Foudres divines et coût spécial de Rune de garde sont traités. Ventriloquie utilise son coût selon l'action ; Métamorphe utilise ses neuf seuils de NC, niveau et PM. Corruption remplace les soins, avec une attaque au contact et un dé bonus pour Blessure mineure. Toiles n'ajoute pas une attaque infligeant des DM par défaut : ses DM exigent l'incendie des toiles.
+
+Les expressions entre crochets sont exposées dans `abilityCalculations`. Les modificateurs de dégâts peuvent être résolus, mais les dés ne sont jamais lancés. Une arme ou une cible non spécifiée reste un contexte requis. L'arithmétique n'utilise ni `eval` ni `Function`.
+
+Les durées, sacrifices de PV, brûlure de mana, conditions gestuelles, résistances des cibles et toutes les transformations ne sont pas intégralement automatisés. Un catalogue d'actions n'est pas une certification de tous les effets de combat.
+
+## Compagnons et adaptation du Compagnon
+
+Les compagnons natifs ont des valeurs dépendant du maître, et leurs paliers grand félin, monture fantastique, golem supérieur et tactiques de meute sont calculés dans des projections de haut rang. Le novice, le garde du corps et le chien de garde fantomatique sont aussi calculés. Une projection ne permet pas d'acheter illégalement un rang élevé au niveau 1.
+
+L'entité propose une répartition de 4 points FOR/AGI et de 2 points INT/PER/CHA, avec CON +2. VOL égale PER et Initiative = 10 + PER sont des décisions Forge tracées dans `companion-conversion-policy.json`. Ses améliorations et celles du golem ont des choix contrôlés. Le familier de l'invocateur partage les PV de son maître. Les caractéristiques absentes de la source ne sont pas inventées.
+
+La table de conjuration COF1 complète est conservée, mais ses huit références de prédateurs ne sont pas présentées comme des profils COF2 convertis. Les constructions d'armée et certaines mutations restent partielles. Le guide de conversion fourni vise principalement les PNJ/créatures : ses augmentations de PV/DM ne sont pas appliquées aux PJ. Aucun équilibrage en partie n'est certifié.
+
+## PDF et progression
+
+Le PDF vierge fourni est reconnu par son empreinte SHA-256 exacte. À l'import, le moteur y ajoute 156 champs éditables correspondant à sa mise en page. Un autre PDF sans champs est refusé ; les modèles déjà éditables restent pris en charge. Le PDF original n'est pas distribué : la transformation s'effectue à partir du fichier importé par l'utilisateur.
+
+Les six exports N2 passent avec valeurs attendues, cases acquises et annexes. Champs, widgets, valeurs et apparences ont été relus, et des pages remplies ont été rendues et inspectées. Le catalogue de progression et les libellés PDF reprennent les sources canoniques ; 195 textes ont été synchronisés sans modifier les effets numériques des anciens personnages. La généralisation du passage de niveau à tous les profils et niveaux reste à réaliser.
 
 ## Vérification
 
-```
-node forge-of-heroes/FINAL_FREEZE_TESTS/path_calculations_runner.cjs
-node forge-of-heroes/FINAL_FREEZE_TESTS/path_descriptions_runner.cjs
-node forge-of-heroes/FINAL_FREEZE_TESTS/hybrid_point_buy_runner.cjs
-node forge-of-heroes/FINAL_FREEZE_TESTS/forgesort_paths_runner.cjs
-node forge-of-heroes/FINAL_FREEZE_TESTS/native_progression_runner.cjs
-node forge-of-heroes/FINAL_FREEZE_TESTS/progression_runner.js
-node forge-of-heroes/FINAL_FREEZE_TESTS/storage_safety_runner.js
-```
-
-Ces contrôles couvrent les ajouts ciblés, les 75 textes de peuple, la résolution sûre des formules, le rendu des cinq rangs, les sauvegardes et les régressions de progression. Ils ne constituent pas une certification de 520 effets mécaniques.
-
-## Lot 1 — dons, attaques et compagnons
-
-`validation-lot1.json` borne la validation du premier lot. Le nouveau scénario `grants_attacks_companions_runner.cjs` couvre 78 créations/rechargements sur chaque produit, dont 50 combinaisons sorcier/moine. Il vérifie des valeurs attendues indépendantes, les changements aller/retour, les restrictions et les choix persistants ; il ne prend pas un simple nombre de capacités comme preuve mécanique.
-
-Les attaques de contact du moine et du bâton de mage sont corrigées : le caractère magique des DM ne transforme pas leur jet en attaque magique. Les capacités accordées par peuple sont intégrées avant les calculs sémantiques, une seule fois, avec leurs choix, leurs sorts et leur coût nul en points de capacité. Les huit types de compagnons visés par ce lot sont calculés depuis les valeurs finales du maître et apparaissent dans le récapitulatif. Les bonus de familier restent conditionnels et leur DEF ne se cumule pas.
-
-La version de règles `FOH_PATH_RULES_2` permet de recalculer les anciennes sauvegardes lorsqu'elles sont ouvertes ; une erreur de choix ou de stockage ne remplace pas la sauvegarde existante par un état incomplet.
-
-```
-node forge-of-heroes/FINAL_FREEZE_TESTS/grants_attacks_companions_runner.cjs
-node forge-of-heroes/FINAL_FREEZE_TESTS/grants_attacks_companions_runner.cjs FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html
-```
-
-## Lot 2 — inventaire complet et calculs ciblés
-
-Le bilan global est désormais `completeness.json`, consultable dans `coverage.html`. L'ancien `completion-audit.json` reste limité aux 520 rangs de profil/peuple ; il ne couvre pas les historiques. Le nouvel inventaire contient 121 voies et 605 rangs : 445 de profil, 75 de peuple et 85 d'historique. Il recense 585 textes disponibles et 20 textes d'arcanes incomplets. Une description disponible ne certifie pas le calcul de tous ses effets.
-
-Les 75 textes d'historique encore absents ont été transcrits mécaniquement depuis les photographies fournies, avec typographie normalisée. Les intitulés provisoires ont été remplacés par les véritables capacités ; l'annexe de fiche utilise ces textes. Les dix textes montagne/nomade déjà vérifiés sont conservés. `history-source-transcriptions.json` conserve la transcription du présent lot. Les talents définis avec le MJ restent des choix, pas des effets inventés par le moteur.
-
-`permanent-rules.js` traite les gains héroïques, les caractéristiques de peuple, les augmentations rétroactives de PV avec CON, plusieurs bonus dépendant du rang, les seuils de critique, les restrictions d'armure et des dépendances après gain de caractéristique. Les objets mathématiques exposent les gains dans `statGainLedger` et `ruleCompletionLedger`. Les projections R4/R5 des tests ne débloquent pas la progression réelle.
-
-`ability-runtime.js` expose les actions, coûts de base, quotas usuels et contrôles atomiques de ressources. Les sorts du Compagnon sont reconnus même sans astérisque dans leur intitulé. Une activation avec coût additionnel non résolu est refusée ; les dés ne sont pas lancés. Les effets complexes, transformations et quotas particuliers ne sont pas intégralement automatisés. Le catalogue d'actions n'est pas une certification d'effets de combat.
-
-Les dons de peuple appartenant au profil fournissent désormais leur prérequis gratuit pour un achat suivant, quel que soit l'ordre des achats. Un don d'un profil extérieur n'ouvre pas ses rangs suivants. Le novice de l'érudit et le garde du corps du nanti disposent de valeurs calculées ; le bonus de DEF du garde reste soumis au contact explicitement indiqué.
-
-La version `FOH_PATH_RULES_3` déclenche le recalcul des anciennes fiches. Les régressions de création, stockage, six profils natifs, 226 plans N2 et transfert au Hub passent. Le test du formulaire PDF officiel n'est pas validé : le PDF vierge fourni n'a pas les champs éditables attendus. Aucun test visuel de navigateur n'est revendiqué.
-
-Les six axes restent partiellement validés. Les traitements propres à toutes les capacités, les constructions d'invocation, l'équilibrage en partie et la progression générale de tous les profils ne sont pas certifiés. Ne pas afficher « données et calculs complets » sur la base du seul nombre de textes.
+`validation-lot3.json` borne ce lot. Il ajoute 16 créations/rejeux et 60 vérifications de répartition d'entité sur les deux produits, plus 10 créations/rejeux de voies optionnelles. Les vérifications de haut rang sont des projections isolées. Les régressions de stockage, les 50 hybrides sorcier/moine et les 226 plans N2 existants passent. Aucun parcours au clic dans un navigateur n'est revendiqué.
 
 ```
 node forge-of-heroes/scripts/sync-rule-bundles.cjs
+node forge-of-heroes/scripts/sync-pdf-catalogs.cjs
 node forge-of-heroes/scripts/build-completeness.cjs
-node forge-of-heroes/FINAL_FREEZE_TESTS/permanent_rules_runner.cjs
-node forge-of-heroes/FINAL_FREEZE_TESTS/ability_runtime_runner.cjs
-node forge-of-heroes/FINAL_FREEZE_TESTS/grant_prerequisites_runner.cjs
-node forge-of-heroes/FINAL_FREEZE_TESTS/history_completeness_runner.cjs
+node forge-of-heroes/FINAL_FREEZE_TESTS/equipment_runtime_companions_runner.cjs
+node forge-of-heroes/FINAL_FREEZE_TESTS/advanced_paths_runner.cjs
+node forge-of-heroes/FINAL_FREEZE_TESTS/flat_pdf_template_runner.cjs CHEMIN_DU_PDF_VIERGE_FOURNI
+node forge-of-heroes/FINAL_FREEZE_TESTS/progression_pdf_runner.js CHEMIN_DU_PDF_VIERGE_FOURNI DOSSIER_TEMPORAIRE
 ```
+
+Le nombre de textes et le nombre de tests ne constituent pas un taux de complétude mécanique. Les six axes du bilan distinguent la complétude des textes des traitements encore partiels.

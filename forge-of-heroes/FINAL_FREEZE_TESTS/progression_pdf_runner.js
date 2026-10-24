@@ -18,7 +18,7 @@ const choices={prepotante:[['voie-du-roublard',2],['voie-de-l-aventurier',2]],sc
  const projected=PDF.projection(out),db=require(dir+'/pdf-labels.json'),slots=[...new Set([...projected.state.voies.profilePathIds,...projected.s.profilePaths.map(p=>p.pathId),...db.paths_class.filter(p=>p.classId===projected.state.classeId&&String(p.group||'Base').toLowerCase()==='base').map(p=>p.id)])].slice(0,5),checks=[[19,22,25,28,31],[20,23,26,29,32],[21,24,27,30,33],[34,37,40,43,46],[35,38,41,44,47]];
  for(let col=0;col<5;col++)for(let rank=1;rank<=5;rank++)assert.equal(form.getCheckBox('undefined_'+checks[col][rank-1]).isChecked(),C.rank(out.head,slots[col])>=rank,'checkbox '+col+'/'+rank);
  for(const field of form.getFields())for(const w of field.acroField.getWidgets())assert.ok(w.getAppearances()?.normal,'missing appearance '+field.getName());
- assert.ok(pdf.getPageCount()>2);fs.writeFileSync(path.join(output,built.name),built.bytes);console.log('PASS '+h.name+' / official 163-field template, level 2 values and full annexes ('+pdf.getPageCount()+' pages)');
+ assert.ok(pdf.getPageCount()>2);fs.writeFileSync(path.join(output,built.name),built.bytes);console.log('PASS '+h.name+' / official '+form.getFields().length+'-field template, level 2 values and full annexes ('+pdf.getPageCount()+' pages)');
  }
  // A failed or absent model never produces a partial PDF.
  store.clear();await assert.rejects(()=>PDF.prepare(C.begin(seeds[0])),/modèle officiel/);

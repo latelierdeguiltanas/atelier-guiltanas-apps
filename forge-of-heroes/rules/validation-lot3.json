@@ -1,0 +1,53 @@
+{
+  "rulesVersion": "FOH_PATH_RULES_4",
+  "overallComplete": false,
+  "sourceTexts": 610,
+  "totalRanks": 610,
+  "missingArcaneTexts": 0,
+  "newTests": {
+    "creationReplayFixturesAcrossBothProducts": 16,
+    "entityDistributionsAcrossBothProducts": 60,
+    "highRankChecks": "PURE_PROJECTIONS_ONLY",
+    "officialPdfHeroesN2": 6,
+    "pdfEditableFields": 156,
+    "sourceTextCatalogSync": 195,
+    "optionalPathCreationReplayFixturesAcrossBothProducts": 10,
+    "optionalSourceRanks": 25,
+    "metamorphShapeCostAndLevelThresholds": 9
+  },
+  "regressions": {
+    "sorcererMonkCreationPairsPerProduct": 50,
+    "creationReplayCasesPerProduct": 78,
+    "orderedNativeN2Plans": 226,
+    "storageAndSyntax": true
+  },
+  "browserValidation": false,
+  "pdfValidation": {
+    "sourceFingerprint": "cb97958e6cd2cf394a3910c5d48af1026a7280da72c4e5f331737e5b41ebddf4",
+    "sourceRedistributed": false,
+    "fieldAndWidgetValuesAgree": true,
+    "appearanceStreamsPresent": true,
+    "renderedPagesReviewed": true
+  },
+  "notCertified": [
+    "All active ability effects and duration conditions",
+    "All characteristic and skill stacking combinations",
+    "Conjured predator COF1 to COF2 profiles",
+    "All transformations and mutations",
+    "Progression for every profile and level",
+    "Balance playtesting"
+  ],
+  "evidence": [
+    "equipment_runtime_companions_runner.cjs",
+    "flat_pdf_template_runner.cjs",
+    "progression_pdf_runner.js",
+    "history_completeness_runner.cjs",
+    "ability_runtime_runner.cjs",
+    "grants_attacks_companions_runner.cjs",
+    "progression_runner.js",
+    "storage_safety_runner.js",
+    "advanced_paths_runner.cjs"
+  ],
+  "sourceCatalogComplete": true,
+  "sourceReviewCorrection": "Les 20 rangs d’arcanes sont complets dans les photos ; la voie de la corruption ajoute 5 rangs au catalogue."
+}

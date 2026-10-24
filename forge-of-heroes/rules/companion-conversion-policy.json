@@ -10,5 +10,18 @@
     "Les durées, portées, restrictions et actions de la source sont conservées sauf décision locale explicitement indiquée.",
     "Les ressources de création utilisent la famille COF2 du profil ; aucune transposition du dé de vie COF1.",
     "Les règles de conversion de monstres (+10 PV, etc.) ne sont pas appliquées aux personnages joueurs."
-  ]
+  ],
+  "extensions": {
+    "FOH_ENTITY_COF2_V1": {
+      "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
+      "source": "Compagnon COF1 pp.25-26",
+      "rules": [
+        "Les 4 points FOR/DEX deviennent 4 points FOR/AGI ; les 2 points INT/SAG/CHA deviennent 2 points INT/PER/CHA.",
+        "CON +2, PV = 5 × niveau, DEF = 12 + AGI et DM = 1d6 + FOR sont conservés.",
+        "VOL = PER et Initiative = 10 + PER sont des décisions Forge, pas des règles officielles de conversion.",
+        "Les bonus exprimés en modificateurs dans les améliorations sont conservés ; la conversion +2 de score vers +1 de modificateur ne leur est pas appliquée.",
+        "Aucune validation d’équilibre en partie n’est revendiquée."
+      ]
+    }
+  }
 }
