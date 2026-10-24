@@ -48,3 +48,28 @@ La version de règles `FOH_PATH_RULES_2` permet de recalculer les anciennes sauv
 node forge-of-heroes/FINAL_FREEZE_TESTS/grants_attacks_companions_runner.cjs
 node forge-of-heroes/FINAL_FREEZE_TESTS/grants_attacks_companions_runner.cjs FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html
 ```
+
+## Lot 2 — inventaire complet et calculs ciblés
+
+Le bilan global est désormais `completeness.json`, consultable dans `coverage.html`. L'ancien `completion-audit.json` reste limité aux 520 rangs de profil/peuple ; il ne couvre pas les historiques. Le nouvel inventaire contient 121 voies et 605 rangs : 445 de profil, 75 de peuple et 85 d'historique. Il recense 585 textes disponibles et 20 textes d'arcanes incomplets. Une description disponible ne certifie pas le calcul de tous ses effets.
+
+Les 75 textes d'historique encore absents ont été transcrits mécaniquement depuis les photographies fournies, avec typographie normalisée. Les intitulés provisoires ont été remplacés par les véritables capacités ; l'annexe de fiche utilise ces textes. Les dix textes montagne/nomade déjà vérifiés sont conservés. `history-source-transcriptions.json` conserve la transcription du présent lot. Les talents définis avec le MJ restent des choix, pas des effets inventés par le moteur.
+
+`permanent-rules.js` traite les gains héroïques, les caractéristiques de peuple, les augmentations rétroactives de PV avec CON, plusieurs bonus dépendant du rang, les seuils de critique, les restrictions d'armure et des dépendances après gain de caractéristique. Les objets mathématiques exposent les gains dans `statGainLedger` et `ruleCompletionLedger`. Les projections R4/R5 des tests ne débloquent pas la progression réelle.
+
+`ability-runtime.js` expose les actions, coûts de base, quotas usuels et contrôles atomiques de ressources. Les sorts du Compagnon sont reconnus même sans astérisque dans leur intitulé. Une activation avec coût additionnel non résolu est refusée ; les dés ne sont pas lancés. Les effets complexes, transformations et quotas particuliers ne sont pas intégralement automatisés. Le catalogue d'actions n'est pas une certification d'effets de combat.
+
+Les dons de peuple appartenant au profil fournissent désormais leur prérequis gratuit pour un achat suivant, quel que soit l'ordre des achats. Un don d'un profil extérieur n'ouvre pas ses rangs suivants. Le novice de l'érudit et le garde du corps du nanti disposent de valeurs calculées ; le bonus de DEF du garde reste soumis au contact explicitement indiqué.
+
+La version `FOH_PATH_RULES_3` déclenche le recalcul des anciennes fiches. Les régressions de création, stockage, six profils natifs, 226 plans N2 et transfert au Hub passent. Le test du formulaire PDF officiel n'est pas validé : le PDF vierge fourni n'a pas les champs éditables attendus. Aucun test visuel de navigateur n'est revendiqué.
+
+Les six axes restent partiellement validés. Les traitements propres à toutes les capacités, les constructions d'invocation, l'équilibrage en partie et la progression générale de tous les profils ne sont pas certifiés. Ne pas afficher « données et calculs complets » sur la base du seul nombre de textes.
+
+```
+node forge-of-heroes/scripts/sync-rule-bundles.cjs
+node forge-of-heroes/scripts/build-completeness.cjs
+node forge-of-heroes/FINAL_FREEZE_TESTS/permanent_rules_runner.cjs
+node forge-of-heroes/FINAL_FREEZE_TESTS/ability_runtime_runner.cjs
+node forge-of-heroes/FINAL_FREEZE_TESTS/grant_prerequisites_runner.cjs
+node forge-of-heroes/FINAL_FREEZE_TESTS/history_completeness_runner.cjs
+```

@@ -1,0 +1,4 @@
+'use strict';
+const fs=require('fs'),path=require('path'),root=path.resolve(__dirname,'..');
+const files=['ability-runtime.js','permanent-rules.js','path-calculations.js'],endMarker="})(typeof window==='undefined'?globalThis:window);",modules=files.map(f=>fs.readFileSync(root+'/rules/'+f,'utf8').trimEnd()).join('\n')+'\n';
+for(const filename of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){const p=root+'/'+filename,html=fs.readFileSync(p,'utf8'),start=html.indexOf("(function(root){'use strict';",html.indexOf('id="FOH_ENGINE_BUNDLE"'));if(start<0)throw Error('Bundle absent');let end=start;for(const _ of files){end=html.indexOf(endMarker,end);if(end<0)throw Error('Fin de module absente');end+=endMarker.length;}fs.writeFileSync(p,html.slice(0,start)+modules+html.slice(end));}
