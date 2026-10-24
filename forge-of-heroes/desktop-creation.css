@@ -1,0 +1,44 @@
+/* Compact desktop creation. Keep mobile sizes and browser zoom available. */
+@media screen and (min-width: 960px) {
+  .shell .hero h1 { font-size: 30px; line-height: 1.15; }
+  .shell .hero p { font-size: 14px; line-height: 1.5; }
+  [data-step="paths"] { font-size: 15px; line-height: 1.5; }
+  [data-step="paths"] h2 { font-size: 23px; line-height: 1.25; margin-bottom: 6px; }
+  [data-step="paths"] h3 { font-size: 17px; line-height: 1.35; }
+  [data-step="paths"] .lead { font-size: 14px; margin: 6px 0 14px; }
+  [data-step="paths"] p { margin: 7px 0; }
+  [data-step="paths"] .field { margin-bottom: 12px; }
+  [data-step="paths"] .field > label { font-size: 14px; line-height: 1.4; }
+  [data-step="paths"] .field > small { font-size: 13px; line-height: 1.45; }
+  [data-step="paths"] select,
+  [data-step="paths"] button { font-size: 14px; line-height: 1.35; min-height: 40px; padding: 8px 11px; }
+  [data-step="paths"] .two { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; align-items: start; }
+  [data-step="paths"] .two > .field { min-width: 0; }
+  [data-step="paths"] .compact-path-picker { padding: 12px; border-radius: 12px; gap: 10px; }
+  [data-step="paths"] .compact-path-current b { font-size: 15px; line-height: 1.4; }
+  [data-step="paths"] .compact-path-current small { font-size: 13px; line-height: 1.5; }
+  [data-step="paths"] .compact-path-actions { gap: 7px; }
+  [data-step="paths"] #path-details { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin-top: 14px; }
+  [data-step="paths"] #path-details .choice { min-height: 0; padding: 12px; border-radius: 12px; }
+  [data-step="paths"] .choice strong { font-size: 15px; line-height: 1.4; }
+  [data-step="paths"] .choice span { font-size: 14px; line-height: 1.5; }
+  [data-step="paths"] .profile-people-guide { font-size: 14px; line-height: 1.5; padding: 13px 15px; margin: 12px 0; }
+  [data-step="paths"] .profile-people-guide h3 { font-size: 17px; margin-bottom: 8px; }
+  [data-step="paths"] .profile-people-guide details { margin: 8px 0; }
+  [data-step="paths"] .people-match-row { padding: 10px 0; }
+  [data-step="paths"] #ability-choice-panel { padding: 12px; }
+  [data-step="paths"] .age-rank-spending h3 { font-size: 17px; }
+  .compact-path-dialog { width: min(88vw,860px); max-height: 86vh; font-size: 15px; }
+  .compact-path-dialog .compact-path-dialog-head { padding: 12px 16px; }
+  .compact-path-dialog .compact-path-dialog-head h2 { font-size: 19px; line-height: 1.35; }
+  .compact-path-dialog .compact-path-help { font-size: 13px; line-height: 1.5; }
+  .compact-path-dialog .compact-path-options { padding: 12px 16px; gap: 10px; }
+  .compact-path-dialog .compact-path-option { padding: 12px; gap: 7px; }
+  .compact-path-dialog .compact-path-option h3 { font-size: 16px; line-height: 1.4; }
+  .compact-path-dialog .compact-path-option p { font-size: 14px; line-height: 1.5; }
+  .compact-path-dialog .compact-path-option-actions button { font-size: 14px; min-height: 40px; }
+  .canon-path-dialog { width: min(88vw,820px); font-size: 15px; line-height: 1.55; }
+  .canon-path-dialog h2 { font-size: 20px; }
+  .canon-path-dialog h3 { font-size: 17px; }
+  .canon-path-dialog article { padding: 10px 12px; margin: 10px 0; }
+}
