@@ -186,3 +186,6 @@ Bouton uniquement aux accueils Forge, gestionnaires COF2 principal/multi, hub co
 
 ## 24 octobre — Main de Scanlan à distance
 Sur demande du MJ, la main possède deux attaques au choix : contact et distance10m sur cible visible. Même action et mêmes dégâts de rapière (actuellement1d6-2), pas de PM ou attaque supplémentaire. Attaque de distance du personnage (actuellement+3). Feinte et effets explicitement au contact restent au contact. Adaptation de table signalée dans les textes et le PDF ; identifiants Escrime conservés. Personnage serveur actualisé sans rejouer les gainsN2 ni toucher aux ressources.
+
+## 24 octobre 2026 — réserve ordinaire de Vivelame
+Compteur pétoire visible dans Mon tour, en vues simplifiée et complète : tirer −1, ajouter/annuler +1, saisie du stock. Initialisation provisoire à 6 selon le souvenir du MJ, ajustable (aucune règle de chargeur six coups ou de six tirs/jour affirmée). Sauvegarde locale par personnage et appareil ; aucun réapprovisionnement automatique au repos. Indépendant des 2 charges explosives/jour. Main de Scanlan inchangée : dégâts hérités de la rapière 1d6 + FOR (−2), Précision ne remplace que le bonus pour toucher. Tests VM des stocks, limites, correction et indépendance du repos ; contrôle visuel téléphone non réalisé.
