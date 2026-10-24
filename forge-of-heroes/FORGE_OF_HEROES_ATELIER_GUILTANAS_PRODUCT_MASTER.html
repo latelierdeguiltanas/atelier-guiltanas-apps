@@ -22248,6 +22248,51 @@
           "textStatus": "PDF_FULL_TEXT"
         },
         "descriptionStatus": "PDF_SOURCE_TEXT"
+      },
+      {
+        "id": "ability:telekinesie:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank3:cof2-lb-2024",
+        "path_id": "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024",
+        "rank": 3,
+        "label": "Télékinésie (A)*",
+        "desc": "Déplace à 20 m, pendant CHA minutes, un objet inerte ou une cible volontaire pesant jusqu’à 50 kg par rang. Déplacement : 5 m par action de mouvement. Un objet peut tomber sur une cible surprise et infliger 1d6 DM par tranche de 50 kg sur une attaque magique réussie.",
+        "source": {
+          "bookId": "cof2-livre-base-2024",
+          "edition": "Chroniques Oubliées Fantasy 2e édition",
+          "printedPage": 93,
+          "chapter": "Famille des mages",
+          "section": "Ensorceleur — Voie de l’air — rang 3"
+        },
+        "certification": {
+          "scope": "advanced_creation",
+          "sourceStatus": "SOURCE_VERIFIED",
+          "structuredStatus": "STRUCTURED",
+          "engineStatus": "ENGINE_CONNECTED",
+          "functionalStatus": "ADVANCED_CREATION_CERTIFIED",
+          "certifiedIn": "FIX125"
+        },
+        "mechanics": {
+          "kind": "spell",
+          "action": "A",
+          "cost": {
+            "resource": "PM",
+            "value": 3
+          },
+          "durationFormula": "CHA minutes",
+          "rangeMeters": 20,
+          "effects": [
+            {
+              "type": "telekinesis",
+              "maxWeightFormula": "50 kg × rang",
+              "movementMetersPerAction": 5
+            },
+            {
+              "type": "conditional_damage",
+              "formula": "1d6 par tranche de 50 kg",
+              "test": "ATM_vs_DEF",
+              "condition": "cible surprise"
+            }
+          ]
+        }
       }
     ],
     "people_rules": [
