@@ -232,3 +232,6 @@ Complément : état bibliothèque distante adopté avant showCampaignHome/save p
 
 ### 25 octobre 2026 — Atlas complet
 Ajout des cartes source du livret : Rose des Vents (4 niveaux sur une carte), Grottes de Poussemer, Observatoire de la Falaise ; images recadrées sans texte de scénario, WebP. Ajout caché en base, sans toucher aux 2 cartes existantes. MJ : aperçu grand format/zoom, compteur visibilité, actualisation et gestion œil existante. PJ : actualisation 8 s et au retour, masquer ferme aussi la carte ouverte. Test VM atlas révéler/masquer/révéler/erreur réseau et échappement OK ; trois recadrages contrôlés visuellement.
+
+### 25 octobre 2026 — Retours gestionnaire
+Bouton « ← Mes espaces » dans l’en-tête sticky du gestionnaire multi, accessible depuis chaque onglet et au défilement. Retour à la sélection sans fermer l’app ni vider le combat. Accueil Bastide : lien direct Retour à la Bastide. Navigation générique isolée.
