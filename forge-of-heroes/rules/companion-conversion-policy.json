@@ -22,6 +22,22 @@
         "Les bonus exprimés en modificateurs dans les améliorations sont conservés ; la conversion +2 de score vers +1 de modificateur ne leur est pas appliquée.",
         "Aucune validation d’équilibre en partie n’est revendiquée."
       ]
+    },
+    "FOH_PREDATORS_COF2_V1": {
+      "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
+      "playtestStatus": "NOT_PLAYTESTED",
+      "source": [
+        "Compagnon COF1 pp.24-25",
+        "Livre de base COF2 pp.269-271"
+      ],
+      "rules": [
+        "Les huit seuils de niveau et le renforcement par le rang sont conservés. Les cinq espèces présentes dans le bestiaire COF2 utilisent leur profil natif, avec leur NC COF2 réel (lion NC3, grand mâle NC4).",
+        "Trois variantes Forge remplacent les références COF1 absentes : loup géant = alpha +1 palier ; tigre à dents de sabre = lion grand mâle +3 paliers ; ours préhistorique = ours polaire +2 paliers. Un palier ajoute DEF2, PV20, attaque2 et DM2. Cette formule est une décision de conception Forge, pas une règle officielle de boss ou de conversion.",
+        "Les caractéristiques et capacités conditionnelles du profil de base sont conservées. Le loup géant est de taille grande ; l’ours préhistorique de taille énorme. Ces choix de taille sont également des décisions Forge.",
+        "Les bonus de meute, embuscade, charge et rage restent conditionnels et ne sont pas ajoutés aux statistiques de base.",
+        "Meute : 1d4 créatures une catégorie sous le maximum ou 2d6 deux catégories sous le maximum ; aucun jet automatique. Cuirasse au rang4 ajoute3DEF. Les autres mutations ne sont pas encore projetées.",
+        "Les valeurs sont déterministes et testées techniquement ; leur équilibre en partie reste à éprouver."
+      ]
     }
   }
 }

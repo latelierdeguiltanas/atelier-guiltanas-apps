@@ -11603,6 +11603,23 @@
         },
         "tags": [
           "conditional_not_permanent"
+        ],
+        "choices": [
+          {
+            "id": "sacredVestments",
+            "type": "enum",
+            "persist": true,
+            "required": false,
+            "default": "VESTMENTS",
+            "values": [
+              "VESTMENTS",
+              "WARRIOR_MAIL"
+            ],
+            "valueLabels": {
+              "VESTMENTS": "Tenue bénie : DEF et résistance au contrôle mental sans armure",
+              "WARRIOR_MAIL": "Je prie une divinité guerrière : maîtrise de la cotte de mailles"
+            }
+          }
         ]
       },
       "source": {

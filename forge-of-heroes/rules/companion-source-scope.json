@@ -1,0 +1,694 @@
+{
+  "schema": "FOH_COMPANION_SOURCE_SCOPE",
+  "version": 1,
+  "allCompanionPathsIntegrated": false,
+  "scope": "Voies de personnages, prestige, domaines religieux et organisations ; objets prestigieux recensés séparément. Les autres règles optionnelles du livre exigent leur propre audit.",
+  "alreadyIntegrated": {
+    "profilePaths": 15,
+    "peoplePaths": 7,
+    "ranks": 110
+  },
+  "missingSections": [
+    {
+      "name": "Voie de l’arme étrange",
+      "group": "prestige",
+      "sourcePrintedPage": 38,
+      "sourcePdfPage": 39,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de l’arme liée",
+      "group": "prestige",
+      "sourcePrintedPage": 39,
+      "sourcePdfPage": 40,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie du colosse",
+      "group": "prestige",
+      "sourcePrintedPage": 40,
+      "sourcePdfPage": 41,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de l’élémentaliste",
+      "group": "prestige",
+      "sourcePrintedPage": 41,
+      "sourcePdfPage": 42,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de l’expert du combat",
+      "group": "prestige",
+      "sourcePrintedPage": 41,
+      "sourcePdfPage": 42,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie du héros",
+      "group": "prestige",
+      "sourcePrintedPage": 42,
+      "sourcePdfPage": 43,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de la Mana",
+      "group": "prestige",
+      "sourcePrintedPage": 43,
+      "sourcePdfPage": 44,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie du pacte vampirique",
+      "group": "prestige",
+      "sourcePrintedPage": 43,
+      "sourcePdfPage": 44,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie du porteur de bouclier",
+      "group": "prestige",
+      "sourcePrintedPage": 44,
+      "sourcePdfPage": 45,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie des saisons",
+      "group": "prestige",
+      "sourcePrintedPage": 45,
+      "sourcePdfPage": 46,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Arcanna",
+      "group": "priest_domain",
+      "sourcePrintedPage": 78,
+      "sourcePdfPage": 79,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Arshran",
+      "group": "priest_domain",
+      "sourcePrintedPage": 78,
+      "sourcePdfPage": 79,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Arwendée",
+      "group": "priest_domain",
+      "sourcePrintedPage": 78,
+      "sourcePdfPage": 79,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Aurilla",
+      "group": "priest_domain",
+      "sourcePrintedPage": 79,
+      "sourcePdfPage": 80,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Axënder",
+      "group": "priest_domain",
+      "sourcePrintedPage": 80,
+      "sourcePdfPage": 81,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Céres",
+      "group": "priest_domain",
+      "sourcePrintedPage": 80,
+      "sourcePdfPage": 81,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Délia",
+      "group": "priest_domain",
+      "sourcePrintedPage": 81,
+      "sourcePdfPage": 82,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Danaëlle",
+      "group": "priest_domain",
+      "sourcePrintedPage": 81,
+      "sourcePdfPage": 82,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Dénora",
+      "group": "priest_domain",
+      "sourcePrintedPage": 81,
+      "sourcePdfPage": 82,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Ellona",
+      "group": "priest_domain",
+      "sourcePrintedPage": 82,
+      "sourcePdfPage": 83,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Forthur",
+      "group": "priest_domain",
+      "sourcePrintedPage": 82,
+      "sourcePdfPage": 83,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Gaëlm",
+      "group": "priest_domain",
+      "sourcePrintedPage": 83,
+      "sourcePdfPage": 84,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Gorom",
+      "group": "priest_domain",
+      "sourcePrintedPage": 83,
+      "sourcePdfPage": 84,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Guardal",
+      "group": "priest_domain",
+      "sourcePrintedPage": 83,
+      "sourcePdfPage": 84,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Hellion",
+      "group": "priest_domain",
+      "sourcePrintedPage": 84,
+      "sourcePdfPage": 85,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Irrion",
+      "group": "priest_domain",
+      "sourcePrintedPage": 84,
+      "sourcePdfPage": 85,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Jeweln",
+      "group": "priest_domain",
+      "sourcePrintedPage": 85,
+      "sourcePdfPage": 86,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Linarré",
+      "group": "priest_domain",
+      "sourcePrintedPage": 85,
+      "sourcePdfPage": 86,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Lugannor",
+      "group": "priest_domain",
+      "sourcePrintedPage": 87,
+      "sourcePdfPage": 88,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Maëdra",
+      "group": "priest_domain",
+      "sourcePrintedPage": 87,
+      "sourcePdfPage": 88,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Mélenna",
+      "group": "priest_domain",
+      "sourcePrintedPage": 88,
+      "sourcePdfPage": 89,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Méphistère",
+      "group": "priest_domain",
+      "sourcePrintedPage": 90,
+      "sourcePdfPage": 91,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Mirandia",
+      "group": "priest_domain",
+      "sourcePrintedPage": 90,
+      "sourcePdfPage": 91,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Möndovaël",
+      "group": "priest_domain",
+      "sourcePrintedPage": 90,
+      "sourcePdfPage": 91,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Morn",
+      "group": "priest_domain",
+      "sourcePrintedPage": 90,
+      "sourcePdfPage": 91,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Orbis",
+      "group": "priest_domain",
+      "sourcePrintedPage": 91,
+      "sourcePdfPage": 92,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Oumaros",
+      "group": "priest_domain",
+      "sourcePrintedPage": 91,
+      "sourcePdfPage": 92,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Périndé",
+      "group": "priest_domain",
+      "sourcePrintedPage": 91,
+      "sourcePdfPage": 92,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Sélenne",
+      "group": "priest_domain",
+      "sourcePrintedPage": 92,
+      "sourcePdfPage": 93,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Solar",
+      "group": "priest_domain",
+      "sourcePrintedPage": 92,
+      "sourcePdfPage": 93,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Suëlle",
+      "group": "priest_domain",
+      "sourcePrintedPage": 92,
+      "sourcePdfPage": 93,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Trennër",
+      "group": "priest_domain",
+      "sourcePrintedPage": 93,
+      "sourcePdfPage": 94,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Tulsadüm",
+      "group": "priest_domain",
+      "sourcePrintedPage": 93,
+      "sourcePdfPage": 94,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Tyriolith",
+      "group": "priest_domain",
+      "sourcePrintedPage": 94,
+      "sourcePdfPage": 95,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de domaine : Vorona",
+      "group": "priest_domain",
+      "sourcePrintedPage": 95,
+      "sourcePdfPage": 96,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de l’académie de magie",
+      "group": "organization_domain",
+      "sourcePrintedPage": 160,
+      "sourcePdfPage": 161,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de l’ordre de chevalerie",
+      "group": "organization_domain",
+      "sourcePrintedPage": 162,
+      "sourcePdfPage": 163,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de l’ordre religieux",
+      "group": "organization_domain",
+      "sourcePrintedPage": 163,
+      "sourcePdfPage": 164,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de l’unité militaire",
+      "group": "organization_domain",
+      "sourcePrintedPage": 165,
+      "sourcePdfPage": 166,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de la cour des miracles",
+      "group": "organization_domain",
+      "sourcePrintedPage": 167,
+      "sourcePdfPage": 168,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de la guilde d’alchimie",
+      "group": "organization_domain",
+      "sourcePrintedPage": 169,
+      "sourcePdfPage": 170,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de la guilde des assassins",
+      "group": "organization_domain",
+      "sourcePrintedPage": 171,
+      "sourcePdfPage": 172,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de la guilde des voleurs",
+      "group": "organization_domain",
+      "sourcePrintedPage": 173,
+      "sourcePdfPage": 174,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie de la milice citadine",
+      "group": "organization_domain",
+      "sourcePrintedPage": 175,
+      "sourcePdfPage": 176,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie du bosquet druidique",
+      "group": "organization_domain",
+      "sourcePrintedPage": 177,
+      "sourcePdfPage": 178,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie du cercle occulte",
+      "group": "organization_domain",
+      "sourcePrintedPage": 180,
+      "sourcePdfPage": 181,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie du collège bardique",
+      "group": "organization_domain",
+      "sourcePrintedPage": 182,
+      "sourcePdfPage": 183,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie du fief féodal",
+      "group": "organization_domain",
+      "sourcePrintedPage": 185,
+      "sourcePdfPage": 186,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie du réseau d’espionnage",
+      "group": "organization_domain",
+      "sourcePrintedPage": 186,
+      "sourcePdfPage": 187,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie d’objet prestigieux : Épée Atlantéenne",
+      "group": "prestigious_item",
+      "sourcePrintedPage": 241,
+      "sourcePdfPage": 242,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie d’objet prestigieux : Hache des pères",
+      "group": "prestigious_item",
+      "sourcePrintedPage": 244,
+      "sourcePdfPage": 245,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie d’objet prestigieux : armure du Roi-corbeau",
+      "group": "prestigious_item",
+      "sourcePrintedPage": 249,
+      "sourcePdfPage": 250,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie d’objet prestigieux : Heaume écarlate d’Oroax",
+      "group": "prestigious_item",
+      "sourcePrintedPage": 253,
+      "sourcePdfPage": 254,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie d’objet prestigieux : les larmes éthérées",
+      "group": "prestigious_item",
+      "sourcePrintedPage": 257,
+      "sourcePdfPage": 258,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie d’objet prestigieux : Éclair blanc",
+      "group": "prestigious_item",
+      "sourcePrintedPage": 261,
+      "sourcePdfPage": 262,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie d’objet prestigieux : Shy’lyrr",
+      "group": "prestigious_item",
+      "sourcePrintedPage": 265,
+      "sourcePdfPage": 266,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    },
+    {
+      "name": "Voie d’objet prestigieux : Peau de malebeste",
+      "group": "prestigious_item",
+      "sourcePrintedPage": 269,
+      "sourcePdfPage": 270,
+      "catalogStatus": "MISSING",
+      "textStatus": "SOURCE_AVAILABLE_NOT_TRANSCRIBED",
+      "conversionStatus": "NOT_ADAPTED",
+      "mechanicalStatus": "NOT_IMPLEMENTED"
+    }
+  ],
+  "missingPathHeadings": 59,
+  "missingItemPathHeadings": 8,
+  "countMeaning": "Titres de voies ou domaines repérés, pas un nombre de rangs vérifiés. Certaines voies réemploient des capacités d’autres ouvrages.",
+  "source": "Chroniques Oubliées Fantasy - Compagnon, PDF fourni de 298 pages",
+  "excludedVariantSystems": [
+    {
+      "name": "CO OSR / Voie de la magie commune",
+      "sourcePrintedPage": 116,
+      "reason": "Variante de système distincte, pas une voie de profil COF2."
+    }
+  ]
+}
