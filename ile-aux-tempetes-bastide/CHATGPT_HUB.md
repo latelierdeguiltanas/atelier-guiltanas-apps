@@ -248,3 +248,6 @@ Navigation retour commune sur les pages du hub, bouton compact sticky. Hymnes/pa
 
 ### 25 octobre 2026 — Visuels individuels des kobolds
 Planche fournie par le MJ conservée sans modification (JPEG malgré extension PNG du fichier envoyé). Cadrages SVG à l’affichage pour les neuf fiches individuelles, communs galerie PJ, liste MJ et aperçu éditeur. Aga/Agga et Myla/Mila rapprochées ; Runara inchangée. Image source unique partagée pour limiter le poids et conserver les illustrations choisies. URLs des neuf fiches renseignées seulement si vides, portrait groupe idem ; portraits personnels existants non écrasés.
+
+### 25 octobre 2026 — Sous-menu kobolds, Varnoth et Tarak
+Galeries MJ et PJ : les neuf fiches kobolds regroupées dans une entrée repliée Repos du Dragon, ouverture au clic, retour/repli explicite, portraits et textes individuels conservés. Aucun changement des visibilités individuelles. Nouveaux portraits Varnoth et Tarak fournis par le MJ, fiches préparées en base et cachées aux joueurs. Contenus reformulés depuis livret p. 9, secrets dans notes MJ uniquement, sans importer les mécaniques D&D.
