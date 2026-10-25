@@ -47,6 +47,15 @@ Deno.serve(async req=>{try{
   if(b.initialize){const{error}=await db.from('bastide_resources').upsert({player_id:id,hp:Math.min(hero.combat.pvMax,Math.max(0,Number(b.hp)||0)),pm:Math.min(hero.combat.pmMax,Math.max(0,Number(b.pm)||0)),hp_max:hero.combat.pvMax,pm_max:hero.combat.pmMax},{onConflict:'player_id',ignoreDuplicates:true});if(error)throw error;const{data,error:e}=await db.from('bastide_resources').select('*').eq('player_id',id).single();if(e)throw e;return json({resource:data});}
   const{data,error}=await db.rpc('bastide_resource_change',{p_player:id,p_revision:Number(b.revision),p_hp:b.hp==null?null:Number(b.hp),p_pm:b.pm==null?null:Number(b.pm)});if(error)throw error;return json(data,data?.conflict?409:200);
  }
+ if(action==='notifications'&&req.method==='GET'){
+  let messages=db.from('bastide_messages').select('player_id',{count:'exact'}).eq('direction',user.admin?'player':'mj').is('seen_at',null).order('created_at',{ascending:true}).limit(1000);
+  if(!user.admin)messages=messages.eq('player_id',user.id);
+  const m=await messages;if(m.error)throw m.error;
+  const threads:Record<string,number>={};for(const row of m.data||[])threads[row.player_id]=(threads[row.player_id]||0)+1;
+  let inventoryCount=0;
+  if(!user.admin){const i=await db.from('bastide_inventory_events').select('id',{count:'exact',head:true}).eq('player_id',user.id).is('seen_at',null).or('event_type.in.(bundle,from-mj),details->>direction.eq.received');if(i.error)throw i.error;inventoryCount=i.count||0;}
+  return json({access:user.admin?'admin':'player',playerId:user.admin?undefined:user.id,messageCount:m.count||0,inventoryCount,threads});
+ }
  if(action==='messages'&&req.method==='GET'){
   let q=db.from('bastide_messages').select('id,player_id,direction,content,attachment,returned_at,seen_at,created_at').order('created_at',{ascending:false}).limit(200);if(!user.admin||pid)q=q.eq('player_id',pid);const{data,error}=await q;if(error)throw error;
   return json({messages:data||[],access:user.admin?'admin':'player'});

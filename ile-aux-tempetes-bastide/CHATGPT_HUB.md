@@ -238,3 +238,10 @@ Bouton « ← Mes espaces » dans l’en-tête sticky du gestionnaire multi, acc
 
 ### 25 octobre 2026 — Retours directs sur le hub
 Navigation retour commune sur les pages du hub, bouton compact sticky. Hymnes/pacte → Wilfried, Atelier chroniqueur → Scanlan ; outils MJ → table MJ ; fiches → espace joueurs. Pages communes reprennent la dernière fiche visitée sur cet onglet (ou lien playerId/referrer interne), sinon espace joueurs. Destinations explicites fonctionnant aussi sans historique et sans accès secret dans les URLs.
+
+### 25 octobre 2026 — Retours des vues, PNJ et notifications persistantes
+- Bouton Retour compact dans les dialogues natifs (y compris dynamiques) et l’atlas agrandi, fermeture de la vue avant navigation. Bouton global : historique interne si disponible, destination contextuelle sinon ; présent aussi à l’accueil.
+- PNJ : Runara + neuf fiches kobolds reformulées depuis livret utilisateur pp. 8–9. Champs joueurs/notes MJ séparés ; portraits et visibilité des deux entrées initiales conservés. Myla/Mila rapprochées sans publier la confidence à Scanlan. Fiches individuelles publiées, masquables via outils Rencontres. Aucun secret MJ dans le dépôt.
+- Endpoint authentifié notifications en bastide-session v8 : comptes exacts messages entrants non lus et envois PJ entrants non consultés (objets/argent). Bulle permanente sur tout le hub ; halo bleu PJ persiste jusqu’à consultation/acquittement serveur, option lumières et réduction animations respectées ; violet combat préservé. Aucun acquittement automatique par polling.
+- Conversation MJ : aucune sélection automatique de la première conversation (évite la lecture involontaire) ; liens notifications ciblent le bon joueur. Envois acquittés par bouton existant inventaire.
+- Tests VM : notifications persistantes/erreur/lecture, retours/routes, atlas, fiches 6 héros, responsive, 109 contrôles serveur (confidentialité notifications incluse). Visuel réel téléphone/ordinateur non observé.
