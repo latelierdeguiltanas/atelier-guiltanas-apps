@@ -1,0 +1,28 @@
+{
+  "fix": "PDF_WINANSI_UNICODE",
+  "cause": "Creation exporter measured/drew raw Unicode in annexes, unlike the partially protected progression exporter.",
+  "sourceErrorReproduced": "WinAnsi cannot encode U+2011",
+  "catalogTitleTextEncodingsChecked": 1895,
+  "inlineAndStandaloneSanitizerParity": true,
+  "creationExports": [
+    "moine",
+    "sorcier",
+    "forgesort"
+  ],
+  "progressionExportsN2": 6,
+  "editableFields": 156,
+  "preserved": [
+    "Saved characters",
+    "Original source descriptions",
+    "French accents",
+    "Dice symbols and numeric modifiers",
+    "Previously imported PDF template"
+  ],
+  "tests": [
+    "pdf_encoding_runner.cjs",
+    "progression_pdf_runner.js",
+    "storage_safety_runner.js"
+  ],
+  "visualCheck": "Creation monk annex rendered and inspected; no encoding failure or text clipping observed.",
+  "notClaimed": "Browser click validation"
+}
