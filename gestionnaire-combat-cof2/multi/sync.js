@@ -16,7 +16,8 @@ function readAccess(){
  if(valid){
   token=hashToken;localStorage.setItem(accessKey,token);
   history.replaceState(null,'',location.pathname+location.search);
- }else token=localStorage.getItem(accessKey)||'';
+ }else token=localStorage.getItem(accessKey)||(source==='bastide'?localStorage.getItem('iot_bastide_inventory_key_v1'):'')||'';
+ if(token&&source==='bastide')localStorage.setItem(accessKey,token);
  return source==='bastide'?!!token&&token.length<=512:/^[a-f0-9]{64}$/.test(token);
 }
 function badge(text,bad=false){
@@ -45,14 +46,14 @@ async function initialSync(){
   }else{
    lastSerialized='';pending=true;await upload();
   }
-  badge('Synchronisé');
+  badge(source==='bastide'?'Bastide · synchronisé':'Synchronisé');
  }catch(e){badge('Hors ligne · données locales',true);console.warn(e);}
 }
 async function upload(){
  if(sending||!token)return;if(blocked){badge('Conflit à résoudre',true);return;}
  const serialized=JSON.stringify(library);if(serialized===lastSerialized&&!pending)return;
  sending=true;pending=false;badge('Enregistrement…');
- try{const d=await call('save',{library,expected:revision});revision=d.revision;lastSerialized=serialized;writeMeta(false);badge('Synchronisé');}
+ try{const d=await call('save',{library,expected:revision});revision=d.revision;lastSerialized=serialized;writeMeta(false);badge(source==='bastide'?'Bastide · synchronisé':'Synchronisé');}
  catch(e){pending=true;if(String(e.message).includes('CONFLICT')){blocked=true;badge('Conflit entre appareils',true);alert('Cet espace de combat a été modifié sur un autre appareil. Tes données locales sont conservées : exporte-les avant de recharger la page.');}else badge('Hors ligne · en attente',true);}
  finally{sending=false;}
 }
@@ -60,7 +61,7 @@ function schedule(){pending=true;writeMeta(true);clearTimeout(timer);timer=setTi
 async function syncNow(manual=false){
  if(!token)return manual&&alert('Ouvre le gestionnaire depuis ton hub MJ pour activer la synchronisation sur cet appareil.');
  if(pending||JSON.stringify(library)!==lastSerialized)return upload();
- try{const remote=await call('get');if(remote.revision>revision){library=remote.library;revision=remote.revision;current=library.campaigns.find(c=>c.id===library.selected)||library.campaigns[0];state=current.state;localStorage.setItem(LIBRARY_KEY,JSON.stringify(library));lastSerialized=JSON.stringify(library);writeMeta(false);showCampaignHome();}badge('Synchronisé');}catch{badge('Hors ligne · données locales',true);}
+ try{const remote=await call('get');if(remote.revision>revision){library=remote.library;revision=remote.revision;current=library.campaigns.find(c=>c.id===library.selected)||library.campaigns[0];state=current.state;localStorage.setItem(LIBRARY_KEY,JSON.stringify(library));lastSerialized=JSON.stringify(library);writeMeta(false);showCampaignHome();}badge(source==='bastide'?'Bastide · synchronisé':'Synchronisé');}catch{badge('Hors ligne · données locales',true);}
 }
 
 const localPersist=persistLibrary;
