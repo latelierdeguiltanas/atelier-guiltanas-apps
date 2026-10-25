@@ -44,3 +44,6 @@ Avant exposition aux joueurs, chaque carte doit être contrôlée individuelleme
 ## Prochaine passe recommandée
 
 Extraire les cinq cartes dans `cartes/assets/`, définir pour chacune un cadrage maître, puis construire le premier prototype interactif sur la carte générale de l’île avant de décliner le système aux quatre cartes de lieux.
+
+## Intégration du 25 octobre 2026
+Les cartes des pages 18, 25 et 30 sont extraites du livret fourni par le MJ, recadrées au cadre de carte sans paragraphes de scénario, contrôlées visuellement puis optimisées WebP (source raster native ~1100 px). Repères des zones, orientation, échelle et tous les ponts de la Rose des Vents conservés. Assets : grottes-poussemer.webp, rose-des-vents.webp, observatoire-falaise.webp. Nouvelles cartes préchargées en base, cachées par défaut. Cartes Île et Repos existantes préservées. Aperçu MJ avant révélation ; atlas PJ actualisé toutes les 8 secondes, fermeture de la carte ouverte lors du masquage. Masquage dans l’atlas, pas un contrôle d’accès aux fichiers image déjà téléchargés.

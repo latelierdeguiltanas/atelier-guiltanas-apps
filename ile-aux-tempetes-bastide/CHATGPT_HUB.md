@@ -229,3 +229,6 @@ Complément : état bibliothèque distante adopté avant showCampaignHome/save p
 - Tests : entry, bastide-link, sync-state, campaigns, editors, initiative-bridge, 45 contrôles structurels et 98 contrôles serveur passent. Les installations réelles des appareils du MJ ne sont pas observées et ne peuvent être certifiées à distance.
 
 - Espace joueur : suppression du menu « Aperçu MJ » et de son sélecteur ; le MJ conserve la lecture du combat sur la fiche ouverte, sans sélection intermédiaire.
+
+### 25 octobre 2026 — Atlas complet
+Ajout des cartes source du livret : Rose des Vents (4 niveaux sur une carte), Grottes de Poussemer, Observatoire de la Falaise ; images recadrées sans texte de scénario, WebP. Ajout caché en base, sans toucher aux 2 cartes existantes. MJ : aperçu grand format/zoom, compteur visibilité, actualisation et gestion œil existante. PJ : actualisation 8 s et au retour, masquer ferme aussi la carte ouverte. Test VM atlas révéler/masquer/révéler/erreur réseau et échappement OK ; trois recadrages contrôlés visuellement.
