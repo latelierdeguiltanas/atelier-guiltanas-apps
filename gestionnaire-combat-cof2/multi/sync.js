@@ -40,7 +40,7 @@ async function initialSync(){
   const meta=readMeta(),remote=await call('get');revision=meta.dirty?Number(meta.revision)||0:remote.revision||0;
   if(meta.dirty){lastSerialized='';pending=true;await upload();}
   else if(validRemote(remote.library)){
-   library=remote.library;current=library.campaigns.find(c=>c.id===library.selected)||library.campaigns[0];
+   library=remote.library;current=library.campaigns.find(c=>c.id===library.selected)||library.campaigns[0];state=current.state;
    localStorage.setItem(LIBRARY_KEY,JSON.stringify(library));lastSerialized=JSON.stringify(library);revision=remote.revision||0;writeMeta(false);showCampaignHome();
   }else{
    lastSerialized='';pending=true;await upload();
@@ -60,7 +60,7 @@ function schedule(){pending=true;writeMeta(true);clearTimeout(timer);timer=setTi
 async function syncNow(manual=false){
  if(!token)return manual&&alert('Ouvre le gestionnaire depuis ton hub MJ pour activer la synchronisation sur cet appareil.');
  if(pending||JSON.stringify(library)!==lastSerialized)return upload();
- try{const remote=await call('get');if(remote.revision>revision){library=remote.library;revision=remote.revision;current=library.campaigns.find(c=>c.id===library.selected)||library.campaigns[0];localStorage.setItem(LIBRARY_KEY,JSON.stringify(library));lastSerialized=JSON.stringify(library);writeMeta(false);showCampaignHome();}badge('Synchronisé');}catch{badge('Hors ligne · données locales',true);}
+ try{const remote=await call('get');if(remote.revision>revision){library=remote.library;revision=remote.revision;current=library.campaigns.find(c=>c.id===library.selected)||library.campaigns[0];state=current.state;localStorage.setItem(LIBRARY_KEY,JSON.stringify(library));lastSerialized=JSON.stringify(library);writeMeta(false);showCampaignHome();}badge('Synchronisé');}catch{badge('Hors ligne · données locales',true);}
 }
 
 const localPersist=persistLibrary;
@@ -68,5 +68,5 @@ persistLibrary=function(){localPersist();schedule();};
 window.addEventListener('online',()=>syncNow());
 window.addEventListener('beforeunload',()=>{if(pending)upload();});
 setInterval(()=>{if(!document.hidden)syncNow();},30000);
-initialSync();
+window.BastideLibraryReady=initialSync();
 })();
