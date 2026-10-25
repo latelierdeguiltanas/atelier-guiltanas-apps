@@ -235,3 +235,6 @@ Ajout des cartes source du livret : Rose des Vents (4 niveaux sur une carte), Gr
 
 ### 25 octobre 2026 — Retours gestionnaire
 Bouton « ← Mes espaces » dans l’en-tête sticky du gestionnaire multi, accessible depuis chaque onglet et au défilement. Retour à la sélection sans fermer l’app ni vider le combat. Accueil Bastide : lien direct Retour à la Bastide. Navigation générique isolée.
+
+### 25 octobre 2026 — Retours directs sur le hub
+Navigation retour commune sur les pages du hub, bouton compact sticky. Hymnes/pacte → Wilfried, Atelier chroniqueur → Scanlan ; outils MJ → table MJ ; fiches → espace joueurs. Pages communes reprennent la dernière fiche visitée sur cet onglet (ou lien playerId/referrer interne), sinon espace joueurs. Destinations explicites fonctionnant aussi sans historique et sans accès secret dans les URLs.
