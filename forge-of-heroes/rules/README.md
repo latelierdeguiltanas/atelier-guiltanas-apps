@@ -1,6 +1,6 @@
 # Couverture des règles de Forge
 
-Les 122 voies intégrées ont leurs 610 textes. Cela ne couvre pas toutes les voies des PDF fournis, et le moteur de calcul reste partiel. Le bilan actuel est `completeness.json`, consultable dans `coverage.html`. La version de règles est `FOH_PATH_RULES_5`.
+Les 122 voies de création/historique ont leurs 610 textes ; 10 voies de prestige ajoutent 50 rangs en référence, soit 132 voies et 660 textes. Cela ne couvre pas toutes les voies des PDF fournis, et le moteur de calcul reste partiel. Le bilan actuel est `completeness.json`, consultable dans `coverage.html`. La version de règles est `FOH_PATH_RULES_6`.
 
 ## Catalogue de sources
 
@@ -9,17 +9,19 @@ Les 122 voies intégrées ont leurs 610 textes. Cela ne couvre pas toutes les vo
 | Profils, Compagnon et options | 90 | 450 |
 | Peuples et voie du mage | 15 | 75 |
 | Historiques | 17 | 85 |
-| Total | 122 | 610 |
+| Sous-total création / historique | 122 | 610 |
+| Prestige (référence, hors progression) | 10 | 50 |
+| Total des textes | 132 | 660 |
 
 Les sources ont été lues dans les fichiers fournis. Les 110 capacités du Compagnon conservent leur original COF1 et une adaptation Forge séparée, explicitement non officielle. Les quinze rangs 1 de profil du Compagnon ont leur description complète, y compris la construction de l'entité et les caractéristiques du familier.
 
 **Correction du précédent bilan :** les vingt rangs d'arcanes étaient bien présents, répartis entre les trois photographies. Leur classement comme sources incomplètes était une erreur de repérage. Ces mêmes photos contiennent aussi la voie de la corruption, ajoutée au catalogue. `advanced-source-transcriptions.json` conserve ces 25 rangs, la table de Métamorphe et leurs pages. `history-source-transcriptions.json` conserve les 75 transcriptions d'historique ajoutées au lot 2 ; les dix textes montagne/nomade déjà vérifiés sont conservés.
 
-`completion-audit.json` garde un périmètre plus restreint : profils et peuples, soit 525 rangs. Le bilan global avec les historiques est `completeness.json` (610 rangs). Les anciens fichiers `validation-lot1.json` et `validation-lot2.json` décrivent leurs lots historiques ; leurs anciens décomptes de sources ne constituent pas l'état actuel.
+`completion-audit.json` garde un périmètre plus restreint : profils et peuples, soit 525 rangs. Le bilan global est `completeness.json` : 610 rangs de création/historique et 50 rangs de prestige en référence. Les anciens fichiers `validation-lot1.json` et `validation-lot2.json` décrivent leurs lots historiques ; leurs anciens décomptes de sources ne constituent pas l'état actuel.
 
 ## Périmètre supplémentaire du Compagnon
 
-`companion-source-scope.json` recense les omissions retrouvées dans les sources : 10 voies de prestige, 35 domaines religieux et 14 voies d’organisation, plus 8 voies d’objets prestigieux séparées. Il s’agit de titres repérés, pas de rangs déjà transcrits ou adaptés. Les règles de CO OSR sont une variante distincte. `sourceCatalogComplete` ne s’applique qu’aux 122 voies déjà intégrées ; `allProvidedSourcePathsIntegrated` reste faux. Le sixième point est désormais partiel sur le périmètre demandé.
+`companion-source-scope.json` recense les omissions retrouvées dans les sources : Les 10 voies de prestige sont désormais transcrites et adaptées dans `prestige-catalog.json`, avec 50 rangs en référence. Restent 35 domaines religieux et 14 voies d’organisation non transcrits, plus 8 voies d’objets prestigieux séparées. Les règles de CO OSR sont une variante distincte. `sourceCatalogComplete` s’applique au catalogue actuel, y compris la référence prestige, sans attester leur achat en progression ; `allProvidedSourcePathsIntegrated` reste faux. Le sixième point est désormais partiel sur le périmètre demandé.
 
 ## Calculs et interactions intégrés
 
@@ -72,3 +74,13 @@ node forge-of-heroes/FINAL_FREEZE_TESTS/progression_pdf_runner.js CHEMIN_DU_PDF_
 ```
 
 Le nombre de textes et le nombre de tests ne constituent pas un taux de complétude mécanique. Les six axes du bilan distinguent la complétude des textes des traitements encore partiels.
+
+## Vérification du travail précédent — lot 5
+
+Les données complètes et le moteur sont maintenant identiques entre index et produit maître. L’audit a corrigé un plafond de DEF bardique périmé dans le maître (rang de la capacité au lieu du rang de la voie), ainsi que les données montagne/nomade du maître. La synchronisation copie désormais aussi la base entière. Les 15 alias de peuple R1 et les 660 libellés/textes PDF sont contrôlés.
+
+`source-import-audit.json` compare 550 rangs à texte extractible aux PDF fournis, dont 390 natifs COF2, 110 Compagnon et 50 prestige. Il normalise la mise en page mais préserve les signes numériques. Les 110 rangs issus des photos (historiques et arcanes) conservent leur contrôle distinct ; on ne prétend pas avoir comparé ces photos par extraction automatique. Les encadrés communs du golem, de la panthère et de la monture sont rattachés au rang donnant le compagnon, avec provenance conservée dans `source-relocations.json`.
+
+Le loup du rôdeur applique enfin le mâle alpha dès R4 : DEF18, PV5×niveau, CON3, FOR5, DM1d4°+5 ; Tactiques de meute ajoute ensuite son bonus de DEF. Démon, zombie et arbre animé ont leurs fiches numériques. Le plafond de zombies compte aussi les voies optionnelles de sorcier. Le cavalier applique ses DM supplémentaires seulement en selle ; la monture de base garde son attaque propre +5.
+
+`prestige-rules.js` fournit les projections de référence des 50 rangs, consultables dans `prestige.html`. Ce module ne donne aucun achat supplémentaire au niveau1 et ne généralise pas le passage de niveau. Les règles Forge du Colosse, des Saisons et de la Mana sont tracées séparément de l’original COF1. Les variantes de mana COF1 de l’encadré sont conservées comme source, pas appliquées en COF2.
