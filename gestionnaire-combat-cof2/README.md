@@ -57,3 +57,6 @@ La frise publique comporte seulement les noms et l’ordre. Buffs, états et eff
 Le stockage local et l’import/export existants sont conservés. La liaison ne fusionne pas les sites et le gestionnaire reste utilisable sans connexion. Les messages privés et le suivi des backgrounds s’ouvrent depuis le panneau de liaison.
 
 Tests sans navigateur : `node tests/check.mjs`, plus les contrôles de bastide-session et des fiches situés dans leurs dossiers respectifs.
+
+## Préparation MJ : buffs et bestiaire
+`editors.js` ajoute les favoris de buffs dans le combat (préparation, activation avec cibles, édition des effets actifs) et l’éditeur du bestiaire (caractéristiques, NC, PV/DEF/initiative, attaques et capacités, notes). Les originaux sont conservés ; les personnalisations portent le libellé adaptation et peuvent être restaurées. Les exemplaires en combat gardent une copie de leur profil ; la case d’application explicite conserve les dégâts subis et laisse hors combat ceux déjà à zéro. Les favoris et personnalisations sont dans l’état local et l’export/import JSON ; pas de synchronisation des modèles entre appareils. Aucun jet, bonus numérique ou tour automatisé. Test : `node tests/editors.cjs`.
