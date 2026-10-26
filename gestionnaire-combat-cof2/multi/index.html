@@ -178,7 +178,7 @@ function exportJSON(){const blob=new Blob([JSON.stringify(state,null,2)],{type:'
 function importJSON(input){const file=input.files[0];if(!file)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x||!Array.isArray(x.fighters))throw new Error('format invalide');state=x;state.party=Array.isArray(state.party)&&state.party.length?state.party:PLAYER_PRESETS.map(p=>({...p}));state.groupEffects=Array.isArray(state.groupEffects)?state.groupEffects:[];save();renderPartyPicker();renderAll();recommend();alert('Sauvegarde importée.')}catch(e){alert('Import impossible : '+e.message)}};r.readAsText(file)}
 function resetAll(){if(!confirm('Réinitialiser toutes les données locales ?'))return;localStorage.removeItem(STATE_KEY);state={version:5,fighters:[],log:[],groupEffects:[],lastRecommendation:null,party:PLAYER_PRESETS.map(p=>({...p}))};renderPartyPicker();renderAll();recommend()}
 </script>
-<script src="campaigns.js?v=2"></script>
+<script src="campaigns.js?v=3"></script>
 <script src="sync.js?v=3"></script>
 <script src="bastide-link.js?v=2" defer></script>
 </body>
