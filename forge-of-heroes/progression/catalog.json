@@ -1,6 +1,6 @@
 {
   "version": "PROGRESSION-1",
-  "maxValidatedLevel": 2,
+  "maxValidatedLevel": 3,
   "profiles": [
     {
       "id": "class:arquebusier:cof2-lb-2024",
@@ -143,6 +143,56 @@
         "status": "PASS"
       },
       "status": "N1_CERTIFIED"
+    },
+    {
+      "id": "class:sorcier:cof2-lb-2024",
+      "label": "Sorcier",
+      "familleId": "mage",
+      "group": "Base",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "Chroniques Oubliées Fantasy 2e édition",
+        "printedPage": 107,
+        "chapter": "Profils",
+        "section": "Profil : Sorcier"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "N1_CERTIFIED",
+        "structured": true,
+        "engineConnected": true,
+        "oracleTested": true,
+        "negativeTested": true,
+        "crossTested": true,
+        "validatedBy": "FIX73",
+        "enabledInCertifiedN1": true
+      }
+    },
+    {
+      "id": "class:moine:cof2-lb-2024",
+      "label": "Moine",
+      "familleId": "mystique",
+      "group": "Base",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "Chroniques Oubliées Fantasy 2e édition",
+        "printedPage": 118,
+        "chapter": "Profils",
+        "section": "Profil : Moine"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "N1_CERTIFIED",
+        "structured": true,
+        "engineConnected": true,
+        "oracleTested": true,
+        "negativeTested": true,
+        "crossTested": true,
+        "validatedBy": "FIX73",
+        "enabledInCertifiedN1": true
+      }
     }
   ],
   "paths": [
@@ -172,7 +222,8 @@
             "chapter": "Profils",
             "section": "Mécanismes"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -187,7 +238,8 @@
             "chapter": "Profils",
             "section": "Arme à répétition"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -202,7 +254,8 @@
             "chapter": "Profils",
             "section": "Tir de barrage (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:canon-double:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -217,7 +270,8 @@
             "chapter": "Profils",
             "section": "Canon double"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:couleuvrine-l:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -232,7 +286,8 @@
             "chapter": "Profils",
             "section": "Couleuvrine (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -262,7 +317,8 @@
             "chapter": "Profils",
             "section": "Tir de grenaille (L)"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:demolition:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -277,7 +333,8 @@
             "chapter": "Profils",
             "section": "Démolition"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:poudre-puissante:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -292,7 +349,8 @@
             "chapter": "Profils",
             "section": "Poudre puissante"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:piege-explosif-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -307,7 +365,8 @@
             "chapter": "Profils",
             "section": "Piège explosif (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:boulet-explosif-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -322,7 +381,8 @@
             "chapter": "Profils",
             "section": "Boulet explosif (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -352,7 +412,8 @@
             "chapter": "Profils",
             "section": "Pilier de bar"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -367,7 +428,8 @@
             "chapter": "Profils",
             "section": "Mort ou vif (L)"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -382,7 +444,8 @@
             "chapter": "Profils",
             "section": "Combattant aguerri"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:constitution-heroique:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -397,7 +460,8 @@
             "chapter": "Profils",
             "section": "Constitution héroïque"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:combat-de-masse:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -412,7 +476,8 @@
             "chapter": "Profils",
             "section": "Combat de masse"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -442,7 +507,8 @@
             "chapter": "Profils",
             "section": "Plus vite que son ombre"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -457,7 +523,8 @@
             "chapter": "Profils",
             "section": "Ajuster le tir"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:tir-double-l:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -472,7 +539,8 @@
             "chapter": "Profils",
             "section": "Tir double (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:agilite-heroique:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -487,7 +555,8 @@
             "chapter": "Profils",
             "section": "Agilité héroïque"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:as-de-la-gachette:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -502,7 +571,8 @@
             "chapter": "Profils",
             "section": "As de la gâchette"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -532,7 +602,8 @@
             "chapter": "Profils",
             "section": "Joli coup"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -547,7 +618,8 @@
             "chapter": "Profils",
             "section": "Défaut dans la cuirasse (A)"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:tir-precis:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -562,7 +634,8 @@
             "chapter": "Profils",
             "section": "Tir précis"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:tireur-delite-l:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -577,7 +650,8 @@
             "chapter": "Profils",
             "section": "Tireur d’élite (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:tir-fatal-l:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -592,7 +666,8 @@
             "chapter": "Profils",
             "section": "Tir fatal (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -622,7 +697,8 @@
             "chapter": "Profils",
             "section": "Précision"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:feinte-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -637,7 +713,8 @@
             "chapter": "Profils",
             "section": "Feinte (L)"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:intelligence-du-combat-m:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -652,7 +729,8 @@
             "chapter": "Profils",
             "section": "Intelligence du combat (M)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:attaque-flamboyante-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -667,7 +745,8 @@
             "chapter": "Profils",
             "section": "Attaque flamboyante (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:botte-mortelle:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -682,7 +761,8 @@
             "chapter": "Profils",
             "section": "Botte mortelle"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -712,7 +792,8 @@
             "chapter": "Profils",
             "section": "Chant des héros (L)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:chant-de-reconfort-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -727,7 +808,8 @@
             "chapter": "Profils",
             "section": "Chant de réconfort (L)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:attaque-sonore-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -742,7 +824,8 @@
             "chapter": "Profils",
             "section": "Attaque sonore (A)*"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:zone-de-silence-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -757,7 +840,8 @@
             "chapter": "Profils",
             "section": "Zone de silence (A)*"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:danse-irresistible-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -772,7 +856,8 @@
             "chapter": "Profils",
             "section": "Danse irrésistible (A)*"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -802,7 +887,8 @@
             "chapter": "Profils",
             "section": "Acrobate"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:grace-feline:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -817,7 +903,8 @@
             "chapter": "Profils",
             "section": "Grâce féline"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:lanceur-de-couteau-g:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -832,7 +919,8 @@
             "chapter": "Profils",
             "section": "Lanceur de couteau (G)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:liberte-daction:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -847,7 +935,8 @@
             "chapter": "Profils",
             "section": "Liberté d’action"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:esquive-acrobatique-g:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -862,7 +951,8 @@
             "chapter": "Profils",
             "section": "Esquive acrobatique (G)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -892,7 +982,8 @@
             "chapter": "Profils",
             "section": "Charmant"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:dentelles-et-rapiere:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -907,7 +998,8 @@
             "chapter": "Profils",
             "section": "Dentelles et rapière"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:baratineur-de-genie:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -922,7 +1014,8 @@
             "chapter": "Profils",
             "section": "Baratineur de génie"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:charisme-heroique:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -937,7 +1030,8 @@
             "chapter": "Profils",
             "section": "Charisme héroïque"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:suggestion-a:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -952,7 +1046,8 @@
             "chapter": "Profils",
             "section": "Suggestion (A)*"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -982,7 +1077,8 @@
             "chapter": "Profils",
             "section": "Rumeurs et légendes"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:eclectique:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -997,7 +1093,8 @@
             "chapter": "Profils",
             "section": "Éclectique"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:attirail:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -1012,7 +1109,8 @@
             "chapter": "Profils",
             "section": "Attirail"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:comprehension-des-langues-a:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -1027,7 +1125,8 @@
             "chapter": "Profils",
             "section": "Compréhension des langues (A)*"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:deguisement-a:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -1042,7 +1141,8 @@
             "chapter": "Profils",
             "section": "Déguisement (A)*"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -1072,7 +1172,8 @@
             "chapter": "Profils",
             "section": "Archer émérite"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:tir-chirurgical:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -1087,7 +1188,8 @@
             "chapter": "Profils",
             "section": "Tir chirurgical"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:dans-le-mille:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -1102,7 +1204,8 @@
             "chapter": "Profils",
             "section": "Dans le mille"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:tir-rapide-l:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -1117,7 +1220,8 @@
             "chapter": "Profils",
             "section": "Tir rapide (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:fleche-de-mort-l:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -1132,7 +1236,8 @@
             "chapter": "Profils",
             "section": "Flèche de mort (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -1168,7 +1273,8 @@
               "name": "Gérer un compagnon animal (livre de base p. 72)",
               "text": "En ville : le loup du rôdeur n’est pas très à l’aise en milieu urbain. Généralement, il préfère rester à l’extérieur de l’agglomération et se débrouiller seul en attendant que son maître le réclame. Toutefois le joueur peut décider que son personnage adopte un très gros chien plutôt qu’un loup ; dans ce cas, les aventures urbaines ne poseront aucun problème. En revanche, le chien voudra suivre son maître partout. Soigner un compagnon animal : un compagnon animal peut être soigné par magie et récupère tous les PV perdus après une récupération complète. Compagnon animal à 0 PV : lorsque le compagnon animal tombe à 0 PV, s’il est en milieu naturel considérez qu’il s’enfuit (il revient au bout de 8 h avec tous ses PV). S’il ne peut pas, il doit être soigné comme le serait un personnage. Mort d’un compagnon animal : le PJ pourra retrouver un nouveau compagnon au passage de niveau suivant. Joueur et MJ doivent se mettre d’accord quant au moment opportun et cela peut faire l’objet d’une scène de jeu. Montreur d’ours : alternativement, le MJ peut autoriser le joueur à adopter un autre animal et modifier la voie en conséquence. Par exemple, un montreur d’ours pourrait bénéficier des modifications suivantes : au rang 2, remplacer le bonus aux tests pour pister et de surprise par un bonus en intimidation et en spectacle. Retrancher 2 en DEF et ajouter +2 en FOR (et donc +2 aux DM) du compagnon."
             }
-          ]
+          ],
+          "auditedLevel3": true
         },
         {
           "id": "ability:travail-dequipe:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -1183,7 +1289,8 @@
             "chapter": "Profils",
             "section": "Travail d’équipe"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:lien-empathique-l:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -1198,7 +1305,8 @@
             "chapter": "Profils",
             "section": "Lien empathique (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:loup-alpha:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -1213,7 +1321,8 @@
             "chapter": "Profils",
             "section": "Loup alpha"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:tactiques-de-meute:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -1228,7 +1337,8 @@
             "chapter": "Profils",
             "section": "Tactiques de meute"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -1258,7 +1368,8 @@
             "chapter": "Profils",
             "section": "Survie"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:nature-nourriciere:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -1273,7 +1384,8 @@
             "chapter": "Profils",
             "section": "Nature nourricière"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:grand-pas-g:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -1288,7 +1400,8 @@
             "chapter": "Profils",
             "section": "Grand pas (G)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:constitution-heroique:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -1303,7 +1416,8 @@
             "chapter": "Profils",
             "section": "Constitution héroïque"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:increvable-l:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -1318,7 +1432,8 @@
             "chapter": "Profils",
             "section": "Increvable (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -1348,7 +1463,8 @@
             "chapter": "Profils",
             "section": "Éclaireur"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:attaque-eclair-l:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -1363,7 +1479,8 @@
             "chapter": "Profils",
             "section": "Attaque éclair (L)"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:chasseur-emerite:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -1378,7 +1495,8 @@
             "chapter": "Profils",
             "section": "Chasseur émérite"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:perception-heroique:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -1393,7 +1511,8 @@
             "chapter": "Profils",
             "section": "Perception héroïque"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:repli-l:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -1408,7 +1527,8 @@
             "chapter": "Profils",
             "section": "Repli (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -1438,7 +1558,8 @@
             "chapter": "Profils",
             "section": "Attaque à suivre (G)"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:parade-croisee:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -1453,7 +1574,8 @@
             "chapter": "Profils",
             "section": "Parade croisée"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:droite-gauche-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -1468,7 +1590,8 @@
             "chapter": "Profils",
             "section": "Droite ‑ gauche (G)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:combattant-heroique:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -1483,7 +1606,8 @@
             "chapter": "Profils",
             "section": "Combattant héroïque"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:double-peine:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -1498,7 +1622,8 @@
             "chapter": "Profils",
             "section": "Double peine"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -1528,7 +1653,8 @@
             "chapter": "Profils",
             "section": "Discrétion"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:attaque-sournoise-l:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -1543,7 +1669,8 @@
             "chapter": "Profils",
             "section": "Attaque sournoise (L)"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:attaque-par-surprise-a:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -1558,7 +1685,8 @@
             "chapter": "Profils",
             "section": "Attaque par surprise (A)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:disparition-m:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -1573,7 +1701,8 @@
             "chapter": "Profils",
             "section": "Disparition (M)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:ouverture-mortelle-l:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -1588,7 +1717,8 @@
             "chapter": "Profils",
             "section": "Ouverture mortelle (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -1618,7 +1748,8 @@
             "chapter": "Profils",
             "section": "Baratin"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:provocation-l:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -1633,7 +1764,8 @@
             "chapter": "Profils",
             "section": "Provocation (L)"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:souplesse-du-felin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -1648,7 +1780,8 @@
             "chapter": "Profils",
             "section": "Souplesse du félin"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:charisme-heroique:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -1663,7 +1796,8 @@
             "chapter": "Profils",
             "section": "Charisme héroïque"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:attaque-paralysante-l:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -1678,7 +1812,8 @@
             "chapter": "Profils",
             "section": "Attaque paralysante (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -1708,7 +1843,8 @@
             "chapter": "Profils",
             "section": "Agile"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:reflexes-felins:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -1723,7 +1859,8 @@
             "chapter": "Profils",
             "section": "Réflexes félins"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:acrobaties-g:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -1738,7 +1875,8 @@
             "chapter": "Profils",
             "section": "Acrobaties (G)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:agilite-heroique:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -1753,7 +1891,8 @@
             "chapter": "Profils",
             "section": "Agilité héroïque"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:esquive-de-la-magie-g:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -1768,7 +1907,8 @@
             "chapter": "Profils",
             "section": "Esquive de la magie (G)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -1798,7 +1938,8 @@
             "chapter": "Profils",
             "section": "Doigts agiles"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:aux-aguets:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -1813,7 +1954,8 @@
             "chapter": "Profils",
             "section": "Aux aguets"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:feindre-la-mort-g:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -1828,7 +1970,8 @@
             "chapter": "Profils",
             "section": "Feindre la mort (G)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:expert-en-criminalite:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -1843,7 +1986,8 @@
             "chapter": "Profils",
             "section": "Expert en criminalité"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:maitre-du-poison:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -1858,7 +2002,8 @@
             "chapter": "Profils",
             "section": "Maître du poison"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -1888,7 +2033,8 @@
             "chapter": "Profils",
             "section": "Attaque en finesse"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:esquive-fatale-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -1903,7 +2049,8 @@
             "chapter": "Profils",
             "section": "Esquive fatale (G)"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:frappe-chirurgicale:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -1918,7 +2065,8 @@
             "chapter": "Profils",
             "section": "Frappe chirurgicale"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:ambidextrie-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -1933,7 +2081,8 @@
             "chapter": "Profils",
             "section": "Ambidextrie (G)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:botte-secrete:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -1948,7 +2097,8 @@
             "chapter": "Profils",
             "section": "Botte secrète"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -1978,7 +2128,8 @@
             "chapter": "Profils",
             "section": "Murmures dans le vent (G)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:sous-tension:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -1993,7 +2144,8 @@
             "chapter": "Famille des mages",
             "section": "Sous tension (M)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:telekinesie:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -2008,7 +2160,8 @@
             "chapter": "Famille des mages",
             "section": "Télékinésie (A)*"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:progression-r4",
@@ -2023,7 +2176,8 @@
             "section": "Foudre (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:progression-r5",
@@ -2038,7 +2192,8 @@
             "section": "Forme éthérée (L)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -2068,7 +2223,8 @@
             "chapter": "Profils",
             "section": "Divination (L)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:detection-invisible:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -2083,7 +2239,8 @@
             "chapter": "Famille des mages",
             "section": "Détection de l’invisible (L)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:progression-r3",
@@ -2098,7 +2255,8 @@
             "section": "Clairvoyance (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:progression-r4",
@@ -2113,7 +2271,8 @@
             "section": "Perception héroïque",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:progression-r5",
@@ -2128,7 +2287,8 @@
             "section": "Prescience",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -2158,7 +2318,8 @@
             "chapter": "Profils",
             "section": "Injonction (A)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:sommeil:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -2173,7 +2334,8 @@
             "chapter": "Famille des mages",
             "section": "Sommeil (L)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:progression-r3",
@@ -2188,7 +2350,8 @@
             "section": "Confusion (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:progression-r4",
@@ -2203,7 +2366,8 @@
             "section": "Amitié (L)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:progression-r5",
@@ -2218,7 +2382,8 @@
             "section": "Domination (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -2248,7 +2413,8 @@
             "chapter": "Profils",
             "section": "Mirage (L)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:image-decalee:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -2263,7 +2429,8 @@
             "chapter": "Famille des mages",
             "section": "Image décalée (M)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:progression-r3",
@@ -2278,7 +2445,8 @@
             "section": "Sort illusoire (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:progression-r4",
@@ -2293,7 +2461,8 @@
             "section": "Imitation (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:progression-r5",
@@ -2308,7 +2477,8 @@
             "section": "Exécution mentale (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -2338,7 +2508,8 @@
             "chapter": "Profils",
             "section": "Choc (A)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:serviteur-invisible:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -2353,7 +2524,8 @@
             "chapter": "Famille des mages",
             "section": "Serviteur invisible (L)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:progression-r3",
@@ -2368,7 +2540,8 @@
             "section": "Arme de mana (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:progression-r4",
@@ -2383,7 +2556,8 @@
             "section": "Porte dimensionnelle (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:progression-r5",
@@ -2398,7 +2572,8 @@
             "section": "Mur de mana (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -2428,7 +2603,8 @@
             "chapter": "Profils",
             "section": "Prédicateur"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:progression-r2",
@@ -2443,7 +2619,8 @@
             "section": "Miracle mineur (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:progression-r3",
@@ -2458,7 +2635,8 @@
             "section": "Arme de lumière (M)* ou (L)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:progression-r4",
@@ -2473,7 +2651,8 @@
             "section": "Ailes célestes (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:progression-r5",
@@ -2488,7 +2667,8 @@
             "section": "Foudres divines (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -2518,7 +2698,8 @@
             "chapter": "Profils",
             "section": "Arme bénie (A)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:progression-r2",
@@ -2533,7 +2714,8 @@
             "section": "Bouclier de la foi",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:progression-r3",
@@ -2548,7 +2730,8 @@
             "section": "Châtiment divin (L)",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:progression-r4",
@@ -2563,7 +2746,8 @@
             "section": "Marteau de la foi (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:progression-r5",
@@ -2578,7 +2762,8 @@
             "section": "Mot de pouvoir (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -2608,7 +2793,8 @@
             "chapter": "Profils",
             "section": "Bénédiction (L)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:progression-r2",
@@ -2623,7 +2809,8 @@
             "section": "Sanctuaire (L)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:progression-r3",
@@ -2638,7 +2825,8 @@
             "section": "Destruction du mal (A)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:progression-r4",
@@ -2653,7 +2841,8 @@
             "section": "Volonté héroïque",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:progression-r5",
@@ -2668,7 +2857,8 @@
             "section": "Intervention divine (G)",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -2698,7 +2888,8 @@
             "chapter": "Profils",
             "section": "Récupération mineure (A)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-des-soins:class-pretre:cof2-lb-2024:progression-r2",
@@ -2713,7 +2904,8 @@
             "section": "Vigueur divine (L)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-des-soins:class-pretre:cof2-lb-2024:progression-r3",
@@ -2728,7 +2920,8 @@
             "section": "Récupération majeure (L)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-des-soins:class-pretre:cof2-lb-2024:progression-r4",
@@ -2743,7 +2936,8 @@
             "section": "Phénix",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "classpath:voie-des-soins:class-pretre:cof2-lb-2024:progression-r5",
@@ -2758,7 +2952,8 @@
             "section": "Rétablissement*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -2788,7 +2983,8 @@
             "chapter": "Profils",
             "section": "Vêtements sacrés"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:progression-r2",
@@ -2803,7 +2999,8 @@
             "section": "Augure (L)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:progression-r3",
@@ -2818,7 +3015,8 @@
             "section": "Délivrance (L)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:progression-r4",
@@ -2833,7 +3031,8 @@
             "section": "Charisme héroïque",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:progression-r5",
@@ -2848,7 +3047,8 @@
             "section": "Marche des plans (L)*",
             "textStatus": "PDF_FULL_TEXT"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -2878,7 +3078,8 @@
             "section": "Rapide comme son ombre"
           },
           "auditedLevel2": true,
-          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2."
+          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2.",
+          "auditedLevel3": true
         },
         {
           "id": "ability:jeune-worg:path:voie-du-gobelin:addon-comp2017-cof2:rank2:cof2-lb-2024",
@@ -2894,7 +3095,8 @@
             "section": "Jeune worg"
           },
           "auditedLevel2": true,
-          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2."
+          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2.",
+          "auditedLevel3": true
         },
         {
           "id": "ability:miam:path:voie-du-gobelin:addon-comp2017-cof2:rank3:cof2-lb-2024",
@@ -2910,7 +3112,8 @@
             "section": "Miam"
           },
           "auditedLevel2": false,
-          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2."
+          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2.",
+          "auditedLevel3": true
         },
         {
           "id": "ability:grand:path:voie-du-gobelin:addon-comp2017-cof2:rank4:cof2-lb-2024",
@@ -2926,7 +3129,8 @@
             "section": "Grand worg"
           },
           "auditedLevel2": false,
-          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2."
+          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2.",
+          "auditedLevel3": false
         },
         {
           "id": "ability:vif-et:path:voie-du-gobelin:addon-comp2017-cof2:rank5:cof2-lb-2024",
@@ -2942,7 +3146,8 @@
             "section": "Vif et alerte"
           },
           "auditedLevel2": false,
-          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2."
+          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2.",
+          "auditedLevel3": false
         }
       ]
     },
@@ -2971,7 +3176,8 @@
             "chapter": "Création du personnage",
             "section": "Petite taille"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:r-sistance-l-gendaire:path:voie-du-halfelin:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -2986,7 +3192,8 @@
             "chapter": "Création du personnage",
             "section": "Résistance légendaire"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:bon-pour-le-moral:path:voie-du-halfelin:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -3001,7 +3208,8 @@
             "chapter": "Création du personnage",
             "section": "Bon pour le moral"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:petit-veinard:path:voie-du-halfelin:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -3016,7 +3224,8 @@
             "chapter": "Création du personnage",
             "section": "Petit veinard"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:vif-et-bien-nourri:path:voie-du-halfelin:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -3031,7 +3240,8 @@
             "chapter": "Création du personnage",
             "section": "Vif et bien nourri"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -3066,7 +3276,8 @@
               "name": "Origine géographique ou sociale (livre de base p. 57)",
               "text": "Origine géographique ou sociale (choisissez ou lancez un d6) : 1 Montagnard (escalade et résistance au froid). 2 Citadin (commerce et résistance aux maladies). 3 Campagnard (météorologie et équitation). 4 Riverain (natation et navigation). 5 Sauvage (chasser et pister). 6 Nomade (orientation et résistance à la chaleur ou au froid). Le MJ peut en inventer d’autres selon les cultures présentes dans son univers de jeu (troglodyte, marais, etc.). Éventuellement, le joueur peut remplacer un des bonus d’origine géographique par un bonus en relation avec son origine sociale ou un gagne-pain de son choix (serrurier, forgeron, scribe, maçon, chasseur, cuisinier, acrobate, pickpocket, bibliothécaire, étudiant, etc.). Le gagne-pain ne peut pas être un profil et le bonus obtenu ne s’applique jamais à des tests de combat. Exemple : Un citadin étudiant en magie pourrait obtenir un bonus de +3 aux tests de commerce et +3 aux tests d’érudition occulte, même si son personnage est finalement devenu guerrier."
             }
-          ]
+          ],
+          "auditedLevel3": true
         },
         {
           "id": "ability:instinct-de-survie:path:voie-de-l-humain:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -3081,7 +3292,8 @@
             "chapter": "Création du personnage",
             "section": "Instinct de survie"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:touche-tout:path:voie-de-l-humain:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -3096,7 +3308,8 @@
             "chapter": "Création du personnage",
             "section": "Touche‑à‑tout"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:loup-parmi-les-loups:path:voie-de-l-humain:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -3111,7 +3324,8 @@
             "chapter": "Création du personnage",
             "section": "Loup parmi les loups"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:polyvalence:path:voie-de-l-humain:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -3126,7 +3340,8 @@
             "chapter": "Création du personnage",
             "section": "Polyvalence"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -3156,7 +3371,8 @@
             "section": "Main lourde"
           },
           "auditedLevel2": true,
-          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2."
+          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2.",
+          "auditedLevel3": true
         },
         {
           "id": "ability:choc-lectrique:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank2:cof2-lb-2024",
@@ -3172,7 +3388,8 @@
             "section": "Choc électrique (L)"
           },
           "auditedLevel2": true,
-          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2."
+          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2.",
+          "auditedLevel3": true
         },
         {
           "id": "ability:camouflage:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank3:cof2-lb-2024",
@@ -3188,7 +3405,8 @@
             "section": "Camouflage"
           },
           "auditedLevel2": false,
-          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2."
+          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2.",
+          "auditedLevel3": true
         },
         {
           "id": "ability:forg-dans:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank4:cof2-lb-2024",
@@ -3204,7 +3422,8 @@
             "section": "Forgé dans la bataille"
           },
           "auditedLevel2": false,
-          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2."
+          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2.",
+          "auditedLevel3": false
         },
         {
           "id": "ability:machine:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank5:cof2-lb-2024",
@@ -3220,7 +3439,8 @@
             "section": "Machine de guerre"
           },
           "auditedLevel2": false,
-          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2."
+          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2.",
+          "auditedLevel3": false
         }
       ]
     },
@@ -3256,7 +3476,8 @@
               "name": "Référence de table COF2 : Langage des animaux (p. 114)",
               "text": "Le druide sait communiquer avec les mammifères. La communication reste primitive et limitée à l’intelligence de l’animal et à son point de vue (prédateur, proie, etc.). De plus, il ajoute son rang + 2 à tous les tests destinés à influencer un animal avec lequel il peut communiquer. Chaque fois que le personnage atteint le rang 4 dans une voie de druide, il apprend à communiquer avec une nouvelle catégorie d’animaux de son choix : les oiseaux, les reptiles (et les amphibiens), les poissons (et les mollusques) ou les arthropodes (insectes, araignées, scorpions, etc.) et enfin les animaux fantastiques (griffon, pégase, etc.)."
             }
-          ]
+          ],
+          "auditedLevel3": true
         },
         {
           "id": "ability:etre-feerique-r2:path:voie-de-letre-feerique:addon-comp2017-cof2:r2:foh-cof2-v1",
@@ -3278,7 +3499,8 @@
               "name": "Référence de table COF2 : Invisibilité (p. 106)",
               "text": "Le magicien se rend invisible pendant [1d4°+INT] minutes. Une fois invisible, personne ne peut plus détecter sa présence ou lui porter d’attaque directe. Si le magicien attaque, il redevient visible. À partir du rang 5, le magicien peut lancer ce sort sur un allié au prix d’une action limitée."
             }
-          ]
+          ],
+          "auditedLevel3": true
         },
         {
           "id": "ability:etre-feerique-r3:path:voie-de-letre-feerique:addon-comp2017-cof2:r3:foh-cof2-v1",
@@ -3294,7 +3516,8 @@
             "section": "Monture féerique"
           },
           "auditedLevel2": false,
-          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2."
+          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2.",
+          "auditedLevel3": true
         },
         {
           "id": "ability:etre-feerique-r4:path:voie-de-letre-feerique:addon-comp2017-cof2:r4:foh-cof2-v1",
@@ -3310,7 +3533,8 @@
             "section": "Grande taille (L)"
           },
           "auditedLevel2": false,
-          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2."
+          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2.",
+          "auditedLevel3": false
         },
         {
           "id": "ability:etre-feerique-r5:path:voie-de-letre-feerique:addon-comp2017-cof2:r5:foh-cof2-v1",
@@ -3326,7 +3550,8 @@
             "section": "Seigneur féerique"
           },
           "auditedLevel2": false,
-          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2."
+          "conversionNote": "Source COF1 : les mentions DEX, SAG et Mod. sont celles du livre. Adaptation COF2 de la table, distincte des voies officielles COF2.",
+          "auditedLevel3": false
         }
       ]
     },
@@ -3355,7 +3580,8 @@
             "chapter": "Création du personnage",
             "section": "Lumière des étoiles"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:enfant-de-la-for-t:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank2:cof2-lb-2024",
@@ -3370,7 +3596,8 @@
             "chapter": "Création du personnage",
             "section": "Enfant de la forêt"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "ability:archer-m-rite:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -3385,7 +3612,8 @@
             "chapter": "Création du personnage",
             "section": "Archer émérite"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": true
         },
         {
           "id": "ability:fl-che-sanglante-l:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank4:cof2-lb-2024",
@@ -3400,7 +3628,8 @@
             "chapter": "Création du personnage",
             "section": "Flèche sanglante (L)"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         },
         {
           "id": "ability:sup-riorit-elfique:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank5:cof2-lb-2024",
@@ -3415,7 +3644,8 @@
             "chapter": "Création du personnage",
             "section": "Supériorité elfique"
           },
-          "auditedLevel2": false
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     },
@@ -3445,7 +3675,8 @@
             "status": "SOURCE_VERIFIED",
             "textStatus": "PHOTO_TRANSCRIPTION"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "history:mountains:rank:2",
@@ -3461,7 +3692,8 @@
             "status": "SOURCE_VERIFIED",
             "textStatus": "PHOTO_TRANSCRIPTION"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "history:mountains:rank:3",
@@ -3477,7 +3709,8 @@
             "status": "SOURCE_VERIFIED",
             "textStatus": "PHOTO_TRANSCRIPTION"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "history:mountains:rank:4",
@@ -3493,7 +3726,8 @@
             "status": "SOURCE_VERIFIED",
             "textStatus": "PHOTO_TRANSCRIPTION"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": false
         },
         {
           "id": "history:mountains:rank:5",
@@ -3509,7 +3743,8 @@
             "status": "SOURCE_VERIFIED",
             "textStatus": "PHOTO_TRANSCRIPTION"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": false
         }
       ]
     },
@@ -3539,7 +3774,8 @@
             "status": "SOURCE_VERIFIED",
             "textStatus": "PHOTO_TRANSCRIPTION"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "history:nomad:rank:2",
@@ -3555,7 +3791,8 @@
             "status": "SOURCE_VERIFIED",
             "textStatus": "PHOTO_TRANSCRIPTION"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "history:nomad:rank:3",
@@ -3571,7 +3808,8 @@
             "status": "SOURCE_VERIFIED",
             "textStatus": "PHOTO_TRANSCRIPTION"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         },
         {
           "id": "history:nomad:rank:4",
@@ -3587,7 +3825,8 @@
             "status": "SOURCE_VERIFIED",
             "textStatus": "PHOTO_TRANSCRIPTION"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": false
         },
         {
           "id": "history:nomad:rank:5",
@@ -3603,7 +3842,8 @@
             "status": "SOURCE_VERIFIED",
             "textStatus": "PHOTO_TRANSCRIPTION"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": false
         }
       ]
     },
@@ -3633,7 +3873,8 @@
             "chapter": "Profils",
             "section": "Langage des animaux"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         }
       ]
     },
@@ -3663,7 +3904,8 @@
             "chapter": "Profils",
             "section": "Vitesse du félin"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         }
       ]
     },
@@ -3693,7 +3935,8 @@
             "chapter": "Profils",
             "section": "Maître de la survie"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         }
       ]
     },
@@ -3723,7 +3966,8 @@
             "chapter": "Profils",
             "section": "Baies magiques (L)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
         }
       ]
     },
@@ -3753,7 +3997,976 @@
             "chapter": "Profils",
             "section": "Peau d’écorce (M)*"
           },
-          "auditedLevel2": true
+          "auditedLevel2": true,
+          "auditedLevel3": true
+        }
+      ]
+    },
+    {
+      "id": "classpath:voie-du-demon:class-sorcier:cof2-lb-2024",
+      "name": "Voie du démon",
+      "kind": "profile",
+      "classId": "class:sorcier:cof2-lb-2024",
+      "ranks": [
+        {
+          "id": "ability-r1-class-sorcier-demon-malediction-cof2-lb-2024",
+          "rank": 1,
+          "name": "Malédiction (M) ou (L)*",
+          "text": "Le sorcier effectue un test opposé d’attaque magique contre une cible à moins de 20 m. En cas de succès, si l’incantation était une action de mouvement (M), la victime subit un dé malus à son prochain test. Si l’incantation était une action limitée (L), le dé malus s’applique à ses 3 prochains tests. Dans tous les cas, la cible ne peut subir les effets de ce sort qu’une fois par combat.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 108,
+            "chapter": "Profils",
+            "section": "Malédiction (M) ou (L)*"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:beaute-de-la-succube-l-:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024",
+          "rank": 2,
+          "name": "Beauté de la succube (L)*",
+          "text": "Le sorcier acquiert une beauté fascinante pour INT minutes. Il gagne un dé bonus aux tests de CHA ainsi qu’une attaque de contact nécessitant un test d’attaque magique (contre DEF, action d’attaque), qui inflige [1d4°+INT] DM. Le sorcier récupère autant de PV (sans dépasser son maximum de PV) que la cible en a perdu.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 108,
+            "chapter": "Profils",
+            "section": "Beauté de la succube (L)*"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank3",
+          "rank": 3,
+          "name": "Pacte démoniaque (G)",
+          "text": "Le sorcier sacrifie 1d4° PV et gagne immédiatement +INT sur le résultat d’un d20 qu’il vient de lancer ou en DEF contre une attaque (avant de savoir si une attaque touche). De plus, il ajoute désormais sa VOL au nombre de dés de récupération (DR) qu’il possède.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 108,
+            "section": "Pacte démoniaque (G)",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank4",
+          "rank": 4,
+          "name": "Aspect du démon (A)*",
+          "text": "Le sorcier prend l’apparence d’un démon ailé pendant INT minutes. Il gagne un dé bonus en attaque au contact et +5 en DEF et à tous les tests physiques (FOR, AGI, CON), mais il ne peut pas utiliser d’arme (ni les arts martiaux). Il peut faire deux attaques de griffes à [1d4°+INT] DM à chaque tour, en action limitée (une seule en action d’attaque) et il peut voler de 10 m par action de mouvement. Note : Ne se cumule pas avec la Beauté de la succube.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 108,
+            "section": "Aspect du démon (A)*",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank5",
+          "rank": 5,
+          "name": "Invocation d’un démon (L)*",
+          "text": "En sacrifiant 1d4° PV, le sorcier invoque un démon à son service pour INT minutes. Ce démon possède l’apparence d’un humanoïde musclé d’environ 2,30 m doté d’une épée et d’ailes de chauve‑souris. Le démon divise par deux tous les DM non magiques subis, les sorts et les armes magiques lui infligent des DM normaux. Il est capable de voler à une vitesse équivalente à un déplacement normal. Lorsque le sorcier atteint le niveau 15, le démon devient capable d’attaquer deux fois à son tour, au prix d’une action limitée. DÉMON | AGI +2 | CON +4* | FOR +5* | PER +2 | | CHA +0 | INT +2 | VOL +4 | Défense 18 (S) Points de vigueur [niveau du sorcier × 5] (V) Initiative [Init. du sorcier] (I) Attaque au contact [attaque magique du sorcier] · DM 2d4°+5",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 108,
+            "section": "Invocation d’un démon (L)*",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        }
+      ]
+    },
+    {
+      "id": "classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024",
+      "name": "Voie de la mort",
+      "kind": "profile",
+      "classId": "class:sorcier:cof2-lb-2024",
+      "ranks": [
+        {
+          "id": "ability-r1-class-sorcier-mort-siphon-des-ames-cof2-lb-2024",
+          "rank": 1,
+          "name": "Siphon des âmes",
+          "text": "Une fois par round, lorsqu’une créature humanoïde vivante meurt à moins de 20 m du sorcier, il récupère NC PV (arrondis à 1 pour NC ½). À partir du rang 3, si la créature est de NC supérieur à 4, il peut choisir de récupérer 1 PM au lieu des PV.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 108,
+            "chapter": "Profils",
+            "section": "Siphon des âmes"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:masque-mortuaire-m-:classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024",
+          "rank": 2,
+          "name": "Masque mortuaire (M)*",
+          "text": "Le sorcier prend l’apparence de la mort pendant INT minutes. Il est alors considéré non‑vivant et devient immunisé à la plupart des pouvoirs des morts‑vivants (drain de vigueur et affaiblissement, paralysie de la goule, etc.). De plus, ceux‑ci le prennent pour l’un des leurs. Il divise par deux tous les DM de froid. Il ne peut pas bénéficier de soins tant qu’il est sous l’effet de ce sort. Note : Les créatures non vivantes sont infatigables, ne respirent pas et sont immunisées aux maladies, aux poisons et à la plupart des attaques qui demandent un test de CON. Elles voient dans le noir comme dans de la pénombre à une distance de 30 m.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 109,
+            "chapter": "Profils",
+            "section": "Masque mortuaire (M)*"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024:rank3",
+          "rank": 3,
+          "name": "Baiser du vampire (A)*",
+          "text": "Ce sort nécessite la réussite d’un test opposé d’attaque magique (portée 30 m). La victime subit [2d4°+INT] DM et le sorcier récupère autant de PV (sans dépasser son maximum de PV).",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 109,
+            "section": "Baiser du vampire (A)*",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024:rank4",
+          "rank": 4,
+          "name": "Peur (A) ou (L)*",
+          "text": "Le sorcier effectue un test opposé d’attaque magique contre une cible (portée 20 m). S’il l’emporte, la victime fuit aussi loin du sorcier que possible pendant INT rounds (il lui faut généralement autant de temps pour revenir !). Les créatures dont le NC est supérieur ou égal au niveau du sorcier ne fuient qu’un seul round. Le sorcier peut choisir de lancer ce sort en action limitée et toutes les créatures à son contact sont affectées (faire un test d’attaque magique par adversaire).",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 109,
+            "section": "Peur (A) ou (L)*",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024:rank5",
+          "rank": 5,
+          "name": "Briser les cœurs (A)*",
+          "text": "Le sorcier fait mine d’arracher le cœur de sa victime, puis de broyer dans sa main (l’image du cœur de la victime apparaît dans la main du sorcier). Il doit faire un test opposé d’attaque magique contre une cible vivante (portée 20 m) et, en cas de réussite, il inflige [5d4°+INT] DM, la moitié en cas de test raté. Ce sort ne peut affecter une même cible qu’une seule fois par combat.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 109,
+            "section": "Briser les cœurs (A)*",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        }
+      ]
+    },
+    {
+      "id": "classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024",
+      "name": "Voie de l’outre-tombe",
+      "kind": "profile",
+      "classId": "class:sorcier:cof2-lb-2024",
+      "ranks": [
+        {
+          "id": "ability-r1-class-sorcier-outre-tombe-un-pied-dans-la-tombe-cof2-lb-2024",
+          "rank": 1,
+          "name": "Un pied dans la tombe (A)*",
+          "text": "Le sorcier désigne une cible vivante à portée (10 m) et doit réussir un test opposé d’attaque magique. En cas de succès, la cible ressent une douleur intense à l’emplacement du cœur, elle subit [1d4°+INT] DM et, si elle rate un test de CON difficulté 10, l’état ralenti durant 1 round.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 109,
+            "chapter": "Profils",
+            "section": "Un pied dans la tombe (A)*"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:armure-d-os:classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024",
+          "rank": 2,
+          "name": "Armure d’os",
+          "text": "Le sorcier peut désormais porter une armure d’os (souvent camouflée sous une robe) qui lui offre un bonus de +3 en DEF et n’empêche pas l’utilisation des capacités de sorcier. Son bonus de DEF augmente de +1 chaque fois que le personnage atteint le rang 4 dans une voie de sorcier. Le sorcier doit confectionner cette armure lui‑même à partir d’ossements et l’entretenir par magie 10 min chaque jour.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 109,
+            "chapter": "Profils",
+            "section": "Armure d’os"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024:rank3",
+          "rank": 3,
+          "name": "Animation des morts (L)*",
+          "text": "Le sorcier anime le cadavre d’un humanoïde de taille moyenne, décédé depuis moins d’INT jours. Le zombie comprend les ordres « Attaquer », « Suivre », « Garder » et « Pas bouger ». Le sorcier peut contrôler un seul zombie, plus un zombie chaque fois qu’il atteint le rang 5 dans une voie de sorcier. Un zombie réduit à 0 PV tombe en poussière. ZOMBIE | AGI ‑1 | CON +1 | FOR +2 | PER ‑2 | | CHA ‑4 | INT ‑4 | VOL +6 | Défense 10 (S) Points de vigueur [10 + niveau] (V) Initiative 8 (I) Attaque au contact [attaque magique du sorcier] · DM 1d4°+2 Le zombie se déplace de 5 m par action de mouvement.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 109,
+            "section": "Animation des morts (L)*",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024:rank4",
+          "rank": 4,
+          "name": "Ensevelissement (L)*",
+          "text": "Une fois par combat, si le sorcier réussit un test opposé d’attaque magique (portée 20 m), des mains squelettiques surgissent sous les pieds d’une cible de taille moyenne ou inférieure et l’enterrent vivante. Tant qu’elle est ensevelie, elle subit 2d4° DM par round, ne peut agir ni être la cible d’attaques extérieures. À son tour, elle peut tenter de sortir de terre en réussissant un test de FOR ou d’AGI (au choix de la cible) difficulté 15 au prix d’une action limitée. Si elle tombe à 0 PV, elle reste enterrée et décède au tour suivant. Chaque personne qui creuse pour l’aider lui octroie un bonus de +2 sur son test (maximum +10).",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 110,
+            "section": "Ensevelissement (L)*",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024:rank5",
+          "rank": 5,
+          "name": "Armée des morts (L)*",
+          "text": "Une fois par jour, le sorcier peut invoquer d’innombrables squelettes qui émergent du sol pour attaquer ses ennemis pendant [niveau du sorcier] rounds. Tous les adversaires situés dans un rayon de 10 m autour du sorcier subissent automatiquement 2d4° DM par round. Les squelettes se déplacent avec le sorcier, mais tous les déplacements dans cette zone (même ceux du sorcier) sont divisés par deux.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 110,
+            "section": "Armée des morts (L)*",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        }
+      ]
+    },
+    {
+      "id": "classpath:voie-du-sang:class-sorcier:cof2-lb-2024",
+      "name": "Voie du sang",
+      "kind": "profile",
+      "classId": "class:sorcier:cof2-lb-2024",
+      "ranks": [
+        {
+          "id": "ability-r1-class-sorcier-sang-saignements-cof2-lb-2024",
+          "rank": 1,
+          "name": "Saignements (A)*",
+          "text": "Le sorcier doit réussir un test d’attaque magique (portée 10 m) contre une difficulté de [10 + CON de la cible]. Du sang s’écoule de la bouche, du nez, des oreilles et même des yeux de la victime, qui subit 1d4° DM par round pendant INT rounds.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 110,
+            "chapter": "Profils",
+            "section": "Saignements (A)*"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:sang-mordant-m-:classpath:voie-du-sang:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024",
+          "rank": 2,
+          "name": "Sang mordant (M)*",
+          "text": "Pendant INT minutes, le sang du sorcier se transforme en un acide qui gicle lorsqu’il subit une blessure. Chaque fois qu’un ennemi au contact le blesse, ce dernier subit 1d4° DM d’acide.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 110,
+            "chapter": "Profils",
+            "section": "Sang mordant (M)*"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-du-sang:class-sorcier:cof2-lb-2024:rank3",
+          "rank": 3,
+          "name": "Exsangue",
+          "text": "Le corps du sorcier devient cadavérique. Il gagne +2 en DEF et ce bonus passe à +3 au rang 5 (Si le personnage porte une armure autre qu’une armure d’os de sorcier, le bonus est réduit de 1 point, donc +1 DEF et +2 DEF au rang 5). De plus, lorsqu’il tombe à 0 PV, il peut continuer à agir, mais avec un dé malus à tous ses tests. S’il subit encore au moins 1 DM, il sombre dans l’inconscience.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 110,
+            "section": "Exsangue",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-du-sang:class-sorcier:cof2-lb-2024:rank4",
+          "rank": 4,
+          "name": "Rituel de sang (A)*",
+          "text": "Le sorcier s’ouvre les veines et sacrifie 1d4° PV pour cibler une créature vivante (portée 20 m), la victime saigne à la moindre blessure. Tous les DM infligés à la cible par des armes tranchantes ou perçantes (griffes et crocs inclus) augmentent de +1d4° pendant INT rounds.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 111,
+            "section": "Rituel de sang (A)*",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-du-sang:class-sorcier:cof2-lb-2024:rank5",
+          "rank": 5,
+          "name": "Lien de sang (A)*",
+          "text": "En réussissant un test opposé d’attaque magique (portée 20 m), le sorcier tisse un lien avec sa victime. Pendant INT minutes, la moitié des DM reçus par le sorcier sont également subis par la cible (les DM infligés au sorcier ne sont pas pour autant réduits) et le sorcier peut lui lancer un sort sans la voir (si elle est à portée).",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 111,
+            "section": "Lien de sang (A)*",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        }
+      ]
+    },
+    {
+      "id": "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+      "name": "Voie de la sombre magie",
+      "kind": "profile",
+      "classId": "class:sorcier:cof2-lb-2024",
+      "ranks": [
+        {
+          "id": "ability-r1-class-sorcier-sombre-magie-tenebres-cof2-lb-2024",
+          "rank": 1,
+          "name": "Ténèbres (L)*",
+          "text": "Le sorcier invoque une zone fixe de ténèbres magiques, de 10 m de diamètre, à une portée de 20 m pour une durée d’INT minutes. Toutes les créatures, même celles capables de voir dans le noir, sont aveuglées dans cette zone. En plus de ce sort, le sorcier ajoute son rang + 2 à tous les tests d’INT basés sur les savoirs sombres (démons, morts‑vivants, rituels impies, etc.).",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 111,
+            "chapter": "Profils",
+            "section": "Ténèbres (L)*"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reptation-m-:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024",
+          "rank": 2,
+          "name": "Reptation (M)*",
+          "text": "Pendant INT minutes, le sorcier peut ramper de 5 m par action de mouvement sur les murs et les plafonds. Il peut lancer des sorts dans cette posture.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 111,
+            "chapter": "Profils",
+            "section": "Reptation (M)*"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank3",
+          "rank": 3,
+          "name": "Strangulation (A)*",
+          "text": "En réussissant un test opposé d’attaque magique (portée 20 m), le sorcier étouffe une créature vivante. La victime subit un dé malus à tous ses tests et [1d4°+INT] DM par round tant que le sorcier maintient sa concentration par une action de mouvement et la dépense de 1 PM par round. Si la victime sort de la portée du sort, il prend fin.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 111,
+            "section": "Strangulation (A)*",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank4",
+          "rank": 4,
+          "name": "Manteau d’ombre (L)*",
+          "text": "Le sorcier s’enveloppe d’ombre pendant INT minutes. Il gagne un dé bonus à tous les tests de discrétion et il impose un dé malus à tous les tests d’attaque à distance qui le prennent pour cible. S’il tombe à 0 PV pendant la durée du sort, il peut choisir de disparaître dans son ombre et de réapparaître à 1d6 km dans la direction de son choix avec 1d4° PV, 1d6 min plus tard (une dissipation de la magie (Maîtrise de la magie, voie du mage) lancée sur la zone où le sorcier a disparu dans son ombre avant sa réapparition au loin fait apparaître son corps et annule l’effet). Ceci met fin au sort et interdit de le lancer de nouveau avant le prochain crépuscule.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 111,
+            "section": "Manteau d’ombre (L)*",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank5",
+          "rank": 5,
+          "name": "Pacte ténébreux",
+          "text": "Le sorcier augmente sa CON de +1. Désormais, il obtient un dé bonus aux tests de CON et voit dans le noir comme s’il s’agissait de pénombre. De plus, lorsqu’il lance un sort, il peut sacrifier 1d4° PV pour ajouter +2d4° aux DM de ce sort. S’il s’agit d’un sort dont les DM durent de round en round (comme strangulation), il peut sacrifier 1d4° PV chaque round.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 111,
+            "section": "Pacte ténébreux",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        }
+      ]
+    },
+    {
+      "id": "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+      "name": "Voie de l’énergie vitale",
+      "kind": "profile",
+      "classId": "class:moine:cof2-lb-2024",
+      "ranks": [
+        {
+          "id": "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1",
+          "rank": 1,
+          "name": "Mains d’énergie (L)",
+          "text": "Par un effort de concentration, le moine peut rendre ses mains intangibles. Au prix d’une action limitée, à son tour, il peut faire une attaque à mains nues avec un bonus en attaque égal au rang + 2. De plus, même lorsqu’il n’utilise pas Mains d’énergie, toutes les attaques à mains nues du moine sont considérées comme magiques et il peut choisir de remplacer sa FOR aux DM par sa VOL.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 119,
+            "chapter": "Profils",
+            "section": "Mains d’énergie (L)"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024:rank2",
+          "rank": 2,
+          "name": "Projection du ki (L)",
+          "text": "Le moine projette une vague de force avec son corps et son esprit à une distance maximale de 20 m. Un test d’attaque magique réussi lui permet d’infliger [1d4°+ VOL] DM. Les DM passent à [2d4°+ VOL] au rang 4.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 119,
+            "section": "Projection du ki (L)",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024:rank3",
+          "rank": 3,
+          "name": "Invulnérable",
+          "text": "Le moine ne reçoit que la moitié des DM de toutes les sources « élémentaires » : Feu, froid, foudre, acide… ainsi que des poisons ou des maladies. À partir du rang 5, il ne reçoit plus aucun DM ni effet des poisons et des maladies.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 119,
+            "section": "Invulnérable",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024:rank4",
+          "rank": 4,
+          "name": "Pression mortelle (M)",
+          "text": "Le moine frappe les points par lesquels circule l’énergie vitale d’une créature vivante. En touchant un point précis, il libère ensuite des effets dévastateurs. Lorsqu’il combat à mains nues, le joueur peut choisir de ne pas infliger immédiatement les DM de ses attaques, il les comptabilise à part et ajoute +1d4° aux DM de chaque attaque. À tout moment dans l’heure qui suit, il peut annoncer une Pression mortelle. Il doit alors réussir un test d’attaque au contact contre la DEF de la cible (action limitée), ce qui libère instantanément la totalité des DM infligés jusqu’alors. À partir du niveau 10, le moine n’a plus besoin de toucher sa cible pour déclencher cet effet ; dans ce cas, il remplace le test d’attaque au contact par un test opposé d’attaque magique, mais n'a droit qu'à un seul essai..",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 119,
+            "section": "Pression mortelle (M)",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024:rank5",
+          "rank": 5,
+          "name": "Ascétisme",
+          "text": "Le moine ne mange presque plus, et il peut subsister sans eau et sans sommeil pendant [5 + VOL] jour. Il ne subit aucune pénalité durant cette période. De plus, le moine augmente sa CON de +1 et obtient un dé bonus aux tests de CON.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 119,
+            "section": "Ascétisme",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        }
+      ]
+    },
+    {
+      "id": "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024",
+      "name": "Voie de la maîtrise",
+      "kind": "profile",
+      "classId": "class:moine:cof2-lb-2024",
+      "ranks": [
+        {
+          "id": "ability:agilite-du-singe:classpath-voie-de-la-maitrise-class-moine-cof2-lb-2024:r1",
+          "rank": 1,
+          "name": "Agilité du singe",
+          "text": "Le moine ajoute son rang + 2 à tous ses tests pour effectuer des acrobaties ou esquiver et il gagne +2 en DEF. Ce bonus passe à +3 au rang 4. Se relever (si le personnage est renversé) devient une action gratuite.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 119,
+            "chapter": "Profils",
+            "section": "Agilité du singe"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024:rank2",
+          "rank": 2,
+          "name": "Griffes du tigre",
+          "text": "Désormais, lorsque le moine obtient un résultat de 1 au dé de DM à mains nues, il le remplace par le résultat maximal du dé. De plus le moine peut choisir d’infliger des DM tranchants ou perforants lorsqu’il combat à mains nues au lieu de DM contondants.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 119,
+            "section": "Griffes du tigre",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024:rank3",
+          "rank": 3,
+          "name": "Morsure du serpent",
+          "text": "Lorsqu’il attaque à mains nues, le moine augmente de 1 point les chances d’obtenir un critique sur les attaques au contact (par exemple, 19‑20 au lieu de 20). De plus, ses coups critiques portés à mains nues sont désormais si douloureux que la cible est affaiblie pendant 1 round.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 119,
+            "section": "Morsure du serpent",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024:rank4",
+          "rank": 4,
+          "name": "Fureur du dragon (L)",
+          "text": "Une fois par combat, le moine peut effectuer une attaque tournoyante qui inflige automatiquement [3d4°+FOR] DM à tous les adversaires au contact et oblige ceux‑ci à réussir un test de FOR difficulté 10 pour ne pas être renversés.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 119,
+            "section": "Fureur du dragon (L)",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024:rank5",
+          "rank": 5,
+          "name": "Moment de perfection",
+          "text": "Une fois par jour, le moine peut choisir de réussir toutes ses attaques automatiquement (pas de critique) et d’esquiver toutes celles qui le prennent pour cible pendant un round. Tout semble aller au ralenti autour de lui… Il peut utiliser cette capacité une fois de plus chaque jour par rang 5 atteint dans une autre voie de moine, mais pas plus d’une fois par combat. De plus le moine augmente définitivement de +1 la valeur de sa plus faible caractéristique (choisir en cas d’égalité).",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 120,
+            "section": "Moment de perfection",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        }
+      ]
+    },
+    {
+      "id": "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024",
+      "name": "Voie de la méditation",
+      "kind": "profile",
+      "classId": "class:moine:cof2-lb-2024",
+      "ranks": [
+        {
+          "id": "ability:pacifisme:classpath-voie-de-la-meditation-class-moine-cof2-lb-2024:r1",
+          "rank": 1,
+          "name": "Pacifisme",
+          "text": "Tant que le moine n’a réalisé aucune action offensive dans un combat, il bénéficie d’un bonus de +5 en DEF et divise par deux tous les DM subis par des attaques. De plus, il obtient un bonus égal à son rang + 2 à tous les tests d’empathie (pour analyser l’état émotionnel d’un interlocuteur) ou à ceux effectués pour apaiser un auditoire ou le convaincre de ne pas avoir recours à la violence.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 120,
+            "chapter": "Profils",
+            "section": "Pacifisme"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-la-meditation:class-moine:cof2-lb-2024:rank2",
+          "rank": 2,
+          "name": "Transe de guérison",
+          "text": "Le moine peut méditer pendant 10 min et récupérer ainsi [1d4°+VOL] PV. Les soins augmentent de +1d4° chaque fois que le personnage atteint le rang 4 dans une voie de moine. Il doit terminer une récupération rapide avant de pouvoir à nouveau utiliser cette capacité et il ne peut pas l’utiliser plus de trois fois par jour.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 120,
+            "section": "Transe de guérison",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-la-meditation:class-moine:cof2-lb-2024:rank3",
+          "rank": 3,
+          "name": "Maîtrise du ki",
+          "text": "Le moine utilise sa force mentale pour augmenter son efficacité en combat. Il ajoute sa VOL à son Initiative et à ses PV. De plus, il gagne +2 en DEF (ce bonus passe à +3 au rang 5).",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 120,
+            "section": "Maîtrise du ki",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-la-meditation:class-moine:cof2-lb-2024:rank4",
+          "rank": 4,
+          "name": "Volonté héroïque",
+          "text": "Le moine augmente sa VOL de +1. Désormais, il obtient un dé bonus aux tests de VOL.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 120,
+            "section": "Volonté héroïque",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-de-la-meditation:class-moine:cof2-lb-2024:rank5",
+          "rank": 5,
+          "name": "Projection mentale (L)",
+          "text": "Une fois par jour, le moine entre en méditation et projette son esprit hors de son corps pendant [1d4°+VOL] minutes. Il ressemble à un ectoplasme de couleur blanche qui se déplace en volant à la vitesse de 10 m par round. Il peut passer au travers des murs, mais pas des êtres vivants ou des barrières magiques. Le moine ne perçoit le monde que par sa projection mentale, mais ressent les DM qui sont infligés à son corps. Il peut utiliser cette capacité une fois de plus chaque jour par rang 5 atteint dans une autre voie de moine. De plus le moine augmente définitivement de +1 la valeur de sa plus faible caractéristique (choisir en cas d’égalité).",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 120,
+            "section": "Projection mentale (L)",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        }
+      ]
+    },
+    {
+      "id": "classpath:voie-du-poing:class-moine:cof2-lb-2024",
+      "name": "Voie du poing",
+      "kind": "profile",
+      "classId": "class:moine:cof2-lb-2024",
+      "ranks": [
+        {
+          "id": "ability:poings-de-fer:classpath-voie-du-poing-class-moine-cof2-lb-2024:r1",
+          "rank": 1,
+          "name": "Poings de fer",
+          "text": "Lorsqu’il combat à mains nues, le moine peut (s’il le souhaite) remplacer sa FOR par son AGI pour ses tests d’attaque au contact et il inflige [1d6+FOR] DM létaux (Voir « DM temporaires » page 219). Ces DM augmentent à chaque rang suivant : 1d8 au rang 2, 1d10 au rang 3, 1d12 au rang 4 et enfin 2d6 au rang 5.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 121,
+            "chapter": "Profils",
+            "section": "Poings de fer"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-du-poing:class-moine:cof2-lb-2024:rank2",
+          "rank": 2,
+          "name": "Peau de fer",
+          "text": "Le moine gagne un bonus de +2 en DEF et il divise tous les DM temporaires subis par deux. Le bonus de DEF passe à +3 au rang 5.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 121,
+            "section": "Peau de fer",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-du-poing:class-moine:cof2-lb-2024:rank3",
+          "rank": 3,
+          "name": "Parade de projectiles (G)",
+          "text": "Le moine peut dévier un projectile (flèche, javelot…) une fois par round (sauf si le test d’attaque est un critique ou si l’attaque vient d’une arme à poudre).",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 121,
+            "section": "Parade de projectiles (G)",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-du-poing:class-moine:cof2-lb-2024:rank4",
+          "rank": 4,
+          "name": "Déluge de coups (L)",
+          "text": "À son tour, le moine peut effectuer deux attaques au contact sur des cibles de son choix.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 121,
+            "section": "Déluge de coups (L)",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-du-poing:class-moine:cof2-lb-2024:rank5",
+          "rank": 5,
+          "name": "Puissance du ki",
+          "text": "Le moine peut choisir de s’imposer un dé malus sur une attaque au contact et ajoute +2d4° aux DM. Cette capacité peut aussi être utilisée avec Projection du ki qui est une attaque magique.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 121,
+            "section": "Puissance du ki",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        }
+      ]
+    },
+    {
+      "id": "classpath:voie-du-vent:class-moine:cof2-lb-2024",
+      "name": "Voie du vent",
+      "kind": "profile",
+      "classId": "class:moine:cof2-lb-2024",
+      "ranks": [
+        {
+          "id": "ability:pas-du-vent:classpath-voie-du-vent-class-moine-cof2-lb-2024:r1",
+          "rank": 1,
+          "name": "Pas du vent",
+          "text": "Le moine peut se déplacer avant et après avoir attaqué (mais il couvre toujours une distance normale, il divise son mouvement en deux). De plus, il gagne +3 en Initiative et son rang + 2 à tous les tests de saut, de course ou d’escalade.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 121,
+            "chapter": "Profils",
+            "section": "Pas du vent"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-du-vent:class-moine:cof2-lb-2024:rank2",
+          "rank": 2,
+          "name": "Course du vent",
+          "text": "Le moine se déplace à une vitesse surhumaine, il gagne +1 en DEF et une action de mouvement lui permet de couvrir 15 m. Au rang 5, le bonus de DEF passe à +2 et l’action de mouvement lui permet de couvrir 20 m.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 121,
+            "section": "Course du vent",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-du-vent:class-moine:cof2-lb-2024:rank3",
+          "rank": 3,
+          "name": "Course des airs",
+          "text": "Le moine défie les lois de la pesanteur et peut se déplacer sur des surfaces qui ne devraient pas supporter son poids. Il peut se déplacer sur l’eau, la neige, le feuillage des arbres ou courir sur un mur vertical. Il doit commencer et terminer son déplacement sur une surface normale. Il n’est plus ralenti par les terrains difficiles et il est désormais immunisé à l’état immobilisé.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 121,
+            "section": "Course des airs",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-du-vent:class-moine:cof2-lb-2024:rank4",
+          "rank": 4,
+          "name": "Agilité héroïque",
+          "text": "Le moine augmente son AGI de +1. Désormais, il obtient un dé bonus aux tests d’AGI.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 121,
+            "section": "Agilité héroïque",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:reference:classpath:voie-du-vent:class-moine:cof2-lb-2024:rank5",
+          "rank": 5,
+          "name": "Passe‑muraille (L)",
+          "text": "Une fois par combat, le moine peut rendre son corps intangible le temps de passer au travers d’un mur d’une épaisseur maximal de VOL mètres. Il ne peut rester immatériel qu’un court instant et reprend corps dès qu’il émerge du mur. Si le mur est trop épais, la capacité ne fonctionne pas. De plus le moine augmente définitivement de +1 la valeur de sa plus faible caractéristique (choisir en cas d’égalité).",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 121,
+            "section": "Passe‑muraille (L)",
+            "textStatus": "PDF_FULL_TEXT"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        }
+      ]
+    },
+    {
+      "id": "path:mage:cof2-lb-2024",
+      "name": "VOIE DU MAGE",
+      "kind": "people",
+      "classId": null,
+      "ranks": [
+        {
+          "id": "ability:capacite-de-peuple-plus-occultisme:path-mage-cof2-lb-2024:r1:cof2-lb-2024",
+          "rank": 1,
+          "name": "Capacité de peuple + occultisme",
+          "text": "Le mage conserve sa capacité de peuple de rang 1. De plus, il ajoute son rang + 2 aux tests de connaissance et d’érudition en rapport avec la magie.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 60,
+            "chapter": "Création du personnage",
+            "section": "Capacité de peuple + occultisme"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": true
+        },
+        {
+          "id": "ability:maitrise-de-la-magie-l:path-mage-cof2-lb-2024:r2:cof2-lb-2024",
+          "rank": 2,
+          "name": "Maîtrise de la magie (L)*",
+          "text": "Le mage peut détecter la présence de magie (y compris la présence d’objets magiques) dans un rayon de 10 m. Un test d’INT difficulté [10 + rang du sort] permet de déterminer la fonction générale de l’enchantement. Il peut aussi tenter de dissiper un sort non permanent d’un rang maximal égal à ceux qu’il est capable de lancer en emportant un test opposé d’attaque magique contre l’auteur du sort.",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 60,
+            "chapter": "Création du personnage",
+            "section": "Maîtrise de la magie (L)*"
+          },
+          "auditedLevel2": true,
+          "auditedLevel3": true
+        },
+        {
+          "id": "ability:tour-de-magie-g:path-mage-cof2-lb-2024:r3:cof2-lb-2024",
+          "rank": 3,
+          "name": "Tour de magie (G)*",
+          "text": "Le mage peut réaliser un tour de magie (portée 10 m) par round en action gratuite sans dépenser aucun PM. Par exemple, fermer une porte à distance, éteindre ou allumer une bougie en claquant des doigts. Il ne peut réaliser aucune action qui nécessite une valeur de caractéristique supérieure à 0 (par exemple, s’il faut au moins +1 ou un test de FOR pour pousser une porte lourde, ce sort ne permet pas de la fermer). Cette capacité ne peut produire aucun DM direct. De plus, le mage gagne +1 en DEF et +2 PM (en plus de celui gagné avec cette capacité ; au total, en apprenant ce sort, le mage acquiert donc 3 PM d’un coup).",
+          "spell": true,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 60,
+            "chapter": "Création du personnage",
+            "section": "Tour de magie (G)*"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": true
+        },
+        {
+          "id": "ability:esprit-superieur:path-mage-cof2-lb-2024:r4:cof2-lb-2024",
+          "rank": 4,
+          "name": "Esprit supérieur",
+          "text": "Le mage augmente son INT et sa VOL de +1. Désormais, il obtient un dé bonus aux tests d’INT.",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 60,
+            "chapter": "Création du personnage",
+            "section": "Esprit supérieur"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
+        },
+        {
+          "id": "ability:tempete-de-mana:path-mage-cof2-lb-2024:r5:cof2-lb-2024",
+          "rank": 5,
+          "name": "Tempête de mana",
+          "text": "Lorsqu’il lance un sort, le mage peut augmenter les DM de +1d4° (en cas de DM sur la durée, une seule fois) en payant +1 PM pour un sort à cible unique ou +3 PM pour un sort de zone (Explosion de feu, Foudre, etc.).",
+          "spell": false,
+          "source": {
+            "bookId": "cof2-livre-base-2024",
+            "edition": "COF2",
+            "printedPage": 60,
+            "chapter": "Création du personnage",
+            "section": "Tempête de mana"
+          },
+          "auditedLevel2": false,
+          "auditedLevel3": false
         }
       ]
     }
