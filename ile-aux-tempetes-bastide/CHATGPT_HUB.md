@@ -258,3 +258,9 @@ Galeries MJ et PJ : les neuf fiches kobolds regroupées dans une entrée replié
 - Monnaie officielle vérifiée livre COF2 p.181 (PDF183) : 1 PO=10 PA=100 PC. Conversion des envois normalisée, silver de compatibilité = total PA, soldes normalisés sans changer leur valeur. Toutes les écritures SQL restent atomiques. Historique : 78 opérations antérieures concordent exactement avec les six valeurs courantes, aucune vente boutique réussie enregistrée ; crédits MJ des ventes manuelles non annulés. Détails privés dans le document de suivi, pas dans Git.
 - Achat : blocage double clic et retrait de chaque article payé du panier au fil des réussites, pour éviter les achats répétés après échec partiel.
 - Déploiement bastide-inventory v19, fonctions SQL corrigées. Tests réels en transaction annulée : revente objet hors catalogue, prix protégé après édition, prix MJ après réception, conversion pièces/rendu, transfert conservation valeur, rollback panier partiel, besace persistée/relecture/sortie/transfert, droits RPC. Tests API MJ/PJ et bootstrap, UI panier et prix, six fiches N2, notifications et 109 contrôles session passent. Visuel réel des appareils non observé.
+
+## 2026-10-27 — Bonus aux actions visibles
+- Fiche PJ : rubrique séparée dans Mon tour (simple et complet), fenêtre des tests et Caractéristiques.
+- Rappels issus uniquement des rangs acquis, traits et équipement actif ; source et conditions conservées. Rang + 2 résolu depuis le plus haut rang acquis dans la même voie.
+- Pas d'ajout aux scores permanents, pas de cumul automatique des rappels. Textes non reconnus restent dans Capacités.
+- Tests : action-bonuses.cjs et sheets-runtime.cjs (six PJ, deux vues et synchronisation N2) passent ; pas de test réel sur appareils.
