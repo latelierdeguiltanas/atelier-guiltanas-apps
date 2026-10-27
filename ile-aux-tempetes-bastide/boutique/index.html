@@ -95,7 +95,7 @@
       </section>
     </main>
     <script src="../assets/inventory-api.js?v=10"></script>
-    <script src="../assets/analytics.js?v=3"></script>
+    <script src="../assets/analytics.js?v=3"></script><script src="../assets/shop-access.js?v=1"></script>
     <script>
       (() => {
         const A = window.BastideInventory,
@@ -118,20 +118,20 @@
         const openProducts = new Set();
         function drawFilters() {
           const categories = ["Tout", ...new Set(catalog.map((x) => x.category))];
-          $("#filters").innerHTML = categories.map((x) => `<button class="${x===activeCategory?'active':''}" data-filter="${esc(x)}">${esc(x)}</button>`).join("");
+          $("#filters").innerHTML = categories.map((x) => `<button class="${x===activeCategory?'active':''}" data-filter="${esc(x)}">${esc(({Tout:'Tous les rayons',Consommable:'Potions et consommables',Équipement:'Matériel d’aventure',Arme:'Armes',Protection:'Protections'})[x]||x)}</button>`).join("");
         }
         function drawProducts() {
           const visible=activeCategory==="Tout"?catalog:catalog.filter(x=>x.category===activeCategory);
-          $("#products").innerHTML = visible.map((x) => `<article class="panel product"><div><span class="pill">${esc(x.category)}</span><h2>${esc(x.name)}</h2><div class="productMeta"><span>${x.stock == null ? "Stock illimité" : x.stock + " en stock"}</span>${x.base?`<span>· ${esc(x.base)}</span>`:""}</div></div><div class="buyBox"><b>${x.price_silver} PA</b><button data-add="${x.id}" ${x.stock===0?'disabled':''}>${x.stock===0?'Épuisé':'Ajouter'}</button></div>${x.description?`<details data-product-details="${x.id}" ${openProducts.has(String(x.id))?'open':''}><summary>Détails</summary><p>${esc(x.description)}</p></details>`:""}</article>`).join("") || "<p>Aucun article dans cette catégorie.</p>";
+          $("#products").innerHTML = visible.map((x) => `<article class="panel product"><div><span class="pill">${esc(x.category)}</span><h2>${esc(x.name)}</h2><div class="productMeta"><span>${x.stock == null ? "Stock illimité" : x.stock + " en stock"}</span>${x.base?`<span>· ${esc(x.base)}</span>`:""}</div></div><div class="buyBox"><b>${x.price_silver*Number(window.BastideShopStatus?.surcharge||1)} PA</b><button data-add="${x.id}" ${x.stock===0?'disabled':''}>${x.stock===0?'Épuisé':'Ajouter'}</button></div>${x.description?`<details data-product-details="${x.id}" ${openProducts.has(String(x.id))?'open':''}><summary>Détails</summary><p>${esc(x.description)}</p></details>`:""}</article>`).join("") || "<p>Aucun article dans cette catégorie.</p>";
         }
         function draw() {
           const lines = [...cart].map(([id, q]) => {
             const x = catalog.find((i) => i.id === id);
-            return `<div class="cartLine"><span>${esc(x.name)} × ${q}</span><b>${x.price_silver * q} pa</b></div>`;
+            return `<div class="cartLine"><span>${esc(x.name)} × ${q}</span><b>${x.price_silver * q*Number(window.BastideShopStatus?.surcharge||1)} pa</b></div>`;
           });
           $("#cart").innerHTML =
             lines.join("") || '<p class="empty">Panier vide.</p>';
-          const baseTotal=[...cart].reduce((sum,[id,q])=>sum+Number(catalog.find(x=>x.id===id)?.price_silver||0)*q,0),finalTotal=window.BastideTradePrice?window.BastideTradePrice('buy',baseTotal):baseTotal;
+          const baseTotal=[...cart].reduce((sum,[id,q])=>sum+Number(catalog.find(x=>x.id===id)?.price_silver||0)*q,0),finalTotal=window.BastideTradePrice?window.BastideTradePrice('buy',baseTotal):baseTotal*Number(window.BastideShopStatus?.surcharge||1);
           if(lines.length)$("#cart").innerHTML+=`<p><b>Total : ${finalTotal} PA</b>${finalTotal!==baseTotal?' · tarif négocié':''}</p>`;
           $("#checkout").disabled = purchasing || !lines.length || !A.hasKey();
         }
@@ -181,12 +181,14 @@
           }finally{purchasing=false;draw();}
         };
         $("#sell").onclick=async()=>{if($("#sell").dataset.busy)return;const lines=[...saleCart].filter(([,quantity])=>quantity>0).map(([itemId,quantity])=>({itemId,quantity}));if(!lines.length)return;if(!confirm('Confirmer la vente à Mila ? Les objets seront retirés de ton inventaire et la monnaie ajoutée immédiatement.'))return;$("#sell").dataset.busy='1';$("#sell").disabled=true;try{const result=await A.call('sell',{method:'POST',body:{lines}});playerState=result.state;window.dispatchEvent(new Event('bastide-trade-completed'));saleCart.clear();$("#sale-message").textContent='Vente validée : Mila a repris les objets et versé la monnaie.';await load()}catch(e){$("#sale-message").textContent=e.message}finally{delete $("#sell").dataset.busy;drawSales()}};
+        window.addEventListener("bastide-shop-opened",load);
+        window.addEventListener("bastide-shop-status",()=>{drawProducts();draw();drawSales()});
         window.addEventListener("bastide-negotiation-updated",()=>{draw();drawSales()});
         window.addEventListener("bastide-pack-purchased",load);
         load();
         setInterval(load,15000);
       })();
     </script>
-  <script src="../assets/packs-player.js?v=1"></script><script src="../assets/negotiation-player.js?v=1"></script><script src="../assets/session-bar.js?v=20261027-health" defer></script><script src="../assets/return-nav.js?v=2" defer></script></body>
+  <script src="../assets/portraits.js?v=1"></script><script src="../assets/mila-counter.js?v=1"></script><script src="../assets/packs-player.js?v=20261027-access"></script><script src="../assets/negotiation-player.js?v=20261027-access"></script><script src="../assets/session-bar.js?v=20261027-health" defer></script><script src="../assets/return-nav.js?v=2" defer></script></body>
 </html>
 

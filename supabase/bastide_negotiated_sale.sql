@@ -7,6 +7,7 @@ declare
   v_player public.bastide_players%rowtype;v_line jsonb;v_inv_item jsonb;v_shop public.bastide_shop_items%rowtype;
   v_inventory jsonb;v_money jsonb;v_total bigint;v_quantity integer;v_remaining integer;v_offer numeric;v_offer_total numeric:=0;v_sold jsonb:='[]'::jsonb;v_before jsonb;v_item_id text;
 begin
+  perform public.bastide_assert_shop_open();
   if jsonb_typeof(p_lines)<>'array' or jsonb_array_length(p_lines)<1 or jsonb_array_length(p_lines)>30 then raise exception 'Panier de vente invalide';end if;
   select * into v_player from public.bastide_players where id=p_player_id for update;
   if not found then raise exception 'Joueur introuvable';end if;

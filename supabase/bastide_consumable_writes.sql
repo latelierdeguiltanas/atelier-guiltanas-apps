@@ -5,6 +5,7 @@ CREATE OR REPLACE FUNCTION public.bastide_purchase(p_player_id text, p_item_id u
 AS $function$
 declare v_player public.bastide_players%rowtype;v_item public.bastide_shop_items%rowtype;v_cost integer;v_inventory jsonb;v_new jsonb;v_money jsonb;v_total integer;
 begin
+  perform public.bastide_assert_shop_open();
   if p_quantity<1 or p_quantity>20 then raise exception 'Quantité invalide';end if;
   select * into v_player from public.bastide_players where id=p_player_id for update;
   select * into v_item from public.bastide_shop_items where id=p_item_id and active for update;

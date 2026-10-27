@@ -43,6 +43,8 @@ create or replace function public.bastide_negotiate(p_player_id text,p_mode text
 returns jsonb language plpgsql set search_path=public as $$
 declare rules bastide_shop_rules%rowtype; old bastide_shop_negotiations%rowtype; info jsonb; die integer; total integer; rate integer; result text; saved bastide_shop_negotiations%rowtype;
 begin
+ perform bastide_assert_shop_open();
+ if exists(select 1 from bastide_shop_relations where player_id=p_player_id and surcharge=2) then raise exception 'Mila refuse de négocier après le vol : intervention du MJ nécessaire';end if;
  perform 1 from bastide_players where id=p_player_id for update;if not found then raise exception 'Joueur introuvable';end if;
  if p_mode not in ('buy','sell') then raise exception 'Type invalide';end if;
  select * into rules from bastide_shop_rules where singleton;if not rules.enabled then raise exception 'Négociation désactivée par le MJ';end if;

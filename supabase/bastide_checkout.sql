@@ -2,6 +2,7 @@ create or replace function public.bastide_checkout(p_player_id text,p_lines json
 returns jsonb language plpgsql set search_path=public as $$
 declare p bastide_players%rowtype; pack bastide_shop_packs%rowtype; line record; item bastide_shop_items%rowtype; inventory jsonb; newitem jsonb; money jsonb; coins bigint; before_money jsonb; q integer; entry jsonb; subtotal numeric:=0; baseprice numeric;
 begin
+ perform bastide_assert_shop_open();
  select * into p from bastide_players where id=p_player_id for update;if not found then raise exception 'Joueur introuvable';end if;
  if p_pack_id is not null then
   select * into pack from bastide_shop_packs where id=p_pack_id and active for update;
@@ -17,6 +18,7 @@ begin
   end loop;
   pack.lines:=p_lines;pack.price_pa:=subtotal;pack.regular_pa:=subtotal;pack.name:='Panier';
  end if;
+ pack.price_pa:=pack.price_pa*coalesce((select surcharge from bastide_shop_relations where player_id=p_player_id),1);
  baseprice:=pack.price_pa;
  -- Packs already have an MJ tariff; negotiation applies to ordinary baskets only.
  if p_pack_id is null then pack.price_pa:=bastide_negotiated_price(p_player_id,'buy',pack.price_pa);end if;

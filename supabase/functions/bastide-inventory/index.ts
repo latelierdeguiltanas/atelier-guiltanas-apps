@@ -15,6 +15,31 @@ Deno.serve(async req=>{try{
   if(req.method==="OPTIONS")return new Response("ok",{headers:cors});
   const url=new URL(req.url),action=url.searchParams.get("action")||"state";
   if(action==="identity"&&req.method==="GET"){const p=await player(req);if(p)return json({access:"player",player:{id:p.id,display_name:p.display_name}});if(await admin(req))return json({access:"admin"});return json({error:"Ouvre ton lien personnel pour accéder à ton espace."},401)}
+  if(action==="shop-status"&&req.method==="GET"){
+    const{data,error}=await db.from("bastide_shop_rules").select("shop_open,shop_message,visit_id,theft_enabled,theft_dc,theft_max_pa").eq("singleton",true).single();if(error)throw error;
+    const p=await player(req);let relation=null,incident=null;if(p){const a=await db.from("bastide_shop_relations").select("surcharge,reason").eq("player_id",p.id).maybeSingle();const b=await db.from("bastide_shop_incidents").select("success,created_at").eq("player_id",p.id).eq("visit_id",data.visit_id).maybeSingle();if(a.error||b.error)throw(a.error||b.error);relation=a.data;incident=b.data;}
+    return json({open:data.shop_open,message:data.shop_message,visitId:data.visit_id,theftEnabled:data.theft_enabled,theftDc:data.theft_dc,theftMax:data.theft_max_pa,surcharge:relation?.surcharge||1,reason:relation?.reason||"",attempted:!!incident});
+  }
+  if(action==="shop-access"&&req.method==="POST"){
+    if(!await admin(req))return json({error:"Accès MJ requis"},401);const b=await req.json();if(typeof b.open!=="boolean")return json({error:"État ouvert/fermé requis"},400);
+    const{data,error}=await db.rpc("bastide_set_shop_access",{p_open:b.open,p_message:b.message??null});if(error)throw error;return json(data);
+  }
+  if(action==="shop-policy"&&req.method==="POST"){
+    if(!await admin(req))return json({error:"Accès MJ requis"},401);const b=await req.json();if(typeof b.enabled!=="boolean"||!Number.isInteger(b.dc)||b.dc<5||b.dc>40||!Number.isInteger(b.max)||b.max<1||b.max>1000)return json({error:"Règles de vol invalides"},400);
+    const{error}=await db.from("bastide_shop_rules").update({theft_enabled:b.enabled,theft_dc:b.dc,theft_max_pa:b.max}).eq("singleton",true);if(error)throw error;return json({ok:true});
+  }
+  if(action==="shop-relations"&&req.method==="GET"){
+    if(!await admin(req))return json({error:"Accès MJ requis"},401);const{data,error}=await db.from("bastide_shop_relations").select("*");if(error)throw error;return json({relations:data||[]});
+  }
+  if(action==="shop-pardon"&&req.method==="POST"){
+    if(!await admin(req))return json({error:"Accès MJ requis"},401);const b=await req.json();if(!b.playerId)return json({error:"Joueur requis"},400);const{error}=await db.from("bastide_shop_relations").update({surcharge:1,reason:"Pardon accordé par le MJ",updated_at:new Date().toISOString()}).eq("player_id",b.playerId);if(error)throw error;return json({ok:true});
+  }
+  if(action==="steal"&&req.method==="POST"){
+    const p=await player(req);if(!p)return json({error:"Lien joueur requis"},401);const b=await req.json();const{data,error}=await db.rpc("bastide_attempt_theft",{p_player_id:p.id,p_item_id:b.itemId});if(error)return json({error:error.message},400);return json(data);
+  }
+  if(["catalog","packs","negotiation"].includes(action)&&req.method==="GET"&&!await admin(req)){
+    const{data,error}=await db.from("bastide_shop_rules").select("shop_open,shop_message").eq("singleton",true).single();if(error)throw error;if(!data?.shop_open)return json({error:data?.shop_message||"Boutique fermée",shopClosed:true},403);
+  }
   if(action==="catalog"&&req.method==="GET"){const{data,error}=await db.from("bastide_shop_items").select("*").eq("active",true).order("sort_order");if(error)throw error;return json({items:data})}
   if(action==="maps"&&req.method==="GET"){const{data,error}=await db.from("bastide_maps").select("id,title,description,image_url,sort_order").eq("player_visible",true).order("sort_order");if(error)throw error;return json({maps:data||[]})}
   if(action==="encounters"&&req.method==="GET"){const{data,error}=await db.from("bastide_encounters").select("id,name,kind,summary,player_text,image_url,sort_order").eq("player_visible",true).order("sort_order").order("name");if(error)throw error;return json({encounters:data||[]})}

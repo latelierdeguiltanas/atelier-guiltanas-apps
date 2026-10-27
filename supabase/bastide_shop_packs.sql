@@ -79,6 +79,7 @@ create or replace function public.bastide_purchase_pack(p_player_id text,p_pack_
 returns jsonb language plpgsql set search_path=public as $$
 declare p bastide_players%rowtype; pack bastide_shop_packs%rowtype; line record; item bastide_shop_items%rowtype; inventory jsonb; newitem jsonb; money jsonb; coins bigint; before_money jsonb; q integer;
 begin
+ perform bastide_assert_shop_open();
  select * into p from bastide_players where id=p_player_id for update;if not found then raise exception 'Joueur introuvable';end if;
  select * into pack from bastide_shop_packs where id=p_pack_id and active for update;
  if not found or pack.stock=0 then raise exception 'Pack indisponible';end if;
