@@ -1,6 +1,6 @@
 create table if not exists public.bastide_character_levels (
  player_id text primary key references public.bastide_players(id),
- payload jsonb not null check (payload->>'format'='FOH_HUB_CHARACTER' and payload->'character'->>'level'='2'),
+ payload jsonb not null check (payload->>'format'='FOH_HUB_CHARACTER' and payload->'character'->>'level' in ('2','3')),
  revision bigint not null default 1,
  updated_at timestamptz not null default now()
 );
@@ -11,7 +11,7 @@ create or replace function public.bastide_character_level_save(p_player text,p_r
 returns jsonb language plpgsql security invoker set search_path=public,pg_temp as $$
 declare oldrow public.bastide_character_levels; newrev bigint; hpmax integer; pmmax integer;
 begin
- if p_payload->'character'->>'id' is distinct from p_player or p_payload->'character'->>'level' is distinct from '2' then raise exception 'Identité ou niveau invalide'; end if;
+ if p_payload->'character'->>'id' is distinct from p_player or coalesce(p_payload->'character'->>'level','') not in ('2','3') then raise exception 'Identité ou niveau invalide'; end if;
  perform pg_advisory_xact_lock(hashtextextended('bastide-character:'||p_player,0));
  select * into oldrow from public.bastide_character_levels where player_id=p_player for update;
  if coalesce(oldrow.revision,0)<>p_revision then return jsonb_build_object('conflict',true); end if;

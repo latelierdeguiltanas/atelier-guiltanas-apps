@@ -62,4 +62,4 @@ Vérifications : 226 plans N2 historiques, 156 plans N3 depuis les choix actuels
 
 Serveur : même moteur et même catalogue que le client ; fonction bastide-character v8. Migration `20261027104628_bastide_character_level_three` limitée à l’acceptation N2/N3, sans modification des droits existants. Transaction de sauvegarde/ressources testée avec rollback, révision périmée refusée et accès HTTP sans clé refusé. Aucun personnage réel passé automatiquement au N3.
 
-Publication limitée à Forge : le service v8 et la migration sont déployés et vérifiés, mais leur copie source dans supabase/ ainsi que les libellés de secours de la fiche Bastide attendent l’autorisation de publication hors Forge. Le bouton Passage de niveau existant utilise déjà le parcours direct. Le test HTTP simulé emploie un instantané du handler v8 déployé. Le dépôt du site de l’Atelier reste inchangé.
+Publication finalisée : sources serveur et migration synchronisées dans le dépôt, indications du hub mises à jour pour la validation numérique et import de secours N2/N3. Le site de l’Atelier reste inchangé.

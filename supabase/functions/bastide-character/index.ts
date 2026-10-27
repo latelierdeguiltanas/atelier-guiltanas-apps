@@ -23,9 +23,9 @@ Deno.serve(async req=>{try{
  if(Number(req.headers.get('content-length')||0)>1000000)return json({error:'Fichier trop volumineux.'},413);
  const raw=await req.text();if(raw.length>1000000)return json({error:'Fichier trop volumineux.'},413);
  const body=JSON.parse(raw),value=body.transfer;
- if(value?.format!=='FOH_HUB_CHARACTER'||value.version!==1)return json({error:'Exporte « Fiche niveau 2 pour le hub » dans Forge.'},400);
+ if(value?.format!=='FOH_HUB_CHARACTER'||value.version!==1)return json({error:'Exporte la fiche numérique validée dans Forge.'},400);
  const rec=value.progression;C.validate(rec);
- if(rec.base.recovery.sourceId!==requested||rec.head.level!==2)return json({error:'Personnage ou niveau incorrect.'},400);
+ if(rec.base.recovery.sourceId!==requested||![2,3].includes(rec.head.level))return json({error:'Personnage ou niveau incorrect.'},400);
  const verified=C.exportHub(rec);
  if(C.canonical(value.character)!==C.canonical(verified.character))return json({error:'La fiche ne correspond pas aux choix validés dans Forge.'},400);
  if(old){C.merge(old.payload.progression,rec);if(C.canonical(old.payload)===C.canonical(verified))return json({character:old.payload.character,revision:old.revision,unchanged:true});}
