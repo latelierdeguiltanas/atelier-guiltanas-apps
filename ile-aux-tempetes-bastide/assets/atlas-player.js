@@ -15,7 +15,7 @@ async function refresh(){
 }
 document.addEventListener('click',e=>{const retry=e.target.closest('[data-retry]');if(retry){const img=document.createElement('img');img.alt='Carte';img.src=retry.dataset.retry+(retry.dataset.retry.includes('?')?'&':'?')+'reload='+Date.now();retry.closest('.mapFrame').replaceChildren(img);wireImages();return;}
  const button=e.target.closest('[data-map]');if(button){const x=maps.find(m=>m.id===button.dataset.map);if(!x)return;viewing=x.id;$('viewerTitle').textContent=x.title;picture.classList.remove('zoomed');picture.src=x.image_url;picture.alt=x.title;viewer.hidden=false;}
- if(e.target===picture)picture.classList.toggle('zoomed');if(e.target.id==='close')close();
+ if(e.target.id==='close')close();
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});

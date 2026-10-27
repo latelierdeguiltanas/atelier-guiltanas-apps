@@ -28,6 +28,30 @@ Deno.serve(async req=>{try{
   if(action==="transfer-money"&&req.method==="POST"){const p=await player(req);if(!p)return json({error:"Lien joueur requis"},401);const b=await req.json(),recipientId=String(b.recipientId||""),amount={po:Math.max(0,Number(b.amount?.po)||0),pa:Math.max(0,Number(b.amount?.pa)||0),pc:Math.max(0,Number(b.amount?.pc)||0)};if(!recipientId)return json({error:"Destinataire requis"},400);const{data,error}=await db.rpc("bastide_transfer_money",{p_sender_id:p.id,p_recipient_id:recipientId,p_amount:amount});if(error)return json({error:error.message},400);return json({state:data})}
   if(action==="transfer-item"&&req.method==="POST"){const p=await player(req);if(!p)return json({error:"Lien joueur requis"},401);const b=await req.json(),recipientId=String(b.recipientId||""),itemId=String(b.itemId||""),quantity=Math.max(0,Math.floor(Number(b.quantity)||0));if(!recipientId||!itemId||quantity<1)return json({error:"Objet, destinataire et quantité requis"},400);const{data,error}=await db.rpc("bastide_transfer_item",{p_sender_id:p.id,p_recipient_id:recipientId,p_item_id:itemId,p_quantity:quantity});if(error)return json({error:error.message},400);return json({state:data})}
   if(action==="seen"&&req.method==="POST"){const p=await player(req);if(!p)return json({error:"Lien joueur requis"},401);const{data,error}=await db.rpc("bastide_mark_events_seen",{p_player_id:p.id});if(error)throw error;return json({ok:true,count:data})}
+  if(action==="negotiation"&&req.method==="GET"){
+    const p=await player(req),isAdmin=await admin(req);if(!p&&!isAdmin)return json({error:"Accès requis"},401);
+    const{data:rules,error}=await db.from("bastide_shop_rules").select("*").eq("singleton",true).single();if(error)throw error;
+    let q=db.from("bastide_shop_negotiations").select("*");if(!isAdmin)q=q.eq("player_id",p.id);const{data:offers,error:e}=await q;if(e)throw e;
+    const bonuses:Record<string,unknown>={};if(p)for(const approach of ["baratin","seduction","persuasion","negociation"]){const{data,error}=await db.rpc("bastide_social_bonus",{p_player_id:p.id,p_approach:approach});if(error)throw error;bonuses[approach]=data;}
+    return json({access:isAdmin?"admin":"player",rules:isAdmin?rules:{enabled:rules.enabled,difficulty:rules.difficulty,success_pct:rules.success_pct,great_pct:rules.great_pct,critical_penalty:rules.critical_penalty,cooldown_hours:rules.cooldown_hours},offers:offers||[],bonuses});
+  }
+  if(action==="negotiate"&&req.method==="POST"){
+    const p=await player(req);if(!p)return json({error:"Lien joueur requis"},401);const b=await req.json();
+    const{data,error}=await db.rpc("bastide_negotiate",{p_player_id:p.id,p_mode:b.mode,p_approach:b.approach});if(error)return json({error:error.message},400);return json({offer:data});
+  }
+  if(action==="negotiation-rules"&&req.method==="POST"){
+    if(!await admin(req))return json({error:"Accès MJ requis"},401);const b=await req.json();
+    for(const k of ["difficulty","success_pct","great_pct","critical_penalty","cooldown_hours"])if(!Number.isInteger(b[k]))return json({error:"Valeurs entières requises"},400);
+    const overrides:Record<string,number>={};for(const[k,v]of Object.entries(b.overrides||{})){if(!Number.isInteger(v)||Number(v)<-20||Number(v)>20)return json({error:"Ajustement MJ : entier de −20 à +20"},400);overrides[k]=Number(v);}
+    const{error}=await db.from("bastide_shop_rules").update({enabled:b.enabled===true,difficulty:b.difficulty,success_pct:b.success_pct,great_pct:b.great_pct,critical_penalty:b.critical_penalty,cooldown_hours:b.cooldown_hours,overrides}).eq("singleton",true);if(error)return json({error:error.message},400);return json({ok:true});
+  }
+  if(action==="negotiation-reset"&&req.method==="POST"){
+    if(!await admin(req))return json({error:"Accès MJ requis"},401);const b=await req.json();if(!b.playerId)return json({error:"Joueur requis"},400);
+    const{error}=await db.from("bastide_shop_negotiations").delete().eq("player_id",String(b.playerId));if(error)throw error;return json({ok:true});
+  }
+  if(action==="checkout"&&req.method==="POST"){
+    const p=await player(req);if(!p)return json({error:"Lien joueur requis"},401);const b=await req.json();const{data,error}=await db.rpc("bastide_checkout",{p_player_id:p.id,p_lines:b.lines,p_pack_id:null});if(error)return json({error:error.message},400);return json({state:data});
+  }
   if(action==="packs"&&req.method==="GET"){
     const p=await player(req),isAdmin=await admin(req);if(!p&&!isAdmin)return json({error:"Accès personnel requis"},401);
     let q=db.from("bastide_shop_packs").select("*").order("updated_at",{ascending:false});
@@ -43,10 +67,10 @@ Deno.serve(async req=>{try{
     const b=await req.json(),p=await player(req);let playerId=p?.id;
     if(!playerId&&await admin(req))playerId=String(b.playerId||"");
     if(!playerId)return json({error:"Accès joueur ou MJ requis"},401);
-    const{data,error}=await db.rpc("bastide_purchase_pack",{p_player_id:playerId,p_pack_id:b.packId});
+    const{data,error}=await db.rpc("bastide_checkout",{p_player_id:playerId,p_lines:null,p_pack_id:b.packId});
     if(error)return json({error:error.message},400);return json({state:data});
   }
-  if(action==="purchase"&&req.method==="POST"){const p=await player(req);if(!p)return json({error:"Lien joueur requis"},401);const b=await req.json();const{data,error}=await db.rpc("bastide_purchase",{p_player_id:p.id,p_item_id:b.itemId,p_quantity:Number(b.quantity)||1});if(error)return json({error:error.message},400);return json({state:data})}
+  if(action==="purchase"&&req.method==="POST"){const p=await player(req);if(!p)return json({error:"Lien joueur requis"},401);const b=await req.json();const{data,error}=await db.rpc("bastide_checkout",{p_player_id:p.id,p_lines:[{itemId:b.itemId,quantity:Number(b.quantity)||1}],p_pack_id:null});if(error)return json({error:error.message},400);return json({state:data})}
   if(action==="set-resale"&&req.method==="POST"){if(!await admin(req))return json({error:"Accès MJ requis"},401);const b=await req.json(),price=Number(b.price);if(b.price==null||b.price===""||!Number.isFinite(price)||price<0||price>1000000||Math.abs(price*10-Math.round(price*10))>0.000001)return json({error:"Prix en PA invalide (pas de 0,1 PA)"},400);const{data,error}=await db.rpc("bastide_set_resale_price",{p_player_id:String(b.playerId||""),p_item_id:String(b.itemId||""),p_price:price});if(error)return json({error:error.message},400);return json({state:data});}
   if(action==="sell"&&req.method==="POST"){const p=await player(req);if(!p&&!await admin(req))return json({error:"Lien joueur ou accès MJ requis"},401);const b=await req.json(),sellerId=p?.id||String(b.playerId||"");if(!sellerId)return json({error:"Joueur requis pour la vente MJ"},400);const lines=Array.isArray(b.lines)?b.lines.slice(0,30):[];const{data,error}=await db.rpc("bastide_sell_items",{p_player_id:sellerId,p_lines:lines});if(error)return json({error:error.message},400);return json({state:data})}
   if(action==="companion"&&req.method==="POST"){const p=await player(req);if(!p||p.id!=="faelar")return json({error:"Compagnon indisponible"},403);const b=await req.json(),companion={name:String(b.companion?.name||"Mon loup").slice(0,80),hp:Math.max(0,Math.min(999,Number(b.companion?.hp)||0))};const{data,error}=await db.rpc("bastide_companion_mutation",{p_player_id:p.id,p_companion:companion});if(error)throw error;return json({state:data})}

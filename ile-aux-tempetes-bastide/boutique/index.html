@@ -131,10 +131,12 @@
           });
           $("#cart").innerHTML =
             lines.join("") || '<p class="empty">Panier vide.</p>';
+          const baseTotal=[...cart].reduce((sum,[id,q])=>sum+Number(catalog.find(x=>x.id===id)?.price_silver||0)*q,0),finalTotal=window.BastideTradePrice?window.BastideTradePrice('buy',baseTotal):baseTotal;
+          if(lines.length)$("#cart").innerHTML+=`<p><b>Total : ${finalTotal} PA</b>${finalTotal!==baseTotal?' · tarif négocié':''}</p>`;
           $("#checkout").disabled = purchasing || !lines.length || !A.hasKey();
         }
         function saleOffer(item){if(item.containerType==='pollen-bag')return null;if(item.salePriceApproved===true)return Number(item.salePriceSilver)>0?{price:Number(item.salePriceSilver)}:null;const match=catalog.find(x=>String(x.id)===String(item.shopItemId)||x.name.toLowerCase()===String(item.name||'').toLowerCase()||(item.base&&x.base&&x.base.toLowerCase()===String(item.base).toLowerCase()));return match?{shop:match,price:Math.max(1,Math.floor(Number(match.price_silver||0)/2))}:null}
-        function drawSales(){const inventory=playerState?.inventory||[],sellable=inventory.filter(x=>Number(x.quantity)>0&&!x.equipped),lines=sellable.map(item=>{const offer=saleOffer(item),q=saleCart.get(item.id)||0;return `<div class="saleLine"><div><strong>${esc(item.name)}</strong><small>${offer?offer.price+' PA pièce':(item.salePriceApproved?'Non destiné à la vente':'Prix à renseigner dans les reventes MJ')}${item.equipped?' · objet équipé':''}</small></div><input data-sale-qty="${esc(item.id)}" type="number" min="0" max="${Number(item.quantity)||0}" value="${q}" ${offer?'':'disabled'}><b>${offer?offer.price*q+' PA':'—'}</b></div>`}).join('');$("#sale-items").innerHTML=lines||'<p class="empty">Aucun objet disponible à la vente.</p>';let total=0;sellable.forEach(item=>{const offer=saleOffer(item);if(offer)total+=offer.price*(saleCart.get(item.id)||0)});$("#sale-total").textContent=total+' PA proposés';$("#sell").disabled=!total||!A.hasKey()}
+        function drawSales(){const inventory=playerState?.inventory||[],sellable=inventory.filter(x=>Number(x.quantity)>0&&!x.equipped),lines=sellable.map(item=>{const offer=saleOffer(item),q=saleCart.get(item.id)||0;return `<div class="saleLine"><div><strong>${esc(item.name)}</strong><small>${offer?offer.price+' PA pièce':(item.salePriceApproved?'Non destiné à la vente':'Prix à renseigner dans les reventes MJ')}${item.equipped?' · objet équipé':''}</small></div><input data-sale-qty="${esc(item.id)}" type="number" min="0" max="${Number(item.quantity)||0}" value="${q}" ${offer?'':'disabled'}><b>${offer?offer.price*q+' PA':'—'}</b></div>`}).join('');$("#sale-items").innerHTML=lines||'<p class="empty">Aucun objet disponible à la vente.</p>';let total=0;sellable.forEach(item=>{const offer=saleOffer(item);if(offer)total+=offer.price*(saleCart.get(item.id)||0)});total=window.BastideTradePrice?window.BastideTradePrice('sell',total):total;$("#sale-total").textContent=total+' PA proposés';$("#sell").disabled=!total||!A.hasKey()}
         async function load() {
           try {
             catalog = (await A.call("catalog")).items || [];
@@ -167,10 +169,9 @@
         $("#checkout").onclick = async () => {
           if(purchasing||!cart.size)return;purchasing=true;draw();let completed=0;
           try {
-            for (const [itemId, quantity] of [...cart]){
-              await A.call("purchase", {method: "POST",body: { itemId, quantity }});
-              cart.delete(itemId);completed++;draw();
-            }
+            const result=await A.call("checkout",{method:"POST",body:{lines:[...cart].map(([itemId,quantity])=>({itemId,quantity}))}});
+            playerState=result.state;
+            window.dispatchEvent(new Event('bastide-trade-completed'));
             cart.clear();
             $("#message").textContent =
               "Achat validé : les objets sont dans ton inventaire.";
@@ -179,12 +180,13 @@
             $("#message").textContent = (completed?completed+" article(s) déjà acheté(s). ":"")+e.message;
           }finally{purchasing=false;draw();}
         };
-        $("#sell").onclick=async()=>{if($("#sell").dataset.busy)return;const lines=[...saleCart].filter(([,quantity])=>quantity>0).map(([itemId,quantity])=>({itemId,quantity}));if(!lines.length)return;if(!confirm('Confirmer la vente à Mila ? Les objets seront retirés de ton inventaire et la monnaie ajoutée immédiatement.'))return;$("#sell").dataset.busy='1';$("#sell").disabled=true;try{const result=await A.call('sell',{method:'POST',body:{lines}});playerState=result.state;saleCart.clear();$("#sale-message").textContent='Vente validée : Mila a repris les objets et versé la monnaie.';await load()}catch(e){$("#sale-message").textContent=e.message}finally{delete $("#sell").dataset.busy;drawSales()}};
+        $("#sell").onclick=async()=>{if($("#sell").dataset.busy)return;const lines=[...saleCart].filter(([,quantity])=>quantity>0).map(([itemId,quantity])=>({itemId,quantity}));if(!lines.length)return;if(!confirm('Confirmer la vente à Mila ? Les objets seront retirés de ton inventaire et la monnaie ajoutée immédiatement.'))return;$("#sell").dataset.busy='1';$("#sell").disabled=true;try{const result=await A.call('sell',{method:'POST',body:{lines}});playerState=result.state;window.dispatchEvent(new Event('bastide-trade-completed'));saleCart.clear();$("#sale-message").textContent='Vente validée : Mila a repris les objets et versé la monnaie.';await load()}catch(e){$("#sale-message").textContent=e.message}finally{delete $("#sell").dataset.busy;drawSales()}};
+        window.addEventListener("bastide-negotiation-updated",()=>{draw();drawSales()});
         window.addEventListener("bastide-pack-purchased",load);
         load();
         setInterval(load,15000);
       })();
     </script>
-  <script src="../assets/packs-player.js?v=1"></script><script src="../assets/session-bar.js?v=9" defer></script><script src="../assets/return-nav.js?v=2" defer></script></body>
+  <script src="../assets/packs-player.js?v=1"></script><script src="../assets/negotiation-player.js?v=1"></script><script src="../assets/session-bar.js?v=20261027-health" defer></script><script src="../assets/return-nav.js?v=2" defer></script></body>
 </html>
 

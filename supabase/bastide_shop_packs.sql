@@ -4,6 +4,7 @@ returns jsonb language plpgsql stable set search_path=public as $$
 declare result jsonb:='[]'; item jsonb; old jsonb; signature jsonb; oldsig jsonb; pos integer; hit integer; shop bastide_shop_items%rowtype;
 begin
  for item in select value from jsonb_array_elements(coalesce(p_inventory,'[]')) loop
+  item:=public.bastide_catalog_item(item);
   if lower(coalesce(item->>'category','')) not like 'consommable%' or coalesce((item->>'equipped')::boolean,false) or coalesce((item->>'chargesMax')::numeric,0)>0 or coalesce(item->>'containerType','')<>'' or coalesce((item->>'quantity')::numeric,0)<=0 then result:=result||jsonb_build_array(item);continue;end if;
   -- Recover catalogue identifiers/prices missing on old Mila purchases only.
   if item->>'source'='mila' and coalesce(item->>'shopItemId','')='' then
@@ -17,9 +18,9 @@ begin
   end if;
   -- Normalized empty defaults; retain every unknown property in the signature.
   item:=jsonb_build_object('containerId','','containerType','','mediaUrl','','mediaType','','documentUrl','','charges',0,'chargesMax',0,'equipment','{}'::jsonb,'salePriceApproved',false,'salePriceSilver',0,'shopItemId','')||item;
-  signature:=item-array['id','quantity','source','receivedAt','purchasePriceSilver'];hit:=-1;
+  signature:=item-array['id','quantity','source','receivedAt','purchasePriceSilver','catalogLoot'];hit:=-1;
   for old,pos in select value,(ordinality-1)::integer from jsonb_array_elements(result) with ordinality loop
-   oldsig:=old-array['id','quantity','source','receivedAt','purchasePriceSilver'];
+   oldsig:=old-array['id','quantity','source','receivedAt','purchasePriceSilver','catalogLoot'];
    if oldsig=signature then hit:=pos;exit;end if;
   end loop;
   if hit<0 then result:=result||jsonb_build_array(item);
