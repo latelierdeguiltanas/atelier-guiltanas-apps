@@ -75,7 +75,7 @@ Deno.serve(async req=>{try{
     const{error}=await db.from("bastide_shop_negotiations").delete().eq("player_id",String(b.playerId));if(error)throw error;return json({ok:true});
   }
   if(action==="checkout"&&req.method==="POST"){
-    const p=await player(req);if(!p)return json({error:"Lien joueur requis"},401);const b=await req.json();const{data,error}=await db.rpc("bastide_checkout",{p_player_id:p.id,p_lines:b.lines,p_pack_id:null});if(error)return json({error:error.message},400);return json({state:data});
+    const p=await player(req),b=await req.json();let target=p?.id;if(!target&&await admin(req))target=String(b.playerId||"");if(!target)return json({error:"Joueur ou accès MJ avec destinataire requis"},401);const{data,error}=await db.rpc("bastide_checkout",{p_player_id:target,p_lines:b.lines,p_pack_id:null});if(error)return json({error:error.message},400);return json({state:data});
   }
   if(action==="packs"&&req.method==="GET"){
     const p=await player(req),isAdmin=await admin(req);if(!p&&!isAdmin)return json({error:"Accès personnel requis"},401);

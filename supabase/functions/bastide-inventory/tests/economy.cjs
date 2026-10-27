@@ -13,5 +13,6 @@ assert.equal((await request('player','negotiation-rules',{})).status,401);assert
 assert.equal((await request('player','shop-access',{open:true})).status,401);assert.equal((await request('admin','shop-access',{open:false})).status,200);assert.equal(calls.at(-1).args.p_open,false);
  assert.equal((await request('player','shop-pardon',{playerId:'scanlan'})).status,401);
  assert.equal((await request('player','steal',{itemId:'test',playerId:'wilfried',die:20})).status,200);assert.equal(calls.at(-1).args.p_player_id,'scanlan');assert.equal(calls.at(-1).args.p_die,undefined);
+ assert.equal((await request('admin','checkout',{playerId:'wilfried',lines:[{itemId:'test',quantity:1}]})).status,200);assert.equal(calls.at(-1).args.p_player_id,'wilfried');assert.equal((await request('player','checkout',{playerId:'wilfried',lines:[]})).status,200);assert.equal(calls.at(-1).args.p_player_id,'scanlan');
  shopOpen=false;for(const action of ['catalog','packs','negotiation'])assert.equal((await request('player',action,null,'GET')).status,403);assert.equal((await request('','shop-status',null,'GET')).status,200);
  console.log('PASS API accès fermé, contrôle MJ et vol isolé ; packs MJ, prix non fourni par PJ, destinataire isolé ;  prix MJ, vente MJ/PJ isolée, refus anonyme et inventaire vide jamais réinitialisé.');})().catch(e=>{console.error(e);process.exitCode=1});
