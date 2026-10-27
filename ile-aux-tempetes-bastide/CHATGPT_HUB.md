@@ -264,3 +264,6 @@ Galeries MJ et PJ : les neuf fiches kobolds regroupées dans une entrée replié
 - Rappels issus uniquement des rangs acquis, traits et équipement actif ; source et conditions conservées. Rang + 2 résolu depuis le plus haut rang acquis dans la même voie.
 - Pas d'ajout aux scores permanents, pas de cumul automatique des rappels. Textes non reconnus restent dans Capacités.
 - Tests : action-bonuses.cjs et sheets-runtime.cjs (six PJ, deux vues et synchronisation N2) passent ; pas de test réel sur appareils.
+
+### Ajustement demandé : rappels compacts
+Bonus aux actions : uniquement libellé et valeur, en texte discret sans carte, sans explication ni source répétée. Initiative exclue car déjà dans les scores. Détails conservés dans les voies.

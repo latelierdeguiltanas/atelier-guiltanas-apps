@@ -2,7 +2,7 @@
 'use strict';
 let D=window.BASTIDE_CHARACTER;let levelRevision=0,levelLoadError=false;
 if(!D){document.body.innerHTML='<p>Fiche de personnage indisponible.</p>';return}
-document.head.insertAdjacentHTML('beforeend','<link rel="stylesheet" href="../ergonomie.css?v=20261027-bonus"><link rel="stylesheet" href="../mana.css"><link rel="stylesheet" href="../inventaire.css?v=3">');
+document.head.insertAdjacentHTML('beforeend','<link rel="stylesheet" href="../ergonomie.css?v=20261027-bonus-compact"><link rel="stylesheet" href="../mana.css"><link rel="stylesheet" href="../inventaire.css?v=3">');
 const inventoryApi=document.createElement('script');inventoryApi.src='../../assets/inventory-api.js?v=11';
 document.body.innerHTML='<p role="status">Vérification de ton accès…</p>';
 try{
@@ -154,7 +154,18 @@ function actionBonuses(){
  equippedItems().forEach(item=>collect([item.equipment?.effect,item.notes].filter(Boolean).join(' '),`Équipement · ${item.name}`,0));
  return rows.filter((row,index)=>rows.findIndex(x=>x.text===row.text&&x.source===row.source)===index);
 }
-function actionBonusesHtml(){const rows=actionBonuses();return `<section class="action-bonuses" aria-label="Bonus aux actions"><h3>Bonus aux actions</h3><p>À ajouter seulement dans les situations indiquées. Ces rappels sont distincts des valeurs générales ; ne compte pas deux fois un bonus déjà intégré.</p>${rows.length?`<div class="action-bonus-list">${rows.map(row=>`<article><strong>${esc(row.label)}</strong><p>${esc(row.text)}</p><small>${esc(row.source)}</small></article>`).join('')}</div>`:'<p>Aucun bonus contextuel aux tests repéré dans les capacités acquises.</p>'}</section>`}
+function actionBonusesHtml(){
+ const entries=[];
+ actionBonuses().forEach(row=>{
+  const text=row.text,formula=text.match(/(\d+) \(rang \d+ \+ 2\)/),number=text.match(/[+−-]\s*\d+(?!d)/i);
+  let value=formula?'+'+formula[1]:/dé (?:de )?bonus/i.test(text)?'dé bonus':/dé (?:de )?malus/i.test(text)?'dé malus':number?number[0].replace(/\s/g,''):'';
+  if(!value)return;
+  row.label.split(' · ').filter(label=>label!=='Tests et actions'&&label!=='Initiative').forEach(label=>{
+   if(!entries.some(x=>x.label===label&&x.value===value))entries.push({label,value});
+  });
+ });
+ return entries.length?`<div class="action-bonuses" aria-label="Bonus aux actions">${entries.map(row=>`<span>${esc(row.label)} <b>${esc(row.value)}</b></span>`).join('')}</div>`:'';
+}
 
 function testCards(){const labels={FOR:'Force',AGI:'Agilité',CON:'Constitution',PER:'Perception',INT:'Intelligence',VOL:'Volonté',CHA:'Charisme'};return `<details class="quick-tests" open><summary>Test demandé par le MJ : 1d20 + caractéristique</summary><div class="stats">${Object.entries(D.stats).map(([k,v])=>`<div class="stat"><small>${esc(labels[k]||k)} (${k})</small><b>${signed(v)}</b></div>`).join('')}</div><small>Ajoute les bonus de capacité et les effets indiqués par le MJ lorsqu’ils s’appliquent.</small></details>${actionBonusesHtml()}`}
 function renderStats(){const move=movement();$('#stats').innerHTML=`<div class="section-title">Caractéristiques</div><div class="stats">${Object.entries(D.stats||{}).map(([k,v])=>`<div class="stat"><small>${esc(k)}</small><b>${signed(v)}</b></div>`).join('')}</div>${actionBonusesHtml()}${D.traits?.length?`<div class="section-title">Traits et restrictions</div><div class="list">${D.traits.map(x=>`<div class="item">${esc(x)}</div>`).join('')}</div>`:''}<div class="section-title">Repères de combat</div><div class="value-grid"><div class="value"><small>DÉF</small><b>${esc(finalValue('def'))}</b>${finalValue('def')!==Number(D.combat.def)?`<em>Base ${D.combat.def}</em>`:''}</div><div class="value"><small>INIT</small><b>${esc(finalValue('init'))}</b>${finalValue('init')!==Number(D.combat.init)?`<em>Base ${D.combat.init}</em>`:''}</div><div class="value"><small>VITESSE</small><b>${move.meters} m</b><em>${move.cases} cases de ${gridMeters} m</em></div><div class="value"><small>PV MAX</small><b>${max.hp}</b></div><div class="value"><small>PC MAX</small><b>${max.pc}</b></div></div>`}
