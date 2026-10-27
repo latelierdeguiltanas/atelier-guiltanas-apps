@@ -7,7 +7,7 @@
       content="width=device-width,initial-scale=1,viewport-fit=cover"
     />
     <title>La boutique de Mila</title>
-    <link rel="stylesheet" href="../assets/bastide.css" />
+    <link rel="stylesheet" href="../assets/bastide.css" /><link rel="stylesheet" href="../assets/shop-room.css?v=1">
     <style>
       .shop {
         width: min(900px, 100%);
@@ -95,7 +95,7 @@
       </section>
     </main>
     <script src="../assets/inventory-api.js?v=10"></script>
-    <script src="../assets/analytics.js?v=3"></script><script src="../assets/shop-access.js?v=1"></script>
+    <script src="../assets/shop-preview.js?v=1"></script><script src="../assets/analytics.js?v=3"></script><script src="../assets/shop-access.js?v=1"></script>
     <script>
       (() => {
         const A = window.BastideInventory,
@@ -121,7 +121,7 @@
           $("#filters").innerHTML = categories.map((x) => `<button class="${x===activeCategory?'active':''}" data-filter="${esc(x)}">${esc(({Tout:'Tous les rayons',Consommable:'Potions et consommables',Équipement:'Matériel d’aventure',Arme:'Armes',Protection:'Protections'})[x]||x)}</button>`).join("");
         }
         function drawProducts() {
-          const visible=activeCategory==="Tout"?catalog:catalog.filter(x=>x.category===activeCategory);
+          const visible=(activeCategory==="Tout"?catalog:catalog.filter(x=>x.category===activeCategory)).filter(x=>{const n=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();return n(x.name+" "+x.description).includes(n($("#product-search")?.value||""))});
           $("#products").innerHTML = visible.map((x) => `<article class="panel product"><div><span class="pill">${esc(x.category)}</span><h2>${esc(x.name)}</h2><div class="productMeta"><span>${x.stock == null ? "Stock illimité" : x.stock + " en stock"}</span>${x.base?`<span>· ${esc(x.base)}</span>`:""}</div></div><div class="buyBox"><b>${x.price_silver*Number(window.BastideShopStatus?.surcharge||1)} PA</b><button data-add="${x.id}" ${x.stock===0?'disabled':''}>${x.stock===0?'Épuisé':'Ajouter'}</button></div>${x.description?`<details data-product-details="${x.id}" ${openProducts.has(String(x.id))?'open':''}><summary>Détails</summary><p>${esc(x.description)}</p></details>`:""}</article>`).join("") || "<p>Aucun article dans cette catégorie.</p>";
         }
         function draw() {
@@ -165,7 +165,7 @@
           }
         };
         document.addEventListener("toggle",(e)=>{const d=e.target.closest?.("[data-product-details]");if(!d)return;if(d.open)openProducts.add(String(d.dataset.productDetails));else openProducts.delete(String(d.dataset.productDetails))},true);
-        document.addEventListener("input",e=>{const input=e.target.closest?.("[data-sale-qty]");if(!input)return;const item=(playerState?.inventory||[]).find(x=>x.id===input.dataset.saleQty),q=Math.max(0,Math.min(Number(item?.quantity)||0,Math.floor(Number(input.value)||0)));saleCart.set(input.dataset.saleQty,q);drawSales()});
+        document.addEventListener("input",e=>{if(e.target.id==="product-search"){drawProducts();return;}const input=e.target.closest?.("[data-sale-qty]");if(!input)return;const item=(playerState?.inventory||[]).find(x=>x.id===input.dataset.saleQty),q=Math.max(0,Math.min(Number(item?.quantity)||0,Math.floor(Number(input.value)||0)));saleCart.set(input.dataset.saleQty,q);drawSales()});
         $("#checkout").onclick = async () => {
           if(purchasing||!cart.size)return;purchasing=true;draw();let completed=0;
           try {
@@ -189,6 +189,6 @@
         setInterval(load,15000);
       })();
     </script>
-  <script src="../assets/portraits.js?v=1"></script><script src="../assets/mila-counter.js?v=1"></script><script src="../assets/packs-player.js?v=20261027-access"></script><script src="../assets/negotiation-player.js?v=20261027-access"></script><script src="../assets/session-bar.js?v=20261027-health" defer></script><script src="../assets/return-nav.js?v=2" defer></script></body>
+  <script src="../assets/portraits.js?v=1"></script><script src="../assets/mila-counter.js?v=1"></script><script src="../assets/packs-player.js?v=20261027-access"></script><script src="../assets/negotiation-player.js?v=20261027-access"></script><script src="../assets/shop-room.js?v=1"></script><script src="../assets/session-bar.js?v=20261027-health" defer></script><script src="../assets/return-nav.js?v=2" defer></script></body>
 </html>
 

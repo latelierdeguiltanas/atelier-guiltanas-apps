@@ -1,0 +1,11 @@
+/* The real PJ page, using MJ-authorized GETs. Never stores or substitutes a player's key. */
+(()=>{'use strict';const id=new URLSearchParams(location.search).get('preview');if(!id)return;const A=window.BastideInventory,original=A.call.bind(A);let inspect=false;
+const gate=original('identity').then(r=>{if(r.access!=='admin')throw Error('Aperçu réservé au MJ.');});
+A.call=async(action,options={})=>{await gate;if((options.method||'GET')!=='GET')throw Error('Aperçu en lecture seule : aucune transaction ni aucun jet effectué.');const name=action.split('&')[0],target=['state','shop-status','packs','negotiation'].includes(name)?action+'&playerId='+encodeURIComponent(id):action;const r=await original(target,options);if(name==='shop-status'&&inspect)return{...r,open:true};return r;};
+window.BastideShopPreview=true;
+const bar=document.createElement('aside');bar.className='shop-preview-banner';bar.innerHTML='<b>Aperçu joueur · lecture seule</b><span data-preview-name></span><button data-preview-open>Voir l’intérieur sans ouvrir aux PJ</button><span data-preview-note>Accès réel appliqué.</span>';document.body.prepend(bar);
+const style=document.createElement('style');style.textContent='.shop-preview-banner{padding:10px;background:#f4d68c;color:#30220e;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:14px system-ui}.shop-preview-banner button{padding:8px;border-radius:8px;border:1px solid #765b21;background:#fff2ce;color:#30220e}';document.head.appendChild(style);
+bar.querySelector('button').onclick=()=>{inspect=!inspect;bar.querySelector('button').textContent=inspect?'Revenir à l’accès réel':'Voir l’intérieur sans ouvrir aux PJ';bar.querySelector('[data-preview-note]').textContent=inspect?'Simulation visuelle : l’accès réel des PJ ne change pas.':'Accès réel appliqué.';window.dispatchEvent(new Event('online'));};
+A.call('state').then(r=>bar.querySelector('[data-preview-name]').textContent=r.player.display_name).catch(e=>bar.querySelector('[data-preview-note]').textContent=e.message);
+const lock=()=>{document.querySelectorAll('#checkout,#sell,[data-buy-pack],[data-trade-roll],[data-theft-roll]').forEach(b=>{if(!b.disabled)b.disabled=true;b.title='Lecture seule dans l’aperçu MJ';});};new MutationObserver(lock).observe(document.querySelector('main'),{childList:true,subtree:true});setInterval(lock,500);
+})();
