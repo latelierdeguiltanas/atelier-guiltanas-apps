@@ -180,10 +180,11 @@
           }finally{purchasing=false;draw();}
         };
         $("#sell").onclick=async()=>{if($("#sell").dataset.busy)return;const lines=[...saleCart].filter(([,quantity])=>quantity>0).map(([itemId,quantity])=>({itemId,quantity}));if(!lines.length)return;if(!confirm('Confirmer la vente à Mila ? Les objets seront retirés de ton inventaire et la monnaie ajoutée immédiatement.'))return;$("#sell").dataset.busy='1';$("#sell").disabled=true;try{const result=await A.call('sell',{method:'POST',body:{lines}});playerState=result.state;saleCart.clear();$("#sale-message").textContent='Vente validée : Mila a repris les objets et versé la monnaie.';await load()}catch(e){$("#sale-message").textContent=e.message}finally{delete $("#sell").dataset.busy;drawSales()}};
+        window.addEventListener("bastide-pack-purchased",load);
         load();
         setInterval(load,15000);
       })();
     </script>
-  <script src="../assets/session-bar.js?v=9" defer></script><script src="../assets/return-nav.js?v=2" defer></script></body>
+  <script src="../assets/packs-player.js?v=1"></script><script src="../assets/session-bar.js?v=9" defer></script><script src="../assets/return-nav.js?v=2" defer></script></body>
 </html>
 
