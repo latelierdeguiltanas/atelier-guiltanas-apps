@@ -88,7 +88,7 @@
       </section>
       <section class="panel sale">
         <h2>Vendre à Mila</h2>
-        <p class="productMeta">Mila reprend les articles de son catalogue à la moitié de leur prix, avec un minimum de 1 PA. Les objets inconnus doivent d’abord être estimés par le MJ.</p>
+        <p class="productMeta">Les prix de revente validés par le MJ sont appliqués directement. Pour les articles du catalogue, Mila propose la moitié du prix (minimum 1 PA). 1 PO = 10 PA = 100 PC.</p>
         <div id="sale-items" class="saleGrid"></div>
         <div class="saleSummary"><b id="sale-total">0 PA proposés</b><button id="sell" class="checkout">Valider la vente</button></div>
         <p id="sale-message"></p>
@@ -113,7 +113,7 @@
                   "'": "&#39;",
                 })[c],
             );
-        let catalog = [], activeCategory = "Tout", playerState = null;
+        let catalog = [], activeCategory = "Tout", playerState = null, purchasing=false;
         const saleCart = new Map();
         const openProducts = new Set();
         function drawFilters() {
@@ -131,10 +131,10 @@
           });
           $("#cart").innerHTML =
             lines.join("") || '<p class="empty">Panier vide.</p>';
-          $("#checkout").disabled = !lines.length || !A.hasKey();
+          $("#checkout").disabled = purchasing || !lines.length || !A.hasKey();
         }
-        function saleOffer(item){const match=catalog.find(x=>String(x.id)===String(item.shopItemId)||x.name.toLowerCase()===String(item.name||'').toLowerCase()||(item.base&&x.base&&x.base.toLowerCase()===String(item.base).toLowerCase()));return match?{shop:match,price:Math.max(1,Math.floor(Number(match.price_silver||0)/2))}:null}
-        function drawSales(){const inventory=playerState?.inventory||[],sellable=inventory.filter(x=>Number(x.quantity)>0&&!x.equipped),lines=sellable.map(item=>{const offer=saleOffer(item),q=saleCart.get(item.id)||0;return `<div class="saleLine"><div><strong>${esc(item.name)}</strong><small>${offer?offer.price+' PA pièce':'Estimation du MJ requise'}${item.equipped?' · objet équipé':''}</small></div><input data-sale-qty="${esc(item.id)}" type="number" min="0" max="${Number(item.quantity)||0}" value="${q}" ${offer?'':'disabled'}><b>${offer?offer.price*q+' PA':'—'}</b></div>`}).join('');$("#sale-items").innerHTML=lines||'<p class="empty">Aucun objet disponible à la vente.</p>';let total=0;sellable.forEach(item=>{const offer=saleOffer(item);if(offer)total+=offer.price*(saleCart.get(item.id)||0)});$("#sale-total").textContent=total+' PA proposés';$("#sell").disabled=!total||!A.hasKey()}
+        function saleOffer(item){if(item.containerType==='pollen-bag')return null;if(item.salePriceApproved===true)return Number(item.salePriceSilver)>0?{price:Number(item.salePriceSilver)}:null;const match=catalog.find(x=>String(x.id)===String(item.shopItemId)||x.name.toLowerCase()===String(item.name||'').toLowerCase()||(item.base&&x.base&&x.base.toLowerCase()===String(item.base).toLowerCase()));return match?{shop:match,price:Math.max(1,Math.floor(Number(match.price_silver||0)/2))}:null}
+        function drawSales(){const inventory=playerState?.inventory||[],sellable=inventory.filter(x=>Number(x.quantity)>0&&!x.equipped),lines=sellable.map(item=>{const offer=saleOffer(item),q=saleCart.get(item.id)||0;return `<div class="saleLine"><div><strong>${esc(item.name)}</strong><small>${offer?offer.price+' PA pièce':(item.salePriceApproved?'Non destiné à la vente':'Prix à renseigner dans les reventes MJ')}${item.equipped?' · objet équipé':''}</small></div><input data-sale-qty="${esc(item.id)}" type="number" min="0" max="${Number(item.quantity)||0}" value="${q}" ${offer?'':'disabled'}><b>${offer?offer.price*q+' PA':'—'}</b></div>`}).join('');$("#sale-items").innerHTML=lines||'<p class="empty">Aucun objet disponible à la vente.</p>';let total=0;sellable.forEach(item=>{const offer=saleOffer(item);if(offer)total+=offer.price*(saleCart.get(item.id)||0)});$("#sale-total").textContent=total+' PA proposés';$("#sell").disabled=!total||!A.hasKey()}
         async function load() {
           try {
             catalog = (await A.call("catalog")).items || [];
@@ -157,7 +157,7 @@
           const filter=e.target.closest("[data-filter]");
           if(filter){activeCategory=filter.dataset.filter;drawFilters();drawProducts();return}
           const b = e.target.closest("[data-add]");
-          if (b) {
+          if (b && !purchasing) {
             cart.set(b.dataset.add, (cart.get(b.dataset.add) || 0) + 1);
             draw();
           }
@@ -165,21 +165,21 @@
         document.addEventListener("toggle",(e)=>{const d=e.target.closest?.("[data-product-details]");if(!d)return;if(d.open)openProducts.add(String(d.dataset.productDetails));else openProducts.delete(String(d.dataset.productDetails))},true);
         document.addEventListener("input",e=>{const input=e.target.closest?.("[data-sale-qty]");if(!input)return;const item=(playerState?.inventory||[]).find(x=>x.id===input.dataset.saleQty),q=Math.max(0,Math.min(Number(item?.quantity)||0,Math.floor(Number(input.value)||0)));saleCart.set(input.dataset.saleQty,q);drawSales()});
         $("#checkout").onclick = async () => {
+          if(purchasing||!cart.size)return;purchasing=true;draw();let completed=0;
           try {
-            for (const [itemId, quantity] of cart)
-              await A.call("purchase", {
-                method: "POST",
-                body: { itemId, quantity },
-              });
+            for (const [itemId, quantity] of [...cart]){
+              await A.call("purchase", {method: "POST",body: { itemId, quantity }});
+              cart.delete(itemId);completed++;draw();
+            }
             cart.clear();
             $("#message").textContent =
               "Achat validé : les objets sont dans ton inventaire.";
             await load();
           } catch (e) {
-            $("#message").textContent = e.message;
-          }
+            $("#message").textContent = (completed?completed+" article(s) déjà acheté(s). ":"")+e.message;
+          }finally{purchasing=false;draw();}
         };
-        $("#sell").onclick=async()=>{const lines=[...saleCart].filter(([,quantity])=>quantity>0).map(([itemId,quantity])=>({itemId,quantity}));if(!lines.length)return;if(!confirm('Confirmer la vente à Mila ? Les objets seront retirés de ton inventaire et la monnaie ajoutée immédiatement.'))return;try{const result=await A.call('sell',{method:'POST',body:{lines}});playerState=result.state;saleCart.clear();$("#sale-message").textContent='Vente validée : Mila a repris les objets et versé la monnaie.';await load()}catch(e){$("#sale-message").textContent=e.message}};
+        $("#sell").onclick=async()=>{if($("#sell").dataset.busy)return;const lines=[...saleCart].filter(([,quantity])=>quantity>0).map(([itemId,quantity])=>({itemId,quantity}));if(!lines.length)return;if(!confirm('Confirmer la vente à Mila ? Les objets seront retirés de ton inventaire et la monnaie ajoutée immédiatement.'))return;$("#sell").dataset.busy='1';$("#sell").disabled=true;try{const result=await A.call('sell',{method:'POST',body:{lines}});playerState=result.state;saleCart.clear();$("#sale-message").textContent='Vente validée : Mila a repris les objets et versé la monnaie.';await load()}catch(e){$("#sale-message").textContent=e.message}finally{delete $("#sell").dataset.busy;drawSales()}};
         load();
         setInterval(load,15000);
       })();
