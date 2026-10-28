@@ -157,7 +157,7 @@
  .topbar{gap:6px}
  .top-actions{gap:4px}
  .backbtn{width:30px;height:30px;font-size:24px}
- .section-row .toolbar{display:none}
+ #view-overview > .section-row:first-child .toolbar{display:none}
 }
 @media(min-width:731px) and (max-width:850px){
  .graph-scroll{display:none}
