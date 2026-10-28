@@ -25,8 +25,77 @@ privacy:{title:'Public, privé et vendable',content:'<p>Un code source <strong>p
 sync:{title:'Que veut dire synchronisé ?',content:'<p><strong>Cloud :</strong> l’application lit et écrit auprès d’un serveur partagé.<br><strong>Hybride :</strong> serveur et données locales coexistent.<br><strong>Local :</strong> les données restent dans le navigateur ou sur l’appareil.<br><strong>À vérifier :</strong> la connexion réelle n’est pas démontrée.</p><p>La présence d’une connexion ne garantit pas que toutes les modifications hors ligne ont été transmises. Il faut comparer des versions ou confirmer le dernier enregistrement.</p>'},
 logs:{title:'Logs et suivi',content:'<p>Les <strong>logs techniques</strong> sont les traces des requêtes, erreurs et exécutions. Le cockpit affiche actuellement des métriques applicatives et le statut déployé des fonctions.</p><p>Les logs complets se trouvent dans <a href=\"https://supabase.com/dashboard/project/jitatmdbipjkvjstcgdc/logs\" target=\"_blank\" rel=\"noopener noreferrer\">Supabase Logs ↗</a> et <a href=\"https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub Actions ↗</a>. Un flux de journaux consolidé nécessiterait une connexion de supervision dédiée.</p>'}
 };
-function setView(view){currentView=view;$$('.view').forEach(x=>x.hidden=x.id!=='view-'+view);$$('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));$('#page-title').innerHTML=escapeHTML(names[view])+' <span class="slim">'+escapeHTML(viewDescriptions[view])+'</span>';scrollTo({top:0,behavior:'smooth'});}
-function showHelp(which){const d=glossary[which]||glossary.github;$('#term-title').textContent=d.title;$('#term-body').innerHTML=d.content;if(!$('#glossary').open)$('#glossary').showModal();}
+let routeRestoring=false,currentHelpTopic=null,currentEditId=null;
+function snapshotRoute(){
+ const dialog=['glossary','project-editor','install-dialog'].find(id=>$('#'+id)?.open)||null;
+ return {view:currentView,repo:graphRepo,selected:selected?{...selected}:null,
+ drawer:$('#drawer').classList.contains('show'),dialog,
+ help:dialog==='glossary'?currentHelpTopic:null,
+ edit:dialog==='project-editor'?currentEditId:null};
+}
+function refreshBackButton(){
+ const state=history.state;
+ $('#cockpit-back').hidden=!(state?.pilotage===true && state.depth>0);
+}
+function pushRoute(){
+ if(routeRestoring)return;
+ const prior=history.state?.pilotage?history.state.depth:0;
+ history.pushState({pilotage:true,depth:prior+1,route:snapshotRoute()},'',location.href);
+ refreshBackButton();
+}
+function initRouteHistory(){
+ if(!history.state?.pilotage)history.replaceState({pilotage:true,depth:0,route:snapshotRoute()},'',location.href);
+ refreshBackButton();
+ window.addEventListener('popstate',e=>restoreRoute(e.state?.pilotage?e.state.route:null));
+ for(const dlg of document.querySelectorAll('dialog'))dlg.addEventListener('cancel',e=>{e.preventDefault();goBack()});
+}
+function hideDrawer(){
+ $('#drawer').classList.remove('show');$('#drawer').setAttribute('aria-hidden','true');$('#shade').hidden=true;
+}
+function goBack(){
+ if(history.state?.pilotage && history.state.depth>0){history.back();return}
+ for(const dlg of document.querySelectorAll('dialog'))if(dlg.open)dlg.close();
+ hideDrawer();selected=null;if(model)drawMap();refreshBackButton();
+}
+function restoreRoute(route){
+ routeRestoring=true;
+ try{
+  for(const dlg of document.querySelectorAll('dialog'))if(dlg.open)dlg.close();
+  hideDrawer();
+  selected=null;
+  const view=route?.view&&names[route.view]?route.view:'overview';
+  setView(view,false);
+  graphRepo=route?.repo||'';
+  if(model?.repos && graphRepo && !model.repos.some(r=>r.id===graphRepo))graphRepo='';
+  $('#graph-repo').value=graphRepo;
+  selected=route?.selected||null;
+  if(model)drawMap();
+  if(model&&route?.drawer&&selected){
+   const x=selected;
+   if(x.kind==='app')showApp(x.id);
+   else if(x.kind==='repo')showRepo(x.id);
+   else if(x.kind==='project')openProject(x.id);
+   else if(x.kind==='device')showDevice(x.id);
+  }
+  if(route?.dialog==='glossary')showHelp(route.help||'guide');
+  if(route?.dialog==='project-editor')editProject(route.edit||null);
+  if(route?.dialog==='install-dialog')openInstallGuide();
+ }finally{routeRestoring=false;refreshBackButton()}
+}
+function setView(view,record=true){
+ if(!names[view])return;
+ const changed=view!==currentView;
+ currentView=view;
+ if(changed){hideDrawer();selected=null}
+ $('.view').forEach(x=>x.hidden=x.id!=='view-'+view);
+ $('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+ $('#page-title').innerHTML=escapeHTML(names[view])+' <span class="slim">'+escapeHTML(viewDescriptions[view])+'</span>';
+ if(changed&&!routeRestoring)scrollTo({top:0,behavior:'smooth'});
+ if(changed&&model)drawMap();
+ if(changed&&record)pushRoute();
+}
+
+function showHelp(which){currentHelpTopic=which;const d=glossary[which]||glossary.github;$('#term-title').textContent=d.title;$('#term-body').innerHTML=d.content;if(!$('#glossary').open)$('#glossary').showModal();pushRoute();}
 function tag(text,style=''){return '<span class="tag '+style+'">'+escapeHTML(text)+'</span>'}
 function link(url,title){return '<a href="'+escapeHTML(url)+'" target="_blank" rel="noopener noreferrer">'+escapeHTML(title)+' ↗</a>'}
 function metric(value,label,hint){return '<div class="metric"><div class="metric-top"><strong>'+escapeHTML(value)+'</strong><small>'+escapeHTML(hint||'')+'</small></div><span>'+escapeHTML(label)+'</span></div>'}
@@ -104,7 +173,7 @@ function renderProjects(){
  }).join('')||'<div class="empty">Aucun projet dans ce filtre.</div>';
 }
 function openProject(id){
- const p=projectData.find(x=>x.id===id);if(!p)return;
+ const p=projectData.find(x=>x.id===id);if(!p)return;selected={kind:'project',id};
  let content='<p class="drawer-desc">'+escapeHTML(p.summary||'Objectif à préciser')+'</p>';
  content+='<div class="detail-grid"><div class="detail-box"><small>Étape</small><b>'+escapeHTML(statuses[p.lifecycle]||p.lifecycle)+'</b></div><div class="detail-box"><small>Publication</small><b>'+escapeHTML(publications[p.publication]||p.publication)+'</b></div><div class="detail-box"><small>Famille</small><b>'+escapeHTML(p.family)+'</b></div><div class="detail-box"><small>Catégorie</small><b>'+escapeHTML(p.category)+'</b></div></div>';
  content+='<div class="detail-label">Dernier état consigné</div><p class="drawer-desc">'+escapeHTML(p.progress_note||'Aucun point de reprise documenté')+'</p>';
@@ -116,14 +185,14 @@ function openProject(id){
  content+='<div class="detail-links"><button class="smallbutton primary" data-edit-project="'+escapeHTML(p.id)+'">Modifier cette fiche</button></div>';
  showDrawer(p.name,'Projet',content);
 }
-function editProject(id){
+function editProject(id){currentEditId=id||null;
  const p=projectData.find(x=>x.id===id)||{id:'',name:'',family:'Jouer & raconter',category:'',lifecycle:'brouillon',publication:'non_publie',summary:'',progress_note:'',next_action:'',repo:'',folder:'',app_id:''};
  const form=$('#project-form');form.reset();
  for(const field of ['id','name','family','category','lifecycle','publication','summary','progress_note','next_action','repo','folder','app_id']){if(form.elements.namedItem(field))form.elements.namedItem(field).value=p[field]||''}
  if(!p.id){form.elements.namedItem('lifecycle').value='brouillon';form.elements.namedItem('publication').value='non_publie';form.elements.namedItem('family').value='Jouer & raconter'}
  $('#project-editor-title').textContent=id?'Modifier un projet':'Nouveau projet';
  $('#project-form-result').textContent='';
- if(!$('#project-editor').open)$('#project-editor').showModal();
+ if(!$('#project-editor').open)$('#project-editor').showModal();pushRoute();
 }
 async function registryRequest(action,body){
  const r=await fetch(REGISTRY+'?action='+action,{method:body?'POST':'GET',cache:'no-store',headers:{'Content-Type':'application/json','x-bastide-key':A.accessKey()},body:body?JSON.stringify(body):undefined});
@@ -139,8 +208,8 @@ async function loadRegistry(force=false){
   if(model){const label=$('#metrics .metric:nth-child(2) strong');if(label)label.textContent=String(projectData.length);const cap=$('#metrics .metric:nth-child(2) span');if(cap)cap.textContent='projets catalogués'}
  }catch(e){if(indicator)indicator.textContent='Registre indisponible : '+e.message}
 }
-function showDrawer(title,kind,content){$('#drawer-kind').textContent=kind.toUpperCase();$('#drawer-content').innerHTML='<h2 class="drawer-title">'+escapeHTML(title)+'</h2>'+content;$('#drawer').classList.add('show');$('#drawer').setAttribute('aria-hidden','false');$('#shade').hidden=false;}
-function closeDrawer(){selected=null;$('#drawer').classList.remove('show');$('#drawer').setAttribute('aria-hidden','true');$('#shade').hidden=true;if(model)drawMap()}
+function showDrawer(title,kind,content){$('#drawer-kind').textContent=kind.toUpperCase();$('#drawer-content').innerHTML='<h2 class="drawer-title">'+escapeHTML(title)+'</h2>'+content;$('#drawer').classList.add('show');$('#drawer').setAttribute('aria-hidden','false');$('#shade').hidden=false;pushRoute();}
+function closeDrawer(){if(history.state?.pilotage&&history.state?.route?.drawer&&history.state.depth>0){goBack();return}hideDrawer();selected=null;if(model)drawMap()}
 function detailList(items){return '<div class="pill-row">'+(items.length?items.map(s=>'<span class="pill">'+escapeHTML(s)+'</span>').join(''):'<span class="minihelp">Aucun lien supplémentaire confirmé</span>')+'</div>'}
 function showApp(id){const a=model.apps.find(x=>x.id===id);if(!a)return;selected={kind:'app',id};graphRepo=a.repo;$('#graph-repo').value=a.repo;drawMap();const r=repoFor(a),dest=a.repo==='apprepo'?ROOT+a.path:a.repo==='site'?'https://github.com/latelierdeguiltanas/latelierdeguiltanas-site':r?.url;const cloudInfo=a.sync==='cloud'?'Données serveur partagées':a.sync==='hybrid'?'Stockage local + serveur':a.sync==='local'?'Stockage local':'Liaison à vérifier';
 const related=model.flows.filter(e=>e[0]===id||e[1]===id).map(e=>{const other=e[0]===id?e[1]:e[0];return (model.apps.find(a=>a.id===other)?.name||other)+' · '+e[2]});
@@ -240,11 +309,11 @@ function drawMap(){
  $('#graph-hint').textContent=appFocus?'Dépôt '+repo.name+' · seules les dépendances de '+appFocus.name+' sont en évidence.':repo.name+' · '+apps.length+' applications. Sélectionne une application pour ses dépendances.';
 }
 function wire(){const clickParent=e=>{const app=e.target.closest('[data-app]'),repo=e.target.closest('[data-repo]'),dev=e.target.closest('[data-device]');if(app)showApp(app.dataset.app);else if(repo)showRepo(repo.dataset.repo);else if(dev)showDevice(dev.dataset.device)};document.addEventListener('click',e=>{if(e.target.closest('.data-row'))clickParent(e);const target=e.target.closest('[data-drawer-app]');if(target){e.preventDefault();showApp(target.dataset.drawerApp)}});
-document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('.data-row'))clickParent(e);if(e.key==='Escape')closeDrawer()});
-$$('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));$$('[data-view-go]').forEach(b=>b.onclick=()=>setView(b.dataset.viewGo));$('#graph-repo').onchange=e=>{graphRepo=e.target.value;selected=null;closeDrawer();drawMap()};$('#graph-reset').onclick=()=>{graphRepo='';selected=null;closeDrawer();$('#graph-repo').value='';drawMap()};
-$('#project-search').oninput=renderProjects;$('#project-stage').onchange=renderProjects;$('#project-family').onchange=renderProjects;$('#project-new').onclick=()=>editProject(null);$('#project-scan').onclick=()=>loadRegistry(true);$('#project-close').onclick=$('#project-cancel').onclick=()=>$('#project-editor').close();$('#project-form').onsubmit=async e=>{e.preventDefault();const f=e.target,b=$('#project-submit');b.disabled=true;$('#project-form-result').textContent='Sauvegarde sur le serveur…';try{const body=Object.fromEntries(new FormData(f));const d=await registryRequest('save',body);$('#project-form-result').textContent='Fiche enregistrée.';$('#project-editor').close();await loadRegistry();openProject(d.project.id)}catch(err){$('#project-form-result').textContent=err.message}finally{b.disabled=false}};$('#project-list').addEventListener('click',e=>{const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)});$('#project-list').addEventListener('keydown',e=>{if(e.key==='Enter'){const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)}});document.addEventListener('click',e=>{const b=e.target.closest('[data-edit-project]');if(b)editProject(b.dataset.editProject)});$('#app-search').oninput=e=>{search=e.target.value.trim().toLowerCase();renderApps()};$('#app-filter').onchange=renderApps;
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('.data-row'))clickParent(e);if(e.key==='Escape'&&!document.querySelector('dialog[open]')&&$('#drawer').classList.contains('show'))goBack()});
+$$('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));$$('[data-view-go]').forEach(b=>b.onclick=()=>setView(b.dataset.viewGo));$('#graph-repo').onchange=e=>{graphRepo=e.target.value;selected=null;hideDrawer();drawMap();pushRoute()};$('#graph-reset').onclick=()=>{graphRepo='';selected=null;hideDrawer();$('#graph-repo').value='';drawMap();pushRoute()};
+$('#project-search').oninput=renderProjects;$('#project-stage').onchange=renderProjects;$('#project-family').onchange=renderProjects;$('#project-new').onclick=()=>editProject(null);$('#project-scan').onclick=()=>loadRegistry(true);$('#project-close').onclick=$('#project-cancel').onclick=goBack;$('#project-form').onsubmit=async e=>{e.preventDefault();const f=e.target,b=$('#project-submit');b.disabled=true;$('#project-form-result').textContent='Sauvegarde sur le serveur…';try{const body=Object.fromEntries(new FormData(f));const d=await registryRequest('save',body);$('#project-form-result').textContent='Fiche enregistrée.';$('#project-editor').close();await loadRegistry();openProject(d.project.id)}catch(err){$('#project-form-result').textContent=err.message}finally{b.disabled=false}};$('#project-list').addEventListener('click',e=>{const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)});$('#project-list').addEventListener('keydown',e=>{if(e.key==='Enter'){const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)}});document.addEventListener('click',e=>{const b=e.target.closest('[data-edit-project]');if(b)editProject(b.dataset.editProject)});$('#app-search').oninput=e=>{search=e.target.value.trim().toLowerCase();renderApps()};$('#app-filter').onchange=renderApps;
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-check-online]');if(!b)return;const a=model?.apps.find(x=>x.id===b.dataset.checkOnline),target=$('#online-test');if(!a||!target)return;b.disabled=true;target.textContent='Test en cours…';try{const u=ROOT+a.path;const r=await fetch(u,{method:'HEAD',cache:'no-store'});target.textContent=r.ok?'✓ Page accessible depuis cet appareil ('+r.status+'). Fonctionnalités internes non testées.':'⚠ Page non confirmée (HTTP '+r.status+').';}catch(err){target.textContent='⚠ Test impossible : '+err.message;}finally{b.disabled=false}});
-$('#drawer-close').onclick=closeDrawer;$('#shade').onclick=closeDrawer;$('#help').onclick=$('#open-guide').onclick=()=>showHelp('guide');$('#term-close').onclick=()=>$('#glossary').close();document.addEventListener('click',e=>{const b=e.target.closest('[data-term]');if(b)showHelp(b.dataset.term)});$('#refresh-players').onclick=loadPlayerChecks;$('#reload').onclick=load}
+$('#drawer-close').onclick=closeDrawer;$('#shade').onclick=closeDrawer;$('#cockpit-back').onclick=goBack;$('#help').onclick=$('#open-guide').onclick=()=>showHelp('guide');$('#term-close').onclick=goBack;document.addEventListener('click',e=>{const b=e.target.closest('[data-term]');if(b)showHelp(b.dataset.term)});$('#refresh-players').onclick=loadPlayerChecks;$('#reload').onclick=load}
 function populate(){const chooser=$('#graph-repo');chooser.innerHTML='<option value="">Vue des dépôts</option>'+model.repos.map(r=>'<option value="'+escapeHTML(r.id)+'">'+escapeHTML(r.name)+'</option>').join('');if(graphRepo&&!model.repos.some(r=>r.id===graphRepo))graphRepo='';chooser.value=graphRepo;renderMetrics();renderBrief();renderApps();renderRepos();renderBackend();renderUsage();renderDevices();drawMap();loadPlayerChecks();$('#freshness').textContent='Données serveur : '+time(model.metrics.generated_at)+' · dépôts : audit '+model.inventoryUpdated}
 async function load(){const reload=$('#reload');reload.disabled=true;$('#live-status').className='online';$('#live-status').innerHTML='<i></i> Synchronisation…';try{
 const key=A?.accessKey?.();if(!key)throw Error('Clé MJ Bastide absente sur ce navigateur.');
@@ -268,7 +337,7 @@ function installationGuide(){
   :['1. Ouvre le cockpit dans Chrome ou Microsoft Edge.','2. Menu du navigateur ⋮ → « Installer cette page comme application ».','3. Confirme la création du raccourci.'];
  return '<p class="minihelp">'+(withinApp?'Ce lien semble ouvert dans un navigateur intégré. Ouvre-le directement dans Chrome/Samsung Internet avant l’installation.':'Le navigateur ne propose pas actuellement son assistant automatique d’installation.')+'</p>'+lines.map(x=>'<p class="install-step">'+escapeHTML(x)+'</p>').join('')+'<p class="minihelp">L’installation ne peut pas être imposée par un site : le navigateur doit proposer ou confirmer le raccourci. Tu n’as pas à créer un autre compte.</p>';
 }
-function openInstallGuide(){const dlg=$('#install-dialog');$('#install-instructions').innerHTML=installationGuide();if(!dlg.open)dlg.showModal();}
+function openInstallGuide(){const dlg=$('#install-dialog');$('#install-instructions').innerHTML=installationGuide();if(!dlg.open)dlg.showModal();pushRoute();}
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installRequest=e;$('#install-app').title='Installer le cockpit en un clic';});
 window.addEventListener('appinstalled',()=>{installRequest=null;$('#install-app').innerHTML='✓ <span>Installée</span>';$('#install-app').title='Application installée';});
 $('#install-app').onclick=async()=>{
@@ -278,8 +347,8 @@ $('#install-app').onclick=async()=>{
   catch{openInstallGuide()}
  }else openInstallGuide();
 };
-$('#install-close').onclick=()=>$('#install-dialog').close();
+$('#install-close').onclick=goBack;
 $('#copy-cockpit-link').onclick=async()=>{try{await navigator.clipboard.writeText(ROOT+'centre-synchronisation/');$('#copy-cockpit-link').textContent='✓ Adresse copiée';}catch{$('#copy-cockpit-link').textContent=ROOT+'centre-synchronisation/';}};
 if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(()=>{});
-wire();load();
+initRouteHistory();wire();load();
 })();
