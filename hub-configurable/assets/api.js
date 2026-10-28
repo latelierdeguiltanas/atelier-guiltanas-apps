@@ -3,6 +3,25 @@ const URL='https://jitatmdbipjkvjstcgdc.supabase.co/rest/v1/rpc/hcfg_link_api';
 const KEY='sb_publishable_XKVr4_kE2qsywCTgurH0CQ_GTXrEFeU';
 export function secret(){return Array.from(crypto.getRandomValues(new Uint8Array(32)),b=>b.toString(16).padStart(2,'0')).join('');}
 export function accessLink(space,token){return location.origin+location.pathname+'#space='+space+'&key='+token;}
+
+/* Code portable: 16 octets UUID + 32 octets du jeton MJ. Même secret que le lien MJ, mais sans URL. */
+export function recoveryCode(workspace){
+  if(workspace?.role!=='mj'||!/^[a-f0-9-]{36}$/i.test(workspace.id||'')||!/^[a-f0-9]{64}$/.test(workspace.token||''))throw Error('Accès MJ requis');
+  const hex=workspace.id.replace(/-/g,'').toLowerCase()+workspace.token.toLowerCase();
+  const bytes=new Uint8Array(hex.match(/../g).map(v=>parseInt(v,16)));
+  let binary='';for(const b of bytes)binary+=String.fromCharCode(b);
+  return 'G2-'+btoa(binary).replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,'');
+}
+export function parseRecoveryCode(value){
+  const compact=String(value||'').trim().replace(/\\s+/g,'');
+  if(!/^G2-[A-Za-z0-9_-]{64}$/.test(compact))throw Error('Code de récupération invalide.');
+  let bytes;try{const raw=atob(compact.slice(3).replace(/-/g,'+').replace(/_/g,'/'));bytes=Uint8Array.from(raw,c=>c.charCodeAt(0))}catch{throw Error('Code de récupération illisible.')}
+  if(bytes.length!==48)throw Error('Code de récupération incomplet.');
+  const hex=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
+  const u=hex.slice(0,32),id=u.slice(0,8)+'-'+u.slice(8,12)+'-'+u.slice(12,16)+'-'+u.slice(16,20)+'-'+u.slice(20),token=hex.slice(32);
+  return{id,token};
+}
+
 export function parseLink(text){let hash;try{hash=new globalThis.URL(text,location.href).hash.slice(1);}catch{throw Error('Lien incomplet.');}const p=new URLSearchParams(hash),id=p.get('space'),token=p.get('key');if(!/^[a-f0-9-]{36}$/.test(id||'')||!/^[a-f0-9]{64}$/.test(token||''))throw Error('Ce lien d’accès est incomplet.');return {id,token};}
 export class HubAPI{
  constructor(store=storage){this.store=store;}
