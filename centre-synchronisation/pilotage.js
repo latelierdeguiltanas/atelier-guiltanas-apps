@@ -110,5 +110,14 @@ const r=await fetch(ENDPOINT,{method:'GET',cache:'no-store',headers:{'x-bastide-
 if(!Array.isArray(data.repos)||!Array.isArray(data.apps)||!data.metrics)throw Error('Inventaire incomplet');
 model=data;$('#locked').hidden=true;$('#content').hidden=false;$('#live-status').className='online ok';$('#live-status').innerHTML='<i></i> Données à jour';populate();
 }catch(e){$('#live-status').className='online bad';$('#live-status').innerHTML='<i></i> Non connecté';if(!model){$('#locked').hidden=false;$('#content').hidden=true;$('#lock-text').textContent=e.message+' Ouvre ton accès MJ Bastide personnel sur cet appareil.'}else{alert('Mise à jour impossible : '+e.message+'. Les dernières données restent visibles.')}}finally{reload.disabled=false}}
+let installRequest=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installRequest=e;$('#install-app').title='Installer le cockpit';});
+window.addEventListener('appinstalled',()=>{installRequest=null;$('#install-app').title='Cockpit installé'});
+$('#install-app').onclick=async()=>{if(installRequest){const p=installRequest;installRequest=null;try{await p.prompt()}catch(e){alert('Installation non proposée : '+e.message)}return}
+const ua=navigator.userAgent;
+const help=/iPhone|iPad|iPod/.test(ua)?'Safari → Partager → Sur l’écran d’accueil.':/Android/.test(ua)?'Menu du navigateur ⋮ → Installer l’application ou Ajouter à l’écran d’accueil.':'Menu Chrome/Edge → Installer cette page comme application, ou créer un raccourci.';
+alert('Pour accéder au cockpit en un geste : '+help);
+};
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(()=>{});
 wire();load();
 })();
