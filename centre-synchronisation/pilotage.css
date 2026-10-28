@@ -9,13 +9,13 @@
 .navbtn{position:relative;border:1px solid transparent;transition:background .16s,border-color .16s}
 .navbtn .navicon{display:grid;place-items:center;border-radius:7px;background:#214431;color:#d0dfca;flex:none}
 .navbtn[data-view="overview"]{--nav:#dbbf7e}
-.navbtn[data-view="applications"]{--nav:#82c9a2}
+.navbtn[data-view="applications"],.navbtn[data-view="projects"]{--nav:#82c9a2}
 .navbtn[data-view="repositories"]{--nav:#84b9dc}
 .navbtn[data-view="backend"]{--nav:#b1a5e7}
 .navbtn[data-view="usage"]{--nav:#e4aa82}
 .navbtn[data-view="devices"]{--nav:#db9abf}
 .navbtn[data-view="overview"] .navicon{background:#443b24;color:#f1d58f}
-.navbtn[data-view="applications"] .navicon{background:#1a4332;color:#8ee4b5}
+.navbtn[data-view="applications"] .navicon,.navbtn[data-view="projects"] .navicon{background:#1a4332;color:#8ee4b5}
 .navbtn[data-view="repositories"] .navicon{background:#183c52;color:#95d0ed}
 .navbtn[data-view="backend"] .navicon{background:#34284e;color:#c9b7ff}
 .navbtn[data-view="usage"] .navicon{background:#4a3026;color:#f1b28c}
