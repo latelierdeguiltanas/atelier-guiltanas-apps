@@ -1,0 +1,46 @@
+{
+  "schema": "FOH_N1_BROWSER_AND_PDF",
+  "scope": "One real desktop-browser human rogue N1 journey; not all profiles and not Android",
+  "browser": "Remote Chrome desktop",
+  "source": "Published Forge page before local corrections",
+  "journey": [
+    "classic creation",
+    "official Expert series",
+    "Assassin + Adventurer",
+    "Adventurer → Movement: DEF13→14, INIT11→12",
+    "Movement → Adventurer: DEF14→13, INIT12→11",
+    "save",
+    "reload",
+    "open through Mes héros",
+    "official PDF download using supplied blank template"
+  ],
+  "expected": {
+    "NIVEAU": "1",
+    "PV MAX": "9",
+    "DEF": "13",
+    "INIT": "11",
+    "PCmax": "3",
+    "PM MAX": "0"
+  },
+  "browserJourneyStatus": "PASS",
+  "downloadedPdf": {
+    "sha256": "b0db6f061ce71b3bbd29676331f4517c65650739ea77895282aa41c061b16eba",
+    "pages": 7,
+    "fields": 156,
+    "numericFieldsStatus": "PASS",
+    "inactiveHistoryStatus": "FAIL_REPRODUCED",
+    "observedDescription": "HUMAIN · Voleur · Aventurier · Historiques : Voie des campagnes R1 · Voie du courtisan R1"
+  },
+  "localFixedExport": {
+    "historyStatus": "PASS",
+    "scope": "actual inline native N1 export with inactive/active histories; shared exporter inactive case",
+    "fields": 156,
+    "pages": 6
+  },
+  "notVerified": [
+    "Android",
+    "all-profile UI journeys",
+    "new Gnome fix in the published browser until deployment"
+  ],
+  "screenshot": "browser-n1-reopening.jpg"
+}

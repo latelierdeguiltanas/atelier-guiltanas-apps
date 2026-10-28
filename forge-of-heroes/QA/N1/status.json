@@ -1,0 +1,26 @@
+{
+  "schema": "FOH_PHASE_STATUS",
+  "activePhase": "N1",
+  "n1": "OPEN",
+  "n2": "WAITING_FOR_N1",
+  "n3": "WAITING_FOR_N2",
+  "overallCertified": false,
+  "checks": {
+    "matrixInputsMatchCurrentEngineAndDatabase": true,
+    "allEightShardsCompleted": true,
+    "matrixAssertions": true,
+    "regressions": true,
+    "precision": true,
+    "aba": true,
+    "ghost": true,
+    "negative": true,
+    "antiFalseGreen": true,
+    "manualReferences": true
+  },
+  "automatedChecksPass": true,
+  "currentIndexSha256": "fdddda3a265e78c5f80ec291f706982ac3d3dfefb3e19ebddcfe9a5e1032bdfb",
+  "matrixIndexSha256": "e06bf4187996e1540b1e3b3fc3e7d7c111b344a55a54024b8d84a6872feb8a6d",
+  "note": "The matrix binds the engine and database, which are unchanged by the later PDF-only fix. Whole-HTML hashes are retained separately; no old evidence is relabelled.",
+  "remainingGate": "QA/N1/README.md — Réserves à fermer avant N2",
+  "generatedAt": "2026-10-28T09:45:42.865Z"
+}

@@ -45950,6 +45950,7 @@ const api={version:'FOH_PRESTIGE_RULES_1',calculate,manaSurcharge};root.FOHPrest
 
 
 
+
 (function(){
 "use strict";
 
@@ -47036,6 +47037,8 @@ const errors=[];
     const a=computeCharacterN1Fix78(sub(primary,p1,pp),true);if(a.errors.length)return a;
     const s=a.sticky,famPV={aventurier:4,combattant:5,mage:3,mystique:4},con=Number(s.caracs&&s.caracs.con||0),secondaryAbility=Data.getClassAbility(p2.id,1);
     const primaryA=s.acquiredAbilities.find(x=>x.pathId===p1.id&&+x.rank===1),secondaryA=secondaryAbility&&{id:secondaryAbility.id,pathId:p2.id,rank:1,label:secondaryAbility.label||'',spell:isSpell(secondaryAbility),mechanics:secondaryAbility.mechanics||{},sourceProfileId:secondary.id};if(!primaryA||!secondaryA)return {sticky:null,errors:['Profil hybride N1 : capacité R1 source absente.']};
+    // The ancestry gift is resolved in the primary projection; also check the secondary R1 before merging.
+    if(s.acquiredAbilities.some(x=>x.origin==='people_granted_ability'&&x.id===secondaryA.id))return {sticky:s,errors:['Don étrange du peuple Gnome : choisir une capacité différente de celles déjà acquises par les voies.']};
     s.profileId='hybrid:'+primary.id+'+'+secondary.id;s.profileLabel=primary.label+' / '+secondary.label;s.familyId=primary.familleId;
     const ageOpened=(s.profilePaths||[]).filter(x=>x.origin==='age_opened_path'||(s.acquiredAbilities||[]).some(a=>a.origin==='age_capacity_points'&&a.pathId===x.pathId));s.profilePaths=[{pathId:p1.id,rank:Math.max(1,...(s.acquiredAbilities||[]).filter(a=>a.pathId===p1.id).map(a=>Number(a.rank||1))),sourceProfileId:primary.id},{pathId:p2.id,rank:1,sourceProfileId:secondary.id},...ageOpened.filter(x=>x.pathId!==p1.id&&x.pathId!==p2.id)];
     s.acquiredAbilities=s.acquiredAbilities.filter(x=>x.pathId===s.voiePeuple?.pathId||x.origin==='people_granted_ability'||x.origin==='people_r1'||x.origin==='age_capacity_points'||x.origin==='history_r1'||x.pathId===p1.id||x.pathId==='path:mage:cof2-lb-2024');

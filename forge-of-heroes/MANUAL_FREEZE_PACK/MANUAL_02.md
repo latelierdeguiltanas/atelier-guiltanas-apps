@@ -12,6 +12,7 @@ Valider un achat exact et le refus d’une valeur +5.
 4. Active les règles nécessaires puis l’âge standard.
 5. Choisis la méthode ADVANCED_POINT_BUY.
 6. Attribue exactement : FOR 2, AGI 2, CON 1, PER 1, INT 0, VOL 0, CHA -1.
+   Attribue le bonus humain +1 à CHA (−1 → 0), une des deux caractéristiques les plus faibles.
 7. Choisis les voies : Voie de l’assassin ; Voie de l’aventurier.
 8. Choisis l’équipement : Rapière, Dague, Dague, Dague, Dague, Dague ; armure armor:cuir-simple:cof2-lb-2024 ; bouclier aucun.
 
@@ -21,7 +22,8 @@ Valider un achat exact et le refus d’une valeur +5.
 - Budget total : 0.
 - Points dépensés : 0.
 - Points restants : 0.
-- PV 9; DEF 14; INIT 11; PC 3; PM 0.
+- PC : 2 + CHA 0 + 1 (famille aventuriers) + 1 (Diversité humaine) = 4, COF2 p.30.
+- PV 9; DEF 14; INIT 11; PC 4; PM 0.
 - Attaques : Rapière +3 / 1d6+2 ; Dague +3 / 1d4+2 ; Dague +3 / 1d4 ; Dague +3 / 1d4+2 ; Dague +3 / 1d4 ; Dague +3 / 1d4+2 ; Dague +3 / 1d4 ; Dague +3 / 1d4+2 ; Dague +3 / 1d4 ; Dague +3 / 1d4+2 ; Dague +3 / 1d4.
 - Choix persistants : {"ability":{},"creation":{}}.
 

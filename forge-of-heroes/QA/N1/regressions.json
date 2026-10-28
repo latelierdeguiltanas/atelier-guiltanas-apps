@@ -1,0 +1,180 @@
+{
+  "schema": "FOH_N1_REGRESSION_BATCH",
+  "scope": "N1 creation and advanced-age projections; no progression work; some high-rank reference projections remain in reused suites",
+  "indexSha256": "e06bf4187996e1540b1e3b3fc3e7d7c111b344a55a54024b8d84a6872feb8a6d",
+  "finishedAt": "2026-10-28T09:38:16.489Z",
+  "passed": 24,
+  "total": 24,
+  "status": "PASS",
+  "browserClicks": false,
+  "suites": [
+    {
+      "file": "n1_gnome_hybrid_duplicate_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "79ac754ad7ced2bf366eacd709ff75dc91abcb7b165ab4e38fdfed08ae604e9d",
+      "output": "PASS 160 Gnome hybrid cases across both products: duplicate rejected for the right reason, alternative gift accepted, both chosen paths retained, immutable input and save/reload.\n"
+    },
+    {
+      "file": "no_profile_budget_runner.js",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "5311aa4f3f7e3e707c8c552762652a41e03178f845cfbc725157bae8dee81b21",
+      "output": "PASS rank and card share the mature budget\nPASS cards alone can use the mature budget\nPASS duplicate ranks are rejected\nPASS rank 3 needs rank 2\nPASS rank 2 plus rank 3 plus card uses exactly four points\nPASS removing a card then buying another rank does not leave ghost points\nPASS extra card beyond the available budget is rejected\nPASS noninteger rank is rejected\n8 no-profile budget checks passed.\n"
+    },
+    {
+      "file": "hybrid_point_buy_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "2abe52a614a5444465fb04dfb55769af7ddd1c1f11c6c01f3846c63350658134",
+      "output": "PASS hybride demi-orc : ajustements raciaux après achat, PV Vigueur conservés, DEF/INIT détaillées, INT des runes contrôlée, inversion principal/secondaire, sans armure, aucune voie fantôme, sauvegarde/rejeu.\n"
+    },
+    {
+      "file": "permanent_rules_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "8c43159a6c0c2f437791d34d9d07f699250894c58dabdbbb37386f54cb3ae790",
+      "output": "PASS 27 permanent-rule cases plus heroic/ancestry projections: rank scaling, negative modifiers, armor/shield changes, retroactive CON PV, stat choices and N1 rank guard.\n"
+    },
+    {
+      "file": "grants_attacks_companions_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "2696cae3055c61e1e7c75b84d420d7503ff6eedca834f5b1667fa0176e0297a5",
+      "output": "PASS 78 creation/replay cases: attack/damage stat separation, R2/R3 dice, grant choices/duplicates/PM, eight asset paths and contextual familiar stacking; 50 sorcerer/monk hybrids.\n"
+    },
+    {
+      "file": "grant_prerequisites_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "a2360549ae3a5cd6e876372729008730d0b721c9f700e9a0a05f72f5ac700da3",
+      "output": "PASS own-profile racial gifts supply prerequisites without duplicate costs, purchase order is irrelevant, removing the grant invalidates the dependent rank, foreign profile ranks stay unavailable.\n"
+    },
+    {
+      "file": "forgesort_paths_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "3a2621fa68b979094e8e86c92a7512e6b37d61a38fe826af99137984872d97ba",
+      "output": "PASS 100 créations N1 gnome forgesort : les 20 paires de voies, tous les rangs 2 possibles, avec/sans voie mage, Don étrange conservé une seule fois.\nPASS affichage des cinq voies, choix des deux emplacements et conseil mage, aucun changement de brouillon à la lecture.\n"
+    },
+    {
+      "file": "equipment_condition_runner.js",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "c3c7cc075daca3f4babc516da1ba4764cecf4115765661b998312e9cac0cb81d",
+      "output": "PASS unarmored barde bonus follows path rank 2\nPASS unarmored barde bonus follows path rank 3\nPASS CHARISMA remains the ceiling when below path rank\nPASS armor on/off/on is reversible and does not retain unarmored bonus\nPASS priest unarmored spiritual bonus is reversible\nPASS shield removal and restoration do not leave a defense bonus\n6 equipment condition checks passed.\n"
+    },
+    {
+      "file": "equipment_runtime_companions_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "4ae16881939879e49b23e8137de64d55922c73bc07ed29850e8af253a0fdba93",
+      "output": "PASS 16 creation/replay fixtures; 60 entity distributions; canonical armor permissions and spell surcharge, target quotas, shared rage/fury pool, lifetime counters, native high-rank companions and strict corruption checks.\n"
+    },
+    {
+      "file": "path_calculations_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "ea0954b4dfad8aef804451448dfc064297973c00d6754fce87813f2d1174f2f0",
+      "output": "PASS arithmetic isolation, unresolved target context, dice unchanged, monk permanent DEF/PV/INIT and speed, kobold DEF, save/replay, 75 people texts, companion characteristic conversions and honest coverage.\n"
+    },
+    {
+      "file": "ability_runtime_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "67d943a5d7332101aff6060d08429c215802fccbdc6077281309f04e5a7dc827",
+      "output": "PASS 6 actor fixtures and atomic resource checks: Companion spell PM, combat/day quotas, insufficient mana, corruption rejection, target-specific enchantment and deactivation without stale damage. No dice rolled.\n"
+    },
+    {
+      "file": "advanced_paths_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "19e215098a48d3d4b17a3d1b5e66365ef3d4a4d173131363dd12b7235b50685f",
+      "output": "PASS 10 optional-path creations/replays; 25 full source ranks per product, Corruption replacement, physical spell attack, conditional web damage, free/movement voice costs, nine shape NC/level/cost thresholds, per-target temptation and guard-dog statistics. Mechanical completeness remains false.\n"
+    },
+    {
+      "file": "sacred_mana_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "c89c08832247367711acb9952598a99d9507b1815b20084de3c6326ad54fd676",
+      "output": "PASS 40 sacred vestments and mana-burn cases across both products. No dice rolled; source COF2 pp.125,228.\n"
+    },
+    {
+      "file": "conjuration_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "924c9bed68ca74275488f6a2d955eeb16f08f7b8b5a6e16ff160196c5898ff6d",
+      "output": "PASS 25 conjuration cases: eight tiers, reinforcement, pack downgrades, carapace, army, source/house provenance, both products and immutable replay. No balance playtest.\n"
+    },
+    {
+      "file": "gnome_gift_help_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "d61df03ffa3a6dfc39bfa40de432d483b97898439838c0a59d35d22d7a96efc9",
+      "output": "PASS Don étrange : 5 choix R1 uniquement, effet lisible, texte complet sans coupe, coût/action, origine gnome et mise à jour à chaque sélection.\n"
+    },
+    {
+      "file": "storage_safety_runner.js",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "c0953a2a44de6fd80970ff4b6c3bfd70f118047e95145a63bc6fdf0d7a6a8eac",
+      "output": "PASS first save and repeated save preserve one identity and exact choices\nPASS unreadable library stays byte-for-byte intact: {broken\nPASS unreadable library stays byte-for-byte intact: {}\nPASS unreadable library stays byte-for-byte intact: null\nPASS unreadable library stays byte-for-byte intact: [null]\nPASS unreadable library stays byte-for-byte intact: [{\"id\":\"old\"}]\nPASS quota failure preserves existing hero and unsaved state\nPASS draft quota failure retains durable hero and prevents duplicate on retry\nPASS storage access denied does not escape the save handler\nPASS automatic save does not replace failure notice with success\nPASS every executable inline script parses\n11 storage and syntax checks passed.\n"
+    },
+    {
+      "file": "navigation_runner.js",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "b227e2e88cf033e42bd2d0d5d662177a87db24c8d61df9a69ed51c872ee1529f",
+      "output": "PASS startup is home; one action opens hero list with creation hidden\nPASS opening recovery directly closes list, opens sheet and never calls N1 step\nPASS back to heroes then home restores correct screens without modifying storage\nPASS normal ready hero opens final sheet directly; locked hero goes directly to its carnet\nPASS legacy library enhancement no longer clicks a hidden button or schedules form jump\n5 navigation fixture checks passed; no real-browser clicks.\n"
+    },
+    {
+      "file": "profile_people_guide_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "ee95e961ac4182a154c9ef7cbec1d177a9480b099e20cb0903c738524f10f11d",
+      "output": "PASS 14 profils de base / 16 peuples : priorités, bonus conditionnels, malus, aide affichée en trois étapes, aucun choix ou calcul modifié.\nPASS profil d’abord : retour au peuple avant caractéristiques ; parcours habituel et validation conservés.\n"
+    },
+    {
+      "file": "path_descriptions_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "f80ca0f21b63aa112371e17d3952f04a9f5de0f3e7938bb9254e9ee9a5a095bb",
+      "output": "PASS index.html: 85 voies, 425 descriptions, rangs uniques, cinq rangs rendus ; sorcier et moine complets.\nPASS FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html: 85 voies, 425 descriptions, rangs uniques, cinq rangs rendus ; sorcier et moine complets.\n"
+    },
+    {
+      "file": "history_completeness_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "9fe58072e069e51bd841f20fd7893165dd6bcf0c33bd2c6fca80f55088ef6712",
+      "output": "PASS 85 history source texts per product, exact path/ability/PDF-appendix data parity; four full historical acquisitions save/replay; novice/bodyguard owner math and reversible contact condition.\n"
+    },
+    {
+      "file": "calculation_trace_runner.js",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "dba651f32a1b593142f42e619744439ec538822f6cc1ebca0670b5d912544dbd",
+      "output": "17 calculation trace checks passed.\n"
+    },
+    {
+      "file": "import_assets_prestige_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "25115b5628431e47ef5d1a687cdb2d366daeb8a6d358fd4827ae17267521c1c0",
+      "output": "PASS exact product DB/engine parity, 660 canonical/PDF texts, 15 ancestry aliases, source section relocation, 100 prestige projections and 14 companion projections including alpha R4, optional sorcerer R5 counts and actual native stats. Prestige purchase remains explicitly unavailable.\nPASS reference-page renderer for all 10 paths, invalid-rank feedback and footer placement outside generated print templates. No browser clicking claimed.\n"
+    },
+    {
+      "file": "precision_transition_runner.js",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "43b14e7e6dd848fe6ca939f4a0a4a1019e23bbe7e949a1d6e0fe098afc15a410",
+      "output": "{\n  \"contracts\": [\n    53,\n    53\n  ],\n  \"aba\": [\n    53,\n    53\n  ],\n  \"ghost\": [\n    13,\n    13\n  ],\n  \"anti\": [\n    10,\n    10\n  ],\n  \"negative\": [\n    14,\n    14\n  ]\n}\n"
+    },
+    {
+      "file": "manual_scenario_assertions.js",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "51e83acb52e1746f539511d18c8ca3f3b127b3e0bbf95b21bb07d318b864a158",
+      "output": "{\n  \"rows\": [\n    {\n      \"manual\": 1,\n      \"name\": \"Standard débutant\",\n      \"fixtureErrors\": [],\n      \"objectiveMatched\": true,\n      \"computed\": {\n        \"PV\": 9,\n        \"DEF\": 13,\n        \"INIT\": 11,\n        \"PC\": 3,\n        \"PM\": 0\n      },\n      \"textReflectsComputedStats\": true,\n      \"beforeAfterComputedSeparately\": true,\n      \"status\": \"PASS\"\n    },\n    {\n      \"manual\": 2,\n      \"name\": \"Point-buy\",\n      \"fixtureErrors\": [],\n      \"objectiveMatched\": true,\n      \"computed\": {\n        \"PV\": 9,\n        \"DEF\": 14,\n        \"INIT\": 11,\n        \"PC\": 4,\n        \"PM\": 0\n      },\n      \"textReflectsComputedStats\": true,\n      \"beforeAfterComputedSeparately\": true,\n      \"status\": \"PASS\"\n    },\n    {\n      \"manual\": 3,\n      \"name\": \"Mûr + Peau de pierre\",\n      \"fixtureErrors\": [],\n      \"objectiveMatched\": true,\n      \"computed\": {\n        \"PV\": 15,\n        \"DEF\": 12,\n        \"INIT\": 11,\n        \"PC\": 2,\n        \"PM\": 0\n      },\n      \"textReflectsComputedStats\": true,\n      \"beforeAfterComputedSeparately\": true,\n      \"status\": \"PASS\"\n    },\n    {\n      \"manual\": 4,\n      \"name\": \"Vénérable + Spécialisation\",\n      \"fixtureErrors\": [],\n      \"objectiveMatched\": true,\n      \"computed\": {\n        \"PV\": 10,\n        \"DEF\": 16,\n        \"INIT\": 11,\n        \"PC\": 2,\n        \"PM\": 0\n      },\n      \"textReflectsComputedStats\": true,\n      \"beforeAfterComputedSeparately\": true,\n      \"status\": \"PASS\"\n    },\n    {\n      \"manual\": 5,\n      \"name\": \"Arme à répétition R2\",\n      \"fixtureErrors\": [],\n      \"objectiveMatched\": true,\n      \"computed\": {\n        \"PV\": 9,\n        \"DEF\": 13,\n        \"INIT\": 11,\n        \"PC\": 3,\n        \"PM\": 0\n      },\n      \"textReflectsComputedStats\": true,\n      \"beforeAfterComputedSeparately\": true,\n      \"status\": \"PASS\"\n    },\n    {\n      \"manual\": 6,\n      \"name\": \"Combattant aguerri R3\",\n      \"fixtureErrors\": [],\n      \"objectiveMatched\": true,\n      \"computed\": {\n        \"PV\": 8,\n        \"DEF\": 14,\n        \"INIT\": 12,\n        \"PC\": 3,\n        \"PM\": 0\n      },\n      \"textReflectsComputedStats\": true,\n      \"beforeAfterComputedSeparately\": true,\n      \"status\": \"PASS\"\n    },\n    {\n      \"manual\": 7,\n      \"name\": \"Hybride réel\",\n      \"fixtureErrors\": [],\n      \"objectiveMatched\": true,\n      \"computed\": {\n        \"PV\": 9,\n        \"DEF\": 13,\n        \"INIT\": 11,\n        \"PC\": 3,\n        \"PM\": 0\n      },\n      \"textReflectsComputedStats\": true,\n      \"beforeAfterComputedSeparately\": true,\n      \"status\": \"PASS\"\n    },\n    {\n      \"manual\": 8,\n      \"name\": \"Historique rang 5\",\n      \"fixtureErrors\": [],\n      \"objectiveMatched\": true,\n      \"computed\": {\n        \"PV\": 8,\n        \"DEF\": 12,\n        \"INIT\": 11,\n        \"PC\": 3,\n        \"PM\": 0\n      },\n      \"textReflectsComputedStats\": true,\n      \"beforeAfterComputedSeparately\": true,\n      \"status\": \"PASS\"\n    },\n    {\n      \"manual\": 9,\n      \"name\": \"Mage R2\",\n      \"fixtureErrors\": [],\n      \"objectiveMatched\": true,\n      \"computed\": {\n        \"PV\": 7,\n        \"DEF\": 11,\n        \"INIT\": 11,\n        \"PC\": 2,\n        \"PM\": 3\n      },\n      \"textReflectsComputedStats\": true,\n      \"beforeAfterComputedSeparately\": true,\n      \"status\": \"PASS\"\n    },\n    {\n      \"manual\": 10,\n      \"name\": \"Save/load + Éduqué\",\n      \"fixtureErrors\": [],\n      \"objectiveMatched\": true,\n      \"computed\": {\n        \"PV\": 11,\n        \"DEF\": 18,\n        \"INIT\": 11,\n        \"PC\": 2,\n        \"PM\": 0\n      },\n      \"textReflectsComputedStats\": true,\n      \"beforeAfterComputedSeparately\": true,\n      \"status\": \"PASS\"\n    },\n    {\n      \"manual\": 11,\n      \"name\": \"Sans profil\",\n      \"fixtureErrors\": [],\n      \"objectiveMatched\": true,\n      \"computed\": {\n        \"PV\": 9,\n        \"DEF\": 13,\n        \"INIT\": 11,\n        \"PC\": 2,\n        \"PM\": 0\n      },\n      \"textReflectsComputedStats\": true,\n      \"beforeAfterComputedSeparately\": true,\n      \"status\": \"PASS\"\n    },\n    {\n      \"manual\": 12,\n      \"name\": \"À la carte\",\n      \"fixtureErrors\": [],\n      \"objectiveMatched\": true,\n      \"computed\": {\n        \"PV\": 9,\n        \"DEF\": 12,\n        \"INIT\": 11,\n        \"PC\": 3,\n        \"PM\": 0\n      },\n      \"textReflectsComputedStats\": true,\n      \"beforeAfterComputedSeparately\": true,\n      \"status\": \"PASS\"\n    }\n  ],\n  \"passed\": 12,\n  \"total\": 12,\n  \"status\": \"PASS\"\n}\n"
+    }
+  ]
+}

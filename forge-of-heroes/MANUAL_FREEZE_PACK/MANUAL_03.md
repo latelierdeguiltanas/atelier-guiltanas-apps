@@ -21,7 +21,8 @@ Vérifier âge mûr, acquisition réelle de Peau de pierre et recalcul de DEF.
 - Budget total : 2.
 - Points dépensés : 2.
 - Points restants : 0.
-- PV 12; DEF 12; INIT 11; PC 2; PM 0.
+- PV : 10 (combattant) + 1 CON (bonus humain) + 2 FOR (Argument de taille, COF2 p.79) + 2 (Vigueur au rang 2, COF2 p.80) = 15.
+- PV 15; DEF 12; INIT 11; PC 2; PM 0.
 - Attaques : Hache à deux mains +3 / 2d6+2 ; Javelot +1 / 1d6 ; Javelot +1 / 1d6 ; Dague +3 / 1d4+2 ; Dague +1 / 1d4.
 - Choix persistants : {"ability":{"ability:peau-de-pierre:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024":{"defenseStat":"AGI"}},"creation":{}}.
 
