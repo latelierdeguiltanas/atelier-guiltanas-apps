@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const $=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(s)),A=window.BastideInventory;
+const $=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(s)),Owner=window.GuiltanasOwnerAuth;
 const ENDPOINT='https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-cockpit';
 const ROOT='https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/';
 const REGISTRY='https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-registry';
@@ -132,8 +132,8 @@ async function loadPlayerChecks(){
  const container=$('#player-rows');if(!container)return;
  container.innerHTML='<p class="empty">Contrôle des accès joueurs…</p>';
  try{
-  const key=A?.accessKey?.();if(!key)throw Error('Accès MJ absent');
-  const resp=await fetch('https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-player-check?action=status',{method:'GET',cache:'no-store',headers:{'x-bastide-key':key}});
+  if(!Owner.token())throw Error('Compte Atelier non connecté');
+  const resp=await fetch('https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-player-check?action=status',{method:'GET',cache:'no-store',headers:{...Owner.headers()}});
   const d=await resp.json();if(!resp.ok)throw Error(d.error||'Contrôle indisponible');
   const current=Number(d.serverBattleRevision);
   container.innerHTML=(d.players||[]).map(p=>{
@@ -195,7 +195,7 @@ function editProject(id){currentEditId=id||null;
  if(!$('#project-editor').open)$('#project-editor').showModal();pushRoute();
 }
 async function registryRequest(action,body){
- const r=await fetch(REGISTRY+'?action='+action,{method:body?'POST':'GET',cache:'no-store',headers:{'Content-Type':'application/json','x-bastide-key':A.accessKey()},body:body?JSON.stringify(body):undefined});
+ const r=await fetch(REGISTRY+'?action='+action,{method:body?'POST':'GET',cache:'no-store',headers:{'Content-Type':'application/json',...Owner.headers()},body:body?JSON.stringify(body):undefined});
  const d=await r.json();if(!r.ok)throw Error(d.error||'Registre indisponible');return d;
 }
 async function loadRegistry(force=false){
