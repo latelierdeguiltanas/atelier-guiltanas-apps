@@ -161,13 +161,33 @@ if(!Array.isArray(data.repos)||!Array.isArray(data.apps)||!data.metrics)throw Er
 model=data;$('#locked').hidden=true;$('#content').hidden=false;$('#live-status').className='online ok';$('#live-status').innerHTML='<i></i> Données à jour';populate();
 }catch(e){$('#live-status').className='online bad';$('#live-status').innerHTML='<i></i> Non connecté';if(!model){$('#locked').hidden=false;$('#content').hidden=true;$('#lock-text').textContent=e.message+' Ouvre ton accès MJ Bastide personnel sur cet appareil.'}else{alert('Mise à jour impossible : '+e.message+'. Les dernières données restent visibles.')}}finally{reload.disabled=false}}
 let installRequest=null;
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installRequest=e;$('#install-app').title='Installer le cockpit';});
-window.addEventListener('appinstalled',()=>{installRequest=null;$('#install-app').title='Cockpit installé'});
-$('#install-app').onclick=async()=>{if(installRequest){const p=installRequest;installRequest=null;try{await p.prompt()}catch(e){alert('Installation non proposée : '+e.message)}return}
-const ua=navigator.userAgent;
-const help=/iPhone|iPad|iPod/.test(ua)?'Safari → Partager → Sur l’écran d’accueil.':/Android/.test(ua)?'Menu du navigateur ⋮ → Installer l’application ou Ajouter à l’écran d’accueil.':'Menu Chrome/Edge → Installer cette page comme application, ou créer un raccourci.';
-alert('Pour accéder au cockpit en un geste : '+help);
+const standalone=()=>window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+function installationGuide(){
+ const ua=navigator.userAgent;
+ const ios=/iPad|iPhone|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+ const samsung=/SamsungBrowser/i.test(ua);
+ const android=/Android/i.test(ua);
+ const withinApp=/wv\)|; wv|ChatGPT|FBAN|Instagram/i.test(ua);
+ const lines=standalone()
+  ?['✓ Pilotage Guiltanas est déjà ouvert comme application installée.']
+  :ios?['1. Ouvre cette adresse dans Safari.','2. Touche Partager (icône carré avec flèche).','3. Choisis « Sur l’écran d’accueil » puis confirme.']
+  :samsung?['1. Ouvre le cockpit dans Samsung Internet.','2. Menu ☰ → « Ajouter la page à ».','3. Sélectionne « Écran d’accueil » et confirme.']
+  :android?['1. Ouvre le cockpit dans Chrome (pas dans le navigateur intégré à une autre application).','2. Menu ⋮ en haut à droite.','3. « Installer l’application » ou « Ajouter à l’écran d’accueil », puis confirme.']
+  :['1. Ouvre le cockpit dans Chrome ou Microsoft Edge.','2. Menu du navigateur ⋮ → « Installer cette page comme application ».','3. Confirme la création du raccourci.'];
+ return '<p class="minihelp">'+(withinApp?'Ce lien semble ouvert dans un navigateur intégré. Ouvre-le directement dans Chrome/Samsung Internet avant l’installation.':'Le navigateur ne propose pas actuellement son assistant automatique d’installation.')+'</p>'+lines.map(x=>'<p class="install-step">'+escapeHTML(x)+'</p>').join('')+'<p class="minihelp">L’installation ne peut pas être imposée par un site : le navigateur doit proposer ou confirmer le raccourci. Tu n’as pas à créer un autre compte.</p>';
+}
+function openInstallGuide(){const dlg=$('#install-dialog');$('#install-instructions').innerHTML=installationGuide();if(!dlg.open)dlg.showModal();}
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installRequest=e;$('#install-app').title='Installer le cockpit en un clic';});
+window.addEventListener('appinstalled',()=>{installRequest=null;$('#install-app').innerHTML='✓ <span>Installée</span>';$('#install-app').title='Application installée';});
+$('#install-app').onclick=async()=>{
+ if(standalone()){openInstallGuide();return}
+ if(installRequest){const p=installRequest;installRequest=null;
+  try{await p.prompt();const outcome=await p.userChoice;if(outcome?.outcome!=='accepted')openInstallGuide();}
+  catch{openInstallGuide()}
+ }else openInstallGuide();
 };
+$('#install-close').onclick=()=>$('#install-dialog').close();
+$('#copy-cockpit-link').onclick=async()=>{try{await navigator.clipboard.writeText(ROOT+'centre-synchronisation/');$('#copy-cockpit-link').textContent='✓ Adresse copiée';}catch{$('#copy-cockpit-link').textContent=ROOT+'centre-synchronisation/';}};
 if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(()=>{});
 wire();load();
 })();
