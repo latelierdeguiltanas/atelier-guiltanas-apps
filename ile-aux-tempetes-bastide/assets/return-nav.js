@@ -17,7 +17,7 @@ else if(!sheet){
 }
 const nav=document.createElement('nav');nav.id='bastide-return';nav.setAttribute('aria-label','Retour');
 const back=document.createElement('a');back.href=new URL(target,base).href;back.textContent=label;nav.append(back);
-if(sheet){const test=document.createElement('a');test.href=new URL('joueurs/verifier/',base).href;test.textContent='↻ Synchronisation';test.title='Paramètres : vérifier la connexion de ce téléphone au serveur Bastide';test.className='bastide-sync-shortcut';nav.append(test)}
+if(sheet){const test=document.createElement('a');test.href=new URL('joueurs/verifier/?auto=1',base).href;test.textContent='↻ Synchronisation';test.title='Paramètres : vérifier la connexion de ce téléphone au serveur Bastide';test.className='bastide-sync-shortcut';nav.append(test)}
 back.textContent='← Retour';back.title=label.replace('← ','');
 back.addEventListener?.('click',e=>{if(window.BastideBack?.closeLayer()){e.preventDefault();return;}try{const ref=new URL(document.referrer);if(ref.origin===base.origin&&ref.pathname.startsWith(base.pathname)&&ref.href!==location.href&&window.history.length>1){e.preventDefault();window.history.back();}}catch{}});
 function closeLayer(){const dialog=[...document.querySelectorAll('dialog[open]')].at(-1);if(dialog){const cancel=new Event('cancel',{cancelable:true});dialog.dispatchEvent(cancel);if(!cancel.defaultPrevented&&dialog.open)dialog.close();return true;}const group=document.querySelector?.('.kobold-group[open]');if(group){group.open=false;group.querySelector('summary')?.focus();return true;}const viewer=document.getElementById('viewer');if(viewer&&!viewer.hidden){const close=document.getElementById('close');if(close)close.click();else viewer.hidden=true;return true;}return false;}
