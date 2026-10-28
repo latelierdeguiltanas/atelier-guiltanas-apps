@@ -28,3 +28,7 @@ const sheet=q('[data-step="summary"]');if(sheet){const bar=document.createElemen
 const hide=document.createElement('style');hide.textContent='.home-progression,.forge-menu-items a[href^="progression/"],#heroes-dialog a[href^="progression/"]{display:none!important}.home-actions{grid-template-columns:repeat(2,1fr)!important}@media(max-width:700px){.home-actions{grid-template-columns:1fr!important}}';document.head.append(hide);
 
 })();
+
+
+// Standalone player sheet: separate storage and no change to the campaign hub.
+(()=>{if(document.querySelector('script[data-foh-player-bridge]'))return;const s=document.createElement('script');s.dataset.fohPlayerBridge='1';s.src=new URL('../fiches-personnages/forge-link.js?v=1',document.baseURI).href;document.head.appendChild(s);})();
