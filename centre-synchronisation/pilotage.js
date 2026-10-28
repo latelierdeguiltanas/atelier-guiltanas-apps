@@ -93,7 +93,7 @@ function renderProjects(){
  const q=$('#project-search').value.trim().toLowerCase(),stage=$('#project-stage').value,family=$('#project-family').value;
  const projects=projectData.filter(p=>(stage==='all'||p.lifecycle===stage)&&(family==='all'||p.family===family)&&(!q||[p.name,p.summary,p.category,p.progress_note,p.repo,p.next_action].join(' ').toLowerCase().includes(q)));
  const count=k=>projectData.filter(x=>x.lifecycle===k).length;
- $('#project-summary').innerHTML='<span><b>'+projectData.length+'</b> projets connus</span><span><b>'+count('actif')+'</b> actifs</span><span><b>'+count('developpement')+'</b> en développement</span><span><b>'+count('pause')+'</b> en pause</span><span><b>'+count('brouillon')+count('idee')+'</b> brouillons / idées</span>';
+ $('#project-summary').innerHTML='<span><b>'+projectData.length+'</b> projets connus</span><span><b>'+count('actif')+'</b> actifs</span><span><b>'+count('developpement')+'</b> en développement</span><span><b>'+count('pause')+'</b> en pause</span><span><b>'+(count('brouillon')+count('idee'))+'</b> brouillons / idées</span>';
  const groupNames=['Jouer & raconter','Créer & fabriquer','Vie numérique'];
  const order={actif:0,developpement:1,brouillon:2,pause:3,idee:4,archive:5};
  box.innerHTML=groupNames.map(group=>{
