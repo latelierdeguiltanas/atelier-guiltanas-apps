@@ -4,7 +4,7 @@ const ENDPOINT='https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-
 const ROOT='https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/';
 const REGISTRY='https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-registry';
 const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-let model=null,currentView='overview',selected=null,graphRepo='apprepo',search='',projectData=[],projectScan=null;
+let model=null,currentView='overview',selected=null,graphRepo='',search='',projectData=[],projectScan=null;
 const nice=n=>Number(n||0).toLocaleString('fr-FR');
 const time=s=>{if(!s)return 'Aucune date';try{return new Date(s).toLocaleString('fr-FR',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}catch{return 'Date inconnue'}};
 const repoFor=a=>model?.repos.find(r=>r.id===a.repo);
@@ -155,53 +155,89 @@ function showRepo(id){const r=model.repos.find(x=>x.id===id);if(!r)return;select
 showDrawer(r.name,'Dépôt GitHub',content)}
 function showDevice(label){const d=(model.devices||[]).find(x=>x.device_label===label);if(!d)return;selected={kind:'device',id:label};const checks=Object.entries(d.diagnostics||{}).map(([k,v])=>'<div class="detail-activity"><strong>'+escapeHTML(k)+'</strong> · '+escapeHTML(v.state||'Non vérifié')+'<div class="minihelp">'+escapeHTML(v.details||'')+'</div></div>').join('');showDrawer(label,'Appareil','<p class="drawer-desc">Dernier diagnostic remonté : '+time(d.last_seen_at)+'. Cela ne prouve pas que l’appareil est actuellement allumé.</p><div class="detail-label">Contrôles remontés</div>'+checks+'<div class="detail-links">'+link(ROOT+'centre-synchronisation/diagnostic/','Ouvrir les diagnostics')+'</div>')}
 function svgEl(tag,attrs={},textValue){const el=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,String(v)));if(textValue!=null)el.textContent=textValue;return el}
+function mobileDependencies(a){
+ const items=[];
+ if(['cloud','hybrid','partial'].includes(a.sync))items.push({label:'☁ Supabase',kind:'data'});
+ if(['local','hybrid','partial'].includes(a.sync))items.push({label:'▣ Données locales',kind:'local'});
+ for(const f of model.flows.filter(f=>f[0]===a.id||f[1]===a.id)){
+  const other=f[0]===a.id?f[1]:f[0],app=model.apps.find(x=>x.id===other);
+  if(app)items.push({label:'↔ '+app.name,kind:'link',target:other,description:f[2]});
+ }
+ return items;
+}
+function renderMobileExplorer(){
+ if(!model)return;
+ const list=$('#mobile-repos');if(!list)return;
+ $('#mobile-repo-count').textContent=model.repos.length+' dépôts · sélection tactile';
+ list.innerHTML=model.repos.map(r=>{
+  const apps=model.apps.filter(a=>a.repo===r.id);
+  const open=r.id===graphRepo;
+  const archives=r.archived?' · archive':'';
+  const status=r.visibility==='private'?'Privé':'Public';
+  const cards=open?'<div class="mobile-apps">'+(apps.length?apps.map(a=>{
+   const focus=selected?.kind==='app'&&selected.id===a.id;
+   const deps=focus?mobileDependencies(a):[];
+   const details=focus?'<div class="mobile-link-detail"><div class="mobile-link-head">Liaisons de '+escapeHTML(a.name)+'</div><div class="mobile-link-sub">Même dépôt ≠ données partagées. Seules les dépendances identifiées sont affichées.</div><div class="mobile-dep-list">'+(deps.length?deps.map(d=>d.target?'<button class="mobile-dep '+d.kind+'" title="'+escapeHTML(d.description)+'" data-mobile-link="'+escapeHTML(d.target)+'">'+escapeHTML(d.label)+'</button>':'<span class="mobile-dep '+d.kind+'">'+escapeHTML(d.label)+'</span>').join(''):'<span class="mobile-empty">Aucune dépendance directe identifiée</span>')+'</div><button type="button" data-mobile-full="'+escapeHTML(a.id)+'">Voir la fiche complète et le dépôt ↗</button></div>':'';
+   return '<button type="button" class="mobile-app-row'+(focus?' current':'')+'" data-mobile-app="'+escapeHTML(a.id)+'" aria-expanded="'+focus+'"><span class="app-connector">↳</span><span class="mobile-app-info">'+escapeHTML(a.name)+'<small>'+escapeHTML(a.path||'Racine du dépôt')+'</small></span><span class="mobile-app-flag '+(a.sync==='local'?'local':'')+'">'+escapeHTML(a.sync==='cloud'?'Cloud':a.sync==='hybrid'?'Mixte':a.sync==='local'?'Local':'À vérifier')+'</span></button>'+details;
+  }).join(''):'<div class="mobile-empty">Aucune application répertoriée dans ce dépôt.</div>')+'</div>':'';
+  return '<div class="mobile-repo'+(open?' expanded':'')+(r.archived?' archived':'')+'" role="listitem"><button type="button" class="mobile-repo-head" data-mobile-repo="'+escapeHTML(r.id)+'" aria-expanded="'+open+'"><span class="mobile-repo-glyph">⌘</span><span class="mobile-repo-info"><strong>'+escapeHTML(r.name)+'</strong><small>'+apps.length+' outil'+(apps.length>1?'s':'')+' répertorié'+(apps.length>1?'s':'')+' · '+escapeHTML(status+archives)+'</small></span><span class="mobile-repo-chevron">›</span></button>'+cards+'</div>';
+ }).join('');
+}
 function drawMap(){
  if(!model)return;
+ renderMobileExplorer();
  const svg=$('#map');svg.replaceChildren();
- const repositories=model.repos,focusRepo=graphRepo,apps=model.apps.filter(a=>a.repo===focusRepo);
- const currentApp=selected?.kind==='app'&&selected.id&&model.apps.find(a=>a.id===selected.id);
- const appFocus=currentApp?.repo===focusRepo?currentApp:null;
- const h=Math.max(690,apps.length*83+90),w=appFocus?1500:1180;
+ const repo=model.repos.find(r=>r.id===graphRepo);
+ const apps=repo?model.apps.filter(a=>a.repo===repo.id):[];
+ const appFocus=selected?.kind==='app'?model.apps.find(a=>a.id===selected.id&&a.repo===graphRepo):null;
+ const deps=appFocus?mobileDependencies(appFocus):[];
+ const h=repo?Math.max(350,apps.length*70+65,deps.length*61+75):420;
+ const w=repo?(appFocus?1110:760):940;
  svg.setAttribute('viewBox','0 0 '+w+' '+h);
  const add=(tag,attrs,txt)=>svgEl(tag,attrs,txt);
- function title(x,txt){svg.append(add('text',{x,y:38,class:'graph-title'},txt))}
- title(20,'COMPTE');title(288,'DÉPÔTS');title(644,'DOSSIERS / APPLICATIONS');
- if(appFocus)title(1135,'LIENS DIRECTS');
- const root={x:118,y:h/2};
- const repoPos={};repositories.forEach((r,i)=>{repoPos[r.id]={x:376,y:94+i*(h-178)/Math.max(1,repositories.length-1)}});
- const appPos={};apps.forEach((a,i)=>{appPos[a.id]={x:758,y:88+i*(h-160)/Math.max(1,apps.length-1)}});
- const drawLine=(from,to,important=false)=>{
-  const mid=(to.x-from.x)*.46;
-  svg.append(add('path',{class:'graph-edge'+(important?' focus':''),
-   d:'M '+(from.x+99)+' '+from.y+' C '+(from.x+99+mid)+' '+from.y+' '+(to.x-99-mid)+' '+to.y+' '+(to.x-99)+' '+to.y}));
+ const title=(x,label)=>svg.append(add('text',{x,y:34,class:'graph-title'},label));
+ const path=(from,to,focus=false)=>{
+  const dx=(to.x-from.x)*.42;
+  svg.append(add('path',{class:'graph-edge'+(focus?' focus':''),
+   d:'M '+(from.x+103)+' '+from.y+' C '+(from.x+103+dx)+' '+from.y+' '+(to.x-103-dx)+' '+to.y+' '+(to.x-103)+' '+to.y}));
  };
- function node(key,pt,label,sub,kind,focus,muted=false){
-  const g=add('g',{class:'graph-node '+(kind==='repo'?'repo-node':kind==='service'?'service-node':'')+(focus?' focus':'')+(muted?' dim':''),
-   transform:'translate('+(pt.x-99)+','+(pt.y-27)+')',tabindex:0,role:'button','aria-label':label});
-  g.append(add('rect',{x:0,y:0,width:198,height:54,rx:kind==='repo'?13:7}));
-  g.append(add('text',{x:12,y:22},label.length>24?label.slice(0,23)+'…':label));
-  g.append(add('text',{x:12,y:40,class:'node-sub'},sub.length>30?sub.slice(0,30)+'…':sub));
-  const action=()=>{if(kind==='repo'){graphRepo=key;selected={kind:'repo',id:key};$('#graph-repo').value=key;showRepo(key)}
-   else if(kind==='app'){showApp(key)}else if(kind==='service'){showHelp(key==='cloud'?'supabase':key==='local'?'sync':'github')}};
-  g.addEventListener('click',action);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();action()}});
+ const node=(pt,label,sub,type,fn,focus=false,dim=false)=>{
+  const g=add('g',{class:'graph-node '+(type==='repo'?'repo-node':type==='service'?'service-node':'')+(focus?' focus':'')+(dim?' dim':''),
+   transform:'translate('+(pt.x-103)+','+(pt.y-27)+')',role:'button',tabindex:0,'aria-label':label});
+  g.append(add('rect',{x:0,y:0,width:206,height:54,rx:type==='repo'?11:8}));
+  g.append(add('text',{x:11,y:21},label.length>24?label.slice(0,23)+'…':label));
+  g.append(add('text',{x:11,y:40,class:'node-sub'},sub.length>30?sub.slice(0,29)+'…':sub));
+  g.addEventListener('click',fn);
+  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn()}});
   svg.append(g);
+ };
+ if(!repo){
+  title(27,'MES DÉPÔTS GITHUB');
+  model.repos.forEach((r,i)=>{
+   const pt={x:166+(i%3)*302,y:112+Math.floor(i/3)*180};
+   node(pt,r.name,(r.visibility==='private'?'Privé':'Public')+(r.archived?' · archive':''),'repo',()=>showRepo(r.id),false,r.archived);
+  });
+  $('#graph-hint').textContent='Six dépôts distincts. Sélectionne un dépôt pour révéler ses dossiers et applications.';
+  return;
  }
- // Les traits GitHub sont un simple rangement de code, pas des transferts de données.
- for(const r of repositories){drawLine(root,repoPos[r.id],r.id===focusRepo)}
- for(const a of apps)drawLine(repoPos[focusRepo],appPos[a.id],!appFocus||appFocus.id===a.id);
- node('account',root,'LATELIERDEGUILTANAS','Compte GitHub','service',false);
- repositories.forEach(r=>node(r.id,repoPos[r.id],r.name,(r.visibility==='private'?'Privé':'Public')+(r.archived?' · archivé':''),'repo',r.id===focusRepo,Boolean(focusRepo)&&r.id!==focusRepo));
- apps.forEach(a=>node(a.id,appPos[a.id],a.name,a.path||'racine','app',appFocus?.id===a.id,!!appFocus&&appFocus.id!==a.id));
+ title(58,'DÉPÔT');title(350,'APPLICATIONS');
+ if(appFocus)title(765,'LIENS DE '+appFocus.name.toUpperCase().slice(0,18));
+ const rp={x:145,y:Math.max(130,h/2)};
+ const positions=new Map(apps.map((a,i)=>[a.id,{x:472,y:80+i*70}]));
+ for(const a of apps)path(rp,positions.get(a.id),!appFocus||appFocus.id===a.id);
+ node(rp,repo.name,repo.archived?'Archivé':repo.visibility==='private'?'Privé':'Dépôt public','repo',()=>showRepo(repo.id),true);
+ for(const a of apps){
+  node(positions.get(a.id),a.name,a.path||'racine du dépôt','app',()=>showApp(a.id),appFocus?.id===a.id,!!appFocus&&appFocus.id!==a.id);
+ }
  if(appFocus){
-  let direct=[];
-  if(['cloud','hybrid','partial'].includes(appFocus.sync))direct.push({id:'cloud',name:'Supabase',sub:'Données serveur',type:'service'});
-  if(['local','hybrid','partial'].includes(appFocus.sync))direct.push({id:'local',name:'Stockage local',sub:'Sur cet appareil',type:'service'});
-  const flows=model.flows.filter(f=>f[0]===appFocus.id||f[1]===appFocus.id);
-  for(const f of flows){const other=f[0]===appFocus.id?f[1]:f[0],a=model.apps.find(p=>p.id===other);if(a)direct.push({id:other,name:a.name,sub:f[2]+' · '+(f[3]==='verified'?'confirmé':f[3]==='planned'?'prévu':'accès / lien'),type:'app'})}
-  direct=direct.slice(0,9);const y0=Math.max(74,Math.min(h-((direct.length-1)*68+74),h/2-(direct.length-1)*34));
-  direct.forEach((d,i)=>{const pt={x:1295,y:y0+i*68};drawLine(appPos[appFocus.id],pt,true);node(d.id,pt,d.name,d.sub,d.type,d.type==='service',false)});
+  deps.forEach((d,i)=>{
+   const pt={x:905,y:Math.max(80,h/2-(deps.length-1)*30.5)+i*61};
+   path(positions.get(appFocus.id),pt,true);
+   const type=d.kind==='data'?'service':'app';
+   node(pt,d.label,d.description||'Connexion directe',type,()=>d.target?showApp(d.target):showHelp(d.kind==='data'?'supabase':'sync'),false);
+  });
  }
- $('#graph-hint').textContent=appFocus?'Sélection : '+appFocus.name+' · traits colorés = liens de cet outil uniquement.':'Compte → dépôt → dossier. Choisis une application pour révéler ses liens. Aucun lien Bastide ↔ Nespresso n’est supposé.';
+ $('#graph-hint').textContent=appFocus?'Dépôt '+repo.name+' · seules les dépendances de '+appFocus.name+' sont en évidence.':repo.name+' · '+apps.length+' applications. Sélectionne une application pour ses dépendances.';
 }
 function wire(){const clickParent=e=>{const app=e.target.closest('[data-app]'),repo=e.target.closest('[data-repo]'),dev=e.target.closest('[data-device]');if(app)showApp(app.dataset.app);else if(repo)showRepo(repo.dataset.repo);else if(dev)showDevice(dev.dataset.device)};document.addEventListener('click',e=>{if(e.target.closest('.data-row'))clickParent(e);const target=e.target.closest('[data-drawer-app]');if(target){e.preventDefault();showApp(target.dataset.drawerApp)}});
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('.data-row'))clickParent(e);if(e.key==='Escape')closeDrawer()});
@@ -209,7 +245,7 @@ $$('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));$$('[data-vi
 $('#project-search').oninput=renderProjects;$('#project-stage').onchange=renderProjects;$('#project-family').onchange=renderProjects;$('#project-new').onclick=()=>editProject(null);$('#project-scan').onclick=()=>loadRegistry(true);$('#project-close').onclick=$('#project-cancel').onclick=()=>$('#project-editor').close();$('#project-form').onsubmit=async e=>{e.preventDefault();const f=e.target,b=$('#project-submit');b.disabled=true;$('#project-form-result').textContent='Sauvegarde sur le serveur…';try{const body=Object.fromEntries(new FormData(f));const d=await registryRequest('save',body);$('#project-form-result').textContent='Fiche enregistrée.';$('#project-editor').close();await loadRegistry();openProject(d.project.id)}catch(err){$('#project-form-result').textContent=err.message}finally{b.disabled=false}};$('#project-list').addEventListener('click',e=>{const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)});$('#project-list').addEventListener('keydown',e=>{if(e.key==='Enter'){const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)}});document.addEventListener('click',e=>{const b=e.target.closest('[data-edit-project]');if(b)editProject(b.dataset.editProject)});$('#app-search').oninput=e=>{search=e.target.value.trim().toLowerCase();renderApps()};$('#app-filter').onchange=renderApps;
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-check-online]');if(!b)return;const a=model?.apps.find(x=>x.id===b.dataset.checkOnline),target=$('#online-test');if(!a||!target)return;b.disabled=true;target.textContent='Test en cours…';try{const u=ROOT+a.path;const r=await fetch(u,{method:'HEAD',cache:'no-store'});target.textContent=r.ok?'✓ Page accessible depuis cet appareil ('+r.status+'). Fonctionnalités internes non testées.':'⚠ Page non confirmée (HTTP '+r.status+').';}catch(err){target.textContent='⚠ Test impossible : '+err.message;}finally{b.disabled=false}});
 $('#drawer-close').onclick=closeDrawer;$('#shade').onclick=closeDrawer;$('#help').onclick=$('#open-guide').onclick=()=>showHelp('guide');$('#term-close').onclick=()=>$('#glossary').close();document.addEventListener('click',e=>{const b=e.target.closest('[data-term]');if(b)showHelp(b.dataset.term)});$('#refresh-players').onclick=loadPlayerChecks;$('#reload').onclick=load}
-function populate(){const chooser=$('#graph-repo');chooser.innerHTML='<option value="">Vue des dépôts</option>'+model.repos.map(r=>'<option value="'+escapeHTML(r.id)+'">'+escapeHTML(r.name)+'</option>').join('');if(!model.repos.some(r=>r.id===graphRepo))graphRepo='apprepo';chooser.value=graphRepo;renderMetrics();renderBrief();renderApps();renderRepos();renderBackend();renderUsage();renderDevices();drawMap();loadPlayerChecks();$('#freshness').textContent='Données serveur : '+time(model.metrics.generated_at)+' · dépôts : audit '+model.inventoryUpdated}
+function populate(){const chooser=$('#graph-repo');chooser.innerHTML='<option value="">Vue des dépôts</option>'+model.repos.map(r=>'<option value="'+escapeHTML(r.id)+'">'+escapeHTML(r.name)+'</option>').join('');if(graphRepo&&!model.repos.some(r=>r.id===graphRepo))graphRepo='';chooser.value=graphRepo;renderMetrics();renderBrief();renderApps();renderRepos();renderBackend();renderUsage();renderDevices();drawMap();loadPlayerChecks();$('#freshness').textContent='Données serveur : '+time(model.metrics.generated_at)+' · dépôts : audit '+model.inventoryUpdated}
 async function load(){const reload=$('#reload');reload.disabled=true;$('#live-status').className='online';$('#live-status').innerHTML='<i></i> Synchronisation…';try{
 const key=A?.accessKey?.();if(!key)throw Error('Clé MJ Bastide absente sur ce navigateur.');
 const r=await fetch(ENDPOINT,{method:'GET',cache:'no-store',headers:{'x-bastide-key':key}});const data=await r.json();if(!r.ok)throw Error(data.error||'Service indisponible');
