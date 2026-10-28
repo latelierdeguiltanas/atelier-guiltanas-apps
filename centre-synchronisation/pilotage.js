@@ -341,12 +341,27 @@ $('#project-search').oninput=renderProjects;$('#project-stage').onchange=renderP
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-check-online]');if(!b)return;const a=model?.apps.find(x=>x.id===b.dataset.checkOnline),target=$('#online-test');if(!a||!target)return;b.disabled=true;target.textContent='Test en cours…';try{const u=ROOT+a.path;const r=await fetch(u,{method:'HEAD',cache:'no-store'});target.textContent=r.ok?'✓ Page accessible depuis cet appareil ('+r.status+'). Fonctionnalités internes non testées.':'⚠ Page non confirmée (HTTP '+r.status+').';}catch(err){target.textContent='⚠ Test impossible : '+err.message;}finally{b.disabled=false}});
 $('#drawer-close').onclick=closeDrawer;$('#shade').onclick=closeDrawer;$('#cockpit-back').onclick=goBack;$('#help').onclick=$('#open-guide').onclick=()=>showHelp('guide');$('#term-close').onclick=goBack;document.addEventListener('click',e=>{const b=e.target.closest('[data-term]');if(b)showHelp(b.dataset.term)});$('#refresh-players').onclick=loadPlayerChecks;$('#reload').onclick=load}
 function populate(){const chooser=$('#graph-repo');chooser.innerHTML='<option value="">Vue des dépôts</option>'+model.repos.map(r=>'<option value="'+escapeHTML(r.id)+'">'+escapeHTML(r.name)+'</option>').join('');if(graphRepo&&!model.repos.some(r=>r.id===graphRepo))graphRepo='';chooser.value=graphRepo;renderMetrics();renderBrief();renderApps();renderRepos();renderBackend();renderUsage();renderDevices();drawMap();loadPlayerChecks();$('#freshness').textContent='Données serveur : '+time(model.metrics.generated_at)+' · dépôts : audit '+model.inventoryUpdated}
-async function load(){const reload=$('#reload');reload.disabled=true;$('#live-status').className='online';$('#live-status').innerHTML='<i></i> Synchronisation…';try{
-const key=A?.accessKey?.();if(!key)throw Error('Clé MJ Bastide absente sur ce navigateur.');
-const r=await fetch(ENDPOINT,{method:'GET',cache:'no-store',headers:{'x-bastide-key':key}});const data=await r.json();if(!r.ok)throw Error(data.error||'Service indisponible');
-if(!Array.isArray(data.repos)||!Array.isArray(data.apps)||!data.metrics)throw Error('Inventaire incomplet');
-model=data;$('#locked').hidden=true;$('#content').hidden=false;$('#live-status').className='online ok';$('#live-status').innerHTML='<i></i> Données à jour';populate();await loadRegistry();if(!routeRestoredOnce){routeRestoredOnce=true;if(history.state?.pilotage&&history.state?.route)restoreRoute(history.state.route)}
-}catch(e){$('#live-status').className='online bad';$('#live-status').innerHTML='<i></i> Non connecté';if(!model){$('#locked').hidden=false;$('#content').hidden=true;$('#lock-text').textContent=e.message+' Ouvre ton accès MJ Bastide personnel sur cet appareil.'}else{alert('Mise à jour impossible : '+e.message+'. Les dernières données restent visibles.')}}finally{reload.disabled=false}}
+async function load(){
+ const reload=$('#reload');reload.disabled=true;$('#live-status').className='online';$('#live-status').innerHTML='<i></i> Connexion…';
+ try{
+  if(!Owner.token()){await window.GuiltanasLogin.show();return}
+  const r=await fetch(ENDPOINT,{method:'GET',cache:'no-store',headers:Owner.headers()});
+  const data=await r.json();
+  if(!r.ok){
+   if(r.status===401||r.status===403){Owner.clear();model=null;await window.GuiltanasLogin.show('Session expirée. Reconnecte-toi.');return}
+   throw Error(data.error||'Service indisponible');
+  }
+  if(!Array.isArray(data.repos)||!Array.isArray(data.apps)||!data.metrics)throw Error('Inventaire incomplet');
+  model=data;$('#locked').hidden=true;$('#content').hidden=false;$('#owner-logout').hidden=false;
+  $('#live-status').className='online ok';$('#live-status').innerHTML='<i></i> À jour';
+  populate();await loadRegistry();
+  if(!routeRestoredOnce){routeRestoredOnce=true;if(history.state?.pilotage&&history.state?.route)restoreRoute(history.state.route)}
+ }catch(e){
+  $('#live-status').className='online bad';$('#live-status').innerHTML='<i></i> Indisponible';
+  if(!model){await window.GuiltanasLogin.show('Erreur de chargement : '+e.message)}
+  else alert('Actualisation impossible : '+e.message);
+ }finally{reload.disabled=false}
+}
 let installRequest=null;
 const standalone=()=>window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
 function installationGuide(){
@@ -376,5 +391,5 @@ $('#install-app').onclick=async()=>{
 $('#install-close').onclick=goBack;
 $('#copy-cockpit-link').onclick=async()=>{try{await navigator.clipboard.writeText(ROOT+'centre-synchronisation/');$('#copy-cockpit-link').textContent='✓ Adresse copiée';}catch{$('#copy-cockpit-link').textContent=ROOT+'centre-synchronisation/';}};
 if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(()=>{});
-initRouteHistory();wire();load();
+initRouteHistory();wire();window.PilotageReload=load;load();
 })();
