@@ -10,10 +10,10 @@ export function recoveryCode(workspace){
   const hex=workspace.id.replace(/-/g,'').toLowerCase()+workspace.token.toLowerCase();
   const bytes=new Uint8Array(hex.match(/../g).map(v=>parseInt(v,16)));
   let binary='';for(const b of bytes)binary+=String.fromCharCode(b);
-  return 'G2-'+btoa(binary).replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,'');
+  return 'G2-'+btoa(binary).split('+').join('-').split('/').join('_').replace(/=+$/,'');
 }
 export function parseRecoveryCode(value){
-  const compact=String(value||'').trim().replace(/\\s+/g,'');
+  const compact=String(value||'').trim().split(' ').join('');
   if(!/^G2-[A-Za-z0-9_-]{64}$/.test(compact))throw Error('Code de récupération invalide.');
   let bytes;try{const raw=atob(compact.slice(3).replace(/-/g,'+').replace(/_/g,'/'));bytes=Uint8Array.from(raw,c=>c.charCodeAt(0))}catch{throw Error('Code de récupération illisible.')}
   if(bytes.length!==48)throw Error('Code de récupération incomplet.');
