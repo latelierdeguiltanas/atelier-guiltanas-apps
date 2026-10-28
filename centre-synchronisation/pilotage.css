@@ -4,3 +4,59 @@
 .guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:12px}.guide-grid button{min-height:43px;text-align:left;padding:9px 12px;color:var(--text);background:#1d3a2a;border:1px solid #42654a;border-radius:8px;font-size:12px}.guide-grid button:hover{background:#2a4f37;border-color:var(--gold2)}@media(max-width:430px){.guide-grid{grid-template-columns:1fr 1fr}.guide-grid button{font-size:11px;padding:9px 7px}}
 
 .tree-root{font:700 12px ui-monospace,monospace;color:var(--gold);border:1px solid #46664b;padding:9px;border-radius:7px;background:#152f21}.tree-branch{margin:0 0 8px 10px;border-left:1px solid #42654c;padding:5px 0 5px 13px}.tree-item{display:flex;gap:8px;align-items:baseline;padding:6px 0;color:#abc4b0;font:11px ui-monospace,monospace;overflow-wrap:anywhere}.tree-item>a{color:#dfd5ad}.tree-item>span:first-child{color:#63846c;flex-shrink:0}
+
+/* Repères par rubrique : même format, silhouettes et couleurs distinctes */
+.navbtn{position:relative;border:1px solid transparent;transition:background .16s,border-color .16s}
+.navbtn .navicon{display:grid;place-items:center;border-radius:7px;background:#214431;color:#d0dfca;flex:none}
+.navbtn[data-view="overview"]{--nav:#dbbf7e}
+.navbtn[data-view="applications"]{--nav:#82c9a2}
+.navbtn[data-view="repositories"]{--nav:#84b9dc}
+.navbtn[data-view="backend"]{--nav:#b1a5e7}
+.navbtn[data-view="usage"]{--nav:#e4aa82}
+.navbtn[data-view="devices"]{--nav:#db9abf}
+.navbtn[data-view="overview"] .navicon{background:#443b24;color:#f1d58f}
+.navbtn[data-view="applications"] .navicon{background:#1a4332;color:#8ee4b5}
+.navbtn[data-view="repositories"] .navicon{background:#183c52;color:#95d0ed}
+.navbtn[data-view="backend"] .navicon{background:#34284e;color:#c9b7ff}
+.navbtn[data-view="usage"] .navicon{background:#4a3026;color:#f1b28c}
+.navbtn[data-view="devices"] .navicon{background:#492b44;color:#e8a9cc}
+.navbtn.active{box-shadow:inset 3px 0 var(--nav);border-color:color-mix(in srgb,var(--nav),transparent 75%);color:#f5f2e8;background:color-mix(in srgb,var(--nav),#12261b 88%)}
+.navbtn.active .navicon{box-shadow:0 0 0 1px var(--nav)}
+.navbtn:hover:not(.active){border-color:#3c5c47}
+.installbtn{display:flex;gap:6px;align-items:center;border:1px solid #bca773;border-radius:8px;background:linear-gradient(130deg,#e9ce8e,#b6a066);color:#1a251c;padding:7px 10px;font-weight:780;font-size:11px;white-space:nowrap;min-height:33px}
+.installbtn span{font-size:17px}
+.installbtn:focus-visible{outline:2px solid #fff}
+.repo-label{font-size:11px;color:var(--muted)}
+#graph-repo{max-width:min(280px,75vw);border-color:#b69f67;color:#f3e1b2;font-weight:600}
+.graph-edge{stroke:#5d8065;opacity:.22}
+.graph-edge.focus{stroke:#f1d18a;opacity:.93;stroke-width:2.6}
+.graph-node.repo-node rect{rx:13}
+.graph-node.service-node rect{fill:#214030;stroke:#b39a5e}
+.graph-node.focus rect{stroke:#f7d88d;stroke-width:3;filter:drop-shadow(0 0 10px #e8bb7059)}
+.graph-node.dim{opacity:.28}
+.graph-legend{background:#12271c}
+.graph-shell{border-color:#486950}
+.player-grid{border:1px solid var(--line);border-radius:10px;background:#10231a;overflow:hidden}
+.player-line{display:flex;align-items:center;gap:9px;padding:9px 11px;border-bottom:1px solid #2c4935}
+.player-line:last-of-type{border:0}
+.player-avatar{width:31px;height:31px;border-radius:9px;background:#2b4e37;color:#e9d199;display:grid;place-items:center;font-weight:750;flex:none}
+.player-info{flex:1;min-width:0;font-size:12px}
+.player-info small{display:block;color:#91aa95;font-size:10px;margin-top:2px}
+.player-line .tag{white-space:nowrap}
+.player-info-note{font-size:11px;line-height:1.5;color:var(--muted);padding:9px 11px;background:#172b20}
+.player-info-note button{font-size:11px;text-decoration:underline;padding:3px}
+.install-step{padding:10px 12px;background:#203b2a;border-left:3px solid #dabf7d;border-radius:4px;color:#efe6d2;margin:7px 0;font-size:13px}
+.install-steps{padding:10px 0}
+#install-dialog .smallbutton{margin-top:4px;font-size:12px}
+@media(max-width:730px){
+.navbtn{box-shadow:none;min-width:0;padding:4px 1px}
+.navbtn .navicon{width:26px;height:24px;font-size:16px;border-radius:7px}
+.navbtn.active{box-shadow:inset 0 2px 0 var(--nav)}
+.navbtn span:not(.navicon){font-weight:580;font-size:9px}
+.navbtn.active span:not(.navicon){font-weight:800;color:var(--nav)}
+.installbtn{padding:6px 8px;min-height:31px}
+.installbtn span{font-size:15px}
+#graph-repo{max-width:205px}
+.graph-scroll svg{min-width:820px}
+.player-line .tag{font-size:9px;max-width:96px;white-space:normal;text-align:center}
+}
