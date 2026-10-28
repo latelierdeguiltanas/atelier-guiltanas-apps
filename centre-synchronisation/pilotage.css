@@ -162,3 +162,14 @@
 @media(min-width:731px) and (max-width:850px){
  .graph-scroll{display:none}
 }
+
+.owner-login{max-width:470px;background:linear-gradient(160deg,#241a35,#14291e);border:1px solid #8268ad;box-shadow:0 0 26px #70449d3b;padding:24px 22px}
+.owner-login .lockglyph img{border-radius:15px;box-shadow:0 0 16px #9d61e18c}
+.owner-form{display:grid;gap:10px;text-align:left;margin:18px 0 7px}
+.owner-form[hidden]{display:none!important}
+.owner-form label{display:block;color:#ead5fc;font-size:12px;font-weight:700}
+.owner-form input{width:100%;min-height:43px;border:1px solid #755b96;background:#101c19;color:#f8f0dd;border-radius:8px;padding:10px;font-size:14px}
+.owner-form .owner-primary{background:#dbbf7f;border:1px solid #eed6a5;border-radius:9px;color:#1e1b18;padding:12px;font-weight:800;min-height:44px}
+.owner-hint{font-size:11px;color:#bdc9bb}
+.owner-error{color:#ffc4b1;min-height:20px;font-size:12px;line-height:1.4}
+.owner-textbtn{background:transparent;border:1px solid #72588c;color:#ebd4ff;border-radius:8px;padding:8px}
