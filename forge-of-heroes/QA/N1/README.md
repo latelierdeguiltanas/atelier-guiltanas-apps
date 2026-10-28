@@ -8,19 +8,19 @@ Ce dossier remplace les anciens compteurs comme point de suivi actuel, sans ré�
 
 | Groupe | Configurations | Acceptées par le moteur | Refusées, conservées pour revue | Échecs d’assertion |
 | --- | ---: | ---: | ---: | ---: |
-| Profils purs × peuples × paires de voies | 2 720 | 2 296 | 424 | 0 |
-| Variantes de bonus/malus de peuple | 5 950 | 5 102 | 848 | 0 |
+| Profils purs × peuples × paires de voies | 2 720 | 2 316 | 404 | 0 |
+| Variantes de bonus/malus de peuple | 5 950 | 5 142 | 808 | 0 |
 | Autre choix du R2 initial des mages | 960 | 840 | 120 | 0 |
-| Hybrides, deux sens, 25 croisements de voies, 16 peuples | 108 800 | 91 920 | 16 880 | 0 |
+| Hybrides, deux sens, 25 croisements de voies, 16 peuples | 108 800 | 92 720 | 16 080 | 0 |
 | Sans profil, toutes les paires distinctes, 16 peuples | 57 120 | 55 902 | 1 218 | 0 |
 | Ordre inverse sans profil, humain | 3 570 | 3 500 | 70 | 0 |
-| **Total** | **179 120** | **159 560** | **19 560** | **0** |
+| **Total** | **179 120** | **160 420** | **18 700** | **0** |
 
-Couverture acceptée : 17 profils, 16 peuples, 85 voies principales, les 272 couples ordonnés de profils hybrides et 3 500 paires distinctes sans profil. 9 375 sauvegardes/relectures sont vérifiées dans cette matrice ; 5 144 mutations à zéro voie sont refusées avec un motif lié aux voies.
+Couverture acceptée : 17 profils, 16 peuples, 85 voies principales, les 272 couples ordonnés de profils hybrides et 3 500 paires distinctes sans profil. 9 425 sauvegardes/relectures sont vérifiées dans cette matrice ; 5 170 mutations à zéro voie sont refusées avec un motif lié aux voies.
 
 **Ce que ce résultat signifie :** les invariants testés passent, y compris les caractéristiques raciales calculées indépendamment, l’identité de profil, l’absence de capacité dupliquée, la présence des R1 choisis, la non-mutation des entrées et le rejeu échantillonné. Cela ne certifie pas chaque chiffre de chaque capacité : les valeurs exactes ciblées sont dans les suites séparées. Le nombre de configurations inclut plusieurs choix pouvant conduire au même résultat ; il n’est pas présenté comme un nombre de fiches mécaniquement uniques.
 
-**Les refus ne sont ni des créations validées ni automatiquement des bugs.** Les 27 groupes de motifs de `matrix.json` restent à examiner et à compléter par des variantes légales : armes de petite taille, équipements ajustés des lutins/fées, monture du centaure, bouclier obligatoire, etc. Une répartition officielle différente est utilisée pour lutin/fée afin de respecter leur plafond de FOR. Le petit bouclier est équipé pour tester la voie du bouclier sans profil. Ces ajustements sont explicites dans le générateur.
+**Les refus ne sont ni des créations validées ni automatiquement des bugs.** Les 27 groupes du lot initial ont été classés en six causes et leurs 81 exemples conservés ont une contrepartie légale testée. Les 27 groupes de la nouvelle matrice sont également classés, en sept causes (dont les armes trop grandes). Les comptes rendus `lot2/rejection-review*.json` distinguent échange MJ, changement de voie et matériel ajusté. Les parcours de l’interface correspondants restent à vérifier. Une répartition officielle différente est utilisée pour lutin/fée afin de respecter leur plafond de FOR. Le petit bouclier est équipé pour tester la voie du bouclier sans profil. Ces ajustements sont explicites dans le générateur.
 
 ## Défauts corrigés dans ce lot
 
@@ -31,7 +31,7 @@ Les contrats anciens ont aussi été actualisés pour les quatre champs introdui
 
 ## Contrôles complémentaires
 
-- 24 suites de régression : PASS ; détail et sorties dans `regressions.json`.
+- 27 suites de régression : PASS ; détail et sorties dans `regressions.json`.
 - 53 transitions et 53 retours A→B→A : PASS ; 11 valeurs exactes, 13 transitions sans résidu, 14 refus ciblés et 10 contrôles anti-faux-vert : PASS.
 - Les 12 fiches de recette sont vérifiées automatiquement. Cela ne signifie pas 12 parcours au clic.
 - Un vrai parcours Chrome : humain voleur, création, changement de voie et retour avec DEF/INIT attendues, sauvegarde, rechargement, réouverture et téléchargement PDF. Le test est limité à ce personnage, sur ordinateur.
@@ -50,10 +50,33 @@ La matrice complète utilise huit processus Node. Les JSON par processus et fich
 
 ## Réserves à fermer avant N2
 
-1. Classer les 27 motifs de refus et ajouter leurs contreparties légales ; contrôler les restrictions et paquetages dans le vrai parcours de chaque peuple concerné.
+1. Les familles de refus ont leur revue et leurs contreparties testées sur le moteur. Reste à contrôler les restrictions et paquetages dans les vrais parcours des peuples concernés, notamment quand un échange MJ est nécessaire ou que la combinaison de voies doit changer.
 2. Étendre les valeurs attendues indépendantes aux effets N1 encore non couverts, y compris les rangs accessibles à la création par âge, les dons et les interactions d’équipement.
-3. Couvrir toutes les alternatives de choix persistants, les trois séries, les répartitions/achats/semi-aléatoire, les voies de peuple alternatives du demi-elfe, la voie du mage, les historiques, options, religions et capacités à la carte. Les suites existantes sont ciblées ; leur produit cartésien complet n’est pas certifié.
+3. Les méthodes de caractéristiques sont maintenant couvertes par le lot 2 ci-dessous. Reste leur croisement complet avec les autres profils/peuples et toutes les alternatives de choix persistants, voies du demi-elfe/mage, historiques, options, religions et capacités à la carte. Leur produit cartésien complet n’est pas certifié.
 4. Répéter les parcours au clic pour hybrides, sans profil et options ; vérifier les exports associés, l’aller-retour d’import et Android. Un seul parcours réel ne valide pas toutes les interfaces.
 5. **Sans voies :** le produit actuel exige des voies et refuse zéro voie. Ce refus est testé. Une création volontaire sans aucune voie n’est pas un mode existant et reste une exigence à préciser, pas une fonctionnalité déclarée validée.
-6. Corriger aussi la référence source interne héritée de Don étrange (`p.136` au lieu de `p.53`) ; elle est signalée ici sans réétiqueter les empreintes des preuves déjà exécutées.
+6. La référence interne de Don étrange est corrigée vers COF2 p.53 ; la nouvelle matrice est rejouée sur le moteur corrigé. Les empreintes antérieures restent dans les preuves de reproduction du lot 2.
 7. Résoudre les éventuels écarts, rejouer les tests concernés et clôturer explicitement la phase N1. Aucun compteur ne déclenche automatiquement la phase N2.
+
+## Lot 2 — reprise du 28 octobre 2026
+
+Les preuves avant/après sont conservées dans `lot2/size-defect-proof.json` et `lot2/semi-random-before.json`.
+
+- Les restrictions d’équipement de peuple sont partagées entre profils purs, hybrides et sans profil. Le mode sans profil ne peut plus contourner la limite d4 des fées/lutins.
+- Le calcul de taille regarde tous les dés des DM de base : une arme 2d6 dépasse la limite 1d10 du gobelin/kobold (Compagnon pp.15 et 17). Un simple examen de `maxDie=6` ne suffisait pas.
+- Une arme d8–d10 est utilisable à deux mains par gobelin/kobold sans bouclier. Le nombre de mains apparaît dans la projection d’attaque et survit à la sauvegarde ; aucun bonus de dégâts n’est inventé. Le port simultané du bouclier reste refusé dans ce mode d’équipement.
+- Après trois petits jets semi-aléatoires, la répartition légale à sept +1 est maintenant acceptée. Une case permet de choisir le bonus sur la valeur 0. Le choix est conservé par la répartition enregistrée et récupéré à la réouverture, sans changer le comportement par défaut des anciennes répartitions. Source : photo `règles avancées.pdf`, PDF p.1, pages imprimées 152–153, lue visuellement après rotation.
+
+`n1_size_equipment_runner.cjs` : 84 cas ciblés sur les deux moteurs. Les refus originaux et les refus courants ont chacun 81 exemples testés, avec des contreparties légales. Ces exemples ne remplacent pas le rejeu complet de chaque refus historique. Les 179 120 configurations principales ont été rejouées sur le moteur final.
+
+`n1_characteristic_methods_runner.cjs` : les 279 936 répartitions possibles de −1 à +4 sont comparées à un calcul indépendant du budget d’achat ; 27 568 sont légales et 252 368 illégales. Les 2 940 permutations distinctes des trois séries sont créées sur un voleur humain. Les 1 331 triplets de résultats de 2d6 sont contrôlés, avec sept rotations par triplet et les 64 variantes à sept +1. Cela donne 9 381 créations semi-aléatoires et 284 créations par achat échantillonnées, avec attentes numériques indépendantes et 407 contrôles de sauvegarde/relecture. Huit contrôles d’interface simulée portent sur les deux produits ; aucun nouveau clic Android n’est revendiqué.
+
+Commandes supplémentaires :
+
+```sh
+node forge-of-heroes/FINAL_FREEZE_TESTS/n1_size_equipment_runner.cjs
+node forge-of-heroes/FINAL_FREEZE_TESTS/n1_rejection_review_runner.cjs --current
+node forge-of-heroes/FINAL_FREEZE_TESTS/n1_characteristic_methods_runner.cjs
+```
+
+Ces progrès ferment des réserves de moteur et de caractéristiques. Ils ne clôturent pas la phase N1 : les autres effets numériques, options, parcours d’interface et le mode volontaire sans voies restent explicitement ouverts.

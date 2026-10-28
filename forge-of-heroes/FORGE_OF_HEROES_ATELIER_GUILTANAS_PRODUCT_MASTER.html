@@ -45951,6 +45951,9 @@ const api={version:'FOH_PRESTIGE_RULES_1',calculate,manaSurcharge};root.FOHPrest
 
 
 
+
+
+
 (function(){
 "use strict";
 
@@ -46001,11 +46004,11 @@ function fnv1a(str){
     return {method:METHODS.ADVANCED_POINT_BUY,budget,spent,remaining:budget-spent,weaknesses,costs:POINT_BUY_COSTS,values:Object.fromEntries(STATS.map((k,i)=>[k,values[i]])),valid:errors.length===0,errors};
   }
   function pairForRoll(roll){if(!Number.isInteger(roll)||roll<2||roll>12) throw new Error('Un jet semi-aléatoire doit être compris entre 2 et 12.');return roll<=5?[1,1]:roll<=8?[2,0]:[3,-1];}
-  function semiRandomPool(rolls){
+  function semiRandomPool(rolls,bonusToZero=false){
     if(!Array.isArray(rolls)||rolls.length!==3) return {valid:false,errors:['Trois jets de 2d6 sont requis.'],pool:[]};
-    try{const pool=rolls.flatMap(pairForRoll);pool.push(0);if(Math.max(...pool)<=1){const i=pool.indexOf(1);pool[i<0?0:i]=2;}return {valid:true,errors:[],rolls:rolls.slice(),pool};}catch(e){return {valid:false,errors:[e.message],pool:[]};}
+    try{const pool=rolls.flatMap(pairForRoll);pool.push(0);if(Math.max(...pool)<=1){if(bonusToZero)pool[pool.length-1]=1;else{const i=pool.indexOf(1);pool[i<0?0:i]=2;}}return {valid:true,errors:[],rolls:rolls.slice(),pool};}catch(e){return {valid:false,errors:[e.message],pool:[]};}
   }
-  function validateSemiRandom(raw,rolls){const r=semiRandomPool(rolls);if(!r.valid)return r;const actual=valuesOf(raw).sort((a,b)=>a-b),expected=r.pool.slice().sort((a,b)=>a-b),ok=actual.length===7&&actual.every((v,i)=>v===expected[i]);return Object.assign(r,{method:METHODS.ADVANCED_SEMI_RANDOM,values:Object.fromEntries(STATS.map((k,i)=>[k,valuesOf(raw)[i]])),valid:ok,errors:ok?[]:['La répartition ne correspond pas aux trois jets semi-aléatoires.']});}
+  function validateSemiRandom(raw,rolls){const r=semiRandomPool(rolls);if(!r.valid)return r;const actual=valuesOf(raw).sort((a,b)=>a-b),expected=r.pool.slice().sort((a,b)=>a-b),matches=actual.length===7&&actual.every((v,i)=>v===expected[i]),balanced=rolls.every(n=>n<=5)&&actual.length===7&&actual.every(v=>v===1),ok=matches||balanced;if(balanced)r.pool=semiRandomPool(rolls,true).pool;return Object.assign(r,{method:METHODS.ADVANCED_SEMI_RANDOM,values:Object.fromEntries(STATS.map((k,i)=>[k,valuesOf(raw)[i]])),valid:ok,errors:ok?[]:['La répartition ne correspond pas aux trois jets semi-aléatoires.']});}
   function validateMethod(method,raw,context){if(method===METHODS.ADVANCED_POINT_BUY)return pointBuyLedger(raw);if(method===METHODS.ADVANCED_SEMI_RANDOM)return validateSemiRandom(raw,context&&context.rolls);return {method:METHODS.STANDARD_SERIES,valid:true,errors:[]};}
   function characteristicLedger(method,methodValues,ageMods,peopleMods,capabilityMods,otherMods){const out={};for(const k of STATS){const row={BASE:0,METHOD_MODIFIER:Number(methodValues&&methodValues[k]||0),AGE_MODIFIER:Number(ageMods&&ageMods[k]||0),PEOPLE_MODIFIER:Number(peopleMods&&peopleMods[k]||0),CAPABILITY_MODIFIER:Number(capabilityMods&&capabilityMods[k]||0),OTHER_CANON_MODIFIER:Number(otherMods&&otherMods[k]||0)};row.FINAL=row.BASE+row.METHOD_MODIFIER+row.AGE_MODIFIER+row.PEOPLE_MODIFIER+row.CAPABILITY_MODIFIER+row.OTHER_CANON_MODIFIER;out[k]=row;}return {method,characteristics:out};}
   return Object.freeze({STATS,POINT_BUY_COSTS,METHODS,pointBuyLedger,pairForRoll,semiRandomPool,validateSemiRandom,validateMethod,characteristicLedger});
@@ -46466,12 +46469,12 @@ const errors=[];
     const weaponCategory=String(weapon.category||'');
     if(peopleRule&&peopleRule.peopleId==='people:gobelin:addon-comp2017-cof2'){
       if(weaponDie>10||['longbow','heavy_crossbow'].includes(weaponCategory)) return {sticky,errors:["Gobelin: arme interdite par la restriction de petite taille."]};
-      if(weaponDie>=8&&weaponDie<=10&&weapon.hands===1) return {sticky,errors:["Gobelin: cette arme exige deux mains."]};
+      if(weaponDie>=8&&weaponDie<=10&&weapon.hands===1&&shieldId) return {sticky,errors:["Gobelin: cette arme exige deux mains."]};
     }
     if(peopleRule&&peopleRule.peopleId==='people:demi-ogre:addon-comp2017-cof2'&&weapon.oversizedOneHanded===true&&shieldId) return {sticky,errors:["Demi-ogre: bouclier incompatible avec une arme surdimensionnée tenue à une main."]};
     if(peopleRule&&['people:kobold:addon-comp2017-cof2'].includes(peopleRule.peopleId)){
       if(weaponDie>10||['longbow','heavy_crossbow'].includes(weaponCategory)) return {sticky,errors:["Kobold : arme interdite par sa petite taille."]};
-      if(weaponDie>=8&&weaponDie<=10&&weapon.hands===1) return {sticky,errors:["Kobold : cette arme exige deux mains."]};
+      if(weaponDie>=8&&weaponDie<=10&&weapon.hands===1&&shieldId) return {sticky,errors:["Kobold : cette arme exige deux mains."]};
     }
     if(peopleRule&&['people:lutin:addon-comp2017-cof2','people:fee:addon-comp2017-cof2'].includes(peopleRule.peopleId)){
       if(weaponDie>4) return {sticky,errors:["Être féerique : cette arme est trop grande (d4 maximum)."]};
@@ -46640,6 +46643,29 @@ const errors=[];
   }
 
 
+  function weaponDamageMaximumN1(weapon){
+    const m=String(weapon&&weapon.damage||'').match(/^\s*(\d*)d(\d+)/i);
+    return m?Number(m[1]||1)*Number(m[2]):Number(weapon&&weapon.maxDie||0);
+  }
+  function ancestryWeaponHandsN1(peopleId,weapon){
+    const small=['people:gobelin:addon-comp2017-cof2','people:kobold:addon-comp2017-cof2'].includes(peopleId),maximum=weaponDamageMaximumN1(weapon);
+    return small&&maximum>6&&maximum<=10?2:Number(weapon.hands||1);
+  }
+  function validateAncestryEquipmentN1(sticky,state,weapons){
+    const errors=[],equip=state.equip||state.equipment||{},people=sticky.peupleId,small=['people:gobelin:addon-comp2017-cof2','people:kobold:addon-comp2017-cof2'].includes(people),tiny=['people:lutin:addon-comp2017-cof2','people:fee:addon-comp2017-cof2'].includes(people),shieldId=String(equip.shieldId||equip.bouclierId||''),armorId=String(equip.armorId||equip.armureId||''),armor=armorId&&(Data.armors||[]).find(a=>a.id===armorId);
+    for(const w of weapons){const maximum=weaponDamageMaximumN1(w);
+      if(small){
+        if(maximum>10||['weapon:longbow','weapon:heavy-crossbow'].includes(w.id))errors.push('Arme interdite par la petite taille du peuple.');
+        if(maximum>6&&maximum<=10&&shieldId)errors.push('Cette arme exige deux mains pour ce peuple : bouclier incompatible.');
+      }
+      if(tiny&&maximum>4)errors.push('Être féerique : arme limitée au d4.');
+    }
+    if(tiny&&(armorId||shieldId)&&equip.tinyFitted!==true)errors.push('Être féerique : équipement non ajusté à la taille.');
+    if(people==='people:fee:addon-comp2017-cof2'&&shieldId)errors.push('Fée : bouclier incompatible avec le vol.');
+    if(people==='people:fee:addon-comp2017-cof2'&&armor&&Number(armor.defBonus)>1)errors.push('Fée : cette armure empêche le vol.');
+    return errors;
+  }
+
   function validateProfileEquipmentN1(sticky,state,profile){
     const errors=[]; const rule=Data.getProfileRule(profile&&profile.id);
     if(!rule||!['N1_CERTIFIED','PARTIAL_N1_GENERALIST_ONLY'].includes(rule.status)) return {errors,weapons:[],rule:null};
@@ -46669,15 +46695,8 @@ const errors=[];
       if((mw.forbiddenCategories||[]).includes(w.category)||(mw.forbiddenTechnology||[]).includes(w.technology)) mastered=false;
       if(profile&&profile.id==='class:pretre:cof2-lb-2024'&&String(state&&state.profileChoices&&state.profileChoices.priestMode||'')==='specialist'){const rel=Data.getReligion(String(state.profileChoices.deityId||''));if(rel&&rel.sacredWeaponId===w.id)mastered=true;}
       if(window.FOHPermanentRules.equipmentRules(state,dbObj).masteredWeaponIds.includes(w.id))mastered=true;if(!mastered)errors.push('Arme non maîtrisée par le profil : '+w.name+'.');
-      if(sticky.peupleId==='people:gobelin:addon-comp2017-cof2'||sticky.peupleId==='people:kobold:addon-comp2017-cof2'){
-        if(w.maxDie>10||['weapon:longbow','weapon:heavy-crossbow'].includes(w.id))errors.push('Arme interdite par la petite taille du peuple.');
-        if(w.maxDie>=8&&w.maxDie<=10&&w.hands===1)errors.push('Cette arme exige deux mains pour ce peuple.');
-      }
-      if(['people:lutin:addon-comp2017-cof2','people:fee:addon-comp2017-cof2'].includes(sticky.peupleId)&&w.maxDie>4)errors.push('Être féerique : arme limitée au d4.');
     }
-    if(['people:lutin:addon-comp2017-cof2','people:fee:addon-comp2017-cof2'].includes(sticky.peupleId)&&(armorId||shieldId)&&equip.tinyFitted!==true)errors.push('Être féerique : équipement non ajusté à la taille.');
-    if(sticky.peupleId==='people:fee:addon-comp2017-cof2'&&shieldId)errors.push('Fée : bouclier incompatible avec le vol.');
-    if(sticky.peupleId==='people:fee:addon-comp2017-cof2'&&armor&&Number(armor.defBonus)>1)errors.push('Fée : cette armure empêche le vol.');
+    errors.push(...validateAncestryEquipmentN1(sticky,state,weapons));
     if(!equip.initialPackageId) errors.push('Choix du paquetage initial obligatoire pour ce profil certifié.');
     else {
       const pack=(rule.initialEquipment.packages||[]).find(p=>p.id===equip.initialPackageId);
@@ -46713,7 +46732,8 @@ const errors=[];
     if(statBonus)damage+='+'+Number(sticky.caracs[statBonus.stat]||0);if(flat)damage+='+'+Number(flat.value||0);
     const label=w.name+((w.alternateModes||[]).length?' ('+(d.mode==='ranged'?'distance':'contact')+')':'');
     const magicalUnarmed=w.id==='weapon:unarmed'&&allEffects.some(e=>e.type==='unarmed_magical'),properties=(w.properties||[]).slice();if(o&&!o.nonLethal){const i=properties.indexOf('temporary_damage');if(i>=0)properties.splice(i,1);}if(magicalUnarmed&&!properties.includes('magical'))properties.push('magical');
-    return{id:w.id+(modeDef&&modeDef!==w?':'+d.mode+':'+d.hands+'h':''),weaponId:w.id,label,type:d.mode==='ranged'?'distance':'contact',attackBonus:atkBase+pred,attackCharacteristic:d.mode==='ranged'?'agi':attackStat,damageCharacteristic:trackedDamageStat,damage,damageType:magicalUnarmed?'magic':(o?.damageType||'physical'),rangeMeters:d.rangeMeters||null,hands:d.hands,properties,mastered:true,conditionalBonuses:pred?[{source:'Armes de prédilection',attack:1}]:[]};
+    const actualHands=ancestryWeaponHandsN1(sticky.peupleId,d);if(actualHands!==Number(d.hands||1))properties.push('two_handed_for_size');
+    return{id:w.id+(modeDef&&modeDef!==w?':'+d.mode+':'+d.hands+'h':''),weaponId:w.id,label,type:d.mode==='ranged'?'distance':'contact',attackBonus:atkBase+pred,attackCharacteristic:d.mode==='ranged'?'agi':attackStat,damageCharacteristic:trackedDamageStat,damage,damageType:magicalUnarmed?'magic':(o?.damageType||'physical'),rangeMeters:d.rangeMeters||null,hands:actualHands,properties,mastered:true,conditionalBonuses:pred?[{source:'Armes de prédilection',attack:1}]:[]};
   }
   function buildAttacks(sticky,weapons,acquisitions,state){
     const active=acquisitions.filter(a=>window.FOHPermanentRules.availability(a.ability,state,dbObj,acquisitions.map(x=>x.ability)).active);const allEffects=active.flatMap(a=>(a.ability?.mechanics?.effects||[]).map(e=>({...e,sourceAbilityId:a.ability.id,sourceKind:a.ability.mechanics?.kind,pathRank:Math.max(a.rank||1,...active.filter(b=>b.pathId===a.pathId).map(b=>b.rank||1))})));
@@ -46753,6 +46773,7 @@ const errors=[];
     if(armor&&Number(armor.defBonus||armor.def||0)>armorMaxDef)errors.push('Sans profil : armure incompatible avec une voie choisie.');
     const shields=masteries.length&&masteries.every(m=>m.shields==='all')?'all':'none';
     if(String(equip.shieldId||'')&&shields!=='all')errors.push('Sans profil : bouclier incompatible avec une voie choisie.');
+    errors.push(...validateAncestryEquipmentN1(sticky,state,weapons));
     const union=rows=>Array.from(new Set(rows.flatMap(x=>Array.isArray(x)?x:[])));
     return {errors,weapons,rule:{status:'N1_NATIVE_NO_PROFILE',masteries:{weaponIds:union(masteries.map(m=>m.weaponIds)),armorIds:union(masteries.map(m=>m.armorIds)),armorMaxDef,shields}}};
   }
@@ -46806,7 +46827,7 @@ const errors=[];
     const grantedAbilityRules=[{
       sourceAbilityId:'ability:don-etrange:path-voie-du-gnome-cof2-lb-2024:r1:cof2-lb-2024',
       choiceField:'grantedAbilityId',allowedClassId:'class:ensorceleur:cof2-lb-2024',allowedRank:1,
-      origin:'people_granted_ability',sourceRule:'COF2 Livre de base p.136 — Don étrange'
+      origin:'people_granted_ability',sourceRule:'COF2 Livre de base p.53 — Don étrange'
     }];
     for(const grant of grantedAbilityRules){
       if(!acquisitions.some(a=>a.ability&&a.ability.id===grant.sourceAbilityId)) continue;
@@ -47158,7 +47179,15 @@ function seriesCounts(values){return values.filter(v=>Number.isFinite(v)).reduce
 function methodValidation(){return FOH_ADVANCED_N1.validateMethod(d.characteristicMethod,d.base,{rolls:d.semiRolls})}
 function updateStatTokenAvailability(){if(d.characteristicMethod!=='STANDARD_SERIES'){const v=methodValidation(),box=$('point-buy-budget');if(d.characteristicMethod==='ADVANCED_POINT_BUY'){box.classList.remove('hidden');box.textContent='Points disponibles : '+v.budget+' · Dépensés : '+v.spent+' · Restants : '+v.remaining;}else box.classList.add('hidden');$('characteristics-hint').classList.toggle('error',!v.valid);$('characteristics-hint').textContent=v.valid?'Répartition avancée valide.':v.errors.join(' ');return v.valid}const vals=Engine.SERIES[d.series],quota=seriesCounts(vals),selects=[...document.querySelectorAll('[data-stat]')],used=seriesCounts(selects.map(x=>x.value===''?NaN:Number(x.value)));const valid=selects.every(x=>x.value!=='')&&Object.keys(quota).every(v=>(used[v]||0)===quota[v]);$('characteristics-hint').classList.toggle('error',!valid);$('characteristics-hint').textContent=valid?'Les sept jetons sont répartis. Choisir une valeur déjà utilisée échange automatiquement les deux caractéristiques.':'Répartis exactement les sept jetons de la série.';return valid}
 function assignStatValue(stat,newValue){const oldValue=Number(d.base[stat]);if(d.characteristicMethod!=='STANDARD_SERIES'){d.base[stat]=newValue;return}const quota=seriesCounts(Engine.SERIES[d.series]),otherStats=Object.keys(d.base).filter(k=>k!==stat),usedElsewhere=otherStats.filter(k=>Number(d.base[k])===newValue);if(usedElsewhere.length>=(quota[newValue]||0)){const swapStat=usedElsewhere[0];d.base[swapStat]=oldValue}d.base[stat]=newValue}
-function renderStats(){const method=d.characteristicMethod||'STANDARD_SERIES',stats=['for','agi','con','per','int','vol','cha'];$('series-zone').classList.toggle('hidden',method!=='STANDARD_SERIES');$('semi-random-zone').classList.toggle('hidden',method!=='ADVANCED_SEMI_RANDOM');$('point-buy-budget').classList.toggle('hidden',method!=='ADVANCED_POINT_BUY');let vals;if(method==='STANDARD_SERIES'){vals=Engine.SERIES[d.series];if([...Object.values(d.base)].sort((a,b)=>a-b).join()!=[...vals].sort((a,b)=>a-b).join())d.base=defaultBase(profile(d.primaryId)?.familleId,d.series)}else if(method==='ADVANCED_SEMI_RANDOM'){const pool=FOH_ADVANCED_N1.semiRandomPool(d.semiRolls);vals=pool.pool;if(pool.valid&&[...Object.values(d.base)].sort((a,b)=>a-b).join()!=pool.pool.slice().sort((a,b)=>a-b).join())stats.forEach((k,i)=>d.base[k]=pool.pool[i]);$('semi-random-result').textContent='Jets : '+d.semiRolls.join(', ')+' · valeurs : '+pool.pool.map(v=>(v>=0?'+':'')+v).join(', ')}else vals=[-1,0,1,2,3,4];$('stats-grid').innerHTML=stats.map(s=>'<label class="stat">'+s.toUpperCase()+'<select data-stat="'+s+'" data-testid="stat-'+s+'">'+[...new Set(vals)].map(v=>'<option value="'+v+'" '+(d.base[s]===v?'selected':'')+'>'+(v>=0?'+':'')+v+'</option>').join('')+'</select><b id="final-'+s+'">'+(d.base[s]>=0?'+':'')+d.base[s]+'</b></label>').join('');document.querySelectorAll('[data-stat]').forEach(x=>x.onchange=()=>{assignStatValue(x.dataset.stat,Number(x.value));renderStats()});const roll=$('semi-random-roll');if(roll)roll.onclick=()=>{d.semiRolls=[0,0,0].map(()=>2+Math.floor(Math.random()*6)+Math.floor(Math.random()*6));renderStats()};updateStatTokenAvailability();updateFinalStats();refreshContinueState()}
+function renderSemiRandomBonusChoice(){
+ const zone=$('semi-random-zone');if(!zone)return;
+ let label=$('semi-random-bonus-choice');if(!label){label=document.createElement('label');label.id='semi-random-bonus-choice';label.className='toggle';const box=document.createElement('input');box.type='checkbox';box.id='semi-random-bonus-zero';label.append(box,document.createTextNode('Placer le bonus sur la valeur 0 : sept caractéristiques à +1'));zone.append(label);box.onchange=()=>{d.semiBonusToZero=box.checked;const pool=FOH_ADVANCED_N1.semiRandomPool(d.semiRolls,d.semiBonusToZero);if(pool.valid)['for','agi','con','per','int','vol','cha'].forEach((k,i)=>d.base[k]=pool.pool[i]);render();};}
+ const low=d.characteristicMethod==='ADVANCED_SEMI_RANDOM'&&Array.isArray(d.semiRolls)&&d.semiRolls.length===3&&d.semiRolls.every(n=>Number.isInteger(n)&&n>=2&&n<=5);label.hidden=!low;label.className=low?'toggle':'toggle hidden';
+ // The saved distribution carries the choice, including through older draft mappers.
+ if(low&&Object.values(d.base||{}).length===7&&Object.values(d.base).every(v=>v===1))d.semiBonusToZero=true;
+ $('semi-random-bonus-zero').checked=!!d.semiBonusToZero;
+}
+function renderStats(){const method=d.characteristicMethod||'STANDARD_SERIES',stats=['for','agi','con','per','int','vol','cha'];$('series-zone').classList.toggle('hidden',method!=='STANDARD_SERIES');$('semi-random-zone').classList.toggle('hidden',method!=='ADVANCED_SEMI_RANDOM');$('point-buy-budget').classList.toggle('hidden',method!=='ADVANCED_POINT_BUY');let vals;if(method==='STANDARD_SERIES'){vals=Engine.SERIES[d.series];if([...Object.values(d.base)].sort((a,b)=>a-b).join()!=[...vals].sort((a,b)=>a-b).join())d.base=defaultBase(profile(d.primaryId)?.familleId,d.series)}else if(method==='ADVANCED_SEMI_RANDOM'){const pool=FOH_ADVANCED_N1.semiRandomPool(d.semiRolls,d.semiBonusToZero===true);vals=pool.pool;if(pool.valid&&[...Object.values(d.base)].sort((a,b)=>a-b).join()!=pool.pool.slice().sort((a,b)=>a-b).join())stats.forEach((k,i)=>d.base[k]=pool.pool[i]);$('semi-random-result').textContent='Jets : '+d.semiRolls.join(', ')+' · valeurs : '+pool.pool.map(v=>(v>=0?'+':'')+v).join(', ')}else vals=[-1,0,1,2,3,4];$('stats-grid').innerHTML=stats.map(s=>'<label class="stat">'+s.toUpperCase()+'<select data-stat="'+s+'" data-testid="stat-'+s+'">'+[...new Set(vals)].map(v=>'<option value="'+v+'" '+(d.base[s]===v?'selected':'')+'>'+(v>=0?'+':'')+v+'</option>').join('')+'</select><b id="final-'+s+'">'+(d.base[s]>=0?'+':'')+d.base[s]+'</b></label>').join('');document.querySelectorAll('[data-stat]').forEach(x=>x.onchange=()=>{assignStatValue(x.dataset.stat,Number(x.value));renderStats()});const roll=$('semi-random-roll');if(roll)roll.onclick=()=>{d.semiRolls=[0,0,0].map(()=>2+Math.floor(Math.random()*6)+Math.floor(Math.random()*6));renderStats()};updateStatTokenAvailability();updateFinalStats();refreshContinueState()}
 function peopleChoices(){const p=people(d.peopleId),sc=p.schema||{},x={};if(sc.type==='special'){const opts=humanStatOptions();x.humainStat=opts.includes(d.humanStat)?d.humanStat:(opts[0]||'')}else{if(sc.bonus?.mode==='choice')x.bonusStat=$('people-bonus')?.value||sc.bonus.options[0];if(sc.malus?.mode==='choice')x.malusStat=$('people-malus')?.value||sc.malus.options[0]}if(p.id==='people:gnome:cof2-lb-2024')x.grantedAbilityId=$('gnome-granted-ability')?.value||d.gnomeAbilityId||'';return x}
 function updateFinalStats(){const pc=peopleChoices(),p=people(d.peopleId),mods={for:0,agi:0,con:0,per:0,int:0,vol:0,cha:0},sc=p.schema||{};if(d.characteristicMethod!=='STANDARD_SERIES'){Object.keys(mods).forEach(s=>{const v=d.base[s],el=$('final-'+s);if(el)el.textContent=(v>=0?'+':'')+v});$('characteristics-hint').textContent=methodValidation().valid?'Les valeurs achetées constituent les caractéristiques de départ avant âge et capacités.':methodValidation().errors.join(' ');return}if(sc.type==='stat_mods'){const b=sc.bonus?.mode==='fixed'?sc.bonus.options[0]:pc.bonusStat,m=sc.malus?.mode==='fixed'?sc.malus.options[0]:pc.malusStat;if(b)mods[b]+=sc.bonus.value;if(m)mods[m]+=sc.malus.value}else if(sc.type==='special')mods[pc.humainStat]=(mods[pc.humainStat]||0)+1;Object.keys(mods).forEach(s=>{const raw=d.base[s],v=raw==null?null:Number(raw)+mods[s];const el=$('final-'+s);if(el)el.textContent=v==null?'—':(v>=0?'+':'')+v});$('characteristics-hint').textContent='Les modificateurs de peuple sont déjà visibles. Les effets d’âge seront appliqués par le moteur au résumé.'}
 function renderAdvanced(){const ages=T.age_rules_advanced.categories;$('age-zone').classList.toggle('hidden',!d.age);$('history-zone').classList.toggle('hidden',!d.histories);$('advanced-empty').classList.toggle('hidden',d.age||d.histories);$('age-category').innerHTML=optionHtml(ages,d.ageId);const a=ages.find(x=>x.id===d.ageId)||ages[1];$('age-impact').innerHTML=`<b>${esc(a.label)}</b> · plafond de rang ${a.maxCreationRank} · ${a.capacityPoints} point(s) de capacité supplémentaire(s). ${Object.keys(a.statMods||{}).length?'Modifications : '+Object.entries(a.statMods).map(([k,v])=>k.toUpperCase()+' '+(v>0?'+':'')+v).join(', '):(a.derivedMods&&a.derivedMods.INIT?'INIT '+a.derivedMods.INIT:'Aucune modification de caractéristique.')}`;$('history-geo').innerHTML=optionHtml(T.history_paths.filter(x=>x.category==='geographic'),d.geoId);$('history-pro').innerHTML=optionHtml(T.history_paths.filter(x=>x.category==='professional'),d.proId);$('age-spending').innerHTML=a.capacityPoints?'<div class="budget">Choisis toi-même comment dépenser tes points. Forge contrôle les coûts, les prérequis et le plafond de rang.</div>':''}
@@ -47202,9 +47231,10 @@ function assignStatValue(stat,newValue){
   d.base[stat]=newValue;
 }
 function renderStats(){
+  renderSemiRandomBonusChoice();
   const method=d.characteristicMethod||'STANDARD_SERIES',stats=Object.keys(emptyBase());$('series-zone').classList.toggle('hidden',method!=='STANDARD_SERIES');$('semi-random-zone').classList.toggle('hidden',method!=='ADVANCED_SEMI_RANDOM');$('point-buy-budget').classList.toggle('hidden',method!=='ADVANCED_POINT_BUY');let vals;
   if(method==='STANDARD_SERIES'){vals=Engine.SERIES[d.series];for(const s of stats)if(!(s in d.base))d.base[s]=null}
-  else if(method==='ADVANCED_SEMI_RANDOM'){const pool=FOH_ADVANCED_N1.semiRandomPool(d.semiRolls);vals=pool.pool;if(pool.valid&&[...Object.values(d.base)].sort((a,b)=>a-b).join()!=pool.pool.slice().sort((a,b)=>a-b).join())stats.forEach((k,i)=>d.base[k]=pool.pool[i]);$('semi-random-result').textContent='Jets : '+d.semiRolls.join(', ')+' · valeurs : '+pool.pool.map(v=>(v>=0?'+':'')+v).join(', ')}
+  else if(method==='ADVANCED_SEMI_RANDOM'){const pool=FOH_ADVANCED_N1.semiRandomPool(d.semiRolls,d.semiBonusToZero===true);vals=pool.pool;if(pool.valid&&[...Object.values(d.base)].sort((a,b)=>a-b).join()!=pool.pool.slice().sort((a,b)=>a-b).join())stats.forEach((k,i)=>d.base[k]=pool.pool[i]);$('semi-random-result').textContent='Jets : '+d.semiRolls.join(', ')+' · valeurs : '+pool.pool.map(v=>(v>=0?'+':'')+v).join(', ')}
   else vals=[-1,0,1,2,3,4];
   const blank=method==='STANDARD_SERIES'?'<option value="">À attribuer…</option>':'';
   $('stats-grid').innerHTML=stats.map(s=>'<label class="stat">'+s.toUpperCase()+'<select data-stat="'+s+'" data-testid="stat-'+s+'">'+blank+[...new Set(vals)].map(v=>'<option value="'+v+'" '+(d.base[s]===v?'selected':'')+'>'+(v>=0?'+':'')+v+'</option>').join('')+'</select><b id="final-'+s+'">'+(d.base[s]==null?'—':(d.base[s]>=0?'+':'')+d.base[s])+'</b></label>').join('');

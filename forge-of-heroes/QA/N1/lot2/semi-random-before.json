@@ -1,0 +1,78 @@
+{
+  "id": "N1-SEMI-LOW-001",
+  "source": {
+    "file": "règles avancées.pdf",
+    "pdfPage": 1,
+    "printedPage": 153,
+    "review": "Photo rendered, rotated and visually read"
+  },
+  "expected": "When all three rolls are in 2–5, the player may add +1 to the seventh zero, resulting in seven +1 values.",
+  "state": {
+    "identite": {
+      "nom": "Convergence produit"
+    },
+    "familleId": "aventurier",
+    "classeId": "class:voleur:cof2-lb-2024",
+    "peupleId": "people:humain:cof2-lb-2024",
+    "serieId": "advanced",
+    "baseCaracs": {
+      "for": 1,
+      "agi": 1,
+      "con": 1,
+      "per": 1,
+      "int": 1,
+      "vol": 1,
+      "cha": 1
+    },
+    "characteristicMethod": {
+      "type": "ADVANCED_SEMI_RANDOM",
+      "rolls": [
+        2,
+        2,
+        2
+      ]
+    },
+    "peupleChoices": {
+      "humainStat": "con",
+      "bonusStat": "int"
+    },
+    "voies": {
+      "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+      "keepPeoplePathId": "",
+      "profilePathIds": [
+        "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+        "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+      ],
+      "mageRank2PathId": ""
+    },
+    "equip": {
+      "initialPackageId": "standard",
+      "armorId": "armor:cuir-simple:cof2-lb-2024",
+      "shieldId": "",
+      "weaponIds": [
+        "weapon:rapier",
+        "weapon:dagger",
+        "weapon:dagger",
+        "weapon:dagger",
+        "weapon:dagger",
+        "weapon:dagger"
+      ]
+    },
+    "profileChoices": {},
+    "abilityChoices": {},
+    "options": {},
+    "advancedRules": {
+      "modelVersion": "FIX78",
+      "age": false,
+      "histories": false,
+      "additionalMagePaths": false
+    },
+    "narrative": {
+      "ideal": "",
+      "flaw": ""
+    }
+  },
+  "beforeErrors": [
+    "La répartition ne correspond pas aux trois jets semi-aléatoires."
+  ]
+}

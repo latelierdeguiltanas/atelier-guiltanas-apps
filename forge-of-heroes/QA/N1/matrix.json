@@ -4,12 +4,12 @@
   "phase": "N1_ONLY",
   "overallCertified": false,
   "smoke": false,
-  "startedAt": "2026-10-28T09:35:16.690Z",
-  "finishedAt": "2026-10-28T09:39:32.439Z",
+  "startedAt": "2026-10-28T15:15:57.319Z",
+  "finishedAt": "2026-10-28T15:20:45.535Z",
   "inputs": {
-    "indexSha256": "e06bf4187996e1540b1e3b3fc3e7d7c111b344a55a54024b8d84a6872feb8a6d",
-    "masterSha256": "e4254180ace75212736adc47ca6f2b28bf97517ebe56c5e46f8a96c2bc0dd3fc",
-    "engineSha256": "472f654b1d92f60b7777cbfa9fcf6fb4aacab036a7bce845c340574f1eb30d3e",
+    "indexSha256": "d583211215f213fa6912e25f6d4cb8202315c4454c1f0d5dc6c1e2c88fe1a4c1",
+    "masterSha256": "97846594ff4b5f13a3b9a4d4037102bcdf46b2d81e39efc0208451db8f446165",
+    "engineSha256": "214f3c6fb3fc6cd78fdb05fa579a0302277c7338d9420be557fdc1a56fd9b203",
     "databaseSha256": "ba4b75a3eb170eb08e789d7705b8b7fffa532ec082d2489561a2bdb512db8df2"
   },
   "scope": {
@@ -29,19 +29,19 @@
   "results": {
     "standard": {
       "attempted": 2720,
-      "accepted": 2296,
-      "rejectedForReview": 424,
+      "accepted": 2316,
+      "rejectedForReview": 404,
       "assertionFailures": 0,
-      "replayChecks": 129,
-      "negativeChecks": 75
+      "replayChecks": 130,
+      "negativeChecks": 76
     },
     "ancestry-choices": {
       "attempted": 5950,
-      "accepted": 5102,
-      "rejectedForReview": 848,
+      "accepted": 5142,
+      "rejectedForReview": 808,
       "assertionFailures": 0,
-      "replayChecks": 295,
-      "negativeChecks": 161
+      "replayChecks": 297,
+      "negativeChecks": 162
     },
     "mage-r2-alternative": {
       "attempted": 960,
@@ -53,11 +53,11 @@
     },
     "hybrid": {
       "attempted": 108800,
-      "accepted": 91920,
-      "rejectedForReview": 16880,
+      "accepted": 92720,
+      "rejectedForReview": 16080,
       "assertionFailures": 0,
-      "replayChecks": 5407,
-      "negativeChecks": 2961
+      "replayChecks": 5454,
+      "negativeChecks": 2985
     },
     "no-profile": {
       "attempted": 57120,
@@ -3998,464 +3998,6 @@
     {
       "mode": "standard",
       "reasons": [
-        "Cette arme exige deux mains pour ce peuple.",
-        "Cette arme exige deux mains pour ce peuple."
-      ],
-      "count": 20,
-      "samples": [
-        {
-          "case": {
-            "mode": "standard",
-            "caseId": "33554e04c9d387cadd21b4a2a554ac78ec668be7c2fcfec245580393f9bd1bb4",
-            "profile": "class:arquebusier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-              "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
-            ]
-          },
-          "state": {
-            "identite": {
-              "nom": "Convergence produit"
-            },
-            "familleId": "aventurier",
-            "classeId": "class:arquebusier:cof2-lb-2024",
-            "peupleId": "people:gobelin:addon-comp2017-cof2",
-            "serieId": "expert",
-            "baseCaracs": {
-              "for": 2,
-              "agi": 1,
-              "con": 0,
-              "per": 1,
-              "int": 3,
-              "vol": 0,
-              "cha": -1
-            },
-            "characteristicMethod": {
-              "type": "STANDARD_SERIES",
-              "rolls": [
-                2,
-                7,
-                12
-              ]
-            },
-            "peupleChoices": {
-              "bonusStat": "agi"
-            },
-            "voies": {
-              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-              "keepPeoplePathId": "",
-              "profilePathIds": [
-                "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-                "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
-              ],
-              "mageRank2PathId": ""
-            },
-            "equip": {
-              "initialPackageId": "standard",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
-              "shieldId": "",
-              "weaponIds": [
-                "weapon:powder-pistol",
-                "weapon:long-sword",
-                "weapon:dagger"
-              ]
-            },
-            "profileChoices": {},
-            "abilityChoices": {},
-            "options": {},
-            "advancedRules": {
-              "modelVersion": "FIX78",
-              "age": false,
-              "histories": false,
-              "additionalMagePaths": false
-            },
-            "narrative": {
-              "ideal": "",
-              "flaw": ""
-            }
-          }
-        },
-        {
-          "case": {
-            "mode": "standard",
-            "caseId": "3ecc1593ac71326dbb166463de33f14a161bd7265a8f5d43ac8577a583c1b2ff",
-            "profile": "class:arquebusier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-              "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
-            ]
-          },
-          "state": {
-            "identite": {
-              "nom": "Convergence produit"
-            },
-            "familleId": "aventurier",
-            "classeId": "class:arquebusier:cof2-lb-2024",
-            "peupleId": "people:gobelin:addon-comp2017-cof2",
-            "serieId": "expert",
-            "baseCaracs": {
-              "for": 2,
-              "agi": 1,
-              "con": 0,
-              "per": 1,
-              "int": 3,
-              "vol": 0,
-              "cha": -1
-            },
-            "characteristicMethod": {
-              "type": "STANDARD_SERIES",
-              "rolls": [
-                2,
-                7,
-                12
-              ]
-            },
-            "peupleChoices": {
-              "bonusStat": "agi"
-            },
-            "voies": {
-              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-              "keepPeoplePathId": "",
-              "profilePathIds": [
-                "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-                "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
-              ],
-              "mageRank2PathId": ""
-            },
-            "equip": {
-              "initialPackageId": "standard",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
-              "shieldId": "",
-              "weaponIds": [
-                "weapon:powder-pistol",
-                "weapon:long-sword",
-                "weapon:dagger"
-              ]
-            },
-            "profileChoices": {},
-            "abilityChoices": {},
-            "options": {},
-            "advancedRules": {
-              "modelVersion": "FIX78",
-              "age": false,
-              "histories": false,
-              "additionalMagePaths": false
-            },
-            "narrative": {
-              "ideal": "",
-              "flaw": ""
-            }
-          }
-        },
-        {
-          "case": {
-            "mode": "standard",
-            "caseId": "78c5610d2064e375ce38a0315699bc0fa3368dcc26beb01630d68571a1f88a9d",
-            "profile": "class:arquebusier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-              "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024"
-            ]
-          },
-          "state": {
-            "identite": {
-              "nom": "Convergence produit"
-            },
-            "familleId": "aventurier",
-            "classeId": "class:arquebusier:cof2-lb-2024",
-            "peupleId": "people:gobelin:addon-comp2017-cof2",
-            "serieId": "expert",
-            "baseCaracs": {
-              "for": 2,
-              "agi": 1,
-              "con": 0,
-              "per": 1,
-              "int": 3,
-              "vol": 0,
-              "cha": -1
-            },
-            "characteristicMethod": {
-              "type": "STANDARD_SERIES",
-              "rolls": [
-                2,
-                7,
-                12
-              ]
-            },
-            "peupleChoices": {
-              "bonusStat": "agi"
-            },
-            "voies": {
-              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-              "keepPeoplePathId": "",
-              "profilePathIds": [
-                "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-                "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024"
-              ],
-              "mageRank2PathId": ""
-            },
-            "equip": {
-              "initialPackageId": "standard",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
-              "shieldId": "",
-              "weaponIds": [
-                "weapon:powder-pistol",
-                "weapon:long-sword",
-                "weapon:dagger"
-              ]
-            },
-            "profileChoices": {},
-            "abilityChoices": {},
-            "options": {},
-            "advancedRules": {
-              "modelVersion": "FIX78",
-              "age": false,
-              "histories": false,
-              "additionalMagePaths": false
-            },
-            "narrative": {
-              "ideal": "",
-              "flaw": ""
-            }
-          }
-        }
-      ]
-    },
-    {
-      "mode": "ancestry-choices",
-      "reasons": [
-        "Cette arme exige deux mains pour ce peuple.",
-        "Cette arme exige deux mains pour ce peuple."
-      ],
-      "count": 40,
-      "samples": [
-        {
-          "case": {
-            "mode": "ancestry-choices",
-            "caseId": "33554e04c9d387cadd21b4a2a554ac78ec668be7c2fcfec245580393f9bd1bb4",
-            "profile": "class:arquebusier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-              "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
-            ]
-          },
-          "state": {
-            "identite": {
-              "nom": "Convergence produit"
-            },
-            "familleId": "aventurier",
-            "classeId": "class:arquebusier:cof2-lb-2024",
-            "peupleId": "people:gobelin:addon-comp2017-cof2",
-            "serieId": "expert",
-            "baseCaracs": {
-              "for": 2,
-              "agi": 1,
-              "con": 0,
-              "per": 1,
-              "int": 3,
-              "vol": 0,
-              "cha": -1
-            },
-            "characteristicMethod": {
-              "type": "STANDARD_SERIES",
-              "rolls": [
-                2,
-                7,
-                12
-              ]
-            },
-            "peupleChoices": {
-              "bonusStat": "agi"
-            },
-            "voies": {
-              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-              "keepPeoplePathId": "",
-              "profilePathIds": [
-                "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-                "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
-              ],
-              "mageRank2PathId": ""
-            },
-            "equip": {
-              "initialPackageId": "standard",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
-              "shieldId": "",
-              "weaponIds": [
-                "weapon:powder-pistol",
-                "weapon:long-sword",
-                "weapon:dagger"
-              ]
-            },
-            "profileChoices": {},
-            "abilityChoices": {},
-            "options": {},
-            "advancedRules": {
-              "modelVersion": "FIX78",
-              "age": false,
-              "histories": false,
-              "additionalMagePaths": false
-            },
-            "narrative": {
-              "ideal": "",
-              "flaw": ""
-            }
-          }
-        },
-        {
-          "case": {
-            "mode": "ancestry-choices",
-            "caseId": "635ad222117de6682f0c0260f28cbca4e39b2b6e6d0972b1349fa8d5ed92e3d6",
-            "profile": "class:arquebusier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-              "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
-            ]
-          },
-          "state": {
-            "identite": {
-              "nom": "Convergence produit"
-            },
-            "familleId": "aventurier",
-            "classeId": "class:arquebusier:cof2-lb-2024",
-            "peupleId": "people:gobelin:addon-comp2017-cof2",
-            "serieId": "expert",
-            "baseCaracs": {
-              "for": 2,
-              "agi": 1,
-              "con": 0,
-              "per": 1,
-              "int": 3,
-              "vol": 0,
-              "cha": -1
-            },
-            "characteristicMethod": {
-              "type": "STANDARD_SERIES",
-              "rolls": [
-                2,
-                7,
-                12
-              ]
-            },
-            "peupleChoices": {
-              "bonusStat": "int"
-            },
-            "voies": {
-              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-              "keepPeoplePathId": "",
-              "profilePathIds": [
-                "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-                "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
-              ],
-              "mageRank2PathId": ""
-            },
-            "equip": {
-              "initialPackageId": "standard",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
-              "shieldId": "",
-              "weaponIds": [
-                "weapon:powder-pistol",
-                "weapon:long-sword",
-                "weapon:dagger"
-              ]
-            },
-            "profileChoices": {},
-            "abilityChoices": {},
-            "options": {},
-            "advancedRules": {
-              "modelVersion": "FIX78",
-              "age": false,
-              "histories": false,
-              "additionalMagePaths": false
-            },
-            "narrative": {
-              "ideal": "",
-              "flaw": ""
-            }
-          }
-        },
-        {
-          "case": {
-            "mode": "ancestry-choices",
-            "caseId": "3ecc1593ac71326dbb166463de33f14a161bd7265a8f5d43ac8577a583c1b2ff",
-            "profile": "class:arquebusier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-              "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
-            ]
-          },
-          "state": {
-            "identite": {
-              "nom": "Convergence produit"
-            },
-            "familleId": "aventurier",
-            "classeId": "class:arquebusier:cof2-lb-2024",
-            "peupleId": "people:gobelin:addon-comp2017-cof2",
-            "serieId": "expert",
-            "baseCaracs": {
-              "for": 2,
-              "agi": 1,
-              "con": 0,
-              "per": 1,
-              "int": 3,
-              "vol": 0,
-              "cha": -1
-            },
-            "characteristicMethod": {
-              "type": "STANDARD_SERIES",
-              "rolls": [
-                2,
-                7,
-                12
-              ]
-            },
-            "peupleChoices": {
-              "bonusStat": "agi"
-            },
-            "voies": {
-              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-              "keepPeoplePathId": "",
-              "profilePathIds": [
-                "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-                "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
-              ],
-              "mageRank2PathId": ""
-            },
-            "equip": {
-              "initialPackageId": "standard",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
-              "shieldId": "",
-              "weaponIds": [
-                "weapon:powder-pistol",
-                "weapon:long-sword",
-                "weapon:dagger"
-              ]
-            },
-            "profileChoices": {},
-            "abilityChoices": {},
-            "options": {},
-            "advancedRules": {
-              "modelVersion": "FIX78",
-              "age": false,
-              "histories": false,
-              "additionalMagePaths": false
-            },
-            "narrative": {
-              "ideal": "",
-              "flaw": ""
-            }
-          }
-        }
-      ]
-    },
-    {
-      "mode": "standard",
-      "reasons": [
         "Être féerique : l’armure doit être fabriquée à sa taille."
       ],
       "count": 180,
@@ -6083,259 +5625,6 @@
             "narrative": {
               "ideal": "",
               "flaw": ""
-            }
-          }
-        }
-      ]
-    },
-    {
-      "mode": "hybrid",
-      "reasons": [
-        "Cette arme exige deux mains pour ce peuple.",
-        "Cette arme exige deux mains pour ce peuple."
-      ],
-      "count": 800,
-      "samples": [
-        {
-          "case": {
-            "mode": "hybrid",
-            "caseId": "29de3040a0a0728b71a06fb61a5c28c618931a99fc4f12c3f10df3537fa09f41",
-            "profile": "class:arquebusier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-              "classpath:voie-de-l-escrime:class-barde:cof2-lb-2024"
-            ]
-          },
-          "state": {
-            "identite": {
-              "nom": "Convergence produit"
-            },
-            "familleId": "aventurier",
-            "classeId": "class:arquebusier:cof2-lb-2024",
-            "peupleId": "people:gobelin:addon-comp2017-cof2",
-            "serieId": "expert",
-            "baseCaracs": {
-              "for": 2,
-              "agi": 1,
-              "con": 0,
-              "per": 1,
-              "int": 3,
-              "vol": 0,
-              "cha": -1
-            },
-            "characteristicMethod": {
-              "type": "STANDARD_SERIES",
-              "rolls": [
-                2,
-                7,
-                12
-              ]
-            },
-            "peupleChoices": {
-              "bonusStat": "agi"
-            },
-            "voies": {
-              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-              "keepPeoplePathId": "",
-              "profilePathIds": [
-                "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-                "classpath:voie-de-l-escrime:class-barde:cof2-lb-2024"
-              ],
-              "mageRank2PathId": ""
-            },
-            "equip": {
-              "initialPackageId": "standard",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
-              "shieldId": "",
-              "weaponIds": [
-                "weapon:powder-pistol",
-                "weapon:long-sword",
-                "weapon:dagger"
-              ]
-            },
-            "profileChoices": {},
-            "abilityChoices": {},
-            "options": {},
-            "advancedRules": {
-              "modelVersion": "FIX78",
-              "age": false,
-              "histories": false,
-              "additionalMagePaths": false
-            },
-            "narrative": {
-              "ideal": "",
-              "flaw": ""
-            },
-            "hybrid": {
-              "enabled": true,
-              "gmApproved": true,
-              "primaryProfileId": "class:arquebusier:cof2-lb-2024",
-              "secondaryProfileId": "class:barde:cof2-lb-2024",
-              "primaryPathId": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-              "secondaryPathId": "classpath:voie-de-l-escrime:class-barde:cof2-lb-2024"
-            }
-          }
-        },
-        {
-          "case": {
-            "mode": "hybrid",
-            "caseId": "74a996b3f539ef7bf299d33440d336eb83ba8f8e86d62f22c7700206b72c42fb",
-            "profile": "class:arquebusier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-              "classpath:voie-du-musicien:class-barde:cof2-lb-2024"
-            ]
-          },
-          "state": {
-            "identite": {
-              "nom": "Convergence produit"
-            },
-            "familleId": "aventurier",
-            "classeId": "class:arquebusier:cof2-lb-2024",
-            "peupleId": "people:gobelin:addon-comp2017-cof2",
-            "serieId": "expert",
-            "baseCaracs": {
-              "for": 2,
-              "agi": 1,
-              "con": 0,
-              "per": 1,
-              "int": 3,
-              "vol": 0,
-              "cha": -1
-            },
-            "characteristicMethod": {
-              "type": "STANDARD_SERIES",
-              "rolls": [
-                2,
-                7,
-                12
-              ]
-            },
-            "peupleChoices": {
-              "bonusStat": "agi"
-            },
-            "voies": {
-              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-              "keepPeoplePathId": "",
-              "profilePathIds": [
-                "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-                "classpath:voie-du-musicien:class-barde:cof2-lb-2024"
-              ],
-              "mageRank2PathId": ""
-            },
-            "equip": {
-              "initialPackageId": "standard",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
-              "shieldId": "",
-              "weaponIds": [
-                "weapon:powder-pistol",
-                "weapon:long-sword",
-                "weapon:dagger"
-              ]
-            },
-            "profileChoices": {},
-            "abilityChoices": {},
-            "options": {},
-            "advancedRules": {
-              "modelVersion": "FIX78",
-              "age": false,
-              "histories": false,
-              "additionalMagePaths": false
-            },
-            "narrative": {
-              "ideal": "",
-              "flaw": ""
-            },
-            "hybrid": {
-              "enabled": true,
-              "gmApproved": true,
-              "primaryProfileId": "class:arquebusier:cof2-lb-2024",
-              "secondaryProfileId": "class:barde:cof2-lb-2024",
-              "primaryPathId": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-              "secondaryPathId": "classpath:voie-du-musicien:class-barde:cof2-lb-2024"
-            }
-          }
-        },
-        {
-          "case": {
-            "mode": "hybrid",
-            "caseId": "17b461e12a699e2d921c3db1a3a3e20126068e8bfa11286c6fcf78e448f66ec5",
-            "profile": "class:arquebusier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-              "classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024"
-            ]
-          },
-          "state": {
-            "identite": {
-              "nom": "Convergence produit"
-            },
-            "familleId": "aventurier",
-            "classeId": "class:arquebusier:cof2-lb-2024",
-            "peupleId": "people:gobelin:addon-comp2017-cof2",
-            "serieId": "expert",
-            "baseCaracs": {
-              "for": 2,
-              "agi": 1,
-              "con": 0,
-              "per": 1,
-              "int": 3,
-              "vol": 0,
-              "cha": -1
-            },
-            "characteristicMethod": {
-              "type": "STANDARD_SERIES",
-              "rolls": [
-                2,
-                7,
-                12
-              ]
-            },
-            "peupleChoices": {
-              "bonusStat": "agi"
-            },
-            "voies": {
-              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-              "keepPeoplePathId": "",
-              "profilePathIds": [
-                "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-                "classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024"
-              ],
-              "mageRank2PathId": ""
-            },
-            "equip": {
-              "initialPackageId": "standard",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
-              "shieldId": "",
-              "weaponIds": [
-                "weapon:powder-pistol",
-                "weapon:long-sword",
-                "weapon:dagger"
-              ]
-            },
-            "profileChoices": {},
-            "abilityChoices": {},
-            "options": {},
-            "advancedRules": {
-              "modelVersion": "FIX78",
-              "age": false,
-              "histories": false,
-              "additionalMagePaths": false
-            },
-            "narrative": {
-              "ideal": "",
-              "flaw": ""
-            },
-            "hybrid": {
-              "enabled": true,
-              "gmApproved": true,
-              "primaryProfileId": "class:arquebusier:cof2-lb-2024",
-              "secondaryProfileId": "class:barde:cof2-lb-2024",
-              "primaryPathId": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
-              "secondaryPathId": "classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024"
             }
           }
         }
@@ -8990,27 +8279,27 @@
     {
       "mode": "standard",
       "reasons": [
-        "Cette arme exige deux mains pour ce peuple."
+        "Arme interdite par la petite taille du peuple."
       ],
-      "count": 60,
+      "count": 20,
       "samples": [
         {
           "case": {
             "mode": "standard",
-            "caseId": "a27e070e87f1d2cf3d9ac5b4eaca66ae7465af6460381a6fd0f674a7ee9806a2",
-            "profile": "class:rodeur:cof2-lb-2024",
+            "caseId": "677cdfcdc5d4726f8220631ccf47087c06987b8e9986b8571dac2a73a3aa3d12",
+            "profile": "class:barbare:cof2-lb-2024",
             "people": "people:gobelin:addon-comp2017-cof2",
             "paths": [
-              "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
-              "classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024"
+              "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+              "classpath:voie-du-pagne:class-barbare:cof2-lb-2024"
             ]
           },
           "state": {
             "identite": {
               "nom": "Convergence produit"
             },
-            "familleId": "aventurier",
-            "classeId": "class:rodeur:cof2-lb-2024",
+            "familleId": "combattant",
+            "classeId": "class:barbare:cof2-lb-2024",
             "peupleId": "people:gobelin:addon-comp2017-cof2",
             "serieId": "expert",
             "baseCaracs": {
@@ -9037,18 +8326,19 @@
               "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
               "keepPeoplePathId": "",
               "profilePathIds": [
-                "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
-                "classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024"
+                "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+                "classpath:voie-du-pagne:class-barbare:cof2-lb-2024"
               ],
               "mageRank2PathId": ""
             },
             "equip": {
-              "initialPackageId": "longsword-bow",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
+              "initialPackageId": "two_handed",
+              "armorId": "armor:cuir-simple:cof2-lb-2024",
               "shieldId": "",
               "weaponIds": [
-                "weapon:long-sword",
-                "weapon:shortbow",
+                "weapon:great-axe",
+                "weapon:javelin",
+                "weapon:javelin",
                 "weapon:dagger"
               ]
             },
@@ -9070,20 +8360,20 @@
         {
           "case": {
             "mode": "standard",
-            "caseId": "30719d5d4c805931d45d2cbf3bf6153ed601a6ae1e283aa7ece652994aa57d24",
-            "profile": "class:rodeur:cof2-lb-2024",
+            "caseId": "6fab76487efe8a5547594f3747c74ddb1d4bb23fb1a425e9843087d2d41590aa",
+            "profile": "class:barbare:cof2-lb-2024",
             "people": "people:gobelin:addon-comp2017-cof2",
             "paths": [
-              "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
-              "classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024"
+              "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+              "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024"
             ]
           },
           "state": {
             "identite": {
               "nom": "Convergence produit"
             },
-            "familleId": "aventurier",
-            "classeId": "class:rodeur:cof2-lb-2024",
+            "familleId": "combattant",
+            "classeId": "class:barbare:cof2-lb-2024",
             "peupleId": "people:gobelin:addon-comp2017-cof2",
             "serieId": "expert",
             "baseCaracs": {
@@ -9110,18 +8400,19 @@
               "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
               "keepPeoplePathId": "",
               "profilePathIds": [
-                "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
-                "classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024"
+                "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+                "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024"
               ],
               "mageRank2PathId": ""
             },
             "equip": {
-              "initialPackageId": "longsword-bow",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
+              "initialPackageId": "two_handed",
+              "armorId": "armor:cuir-simple:cof2-lb-2024",
               "shieldId": "",
               "weaponIds": [
-                "weapon:long-sword",
-                "weapon:shortbow",
+                "weapon:great-axe",
+                "weapon:javelin",
+                "weapon:javelin",
                 "weapon:dagger"
               ]
             },
@@ -9143,20 +8434,20 @@
         {
           "case": {
             "mode": "standard",
-            "caseId": "07e5257fd018eadac4f0a88e08c427f9709870a106647ec2a630f12bca02de58",
-            "profile": "class:rodeur:cof2-lb-2024",
+            "caseId": "e80759df728b842aa3eb6c60ad03fd3f55292a47b842e9b8e59a6c086c99cd59",
+            "profile": "class:barbare:cof2-lb-2024",
             "people": "people:gobelin:addon-comp2017-cof2",
             "paths": [
-              "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
-              "classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024"
+              "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+              "classpath:voie-du-primitif:class-barbare:cof2-lb-2024"
             ]
           },
           "state": {
             "identite": {
               "nom": "Convergence produit"
             },
-            "familleId": "aventurier",
-            "classeId": "class:rodeur:cof2-lb-2024",
+            "familleId": "combattant",
+            "classeId": "class:barbare:cof2-lb-2024",
             "peupleId": "people:gobelin:addon-comp2017-cof2",
             "serieId": "expert",
             "baseCaracs": {
@@ -9183,27 +8474,24 @@
               "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
               "keepPeoplePathId": "",
               "profilePathIds": [
-                "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
-                "classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024"
+                "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+                "classpath:voie-du-primitif:class-barbare:cof2-lb-2024"
               ],
               "mageRank2PathId": ""
             },
             "equip": {
-              "initialPackageId": "longsword-bow",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
+              "initialPackageId": "two_handed",
+              "armorId": "armor:cuir-simple:cof2-lb-2024",
               "shieldId": "",
               "weaponIds": [
-                "weapon:long-sword",
-                "weapon:shortbow",
+                "weapon:great-axe",
+                "weapon:javelin",
+                "weapon:javelin",
                 "weapon:dagger"
               ]
             },
             "profileChoices": {},
-            "abilityChoices": {
-              "ability:eclaireur:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024": {
-                "traqueurSwap": false
-              }
-            },
+            "abilityChoices": {},
             "options": {},
             "advancedRules": {
               "modelVersion": "FIX78",
@@ -9222,27 +8510,27 @@
     {
       "mode": "ancestry-choices",
       "reasons": [
-        "Cette arme exige deux mains pour ce peuple."
+        "Arme interdite par la petite taille du peuple."
       ],
-      "count": 120,
+      "count": 40,
       "samples": [
         {
           "case": {
             "mode": "ancestry-choices",
-            "caseId": "a27e070e87f1d2cf3d9ac5b4eaca66ae7465af6460381a6fd0f674a7ee9806a2",
-            "profile": "class:rodeur:cof2-lb-2024",
+            "caseId": "677cdfcdc5d4726f8220631ccf47087c06987b8e9986b8571dac2a73a3aa3d12",
+            "profile": "class:barbare:cof2-lb-2024",
             "people": "people:gobelin:addon-comp2017-cof2",
             "paths": [
-              "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
-              "classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024"
+              "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+              "classpath:voie-du-pagne:class-barbare:cof2-lb-2024"
             ]
           },
           "state": {
             "identite": {
               "nom": "Convergence produit"
             },
-            "familleId": "aventurier",
-            "classeId": "class:rodeur:cof2-lb-2024",
+            "familleId": "combattant",
+            "classeId": "class:barbare:cof2-lb-2024",
             "peupleId": "people:gobelin:addon-comp2017-cof2",
             "serieId": "expert",
             "baseCaracs": {
@@ -9269,18 +8557,19 @@
               "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
               "keepPeoplePathId": "",
               "profilePathIds": [
-                "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
-                "classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024"
+                "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+                "classpath:voie-du-pagne:class-barbare:cof2-lb-2024"
               ],
               "mageRank2PathId": ""
             },
             "equip": {
-              "initialPackageId": "longsword-bow",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
+              "initialPackageId": "two_handed",
+              "armorId": "armor:cuir-simple:cof2-lb-2024",
               "shieldId": "",
               "weaponIds": [
-                "weapon:long-sword",
-                "weapon:shortbow",
+                "weapon:great-axe",
+                "weapon:javelin",
+                "weapon:javelin",
                 "weapon:dagger"
               ]
             },
@@ -9302,20 +8591,20 @@
         {
           "case": {
             "mode": "ancestry-choices",
-            "caseId": "a0ff14a3c39274c7da64c0a0a807cf4028ddeb13fa48e6c18dd2c460e4a0b5c6",
-            "profile": "class:rodeur:cof2-lb-2024",
+            "caseId": "f20ee25fe12adb08dd40c85c885f7501fa59c72dff7794af3d63caaa57282666",
+            "profile": "class:barbare:cof2-lb-2024",
             "people": "people:gobelin:addon-comp2017-cof2",
             "paths": [
-              "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
-              "classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024"
+              "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+              "classpath:voie-du-pagne:class-barbare:cof2-lb-2024"
             ]
           },
           "state": {
             "identite": {
               "nom": "Convergence produit"
             },
-            "familleId": "aventurier",
-            "classeId": "class:rodeur:cof2-lb-2024",
+            "familleId": "combattant",
+            "classeId": "class:barbare:cof2-lb-2024",
             "peupleId": "people:gobelin:addon-comp2017-cof2",
             "serieId": "expert",
             "baseCaracs": {
@@ -9342,18 +8631,19 @@
               "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
               "keepPeoplePathId": "",
               "profilePathIds": [
-                "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
-                "classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024"
+                "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+                "classpath:voie-du-pagne:class-barbare:cof2-lb-2024"
               ],
               "mageRank2PathId": ""
             },
             "equip": {
-              "initialPackageId": "longsword-bow",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
+              "initialPackageId": "two_handed",
+              "armorId": "armor:cuir-simple:cof2-lb-2024",
               "shieldId": "",
               "weaponIds": [
-                "weapon:long-sword",
-                "weapon:shortbow",
+                "weapon:great-axe",
+                "weapon:javelin",
+                "weapon:javelin",
                 "weapon:dagger"
               ]
             },
@@ -9375,20 +8665,20 @@
         {
           "case": {
             "mode": "ancestry-choices",
-            "caseId": "30719d5d4c805931d45d2cbf3bf6153ed601a6ae1e283aa7ece652994aa57d24",
-            "profile": "class:rodeur:cof2-lb-2024",
+            "caseId": "6fab76487efe8a5547594f3747c74ddb1d4bb23fb1a425e9843087d2d41590aa",
+            "profile": "class:barbare:cof2-lb-2024",
             "people": "people:gobelin:addon-comp2017-cof2",
             "paths": [
-              "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
-              "classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024"
+              "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+              "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024"
             ]
           },
           "state": {
             "identite": {
               "nom": "Convergence produit"
             },
-            "familleId": "aventurier",
-            "classeId": "class:rodeur:cof2-lb-2024",
+            "familleId": "combattant",
+            "classeId": "class:barbare:cof2-lb-2024",
             "peupleId": "people:gobelin:addon-comp2017-cof2",
             "serieId": "expert",
             "baseCaracs": {
@@ -9415,18 +8705,19 @@
               "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
               "keepPeoplePathId": "",
               "profilePathIds": [
-                "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
-                "classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024"
+                "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+                "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024"
               ],
               "mageRank2PathId": ""
             },
             "equip": {
-              "initialPackageId": "longsword-bow",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
+              "initialPackageId": "two_handed",
+              "armorId": "armor:cuir-simple:cof2-lb-2024",
               "shieldId": "",
               "weaponIds": [
-                "weapon:long-sword",
-                "weapon:shortbow",
+                "weapon:great-axe",
+                "weapon:javelin",
+                "weapon:javelin",
                 "weapon:dagger"
               ]
             },
@@ -9450,18 +8741,18 @@
     {
       "mode": "hybrid",
       "reasons": [
-        "Cette arme exige deux mains pour ce peuple."
+        "Arme interdite par la petite taille du peuple."
       ],
-      "count": 2400,
+      "count": 800,
       "samples": [
         {
           "case": {
             "mode": "hybrid",
-            "caseId": "4bc01efa316eaea174033156e9b5a11c00177c79eecbc8bbf84922e10d6b2ee1",
-            "profile": "class:rodeur:cof2-lb-2024",
+            "caseId": "7180d7adf870425f39e587abf05756fe0ca358e09cba98d6c0996c6f1744b89e",
+            "profile": "class:barbare:cof2-lb-2024",
             "people": "people:gobelin:addon-comp2017-cof2",
             "paths": [
-              "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
+              "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
             ]
           },
@@ -9469,8 +8760,8 @@
             "identite": {
               "nom": "Convergence produit"
             },
-            "familleId": "aventurier",
-            "classeId": "class:rodeur:cof2-lb-2024",
+            "familleId": "combattant",
+            "classeId": "class:barbare:cof2-lb-2024",
             "peupleId": "people:gobelin:addon-comp2017-cof2",
             "serieId": "expert",
             "baseCaracs": {
@@ -9497,18 +8788,19 @@
               "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
               "keepPeoplePathId": "",
               "profilePathIds": [
-                "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
+                "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
                 "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
               ],
               "mageRank2PathId": ""
             },
             "equip": {
-              "initialPackageId": "longsword-bow",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
+              "initialPackageId": "two_handed",
+              "armorId": "armor:cuir-simple:cof2-lb-2024",
               "shieldId": "",
               "weaponIds": [
-                "weapon:long-sword",
-                "weapon:shortbow",
+                "weapon:great-axe",
+                "weapon:javelin",
+                "weapon:javelin",
                 "weapon:dagger"
               ]
             },
@@ -9528,9 +8820,9 @@
             "hybrid": {
               "enabled": true,
               "gmApproved": true,
-              "primaryProfileId": "class:rodeur:cof2-lb-2024",
+              "primaryProfileId": "class:barbare:cof2-lb-2024",
               "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
-              "primaryPathId": "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "secondaryPathId": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
             }
           }
@@ -9538,11 +8830,11 @@
         {
           "case": {
             "mode": "hybrid",
-            "caseId": "0de590babb263557792e0a91d508babd21d0f6494e3221d0d08e127946cfcac9",
-            "profile": "class:rodeur:cof2-lb-2024",
+            "caseId": "49f9b49df53d91c70e45501e2ecdc76e893da69f82cf2d8b0bb53be05ec42944",
+            "profile": "class:barbare:cof2-lb-2024",
             "people": "people:gobelin:addon-comp2017-cof2",
             "paths": [
-              "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
+              "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
             ]
           },
@@ -9550,8 +8842,8 @@
             "identite": {
               "nom": "Convergence produit"
             },
-            "familleId": "aventurier",
-            "classeId": "class:rodeur:cof2-lb-2024",
+            "familleId": "combattant",
+            "classeId": "class:barbare:cof2-lb-2024",
             "peupleId": "people:gobelin:addon-comp2017-cof2",
             "serieId": "expert",
             "baseCaracs": {
@@ -9578,18 +8870,19 @@
               "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
               "keepPeoplePathId": "",
               "profilePathIds": [
-                "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
+                "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
                 "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
               ],
               "mageRank2PathId": ""
             },
             "equip": {
-              "initialPackageId": "longsword-bow",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
+              "initialPackageId": "two_handed",
+              "armorId": "armor:cuir-simple:cof2-lb-2024",
               "shieldId": "",
               "weaponIds": [
-                "weapon:long-sword",
-                "weapon:shortbow",
+                "weapon:great-axe",
+                "weapon:javelin",
+                "weapon:javelin",
                 "weapon:dagger"
               ]
             },
@@ -9609,9 +8902,9 @@
             "hybrid": {
               "enabled": true,
               "gmApproved": true,
-              "primaryProfileId": "class:rodeur:cof2-lb-2024",
+              "primaryProfileId": "class:barbare:cof2-lb-2024",
               "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
-              "primaryPathId": "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "secondaryPathId": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
             }
           }
@@ -9619,11 +8912,11 @@
         {
           "case": {
             "mode": "hybrid",
-            "caseId": "55625fd30caa45f7f3643d101eca69d34cd745428873ac12f31dc850e7a07eb6",
-            "profile": "class:rodeur:cof2-lb-2024",
+            "caseId": "3c6dccf063174efed4b510a558984ce21404c8125abe00c00550598aa92e6fb0",
+            "profile": "class:barbare:cof2-lb-2024",
             "people": "people:gobelin:addon-comp2017-cof2",
             "paths": [
-              "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
+              "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
             ]
           },
@@ -9631,8 +8924,8 @@
             "identite": {
               "nom": "Convergence produit"
             },
-            "familleId": "aventurier",
-            "classeId": "class:rodeur:cof2-lb-2024",
+            "familleId": "combattant",
+            "classeId": "class:barbare:cof2-lb-2024",
             "peupleId": "people:gobelin:addon-comp2017-cof2",
             "serieId": "expert",
             "baseCaracs": {
@@ -9659,18 +8952,19 @@
               "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
               "keepPeoplePathId": "",
               "profilePathIds": [
-                "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
+                "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
                 "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
               ],
               "mageRank2PathId": ""
             },
             "equip": {
-              "initialPackageId": "longsword-bow",
-              "armorId": "armor:cuir-renforce:cof2-lb-2024",
+              "initialPackageId": "two_handed",
+              "armorId": "armor:cuir-simple:cof2-lb-2024",
               "shieldId": "",
               "weaponIds": [
-                "weapon:long-sword",
-                "weapon:shortbow",
+                "weapon:great-axe",
+                "weapon:javelin",
+                "weapon:javelin",
                 "weapon:dagger"
               ]
             },
@@ -9690,9 +8984,9 @@
             "hybrid": {
               "enabled": true,
               "gmApproved": true,
-              "primaryProfileId": "class:rodeur:cof2-lb-2024",
+              "primaryProfileId": "class:barbare:cof2-lb-2024",
               "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
-              "primaryPathId": "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "secondaryPathId": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
             }
           }
@@ -10156,6 +9450,464 @@
       ]
     },
     {
+      "mode": "standard",
+      "reasons": [
+        "Arme interdite par la petite taille du peuple.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
+      ],
+      "count": 40,
+      "samples": [
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "935ce5c8410eba418ab1f433c58e61e143cc84d6b01b29cc2bce8f9711df7810",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:gobelin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:chevalier:cof2-lb-2024",
+            "peupleId": "people:gobelin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "armor:cotte-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:cavalry-lance",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "3e9ed61315447a085ad0df886e6d5bf8dc1df97c605af6578c5c401cd559dcbb",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:gobelin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-du-preux:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:chevalier:cof2-lb-2024",
+            "peupleId": "people:gobelin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                "classpath:voie-du-preux:class-chevalier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "armor:cotte-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:cavalry-lance",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "3de9297f80e3973586a567adb1696d32108715f2495835a1051617123996369a",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:gobelin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:chevalier:cof2-lb-2024",
+            "peupleId": "people:gobelin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                "classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "armor:cotte-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:cavalry-lance",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "ancestry-choices",
+      "reasons": [
+        "Arme interdite par la petite taille du peuple.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
+      ],
+      "count": 80,
+      "samples": [
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "935ce5c8410eba418ab1f433c58e61e143cc84d6b01b29cc2bce8f9711df7810",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:gobelin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:chevalier:cof2-lb-2024",
+            "peupleId": "people:gobelin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "armor:cotte-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:cavalry-lance",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "3636cc4b1461822634ab205d1330da4fe01ee4cae6fd3561daefd5dc441e2087",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:gobelin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:chevalier:cof2-lb-2024",
+            "peupleId": "people:gobelin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "int"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "armor:cotte-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:cavalry-lance",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "3e9ed61315447a085ad0df886e6d5bf8dc1df97c605af6578c5c401cd559dcbb",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:gobelin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-du-preux:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:chevalier:cof2-lb-2024",
+            "peupleId": "people:gobelin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                "classpath:voie-du-preux:class-chevalier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "armor:cotte-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:cavalry-lance",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        }
+      ]
+    },
+    {
       "mode": "hybrid",
       "reasons": [
         "Centaure : la Fidèle monture standard ne peut pas être montée ; choisir une autre voie."
@@ -10365,6 +10117,259 @@
             },
             "voies": {
               "peoplePathId": "path:voie-du-centaure:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "armor:cotte-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:cavalry-lance",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:chevalier:cof2-lb-2024",
+              "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "reasons": [
+        "Arme interdite par la petite taille du peuple.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
+      ],
+      "count": 1600,
+      "samples": [
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "14c10cd4cb203f55ff34160a5f942d02eb37664827c5be1de583d76658d52ea3",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:gobelin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:chevalier:cof2-lb-2024",
+            "peupleId": "people:gobelin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "armor:cotte-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:cavalry-lance",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:chevalier:cof2-lb-2024",
+              "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "051cf0d71d5cedf5d852c8fc4331fbdd045201251fa2f39c84b1514fae5e44e0",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:gobelin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:chevalier:cof2-lb-2024",
+            "peupleId": "people:gobelin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "armor:cotte-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:cavalry-lance",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:chevalier:cof2-lb-2024",
+              "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "786e32e9a16321bb49914f2b91be4859da2c44b25ea64082b43d16c91695cb5f",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:gobelin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:chevalier:cof2-lb-2024",
+            "peupleId": "people:gobelin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
               "keepPeoplePathId": "",
               "profilePathIds": [
                 "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",

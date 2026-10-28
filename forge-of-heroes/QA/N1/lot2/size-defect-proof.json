@@ -1,0 +1,646 @@
+{
+  "schema": "FOH_N1_SIZE_DEFECT_PROOF",
+  "source": "Compagnon pp.15 et 17: petites armes, passage à deux mains, maximum 1d10 ; politique Forge déclarée pour être féerique d4",
+  "beforeHtmlSha256": "fdddda3a265e78c5f80ec291f706982ac3d3dfefb3e19ebddcfe9a5e1032bdfb",
+  "afterHtmlSha256": "d583211215f213fa6912e25f6d4cb8202315c4454c1f0d5dc6c1e2c88fe1a4c1",
+  "rows": [
+    {
+      "people": "gobelin",
+      "mode": "STANDARD",
+      "weapon": "great-sword",
+      "state": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "combattant",
+        "classeId": "class:guerrier:cof2-lb-2024",
+        "peupleId": "people:gobelin:addon-comp2017-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "agi"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+            "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "greatsword-dagger",
+          "weaponIds": [
+            "weapon:great-sword"
+          ],
+          "armorId": "",
+          "shieldId": "",
+          "tinyFitted": true,
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      },
+      "before": {
+        "accepted": true,
+        "errors": [],
+        "attack": {
+          "id": "weapon:great-sword",
+          "weaponId": "weapon:great-sword",
+          "label": "Épée à deux mains",
+          "type": "contact",
+          "attackBonus": 3,
+          "attackCharacteristic": "for",
+          "damageCharacteristic": "for",
+          "damage": "2d6+2",
+          "damageType": "physical",
+          "rangeMeters": null,
+          "hands": 2,
+          "properties": [
+            "two_handed"
+          ],
+          "mastered": true,
+          "conditionalBonuses": [],
+          "criticalThreshold": 20,
+          "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
+        }
+      },
+      "after": {
+        "accepted": false,
+        "errors": [
+          "Arme interdite par la petite taille du peuple."
+        ],
+        "attack": null
+      }
+    },
+    {
+      "people": "kobold",
+      "mode": "NO_PROFILE",
+      "weapon": "great-sword",
+      "state": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "combattant",
+        "classeId": "class:guerrier:cof2-lb-2024",
+        "peupleId": "people:kobold:addon-comp2017-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "agi"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-kobold:addon-comp2017-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+            "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "greatsword-dagger",
+          "weaponIds": [
+            "weapon:great-sword"
+          ],
+          "armorId": "",
+          "shieldId": "",
+          "tinyFitted": true,
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "profileMode": "NO_PROFILE",
+        "noProfile": {
+          "enabled": true,
+          "primaryPathId": "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+          "pathIds": [
+            "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+            "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024"
+          ]
+        }
+      },
+      "before": {
+        "accepted": true,
+        "errors": [],
+        "attack": {
+          "id": "weapon:great-sword",
+          "weaponId": "weapon:great-sword",
+          "label": "Épée à deux mains",
+          "type": "contact",
+          "attackBonus": 3,
+          "attackCharacteristic": "for",
+          "damageCharacteristic": "for",
+          "damage": "2d6+2",
+          "damageType": "physical",
+          "rangeMeters": null,
+          "hands": 2,
+          "properties": [
+            "two_handed"
+          ],
+          "mastered": true,
+          "conditionalBonuses": [],
+          "criticalThreshold": 20,
+          "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
+        }
+      },
+      "after": {
+        "accepted": false,
+        "errors": [
+          "Arme interdite par la petite taille du peuple."
+        ],
+        "attack": null
+      }
+    },
+    {
+      "people": "fee",
+      "mode": "NO_PROFILE",
+      "weapon": "great-sword",
+      "state": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "combattant",
+        "classeId": "class:guerrier:cof2-lb-2024",
+        "peupleId": "people:fee:addon-comp2017-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": -1,
+          "agi": 2,
+          "con": 1,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": 0
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "agi"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+            "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "greatsword-dagger",
+          "weaponIds": [
+            "weapon:great-sword"
+          ],
+          "armorId": "",
+          "shieldId": "",
+          "tinyFitted": true,
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "profileMode": "NO_PROFILE",
+        "noProfile": {
+          "enabled": true,
+          "primaryPathId": "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+          "pathIds": [
+            "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+            "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024"
+          ]
+        }
+      },
+      "before": {
+        "accepted": true,
+        "errors": [],
+        "attack": {
+          "id": "weapon:great-sword",
+          "weaponId": "weapon:great-sword",
+          "label": "Épée à deux mains",
+          "type": "contact",
+          "attackBonus": 0,
+          "attackCharacteristic": "for",
+          "damageCharacteristic": "for",
+          "damage": "2d6-1",
+          "damageType": "physical",
+          "rangeMeters": null,
+          "hands": 2,
+          "properties": [
+            "two_handed"
+          ],
+          "mastered": true,
+          "conditionalBonuses": [],
+          "criticalThreshold": 20,
+          "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
+        }
+      },
+      "after": {
+        "accepted": false,
+        "errors": [
+          "Être féerique : arme limitée au d4."
+        ],
+        "attack": null
+      }
+    },
+    {
+      "people": "gobelin",
+      "mode": "STANDARD",
+      "weapon": "long-sword",
+      "state": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "combattant",
+        "classeId": "class:guerrier:cof2-lb-2024",
+        "peupleId": "people:gobelin:addon-comp2017-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "agi"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+            "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "greatsword-dagger",
+          "weaponIds": [
+            "weapon:long-sword"
+          ],
+          "armorId": "",
+          "shieldId": "",
+          "tinyFitted": true,
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      },
+      "before": {
+        "accepted": false,
+        "errors": [
+          "Cette arme exige deux mains pour ce peuple."
+        ],
+        "attack": null
+      },
+      "after": {
+        "accepted": true,
+        "errors": [],
+        "attack": {
+          "id": "weapon:long-sword",
+          "weaponId": "weapon:long-sword",
+          "label": "Épée longue",
+          "type": "contact",
+          "attackBonus": 3,
+          "attackCharacteristic": "for",
+          "damageCharacteristic": "for",
+          "damage": "1d8+2",
+          "damageType": "physical",
+          "rangeMeters": null,
+          "hands": 2,
+          "properties": [
+            "two_handed_for_size"
+          ],
+          "mastered": true,
+          "conditionalBonuses": [],
+          "criticalThreshold": 20,
+          "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
+        }
+      }
+    },
+    {
+      "people": "kobold",
+      "mode": "NO_PROFILE",
+      "weapon": "long-sword",
+      "state": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "combattant",
+        "classeId": "class:guerrier:cof2-lb-2024",
+        "peupleId": "people:kobold:addon-comp2017-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "agi"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-kobold:addon-comp2017-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+            "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "greatsword-dagger",
+          "weaponIds": [
+            "weapon:long-sword"
+          ],
+          "armorId": "",
+          "shieldId": "",
+          "tinyFitted": true,
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "profileMode": "NO_PROFILE",
+        "noProfile": {
+          "enabled": true,
+          "primaryPathId": "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+          "pathIds": [
+            "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+            "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024"
+          ]
+        }
+      },
+      "before": {
+        "accepted": true,
+        "errors": [],
+        "attack": {
+          "id": "weapon:long-sword",
+          "weaponId": "weapon:long-sword",
+          "label": "Épée longue",
+          "type": "contact",
+          "attackBonus": 3,
+          "attackCharacteristic": "for",
+          "damageCharacteristic": "for",
+          "damage": "1d8+2",
+          "damageType": "physical",
+          "rangeMeters": null,
+          "hands": 1,
+          "properties": [],
+          "mastered": true,
+          "conditionalBonuses": [],
+          "criticalThreshold": 20,
+          "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
+        }
+      },
+      "after": {
+        "accepted": true,
+        "errors": [],
+        "attack": {
+          "id": "weapon:long-sword",
+          "weaponId": "weapon:long-sword",
+          "label": "Épée longue",
+          "type": "contact",
+          "attackBonus": 3,
+          "attackCharacteristic": "for",
+          "damageCharacteristic": "for",
+          "damage": "1d8+2",
+          "damageType": "physical",
+          "rangeMeters": null,
+          "hands": 2,
+          "properties": [
+            "two_handed_for_size"
+          ],
+          "mastered": true,
+          "conditionalBonuses": [],
+          "criticalThreshold": 20,
+          "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
+        }
+      }
+    },
+    {
+      "people": "humain",
+      "mode": "STANDARD",
+      "weapon": "long-sword",
+      "state": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "combattant",
+        "classeId": "class:guerrier:cof2-lb-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "con"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+            "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "greatsword-dagger",
+          "weaponIds": [
+            "weapon:long-sword"
+          ],
+          "armorId": "",
+          "shieldId": "",
+          "tinyFitted": true,
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      },
+      "before": {
+        "accepted": true,
+        "errors": [],
+        "attack": {
+          "id": "weapon:long-sword",
+          "weaponId": "weapon:long-sword",
+          "label": "Épée longue",
+          "type": "contact",
+          "attackBonus": 3,
+          "attackCharacteristic": "for",
+          "damageCharacteristic": "for",
+          "damage": "1d8+2",
+          "damageType": "physical",
+          "rangeMeters": null,
+          "hands": 1,
+          "properties": [],
+          "mastered": true,
+          "conditionalBonuses": [],
+          "criticalThreshold": 20,
+          "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
+        }
+      },
+      "after": {
+        "accepted": true,
+        "errors": [],
+        "attack": {
+          "id": "weapon:long-sword",
+          "weaponId": "weapon:long-sword",
+          "label": "Épée longue",
+          "type": "contact",
+          "attackBonus": 3,
+          "attackCharacteristic": "for",
+          "damageCharacteristic": "for",
+          "damage": "1d8+2",
+          "damageType": "physical",
+          "rangeMeters": null,
+          "hands": 1,
+          "properties": [],
+          "mastered": true,
+          "conditionalBonuses": [],
+          "criticalThreshold": 20,
+          "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
+        }
+      }
+    }
+  ],
+  "status": "PASS"
+}

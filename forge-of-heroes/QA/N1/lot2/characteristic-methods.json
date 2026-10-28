@@ -1,0 +1,30 @@
+{
+  "schema": "FOH_N1_CHARACTERISTIC_METHODS",
+  "status": "PASS",
+  "source": {
+    "document": "règles avancées.pdf",
+    "pdfPage": 1,
+    "printedPages": [
+      152,
+      153
+    ],
+    "review": "Photo rendered, rotated and visually checked; OCR was used only to locate the page"
+  },
+  "indexSha256": "d583211215f213fa6912e25f6d4cb8202315c4454c1f0d5dc6c1e2c88fe1a4c1",
+  "engineSha256": "214f3c6fb3fc6cd78fdb05fa579a0302277c7338d9420be557fdc1a56fd9b203",
+  "counts": {
+    "pointBuy": 279936,
+    "pointBuyValid": 27568,
+    "pointBuyInvalid": 252368,
+    "pointBuyCreations": 284,
+    "classicCreations": 2940,
+    "semiTriples": 1331,
+    "semiCreations": 9381,
+    "balancedLowCreations": 64,
+    "replayChecks": 407,
+    "invalidInputs": 12,
+    "uiFixtureChecks": 8
+  },
+  "scope": "Exhaustive finite point-buy domain -1..4 for seven stats; all unique allocations of the three classic series on a human rogue; all 1331 2d6-total triples with 7 cyclic allocations each and all 64 all-low balanced alternatives. Selected point-buy creations and sampled serialization; no claim of every profile/people/method Cartesian combination.",
+  "numericOracle": "Independent human adjustment, PV/DEF/INIT/PC/PM, attack bases and recovery on a rogue without numeric path bonuses. UI checked by DOM fixture on both products, not real Android clicks."
+}
