@@ -43,3 +43,7 @@ Adresse : https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/hub-confi
 - Hébergement GitHub Pages et projet de données partagés, avec fichiers, tables et autorisations séparés.
 
 Tests : `node --test hub-configurable/tests/*.test.mjs`. Tests de droits sans compte : `tests/links.sql` (transaction annulée). La bibliothèque PDF-lib est vendue dans `assets/`, avec sa licence dans `docs/`.
+
+## Récupération cloud (bêta 2.4)
+
+Le bouton « Sauvegarder en ligne » force la synchronisation et vérifie une lecture serveur avant d'afficher un code MJ privé. Depuis un autre appareil, l'accueil propose « Récupérer ma campagne en ligne », sans lien URL à ressaisir. Ce code donne le même niveau d'accès que le lien MJ, et doit être conservé de façon confidentielle. L'état courant est rechargé du serveur; ce n'est pas un historique daté. Une sauvegarde JSON reste conseillée pour l'archivage. En cas de file locale ou de conflit non résolu, aucune sauvegarde en ligne n'est annoncée comme réussie.
