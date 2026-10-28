@@ -2,14 +2,15 @@
 const $=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(s)),A=window.BastideInventory;
 const ENDPOINT='https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-cockpit';
 const ROOT='https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/';
+const REGISTRY='https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-registry';
 const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-let model=null,currentView='overview',selected=null,graphRepo='apprepo',search='';
+let model=null,currentView='overview',selected=null,graphRepo='apprepo',search='',projectData=[],projectScan=null;
 const nice=n=>Number(n||0).toLocaleString('fr-FR');
 const time=s=>{if(!s)return 'Aucune date';try{return new Date(s).toLocaleString('fr-FR',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}catch{return 'Date inconnue'}};
 const repoFor=a=>model?.repos.find(r=>r.id===a.repo);
 const codePublic=a=>repoFor(a)?.visibility==='public';
-const names={overview:'Vue d’ensemble',applications:'Applications',repositories:'Dépôts GitHub',backend:'Supabase',usage:'Utilisation',devices:'Connexions'};
-const viewDescriptions={overview:'de ton écosystème',applications:'de l’Atelier',repositories:'& projets',backend:'& stockage',usage:'réelle des outils',devices:'& sauvegardes'};
+const names={overview:'Vue d’ensemble',projects:'Projets',applications:'Applications',repositories:'Dépôts GitHub',backend:'Supabase',usage:'Utilisation',devices:'Connexions'};
+const viewDescriptions={overview:'de ton écosystème',projects:'de l’Atelier',applications:'de l’Atelier',repositories:'& projets',backend:'& stockage',usage:'réelle des outils',devices:'& sauvegardes'};
 const glossary={
 guide:{title:'Comprendre ton écosystème',content:'<p>Ton Atelier fonctionne comme une petite entreprise logicielle : <strong>GitHub conserve le code</strong>, <strong>GitHub Pages affiche les outils</strong>, <strong>Supabase partage les données</strong>, et les <strong>navigateurs gardent parfois des copies locales</strong>.</p><div class="story"><span>GitHub</span> → <span>Application web</span> ↔ <span>Supabase</span> ↔ <span>Autre appareil</span></div><p>Choisis ce que tu veux comprendre :</p><div class="guide-grid"><button data-term="repository">⌘ Dépôts & dossiers</button><button data-term="github">◈ Publication des sites</button><button data-term="supabase">◫ Base Supabase</button><button data-term="sync">⌁ Synchronisation</button><button data-term="session">▥ Mesurer les usages</button><button data-term="logs">▤ Journaux & erreurs</button><button data-term="access">◇ Identifiants & permissions</button><button data-term="privacy">♧ Public & commercial</button></div>'},
 
@@ -83,6 +84,61 @@ async function loadPlayerChecks(){
   };
  }catch(e){container.innerHTML='<p class="empty">Contrôle des joueurs impossible : '+escapeHTML(e.message)+'</p>'}
 }
+
+const statuses={actif:'Actif',developpement:'Développement',brouillon:'Brouillon',pause:'En pause',idee:'Idée',archive:'Archivé'};
+const publications={en_ligne:'En ligne',local:'Local',non_publie:'Non publié',inconnu:'À vérifier'};
+function projectTag(value){return '<span class="project-pill p-'+escapeHTML(value)+'">'+escapeHTML(statuses[value]||value)+'</span>'}
+function renderProjects(){
+ const box=$('#project-list');if(!box)return;
+ const q=$('#project-search').value.trim().toLowerCase(),stage=$('#project-stage').value,family=$('#project-family').value;
+ const projects=projectData.filter(p=>(stage==='all'||p.lifecycle===stage)&&(family==='all'||p.family===family)&&(!q||[p.name,p.summary,p.category,p.progress_note,p.repo,p.next_action].join(' ').toLowerCase().includes(q)));
+ const count=k=>projectData.filter(x=>x.lifecycle===k).length;
+ $('#project-summary').innerHTML='<span><b>'+projectData.length+'</b> projets connus</span><span><b>'+count('actif')+'</b> actifs</span><span><b>'+count('developpement')+'</b> en développement</span><span><b>'+count('pause')+'</b> en pause</span><span><b>'+count('brouillon')+count('idee')+'</b> brouillons / idées</span>';
+ const groupNames=['Jouer & raconter','Créer & fabriquer','Vie numérique'];
+ const order={actif:0,developpement:1,brouillon:2,pause:3,idee:4,archive:5};
+ box.innerHTML=groupNames.map(group=>{
+  const subset=projects.filter(p=>p.family===group).sort((a,b)=>(order[a.lifecycle]??9)-(order[b.lifecycle]??9)||a.name.localeCompare(b.name,'fr'));
+  if(!subset.length)return '';
+  return '<div class="project-family-title">'+escapeHTML(group)+' <small>'+subset.length+'</small></div>'+
+   subset.map(p=>'<div class="project-row" data-project="'+escapeHTML(p.id)+'" role="button" tabindex="0"><div class="project-name"><b>'+escapeHTML(p.name)+'</b><small>'+escapeHTML(p.category)+' · '+escapeHTML(p.repo||'Aucun dépôt confirmé')+'</small></div><div class="project-meta">'+escapeHTML(p.progress_note||p.summary||'Étape non documentée')+'</div>'+projectTag(p.lifecycle)+'<span class="project-chevron">›</span></div>').join('');
+ }).join('')||'<div class="empty">Aucun projet dans ce filtre.</div>';
+}
+function openProject(id){
+ const p=projectData.find(x=>x.id===id);if(!p)return;
+ let content='<p class="drawer-desc">'+escapeHTML(p.summary||'Objectif à préciser')+'</p>';
+ content+='<div class="detail-grid"><div class="detail-box"><small>Étape</small><b>'+escapeHTML(statuses[p.lifecycle]||p.lifecycle)+'</b></div><div class="detail-box"><small>Publication</small><b>'+escapeHTML(publications[p.publication]||p.publication)+'</b></div><div class="detail-box"><small>Famille</small><b>'+escapeHTML(p.family)+'</b></div><div class="detail-box"><small>Catégorie</small><b>'+escapeHTML(p.category)+'</b></div></div>';
+ content+='<div class="detail-label">Dernier état consigné</div><p class="drawer-desc">'+escapeHTML(p.progress_note||'Aucun point de reprise documenté')+'</p>';
+ content+='<div class="detail-label">Pour reprendre ce projet</div><p class="drawer-desc">'+escapeHTML(p.next_action||'Aucune prochaine étape notée')+'</p>';
+ content+='<div class="detail-label">Emplacement connu</div><div class="subgraph">'+escapeHTML(p.repo?p.repo+'/'+(p.folder||''):'Aucun dépôt GitHub confirmé')+'</div>';
+ if(p.source_url?.startsWith('https://'))content+='<div class="detail-links">'+link(p.source_url,'Source détectée')+'</div>';
+ if(p.app_id){const app=model.apps.find(a=>a.id===p.app_id);if(app)content+='<div class="detail-links"><button class="smallbutton" data-drawer-app="'+escapeHTML(app.id)+'">Voir les connexions techniques</button></div>'}
+ content+='<div class="detail-label">Suivi</div><div class="minihelp">Dernière modification du registre : '+time(p.updated_at)+' · '+escapeHTML(p.source)+'</div>';
+ content+='<div class="detail-links"><button class="smallbutton primary" data-edit-project="'+escapeHTML(p.id)+'">Modifier cette fiche</button></div>';
+ showDrawer(p.name,'Projet',content);
+}
+function editProject(id){
+ const p=projectData.find(x=>x.id===id)||{id:'',name:'',family:'Jouer & raconter',category:'',lifecycle:'brouillon',publication:'non_publie',summary:'',progress_note:'',next_action:'',repo:'',folder:'',app_id:''};
+ const form=$('#project-form');form.reset();
+ for(const field of ['id','name','family','category','lifecycle','publication','summary','progress_note','next_action','repo','folder','app_id']){if(form.elements.namedItem(field))form.elements.namedItem(field).value=p[field]||''}
+ if(!p.id){form.elements.namedItem('lifecycle').value='brouillon';form.elements.namedItem('publication').value='non_publie';form.elements.namedItem('family').value='Jouer & raconter'}
+ $('#project-editor-title').textContent=id?'Modifier un projet':'Nouveau projet';
+ $('#project-form-result').textContent='';
+ if(!$('#project-editor').open)$('#project-editor').showModal();
+}
+async function registryRequest(action,body){
+ const r=await fetch(REGISTRY+'?action='+action,{method:body?'POST':'GET',cache:'no-store',headers:{'Content-Type':'application/json','x-bastide-key':A.accessKey()},body:body?JSON.stringify(body):undefined});
+ const d=await r.json();if(!r.ok)throw Error(d.error||'Registre indisponible');return d;
+}
+async function loadRegistry(){
+ const indicator=$('#project-sync-status');if(indicator)indicator.textContent='Recherche des nouveaux dépôts et lecture du registre…';
+ try{
+  const d=await registryRequest('list');projectData=d.projects||[];projectScan=d.scan||null;
+  const scan=projectScan;
+  if(indicator)indicator.textContent='Registre Supabase à jour · '+projectData.length+' projets · GitHub public : '+(scan?.last_error?'contrôle impossible ('+scan.last_error+')':'contrôlé le '+time(scan?.last_github_at))+' · dépôts privés à suivre via connexion autorisée';
+  renderProjects();
+  if(model){const label=$('#metrics .metric:nth-child(2) strong');if(label)label.textContent=String(projectData.length);const cap=$('#metrics .metric:nth-child(2) span');if(cap)cap.textContent='projets catalogués'}
+ }catch(e){if(indicator)indicator.textContent='Registre indisponible : '+e.message}
+}
 function showDrawer(title,kind,content){$('#drawer-kind').textContent=kind.toUpperCase();$('#drawer-content').innerHTML='<h2 class="drawer-title">'+escapeHTML(title)+'</h2>'+content;$('#drawer').classList.add('show');$('#drawer').setAttribute('aria-hidden','false');$('#shade').hidden=false;}
 function closeDrawer(){selected=null;$('#drawer').classList.remove('show');$('#drawer').setAttribute('aria-hidden','true');$('#shade').hidden=true;if(model)drawMap()}
 function detailList(items){return '<div class="pill-row">'+(items.length?items.map(s=>'<span class="pill">'+escapeHTML(s)+'</span>').join(''):'<span class="minihelp">Aucun lien supplémentaire confirmé</span>')+'</div>'}
@@ -150,7 +206,7 @@ function drawMap(){
 function wire(){const clickParent=e=>{const app=e.target.closest('[data-app]'),repo=e.target.closest('[data-repo]'),dev=e.target.closest('[data-device]');if(app)showApp(app.dataset.app);else if(repo)showRepo(repo.dataset.repo);else if(dev)showDevice(dev.dataset.device)};document.addEventListener('click',e=>{if(e.target.closest('.data-row'))clickParent(e);const target=e.target.closest('[data-drawer-app]');if(target){e.preventDefault();showApp(target.dataset.drawerApp)}});
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('.data-row'))clickParent(e);if(e.key==='Escape')closeDrawer()});
 $$('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));$$('[data-view-go]').forEach(b=>b.onclick=()=>setView(b.dataset.viewGo));$('#graph-repo').onchange=e=>{graphRepo=e.target.value;selected=null;closeDrawer();drawMap()};$('#graph-reset').onclick=()=>{graphRepo='';selected=null;closeDrawer();$('#graph-repo').value='';drawMap()};
-$('#app-search').oninput=e=>{search=e.target.value.trim().toLowerCase();renderApps()};$('#app-filter').onchange=renderApps;
+$('#project-search').oninput=renderProjects;$('#project-stage').onchange=renderProjects;$('#project-family').onchange=renderProjects;$('#project-new').onclick=()=>editProject(null);$('#project-close').onclick=$('#project-cancel').onclick=()=>$('#project-editor').close();$('#project-form').onsubmit=async e=>{e.preventDefault();const f=e.target,b=$('#project-submit');b.disabled=true;$('#project-form-result').textContent='Sauvegarde sur le serveur…';try{const body=Object.fromEntries(new FormData(f));const d=await registryRequest('save',body);$('#project-form-result').textContent='Fiche enregistrée.';$('#project-editor').close();await loadRegistry();openProject(d.project.id)}catch(err){$('#project-form-result').textContent=err.message}finally{b.disabled=false}};$('#project-list').addEventListener('click',e=>{const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)});$('#project-list').addEventListener('keydown',e=>{if(e.key==='Enter'){const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)}});document.addEventListener('click',e=>{const b=e.target.closest('[data-edit-project]');if(b)editProject(b.dataset.editProject)});$('#app-search').oninput=e=>{search=e.target.value.trim().toLowerCase();renderApps()};$('#app-filter').onchange=renderApps;
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-check-online]');if(!b)return;const a=model?.apps.find(x=>x.id===b.dataset.checkOnline),target=$('#online-test');if(!a||!target)return;b.disabled=true;target.textContent='Test en cours…';try{const u=ROOT+a.path;const r=await fetch(u,{method:'HEAD',cache:'no-store'});target.textContent=r.ok?'✓ Page accessible depuis cet appareil ('+r.status+'). Fonctionnalités internes non testées.':'⚠ Page non confirmée (HTTP '+r.status+').';}catch(err){target.textContent='⚠ Test impossible : '+err.message;}finally{b.disabled=false}});
 $('#drawer-close').onclick=closeDrawer;$('#shade').onclick=closeDrawer;$('#help').onclick=$('#open-guide').onclick=()=>showHelp('guide');$('#term-close').onclick=()=>$('#glossary').close();document.addEventListener('click',e=>{const b=e.target.closest('[data-term]');if(b)showHelp(b.dataset.term)});$('#refresh-players').onclick=loadPlayerChecks;$('#reload').onclick=load}
 function populate(){const chooser=$('#graph-repo');chooser.innerHTML='<option value="">Vue des dépôts</option>'+model.repos.map(r=>'<option value="'+escapeHTML(r.id)+'">'+escapeHTML(r.name)+'</option>').join('');if(!model.repos.some(r=>r.id===graphRepo))graphRepo='apprepo';chooser.value=graphRepo;renderMetrics();renderBrief();renderApps();renderRepos();renderBackend();renderUsage();renderDevices();drawMap();loadPlayerChecks();$('#freshness').textContent='Données serveur : '+time(model.metrics.generated_at)+' · dépôts : audit '+model.inventoryUpdated}
@@ -158,7 +214,7 @@ async function load(){const reload=$('#reload');reload.disabled=true;$('#live-st
 const key=A?.accessKey?.();if(!key)throw Error('Clé MJ Bastide absente sur ce navigateur.');
 const r=await fetch(ENDPOINT,{method:'GET',cache:'no-store',headers:{'x-bastide-key':key}});const data=await r.json();if(!r.ok)throw Error(data.error||'Service indisponible');
 if(!Array.isArray(data.repos)||!Array.isArray(data.apps)||!data.metrics)throw Error('Inventaire incomplet');
-model=data;$('#locked').hidden=true;$('#content').hidden=false;$('#live-status').className='online ok';$('#live-status').innerHTML='<i></i> Données à jour';populate();
+model=data;$('#locked').hidden=true;$('#content').hidden=false;$('#live-status').className='online ok';$('#live-status').innerHTML='<i></i> Données à jour';populate();await loadRegistry();
 }catch(e){$('#live-status').className='online bad';$('#live-status').innerHTML='<i></i> Non connecté';if(!model){$('#locked').hidden=false;$('#content').hidden=true;$('#lock-text').textContent=e.message+' Ouvre ton accès MJ Bastide personnel sur cet appareil.'}else{alert('Mise à jour impossible : '+e.message+'. Les dernières données restent visibles.')}}finally{reload.disabled=false}}
 let installRequest=null;
 const standalone=()=>window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
