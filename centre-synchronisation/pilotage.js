@@ -293,7 +293,15 @@ function drawMap(){
  if(appFocus)title(765,'LIENS DE '+appFocus.name.toUpperCase().slice(0,18));
  const rp={x:145,y:Math.max(130,h/2)};
  const positions=new Map(apps.map((a,i)=>[a.id,{x:472,y:80+i*70}]));
- for(const a of apps)path(rp,positions.get(a.id),!appFocus||appFocus.id===a.id);
+ if(apps.length){
+  const trunkX=300,first=positions.get(apps[0].id).y,last=positions.get(apps[apps.length-1].id).y;
+  const trunk=add('path',{class:'graph-edge'+(!appFocus?' focus':''),d:'M '+(rp.x+103)+' '+rp.y+' H '+trunkX+' M '+trunkX+' '+first+' V '+last});
+  svg.append(trunk);
+  for(const a of apps){
+   const to=positions.get(a.id),active=!appFocus||appFocus.id===a.id;
+   svg.append(add('path',{class:'graph-edge'+(active?' focus':''),d:'M '+trunkX+' '+to.y+' H '+(to.x-103)}));
+  }
+ }
  node(rp,repo.name,repo.archived?'Archivé':repo.visibility==='private'?'Privé':'Dépôt public','repo',()=>showRepo(repo.id),true);
  for(const a of apps){
   node(positions.get(a.id),a.name,a.path||'racine du dépôt','app',()=>showApp(a.id),appFocus?.id===a.id,!!appFocus&&appFocus.id!==a.id);
