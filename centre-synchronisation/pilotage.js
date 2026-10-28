@@ -58,6 +58,31 @@ const coverage=[['Hub générique','Activité mesurée','generic'],['Hub Bastide
 $('#coverage').innerHTML=coverage.map(x=>'<div class="data-row" role="button" tabindex="0" data-app="'+x[2]+'"><div class="row-name">'+escapeHTML(x[0])+'</div><span class="secondary">'+escapeHTML(x[1])+'</span><span class="secondary">Instrumentation</span>'+tag(x[2]==='generic'?'Mesurée':'Partielle',x[2]==='generic'?'cloud':'warn')+'<span class="arrow">›</span></div>').join('')}
 function renderDevices(){const rows=model.devices||[];$('#device-rows').innerHTML=rows.map(d=>'<div class="data-row" role="button" tabindex="0" data-device="'+escapeHTML(d.device_label||'Appareil')+'"><div class="row-name">'+escapeHTML(d.device_label||'Appareil sans nom')+'<small>Dernier contrôle '+time(d.last_seen_at)+'</small></div><span class="secondary">Profil navigateur</span><span class="secondary">Dernier signal, pas connexion live</span>'+tag('Rapport reçu','cloud')+'<span class="arrow">›</span></div>').join('')||'<div class="empty">Aucun appareil n’a encore transmis de diagnostic.</div>';
 $('#sync-flow').innerHTML='<div class="sync-step"><b>① Sur l’appareil</b><span>Clés locales, caches et changements en attente</span></div><div class="sync-arrow">→</div><div class="sync-step"><b>② Dans Supabase</b><span>Version partagée, autorisations et données</span></div><div class="sync-arrow">→</div><div class="sync-step"><b>③ Comparaison</b><span>Version identique, en attente ou conflit</span></div>'}
+async function loadPlayerChecks(){
+ const container=$('#player-rows');if(!container)return;
+ container.innerHTML='<p class="empty">Contrôle des accès joueurs…</p>';
+ try{
+  const key=A?.accessKey?.();if(!key)throw Error('Accès MJ absent');
+  const resp=await fetch('https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-player-check?action=status',{method:'GET',cache:'no-store',headers:{'x-bastide-key':key}});
+  const d=await resp.json();if(!resp.ok)throw Error(d.error||'Contrôle indisponible');
+  const current=Number(d.serverBattleRevision);
+  container.innerHTML=(d.players||[]).map(p=>{
+   const records=(d.checks||[]).filter(c=>c.player_id===p.id),last=records[0];
+   const recent=last&&(Date.now()-Date.parse(last.last_checked_at)<10*60*1000);
+   const stale=last&&d.serverBattleRevision!==null&&last.last_battle_revision!==null&&Number(last.last_battle_revision)<current;
+   const state=!last?'Non vérifié':stale?'Combat à actualiser':recent?'Connexion récente':'Dernier test ancien';
+   const cls=!last?'neutral':stale?'warn':recent?'good':'neutral';
+   const detail=!last?'Aucun appareil de ce joueur n’a encore effectué de test.':time(last.last_checked_at)+' · '+records.length+' navigateur(s) connu(s) · combat révision '+String(last.last_battle_revision??'inconnue');
+   return '<article class="player-line"><span class="player-avatar">'+escapeHTML((p.name||'?').slice(0,1))+'</span><div class="player-info"><b>'+escapeHTML(p.name)+'</b><small>'+escapeHTML(detail)+'</small></div><span class="tag '+cls+'">'+state+'</span></article>';
+  }).join('');
+  container.insertAdjacentHTML('beforeend','<div class="player-info-note">« Vérifié » signifie : lecture réussie du serveur lors du dernier test, pas téléphone constamment connecté. <button class="textbtn" id="copy-player-test">Copier le lien de test à envoyer aux joueurs</button></div>');
+  $('#copy-player-test').onclick=async()=>{
+   const url=ROOT+'ile-aux-tempetes-bastide/joueurs/verifier/';
+   try{await navigator.clipboard.writeText(url);$('#copy-player-test').textContent='✓ Lien copié';}
+   catch{$('#copy-player-test').textContent='Ouvre : '+url;}
+  };
+ }catch(e){container.innerHTML='<p class="empty">Contrôle des joueurs impossible : '+escapeHTML(e.message)+'</p>'}
+}
 function showDrawer(title,kind,content){$('#drawer-kind').textContent=kind.toUpperCase();$('#drawer-content').innerHTML='<h2 class="drawer-title">'+escapeHTML(title)+'</h2>'+content;$('#drawer').classList.add('show');$('#drawer').setAttribute('aria-hidden','false');$('#shade').hidden=false;}
 function closeDrawer(){selected=null;$('#drawer').classList.remove('show');$('#drawer').setAttribute('aria-hidden','true');$('#shade').hidden=true;if(model)drawMap()}
 function detailList(items){return '<div class="pill-row">'+(items.length?items.map(s=>'<span class="pill">'+escapeHTML(s)+'</span>').join(''):'<span class="minihelp">Aucun lien supplémentaire confirmé</span>')+'</div>'}
@@ -109,7 +134,7 @@ function drawMap(){
  for(const r of repositories){drawLine(root,repoPos[r.id],r.id===focusRepo)}
  for(const a of apps)drawLine(repoPos[focusRepo],appPos[a.id],!appFocus||appFocus.id===a.id);
  node('account',root,'LATELIERDEGUILTANAS','Compte GitHub','service',false);
- repositories.forEach(r=>node(r.id,repoPos[r.id],r.name,(r.visibility==='private'?'Privé':'Public')+(r.archived?' · archivé':''),'repo',r.id===focusRepo,r.id!==focusRepo));
+ repositories.forEach(r=>node(r.id,repoPos[r.id],r.name,(r.visibility==='private'?'Privé':'Public')+(r.archived?' · archivé':''),'repo',r.id===focusRepo,Boolean(focusRepo)&&r.id!==focusRepo));
  apps.forEach(a=>node(a.id,appPos[a.id],a.name,a.path||'racine','app',appFocus?.id===a.id,!!appFocus&&appFocus.id!==a.id));
  if(appFocus){
   let direct=[];
@@ -127,8 +152,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('.d
 $$('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));$$('[data-view-go]').forEach(b=>b.onclick=()=>setView(b.dataset.viewGo));$('#graph-repo').onchange=e=>{graphRepo=e.target.value;selected=null;closeDrawer();drawMap()};$('#graph-reset').onclick=()=>{graphRepo='';selected=null;closeDrawer();$('#graph-repo').value='';drawMap()};
 $('#app-search').oninput=e=>{search=e.target.value.trim().toLowerCase();renderApps()};$('#app-filter').onchange=renderApps;
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-check-online]');if(!b)return;const a=model?.apps.find(x=>x.id===b.dataset.checkOnline),target=$('#online-test');if(!a||!target)return;b.disabled=true;target.textContent='Test en cours…';try{const u=ROOT+a.path;const r=await fetch(u,{method:'HEAD',cache:'no-store'});target.textContent=r.ok?'✓ Page accessible depuis cet appareil ('+r.status+'). Fonctionnalités internes non testées.':'⚠ Page non confirmée (HTTP '+r.status+').';}catch(err){target.textContent='⚠ Test impossible : '+err.message;}finally{b.disabled=false}});
-$('#drawer-close').onclick=closeDrawer;$('#shade').onclick=closeDrawer;$('#help').onclick=$('#open-guide').onclick=()=>showHelp('guide');$('#term-close').onclick=()=>$('#glossary').close();document.addEventListener('click',e=>{const b=e.target.closest('[data-term]');if(b)showHelp(b.dataset.term)});$('#reload').onclick=load}
-function populate(){const chooser=$('#graph-repo');chooser.innerHTML='<option value="">Vue des dépôts</option>'+model.repos.map(r=>'<option value="'+escapeHTML(r.id)+'">'+escapeHTML(r.name)+'</option>').join('');if(!model.repos.some(r=>r.id===graphRepo))graphRepo='apprepo';chooser.value=graphRepo;renderMetrics();renderBrief();renderApps();renderRepos();renderBackend();renderUsage();renderDevices();drawMap();$('#freshness').textContent='Données serveur : '+time(model.metrics.generated_at)+' · dépôts : audit '+model.inventoryUpdated}
+$('#drawer-close').onclick=closeDrawer;$('#shade').onclick=closeDrawer;$('#help').onclick=$('#open-guide').onclick=()=>showHelp('guide');$('#term-close').onclick=()=>$('#glossary').close();document.addEventListener('click',e=>{const b=e.target.closest('[data-term]');if(b)showHelp(b.dataset.term)});$('#refresh-players').onclick=loadPlayerChecks;$('#reload').onclick=load}
+function populate(){const chooser=$('#graph-repo');chooser.innerHTML='<option value="">Vue des dépôts</option>'+model.repos.map(r=>'<option value="'+escapeHTML(r.id)+'">'+escapeHTML(r.name)+'</option>').join('');if(!model.repos.some(r=>r.id===graphRepo))graphRepo='apprepo';chooser.value=graphRepo;renderMetrics();renderBrief();renderApps();renderRepos();renderBackend();renderUsage();renderDevices();drawMap();loadPlayerChecks();$('#freshness').textContent='Données serveur : '+time(model.metrics.generated_at)+' · dépôts : audit '+model.inventoryUpdated}
 async function load(){const reload=$('#reload');reload.disabled=true;$('#live-status').className='online';$('#live-status').innerHTML='<i></i> Synchronisation…';try{
 const key=A?.accessKey?.();if(!key)throw Error('Clé MJ Bastide absente sur ce navigateur.');
 const r=await fetch(ENDPOINT,{method:'GET',cache:'no-store',headers:{'x-bastide-key':key}});const data=await r.json();if(!r.ok)throw Error(data.error||'Service indisponible');
