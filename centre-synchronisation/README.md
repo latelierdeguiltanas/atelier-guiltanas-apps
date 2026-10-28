@@ -79,3 +79,12 @@ Un dépôt == un repository. **Dépôt public != application effectivement en se
 - Un lien équivalent apparaît dans le menu de l'accueil joueur. Le nouveau fichier commun est chargé avec une version d'URL changée sur les six fiches.
 - Les confirmations sont enregistrées dans `guiltanas_player_checks` sans IP, localisation ou contenu de messages ; l'espace MJ peut consulter la date et la révision reçue via le cockpit.
 - Important : une ancienne confirmation n'est pas une présence en direct. Une mise à jour de l'inventaire PJ et tous les caches locaux n'est pas prouvée par ce seul test.
+
+## Ergonomie v6 — 28 octobre 2026
+- La carte ne commence plus par le compte « Atelier de Guiltanas », puisque le cockpit ne gère qu'une entreprise.
+- **Mobile (jusqu'à 850 px)** : explorateur compact par dépôt GitHub, accordéon. Un appui sur un dépôt dévoile ses applications; un appui sur une application révèle uniquement sa liste de dépendances identifiées (Supabase, stockage local, liens directs) et son accès à la fiche détaillée. Aucun défilement horizontal du graphe.
+- **Grand écran** : vue de six dépôts sans flèches par défaut, sélection d'un dépôt pour révéler ses applications, puis d'une application pour ses seuls liens. Raccordement dépôt → applications représenté par un **tronc vertical et des branches horizontales**, sans maillage croisé.
+- Avoir deux outils dans un même dépôt / projet Supabase ne signifie **pas** qu'ils partagent leurs données. Hub Bastide et Hub Nespresso demeurent indépendants tant qu'une connexion directe n'est pas identifiée.
+- **Navigation Android / PWA** : états internes dans l'historique navigateur (onglets, dépôts, choix d'application, fiches détaillées, modales). Flèche Retour système → vue précédente / fermeture de la fiche, avant toute sortie éventuelle de l'application. Bouton Retour secondaire visible dans la barre haute après la première navigation. Historique restauré après rechargement des données.
+- Les dépôts historiques Soundboard **n'ont pas été modifiés, archivés ou supprimés** dans cette opération ; leur nettoyage nécessite un audit et une décision distincts.
+- Tests : syntaxe JS, simulation de l'historique Retour pour deux onglets, modèle du sélecteur mobile et graphe sans colonne racine. Validation visuelle/gestuelle sur vrai Android à effectuer.
