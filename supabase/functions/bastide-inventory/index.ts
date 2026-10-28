@@ -1,3 +1,4 @@
+import { dialogueAdmin } from "./dialogue-admin.ts";
 import { shopCategory } from "./shop-category.ts";
 import { localReply } from "./mila-dialogue.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
@@ -17,6 +18,7 @@ const cleanEntry=(x:any,ownerId:string)=>({owner_id:ownerId,kind:x?.kind==="conf
 Deno.serve(async req=>{try{
   if(req.method==="OPTIONS")return new Response("ok",{headers:cors});
   const url=new URL(req.url),action=url.searchParams.get("action")||"state";
+  if(action.startsWith("dialogue-"))return await dialogueAdmin(action,req,url,db,await admin(req),json);
   if(["shop-status","packs","negotiation","shop-requests","mila-chat"].includes(action)&&req.method==="GET"&&url.searchParams.has("playerId")&&!await readablePlayer(req,url))return json({error:"Personnage inaccessible"},401);
   if(action==="identity"&&req.method==="GET"){const p=await player(req);if(p)return json({access:"player",player:{id:p.id,display_name:p.display_name}});if(await admin(req))return json({access:"admin"});return json({error:"Ouvre ton lien personnel pour accéder à ton espace."},401)}
   if(action==="shop-status"&&req.method==="GET"){
