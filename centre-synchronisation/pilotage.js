@@ -25,7 +25,7 @@ privacy:{title:'Public, privé et vendable',content:'<p>Un code source <strong>p
 sync:{title:'Que veut dire synchronisé ?',content:'<p><strong>Cloud :</strong> l’application lit et écrit auprès d’un serveur partagé.<br><strong>Hybride :</strong> serveur et données locales coexistent.<br><strong>Local :</strong> les données restent dans le navigateur ou sur l’appareil.<br><strong>À vérifier :</strong> la connexion réelle n’est pas démontrée.</p><p>La présence d’une connexion ne garantit pas que toutes les modifications hors ligne ont été transmises. Il faut comparer des versions ou confirmer le dernier enregistrement.</p>'},
 logs:{title:'Logs et suivi',content:'<p>Les <strong>logs techniques</strong> sont les traces des requêtes, erreurs et exécutions. Le cockpit affiche actuellement des métriques applicatives et le statut déployé des fonctions.</p><p>Les logs complets se trouvent dans <a href=\"https://supabase.com/dashboard/project/jitatmdbipjkvjstcgdc/logs\" target=\"_blank\" rel=\"noopener noreferrer\">Supabase Logs ↗</a> et <a href=\"https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub Actions ↗</a>. Un flux de journaux consolidé nécessiterait une connexion de supervision dédiée.</p>'}
 };
-let routeRestoring=false,currentHelpTopic=null,currentEditId=null;
+let routeRestoring=false,currentHelpTopic=null,currentEditId=null,routeRestoredOnce=false;
 function snapshotRoute(){
  const dialog=['glossary','project-editor','install-dialog'].find(id=>$('#'+id)?.open)||null;
  return {view:currentView,repo:graphRepo,selected:selected?{...selected}:null,
@@ -337,7 +337,7 @@ async function load(){const reload=$('#reload');reload.disabled=true;$('#live-st
 const key=A?.accessKey?.();if(!key)throw Error('Clé MJ Bastide absente sur ce navigateur.');
 const r=await fetch(ENDPOINT,{method:'GET',cache:'no-store',headers:{'x-bastide-key':key}});const data=await r.json();if(!r.ok)throw Error(data.error||'Service indisponible');
 if(!Array.isArray(data.repos)||!Array.isArray(data.apps)||!data.metrics)throw Error('Inventaire incomplet');
-model=data;$('#locked').hidden=true;$('#content').hidden=false;$('#live-status').className='online ok';$('#live-status').innerHTML='<i></i> Données à jour';populate();await loadRegistry();
+model=data;$('#locked').hidden=true;$('#content').hidden=false;$('#live-status').className='online ok';$('#live-status').innerHTML='<i></i> Données à jour';populate();if(!routeRestoredOnce){routeRestoredOnce=true;if(history.state?.pilotage&&history.state?.route)restoreRoute(history.state.route)}await loadRegistry();
 }catch(e){$('#live-status').className='online bad';$('#live-status').innerHTML='<i></i> Non connecté';if(!model){$('#locked').hidden=false;$('#content').hidden=true;$('#lock-text').textContent=e.message+' Ouvre ton accès MJ Bastide personnel sur cet appareil.'}else{alert('Mise à jour impossible : '+e.message+'. Les dernières données restent visibles.')}}finally{reload.disabled=false}}
 let installRequest=null;
 const standalone=()=>window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
