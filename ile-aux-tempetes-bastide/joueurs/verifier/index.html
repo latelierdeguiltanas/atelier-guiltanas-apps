@@ -5,5 +5,5 @@ const [battle,messages]=await Promise.all([api.session('battle'),api.session('me
 let deviceId=localStorage.getItem('guiltanas_bastide_check_device_v1');if(!deviceId){deviceId=crypto.randomUUID();localStorage.setItem('guiltanas_bastide_check_device_v1',deviceId)}
 const r=await fetch('https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-player-check?action=check-in',{method:'POST',cache:'no-store',headers:{'Content-Type':'application/json','x-bastide-key':api.accessKey()},body:JSON.stringify({deviceId,battleRevision:battle.revision??null,messagesOk:true})});const d=await r.json();if(!r.ok||!d.ok)throw Error(d.error||'Enregistrement du test impossible');
 out.textContent='✓ Connexion confirmée avec le serveur. Le MJ peut voir ce contrôle dans son cockpit. Version du combat reçue : '+String(battle.revision??'non communiquée')+'.';
-}catch(e){out.textContent='⚠ Test non validé : '+e.message}finally{b.disabled=false}}})();
+}catch(e){out.textContent='⚠ Test non validé : '+e.message}finally{b.disabled=false}};if(new URLSearchParams(location.search).get('auto')==='1')b.click();})();
 </script></body></html>
