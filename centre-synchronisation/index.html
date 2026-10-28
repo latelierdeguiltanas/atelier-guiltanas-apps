@@ -1,7 +1,7 @@
 <!doctype html><html lang="fr"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#291548"><meta name="referrer" content="no-referrer">
 <title>Pilotage · Atelier de Guiltanas</title>
-<link rel="icon" type="image/png" sizes="192x192" href="icons/pilotage-guiltanas-192.png?v=2"><link rel="apple-touch-icon" sizes="180x180" href="icons/pilotage-guiltanas-180.png?v=2"><link rel="manifest" href="manifest.webmanifest?v=3"><link rel="stylesheet" href="pilotage.css?v=6">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/pilotage-guiltanas-192.png?v=2"><link rel="apple-touch-icon" sizes="180x180" href="icons/pilotage-guiltanas-180.png?v=2"><link rel="manifest" href="manifest.webmanifest?v=3"><link rel="stylesheet" href="pilotage.css?v=7">
 </head><body>
 <div class="app">
 <aside class="rail" aria-label="Navigation">
@@ -17,8 +17,29 @@
   <div class="rail-foot"><button id="open-guide" title="Comprendre l'écosystème">ⓘ <span>Comprendre</span></button><span class="rail-sub">v1 · cockpit</span></div>
 </aside>
 <div class="workspace">
-<header class="topbar"><div><div class="eyebrow">L’ATELIER DE GUILTANAS / INFRASTRUCTURE</div><h1 id="page-title">Vue d’ensemble <span class="slim">de ton écosystème</span></h1></div><div class="top-actions"><button class="backbtn" id="cockpit-back" aria-label="Retour à la vue précédente" title="Retour" hidden>‹</button><span class="online" id="live-status"><i></i> Connexion…</span><button class="installbtn" id="install-app" title="Installer le cockpit sur cet appareil"><span>⇩</span> Installer</button><button class="iconbtn" id="reload" title="Actualiser les données">↻</button><button class="iconbtn" id="help" title="Lexique et fonctionnement">?</button></div></header>
-<div id="locked" class="lock" hidden><div class="lockglyph">◇</div><h2>Tableau privé de l’Atelier</h2><p id="lock-text">Ouvre d'abord ton accès MJ Bastide privé sur ce navigateur. Le cockpit ne publie pas les données d'administration.</p><a class="primarylink" href="../ile-aux-tempetes-bastide/mj/">Ouvrir mon espace MJ</a></div>
+<header class="topbar"><div><div class="eyebrow">L’ATELIER DE GUILTANAS / INFRASTRUCTURE</div><h1 id="page-title">Vue d’ensemble <span class="slim">de ton écosystème</span></h1></div><div class="top-actions"><button class="backbtn" id="cockpit-back" aria-label="Retour à la vue précédente" title="Retour" hidden>‹</button><span class="online" id="live-status"><i></i> Connexion…</span><button class="installbtn" id="install-app" title="Installer le cockpit sur cet appareil"><span>⇩</span> Installer</button><button class="iconbtn" id="owner-logout" title="Se déconnecter de l’Atelier" hidden>⇥</button><button class="iconbtn" id="reload" title="Actualiser les données">↻</button><button class="iconbtn" id="help" title="Lexique et fonctionnement">?</button></div></header>
+<section id="locked" class="lock owner-login" hidden>
+<div class="lockglyph"><img src="icons/pilotage-guiltanas-192.png?v=2" alt="" width="58" height="58"></div>
+<h2 id="auth-title">Connexion à Pilotage Guiltanas</h2>
+<p id="lock-text">Ton cockpit possède son propre accès, indépendant des hubs et des campagnes.</p>
+<form id="owner-login-form" class="owner-form" hidden>
+<label for="owner-password">Mot de passe Atelier</label>
+<input id="owner-password" type="password" required autocomplete="current-password" placeholder="Mot de passe propriétaire">
+<button id="owner-login-submit" class="owner-primary" type="submit">Accéder à mon cockpit</button>
+</form>
+<form id="owner-setup-form" class="owner-form" hidden>
+<label for="owner-bootstrap">Code d'activation unique de l'Atelier</label>
+<input id="owner-bootstrap" type="text" required spellcheck="false" autocapitalize="characters" autocomplete="off" placeholder="GC-XXXXXX-XXXXXX-XXXXXX-XXXXXX">
+<label for="owner-setup-password">Créer mon mot de passe Atelier (14 caractères minimum)</label>
+<input id="owner-setup-password" type="password" minlength="14" maxlength="120" required autocomplete="new-password">
+<label for="owner-setup-confirm">Confirmer mon mot de passe</label>
+<input id="owner-setup-confirm" type="password" minlength="14" maxlength="120" required autocomplete="new-password">
+<button id="owner-setup-submit" class="owner-primary" type="submit">Activer mon cockpit</button>
+<p class="owner-hint">Une seule activation, sur l’appareil de ton choix. Ensuite, ton mot de passe fonctionne sur tous tes ordinateurs et téléphones.</p>
+</form>
+<div id="auth-error" class="owner-error" role="status"></div>
+<button id="auth-retry" class="owner-textbtn" type="button" hidden>Réessayer</button>
+</section>
 <div id="content" hidden>
 <div class="metrics" id="metrics"></div>
 <div id="view-overview" class="view">
@@ -59,4 +80,4 @@
 <div class="project-form-actions"><button class="smallbutton" type="button" id="project-cancel">Annuler</button><button class="smallbutton primary" type="submit" id="project-submit">Enregistrer dans le registre</button></div>
 <div id="project-form-result" role="status"></div>
 </form></dialog><dialog id="install-dialog"><div class="dialog-head"><div><span class="eyebrow">RACCOURCI MOBILE / PC</span><h2>Installer Pilotage Guiltanas</h2></div><button id="install-close">×</button></div><div id="install-instructions" class="install-steps"></div><button class="smallbutton" id="copy-cockpit-link">Copier le lien du cockpit</button></dialog><dialog id="glossary"><div class="dialog-head"><div><span class="eyebrow">MODE D'EMPLOI</span><h2 id="term-title"></h2></div><button id="term-close">×</button></div><div id="term-body"></div></dialog>
-<script src="../ile-aux-tempetes-bastide/assets/inventory-api.js?v=12"></script><script src="pilotage.js?v=6"></script></body></html>
+<script src="owner-auth.js?v=1"></script><script src="pilotage.js?v=7"></script></body></html>
