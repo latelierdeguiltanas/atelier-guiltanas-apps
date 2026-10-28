@@ -61,3 +61,21 @@ Un dépôt == un repository. **Dépôt public != application effectivement en se
 3. Ajouter pour chaque application une instrumentation minimale de sessions agrégées, documentée côté utilisateur, sans collecter l'identité des joueurs.
 4. Étendre le suivi de version locale/serveur au gestionnaire, à Forge et au hub configurable; séparer toujours les données vérifiées des suppositions.
 5. Proposer une mise à jour autorisée et planifiée de l'inventaire des dépôts via connexion GitHub, sans exposer de jeton dans GitHub Pages.
+
+## Registre de tous les projets (extension 28/10/2026)
+- Source de vérité de l'inventaire **applicatif**, même sans dépôt : `public.guiltanas_project_registry` (RLS, aucune lecture publique directe) ; 21 fiches initiales, classées `Jouer & raconter`, `Créer & fabriquer`, `Vie numérique`.
+- Statuts indépendants : **actif / développement / brouillon / pause / idée / archive** et **en ligne / local / non publié / inconnu**. Ne pas assimiler un fichier HTML hébergé à une application terminée.
+- Éléments distincts : Hub Bastide, Hub Nespresso, Hub configurable bêta, Hub générique produit privé ; Soundboard générique Soundboard_final, Soundboard Île aux Tempêtes avec sons locaux, anciennes archives ; gestionnaires COF2 et D&D ; Forge, fiches, MJ Express, cockpit, budget, missions privées, applications enfants/famille et micro-outils.
+- Les fiches peuvent être ajoutées/modifiées depuis le cockpit (dernier état retrouvé, prochaine étape, dépôt/dossier, famille). Accès uniquement via le lien privé MJ Bastide jusqu'à création d'une identité Atelier indépendante. Pas de suppression côté interface.
+- Historique : `public.guiltanas_project_history` archive l'état précédent lors des modifications ; pas d'écran de restauration encore.
+- `guiltanas-registry` (Edge Function) : lecture/écriture authentifiées; découvre les dépôts **publics** GitHub et les nouveaux dossiers au premier niveau de `atelier-guiltanas-apps`. Interroge GitHub au plus toutes les 15 minutes lors du chargement, ou immédiatement via **Vérifier GitHub**. Les découvertes inconnues sont créées comme brouillons « À classer », **jamais déclarées automatiquement opérationnelles**. Une erreur de l'API GitHub apparaît dans le cockpit.
+- Les dépôts **privés** ne peuvent pas être inventoriés par l'API publique anonyme du serveur. Contrôle complémentaire planifié via les connecteurs GitHub et Drive autorisés, avec remontée uniquement en cas de changement/échec ; il ne constitue ni un webhook temps réel ni une preuve de couverture exhaustive.
+- Aucune connexion continue aux nouvelles conversations ChatGPT : une idée seulement évoquée en chat n'est pas garantie détectable instantanément. Elle doit avoir une fiche dans le registre ou être intégrée lors du prochain inventaire explicite.
+- L'inventaire source des projets est **distinct** du schéma de cartographie technique `guiltanas-cockpit` (listes des services et liens audités, susceptible d'avoir un rythme de mise à jour différent). À réconcilier en cas de découverte.
+
+## Bouton de synchronisation des joueurs Bastide
+- `ile-aux-tempetes-bastide/assets/return-nav.js` propose sur chaque fiche un raccourci **↻ Synchronisation**.
+- Ouvre `joueurs/verifier/?auto=1` et effectue la lecture de l'état du combat et des messages depuis **ce navigateur** ; un résultat n'est marqué réussi qu'après accusé du service `guiltanas-player-check`.
+- Un lien équivalent apparaît dans le menu de l'accueil joueur. Le nouveau fichier commun est chargé avec une version d'URL changée sur les six fiches.
+- Les confirmations sont enregistrées dans `guiltanas_player_checks` sans IP, localisation ou contenu de messages ; l'espace MJ peut consulter la date et la révision reçue via le cockpit.
+- Important : une ancienne confirmation n'est pas une présence en direct. Une mise à jour de l'inventaire PJ et tous les caches locaux n'est pas prouvée par ce seul test.
