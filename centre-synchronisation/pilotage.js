@@ -308,7 +308,25 @@ function drawMap(){
  }
  $('#graph-hint').textContent=appFocus?'Dépôt '+repo.name+' · seules les dépendances de '+appFocus.name+' sont en évidence.':repo.name+' · '+apps.length+' applications. Sélectionne une application pour ses dépendances.';
 }
-function wire(){const clickParent=e=>{const app=e.target.closest('[data-app]'),repo=e.target.closest('[data-repo]'),dev=e.target.closest('[data-device]');if(app)showApp(app.dataset.app);else if(repo)showRepo(repo.dataset.repo);else if(dev)showDevice(dev.dataset.device)};document.addEventListener('click',e=>{if(e.target.closest('.data-row'))clickParent(e);const target=e.target.closest('[data-drawer-app]');if(target){e.preventDefault();showApp(target.dataset.drawerApp)}});
+function chooseMobileRepo(id){
+ if(!model?.repos.some(r=>r.id===id))return;
+ graphRepo=graphRepo===id?'':id;selected=null;hideDrawer();$('#graph-repo').value=graphRepo;drawMap();pushRoute();
+}
+function chooseMobileApp(id){
+ const a=model?.apps.find(x=>x.id===id);if(!a)return;
+ const already=selected?.kind==='app'&&selected.id===id;
+ graphRepo=a.repo;selected=already?null:{kind:'app',id};hideDrawer();$('#graph-repo').value=graphRepo;drawMap();pushRoute();
+ const row=$('#mobile-repos').querySelector('[data-mobile-app="'+id+'"]');
+ if(row&&!already)row.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function wire(){const explorer=$('#mobile-repos');
+ explorer.addEventListener('click',e=>{
+  const full=e.target.closest('[data-mobile-full]');if(full){showApp(full.dataset.mobileFull);return}
+  const link=e.target.closest('[data-mobile-link]');if(link){chooseMobileApp(link.dataset.mobileLink);return}
+  const app=e.target.closest('[data-mobile-app]');if(app){chooseMobileApp(app.dataset.mobileApp);return}
+  const repo=e.target.closest('[data-mobile-repo]');if(repo)chooseMobileRepo(repo.dataset.mobileRepo);
+ });
+ const clickParent=e=>{const app=e.target.closest('[data-app]'),repo=e.target.closest('[data-repo]'),dev=e.target.closest('[data-device]');if(app)showApp(app.dataset.app);else if(repo)showRepo(repo.dataset.repo);else if(dev)showDevice(dev.dataset.device)};document.addEventListener('click',e=>{if(e.target.closest('.data-row'))clickParent(e);const target=e.target.closest('[data-drawer-app]');if(target){e.preventDefault();showApp(target.dataset.drawerApp)}});
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('.data-row'))clickParent(e);if(e.key==='Escape'&&!document.querySelector('dialog[open]')&&$('#drawer').classList.contains('show'))goBack()});
 $$('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));$$('[data-view-go]').forEach(b=>b.onclick=()=>setView(b.dataset.viewGo));$('#graph-repo').onchange=e=>{graphRepo=e.target.value;selected=null;hideDrawer();drawMap();pushRoute()};$('#graph-reset').onclick=()=>{graphRepo='';selected=null;hideDrawer();$('#graph-repo').value='';drawMap();pushRoute()};
 $('#project-search').oninput=renderProjects;$('#project-stage').onchange=renderProjects;$('#project-family').onchange=renderProjects;$('#project-new').onclick=()=>editProject(null);$('#project-scan').onclick=()=>loadRegistry(true);$('#project-close').onclick=$('#project-cancel').onclick=goBack;$('#project-form').onsubmit=async e=>{e.preventDefault();const f=e.target,b=$('#project-submit');b.disabled=true;$('#project-form-result').textContent='Sauvegarde sur le serveur…';try{const body=Object.fromEntries(new FormData(f));const d=await registryRequest('save',body);$('#project-form-result').textContent='Fiche enregistrée.';$('#project-editor').close();await loadRegistry();openProject(d.project.id)}catch(err){$('#project-form-result').textContent=err.message}finally{b.disabled=false}};$('#project-list').addEventListener('click',e=>{const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)});$('#project-list').addEventListener('keydown',e=>{if(e.key==='Enter'){const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)}});document.addEventListener('click',e=>{const b=e.target.closest('[data-edit-project]');if(b)editProject(b.dataset.editProject)});$('#app-search').oninput=e=>{search=e.target.value.trim().toLowerCase();renderApps()};$('#app-filter').onchange=renderApps;
