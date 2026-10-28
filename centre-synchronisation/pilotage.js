@@ -87,8 +87,8 @@ function setView(view,record=true){
  const changed=view!==currentView;
  currentView=view;
  if(changed){hideDrawer();selected=null}
- $('.view').forEach(x=>x.hidden=x.id!=='view-'+view);
- $('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+ $$('.view').forEach(x=>x.hidden=x.id!=='view-'+view);
+ $$('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
  $('#page-title').innerHTML=escapeHTML(names[view])+' <span class="slim">'+escapeHTML(viewDescriptions[view])+'</span>';
  if(changed&&!routeRestoring)scrollTo({top:0,behavior:'smooth'});
  if(changed&&model)drawMap();
