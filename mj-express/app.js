@@ -239,6 +239,30 @@ window.addEventListener('appinstalled',()=>{
 });
 $('#install-guide-close').onclick=()=>$('#install-guide').close();
 $('#install-guide-check').onclick=checkInstallStatus;
+$('#copy-push-diag').onclick=async()=>{
+ const d=pushSnapshot||await inspectPush();
+ const copy=[
+  'MJ Express · diagnostic de connexion (aucun identifiant privé)',
+  'Date : '+new Date().toISOString(),
+  'Adresse : '+location.origin+location.pathname,
+  'Navigateur : '+navigator.userAgent.slice(0,160),
+  'Application installée : '+String(isStandalone()),
+  'API Notification : '+d.notificationApi,
+  'Notification.permission : '+d.notificationPermission,
+  'Résultat permission après clic : '+String(d.requestResult??'non demandé ici'),
+  'Permission site/Android : '+d.browserPermission,
+  'PushManager.permissionState : '+d.pushPermission,
+  'Service worker : '+d.serviceWorker,
+  'Abonnement local : '+d.subscription,
+  'Abonnement Supabase : '+d.serverSubscription,
+  'Erreur : '+(d.error||'aucune constatée'),
+  'Invite installation : '+!!installPrompt,
+  'Dernier diagnostic : '+$('#push-progress').textContent
+ ].join('\n');
+ try{await navigator.clipboard.writeText(copy);$('#copy-push-diag').textContent='✓ Diagnostic copié';}
+ catch{$('#copy-push-diag').textContent='Copie impossible dans ce navigateur';}
+};
+
 $('#install').onclick=()=>{
  if(isStandalone()){
   paintInstallSteps();$('#install-guide').showModal();checkInstallStatus();return;
