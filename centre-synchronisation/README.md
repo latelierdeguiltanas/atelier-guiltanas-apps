@@ -121,3 +121,21 @@ Le Cockpit/Pilotage Guiltanas (`centre-synchronisation/`) est l'application prop
 **Inventaire des anciens chats :** les échanges disponibles ont permis d'identifier des *groupes thématiques*, mais pas toutes les conversations ni leurs liens. Le détail est dans le document Drive privé « 02 — INVENTAIRE INITIAL DES PROJETS ET TRACES DE CHATS — 2026-10-29 » ; une exportation ChatGPT volontaire permettra ultérieurement l'attribution fiable de chaque conversation à un ou plusieurs projets. Ne rien supprimer ou archiver en masse avant récupération et décision explicite de l'utilisateur.
 
 **Évolution recommandée :** fusionner progressivement les états Drive structurés, les tests certifiés et les conversations récupérées dans cette interface déjà authentifiée. Ne pas réimporter les six entrées de démonstration du prototype `guiltanas-control/` comme nouveaux projets ; consolider les 31 fiches déjà présentes. Les mots de passe, clés, contenus privés et données financières ne doivent jamais être copiés dans les fichiers publics GitHub Pages.
+
+
+## 29 octobre 2026 — Écosystème parent et inventaire privé des conversations
+
+**Fonctionnalités installées dans le Cockpit officiel** (sans second tableau de bord) :
+- Dans l’onglet **Projets**, l'Écosystème Atelier de Guiltanas est la racine visuelle. Les 31 fiches conservées sont regroupées sous Applications/outils JDR, Créations/ressources, Pilotage/présence et Autres projets ; aucun projet existant n'est supprimé ou dupliqué.
+- Une section repliable **Conversations** permet de visualiser, par projet, le nombre de conversations importées, les signalements « bloqué », les fils longs « à examiner » et les non-vérifiés. Le statut est modifiable et stocké dans Supabase privé, pas dans les sources publiques GitHub.
+- L'import ponctuel de **conversations.json** analyse les conversations dans le navigateur et n'envoie au serveur que ID, titre, tags de projet, nombre de messages et date. **Aucun message, pièce jointe ou texte intégral du chat n'est envoyé.**
+- Une même conversation peut être liée à plusieurs projets. La classification automatique utilise des indices de vocabulaire et reste **à confirmer** ; elle n'est pas un diagnostic de panne.
+- La synchronisation manuelle de l’onglet Projets relit le registre privé Supabase et le dernier inventaire de chats stocké. Elle **ne peut pas interroger ni tester les conversations privées encore absentes de cet inventaire** ; ChatGPT ne fournit pas de connecteur de santé de conversation.
+- Les chats longs de 240 messages ou plus peuvent être marqués « à examiner » par l'import. Un chat « bloqué signalé » n'est créé que par un marquage explicite dans le registre, jamais par une heuristique de longueur.
+- Aucun archivage/suppression native ChatGPT n'est effectué depuis le Cockpit.
+
+**Infrastructure :** migration privée `guiltanas_private_chat_inventory_v1`, table `public.guiltanas_chat_inventory` avec RLS activée, aucun accès `anon/authenticated`, lecture/écriture uniquement via la fonction Edge `guiltanas-chat-inventory` autorisée par la session propriétaire Atelier. Version 2 de la fonction déployée. Les fonctions précédentes du Cockpit et les données des campagnes restent inchangées.
+
+**Contrôles :** migrations confirmées, fonction Edge ACTIVE, syntaxe JavaScript du Cockpit vérifiée et fichiers GitHub relus. Recette navigateur au clic, import d'export réel et autorisation au travers de la session propriétaire **pas encore testés sur un téléphone réel**. La table de chats est vide jusqu'à un import volontaire : ne pas annoncer « tous les chats analysés » ni « tous les bugs détectés » avant une preuve.
+
+**À suivre :** import privé ponctuel de conversations.json (dans la rubrique Conversations), correction des affectations multi-projets, contrôles utilisateurs sur les chats réellement bloqués ; ajout des jalons Drive avec preuves à chaque fiche. La synchronisation automatique Drive → Supabase reste un chantier séparé non certifié.
