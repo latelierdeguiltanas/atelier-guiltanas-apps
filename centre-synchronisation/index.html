@@ -1,14 +1,14 @@
 <!doctype html><html lang="fr"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#291548"><meta name="referrer" content="no-referrer">
 <title>Pilotage · Atelier de Guiltanas</title>
-<link rel="icon" type="image/png" sizes="192x192" href="icons/pilotage-guiltanas-192.png?v=2"><link rel="apple-touch-icon" sizes="180x180" href="icons/pilotage-guiltanas-180.png?v=2"><link rel="manifest" href="manifest.webmanifest?v=3"><link rel="stylesheet" href="pilotage.css?v=13">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/pilotage-guiltanas-192.png?v=2"><link rel="apple-touch-icon" sizes="180x180" href="icons/pilotage-guiltanas-180.png?v=2"><link rel="manifest" href="manifest.webmanifest?v=3"><link rel="stylesheet" href="pilotage.css?v=14">
 </head><body>
 <div class="app">
 <aside class="rail" aria-label="Navigation">
   <div class="brand" title="L'Atelier de Guiltanas"><img class="brand-icon" src="icons/pilotage-guiltanas-192.png?v=2" alt="" aria-hidden="true"><div class="brand-label">ATELIER <em>GUILTANAS</em><small>POSTE DE PILOTAGE</small></div></div>
   <div class="rail-nav">
-    <button class="navbtn active" data-view="overview" title="Vue d'ensemble"><span class="navicon">◈</span><span>Vue globale</span></button>
-    <button class="navbtn" data-view="projects" title="Projets actifs, brouillons et pauses"><span class="navicon">▦</span><span>Projets</span></button>
+    <button class="navbtn active" data-view="projects" title="Tes projets et créations"><span class="navicon">▦</span><span>Mes projets</span></button>
+    <button class="navbtn" data-view="overview" title="Carte technique de tes outils"><span class="navicon">◈</span><span>Technique</span></button>
     <button class="navbtn" data-view="repositories" title="Dépôts GitHub"><span class="navicon">⌘</span><span>GitHub</span></button>
     <button class="navbtn" data-view="backend" title="Supabase et données"><span class="navicon">◫</span><span>Supabase</span></button>
     <button class="navbtn" data-view="usage" title="Utilisation"><span class="navicon">▥</span><span>Utilisation</span></button>
@@ -17,7 +17,7 @@
   <div class="rail-foot"><button id="open-guide" title="Comprendre l'écosystème">ⓘ <span>Comprendre</span></button><span class="rail-sub">v1 · cockpit</span></div>
 </aside>
 <div class="workspace">
-<header class="topbar"><div><div class="eyebrow">L’ATELIER DE GUILTANAS / INFRASTRUCTURE</div><h1 id="page-title">Vue d’ensemble <span class="slim">de ton écosystème</span></h1></div><div class="top-actions"><button class="backbtn" id="cockpit-back" aria-label="Retour à la vue précédente" title="Retour" hidden>‹</button><span class="online" id="live-status"><i></i> Connexion…</span><button class="installbtn" id="install-app" title="Installer le cockpit sur cet appareil"><span>⇩</span> Installer</button><button class="iconbtn" id="owner-logout" title="Se déconnecter de l’Atelier" hidden>⇥</button><button class="iconbtn" id="reload" title="Actualiser les données">↻</button><button class="iconbtn" id="help" title="Lexique et fonctionnement">?</button></div></header>
+<header class="topbar"><div><div class="eyebrow">L’ATELIER DE GUILTANAS / PROJETS</div><h1 id="page-title">Mes projets <span class="slim">de l’Atelier</span></h1></div><div class="top-actions"><button class="backbtn" id="cockpit-back" aria-label="Retour à la vue précédente" title="Retour" hidden>‹</button><span class="online" id="live-status"><i></i> Connexion…</span><button class="installbtn" id="install-app" title="Installer le cockpit sur cet appareil"><span>⇩</span> Installer</button><button class="iconbtn" id="owner-logout" title="Se déconnecter de l’Atelier" hidden>⇥</button><button class="iconbtn" id="reload" title="Actualiser les données">↻</button><button class="iconbtn" id="help" title="Lexique et fonctionnement">?</button></div></header>
 <section id="locked" class="lock owner-login" hidden>
 <div class="lockglyph"><img src="icons/pilotage-guiltanas-192.png?v=2" alt="" width="58" height="58"></div>
 <h2 id="auth-title">Connexion à Pilotage Guiltanas</h2>
@@ -41,25 +41,39 @@
 <button id="auth-retry" class="owner-textbtn" type="button" hidden>Réessayer</button>
 </section>
 <div id="content" hidden>
-<div class="metrics" id="metrics"></div>
-<div id="view-overview" class="view">
+<div class="metrics" id="metrics" hidden></div>
+<div id="view-overview" class="view" hidden>
 <div class="section-row"><div><h2>Cartographie</h2><p>Une hiérarchie à la fois · appuie sur une application pour ses connexions</p></div><div class="toolbar"><label class="repo-label" for="graph-repo">Dépôt</label><select id="graph-repo" aria-label="Choisir un dépôt GitHub"></select><button class="chip" id="graph-reset" title="Revenir à la vue générale">Tous les dépôts</button></div></div>
 <div class="graph-shell"><div id="mobile-explorer" class="mobile-explorer"><div class="mobile-explorer-head"><span class="mobile-explorer-title">Mes dépôts</span><span id="mobile-repo-count" class="mobile-explorer-count">—</span></div><div id="mobile-repos" class="mobile-repos" role="list"></div><p class="mobile-explorer-note">Touchez un dépôt pour afficher ses outils, puis un outil pour voir ses liaisons.</p></div><div class="graph-legend"><span><i class="dot repo"></i> GitHub</span><span><i class="dot appdot"></i> Application</span><span><i class="dot data"></i> Données</span><span class="muted">Les traits ne signifient pas une synchronisation entre applications</span></div><div id="graph-scroll" class="graph-scroll"><svg id="map" viewBox="0 0 1320 760" role="img" aria-label="Carte interactive des dépôts, applications et services"></svg></div><div class="graph-hint" id="graph-hint">Sélectionne un dépôt pour voir ses applications, sans connexions parasites.</div></div>
 <div class="split-bottom"><div class="micro-section"><div class="section-row"><h2>Dernières données connues</h2><button class="textbtn" data-view-go="usage">Voir l'usage →</button></div><div id="brief-usage" class="micro-content"></div></div><div class="micro-section"><div class="section-row"><h2>À surveiller</h2><button class="textbtn" data-view-go="devices">Mes connexions →</button></div><div id="alerts" class="micro-content"></div></div></div>
 </div>
-<div id="view-projects" class="view" hidden>
-<div class="section-row"><div><h2>Registre des projets de l’Atelier</h2><p>En ligne, en chantier, en pause ou encore à l’état d’idée</p></div><div class="toolbar"><button id="project-scan" class="chip" title="Chercher immédiatement les nouveaux dépôts publics">↻ Vérifier GitHub</button><button id="project-new" class="smallbutton">＋ Nouveau projet</button></div></div>
-<div class="project-summary" id="project-summary"></div>
-<section class="project-audit-panel" id="project-audit-panel" aria-label="État de confiance des projets">
-  <div class="project-audit-head">
-    <div><strong>Avancement réel</strong><p>On distingue l'activité déclarée des preuves de validation.</p></div>
-    <button type="button" id="project-refresh" class="chip" title="Relire le registre privé, sans recharger la page">↻ Actualiser les projets</button>
-  </div>
-  <div id="project-audit-content" aria-live="polite"><p>Lecture du registre privé…</p></div><p class="project-audit-reliability">Les preuves détaillées restent dans les sources Drive privées ; cette page ne publie pas leur contenu.</p>
+<div id="view-projects" class="view">
+<section class="project-welcome">
+  <div><div class="project-eyebrow">PROJETS & CRÉATIONS</div><h2>Mes projets</h2><p>Tout ce qui compte, au même endroit.</p></div>
+  <button id="project-refresh" type="button" class="project-action-sync" title="Relire le registre et ses journaux sans recharger la page">↻ <span>Synchroniser</span></button>
 </section>
-<div class="project-controls"><input type="search" id="project-search" class="search" placeholder="Rechercher un projet…"><select id="project-stage"><option value="all">Tous les états</option><option value="actif">Actifs</option><option value="developpement">En développement</option><option value="brouillon">Brouillons</option><option value="pause">En pause</option><option value="idee">Idées</option><option value="archive">Archives</option></select><select id="project-family"><option value="all">Toutes les familles</option><option value="Jouer & raconter">Jouer & raconter</option><option value="Créer & fabriquer">Créer & fabriquer</option><option value="Vie numérique">Vie numérique</option></select></div>
-<div class="project-update" id="project-sync-status">Chargement du registre…</div>
+<div class="project-simple-tools">
+  <label for="project-search" class="visually-hidden">Trouver un projet</label>
+  <input type="search" id="project-search" class="project-search-input" placeholder="⌕  Rechercher un projet…" />
+  <details class="project-filters">
+    <summary>Filtres</summary>
+    <div class="project-controls">
+      <select id="project-stage" aria-label="État du projet"><option value="all">Tous les états</option><option value="actif">Actifs</option><option value="developpement">En développement</option><option value="brouillon">À organiser</option><option value="pause">En pause</option><option value="idee">Idées</option><option value="archive">Archives</option></select>
+      <select id="project-family" aria-label="Famille de projet"><option value="all">Toutes les familles</option><option value="Jouer & raconter">Jouer & raconter</option><option value="Créer & fabriquer">Créer & fabriquer</option><option value="Vie numérique">Vie numérique</option></select>
+    </div>
+  </details>
+</div>
+<div class="project-summary" id="project-summary"></div>
 <div id="project-list" class="project-list"></div>
+<details class="project-audit-disclosure">
+ <summary>Suivi des travaux et alertes <span id="project-alert-count"></span></summary>
+ <div class="project-audit-panel" id="project-audit-panel">
+   <div class="project-audit-head"><strong>Points de suivi</strong><p>Ce qui est consigné, ce qui demande une reprise.</p></div>
+   <div id="project-audit-content" aria-live="polite"></div>
+   <p class="project-audit-reliability">Un jalon ancien ne prouve pas qu’un chat est planté ; seuls les états enregistrés sont affichés.</p>
+ </div>
+</details>
+<div id="project-sync-status" class="project-update project-update-quiet" role="status">Chargement des projets…</div>
 <details id="chat-inventory-panel" class="chat-inventory-panel">
   <summary>💬 Conversations Work liées aux projets <span id="chat-health-count">· recherche en cours</span></summary>
   <div class="chat-inventory-body">
@@ -96,4 +110,4 @@
 <div class="project-form-actions"><button class="smallbutton" type="button" id="project-cancel">Annuler</button><button class="smallbutton primary" type="submit" id="project-submit">Enregistrer dans le registre</button></div>
 <div id="project-form-result" role="status"></div>
 </form></dialog><dialog id="install-dialog"><div class="dialog-head"><div><span class="eyebrow">RACCOURCI MOBILE / PC</span><h2>Installer Pilotage Guiltanas</h2></div><button id="install-close">×</button></div><div id="install-instructions" class="install-steps"></div><button class="smallbutton" id="copy-cockpit-link">Copier le lien du cockpit</button></dialog><dialog id="glossary"><div class="dialog-head"><div><span class="eyebrow">MODE D'EMPLOI</span><h2 id="term-title"></h2></div><button id="term-close">×</button></div><div id="term-body"></div></dialog>
-<script src="owner-auth.js?v=1"></script><script src="owner-login-ui.js?v=1"></script><script src="pilotage.js?v=14"></script></body></html>
+<script src="owner-auth.js?v=1"></script><script src="owner-login-ui.js?v=1"></script><script src="pilotage.js?v=15"></script></body></html>
