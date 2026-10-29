@@ -267,6 +267,7 @@ window.addEventListener('appinstalled',()=>{
 });
 $('#install-guide-close').onclick=()=>$('#install-guide').close();
 $('#install-guide-check').onclick=checkInstallStatus;
+$('#android-display-help').onclick=()=>$('#android-display-guide').showModal();$('#android-display-close').onclick=()=>$('#android-display-guide').close();
 $('#push-repair-help').onclick=()=>showPushRepair('Le navigateur ou l’application Android indique une autorisation refusée. Il faut la modifier dans les réglages du site, ce que JavaScript ne peut pas faire à ta place.');
 $('#push-repair-close').onclick=()=>$('#push-repair-guide').close();
 $('#push-repair-recheck').onclick=async()=>{await refreshPushHealth();$('#push-repair-reason').textContent='Nouvelle vérification terminée : '+$('#push-health').textContent;};
