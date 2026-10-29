@@ -1,0 +1,78 @@
+{
+  "project": "Forge of Heroes",
+  "milestone": "Validation exhaustive N1",
+  "snapshot_date": "2026-10-29",
+  "status": "validation_non_demontree",
+  "progress_percent": null,
+  "progress_reason": "Les 12 parcours réels sont requis; résultats d'exécution non confirmés dans les sources lues.",
+  "evidence": [
+    {
+      "type": "github_file",
+      "url": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/README.md",
+      "finding": "README exige 12 parcours réels avant gate N1."
+    },
+    {
+      "type": "github_file",
+      "url": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/MANUAL_FREEZE_PACK/README.md",
+      "finding": "Liste des 12 parcours de validation manuelle."
+    },
+    {
+      "type": "drive",
+      "url": "https://docs.google.com/document/d/1LRxBDidAnSUbkamPzZzlt-Gcl-SUAAR3q8ZZ0MgmK1c/edit",
+      "finding": "Trace des correctifs et tests automatisés du 24 octobre; aucun clic navigateur réel indiqué pour plusieurs passes."
+    }
+  ],
+  "manual_cases": [
+    {
+      "id": "MANUAL_01",
+      "status": "non_verifie_dans_cet_audit"
+    },
+    {
+      "id": "MANUAL_02",
+      "status": "non_verifie_dans_cet_audit"
+    },
+    {
+      "id": "MANUAL_03",
+      "status": "non_verifie_dans_cet_audit"
+    },
+    {
+      "id": "MANUAL_04",
+      "status": "non_verifie_dans_cet_audit"
+    },
+    {
+      "id": "MANUAL_05",
+      "status": "non_verifie_dans_cet_audit"
+    },
+    {
+      "id": "MANUAL_06",
+      "status": "non_verifie_dans_cet_audit"
+    },
+    {
+      "id": "MANUAL_07",
+      "status": "non_verifie_dans_cet_audit"
+    },
+    {
+      "id": "MANUAL_08",
+      "status": "non_verifie_dans_cet_audit"
+    },
+    {
+      "id": "MANUAL_09",
+      "status": "non_verifie_dans_cet_audit"
+    },
+    {
+      "id": "MANUAL_10",
+      "status": "non_verifie_dans_cet_audit"
+    },
+    {
+      "id": "MANUAL_11",
+      "status": "non_verifie_dans_cet_audit"
+    },
+    {
+      "id": "MANUAL_12",
+      "status": "non_verifie_dans_cet_audit"
+    }
+  ],
+  "next_action": "Recouper le dernier état GitHub des 12 parcours, puis exécuter/attester les parcours manquants avant gate N1.",
+  "conversation_registry": [],
+  "conversation_import_status": "non_inventorie"
+}
