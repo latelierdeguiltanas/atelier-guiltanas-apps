@@ -245,8 +245,7 @@ $('#install').onclick=()=>{
  }
  if(installPrompt){
   const prompt=installPrompt;installPrompt=null;
-  Promise.resolve().then(async()=>{try{await prompt.prompt();const selection=await prompt.userChoice;if(selection?.outcome!=='accepted'){paintInstallSteps();$('#install-guide').showModal();checkInstallStatus();}}
-    catch(err){showInstallMessage('Installation automatique impossible : '+err.message);paintInstallSteps();$('#install-guide').showModal();checkInstallStatus();}});
+  try{const native=prompt.prompt();Promise.resolve(native).then(()=>prompt.userChoice).then(choice=>{if(choice?.outcome!=='accepted'){paintInstallSteps();$('#install-guide').showModal();checkInstallStatus();}}).catch(err=>{showInstallMessage('Installation automatique impossible : '+err.message);paintInstallSteps();$('#install-guide').showModal();checkInstallStatus();});}catch(err){showInstallMessage('Installation automatique impossible : '+err.message);paintInstallSteps();$('#install-guide').showModal();checkInstallStatus();}
   return;
  }
  paintInstallSteps();
