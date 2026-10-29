@@ -1,0 +1,35 @@
+name: Guiltanas Control — Drive status mirror
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: guiltanas-control-drive-status
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GC_DRIVE_SA_JSON: ${{ secrets.GC_DRIVE_SA_JSON }}
+      GC_DRIVE_DOC_IDS: ${{ secrets.GC_DRIVE_DOC_IDS }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Read Drive and update the public projection
+        run: node guiltanas-control/scripts/sync-drive-status.cjs
+      - name: Publish updated data only
+        run: |
+          if git diff --quiet -- guiltanas-control/data/projects.json; then
+            echo "Aucune modification."
+            exit 0
+          fi
+          git config user.name "guiltanas-control-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add guiltanas-control/data/projects.json
+          git commit -m "Sync public Guiltanas Control statuses from Drive"
+          git push
