@@ -1,0 +1,212 @@
+{
+  "schema_version": 2,
+  "projection": "public_project_status_only",
+  "sync_contract": "drive_state_then_github_mirror_same_intervention",
+  "last_published_date": "2026-10-29",
+  "last_published_reason": "Initialisation du protocole Drive et du tableau de bord par projet",
+  "caveat": "Les statuts reflètent les preuves identifiées ; une absence de preuve n'est pas un test échoué.",
+  "projects": [
+    {
+      "id": "forge",
+      "name": "Forge of Heroes",
+      "family": "Application COF2",
+      "priority": "haute",
+      "status": "validation_non_certifiee",
+      "status_label": "Niveau 1 non certifié",
+      "summary": "La création N1 dispose de corrections et de tests automatisés documentés, mais la recette exhaustive n'est pas certifiée.",
+      "last_update": "2026-10-29",
+      "progress_percent": null,
+      "progress_basis": "Les résultats des 12 parcours manuels exigés par le pack de gel restent à rapprocher de preuves vérifiables. Pourcentage indéterminé.",
+      "current_work": null,
+      "phases": [
+        {
+          "id": "creation-n1",
+          "name": "Création de personnage — niveau 1",
+          "status": "verification_requise",
+          "detail": "Gel technique et corrections consignés. 12 parcours réels requis avant certification globale.",
+          "progress_percent": null
+        },
+        {
+          "id": "passage-n2",
+          "name": "Passage du niveau 1 au niveau 2",
+          "status": "partiel",
+          "detail": "Des parcours et adaptateurs existent ; exhaustivité à contrôler après le jalon N1.",
+          "progress_percent": null
+        },
+        {
+          "id": "passage-n3",
+          "name": "Passage du niveau 2 au niveau 3",
+          "status": "non_certifie",
+          "detail": "Non inclus dans la certification courante.",
+          "progress_percent": null
+        }
+      ],
+      "tests": {
+        "manual_pack_total": 12,
+        "manual_pack_verified": null,
+        "status": "non_consolide",
+        "link": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/tree/main/forge-of-heroes/MANUAL_FREEZE_PACK"
+      },
+      "timeline": [
+        {
+          "date": "2026-10-24",
+          "kind": "developpement",
+          "title": "Correctifs hybrides et voies documentés",
+          "detail": "Le document d'état décrit des correctifs et tests automatisés ; la validation réelle au clic n'est pas généralisée."
+        },
+        {
+          "date": "2026-10-29",
+          "kind": "audit",
+          "title": "Certification N1 suspendue faute de consolidation",
+          "detail": "Le README Forge exige les 12 parcours manuels ; résultats non confirmés dans cette passe."
+        },
+        {
+          "date": "2026-10-29",
+          "kind": "pilotage",
+          "title": "Protocole de suivi par projet intégré à Drive",
+          "detail": "Inscription de l'objectif avant intervention et des preuves à chaque jalon."
+        }
+      ],
+      "next_action": "Rapprocher les résultats et preuves des 12 parcours du gel N1 ; identifier les cas non attestés avant de déclarer la création N1 terminée.",
+      "links": {
+        "repository": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/tree/main/forge-of-heroes",
+        "chatgpt": null
+      }
+    },
+    {
+      "id": "hub-bastide",
+      "name": "Hub Île aux Tempêtes — Bastide",
+      "family": "Application JDR",
+      "priority": "normale",
+      "status": "audit_a_faire",
+      "status_label": "État à consolider",
+      "summary": "Hub COF2 actif, mais la progression consolidée et les interventions récentes restent à réconcilier.",
+      "last_update": null,
+      "progress_percent": null,
+      "current_work": null,
+      "phases": [],
+      "timeline": [],
+      "next_action": "Lire le document Drive « État du projet — Bastide » et rapprocher la version GitHub.",
+      "links": {
+        "repository": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/tree/main/ile-aux-tempetes-bastide",
+        "chatgpt": null
+      }
+    },
+    {
+      "id": "hub-generique",
+      "name": "Hub JDR générique",
+      "family": "Application JDR",
+      "priority": "normale",
+      "status": "audit_a_faire",
+      "status_label": "État à consolider",
+      "summary": "Projet de hub paramétrable, à inventorier comme chantier unique plutôt que par conversation.",
+      "last_update": null,
+      "progress_percent": null,
+      "current_work": null,
+      "phases": [],
+      "timeline": [],
+      "next_action": "Identifier sa source technique canonique et son état Drive.",
+      "links": {
+        "repository": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps",
+        "chatgpt": null
+      }
+    },
+    {
+      "id": "fiche",
+      "name": "Fiche de personnage interactive",
+      "family": "Application JDR",
+      "priority": "haute",
+      "status": "audit_a_faire",
+      "status_label": "État à consolider",
+      "summary": "Fiche accessible sur plusieurs appareils, indépendante de Forge ; périmètre et dépôt à confirmer.",
+      "last_update": null,
+      "progress_percent": null,
+      "current_work": null,
+      "phases": [],
+      "timeline": [],
+      "next_action": "Consolider les demandes depuis les sources disponibles ; distinguer les propositions du code livré.",
+      "links": {
+        "repository": null,
+        "chatgpt": null
+      }
+    },
+    {
+      "id": "soundboard",
+      "name": "Soundboard",
+      "family": "Application audio",
+      "priority": "normale",
+      "status": "audit_a_faire",
+      "status_label": "Source officielle à confirmer",
+      "summary": "Plusieurs dépôts historiques ; dépôt officiel et résultats d'audit non encore consolidés dans ce tableau.",
+      "last_update": null,
+      "progress_percent": null,
+      "current_work": null,
+      "phases": [],
+      "timeline": [],
+      "next_action": "Identifier le dépôt officiel et relier les travaux d'audit.",
+      "links": {
+        "repository": null,
+        "chatgpt": null
+      }
+    },
+    {
+      "id": "guiltanas-control",
+      "name": "Guiltanas Control",
+      "family": "Pilotage",
+      "priority": "haute",
+      "status": "en_cours",
+      "status_label": "Architecture de synchronisation en cours",
+      "summary": "Pilotage par projet basé sur l'état Drive et une projection publiée sur GitHub.",
+      "last_update": "2026-10-29",
+      "progress_percent": null,
+      "current_work": {
+        "id": "GC-20261029-01",
+        "state": "en_cours",
+        "opened_date": "2026-10-29",
+        "objective": "Mettre en place l'état d'intervention Drive et l'interface projet qui actualise automatiquement son miroir public."
+      },
+      "phases": [
+        {
+          "id": "protocole",
+          "name": "Protocole Drive",
+          "status": "valide",
+          "detail": "Méthode globale et journal Forge mis à jour, vérification de l'enregistrement à effectuer.",
+          "progress_percent": null
+        },
+        {
+          "id": "interface",
+          "name": "Tableau de bord par projet",
+          "status": "en_cours",
+          "detail": "Lecture automatique d'un miroir JSON hébergé avec l'application.",
+          "progress_percent": null
+        },
+        {
+          "id": "bridge",
+          "name": "Synchronisation Drive autonome",
+          "status": "non_configure",
+          "detail": "Passerelle d'authentification Drive → GitHub non déployée ; la synchronisation repose actuellement sur deux écritures de l'assistant.",
+          "progress_percent": null
+        }
+      ],
+      "timeline": [
+        {
+          "date": "2026-10-29",
+          "kind": "decision",
+          "title": "Le projet remplace le chat comme unité de suivi",
+          "detail": "Le tableau présente des jalons uniques par application ; les chats deviennent des sources facultatives."
+        },
+        {
+          "date": "2026-10-29",
+          "kind": "pilotage",
+          "title": "Méthode de travail mise à jour dans Drive",
+          "detail": "Consigner l'intention puis le résultat de chaque étape."
+        }
+      ],
+      "next_action": "Finir la projection GitHub, vérifier la lecture du tableau, puis concevoir la passerelle d'authentification automatique Drive → GitHub.",
+      "links": {
+        "repository": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/tree/main/guiltanas-control",
+        "chatgpt": null
+      }
+    }
+  ]
+}
