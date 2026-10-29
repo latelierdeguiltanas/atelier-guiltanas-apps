@@ -5,8 +5,30 @@ const ROOT=self.registration.scope;
 const ICON=new URL('icons/mj-express-192.png?v=2',ROOT).href;
 const BADGE=new URL('icons/mj-express-192.png?v=2',ROOT).href;
 
-self.addEventListener('install',()=>self.skipWaiting());
-self.addEventListener('activate',event=>event.waitUntil(self.clients.claim()));
+const CACHE='mj-express-shell-v3';
+const SHELL=['./','./manifest.webmanifest','./app.js','./icons/mj-express-192.png','./icons/mj-express-512.png'];
+self.addEventListener('install',event=>event.waitUntil((async()=>{
+ // Only cache the public app shell. Never cache requests for private Bastide/Supabase data.
+ try{const cache=await caches.open(CACHE);await cache.addAll(SHELL);}catch{/* Installation must remain possible even if caching fails. */}
+ await self.skipWaiting();
+})()));
+self.addEventListener('activate',event=>event.waitUntil((async()=>{
+ const names=await caches.keys();
+ await Promise.all(names.filter(k=>k.startsWith('mj-express-shell-')&&k!==CACHE).map(k=>caches.delete(k)));
+ await self.clients.claim();
+})()));
+self.addEventListener('fetch',event=>{
+ if(event.request.mode!=='navigate'||event.request.method!=='GET')return;
+ const url=new URL(event.request.url);
+ if(url.origin!==self.location.origin||!url.pathname.startsWith(new URL(ROOT).pathname))return;
+ event.respondWith((async()=>{
+  try{return await fetch(event.request);}
+  catch{
+   const cached=await caches.match(new URL('./',ROOT).href);
+   return cached||new Response('MJ Express est hors ligne. Réessaie lorsque le réseau est disponible.',{status:503,headers:{'Content-Type':'text/plain; charset=utf-8'}});
+  }
+ })());
+});
 
 async function receipt(test,shown,error){
  if(!test?.id||!test?.secret)return;
