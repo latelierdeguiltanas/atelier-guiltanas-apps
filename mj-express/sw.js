@@ -5,7 +5,7 @@ const ROOT=self.registration.scope;
 const ICON=new URL('icons/mj-express-192.png?v=2',ROOT).href;
 const BADGE=new URL('icons/mj-express-192.png?v=2',ROOT).href;
 
-const CACHE='mj-express-shell-v3';
+const CACHE='mj-express-shell-v4';
 const SHELL=['./','./manifest.webmanifest','./app.js','./icons/mj-express-192.png','./icons/mj-express-512.png'];
 self.addEventListener('install',event=>event.waitUntil((async()=>{
  // Only cache the public app shell. Never cache requests for private Bastide/Supabase data.
