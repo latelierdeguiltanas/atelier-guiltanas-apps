@@ -151,14 +151,20 @@ async function localNotificationTest(){
  const target=$('#push-progress');
  try{
   const r=await service();
+  const tag='mj-express-local-'+Date.now();
   await r.showNotification('MJ Express · test local',{
    body:'Le cor enchanté annonce tes messages !',
    icon:new URL('./icons/mj-express-192.png?v=2',location.href).href,
    badge:new URL('./icons/mj-express-192.png?v=2',location.href).href,
-   tag:'mj-express-local-'+Date.now(),renotify:true,
+   tag,renotify:true,
    data:{url:location.href}
   });
-  target.textContent='✓ Demande d’affichage local acceptée par le navigateur. Si Android ne montre rien, vérifie les notifications Samsung Internet, les catégories et le mode Ne pas déranger.';
+  let registered='inconnu';
+  if(typeof r.getNotifications==='function'){
+   const current=await r.getNotifications({tag});
+   registered=String(current.length);
+  }
+  target.textContent='Le navigateur a accepté le test local. Notifications encore enregistrées : '+registered+'. '+(registered==='0'?'Aucune visible côté navigateur après la demande : vérifie les filtres Android.':'Si la barre d’état reste vide, vérifie les catégories de notification et les options d’alerte Android.');
  }catch(e){
   target.textContent='✗ Affichage local refusé : '+e.message+' (ce test ne dépend pas du serveur Push).';
  }finally{await refreshPushHealth();}
@@ -169,7 +175,7 @@ async function checkTestReceipt(id,quiet=false){
  try{
   const x=await pcall('test-status',null,{receiptId:id});
   if(x.workerReceived&&x.displayRequested){
-   target.textContent='✓ Push reçu par le service worker, affichage demandé à Android. Si la barre reste vide, vérifie les paramètres de notifications Samsung Internet.';
+   const worker=await service();let listed='non accessible';if(worker.getNotifications){const current=await worker.getNotifications({tag:'mj-test-'+id});listed=String(current.length)}target.textContent='✓ Push reçu. Le navigateur répertorie '+listed+' notification(s) pour ce test. Si Android n’affiche toujours rien, vérifie les catégories de notification, leur mode Alerte et le mode Ne pas déranger.';
    return true;
   }
   if(x.workerReceived&&x.workerError){
