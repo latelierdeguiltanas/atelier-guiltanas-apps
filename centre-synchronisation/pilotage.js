@@ -187,6 +187,36 @@ const projectEvidence={
     next:'Consolider les validations des dernières interventions contre la version publiée.'
   }
 };
+/* Project progress evidence. GitHub can show writes, not ChatGPT task process health. */
+async function loadForgeWorkEvidence(){
+ const dest=$('#forge-work-pulse');if(!dest)return;
+ dest.textContent='Lecture des preuves techniques GitHub…';
+ try{
+  const prefix='https://api.github.com/repos/latelierdeguiltanas/atelier-guiltanas-apps';
+  const [prResponse,commitsResponse]=await Promise.all([
+    fetch(prefix+'/pulls/2',{headers:{Accept:'application/vnd.github+json'},cache:'no-store'}),
+    fetch(prefix+'/pulls/2/commits?per_page=100',{headers:{Accept:'application/vnd.github+json'},cache:'no-store'})
+  ]);
+  if(!prResponse.ok||!commitsResponse.ok)throw Error('GitHub ne répond pas ('+prResponse.status+'/'+commitsResponse.status+')');
+  const pr=await prResponse.json(),commits=await commitsResponse.json();
+  if(!Array.isArray(commits))throw Error('Historique de la PR non disponible');
+  const newest=commits.map(c=>({date:c.commit?.committer?.date||c.commit?.author?.date,sha:c.sha}))
+    .filter(x=>x.date&&Number.isFinite(Date.parse(x.date))).sort((a,b)=>Date.parse(b.date)-Date.parse(a.date))[0];
+  const last=newest?.date?new Date(newest.date):null;
+  const prTime=pr.updated_at?new Date(pr.updated_at):null;
+  const dateFmt=x=>x&&Number.isFinite(x.getTime())?x.toLocaleString('fr-FR',{timeZone:'Europe/Paris',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'inconnue';
+  const hours=last?(Date.now()-last.getTime())/3600000:null;
+  const inactivity=hours!==null&&hours>24;
+  const state=pr.merged?'Fusionnée':pr.state==='open'?(pr.draft?'Ouverte en brouillon':'Ouverte'):'Fermée, non fusionnée';
+  dest.innerHTML='<div class="work-evidence-row"><strong>PR #2 · '+escapeHTML(state)+'</strong><span>Dernier commit : '+escapeHTML(dateFmt(last))+'</span>'+
+    '<span>Dernière mise à jour PR : '+escapeHTML(dateFmt(prTime))+'</span>'+
+    '<span>Commits : '+escapeHTML(commits.length)+'</span>'+
+    (inactivity?'<span class="work-evidence-warning">⚠ Pas de nouveau commit constaté depuis plus de 24 h.</span>':'<span class="work-evidence-ok">✓ Activité GitHub récente constatée.</span>')+'</div>'+
+    '<p class="minihelp">Ce contrôle prouve uniquement des modifications enregistrées sur GitHub ; il ne teste ni la boucle interne de Work, ni l’état du chat Android/Web, ni la validation N1.</p>'+
+    '<p><a href="https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/pull/2" target="_blank" rel="noopener noreferrer">Ouvrir les travaux Forge N1</a></p>';
+ }catch(err){dest.textContent='Contrôle GitHub impossible : '+String(err.message||err)+'. Aucun diagnostic de chat ne peut en être déduit.'}
+}
+
 function projectEvidenceMarkup(p){
   const e=projectEvidence[p.id];
   const title=e?e.headline:'État de validation : non audité individuellement';
@@ -199,6 +229,7 @@ function projectEvidenceMarkup(p){
     '<p><span class="uncertain">○ Non certifié :</span> '+escapeHTML(no)+'</p>'+
     '<p><b>Prochaine vérification :</b> '+escapeHTML(next)+'</p>'+
     (e?.source?'<p>'+link(e.source,'Voir le référentiel de tests')+'</p>':'')+
+    (p.id==='forge'?'<div class="project-work-pulse"><h3>Dernière preuve technique — Forge N1</h3><div id="forge-work-pulse">Non vérifiée</div><button class="smallbutton" type="button" data-refresh-forge-work>↻ Contrôler l’activité GitHub</button></div>':'')+
     '<p class="minihelp">Chats associés : inventaire incomplet. Aucun nombre de chats n’est inventé.</p>'+
     '<div class="detail-links project-resume"><button class="smallbutton primary" data-reprise-project="'+escapeHTML(p.id)+'">↗ Reprendre dans ChatGPT</button></div></section>';
 }
@@ -344,6 +375,7 @@ function openProject(id){
  content+=projectEvidenceMarkup(p);content+=projectChatMarkup(p);
  content+='<div class="detail-links"><button class="smallbutton primary" data-edit-project="'+escapeHTML(p.id)+'">Modifier cette fiche</button></div>';
  showDrawer(p.name,'Projet',content);
+ if(p.id==='forge')void loadForgeWorkEvidence();
 }
 function editProject(id){currentEditId=id||null;
  const p=projectData.find(x=>x.id===id)||{id:'',name:'',family:'Jouer & raconter',category:'',lifecycle:'brouillon',publication:'non_publie',summary:'',progress_note:'',next_action:'',repo:'',folder:'',app_id:''};
@@ -499,6 +531,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('.d
 $$('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));$$('[data-view-go]').forEach(b=>b.onclick=()=>setView(b.dataset.viewGo));$('#graph-repo').onchange=e=>{graphRepo=e.target.value;selected=null;hideDrawer();drawMap();pushRoute()};$('#graph-reset').onclick=()=>{graphRepo='';selected=null;hideDrawer();$('#graph-repo').value='';drawMap();pushRoute()};
 $('#project-search').oninput=renderProjects;$('#project-stage').onchange=renderProjects;$('#project-family').onchange=renderProjects;$('#project-new').onclick=()=>editProject(null);$('#project-scan').onclick=()=>loadRegistry(true);$('#project-refresh').onclick=()=>loadRegistry(false);
  $('#chat-findings-refresh').onclick=loadChatInventory;
+ document.addEventListener('click',e=>{if(e.target.closest('[data-refresh-forge-work]'))void loadForgeWorkEvidence()});
  document.addEventListener('click',e=>{const audit=e.target.closest('[data-project-audit]');if(audit){openProject(audit.dataset.projectAudit);return}const resume=e.target.closest('[data-reprise-project]');if(resume){e.preventDefault();resumeProject(resume.dataset.repriseProject)}});$('#project-close').onclick=$('#project-cancel').onclick=goBack;$('#project-form').onsubmit=async e=>{e.preventDefault();const f=e.target,b=$('#project-submit');b.disabled=true;$('#project-form-result').textContent='Sauvegarde sur le serveur…';try{const body=Object.fromEntries(new FormData(f));const d=await registryRequest('save',body);$('#project-form-result').textContent='Fiche enregistrée.';$('#project-editor').close();if(history.state?.pilotage&&history.state.route?.dialog==='project-editor'){history.replaceState({...history.state,route:{...history.state.route,dialog:null,edit:null}},'',location.href)}await loadRegistry();openProject(d.project.id)}catch(err){$('#project-form-result').textContent=err.message}finally{b.disabled=false}};$('#project-list').addEventListener('click',e=>{const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)});$('#project-list').addEventListener('keydown',e=>{if(e.key==='Enter'){const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)}});document.addEventListener('click',e=>{const b=e.target.closest('[data-edit-project]');if(b)editProject(b.dataset.editProject)});$('#app-search').oninput=e=>{search=e.target.value.trim().toLowerCase();renderApps()};$('#app-filter').onchange=renderApps;
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-check-online]');if(!b)return;const a=model?.apps.find(x=>x.id===b.dataset.checkOnline),target=$('#online-test');if(!a||!target)return;b.disabled=true;target.textContent='Test en cours…';try{const u=ROOT+a.path;const r=await fetch(u,{method:'HEAD',cache:'no-store'});target.textContent=r.ok?'✓ Page accessible depuis cet appareil ('+r.status+'). Fonctionnalités internes non testées.':'⚠ Page non confirmée (HTTP '+r.status+').';}catch(err){target.textContent='⚠ Test impossible : '+err.message;}finally{b.disabled=false}});
 $('#drawer-close').onclick=closeDrawer;$('#shade').onclick=closeDrawer;$('#cockpit-back').onclick=goBack;$('#help').onclick=$('#open-guide').onclick=()=>showHelp('guide');$('#term-close').onclick=goBack;document.addEventListener('click',e=>{const b=e.target.closest('[data-term]');if(b)showHelp(b.dataset.term)});$('#refresh-players').onclick=loadPlayerChecks;$('#reload').onclick=load}
