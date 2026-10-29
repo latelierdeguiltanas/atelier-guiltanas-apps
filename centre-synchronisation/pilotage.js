@@ -246,7 +246,7 @@ const chatStates={
  cloture:'Clôturé pour le projet'
 };
 async function chatRequest(action,body){
- const endpoint=CHATS_ENDPOINT+'?action='+encodeURIComponent(action);
+ const endpoint=CHATS_ENDPOINT+'?action='+action;
  const response=await fetch(endpoint,{method:body?'POST':'GET',headers:{'Content-Type':'application/json',...Owner.headers()},cache:'no-store',body:body?JSON.stringify(body):undefined});
  const data=await response.json();if(!response.ok)throw Error(data.error||'Inventaire indisponible');return data;
 }
@@ -294,7 +294,7 @@ function renderChatPanel(){
  const counts=chatStatusCounts();
  summary.textContent='· '+counts.total+' recensée'+(counts.total>1?'s':'');
  stats.innerHTML='<div class="chat-summary-grid">'+
- '<div><strong>'+counts.total+'</strong><small>Chad(s) inventorié(s)</small></div>'+
+ '<div><strong>'+counts.total+'</strong><small>Chats inventoriés</small></div>'+
  '<div><strong>'+counts.blocked+'</strong><small>Blocages signalés</small></div>'+
  '<div><strong>'+counts.suspect+'</strong><small>À examiner</small></div>'+
  '<div><strong>'+counts.unknown+'</strong><small>Non vérifiés</small></div></div>';
