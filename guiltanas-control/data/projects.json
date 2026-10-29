@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
   "projection": "public_project_status_only",
-  "sync_contract": "drive_state_then_github_mirror_same_intervention",
+  "sync_contract": "drive_then_github_dual_write_until_bridge_auth",
   "last_published_date": "2026-10-29",
-  "last_published_reason": "Initialisation du protocole Drive et du tableau de bord par projet",
+  "last_published_reason": "Clôture de l'intervention de mise en place, statut partiel explicite",
   "caveat": "Les statuts reflètent les preuves identifiées ; une absence de preuve n'est pas un test échoué.",
   "projects": [
     {
@@ -154,37 +154,32 @@
       "name": "Guiltanas Control",
       "family": "Pilotage",
       "priority": "haute",
-      "status": "en_cours",
-      "status_label": "Architecture de synchronisation en cours",
-      "summary": "Pilotage par projet basé sur l'état Drive et une projection publiée sur GitHub.",
+      "status": "partiel",
+      "status_label": "Pilote publié — liaison Drive à activer",
+      "summary": "Vue par projet en ligne dans le dépôt, registre Drive établi et passerelle automatisée prête à configurer. Vérification dans un navigateur réel encore à faire.",
       "last_update": "2026-10-29",
       "progress_percent": null,
-      "current_work": {
-        "id": "GC-20261029-01",
-        "state": "en_cours",
-        "opened_date": "2026-10-29",
-        "objective": "Mettre en place l'état d'intervention Drive et l'interface projet qui actualise automatiquement son miroir public."
-      },
+      "current_work": null,
       "phases": [
         {
           "id": "protocole",
-          "name": "Protocole Drive",
+          "name": "Protocole d'état par projet sur Drive",
           "status": "valide",
-          "detail": "Méthode globale et journal Forge mis à jour, vérification de l'enregistrement à effectuer.",
+          "detail": "Méthode globale, état Forge et état Control mis à jour. Deux blocs de publication Drive structurés créés.",
           "progress_percent": null
         },
         {
           "id": "interface",
-          "name": "Tableau de bord par projet",
-          "status": "en_cours",
-          "detail": "Lecture automatique d'un miroir JSON hébergé avec l'application.",
+          "name": "Application de pilotage par projet",
+          "status": "verification_requise",
+          "detail": "Nouvelle interface et chargement automatique du fichier data/projects.json publiés sur GitHub ; syntaxe JS vérifiée, essai au clic sur appareil réel non fait.",
           "progress_percent": null
         },
         {
           "id": "bridge",
-          "name": "Synchronisation Drive autonome",
+          "name": "Synchronisation autonome Drive → GitHub",
           "status": "non_configure",
-          "detail": "Passerelle d'authentification Drive → GitHub non déployée ; la synchronisation repose actuellement sur deux écritures de l'assistant.",
+          "detail": "Script + workflow programmés toutes les 5 minutes. Inactifs tant que le compte de service Drive et les secrets GitHub ne sont pas configurés.",
           "progress_percent": null
         }
       ],
@@ -200,13 +195,20 @@
           "kind": "pilotage",
           "title": "Méthode de travail mise à jour dans Drive",
           "detail": "Consigner l'intention puis le résultat de chaque étape."
+        },
+        {
+          "date": "2026-10-29",
+          "kind": "developpement",
+          "title": "Interface projet et passerelle Drive enregistrées",
+          "detail": "GitHub commits 1cd3acc (interface), 390c40e (registre), 0208b23 (script) et c461150 (workflow). La validation navigateur et l'authentification restent à réaliser."
         }
       ],
-      "next_action": "Finir la projection GitHub, vérifier la lecture du tableau, puis concevoir la passerelle d'authentification automatique Drive → GitHub.",
+      "next_action": "Activer une fois l'accès lecture Google Docs via compte de service et les secrets GitHub, vérifier un cycle complet Drive → application, puis tester l'interface sur smartphone et étendre l'inventaire.",
       "links": {
         "repository": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/tree/main/guiltanas-control",
         "chatgpt": null
-      }
+      },
+      "progress_basis": "Le protocole et le code sont enregistrés. Le pont Drive → GitHub n'a pas ses autorisations, la recette mobile n'est pas réalisée. Aucun pourcentage global certifiable."
     }
   ]
 }
