@@ -88,7 +88,7 @@ function setView(view,record=true){
  currentView=view;
  if(changed){hideDrawer();selected=null}
  $$('.view').forEach(x=>x.hidden=x.id!=='view-'+view);
- $('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+ $$('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
  $('#metrics').hidden=view!=='overview';
  $('#reload').hidden=view==='projects';
  $('#page-title').innerHTML=escapeHTML(names[view])+' <span class="slim">'+escapeHTML(viewDescriptions[view])+'</span>';
