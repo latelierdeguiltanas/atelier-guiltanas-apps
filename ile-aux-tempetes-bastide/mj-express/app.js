@@ -19,113 +19,165 @@ async function service(){
  registration=await navigator.serviceWorker.register('./sw.js',{scope:'./',updateViaCache:'none'});
  return registration;
 }
-function permissionState(){return 'Notification'in window?Notification.permission:'unsupported'}
-function explainPermission(){
- const perm=permissionState();
- $('#push-status').textContent=perm==='granted'?'Autorisation navigateur : accordée':perm==='denied'?'Autorisation navigateur : bloquée':perm==='default'?'Autorisation navigateur : non accordée':'Notifications indisponibles';
- $('#push-status').style.color=perm==='granted'?'#99e9a6':perm==='denied'?'#f3a9a0':'#f1c17e';
+let lastPermissionResponse=null;
+let pushSnapshot=null;
+async function inspectPush(){
+ const details={
+  notificationApi:!!window.Notification,
+  notificationPermission:window.Notification?.permission??'indisponible',
+  requestResult:lastPermissionResponse,
+  browserPermission:'indisponible',
+  pushPermission:'indisponible',
+  serviceWorker:false,
+  subscription:false,
+  serverSubscription:false,
+  error:null
+ };
+ if(navigator.permissions?.query){
+  try{const permission=await navigator.permissions.query({name:'notifications'});details.browserPermission=permission.state;}
+  catch{details.browserPermission='non exposée';}
+ }
+ try{
+  const r=await service();details.serviceWorker=true;
+  if(!r.pushManager){details.error='PushManager indisponible sur le service worker';return details;}
+  if(typeof r.pushManager.permissionState==='function'){
+   try{details.pushPermission=await r.pushManager.permissionState({userVisibleOnly:true});}
+   catch{details.pushPermission='non exposée';}
+  }
+  const local=await r.pushManager.getSubscription();
+  details.subscription=!!local;
+  if(local){
+   const server=await pcall('devices');
+   // Cross-check endpoint on the server rather than just a per-browser random deviceId.
+   // The server deliberately returns no private endpoint: compare deviceId and active state.
+   details.serverSubscription=(server.devices||[]).some(d=>d.device_id===deviceId()&&!d.disabled_at);
+  }
+ }catch(e){details.error=String(e?.message||e);}
+ return details;
+}
+function paintPushHealth(d){
+ pushSnapshot=d;
+ const chip=$('#push-status'),out=$('#push-health');
+ const confirmed=d.subscription&&d.serverSubscription;
+ const allowed=[d.requestResult,d.notificationPermission,d.browserPermission,d.pushPermission].includes('granted');
+ const denied=[d.notificationPermission,d.browserPermission,d.pushPermission].includes('denied');
+ if(confirmed){chip.textContent='✓ Abonnement Push local et serveur confirmé';chip.style.color='#9aefad';}
+ else if(d.subscription){chip.textContent='⚠ Abonnement local non confirmé sur Supabase';chip.style.color='#f3d08c';}
+ else if(d.serviceWorker&&allowed){chip.textContent='⚠ Permission accordée, abonnement absent';chip.style.color='#f3d08c';}
+ else if(denied){chip.textContent='✗ Autorisation bloquée';chip.style.color='#f4aba4';}
+ else{chip.textContent='⚠ Abonnement Push non confirmé';chip.style.color='#f3d08c';}
+ out.textContent='Navigateur : '+d.notificationPermission+' · Permission Android/site : '+d.browserPermission+' · Push : '+d.pushPermission+' · Abonnement : '+(d.subscription?'oui':'non')+' · Serveur : '+(d.serverSubscription?'oui':'non')+(d.error?' · Erreur : '+d.error:'');
 }
 async function refreshPushHealth(){
- explainPermission();
- const out=$('#push-health');
- const perm=permissionState();
- if(perm==='denied'){out.textContent='Android/Samsung Internet bloque les notifications : autorise-les dans les paramètres du navigateur et du téléphone.';return}
- if(perm==='default'){out.textContent='La fenêtre de permission doit être acceptée dans CE navigateur. Un abonnement ancien côté serveur ne suffit pas.';return}
- if(perm!=='granted'){out.textContent='Cette version du navigateur ne propose pas les notifications Web Push.';return}
+ const info=await inspectPush();paintPushHealth(info);return info;
+}
+function requestPermissionFromClick(){
+ // Call directly during the tap: Samsung/Android may lose transient user activation after awaits.
+ const api=window.Notification;
+ if(!api||typeof api.requestPermission!=='function')return Promise.resolve(null);
+ if(api.permission==='granted')return Promise.resolve('granted');
  try{
-  const r=await service();
-  const local=await r.pushManager.getSubscription();
-  if(!local){out.textContent='Permission accordée, mais aucun abonnement Push sur cet appareil. Appuie sur « Activer les notifications ».';return}
-  const server=await pcall('devices');
-  const known=(server.devices||[]).find(x=>x.device_id===deviceId()&&!x.disabled_at);
-  out.textContent=known?'✓ Permission, abonnement local et inscription serveur confirmés. L’affichage Android reste à tester.':'Abonnement local trouvé mais non confirmé sur le serveur : réactive les notifications.';
- }catch(e){out.textContent='Diagnostic Push incomplet : '+e.message}
+  const p=api.requestPermission();
+  if(p&&typeof p.then==='function')return p;
+  return Promise.resolve(api.permission);
+ }catch(e){return Promise.reject(e);}
 }
 async function enable(){
  const btn=$('#push-enable');btn.disabled=true;
+ let phase='permission';
  try{
-  if(!('PushManager'in window)||!('Notification'in window))throw Error('Web Push incompatible avec ce navigateur.');
-  // Must call requestPermission from the original user gesture, BEFORE any await.
-  const requested=Notification.permission==='default'?Notification.requestPermission():Promise.resolve(Notification.permission);
-  const perm=await requested;
-  if(perm!=='granted')throw Error(perm==='denied'?'Autorisation bloquée. Vérifie les notifications du site dans les paramètres Samsung Internet / Android.':'Autorisation non accordée dans ce navigateur.');
+  const asked=requestPermissionFromClick();
+  const result=await asked;
+  lastPermissionResponse=result;
+  phase='service worker';
   const r=await service();
+  if(!r.pushManager)throw Error('Samsung Internet ne présente pas PushManager pour ce site.');
+  phase='vérification serveur';
   const d=await pcall('status');
+  phase='abonnement navigateur';
   let sub=await r.pushManager.getSubscription();
-  if(!sub)sub=await r.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64ToArr(d.publicKey)});
+  if(!sub){
+   try{sub=await r.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64ToArr(d.publicKey)});}
+   catch(err){throw Error('Abonnement refusé par le navigateur : '+String(err?.message||err));}
+  }
+  phase='enregistrement Supabase';
   await pcall('subscribe',{subscription:sub.toJSON(),deviceId:deviceId(),deviceLabel:'MJ Express',browserLabel:navigator.userAgent.slice(0,80)});
-  status('Abonnement Push enregistré sur ce navigateur. Vérifie maintenant l’affichage local.');
-  $('#push-progress').textContent='Étape 1/2 : inscription confirmée. Utilise « Tester l’affichage sur ce téléphone ».';
-  await refreshDevices();await refreshPushHealth();
- }catch(e){status('Notifications non activées : '+e.message);$('#push-progress').textContent='Activation incomplète : '+e.message;await refreshPushHealth()}
- finally{btn.disabled=false}
+  status('Abonnement Push enregistré. Le prochain test vérifiera la réception réelle.');
+  $('#push-progress').textContent='✓ Abonnement accepté. Vérifie maintenant l’affichage local, puis l’envoi du serveur.';
+  await refreshDevices();
+ }catch(e){
+  status('Notifications : erreur à l’étape « '+phase+' » : '+e.message);
+  $('#push-progress').textContent='✗ '+phase+' : '+e.message+' · Permission renvoyée : '+String(lastPermissionResponse??'inconnue');
+ }finally{btn.disabled=false;await refreshPushHealth();}
 }
 async function disable(){
  try{
-  const r=await service(),sub=await r.pushManager.getSubscription();
-  if(sub){await pcall('unsubscribe',{endpoint:sub.endpoint});await sub.unsubscribe()}
-  status('Abonnement désactivé sur ce navigateur.');
-  $('#push-progress').textContent='Désactivé sur cet appareil.';
-  await refreshDevices();await refreshPushHealth();
+  const r=await service(),sub=await r.pushManager?.getSubscription();
+  if(sub){await pcall('unsubscribe',{endpoint:sub.endpoint});await sub.unsubscribe();}
+  status('Abonnement désactivé sur cet appareil.');$('#push-progress').textContent='Désactivé.';
+  await refreshDevices();
  }catch(e){status('Désactivation impossible : '+e.message)}
+ finally{await refreshPushHealth();}
 }
 async function refreshDevices(){
  try{
-  const s=await pcall('devices');
-  $('#devices-list').innerHTML=(s.devices||[]).map(x=>'<div class="item"><b>'+esc(x.device_label||'Appareil sans nom')+'</b> · '+(x.disabled_at?'Désactivé':'Abonné')+'<div class="meta">Vu le '+new Date(x.last_seen_at).toLocaleString('fr-FR')+'</div></div>').join('')||'<div class="meta">Aucun appareil inscrit aux notifications.</div>';
- }catch(e){$('#devices-list').textContent='Impossible de vérifier les appareils : '+e.message}
+  const d=await pcall('devices');
+  $('#devices-list').innerHTML=(d.devices||[]).map(x=>'<div class="item"><b>'+esc(x.device_label||'Appareil sans nom')+'</b> · '+(x.disabled_at?'Désactivé':'Abonné')+'<div class="meta">Vu le '+new Date(x.last_seen_at).toLocaleString('fr-FR')+'</div></div>').join('')||'<div class="meta">Aucun appareil inscrit aux notifications.</div>';
+ }catch(e){$('#devices-list').textContent='Impossible de vérifier les appareils : '+e.message;}
 }
 async function localNotificationTest(){
  const target=$('#push-progress');
- if(permissionState()!=='granted'){target.textContent='Affichage impossible : autorise d’abord les notifications dans ce navigateur.';await refreshPushHealth();return}
  try{
   const r=await service();
   await r.showNotification('MJ Express · test local',{
-   body:'Le cor enchanté annonce tes messages !',icon:new URL('./icons/mj-express-192.png?v=2',location.href).href,
+   body:'Le cor enchanté annonce tes messages !',
+   icon:new URL('./icons/mj-express-192.png?v=2',location.href).href,
    badge:new URL('./icons/mj-express-192.png?v=2',location.href).href,
-   tag:'mj-express-local-'+Date.now(),renotify:true,vibrate:[160,80,180],
+   tag:'mj-express-local-'+Date.now(),renotify:true,
    data:{url:location.href}
   });
-  target.textContent='✓ Le navigateur a accepté la demande d’affichage local. Regarde les notifications Android. Si rien n’apparaît, vérifie les notifications de Samsung Internet dans les paramètres du téléphone.';
- }catch(e){target.textContent='Échec de l’affichage local : '+e.message}
+  target.textContent='✓ Demande d’affichage local acceptée par le navigateur. Si Android ne montre rien, vérifie les notifications Samsung Internet, les catégories et le mode Ne pas déranger.';
+ }catch(e){
+  target.textContent='✗ Affichage local refusé : '+e.message+' (ce test ne dépend pas du serveur Push).';
+ }finally{await refreshPushHealth();}
 }
 async function checkTestReceipt(id,quiet=false){
- if(!id)return;
+ if(!id)return false;
  const target=$('#push-progress');
  try{
   const x=await pcall('test-status',null,{receiptId:id});
   if(x.workerReceived&&x.displayRequested){
-   target.textContent='✓ Réception par le service worker confirmée : Android a reçu une demande d’affichage. Si rien en barre d’état, vérifie les notifications système du navigateur.';
+   target.textContent='✓ Push reçu par le service worker, affichage demandé à Android. Si la barre reste vide, vérifie les paramètres de notifications Samsung Internet.';
    return true;
   }
   if(x.workerReceived&&x.workerError){
-   target.textContent='✗ Notification reçue par le service worker, mais affichage refusé : '+x.workerError;
+   target.textContent='✗ Push reçu, mais affichage refusé : '+x.workerError;
    return true;
   }
-  if(!quiet)target.textContent=x.gatewayAccepted?'Passerelle Push acceptée ; aucune confirmation de réception sur le téléphone pour l’instant.':'Passerelle Push non confirmée.';
+  if(!quiet)target.textContent=x.gatewayAccepted?'Passerelle Push acceptée, mais aucune confirmation du service worker sur ce téléphone.':'Envoi non confirmé.';
   return false;
- }catch(e){if(!quiet)target.textContent='Vérification de réception indisponible : '+e.message;return false}
+ }catch(e){if(!quiet)target.textContent='Vérification du reçu impossible : '+e.message;return false;}
 }
 async function serverNotificationTest(){
  const btn=$('#push-test');btn.disabled=true;
  try{
-  if(permissionState()!=='granted')throw Error('Autorise d’abord les notifications dans ce navigateur.');
-  const r=await service(),sub=await r.pushManager.getSubscription();
-  if(!sub)throw Error('Aucun abonnement local : commence par « Activer les notifications ».');
-  const data=await pcall('test',{deviceId:deviceId()});
-  if(!data.accepted||!data.receiptId)throw Error('Passerelle Push non confirmée.');
-  lastTestReceipt=data.receiptId;
+  const r=await service(),sub=await r.pushManager?.getSubscription();
+  if(!sub)throw Error('Aucun abonnement Push local. Utilise d’abord « Activer les notifications ».');
+  // Resynchronize existing subscription, including phones that reinstalled the application.
+  await pcall('subscribe',{subscription:sub.toJSON(),deviceId:deviceId(),deviceLabel:'MJ Express',browserLabel:navigator.userAgent.slice(0,80)});
+  const d=await pcall('test',{deviceId:deviceId()});
+  if(!d.accepted||!d.receiptId)throw Error('Envoi rejeté par la passerelle.');
+  lastTestReceipt=d.receiptId;
   sessionStorage.setItem('mj_express_last_push_receipt',lastTestReceipt);
-  $('#push-progress').textContent='Étape 1/2 : la passerelle Push a accepté le message. Vérification de la réception sur Android…';
-  for(let attempt=0;attempt<9;attempt++){
+  $('#push-progress').textContent='Étape 1 : passerelle acceptée. Attente du service worker…';
+  for(let n=0;n<9;n++){
    if(document.hidden)return;
    await new Promise(resolve=>setTimeout(resolve,2500));
    if(await checkTestReceipt(lastTestReceipt,true))return;
   }
   await checkTestReceipt(lastTestReceipt);
-  $('#push-progress').textContent+=' Si le test local fonctionne mais pas ce test serveur, la réception en arrière-plan du navigateur est à contrôler.';
- }catch(e){$('#push-progress').textContent='Test serveur impossible : '+e.message}
- finally{btn.disabled=false}
+ }catch(e){$('#push-progress').textContent='✗ Test Push serveur : '+e.message;}
+ finally{btn.disabled=false;await refreshPushHealth();}
 }
 async function diagnose(){const out=$('#diagnostics');out.textContent='Vérification en cours…';const checks=[];async function ck(title,fn){try{const data=await fn();checks.push({title,ok:true,detail:data})}catch(e){checks.push({title,ok:false,detail:e.message})}}
 await ck('Accès privé MJ',async()=>{const r=await A.call('identity');if(r.access!=='admin')throw Error('Cet appareil ne possède pas un lien MJ');return 'Autorisé'});
