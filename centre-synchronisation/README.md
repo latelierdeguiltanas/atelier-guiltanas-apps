@@ -139,3 +139,19 @@ Le Cockpit/Pilotage Guiltanas (`centre-synchronisation/`) est l'application prop
 **Contrôles :** migrations confirmées, fonction Edge ACTIVE, syntaxe JavaScript du Cockpit vérifiée et fichiers GitHub relus. Recette navigateur au clic, import d'export réel et autorisation au travers de la session propriétaire **pas encore testés sur un téléphone réel**. La table de chats est vide jusqu'à un import volontaire : ne pas annoncer « tous les chats analysés » ni « tous les bugs détectés » avant une preuve.
 
 **À suivre :** import privé ponctuel de conversations.json (dans la rubrique Conversations), correction des affectations multi-projets, contrôles utilisateurs sur les chats réellement bloqués ; ajout des jalons Drive avec preuves à chaque fiche. La synchronisation automatique Drive → Supabase reste un chantier séparé non certifié.
+
+## 29/10/2026 soir — Correction de l'inventaire des chats : aucune importation exigée
+
+**Consigne utilisateur faisant autorité :** ne pas demander d'export ni d'import de l'intégralité des chats. Le Cockpit doit être **orienté projets**, très lisible et utilisable sur téléphone. La collecte doit être effectuée par l'assistant à partir des conversations et documents qu'il peut réellement retrouver, avec provenance.
+
+**Application modifiée :** le bouton/fichier d'import `conversations.json` a été retiré de l'interface. Dans l'onglet Projets, les conversations de travail Work ont un panneau repliable alimenté par les signalements privés retrouvés dans les échanges accessibles, **pas** par des fils inventés ni par l'historique complet. Chaque entrée conserve sa date, son périmètre, la preuve du signalement et deux états distincts « Android » et « Web ». Par défaut ces deux états sont **non testés**. Un signalement historique n'est pas une preuve que la conversation est encore inutilisable.
+
+**Accès :** table privée `public.guiltanas_work_chat_findings`, RLS activée, accès anonyme et authenticated révoqué, service role seulement via fonction Edge `guiltanas-chat-inventory` (action GET findings, session propriétaire Atelier obligatoire). Aucun lien direct de chat n'est forgé. Les entrées « Reprise et certification Forge » ou « Dragonlance phase 2C » sont des *signalements historiques* parfois susceptibles de recouvrir plusieurs interventions, et non des threads identifiés par leur ID.
+
+**Projet parent :** « Écosystème · Atelier de Guiltanas » est visible dans l'onglet Projets, avec les sous-ensembles d'applications et créations repliables ; les chantiers plus personnels comme Budget et Missions restent dans une rubrique distincte. Les signalements de chat figurent sous les projets concernés, sans créer un projet par chat.
+
+**Découvertes complémentaires :** Gestionnaire de scénarios HTML (ancien livrable local), Identité et architecture de marque (Gates 01–03 historiques), Skeryon (univers créatif) ont été ajoutés au registre existant avec état actuel **à requalifier**. Aucune suppression de projet ancien.
+
+**Limite technique essentielle :** cette application n'a pas de connexion capable de parcourir et tester les sessions privées ChatGPT sur Android et sur le site web. Son bouton d'actualisation relit les rapports/états déjà accessibles dans Supabase, il **ne détecte pas automatiquement** qu'un chat vient de planter. Tester directement des conversations sur un navigateur web signé nécessite une session de navigation autorisée ; le comportement de l'application Android ne peut pas être déduit d'un test web. Ne jamais afficher « fonctionnel » ou « bugué confirmé » sans test source sur la plateforme correspondante.
+
+**Vérifications réalisées :** source de l'interface GitHub relue, syntaxe JavaScript passée, Edge Function active, contrôle SQL des permissions RLS ; aucune preuve de test interactif sur navigateur authentifié ou appareil Android dans cette intervention. Ne pas annoncer une synchronisation live des chats ChatGPT comme livrée.
