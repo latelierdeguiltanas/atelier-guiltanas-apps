@@ -253,7 +253,7 @@ function renderProjectAuditPulse(){
 
 function projectResumeText(p){
  const evidence=projectEvidence[p.id];
- return 'REPRISE PAR PROJET — '+p.name+'\n\nConsulte le registre « Pilotage Guiltanas » et le document Drive « 00 — ÉTAT DU PROJET » de ce projet AVANT de modifier du code. Inscris le périmètre et le statut EN COURS dans Drive. À chaque jalon, inscris modification, commit, preuves, éventuels échecs et prochaine action. Mets à jour le registre existant, sans créer de projet doublon. Ne considère pas les affirmations des anciens chats comme preuves de validation.\n\nDernier état déclaré : '+(p.progress_note||p.summary||'non renseigné')+'\nStatut : '+(p.lifecycle||'inconnu')+'\nProchaine étape : '+(p.next_action||'à déterminer')+'\n'+(evidence?'\nÉtat de vérification : '+evidence.headline+'\nÀ vérifier : '+evidence.uncertain:'')+'\n\nPrends les sources existantes comme référence, préserve les autres projets et n’invente aucun pourcentage de validation.';
+ return 'REPRISE PAR PROJET — '+p.name+'\n\nProtocole Atelier obligatoire : lire centre-synchronisation/PROTOCOLE_INTERVENTION.md et le document « 00 — MÉTHODE GLOBALE DE TRAVAIL — PROJETS » avant de commencer. Ouvrir une intervention EN COURS dans le document Drive du projet AVANT modification ; après chaque grand lot consigner preuves, commits et étapes dans Drive (et dans le journal privé du Copilote si accessible) ; AVANT la réponse finale consigner le bilan et clore TERMINÉ ou PARTIEL. Ne jamais déclarer un chat planté sur la seule absence de jalon.\n\nConsulte le registre « Pilotage Guiltanas » et le document Drive « 00 — ÉTAT DU PROJET » de ce projet AVANT de modifier du code. Inscris le périmètre et le statut EN COURS dans Drive. À chaque jalon, inscris modification, commit, preuves, éventuels échecs et prochaine action. Mets à jour le registre existant, sans créer de projet doublon. Ne considère pas les affirmations des anciens chats comme preuves de validation.\n\nDernier état déclaré : '+(p.progress_note||p.summary||'non renseigné')+'\nStatut : '+(p.lifecycle||'inconnu')+'\nProchaine étape : '+(p.next_action||'à déterminer')+'\n'+(evidence?'\nÉtat de vérification : '+evidence.headline+'\nÀ vérifier : '+evidence.uncertain:'')+'\n\nPrends les sources existantes comme référence, préserve les autres projets et n’invente aucun pourcentage de validation.';
 }
 async function resumeProject(id){
  const p=projectData.find(x=>x.id===id);if(!p)return;
@@ -466,16 +466,25 @@ function renderProjects(){
 
 function openProject(id){
  const p=projectData.find(x=>x.id===id);if(!p)return;selected={kind:'project',id};
- let content='<p class="drawer-desc">'+escapeHTML(p.summary||'Objectif à préciser')+'</p>';
+ const short=PROJECT_SHORT_NAMES[p.id]||p.name;
+ const next=(p.next_action||'La prochaine étape reste à confirmer.').slice(0,650);
+ let content='<div class="project-drawer-head">'+projectIconMarkup(p)+'<div><div class="project-drawer-kicker">'+escapeHTML(p.category||'Projet')+'</div><strong>'+escapeHTML(short)+'</strong><small>'+escapeHTML(projectState(p))+'</small></div></div>';
+ content+='<div class="project-hero-summary"><p>'+escapeHTML((p.summary||'Objectif à préciser.').slice(0,500))+'</p></div>';
+ content+='<div class="project-next-step"><small>PROCHAIN PAS</small><p>'+escapeHTML(next)+'</p></div>';
+ if(p.repo==='atelier-guiltanas-apps'&&/^[a-z0-9/_-]+\/$/i.test(p.folder||'')&&p.publication==='en_ligne'){
+  content+='<div class="detail-links"><a class="smallbutton primary" href="'+escapeHTML(ROOT+p.folder)+'" target="_blank" rel="noopener noreferrer">Ouvrir l’application</a></div>';
+ }
+ content+=projectWorkMarkup(p);
+ content+=projectChatMarkup(p);
+ content+='<details class="project-advanced-details"><summary>Informations techniques et preuves</summary>';
  content+='<div class="detail-grid"><div class="detail-box"><small>Étape</small><b>'+escapeHTML(statuses[p.lifecycle]||p.lifecycle)+'</b></div><div class="detail-box"><small>Publication</small><b>'+escapeHTML(publications[p.publication]||p.publication)+'</b></div><div class="detail-box"><small>Famille</small><b>'+escapeHTML(p.family)+'</b></div><div class="detail-box"><small>Catégorie</small><b>'+escapeHTML(p.category)+'</b></div></div>';
  content+='<div class="detail-label">Dernier état consigné</div><p class="drawer-desc">'+escapeHTML(p.progress_note||'Aucun point de reprise documenté')+'</p>';
- content+='<div class="detail-label">Pour reprendre ce projet</div><p class="drawer-desc">'+escapeHTML(p.next_action||'Aucune prochaine étape notée')+'</p>';
- content+='<div class="detail-label">Emplacement connu</div><div class="subgraph">'+escapeHTML(p.repo?p.repo+'/'+(p.folder||''):'Aucun dépôt GitHub confirmé')+'</div>';
+ content+='<div class="detail-label">Code et documentation</div><div class="subgraph">'+escapeHTML(p.repo?p.repo+'/'+(p.folder||''):'Aucun dépôt GitHub confirmé')+'</div>';
  if(p.source_url?.startsWith('https://'))content+='<div class="detail-links">'+link(p.source_url,'Source détectée')+'</div>';
- if(p.app_id){const app=model.apps.find(a=>a.id===p.app_id);if(app)content+='<div class="detail-links"><button class="smallbutton" data-drawer-app="'+escapeHTML(app.id)+'">Voir les connexions techniques</button></div>'}
- content+='<div class="detail-label">Suivi</div><div class="minihelp">Dernière modification du registre : '+time(p.updated_at)+' · '+escapeHTML(p.source)+'</div>';
- content+=projectWorkMarkup(p);content+=projectChatMarkup(p);content+=projectEvidenceMarkup(p);
- content+='<div class="detail-links"><button class="smallbutton primary" data-edit-project="'+escapeHTML(p.id)+'">Modifier cette fiche</button></div>';
+ if(p.app_id&&model){const app=model.apps.find(a=>a.id===p.app_id);if(app)content+='<div class="detail-links"><button class="smallbutton" data-drawer-app="'+escapeHTML(app.id)+'">Voir les connexions techniques</button></div>'}
+ content+='<div class="detail-label">Suivi du registre</div><p class="minihelp">Dernière mise à jour : '+time(p.updated_at)+' · '+escapeHTML(p.source)+'</p>';
+ content+=projectEvidenceMarkup(p);
+ content+='</details><div class="detail-links"><button class="smallbutton primary" data-edit-project="'+escapeHTML(p.id)+'">Modifier cette fiche</button></div>';
  showDrawer(p.name,'Projet',content);
  if(p.id==='forge')void loadForgeWorkEvidence();
 }
