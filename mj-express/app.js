@@ -72,15 +72,23 @@ async function refreshPushHealth(){
  const info=await inspectPush();paintPushHealth(info);return info;
 }
 function requestPermissionFromClick(){
- // Call directly during the tap: Samsung/Android may lose transient user activation after awaits.
  const api=window.Notification;
- if(!api||typeof api.requestPermission!=='function')return Promise.resolve(null);
+ if(!api||typeof api.requestPermission!=='function')return Promise.reject(new Error('API Notification indisponible dans ce navigateur.'));
  if(api.permission==='granted')return Promise.resolve('granted');
- try{
-  const p=api.requestPermission();
-  if(p&&typeof p.then==='function')return p;
-  return Promise.resolve(api.permission);
- }catch(e){return Promise.reject(e);}
+ if(api.permission==='denied')return Promise.resolve('denied');
+ // IMPORTANT: some mobile browsers still return undefined and notify via callback.
+ // Do not subscribe until the actual permission response arrives.
+ return new Promise((resolve,reject)=>{
+  let finished=false;
+  const finish=value=>{if(finished)return;finished=true;clearTimeout(timeout);resolve(value||api.permission||'default');};
+  const fail=err=>{if(finished)return;finished=true;clearTimeout(timeout);reject(err);};
+  const timeout=setTimeout(()=>finish(api.permission||'default'),30000);
+  try{
+   const result=api.requestPermission(finish);
+   if(result&&typeof result.then==='function')result.then(finish,fail);
+   else if(typeof result==='string')finish(result);
+  }catch(err){fail(err);}
+ });
 }
 async function enable(){
  const btn=$('#push-enable');btn.disabled=true;
@@ -89,6 +97,14 @@ async function enable(){
   const asked=requestPermissionFromClick();
   const result=await asked;
   lastPermissionResponse=result;
+  if(result==='denied'){
+   showPushRepair('Le navigateur bloque les notifications pour ce site. Les autorisations Android seules ne suffisent pas.');
+   throw Error('Permission du site refusée. Utilise le guide « Réparer les autorisations ».');
+  }
+  if(result!=='granted'){
+   showPushRepair('Le navigateur n’a pas confirmé la permission après la validation.');
+   throw Error('Permission non confirmée ('+String(result)+').');
+  }
   phase='service worker';
   const r=await service();
   if(!r.pushManager)throw Error('Samsung Internet ne présente pas PushManager pour ce site.');
