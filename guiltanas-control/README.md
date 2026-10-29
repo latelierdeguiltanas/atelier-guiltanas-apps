@@ -41,3 +41,12 @@ Une seule ligne de progression officielle pour chaque application de l'Atelier d
 ## Confidentialité
 
 Le dépôt GitHub Pages est public. Ne pas y déposer de données personnelles, conversations privées, jetons ou secrets. Le bloc \`GC_PUBLIC_STATE\` des documents Drive est explicitement destiné à la publication, et le script applique une liste blanche de champs autorisés. Le document Drive complet reste privé.
+
+
+## Décision du 29 octobre 2026 — intégration au Cockpit existant
+
+**Cette application est un prototype temporaire, et non la future interface officielle.** Le Cockpit `centre-synchronisation/` possède déjà une identité propriétaire, un registre riche de projets, une installation PWA, des vues GitHub, Supabase et Connexions, ainsi qu'un bouton d'actualisation. Le suivi Forge/Drive, la chronologie et la reprise ChatGPT doivent donc migrer dans **une seule application propriétaire : Pilotage Guiltanas**. Ne pas écraser les fiches existantes du registre Supabase par les six entrées de démonstration du prototype.
+
+Le bouton `↻ Synchroniser` de ce prototype relit **uniquement la projection déjà publiée sur GitHub**, sans recharger la page. Il **ne provoque pas encore** une lecture directe de Drive ; ne jamais prétendre l'inverse. La vérification ne se déclenche qu'à l'ouverture de l'application et sur demande (la boucle toutes les 60 secondes est retirée). La vraie synchronisation instantanée Drive doit être intégrée à une action serveur sécurisée derrière l'accès propriétaire, avant suppression du prototype.
+
+**Tri des conversations :** créer ultérieurement un catalogue privé à partir de l'export ChatGPT volontaire du propriétaire. Même un chat de titre anodin peut contenir des idées de plusieurs projets. Les chats défaillants sont conservés comme sources, classés « ne plus poursuivre » après récupération ; la suppression reste une décision explicite du propriétaire. Les informations privées ne doivent jamais être envoyées au GitHub Pages public.
