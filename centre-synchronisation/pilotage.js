@@ -4,7 +4,7 @@ const ENDPOINT='https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-
 const ROOT='https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/';
 const REGISTRY='https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-registry';
 const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-let model=null,currentView='overview',selected=null,graphRepo='',search='',projectData=[],projectScan=null;
+let model=null,currentView='projects',selected=null,graphRepo='',search='',projectData=[],projectScan=null;
 const nice=n=>Number(n||0).toLocaleString('fr-FR');
 const time=s=>{if(!s)return 'Aucune date';try{return new Date(s).toLocaleString('fr-FR',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}catch{return 'Date inconnue'}};
 const repoFor=a=>model?.repos.find(r=>r.id===a.repo);
@@ -63,7 +63,7 @@ function restoreRoute(route){
   for(const dlg of document.querySelectorAll('dialog'))if(dlg.open)dlg.close();
   hideDrawer();
   selected=null;
-  const view=route?.view&&names[route.view]?route.view:'overview';
+  const view=route?.view&&names[route.view]?route.view:'projects';
   setView(view,false);
   graphRepo=route?.repo||'';
   if(model?.repos && graphRepo && !model.repos.some(r=>r.id===graphRepo))graphRepo='';
@@ -88,7 +88,8 @@ function setView(view,record=true){
  currentView=view;
  if(changed){hideDrawer();selected=null}
  $$('.view').forEach(x=>x.hidden=x.id!=='view-'+view);
- $$('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+ $('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+ $('#metrics').hidden=view!=='overview';
  $('#page-title').innerHTML=escapeHTML(names[view])+' <span class="slim">'+escapeHTML(viewDescriptions[view])+'</span>';
  if(changed&&!routeRestoring)scrollTo({top:0,behavior:'smooth'});
  if(changed&&model)drawMap();
@@ -235,19 +236,21 @@ function projectEvidenceMarkup(p){
 }
 function renderProjectAuditPulse(){
  const node=$('#project-audit-content');if(!node)return;
- const total=projectData.length;
- const n=lifecycle=>projectData.filter(p=>p.lifecycle===lifecycle).length;
- const abandoned=projectData.filter(p=>p.lifecycle==='abandonne'||p.lifecycle==='abandonné').length;
+ const flagged=workRuns.filter(r=>workRunState(r).label==='Reprise à vérifier');
+ const open=workRuns.filter(r=>['en_cours','en_attente','partiel'].includes(r.status));
+ const label=$('#project-alert-count');
+ if(label)label.textContent=flagged.length?'· '+flagged.length+' à vérifier':'';
+ const recent=workRuns.filter(r=>r.status!=='reconstitue').slice(0,9);
  node.innerHTML='<div class="project-audit-metrics">'+
-   '<div class="project-audit-metric"><strong>'+total+'</strong><small>Fiches connues</small></div>'+
-   '<div class="project-audit-metric"><strong>'+(n('actif')+n('developpement'))+'</strong><small>Actifs ou en chantier</small></div>'+
-   '<div class="project-audit-metric"><strong>'+n('pause')+'</strong><small>En pause déclarée</small></div>'+
-   '<div class="project-audit-metric"><strong>'+abandoned+'</strong><small>Abandons explicitement classés</small></div>'+
-   '</div><div class="project-audit-focus"><div><strong>⚒ Forge : N1 non certifié dans le référentiel actuel</strong>'+
-   '<p>Des tests sont documentés, mais le gel N1 ne doit pas être annoncé sans preuves rattachées à la version publiée.</p></div>'+
-   '<button type="button" data-project-audit="forge">Voir les preuves</button></div>'+
-   '<p class="project-audit-reliability">Source : registre privé Supabase · Ces chiffres classent des fiches, pas des fonctionnalités validées. Archives, brouillons et modules peuvent se recouper. Historique complet des chats non importé.</p>';
+  '<div class="project-audit-metric"><strong>'+open.length+'</strong><small>Interventions ouvertes</small></div>'+
+  '<div class="project-audit-metric"><strong>'+flagged.length+'</strong><small>Jalons à revérifier</small></div>'+
+  '<div class="project-audit-metric"><strong>'+workRuns.length+'</strong><small>Journaux de travail</small></div>'+
+  '</div>'+
+  (recent.length?recent.map(r=>{const state=workRunState(r);return '<button type="button" class="work-summary-row" data-project-audit="'+escapeHTML(r.project_id)+'">'+
+    '<span>'+escapeHTML(r.title)+'</span><small class="'+state.severity+'">'+escapeHTML(state.label)+'</small></button>'}).join(''):'<p class="minihelp">Les nouvelles interventions seront affichées ici lorsqu’elles commenceront à écrire des jalons.</p>')+
+  '<p class="minihelp">Le seuil de 24 h signale une intervention non clôturée à examiner. Une tâche Work peut attendre, réfléchir ou travailler sans écrire ; cette alerte ne confirme aucune panne.</p>';
 }
+
 function projectResumeText(p){
  const evidence=projectEvidence[p.id];
  return 'REPRISE PAR PROJET — '+p.name+'\n\nConsulte le registre « Pilotage Guiltanas » et le document Drive « 00 — ÉTAT DU PROJET » de ce projet AVANT de modifier du code. Inscris le périmètre et le statut EN COURS dans Drive. À chaque jalon, inscris modification, commit, preuves, éventuels échecs et prochaine action. Mets à jour le registre existant, sans créer de projet doublon. Ne considère pas les affirmations des anciens chats comme preuves de validation.\n\nDernier état déclaré : '+(p.progress_note||p.summary||'non renseigné')+'\nStatut : '+(p.lifecycle||'inconnu')+'\nProchaine étape : '+(p.next_action||'à déterminer')+'\n'+(evidence?'\nÉtat de vérification : '+evidence.headline+'\nÀ vérifier : '+evidence.uncertain:'')+'\n\nPrends les sources existantes comme référence, préserve les autres projets et n’invente aucun pourcentage de validation.';
