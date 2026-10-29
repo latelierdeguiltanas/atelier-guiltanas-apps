@@ -239,7 +239,7 @@ async function resumeProject(id){
 const CHATS_ENDPOINT='https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-chat-inventory';
 let workFindings=[],workFindingsLoaded=false,workFindingsError='',workFindingsChecked=null;
 function ecosystemMember(p){
- return !new Set(['budget','missions','enfants','messages-enfants','scenario-manager']).has(p.id);
+ return !new Set(['budget','missions','enfants','messages-enfants']).has(p.id);
 }
 function ecosystemName(p){
  if(['cockpit','ghdir-guiltanas-control','site-atelier','marque-atelier'].includes(p.id))return 'Pilotage et présence';
@@ -258,7 +258,7 @@ async function loadChatInventory(){
  try{
   const response=await fetch(CHATS_ENDPOINT+'?action=findings',{cache:'no-store',headers:{'Content-Type':'application/json',...Owner.headers()}});
   const data=await response.json();if(!response.ok)throw Error(data.error||'État des travaux indisponible');
-  workFindings=Array.isArray(data.findings)?data.findings:[];workFindingsLoaded=true;workFindingsError='';workFindingsChecked=new Date();
+  workFindings=Array.isArray(data.findings)?data.findings:[];workFindingsLoaded=true;workFindingsError='';workFindingsChecked=new Date(); if(projectData.length)renderProjects();
  }catch(e){workFindingsError=String(e.message||e);workFindingsLoaded=false}
  renderChatPanel();
 }
@@ -286,7 +286,7 @@ function renderChatPanel(){
  '<div><strong>'+reported+'</strong><small>Blocages signalés</small></div>'+
  '<div><strong>'+lost+'</strong><small>Incidents Work distincts</small></div>'+
  '<div><strong>'+workFindings.length+'</strong><small>Traces retrouvées</small></div>'+
- '<div><strong>—</strong><small>Tests directs Web/Android non disponibles</small></div></div>';
+ '<div><strong>—</strong><small>Tests directs Android/Web</small></div></div>';
  if(note)note.textContent='Contrôle de la base : '+(workFindingsChecked?workFindingsChecked.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}):'non fait')+'. Les incidents proviennent des échanges accessibles ; le bouton ne peut pas tester les conversations privées sur les deux plateformes.';
  list.innerHTML=workFindings.length?workFindings.slice(0,30).map(workFindingRow).join(''):'<div class="minihelp">Aucun incident Work retrouvé dans les sources actuellement consultées. Cela ne veut pas dire qu’aucun chat n’a planté.</div>';
 }
@@ -310,7 +310,8 @@ function renderProjects(){
  $('#project-summary').innerHTML='<span><b>'+projectData.length+'</b> fiches du registre</span><span><b>'+n('actif')+'</b> actifs</span><span><b>'+n('developpement')+'</b> en chantier</span><span><b>'+n('pause')+'</b> pauses</span><span><b>'+(n('brouillon')+n('idee'))+'</b> pistes</span>';
  const ecosystem=filtered.filter(ecosystemMember),others=filtered.filter(p=>!ecosystemMember(p));
  const order={actif:0,developpement:1,pause:2,brouillon:3,idee:4,archive:5};
- const row=p=>'<div class="project-row" data-project="'+escapeHTML(p.id)+'" role="button" tabindex="0"><div class="project-name"><b>'+escapeHTML(p.name)+'</b><small>'+escapeHTML(p.category)+' · '+escapeHTML(p.repo||'Source à confirmer')+'</small></div><div class="project-meta">'+escapeHTML(p.progress_note||p.summary||'État non documenté')+'</div>'+projectTag(p.lifecycle)+'<span class="project-chevron">›</span></div>';
+ const row=p=>{const signals=workFindings.filter(f=>(f.project_ids||[]).includes(p.id)&&f.signal==='blocage_signale').length;
+  return '<div class="project-row" data-project="'+escapeHTML(p.id)+'" role="button" tabindex="0"><div class="project-name"><b>'+escapeHTML(p.name)+'</b><small>'+escapeHTML(p.category)+' · '+escapeHTML(p.repo||'Source à confirmer')+'</small></div><div class="project-meta">'+escapeHTML((p.progress_note||p.summary||'État non documenté').slice(0,110))+'</div>'+projectTag(p.lifecycle)+(signals?'<span class="work-health-pill work-risk">⚠ '+signals+' signalement'+(signals>1?'s':'')+'</span>':'')+'<span class="project-chevron">›</span></div>'};
  const sections=[
   ['Applications et outils JDR','🛡','Jouer & raconter'],
   ['Créations et ressources','✦','Créer & fabriquer'],
