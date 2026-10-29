@@ -333,33 +333,132 @@ function projectChatMarkup(p){
  return html+'<p class="minihelp">Un ancien signalement ne prouve pas que le chat est toujours bloqué. Aucun fil n’a été archivé ou supprimé.</p></section>';
 }
 
+
+/* Icon sources match the existing app manifests. Non-app projects use a neutral symbol. */
+const PROJECT_ICON_PATHS={
+ 'forge':'../guiltanas-install/forge-192.png',
+ 'fiches-pj':'../guiltanas-install/hero-192.png',
+ 'combat-cof2':'../guiltanas-install/combat-192.png',
+ 'combat-dnd':'../guiltanas-install/combat-192.png',
+ 'hub-bastide':'../guiltanas-install/island-192.png',
+ 'hub-nespresso':'../guiltanas-install/island-192.png',
+ 'hub-configurable':'../guiltanas-install/hub-192.png',
+ 'hub-produit':'../guiltanas-install/hub-192.png',
+ 'express-universel':'../guiltanas-install/messages-192.png',
+ 'mj-express':'../mj-express/icons/mj-express-192.png',
+ 'pj-express':'../guiltanas-install/messages-192.png',
+ 'soundboard-generique':'../guiltanas-install/sound-192.png',
+ 'soundboard-ile':'../guiltanas-install/sound-192.png',
+ 'critique':'../guiltanas-install/critical-192.png',
+ 'cockpit':'./icons/pilotage-guiltanas-192.png',
+ 'ghdir-guiltanas-control':'./icons/pilotage-guiltanas-192.png',
+ 'budget':'../guiltanas-install/budget-192.png',
+ 'missions':'../guiltanas-install/admin-192.png',
+ 'scenario-manager':'../guiltanas-install/notes-192.png',
+ 'generateur-quetes':'../guiltanas-install/notes-192.png'
+};
+const PROJECT_SYMBOLS={
+ 'site-atelier':'🌐','identite-marque':'✧','skeryon':'✦','application-peinture':'🎨',
+ 'enfants':'🧸','messages-enfants':'💬','kobold':'🗣️',
+ 'deck-echecs-critiques':'🎴','deck-rencontres-physique':'🃏','deck-succes-critiques':'🃏',
+ 'decks':'🃏','dragonlance-cof2':'🐉','archive-audioboard-full':'♫',
+ 'soundboard-archives':'♫'
+};
+const PROJECT_SHORT_NAMES={
+ 'forge':'Forge of Heroes','hub-bastide':'Hub Bastide','hub-nespresso':'Hub Nespresso',
+ 'hub-configurable':'Hub configurable','hub-produit':'Hub générique',
+ 'fiches-pj':'Fiches PJ','combat-cof2':'Combat COF2','combat-dnd':'Combat D&D',
+ 'mj-express':'MJ Express','pj-express':'PJ Express',
+ 'express-universel':'Guiltanas Express','soundboard-generique':'Soundboard',
+ 'soundboard-ile':'Soundboard Île','cockpit':'Copilote',
+ 'site-atelier':'Site Atelier','missions':'Missions','budget':'Budget',
+ 'ghdir-guiltanas-control':'Prototype Control',
+ 'identite-marque':'Identité de marque','scenario-manager':'Scénarios'
+};
+function projectIconMarkup(p){
+ const path=PROJECT_ICON_PATHS[p.id];
+ return path?'<span class="project-tile-icon"><img alt="" loading="lazy" src="'+path+'" /></span>'
+   :'<span class="project-tile-icon project-icon-fallback" aria-hidden="true">'+(PROJECT_SYMBOLS[p.id]||'✦')+'</span>';
+}
+function projectState(p){
+ const labels={actif:'Actif',developpement:'En création',pause:'En pause',brouillon:'À organiser',idee:'Idée',archive:'Archivé'};
+ return labels[p.lifecycle]||'À classer';
+}
+let workRuns=[],workRunsReady=false,workRunsError='';
+async function loadWorkRuns(){
+ if(!Owner.token())return;
+ try{
+  const r=await fetch(CHATS_ENDPOINT+'?action=work-runs',{headers:{'Content-Type':'application/json',...Owner.headers()},cache:'no-store'});
+  const d=await r.json();if(!r.ok)throw Error(d.error||'Journal non disponible');
+  workRuns=Array.isArray(d.runs)?d.runs:[];workRunsReady=true;workRunsError='';
+ }catch(e){workRunsError=String(e.message||e);workRunsReady=false}
+ renderProjectAuditPulse();
+ renderProjects();
+}
+function workRunState(run){
+ if(run.status==='termine')return {label:'Clôturé',severity:'good'};
+ if(run.status==='en_attente')return {label:'En attente',severity:'neutral'};
+ if(run.status==='reconstitue')return {label:'Historique retrouvé',severity:'neutral'};
+ if(run.status==='interrompu')return {label:'Interrompu',severity:'warn'};
+ const last=Date.parse(run.last_milestone_at||run.first_logged_at||'');
+ const age=Number.isFinite(last)?Math.max(0,Date.now()-last)/3600000:null;
+ if(age!==null&&age>=24)return {label:'Reprise à vérifier',severity:'warn'};
+ if(age!==null&&age>=6)return {label:'Sans jalon récent',severity:'neutral'};
+ return {label:'En cours consigné',severity:'good'};
+}
+function projectWorkMarkup(p){
+ if(!workRunsReady)return '';
+ const rows=workRuns.filter(x=>x.project_id===p.id);
+ if(!rows.length)return '<details class="project-work-details"><summary>Journal de travail <small>aucun suivi enregistré</small></summary><p>Un historique inexistant ne prouve ni fonctionnement ni panne d’un chat.</p></details>';
+ const html=rows.slice(0,5).map(run=>{
+  const state=workRunState(run);
+  const times=run.last_milestone_at||run.first_logged_at;
+  const points=Array.isArray(run.milestones)?run.milestones:[];
+  const tags=points.slice(-5).map(m=>'<li><span>'+escapeHTML(m.label||'Étape')+'</span><small>'+escapeHTML(m.state||'noté')+'</small></li>').join('');
+  return '<div class="work-run-card"><div class="work-run-top"><b>'+escapeHTML(run.title)+'</b><span class="work-state '+state.severity+'">'+escapeHTML(state.label)+'</span></div>'+
+   '<small>Dernière preuve : '+escapeHTML(time(times))+'</small>'+
+   (tags?'<ol class="work-step-list">'+tags+'</ol>':'')+
+   (run.evidence_url&&/^https:\/\//.test(run.evidence_url)?'<a target="_blank" rel="noopener noreferrer" href="'+escapeHTML(run.evidence_url)+'">Voir la preuve</a>':'')+
+   '</div>';
+ }).join('');
+ return '<details class="project-work-details"><summary>Journal des interventions <small>'+rows.length+' suivi(s)</small></summary>'+
+ html+'<p class="minihelp">Sans clôture et sans nouveau jalon pendant 24 h = reprise à vérifier, jamais preuve d’un plantage ChatGPT. Un outil peut travailler sans publier de jalon ou attendre une autorisation.</p></details>';
+}
+
 function renderProjects(){
  const box=$('#project-list');if(!box)return;
- const q=$('#project-search').value.trim().toLowerCase(),stage=$('#project-stage').value,family=$('#project-family').value;
- const filtered=projectData.filter(p=>(stage==='all'||p.lifecycle===stage)&&(family==='all'||p.family===family)&&(!q||[p.name,p.summary,p.category,p.progress_note,p.repo,p.next_action].join(' ').toLowerCase().includes(q)));
+ const q=($('#project-search')?.value||'').trim().toLocaleLowerCase('fr'),stage=$('#project-stage')?.value||'all',family=$('#project-family')?.value||'all';
+ const filtered=projectData.filter(p=>(stage==='all'||p.lifecycle===stage)&&(family==='all'||p.family===family)&&(!q||[p.name,p.summary,p.category,p.progress_note,p.repo,p.next_action].join(' ').toLocaleLowerCase('fr').includes(q)));
  const n=k=>projectData.filter(x=>x.lifecycle===k).length;
- $('#project-summary').innerHTML='<span><b>'+projectData.length+'</b> fiches du registre</span><span><b>'+n('actif')+'</b> actifs</span><span><b>'+n('developpement')+'</b> en chantier</span><span><b>'+n('pause')+'</b> pauses</span><span><b>'+(n('brouillon')+n('idee'))+'</b> pistes</span>';
- const ecosystem=filtered.filter(ecosystemMember),others=filtered.filter(p=>!ecosystemMember(p));
+ $('#project-summary').innerHTML='<span><b>'+projectData.length+'</b> projets repérés</span><span><b>'+(n('actif')+n('developpement'))+'</b> en action</span><span><b>'+n('pause')+'</b> en pause</span>';
  const order={actif:0,developpement:1,pause:2,brouillon:3,idee:4,archive:5};
- const row=p=>{const signals=workFindings.filter(f=>(f.project_ids||[]).includes(p.id)&&f.signal==='blocage_signale').length;
-  return '<div class="project-row" data-project="'+escapeHTML(p.id)+'" role="button" tabindex="0"><div class="project-name"><b>'+escapeHTML(p.name)+'</b><small>'+escapeHTML(p.category)+' · '+escapeHTML(p.repo||'Source à confirmer')+'</small></div><div class="project-meta">'+escapeHTML((p.progress_note||p.summary||'État non documenté').slice(0,110))+'</div>'+projectTag(p.lifecycle)+(signals?'<span class="work-health-pill work-risk">⚠ '+signals+' signalement'+(signals>1?'s':'')+'</span>':'')+'<span class="project-chevron">›</span></div>'};
- const sections=[
-  ['Applications et outils JDR','🛡','Jouer & raconter'],
-  ['Créations et ressources','✦','Créer & fabriquer'],
-  ['Pilotage et présence','◈','Vie numérique'],
-  ['Autres projets','◦','Autres projets']
- ];
- const buckets={'Applications et outils JDR':[],'Créations et ressources':[],'Pilotage et présence':[],'Autres projets':others};
- ecosystem.forEach(p=>{let name=ecosystemName(p);if(!buckets[name])name='Applications et outils JDR';buckets[name].push(p)});
- const active=projectData.filter(p=>ecosystemMember(p)&&['actif','developpement'].includes(p.lifecycle)).length;
- let html='<div class="ecosystem-root"><div><small>PROJET PRINCIPAL</small><strong>🌳 Écosystème · Atelier de Guiltanas</strong><p>'+active+' outils ou chantiers actifs/en développement · '+projectData.filter(ecosystemMember).length+' fiches associées</p></div><span class="project-root-tag">Vue unifiée</span></div>';
- for(const [name,icon] of sections){
-  const arr=buckets[name].sort((a,b)=>(a.id==='forge'?-1:0)-(b.id==='forge'?-1:0)||(order[a.lifecycle]??9)-(order[b.lifecycle]??9)||a.name.localeCompare(b.name,'fr'));
-  if(!arr.length)continue;
-  const show=q!==''||name==='Applications et outils JDR'?' open':'';
-  html+='<details class="project-tree-group"'+show+'><summary>'+icon+' '+escapeHTML(name)+' <small>'+arr.length+'</small></summary><div class="project-tree-items">'+arr.map(row).join('')+'</div></details>';
+ const card=p=>{
+   const reports=workFindings.filter(f=>(f.project_ids||[]).includes(p.id)&&f.signal==='blocage_signale').length;
+   const activeRun=workRuns.filter(r=>r.project_id===p.id&&workRunState(r).label==='Reprise à vérifier').length;
+   const title=PROJECT_SHORT_NAMES[p.id]||p.name.replace(/\s*[·—].*$/,'').slice(0,45);
+   return '<article class="project-tile" data-project="'+escapeHTML(p.id)+'" role="button" tabindex="0" aria-label="Ouvrir '+escapeHTML(p.name)+'">'+
+      projectIconMarkup(p)+'<div class="project-tile-info"><strong>'+escapeHTML(title)+'</strong>'+
+      '<small class="project-mini-state '+escapeHTML(p.lifecycle||'')+'">'+escapeHTML(projectState(p))+'</small></div>'+
+      ((reports||activeRun)?'<span class="project-alert-dot" title="Signalement(s) de blocage ou jalon à vérifier">!</span>':'')+
+      '</article>';
+ };
+ const main=['forge','hub-bastide','hub-configurable','fiches-pj','cockpit','soundboard-generique','budget','missions'];
+ const favorites=main.map(id=>filtered.find(p=>p.id===id)).filter(Boolean);
+ const others=filtered.filter(p=>!main.includes(p.id));
+ let html='<div class="ecosystem-root ecosystem-home"><img src="icons/pilotage-guiltanas-192.png" alt="" /><div><small>TON ESPACE DE TRAVAIL</small><strong>L’Atelier de Guiltanas</strong><p>Projets, créations et outils au même endroit</p></div></div>';
+ if(favorites.length)html+='<div class="project-shelf-heading"><h3>Accès rapide</h3><small>'+favorites.length+' favoris</small></div><div class="project-tile-grid project-quick-grid">'+favorites.map(card).join('')+'</div>';
+ const groups=[['Applications JDR','🎲',others.filter(p=>ecosystemMember(p)&&p.family==='Jouer & raconter')],
+               ['Créations & ressources','✦',others.filter(p=>ecosystemMember(p)&&p.family==='Créer & fabriquer')],
+               ['Site & pilotage','◈',others.filter(p=>ecosystemMember(p)&&p.family==='Vie numérique')],
+               ['Autres projets','⌂',others.filter(p=>!ecosystemMember(p))]];
+ const openGroups=new Set(Array.from(box.querySelectorAll('details[data-shelf]')).filter(d=>d.open).map(d=>d.dataset.shelf));
+ for(const [name,symbol,items] of groups){
+  if(!items.length)continue;
+  items.sort((a,b)=>(order[a.lifecycle]??9)-(order[b.lifecycle]??9)||a.name.localeCompare(b.name,'fr'));
+  const isOpen=q!==''||stage!=='all'||family!=='all'||openGroups.has(name);
+  html+='<details class="project-icon-shelf" data-shelf="'+escapeHTML(name)+'"'+(isOpen?' open':'')+'><summary><span>'+symbol+' '+escapeHTML(name)+'</span><small>'+items.length+' projets</small></summary><div class="project-tile-grid">'+items.map(card).join('')+'</div></details>';
  }
- box.innerHTML=html||'<div class="empty">Aucun projet dans ce filtre.</div>';
+ box.innerHTML=html;
 }
 
 function openProject(id){
@@ -372,7 +471,7 @@ function openProject(id){
  if(p.source_url?.startsWith('https://'))content+='<div class="detail-links">'+link(p.source_url,'Source détectée')+'</div>';
  if(p.app_id){const app=model.apps.find(a=>a.id===p.app_id);if(app)content+='<div class="detail-links"><button class="smallbutton" data-drawer-app="'+escapeHTML(app.id)+'">Voir les connexions techniques</button></div>'}
  content+='<div class="detail-label">Suivi</div><div class="minihelp">Dernière modification du registre : '+time(p.updated_at)+' · '+escapeHTML(p.source)+'</div>';
- content+=projectEvidenceMarkup(p);content+=projectChatMarkup(p);
+ content+=projectWorkMarkup(p);content+=projectChatMarkup(p);content+=projectEvidenceMarkup(p);
  content+='<div class="detail-links"><button class="smallbutton primary" data-edit-project="'+escapeHTML(p.id)+'">Modifier cette fiche</button></div>';
  showDrawer(p.name,'Projet',content);
  if(p.id==='forge')void loadForgeWorkEvidence();
@@ -396,7 +495,7 @@ async function loadRegistry(force=false){
   const d=await registryRequest(force?'list&force=1':'list');projectData=d.projects||[];projectScan=d.scan||null;
   const scan=projectScan;
   if(indicator)indicator.textContent='Registre Supabase à jour · '+projectData.length+' projets · GitHub public : '+(scan?.last_error?'contrôle impossible ('+scan.last_error+')':'contrôlé le '+time(scan?.last_github_at))+' · dépôts privés à suivre via connexion autorisée';
-  renderProjects();renderProjectAuditPulse();await loadChatInventory();
+  renderProjects();renderProjectAuditPulse();await Promise.all([loadChatInventory(),loadWorkRuns()]);
   if(model){const label=$('#metrics .metric:nth-child(2) strong');if(label)label.textContent=String(projectData.length);const cap=$('#metrics .metric:nth-child(2) span');if(cap)cap.textContent='projets catalogués'}
  }catch(e){if(indicator)indicator.textContent='Registre indisponible : '+e.message}
 }
