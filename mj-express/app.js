@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const A=window.BastideInventory,$=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const PUSH='https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-push',keyStore='guiltanas_device_id_v1';
-let players=[],messages=[],selected='',statusBusy=false,installPrompt=null,registration=null,lastTestReceipt=null;const deviceId=()=>{let id=localStorage.getItem(keyStore);if(!id){id=crypto.randomUUID();localStorage.setItem(keyStore,id)}return id};
+let players=[],messages=[],selected='',statusBusy=false,installPrompt=window.__MJDeferredInstall||null,registration=null,lastTestReceipt=null;const deviceId=()=>{let id=localStorage.getItem(keyStore);if(!id){id=crypto.randomUUID();localStorage.setItem(keyStore,id)}return id};
 function status(s){$('#status').textContent=s}
 function selectedName(id){return players.find(x=>x.id===id)?.display_name||id}
 async function pcall(action,body,params){const query=new URLSearchParams({action,...params});const req=await fetch(PUSH+'?'+query,{method:body?'POST':'GET',cache:'no-store',headers:{'Content-Type':'application/json','x-bastide-key':A.accessKey()},body:body?JSON.stringify(body):undefined});const data=await req.json().catch(()=>({}));if(!req.ok)throw Error(data.error||'Service push indisponible');return data}
@@ -250,7 +250,7 @@ async function checkInstallStatus(){
  $('#install-check').textContent=lines.join(' · ');
 }
 window.addEventListener('beforeinstallprompt',e=>{
- e.preventDefault();installPrompt=e;
+ e.preventDefault();installPrompt=e;window.__MJDeferredInstall=e;
  showInstallMessage('✓ Installation native disponible : appuie sur le bouton Installer MJ Express.');
 });
 window.addEventListener('appinstalled',()=>{
