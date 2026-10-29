@@ -3,7 +3,7 @@
   "projection": "public_project_status_only",
   "sync_contract": "drive_then_github_dual_write_until_bridge_auth",
   "last_published_date": "2026-10-29",
-  "last_published_reason": "Clôture de l'intervention de mise en place, statut partiel explicite",
+  "last_published_reason": "Synchronisation manuelle de l'interface et décision d'unifier dans le Cockpit existant",
   "caveat": "Les statuts reflètent les preuves identifiées ; une absence de preuve n'est pas un test échoué.",
   "projects": [
     {
@@ -155,31 +155,38 @@
       "family": "Pilotage",
       "priority": "haute",
       "status": "partiel",
-      "status_label": "Pilote publié — liaison Drive à activer",
-      "summary": "Vue par projet en ligne dans le dépôt, registre Drive établi et passerelle automatisée prête à configurer. Vérification dans un navigateur réel encore à faire.",
+      "status_label": "Prototype prêt — fusion Cockpit à prévoir",
+      "summary": "Interface prototype : synchronisation manuelle des données GitHub, sans rechargement ni polling chaque minute. Décision : intégrer la chronologie et la reprise ChatGPT au Cockpit propriétaire existant.",
       "last_update": "2026-10-29",
       "progress_percent": null,
       "current_work": null,
       "phases": [
         {
-          "id": "protocole",
-          "name": "Protocole d'état par projet sur Drive",
-          "status": "valide",
-          "detail": "Méthode globale, état Forge et état Control mis à jour. Deux blocs de publication Drive structurés créés.",
-          "progress_percent": null
-        },
-        {
-          "id": "interface",
-          "name": "Application de pilotage par projet",
+          "id": "bouton",
+          "name": "Actualisation manuelle du prototype",
           "status": "verification_requise",
-          "detail": "Nouvelle interface et chargement automatique du fichier data/projects.json publiés sur GitHub ; syntaxe JS vérifiée, essai au clic sur appareil réel non fait.",
+          "detail": "Le bouton relit la projection GitHub, sans rechargement de page ni minuteur. Syntaxe vérifiée ; test réel sur téléphone à faire.",
           "progress_percent": null
         },
         {
-          "id": "bridge",
-          "name": "Synchronisation autonome Drive → GitHub",
+          "id": "fusion",
+          "name": "Fusion dans Pilotage Guiltanas",
           "status": "non_configure",
-          "detail": "Script + workflow programmés toutes les 5 minutes. Inactifs tant que le compte de service Drive et les secrets GitHub ne sont pas configurés.",
+          "detail": "Le Cockpit centre-synchronisation possède déjà accès propriétaire, registre, Github, Supabase, métriques, PWA et bouton de rafraîchissement. Fusion de la chronologie et du registre chat à réaliser sans perdre les fonctionnalités.",
+          "progress_percent": null
+        },
+        {
+          "id": "historique",
+          "name": "Inventaire et classement des anciens chats",
+          "status": "non_configure",
+          "detail": "Nécessite un export ChatGPT consenti ; aucun accès exhaustif ni suppression automatique depuis le connecteur.",
+          "progress_percent": null
+        },
+        {
+          "id": "drive",
+          "name": "Synchronisation privée Drive → pilotage",
+          "status": "non_configure",
+          "detail": "Protocole Drive existant ; passerelle autonome non activée. Cible : action serveur authentifiée dans le Cockpit.",
           "progress_percent": null
         }
       ],
@@ -201,14 +208,26 @@
           "kind": "developpement",
           "title": "Interface projet et passerelle Drive enregistrées",
           "detail": "GitHub commits 1cd3acc (interface), 390c40e (registre), 0208b23 (script) et c461150 (workflow). La validation navigateur et l'authentification restent à réaliser."
+        },
+        {
+          "date": "2026-10-29",
+          "kind": "decision",
+          "title": "Le Cockpit existant devient l'application cible",
+          "detail": "Conservation du registre de projets et des vues GitHub/Supabase du Cockpit. Guiltanas Control reste un prototype temporaire, sans fusion prématurée."
+        },
+        {
+          "date": "2026-10-29",
+          "kind": "interface",
+          "title": "Rafraîchissement manuel ajouté",
+          "detail": "Bouton Synchroniser : relecture GitHub sans rechargement. Rafraîchissement automatique toutes les 60 secondes retiré ; aucun accès direct à Drive par le bouton."
         }
       ],
-      "next_action": "Activer une fois l'accès lecture Google Docs via compte de service et les secrets GitHub, vérifier un cycle complet Drive → application, puis tester l'interface sur smartphone et étendre l'inventaire.",
+      "next_action": "Intégrer la chronologie de développement et le suivi de validation dans le registre du Cockpit existant, avec bouton de vraie synchronisation Drive authentifiée ; inventorier les chats privés après export volontaire.",
       "links": {
         "repository": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/tree/main/guiltanas-control",
         "chatgpt": null
       },
-      "progress_basis": "Le protocole et le code sont enregistrés. Le pont Drive → GitHub n'a pas ses autorisations, la recette mobile n'est pas réalisée. Aucun pourcentage global certifiable."
+      "progress_basis": "Le bouton lit la projection GitHub seulement ; la synchronisation Drive directe et l'intégration au Cockpit authentifié ne sont pas réalisées. Aucun taux global certifiable."
     }
   ]
 }
