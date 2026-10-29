@@ -5,7 +5,7 @@ const URL='https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-playe
 const tokenFormat=(text)=>String(text||'').replace(/[^0-9a-f]/gi,'').toLowerCase();
 function nowConfig(){try{return JSON.parse(localStorage.getItem(ID)||'null')}catch{return null}}
 function setConfig(c){localStorage.setItem(ID,JSON.stringify(c));}
-function summary(message,error=false){const el=document.getElementById('cloud-status');if(el){el.textContent=message;el.classList.toggle('error',error)}}
+function summary(message,error=false){for(const id of ['cloud-status','cloud-play-status']){const el=document.getElementById(id);if(el){el.textContent=message;el.classList.toggle('error',error)}}}
 function count(){try{return Object.keys(L.read().data.entries).length}catch{return 0}}
 function fingerprint(){return JSON.stringify(L.read().data)}
 function codeFormat(v){return String(v).match(/.{1,8}/g)?.join('-')||''}
@@ -18,7 +18,7 @@ async function api(action,body){
   return d;
  }finally{clearTimeout(timer)}
 }
-let busy=false,delayed=null;
+let busy=false,delayed=null,pending=false,conflicted=false;
 async function create(){
  if(busy)return;busy=true;
  try{
@@ -47,7 +47,7 @@ async function connect(text){
  finally{busy=false}
 }
 async function sync({quiet=false}={}){
- if(busy)return;
+ if(busy){pending=true;return;}
  const config=nowConfig();
  if(!config?.key)return;
  busy=true;
@@ -55,7 +55,7 @@ async function sync({quiet=false}={}){
   const remote=await api('pull',{key:config.key});
   const local= L.read().data,actual=fingerprint(),dirty=actual!==config.fingerprint;
   if(remote.revision!==config.revision){
-   if(dirty)throw new Error('CONFLIT : la fiche a été modifiée sur deux appareils. Aucun contenu n’a été écrasé. Fais une sauvegarde JSON locale avant toute restauration.');
+   if(dirty){conflicted=true;throw new Error('CONFLIT : la fiche a été modifiée sur deux appareils. Aucun contenu n’a été écrasé. Fais une sauvegarde JSON locale avant toute restauration.');}
    L.restore(remote.payload);
    setConfig({...config,revision:remote.revision,fingerprint:fingerprint()});
    if(!quiet)summary('✓ Fiches actualisées depuis le serveur.');
@@ -68,15 +68,16 @@ async function sync({quiet=false}={}){
   render();
  }catch(e){
   summary('⚠ Synchronisation non confirmée : '+e.message+' Tes données locales restent disponibles.',true);
- }finally{busy=false}
+ }finally{busy=false;if(pending&&!conflicted){pending=false;trigger();}}
 }
-function trigger(){if(!nowConfig()?.key)return;clearTimeout(delayed);delayed=setTimeout(()=>sync({quiet:false}),1600);}
+function trigger(){if(!nowConfig()?.key||conflicted)return;pending=false;clearTimeout(delayed);delayed=setTimeout(()=>sync({quiet:false}),1600);}
 function render(){
  const config=nowConfig(),connected=!!config?.key;
  for(const [id,show] of [['cloud-create',!connected],['cloud-link',!connected],['cloud-sync',connected],['cloud-disconnect',connected],['cloud-copy',connected]]){
   const el=document.getElementById(id);if(el)el.hidden=!show;
  }
  const meta=document.getElementById('cloud-meta');if(meta)meta.textContent=connected?'Coffre en ligne relié · version '+config.revision+' · '+count()+' fiche(s)':'Aucun coffre relié. Les fiches restent enregistrées uniquement sur ce navigateur.';
+ const badge=document.getElementById('cloud-play-status');if(badge&&!badge.textContent.includes('⚠')&&!badge.textContent.includes('CONFLIT'))badge.textContent=connected?'☁ Coffre relié · v'+config.revision:'○ Fiche sur cet appareil uniquement';
 }
 function setup(){
  const createBtn=document.getElementById('cloud-create'),connectBtn=document.getElementById('cloud-link');
@@ -97,6 +98,10 @@ function setup(){
   localStorage.removeItem(ID);summary('Connexion cloud retirée de cet appareil. Données locales conservées.');render();
  };
  render();
+ document.getElementById('play-sync').onclick=()=>{conflicted=false;sync({quiet:false});};
+ document.getElementById('play-library').onclick=()=>{history.pushState(null,'',new URL('./',location.href));window.dispatchEvent(new Event('popstate'));};
+ window.addEventListener('online',()=>{if(nowConfig()?.key&&!conflicted)sync({quiet:false})});
+ window.addEventListener('visibilitychange',()=>{if(!document.hidden&&nowConfig()?.key&&!conflicted)sync({quiet:true})});
  if(nowConfig()?.key)sync({quiet:false});
 }
 root.GuiltanasPlayerCloud={create,connect,sync,trigger,render,setup,config:nowConfig};
