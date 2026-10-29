@@ -234,146 +234,72 @@ async function resumeProject(id){
 
 /* Conversation inventory: metadata only, behind Atelier owner auth.
    ChatGPT does not provide this application with automatic live conversation health status. */
+/* The assistant tracks accessible Work conversation reports. This application cannot probe
+   ChatGPT Android app nor the signed-in web chat history itself. */
 const CHATS_ENDPOINT='https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-chat-inventory';
-let chatInventory=[],chatInventoryReady=false,chatInventoryError='',chatListTotal=0;
-const chatStates={
- non_verifie:'Non vérifié',
- a_examiner:'À examiner (indice, pas un bug confirmé)',
- bloque_signale:'Bloqué — signalé',
- actif_confirme:'Utilisable — confirmé',
- archive_proposee:'À archiver',
- archive_confirmee:'Archivé — confirmé',
- cloture:'Clôturé pour le projet'
-};
-async function chatRequest(action,body){
- const endpoint=CHATS_ENDPOINT+'?action='+action;
- const response=await fetch(endpoint,{method:body?'POST':'GET',headers:{'Content-Type':'application/json',...Owner.headers()},cache:'no-store',body:body?JSON.stringify(body):undefined});
- const data=await response.json();if(!response.ok)throw Error(data.error||'Inventaire indisponible');return data;
-}
-async function loadChatInventory(){
- if(!Owner.token())return;
- try{
-  let entries=[],offset=0,total=0;
-  while(offset<5000){
-   const data=await chatRequest('list&offset='+offset+'&limit=250');
-   entries.push(...(data.chats||[]));total=data.total||entries.length;
-   if(!(data.chats||[]).length||entries.length>=total)break;
-   offset+=data.chats.length;
-  }
-  chatInventory=entries;chatListTotal=total;chatInventoryReady=true;chatInventoryError='';
- }catch(err){chatInventoryError=String(err.message||err);chatInventoryReady=false}
- renderChatPanel();
-}
-function chatStatusCounts(){
- const count=s=>chatInventory.filter(c=>c.status===s).length;
- return {total:chatListTotal,blocked:count('bloque_signale'),suspect:count('a_examiner'),unknown:count('non_verifie'),usable:count('actif_confirme')};
-}
+let workFindings=[],workFindingsLoaded=false,workFindingsError='',workFindingsChecked=null;
 function ecosystemMember(p){
- return !new Set(['budget','missions','enfants','messages-enfants']).has(p.id);
+ return !new Set(['budget','missions','enfants','messages-enfants','scenario-manager']).has(p.id);
 }
 function ecosystemName(p){
- if(['cockpit','ghdir-guiltanas-control','site-atelier'].includes(p.id))return 'Pilotage et présence';
+ if(['cockpit','ghdir-guiltanas-control','site-atelier','marque-atelier'].includes(p.id))return 'Pilotage et présence';
  if(p.family==='Créer & fabriquer')return 'Créations et ressources';
  return ecosystemMember(p)?'Applications et outils JDR':'Autres projets';
 }
-function chatRow(c){
- const pNames=(c.project_ids||[]).map(id=>projectData.find(p=>p.id===id)?.name||id);
- const canOpen=/^https:\/\/(chatgpt\.com|chat\.openai\.com)\//.test(c.chat_url||'');
- return '<div class="chat-entry" data-chat-id="'+escapeHTML(c.id)+'">'+
- '<div class="chat-entry-title"><strong>'+escapeHTML(c.title)+'</strong><small>'+escapeHTML(c.last_message_at?new Date(c.last_message_at).toLocaleDateString('fr-FR'):'Date non connue')+' · '+escapeHTML(c.message_count??'—')+' messages</small></div>'+
- '<div class="chat-entry-meta">'+escapeHTML(pNames.length?pNames.join(' · '):'Projet à classer')+'</div>'+
- '<div class="chat-entry-controls"><select class="chat-entry-state" aria-label="État de la conversation">'+
- Object.entries(chatStates).map(([id,label])=>'<option value="'+id+'"'+(c.status===id?' selected':'')+'>'+escapeHTML(label)+'</option>').join('')+'</select>'+
- (canOpen?'<a class="smallbutton" href="'+escapeHTML(c.chat_url)+'" target="_blank" rel="noopener noreferrer">Ouvrir</a>':'<span class="minihelp">Lien non disponible</span>')+
- '</div></div>';
+const workSignals={
+ blocage_signale:'Blocage signalé',
+ navigateur_work_interrompu:'Outil Work interrompu',
+ a_localiser:'À retrouver',
+ fonctionnel_historique:'Fonctionnel à cette date'
+};
+const workPlatformState={non_teste:'Non testé',echec_signale:'Échec signalé',fonctionnel_confirme:'Confirmé utilisable'};
+async function loadChatInventory(){
+ if(!Owner.token())return;
+ try{
+  const response=await fetch(CHATS_ENDPOINT+'?action=findings',{cache:'no-store',headers:{'Content-Type':'application/json',...Owner.headers()}});
+  const data=await response.json();if(!response.ok)throw Error(data.error||'État des travaux indisponible');
+  workFindings=Array.isArray(data.findings)?data.findings:[];workFindingsLoaded=true;workFindingsError='';workFindingsChecked=new Date();
+ }catch(e){workFindingsError=String(e.message||e);workFindingsLoaded=false}
+ renderChatPanel();
+}
+function workFindingCount(projectId){
+ return workFindings.filter(f=>(f.project_ids||[]).includes(projectId)).length;
+}
+function workFindingRow(f){
+ const names=(f.project_ids||[]).map(id=>projectData.find(p=>p.id===id)?.name||id);
+ const label=workSignals[f.signal]||'À vérifier';
+ const date=f.observed_at?new Date(f.observed_at+'T12:00:00').toLocaleDateString('fr-FR'):'date inconnue';
+ const maybeLink=f.chat_url&&/^https:\/\/(chatgpt\.com|chat\.openai\.com)\//.test(f.chat_url)?'<a target="_blank" rel="noopener noreferrer" href="'+escapeHTML(f.chat_url)+'">Ouvrir le fil</a>':'<span class="minihelp">Lien direct non retrouvé</span>';
+ return '<div class="work-finding"><div class="work-finding-head"><strong>'+escapeHTML(f.title)+'</strong><span class="work-health-pill '+(f.signal==='blocage_signale'?'work-risk':'work-neutral')+'">'+escapeHTML(label)+'</span></div>'+
+ '<div class="work-finding-sub">'+escapeHTML(names.join(' · '))+' · '+escapeHTML(date)+'</div>'+
+ '<div class="work-platforms"><span>Android : <b>'+escapeHTML(workPlatformState[f.android_state]||'Non testé')+'</b></span><span>Web : <b>'+escapeHTML(workPlatformState[f.web_state]||'Non testé')+'</b></span></div>'+
+ '<p class="work-finding-evidence">'+escapeHTML(f.evidence||'Aucune preuve supplémentaire.')+'</p>'+
+ '<div class="work-finding-foot">'+maybeLink+'</div></div>';
 }
 function renderChatPanel(){
- const summary=$('#chat-health-count'),stats=$('#chat-health-stats'),note=$('#chat-inventory-note'),list=$('#chat-inventory-list');
- if(!summary||!stats||!list)return;
- if(chatInventoryError){summary.textContent='· indisponible';stats.textContent='Erreur de lecture du registre privé : '+chatInventoryError;list.innerHTML='';return}
- const counts=chatStatusCounts();
- summary.textContent='· '+counts.total+' inventoriés'+(counts.blocked?' · '+counts.blocked+' bloqués signalés':'')+(counts.suspect?' · '+counts.suspect+' à examiner':'');
+ const summary=$('#chat-health-count'),stats=$('#chat-health-stats'),note=$('#chat-inventory-note'),list=$('#chat-inventory-list');if(!summary||!stats||!list)return;
+ if(workFindingsError){summary.textContent='· lecture impossible';stats.textContent='Registre privé indisponible : '+workFindingsError;list.innerHTML='';return}
+ const reported=workFindings.filter(f=>f.signal==='blocage_signale').length;
+ const lost=workFindings.filter(f=>f.signal==='navigateur_work_interrompu').length;
+ summary.textContent='· '+workFindings.length+' signalements étudiés';
  stats.innerHTML='<div class="chat-summary-grid">'+
- '<div><strong>'+counts.total+'</strong><small>Chats inventoriés</small></div>'+
- '<div><strong>'+counts.blocked+'</strong><small>Blocages signalés</small></div>'+
- '<div><strong>'+counts.suspect+'</strong><small>À examiner</small></div>'+
- '<div><strong>'+counts.unknown+'</strong><small>Non vérifiés</small></div></div>';
- if(note)note.textContent=counts.total?'Seules les conversations importées sont comptées. Les chats non importés restent invisibles ; un fil long est à examiner, pas forcément bloqué.':'Aucun historique ChatGPT importé. « Actualiser » relit ce registre, mais ne peut pas détecter les chats privés qui n’y figurent pas.';
- const f=$('#chat-status-filter')?.value||'all';
- const filtered=chatInventory.filter(c=>f==='all'||c.status===f);
- list.innerHTML=filtered.length?filtered.slice(0,70).map(chatRow).join('')+'<p class="minihelp">'+Math.min(filtered.length,70)+' affichées sur '+filtered.length+'. Choisis un projet pour son historique ciblé.</p>':'<div class="minihelp">Aucune conversation dans ce filtre.</div>';
+ '<div><strong>'+reported+'</strong><small>Blocages signalés</small></div>'+
+ '<div><strong>'+lost+'</strong><small>Incidents Work distincts</small></div>'+
+ '<div><strong>'+workFindings.length+'</strong><small>Traces retrouvées</small></div>'+
+ '<div><strong>—</strong><small>Tests directs Web/Android non disponibles</small></div></div>';
+ if(note)note.textContent='Contrôle de la base : '+(workFindingsChecked?workFindingsChecked.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}):'non fait')+'. Les incidents proviennent des échanges accessibles ; le bouton ne peut pas tester les conversations privées sur les deux plateformes.';
+ list.innerHTML=workFindings.length?workFindings.slice(0,30).map(workFindingRow).join(''):'<div class="minihelp">Aucun incident Work retrouvé dans les sources actuellement consultées. Cela ne veut pas dire qu’aucun chat n’a planté.</div>';
 }
 function projectChatMarkup(p){
- if(!chatInventoryReady)return '<div class="project-chat-state">💬 Conversations : inventaire privé non disponible ou non importé</div>';
- const chats=chatInventory.filter(c=>(c.project_ids||[]).includes(p.id));
- const blocked=chats.filter(c=>c.status==='bloque_signale').length;
- const suspect=chats.filter(c=>c.status==='a_examiner').length;
- let html='<section class="project-evidence"><h3>💬 Conversations liées à ce projet</h3><p>'+chats.length+' retrouvée(s) dans l’inventaire privé · '+blocked+' signalée(s) bloquée(s) · '+suspect+' à examiner</p>';
- if(!chats.length)html+='<p>Aucune conversation attribuée. Cela ne signifie pas qu’il n’existe aucun ancien chat.</p>';
- else html+=chats.slice(0,8).map(c=>'<div class="project-chat-item">'+escapeHTML(c.title)+' <small>· '+escapeHTML(chatStates[c.status]||'Non vérifié')+'</small></div>').join('');
- return html+'<p class="minihelp">Un blocage ne peut être confirmé que par un signalement ou un test réel dans ChatGPT, jamais par la simple synchronisation.</p></section>';
-}
-const chatPatterns=[
- ['forge',/forge.of.heroes|forge.sorcier|forgesorcier|voie.du.pagne|création.de.personnage|création.niveau.1|passage.de.niveau|profil.hybride/i],
- ['fiches-pj',/fiche.*interactive|fiche.*personnage.*cloud|import.*pdf.*fiche|suivi.*pv.*pm/i],
- ['hub-bastide',/hub.*bastide|île.aux.tempêtes.*bastide|mila.*dialogue|zéphéline|scanlan|vivelame|prépotente/i],
- ['hub-nespresso',/hub.*nespresso|île.aux.tempêtes.*d&d|xp.fantôme|nespresso.*joueurs/i],
- ['hub-configurable',/hub.configurable|hub.générique|hub.universel|espace.mj.*personnel/i],
- ['combat-cof2',/gestionnaire.*combat.*cof2|frise.*initiative|combat.*givrefoliette/i],
- ['soundboard-generique',/soundboard.*officiel|soundboard.*générique|soundboard_final/i],
- ['soundboard-ile',/soundboard.*île.aux.tempêtes|son.*muet.*soundboard/i],
- ['cockpit',/pilotage.guiltanas|guiltanas.control|cockpit|centre.synchronisation|inventaire.*chats/i],
- ['site-atelier',/seo.*atelier|référencement.*atelier|site.*atelier.guiltanas/i],
- ['mj-express',/mj.express/i],['pj-express',/pj.express/i],['express-universel',/guiltanas.express/i],
- ['budget',/budget.guiltanas|tableau.*budget/i],
- ['missions',/tableau.*missions.*sécurisé|pdp.*permis.feu|asnr.*missions/i],
- ['dragonlance-cof2',/dragonlance.*cof2/i],
- ['deck-succes-critiques',/deck.*succès.critique/i]
-];
-function chatTopics(conversation){
- const title=String(conversation.title||'').slice(0,250);
- let userTexts='',messages=0;
- const nodes=Object.values(conversation.mapping||{});
- for(const node of nodes){
-  const m=node&&node.message;if(!m)continue;messages++;
-  if(m.author?.role!=='user'||userTexts.length>60000)continue;
-  const parts=m.content?.parts||[];
-  for(const x of parts)if(typeof x==='string'&&userTexts.length<60000)userTexts+=' '+x.slice(0,4000);
+ const matches=workFindings.filter(f=>(f.project_ids||[]).includes(p.id));
+ let html='<section class="project-evidence"><h3>💬 Conversations Work & incidents</h3>';
+ if(!workFindingsLoaded)html+='<p>Recherche non disponible ; aucun état de chat garanti.</p>';
+ else if(!matches.length)html+='<p>Aucun blocage signalé retrouvé dans les sources consultées. Fonctionnement Android/Web : <b>non vérifié</b>.</p>';
+ else {
+  html+='<p>'+matches.length+' trace(s) de travail documentée(s) ; aucun test direct sur Android ou le Web n’a été réalisé.</p>';
+  html+=matches.map(f=>'<div class="project-chat-item"><strong>'+escapeHTML(f.title)+'</strong> · '+escapeHTML(workSignals[f.signal]||'À vérifier')+'<small> · App : '+escapeHTML(workPlatformState[f.android_state])+' / Web : '+escapeHTML(workPlatformState[f.web_state])+'</small></div>').join('');
  }
- const tagged=[];
- for(const [id,pattern] of chatPatterns)if(pattern.test(title)||pattern.test(userTexts))tagged.push(id);
- return {projects:tagged.slice(0,10),messageCount:messages};
-}
-async function importChatExport(file){
- const progress=$('#chat-import-progress');
- if(!file)return;
- if(file.size>180000000){progress.textContent='Export JSON trop volumineux pour cet import navigateur (180 Mo maximum).';return}
- progress.textContent='Analyse locale des conversations : aucun texte de message ne sera envoyé au serveur.';
- let parsed;
- try{parsed=JSON.parse(await file.text());if(!Array.isArray(parsed))throw Error('Le fichier doit être conversations.json, pas une autre exportation.')}catch(e){progress.textContent='Impossible de lire conversations.json : '+e.message;return}
- if(!parsed.length){progress.textContent='Le fichier ne contient aucune conversation.';return}
- const prepared=[];
- for(let i=0;i<parsed.length;i++){
-  const c=parsed[i],id=String(c?.id||c?.conversation_id||'');
-  if(!/^[a-zA-Z0-9_-]{12,140}$/.test(id))continue;
-  const analyzed=chatTopics(c);
-  const timestamp=typeof c.update_time==='number'&&Number.isFinite(c.update_time)?new Date(c.update_time*1000):null;
-  const date=timestamp&&Number.isFinite(timestamp.getTime())?timestamp.toISOString():null;
-  // A very long thread is flagged FOR REVIEW only, never confirmed "broken".
-  const danger=analyzed.messageCount>=240;
-  prepared.push({id,title:String(c.title||'Sans titre').slice(0,180),project_ids:analyzed.projects,
-    message_count:analyzed.messageCount,last_message_at:date,status:danger?'a_examiner':'non_verifie',
-    chat_url:/^[0-9a-f]{8}-[0-9a-f-]{27,}$/i.test(id)?'https://chatgpt.com/c/'+id:''});
- }
- if(!prepared.length){progress.textContent='Aucun identifiant de conversation valide détecté.';return}
- try{
-  for(let i=0;i<prepared.length;i+=120){
-   await chatRequest('import',{chats:prepared.slice(i,i+120)});
-   progress.textContent='Import sécurisé : '+Math.min(i+120,prepared.length)+' / '+prepared.length+' métadonnées enregistrées…';
-  }
-  progress.textContent='✓ '+prepared.length+' conversations indexées. Aucun message ni pièce jointe envoyé au serveur. Les liens reconstruits à partir des identifiants ChatGPT et les correspondances par projet restent à vérifier.';
-  await loadChatInventory();
- }catch(e){progress.textContent='Import interrompu : '+String(e.message||e)+'. Les lots précédents restent enregistrés.'}
+ return html+'<p class="minihelp">Un ancien signalement ne prouve pas que le chat est toujours bloqué. Aucun fil n’a été archivé ou supprimé.</p></section>';
 }
 
 function renderProjects(){
@@ -571,17 +497,8 @@ function wire(){const explorer=$('#mobile-repos');
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('.data-row'))clickParent(e);if(e.key==='Escape'&&!document.querySelector('dialog[open]')&&$('#drawer').classList.contains('show'))goBack()});
 $$('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));$$('[data-view-go]').forEach(b=>b.onclick=()=>setView(b.dataset.viewGo));$('#graph-repo').onchange=e=>{graphRepo=e.target.value;selected=null;hideDrawer();drawMap();pushRoute()};$('#graph-reset').onclick=()=>{graphRepo='';selected=null;hideDrawer();$('#graph-repo').value='';drawMap();pushRoute()};
 $('#project-search').oninput=renderProjects;$('#project-stage').onchange=renderProjects;$('#project-family').onchange=renderProjects;$('#project-new').onclick=()=>editProject(null);$('#project-scan').onclick=()=>loadRegistry(true);$('#project-refresh').onclick=()=>loadRegistry(false);
- $('#chat-import-trigger').onclick=()=>$('#chat-import-file').click();
- $('#chat-import-file').onchange=e=>{importChatExport(e.target.files?.[0]);e.target.value=''};
- $('#chat-status-filter').onchange=renderChatPanel;
- $('#chat-inventory-list').addEventListener('change',async e=>{
-  const sel=e.target.closest('.chat-entry-state');if(!sel)return;
-  const row=sel.closest('[data-chat-id]');const c=chatInventory.find(x=>x.id===row?.dataset.chatId);if(!c)return;
-  sel.disabled=true;const old=c.status;
-  try{const saved=await chatRequest('mark',{id:c.id,status:sel.value});c.status=saved.chat.status;renderChatPanel()}
-  catch(err){c.status=old;sel.value=old;alert('Statut non enregistré : '+String(err.message||err))}
-  finally{sel.disabled=false}
- });document.addEventListener('click',e=>{const audit=e.target.closest('[data-project-audit]');if(audit){openProject(audit.dataset.projectAudit);return}const resume=e.target.closest('[data-reprise-project]');if(resume){e.preventDefault();resumeProject(resume.dataset.repriseProject)}});$('#project-close').onclick=$('#project-cancel').onclick=goBack;$('#project-form').onsubmit=async e=>{e.preventDefault();const f=e.target,b=$('#project-submit');b.disabled=true;$('#project-form-result').textContent='Sauvegarde sur le serveur…';try{const body=Object.fromEntries(new FormData(f));const d=await registryRequest('save',body);$('#project-form-result').textContent='Fiche enregistrée.';$('#project-editor').close();if(history.state?.pilotage&&history.state.route?.dialog==='project-editor'){history.replaceState({...history.state,route:{...history.state.route,dialog:null,edit:null}},'',location.href)}await loadRegistry();openProject(d.project.id)}catch(err){$('#project-form-result').textContent=err.message}finally{b.disabled=false}};$('#project-list').addEventListener('click',e=>{const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)});$('#project-list').addEventListener('keydown',e=>{if(e.key==='Enter'){const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)}});document.addEventListener('click',e=>{const b=e.target.closest('[data-edit-project]');if(b)editProject(b.dataset.editProject)});$('#app-search').oninput=e=>{search=e.target.value.trim().toLowerCase();renderApps()};$('#app-filter').onchange=renderApps;
+ $('#chat-findings-refresh').onclick=loadChatInventory;
+ document.addEventListener('click',e=>{const audit=e.target.closest('[data-project-audit]');if(audit){openProject(audit.dataset.projectAudit);return}const resume=e.target.closest('[data-reprise-project]');if(resume){e.preventDefault();resumeProject(resume.dataset.repriseProject)}});$('#project-close').onclick=$('#project-cancel').onclick=goBack;$('#project-form').onsubmit=async e=>{e.preventDefault();const f=e.target,b=$('#project-submit');b.disabled=true;$('#project-form-result').textContent='Sauvegarde sur le serveur…';try{const body=Object.fromEntries(new FormData(f));const d=await registryRequest('save',body);$('#project-form-result').textContent='Fiche enregistrée.';$('#project-editor').close();if(history.state?.pilotage&&history.state.route?.dialog==='project-editor'){history.replaceState({...history.state,route:{...history.state.route,dialog:null,edit:null}},'',location.href)}await loadRegistry();openProject(d.project.id)}catch(err){$('#project-form-result').textContent=err.message}finally{b.disabled=false}};$('#project-list').addEventListener('click',e=>{const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)});$('#project-list').addEventListener('keydown',e=>{if(e.key==='Enter'){const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)}});document.addEventListener('click',e=>{const b=e.target.closest('[data-edit-project]');if(b)editProject(b.dataset.editProject)});$('#app-search').oninput=e=>{search=e.target.value.trim().toLowerCase();renderApps()};$('#app-filter').onchange=renderApps;
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-check-online]');if(!b)return;const a=model?.apps.find(x=>x.id===b.dataset.checkOnline),target=$('#online-test');if(!a||!target)return;b.disabled=true;target.textContent='Test en cours…';try{const u=ROOT+a.path;const r=await fetch(u,{method:'HEAD',cache:'no-store'});target.textContent=r.ok?'✓ Page accessible depuis cet appareil ('+r.status+'). Fonctionnalités internes non testées.':'⚠ Page non confirmée (HTTP '+r.status+').';}catch(err){target.textContent='⚠ Test impossible : '+err.message;}finally{b.disabled=false}});
 $('#drawer-close').onclick=closeDrawer;$('#shade').onclick=closeDrawer;$('#cockpit-back').onclick=goBack;$('#help').onclick=$('#open-guide').onclick=()=>showHelp('guide');$('#term-close').onclick=goBack;document.addEventListener('click',e=>{const b=e.target.closest('[data-term]');if(b)showHelp(b.dataset.term)});$('#refresh-players').onclick=loadPlayerChecks;$('#reload').onclick=load}
 function populate(){const chooser=$('#graph-repo');chooser.innerHTML='<option value="">Vue des dépôts</option>'+model.repos.map(r=>'<option value="'+escapeHTML(r.id)+'">'+escapeHTML(r.name)+'</option>').join('');if(graphRepo&&!model.repos.some(r=>r.id===graphRepo))graphRepo='';chooser.value=graphRepo;renderMetrics();renderBrief();renderApps();renderRepos();renderBackend();renderUsage();renderDevices();drawMap();loadPlayerChecks();$('#freshness').textContent='Données serveur : '+time(model.metrics.generated_at)+' · dépôts : audit '+model.inventoryUpdated}
