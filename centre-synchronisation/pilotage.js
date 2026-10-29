@@ -362,7 +362,8 @@ async function importChatExport(file){
   // A very long thread is flagged FOR REVIEW only, never confirmed "broken".
   const danger=analyzed.messageCount>=240;
   prepared.push({id,title:String(c.title||'Sans titre').slice(0,180),project_ids:analyzed.projects,
-    message_count:analyzed.messageCount,last_message_at:date,status:danger?'a_examiner':'non_verifie'});
+    message_count:analyzed.messageCount,last_message_at:date,status:danger?'a_examiner':'non_verifie',
+    chat_url:/^[0-9a-f]{8}-[0-9a-f-]{27,}$/i.test(id)?'https://chatgpt.com/c/'+id:''});
  }
  if(!prepared.length){progress.textContent='Aucun identifiant de conversation valide détecté.';return}
  try{
@@ -370,7 +371,7 @@ async function importChatExport(file){
    await chatRequest('import',{chats:prepared.slice(i,i+120)});
    progress.textContent='Import sécurisé : '+Math.min(i+120,prepared.length)+' / '+prepared.length+' métadonnées enregistrées…';
   }
-  progress.textContent='✓ '+prepared.length+' conversations indexées. Aucun message ni pièce jointe envoyé au serveur. Les correspondances par mots-clés restent à confirmer.';
+  progress.textContent='✓ '+prepared.length+' conversations indexées. Aucun message ni pièce jointe envoyé au serveur. Les liens reconstruits à partir des identifiants ChatGPT et les correspondances par projet restent à vérifier.';
   await loadChatInventory();
  }catch(e){progress.textContent='Import interrompu : '+String(e.message||e)+'. Les lots précédents restent enregistrés.'}
 }
