@@ -1,16 +1,16 @@
 {
   "schema": "FOH_N1_REJECTION_REVIEW",
   "version": 1,
-  "sourceReportSha256": "5b35a363169af0d5c0c3cb1980ad0fd9ce59c516bf71d6dfdca9c7cab2637977",
+  "sourceReportSha256": "f182e300fdf3495d047757aa72221d66cff6c9b214ea9604555aacc0fa1630d6",
   "sourceInputs": {
-    "indexSha256": "d583211215f213fa6912e25f6d4cb8202315c4454c1f0d5dc6c1e2c88fe1a4c1",
-    "masterSha256": "97846594ff4b5f13a3b9a4d4037102bcdf46b2d81e39efc0208451db8f446165",
-    "engineSha256": "214f3c6fb3fc6cd78fdb05fa579a0302277c7338d9420be557fdc1a56fd9b203",
+    "indexSha256": "72f141a6dbc688cd9a2ffed16d8b931097bd3120961e82d3c8f511d476a0c5c7",
+    "masterSha256": "085cba5d3fccac6c228d3b3e6afc8a810c45fe5232e5b9744876602474919d7a",
+    "engineSha256": "3e2dccfcb4f36261091c9362e8cfbfbe2e8170d4acfbf58f8914539f78722bf1",
     "databaseSha256": "ba4b75a3eb170eb08e789d7705b8b7fffa532ec082d2489561a2bdb512db8df2"
   },
-  "currentEngineSha256": "214f3c6fb3fc6cd78fdb05fa579a0302277c7338d9420be557fdc1a56fd9b203",
+  "currentEngineSha256": "3e2dccfcb4f36261091c9362e8cfbfbe2e8170d4acfbf58f8914539f78722bf1",
   "groupCount": 27,
-  "underlyingSourceCases": 18700,
+  "underlyingSourceCases": 19990,
   "sampledCases": 81,
   "categories": 7,
   "status": "PASS",
@@ -5393,7 +5393,7 @@
     {
       "originalGroup": 18,
       "mode": "standard",
-      "sourceCount": 20,
+      "sourceCount": 30,
       "reasons": [
         "Arme interdite par la petite taille du peuple."
       ],
@@ -5401,16 +5401,16 @@
       "categories": [
         "SMALL_FORBIDDEN"
       ],
-      "source": "Compagnon pp.15 et 17, maximum 1d10 ; interdictions d’arc long/arbalète lourde de la politique Forge",
+      "source": "COF2 Livre de base p.55 (halfelin) ; Compagnon pp.15 et 17 (gobelin/kobold, adaptation Forge) : maximum 1d10, arc long et arbalète lourde interdits",
       "conclusion": "Les DM de base sont évalués sur tous les dés : 2d6 dépasse 1d10. Une arme plus petite, maîtrisée, constitue la contrepartie.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
           "case": {
             "mode": "standard",
-            "caseId": "677cdfcdc5d4726f8220631ccf47087c06987b8e9986b8571dac2a73a3aa3d12",
+            "caseId": "24fc9772a9d0b591db36ee3eb2b8fa69a77aab43f86cfeaf5e1c7aeeaf2cf833",
             "profile": "class:barbare:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
+            "people": "people:halfelin:cof2-lb-2024",
             "paths": [
               "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "classpath:voie-du-pagne:class-barbare:cof2-lb-2024"
@@ -5431,7 +5431,7 @@
               },
               "familleId": "combattant",
               "classeId": "class:barbare:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
+              "peupleId": "people:halfelin:cof2-lb-2024",
               "serieId": "expert",
               "baseCaracs": {
                 "for": 2,
@@ -5454,7 +5454,7 @@
                 "bonusStat": "agi"
               },
               "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
                 "keepPeoplePathId": "",
                 "profilePathIds": [
                   "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
@@ -5487,9 +5487,9 @@
               }
             },
             "expectedDerived": {
-              "PV": 13,
+              "PV": 12,
               "DEF": 13,
-              "INIT": 14
+              "INIT": 11
             },
             "saveReplay": "PASS"
           }
@@ -5497,9 +5497,9 @@
         {
           "case": {
             "mode": "standard",
-            "caseId": "6fab76487efe8a5547594f3747c74ddb1d4bb23fb1a425e9843087d2d41590aa",
+            "caseId": "bb3e38e7b85683de90303d54906a9ad96b04c6888f60dc158f7bb04c6e9c7f5f",
             "profile": "class:barbare:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
+            "people": "people:halfelin:cof2-lb-2024",
             "paths": [
               "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024"
@@ -5520,7 +5520,7 @@
               },
               "familleId": "combattant",
               "classeId": "class:barbare:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
+              "peupleId": "people:halfelin:cof2-lb-2024",
               "serieId": "expert",
               "baseCaracs": {
                 "for": 2,
@@ -5543,7 +5543,7 @@
                 "bonusStat": "agi"
               },
               "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
                 "keepPeoplePathId": "",
                 "profilePathIds": [
                   "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
@@ -5576,9 +5576,9 @@
               }
             },
             "expectedDerived": {
-              "PV": 12,
+              "PV": 11,
               "DEF": 14,
-              "INIT": 17
+              "INIT": 14
             },
             "saveReplay": "PASS"
           }
@@ -5586,9 +5586,9 @@
         {
           "case": {
             "mode": "standard",
-            "caseId": "e80759df728b842aa3eb6c60ad03fd3f55292a47b842e9b8e59a6c086c99cd59",
+            "caseId": "40712da92ccf7840ff9cf3572604023de113c917d76cbcf83e2e9824b90f83a6",
             "profile": "class:barbare:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
+            "people": "people:halfelin:cof2-lb-2024",
             "paths": [
               "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "classpath:voie-du-primitif:class-barbare:cof2-lb-2024"
@@ -5609,7 +5609,7 @@
               },
               "familleId": "combattant",
               "classeId": "class:barbare:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
+              "peupleId": "people:halfelin:cof2-lb-2024",
               "serieId": "expert",
               "baseCaracs": {
                 "for": 2,
@@ -5632,7 +5632,7 @@
                 "bonusStat": "agi"
               },
               "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
                 "keepPeoplePathId": "",
                 "profilePathIds": [
                   "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
@@ -5665,9 +5665,9 @@
               }
             },
             "expectedDerived": {
-              "PV": 13,
+              "PV": 12,
               "DEF": 13,
-              "INIT": 14
+              "INIT": 11
             },
             "saveReplay": "PASS"
           }
@@ -5677,7 +5677,7 @@
     {
       "originalGroup": 19,
       "mode": "ancestry-choices",
-      "sourceCount": 40,
+      "sourceCount": 60,
       "reasons": [
         "Arme interdite par la petite taille du peuple."
       ],
@@ -5685,16 +5685,16 @@
       "categories": [
         "SMALL_FORBIDDEN"
       ],
-      "source": "Compagnon pp.15 et 17, maximum 1d10 ; interdictions d’arc long/arbalète lourde de la politique Forge",
+      "source": "COF2 Livre de base p.55 (halfelin) ; Compagnon pp.15 et 17 (gobelin/kobold, adaptation Forge) : maximum 1d10, arc long et arbalète lourde interdits",
       "conclusion": "Les DM de base sont évalués sur tous les dés : 2d6 dépasse 1d10. Une arme plus petite, maîtrisée, constitue la contrepartie.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
           "case": {
             "mode": "ancestry-choices",
-            "caseId": "677cdfcdc5d4726f8220631ccf47087c06987b8e9986b8571dac2a73a3aa3d12",
+            "caseId": "24fc9772a9d0b591db36ee3eb2b8fa69a77aab43f86cfeaf5e1c7aeeaf2cf833",
             "profile": "class:barbare:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
+            "people": "people:halfelin:cof2-lb-2024",
             "paths": [
               "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "classpath:voie-du-pagne:class-barbare:cof2-lb-2024"
@@ -5715,7 +5715,7 @@
               },
               "familleId": "combattant",
               "classeId": "class:barbare:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
+              "peupleId": "people:halfelin:cof2-lb-2024",
               "serieId": "expert",
               "baseCaracs": {
                 "for": 2,
@@ -5738,7 +5738,7 @@
                 "bonusStat": "agi"
               },
               "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
                 "keepPeoplePathId": "",
                 "profilePathIds": [
                   "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
@@ -5771,9 +5771,9 @@
               }
             },
             "expectedDerived": {
-              "PV": 13,
+              "PV": 12,
               "DEF": 13,
-              "INIT": 14
+              "INIT": 11
             },
             "saveReplay": "PASS"
           }
@@ -5781,9 +5781,9 @@
         {
           "case": {
             "mode": "ancestry-choices",
-            "caseId": "f20ee25fe12adb08dd40c85c885f7501fa59c72dff7794af3d63caaa57282666",
+            "caseId": "fb0714f8c98a18ef74ff21e4d8e282cc5b9eb74409e109ecf17547a856740b74",
             "profile": "class:barbare:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
+            "people": "people:halfelin:cof2-lb-2024",
             "paths": [
               "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "classpath:voie-du-pagne:class-barbare:cof2-lb-2024"
@@ -5804,7 +5804,7 @@
               },
               "familleId": "combattant",
               "classeId": "class:barbare:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
+              "peupleId": "people:halfelin:cof2-lb-2024",
               "serieId": "expert",
               "baseCaracs": {
                 "for": 2,
@@ -5824,10 +5824,10 @@
                 ]
               },
               "peupleChoices": {
-                "bonusStat": "int"
+                "bonusStat": "vol"
               },
               "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
                 "keepPeoplePathId": "",
                 "profilePathIds": [
                   "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
@@ -5860,9 +5860,9 @@
               }
             },
             "expectedDerived": {
-              "PV": 13,
+              "PV": 12,
               "DEF": 12,
-              "INIT": 14
+              "INIT": 11
             },
             "saveReplay": "PASS"
           }
@@ -5870,9 +5870,9 @@
         {
           "case": {
             "mode": "ancestry-choices",
-            "caseId": "6fab76487efe8a5547594f3747c74ddb1d4bb23fb1a425e9843087d2d41590aa",
+            "caseId": "bb3e38e7b85683de90303d54906a9ad96b04c6888f60dc158f7bb04c6e9c7f5f",
             "profile": "class:barbare:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
+            "people": "people:halfelin:cof2-lb-2024",
             "paths": [
               "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024"
@@ -5893,7 +5893,7 @@
               },
               "familleId": "combattant",
               "classeId": "class:barbare:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
+              "peupleId": "people:halfelin:cof2-lb-2024",
               "serieId": "expert",
               "baseCaracs": {
                 "for": 2,
@@ -5916,7 +5916,7 @@
                 "bonusStat": "agi"
               },
               "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
                 "keepPeoplePathId": "",
                 "profilePathIds": [
                   "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
@@ -5949,9 +5949,9 @@
               }
             },
             "expectedDerived": {
-              "PV": 12,
+              "PV": 11,
               "DEF": 14,
-              "INIT": 17
+              "INIT": 14
             },
             "saveReplay": "PASS"
           }
@@ -5961,7 +5961,7 @@
     {
       "originalGroup": 20,
       "mode": "hybrid",
-      "sourceCount": 800,
+      "sourceCount": 1200,
       "reasons": [
         "Arme interdite par la petite taille du peuple."
       ],
@@ -5969,16 +5969,16 @@
       "categories": [
         "SMALL_FORBIDDEN"
       ],
-      "source": "Compagnon pp.15 et 17, maximum 1d10 ; interdictions d’arc long/arbalète lourde de la politique Forge",
+      "source": "COF2 Livre de base p.55 (halfelin) ; Compagnon pp.15 et 17 (gobelin/kobold, adaptation Forge) : maximum 1d10, arc long et arbalète lourde interdits",
       "conclusion": "Les DM de base sont évalués sur tous les dés : 2d6 dépasse 1d10. Une arme plus petite, maîtrisée, constitue la contrepartie.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
           "case": {
             "mode": "hybrid",
-            "caseId": "7180d7adf870425f39e587abf05756fe0ca358e09cba98d6c0996c6f1744b89e",
+            "caseId": "493a4ab0d2c99b1edc23705fe1ea093927ffdf468c5face62ce59251975dd0fc",
             "profile": "class:barbare:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
+            "people": "people:halfelin:cof2-lb-2024",
             "paths": [
               "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
@@ -5999,7 +5999,7 @@
               },
               "familleId": "combattant",
               "classeId": "class:barbare:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
+              "peupleId": "people:halfelin:cof2-lb-2024",
               "serieId": "expert",
               "baseCaracs": {
                 "for": 2,
@@ -6022,7 +6022,7 @@
                 "bonusStat": "agi"
               },
               "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
                 "keepPeoplePathId": "",
                 "profilePathIds": [
                   "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
@@ -6063,9 +6063,9 @@
               }
             },
             "expectedDerived": {
-              "PV": 11,
+              "PV": 10,
               "DEF": 13,
-              "INIT": 14
+              "INIT": 11
             },
             "saveReplay": "PASS"
           }
@@ -6073,9 +6073,9 @@
         {
           "case": {
             "mode": "hybrid",
-            "caseId": "49f9b49df53d91c70e45501e2ecdc76e893da69f82cf2d8b0bb53be05ec42944",
+            "caseId": "a9a347ede2d41fa8264fd9456ae24574b615ed9ede1b2b6e21895cd1b800e2f5",
             "profile": "class:barbare:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
+            "people": "people:halfelin:cof2-lb-2024",
             "paths": [
               "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
@@ -6096,7 +6096,7 @@
               },
               "familleId": "combattant",
               "classeId": "class:barbare:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
+              "peupleId": "people:halfelin:cof2-lb-2024",
               "serieId": "expert",
               "baseCaracs": {
                 "for": 2,
@@ -6119,7 +6119,7 @@
                 "bonusStat": "agi"
               },
               "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
                 "keepPeoplePathId": "",
                 "profilePathIds": [
                   "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
@@ -6160,9 +6160,9 @@
               }
             },
             "expectedDerived": {
-              "PV": 11,
+              "PV": 10,
               "DEF": 13,
-              "INIT": 14
+              "INIT": 11
             },
             "saveReplay": "PASS"
           }
@@ -6170,9 +6170,9 @@
         {
           "case": {
             "mode": "hybrid",
-            "caseId": "3c6dccf063174efed4b510a558984ce21404c8125abe00c00550598aa92e6fb0",
+            "caseId": "5dff37af7735e372f6d132344b0160bbd9381fff45b461831e8743e3656a9074",
             "profile": "class:barbare:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
+            "people": "people:halfelin:cof2-lb-2024",
             "paths": [
               "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
               "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
@@ -6193,7 +6193,7 @@
               },
               "familleId": "combattant",
               "classeId": "class:barbare:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
+              "peupleId": "people:halfelin:cof2-lb-2024",
               "serieId": "expert",
               "baseCaracs": {
                 "for": 2,
@@ -6216,7 +6216,7 @@
                 "bonusStat": "agi"
               },
               "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
                 "keepPeoplePathId": "",
                 "profilePathIds": [
                   "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
@@ -6257,9 +6257,9 @@
               }
             },
             "expectedDerived": {
-              "PV": 11,
+              "PV": 10,
               "DEF": 13,
-              "INIT": 14
+              "INIT": 11
             },
             "saveReplay": "PASS"
           }
@@ -6268,6 +6268,584 @@
     },
     {
       "originalGroup": 21,
+      "mode": "standard",
+      "sourceCount": 60,
+      "reasons": [
+        "Arme interdite par la petite taille du peuple.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
+      ],
+      "category": "SMALL_FORBIDDEN",
+      "categories": [
+        "SMALL_FORBIDDEN",
+        "SMALL_TWO_HANDS"
+      ],
+      "source": "COF2 Livre de base p.55 (halfelin) ; Compagnon pp.15 et 17 (gobelin/kobold, adaptation Forge) : maximum 1d10, arc long et arbalète lourde interdits ; COF2 Livre de base p.55 (halfelin) ; Compagnon pp.15 et 17, règle Petite taille (gobelin/kobold, adaptation Forge)",
+      "conclusion": "Les DM de base sont évalués sur tous les dés : 2d6 dépasse 1d10. Une arme plus petite, maîtrisée, constitue la contrepartie. Le d8–d10 demande deux mains. Le défaut refusant aussi un personnage sans bouclier est corrigé ; le nombre de mains est porté sur l’attaque.",
+      "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
+      "samples": [
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "f4c0ea5c2621014632b31a18208229006abcc8e2cdc50cbce6eaea48cb01786c",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
+          "errors": [
+            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
+            "Arme interdite par la petite taille du peuple."
+          ],
+          "counterpart": {
+            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
+            "requiresMJEquipmentExchange": true,
+            "changesSelectedPaths": false,
+            "interfaceNotVerified": true,
+            "state": {
+              "identite": {
+                "nom": "Convergence produit"
+              },
+              "familleId": "combattant",
+              "classeId": "class:chevalier:cof2-lb-2024",
+              "peupleId": "people:halfelin:cof2-lb-2024",
+              "serieId": "expert",
+              "baseCaracs": {
+                "for": 2,
+                "agi": 1,
+                "con": 0,
+                "per": 1,
+                "int": 3,
+                "vol": 0,
+                "cha": -1
+              },
+              "characteristicMethod": {
+                "type": "STANDARD_SERIES",
+                "rolls": [
+                  2,
+                  7,
+                  12
+                ]
+              },
+              "peupleChoices": {
+                "bonusStat": "agi"
+              },
+              "voies": {
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+                "keepPeoplePathId": "",
+                "profilePathIds": [
+                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                  "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
+                ],
+                "mageRank2PathId": ""
+              },
+              "equip": {
+                "initialPackageId": "standard",
+                "armorId": "",
+                "shieldId": "",
+                "weaponIds": [
+                  "weapon:dagger"
+                ],
+                "tinyFitted": true,
+                "gmApprovedSwap": true
+              },
+              "profileChoices": {},
+              "abilityChoices": {},
+              "options": {},
+              "advancedRules": {
+                "modelVersion": "FIX78",
+                "age": false,
+                "histories": false,
+                "additionalMagePaths": false
+              },
+              "narrative": {
+                "ideal": "",
+                "flaw": ""
+              }
+            },
+            "expectedDerived": {
+              "PV": 10,
+              "DEF": 13,
+              "INIT": 11
+            },
+            "saveReplay": "PASS"
+          }
+        },
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "591338bba70e2be2dca0e7febaf55df2b36b0fbb918b3fe6c9e3f744e4f35bb1",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-du-preux:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
+          "errors": [
+            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
+            "Arme interdite par la petite taille du peuple."
+          ],
+          "counterpart": {
+            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
+            "requiresMJEquipmentExchange": true,
+            "changesSelectedPaths": false,
+            "interfaceNotVerified": true,
+            "state": {
+              "identite": {
+                "nom": "Convergence produit"
+              },
+              "familleId": "combattant",
+              "classeId": "class:chevalier:cof2-lb-2024",
+              "peupleId": "people:halfelin:cof2-lb-2024",
+              "serieId": "expert",
+              "baseCaracs": {
+                "for": 2,
+                "agi": 1,
+                "con": 0,
+                "per": 1,
+                "int": 3,
+                "vol": 0,
+                "cha": -1
+              },
+              "characteristicMethod": {
+                "type": "STANDARD_SERIES",
+                "rolls": [
+                  2,
+                  7,
+                  12
+                ]
+              },
+              "peupleChoices": {
+                "bonusStat": "agi"
+              },
+              "voies": {
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+                "keepPeoplePathId": "",
+                "profilePathIds": [
+                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                  "classpath:voie-du-preux:class-chevalier:cof2-lb-2024"
+                ],
+                "mageRank2PathId": ""
+              },
+              "equip": {
+                "initialPackageId": "standard",
+                "armorId": "",
+                "shieldId": "",
+                "weaponIds": [
+                  "weapon:dagger"
+                ],
+                "tinyFitted": true,
+                "gmApprovedSwap": true
+              },
+              "profileChoices": {},
+              "abilityChoices": {},
+              "options": {},
+              "advancedRules": {
+                "modelVersion": "FIX78",
+                "age": false,
+                "histories": false,
+                "additionalMagePaths": false
+              },
+              "narrative": {
+                "ideal": "",
+                "flaw": ""
+              }
+            },
+            "expectedDerived": {
+              "PV": 10,
+              "DEF": 13,
+              "INIT": 11
+            },
+            "saveReplay": "PASS"
+          }
+        },
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "7e1d71a9dac19f700ef058953c327a564341997a29279f7f142be619ae756e7a",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
+          "errors": [
+            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
+            "Arme interdite par la petite taille du peuple."
+          ],
+          "counterpart": {
+            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
+            "requiresMJEquipmentExchange": true,
+            "changesSelectedPaths": false,
+            "interfaceNotVerified": true,
+            "state": {
+              "identite": {
+                "nom": "Convergence produit"
+              },
+              "familleId": "combattant",
+              "classeId": "class:chevalier:cof2-lb-2024",
+              "peupleId": "people:halfelin:cof2-lb-2024",
+              "serieId": "expert",
+              "baseCaracs": {
+                "for": 2,
+                "agi": 1,
+                "con": 0,
+                "per": 1,
+                "int": 3,
+                "vol": 0,
+                "cha": -1
+              },
+              "characteristicMethod": {
+                "type": "STANDARD_SERIES",
+                "rolls": [
+                  2,
+                  7,
+                  12
+                ]
+              },
+              "peupleChoices": {
+                "bonusStat": "agi"
+              },
+              "voies": {
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+                "keepPeoplePathId": "",
+                "profilePathIds": [
+                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                  "classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024"
+                ],
+                "mageRank2PathId": ""
+              },
+              "equip": {
+                "initialPackageId": "standard",
+                "armorId": "",
+                "shieldId": "",
+                "weaponIds": [
+                  "weapon:dagger"
+                ],
+                "tinyFitted": true,
+                "gmApprovedSwap": true
+              },
+              "profileChoices": {},
+              "abilityChoices": {},
+              "options": {},
+              "advancedRules": {
+                "modelVersion": "FIX78",
+                "age": false,
+                "histories": false,
+                "additionalMagePaths": false
+              },
+              "narrative": {
+                "ideal": "",
+                "flaw": ""
+              }
+            },
+            "expectedDerived": {
+              "PV": 10,
+              "DEF": 13,
+              "INIT": 11
+            },
+            "saveReplay": "PASS"
+          }
+        }
+      ]
+    },
+    {
+      "originalGroup": 22,
+      "mode": "ancestry-choices",
+      "sourceCount": 120,
+      "reasons": [
+        "Arme interdite par la petite taille du peuple.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
+      ],
+      "category": "SMALL_FORBIDDEN",
+      "categories": [
+        "SMALL_FORBIDDEN",
+        "SMALL_TWO_HANDS"
+      ],
+      "source": "COF2 Livre de base p.55 (halfelin) ; Compagnon pp.15 et 17 (gobelin/kobold, adaptation Forge) : maximum 1d10, arc long et arbalète lourde interdits ; COF2 Livre de base p.55 (halfelin) ; Compagnon pp.15 et 17, règle Petite taille (gobelin/kobold, adaptation Forge)",
+      "conclusion": "Les DM de base sont évalués sur tous les dés : 2d6 dépasse 1d10. Une arme plus petite, maîtrisée, constitue la contrepartie. Le d8–d10 demande deux mains. Le défaut refusant aussi un personnage sans bouclier est corrigé ; le nombre de mains est porté sur l’attaque.",
+      "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
+      "samples": [
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "f4c0ea5c2621014632b31a18208229006abcc8e2cdc50cbce6eaea48cb01786c",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
+          "errors": [
+            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
+            "Arme interdite par la petite taille du peuple."
+          ],
+          "counterpart": {
+            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
+            "requiresMJEquipmentExchange": true,
+            "changesSelectedPaths": false,
+            "interfaceNotVerified": true,
+            "state": {
+              "identite": {
+                "nom": "Convergence produit"
+              },
+              "familleId": "combattant",
+              "classeId": "class:chevalier:cof2-lb-2024",
+              "peupleId": "people:halfelin:cof2-lb-2024",
+              "serieId": "expert",
+              "baseCaracs": {
+                "for": 2,
+                "agi": 1,
+                "con": 0,
+                "per": 1,
+                "int": 3,
+                "vol": 0,
+                "cha": -1
+              },
+              "characteristicMethod": {
+                "type": "STANDARD_SERIES",
+                "rolls": [
+                  2,
+                  7,
+                  12
+                ]
+              },
+              "peupleChoices": {
+                "bonusStat": "agi"
+              },
+              "voies": {
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+                "keepPeoplePathId": "",
+                "profilePathIds": [
+                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                  "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
+                ],
+                "mageRank2PathId": ""
+              },
+              "equip": {
+                "initialPackageId": "standard",
+                "armorId": "",
+                "shieldId": "",
+                "weaponIds": [
+                  "weapon:dagger"
+                ],
+                "tinyFitted": true,
+                "gmApprovedSwap": true
+              },
+              "profileChoices": {},
+              "abilityChoices": {},
+              "options": {},
+              "advancedRules": {
+                "modelVersion": "FIX78",
+                "age": false,
+                "histories": false,
+                "additionalMagePaths": false
+              },
+              "narrative": {
+                "ideal": "",
+                "flaw": ""
+              }
+            },
+            "expectedDerived": {
+              "PV": 10,
+              "DEF": 13,
+              "INIT": 11
+            },
+            "saveReplay": "PASS"
+          }
+        },
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "643fbd59d8fbed917fce84388918d01a820482bd23adedab63b16f5c287e8a3a",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
+          "errors": [
+            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
+            "Arme interdite par la petite taille du peuple."
+          ],
+          "counterpart": {
+            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
+            "requiresMJEquipmentExchange": true,
+            "changesSelectedPaths": false,
+            "interfaceNotVerified": true,
+            "state": {
+              "identite": {
+                "nom": "Convergence produit"
+              },
+              "familleId": "combattant",
+              "classeId": "class:chevalier:cof2-lb-2024",
+              "peupleId": "people:halfelin:cof2-lb-2024",
+              "serieId": "expert",
+              "baseCaracs": {
+                "for": 2,
+                "agi": 1,
+                "con": 0,
+                "per": 1,
+                "int": 3,
+                "vol": 0,
+                "cha": -1
+              },
+              "characteristicMethod": {
+                "type": "STANDARD_SERIES",
+                "rolls": [
+                  2,
+                  7,
+                  12
+                ]
+              },
+              "peupleChoices": {
+                "bonusStat": "vol"
+              },
+              "voies": {
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+                "keepPeoplePathId": "",
+                "profilePathIds": [
+                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                  "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
+                ],
+                "mageRank2PathId": ""
+              },
+              "equip": {
+                "initialPackageId": "standard",
+                "armorId": "",
+                "shieldId": "",
+                "weaponIds": [
+                  "weapon:dagger"
+                ],
+                "tinyFitted": true,
+                "gmApprovedSwap": true
+              },
+              "profileChoices": {},
+              "abilityChoices": {},
+              "options": {},
+              "advancedRules": {
+                "modelVersion": "FIX78",
+                "age": false,
+                "histories": false,
+                "additionalMagePaths": false
+              },
+              "narrative": {
+                "ideal": "",
+                "flaw": ""
+              }
+            },
+            "expectedDerived": {
+              "PV": 10,
+              "DEF": 12,
+              "INIT": 11
+            },
+            "saveReplay": "PASS"
+          }
+        },
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "591338bba70e2be2dca0e7febaf55df2b36b0fbb918b3fe6c9e3f744e4f35bb1",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-du-preux:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
+          "errors": [
+            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
+            "Arme interdite par la petite taille du peuple."
+          ],
+          "counterpart": {
+            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
+            "requiresMJEquipmentExchange": true,
+            "changesSelectedPaths": false,
+            "interfaceNotVerified": true,
+            "state": {
+              "identite": {
+                "nom": "Convergence produit"
+              },
+              "familleId": "combattant",
+              "classeId": "class:chevalier:cof2-lb-2024",
+              "peupleId": "people:halfelin:cof2-lb-2024",
+              "serieId": "expert",
+              "baseCaracs": {
+                "for": 2,
+                "agi": 1,
+                "con": 0,
+                "per": 1,
+                "int": 3,
+                "vol": 0,
+                "cha": -1
+              },
+              "characteristicMethod": {
+                "type": "STANDARD_SERIES",
+                "rolls": [
+                  2,
+                  7,
+                  12
+                ]
+              },
+              "peupleChoices": {
+                "bonusStat": "agi"
+              },
+              "voies": {
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+                "keepPeoplePathId": "",
+                "profilePathIds": [
+                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                  "classpath:voie-du-preux:class-chevalier:cof2-lb-2024"
+                ],
+                "mageRank2PathId": ""
+              },
+              "equip": {
+                "initialPackageId": "standard",
+                "armorId": "",
+                "shieldId": "",
+                "weaponIds": [
+                  "weapon:dagger"
+                ],
+                "tinyFitted": true,
+                "gmApprovedSwap": true
+              },
+              "profileChoices": {},
+              "abilityChoices": {},
+              "options": {},
+              "advancedRules": {
+                "modelVersion": "FIX78",
+                "age": false,
+                "histories": false,
+                "additionalMagePaths": false
+              },
+              "narrative": {
+                "ideal": "",
+                "flaw": ""
+              }
+            },
+            "expectedDerived": {
+              "PV": 10,
+              "DEF": 13,
+              "INIT": 11
+            },
+            "saveReplay": "PASS"
+          }
+        }
+      ]
+    },
+    {
+      "originalGroup": 23,
       "mode": "standard",
       "sourceCount": 4,
       "reasons": [
@@ -6551,7 +7129,7 @@
       ]
     },
     {
-      "originalGroup": 22,
+      "originalGroup": 24,
       "mode": "ancestry-choices",
       "sourceCount": 8,
       "reasons": [
@@ -6835,585 +7413,320 @@
       ]
     },
     {
-      "originalGroup": 23,
-      "mode": "standard",
-      "sourceCount": 40,
-      "reasons": [
-        "Arme interdite par la petite taille du peuple.",
-        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
-      ],
-      "category": "SMALL_FORBIDDEN",
-      "categories": [
-        "SMALL_FORBIDDEN",
-        "SMALL_TWO_HANDS"
-      ],
-      "source": "Compagnon pp.15 et 17, maximum 1d10 ; interdictions d’arc long/arbalète lourde de la politique Forge ; Compagnon pp.15 et 17, règle Petite taille (conservée dans l’adaptation Forge)",
-      "conclusion": "Les DM de base sont évalués sur tous les dés : 2d6 dépasse 1d10. Une arme plus petite, maîtrisée, constitue la contrepartie. Le d8–d10 demande deux mains. Le défaut refusant aussi un personnage sans bouclier est corrigé ; le nombre de mains est porté sur l’attaque.",
-      "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
-      "samples": [
-        {
-          "case": {
-            "mode": "standard",
-            "caseId": "935ce5c8410eba418ab1f433c58e61e143cc84d6b01b29cc2bce8f9711df7810",
-            "profile": "class:chevalier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-              "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
-            ]
-          },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
-            "Arme interdite par la petite taille du peuple."
-          ],
-          "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
-            "changesSelectedPaths": false,
-            "interfaceNotVerified": true,
-            "state": {
-              "identite": {
-                "nom": "Convergence produit"
-              },
-              "familleId": "combattant",
-              "classeId": "class:chevalier:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
-              "serieId": "expert",
-              "baseCaracs": {
-                "for": 2,
-                "agi": 1,
-                "con": 0,
-                "per": 1,
-                "int": 3,
-                "vol": 0,
-                "cha": -1
-              },
-              "characteristicMethod": {
-                "type": "STANDARD_SERIES",
-                "rolls": [
-                  2,
-                  7,
-                  12
-                ]
-              },
-              "peupleChoices": {
-                "bonusStat": "agi"
-              },
-              "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-                "keepPeoplePathId": "",
-                "profilePathIds": [
-                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-                  "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
-                ],
-                "mageRank2PathId": ""
-              },
-              "equip": {
-                "initialPackageId": "standard",
-                "armorId": "",
-                "shieldId": "",
-                "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
-              },
-              "profileChoices": {},
-              "abilityChoices": {},
-              "options": {},
-              "advancedRules": {
-                "modelVersion": "FIX78",
-                "age": false,
-                "histories": false,
-                "additionalMagePaths": false
-              },
-              "narrative": {
-                "ideal": "",
-                "flaw": ""
-              }
-            },
-            "expectedDerived": {
-              "PV": 10,
-              "DEF": 13,
-              "INIT": 14
-            },
-            "saveReplay": "PASS"
-          }
-        },
-        {
-          "case": {
-            "mode": "standard",
-            "caseId": "3e9ed61315447a085ad0df886e6d5bf8dc1df97c605af6578c5c401cd559dcbb",
-            "profile": "class:chevalier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-              "classpath:voie-du-preux:class-chevalier:cof2-lb-2024"
-            ]
-          },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
-            "Arme interdite par la petite taille du peuple."
-          ],
-          "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
-            "changesSelectedPaths": false,
-            "interfaceNotVerified": true,
-            "state": {
-              "identite": {
-                "nom": "Convergence produit"
-              },
-              "familleId": "combattant",
-              "classeId": "class:chevalier:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
-              "serieId": "expert",
-              "baseCaracs": {
-                "for": 2,
-                "agi": 1,
-                "con": 0,
-                "per": 1,
-                "int": 3,
-                "vol": 0,
-                "cha": -1
-              },
-              "characteristicMethod": {
-                "type": "STANDARD_SERIES",
-                "rolls": [
-                  2,
-                  7,
-                  12
-                ]
-              },
-              "peupleChoices": {
-                "bonusStat": "agi"
-              },
-              "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-                "keepPeoplePathId": "",
-                "profilePathIds": [
-                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-                  "classpath:voie-du-preux:class-chevalier:cof2-lb-2024"
-                ],
-                "mageRank2PathId": ""
-              },
-              "equip": {
-                "initialPackageId": "standard",
-                "armorId": "",
-                "shieldId": "",
-                "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
-              },
-              "profileChoices": {},
-              "abilityChoices": {},
-              "options": {},
-              "advancedRules": {
-                "modelVersion": "FIX78",
-                "age": false,
-                "histories": false,
-                "additionalMagePaths": false
-              },
-              "narrative": {
-                "ideal": "",
-                "flaw": ""
-              }
-            },
-            "expectedDerived": {
-              "PV": 10,
-              "DEF": 13,
-              "INIT": 14
-            },
-            "saveReplay": "PASS"
-          }
-        },
-        {
-          "case": {
-            "mode": "standard",
-            "caseId": "3de9297f80e3973586a567adb1696d32108715f2495835a1051617123996369a",
-            "profile": "class:chevalier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-              "classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024"
-            ]
-          },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
-            "Arme interdite par la petite taille du peuple."
-          ],
-          "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
-            "changesSelectedPaths": false,
-            "interfaceNotVerified": true,
-            "state": {
-              "identite": {
-                "nom": "Convergence produit"
-              },
-              "familleId": "combattant",
-              "classeId": "class:chevalier:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
-              "serieId": "expert",
-              "baseCaracs": {
-                "for": 2,
-                "agi": 1,
-                "con": 0,
-                "per": 1,
-                "int": 3,
-                "vol": 0,
-                "cha": -1
-              },
-              "characteristicMethod": {
-                "type": "STANDARD_SERIES",
-                "rolls": [
-                  2,
-                  7,
-                  12
-                ]
-              },
-              "peupleChoices": {
-                "bonusStat": "agi"
-              },
-              "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-                "keepPeoplePathId": "",
-                "profilePathIds": [
-                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-                  "classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024"
-                ],
-                "mageRank2PathId": ""
-              },
-              "equip": {
-                "initialPackageId": "standard",
-                "armorId": "",
-                "shieldId": "",
-                "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
-              },
-              "profileChoices": {},
-              "abilityChoices": {},
-              "options": {},
-              "advancedRules": {
-                "modelVersion": "FIX78",
-                "age": false,
-                "histories": false,
-                "additionalMagePaths": false
-              },
-              "narrative": {
-                "ideal": "",
-                "flaw": ""
-              }
-            },
-            "expectedDerived": {
-              "PV": 10,
-              "DEF": 13,
-              "INIT": 14
-            },
-            "saveReplay": "PASS"
-          }
-        }
-      ]
-    },
-    {
-      "originalGroup": 24,
-      "mode": "ancestry-choices",
-      "sourceCount": 80,
-      "reasons": [
-        "Arme interdite par la petite taille du peuple.",
-        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
-      ],
-      "category": "SMALL_FORBIDDEN",
-      "categories": [
-        "SMALL_FORBIDDEN",
-        "SMALL_TWO_HANDS"
-      ],
-      "source": "Compagnon pp.15 et 17, maximum 1d10 ; interdictions d’arc long/arbalète lourde de la politique Forge ; Compagnon pp.15 et 17, règle Petite taille (conservée dans l’adaptation Forge)",
-      "conclusion": "Les DM de base sont évalués sur tous les dés : 2d6 dépasse 1d10. Une arme plus petite, maîtrisée, constitue la contrepartie. Le d8–d10 demande deux mains. Le défaut refusant aussi un personnage sans bouclier est corrigé ; le nombre de mains est porté sur l’attaque.",
-      "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
-      "samples": [
-        {
-          "case": {
-            "mode": "ancestry-choices",
-            "caseId": "935ce5c8410eba418ab1f433c58e61e143cc84d6b01b29cc2bce8f9711df7810",
-            "profile": "class:chevalier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-              "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
-            ]
-          },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
-            "Arme interdite par la petite taille du peuple."
-          ],
-          "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
-            "changesSelectedPaths": false,
-            "interfaceNotVerified": true,
-            "state": {
-              "identite": {
-                "nom": "Convergence produit"
-              },
-              "familleId": "combattant",
-              "classeId": "class:chevalier:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
-              "serieId": "expert",
-              "baseCaracs": {
-                "for": 2,
-                "agi": 1,
-                "con": 0,
-                "per": 1,
-                "int": 3,
-                "vol": 0,
-                "cha": -1
-              },
-              "characteristicMethod": {
-                "type": "STANDARD_SERIES",
-                "rolls": [
-                  2,
-                  7,
-                  12
-                ]
-              },
-              "peupleChoices": {
-                "bonusStat": "agi"
-              },
-              "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-                "keepPeoplePathId": "",
-                "profilePathIds": [
-                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-                  "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
-                ],
-                "mageRank2PathId": ""
-              },
-              "equip": {
-                "initialPackageId": "standard",
-                "armorId": "",
-                "shieldId": "",
-                "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
-              },
-              "profileChoices": {},
-              "abilityChoices": {},
-              "options": {},
-              "advancedRules": {
-                "modelVersion": "FIX78",
-                "age": false,
-                "histories": false,
-                "additionalMagePaths": false
-              },
-              "narrative": {
-                "ideal": "",
-                "flaw": ""
-              }
-            },
-            "expectedDerived": {
-              "PV": 10,
-              "DEF": 13,
-              "INIT": 14
-            },
-            "saveReplay": "PASS"
-          }
-        },
-        {
-          "case": {
-            "mode": "ancestry-choices",
-            "caseId": "3636cc4b1461822634ab205d1330da4fe01ee4cae6fd3561daefd5dc441e2087",
-            "profile": "class:chevalier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-              "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
-            ]
-          },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
-            "Arme interdite par la petite taille du peuple."
-          ],
-          "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
-            "changesSelectedPaths": false,
-            "interfaceNotVerified": true,
-            "state": {
-              "identite": {
-                "nom": "Convergence produit"
-              },
-              "familleId": "combattant",
-              "classeId": "class:chevalier:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
-              "serieId": "expert",
-              "baseCaracs": {
-                "for": 2,
-                "agi": 1,
-                "con": 0,
-                "per": 1,
-                "int": 3,
-                "vol": 0,
-                "cha": -1
-              },
-              "characteristicMethod": {
-                "type": "STANDARD_SERIES",
-                "rolls": [
-                  2,
-                  7,
-                  12
-                ]
-              },
-              "peupleChoices": {
-                "bonusStat": "int"
-              },
-              "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-                "keepPeoplePathId": "",
-                "profilePathIds": [
-                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-                  "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024"
-                ],
-                "mageRank2PathId": ""
-              },
-              "equip": {
-                "initialPackageId": "standard",
-                "armorId": "",
-                "shieldId": "",
-                "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
-              },
-              "profileChoices": {},
-              "abilityChoices": {},
-              "options": {},
-              "advancedRules": {
-                "modelVersion": "FIX78",
-                "age": false,
-                "histories": false,
-                "additionalMagePaths": false
-              },
-              "narrative": {
-                "ideal": "",
-                "flaw": ""
-              }
-            },
-            "expectedDerived": {
-              "PV": 10,
-              "DEF": 12,
-              "INIT": 14
-            },
-            "saveReplay": "PASS"
-          }
-        },
-        {
-          "case": {
-            "mode": "ancestry-choices",
-            "caseId": "3e9ed61315447a085ad0df886e6d5bf8dc1df97c605af6578c5c401cd559dcbb",
-            "profile": "class:chevalier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-              "classpath:voie-du-preux:class-chevalier:cof2-lb-2024"
-            ]
-          },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
-            "Arme interdite par la petite taille du peuple."
-          ],
-          "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
-            "changesSelectedPaths": false,
-            "interfaceNotVerified": true,
-            "state": {
-              "identite": {
-                "nom": "Convergence produit"
-              },
-              "familleId": "combattant",
-              "classeId": "class:chevalier:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
-              "serieId": "expert",
-              "baseCaracs": {
-                "for": 2,
-                "agi": 1,
-                "con": 0,
-                "per": 1,
-                "int": 3,
-                "vol": 0,
-                "cha": -1
-              },
-              "characteristicMethod": {
-                "type": "STANDARD_SERIES",
-                "rolls": [
-                  2,
-                  7,
-                  12
-                ]
-              },
-              "peupleChoices": {
-                "bonusStat": "agi"
-              },
-              "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-                "keepPeoplePathId": "",
-                "profilePathIds": [
-                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-                  "classpath:voie-du-preux:class-chevalier:cof2-lb-2024"
-                ],
-                "mageRank2PathId": ""
-              },
-              "equip": {
-                "initialPackageId": "standard",
-                "armorId": "",
-                "shieldId": "",
-                "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
-              },
-              "profileChoices": {},
-              "abilityChoices": {},
-              "options": {},
-              "advancedRules": {
-                "modelVersion": "FIX78",
-                "age": false,
-                "histories": false,
-                "additionalMagePaths": false
-              },
-              "narrative": {
-                "ideal": "",
-                "flaw": ""
-              }
-            },
-            "expectedDerived": {
-              "PV": 10,
-              "DEF": 13,
-              "INIT": 14
-            },
-            "saveReplay": "PASS"
-          }
-        }
-      ]
-    },
-    {
       "originalGroup": 25,
+      "mode": "hybrid",
+      "sourceCount": 2400,
+      "reasons": [
+        "Arme interdite par la petite taille du peuple.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
+      ],
+      "category": "SMALL_FORBIDDEN",
+      "categories": [
+        "SMALL_FORBIDDEN",
+        "SMALL_TWO_HANDS"
+      ],
+      "source": "COF2 Livre de base p.55 (halfelin) ; Compagnon pp.15 et 17 (gobelin/kobold, adaptation Forge) : maximum 1d10, arc long et arbalète lourde interdits ; COF2 Livre de base p.55 (halfelin) ; Compagnon pp.15 et 17, règle Petite taille (gobelin/kobold, adaptation Forge)",
+      "conclusion": "Les DM de base sont évalués sur tous les dés : 2d6 dépasse 1d10. Une arme plus petite, maîtrisée, constitue la contrepartie. Le d8–d10 demande deux mains. Le défaut refusant aussi un personnage sans bouclier est corrigé ; le nombre de mains est porté sur l’attaque.",
+      "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
+      "samples": [
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "22efff21483b5354dd9f036003e709581c58f68b75002c671e27709ed3c199f8",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
+          "errors": [
+            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
+            "Arme interdite par la petite taille du peuple."
+          ],
+          "counterpart": {
+            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
+            "requiresMJEquipmentExchange": true,
+            "changesSelectedPaths": false,
+            "interfaceNotVerified": true,
+            "state": {
+              "identite": {
+                "nom": "Convergence produit"
+              },
+              "familleId": "combattant",
+              "classeId": "class:chevalier:cof2-lb-2024",
+              "peupleId": "people:halfelin:cof2-lb-2024",
+              "serieId": "expert",
+              "baseCaracs": {
+                "for": 2,
+                "agi": 1,
+                "con": 0,
+                "per": 1,
+                "int": 3,
+                "vol": 0,
+                "cha": -1
+              },
+              "characteristicMethod": {
+                "type": "STANDARD_SERIES",
+                "rolls": [
+                  2,
+                  7,
+                  12
+                ]
+              },
+              "peupleChoices": {
+                "bonusStat": "agi"
+              },
+              "voies": {
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+                "keepPeoplePathId": "",
+                "profilePathIds": [
+                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                  "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+                ],
+                "mageRank2PathId": ""
+              },
+              "equip": {
+                "initialPackageId": "standard",
+                "armorId": "",
+                "shieldId": "",
+                "weaponIds": [
+                  "weapon:dagger"
+                ],
+                "tinyFitted": true,
+                "gmApprovedSwap": true
+              },
+              "profileChoices": {},
+              "abilityChoices": {},
+              "options": {},
+              "advancedRules": {
+                "modelVersion": "FIX78",
+                "age": false,
+                "histories": false,
+                "additionalMagePaths": false
+              },
+              "narrative": {
+                "ideal": "",
+                "flaw": ""
+              },
+              "hybrid": {
+                "enabled": true,
+                "gmApproved": true,
+                "primaryProfileId": "class:chevalier:cof2-lb-2024",
+                "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+                "primaryPathId": "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                "secondaryPathId": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+              }
+            },
+            "expectedDerived": {
+              "PV": 9,
+              "DEF": 13,
+              "INIT": 11
+            },
+            "saveReplay": "PASS"
+          }
+        },
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "8b2fba9bb9e809830a85004a877b71306dd4bfba122721a7a74cd8b583464449",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
+          "errors": [
+            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
+            "Arme interdite par la petite taille du peuple."
+          ],
+          "counterpart": {
+            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
+            "requiresMJEquipmentExchange": true,
+            "changesSelectedPaths": false,
+            "interfaceNotVerified": true,
+            "state": {
+              "identite": {
+                "nom": "Convergence produit"
+              },
+              "familleId": "combattant",
+              "classeId": "class:chevalier:cof2-lb-2024",
+              "peupleId": "people:halfelin:cof2-lb-2024",
+              "serieId": "expert",
+              "baseCaracs": {
+                "for": 2,
+                "agi": 1,
+                "con": 0,
+                "per": 1,
+                "int": 3,
+                "vol": 0,
+                "cha": -1
+              },
+              "characteristicMethod": {
+                "type": "STANDARD_SERIES",
+                "rolls": [
+                  2,
+                  7,
+                  12
+                ]
+              },
+              "peupleChoices": {
+                "bonusStat": "agi"
+              },
+              "voies": {
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+                "keepPeoplePathId": "",
+                "profilePathIds": [
+                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                  "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+                ],
+                "mageRank2PathId": ""
+              },
+              "equip": {
+                "initialPackageId": "standard",
+                "armorId": "",
+                "shieldId": "",
+                "weaponIds": [
+                  "weapon:dagger"
+                ],
+                "tinyFitted": true,
+                "gmApprovedSwap": true
+              },
+              "profileChoices": {},
+              "abilityChoices": {},
+              "options": {},
+              "advancedRules": {
+                "modelVersion": "FIX78",
+                "age": false,
+                "histories": false,
+                "additionalMagePaths": false
+              },
+              "narrative": {
+                "ideal": "",
+                "flaw": ""
+              },
+              "hybrid": {
+                "enabled": true,
+                "gmApproved": true,
+                "primaryProfileId": "class:chevalier:cof2-lb-2024",
+                "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+                "primaryPathId": "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                "secondaryPathId": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+              }
+            },
+            "expectedDerived": {
+              "PV": 9,
+              "DEF": 13,
+              "INIT": 11
+            },
+            "saveReplay": "PASS"
+          }
+        },
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "081dd93932679c9f3172762895405830c931df096cd059696f499476b8e9e9a7",
+            "profile": "class:chevalier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+              "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
+          "errors": [
+            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
+            "Arme interdite par la petite taille du peuple."
+          ],
+          "counterpart": {
+            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
+            "requiresMJEquipmentExchange": true,
+            "changesSelectedPaths": false,
+            "interfaceNotVerified": true,
+            "state": {
+              "identite": {
+                "nom": "Convergence produit"
+              },
+              "familleId": "combattant",
+              "classeId": "class:chevalier:cof2-lb-2024",
+              "peupleId": "people:halfelin:cof2-lb-2024",
+              "serieId": "expert",
+              "baseCaracs": {
+                "for": 2,
+                "agi": 1,
+                "con": 0,
+                "per": 1,
+                "int": 3,
+                "vol": 0,
+                "cha": -1
+              },
+              "characteristicMethod": {
+                "type": "STANDARD_SERIES",
+                "rolls": [
+                  2,
+                  7,
+                  12
+                ]
+              },
+              "peupleChoices": {
+                "bonusStat": "agi"
+              },
+              "voies": {
+                "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+                "keepPeoplePathId": "",
+                "profilePathIds": [
+                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                  "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+                ],
+                "mageRank2PathId": ""
+              },
+              "equip": {
+                "initialPackageId": "standard",
+                "armorId": "",
+                "shieldId": "",
+                "weaponIds": [
+                  "weapon:dagger"
+                ],
+                "tinyFitted": true,
+                "gmApprovedSwap": true
+              },
+              "profileChoices": {},
+              "abilityChoices": {},
+              "options": {},
+              "advancedRules": {
+                "modelVersion": "FIX78",
+                "age": false,
+                "histories": false,
+                "additionalMagePaths": false
+              },
+              "narrative": {
+                "ideal": "",
+                "flaw": ""
+              },
+              "hybrid": {
+                "enabled": true,
+                "gmApproved": true,
+                "primaryProfileId": "class:chevalier:cof2-lb-2024",
+                "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+                "primaryPathId": "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+                "secondaryPathId": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+              }
+            },
+            "expectedDerived": {
+              "PV": 9,
+              "DEF": 13,
+              "INIT": 11
+            },
+            "saveReplay": "PASS"
+          }
+        }
+      ]
+    },
+    {
+      "originalGroup": 26,
       "mode": "hybrid",
       "sourceCount": 80,
       "reasons": [
@@ -7714,319 +8027,6 @@
               "PV": 10,
               "DEF": 11,
               "INIT": 11
-            },
-            "saveReplay": "PASS"
-          }
-        }
-      ]
-    },
-    {
-      "originalGroup": 26,
-      "mode": "hybrid",
-      "sourceCount": 1600,
-      "reasons": [
-        "Arme interdite par la petite taille du peuple.",
-        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
-      ],
-      "category": "SMALL_FORBIDDEN",
-      "categories": [
-        "SMALL_FORBIDDEN",
-        "SMALL_TWO_HANDS"
-      ],
-      "source": "Compagnon pp.15 et 17, maximum 1d10 ; interdictions d’arc long/arbalète lourde de la politique Forge ; Compagnon pp.15 et 17, règle Petite taille (conservée dans l’adaptation Forge)",
-      "conclusion": "Les DM de base sont évalués sur tous les dés : 2d6 dépasse 1d10. Une arme plus petite, maîtrisée, constitue la contrepartie. Le d8–d10 demande deux mains. Le défaut refusant aussi un personnage sans bouclier est corrigé ; le nombre de mains est porté sur l’attaque.",
-      "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
-      "samples": [
-        {
-          "case": {
-            "mode": "hybrid",
-            "caseId": "14c10cd4cb203f55ff34160a5f942d02eb37664827c5be1de583d76658d52ea3",
-            "profile": "class:chevalier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
-            ]
-          },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
-            "Arme interdite par la petite taille du peuple."
-          ],
-          "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
-            "changesSelectedPaths": false,
-            "interfaceNotVerified": true,
-            "state": {
-              "identite": {
-                "nom": "Convergence produit"
-              },
-              "familleId": "combattant",
-              "classeId": "class:chevalier:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
-              "serieId": "expert",
-              "baseCaracs": {
-                "for": 2,
-                "agi": 1,
-                "con": 0,
-                "per": 1,
-                "int": 3,
-                "vol": 0,
-                "cha": -1
-              },
-              "characteristicMethod": {
-                "type": "STANDARD_SERIES",
-                "rolls": [
-                  2,
-                  7,
-                  12
-                ]
-              },
-              "peupleChoices": {
-                "bonusStat": "agi"
-              },
-              "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-                "keepPeoplePathId": "",
-                "profilePathIds": [
-                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-                  "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
-                ],
-                "mageRank2PathId": ""
-              },
-              "equip": {
-                "initialPackageId": "standard",
-                "armorId": "",
-                "shieldId": "",
-                "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
-              },
-              "profileChoices": {},
-              "abilityChoices": {},
-              "options": {},
-              "advancedRules": {
-                "modelVersion": "FIX78",
-                "age": false,
-                "histories": false,
-                "additionalMagePaths": false
-              },
-              "narrative": {
-                "ideal": "",
-                "flaw": ""
-              },
-              "hybrid": {
-                "enabled": true,
-                "gmApproved": true,
-                "primaryProfileId": "class:chevalier:cof2-lb-2024",
-                "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
-                "primaryPathId": "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-                "secondaryPathId": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
-              }
-            },
-            "expectedDerived": {
-              "PV": 9,
-              "DEF": 13,
-              "INIT": 14
-            },
-            "saveReplay": "PASS"
-          }
-        },
-        {
-          "case": {
-            "mode": "hybrid",
-            "caseId": "051cf0d71d5cedf5d852c8fc4331fbdd045201251fa2f39c84b1514fae5e44e0",
-            "profile": "class:chevalier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-              "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
-            ]
-          },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
-            "Arme interdite par la petite taille du peuple."
-          ],
-          "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
-            "changesSelectedPaths": false,
-            "interfaceNotVerified": true,
-            "state": {
-              "identite": {
-                "nom": "Convergence produit"
-              },
-              "familleId": "combattant",
-              "classeId": "class:chevalier:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
-              "serieId": "expert",
-              "baseCaracs": {
-                "for": 2,
-                "agi": 1,
-                "con": 0,
-                "per": 1,
-                "int": 3,
-                "vol": 0,
-                "cha": -1
-              },
-              "characteristicMethod": {
-                "type": "STANDARD_SERIES",
-                "rolls": [
-                  2,
-                  7,
-                  12
-                ]
-              },
-              "peupleChoices": {
-                "bonusStat": "agi"
-              },
-              "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-                "keepPeoplePathId": "",
-                "profilePathIds": [
-                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-                  "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
-                ],
-                "mageRank2PathId": ""
-              },
-              "equip": {
-                "initialPackageId": "standard",
-                "armorId": "",
-                "shieldId": "",
-                "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
-              },
-              "profileChoices": {},
-              "abilityChoices": {},
-              "options": {},
-              "advancedRules": {
-                "modelVersion": "FIX78",
-                "age": false,
-                "histories": false,
-                "additionalMagePaths": false
-              },
-              "narrative": {
-                "ideal": "",
-                "flaw": ""
-              },
-              "hybrid": {
-                "enabled": true,
-                "gmApproved": true,
-                "primaryProfileId": "class:chevalier:cof2-lb-2024",
-                "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
-                "primaryPathId": "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-                "secondaryPathId": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
-              }
-            },
-            "expectedDerived": {
-              "PV": 9,
-              "DEF": 13,
-              "INIT": 14
-            },
-            "saveReplay": "PASS"
-          }
-        },
-        {
-          "case": {
-            "mode": "hybrid",
-            "caseId": "786e32e9a16321bb49914f2b91be4859da2c44b25ea64082b43d16c91695cb5f",
-            "profile": "class:chevalier:cof2-lb-2024",
-            "people": "people:gobelin:addon-comp2017-cof2",
-            "paths": [
-              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-              "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
-            ]
-          },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
-            "Arme interdite par la petite taille du peuple."
-          ],
-          "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
-            "changesSelectedPaths": false,
-            "interfaceNotVerified": true,
-            "state": {
-              "identite": {
-                "nom": "Convergence produit"
-              },
-              "familleId": "combattant",
-              "classeId": "class:chevalier:cof2-lb-2024",
-              "peupleId": "people:gobelin:addon-comp2017-cof2",
-              "serieId": "expert",
-              "baseCaracs": {
-                "for": 2,
-                "agi": 1,
-                "con": 0,
-                "per": 1,
-                "int": 3,
-                "vol": 0,
-                "cha": -1
-              },
-              "characteristicMethod": {
-                "type": "STANDARD_SERIES",
-                "rolls": [
-                  2,
-                  7,
-                  12
-                ]
-              },
-              "peupleChoices": {
-                "bonusStat": "agi"
-              },
-              "voies": {
-                "peoplePathId": "path:voie-du-gobelin:addon-comp2017-cof2",
-                "keepPeoplePathId": "",
-                "profilePathIds": [
-                  "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-                  "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
-                ],
-                "mageRank2PathId": ""
-              },
-              "equip": {
-                "initialPackageId": "standard",
-                "armorId": "",
-                "shieldId": "",
-                "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
-              },
-              "profileChoices": {},
-              "abilityChoices": {},
-              "options": {},
-              "advancedRules": {
-                "modelVersion": "FIX78",
-                "age": false,
-                "histories": false,
-                "additionalMagePaths": false
-              },
-              "narrative": {
-                "ideal": "",
-                "flaw": ""
-              },
-              "hybrid": {
-                "enabled": true,
-                "gmApproved": true,
-                "primaryProfileId": "class:chevalier:cof2-lb-2024",
-                "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
-                "primaryPathId": "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
-                "secondaryPathId": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
-              }
-            },
-            "expectedDerived": {
-              "PV": 9,
-              "DEF": 13,
-              "INIT": 14
             },
             "saveReplay": "PASS"
           }

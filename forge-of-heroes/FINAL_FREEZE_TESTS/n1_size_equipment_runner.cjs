@@ -11,9 +11,9 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
   return s;
  }
  for(const mode of ['standard','hybrid','no-profile']){
-  for(const people of ['people:gobelin:addon-comp2017-cof2','people:kobold:addon-comp2017-cof2']){
+  for(const people of ['people:halfelin:cof2-lb-2024','people:gobelin:addon-comp2017-cof2','people:kobold:addon-comp2017-cof2']){
    for(const weapon of ['weapon:great-sword','weapon:great-axe','weapon:longbow','weapon:heavy-crossbow']){const s=base(people,mode,weapon),before=JSON.stringify(s),r=E.computeCharacterN1(s);assert.ok(r.errors.length,people+' '+mode+' must reject '+weapon);assert.match(r.errors.join(' '),/taille|interdite/i);assert.equal(JSON.stringify(s),before);count++;}
-   const s=base(people,mode,'weapon:long-sword'),r=E.computeCharacterN1(s);assert.equal(r.errors.length,0,r.errors.join(' | '));const attack=r.sticky.attacks.find(a=>a.weaponId==='weapon:long-sword');assert.ok(attack);assert.equal(attack.hands,2);assert.equal(attack.damage,'1d8+2');assert.ok(attack.properties.includes('two_handed_for_size'));
+   const s=base(people,mode,'weapon:long-sword'),r=E.computeCharacterN1(s);assert.equal(r.errors.length,0,r.errors.join(' | '));const attack=r.sticky.attacks.find(a=>a.weaponId==='weapon:long-sword');assert.ok(attack);assert.equal(attack.hands,2);assert.equal(attack.damage,people==='people:halfelin:cof2-lb-2024'?'1d8+1':'1d8+2');assert.ok(attack.properties.includes('two_handed_for_size'));
    s.equip.shieldId='shield:petit:cof2-lb-2024';const blocked=E.computeCharacterN1(s);assert.match(blocked.errors.join(' '),/deux mains/);s.equip.shieldId='';assert.deepEqual(E.computeCharacterN1(s).sticky,r.sticky);const payload=E.createHeroSavePayload(s,r.sticky.characterState,{id:'size-test'}),back=E.computeCharacterN1(E.restoreHeroSavePayload(JSON.parse(JSON.stringify(payload))).draft);assert.equal(back.errors.length,0);assert.equal(back.sticky.attacks.find(a=>a.weaponId==='weapon:long-sword').hands,2);count++;
    const ordinary=base('people:humain:cof2-lb-2024',mode,'weapon:long-sword');ordinary.peupleChoices={humainStat:'con'};const human=E.computeCharacterN1(ordinary);assert.equal(human.errors.length,0,human.errors.join(' | '));assert.equal(human.sticky.attacks.find(a=>a.weaponId==='weapon:long-sword').hands,1);count++;
   }
@@ -22,4 +22,4 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
   }
  }
 }
-console.log('PASS '+count+' size/equipment cases across both engines: 2d6 rejected, d8 at two hands without shield, hand count/damage/save/reload, no-profile racial limits, legal d4 counterparts and ordinary-human regression. Sources Compagnon pp.15,17; Forge tiny-equipment policy.');
+console.log('PASS '+count+' size/equipment cases across both engines: 2d6 rejected, d8 at two hands without shield, hand count/damage/save/reload, no-profile racial limits, legal d4 counterparts and ordinary-human regression. Sources COF2 Livre de base p.55 (PDF p.57), Compagnon pp.15,17; Forge tiny-equipment policy.');

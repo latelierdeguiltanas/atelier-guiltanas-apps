@@ -8,15 +8,15 @@ Ce dossier remplace les anciens compteurs comme point de suivi actuel, sans ré�
 
 | Groupe | Configurations | Acceptées par le moteur | Refusées, conservées pour revue | Échecs d’assertion |
 | --- | ---: | ---: | ---: | ---: |
-| Profils purs × peuples × paires de voies | 2 720 | 2 316 | 404 | 0 |
-| Variantes de bonus/malus de peuple | 5 950 | 5 142 | 808 | 0 |
+| Profils purs × peuples × paires de voies | 2 720 | 2 286 | 434 | 0 |
+| Variantes de bonus/malus de peuple | 5 950 | 5 082 | 868 | 0 |
 | Autre choix du R2 initial des mages | 960 | 840 | 120 | 0 |
-| Hybrides, deux sens, 25 croisements de voies, 16 peuples | 108 800 | 92 720 | 16 080 | 0 |
+| Hybrides, deux sens, 25 croisements de voies, 16 peuples | 108 800 | 91 520 | 17 280 | 0 |
 | Sans profil, toutes les paires distinctes, 16 peuples | 57 120 | 55 902 | 1 218 | 0 |
 | Ordre inverse sans profil, humain | 3 570 | 3 500 | 70 | 0 |
-| **Total** | **179 120** | **160 420** | **18 700** | **0** |
+| **Total** | **179 120** | **159 130** | **19 990** | **0** |
 
-Couverture acceptée : 17 profils, 16 peuples, 85 voies principales, les 272 couples ordonnés de profils hybrides et 3 500 paires distinctes sans profil. 9 425 sauvegardes/relectures sont vérifiées dans cette matrice ; 5 170 mutations à zéro voie sont refusées avec un motif lié aux voies.
+Couverture acceptée : 17 profils, 16 peuples, 85 voies principales, les 272 couples ordonnés de profils hybrides et 3 500 paires distinctes sans profil. 9 352 sauvegardes/relectures sont vérifiées dans cette matrice ; 5 127 mutations à zéro voie sont refusées avec un motif lié aux voies.
 
 **Ce que ce résultat signifie :** les invariants testés passent, y compris les caractéristiques raciales calculées indépendamment, l’identité de profil, l’absence de capacité dupliquée, la présence des R1 choisis, la non-mutation des entrées et le rejeu échantillonné. Cela ne certifie pas chaque chiffre de chaque capacité : les valeurs exactes ciblées sont dans les suites séparées. Le nombre de configurations inclut plusieurs choix pouvant conduire au même résultat ; il n’est pas présenté comme un nombre de fiches mécaniquement uniques.
 
@@ -31,7 +31,7 @@ Les contrats anciens ont aussi été actualisés pour les quatre champs introdui
 
 ## Contrôles complémentaires
 
-- 27 suites de régression : PASS ; détail et sorties dans `regressions.json`.
+- 29 suites de régression : PASS ; détail et sorties dans `regressions.json`.
 - 53 transitions et 53 retours A→B→A : PASS ; 11 valeurs exactes, 13 transitions sans résidu, 14 refus ciblés et 10 contrôles anti-faux-vert : PASS.
 - Les 12 fiches de recette sont vérifiées automatiquement. Cela ne signifie pas 12 parcours au clic.
 - Un vrai parcours Chrome : humain voleur, création, changement de voie et retour avec DEF/INIT attendues, sauvegarde, rechargement, réouverture et téléchargement PDF. Le test est limité à ce personnage, sur ordinateur.
@@ -80,3 +80,16 @@ node forge-of-heroes/FINAL_FREEZE_TESTS/n1_characteristic_methods_runner.cjs
 ```
 
 Ces progrès ferment des réserves de moteur et de caractéristiques. Ils ne clôturent pas la phase N1 : les autres effets numériques, options, parcours d’interface et le mode volontaire sans voies restent explicitement ouverts.
+
+## Lot 3 — contrôles directs des PDF (28 octobre 2026)
+
+Deux omissions sont corrigées après lecture visuelle des pages sources ; leurs empreintes et pages sont dans `lot3/sources.json`.
+
+- **N1-HALFELIN-SIZE-001 :** Petite taille (Livre de base p.55, PDF p.57) impose aussi au halfelin les limites d6 à une main, d8–d10 à deux mains, l’interdiction au-delà de d10, de l’arc long et de l’arbalète lourde. Le contrôle partagé du lot 2 avait omis ce peuple. Le halfelin est ajouté aux mêmes validations et à la projection du nombre de mains. Neuf cas avant/après couvrent profil pur, hybride et sans profil ; le test d’équipement est étendu à **120 cas sur les deux produits**. Les dégâts tiennent compte du malus racial de FOR, sans bonus de deux mains inventé.
+- **N1-AGE-RESIDUAL-001 :** le choix +1 PC/+1 DR de « Très jeune » persistait dans les catégories jeune, mûr et vénérable. La source (Règles avancées p.153, PDF p.1) n’accorde ces bonus qu’à « Très jeune ». Le moteur normalise ce choix à `null` pour les autres catégories. Six échecs avant correction sont conservés dans `lot3/age-before.json`. Les **24 cas sur les deux produits** contrôlent les quatre catégories, les anciens choix PC/DR, les caractéristiques exactes, PV/DEF/INIT/PC/PM/attaques/DR, les rangs et le budget d’âge, ainsi que **22 sauvegardes/relectures** et la désactivation du module. Le calcul indépendant porte sur un voleur humain ; il ne prétend pas certifier tous les effets d’âge de chaque profil.
+
+Le passage « Jouer sans profil » (Règles avancées p.154, PDF p.2) conserve explicitement des voies et leur famille. Il ne fournit pas de règle de création sans aucune voie. Cette dernière demande reste distincte de la validation du mode sans profil.
+
+Le lot 3 ajoute aussi **850 contrôles d’interactions d’âge et 850 sauvegardes/relectures**, sur les deux produits, pour 17 profils et 85 voies (chaque voie en première position, avec la suivante comme seconde voie). Les catégories jeune et très jeune sont comparées à chaque fiche de référence : seules les différences INIT/PC/DR de la règle d’âge sont attendues. Ce contrôle relatif ne remplace pas la validation indépendante des chiffres de base de chaque capacité ni les catégories mûr/vénérable sur tous les profils. Rapport : `lot3/age-profiles.json`.
+
+Matrice finale après les deux correctifs du lot 3 : **179 120 tentatives, 159 130 acceptées, 19 990 refusées, zéro échec d’assertion**. Les 27 groupes de refus courants ont été revus sur cette même empreinte du moteur. La baisse des créations acceptées provient des équipements de halfelins désormais refusés conformément à la source ; elle ne représente pas une perte de couverture. Les 29 suites passent (lot complet initial de 28 suites, puis trois réexécutions documentées dont la nouvelle suite des profils).

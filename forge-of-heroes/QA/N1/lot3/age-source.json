@@ -1,0 +1,114 @@
+{
+  "schema": "FOH_N1_AGE_SOURCE_CHECK",
+  "sources": [
+    {
+      "file": "règles avancées.pdf",
+      "pdfPage": 1,
+      "printedPage": 153,
+      "visuallyRead": true,
+      "rule": "Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3."
+    }
+  ],
+  "cases": [
+    {
+      "id": "index.html:very-young:null",
+      "status": "PASS"
+    },
+    {
+      "id": "index.html:very-young:PC",
+      "status": "PASS"
+    },
+    {
+      "id": "index.html:very-young:DR",
+      "status": "PASS"
+    },
+    {
+      "id": "index.html:young:null",
+      "status": "PASS"
+    },
+    {
+      "id": "index.html:young:PC",
+      "status": "PASS"
+    },
+    {
+      "id": "index.html:young:DR",
+      "status": "PASS"
+    },
+    {
+      "id": "index.html:mature:null",
+      "status": "PASS"
+    },
+    {
+      "id": "index.html:mature:PC",
+      "status": "PASS"
+    },
+    {
+      "id": "index.html:mature:DR",
+      "status": "PASS"
+    },
+    {
+      "id": "index.html:venerable:null",
+      "status": "PASS"
+    },
+    {
+      "id": "index.html:venerable:PC",
+      "status": "PASS"
+    },
+    {
+      "id": "index.html:venerable:DR",
+      "status": "PASS"
+    },
+    {
+      "id": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:null",
+      "status": "PASS"
+    },
+    {
+      "id": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:PC",
+      "status": "PASS"
+    },
+    {
+      "id": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:DR",
+      "status": "PASS"
+    },
+    {
+      "id": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:null",
+      "status": "PASS"
+    },
+    {
+      "id": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:PC",
+      "status": "PASS"
+    },
+    {
+      "id": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:DR",
+      "status": "PASS"
+    },
+    {
+      "id": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:null",
+      "status": "PASS"
+    },
+    {
+      "id": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:PC",
+      "status": "PASS"
+    },
+    {
+      "id": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:DR",
+      "status": "PASS"
+    },
+    {
+      "id": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:null",
+      "status": "PASS"
+    },
+    {
+      "id": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:PC",
+      "status": "PASS"
+    },
+    {
+      "id": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:DR",
+      "status": "PASS"
+    }
+  ],
+  "replays": 22,
+  "failures": [],
+  "engineSha256": "3e2dccfcb4f36261091c9362e8cfbfbe2e8170d4acfbf58f8914539f78722bf1",
+  "status": "PASS"
+}
