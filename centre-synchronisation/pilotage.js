@@ -292,7 +292,7 @@ function renderChatPanel(){
  if(!summary||!stats||!list)return;
  if(chatInventoryError){summary.textContent='· indisponible';stats.textContent='Erreur de lecture du registre privé : '+chatInventoryError;list.innerHTML='';return}
  const counts=chatStatusCounts();
- summary.textContent='· '+counts.total+' recensée'+(counts.total>1?'s':'');
+ summary.textContent='· '+counts.total+' inventoriés'+(counts.blocked?' · '+counts.blocked+' bloqués signalés':'')+(counts.suspect?' · '+counts.suspect+' à examiner':'');
  stats.innerHTML='<div class="chat-summary-grid">'+
  '<div><strong>'+counts.total+'</strong><small>Chats inventoriés</small></div>'+
  '<div><strong>'+counts.blocked+'</strong><small>Blocages signalés</small></div>'+
@@ -357,7 +357,8 @@ async function importChatExport(file){
   const c=parsed[i],id=String(c?.id||c?.conversation_id||'');
   if(!/^[a-zA-Z0-9_-]{12,140}$/.test(id))continue;
   const analyzed=chatTopics(c);
-  const date=typeof c.update_time==='number'?new Date(c.update_time*1000).toISOString():null;
+  const timestamp=typeof c.update_time==='number'&&Number.isFinite(c.update_time)?new Date(c.update_time*1000):null;
+  const date=timestamp&&Number.isFinite(timestamp.getTime())?timestamp.toISOString():null;
   // A very long thread is flagged FOR REVIEW only, never confirmed "broken".
   const danger=analyzed.messageCount>=240;
   prepared.push({id,title:String(c.title||'Sans titre').slice(0,180),project_ids:analyzed.projects,
