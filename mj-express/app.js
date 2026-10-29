@@ -55,12 +55,18 @@ async function inspectPush(){
  }catch(e){details.error=String(e?.message||e);}
  return details;
 }
+function showPushRepair(reason){
+ const dialog=$('#push-repair-guide');
+ $('#push-repair-reason').textContent=reason||'La permission du navigateur n’est pas confirmée pour MJ Express.';
+ if(dialog&&!dialog.open)dialog.showModal();
+}
 function paintPushHealth(d){
  pushSnapshot=d;
  const chip=$('#push-status'),out=$('#push-health');
  const confirmed=d.subscription&&d.serverSubscription;
  const allowed=[d.requestResult,d.notificationPermission,d.browserPermission,d.pushPermission].includes('granted');
  const denied=[d.notificationPermission,d.browserPermission,d.pushPermission].includes('denied');
+ $('#push-repair-help').style.display=denied?'inline-block':'none';
  if(confirmed){chip.textContent='✓ Abonnement Push local et serveur confirmé';chip.style.color='#9aefad';}
  else if(d.subscription){chip.textContent='⚠ Abonnement local non confirmé sur Supabase';chip.style.color='#f3d08c';}
  else if(d.serviceWorker&&allowed){chip.textContent='⚠ Permission accordée, abonnement absent';chip.style.color='#f3d08c';}
@@ -255,6 +261,11 @@ window.addEventListener('appinstalled',()=>{
 });
 $('#install-guide-close').onclick=()=>$('#install-guide').close();
 $('#install-guide-check').onclick=checkInstallStatus;
+$('#push-repair-help').onclick=()=>showPushRepair('Le navigateur ou l’application Android indique une autorisation refusée. Il faut la modifier dans les réglages du site, ce que JavaScript ne peut pas faire à ta place.');
+$('#push-repair-close').onclick=()=>$('#push-repair-guide').close();
+$('#push-repair-recheck').onclick=async()=>{await refreshPushHealth();$('#push-repair-reason').textContent='Nouvelle vérification terminée : '+$('#push-health').textContent;};
+$('#push-repair-copy-url').onclick=async()=>{try{await navigator.clipboard.writeText(location.origin);$('#push-repair-copy-url').textContent='✓ Domaine copié';}catch{$('#push-repair-copy-url').textContent=location.origin;}};
+
 $('#copy-push-diag').onclick=async()=>{
  const d=pushSnapshot||await inspectPush();
  const copy=[
