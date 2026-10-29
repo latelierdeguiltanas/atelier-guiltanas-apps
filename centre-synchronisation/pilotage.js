@@ -377,18 +377,31 @@ async function importChatExport(file){
 function renderProjects(){
  const box=$('#project-list');if(!box)return;
  const q=$('#project-search').value.trim().toLowerCase(),stage=$('#project-stage').value,family=$('#project-family').value;
- const projects=projectData.filter(p=>(stage==='all'||p.lifecycle===stage)&&(family==='all'||p.family===family)&&(!q||[p.name,p.summary,p.category,p.progress_note,p.repo,p.next_action].join(' ').toLowerCase().includes(q)));
- const count=k=>projectData.filter(x=>x.lifecycle===k).length;
- $('#project-summary').innerHTML='<span><b>'+projectData.length+'</b> projets connus</span><span><b>'+count('actif')+'</b> actifs</span><span><b>'+count('developpement')+'</b> en développement</span><span><b>'+count('pause')+'</b> en pause</span><span><b>'+(count('brouillon')+count('idee'))+'</b> brouillons / idées</span>';
- const groupNames=['Jouer & raconter','Créer & fabriquer','Vie numérique'];
- const order={actif:0,developpement:1,brouillon:2,pause:3,idee:4,archive:5};
- box.innerHTML=groupNames.map(group=>{
-  const subset=projects.filter(p=>p.family===group).sort((a,b)=>(order[a.lifecycle]??9)-(order[b.lifecycle]??9)||a.name.localeCompare(b.name,'fr'));
-  if(!subset.length)return '';
-  return '<div class="project-family-title">'+escapeHTML(group)+' <small>'+subset.length+'</small></div>'+
-   subset.map(p=>'<div class="project-row" data-project="'+escapeHTML(p.id)+'" role="button" tabindex="0"><div class="project-name"><b>'+escapeHTML(p.name)+'</b><small>'+escapeHTML(p.category)+' · '+escapeHTML(p.repo||'Aucun dépôt confirmé')+'</small></div><div class="project-meta">'+escapeHTML(p.progress_note||p.summary||'Étape non documentée')+'</div>'+projectTag(p.lifecycle)+'<span class="project-chevron">›</span></div>').join('');
- }).join('')||'<div class="empty">Aucun projet dans ce filtre.</div>';
+ const filtered=projectData.filter(p=>(stage==='all'||p.lifecycle===stage)&&(family==='all'||p.family===family)&&(!q||[p.name,p.summary,p.category,p.progress_note,p.repo,p.next_action].join(' ').toLowerCase().includes(q)));
+ const n=k=>projectData.filter(x=>x.lifecycle===k).length;
+ $('#project-summary').innerHTML='<span><b>'+projectData.length+'</b> fiches du registre</span><span><b>'+n('actif')+'</b> actifs</span><span><b>'+n('developpement')+'</b> en chantier</span><span><b>'+n('pause')+'</b> pauses</span><span><b>'+(n('brouillon')+n('idee'))+'</b> pistes</span>';
+ const ecosystem=filtered.filter(ecosystemMember),others=filtered.filter(p=>!ecosystemMember(p));
+ const order={actif:0,developpement:1,pause:2,brouillon:3,idee:4,archive:5};
+ const row=p=>'<div class="project-row" data-project="'+escapeHTML(p.id)+'" role="button" tabindex="0"><div class="project-name"><b>'+escapeHTML(p.name)+'</b><small>'+escapeHTML(p.category)+' · '+escapeHTML(p.repo||'Source à confirmer')+'</small></div><div class="project-meta">'+escapeHTML(p.progress_note||p.summary||'État non documenté')+'</div>'+projectTag(p.lifecycle)+'<span class="project-chevron">›</span></div>';
+ const sections=[
+  ['Applications et outils JDR','🛡','Jouer & raconter'],
+  ['Créations et ressources','✦','Créer & fabriquer'],
+  ['Pilotage et présence','◈','Vie numérique'],
+  ['Autres projets','◦','Autres projets']
+ ];
+ const buckets={'Applications et outils JDR':[],'Créations et ressources':[],'Pilotage et présence':[],'Autres projets':others};
+ ecosystem.forEach(p=>{let name=ecosystemName(p);if(!buckets[name])name='Applications et outils JDR';buckets[name].push(p)});
+ const active=projectData.filter(p=>ecosystemMember(p)&&['actif','developpement'].includes(p.lifecycle)).length;
+ let html='<div class="ecosystem-root"><div><small>PROJET PRINCIPAL</small><strong>🌳 Écosystème · Atelier de Guiltanas</strong><p>'+active+' outils ou chantiers actifs/en développement · '+projectData.filter(ecosystemMember).length+' fiches associées</p></div><span class="project-root-tag">Vue unifiée</span></div>';
+ for(const [name,icon] of sections){
+  const arr=buckets[name].sort((a,b)=>(a.id==='forge'?-1:0)-(b.id==='forge'?-1:0)||(order[a.lifecycle]??9)-(order[b.lifecycle]??9)||a.name.localeCompare(b.name,'fr'));
+  if(!arr.length)continue;
+  const show=q!==''||name==='Applications et outils JDR'?' open':'';
+  html+='<details class="project-tree-group"'+show+'><summary>'+icon+' '+escapeHTML(name)+' <small>'+arr.length+'</small></summary><div class="project-tree-items">'+arr.map(row).join('')+'</div></details>';
+ }
+ box.innerHTML=html||'<div class="empty">Aucun projet dans ce filtre.</div>';
 }
+
 function openProject(id){
  const p=projectData.find(x=>x.id===id);if(!p)return;selected={kind:'project',id};
  let content='<p class="drawer-desc">'+escapeHTML(p.summary||'Objectif à préciser')+'</p>';
