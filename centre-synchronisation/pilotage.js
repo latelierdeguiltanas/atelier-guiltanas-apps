@@ -157,6 +157,80 @@ async function loadPlayerChecks(){
 const statuses={actif:'Actif',developpement:'Développement',brouillon:'Brouillon',pause:'En pause',idee:'Idée',archive:'Archivé'};
 const publications={en_ligne:'En ligne',local:'Local',non_publie:'Non publié',inconnu:'À vérifier'};
 function projectTag(value){return '<span class="project-pill p-'+escapeHTML(value)+'">'+escapeHTML(statuses[value]||value)+'</span>'}
+
+/* Historical evidence layer: no verification percentages are inferred from lifecycle status.
+   All project names/statuses still come from the authenticated private registry. */
+const projectEvidence={
+  forge:{
+    headline:'N1 : certification exhaustive non démontrée sur la version actuelle',
+    verified:'Dépôt de production et suites de tests automatisés retrouvés ; correctifs documentés et pack de 12 scénarios réels existant.',
+    uncertain:'Des validations manuelles anciennes sont consignées, mais des changements ultérieurs ont eu lieu. La recette finale des 12 cas et toutes les combinaisons doivent être rapprochées de la version publiée.',
+    next:'Relever la version actuelle et les résultats datés des 12 scénarios ; marquer séparément « testé automatiquement », « testé par Math » et « à rejouer ».',
+    source:'https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/MANUAL_FREEZE_PACK/README.md'
+  },
+  cockpit:{
+    headline:'Cockpit opérationnel ; intégration du pilotage en cours',
+    verified:'Interface authentifiée, inventaire Supabase, registre des projets, vues GitHub et diagnostics déjà présents dans le code.',
+    uncertain:'La migration complète de l’historique des chats n’est pas réalisée ; l’authentification et la recette mobile sont à préserver et vérifier.',
+    next:'Enrichir les projets existants du registre avec des jalons, preuves et liens vers les conversations récupérées.'
+  },
+  'fiches-pj':{
+    headline:'Fiche interactive : développement disponible, recette complète à confirmer',
+    verified:'Dossier fiches-personnages/ présent ; fiche et liaison cloud documentées dans le registre.',
+    uncertain:'Le passage N2 d’un personnage réel et la reprise multi-appareils restent à attester.',
+    next:'Faire une recette ciblée N1/N2 et récupération sur deux appareils.'
+  },
+  'hub-bastide':{
+    headline:'Hub Bastide en ligne ; plusieurs modules sont encore en validation',
+    verified:'Dépôt et document Drive de suivi retrouvés. Plusieurs fonctionnalités et tests techniques y sont documentés.',
+    uncertain:'Les contrôles au clic sur appareils réels et les derniers parcours de dialogues/messagerie ne sont pas tous attestés.',
+    next:'Consolider les validations des dernières interventions contre la version publiée.'
+  }
+};
+function projectEvidenceMarkup(p){
+  const e=projectEvidence[p.id];
+  const title=e?e.headline:'État de validation : non audité individuellement';
+  const yes=e?e.verified:'Cette fiche est classée dans le registre privé ; son statut n’est pas une preuve de recette.';
+  const no=e?e.uncertain:'Les décisions issues des anciens chats, les preuves réelles et les critères de complétude restent à rapprocher.';
+  const next=e?e.next:(p.next_action||'Identifier les critères de validation et les sources de preuve.');
+  return '<section class="project-evidence"><h3>Validation et traçabilité</h3>'+
+    '<strong class="fact">'+escapeHTML(title)+'</strong>'+
+    '<p><span class="proof">✓ Éléments documentés :</span> '+escapeHTML(yes)+'</p>'+
+    '<p><span class="uncertain">○ Non certifié :</span> '+escapeHTML(no)+'</p>'+
+    '<p><b>Prochaine vérification :</b> '+escapeHTML(next)+'</p>'+
+    (e?.source?'<p>'+link(e.source,'Voir le référentiel de tests')+'</p>':'')+
+    '<p class="minihelp">Chats associés : inventaire incomplet. Aucun nombre de chats n’est inventé.</p>'+
+    '<div class="detail-links project-resume"><button class="smallbutton primary" data-reprise-project="'+escapeHTML(p.id)+'">↗ Reprendre dans ChatGPT</button></div></section>';
+}
+function renderProjectAuditPulse(){
+ const node=$('#project-audit-content');if(!node)return;
+ const total=projectData.length;
+ const n=lifecycle=>projectData.filter(p=>p.lifecycle===lifecycle).length;
+ const abandoned=projectData.filter(p=>p.lifecycle==='abandonne'||p.lifecycle==='abandonné').length;
+ node.innerHTML='<div class="project-audit-metrics">'+
+   '<div class="project-audit-metric"><strong>'+total+'</strong><small>Fiches connues</small></div>'+
+   '<div class="project-audit-metric"><strong>'+(n('actif')+n('developpement'))+'</strong><small>Actifs ou en chantier</small></div>'+
+   '<div class="project-audit-metric"><strong>'+n('pause')+'</strong><small>En pause déclarée</small></div>'+
+   '<div class="project-audit-metric"><strong>'+abandoned+'</strong><small>Abandons explicitement classés</small></div>'+
+   '</div><div class="project-audit-focus"><div><strong>⚒ Forge : N1 non certifié dans le référentiel actuel</strong>'+
+   '<p>Des tests sont documentés, mais le gel N1 ne doit pas être annoncé sans preuves rattachées à la version publiée.</p></div>'+
+   '<button type="button" data-project-audit="forge">Voir les preuves</button></div>'+
+   '<p class="project-audit-reliability">Source : registre privé Supabase · Ces chiffres classent des fiches, pas des fonctionnalités validées. Archives, brouillons et modules peuvent se recouper. Historique complet des chats non importé.</p>';
+}
+function projectResumeText(p){
+ const evidence=projectEvidence[p.id];
+ return 'REPRISE PAR PROJET — '+p.name+'\n\nConsulte le registre « Pilotage Guiltanas » et le document Drive « 00 — ÉTAT DU PROJET » de ce projet AVANT de modifier du code. Inscris le périmètre et le statut EN COURS dans Drive. À chaque jalon, inscris modification, commit, preuves, éventuels échecs et prochaine action. Mets à jour le registre existant, sans créer de projet doublon. Ne considère pas les affirmations des anciens chats comme preuves de validation.\n\nDernier état déclaré : '+(p.progress_note||p.summary||'non renseigné')+'\nStatut : '+(p.lifecycle||'inconnu')+'\nProchaine étape : '+(p.next_action||'à déterminer')+'\n'+(evidence?'\nÉtat de vérification : '+evidence.headline+'\nÀ vérifier : '+evidence.uncertain:'')+'\n\nPrends les sources existantes comme référence, préserve les autres projets et n’invente aucun pourcentage de validation.';
+}
+async function resumeProject(id){
+ const p=projectData.find(x=>x.id===id);if(!p)return;
+ const message=projectResumeText(p);
+ let copied=false;
+ try{await navigator.clipboard.writeText(message);copied=true}catch(e){}
+ window.open('https://chatgpt.com/','_blank','noopener,noreferrer');
+ if(!copied)window.prompt('Le navigateur a refusé la copie automatique. Copie le contexte de reprise :',message);
+ else {const textEl=$('#project-sync-status');if(textEl)textEl.textContent='Contexte de « '+p.name+' » copié ; colle-le dans le nouveau chat.'}
+}
+
 function renderProjects(){
  const box=$('#project-list');if(!box)return;
  const q=$('#project-search').value.trim().toLowerCase(),stage=$('#project-stage').value,family=$('#project-family').value;
@@ -182,6 +256,7 @@ function openProject(id){
  if(p.source_url?.startsWith('https://'))content+='<div class="detail-links">'+link(p.source_url,'Source détectée')+'</div>';
  if(p.app_id){const app=model.apps.find(a=>a.id===p.app_id);if(app)content+='<div class="detail-links"><button class="smallbutton" data-drawer-app="'+escapeHTML(app.id)+'">Voir les connexions techniques</button></div>'}
  content+='<div class="detail-label">Suivi</div><div class="minihelp">Dernière modification du registre : '+time(p.updated_at)+' · '+escapeHTML(p.source)+'</div>';
+ content+=projectEvidenceMarkup(p);
  content+='<div class="detail-links"><button class="smallbutton primary" data-edit-project="'+escapeHTML(p.id)+'">Modifier cette fiche</button></div>';
  showDrawer(p.name,'Projet',content);
 }
@@ -204,7 +279,7 @@ async function loadRegistry(force=false){
   const d=await registryRequest(force?'list&force=1':'list');projectData=d.projects||[];projectScan=d.scan||null;
   const scan=projectScan;
   if(indicator)indicator.textContent='Registre Supabase à jour · '+projectData.length+' projets · GitHub public : '+(scan?.last_error?'contrôle impossible ('+scan.last_error+')':'contrôlé le '+time(scan?.last_github_at))+' · dépôts privés à suivre via connexion autorisée';
-  renderProjects();
+  renderProjects();renderProjectAuditPulse();
   if(model){const label=$('#metrics .metric:nth-child(2) strong');if(label)label.textContent=String(projectData.length);const cap=$('#metrics .metric:nth-child(2) span');if(cap)cap.textContent='projets catalogués'}
  }catch(e){if(indicator)indicator.textContent='Registre indisponible : '+e.message}
 }
@@ -337,7 +412,7 @@ function wire(){const explorer=$('#mobile-repos');
  const clickParent=e=>{const app=e.target.closest('[data-app]'),repo=e.target.closest('[data-repo]'),dev=e.target.closest('[data-device]');if(app)showApp(app.dataset.app);else if(repo)showRepo(repo.dataset.repo);else if(dev)showDevice(dev.dataset.device)};document.addEventListener('click',e=>{if(e.target.closest('.data-row'))clickParent(e);const target=e.target.closest('[data-drawer-app]');if(target){e.preventDefault();showApp(target.dataset.drawerApp)}});
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('.data-row'))clickParent(e);if(e.key==='Escape'&&!document.querySelector('dialog[open]')&&$('#drawer').classList.contains('show'))goBack()});
 $$('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));$$('[data-view-go]').forEach(b=>b.onclick=()=>setView(b.dataset.viewGo));$('#graph-repo').onchange=e=>{graphRepo=e.target.value;selected=null;hideDrawer();drawMap();pushRoute()};$('#graph-reset').onclick=()=>{graphRepo='';selected=null;hideDrawer();$('#graph-repo').value='';drawMap();pushRoute()};
-$('#project-search').oninput=renderProjects;$('#project-stage').onchange=renderProjects;$('#project-family').onchange=renderProjects;$('#project-new').onclick=()=>editProject(null);$('#project-scan').onclick=()=>loadRegistry(true);$('#project-close').onclick=$('#project-cancel').onclick=goBack;$('#project-form').onsubmit=async e=>{e.preventDefault();const f=e.target,b=$('#project-submit');b.disabled=true;$('#project-form-result').textContent='Sauvegarde sur le serveur…';try{const body=Object.fromEntries(new FormData(f));const d=await registryRequest('save',body);$('#project-form-result').textContent='Fiche enregistrée.';$('#project-editor').close();if(history.state?.pilotage&&history.state.route?.dialog==='project-editor'){history.replaceState({...history.state,route:{...history.state.route,dialog:null,edit:null}},'',location.href)}await loadRegistry();openProject(d.project.id)}catch(err){$('#project-form-result').textContent=err.message}finally{b.disabled=false}};$('#project-list').addEventListener('click',e=>{const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)});$('#project-list').addEventListener('keydown',e=>{if(e.key==='Enter'){const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)}});document.addEventListener('click',e=>{const b=e.target.closest('[data-edit-project]');if(b)editProject(b.dataset.editProject)});$('#app-search').oninput=e=>{search=e.target.value.trim().toLowerCase();renderApps()};$('#app-filter').onchange=renderApps;
+$('#project-search').oninput=renderProjects;$('#project-stage').onchange=renderProjects;$('#project-family').onchange=renderProjects;$('#project-new').onclick=()=>editProject(null);$('#project-scan').onclick=()=>loadRegistry(true);$('#project-refresh').onclick=()=>loadRegistry(false);document.addEventListener('click',e=>{const audit=e.target.closest('[data-project-audit]');if(audit){openProject(audit.dataset.projectAudit);return}const resume=e.target.closest('[data-reprise-project]');if(resume){e.preventDefault();resumeProject(resume.dataset.repriseProject)}});$('#project-close').onclick=$('#project-cancel').onclick=goBack;$('#project-form').onsubmit=async e=>{e.preventDefault();const f=e.target,b=$('#project-submit');b.disabled=true;$('#project-form-result').textContent='Sauvegarde sur le serveur…';try{const body=Object.fromEntries(new FormData(f));const d=await registryRequest('save',body);$('#project-form-result').textContent='Fiche enregistrée.';$('#project-editor').close();if(history.state?.pilotage&&history.state.route?.dialog==='project-editor'){history.replaceState({...history.state,route:{...history.state.route,dialog:null,edit:null}},'',location.href)}await loadRegistry();openProject(d.project.id)}catch(err){$('#project-form-result').textContent=err.message}finally{b.disabled=false}};$('#project-list').addEventListener('click',e=>{const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)});$('#project-list').addEventListener('keydown',e=>{if(e.key==='Enter'){const row=e.target.closest('[data-project]');if(row)openProject(row.dataset.project)}});document.addEventListener('click',e=>{const b=e.target.closest('[data-edit-project]');if(b)editProject(b.dataset.editProject)});$('#app-search').oninput=e=>{search=e.target.value.trim().toLowerCase();renderApps()};$('#app-filter').onchange=renderApps;
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-check-online]');if(!b)return;const a=model?.apps.find(x=>x.id===b.dataset.checkOnline),target=$('#online-test');if(!a||!target)return;b.disabled=true;target.textContent='Test en cours…';try{const u=ROOT+a.path;const r=await fetch(u,{method:'HEAD',cache:'no-store'});target.textContent=r.ok?'✓ Page accessible depuis cet appareil ('+r.status+'). Fonctionnalités internes non testées.':'⚠ Page non confirmée (HTTP '+r.status+').';}catch(err){target.textContent='⚠ Test impossible : '+err.message;}finally{b.disabled=false}});
 $('#drawer-close').onclick=closeDrawer;$('#shade').onclick=closeDrawer;$('#cockpit-back').onclick=goBack;$('#help').onclick=$('#open-guide').onclick=()=>showHelp('guide');$('#term-close').onclick=goBack;document.addEventListener('click',e=>{const b=e.target.closest('[data-term]');if(b)showHelp(b.dataset.term)});$('#refresh-players').onclick=loadPlayerChecks;$('#reload').onclick=load}
 function populate(){const chooser=$('#graph-repo');chooser.innerHTML='<option value="">Vue des dépôts</option>'+model.repos.map(r=>'<option value="'+escapeHTML(r.id)+'">'+escapeHTML(r.name)+'</option>').join('');if(graphRepo&&!model.repos.some(r=>r.id===graphRepo))graphRepo='';chooser.value=graphRepo;renderMetrics();renderBrief();renderApps();renderRepos();renderBackend();renderUsage();renderDevices();drawMap();loadPlayerChecks();$('#freshness').textContent='Données serveur : '+time(model.metrics.generated_at)+' · dépôts : audit '+model.inventoryUpdated}
