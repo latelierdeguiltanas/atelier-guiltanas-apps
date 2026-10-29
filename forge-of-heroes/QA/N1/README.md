@@ -159,3 +159,15 @@ node forge-of-heroes/FINAL_FREEZE_TESTS/n1_pdf_religion_runner.cjs CHEMIN_DU_PDF
 ```
 
 Fin du lot 6 : **34 suites PASS**, 179 120 configurations rejouées sans échec d’assertion ; les empreintes du moteur et des données correspondent à la matrice. L’amélioration de l’export a ensuite modifié le HTML hors moteur : elle est contrôlée par les six exports dédiés et une nouvelle analyse de syntaxe. La différence des empreintes HTML complètes est donc conservée, sans attribuer à la matrice un contrôle de l’export. Les 240 inversions d’achat du nouveau test ont été réexécutées séparément et consignées dans `regressions.json`.
+
+## Lot 7 — accès aux équipements légaux dans l’interface
+
+Le moteur autorisait déjà un échange de paquetage approuvé par le MJ, mais l’interface ne permettait pas de saisir cet échange. Cela rendait certaines contreparties légales des petites tailles accessibles seulement aux tests.
+
+Un panneau optionnel **« Échange de matériel validé par le MJ »** permet désormais de choisir les armes (avec plusieurs exemplaires et ajout de lignes), l’armure et le bouclier. Les choix sont conservés dans le brouillon et l’import d’un état équipé. Désactiver le panneau rétablit le paquetage ; le réactiver retrouve les choix. L’accord MJ ne désactive aucun contrôle de maîtrise, de taille, de bouclier ou de voie du moteur. Il s’agit de la politique d’échange Forge préexistante, pas d’un nouveau paquetage officiel.
+
+`lot7/equipment-ui.json` : **36 scénarios DOM reliés au vrai constructeur d’équipement et au moteur**, sur les deux HTML, pour humain, halfelin, gobelin, kobold, lutin et fée, en profil pur/hybride/sans profil. Les 36 sauvegardes/relectures passent. Les 30 essais d’une arme trop grande restent refusés. Les tests couvrent aussi les armes multiples, la conservation du brouillon, le retour au paquetage et l’origine correcte du paquetage sans profil lorsque le profil global résiduel est différent. Ce sont des contrôles DOM, pas des clics Android.
+
+La revue numérique est également étendue à **25 capacités et 132 cas** dans le runner source : Vivacité, les voies du vent/poing/méditation du moine, Murmures dans le vent, les effets initiaux du psionique et du samouraï, et Tour de magie au rang 3. Les six profils mages vérifient indépendamment le gain de +1 DEF et de +3 PM à l’acquisition de ce rang, avec sauvegarde. Les adaptations Compagnon restent signalées comme telles. Le rapport courant `lot4/source-numeric.json` est étendu ; son état antérieur de 74 cas reste dans l’historique Git.
+
+35 suites passent. La correction du seul extracteur de fixture de l’ancien HTML, puis l’extension du test numérique, ont été réexécutées séparément et consignées dans `regressions.json`. Le moteur et les données n’ont pas changé dans ce lot : leur matrice complète précédente reste applicable, sans prétendre que la matrice vérifie l’interface.

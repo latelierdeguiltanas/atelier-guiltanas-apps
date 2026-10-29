@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_SOURCE_NUMERIC",
-  "scope": "Absolute numerical expectations for 15 official abilities at creation ranks 1–3. Unarmored human, neutral second path, no combat activation. Not a claim of all N1 effects.",
+  "scope": "Absolute numerical expectations for 25 official/adapted abilities at creation ranks 1–3. Unarmored human, neutral second path, no combat activation. Not a claim of all N1 effects.",
   "cases": [
     {
       "label": "index.html:voie-du-saltimbanque:2",
@@ -521,6 +521,450 @@
       "status": "PASS"
     },
     {
+      "label": "index.html:voie-du-combat:1",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 90,
+        "printedPage": 88
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 13,
+        "PV": 11
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-du-combat:2",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 90,
+        "printedPage": 88
+      },
+      "expected": {
+        "DEF": 10,
+        "INIT": 13,
+        "PV": 11
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-du-combat:3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 90,
+        "printedPage": 88
+      },
+      "expected": {
+        "DEF": 10,
+        "INIT": 13,
+        "PV": 10
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-du-vent:1",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 123,
+        "printedPage": 121
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 13,
+        "PV": 9
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-du-vent:2",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 123,
+        "printedPage": 121
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 13,
+        "PV": 9
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-du-vent:3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 123,
+        "printedPage": 121
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 13,
+        "PV": 8
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-de-la-meditation:3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 122,
+        "printedPage": 120
+      },
+      "expected": {
+        "DEF": 12,
+        "INIT": 12,
+        "PV": 10
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-du-poing:2",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 123,
+        "printedPage": 121
+      },
+      "expected": {
+        "DEF": 12,
+        "INIT": 10,
+        "PV": 9
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-du-poing:3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 123,
+        "printedPage": 121
+      },
+      "expected": {
+        "DEF": 12,
+        "INIT": 10,
+        "PV": 8
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-de-l-air:1",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 95,
+        "printedPage": 93
+      },
+      "expected": {
+        "DEF": 12,
+        "INIT": 11,
+        "PV": 7
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-de-l-air:2",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 95,
+        "printedPage": 93
+      },
+      "expected": {
+        "DEF": 12,
+        "INIT": 11,
+        "PV": 7
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-de-l-air:3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 95,
+        "printedPage": 93
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 11,
+        "PV": 6
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-du-controle-corporel:1",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 34,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 12,
+        "PV": 6
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-du-controle-corporel:2",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 34,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 12,
+        "PV": 6
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-du-controle-corporel:3",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 34,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 10,
+        "INIT": 11,
+        "PV": 5
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-du-ki:1",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 32,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 13,
+        "PV": 9
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-du-ki:2",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 32,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 10,
+        "INIT": 13,
+        "PV": 9
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-du-ki:3",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 32,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 10,
+        "INIT": 13,
+        "PV": 8
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-de-l-empathie:1",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 34,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 13,
+        "PV": 7
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-de-l-empathie:2",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 34,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 13,
+        "INIT": 14,
+        "PV": 7
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-de-l-empathie:3",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 34,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 12,
+        "INIT": 15,
+        "PV": 6
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-de-la-telekinesie:2",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 36,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 13,
+        "INIT": 12,
+        "PV": 7
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:voie-de-la-telekinesie:3",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 36,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 13,
+        "INIT": 12,
+        "PV": 6
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:class:ensorceleur:cof2-lb-2024:mage-r3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "pdfPage": 62
+      },
+      "expected": {
+        "DEFDelta": 1,
+        "PMDelta": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:class:forgesort:cof2-lb-2024:mage-r3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "pdfPage": 62
+      },
+      "expected": {
+        "DEFDelta": 1,
+        "PMDelta": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:class:magicien:cof2-lb-2024:mage-r3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "pdfPage": 62
+      },
+      "expected": {
+        "DEFDelta": 1,
+        "PMDelta": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:class:sorcier:cof2-lb-2024:mage-r3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "pdfPage": 62
+      },
+      "expected": {
+        "DEFDelta": 1,
+        "PMDelta": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:class:invocateur:addon-compagnon-2024:mage-r3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "pdfPage": 62
+      },
+      "expected": {
+        "DEFDelta": 1,
+        "PMDelta": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "index.html:class:psionique:addon-compagnon-2024:mage-r3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "pdfPage": 62
+      },
+      "expected": {
+        "DEFDelta": 1,
+        "PMDelta": 3
+      },
+      "status": "PASS"
+    },
+    {
       "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-saltimbanque:2",
       "source": {
         "document": "COF2 Livre de base",
@@ -1035,6 +1479,450 @@
         "DEF": 10,
         "INIT": 10,
         "PV": 6
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-combat:1",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 90,
+        "printedPage": 88
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 13,
+        "PV": 11
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-combat:2",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 90,
+        "printedPage": 88
+      },
+      "expected": {
+        "DEF": 10,
+        "INIT": 13,
+        "PV": 11
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-combat:3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 90,
+        "printedPage": 88
+      },
+      "expected": {
+        "DEF": 10,
+        "INIT": 13,
+        "PV": 10
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-vent:1",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 123,
+        "printedPage": 121
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 13,
+        "PV": 9
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-vent:2",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 123,
+        "printedPage": 121
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 13,
+        "PV": 9
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-vent:3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 123,
+        "printedPage": 121
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 13,
+        "PV": 8
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-de-la-meditation:3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 122,
+        "printedPage": 120
+      },
+      "expected": {
+        "DEF": 12,
+        "INIT": 12,
+        "PV": 10
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-poing:2",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 123,
+        "printedPage": 121
+      },
+      "expected": {
+        "DEF": 12,
+        "INIT": 10,
+        "PV": 9
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-poing:3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 123,
+        "printedPage": 121
+      },
+      "expected": {
+        "DEF": 12,
+        "INIT": 10,
+        "PV": 8
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-de-l-air:1",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 95,
+        "printedPage": 93
+      },
+      "expected": {
+        "DEF": 12,
+        "INIT": 11,
+        "PV": 7
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-de-l-air:2",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 95,
+        "printedPage": 93
+      },
+      "expected": {
+        "DEF": 12,
+        "INIT": 11,
+        "PV": 7
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-de-l-air:3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "pdfPage": 95,
+        "printedPage": 93
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 11,
+        "PV": 6
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-controle-corporel:1",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 34,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 12,
+        "PV": 6
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-controle-corporel:2",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 34,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 12,
+        "PV": 6
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-controle-corporel:3",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 34,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 10,
+        "INIT": 11,
+        "PV": 5
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-ki:1",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 32,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 13,
+        "PV": 9
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-ki:2",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 32,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 10,
+        "INIT": 13,
+        "PV": 9
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-du-ki:3",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 32,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 10,
+        "INIT": 13,
+        "PV": 8
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-de-l-empathie:1",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 34,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 11,
+        "INIT": 13,
+        "PV": 7
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-de-l-empathie:2",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 34,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 13,
+        "INIT": 14,
+        "PV": 7
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-de-l-empathie:3",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 34,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 12,
+        "INIT": 15,
+        "PV": 6
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-de-la-telekinesie:2",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 36,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 13,
+        "INIT": 12,
+        "PV": 7
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:voie-de-la-telekinesie:3",
+      "source": {
+        "document": "Compagnon, adaptation Forge COF2",
+        "sourceOriginal": {
+          "bookId": "cof1-compagnon-2017",
+          "printedPage": 36,
+          "edition": "COF1"
+        },
+        "officialCof2": false
+      },
+      "expected": {
+        "DEF": 13,
+        "INIT": 12,
+        "PV": 6
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:class:ensorceleur:cof2-lb-2024:mage-r3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "pdfPage": 62
+      },
+      "expected": {
+        "DEFDelta": 1,
+        "PMDelta": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:class:forgesort:cof2-lb-2024:mage-r3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "pdfPage": 62
+      },
+      "expected": {
+        "DEFDelta": 1,
+        "PMDelta": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:class:magicien:cof2-lb-2024:mage-r3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "pdfPage": 62
+      },
+      "expected": {
+        "DEFDelta": 1,
+        "PMDelta": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:class:sorcier:cof2-lb-2024:mage-r3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "pdfPage": 62
+      },
+      "expected": {
+        "DEFDelta": 1,
+        "PMDelta": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:class:invocateur:addon-compagnon-2024:mage-r3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "pdfPage": 62
+      },
+      "expected": {
+        "DEFDelta": 1,
+        "PMDelta": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:class:psionique:addon-compagnon-2024:mage-r3",
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "pdfPage": 62
+      },
+      "expected": {
+        "DEFDelta": 1,
+        "PMDelta": 3
       },
       "status": "PASS"
     }

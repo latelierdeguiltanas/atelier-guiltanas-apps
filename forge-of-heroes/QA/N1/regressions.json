@@ -1,13 +1,20 @@
 {
   "schema": "FOH_N1_REGRESSION_BATCH",
   "scope": "N1 creation and advanced-age projections; no progression work; some high-rank reference projections remain in reused suites",
-  "indexSha256": "2bae66e129b9c3e67914a15c60fe4893d5d6c55729412851e00bbf98b0f5d6cf",
-  "finishedAt": "2026-10-29T12:41:16.210Z",
-  "passed": 34,
-  "total": 34,
+  "indexSha256": "a5ced4a341e58b55f2c33308013f68bcc36064b0ec39c320dadeb9b3a651ff11",
+  "finishedAt": "2026-10-29T13:00:26.624Z",
+  "passed": 35,
+  "total": 35,
   "status": "PASS",
   "browserClicks": false,
   "suites": [
+    {
+      "file": "n1_equipment_ui_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "c8bc2a5b87e6a16f118bb8231b01041dad40f7d09109bef563dfcf43c030d007",
+      "output": "PASS 36 DOM-to-engine equipment cases, 36 replays, 30 ancestry refusals; approval toggle, return to package and serialized UI draft preservation.\n"
+    },
     {
       "file": "n1_religion_ui_runner.cjs",
       "status": "PASS",
@@ -40,8 +47,8 @@
       "file": "n1_source_numeric_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "ed61f8681dd0bf7abea58d13c8462368a2128cf7c3f11d7f1f5769f5cfe66e0a",
-      "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 74,\n  \"failures\": []\n}\n"
+      "runnerSha256": "73c8ed9ec59e56ff3bb248a2d8b61f5748fe3d40c08206d9b081b1a644b97df4",
+      "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 132,\n  \"failures\": []\n}\n"
     },
     {
       "file": "n1_age_profiles_runner.cjs",
@@ -249,14 +256,19 @@
   ],
   "followupReruns": [
     {
-      "file": "n1_religion_creation_runner.cjs",
-      "reason": "Added 240 reverse-purchase assertions after full batch.",
-      "finishedAt": "2026-10-29T12:43:43.950Z"
+      "file": "n1_equipment_ui_runner.cjs",
+      "reason": "Fixed legacy fixture function extraction and extended dynamic weapon rows; final UI copy and script syntax rechecked.",
+      "finishedAt": "2026-10-29T13:02:50.725Z"
     },
     {
       "file": "storage_safety_runner.js",
-      "reason": "Rechecked every inline script after the PDF-only change.",
-      "finishedAt": "2026-10-29T12:43:43.950Z"
+      "reason": "Fixed legacy fixture function extraction and extended dynamic weapon rows; final UI copy and script syntax rechecked.",
+      "finishedAt": "2026-10-29T13:02:50.726Z"
+    },
+    {
+      "file": "n1_source_numeric_runner.cjs",
+      "reason": "Extended independent numeric source expectations to 25 abilities / 132 cases, including Mage R3 and explicit source rank check.",
+      "finishedAt": "2026-10-29T13:17:17.573Z"
     }
   ]
 }

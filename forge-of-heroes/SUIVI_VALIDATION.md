@@ -52,3 +52,10 @@ Lot 2 : restrictions de taille communes aux trois modes de création, armes 2d6 
 - Attaques et exports reconstruits depuis la capacité réellement acquise. Fiche officielle et annexes affichent le remplacement.
 - 360 créations/sauvegardes-relectures, 240 inversions d’achat, 20 contrôles DOM et six exports PDF. Rapports dans `QA/N1/lot6` ; source avant correction : 136 échecs sur 180 cas.
 - Périmètre et limites documentés. La phase N1 n’est pas clôturée par le seul passage des tests de ce lot.
+
+### Lot 7 N1 — paquetages et valeurs exactes
+
+- Accès à l’échange de matériel validé par le MJ dans les deux interfaces ; choix d’armes, armure et bouclier persistants et réversibles.
+- 36 scénarios DOM→constructeur→moteur et sauvegardes/relectures ; 30 armes trop grandes toujours refusées. Le moteur et les données restent identiques au lot 6.
+- Revue numérique étendue : 25 capacités / 132 cas, dont Tour de magie R3 sur les six profils mages. 35 suites passent.
+- Les contrôles DOM ne remplacent pas une recette utilisateur Android. Les réserves et les limites restent explicites.
