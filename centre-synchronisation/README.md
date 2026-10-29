@@ -155,3 +155,14 @@ Le Cockpit/Pilotage Guiltanas (`centre-synchronisation/`) est l'application prop
 **Limite technique essentielle :** cette application n'a pas de connexion capable de parcourir et tester les sessions privées ChatGPT sur Android et sur le site web. Son bouton d'actualisation relit les rapports/états déjà accessibles dans Supabase, il **ne détecte pas automatiquement** qu'un chat vient de planter. Tester directement des conversations sur un navigateur web signé nécessite une session de navigation autorisée ; le comportement de l'application Android ne peut pas être déduit d'un test web. Ne jamais afficher « fonctionnel » ou « bugué confirmé » sans test source sur la plateforme correspondante.
 
 **Vérifications réalisées :** source de l'interface GitHub relue, syntaxe JavaScript passée, Edge Function active, contrôle SQL des permissions RLS ; aucune preuve de test interactif sur navigateur authentifié ou appareil Android dans cette intervention. Ne pas annoncer une synchronisation live des chats ChatGPT comme livrée.
+
+
+## 29/10/2026 — Contrôle de progression technique, pas diagnostic interne des chats
+
+Pour Forge N1, la fiche projet du Cockpit affiche désormais un contrôle à la demande de la PR GitHub [#2](https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/pull/2) : statut, dernier commit horodaté, dernière mise à jour de PR, nombre de commits. Cette lecture est faite depuis le navigateur, sans jeton GitHub privé et sans minuterie. En l'absence de commit pendant plus de 24 h, la fiche signale **l'absence de nouvelle preuve GitHub** ; elle ne conclut jamais à un chat Work planté.
+
+Preuve initiale du 29 octobre : PR ouverte en brouillon (non fusionnée), 9 commits ; dernier SHA `6b2aac296f799c2bdc894a1d1a8b492f18e9892f` daté 14:16:40 UTC, **15:16:40 à Paris** ; dernière mise à jour de la PR 14:22:04 UTC, **15:22:04 à Paris**. Les tests automatiques allégués dans le descriptif de PR et les 12 parcours manuels de certification N1 n'ont pas été validés par cette simple vérification.
+
+**Limitations :** ni ce site ni les connecteurs GitHub/Drive ne disposent de télémétrie des processus internes de ChatGPT Work, des boucles de génération, des erreurs serveur propres à un chat, des pauses de validation ou de l'état de la vue Android. Un chat peut être fonctionnel dans un navigateur et défaillant dans l'application ; les statuts doivent être séparés et basés sur des essais réels. Réparer le fil serveur ou forcer le déblocage interne n'est pas accessible. Reprise sûre : lire l'état Drive et la dernière preuve technique plutôt que relancer des commandes en boucle.
+
+**Contrôles :** source GitHub relue, JavaScript validé syntaxiquement et PR GitHub consultée. Essai de l'interface connectée sur le téléphone de l'utilisateur non vérifié.
