@@ -185,8 +185,74 @@ await ck('Messages Bastide',async()=>{await A.session('notifications');return 'S
 await ck('État combat partagé',async()=>{const r=await A.session('battle');return 'Révision '+(r.revision??'?')+' · '+(r.payload?.active?'Combat publié':'Aucun combat publié')});
 await ck('Inscription Web Push',async()=>{await pcall('status');return 'Service serveur accessible'});
 out.innerHTML=checks.map(c=>'<div class="item"><b>'+(c.ok?'✓ ':'! ')+esc(c.title)+'</b><div class="meta">'+esc(c.detail)+'</div></div>').join('')+'<p class="meta">La présence en ligne d’un joueur et ses modifications locales non envoyées ne sont pas observables depuis ces tests.</p>'}
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$('#install-help').textContent='Installation disponible : appuie sur Installer MJ Express.'});
-$('#install').onclick=async()=>{if(installPrompt){await installPrompt.prompt();installPrompt=null}else{$('#install-help').textContent='Samsung Internet : menu ☰ → Ajouter la page à → Écran d’accueil. Chrome : menu ⋮ → Installer l’application. iPhone : Safari → Partager → Sur l’écran d’accueil. Après installation, vérifie l’autorisation de notifications du navigateur dans Android.'}};
+const isStandalone=()=>window.matchMedia?.('(display-mode: standalone)')?.matches||navigator.standalone===true;
+const browserIsSamsung=/SamsungBrowser/i.test(navigator.userAgent);
+const browserIsAndroid=/Android/i.test(navigator.userAgent);
+const browserIsIOS=/iPhone|iPad|iPod/i.test(navigator.userAgent);
+function showInstallMessage(text){$('#install-help').textContent=text;}
+function paintInstallSteps(){
+ const box=$('#install-steps'),chrome=$('#install-in-chrome');
+ if(isStandalone()){
+  box.innerHTML='<p>✓ MJ Express est déjà ouvert en mode application. Tu peux retrouver son icône parmi tes applications.</p>';
+  chrome.style.display='none';return;
+ }
+ if(browserIsSamsung){
+  box.innerHTML='<p><b>1.</b> Dans Samsung Internet, touche l’icône <b>＋ / Installer</b> près de la barre d’adresse si elle apparaît.</p><p><b>2.</b> Sinon, ouvre le menu <b>☰</b> de Samsung Internet → <b>Ajouter la page à</b> → <b>Écran d’accueil</b> ou <b>Applications</b>.</p><p><b>3.</b> Confirme « Installer ». Si Samsung ne le propose pas, le bouton ci-dessous permet d’essayer Chrome et son installation Android native.</p>';
+  const address=location.origin+location.pathname;
+  chrome.href='intent://'+address.replace(/^https?:\/\//,'')+'#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(address)+';end';
+  chrome.style.display='block';
+ }else if(browserIsIOS){
+  box.innerHTML='<p><b>1.</b> Ouvre cette page dans Safari.</p><p><b>2.</b> Touche <b>Partager</b> puis <b>Sur l’écran d’accueil</b>.</p><p><b>3.</b> Confirme l’icône du cor enchanté.</p>';
+  chrome.style.display='none';
+ }else if(browserIsAndroid){
+  box.innerHTML='<p><b>1.</b> Ouvre le menu <b>⋮</b> de Chrome.</p><p><b>2.</b> Choisis <b>Installer l’application</b> ou <b>Ajouter à l’écran d’accueil</b>.</p><p><b>3.</b> Valide l’installation Android de MJ Express.</p>';
+  chrome.style.display='none';
+ }else{
+  box.innerHTML='<p>Dans Chrome ou Edge, ouvre le menu ⋮ puis <b>Installer cette page comme application</b>. Le système crée son propre raccourci.</p>';
+  chrome.style.display='none';
+ }
+}
+async function checkInstallStatus(){
+ const lines=[];
+ lines.push(isStandalone()?'✓ Mode application autonome':'○ Page actuellement ouverte dans le navigateur');
+ try{
+  const response=await fetch('./manifest.webmanifest?v=4',{cache:'no-store'});
+  const m=await response.json();
+  lines.push(response.ok&&m.display==='standalone'&&m.icons?.length>=2?'✓ Manifeste PWA avec icônes reconnu':'⚠ Manifeste incomplet (ou réponse invalide)');
+ }catch(e){lines.push('✗ Manifeste indisponible : '+e.message);}
+ try{
+  const reg=await service();
+  lines.push(reg?.active?'✓ Service worker actif':reg?.installing?'○ Installation du service worker en cours':'○ Service worker en attente');
+ }catch(e){lines.push('✗ Service worker : '+e.message);}
+ lines.push(installPrompt?'✓ Invitation d’installation native proposée':'○ Ce navigateur ne propose pas actuellement d’invitation automatique');
+ $('#install-check').textContent=lines.join(' · ');
+}
+window.addEventListener('beforeinstallprompt',e=>{
+ e.preventDefault();installPrompt=e;
+ showInstallMessage('✓ Installation native disponible : appuie sur le bouton Installer MJ Express.');
+});
+window.addEventListener('appinstalled',()=>{
+ installPrompt=null;
+ $('#install').textContent='✓ MJ Express installé';
+ showInstallMessage('✓ MJ Express installé. Retrouve le cor enchanté dans tes applications.');
+ if($('#install-guide').open)checkInstallStatus();
+});
+$('#install-guide-close').onclick=()=>$('#install-guide').close();
+$('#install-guide-check').onclick=checkInstallStatus;
+$('#install').onclick=()=>{
+ if(isStandalone()){
+  paintInstallSteps();$('#install-guide').showModal();checkInstallStatus();return;
+ }
+ if(installPrompt){
+  const prompt=installPrompt;installPrompt=null;
+  Promise.resolve().then(async()=>{try{await prompt.prompt();const selection=await prompt.userChoice;if(selection?.outcome!=='accepted'){paintInstallSteps();$('#install-guide').showModal();checkInstallStatus();}}
+    catch(err){showInstallMessage('Installation automatique impossible : '+err.message);paintInstallSteps();$('#install-guide').showModal();checkInstallStatus();}});
+  return;
+ }
+ paintInstallSteps();
+ $('#install-guide').showModal();
+ checkInstallStatus();
+};
 document.querySelectorAll('[data-tab]').forEach(x=>x.onclick=()=>setTab(x.dataset.tab));
 $('#refresh').onclick=refresh;$('#thread-list').onclick=e=>{const el=e.target.closest('[data-thread]');if(el)openThread(el.dataset.thread)};
 $('#reply').onsubmit=async e=>{e.preventDefault();if(!selected)return;const content=$('#reply-text').value.trim();if(!content)return;const b=e.submitter;b.disabled=true;try{await send(selected,content,crypto.randomUUID());$('#reply-text').value='';await refresh()}catch(ex){status('Envoi impossible : '+ex.message)}finally{b.disabled=false}};
@@ -196,5 +262,6 @@ $('#select-all').onchange=e=>document.querySelectorAll('[data-group-target]').fo
 $('#group-form').onsubmit=async e=>{e.preventDefault();const text=$('#group-text').value.trim(),ids=[...document.querySelectorAll('[data-group-target]:checked')].map(x=>x.value);if(!text||!ids.length)return status('Choisis au moins un joueur et écris ton message.');if(!confirm('Envoyer '+ids.length+' message(s) privé(s) distinct(s) ?'))return;const b=$('#group-submit');b.disabled=true;let done=0;try{for(const id of ids){await send(id,text,crypto.randomUUID());done++}$('#group-text').value='';$('#group').hidden=true;status(done+' messages envoyés.');await refresh()}catch(ex){status(done+' message(s) envoyé(s), puis interruption : '+ex.message+' — vérifie les fils avant de relancer.')}finally{b.disabled=false}};
 $('#shop-open').onclick=()=>updateShop(true);$('#shop-close').onclick=()=>updateShop(false);
 $('#push-enable').onclick=enable;$('#push-disable').onclick=disable;$('#push-local-test').onclick=localNotificationTest;$('#push-test').onclick=serverNotificationTest;$('#devices-refresh').onclick=refreshDevices;$('#diag-refresh').onclick=diagnose;document.addEventListener('visibilitychange',()=>{if(!document.hidden){refreshPushHealth();const id=sessionStorage.getItem('mj_express_last_push_receipt');if(id)checkTestReceipt(id,true)}});
+service().catch(e=>console.warn('MJ Express PWA :',e?.message||e));
 (async()=>{try{const who=await A.call('identity');if(who.access!=='admin')throw Error('Accès MJ requis');const data=await A.call('admin');players=data.players||[];if(!players.length)throw Error('Aucun personnage disponible');$('#locked').hidden=true;$('#app').hidden=false;$('#group-targets').innerHTML=players.map(p=>'<label><input data-group-target checked type="checkbox" value="'+esc(p.id)+'"> '+esc(p.display_name)+'</label>').join('');await refresh();await service().catch(()=>{});await refreshPushHealth();setInterval(()=>{if(!document.hidden)refresh()},15000)}catch(e){$('#locked').querySelector('p').textContent='Accès non disponible : '+e.message+'. Ouvre d’abord ton lien privé MJ depuis le hub.'}})();
 })();
