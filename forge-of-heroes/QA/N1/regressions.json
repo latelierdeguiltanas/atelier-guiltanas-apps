@@ -1,13 +1,20 @@
 {
   "schema": "FOH_N1_REGRESSION_BATCH",
   "scope": "N1 creation and advanced-age projections; no progression work; some high-rank reference projections remain in reused suites",
-  "indexSha256": "a5ced4a341e58b55f2c33308013f68bcc36064b0ec39c320dadeb9b3a651ff11",
-  "finishedAt": "2026-10-29T13:00:26.624Z",
-  "passed": 35,
-  "total": 35,
+  "indexSha256": "81ba70ffd61f2a2afaeca809f25b1c3fc97b9b72889ddb634f7ace8bd32a22ba",
+  "finishedAt": "2026-10-29T13:53:57.582Z",
+  "passed": 36,
+  "total": 36,
   "status": "PASS",
   "browserClicks": false,
   "suites": [
+    {
+      "file": "n1_history_ancestry_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "614da73bed0537d4049c4c767a0723e4bb608d37b4237eadcdde053dc6ac099e",
+      "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 288,\n  \"replays\": 272,\n  \"refusals\": 16,\n  \"offChecks\": 272,\n  \"failures\": [],\n  \"totalFailures\": 0\n}\n"
+    },
     {
       "file": "n1_equipment_ui_runner.cjs",
       "status": "PASS",
@@ -62,7 +69,7 @@
       "status": "PASS",
       "exitCode": 0,
       "runnerSha256": "6b5aba38a9b7abe1fd41348899498cc19125a731c532b21a89e915c0b55e0dbc",
-      "output": "{\n  \"schema\": \"FOH_N1_AGE_SOURCE_CHECK\",\n  \"sources\": [\n    {\n      \"file\": \"règles avancées.pdf\",\n      \"pdfPage\": 1,\n      \"printedPage\": 153,\n      \"visuallyRead\": true,\n      \"rule\": \"Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.\"\n    }\n  ],\n  \"cases\": [\n    {\n      \"id\": \"index.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:DR\",\n      \"status\": \"PASS\"\n    }\n  ],\n  \"replays\": 22,\n  \"failures\": [],\n  \"engineSha256\": \"a9bd1d7ca95ffd86c4ec8c53947ac96cd980b849ff22bf0ecbcf835cb34c7a65\",\n  \"status\": \"PASS\"\n}\n"
+      "output": "{\n  \"schema\": \"FOH_N1_AGE_SOURCE_CHECK\",\n  \"sources\": [\n    {\n      \"file\": \"règles avancées.pdf\",\n      \"pdfPage\": 1,\n      \"printedPage\": 153,\n      \"visuallyRead\": true,\n      \"rule\": \"Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.\"\n    }\n  ],\n  \"cases\": [\n    {\n      \"id\": \"index.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:DR\",\n      \"status\": \"PASS\"\n    }\n  ],\n  \"replays\": 22,\n  \"failures\": [],\n  \"engineSha256\": \"b170d942cd357c61dca31d1e5b60f557d256ba6b424cbb282cc78debae677a9a\",\n  \"status\": \"PASS\"\n}\n"
     },
     {
       "file": "n1_size_equipment_runner.cjs",
@@ -252,23 +259,6 @@
       "exitCode": 0,
       "runnerSha256": "09632b3e373975be961eb58be77cc4312aeab8c070ccf3cd47a1b24a1967e001",
       "output": "PASS {\"pointBuy\":279936,\"pointBuyValid\":27568,\"pointBuyInvalid\":252368,\"pointBuyCreations\":284,\"classicCreations\":2940,\"semiTriples\":1331,\"semiCreations\":9381,\"balancedLowCreations\":64,\"replayChecks\":407,\"invalidInputs\":12,\"uiFixtureChecks\":8}\n"
-    }
-  ],
-  "followupReruns": [
-    {
-      "file": "n1_equipment_ui_runner.cjs",
-      "reason": "Fixed legacy fixture function extraction and extended dynamic weapon rows; final UI copy and script syntax rechecked.",
-      "finishedAt": "2026-10-29T13:02:50.725Z"
-    },
-    {
-      "file": "storage_safety_runner.js",
-      "reason": "Fixed legacy fixture function extraction and extended dynamic weapon rows; final UI copy and script syntax rechecked.",
-      "finishedAt": "2026-10-29T13:02:50.726Z"
-    },
-    {
-      "file": "n1_source_numeric_runner.cjs",
-      "reason": "Extended independent numeric source expectations to 25 abilities / 132 cases, including Mage R3 and explicit source rank check.",
-      "finishedAt": "2026-10-29T13:17:17.573Z"
     }
   ]
 }

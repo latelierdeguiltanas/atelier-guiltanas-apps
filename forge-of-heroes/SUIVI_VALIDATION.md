@@ -59,3 +59,14 @@ Lot 2 : restrictions de taille communes aux trois modes de création, armes 2d6 
 - 36 scénarios DOM→constructeur→moteur et sauvegardes/relectures ; 30 armes trop grandes toujours refusées. Le moteur et les données restent identiques au lot 6.
 - Revue numérique étendue : 25 capacités / 132 cas, dont Tour de magie R3 sur les six profils mages. 35 suites passent.
 - Les contrôles DOM ne remplacent pas une recette utilisateur Android. Les réserves et les limites restent explicites.
+
+
+## Lot 8 — peuples et historiques, texte intégral de Diversité
+
+Source : Voies d’historique p.172 et Livre de base pp.57–58. L’humain avec historiques reçoit +5 dans une profession/loisir cohérent avec sa voie professionnelle ; son +1 PC reste acquis. L’elfe sylvain remplace le milieu forestier par son origine et augmente son bonus géographique de +3 à +5 ; cités et campagnes lui sont interdites. Ces règles concernent les peuples explicitement nommés : elles ne sont pas extrapolées au demi-elfe qui choisit leur voie.
+
+Le moteur, les choix d’interface persistants et les exports natif/partagé appliquent ces règles, y compris quand la voie du mage conserve la capacité de peuple. Une ancienne origine interdite reste visible comme invalide jusqu’à correction, sans réécriture silencieuse. Le texte de Diversité est complété avec les six origines et les conditions des choix personnalisés, auparavant omis après « voir ci-dessous ». Les choix ordinaires de métier/origine hors historiques restent textuels ; ce lot ne prétend pas les automatiser.
+
+Preuves dans `lot8/` : **288 cas**, dont **272 créations/relectures**, **16 refus attendus**, **272 désactivations du module** ; deux fixtures d’interface. La référence avant correction donne 72 échecs sur 144 cas. **Huit vrais exports PDF** vérifient les champs et les annexes, dont la capacité conservée par le mage ; page des voies de l’elfe et annexe du mage humain inspectées visuellement. **550 textes source correspondent** à leur source extractible : ce contrôle ne prouve pas que tous les paragraphes connexes sont présents.
+
+État après correction : **36 suites PASS**, matrice complète de **179 120 tentatives**, **zéro échec d’assertion**, 27 familles de refus relues, empreintes moteur/données à jour. Les contrôles automatiques du statut passent. La clôture globale reste distincte des preuves de ce lot ; parcours Android et réserves listées plus haut non déclarés réalisés.
