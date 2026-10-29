@@ -265,6 +265,20 @@ $('#push-repair-help').onclick=()=>showPushRepair('Le navigateur ou l’applicat
 $('#push-repair-close').onclick=()=>$('#push-repair-guide').close();
 $('#push-repair-recheck').onclick=async()=>{await refreshPushHealth();$('#push-repair-reason').textContent='Nouvelle vérification terminée : '+$('#push-health').textContent;};
 $('#push-repair-copy-url').onclick=async()=>{try{await navigator.clipboard.writeText(location.origin);$('#push-repair-copy-url').textContent='✓ Domaine copié';}catch{$('#push-repair-copy-url').textContent=location.origin;}};
+$('#push-reset-sub').onclick=async()=>{
+ const b=$('#push-reset-sub');b.disabled=true;$('#push-reset-state').textContent='Réinitialisation de l’abonnement Push de ce navigateur…';
+ try{
+  const reg=await service(),sub=await reg.pushManager?.getSubscription();
+  if(sub){
+   try{await pcall('unsubscribe',{endpoint:sub.endpoint})}catch(e){console.warn('Ancien abonnement distant non confirmé',e?.message||e)}
+   const deleted=await sub.unsubscribe();
+   if(deleted===false)throw Error('Le navigateur n’a pas supprimé l’ancien abonnement.');
+  }
+  $('#push-reset-state').textContent='✓ Abonnement local réinitialisé. Reviens dans MJ Express puis touche « Activer les notifications ». Aucune donnée de campagne supprimée.';
+  await refreshPushHealth();
+ }catch(e){$('#push-reset-state').textContent='Échec de la réinitialisation : '+e.message;}
+ finally{b.disabled=false;}
+};
 
 $('#copy-push-diag').onclick=async()=>{
  const d=pushSnapshot||await inspectPush();
