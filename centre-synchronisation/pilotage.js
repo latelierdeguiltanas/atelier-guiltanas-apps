@@ -9,7 +9,7 @@ const nice=n=>Number(n||0).toLocaleString('fr-FR');
 const time=s=>{if(!s)return 'Aucune date';try{return new Date(s).toLocaleString('fr-FR',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}catch{return 'Date inconnue'}};
 const repoFor=a=>model?.repos.find(r=>r.id===a.repo);
 const codePublic=a=>repoFor(a)?.visibility==='public';
-const names={overview:'Vue d’ensemble',projects:'Projets',applications:'Applications',repositories:'Dépôts GitHub',backend:'Supabase',usage:'Utilisation',devices:'Connexions'};
+const names={overview:'Vue d’ensemble',projects:'Pilotage',applications:'Applications',repositories:'Dépôts GitHub',backend:'Supabase',usage:'Utilisation',devices:'Connexions'};
 const viewDescriptions={overview:'de ton écosystème',projects:'de l’Atelier',applications:'de l’Atelier',repositories:'& projets',backend:'& stockage',usage:'réelle des outils',devices:'& sauvegardes'};
 const glossary={
 guide:{title:'Comprendre ton écosystème',content:'<p>Ton Atelier fonctionne comme une petite entreprise logicielle : <strong>GitHub conserve le code</strong>, <strong>GitHub Pages affiche les outils</strong>, <strong>Supabase partage les données</strong>, et les <strong>navigateurs gardent parfois des copies locales</strong>.</p><div class="story"><span>GitHub</span> → <span>Application web</span> ↔ <span>Supabase</span> ↔ <span>Autre appareil</span></div><p>Choisis ce que tu veux comprendre :</p><div class="guide-grid"><button data-term="repository">⌘ Dépôts & dossiers</button><button data-term="github">◈ Publication des sites</button><button data-term="supabase">◫ Base Supabase</button><button data-term="sync">⌁ Synchronisation</button><button data-term="session">▥ Mesurer les usages</button><button data-term="logs">▤ Journaux & erreurs</button><button data-term="access">◇ Identifiants & permissions</button><button data-term="privacy">♧ Public & commercial</button></div>'},
@@ -90,6 +90,7 @@ function setView(view,record=true){
  $$('.view').forEach(x=>x.hidden=x.id!=='view-'+view);
  $('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
  $('#metrics').hidden=view!=='overview';
+ $('#reload').hidden=view==='projects';
  $('#page-title').innerHTML=escapeHTML(names[view])+' <span class="slim">'+escapeHTML(viewDescriptions[view])+'</span>';
  if(changed&&!routeRestoring)scrollTo({top:0,behavior:'smooth'});
  if(changed&&model)drawMap();
