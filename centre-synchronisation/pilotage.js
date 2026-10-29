@@ -224,9 +224,9 @@ function projectResumeText(p){
 async function resumeProject(id){
  const p=projectData.find(x=>x.id===id);if(!p)return;
  const message=projectResumeText(p);
+ const opened=window.open('https://chatgpt.com/','_blank','noopener,noreferrer');
  let copied=false;
  try{await navigator.clipboard.writeText(message);copied=true}catch(e){}
- window.open('https://chatgpt.com/','_blank','noopener,noreferrer');
  if(!copied)window.prompt('Le navigateur a refusé la copie automatique. Copie le contexte de reprise :',message);
  else {const textEl=$('#project-sync-status');if(textEl)textEl.textContent='Contexte de « '+p.name+' » copié ; colle-le dans le nouveau chat.'}
 }
