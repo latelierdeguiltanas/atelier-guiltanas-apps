@@ -400,6 +400,7 @@ async function loadWorkRuns(){
 }
 function workRunState(run){
  if(run.status==='termine')return {label:'Clôturé',severity:'good'};
+ if(run.status==='partiel'&&run.finished_at)return {label:'Clôturé partiellement',severity:'neutral'};
  if(run.status==='en_attente')return {label:'En attente',severity:'neutral'};
  if(run.status==='reconstitue')return {label:'Historique retrouvé',severity:'neutral'};
  if(run.status==='interrompu')return {label:'Interrompu',severity:'warn'};
