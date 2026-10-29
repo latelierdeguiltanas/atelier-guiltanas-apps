@@ -1,7 +1,7 @@
 <!doctype html><html lang="fr"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#291548"><meta name="referrer" content="no-referrer">
 <title>Pilotage · Atelier de Guiltanas</title>
-<link rel="icon" type="image/png" sizes="192x192" href="icons/pilotage-guiltanas-192.png?v=2"><link rel="apple-touch-icon" sizes="180x180" href="icons/pilotage-guiltanas-180.png?v=2"><link rel="manifest" href="manifest.webmanifest?v=3"><link rel="stylesheet" href="pilotage.css?v=7">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/pilotage-guiltanas-192.png?v=2"><link rel="apple-touch-icon" sizes="180x180" href="icons/pilotage-guiltanas-180.png?v=2"><link rel="manifest" href="manifest.webmanifest?v=3"><link rel="stylesheet" href="pilotage.css?v=9">
 </head><body>
 <div class="app">
 <aside class="rail" aria-label="Navigation">
@@ -50,6 +50,13 @@
 <div id="view-projects" class="view" hidden>
 <div class="section-row"><div><h2>Registre des projets de l’Atelier</h2><p>En ligne, en chantier, en pause ou encore à l’état d’idée</p></div><div class="toolbar"><button id="project-scan" class="chip" title="Chercher immédiatement les nouveaux dépôts publics">↻ Vérifier GitHub</button><button id="project-new" class="smallbutton">＋ Nouveau projet</button></div></div>
 <div class="project-summary" id="project-summary"></div>
+<section class="project-audit-panel" id="project-audit-panel" aria-label="État de confiance des projets">
+  <div class="project-audit-head">
+    <div><strong>Avancement réel</strong><p>On distingue l'activité déclarée des preuves de validation.</p></div>
+    <button type="button" id="project-refresh" class="chip" title="Relire le registre privé, sans recharger la page">↻ Synchroniser</button>
+  </div>
+  <div id="project-audit-content" aria-live="polite"><p>Lecture du registre privé…</p></div>
+</section>
 <div class="project-controls"><input type="search" id="project-search" class="search" placeholder="Rechercher un projet…"><select id="project-stage"><option value="all">Tous les états</option><option value="actif">Actifs</option><option value="developpement">En développement</option><option value="brouillon">Brouillons</option><option value="pause">En pause</option><option value="idee">Idées</option><option value="archive">Archives</option></select><select id="project-family"><option value="all">Toutes les familles</option><option value="Jouer & raconter">Jouer & raconter</option><option value="Créer & fabriquer">Créer & fabriquer</option><option value="Vie numérique">Vie numérique</option></select></div>
 <div class="project-update" id="project-sync-status">Chargement du registre…</div>
 <div id="project-list" class="project-list"></div>
@@ -80,4 +87,4 @@
 <div class="project-form-actions"><button class="smallbutton" type="button" id="project-cancel">Annuler</button><button class="smallbutton primary" type="submit" id="project-submit">Enregistrer dans le registre</button></div>
 <div id="project-form-result" role="status"></div>
 </form></dialog><dialog id="install-dialog"><div class="dialog-head"><div><span class="eyebrow">RACCOURCI MOBILE / PC</span><h2>Installer Pilotage Guiltanas</h2></div><button id="install-close">×</button></div><div id="install-instructions" class="install-steps"></div><button class="smallbutton" id="copy-cockpit-link">Copier le lien du cockpit</button></dialog><dialog id="glossary"><div class="dialog-head"><div><span class="eyebrow">MODE D'EMPLOI</span><h2 id="term-title"></h2></div><button id="term-close">×</button></div><div id="term-body"></div></dialog>
-<script src="owner-auth.js?v=1"></script><script src="owner-login-ui.js?v=1"></script><script src="pilotage.js?v=8"></script></body></html>
+<script src="owner-auth.js?v=1"></script><script src="owner-login-ui.js?v=1"></script><script src="pilotage.js?v=10"></script></body></html>
