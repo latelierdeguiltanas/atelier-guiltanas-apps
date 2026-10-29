@@ -31,7 +31,7 @@ Les contrats anciens ont aussi été actualisés pour les quatre champs introdui
 
 ## Contrôles complémentaires
 
-- 32 suites de régression : PASS ; détail et sorties dans `regressions.json`.
+- 34 suites de régression : PASS ; détail et sorties dans `regressions.json`.
 - 53 transitions et 53 retours A→B→A : PASS ; 11 valeurs exactes, 13 transitions sans résidu, 14 refus ciblés et 10 contrôles anti-faux-vert : PASS.
 - Les 12 fiches de recette sont vérifiées automatiquement. Cela ne signifie pas 12 parcours au clic.
 - Un vrai parcours Chrome : humain voleur, création, changement de voie et retour avec DEF/INIT attendues, sauvegarde, rechargement, réouverture et téléchargement PDF. Le test est limité à ce personnage, sur ordinateur.
@@ -133,3 +133,29 @@ node forge-of-heroes/FINAL_FREEZE_TESTS/n1_pdf_history_source_runner.cjs CHEMIN_
 Les vérifications restantes du N1 demeurent explicites dans la section des réserves. Aucune nouvelle navigation IA ni recette Android n’est revendiquée.
 
 Fin du lot 5 : **32 suites PASS**, matrice complète rejouée (179 120 tentatives, zéro échec d’assertion), revue des 27 familles de refus mise à jour. La comparaison directe des sources natives/Compagnon extractibles vérifie à nouveau **550 rangs, 550 correspondances, aucun écart** (`lot5/extractible-source-audit.json`). Cette dernière vérification porte sur les textes d’origine ; les transcriptions photographiques et les adaptations restent identifiées séparément.
+
+## Lot 6 — prêtres spécialistes (29 octobre 2026)
+
+La règle du Livre de base p.122 (PDF p.124), lue visuellement, impose de remplacer une capacité du même rang par la capacité divine et d’acquérir celle-ci en premier à ce rang. La création avec âge variable expose cette règle dès le N1.
+
+Corrections :
+
+- Le remplacement de rang 1 conserve la voie de prêtre comme voie d’acquisition. Il ne supprime plus son prérequis de rang 1 : les rangs suivants deviennent accessibles et le rang de la voie fait évoluer les bonus de la capacité divine.
+- Les achats d’âge de rang 2/3 peuvent maintenant remplacer une capacité de voie de prêtre par la capacité divine correspondante, avec le même coût et sans donner les deux capacités. L’achat divin est traité en premier à son rang. Le choix de voie est explicite, sauvegardé et proposé dans l’interface ; sans choix explicite dans un ancien brouillon, le moteur choisit une voie admissible de manière déterministe.
+- Les références canoniques manquantes d’Arcanna, Linnarré, Orbis, Perinde et Tulsadüm sont reliées aux capacités existantes. Le rang 4 de Linnarré reste différé, sans être accordé au N1. Les références ambiguës déjà hors catalogue ne sont pas inventées.
+- La reconstruction des attaques utilise la vraie capacité divine, au lieu de celle qu’elle remplace.
+- Les exporteurs natif et partagé substituent aussi le titre, le résumé et le texte intégral de la capacité divine sur la fiche et dans l’annexe. La mention « capacité divine » rend le remplacement explicite.
+
+`lot6/religions.json` : **360 créations et 360 sauvegardes/relectures**, pour les 30 religions proposées, les deux voies de remplacement et les catégories jeune/mûr/vénérable, sur les deux produits. **240 inversions des achats** contrôlent leur ordre. La présence de la capacité divine, l’absence de celle remplacée, les rangs conservés et les valeurs exactes d’Archer émérite, Robustesse et Poings de fer sont vérifiés. Périmètre : prêtre humain sans armure ni bouclier, deux voies de prêtre ; les croisements hybrides/historiques ne sont pas déclarés couverts par ce lot.
+
+La preuve avant correction porte sur 180 cas : 136 échouent, y compris des exceptions du moteur avant projection. Les résultats sont conservés dans `lot6/religions-before.json`. Les 20 contrôles DOM simulés des deux interfaces valident les options et la transmission du choix ; ils ne constituent pas une recette au clic sur Android.
+
+`lot6/pdf-religions.json` : **six vrais exports**, natifs/partagés, couvrent les substitutions de rang 1/2/3, les titres de formulaire, les descriptions complètes des annexes et les PV. La page officielle des voies et l’annexe de l’export natif de rang 3 ont été rendues et inspectées. Le produit maître historique n’embarquant pas l’exporteur natif, sa parité PDF n’est pas revendiquée.
+
+```sh
+node forge-of-heroes/FINAL_FREEZE_TESTS/n1_religion_creation_runner.cjs
+node forge-of-heroes/FINAL_FREEZE_TESTS/n1_religion_ui_runner.cjs
+node forge-of-heroes/FINAL_FREEZE_TESTS/n1_pdf_religion_runner.cjs CHEMIN_DU_PDF_VIERGE DOSSIER_TEMPORAIRE
+```
+
+Fin du lot 6 : **34 suites PASS**, 179 120 configurations rejouées sans échec d’assertion ; les empreintes du moteur et des données correspondent à la matrice. L’amélioration de l’export a ensuite modifié le HTML hors moteur : elle est contrôlée par les six exports dédiés et une nouvelle analyse de syntaxe. La différence des empreintes HTML complètes est donc conservée, sans attribuer à la matrice un contrôle de l’export. Les 240 inversions d’achat du nouveau test ont été réexécutées séparément et consignées dans `regressions.json`.

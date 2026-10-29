@@ -44,3 +44,11 @@ Lot 2 : restrictions de taille communes aux trois modes de création, armes 2d6 
 - 684 créations et sauvegardes/relectures passent sur les deux produits : 72 couples origine/profession, 17 voies jusqu’au rang 5, choix de l’expert et ordre des achats. Valeurs numériques et coût des rangs contrôlés indépendamment.
 - Quatre exports PDF natifs/partagés contrôlent les corrections dans les annexes et les PV des champs ; annexe native du nanti inspectée visuellement.
 - Rapports dans `QA/N1/lot5`. Les effets contextuels non automatisés, les autres combinaisons et la recette mobile restent des réserves ; aucune clôture globale prématurée.
+
+### Lot 6 N1 — prêtres spécialistes (29 octobre 2026)
+
+- Règle source p.122 : rang 1 remplacé conservé comme prérequis ; capacité divine de rang 2/3 substituée lors des achats d’âge, en premier à son rang ; choix de la voie remplacée dans l’interface.
+- Cinq références canoniques de religions reliées. Pas de capacité de rang 4 accordée au N1.
+- Attaques et exports reconstruits depuis la capacité réellement acquise. Fiche officielle et annexes affichent le remplacement.
+- 360 créations/sauvegardes-relectures, 240 inversions d’achat, 20 contrôles DOM et six exports PDF. Rapports dans `QA/N1/lot6` ; source avant correction : 136 échecs sur 180 cas.
+- Périmètre et limites documentés. La phase N1 n’est pas clôturée par le seul passage des tests de ce lot.
