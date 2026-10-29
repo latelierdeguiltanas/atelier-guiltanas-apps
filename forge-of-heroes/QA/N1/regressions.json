@@ -1,19 +1,40 @@
 {
   "schema": "FOH_N1_REGRESSION_BATCH",
   "scope": "N1 creation and advanced-age projections; no progression work; some high-rank reference projections remain in reused suites",
-  "indexSha256": "72f141a6dbc688cd9a2ffed16d8b931097bd3120961e82d3c8f511d476a0c5c7",
-  "finishedAt": "2026-10-28T15:49:00.947Z",
-  "passed": 29,
-  "total": 29,
+  "indexSha256": "f85a63f7eae960aa8c970b8027e0061b6f967aa1db5b2157759cb6e564d63f25",
+  "finishedAt": "2026-10-29T10:10:58.640Z",
+  "passed": 31,
+  "total": 31,
   "status": "PASS",
   "browserClicks": false,
   "suites": [
+    {
+      "file": "n1_mage_rank_projection_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "17d94409c8bfd258a1629227288f8773c204ee9f687932dd7f26c512aacf4809",
+      "output": "{\"status\":\"PASS\",\"cases\":180,\"replays\":180,\"profiles\":6,\"failures\":0}\n"
+    },
+    {
+      "file": "n1_source_numeric_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "ed61f8681dd0bf7abea58d13c8462368a2128cf7c3f11d7f1f5769f5cfe66e0a",
+      "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 74,\n  \"failures\": []\n}\n"
+    },
+    {
+      "file": "n1_age_profiles_runner.cjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "a57df546eac8dc098ad13c1d0f5da6447686609fa14d9b329217fe2bfe0b17b2",
+      "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 850,\n  \"replays\": 850,\n  \"profiles\": 17,\n  \"paths\": 85,\n  \"failures\": []\n}\n"
+    },
     {
       "file": "n1_age_source_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
       "runnerSha256": "6b5aba38a9b7abe1fd41348899498cc19125a731c532b21a89e915c0b55e0dbc",
-      "output": "{\n  \"schema\": \"FOH_N1_AGE_SOURCE_CHECK\",\n  \"sources\": [\n    {\n      \"file\": \"règles avancées.pdf\",\n      \"pdfPage\": 1,\n      \"printedPage\": 153,\n      \"visuallyRead\": true,\n      \"rule\": \"Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.\"\n    }\n  ],\n  \"cases\": [\n    {\n      \"id\": \"index.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:DR\",\n      \"status\": \"PASS\"\n    }\n  ],\n  \"replays\": 22,\n  \"failures\": [],\n  \"engineSha256\": \"3e2dccfcb4f36261091c9362e8cfbfbe2e8170d4acfbf58f8914539f78722bf1\",\n  \"status\": \"PASS\"\n}\n"
+      "output": "{\n  \"schema\": \"FOH_N1_AGE_SOURCE_CHECK\",\n  \"sources\": [\n    {\n      \"file\": \"règles avancées.pdf\",\n      \"pdfPage\": 1,\n      \"printedPage\": 153,\n      \"visuallyRead\": true,\n      \"rule\": \"Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.\"\n    }\n  ],\n  \"cases\": [\n    {\n      \"id\": \"index.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:DR\",\n      \"status\": \"PASS\"\n    }\n  ],\n  \"replays\": 22,\n  \"failures\": [],\n  \"engineSha256\": \"2016ceb55ff54ced8c07d9b6f88f8b91afa943f37959561527a8a996c4e7328b\",\n  \"status\": \"PASS\"\n}\n"
     },
     {
       "file": "n1_size_equipment_runner.cjs",
@@ -203,30 +224,6 @@
       "exitCode": 0,
       "runnerSha256": "09632b3e373975be961eb58be77cc4312aeab8c070ccf3cd47a1b24a1967e001",
       "output": "PASS {\"pointBuy\":279936,\"pointBuyValid\":27568,\"pointBuyInvalid\":252368,\"pointBuyCreations\":284,\"classicCreations\":2940,\"semiTriples\":1331,\"semiCreations\":9381,\"balancedLowCreations\":64,\"replayChecks\":407,\"invalidInputs\":12,\"uiFixtureChecks\":8}\n"
-    },
-    {
-      "file": "n1_age_profiles_runner.cjs",
-      "status": "PASS",
-      "exitCode": 0,
-      "runnerSha256": "a57df546eac8dc098ad13c1d0f5da6447686609fa14d9b329217fe2bfe0b17b2",
-      "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 850,\n  \"replays\": 850,\n  \"profiles\": 17,\n  \"paths\": 85,\n  \"failures\": []\n}\n"
-    }
-  ],
-  "followupReruns": [
-    {
-      "file": "n1_age_source_runner.cjs",
-      "reason": "Extended source assertions, source attribution, and new cross-profile age suite after full batch.",
-      "finishedAt": "2026-10-28T15:51:27.256Z"
-    },
-    {
-      "file": "n1_rejection_review_runner.cjs",
-      "reason": "Extended source assertions, source attribution, and new cross-profile age suite after full batch.",
-      "finishedAt": "2026-10-28T15:51:29.406Z"
-    },
-    {
-      "file": "n1_age_profiles_runner.cjs",
-      "reason": "Extended source assertions, source attribution, and new cross-profile age suite after full batch.",
-      "finishedAt": "2026-10-28T15:51:46.401Z"
     }
   ]
 }

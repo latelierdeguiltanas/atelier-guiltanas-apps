@@ -1,0 +1,26 @@
+{
+  "schema": "FOH_N1_MAGE_RANK_PROJECTION",
+  "source": {
+    "document": "COF2 Livre de base",
+    "printedPage": 29,
+    "pdfPage": 31,
+    "visuallyRead": true
+  },
+  "cases": 180,
+  "replays": 180,
+  "grantChecks": 2,
+  "profiles": [
+    "class:ensorceleur:cof2-lb-2024",
+    "class:forgesort:cof2-lb-2024",
+    "class:magicien:cof2-lb-2024",
+    "class:sorcier:cof2-lb-2024",
+    "class:invocateur:addon-compagnon-2024",
+    "class:psionique:addon-compagnon-2024"
+  ],
+  "failures": [],
+  "inputs": {
+    "index.html": "2016ceb55ff54ced8c07d9b6f88f8b91afa943f37959561527a8a996c4e7328b",
+    "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html": "2016ceb55ff54ced8c07d9b6f88f8b91afa943f37959561527a8a996c4e7328b"
+  },
+  "status": "PASS"
+}

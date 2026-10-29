@@ -31,7 +31,7 @@ Les contrats anciens ont aussi été actualisés pour les quatre champs introdui
 
 ## Contrôles complémentaires
 
-- 29 suites de régression : PASS ; détail et sorties dans `regressions.json`.
+- 31 suites de régression : PASS ; détail et sorties dans `regressions.json`.
 - 53 transitions et 53 retours A→B→A : PASS ; 11 valeurs exactes, 13 transitions sans résidu, 14 refus ciblés et 10 contrôles anti-faux-vert : PASS.
 - Les 12 fiches de recette sont vérifiées automatiquement. Cela ne signifie pas 12 parcours au clic.
 - Un vrai parcours Chrome : humain voleur, création, changement de voie et retour avec DEF/INIT attendues, sauvegarde, rechargement, réouverture et téléchargement PDF. Le test est limité à ce personnage, sur ordinateur.
@@ -93,3 +93,24 @@ Le passage « Jouer sans profil » (Règles avancées p.154, PDF p.2) conserve e
 Le lot 3 ajoute aussi **850 contrôles d’interactions d’âge et 850 sauvegardes/relectures**, sur les deux produits, pour 17 profils et 85 voies (chaque voie en première position, avec la suivante comme seconde voie). Les catégories jeune et très jeune sont comparées à chaque fiche de référence : seules les différences INIT/PC/DR de la règle d’âge sont attendues. Ce contrôle relatif ne remplace pas la validation indépendante des chiffres de base de chaque capacité ni les catégories mûr/vénérable sur tous les profils. Rapport : `lot3/age-profiles.json`.
 
 Matrice finale après les deux correctifs du lot 3 : **179 120 tentatives, 159 130 acceptées, 19 990 refusées, zéro échec d’assertion**. Les 27 groupes de refus courants ont été revus sur cette même empreinte du moteur. La baisse des créations acceptées provient des équipements de halfelins désormais refusés conformément à la source ; elle ne représente pas une perte de couverture. Les 29 suites passent (lot complet initial de 28 suites, puis trois réexécutions documentées dont la nouvelle suite des profils).
+
+## Lot 4 — valeurs exactes et rangs sauvegardés (29 octobre 2026)
+
+Les attentes numériques de `n1_source_numeric_runner.cjs` sont écrites à partir du Livre de base fourni, sans reprendre les formules du moteur. **74 créations et sauvegardes/relectures**, sur les deux produits, couvrent quinze capacités officielles aux rangs 1–3 accessibles au N1 : Grâce féline, Archer émérite, Souplesse du félin, Agile, Vigueur, Réflexes éclair, Armure de vent, Robustesse, Vitesse du félin, Agilité du singe, Vêtements sacrés, Divination, Runes de défense, Exsangue et Pacte démoniaque. Le test tient compte des autres effets acquis dans leurs voies, des choix de Peau de pierre/Armure lourde, des DR de famille et des malus d’âge. CHA négatif et VOL positive évitent de réduire les vérifications à des bonus nuls. Chaque cas indique sa page source et ses valeurs attendues dans `lot4/source-numeric.json`. Périmètre : humain sans armure ; ce lot ne certifie pas tous les équipements ni toutes les capacités.
+
+**N1-MAGE-PATH-RANK-001 :** les capacités initiales de rang 2 des mages étaient présentes, mais `characterState.paths` pouvait conserver le rang 1, ou omettre la Voie du mage. Source lue visuellement : Livre de base p.29, PDF p.31. La projection finale réconcilie le rang des voies présentes avec les capacités réellement acquises, ajoute la Voie du mage choisie, et exclut les capacités seulement accordées par un don. Aucun rang n’est accordé par ce correctif : il représente les acquisitions déjà validées.
+
+- `lot4/mage-ranks-before.json` conserve 90 reproductions avant correction.
+- `lot4/mage-ranks.json` : 180 cas et 180 sauvegardes/relectures, six profils mages, leurs cinq voies principales, rang 2 sur la première ou la seconde voie ou sur la Voie du mage, sur les deux produits. Deux contrôles de Touche-à-tout vérifient qu’une capacité donnée ne fait pas progresser sa voie d’origine.
+- `lot4/mage-legacy-saves.json` : douze sauvegardes réellement fabriquées par le moteur avant correction, réouvertes avec le moteur corrigé. Les rangs sont rétablis, les valeurs numériques et les payloads d’origine restent identiques.
+
+Rejouer les deux contrôles autonomes :
+
+```sh
+node forge-of-heroes/FINAL_FREEZE_TESTS/n1_source_numeric_runner.cjs
+node forge-of-heroes/FINAL_FREEZE_TESTS/n1_mage_rank_projection_runner.cjs
+```
+
+Les preuves avant/après et anciennes sauvegardes peuvent être régénérées en extrayant l’HTML du commit `f080f9833aa254399df9c536cb815cfbc16108a0`, puis en passant son chemin aux runners `n1_mage_rank_projection_runner.cjs` et `n1_mage_legacy_save_runner.cjs`. Les PDF source ne sont pas copiés dans le dépôt. Les réserves N1 non couvertes restent ouvertes ; N2/N3 attendent.
+
+Vérification finale du lot 4 : les 31 suites passent ; les huit lots de la matrice de 179 120 tentatives sont terminés sans échec d’assertion et leurs empreintes correspondent au moteur final. Les 27 familles de refus sont relues sur cette même matrice. Le verrou de clôture reste fermé tant que les autres réserves N1 subsistent.

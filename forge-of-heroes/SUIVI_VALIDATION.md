@@ -30,3 +30,10 @@ Lot 2 : restrictions de taille communes aux trois modes de création, armes 2d6 
 - N1 reste ouvert ; N2/N3 en attente. Les réserves détaillées du README demeurent actives, notamment parcours mobile et effets numériques non encore vérifiés indépendamment. Pas de clôture automatique à partir des compteurs.
 
 - Extension des interactions jeune/très jeune aux 17 profils et 85 voies : 850 cas et 850 sauvegardes/relectures passent sur les deux produits. Chaque calcul est comparé à sa référence sans âge, avec seulement les écarts prévus par la règle. La validation numérique absolue de chaque capacité reste une réserve distincte.
+
+### Lot 4 N1 — calculs issus du Livre de base et cohérence des rangs (29 octobre 2026)
+
+- Quinze capacités officielles confrontées aux règles source : 74 créations avec valeurs exactes et sauvegardes/relectures, sur les deux produits. Rapport `QA/N1/lot4/source-numeric.json`, pages sources dans chaque cas.
+- Défaut trouvé et corrigé : rang 2 initial des mages absent ou enregistré au rang 1 dans la projection sauvegardée des voies. La Voie du mage est désormais incluse lorsqu’elle est choisie. Les capacités données par un don ne font pas progresser une voie.
+- Preuve : 90 cas avant correction ; 180 cas après correction sur les deux produits, avec 180 sauvegardes/relectures et deux contrôles des dons. Douze anciennes sauvegardes sont réouvertes sans changement de statistiques.
+- N1 reste ouvert sur les effets et combinaisons non encore couverts et la recette mobile utilisateur. Aucune progression N2/N3 ni publication du site incluse dans ce lot.
