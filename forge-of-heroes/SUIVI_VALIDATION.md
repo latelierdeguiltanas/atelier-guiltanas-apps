@@ -20,7 +20,11 @@ La présence d'un texte, un grand nombre de tests ou la réussite d'un seul pers
 
 ## Dernier lot N1
 
-Lot 2 : restrictions de taille communes aux trois modes de création, armes 2d6 et tenue à deux mains corrigées, variante semi-aléatoire à sept +1 intégrée. Les 27 familles de refus antérieures et les 27 groupes actuels ont leur revue avec exemples et contreparties. 27 suites passent ; la matrice est rejouée sur le nouveau moteur. Voir les preuves `QA/N1/lot2/`. N1 reste ouvert ; N2 et N3 attendent.
+Dernier point : lots 8 et 9, règles peuples/historiques et origine de Diversité. Les preuves et limites sont détaillées plus bas et dans `QA/N1/README.md`. N1 reste ouvert ; N2/N3 attendent.
+
+### Lot 2 N1 — restrictions et méthodes
+
+Restrictions de taille communes aux trois modes, armes 2d6 et tenue à deux mains corrigées ; variante semi-aléatoire à sept +1 intégrée. Les 27 familles de refus ont leurs contreparties testées. Les 27 suites de cette étape passaient ; voir `QA/N1/lot2/`.
 
 ### Lot 3 N1 — confrontation visuelle aux PDF, 28 octobre 2026
 
@@ -70,3 +74,18 @@ Le moteur, les choix d’interface persistants et les exports natif/partagé app
 Preuves dans `lot8/` : **288 cas**, dont **272 créations/relectures**, **16 refus attendus**, **272 désactivations du module** ; deux fixtures d’interface. La référence avant correction donne 72 échecs sur 144 cas. **Huit vrais exports PDF** vérifient les champs et les annexes, dont la capacité conservée par le mage ; page des voies de l’elfe et annexe du mage humain inspectées visuellement. **550 textes source correspondent** à leur source extractible : ce contrôle ne prouve pas que tous les paragraphes connexes sont présents.
 
 État après correction : **36 suites PASS**, matrice complète de **179 120 tentatives**, **zéro échec d’assertion**, 27 familles de refus relues, empreintes moteur/données à jour. Les contrôles automatiques du statut passent. La clôture globale reste distincte des preuves de ce lot ; parcours Android et réserves listées plus haut non déclarés réalisés.
+
+
+## Lot 9 — origine de Diversité enregistrée et exportée
+
+Le choix des six origines du Livre de base pp.57–58 est désormais disponible pour la capacité Diversité, aussi lorsqu’elle est choisie par le demi-elfe ou conservée par la voie du mage. Le nomade enregistre son climat ; un des deux domaines peut être remplacé par une origine sociale ou un gagne-pain. Une origine personnalisée contient deux domaines distincts et un accord MJ. Le moteur refuse les origines inconnues, les champs personnalisés incomplets et le choix d’un profil comme gagne-pain. Les bonus sont de **+3, explicitement hors combat**, sans modification des attaques ni des statistiques permanentes. Le +1 PC préexistant est conservé.
+
+Une ancienne création sans origine enregistrée garde son fonctionnement manuel : aucune origine ni bonus de compétence n’est inventé. Le choix est enregistré dans le brouillon et l’état exporté. Avec les historiques, l’humain utilise la règle +5 du lot 8 ; une origine +3 résiduelle ne se cumule pas. La capacité de la voie humaine choisie par un demi-elfe conserve sa règle propre.
+
+`lot9/origins.json` : **2 856 créations et sauvegardes/relectures**, 17 profils, humain/demi-elfe, profil pur/hybride/sans profil, sept variantes d’origine (les deux climats du nomade), avec/sans remplacement social, sur les deux HTML. Les valeurs des deux domaines sont indépendantes des données du moteur ; statistiques et attaques sont comparées à leur référence sans origine. S’ajoutent **14 refus**, six interactions avec les historiques, huit contrôles personnalisés/compatibilité et deux fixtures d’interface reliées au constructeur des choix de peuple.
+
+La référence précédente donne **1 428 créations sans origine projetée**, plus sept refus non appliqués et deux cas personnalisés non projetés : 1 437 assertions en échec. Le rapport `origins-before.json` distingue ces contrôles. Les erreurs de paquetage du générateur de test ont été corrigées avant cette comparaison finale ; elles ne sont pas comptées comme défauts du produit.
+
+`lot9/pdf-origins.json` : **16 vrais exports** natifs/partagés pour humain/demi-elfe, voie humaine directe/conservée par le mage, origine sociale/personnalisée. Champs officiels, domaines choisis, +1 PC, +3 hors combat et texte source intégral sont contrôlés. Le résumé d’occultisme utilise le rang réel de la voie du mage : +4 au rang 2. Annexe du demi-elfe mage inspectée après rendu. Les huit exports historiques du lot 8 sont rejoués.
+
+Fin de lot : **37 suites PASS** (36 suites de la campagne générale et la nouvelle suite ciblée), matrice complète rejouée sans échec d’assertion, revue des 27 familles actualisée. Le dernier changement de résumé PDF est extérieur au moteur ; le contrôle d’équipement lié au HTML a été réexécuté après ce changement. Les preuves ne constituent pas une recette au clic sur Android, et ne clôturent pas les réserves globales encore listées.
