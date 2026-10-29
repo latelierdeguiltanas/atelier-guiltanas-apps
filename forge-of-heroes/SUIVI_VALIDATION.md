@@ -37,3 +37,10 @@ Lot 2 : restrictions de taille communes aux trois modes de création, armes 2d6 
 - Défaut trouvé et corrigé : rang 2 initial des mages absent ou enregistré au rang 1 dans la projection sauvegardée des voies. La Voie du mage est désormais incluse lorsqu’elle est choisie. Les capacités données par un don ne font pas progresser une voie.
 - Preuve : 90 cas avant correction ; 180 cas après correction sur les deux produits, avec 180 sauvegardes/relectures et deux contrôles des dons. Douze anciennes sauvegardes sont réouvertes sans changement de statistiques.
 - N1 reste ouvert sur les effets et combinaisons non encore couverts et la recette mobile utilisateur. Aucune progression N2/N3 ni publication du site incluse dans ce lot.
+
+### Lot 5 N1 — historiques (29 octobre 2026)
+
+- Relecture visuelle des six pages source. Quatre écarts corrigés : dégâts du garde du corps, difficulté répétée d’Au-dessus des lois, attaque dans Fendre la foule et condition ajoutée à Se mettre à l’abri.
+- 684 créations et sauvegardes/relectures passent sur les deux produits : 72 couples origine/profession, 17 voies jusqu’au rang 5, choix de l’expert et ordre des achats. Valeurs numériques et coût des rangs contrôlés indépendamment.
+- Quatre exports PDF natifs/partagés contrôlent les corrections dans les annexes et les PV des champs ; annexe native du nanti inspectée visuellement.
+- Rapports dans `QA/N1/lot5`. Les effets contextuels non automatisés, les autres combinaisons et la recette mobile restent des réserves ; aucune clôture globale prématurée.

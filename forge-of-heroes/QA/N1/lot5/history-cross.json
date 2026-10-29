@@ -1,0 +1,196 @@
+{
+  "schema": "FOH_N1_HISTORY_CROSS",
+  "sources": [
+    {
+      "document": "voies d’historique.pdf",
+      "pdfPage": 1,
+      "printedPages": [
+        170,
+        171
+      ],
+      "visuallyRead": true
+    },
+    {
+      "document": "voies d’historique.pdf",
+      "pdfPage": 5,
+      "printedPages": [
+        178,
+        179
+      ],
+      "visuallyRead": true
+    },
+    {
+      "document": "voies d’historique.pdf",
+      "pdfPage": 6,
+      "printedPage": 180,
+      "visuallyRead": true
+    }
+  ],
+  "cases": 684,
+  "replays": 684,
+  "pairs": [
+    "history:campaigns|history:courtier",
+    "history:campaigns|history:scholar",
+    "history:campaigns|history:expert",
+    "history:campaigns|history:commoner",
+    "history:campaigns|history:soldier",
+    "history:campaigns|history:pauper",
+    "history:campaigns|history:wealthy",
+    "history:campaigns|history:nomad",
+    "history:cities|history:courtier",
+    "history:cities|history:scholar",
+    "history:cities|history:expert",
+    "history:cities|history:commoner",
+    "history:cities|history:soldier",
+    "history:cities|history:pauper",
+    "history:cities|history:wealthy",
+    "history:cities|history:nomad",
+    "history:deserts|history:courtier",
+    "history:deserts|history:scholar",
+    "history:deserts|history:expert",
+    "history:deserts|history:commoner",
+    "history:deserts|history:soldier",
+    "history:deserts|history:pauper",
+    "history:deserts|history:wealthy",
+    "history:deserts|history:nomad",
+    "history:forests|history:courtier",
+    "history:forests|history:scholar",
+    "history:forests|history:expert",
+    "history:forests|history:commoner",
+    "history:forests|history:soldier",
+    "history:forests|history:pauper",
+    "history:forests|history:wealthy",
+    "history:forests|history:nomad",
+    "history:caves|history:courtier",
+    "history:caves|history:scholar",
+    "history:caves|history:expert",
+    "history:caves|history:commoner",
+    "history:caves|history:soldier",
+    "history:caves|history:pauper",
+    "history:caves|history:wealthy",
+    "history:caves|history:nomad",
+    "history:marshes|history:courtier",
+    "history:marshes|history:scholar",
+    "history:marshes|history:expert",
+    "history:marshes|history:commoner",
+    "history:marshes|history:soldier",
+    "history:marshes|history:pauper",
+    "history:marshes|history:wealthy",
+    "history:marshes|history:nomad",
+    "history:mountains|history:courtier",
+    "history:mountains|history:scholar",
+    "history:mountains|history:expert",
+    "history:mountains|history:commoner",
+    "history:mountains|history:soldier",
+    "history:mountains|history:pauper",
+    "history:mountains|history:wealthy",
+    "history:mountains|history:nomad",
+    "history:plains|history:courtier",
+    "history:plains|history:scholar",
+    "history:plains|history:expert",
+    "history:plains|history:commoner",
+    "history:plains|history:soldier",
+    "history:plains|history:pauper",
+    "history:plains|history:wealthy",
+    "history:plains|history:nomad",
+    "history:shores|history:courtier",
+    "history:shores|history:scholar",
+    "history:shores|history:expert",
+    "history:shores|history:commoner",
+    "history:shores|history:soldier",
+    "history:shores|history:pauper",
+    "history:shores|history:wealthy",
+    "history:shores|history:nomad"
+  ],
+  "paths": [
+    "history:campaigns",
+    "history:courtier",
+    "history:scholar",
+    "history:expert",
+    "history:commoner",
+    "history:soldier",
+    "history:pauper",
+    "history:wealthy",
+    "history:nomad",
+    "history:cities",
+    "history:deserts",
+    "history:forests",
+    "history:caves",
+    "history:marshes",
+    "history:mountains",
+    "history:plains",
+    "history:shores"
+  ],
+  "inputs": {
+    "index.html": "1dc9748e06cd0f53e58e56778fae84edb0adeeea65a831a56cbe902a85231e0e",
+    "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html": "1dc9748e06cd0f53e58e56778fae84edb0adeeea65a831a56cbe902a85231e0e"
+  },
+  "sourceTextChecks": [
+    {
+      "file": "index.html",
+      "path": "history:wealthy",
+      "rank": 4,
+      "expectedFragment": "DM 1d4°+2",
+      "pdfPage": 6,
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "path": "history:wealthy",
+      "rank": 5,
+      "expectedFragment": "augmente de 5 à chaque fois",
+      "pdfPage": 6,
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "path": "history:cities",
+      "rank": 3,
+      "expectedFragment": "+2 en DEF et en attaque",
+      "pdfPage": 2,
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "path": "history:deserts",
+      "rank": 4,
+      "expectedFragment": "ne subit les éléments que s’il en a fait le choix",
+      "pdfPage": 2,
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "path": "history:wealthy",
+      "rank": 4,
+      "expectedFragment": "DM 1d4°+2",
+      "pdfPage": 6,
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "path": "history:wealthy",
+      "rank": 5,
+      "expectedFragment": "augmente de 5 à chaque fois",
+      "pdfPage": 6,
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "path": "history:cities",
+      "rank": 3,
+      "expectedFragment": "+2 en DEF et en attaque",
+      "pdfPage": 2,
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "path": "history:deserts",
+      "rank": 4,
+      "expectedFragment": "ne subit les éléments que s’il en a fait le choix",
+      "pdfPage": 2,
+      "status": "PASS"
+    }
+  ],
+  "failures": [],
+  "status": "PASS"
+}

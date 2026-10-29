@@ -31,7 +31,7 @@ Les contrats anciens ont aussi été actualisés pour les quatre champs introdui
 
 ## Contrôles complémentaires
 
-- 31 suites de régression : PASS ; détail et sorties dans `regressions.json`.
+- 32 suites de régression : PASS ; détail et sorties dans `regressions.json`.
 - 53 transitions et 53 retours A→B→A : PASS ; 11 valeurs exactes, 13 transitions sans résidu, 14 refus ciblés et 10 contrôles anti-faux-vert : PASS.
 - Les 12 fiches de recette sont vérifiées automatiquement. Cela ne signifie pas 12 parcours au clic.
 - Un vrai parcours Chrome : humain voleur, création, changement de voie et retour avec DEF/INIT attendues, sauvegarde, rechargement, réouverture et téléchargement PDF. Le test est limité à ce personnage, sur ordinateur.
@@ -114,3 +114,22 @@ node forge-of-heroes/FINAL_FREEZE_TESTS/n1_mage_rank_projection_runner.cjs
 Les preuves avant/après et anciennes sauvegardes peuvent être régénérées en extrayant l’HTML du commit `f080f9833aa254399df9c536cb815cfbc16108a0`, puis en passant son chemin aux runners `n1_mage_rank_projection_runner.cjs` et `n1_mage_legacy_save_runner.cjs`. Les PDF source ne sont pas copiés dans le dépôt. Les réserves N1 non couvertes restent ouvertes ; N2/N3 attendent.
 
 Vérification finale du lot 4 : les 31 suites passent ; les huit lots de la matrice de 179 120 tentatives sont terminés sans échec d’assertion et leurs empreintes correspondent au moteur final. Les 27 familles de refus sont relues sur cette même matrice. Le verrou de clôture reste fermé tant que les autres réserves N1 subsistent.
+
+## Lot 5 — historiques croisés et contrôle des photos (29 octobre 2026)
+
+Les six pages de `voies d’historique.pdf` ont été relues visuellement. Quatre écarts sont corrigés dans les données des deux produits et les libellés de l’export : dégâts du garde du corps du nanti **1d4°+2** ; augmentation de difficulté d’Au-dessus des lois **+5** par utilisation supplémentaire la même semaine ; Fendre la foule **+2 en DEF et en attaque** ; suppression de la condition d’équipement ajoutée à Se mettre à l’abri. Le calcul du compagnon utilise désormais les bons dégâts. Les pages et valeurs avant/après sont dans `lot5/source-review.json`.
+
+`n1_history_cross_runner.cjs` couvre les **72 couples** entre neuf origines et huit professions. Pour chaque couple, les achats de rangs 2–5 portent successivement sur l’origine et la profession, dans les deux ordres ; les quatre choix de caractéristique de l’expert sont essayés. Sur les deux produits : **684 créations et 684 sauvegardes/relectures**, les 17 voies et leurs cinq rangs sont couverts. Les attentes indépendantes vérifient caractéristiques, PV, DEF, INIT, DR, coût uniforme d’un point par rang historique, absence de fuite des bonus de contexte et garde du corps adjacent. Périmètre : guerrier humain sans armure, voie du soldat ; ce n’est pas le produit cartésien avec tous les profils et peuples.
+
+La preuve avant correction comporte 342 cas, dont 18 échouaient sur les dégâts du garde du corps, ainsi que quatre écarts textuels source détectés indépendamment. `lot5/history-before.json` conserve les résultats. Le texte des historiques reste une transcription mécanique normalisée ; ce lot ne déclare pas les 85 rangs verbatim ni tous les effets de contexte automatisés.
+
+**Export :** quatre vrais PDF N1 (cités/nanti et déserts/nanti, export natif et partagé) sont créés depuis le modèle fourni. PV des formulaires contrôlés, quatre corrections retrouvées dans les textes des annexes. L’annexe du nanti de l’export natif est rendue et inspectée. Résultats : `lot5/pdf-source.json`. Les PDF de test et le modèle ne sont pas publiés.
+
+```sh
+node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_cross_runner.cjs
+node forge-of-heroes/FINAL_FREEZE_TESTS/n1_pdf_history_source_runner.cjs CHEMIN_DU_PDF_VIERGE DOSSIER_TEMPORAIRE
+```
+
+Les vérifications restantes du N1 demeurent explicites dans la section des réserves. Aucune nouvelle navigation IA ni recette Android n’est revendiquée.
+
+Fin du lot 5 : **32 suites PASS**, matrice complète rejouée (179 120 tentatives, zéro échec d’assertion), revue des 27 familles de refus mise à jour. La comparaison directe des sources natives/Compagnon extractibles vérifie à nouveau **550 rangs, 550 correspondances, aucun écart** (`lot5/extractible-source-audit.json`). Cette dernière vérification porte sur les textes d’origine ; les transcriptions photographiques et les adaptations restent identifiées séparément.
