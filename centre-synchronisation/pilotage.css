@@ -247,3 +247,12 @@
 .work-finding-foot{font-size:11px}
 .project-chat-item strong{font-size:12px}
 @media(max-width:730px){.work-finding-head{flex-direction:column;gap:6px}.work-health-pill{align-self:flex-start}.work-platforms{gap:5px}}
+
+/* Read-only GitHub proof of work; deliberately not a chat health check. */
+.project-work-pulse{margin-top:12px;padding:12px;border-radius:10px;border:1px solid #59734e;background:#0e241b}
+.project-work-pulse h3{font-size:13px;color:#e2cb92;margin:0 0 8px}
+.work-evidence-row{display:grid;gap:5px;font-size:12px;line-height:1.5;color:#d7e1d4}
+.work-evidence-row strong{color:#f5ebcc}
+.work-evidence-warning{color:#ffcbab;font-weight:700}
+.work-evidence-ok{color:#a3dfb0;font-weight:700}
+.project-work-pulse button{margin:10px 0}
