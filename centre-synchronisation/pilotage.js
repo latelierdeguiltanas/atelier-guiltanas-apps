@@ -432,13 +432,18 @@ function projectWorkMarkup(p){
 }
 
 function projectProgressTile(p){
- const audit=p.id==='forge'?forgeAudit:null;
- const total=audit?.counts?.total, passed=audit?.counts?.passed;
- const valid=Number.isFinite(total)&&total>0&&Number.isFinite(passed);
- const pct=valid?Math.round(passed*100/total):null;
- const n=Number.isFinite(p.verified_checks)?p.verified_checks:null, d=Number.isFinite(p.total_checks)?p.total_checks:null;
- const computed=pct!==null?pct:(n!==null&&d>0?Math.round(n*100/d):null);
- return '<div class="project-tile-progress" aria-label="'+(computed===null?'Progression non mesurée':computed+' pour cent de contrôles validés')+'"><span class="project-tile-track"><span style="width:'+(computed===null?0:computed)+'%"></span></span><small>'+(computed===null?'—':computed+'%')+'</small></div>';
+ const checkpoints=[
+  {ok:!!(p.source_url||p.repo||p.source),label:'Source identifiée'},
+  {ok:!!p.repo,label:'Dépôt référencé'},
+  {ok:!!p.folder,label:'Livrable localisé'},
+  {ok:p.publication==='en_ligne',label:'Publication en ligne'}
+ ];
+ const supported=checkpoints.filter(x=>x.ok).length;
+ const pct=Math.round(100*supported/checkpoints.length);
+ const forge=p.id==='forge';
+ const audit=forge?forgeAudit:null;
+ const note=forge&&audit?' · recette N1 : '+audit.counts.passed+'/'+audit.counts.total+' validés':'';
+ return '<div class="project-tile-progress" title="Indice de traçabilité : '+supported+'/'+checkpoints.length+' preuves de localisation et publication'+note+'. Ce n’est pas le pourcentage de développement terminé." aria-label="Traçabilité du projet '+pct+' pour cent"><span class="project-tile-track"><span style="width:'+pct+'%"></span></span><small>'+pct+'%*</small></div>';
 }
 function renderProjects(){
  const box=$('#project-list');if(!box)return;
@@ -462,6 +467,7 @@ function renderProjects(){
  const favorites=main.map(id=>filtered.find(p=>p.id===id)).filter(Boolean);
  const others=filtered.filter(p=>!main.includes(p.id));
  let html='<div class="ecosystem-root ecosystem-home"><img src="icons/pilotage-guiltanas-192.png" alt="" /><div><small>TON ESPACE DE TRAVAIL</small><strong>L’Atelier de Guiltanas</strong><p>Projets, créations et outils au même endroit</p></div></div>';
+ html+='<p class="minihelp">* Barres : traçabilité des sources (dépôt, livrable, publication), pas taux de réalisation. Une recette en échec ne remet pas un produit existant à zéro.</p>';
  if(favorites.length)html+='<div class="project-shelf-heading"><h3>Accès rapide</h3><small>'+favorites.length+' favoris</small></div><div class="project-tile-grid project-quick-grid">'+favorites.map(card).join('')+'</div>';
  const groups=[['Applications JDR','🎲',others.filter(p=>ecosystemMember(p)&&p.family==='Jouer & raconter')],
                ['Créations & ressources','✦',others.filter(p=>ecosystemMember(p)&&p.family==='Créer & fabriquer')],
