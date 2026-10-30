@@ -402,3 +402,12 @@
 .forge-evidence{margin-top:12px;border-top:1px solid #405343;padding-top:12px}
 .forge-evidence summary{cursor:pointer;font-weight:600;color:#f0d59c}
 @media(max-width:380px){.forge-overview{gap:8px;grid-template-columns:1fr 1fr}.forge-legend{font-size:11px}}
+
+
+/* Home-first compact project progress */
+.project-tile-info{min-width:0;flex:1}
+.project-tile-progress{display:flex;align-items:center;gap:7px;margin-top:6px;width:100%;min-width:0}
+.project-tile-track{display:block;flex:1;min-width:28px;height:6px;border-radius:20px;background:rgba(127,145,132,.28);overflow:hidden}
+.project-tile-track>span{display:block;height:100%;border-radius:20px;background:#c5a15c}
+.project-tile-progress small{font-size:10px;min-width:27px;text-align:right;opacity:.85;font-variant-numeric:tabular-nums}
+.project-advanced-details>summary{cursor:pointer}
