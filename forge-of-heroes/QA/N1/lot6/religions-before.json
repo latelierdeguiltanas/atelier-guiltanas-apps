@@ -1,0 +1,817 @@
+{
+  "schema": "FOH_N1_RELIGIONS",
+  "source": {
+    "document": "COF2 Livre de base",
+    "printedPage": 122,
+    "pdfPage": 124,
+    "rule": "Divine ability replaces one ability of the same rank and is the first ability of that rank."
+  },
+  "cases": 180,
+  "replays": 44,
+  "religions": [
+    "religion:arcanna:cof2-lb-2024",
+    "religion:arwendee:cof2-lb-2024",
+    "religion:aurilla:cof2-lb-2024",
+    "religion:axender:cof2-lb-2024",
+    "religion:basile:cof2-lb-2024",
+    "religion:ceres:cof2-lb-2024",
+    "religion:denora:cof2-lb-2024",
+    "religion:ellona:cof2-lb-2024",
+    "religion:forthur:cof2-lb-2024",
+    "religion:gaelm:cof2-lb-2024",
+    "religion:gorom:cof2-lb-2024",
+    "religion:guardal:cof2-lb-2024",
+    "religion:hellion:cof2-lb-2024",
+    "religion:irrion:cof2-lb-2024",
+    "religion:jeweln:cof2-lb-2024",
+    "religion:linnarre:cof2-lb-2024",
+    "religion:melenna:cof2-lb-2024",
+    "religion:mephistere:cof2-lb-2024",
+    "religion:mirandia:cof2-lb-2024",
+    "religion:morn:cof2-lb-2024",
+    "religion:orbis:cof2-lb-2024",
+    "religion:oumaros:cof2-lb-2024",
+    "religion:perinde:cof2-lb-2024",
+    "religion:selenne:cof2-lb-2024",
+    "religion:solar:cof2-lb-2024",
+    "religion:suelle:cof2-lb-2024",
+    "religion:trenner:cof2-lb-2024",
+    "religion:tulsadum:cof2-lb-2024",
+    "religion:tyriolith:cof2-lb-2024",
+    "religion:vorona:cof2-lb-2024"
+  ],
+  "failures": [
+    {
+      "id": "/tmp/foh-before-religion.html:Arcanna:mature:0",
+      "message": "/tmp/foh-before-religion.html:Arcanna:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Arcanna:mature:1",
+      "message": "/tmp/foh-before-religion.html:Arcanna:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Arcanna:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Arcanna:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Arcanna:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Arcanna:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Arwendée:young:0",
+      "message": "Engine threw: Cannot read properties of null (reading 'path_id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Arwendée:young:1",
+      "message": "Engine threw: Cannot read properties of null (reading 'id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Arwendée:mature:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Arwendée:mature:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Arwendée:venerable:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Arwendée:venerable:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Aurilla:young:0",
+      "message": "Engine threw: Cannot read properties of null (reading 'path_id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Aurilla:young:1",
+      "message": "Engine threw: Cannot read properties of null (reading 'id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Aurilla:mature:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Aurilla:mature:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Aurilla:venerable:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Aurilla:venerable:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Axënder:young:0",
+      "message": "Engine threw: Cannot read properties of null (reading 'path_id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Axënder:young:1",
+      "message": "Engine threw: Cannot read properties of null (reading 'id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Axënder:mature:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Axënder:mature:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Axënder:venerable:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Axënder:venerable:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Basile:mature:0",
+      "message": "/tmp/foh-before-religion.html:Basile:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Basile:mature:1",
+      "message": "/tmp/foh-before-religion.html:Basile:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Basile:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Basile:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Basile:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Basile:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Céres:young:0",
+      "message": "Engine threw: Cannot read properties of null (reading 'path_id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Céres:young:1",
+      "message": "Engine threw: Cannot read properties of null (reading 'id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Céres:mature:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Céres:mature:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Céres:venerable:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Céres:venerable:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Dénora:young:0",
+      "message": "Engine threw: Cannot read properties of null (reading 'path_id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Dénora:young:1",
+      "message": "Engine threw: Cannot read properties of null (reading 'id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Dénora:mature:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Dénora:mature:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Dénora:venerable:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Dénora:venerable:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Ellona:mature:0",
+      "message": "/tmp/foh-before-religion.html:Ellona:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Ellona:mature:1",
+      "message": "/tmp/foh-before-religion.html:Ellona:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Ellona:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Ellona:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Ellona:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Ellona:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Forthur:mature:0",
+      "message": "/tmp/foh-before-religion.html:Forthur:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Forthur:mature:1",
+      "message": "/tmp/foh-before-religion.html:Forthur:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Forthur:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Forthur:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Forthur:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Forthur:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Gaëlm:mature:0",
+      "message": "/tmp/foh-before-religion.html:Gaëlm:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Gaëlm:mature:1",
+      "message": "/tmp/foh-before-religion.html:Gaëlm:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Gaëlm:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Gaëlm:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Gaëlm:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Gaëlm:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Gorom:mature:0",
+      "message": "/tmp/foh-before-religion.html:Gorom:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Gorom:mature:1",
+      "message": "/tmp/foh-before-religion.html:Gorom:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Gorom:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Gorom:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Gorom:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Gorom:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Guardal:young:0",
+      "message": "Engine threw: Cannot read properties of null (reading 'path_id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Guardal:young:1",
+      "message": "Engine threw: Cannot read properties of null (reading 'id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Guardal:mature:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Guardal:mature:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Guardal:venerable:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Guardal:venerable:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Hellion:young:0",
+      "message": "Engine threw: Cannot read properties of null (reading 'path_id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Hellion:young:1",
+      "message": "Engine threw: Cannot read properties of null (reading 'id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Hellion:mature:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Hellion:mature:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Hellion:venerable:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Hellion:venerable:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Irrion:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Irrion:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Irrion:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Irrion:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Jeweln:mature:0",
+      "message": "/tmp/foh-before-religion.html:Jeweln:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Jeweln:mature:1",
+      "message": "/tmp/foh-before-religion.html:Jeweln:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Jeweln:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Jeweln:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Jeweln:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Jeweln:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Mélenna:mature:0",
+      "message": "/tmp/foh-before-religion.html:Mélenna:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Mélenna:mature:1",
+      "message": "/tmp/foh-before-religion.html:Mélenna:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Mélenna:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Mélenna:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Mélenna:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Mélenna:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Méphistère:young:0",
+      "message": "Engine threw: Cannot read properties of null (reading 'path_id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Méphistère:young:1",
+      "message": "Engine threw: Cannot read properties of null (reading 'id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Méphistère:mature:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Méphistère:mature:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Méphistère:venerable:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Méphistère:venerable:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Mirandia:mature:0",
+      "message": "/tmp/foh-before-religion.html:Mirandia:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Mirandia:mature:1",
+      "message": "/tmp/foh-before-religion.html:Mirandia:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Mirandia:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Mirandia:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Mirandia:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Mirandia:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Morn:mature:0",
+      "message": "/tmp/foh-before-religion.html:Morn:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Morn:mature:1",
+      "message": "/tmp/foh-before-religion.html:Morn:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Morn:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Morn:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Morn:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Morn:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Orbis:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Orbis:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Orbis:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Orbis:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Oumaros:mature:0",
+      "message": "/tmp/foh-before-religion.html:Oumaros:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Oumaros:mature:1",
+      "message": "/tmp/foh-before-religion.html:Oumaros:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Oumaros:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Oumaros:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Oumaros:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Oumaros:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Perinde:mature:0",
+      "message": "/tmp/foh-before-religion.html:Perinde:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Perinde:mature:1",
+      "message": "/tmp/foh-before-religion.html:Perinde:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Perinde:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Perinde:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Perinde:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Perinde:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Sélenne:young:0",
+      "message": "Engine threw: Cannot read properties of null (reading 'path_id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Sélenne:young:1",
+      "message": "Engine threw: Cannot read properties of null (reading 'id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Sélenne:mature:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Sélenne:mature:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Sélenne:venerable:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Sélenne:venerable:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Solar:young:0",
+      "message": "Engine threw: Cannot read properties of null (reading 'path_id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Solar:young:1",
+      "message": "Engine threw: Cannot read properties of null (reading 'id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Solar:mature:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Solar:mature:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Solar:venerable:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Solar:venerable:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Suëlle:mature:0",
+      "message": "/tmp/foh-before-religion.html:Suëlle:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Suëlle:mature:1",
+      "message": "/tmp/foh-before-religion.html:Suëlle:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Suëlle:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Suëlle:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Suëlle:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Suëlle:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Trenner:young:0",
+      "message": "Engine threw: Cannot read properties of null (reading 'path_id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Trenner:young:1",
+      "message": "Engine threw: Cannot read properties of null (reading 'id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Trenner:mature:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Trenner:mature:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Trenner:venerable:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Trenner:venerable:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Tulsadüm:mature:0",
+      "message": "/tmp/foh-before-religion.html:Tulsadüm:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Tulsadüm:mature:1",
+      "message": "/tmp/foh-before-religion.html:Tulsadüm:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Tulsadüm:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Tulsadüm:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Tulsadüm:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Tulsadüm:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Tyriolith:mature:0",
+      "message": "/tmp/foh-before-religion.html:Tyriolith:mature:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Tyriolith:mature:1",
+      "message": "/tmp/foh-before-religion.html:Tyriolith:mature:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Tyriolith:venerable:0",
+      "message": "/tmp/foh-before-religion.html:Tyriolith:venerable:0\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Tyriolith:venerable:1",
+      "message": "/tmp/foh-before-religion.html:Tyriolith:venerable:1\n\n0 !== 1\n",
+      "actual": 0,
+      "expected": 1
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Vorona:young:0",
+      "message": "Engine threw: Cannot read properties of null (reading 'path_id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Vorona:young:1",
+      "message": "Engine threw: Cannot read properties of null (reading 'id')"
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Vorona:mature:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Vorona:mature:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Vorona:venerable:0",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    },
+    {
+      "id": "/tmp/foh-before-religion.html:Vorona:venerable:1",
+      "message": "Dépense PCap : voie non autorisée ou rang précédent obligatoire.\n\n1 !== 0\n",
+      "actual": 1,
+      "expected": 0
+    }
+  ],
+  "inputs": {
+    "/tmp/foh-before-religion.html": "1dc9748e06cd0f53e58e56778fae84edb0adeeea65a831a56cbe902a85231e0e"
+  },
+  "status": "FAIL"
+}

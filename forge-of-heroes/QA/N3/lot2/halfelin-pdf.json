@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "scope": "Four real N2 official exports, FOR/AGI to hit and FOR/VOL damage; hybrid label, PV/DEF and attack/damage fields checked.",
+  "rows": [
+    {
+      "attack": "FOR",
+      "damage": "FOR",
+      "expectedAttack": 1,
+      "expectedDamage": "1d6-1",
+      "PV": 13,
+      "DEF": 17,
+      "passed": true
+    },
+    {
+      "attack": "FOR",
+      "damage": "VOL",
+      "expectedAttack": 1,
+      "expectedDamage": "1d6+1",
+      "PV": 13,
+      "DEF": 17,
+      "passed": true
+    },
+    {
+      "attack": "AGI",
+      "damage": "FOR",
+      "expectedAttack": 6,
+      "expectedDamage": "1d6-1",
+      "PV": 13,
+      "DEF": 17,
+      "passed": true
+    },
+    {
+      "attack": "AGI",
+      "damage": "VOL",
+      "expectedAttack": 6,
+      "expectedDamage": "1d6+1",
+      "PV": 13,
+      "DEF": 17,
+      "passed": true
+    }
+  ]
+}

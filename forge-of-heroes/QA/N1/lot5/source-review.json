@@ -1,0 +1,61 @@
+{
+  "schema": "FOH_N1_HISTORY_SOURCE_REVIEW",
+  "source": {
+    "file": "20-voies-d-historique.pdf",
+    "sha256": "287667d41db5d459440c556cb6470233a72a363b68a77bfa4f11cc8b9575b429",
+    "visuallyReadPdfPages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "corrections": [
+    {
+      "id": "N1-HISTORY-BODYGUARD-DAMAGE",
+      "path": "history:wealthy",
+      "rank": 4,
+      "pdfPage": 6,
+      "printedPage": 180,
+      "before": "1d4°+1",
+      "after": "1d4°+2",
+      "scope": "Source text, companion numeric projection, PDF catalogs."
+    },
+    {
+      "id": "N1-HISTORY-LAW-INCREMENT",
+      "path": "history:wealthy",
+      "rank": 5,
+      "pdfPage": 6,
+      "printedPage": 180,
+      "before": 10,
+      "after": 5,
+      "scope": "Repeated-use weekly difficulty, source and PDF text. No legal-action simulator claimed."
+    },
+    {
+      "id": "N1-HISTORY-CROWD-ATTACK",
+      "path": "history:cities",
+      "rank": 3,
+      "pdfPage": 2,
+      "printedPage": 173,
+      "before": "DEF +2 only",
+      "after": "DEF +2 and attack +2",
+      "scope": "Conditional bonus source and PDF text. Kept out of permanent creation values."
+    },
+    {
+      "id": "N1-HISTORY-DESERT-SHELTER",
+      "path": "history:deserts",
+      "rank": 4,
+      "pdfPage": 2,
+      "printedPage": 173,
+      "before": "Added requirement for suitable equipment",
+      "after": "Source choice/never-caught-unprepared rule restored",
+      "scope": "Source and PDF text."
+    }
+  ],
+  "limits": [
+    "Descriptions remain normalized mechanical transcriptions, not an assertion of verbatim reproduction of all 85 ranks.",
+    "Context-dependent history effects are not all automated. Creation baseline leakage and the bodyguard contact condition are tested."
+  ]
+}

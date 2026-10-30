@@ -88,6 +88,36 @@ function numeric(expression,v){if(typeof expression==='number')return expression
  const parts=s.match(/[+-]?[^+-]+/g)||[];return parts.reduce((n,p)=>{const sign=p[0]==='-'?-1:1,key=p.replace(/^[+-]/,'');const value=/^\d+$/.test(key)?Number(key):v[key];if(!Number.isFinite(value))throw Error('Variable de règle absente : '+key);return n+sign*value;},0);}
 function damagePlus(value,bonus){if(!bonus)return value;const m=String(value||'').match(/^(\d+d\d+°?)([+-]\d+)?$/);if(!m)return String(value)+(bonus>=0?'+':'')+bonus;const sum=Number(m[2]||0)+bonus;return m[1]+(sum?((sum>0?'+':'')+sum):'');}
 function weaponMatch(type,a,w){const props=w.properties||[],n=fold(w.name||a.label);if(type==='melee')return a.type==='contact';if(type==='ranged')return a.type==='distance';if(type==='unarmed')return a.weaponId==='weapon:unarmed';if(type==='light_melee')return a.type==='contact'&&props.includes('light');if(type==='bow')return a.type==='distance'&&w.category==='bow';if(type==='thrown_knife')return a.type==='distance'&&/dague|couteau/.test(n);if(type==='axe_hammer')return /hache|marteau/.test(n);if(type==='crossbow_powder')return w.category==='crossbow'||props.includes('powder')||/arbalete|poudre|mousquet|pistolet|arquebuse/.test(n);return false;}
+// Explicit people test bonuses are projected separately from combat statistics.
+// Context is retained on the entry; e.g. resistance to spells never raises ordinary ATM.
+function projectPeopleBonuses(s,state){
+ const rows=s.acquiredAbilities||[],rank=id=>Math.max(0,...rows.filter(a=>(a.pathId||a.path_id)===id).map(a=>Number(a.rank))),seen=new Set();
+ const historyRules=s.historyPath?.ancestryRules||[],hasHistory=type=>historyRules.some(r=>r.type===type);
+ function skill(a,tests,value,condition=null,excludes=[]){const entry={sourceAbilityId:a.id,tests,value,scope:'self',bonusType:'people',...(condition?{condition}:{}),...(excludes.length?{excludes}:{}),sourceRule:'Voie de peuple, rang '+a.rank};s.skillBonuses=s.skillBonuses||[];const key=a.id+'|'+JSON.stringify(tests);if(seen.has(key))return;seen.add(key);const index=s.skillBonuses.findIndex(x=>x.sourceAbilityId===a.id&&JSON.stringify(x.tests)===JSON.stringify(tests));if(index>=0)s.skillBonuses[index]=entry;else s.skillBonuses.push(entry);}
+ function feature(a,value){s.passiveFeatures.push({...value,sourceAbilityId:a.id});}
+ for(const a of rows){const path=a.pathId||a.path_id,p=path?.split(':')[1],r=Number(a.rank);if(!String(path).startsWith('path:'))continue;
+ if(r===1){
+  if(p==='voie-du-halfelin')skill(a,['discrétion','subtilisation'],3);
+  if(p==='voie-du-nain'){skill(a,['pierre','architecture','mines'],3);skill(a,['passages secrets','pièges'],3,'dans les murs et parois rocheuses');}
+  if(p==='voie-du-demi-orc')skill(a,['intimidation'],3);
+  if(p==='voie-de-l-elfe-haut')skill(a,['érudition','arts'],3);
+  if(p==='voie-de-l-elfe-sylvain'&&!hasHistory('sylvan_history'))skill(a,['escalade','discrétion','chasse','survie'],3,'en forêt');
+  if(p==='voie-du-gnome')skill(a,['sciences ordinaires','sciences occultes'],3);
+  if(p==='voie-du-gobelin')skill(a,['discrétion'],3);
+  if(p==='voie-du-kobold')skill(a,['discrétion','embuscade'],3);
+  if(p==='voie-de-letre-feerique'){skill(a,['comprendre les animaux','calmer les animaux','communiquer avec les animaux'],3);feature(a,{kind:'animal_language'});}
+  if(p==='voie-du-demi-ogre')skill(a,['VOL'],5,'résister ou mettre fin à sa Réaction violente');
+  if(p==='mage')skill(a,['connaissance de la magie','érudition occulte'],rank(path)+2);
+  if(['voie-du-nain','voie-du-demi-orc','voie-du-gnome'].includes(p))feature(a,{kind:'vision',meters:p==='voie-du-gnome'?10:30,darkness:'pénombre dans le noir total'});
+  if(['voie-de-l-elfe-haut','voie-de-l-elfe-sylvain'].includes(p))feature(a,{kind:'vision',condition:'nuit sous la lumière des étoiles',darkness:'pénombre'});
+ }
+ if(r===2){
+  if(['voie-du-halfelin','voie-de-l-elfe-haut'].includes(p))skill(a,['attaque magique opposée'],rank(path),'résister à un sort');
+  if(p==='voie-de-l-elfe-haut')feature(a,{kind:'immunity',targets:['peur','sommeil magique']});
+  if(p==='voie-du-gnome')skill(a,['interaction sociale'],3,null,['intimidation']);
+ }
+ }
+}
 function apply(s,state,db){const rows=ownedRules(s,db,state),before={...s.caracs},delta=Object.fromEntries(STATS.map(k=>[k,0])),errors=[...equipmentRules(state,db,s.acquiredAbilities).sacredErrors],statChanges=[];s.passiveFeatures=[];
  for(const x of rows){const bag=state.abilityChoices?.[x.ability.id]||{};for(const rule of x.rules){let values=null;if(rule.kind==='stats')values=rule.values;if(rule.kind==='stat_choice'){const choice=String(bag[rule.id]||rule.default||'').toLowerCase();if(!rule.values.includes(choice)){errors.push(x.ability.label+' : choisir '+rule.values.map(x=>x.toUpperCase()).join(' ou ')+'.');continue;}values={[choice]:rule.amount};if(choice===rule.bonusDieIf)s.passiveFeatures.push({kind:'bonus_die',stat:choice,sourceAbilityId:x.ability.id});}
  if(values){for(const[k,value]of Object.entries(values))delta[k]+=value;statChanges.push({abilityId:x.ability.id,values:clone(values)});}
@@ -121,6 +151,7 @@ function apply(s,state,db){const rows=ownedRules(s,db,state),before={...s.caracs
   for(const x of rows)if(x.rules.some(r=>r.kind==='sabre_formula')&&a.type==='contact'&&/sabre|katana|wakizashi|boken/i.test(a.label||'')){const bag=state.abilityChoices?.[x.ability.id]||{},atk=bag.sabreAttackStat||'AUTO',damage=bag.sabreDamageStat||'AUTO',chosen=atk==='AUTO'?(s.caracs.agi>s.caracs.for?'agi':'for'):atk.toLowerCase(),old=a.attackCharacteristic||'for';a.attackBonus+=s.caracs[chosen]-s.caracs[old];a.attackCharacteristic=chosen;const amount=damage==='AUTO'?Math.max(s.caracs.for,x.rank):damage==='RANG'?x.rank:s.caracs.for;a.damage=damagePlus(a.damage,amount-s.caracs.for);a.damageCharacteristic=damage==='FOR'||damage==='AUTO'&&s.caracs.for>=x.rank?'for':null;a.damageSource=a.damageCharacteristic?'FOR':'RANG';}
   if(a.abilityId){const canonical=[...((db.tables||db).abilities_class||[]),...((db.tables||db).abilities_people||[])].find(x=>x.id===a.abilityId);if(canonical){const condition=availability(canonical,state,db,s.acquiredAbilities);if(!condition.active)a.disabledReason=condition.reason;}}
  }
+ projectPeopleBonuses(s,state);
  s.statGainLedger=statChanges;if(s.characterState){s.characterState.characteristics=clone(s.caracs);s.characterState.attacks=clone(s.attacks||[]);s.characterState.passiveFeatures=clone(s.passiveFeatures);s.characterState.skillBonuses=clone(s.skillBonuses||[]);s.characterState.statGainLedger=clone(statChanges);s.characterState.activeFeatures=clone(s.activeFeatures||[]);}return{errors,statChanges};
 }
 const api={version:'FOH_PERMANENT_RULES_1',ruleSet,numeric,apply,damagePlus,weaponMatch,plannedAbilities,equipmentRules,availability};root.FOHPermanentRules=api;if(typeof module!=='undefined')module.exports=api;

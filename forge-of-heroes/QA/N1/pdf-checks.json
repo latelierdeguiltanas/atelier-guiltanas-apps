@@ -1,0 +1,8 @@
+{
+  "scope": "N1 PDF targeted checks after inactive-history fix",
+  "inactiveHistory": "PASS: 2 inline native N1 cases + 1 shared exporter case",
+  "encoding": "PASS actual inline N1 export moine / 7 pages\nPASS actual inline N1 export sorcier / 7 pages\nPASS actual inline N1 export forgesort / 8 pages\nPASS 1895 catalog text/title encodings, exact inline/standalone sanitizer parity, original U+2011 failure reproduced, accents/dice preserved, custom names and actual creation exports.\n",
+  "template": "PASS exact-template fingerprint, 156 editable fields, unrelated PDF rejection, idempotent reload, checked values/appearances and inline/standalone normalizer parity. No form PDF is distributed.\n",
+  "syntaxAndStorage": "PASS first save and repeated save preserve one identity and exact choices\nPASS unreadable library stays byte-for-byte intact: {broken\nPASS unreadable library stays byte-for-byte intact: {}\nPASS unreadable library stays byte-for-byte intact: null\nPASS unreadable library stays byte-for-byte intact: [null]\nPASS unreadable library stays byte-for-byte intact: [{\"id\":\"old\"}]\nPASS quota failure preserves existing hero and unsaved state\nPASS draft quota failure retains durable hero and prevents duplicate on retry\nPASS storage access denied does not escape the save handler\nPASS automatic save does not replace failure notice with success\nPASS every executable inline script parses\n11 storage and syntax checks passed.\n",
+  "visual": "Corrected inactive-history PDF page 1 rendered and inspected; full all-profile visual certification pending"
+}

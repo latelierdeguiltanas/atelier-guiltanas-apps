@@ -1,0 +1,142 @@
+{
+  "schema": "FOH_N1_HALFELIN_SOURCE",
+  "source": {
+    "document": "COF2 Livre de base",
+    "printedPage": 55,
+    "pdfPage": 57,
+    "visuallyRead": true
+  },
+  "before": [
+    {
+      "mode": "standard",
+      "weapon": "weapon:great-sword",
+      "errors": [],
+      "hands": 2,
+      "damage": "2d6+1"
+    },
+    {
+      "mode": "standard",
+      "weapon": "weapon:long-sword",
+      "errors": [],
+      "hands": 1,
+      "damage": "1d8+1"
+    },
+    {
+      "mode": "standard",
+      "weapon": "weapon:dagger",
+      "errors": [],
+      "hands": 1,
+      "damage": "1d4+1"
+    },
+    {
+      "mode": "hybrid",
+      "weapon": "weapon:great-sword",
+      "errors": [],
+      "hands": 2,
+      "damage": "2d6+1"
+    },
+    {
+      "mode": "hybrid",
+      "weapon": "weapon:long-sword",
+      "errors": [],
+      "hands": 1,
+      "damage": "1d8+1"
+    },
+    {
+      "mode": "hybrid",
+      "weapon": "weapon:dagger",
+      "errors": [],
+      "hands": 1,
+      "damage": "1d4+1"
+    },
+    {
+      "mode": "no-profile",
+      "weapon": "weapon:great-sword",
+      "errors": [],
+      "hands": 2,
+      "damage": "2d6+1"
+    },
+    {
+      "mode": "no-profile",
+      "weapon": "weapon:long-sword",
+      "errors": [],
+      "hands": 1,
+      "damage": "1d8+1"
+    },
+    {
+      "mode": "no-profile",
+      "weapon": "weapon:dagger",
+      "errors": [],
+      "hands": 1,
+      "damage": "1d4+1"
+    }
+  ],
+  "after": [
+    {
+      "mode": "standard",
+      "weapon": "weapon:great-sword",
+      "errors": [
+        "Arme interdite par la petite taille du peuple."
+      ]
+    },
+    {
+      "mode": "standard",
+      "weapon": "weapon:long-sword",
+      "errors": [],
+      "hands": 2,
+      "damage": "1d8+1"
+    },
+    {
+      "mode": "standard",
+      "weapon": "weapon:dagger",
+      "errors": [],
+      "hands": 1,
+      "damage": "1d4+1"
+    },
+    {
+      "mode": "hybrid",
+      "weapon": "weapon:great-sword",
+      "errors": [
+        "Arme interdite par la petite taille du peuple."
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "weapon": "weapon:long-sword",
+      "errors": [],
+      "hands": 2,
+      "damage": "1d8+1"
+    },
+    {
+      "mode": "hybrid",
+      "weapon": "weapon:dagger",
+      "errors": [],
+      "hands": 1,
+      "damage": "1d4+1"
+    },
+    {
+      "mode": "no-profile",
+      "weapon": "weapon:great-sword",
+      "errors": [
+        "Arme interdite par la petite taille du peuple."
+      ]
+    },
+    {
+      "mode": "no-profile",
+      "weapon": "weapon:long-sword",
+      "errors": [],
+      "hands": 2,
+      "damage": "1d8+1"
+    },
+    {
+      "mode": "no-profile",
+      "weapon": "weapon:dagger",
+      "errors": [],
+      "hands": 1,
+      "damage": "1d4+1"
+    }
+  ],
+  "beforeEngineSha256": "214f3c6fb3fc6cd78fdb05fa579a0302277c7338d9420be557fdc1a56fd9b203",
+  "afterEngineSha256": "3e2dccfcb4f36261091c9362e8cfbfbe2e8170d4acfbf58f8914539f78722bf1",
+  "status": "PASS"
+}

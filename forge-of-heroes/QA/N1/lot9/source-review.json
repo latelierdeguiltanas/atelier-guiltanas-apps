@@ -1,0 +1,28 @@
+{
+  "schema": "FOH_N1_HUMAN_ORIGINS_SOURCE_REVIEW",
+  "source": {
+    "file": "04-COF2_01_Livre_de_base_web_v1.pdf",
+    "sha256": "997f2e784a4bcd69c64f9f1bd38f13fc57a003d8ea48cdf15a2577aeab0d9fae",
+    "printedPages": [
+      57,
+      58
+    ],
+    "pdfPages": [
+      59,
+      60
+    ]
+  },
+  "rules": [
+    "Six listed geographical origins; two +3 domains; one extra PC.",
+    "Nomad chooses heat or cold resistance.",
+    "One domain may be replaced by social origin or livelihood; livelihood cannot be a profile; no combat tests.",
+    "Custom origins are defined by the GM."
+  ],
+  "compatibility": "Missing origin remains manual; no default or numeric skill bonus is fabricated. Human history +5 replaces this branch; stale origin cannot stack.",
+  "fixtureCorrections": [
+    "Shield path without a shield changed to a neutral legal path.",
+    "No-profile fixture does not select the reserved Mage ancestry path.",
+    "Priest fixture retains mastered weapons instead of an unmastered dagger."
+  ],
+  "pdfIteration": "New contextual Mage summary initially used an absent voieMage.rank property. It now calculates the highest acquired Mage rank; dedicated tests assert +4 at rank 2."
+}

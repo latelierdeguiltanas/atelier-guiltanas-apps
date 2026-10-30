@@ -1,0 +1,47 @@
+{
+  "schema": "FOH_N1_HISTORY_PDF_SOURCE",
+  "status": "PASS",
+  "files": [
+    {
+      "file": "native-cities.pdf",
+      "pages": 7,
+      "checks": {
+        "bodyguardDamage": true,
+        "lawIncrement": true,
+        "crowdAttack": true
+      },
+      "passed": true
+    },
+    {
+      "file": "native-deserts.pdf",
+      "pages": 7,
+      "checks": {
+        "bodyguardDamage": true,
+        "lawIncrement": true,
+        "desertChoice": true
+      },
+      "passed": true
+    },
+    {
+      "file": "shared-cities.pdf",
+      "pages": 8,
+      "checks": {
+        "bodyguardDamage": true,
+        "lawIncrement": true,
+        "crowdAttack": true
+      },
+      "passed": true
+    },
+    {
+      "file": "shared-deserts.pdf",
+      "pages": 8,
+      "checks": {
+        "bodyguardDamage": true,
+        "lawIncrement": true,
+        "desertChoice": true
+      },
+      "passed": true
+    }
+  ],
+  "scope": "Native and shared actual N1 exports: source corrections extracted from full annexes; PV fields checked during generation."
+}
