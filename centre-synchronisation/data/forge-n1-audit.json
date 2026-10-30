@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "project_id": "forge",
+  "source": "forge-of-heroes/REAL_USER_JOURNEY/MANUAL_XX_RESULT.md",
+  "scope": "N1 manual freeze pack, historical results on main",
+  "counts": {
+    "total": 12,
+    "passed": 0,
+    "failed": 2,
+    "unavailable": 10
+  },
+  "cases": [
+    {
+      "id": "MANUAL_01",
+      "status": "FAIL",
+      "issue": "PV, PC, armure du paquetage, identité",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_01_RESULT.md"
+    },
+    {
+      "id": "MANUAL_02",
+      "status": "FAIL",
+      "issue": "Armure du paquetage, identité; reprise non exécutée",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_02_RESULT.md"
+    },
+    {
+      "id": "MANUAL_03",
+      "status": "UNAVAILABLE",
+      "issue": "Âge mûr, peau de pierre R2",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_03_RESULT.md"
+    },
+    {
+      "id": "MANUAL_04",
+      "status": "UNAVAILABLE",
+      "issue": "Vénérable, armes de prédilection, spécialisation",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_04_RESULT.md"
+    },
+    {
+      "id": "MANUAL_05",
+      "status": "UNAVAILABLE",
+      "issue": "Arme à répétition R2",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_05_RESULT.md"
+    },
+    {
+      "id": "MANUAL_06",
+      "status": "UNAVAILABLE",
+      "issue": "Combattant aguerri R3",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_06_RESULT.md"
+    },
+    {
+      "id": "MANUAL_07",
+      "status": "UNAVAILABLE",
+      "issue": "Hybride et permissions MJ",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_07_RESULT.md"
+    },
+    {
+      "id": "MANUAL_08",
+      "status": "UNAVAILABLE",
+      "issue": "Historiques et voies haut rang",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_08_RESULT.md"
+    },
+    {
+      "id": "MANUAL_09",
+      "status": "UNAVAILABLE",
+      "issue": "Mage et lévitation R2",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_09_RESULT.md"
+    },
+    {
+      "id": "MANUAL_10",
+      "status": "UNAVAILABLE",
+      "issue": "Sauvegarde, A-B-A, Éduqué",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_10_RESULT.md"
+    },
+    {
+      "id": "MANUAL_11",
+      "status": "UNAVAILABLE",
+      "issue": "Sans profil",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_11_RESULT.md"
+    },
+    {
+      "id": "MANUAL_12",
+      "status": "UNAVAILABLE",
+      "issue": "Capacités à la carte",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_12_RESULT.md"
+    }
+  ],
+  "note": "Ces résultats historiques ne préjugent pas des corrections plus récentes ni de l'état d'un chat en cours. Couverture de recette constatée : 2/12 exécutés, 0/12 réussis ; 10 non exécutés. Ce n'est pas une mesure de qualité totale du code."
+}
