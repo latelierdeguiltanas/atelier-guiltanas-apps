@@ -1,3 +1,13 @@
+## Jalon du relais — 30 octobre 2026 — vérifications terminées, N1 encore ouvert
+
+- Branche sauvegardée, PR #3 vers qa/forge-n1-certification. Base du relais publiée : 6b3cb24.
+- Matrice complète : 179 120 tentatives, 159 290 acceptées, 19 830 refus, zéro échec ; 27 familles revues et contreparties légales rejouées.
+- 37/37 régressions PASS. Les trois contrats PEOPLE ont été enrichis avec les traits de vision attendus (genre, portée/condition), sans relâcher les chiffres ; 53/53 transitions et ABA, 13/13 fantômes, 14/14 motifs et 10/10 anti-faux-vert passent.
+- Oracle R1 : 7 600 tentatives, 7 480 créations, 120 refus attendus. Extension R2 : 7 140 paires, 7 020 créations et 120 refus ; première exécution complète puis correction des fixtures Artilleur sans arme et rejeu ciblé 168 cas, sans changement de moteur. Preuves avant/après conservées.
+- PDF sans profil : retrait des voies techniques non choisies ; 12 exports natifs/partagés passent et rendu inspecté. Six exports N3, 156 plans N3 Bastide, 150 hybrides sorcier/moine → N2 et choix de poings passent en simulations. Aucun PJ réel modifié.
+- Tous les contrôles automatiques du statut passent ; cela ne ferme pas les réserves universelles : contextes/choix d’équipement et d’âge au-delà de ces oracles, parcours hybrides/sans profil/options au clic et Android, création volontaire sans voie absente. Ne pas annoncer certification générale ni déploiement main/service à partir de la PR.
+- Prochaine action : fermer ces réserves par couverture source et parcours ciblés, puis intégrer. Les urgences N3 et sorcier/moine restent autorisées en parallèle ; aucun choix futur des joueurs ne doit être imposé.
+
 ## Relais du 30 octobre 2026 — lot 10 récupéré, vérification en cours
 
 Correctifs non publiés du précédent chat retrouvés et réunis : oracle N1, langues, familier, peuples R1/R2, résumés PDF, choix du moine en progression. Rejeu actuel : 60 cas peuples/60 sauvegardes/50 retraits, 72 cas langues, 6 contextes familier, 8 variantes moine, 156 plans N3 et six parcours UI/serveur simulés PASS. Oracle 7 600 et campagne générale en cours. Aucun PJ réel modifié, pas de certification universelle ni de recette Android annoncée.

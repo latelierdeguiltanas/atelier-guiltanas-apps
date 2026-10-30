@@ -1,16 +1,16 @@
 {
   "schema": "FOH_N1_REJECTION_REVIEW",
   "version": 1,
-  "sourceReportSha256": "8e521fe412e6c6b332fa386e8306c739105a9c0a5005882919a0a6b7fffff655",
+  "sourceReportSha256": "f7fae484ae32175d2d2d707144995d1eae19a4bb0cbf893634e055028aae00df",
   "sourceInputs": {
-    "indexSha256": "1e3f64e4be470c61daae5b70ee30dedb3292df1cc9e5eda61151f9420c6c9ffe",
-    "masterSha256": "bdaf1dbcce94e5de249c1293a2337df18f68c335ab1655d6f2607e02fc822e05",
-    "engineSha256": "089030e66351f8ef028ab5016e1f004addda1e2e2a6e302299a8e6a451e50b08",
-    "databaseSha256": "d679373bf29f30d2e039721c2b2a68f7a45d9aaac0d4e9e60a57059e8bcf8ac8"
+    "indexSha256": "c8300f8991b1460fc5e0b749be9fc7845b84644168d001a526e9e958f3178783",
+    "masterSha256": "455831e1e7f728c03a7b55107e5a947f3ea9fc5d4335e53f9164229eea159df4",
+    "engineSha256": "9c9c23e1fbf98b60113b415889945b63632ea36224464b6293a3500c17cddc21",
+    "databaseSha256": "eae2d572846102c1ea26c69eec204b080bcf928060f887c13341a4cecc762167"
   },
-  "currentEngineSha256": "089030e66351f8ef028ab5016e1f004addda1e2e2a6e302299a8e6a451e50b08",
+  "currentEngineSha256": "9c9c23e1fbf98b60113b415889945b63632ea36224464b6293a3500c17cddc21",
   "groupCount": 27,
-  "underlyingSourceCases": 19990,
+  "underlyingSourceCases": 19830,
   "sampledCases": 81,
   "categories": 7,
   "status": "PASS",
@@ -1477,7 +1477,7 @@
         {
           "case": {
             "mode": "standard",
-            "caseId": "9e9aec7b79bc3b9b829aeb8c1346ee673bffcd09aa11d5629a2dfcf55c855311",
+            "caseId": "52dc6c62487df8b2386a33d582cc7bb0c6cd62f84b868b0527854b9e4f1da4be",
             "profile": "class:samourai:addon-compagnon-2024",
             "people": "people:lutin:addon-comp2017-cof2",
             "paths": [
@@ -1543,14 +1543,8 @@
                 "tinyFitted": true,
                 "gmApprovedSwap": true
               },
-              "profileChoices": {
-                "extraLanguage": "celestien"
-              },
-              "abilityChoices": {
-                "ability-r1-class-samourai-dirigeant-eduque-addon-compagnon-2024": {
-                  "extraLanguage": "celestien"
-                }
-              },
+              "profileChoices": {},
+              "abilityChoices": {},
               "options": {},
               "advancedRules": {
                 "modelVersion": "FIX78",
@@ -1775,7 +1769,7 @@
         {
           "case": {
             "mode": "ancestry-choices",
-            "caseId": "9e9aec7b79bc3b9b829aeb8c1346ee673bffcd09aa11d5629a2dfcf55c855311",
+            "caseId": "52dc6c62487df8b2386a33d582cc7bb0c6cd62f84b868b0527854b9e4f1da4be",
             "profile": "class:samourai:addon-compagnon-2024",
             "people": "people:lutin:addon-comp2017-cof2",
             "paths": [
@@ -1841,14 +1835,8 @@
                 "tinyFitted": true,
                 "gmApprovedSwap": true
               },
-              "profileChoices": {
-                "extraLanguage": "celestien"
-              },
-              "abilityChoices": {
-                "ability-r1-class-samourai-dirigeant-eduque-addon-compagnon-2024": {
-                  "extraLanguage": "celestien"
-                }
-              },
+              "profileChoices": {},
+              "abilityChoices": {},
               "options": {},
               "advancedRules": {
                 "modelVersion": "FIX78",
@@ -1872,7 +1860,7 @@
         {
           "case": {
             "mode": "ancestry-choices",
-            "caseId": "bc795551422a8e2cb698f2084574daf6488c8747a188cf6450ddd361b3f59fd0",
+            "caseId": "8a3540a8e38de635547917151ce0ad6d0e823b60211b1dcaf678df046b0eea17",
             "profile": "class:samourai:addon-compagnon-2024",
             "people": "people:lutin:addon-comp2017-cof2",
             "paths": [
@@ -1938,14 +1926,8 @@
                 "tinyFitted": true,
                 "gmApprovedSwap": true
               },
-              "profileChoices": {
-                "extraLanguage": "celestien"
-              },
-              "abilityChoices": {
-                "ability-r1-class-samourai-dirigeant-eduque-addon-compagnon-2024": {
-                  "extraLanguage": "celestien"
-                }
-              },
+              "profileChoices": {},
+              "abilityChoices": {},
               "options": {},
               "advancedRules": {
                 "modelVersion": "FIX78",
@@ -2998,7 +2980,7 @@
     {
       "originalGroup": 10,
       "mode": "no-profile",
-      "sourceCount": 1050,
+      "sourceCount": 900,
       "reasons": [
         "Sans profil : bouclier incompatible avec une voie choisie."
       ],
@@ -3309,7 +3291,7 @@
     {
       "originalGroup": 11,
       "mode": "no-profile-reverse",
-      "sourceCount": 70,
+      "sourceCount": 60,
       "reasons": [
         "Sans profil : bouclier incompatible avec une voie choisie."
       ],

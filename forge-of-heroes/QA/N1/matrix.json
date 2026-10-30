@@ -4,13 +4,13 @@
   "phase": "N1_ONLY",
   "overallCertified": false,
   "smoke": false,
-  "startedAt": "2026-10-29T14:07:06.382Z",
-  "finishedAt": "2026-10-29T14:12:32.627Z",
+  "startedAt": "2026-10-30T13:39:04.813Z",
+  "finishedAt": "2026-10-30T13:50:25.393Z",
   "inputs": {
-    "indexSha256": "1e3f64e4be470c61daae5b70ee30dedb3292df1cc9e5eda61151f9420c6c9ffe",
-    "masterSha256": "bdaf1dbcce94e5de249c1293a2337df18f68c335ab1655d6f2607e02fc822e05",
-    "engineSha256": "089030e66351f8ef028ab5016e1f004addda1e2e2a6e302299a8e6a451e50b08",
-    "databaseSha256": "d679373bf29f30d2e039721c2b2a68f7a45d9aaac0d4e9e60a57059e8bcf8ac8"
+    "indexSha256": "c8300f8991b1460fc5e0b749be9fc7845b84644168d001a526e9e958f3178783",
+    "masterSha256": "455831e1e7f728c03a7b55107e5a947f3ea9fc5d4335e53f9164229eea159df4",
+    "engineSha256": "9c9c23e1fbf98b60113b415889945b63632ea36224464b6293a3500c17cddc21",
+    "databaseSha256": "eae2d572846102c1ea26c69eec204b080bcf928060f887c13341a4cecc762167"
   },
   "scope": {
     "profiles": 17,
@@ -61,18 +61,18 @@
     },
     "no-profile": {
       "attempted": 57120,
-      "accepted": 55902,
-      "rejectedForReview": 1218,
+      "accepted": 56052,
+      "rejectedForReview": 1068,
       "assertionFailures": 0,
-      "replayChecks": 3284,
-      "negativeChecks": 1810
+      "replayChecks": 3294,
+      "negativeChecks": 1816
     },
     "no-profile-reverse": {
       "attempted": 3570,
-      "accepted": 3500,
-      "rejectedForReview": 70,
+      "accepted": 3510,
+      "rejectedForReview": 60,
       "assertionFailures": 0,
-      "replayChecks": 206,
+      "replayChecks": 207,
       "negativeChecks": 112
     }
   },
@@ -488,7 +488,7 @@
       ]
     },
     "noProfilePairs": {
-      "count": 3500,
+      "count": 3510,
       "values": [
         "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024|classpath:voie-de-l-arc-et-du-cheval:class-samourai:addon-compagnon-2024",
         "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024|classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
@@ -1864,6 +1864,7 @@
         "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-des-runes:class-forgesort:cof2-lb-2024",
         "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-des-soins:class-pretre:cof2-lb-2024",
         "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-des-vegetaux:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
         "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
         "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
         "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
@@ -1928,6 +1929,7 @@
         "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-des-runes:class-forgesort:cof2-lb-2024",
         "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-des-soins:class-pretre:cof2-lb-2024",
         "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-des-vegetaux:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
         "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
         "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
         "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
@@ -2514,6 +2516,7 @@
         "classpath:voie-de-la-nature:class-druide:cof2-lb-2024|classpath:voie-des-runes:class-forgesort:cof2-lb-2024",
         "classpath:voie-de-la-nature:class-druide:cof2-lb-2024|classpath:voie-des-soins:class-pretre:cof2-lb-2024",
         "classpath:voie-de-la-nature:class-druide:cof2-lb-2024|classpath:voie-des-vegetaux:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-nature:class-druide:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
         "classpath:voie-de-la-nature:class-druide:cof2-lb-2024|classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
         "classpath:voie-de-la-nature:class-druide:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
         "classpath:voie-de-la-nature:class-druide:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
@@ -2671,6 +2674,7 @@
         "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024|classpath:voie-des-runes:class-forgesort:cof2-lb-2024",
         "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024|classpath:voie-des-soins:class-pretre:cof2-lb-2024",
         "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024|classpath:voie-des-vegetaux:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
         "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024|classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
         "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
         "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
@@ -2913,6 +2917,7 @@
         "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024|classpath:voie-des-runes:class-forgesort:cof2-lb-2024",
         "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024|classpath:voie-des-soins:class-pretre:cof2-lb-2024",
         "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024|classpath:voie-des-vegetaux:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
         "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024|classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
         "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
         "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
@@ -3087,6 +3092,7 @@
         "classpath:voie-des-animaux:class-druide:cof2-lb-2024|classpath:voie-des-runes:class-forgesort:cof2-lb-2024",
         "classpath:voie-des-animaux:class-druide:cof2-lb-2024|classpath:voie-des-soins:class-pretre:cof2-lb-2024",
         "classpath:voie-des-animaux:class-druide:cof2-lb-2024|classpath:voie-des-vegetaux:class-druide:cof2-lb-2024",
+        "classpath:voie-des-animaux:class-druide:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
         "classpath:voie-des-animaux:class-druide:cof2-lb-2024|classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
         "classpath:voie-des-animaux:class-druide:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
         "classpath:voie-des-animaux:class-druide:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
@@ -3387,6 +3393,7 @@
         "classpath:voie-des-runes:class-forgesort:cof2-lb-2024|classpath:voie-du-vagabond:class-barde:cof2-lb-2024",
         "classpath:voie-des-runes:class-forgesort:cof2-lb-2024|classpath:voie-du-vent:class-moine:cof2-lb-2024",
         "classpath:voie-des-soins:class-pretre:cof2-lb-2024|classpath:voie-des-vegetaux:class-druide:cof2-lb-2024",
+        "classpath:voie-des-soins:class-pretre:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
         "classpath:voie-des-soins:class-pretre:cof2-lb-2024|classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
         "classpath:voie-des-soins:class-pretre:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
         "classpath:voie-des-soins:class-pretre:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
@@ -3420,6 +3427,7 @@
         "classpath:voie-des-soins:class-pretre:cof2-lb-2024|classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024",
         "classpath:voie-des-soins:class-pretre:cof2-lb-2024|classpath:voie-du-vagabond:class-barde:cof2-lb-2024",
         "classpath:voie-des-soins:class-pretre:cof2-lb-2024|classpath:voie-du-vent:class-moine:cof2-lb-2024",
+        "classpath:voie-des-vegetaux:class-druide:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
         "classpath:voie-des-vegetaux:class-druide:cof2-lb-2024|classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
         "classpath:voie-des-vegetaux:class-druide:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
         "classpath:voie-des-vegetaux:class-druide:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
@@ -3455,12 +3463,14 @@
         "classpath:voie-des-vegetaux:class-druide:cof2-lb-2024|classpath:voie-du-vent:class-moine:cof2-lb-2024",
         "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
         "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-fauve:class-druide:cof2-lb-2024",
         "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024",
         "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024",
         "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-pagne:class-barbare:cof2-lb-2024",
         "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
         "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-preux:class-chevalier:cof2-lb-2024",
         "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-primitif:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-protecteur:class-druide:cof2-lb-2024",
         "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-soldat:class-guerrier:cof2-lb-2024",
         "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
         "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
@@ -5158,7 +5168,7 @@
         {
           "case": {
             "mode": "standard",
-            "caseId": "9e9aec7b79bc3b9b829aeb8c1346ee673bffcd09aa11d5629a2dfcf55c855311",
+            "caseId": "52dc6c62487df8b2386a33d582cc7bb0c6cd62f84b868b0527854b9e4f1da4be",
             "profile": "class:samourai:addon-compagnon-2024",
             "people": "people:lutin:addon-comp2017-cof2",
             "paths": [
@@ -5214,14 +5224,8 @@
                 "weapon:shortbow"
               ]
             },
-            "profileChoices": {
-              "extraLanguage": "celestien"
-            },
-            "abilityChoices": {
-              "ability-r1-class-samourai-dirigeant-eduque-addon-compagnon-2024": {
-                "extraLanguage": "celestien"
-              }
-            },
+            "profileChoices": {},
+            "abilityChoices": {},
             "options": {},
             "advancedRules": {
               "modelVersion": "FIX78",
@@ -5397,7 +5401,7 @@
         {
           "case": {
             "mode": "ancestry-choices",
-            "caseId": "9e9aec7b79bc3b9b829aeb8c1346ee673bffcd09aa11d5629a2dfcf55c855311",
+            "caseId": "52dc6c62487df8b2386a33d582cc7bb0c6cd62f84b868b0527854b9e4f1da4be",
             "profile": "class:samourai:addon-compagnon-2024",
             "people": "people:lutin:addon-comp2017-cof2",
             "paths": [
@@ -5453,14 +5457,8 @@
                 "weapon:shortbow"
               ]
             },
-            "profileChoices": {
-              "extraLanguage": "celestien"
-            },
-            "abilityChoices": {
-              "ability-r1-class-samourai-dirigeant-eduque-addon-compagnon-2024": {
-                "extraLanguage": "celestien"
-              }
-            },
+            "profileChoices": {},
+            "abilityChoices": {},
             "options": {},
             "advancedRules": {
               "modelVersion": "FIX78",
@@ -5477,7 +5475,7 @@
         {
           "case": {
             "mode": "ancestry-choices",
-            "caseId": "bc795551422a8e2cb698f2084574daf6488c8747a188cf6450ddd361b3f59fd0",
+            "caseId": "8a3540a8e38de635547917151ce0ad6d0e823b60211b1dcaf678df046b0eea17",
             "profile": "class:samourai:addon-compagnon-2024",
             "people": "people:lutin:addon-comp2017-cof2",
             "paths": [
@@ -5533,14 +5531,8 @@
                 "weapon:shortbow"
               ]
             },
-            "profileChoices": {
-              "extraLanguage": "celestien"
-            },
-            "abilityChoices": {
-              "ability-r1-class-samourai-dirigeant-eduque-addon-compagnon-2024": {
-                "extraLanguage": "celestien"
-              }
-            },
+            "profileChoices": {},
+            "abilityChoices": {},
             "options": {},
             "advancedRules": {
               "modelVersion": "FIX78",
@@ -6397,7 +6389,7 @@
       "reasons": [
         "Sans profil : bouclier incompatible avec une voie choisie."
       ],
-      "count": 1050,
+      "count": 900,
       "samples": [
         {
           "case": {
@@ -6640,7 +6632,7 @@
       "reasons": [
         "Sans profil : bouclier incompatible avec une voie choisie."
       ],
-      "count": 70,
+      "count": 60,
       "samples": [
         {
           "case": {

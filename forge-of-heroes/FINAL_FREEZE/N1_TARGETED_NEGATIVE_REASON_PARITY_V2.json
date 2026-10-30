@@ -105,7 +105,7 @@
       "positiveControl": [],
       "expectedErrorPattern": "/choix obligatoire|requis|minimum|capacité accordée/i",
       "actualErrors": [
-        "Combattant aguerri : choix obligatoire manquant."
+        "Combattant aguerri : choisir la capacité accordée."
       ],
       "classification": "TARGET_REJECTED",
       "status": "PASS"
@@ -115,7 +115,7 @@
       "positiveControl": [],
       "expectedErrorPattern": "/Combattant aguerri : option illégale|capacité accordée illégale/i",
       "actualErrors": [
-        "Combattant aguerri : option illégale."
+        "Combattant aguerri : capacité accordée illégale avec cet équipement."
       ],
       "classification": "TARGET_REJECTED",
       "status": "PASS"
@@ -149,6 +149,5 @@
   "wrongReasonRejections": 0,
   "priestMode": "PASS",
   "religion": "PASS",
-  "status": "PASS",
-  "finalProductSha": "565cc873e6429ce524fcea371d0a3fe11fe5ab96e6757e4177d4f7d8433b5559"
+  "status": "PASS"
 }

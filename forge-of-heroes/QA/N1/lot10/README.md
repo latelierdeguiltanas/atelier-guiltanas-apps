@@ -20,3 +20,11 @@
 ## Limites conservées
 
 Cet oracle porte sur un humain sans armure, une série officielle, sans activation ni contexte de combat, sans variante d'arme. Il ne prouve pas tous les choix, effets d'équipement, compétences, cultures, peuples, sorts activés, variantes ou interactions d'âge. Les R2 non mages accessibles par âge conservent leurs autres tests ciblés, et ne sont pas couverts tous ensemble par cet oracle de paires. Les conversions Compagnon restent des adaptations Forge, non des règles officielles COF2. Aucune recette Android n'est revendiquée. La clôture N1 reste à traiter séparément.
+
+## Extension R2 du relais
+
+Toutes les paires distinctes des 85 voies sont portées au R2 par les deux points d’âge mûr en mode sans profil : 7 140 tentatives sur les deux HTML, 7 020 créations conformes aux attentes numériques indépendantes et 120 refus de petit bouclier attendus. Même périmètre humain/série de base/sans armure ; AGI −1 d’âge appliqué. Les sorts actifs, variantes et interactions non exercés restent hors certification.
+
+La première exécution contenait 166 erreurs du générateur (Arme à répétition sans arme possédée). Rapport conservé dans `r2-pair-before.json`. Après ajout explicite d’une arbalète légère, les 168 paires contenant Artilleur sont rejouées et passent (166 créations, 2 refus de bouclier). La synthèse finale relie les deux preuves et vérifie que chaque échec initial appartient au sous-ensemble rejoué ; elle ne prétend pas à un deuxième rejeu complet.
+
+Correction PDF sans profil : colonnes non choisies et annexes du profil technique retirées dans les exporteurs natif/partagé ; douze exports recontrôlés et page 2 sans profil rendue/inspectée.

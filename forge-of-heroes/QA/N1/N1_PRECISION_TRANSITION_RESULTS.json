@@ -6,13 +6,16 @@
       "contract": {
         "EXPECTED_CHANGED_PATHS": [
           "peopleId",
-          "characteristics"
+          "characteristics",
+          "passiveFeatures"
         ],
         "EXPECTED_UNCHANGED_PATHS": [
           "profileId"
         ],
         "EXPECTED_VALUES_AFTER": {
-          "peopleId": "people:elfe-haut:cof2-lb-2024"
+          "peopleId": "people:elfe-haut:cof2-lb-2024",
+          "passiveFeatures.0.kind": "vision",
+          "passiveFeatures.0.condition": "nuit sous la lumière des étoiles"
         },
         "OPTIONAL_ALLOWED_CHANGES": [
           "familyId",
@@ -72,17 +75,19 @@
           "languages.automatic",
           "languages.choicesAllowed",
           "languages.remainingSlots",
+          "passiveFeatures",
           "paths",
           "peopleId",
           "permanentChoices.bonusStat",
-          "permanentChoices.humainStat"
+          "permanentChoices.humainStat",
+          "skillBonuses"
         ],
         "missingExpectedChanges": [],
         "unexpectedChanges": [],
         "unchangedViolations": [],
         "exactValueFailures": [],
         "beforeHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
-        "afterHash": "4a8304a9a5b99ede14286dac62acfaa278cbf236d847a8c247bfa930c483a67c"
+        "afterHash": "569e829f59951979b321d838f3e49419395f5c7e85c1eff39cb60fcfb7fb892c"
       },
       "status": "PASS"
     },
@@ -92,13 +97,16 @@
       "contract": {
         "EXPECTED_CHANGED_PATHS": [
           "peopleId",
-          "characteristics"
+          "characteristics",
+          "passiveFeatures"
         ],
         "EXPECTED_UNCHANGED_PATHS": [
           "profileId"
         ],
         "EXPECTED_VALUES_AFTER": {
-          "peopleId": "people:nain:cof2-lb-2024"
+          "peopleId": "people:nain:cof2-lb-2024",
+          "passiveFeatures.0.kind": "vision",
+          "passiveFeatures.0.meters": 30
         },
         "OPTIONAL_ALLOWED_CHANGES": [
           "familyId",
@@ -154,17 +162,19 @@
           "derived.PC",
           "languages.automatic",
           "languages.choicesAllowed",
+          "passiveFeatures",
           "paths",
           "peopleId",
           "permanentChoices.bonusStat",
-          "permanentChoices.humainStat"
+          "permanentChoices.humainStat",
+          "skillBonuses"
         ],
         "missingExpectedChanges": [],
         "unexpectedChanges": [],
         "unchangedViolations": [],
         "exactValueFailures": [],
         "beforeHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
-        "afterHash": "627fc99b36c9f640fdf82caefb2ace9d11caeb50c9c632ba7f3b0878ed19e7c9"
+        "afterHash": "3cdd66c8483f9dda2bd4e1251e4f0d154c600495e3e49a479ba3ef2e61b689e8"
       },
       "status": "PASS"
     },
@@ -174,13 +184,16 @@
       "contract": {
         "EXPECTED_CHANGED_PATHS": [
           "peopleId",
-          "characteristics"
+          "characteristics",
+          "passiveFeatures"
         ],
         "EXPECTED_UNCHANGED_PATHS": [
           "profileId"
         ],
         "EXPECTED_VALUES_AFTER": {
-          "peopleId": "people:demi-orc:cof2-lb-2024"
+          "peopleId": "people:demi-orc:cof2-lb-2024",
+          "passiveFeatures.0.kind": "vision",
+          "passiveFeatures.0.meters": 30
         },
         "OPTIONAL_ALLOWED_CHANGES": [
           "familyId",
@@ -239,18 +252,20 @@
           "derived.PV",
           "languages.automatic",
           "languages.choicesAllowed",
+          "passiveFeatures",
           "paths",
           "peopleId",
           "permanentChoices.bonusStat",
           "permanentChoices.humainStat",
-          "permanentChoices.malusStat"
+          "permanentChoices.malusStat",
+          "skillBonuses"
         ],
         "missingExpectedChanges": [],
         "unexpectedChanges": [],
         "unchangedViolations": [],
         "exactValueFailures": [],
         "beforeHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
-        "afterHash": "05e5de2dbcb2fd0892f343dff4c13c3279fdcb45c158add070c61b6db67a3cb4"
+        "afterHash": "227bc7a6b091bea3ca2d6aa3406eb8d5a8620662a395d87aa67ab00550f65eb7"
       },
       "status": "PASS"
     },
@@ -1391,8 +1406,8 @@
         "unexpectedChanges": [],
         "unchangedViolations": [],
         "exactValueFailures": [],
-        "beforeHash": "1fcabd9d1f561abf50dbcafe47fb7d4daba0582c5f3baab389f84e9bc3fb3abc",
-        "afterHash": "adb049bd90d1165861ae78646058eac994410b6b00f14882e79b52a72d1aefec"
+        "beforeHash": "fdc8e12b936921802bec3e48b8a012d513283130905aeb3c0b7b25a87e2939c8",
+        "afterHash": "0e5c308f558f5552a8f1f6f2e165afe8689a69f9ea40ee7d960cfa980fc1cda1"
       },
       "status": "PASS"
     },
@@ -1456,6 +1471,8 @@
           "abilityCalculations",
           "abilityRuntimeCatalog",
           "hybrid.secondaryPathId",
+          "languages.automatic",
+          "languages.choicesAllowed",
           "paths",
           "permanentEffects",
           "skillBonuses"
@@ -1464,8 +1481,8 @@
         "unexpectedChanges": [],
         "unchangedViolations": [],
         "exactValueFailures": [],
-        "beforeHash": "1fcabd9d1f561abf50dbcafe47fb7d4daba0582c5f3baab389f84e9bc3fb3abc",
-        "afterHash": "1a44796773baa47ad688cc4ec351c00078e3a37e94bc59c88dc245c1d656cde2"
+        "beforeHash": "fdc8e12b936921802bec3e48b8a012d513283130905aeb3c0b7b25a87e2939c8",
+        "afterHash": "cd8e526c292378fc0cfeebe52cb19185fd4a244ce91a31e53885e474db713316"
       },
       "status": "PASS"
     },
@@ -2012,8 +2029,8 @@
         "unexpectedChanges": [],
         "unchangedViolations": [],
         "exactValueFailures": [],
-        "beforeHash": "4b957359e0d623ff5215386041db686a5459770def88407b36ab264453c51a74",
-        "afterHash": "004fb21df81abdc9b13a024ce165aca1628f37d1a2c85339211832ab8ce58328"
+        "beforeHash": "8b2ebb6a9560f539029765a07cd0fdb06dbb5b70f90212a11da2d55c26aa7d9f",
+        "afterHash": "e3dd3859223f169cfe652de2f55f01ebf6564d1dd9e57aa2bc5810ba5b41222c"
       },
       "status": "PASS"
     },
@@ -2100,8 +2117,8 @@
         "unexpectedChanges": [],
         "unchangedViolations": [],
         "exactValueFailures": [],
-        "beforeHash": "4b957359e0d623ff5215386041db686a5459770def88407b36ab264453c51a74",
-        "afterHash": "bc000c574ba9637f01b3a66f7f0be86643810c88ff089f4c36b04a97ba900ae5"
+        "beforeHash": "8b2ebb6a9560f539029765a07cd0fdb06dbb5b70f90212a11da2d55c26aa7d9f",
+        "afterHash": "4a55338b92992755c23687e54ee86dd052bcb4289d72b6ddcf35c24ac8485c94"
       },
       "status": "PASS"
     },
@@ -2182,8 +2199,8 @@
         "unexpectedChanges": [],
         "unchangedViolations": [],
         "exactValueFailures": [],
-        "beforeHash": "5ef031b1d19cd86a118982e37799c688c0d3c22711be4658592184e4b4a2c10e",
-        "afterHash": "f394fd58d1feae20577d0df3cc4a286595d57cb6f687736eaf4a8c609491bb95"
+        "beforeHash": "edc726490e65caa1e5b18f8fcb1b51bae46c0cc92b1351bc2fd712d9fa053776",
+        "afterHash": "e68e61cbd93f4e660aa5564dc91d17687260dd5b2e42fc975df4bd641034aff8"
       },
       "status": "PASS"
     },
@@ -2271,8 +2288,8 @@
         "unexpectedChanges": [],
         "unchangedViolations": [],
         "exactValueFailures": [],
-        "beforeHash": "5ef031b1d19cd86a118982e37799c688c0d3c22711be4658592184e4b4a2c10e",
-        "afterHash": "01777a4613bfe21a3825ea8480930a9006bf44950abe37399d91aa2e46b2bdfd"
+        "beforeHash": "edc726490e65caa1e5b18f8fcb1b51bae46c0cc92b1351bc2fd712d9fa053776",
+        "afterHash": "ad6ea4eb929d0231e3e506f9130a622b1b0ff38e35cd5bc69f04843e953caaf5"
       },
       "status": "PASS"
     },
@@ -2897,8 +2914,8 @@
         "unexpectedChanges": [],
         "unchangedViolations": [],
         "exactValueFailures": [],
-        "beforeHash": "c0d4b6da4f21db6b3463f0dd0ced2aa99b3d26cd4b516c0fc671e55ceb2456a9",
-        "afterHash": "9955955e7e864878d4d0c6410579e1e085300c866da1ca3269803e7d9b7b371f"
+        "beforeHash": "2a3d342ac46d8feb4809751aff471f2c980de0414ef7e6540820013bffe0b5ca",
+        "afterHash": "1e5bf5cc7bd24d8ac2e560b90ce708253c819c05570e67bbbc34143d9d21037c"
       },
       "status": "PASS"
     },
@@ -3972,8 +3989,8 @@
         "unexpectedChanges": [],
         "unchangedViolations": [],
         "exactValueFailures": [],
-        "beforeHash": "c0d4b6da4f21db6b3463f0dd0ced2aa99b3d26cd4b516c0fc671e55ceb2456a9",
-        "afterHash": "2474afa947d7fe39dbab69ba5e57605ddb4c3bf889539852496df8f26508069e"
+        "beforeHash": "2a3d342ac46d8feb4809751aff471f2c980de0414ef7e6540820013bffe0b5ca",
+        "afterHash": "874f1dda1c9a0b04c6a49110d4e4b81e293fdeb5ca9d9c20e77fa0bf91e74572"
       },
       "status": "PASS"
     },
@@ -4041,8 +4058,8 @@
         "unexpectedChanges": [],
         "unchangedViolations": [],
         "exactValueFailures": [],
-        "beforeHash": "c0d4b6da4f21db6b3463f0dd0ced2aa99b3d26cd4b516c0fc671e55ceb2456a9",
-        "afterHash": "648367cc04e41e248d1bb64e452c6981629b3b5702061d17b35074cad4bec702"
+        "beforeHash": "2a3d342ac46d8feb4809751aff471f2c980de0414ef7e6540820013bffe0b5ca",
+        "afterHash": "29ecb94d1092d686b2abc9c1f709053f886841da3a650a2a1050a3665abec930"
       },
       "status": "PASS"
     }
@@ -4052,8 +4069,8 @@
   "missingExpectedChanges": 0,
   "unexpectedChanges": 0,
   "exactValueAssertions": {
-    "passed": 11,
-    "total": 11
+    "passed": 17,
+    "total": 17
   },
   "status": "PASS"
 }
