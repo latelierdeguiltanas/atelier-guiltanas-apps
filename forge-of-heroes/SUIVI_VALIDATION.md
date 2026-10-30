@@ -1,3 +1,7 @@
+## Jalon de publication ciblée — 30 octobre 2026
+
+Les PR #3 et #2 sont intégrées à main (941007f). Contrôles ciblés 176 plans N3 réels / 420 bases et 54 520 plans halfelin N2 / 12 PDF PASS. Une divergence de catalogue déployé a été détectée au premier déploiement : le service v10 réduit a été annulé par restauration v11 de la référence v9. Aucun carnet modifié. La version complète conserve 122 voies et 17 profils ; les points d’extension existants sont préservés et les huit profils natifs ciblés restent explicitement délimités. Toutes les vérifications ciblées ont été rejouées sur ce catalogue complet. Correctif de parité client/serveur et caches v4 en cours de publication finale. N1 général reste ouvert.
+
 ## Jalon ciblé du 30 octobre 2026 — tests PASS, publication en préparation
 
 176 plans N3 depuis les six vrais carnets N2, 420 créations de halfelin sorcier/moine et 54 520 passages N2 : PASS. Scanlan DEF à R3 et Prépotante DM de dagues à R3 corrigés ; choix de monture et de chargeurs ajoutés. Version native 3 corrige les mains nues sans Poings de fer et conserve les traits de création. Douze PDF officiels ciblés passent. Lire QA/N3/lot2/README.md pour les conditions précises. Publication client/serveur et contrôle de parité restent à terminer ; aucun niveau réel attribué. N1 global demeure ouvert.

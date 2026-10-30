@@ -31,3 +31,7 @@ node forge-of-heroes/FINAL_FREEZE_TESTS/halfelin_n2_pdf_choices.cjs MODELE_PRIVE
 ```
 
 Les parcours UI utilisent des fixtures DOM/stockage, pas un navigateur Android réel. Ce bilan valide le périmètre ciblé ci-dessus ; il ne constitue pas une garantie universelle de l’ensemble de Forge N1/N2/N3. Le verrouillage global N1 reste suivi dans `QA/N1/README.md`.
+
+## Conservation du service existant
+
+Le service v9 possédait un catalogue de 122 voies/17 profils, plus large que le catalogue de travail initial (54 voies/8 profils). Le premier déploiement v10 de ce dernier a été annulé immédiatement par restauration de la référence v9 sous v11, sans écriture dans les carnets. Le catalogue final conserve tous les identifiants et tous les rangs existants ; les corrections ciblées sont fusionnées dans ces 122 voies. Le client et le serveur utilisent le même catalogue et le même core. Les points d’extension universels du core précédent sont conservés ; cela ne certifie pas ces branches générales. L’adaptateur natif garde explicitement ses huit profils déjà pris en charge afin de ne pas ouvrir neuf progressions supplémentaires par simple présence dans le catalogue. Les 176 et 54 520 plans ainsi que les régressions et 12 PDF ont été rejoués sur cette version complète.
