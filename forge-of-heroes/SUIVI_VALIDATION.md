@@ -1,3 +1,11 @@
+## Reprise du 30 octobre 2026 — intervention ouverte
+
+- Base vérifiée sur GitHub : PR #2, `qa/forge-n1-certification`, commit `6b2aac2` (lot 9). Les mentions historiques de PR #87 ne correspondent pas au dépôt actuel.
+- Nouvelle priorité utilisateur : permettre en urgence le N3 des six PJ Bastide, en parallèle de la clôture N1 ; création sorcier/moine N1 puis N2 également demandée. Cette instruction remplace l’attente systématique N2/N3 du 28 octobre, sans valoir certification des niveaux.
+- Chantier N1 : oracle numérique indépendant R1/R2, contrôle des choix persistants, parcours et export officiel. Chantier progression : état réel et bloqueurs des six fiches / hybride sorcier-moine.
+- Critères : ne pas convertir un compteur vert en certification universelle ; ne pas attribuer aux joueurs leurs futurs rangs/PV sans choix ; conserver les preuves et limites.
+- État : EN COURS. Aucun nouveau correctif ni déploiement déclaré à ce point. Prochaine mise à jour après résultats reproductibles.
+
 # Forge of Heroes — suivi de validation
 
 Décision du 28 octobre 2026 : **terminer N1 avant de poursuivre N2, puis N3**. Les besoins urgents antérieurs ne constituent pas une certification générale.
