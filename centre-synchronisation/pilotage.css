@@ -382,3 +382,6 @@
 .project-advanced-details>summary::after{content:"⌄";float:right}
 .project-advanced-details[open]>summary::after{content:"⌃"}
 .project-advanced-details>.detail-grid,.project-advanced-details>.detail-label,.project-advanced-details>.drawer-desc,.project-advanced-details>.subgraph,.project-advanced-details>.detail-links,.project-advanced-details>.minihelp,.project-advanced-details>.project-evidence{margin:10px 12px}
+
+/* Vue de progression par jalons */
+.project-milestone-box{margin:15px 0;padding:14px;border:1px solid #526747;border-radius:14px;background:#13291f}.project-milestone-box h3{margin:0 0 10px;color:#e9d399}.project-milestone-box>p{line-height:1.5;color:#c9d6c9}.project-milestone{border-top:1px solid #405343;padding:13px 0}.project-milestone-title{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.project-milestone-title span{border:1px solid #9c8050;border-radius:30px;padding:4px 9px;font-size:11px;color:#f0d59c}.project-milestone p,.project-milestone li{font-size:13px;line-height:1.55;color:#d1dbd1}.project-milestone ul{padding-left:19px;margin:8px 0}
