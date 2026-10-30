@@ -1,0 +1,19 @@
+{
+  "scope": "Exact live N2 ledgers replayed locally, no database mutation",
+  "rows": [
+    {
+      "id": "scanlan",
+      "path": "classpath:voie-de-la-seduction:class-barde:cof2-lb-2024",
+      "source": "Livre de base p.68, Dentelles et rapière : CHA plafonné par rang",
+      "expectedDEF": 15,
+      "actualDEF": 14
+    },
+    {
+      "id": "prepotante",
+      "path": "classpath:voie-du-roublard:class-voleur:cof2-lb-2024",
+      "source": "Livre de base p.76, Doigts agiles : +2 DM au rang 3",
+      "expectedDamage": "1d4+2",
+      "actualDamage": "1d4+1"
+    }
+  ]
+}

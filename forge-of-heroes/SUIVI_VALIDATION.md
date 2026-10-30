@@ -1,3 +1,11 @@
+## Jalon ciblé du 30 octobre 2026 — tests PASS, publication en préparation
+
+176 plans N3 depuis les six vrais carnets N2, 420 créations de halfelin sorcier/moine et 54 520 passages N2 : PASS. Scanlan DEF à R3 et Prépotante DM de dagues à R3 corrigés ; choix de monture et de chargeurs ajoutés. Version native 3 corrige les mains nues sans Poings de fer et conserve les traits de création. Douze PDF officiels ciblés passent. Lire QA/N3/lot2/README.md pour les conditions précises. Publication client/serveur et contrôle de parité restent à terminer ; aucun niveau réel attribué. N1 global demeure ouvert.
+
+## Intervention ciblée — halfelin sorcier/moine N2 et six carnets réels N3 — EN COURS
+
+Les six carnets serveur ont été relus, tous N2 ; validation de leur historique actuel PASS. Audit indépendant de toutes les options N3 et des combinaisons N2 du halfelin en cours. Deux choix manquants repérés : monture féerique terrestre/volante et armes à chargeur. Aucun carnet réel modifié.
+
 ## Jalon du relais — 30 octobre 2026 — vérifications terminées, N1 encore ouvert
 
 - Branche sauvegardée, PR #3 vers qa/forge-n1-certification. Base du relais publiée : 6b3cb24.
