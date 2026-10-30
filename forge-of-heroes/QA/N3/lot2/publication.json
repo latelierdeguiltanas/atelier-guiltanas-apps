@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-30",
+  "releaseCommit": "4aaee2ae366e95c56f6a7f19f6e019558c4a69d5",
+  "service": {
+    "version": 12,
+    "status": "ACTIVE",
+    "checks": [
+      {
+        "name": "index.ts",
+        "match": true
+      },
+      {
+        "name": "core.js",
+        "match": true
+      },
+      {
+        "name": "catalog.json",
+        "match": true
+      }
+    ],
+    "paths": 122
+  },
+  "pages": [
+    {
+      "path": "index.html",
+      "http": 200,
+      "match": true,
+      "sha256": "813458e5b29dd6fb571c17bbd214c1ce92abbb0b7389100c9b662b606f34c38d"
+    },
+    {
+      "path": "progression/core.js",
+      "http": 200,
+      "match": true,
+      "sha256": "a87922bbb5b0062b58aaf6d875fb31f45fea686f2665074d5b7ab6680aaac48a"
+    },
+    {
+      "path": "progression/catalog.json",
+      "http": 200,
+      "match": true,
+      "sha256": "d8c8cd05afc6b6a70cdb89730a76c9b647d130716a29f5667b21b4458c61a4ac"
+    },
+    {
+      "path": "native-progression.js",
+      "http": 200,
+      "match": true,
+      "sha256": "37bb0c605a8fbd805f335d818502629ba8c9fc89de6f21302ae5caab5e62b07c"
+    },
+    {
+      "path": "progression/app.js",
+      "http": 200,
+      "match": true,
+      "sha256": "d0ceecec6cb879faea021a2101e8b79fe3cf7d27f4fbf153773d52c8610fe71b"
+    }
+  ],
+  "anonymousRequestStatus": 401,
+  "targetPlans": {
+    "bastideN3": 176,
+    "halfelinBases": 420,
+    "halfelinN2": 54520,
+    "officialPdfs": 12
+  },
+  "realPlayersLeveledByTests": false,
+  "globalN1Certified": false,
+  "androidBrowserTested": false
+}

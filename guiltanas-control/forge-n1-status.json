@@ -4,8 +4,13 @@
   "snapshot_date": "2026-10-30",
   "status": "validation_n1_en_cours",
   "progress_percent": null,
-  "progress_reason": "Contrôles automatisés du lot 10 PASS ; certification exhaustive et recette Android restent ouvertes.",
+  "progress_reason": "Correctifs publiés et contrôles ciblés Bastide N3 / halfelin N2 validés ; certification N1 générale encore ouverte.",
   "evidence": [
+    {
+      "type": "github_file",
+      "url": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/QA/N3/lot2/publication.json",
+      "finding": "Publication client/serveur relue, service v12 actif et catalogue complet conservé."
+    },
     {
       "type": "github_file",
       "url": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/26e6b6a0b25031fec08aa2bb51dd7e102819b7b7/forge-of-heroes/QA/N1/status.json",
@@ -77,14 +82,14 @@
       "status": "non_verifie_dans_cet_audit"
     }
   ],
-  "next_action": "Fermer les réserves source/contexte/choix d'âge et d'équipement, puis les parcours hybrides/sans profil/options et Android avant certification générale et intégration.",
+  "next_action": "Clôturer les variantes N1 d’âge, d’historiques, d’équipement et de contexte encore ouvertes et les parcours mobiles.",
   "conversation_registry": [],
   "conversation_import_status": "non_inventorie",
-  "current_work": "Lot 10 et extension R2 sauvegardés sur PR #3 ; correctif PDF sans profil vérifié.",
+  "current_work": "Terminer les variantes avancées et les parcours mobiles N1.",
   "work_branch": "fix/forge-final-n1-bastide-n3",
   "work_commit": "26e6b6a0b25031fec08aa2bb51dd7e102819b7b7",
-  "work_pr": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/pull/3",
-  "production_updated": false,
+  "work_pr": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/pull/2",
+  "production_updated": true,
   "automated_tests": {
     "regression_suites": {
       "passed": 37,
@@ -110,5 +115,31 @@
     "bastide_n3_plans": 156,
     "sorcerer_monk_n2_creations": 150,
     "browser_android_tested": false
-  }
+  },
+  "release_commit": "4aaee2ae366e95c56f6a7f19f6e019558c4a69d5",
+  "service_version": 12,
+  "urgent_targets": {
+    "bastide_n3": {
+      "status": "validation_ciblee_pass",
+      "live_ledgers": 6,
+      "plans": 176,
+      "source": "forge-of-heroes/QA/N3/lot2/all-choices-live.json"
+    },
+    "halfelin_sorcerer_monk_n2": {
+      "status": "validation_ciblee_pass",
+      "creations": 420,
+      "plans": 54520,
+      "scope": "Création jeune, série expert, sans armure, voies standards et Mage ; deux bonus de peuple, FOR/AGI et FOR/VOL",
+      "source": "forge-of-heroes/QA/N3/lot2/halfelin-all-n2.json"
+    }
+  },
+  "deployed_verification": {
+    "files_match": true,
+    "resources": 5,
+    "service_active": true,
+    "complete_catalog_paths": 122,
+    "anonymous_http_status": 401,
+    "player_records_written": 0
+  },
+  "android_tested": false
 }
