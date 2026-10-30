@@ -524,7 +524,7 @@ async function loadRegistry(force=false){
   const d=await registryRequest(force?'list&force=1':'list');projectData=d.projects||[];projectScan=d.scan||null;
   const scan=projectScan;
   if(indicator)indicator.textContent='Registre Supabase à jour · '+projectData.length+' projets · GitHub public : '+(scan?.last_error?'contrôle impossible ('+scan.last_error+')':'contrôlé le '+time(scan?.last_github_at))+' · dépôts privés à suivre via connexion autorisée';
-  renderProjects();renderProjectAuditPulse();await Promise.all([loadChatInventory(),loadWorkRuns()]);
+  renderProjects();renderProjectAuditPulse();await Promise.all([loadChatInventory(),loadWorkRuns()]);if(selected?.kind==='project'&&projectData.some(p=>p.id===selected.id))openProject(selected.id);
   if(model){const label=$('#metrics .metric:nth-child(2) strong');if(label)label.textContent=String(projectData.length);const cap=$('#metrics .metric:nth-child(2) span');if(cap)cap.textContent='projets catalogués'}
  }catch(e){if(indicator)indicator.textContent='Registre indisponible : '+e.message}
 }
