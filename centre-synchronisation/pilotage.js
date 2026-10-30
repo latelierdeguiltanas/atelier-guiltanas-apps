@@ -466,6 +466,21 @@ function renderProjects(){
  box.innerHTML=html;
 }
 
+
+/* Jalons visibles : données de référence publiées, jamais un pourcentage inventé. */
+const PROJECT_MILESTONES={
+ forge:[
+  {name:'Création niveau 1',status:'À certifier',detail:'Tous peuples, profils classiques/hybrides, contraintes des voies et rangs 1–2, calculs et export PDF. La preuve de couverture exhaustive manque.',checks:['Options peuple/profil et hybrides','Rangs 1 et 2 et prérequis','Bonus, malus et calculs','Export PDF et sauvegarde','Tests de non-régression et cas limites']},
+  {name:'Passage niveau 2',status:'À vérifier',detail:'Choix de voies, caractéristiques, calculs, sauvegarde et export N2.'},
+  {name:'Passage niveau 3',status:'Non certifié',detail:'Progression N2 → N3 et validations des six PJ Bastide.'}
+ ]
+};
+function projectMilestonesMarkup(p){
+ const steps=PROJECT_MILESTONES[p.id];
+ if(!steps)return '<section class="project-milestone-box"><h3>Avancement par étapes</h3><p>Jalons détaillés non encore audités pour ce projet. Le statut global ne constitue pas une mesure de couverture.</p><strong>Prochaine étape connue</strong><p>'+escapeHTML(p.next_action||'À définir à partir des sources')+'</p></section>';
+ return '<section class="project-milestone-box"><h3>Avancement par étapes</h3><p class="minihelp">Aucun pourcentage de fiabilité sans nombre de cas vérifiés et total des cas applicables.</p>'+steps.map((step,i)=>'<div class="project-milestone"><div class="project-milestone-title"><b>'+escapeHTML((i+1)+'. '+step.name)+'</b><span>'+escapeHTML(step.status)+'</span></div><p>'+escapeHTML(step.detail)+'</p>'+(step.checks?'<ul>'+step.checks.map(c=>'<li>'+escapeHTML(c)+' — preuve de validation à consolider</li>').join('')+'</ul>':'')+'</div>').join('')+'</section>';
+}
+
 function openProject(id){
  const p=projectData.find(x=>x.id===id);if(!p)return;selected={kind:'project',id};
  const short=PROJECT_SHORT_NAMES[p.id]||p.name;
@@ -476,6 +491,7 @@ function openProject(id){
  if(p.repo==='atelier-guiltanas-apps'&&/^[a-z0-9/_-]+\/$/i.test(p.folder||'')&&p.publication==='en_ligne'){
   content+='<div class="detail-links"><a class="smallbutton primary" href="'+escapeHTML(ROOT+p.folder)+'" target="_blank" rel="noopener noreferrer">Ouvrir l’application</a></div>';
  }
+ content+=projectMilestonesMarkup(p);
  content+=projectWorkMarkup(p);
  content+=projectChatMarkup(p);
  content+='<details class="project-advanced-details"><summary>Informations techniques et preuves</summary>';
