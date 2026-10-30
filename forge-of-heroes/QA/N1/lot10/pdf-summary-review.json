@@ -1,0 +1,601 @@
+{
+  "schema": "FOH_R1_R2_SUMMARY_REVIEW",
+  "scope": "All 210 stored R1/R2 descriptions and current native/shared summaries reviewed semantically; not independent certification of source transcriptions or mechanical effects.",
+  "reviewed": 210,
+  "corrected": 96,
+  "source": "Existing full source descriptions from supplied COF2 PDFs; converted Compagnon records retain non-official status. Full descriptions unchanged.",
+  "cases": [
+    {
+      "abilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Mécanismes",
+      "sourceSHA256": "1928711809fb611d30e18db910d87501a25269cdfc9fffc6c395d33d7c649ff4",
+      "summary": "Mécanismes, pièges mécaniques et armes de siège : tests +rang+2. Attaques avec une arme de siège : dé bonus."
+    },
+    {
+      "abilityId": "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Arme à répétition",
+      "sourceSHA256": "42914418af2bacec07eb5684ce4ffd0bc3eff1edd39453449699e25f43ad0a13",
+      "summary": "Modifie jusqu’à 2 armes : chargeur de 2+INT projectiles, +1 par voie d’arquebusier R3. Recharger coûte une action L par projectile."
+    },
+    {
+      "abilityId": "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Tir de grenaille (L)",
+      "sourceSHA256": "a67149d20791057f841ba45e457f2a5683ce40c030aeb4e7f5ce73bf1ed725cf",
+      "summary": "Au chargement, choisit la grenaille. Tir (L) : un seul jet contre les cibles du cône de 10 × 5 m ; si DEF atteinte, moitié des DM habituels. Artificier : tests +rang+2."
+    },
+    {
+      "abilityId": "ability:demolition:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Démolition",
+      "sourceSHA256": "d31941b94ba5a53cb8a6017015b91806395d5e4513a202e8d4b3c2ee2ddba25b",
+      "summary": "Prépare et pose une charge en 3 rounds : structure, 3d4°+INT DM, moitié de RD ignorée ; rayon 2 m, 2d4° DM. Charges/jour = rang, partagées avec Piège et Boulet explosifs."
+    },
+    {
+      "abilityId": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Pilier de bar",
+      "sourceSHA256": "d3f0d1b73c4b5cde1f0cbdbc076130dbb5689fefc7c46ea61f6ca82c800ae5a1",
+      "summary": "Tavernes/auberges (interaction) et résistance à l’alcool : tests +rang+2. Mains nues : 1d4° DM non létaux ; DM non létaux subis divisés par 2."
+    },
+    {
+      "abilityId": "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Mort ou vif (L)",
+      "sourceSHA256": "3e822e906011587434d6c75164ee33b72f8c4b170393d90175ec507cc92e49af",
+      "summary": "Attaque (L), contact ou distance : DM normaux ou temporaires. Si NC cible <rang, choisit désarmer, renverser ou affaiblir 1d4 rounds. Critique : cumule 2 effets."
+    },
+    {
+      "abilityId": "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Défaut dans la cuirasse (A)",
+      "sourceSHA256": "952555180bbf0ba4f322d4491e31f5d6112b2a21e3e48984ac2f2c99d92cdb9f",
+      "summary": "Une action A pour viser : au round suivant, tirs contre DEF 10+AGI ; ignore résistance/RD sauf immatériel. Avec Combat de masse en début de round, effet limité aux tirs du round en cours."
+    },
+    {
+      "abilityId": "ability:feinte-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Feinte (L)",
+      "sourceSHA256": "0ad3581aeb1b10a4c1509c1efab90fc06785cd86d8ddee0ce07ea9d9e7908914",
+      "summary": "Feinte (L) : test opposé CHA/PER. Au round suivant, première attaque au contact contre cette cible : bonus +2×rang pour toucher ; si feinte réussie, +2d4° DM."
+    },
+    {
+      "abilityId": "ability:chant-des-heros-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Chant des héros (L)*",
+      "sourceSHA256": "373d440dbf971383122e47420f9739f720414bd533522925676a849bd151e89e",
+      "summary": "Chant (L), puis fredonnement gratuit : soi et alliés à portée de voix, tous tests +1 pendant CHA min (+2 au R5). Musique et chant : tests +rang+2."
+    },
+    {
+      "abilityId": "ability:charmant:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Charmant",
+      "sourceSHA256": "8cb4893926665bedd3903e90965fabefc87cffc733c2d8029aac1638052a609e",
+      "summary": "Séduction, persuasion, mensonge et baratin : tests +rang+2. Dépense 1 PC pour un allié en vue : son test reçoit +1d4°+CHA, au lieu de +10."
+    },
+    {
+      "abilityId": "ability:eclectique:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Éclectique",
+      "sourceSHA256": "b2518f91e15cb584cf65041a1fab672923df1ecbdfd9411ad9690e6e0624419c",
+      "summary": "Tous tests de compétence +1 ; aucun cumul de compétence sauf R1 de peuple. Bonus +1 supplémentaire par voie de barde R4."
+    },
+    {
+      "abilityId": "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Archer émérite",
+      "sourceSHA256": "044a743d788017acaaf37e557821f9e09517ee2ec2bc8cd0a04dda28143b6020",
+      "summary": "À l’arc : ajoute PER aux DM et +rang en Initiative. Variante lancer : ajoute FOR aux DM et double la portée de jet, sans bonus d’Initiative ; la voie s’applique alors aux armes de jet."
+    },
+    {
+      "abilityId": "ability:le-loup:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Le loup",
+      "sourceSHA256": "9f21f6cfc2b3849c14c7ecc73f4576c6c34391f358efa4fbd875aa91c1a5ff52",
+      "summary": "Loup compagnon, agit avec le rôdeur : DEF 12+rang ; PV 4×niveau ; Init du maître ; attaque = attaque magique ; DM 1d4+2. Ordres simples ; à 0 PV en nature, fuite et retour après 8 h."
+    },
+    {
+      "abilityId": "ability:survie:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Survie",
+      "sourceSHA256": "ac992a9c85531149d2ec2c64e3759a0f658f598aebb50f54df4c10cdcc2f6196",
+      "summary": "Survie en nature (dont récupération nocturne) et escalade : tests +rang+2. En dormant en nature, dépenser 1 DR soigne aussi 1d4° PV en plus du soin normal."
+    },
+    {
+      "abilityId": "ability:nature-nourriciere:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Nature nourricière",
+      "sourceSHA256": "2d5c5c5e5b6562c2d4b02eb6db272c913e19cf84da18cbe39a06928fe7873edc",
+      "summary": "1/jour, après 1d6 h en nature sauvage : nourriture pour rang personnes. PER (Survie) 10 : plantes pour 1d4° PV par rang, à employer immédiatement ; préparation et effet 10 min chacun, dés répartissables."
+    },
+    {
+      "abilityId": "ability:attaque-a-suivre-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Attaque à suivre (G)",
+      "sourceSHA256": "05892b94014008c0eb028f406db201279f892eb4dd3805705aacafcb280adb20",
+      "summary": "1/round, après échec de la main principale : attaque gratuite de l’autre main. Dague, hachette ou épée courte ; autre arme à une main : dé malus."
+    },
+    {
+      "abilityId": "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Discrétion",
+      "sourceSHA256": "e819d97df10e5f987b289b64f18407480dab52a02b673f1881615524b73e323a",
+      "summary": "Discrétion, déguisement et arme cachée : tests +rang+2 ; apprend l’argotien gestuel. Contre un adversaire surpris : dé bonus en attaque."
+    },
+    {
+      "abilityId": "ability:attaque-sournoise-l:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Attaque sournoise (L)",
+      "sourceSHA256": "d49dc6aef913ca4051a7f2ecf45ebaa04fe5ba78b779e6888166b005f7305f8d",
+      "summary": "1/round, adversaire surpris ou de dos : +2d4° DM avec arme légère (dague, épée courte, rapière), bonus divisé par 2 sinon, y compris à distance. +1d4° par voie de voleur R4 (maximum 7d4°)."
+    },
+    {
+      "abilityId": "ability:baratin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Baratin",
+      "sourceSHA256": "a8144e4132b3cf44c99d969f4a5f3f86495d895f84334d569f64909e680c3b3f",
+      "summary": "Baratin, séduction, négociation, mensonge et marché noir : tests +rang+2. Parchemin/baguette (L) : attaque magique contre 10+2×rang du sort ; échec sans lancement, nouvel essai possible."
+    },
+    {
+      "abilityId": "ability:provocation-l:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Provocation (L)",
+      "sourceSHA256": "fa3ed119e3f915a01c94589db643634060b71b75fe1e74b0c7d017936d3e91a4",
+      "summary": "Provocation (L), humanoïde à 10 m : CHA opposé à INT ; succès, il doit attaquer au prochain tour. S’il est au contact, riposte gratuite : attaque sournoise ou +1d4° DM au choix."
+    },
+    {
+      "abilityId": "ability:agile:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Agile",
+      "sourceSHA256": "c7d449e86276951ebe832299cf152bce28afb16b7303eed81d3212f13884c72a",
+      "summary": "Déplacements, esquive, saut, course, équilibre, escalade et évasion : tests +rang+2. DEF et Initiative +1, puis +2 au R3 et +3 au R5."
+    },
+    {
+      "abilityId": "ability:doigts-agiles:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Doigts agiles",
+      "sourceSHA256": "6130f6cad6a93da554320b912065a7badd49e5a2de378fa8119885d896bf2082",
+      "summary": "Précision manuelle (serrures, pièges, pickpocket) et estimation d’objets précieux : tests +rang+2. Dagues/couteaux à distance : DM +1, puis +2 au R3 et +3 au R5."
+    },
+    {
+      "abilityId": "ability:attaque-en-finesse:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Attaque en finesse",
+      "sourceSHA256": "f38d94792119446f5ba223b38b12a02a83d6b74a84fc9e9fdad74f9939f0f8be",
+      "summary": "Initiative +AGI. Avec dague, épée courte ou rapière : AGI peut remplacer FOR pour toucher au contact, pas aux DM. Intimidation : tests +rang+2."
+    },
+    {
+      "abilityId": "ability:esquive-fatale-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Esquive fatale (G)",
+      "sourceSHA256": "5ee9205a8c4a17f35ec606a189e0e99c50b328acfba24a74369c388617144563",
+      "summary": "1/combat (G), sauf critique : redirige une attaque sur un autre adversaire à son contact ; son jet doit atteindre la DEF de cette nouvelle cible. Impossible sans second adversaire au contact."
+    },
+    {
+      "abilityId": "ability:argument-de-taille:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Argument de taille",
+      "sourceSHA256": "267666917dbd7f528378eda36cd40754ebae3340996278f4722f23c488d1f017",
+      "summary": "PV maximum +FOR. Négociation, persuasion et intimidation : ajoute FOR à ses tests de CHA et à ceux des alliés au contact."
+    },
+    {
+      "abilityId": "ability:tour-de-force-g:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Tour de force (G)",
+      "sourceSHA256": "566efc18ee504985247e26e5e42a93474b5dc71c871111a2bbbb36626157e81f",
+      "summary": "Avant le jet (G), sacrifie 1d4° PV : +10 à un test de FOR, jamais attaque/DM. Autorise la chemise de mailles avec les capacités de barbare auparavant limitées au cuir renforcé."
+    },
+    {
+      "abilityId": "ability:peau-de-pierre:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Peau de pierre",
+      "sourceSHA256": "2b666c24b3da0226e1310694e060ac4c0ecb09a3ca407560e5495c6d4d9ff009",
+      "summary": "Choisit CON au lieu d’AGI pour la DEF, avec le plafond de l’armure. Si AGI ≥CON : DEF +1 à la place, puis +2 au R4."
+    },
+    {
+      "abilityId": "ability:cri-de-guerre-g:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Cri de guerre (G)",
+      "sourceSHA256": "c384464127e79cec10807f7ebab8d9803cf3b42b56828d757d7fef36c3205323",
+      "summary": "1/combat (G), rayon 10 m : ennemis de FOR inférieure, dé malus aux attaques au contact à leur prochain tour. Résistance à la peur (VOL) : tests +rang+2."
+    },
+    {
+      "abilityId": "ability:fidele-monture:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Fidèle monture",
+      "sourceSHA256": "ea83a97565aada69d19b82e654b1ff885db0640041e61307b841eaade748b5bd",
+      "summary": "Monture fidèle : à cheval, +10 m de déplacement avant/après une action normale ; n’attaque que si attaquée au contact. Équitation/dressage : tests +rang+2. Stats complètes en annexe."
+    },
+    {
+      "abilityId": "ability:armure-sur-mesure:classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Armure sur mesure",
+      "sourceSHA256": "7f5cb62b3906bbe34e1f388340bc640c843dc04841ac8f3b0c5148db02a544a5",
+      "summary": "Pénalités d’armure aux tests : ne compte que la moitié de sa DEF. En plaques : DEF +1 par voie de chevalier R5."
+    },
+    {
+      "abilityId": "ability:encaisser-un-coup-m:classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Encaisser un coup (M)",
+      "sourceSHA256": "181fc840a67a081962a3507164a43d5ebc852f5389383dbf6882be86f82c2050",
+      "summary": "Encaisser (M), jusqu’au prochain tour : sur une attaque au contact, retranche la DEF de l’armure aux DM (minimum 1). Pas d’étourdissement ni renversement par ce coup. Au R5, ajoute le bouclier."
+    },
+    {
+      "abilityId": "ability:ignorer-la-douleur-g:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Ignorer la douleur (G)",
+      "sourceSHA256": "bb0bc5539f1393bcd071804bd7935710f72714744b6d0255a57a8f4f2c2a869e",
+      "summary": "1/combat (G) : reporte après le combat les DM d’une attaque non critique. Haranguer/convaincre une foule d’au moins 15 personnes : tests +rang+2."
+    },
+    {
+      "abilityId": "ability:piqures-d-insectes:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Piqûres d’insectes",
+      "sourceSHA256": "3b63a771d8304dae219ec8df53ac749a1feed2865c7f00eea8fe0aad1aed0476",
+      "summary": "Contre les attaques à distance : RD 1 en cuir, 2 en mailles, 3 en plaques. Toute attaque inflige au moins 1 DM."
+    },
+    {
+      "abilityId": "ability:intercepter-g:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Intercepter (G)",
+      "sourceSHA256": "a8f79585d9c8509c36ce24a62fc2e3b4fefa1110150cee99ed08f26df232f0f6",
+      "summary": "1/round (G), à annoncer avant le résultat : intercepte pour un allié au contact. Utilise sa DEF et retranche rang aux DM ; cumul avec Piqûres d’insectes/Encaisser un coup."
+    },
+    {
+      "abilityId": "ability:ecuyer:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Écuyer",
+      "sourceSHA256": "674f1e007e94d9e91253cc9168cb61b1fba9e93ee1e715568a7a354cb7077ec5",
+      "summary": "Écuyer loyal : armes affûtées, critique au contact élargi de 1. Après récupération complète : +1d4° PV pour soi, monture et CHA alliés. Stats de l’écuyer en annexe ; remplaçable au niveau suivant."
+    },
+    {
+      "abilityId": "ability:proteger-un-allie-g:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Protéger un allié (G)",
+      "sourceSHA256": "48df5a3c9ee859a3c81c1923fecd0dd56312d1e40ae5c2a24167d6d08ccc7b95",
+      "summary": "Non surpris : DEF +2 à un allié au contact contre 1 attaque/round, à annoncer avant le résultat (G). Éviter la surprise : tests +rang+2."
+    },
+    {
+      "abilityId": "ability:parer-un-coup-m:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Parer un coup (M)",
+      "sourceSHA256": "58563c47c71947fca164fb328c42370d3fdafdf45ad8429f12cfbe50bf6ccfa8",
+      "summary": "Parade (M), avant le prochain tour : attaque contact (FOR ou AGI) opposée au jet adverse, contact/distance. Réussite : aucun DM, moitié si ennemi énorme/colossal. Au R5, option G avec dé malus, 1/round."
+    },
+    {
+      "abilityId": "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Armes de prédilection",
+      "sourceSHA256": "f1dd6243ce9b3da7d0cd8d5d0794e0c3c371dde8e8ca5cb416870e81bd035d2d",
+      "summary": "Choisit épées, haches, masses, lances ou armes de jet : attaque +1 avec cette catégorie. Estimer une arme ou la réputation martiale : tests +rang+2."
+    },
+    {
+      "abilityId": "ability:resilient:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Résilient",
+      "sourceSHA256": "fffa288f21c20fc58d2398b705c0612636eae5d92ceab8e9039232b1b41b3940",
+      "summary": "Récupération rapide en 10 min (5 min au R4). Résister aux états étourdi et affaibli : tests +rang."
+    },
+    {
+      "abilityId": "ability:teigneux-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Teigneux (G)",
+      "sourceSHA256": "962cba5dee552e4a98ced486a228e240d3fcd85a072bef5cbe3fcd9896c45201",
+      "summary": "1/round (G), attaque au contact contre une créature qui tente de s’éloigner. Résister à l’alcool, au manque de nourriture ou de sommeil : tests +rang+2."
+    },
+    {
+      "abilityId": "ability:prouesse-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Prouesse (G)",
+      "sourceSHA256": "611f0c129c85361f6cbc53c2f5f47b484187325af120beb22d86933d65a686c0",
+      "summary": "1/round (G), même après le résultat du test : sacrifie 1d4° PV pour +5 à un test de FOR ou de CON."
+    },
+    {
+      "abilityId": "ability:conjuration-de-predateur:classpath-voie-de-la-conjuration-class-invocateur-addon-compagnon-2024:r1",
+      "label": "Rang 1 — Conjuration de prédateur",
+      "sourceSHA256": "0c0104bf2bfe0b233c72620c3fa34ea6701759b5a1ae0c439c40a7f08a53cd8c",
+      "summary": "1/combat : conjure un prédateur au contact pendant 5+CHA rounds, jusqu’à 50 m du maître. Animal selon niveau effectif (table en annexe). Adaptation Forge COF2 non officielle."
+    },
+    {
+      "abilityId": "ability:invocation-d-une-entite:classpath-voie-de-l-entite-class-invocateur-addon-compagnon-2024:r1",
+      "label": "Rang 1 — Invocation d’une entité",
+      "sourceSHA256": "b86cdfa82542c9f94e626c8b3b998c16fdf649fc3895554d2cb9512b1ff88d55",
+      "summary": "Entité dévouée : DEF 12+AGI, PV 5×niveau, attaque niveau+FOR/AGI, DM 1d6+FOR. Répartit FOR/AGI 4 points et INT/PER/CHA 2 points, CON +2. Renvoi/0 PV : rappel après 12 h, soignée. Adaptation Forge ; détails en annexe."
+    },
+    {
+      "abilityId": "ability:familier:classpath-voie-du-familier-class-invocateur-addon-compagnon-2024:r1",
+      "label": "Rang 1 — Familier",
+      "sourceSHA256": "13d4234a9bff0e817b5f683bd0e06966780a0ccff0e8e94dcadbf3ccc928160f",
+      "summary": "Sens partagés et communication à distance illimitée ; familier en vue : Initiative +2. PV partagés, cible unique en zone. Peut éviter ses DM en le détruisant ; rappel après 24 h. Stats en annexe."
+    },
+    {
+      "abilityId": "ability:mutation-offensive:classpath-voie-des-mutations-class-invocateur-addon-compagnon-2024:r1",
+      "label": "Rang 1 — Mutation offensive",
+      "sourceSHA256": "08b6e5e6b63231504dcbe69866d14f1f1689e612fa17430eaa0cf94ff33633eb",
+      "summary": "Pendant 5+CHA rounds, appendice monstrueux : attaque (L), FOR +3 sur cette attaque ; 1d6+FOR DM, 2d6 au niveau 10. Dès R4, attaque en action A."
+    },
+    {
+      "abilityId": "ability:langage-des-animaux:classpath-voie-des-animaux-class-druide-cof2-lb-2024:r1",
+      "label": "Rang 1 — Langage des animaux",
+      "sourceSHA256": "a88edd19ea339cdec46e22694c95631e3161767dad67208e4da2eaf963d07745",
+      "summary": "Communique avec les mammifères selon leur intelligence ; les influencer : tests +rang+2. Une catégorie d’animaux supplémentaire à chaque voie de druide R4."
+    },
+    {
+      "abilityId": "ability:maitre-de-la-survie:classpath-voie-de-la-nature-class-druide-cof2-lb-2024:r1",
+      "label": "Rang 1 — Maître de la survie",
+      "sourceSHA256": "8b41525226498da7ded844b29872b3c8313ce4751c0fe0826a9969809c07c39d",
+      "summary": "Survie en nature, dont récupération nocturne : tests +rang+2. En dormant en nature, utiliser 1 DR soigne aussi 1d4° PV."
+    },
+    {
+      "abilityId": "ability:baies-magiques:classpath-voie-du-protecteur-class-druide-cof2-lb-2024:r1",
+      "label": "Rang 1 — Baies magiques (L)*",
+      "sourceSHA256": "bcbdc1a5d84c91c9ce5356466a9954032d453cb0d4f0c9503e7d7231d09009a5",
+      "summary": "Devant un végétal vivant : crée PER fruits, chacun nourrit et soigne 1d4°+rang PV après 1 min, 1 effet/jour/personnage. Vigilance et discrétion en nature : tests +rang+2."
+    },
+    {
+      "abilityId": "ability:peau-d-ecorce:classpath-voie-des-vegetaux-class-druide-cof2-lb-2024:r1",
+      "label": "Rang 1 — Peau d’écorce (M)*",
+      "sourceSHA256": "a18c7aa01929f21d647e996f7a1302ac91453ddb2c5bf442f7bdf61d76fa5b7d",
+      "summary": "DEF +2 pendant PER min (+1 aux R3/R5) ; pas de cumul avec armure métallique ni autre sort de DEF, sauf Masque du prédateur. Identifier les plantes et leurs propriétés : tests +rang+2."
+    },
+    {
+      "abilityId": "ability:foi:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:r1",
+      "label": "Rang 1 — Prédicateur",
+      "sourceSHA256": "de1ceef23c2d74fd0eb3a1523639308ef62c86ad064b210c3cf4756edcbba266",
+      "summary": "Convaincre/convertir : tests +rang+2. 1/jour, récupère 1 PC en convertissant ou en faisant suivre ses préceptes à une créature réticente."
+    },
+    {
+      "abilityId": "ability:guerre-sainte:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:r1",
+      "label": "Rang 1 — Arme bénie (A)*",
+      "sourceSHA256": "8227d4d3305f18f310209e12bf76a9bbbf8f86d2801d66f8c399e837201a1a7b",
+      "summary": "Arme bénie 24 h : DM magiques et relance chaque 1 du dé de DM (garde le second jet). La bénédiction cesse si une autre créature utilise l’arme."
+    },
+    {
+      "abilityId": "ability:priere:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:r1",
+      "label": "Rang 1 — Bénédiction (L)*",
+      "sourceSHA256": "2b5f8dd0a0e17742b0ab1103074c497b680f53e43e943c73618a241581d344cb",
+      "summary": "Prière : soi et alliés en vue, tests de caractéristique et d’attaque +1 pendant CHA min (+2 au R5). Théologie/cosmologie : tests +rang+2."
+    },
+    {
+      "abilityId": "ability:soins:classpath:voie-des-soins:class-pretre:cof2-lb-2024:r1",
+      "label": "Rang 1 — Récupération mineure (A)*",
+      "sourceSHA256": "821d6067a5b5594683d66883ddf78ccf12cbcbe0137f126700cebd2d81207c29",
+      "summary": "Au contact, soi/allié : soigne 1d4°+CHA PV. Usages/jour = rang, +1 par autre voie de prêtre R3. Médecine/premiers soins : tests +rang+2."
+    },
+    {
+      "abilityId": "ability:spiritualite:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:r1",
+      "label": "Rang 1 — Vêtements sacrés",
+      "sourceSHA256": "9c1ef2618e36368c7107e200d8e4e7ec5028dee18f0495a1d854cc4c8cd82c8a",
+      "summary": "Sans armure (bouclier permis) : DEF +2 (+3 R3/+4 R5) et dé bonus contre contrôle mental. Variante divinité guerrière : cotte de mailles autorisée avec capacités de prêtre ; hybride : chemise de mailles requise."
+    },
+    {
+      "abilityId": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+      "label": "Rang 1 — Projectile de mana (A)*",
+      "sourceSHA256": "069ddb38d555547bbd9255a6dbed1257b5b9b9814be76d55c392119a82b3d688",
+      "summary": "Cible visible à 30 m : 1d4° DM automatiques. Résultat maximal : relance une seule fois et ajoute le résultat. DM +1 par voie de magicien R4, au maximum +INT."
+    },
+    {
+      "abilityId": "ability:asphyxie:classpath-voie-de-la-magie-elementaire-class-magicien-cof2-lb-2024:r1",
+      "label": "Rang 1 — Asphyxie (A)*",
+      "sourceSHA256": "a23a6151253c021d10cbfc9e065c741e78dc070225ffe1816028503728427ea1",
+      "summary": "Attaque magique opposée à 20 m : 1d4° DM/round pendant INT rounds ; ignore les réductions de DM. Sans respiration : immunisé."
+    },
+    {
+      "abilityId": "ability:armure-de-mana:classpath-voie-de-la-magie-protectrice-class-magicien-cof2-lb-2024:r1",
+      "label": "Rang 1 — Armure de mana (M)*",
+      "sourceSHA256": "ef3fe409905bb9e2c4505457ef89033b3bf11a4b3f41236dda69f55121ef7946",
+      "summary": "Armure magique : DEF +3 pendant INT min, +4 au R3, puis +1 par voie de magicien/mage R5. Ne se cumule jamais avec une armure."
+    },
+    {
+      "abilityId": "ability:lumiere:classpath-voie-de-la-magie-universelle-class-magicien-cof2-lb-2024:r1",
+      "label": "Rang 1 — Lumière (L)*",
+      "sourceSHA256": "47c0a362f755344e6dd0c337aa46149adc9a8c25e4c0f398888074586e2d7ca0",
+      "summary": "Objet à 10 m : lumière rayon 10 m, INT h. 1/combat, cible NC ≤rang : attaque magique opposée pour aveugler 1 round."
+    },
+    {
+      "abilityId": "ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024",
+      "label": "Murmures dans le vent (G)*",
+      "sourceSHA256": "934660e75f9600807042bcd05dd5ba13d6534cce56edc50a4ae289cd47931c0e",
+      "summary": "Message d’environ 10 mots, cible connue ou visible à CHA×100 m ; réponse immédiate. Bonus permanents : Initiative +1, DEF +1."
+    },
+    {
+      "abilityId": "ability-r1-class-ensorceleur-divination-divination-cof2-lb-2024",
+      "label": "Divination (L)*",
+      "sourceSHA256": "8c75380e641a3c3ad4b597f1631cf2cead40f5bb8d6b37a616fb43dced114f4d",
+      "summary": "À 10 m, attaque magique opposée si NC <niveau : renseignements publics sur la cible. Volontaire, lignes de la main : sans test/limite NC. Init/DEF +1, +1 au R3 et par voie d’ensorceleur R5."
+    },
+    {
+      "abilityId": "ability-r1-class-ensorceleur-envouteur-injonction-cof2-lb-2024",
+      "label": "Injonction (A)*",
+      "sourceSHA256": "0451f9ae71255e1b215164b2441252f1d6ef1b20496612bf5ea029a6a49fa2f0",
+      "summary": "À 20 m, attaque magique opposée : ordre compréhensible de 2–3 mots, non suicidaire, exécuté au prochain tour. Persuasion/séduction : tests +rang+2."
+    },
+    {
+      "abilityId": "ability-r1-class-ensorceleur-illusions-mirage-cof2-lb-2024",
+      "label": "Mirage (L)*",
+      "sourceSHA256": "c49241122bee91593fa6cb0e85ee2fcefe6653fc325934e87e7d138382be0b51",
+      "summary": "À 50 m : illusion visuelle/sonore immobile, côté maximal 2 m×rang, CHA min. Au R4, animée mais durée en rounds. Supercherie/mensonge : tests +rang+2."
+    },
+    {
+      "abilityId": "ability-r1-class-ensorceleur-invocation-choc-cof2-lb-2024",
+      "label": "Choc (A)*",
+      "sourceSHA256": "ae0b39702a6df9493aed578bd05aca90928ee66794ad89ffd4e071d70ca57b7a",
+      "summary": "À 20 m, attaque magique contre DEF : 1d4°+CHA DM. Si NC cible <rang : FOR difficulté 10 ou renversée."
+    },
+    {
+      "abilityId": "ability-r1-class-psionique-attaque-mentale-attaque-mentale-addon-compagnon-2024",
+      "label": "Rang 1 — Attaque mentale",
+      "sourceSHA256": "03eba2516d95135ab74a6ce85662f1f0a823f93254bc62c0cfb80603f0663a33",
+      "summary": "À 50 m, attaque magique : 1d6+CHA DM (2d6 R3, 3d6 R5). Peut infliger des DM temporaires en remplaçant les d6 par des d4."
+    },
+    {
+      "abilityId": "ability-r1-class-psionique-perception-perception-extra-sensorielle-addon-compagnon-2024",
+      "label": "Rang 1 — Perception extra-sensorielle",
+      "sourceSHA256": "b1957f393f20e44c56b16bc8e2738056ea9d652e10ca22706a57ea9ddfa9a838",
+      "summary": "Perception et Initiative : +1/rang. Ce bonus ne s’applique pas aux tests demandés par les autres capacités de cette voie."
+    },
+    {
+      "abilityId": "ability-r1-class-psionique-telekinesie-manipulation-a-distance-addon-compagnon-2024",
+      "label": "Rang 1 — Manipulation à distance",
+      "sourceSHA256": "6f02a469b7d30e0e68346c4e829ef4b3965a8b7d33946f554acaeb3222f4a9c1",
+      "summary": "À 20 m : manipule avec AGI = PER, FOR = CHA, déplacement 10 m/round. Arme à distance : attaque magique, DM +CHA ; action L, puis A au R3 et M au R5."
+    },
+    {
+      "abilityId": "ability:sous-tension:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Sous tension (M)*",
+      "sourceSHA256": "0285d881e205930e1865589a94cdf784b07fcf871887349114015c48ba631bb1",
+      "summary": "CHA min : toute créature qui touche ou blesse au contact reçoit 1d4° DM. À chaque round (A) : attaque magique contre DEF à 10 m, décharge de 1d4°+CHA DM."
+    },
+    {
+      "abilityId": "ability:detection-invisible:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Détection de l’invisible (L)*",
+      "sourceSHA256": "ae816a0254a857650139f20ef449f57e092ae994ed0b35a562fe05553f96f470",
+      "summary": "Pendant CHA min : détecte créatures invisibles/cachées à 20 m et Clairvoyance. Aveuglé, peut attaquer les créatures sans malus, mais ne distingue pas le décor."
+    },
+    {
+      "abilityId": "ability:sommeil:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Sommeil (L)*",
+      "sourceSHA256": "88b9108cb874b6b6869308675daa7a3d8e391e90fd776abb169798fb6b0e9a8a",
+      "summary": "1/combat, zone diamètre 10 m à 20 m : endort jusqu’à 1d4°+CHA créatures vivantes, NC <1 (R4 : <2 ; R5 : <3), pendant CHA min. Réveil : attaque infligeant 1 DM."
+    },
+    {
+      "abilityId": "ability:saper-les-forces-a:classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Saper les forces (A)*",
+      "sourceSHA256": "f58c515538db39db3969c365488937aad920e58ae687004b6bd2fcc01b46a8b0",
+      "summary": "Cible vivante à 10 m, attaque magique opposée : FOR, attaque contact et DM −2 jusqu’à fin du combat. Non cumulable sur une même cible."
+    },
+    {
+      "abilityId": "ability:maitrise-des-elements-m:classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Maîtrise des éléments (M)*",
+      "sourceSHA256": "d7aca81578dfce6e114776a6aeb3b4f970d60c52e4945c9c18963585e088fb0a",
+      "summary": "Pendant INT min : réduit de rang+2 les DM de feu, froid, électricité et acide subis ; peut échanger ces éléments dans ses propres sorts."
+    },
+    {
+      "abilityId": "ability:chute-ralentie-g:classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Chute ralentie (G)*",
+      "sourceSHA256": "e9c700acbf5c55fbef95a8b8d942c1e7a6adc6aad7acaddaf1e241bdce63f8f7",
+      "summary": "Jusqu’à INT cibles à 10 m, même hors tour : chute sans DM. Chute inattendue : INT difficulté 15 par compagnon, réussite automatique sur soi."
+    },
+    {
+      "abilityId": "ability:familier-a:classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Familier (A)*",
+      "sourceSHA256": "f4236f33f766ec50166edecffe914b2436186c49db0ca047ab1859eb6b9898eb",
+      "summary": "Sens/communication illimités ; familier en vue : Initiative et DEF +2. À 0 PV : disparaît, maître perd 1d4° PV ; rappel après récupération complète. PV = niveau, stats en annexe."
+    },
+    {
+      "abilityId": "ability:arcanes-exhumed:r1:fix77",
+      "label": "Message magique (L)*",
+      "sourceSHA256": "492e54623e4d097d134757f5a6f6cd2e839128dfa9a17bfba198764ebb82ffcc",
+      "summary": "Surface touchée, 24 h : une créature à 5 m déclenche un message de niveau+5 mots maximum. Permanent : lancé au R4 (4 PM), gemme 200 pa."
+    },
+    {
+      "abilityId": "ability:arcanes-exhumed:r2:fix77",
+      "label": "Toiles (L)*",
+      "sourceSHA256": "072c8c2f5acbc8fbe4d1a56e46dcd5c49db31746aa27de83721283f9cbd9ab87",
+      "summary": "Toile, diamètre 5 m à 10 m, INT rounds : immobilise les ennemis, pas les alliés. Se libérer (A) : FOR 10+INT ; réussite, immunité pour ce combat. Feu : détruit la toile et inflige 1d6 DM."
+    },
+    {
+      "abilityId": "ability:arcanes-lost:r1:fix77",
+      "label": "Disque de transport (L)*",
+      "sourceSHA256": "b258b9494ddb133201ae4176b1ccb75bbf499e8279f710d087210ffd86cbaefc",
+      "summary": "Disque à 0–10 m, INT h : porte niveau×20 kg, au plus une créature M. Peut porter le mage s’il supporte son poids : déplacement horizontal 5 m/action M."
+    },
+    {
+      "abilityId": "ability:arcanes-dark:r2:fix77",
+      "label": "Tentation du démon (A)*",
+      "sourceSHA256": "c8050f76d6f51b2d87972638828ac6c61db1a3da6b553c27f078e66937552aa1",
+      "summary": "1/cible/combat : attaque magique sur vivant à 10 m ; fantasme à 20 m, cible cesse d’agir, approche et PER −10 durant INT rounds (1 si NC >niveau). Se brise si cible attaquée."
+    },
+    {
+      "abilityId": "ability:foh81:invocateur:voie-de-l-entite:r2",
+      "label": "Rang 2 — Lien magique",
+      "sourceSHA256": "fd92e4098ac5e5e920943a32345e9390d352db022ca2d7f2dc52926869031833",
+      "summary": "Télépathie illimitée avec l’entité ; sacrifie ses PV pour absorber ses DM. Ses propres DM peuvent être transférés à l’entité mais sont doublés. L’entité peut toucher les cibles protégées des invocations."
+    },
+    {
+      "abilityId": "ability:foh81:invocateur:voie-des-mutations:r2",
+      "label": "Rang 2 — Mutation protectrice",
+      "sourceSHA256": "7f5f32e5a71c5517a2cad05b545cefb69e403a5f9329daf333810fe658345554",
+      "summary": "5+CHA min, une mutation sans cumul : DEF +rang ; feu/acide ÷2 ; froid/foudre ÷2 ; respiration aquatique ; immunité poison ou maladies. Choisit une option à chaque lancement."
+    },
+    {
+      "abilityId": "ability:foh81:invocateur:voie-des-portes:r2",
+      "label": "Rang 2 — Porte artificielle",
+      "sourceSHA256": "4829b9f8115549566d8f0a18fd3a58b3cd7eeb06de2bdc3521d11cfecf66c46a",
+      "summary": "Porte temporaire dans un mur maçonné non magique de moins de 1 m d’épaisseur ; s’ouvre/se ferme normalement pendant 5+CHA rounds."
+    },
+    {
+      "abilityId": "ability:foh81:samourai:voie-du-sabre:r2",
+      "label": "Rang 2 — Frappe du vide",
+      "sourceSHA256": "dc3222175a4ce2112b9e4526c7f5d8f955c1cf56a0053df8f0aa7f09f0c03a75",
+      "summary": "Première attaque contact, sabre au fourreau : attaque +2, DM +1d6. Dégainer devient une action gratuite."
+    },
+    {
+      "abilityId": "ability:foh81:psionique:voie-de-la-telepathie:r2",
+      "label": "Rang 2 — Radar mental",
+      "sourceSHA256": "b82c406d64d9bbc444e4802b41066418f49fb6a1089c5b16a2a31d6921205fd4",
+      "summary": "Détecter un être vivant : tests de PER +2/rang. Au contact, pas de malus pour l’attaquer aveuglé ou s’il est invisible. Dès R4, évalue sommairement sa santé."
+    },
+    {
+      "abilityId": "ability:reference:classpath:voie-des-animaux:class-druide:cof2-lb-2024:rank2",
+      "label": "Petit compagnon",
+      "sourceSHA256": "c95bdd063423937f79fccc7cbf8d0452e2f33df83dfeffd49c5c00de4b8f3c22",
+      "summary": "Sens/communication illimités ; familier en vue : DEF +2, non cumulable avec Familier du magicien. PV 2×niveau. À 0 PV : revient après 24 h ; mort : maître perd 1d4° PV, remplacement au niveau suivant."
+    },
+    {
+      "abilityId": "ability:reference:classpath:voie-du-fauve:class-druide:cof2-lb-2024:rank2",
+      "label": "Panthère",
+      "sourceSHA256": "8dbf73f440d3a0c57b9bb9b1c528843e5e92593e6cb7ae99bfe14a61a9cf3137",
+      "summary": "Panthère/puma obéissant : DEF 13+rang ; PV 4×niveau ; Init du maître ; attaque = attaque magique ; DM 1d4+2. À 0 PV en nature, fuit et revient après 8 h ; morte, remplacement au niveau suivant."
+    },
+    {
+      "abilityId": "ability:reference:classpath:voie-du-protecteur:class-druide:cof2-lb-2024:rank2",
+      "label": "Forêt vivante*",
+      "sourceSHA256": "a73ea9ac0b6efd167802a873e0fa611f6b9b1647246b8775bc8db1407a5e300a",
+      "summary": "1/jour, rituel 30 min : forêt alliée, rayon 1 km×rang, 24 h. Ennemis : mouvement ÷2 et dé malus en survie, orientation, perception et discrétion. Conflit entre druides : plus haut niveau prioritaire."
+    },
+    {
+      "abilityId": "ability:reference:classpath:voie-des-vegetaux:class-druide:cof2-lb-2024:rank2",
+      "label": "Prison végétale (L)*",
+      "sourceSHA256": "93b7368f59793d61920b18ba981a13de5c9ba463d086e075f8a8086f1108d169",
+      "summary": "Végétation, diamètre 10 m à 20 m, PER min : immobilise ennemis, pas alliés. Se libérer (A) : FOR 10+PER ; réussite, immunité au sort pour ce combat."
+    },
+    {
+      "abilityId": "ability:reference:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:rank2",
+      "label": "Miracle mineur (A)*",
+      "sourceSHA256": "4daa1602174e7c3f0aa88dbbe23a83f9089861cab6b06f15e83f109a65634a75",
+      "summary": "Petit miracle : purifie eau/nourriture (sans création), guérit maladie bénigne ou apaise douleur ; majeure, 1 round. Sur une créature à 0 PV : rend 1d4° PV."
+    },
+    {
+      "abilityId": "ability:reference:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:rank2",
+      "label": "Bouclier de la foi",
+      "sourceSHA256": "940e59f73cedaa433fbd5dd3d56a14ea4ea9aab6c40eb09f50d75e0a0d94c2d5",
+      "summary": "Bouclier personnel portant le symbole de la foi : DEF +1, puis +2 au R5. Aucun bénéfice pour un autre porteur."
+    },
+    {
+      "abilityId": "ability:reference:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:rank2",
+      "label": "Sanctuaire (L)*",
+      "sourceSHA256": "122a0274b0d7bd1ee725649ca69928e5ace1f5de0cd47ff1063be1f671e44fdc",
+      "summary": "1 min : pour attaquer le prêtre, INT 10+CHA, sinon interdit ; niveau <moitié de celui du prêtre, sans test. Action offensive du prêtre : fin immédiate, récupération rapide avant relance."
+    },
+    {
+      "abilityId": "ability:reference:classpath:voie-des-soins:class-pretre:cof2-lb-2024:rank2",
+      "label": "Vigueur divine (L)*",
+      "sourceSHA256": "b1fde6f976e9edd6927bce2caa6096d636f0a893e73901d0445cfb1d6102c254",
+      "summary": "Au contact : guérit poison/maladie ; infection surnaturelle, test d’attaque magique selon MJ. Résister aux maladies et poisons : tests +rang+2."
+    },
+    {
+      "abilityId": "ability:reference:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:rank2",
+      "label": "Augure (L)*",
+      "sourceSHA256": "da04caac88bf926f6d51f4e9c7ff66d39926dd13e2489251a999693d8bcd650f",
+      "summary": "CHA difficulté 10 : le MJ annonce les conséquences d’une action (bénéfique, incertain, risqué ou préjudiciable)."
+    },
+    {
+      "abilityId": "ability:corruption:r2:fix77",
+      "label": "Poison (A)",
+      "sourceSHA256": "b0123858843a5ff12855341af47a9f147683cfe46576fc2e15bd264869de75f1",
+      "summary": "Attaque contact : 1d4° DM poison ; CON 10+CHA ou affaibli 1 round (jusqu’à récupération rapide si NC <rang). Non-vivants immunisés."
+    },
+    {
+      "abilityId": "ability:petite-taille:path:voie-du-halfelin:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Petite taille",
+      "sourceSHA256": "26c1271ae47b1b6748638e81ff49e876a8ea58f42a0a155c847c9d452d70695b",
+      "summary": "DEF +1 ; discrétion/subtilisation +3. Armes : d6 maximum à une main, d8–d10 à deux mains ; >d10, arc long et arbalète lourde interdits."
+    },
+    {
+      "abilityId": "ability:don-trange:path:voie-du-gnome:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Don étrange",
+      "sourceSHA256": "ceb8912b2e0aa81b51284e9fed393a4e676fcc70f9134b3c30f72d8117751958",
+      "summary": "Sciences (INT) +3 ; capacité d’ensorceleur R1 au choix. En armure : sort limité à 1/jour, coût PM normal. Vision nocturne 10 m comme en pénombre."
+    },
+    {
+      "abilityId": "ability:violence-cibl-e:path:voie-du-demi-ogre:addon-comp2017-cof2:rank2:cof2-lb-2024",
+      "label": "Violence ciblée",
+      "sourceSHA256": "50908e457826670d32562e7db8b1f907e04b27be76c51dea9744cf0a7183e4bc",
+      "summary": "Résiste à une Réaction violente : gagne 1 point de violence. Même jour (G), le dépense pour une réaction de 1d4 rounds contre une cible choisie. Provocation volontaire d’un allié : aucun point."
+    },
+    {
+      "abilityId": "ability:jeune-worg:path:voie-du-gobelin:addon-comp2017-cof2:rank2:cof2-lb-2024",
+      "label": "Jeune worg",
+      "sourceSHA256": "9527d817e02109d1af9a5a7baad24b82f50de772f9fe7c41c2ebcea08923b05c",
+      "summary": "Worg montable : pas de pénalité pour le cavalier ; ordonner l’attaque coûte M, seconde action pour déplacement 20 m ou attaque personnelle. DEF 14 ; PV 4×niveau ; attaque +niveau ; DM 1d6+1."
+    }
+  ],
+  "directPDFSpotChecks": {
+    "file": "COF2_01_Livre_de_base_web_v1.pdf",
+    "sha256": "997f2e784a4bcd69c64f9f1bd38f13fc57a003d8ea48cdf15a2577aeab0d9fae",
+    "printedPages": [
+      55,
+      62,
+      64,
+      65,
+      66,
+      80,
+      85,
+      104,
+      105
+    ],
+    "method": "Text extraction read for named capacities; authoring primarily from full stored descriptions. This is not a new independent full-PDF transcription audit."
+  }
+}

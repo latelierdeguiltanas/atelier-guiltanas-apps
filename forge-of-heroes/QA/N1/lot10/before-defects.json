@@ -1,0 +1,82 @@
+{
+  "baseline": "6b2aac296f799c2bdc894a1d1a8b492f18e9892f",
+  "cases": [
+    {
+      "name": "chevalier INT -1",
+      "expected": "Valid source-conforming educated character",
+      "errors": [
+        "Langues : nombre de choix supérieur à l’INT disponible."
+      ]
+    },
+    {
+      "name": "samourai INT -1",
+      "expected": "Valid source-conforming educated character",
+      "errors": [
+        "Rang 1 — Éduqué : choix obligatoire manquant."
+      ],
+      "languages": {
+        "automatic": [
+          "commun"
+        ],
+        "choicesAllowed": [
+          "sylvestre",
+          "runique",
+          "noir-parle",
+          "draconique",
+          "abyssal",
+          "celestien",
+          "argotien",
+          "profond",
+          "aquarien"
+        ],
+        "selected": [],
+        "literacy": "illiterate",
+        "remainingSlots": 0
+      }
+    },
+    {
+      "name": "no-profile voie-de-la-brute",
+      "expected": {
+        "PV": 13,
+        "PC": 2
+      },
+      "actual": {
+        "PV": 11,
+        "PC": 1
+      }
+    },
+    {
+      "name": "no-profile voie-du-pagne",
+      "expected": {
+        "PV": 12,
+        "PC": 2
+      },
+      "actual": {
+        "PV": 11,
+        "PC": 1
+      }
+    },
+    {
+      "name": "no-profile voie-du-primitif",
+      "expected": {
+        "PV": 12,
+        "PC": 2
+      },
+      "actual": {
+        "PV": 11,
+        "PC": 1
+      }
+    },
+    {
+      "name": "no-profile voie-de-la-resistance",
+      "expected": {
+        "PV": 14,
+        "PC": 2
+      },
+      "actual": {
+        "PV": 11,
+        "PC": 1
+      }
+    }
+  ]
+}

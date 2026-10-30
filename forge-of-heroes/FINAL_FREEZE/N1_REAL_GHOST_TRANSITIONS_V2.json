@@ -195,8 +195,8 @@
         }
       ],
       "unexpectedResiduals": [],
-      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
-      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "transitionedMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
+      "freshMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
       "status": "PASS"
     },
     {
@@ -226,19 +226,25 @@
               "label": "Épée longue",
               "type": "contact",
               "attackBonus": 3,
+              "attackCharacteristic": "for",
+              "damageCharacteristic": "for",
               "damage": "1d8+2",
               "damageType": "physical",
               "rangeMeters": null,
               "hands": 1,
               "properties": [],
               "mastered": true,
-              "conditionalBonuses": []
+              "conditionalBonuses": [],
+              "criticalThreshold": 20,
+              "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
             },
             {
               "weaponId": "weapon:great-sword",
               "label": "Épée à deux mains",
               "type": "contact",
               "attackBonus": 3,
+              "attackCharacteristic": "for",
+              "damageCharacteristic": "for",
               "damage": "2d6+2",
               "damageType": "physical",
               "rangeMeters": null,
@@ -247,13 +253,17 @@
                 "two_handed"
               ],
               "mastered": true,
-              "conditionalBonuses": []
+              "conditionalBonuses": [],
+              "criticalThreshold": 20,
+              "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
             },
             {
               "weaponId": "weapon:dagger",
-              "label": "Dague",
+              "label": "Dague (contact)",
               "type": "contact",
               "attackBonus": 3,
+              "attackCharacteristic": "for",
+              "damageCharacteristic": "for",
               "damage": "1d4+2",
               "damageType": "physical",
               "rangeMeters": null,
@@ -262,13 +272,17 @@
                 "light"
               ],
               "mastered": true,
-              "conditionalBonuses": []
+              "conditionalBonuses": [],
+              "criticalThreshold": 20,
+              "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
             },
             {
               "weaponId": "weapon:dagger",
-              "label": "Dague",
+              "label": "Dague (distance)",
               "type": "distance",
               "attackBonus": 2,
+              "attackCharacteristic": "agi",
+              "damageCharacteristic": null,
               "damage": "1d4",
               "damageType": "physical",
               "rangeMeters": 5,
@@ -277,7 +291,9 @@
                 "light"
               ],
               "mastered": true,
-              "conditionalBonuses": []
+              "conditionalBonuses": [],
+              "criticalThreshold": 20,
+              "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
             }
           ],
           "fresh": [
@@ -286,19 +302,25 @@
               "label": "Épée longue",
               "type": "contact",
               "attackBonus": 3,
+              "attackCharacteristic": "for",
+              "damageCharacteristic": "for",
               "damage": "1d8+2",
               "damageType": "physical",
               "rangeMeters": null,
               "hands": 1,
               "properties": [],
               "mastered": true,
-              "conditionalBonuses": []
+              "conditionalBonuses": [],
+              "criticalThreshold": 20,
+              "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
             },
             {
               "weaponId": "weapon:great-sword",
               "label": "Épée à deux mains",
               "type": "contact",
               "attackBonus": 3,
+              "attackCharacteristic": "for",
+              "damageCharacteristic": "for",
               "damage": "2d6+2",
               "damageType": "physical",
               "rangeMeters": null,
@@ -307,13 +329,17 @@
                 "two_handed"
               ],
               "mastered": true,
-              "conditionalBonuses": []
+              "conditionalBonuses": [],
+              "criticalThreshold": 20,
+              "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
             },
             {
               "weaponId": "weapon:dagger",
-              "label": "Dague",
+              "label": "Dague (contact)",
               "type": "contact",
               "attackBonus": 3,
+              "attackCharacteristic": "for",
+              "damageCharacteristic": "for",
               "damage": "1d4+2",
               "damageType": "physical",
               "rangeMeters": null,
@@ -322,13 +348,17 @@
                 "light"
               ],
               "mastered": true,
-              "conditionalBonuses": []
+              "conditionalBonuses": [],
+              "criticalThreshold": 20,
+              "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
             },
             {
               "weaponId": "weapon:dagger",
-              "label": "Dague",
+              "label": "Dague (distance)",
               "type": "distance",
               "attackBonus": 2,
+              "attackCharacteristic": "agi",
+              "damageCharacteristic": null,
               "damage": "1d4",
               "damageType": "physical",
               "rangeMeters": 5,
@@ -337,15 +367,17 @@
                 "light"
               ],
               "mastered": true,
-              "conditionalBonuses": []
+              "conditionalBonuses": [],
+              "criticalThreshold": 20,
+              "damageCalculationStatus": "RESOLVED_WITHOUT_DICE_ROLL"
             }
           ],
           "removed": true
         }
       ],
       "unexpectedResiduals": [],
-      "transitionedMechanicalHash": "a092a0aee32399cdb9e8ccec53df58619b02913a4e5c55309289d04aea248511",
-      "freshMechanicalHash": "a092a0aee32399cdb9e8ccec53df58619b02913a4e5c55309289d04aea248511",
+      "transitionedMechanicalHash": "dcbe66d04d716a8286638600d0242faa310c9559833c7932544a7f4bcef8eba3",
+      "freshMechanicalHash": "dcbe66d04d716a8286638600d0242faa310c9559833c7932544a7f4bcef8eba3",
       "status": "PASS"
     },
     {
@@ -375,8 +407,8 @@
         }
       ],
       "unexpectedResiduals": [],
-      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
-      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "transitionedMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
+      "freshMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
       "status": "PASS"
     },
     {
@@ -412,8 +444,8 @@
         }
       ],
       "unexpectedResiduals": [],
-      "transitionedMechanicalHash": "a092a0aee32399cdb9e8ccec53df58619b02913a4e5c55309289d04aea248511",
-      "freshMechanicalHash": "a092a0aee32399cdb9e8ccec53df58619b02913a4e5c55309289d04aea248511",
+      "transitionedMechanicalHash": "dcbe66d04d716a8286638600d0242faa310c9559833c7932544a7f4bcef8eba3",
+      "freshMechanicalHash": "dcbe66d04d716a8286638600d0242faa310c9559833c7932544a7f4bcef8eba3",
       "status": "PASS"
     },
     {
@@ -450,8 +482,8 @@
         }
       ],
       "unexpectedResiduals": [],
-      "transitionedMechanicalHash": "52bf3ac5e2aefe1c88335ddc5ad611864d5854097c6276cfadfbf674892962c9",
-      "freshMechanicalHash": "52bf3ac5e2aefe1c88335ddc5ad611864d5854097c6276cfadfbf674892962c9",
+      "transitionedMechanicalHash": "de3d3f3f1a51f43d84dcc1daf78806e53b3f1e24079823ccaeeb4a7f311580ca",
+      "freshMechanicalHash": "de3d3f3f1a51f43d84dcc1daf78806e53b3f1e24079823ccaeeb4a7f311580ca",
       "status": "PASS"
     },
     {
@@ -474,8 +506,8 @@
         }
       ],
       "unexpectedResiduals": [],
-      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
-      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "transitionedMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
+      "freshMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
       "status": "PASS"
     },
     {
@@ -498,8 +530,8 @@
         }
       ],
       "unexpectedResiduals": [],
-      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
-      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "transitionedMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
+      "freshMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
       "status": "PASS"
     },
     {
@@ -520,8 +552,8 @@
         }
       ],
       "unexpectedResiduals": [],
-      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
-      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "transitionedMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
+      "freshMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
       "status": "PASS"
     },
     {
@@ -581,14 +613,60 @@
         },
         {
           "path": "skillBonuses",
-          "transitioned": [],
-          "fresh": [],
+          "transitioned": [
+            {
+              "sourceAbilityId": "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+              "tests": [
+                "stealth",
+                "disguise",
+                "hide_weapon"
+              ],
+              "value": 3,
+              "scope": "self"
+            },
+            {
+              "sourceAbilityId": "ability:baratin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+              "tests": [
+                "bluff",
+                "seduce",
+                "negotiate",
+                "lie",
+                "black_market"
+              ],
+              "value": 3,
+              "scope": "self"
+            }
+          ],
+          "fresh": [
+            {
+              "sourceAbilityId": "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+              "tests": [
+                "stealth",
+                "disguise",
+                "hide_weapon"
+              ],
+              "value": 3,
+              "scope": "self"
+            },
+            {
+              "sourceAbilityId": "ability:baratin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+              "tests": [
+                "bluff",
+                "seduce",
+                "negotiate",
+                "lie",
+                "black_market"
+              ],
+              "value": 3,
+              "scope": "self"
+            }
+          ],
           "removed": true
         }
       ],
       "unexpectedResiduals": [],
-      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
-      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "transitionedMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
+      "freshMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
       "status": "PASS"
     },
     {
@@ -609,8 +687,8 @@
         }
       ],
       "unexpectedResiduals": [],
-      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
-      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "transitionedMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
+      "freshMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
       "status": "PASS"
     },
     {
@@ -631,8 +709,8 @@
         }
       ],
       "unexpectedResiduals": [],
-      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
-      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "transitionedMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
+      "freshMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
       "status": "PASS"
     },
     {
@@ -655,8 +733,8 @@
         }
       ],
       "unexpectedResiduals": [],
-      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
-      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "transitionedMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
+      "freshMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
       "status": "PASS"
     },
     {
@@ -679,13 +757,12 @@
         }
       ],
       "unexpectedResiduals": [],
-      "transitionedMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
-      "freshMechanicalHash": "627f2f4da1adc287763b514096561b022cb6e5b52849e1d7d10ca163e07950fe",
+      "transitionedMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
+      "freshMechanicalHash": "db328ca7d14a1823b7e54aaeb460dbad18b3fe8188f36b14919e5f1666098c45",
       "status": "PASS"
     }
   ],
   "passed": 13,
   "total": 13,
-  "status": "PASS",
-  "finalProductSha": "565cc873e6429ce524fcea371d0a3fe11fe5ab96e6757e4177d4f7d8433b5559"
+  "status": "PASS"
 }

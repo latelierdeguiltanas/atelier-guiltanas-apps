@@ -35,13 +35,16 @@
       "category": "PEOPLE",
       "EXPECTED_CHANGED_PATHS": [
         "peopleId",
-        "characteristics"
+        "characteristics",
+        "passiveFeatures"
       ],
       "EXPECTED_UNCHANGED_PATHS": [
         "profileId"
       ],
       "EXPECTED_VALUES_AFTER": {
-        "peopleId": "people:elfe-haut:cof2-lb-2024"
+        "peopleId": "people:elfe-haut:cof2-lb-2024",
+        "passiveFeatures.0.kind": "vision",
+        "passiveFeatures.0.condition": "nuit sous la lumière des étoiles"
       },
       "OPTIONAL_ALLOWED_CHANGES": [
         "familyId",
@@ -86,13 +89,16 @@
       "category": "PEOPLE",
       "EXPECTED_CHANGED_PATHS": [
         "peopleId",
-        "characteristics"
+        "characteristics",
+        "passiveFeatures"
       ],
       "EXPECTED_UNCHANGED_PATHS": [
         "profileId"
       ],
       "EXPECTED_VALUES_AFTER": {
-        "peopleId": "people:nain:cof2-lb-2024"
+        "peopleId": "people:nain:cof2-lb-2024",
+        "passiveFeatures.0.kind": "vision",
+        "passiveFeatures.0.meters": 30
       },
       "OPTIONAL_ALLOWED_CHANGES": [
         "familyId",
@@ -137,13 +143,16 @@
       "category": "PEOPLE",
       "EXPECTED_CHANGED_PATHS": [
         "peopleId",
-        "characteristics"
+        "characteristics",
+        "passiveFeatures"
       ],
       "EXPECTED_UNCHANGED_PATHS": [
         "profileId"
       ],
       "EXPECTED_VALUES_AFTER": {
-        "peopleId": "people:demi-orc:cof2-lb-2024"
+        "peopleId": "people:demi-orc:cof2-lb-2024",
+        "passiveFeatures.0.kind": "vision",
+        "passiveFeatures.0.meters": 30
       },
       "OPTIONAL_ALLOWED_CHANGES": [
         "familyId",

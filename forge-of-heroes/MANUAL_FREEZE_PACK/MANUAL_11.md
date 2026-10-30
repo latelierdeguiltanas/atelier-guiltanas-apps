@@ -21,7 +21,8 @@ Créer un héros sans aucun profil caché avec deux voies de provenances différ
 - Budget total : 0.
 - Points dépensés : 0.
 - Points restants : 0.
-- PV 9; DEF 13; INIT 11; PC 2; PM 0.
+- PC : 2 de base −1 CHA +1 aventurier +1 humain = 3 (Livre de base pp.30–31,57 ; sans profil : Règles avancées p.154).
+- PV 9; DEF 13; INIT 11; PC 3; PM 0.
 - Attaques : Rapière +3 / 1d6+2 ; Dague +3 / 1d4+2 ; Dague +2 / 1d4 ; Dague +3 / 1d4+2 ; Dague +2 / 1d4 ; Dague +3 / 1d4+2 ; Dague +2 / 1d4 ; Dague +3 / 1d4+2 ; Dague +2 / 1d4 ; Dague +3 / 1d4+2 ; Dague +2 / 1d4.
 - Choix persistants : {"ability":{},"creation":{}}.
 

@@ -1,3 +1,42 @@
+## Jalon ciblé du 30 octobre 2026 — tests PASS, publication en préparation
+
+176 plans N3 depuis les six vrais carnets N2, 420 créations de halfelin sorcier/moine et 54 520 passages N2 : PASS. Scanlan DEF à R3 et Prépotante DM de dagues à R3 corrigés ; choix de monture et de chargeurs ajoutés. Version native 3 corrige les mains nues sans Poings de fer et conserve les traits de création. Douze PDF officiels ciblés passent. Lire QA/N3/lot2/README.md pour les conditions précises. Publication client/serveur et contrôle de parité restent à terminer ; aucun niveau réel attribué. N1 global demeure ouvert.
+
+## Intervention ciblée — halfelin sorcier/moine N2 et six carnets réels N3 — EN COURS
+
+Les six carnets serveur ont été relus, tous N2 ; validation de leur historique actuel PASS. Audit indépendant de toutes les options N3 et des combinaisons N2 du halfelin en cours. Deux choix manquants repérés : monture féerique terrestre/volante et armes à chargeur. Aucun carnet réel modifié.
+
+## Jalon du relais — 30 octobre 2026 — vérifications terminées, N1 encore ouvert
+
+- Branche sauvegardée, PR #3 vers qa/forge-n1-certification. Base du relais publiée : 6b3cb24.
+- Matrice complète : 179 120 tentatives, 159 290 acceptées, 19 830 refus, zéro échec ; 27 familles revues et contreparties légales rejouées.
+- 37/37 régressions PASS. Les trois contrats PEOPLE ont été enrichis avec les traits de vision attendus (genre, portée/condition), sans relâcher les chiffres ; 53/53 transitions et ABA, 13/13 fantômes, 14/14 motifs et 10/10 anti-faux-vert passent.
+- Oracle R1 : 7 600 tentatives, 7 480 créations, 120 refus attendus. Extension R2 : 7 140 paires, 7 020 créations et 120 refus ; première exécution complète puis correction des fixtures Artilleur sans arme et rejeu ciblé 168 cas, sans changement de moteur. Preuves avant/après conservées.
+- PDF sans profil : retrait des voies techniques non choisies ; 12 exports natifs/partagés passent et rendu inspecté. Six exports N3, 156 plans N3 Bastide, 150 hybrides sorcier/moine → N2 et choix de poings passent en simulations. Aucun PJ réel modifié.
+- Tous les contrôles automatiques du statut passent ; cela ne ferme pas les réserves universelles : contextes/choix d’équipement et d’âge au-delà de ces oracles, parcours hybrides/sans profil/options au clic et Android, création volontaire sans voie absente. Ne pas annoncer certification générale ni déploiement main/service à partir de la PR.
+- Prochaine action : fermer ces réserves par couverture source et parcours ciblés, puis intégrer. Les urgences N3 et sorcier/moine restent autorisées en parallèle ; aucun choix futur des joueurs ne doit être imposé.
+
+## Relais du 30 octobre 2026 — lot 10 récupéré, vérification en cours
+
+Correctifs non publiés du précédent chat retrouvés et réunis : oracle N1, langues, familier, peuples R1/R2, résumés PDF, choix du moine en progression. Rejeu actuel : 60 cas peuples/60 sauvegardes/50 retraits, 72 cas langues, 6 contextes familier, 8 variantes moine, 156 plans N3 et six parcours UI/serveur simulés PASS. Oracle 7 600 et campagne générale en cours. Aucun PJ réel modifié, pas de certification universelle ni de recette Android annoncée.
+
+## Jalon du 30 octobre 2026 — correctifs intégrés, publication en attente
+
+- Lots intégrés : langues Chevalier/Samouraï, PV/PC sans profil, maîtrise petits boucliers, familier conditionnel ; 7 600 essais numériques indépendants (7 480 créations / 120 refus attendus).
+- PDF : 210 résumés R1/R2 relus, 96 complétés ; identité hybride, idéal/travers et purge du modèle déjà rempli. Douze vrais exports natifs/partagés : champs/widgets/AP contrôlés et pages officielles sorcier/moine rendues. Aucun PDF privé publié.
+- Peuples : projection des bonus de tests et traits avec conditions, 60 créations/relectures et 50 contrôles négatifs/variantes. Calculs des actions conditionnelles supplémentaires en cours.
+- N3 : lecture seule des six carnets serveur réels, tous N2. Rejeu des 156 plans N3 depuis ces carnets : résultats identiques au service v9 déployé, inventaires et historique N2 conservés. Aucun choix N3 enregistré en production.
+- Point de vigilance résolu par réconciliation en cours : le service v9 déployé contient une couche universelle absente du dépôt courant. Il ne faut pas le remplacer par le moteur plus ancien du dépôt. Conservation explicite requise avant déploiement.
+- État : N1 non certifié globalement ; contrôles indépendants R2 et intégration finale en cours. Les résultats intermédiaires ne remplacent pas le rejeu final après fusion.
+
+## Reprise du 30 octobre 2026 — intervention ouverte
+
+- Base vérifiée sur GitHub : PR #2, `qa/forge-n1-certification`, commit `6b2aac2` (lot 9). Les mentions historiques de PR #87 ne correspondent pas au dépôt actuel.
+- Nouvelle priorité utilisateur : permettre en urgence le N3 des six PJ Bastide, en parallèle de la clôture N1 ; création sorcier/moine N1 puis N2 également demandée. Cette instruction remplace l’attente systématique N2/N3 du 28 octobre, sans valoir certification des niveaux.
+- Chantier N1 : oracle numérique indépendant R1/R2, contrôle des choix persistants, parcours et export officiel. Chantier progression : état réel et bloqueurs des six fiches / hybride sorcier-moine.
+- Critères : ne pas convertir un compteur vert en certification universelle ; ne pas attribuer aux joueurs leurs futurs rangs/PV sans choix ; conserver les preuves et limites.
+- État : EN COURS. Aucun nouveau correctif ni déploiement déclaré à ce point. Prochaine mise à jour après résultats reproductibles.
+
 # Forge of Heroes — suivi de validation
 
 Décision du 28 octobre 2026 : **terminer N1 avant de poursuivre N2, puis N3**. Les besoins urgents antérieurs ne constituent pas une certification générale.

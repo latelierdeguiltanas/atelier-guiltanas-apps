@@ -1,6 +1,6 @@
 # Validation de la création N1
 
-**Phase active : N1. Certification globale encore ouverte. N2 et N3 en attente.**
+**Phase active : clôture N1, certification globale encore ouverte. Urgences autorisées en parallèle : six PJ Bastide N3 et sorcier/moine N1→N2 (voir `../N3/2026-10-30.md`).**
 
 Ce dossier remplace les anciens compteurs comme point de suivi actuel, sans réécrire les preuves historiques de `FINAL_FREEZE`. Les résultats sont attachés aux empreintes du moteur et des données ; les contrôles PDF conservent leur propre périmètre. Les trois profils et huit peuples du Compagnon restent des adaptations Forge, pas une certification officielle COF2.
 
@@ -12,11 +12,11 @@ Ce dossier remplace les anciens compteurs comme point de suivi actuel, sans ré�
 | Variantes de bonus/malus de peuple | 5 950 | 5 082 | 868 | 0 |
 | Autre choix du R2 initial des mages | 960 | 840 | 120 | 0 |
 | Hybrides, deux sens, 25 croisements de voies, 16 peuples | 108 800 | 91 520 | 17 280 | 0 |
-| Sans profil, toutes les paires distinctes, 16 peuples | 57 120 | 55 902 | 1 218 | 0 |
-| Ordre inverse sans profil, humain | 3 570 | 3 500 | 70 | 0 |
-| **Total** | **179 120** | **159 130** | **19 990** | **0** |
+| Sans profil, toutes les paires distinctes, 16 peuples | 57 120 | 56 052 | 1 068 | 0 |
+| Ordre inverse sans profil, humain | 3 570 | 3 510 | 60 | 0 |
+| **Total** | **179 120** | **159 290** | **19 830** | **0** |
 
-Couverture acceptée : 17 profils, 16 peuples, 85 voies principales, les 272 couples ordonnés de profils hybrides et 3 500 paires distinctes sans profil. 9 352 sauvegardes/relectures sont vérifiées dans cette matrice ; 5 127 mutations à zéro voie sont refusées avec un motif lié aux voies.
+Couverture acceptée : 17 profils, 16 peuples, 85 voies principales, les 272 couples ordonnés de profils hybrides et 3 510 paires distinctes sans profil. 9 352 sauvegardes/relectures sont vérifiées dans cette matrice ; 5 127 mutations à zéro voie sont refusées avec un motif lié aux voies.
 
 **Ce que ce résultat signifie :** les invariants testés passent, y compris les caractéristiques raciales calculées indépendamment, l’identité de profil, l’absence de capacité dupliquée, la présence des R1 choisis, la non-mutation des entrées et le rejeu échantillonné. Cela ne certifie pas chaque chiffre de chaque capacité : les valeurs exactes ciblées sont dans les suites séparées. Le nombre de configurations inclut plusieurs choix pouvant conduire au même résultat ; il n’est pas présenté comme un nombre de fiches mécaniquement uniques.
 
@@ -197,3 +197,14 @@ La référence précédente donne **1 428 créations sans origine projetée**, p
 `lot9/pdf-origins.json` : **16 vrais exports** natifs/partagés pour humain/demi-elfe, voie humaine directe/conservée par le mage, origine sociale/personnalisée. Champs officiels, domaines choisis, +1 PC, +3 hors combat et texte source intégral sont contrôlés. Le résumé d’occultisme utilise le rang réel de la voie du mage : +4 au rang 2. Annexe du demi-elfe mage inspectée après rendu. Les huit exports historiques du lot 8 sont rejoués.
 
 Fin de lot : **37 suites PASS** (36 suites de la campagne générale et la nouvelle suite ciblée), matrice complète rejouée sans échec d’assertion, revue des 27 familles actualisée. Le dernier changement de résumé PDF est extérieur au moteur ; le contrôle d’équipement lié au HTML a été réexécuté après ce changement. Les preuves ne constituent pas une recette au clic sur Android, et ne clôturent pas les réserves globales encore listées.
+
+
+## Lot 10 — reprise du 30 octobre
+
+Les correctifs non publiés du précédent chat ont été récupérés, contrôlés et sauvegardés sur `fix/forge-final-n1-bastide-n3` au commit `6b3cb24`. Le détail des sources, défauts et limites est dans [lot10/README.md](lot10/README.md). Rejeu indépendant : 7 600 tentatives, 7 480 créations et 120 refus attendus ; 60 cas peuples R1/R2 avec 60 sauvegardes et 50 retraits/choix ; 72 langues ; six contextes de familier. Les 210 résumés R1/R2 et 39 sentinelles sémantiques passent ; 96 résumés corrigés conservent leurs descriptions intégrales. Douze vrais exports N1 et six N3 ont été régénérés.
+
+Défaut supplémentaire du relais : le PDF sans profil affichait les voies non choisies du profil technique dans les colonnes 3–5 et les annexes. Les deux exporteurs ne complètent plus ces colonnes ; nouveau contrôle des 15 titres/corps et des annexes sur les deux PDF sans profil, rendu final inspecté. Les exports classiques/hybrides conservent leur comportement.
+
+Une nouvelle extension indépendante aux paires R2 par âge et le rejeu de la matrice générale sont en cours ; seuls les résultats effectivement terminés doivent être retenus. Aucun clic Android ni changement de rang d’un PJ réel n’est déclaré. Le mode volontaire sans voie reste absent et ne doit pas être confondu avec sans profil.
+
+Rejeu final du relais : **179 120 tentatives, 159 290 créations acceptées, 19 830 refus conservés pour revue, zéro échec**. L’évolution des acceptations vient notamment des petits boucliers du mode sans profil. Les 27 familles sont à nouveau revues. L’oracle R2 couvre **7 140 paires sur deux produits**, dont **7 020 créations numériques conformes et 120 refus de bouclier attendus** ; l’armement absent des fixtures Artilleur a été corrigé et ses 168 cas seuls rejoués (166 anciens échecs du générateur conservés). Cette contre-vérification ciblée ne prétend pas être un deuxième rejeu complet. Les limites de caractéristiques/peuple/équipement/contexte de cet oracle restent explicites.

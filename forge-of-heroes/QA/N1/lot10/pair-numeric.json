@@ -1,0 +1,2571 @@
+{
+  "schema": "FOH_N1_INDEPENDENT_PAIR_NUMERICS",
+  "scope": "Unarmored human standard characteristic series, 85 main R1 paths and every distinct pair in no-profile mode; every same-profile pair with both mage R2 choices. PV/PC/DR/DEF/INIT and ordinary attack bases. PM only official native profiles. No active spell, familiar visible, mounted, difficult terrain, offhand or other context. Does not certify all conditions/equipment/skills/choices.",
+  "sourceExpectations": "Hand-authored formulas from supplied COF2 Livre de base and Compagnon adaptations; no numeric expectation reads product mechanics or comparison to baseline output.",
+  "sources": {
+    "native": "COF2 Livre de base pp.30–31,57–58 and profile pages",
+    "noProfile": "Règles avancées p.154",
+    "adapted": "Compagnon COF1: adopted Forge conversions, not official COF2"
+  },
+  "inputs": {
+    "index.html": "c8300f8991b1460fc5e0b749be9fc7845b84644168d001a526e9e958f3178783",
+    "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html": "455831e1e7f728c03a7b55107e5a947f3ea9fc5d4335e53f9164229eea159df4"
+  },
+  "counts": {
+    "no-profile": 7140,
+    "expectedShieldRefusals": 120,
+    "standard": 220,
+    "standard-mage-r2": 240
+  },
+  "failures": [],
+  "sampleCases": [
+    {
+      "label": "index.html|no-profile|classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024|classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        [
+          65,
+          67
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024|classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        [
+          119,
+          121
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024|classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 12,
+        "INIT": 11,
+        "DR": 3
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        [
+          93,
+          96
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024|classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        [
+          70,
+          72
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024|classpath:voie-du-familier:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024|classpath:voie-du-demon:class-sorcier:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        [
+          108,
+          110
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024|classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        [
+          84,
+          86
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-l-escrime:class-barde:cof2-lb-2024|classpath:voie-du-vagabond:class-barde:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          68,
+          69
+        ],
+        [
+          68,
+          69
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-l-escrime:class-barde:cof2-lb-2024|classpath:voie-des-soins:class-pretre:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          68,
+          69
+        ],
+        [
+          123,
+          125
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          68,
+          69
+        ],
+        [
+          104,
+          106
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 13,
+        "DR": 3
+      },
+      "source": [
+        [
+          68,
+          69
+        ],
+        [
+          88,
+          89
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-seduction:class-barde:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          68,
+          69
+        ],
+        [
+          70,
+          72
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-seduction:class-barde:cof2-lb-2024|classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          68,
+          69
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-vagabond:class-barde:cof2-lb-2024|classpath:voie-de-la-nature:class-druide:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          68,
+          69
+        ],
+        [
+          114,
+          116
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024|classpath:voie-du-metal:class-forgesort:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 11,
+        "DR": 3
+      },
+      "source": [
+        [
+          70,
+          72
+        ],
+        [
+          99,
+          101
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024|classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          70,
+          72
+        ],
+        [
+          84,
+          86
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024|classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          70,
+          72
+        ],
+        [
+          74,
+          76
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024|classpath:voie-des-portes:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          70,
+          72
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024|classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          70,
+          72
+        ],
+        [
+          119,
+          121
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          70,
+          72
+        ],
+        [
+          108,
+          110
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024|classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          74,
+          76
+        ],
+        [
+          99,
+          101
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024|classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          74,
+          76
+        ],
+        [
+          88,
+          89
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-deplacement:class-voleur:cof2-lb-2024|classpath:voie-de-la-rage:class-barbare:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 3,
+        "DEF": 12,
+        "INIT": 11,
+        "DR": 3
+      },
+      "source": [
+        [
+          74,
+          76
+        ],
+        [
+          80,
+          81
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-deplacement:class-voleur:cof2-lb-2024|classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 12,
+        "INIT": 11,
+        "DR": 3
+      },
+      "source": [
+        [
+          74,
+          76
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-roublard:class-voleur:cof2-lb-2024|classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          74,
+          76
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-spadassin:class-voleur:cof2-lb-2024|classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 11,
+        "DR": 3
+      },
+      "source": [
+        [
+          74,
+          76
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-brute:class-barbare:cof2-lb-2024|classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|",
+      "want": {
+        "PV": 11,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          80,
+          81
+        ],
+        [
+          123,
+          125
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-pagne:class-barbare:cof2-lb-2024|classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024|",
+      "want": {
+        "PV": 11,
+        "PC": 2,
+        "DEF": 13,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          80,
+          81
+        ],
+        [
+          119,
+          121
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024|classpath:voie-du-protecteur:class-druide:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 2,
+        "DEF": 12,
+        "INIT": 13,
+        "DR": 4
+      },
+      "source": [
+        [
+          80,
+          81
+        ],
+        [
+          114,
+          116
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-primitif:class-barbare:cof2-lb-2024|classpath:voie-du-fauve:class-druide:cof2-lb-2024|",
+      "want": {
+        "PV": 11,
+        "PC": 2,
+        "DEF": 12,
+        "INIT": 13,
+        "DR": 4
+      },
+      "source": [
+        [
+          80,
+          81
+        ],
+        [
+          114,
+          116
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-rage:class-barbare:cof2-lb-2024|classpath:voie-des-animaux:class-druide:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          80,
+          81
+        ],
+        [
+          114,
+          116
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024|classpath:voie-des-animaux:class-druide:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          84,
+          86
+        ],
+        [
+          114,
+          116
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024|classpath:voie-du-fauve:class-druide:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 2,
+        "DEF": 12,
+        "INIT": 13,
+        "DR": 4
+      },
+      "source": [
+        [
+          84,
+          86
+        ],
+        [
+          114,
+          116
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-preux:class-chevalier:cof2-lb-2024|classpath:voie-du-protecteur:class-druide:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          84,
+          86
+        ],
+        [
+          114,
+          116
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024|classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 2,
+        "DEF": 13,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          84,
+          86
+        ],
+        [
+          119,
+          121
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024|classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          84,
+          86
+        ],
+        [
+          123,
+          125
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-combat:class-guerrier:cof2-lb-2024|classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 13,
+        "DR": 4
+      },
+      "source": [
+        [
+          88,
+          89
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024|classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          88,
+          89
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-soldat:class-guerrier:cof2-lb-2024|classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          88,
+          89
+        ],
+        [
+          99,
+          101
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024|classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 12,
+        "INIT": 11,
+        "DR": 3
+      },
+      "source": [
+        [
+          93,
+          96
+        ],
+        [
+          108,
+          110
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024|classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 12,
+        "INIT": 11,
+        "DR": 4
+      },
+      "source": [
+        [
+          93,
+          96
+        ],
+        [
+          119,
+          121
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024|classpath:voie-des-portes:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          93,
+          96
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024|classpath:voie-du-metal:class-forgesort:cof2-lb-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          93,
+          96
+        ],
+        [
+          99,
+          101
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024|classpath:voie-de-la-nature:class-druide:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          99,
+          101
+        ],
+        [
+          114,
+          116
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024|classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          99,
+          101
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-golem:class-forgesort:cof2-lb-2024|classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          99,
+          101
+        ],
+        [
+          104,
+          106
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-des-runes:class-forgesort:cof2-lb-2024|classpath:voie-des-soins:class-pretre:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 13,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          99,
+          101
+        ],
+        [
+          123,
+          125
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-demon:class-sorcier:cof2-lb-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          104,
+          106
+        ],
+        [
+          108,
+          110
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024|classpath:voie-du-familier:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          104,
+          106
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024|classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          104,
+          106
+        ],
+        [
+          119,
+          121
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024|classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          108,
+          110
+        ],
+        [
+          108,
+          110
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024|classpath:voie-du-sabre:class-samourai:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          108,
+          110
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          108,
+          110
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-fauve:class-druide:cof2-lb-2024|classpath:voie-du-sabre:class-samourai:addon-compagnon-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 12,
+        "INIT": 13,
+        "DR": 4
+      },
+      "source": [
+        [
+          114,
+          116
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-des-vegetaux:class-druide:cof2-lb-2024|classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          114,
+          116
+        ],
+        [
+          119,
+          121
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024|classpath:voie-du-familier:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 13,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          119,
+          121
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-vent:class-moine:cof2-lb-2024|classpath:voie-des-soins:class-pretre:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 13,
+        "DR": 4
+      },
+      "source": [
+        [
+          119,
+          121
+        ],
+        [
+          123,
+          125
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-la-priere:class-pretre:cof2-lb-2024|classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          123,
+          125
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024|classpath:voie-des-portes:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        "COF1 adaptation",
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|no-profile|classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024|classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        "COF1 adaptation",
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|standard|classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024|classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        [
+          65,
+          67
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|standard|classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024|classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024|",
+      "want": {
+        "PV": 11,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          84,
+          86
+        ],
+        [
+          84,
+          86
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|standard-mage-r2|classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024|classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024|classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 13,
+        "INIT": 12,
+        "DR": 3
+      },
+      "source": [
+        [
+          93,
+          96
+        ],
+        [
+          93,
+          96
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|standard-mage-r2|classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024|classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024|classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          104,
+          106
+        ],
+        [
+          104,
+          106
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "index.html|standard-mage-r2|classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024|classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024|classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 13,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        "COF1 adaptation",
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        [
+          68,
+          69
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024|classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        [
+          123,
+          125
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024|classpath:voie-du-metal:class-forgesort:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        [
+          99,
+          101
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024|classpath:voie-de-la-brute:class-barbare:cof2-lb-2024|",
+      "want": {
+        "PV": 11,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        [
+          80,
+          81
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024|classpath:voie-du-sabre:class-samourai:addon-compagnon-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024|classpath:voie-du-protecteur:class-druide:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        [
+          114,
+          116
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-l-escrime:class-barde:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          68,
+          69
+        ],
+        [
+          93,
+          96
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-spadassin:class-voleur:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 11,
+        "DR": 3
+      },
+      "source": [
+        [
+          68,
+          69
+        ],
+        [
+          74,
+          76
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-ki:class-samourai:addon-compagnon-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 13,
+        "DR": 4
+      },
+      "source": [
+        [
+          68,
+          69
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024|classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          68,
+          69
+        ],
+        [
+          119,
+          121
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-seduction:class-barde:cof2-lb-2024|classpath:voie-du-golem:class-forgesort:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          68,
+          69
+        ],
+        [
+          99,
+          101
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-vagabond:class-barde:cof2-lb-2024|classpath:voie-du-preux:class-chevalier:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          68,
+          69
+        ],
+        [
+          84,
+          86
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024|classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 11,
+        "DR": 3
+      },
+      "source": [
+        [
+          70,
+          72
+        ],
+        [
+          70,
+          72
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024|classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 11,
+        "DR": 3
+      },
+      "source": [
+        [
+          70,
+          72
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024|classpath:voie-de-la-nature:class-druide:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          70,
+          72
+        ],
+        [
+          114,
+          116
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024|classpath:voie-des-runes:class-forgesort:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 13,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          70,
+          72
+        ],
+        [
+          99,
+          101
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024|classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          70,
+          72
+        ],
+        [
+          88,
+          89
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-pagne:class-barbare:cof2-lb-2024|",
+      "want": {
+        "PV": 11,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          70,
+          72
+        ],
+        [
+          80,
+          81
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          70,
+          72
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024|classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          74,
+          76
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024|classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 13,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          74,
+          76
+        ],
+        [
+          119,
+          121
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-deplacement:class-voleur:cof2-lb-2024|classpath:voie-du-sang:class-sorcier:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 12,
+        "INIT": 11,
+        "DR": 3
+      },
+      "source": [
+        [
+          74,
+          76
+        ],
+        [
+          108,
+          110
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-roublard:class-voleur:cof2-lb-2024|classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          74,
+          76
+        ],
+        [
+          104,
+          106
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-spadassin:class-voleur:cof2-lb-2024|classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 11,
+        "DR": 3
+      },
+      "source": [
+        [
+          74,
+          76
+        ],
+        [
+          99,
+          101
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-brute:class-barbare:cof2-lb-2024|classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024|",
+      "want": {
+        "PV": 10,
+        "PC": 2,
+        "DEF": 12,
+        "INIT": 11,
+        "DR": 3
+      },
+      "source": [
+        [
+          80,
+          81
+        ],
+        [
+          93,
+          96
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-pagne:class-barbare:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024|",
+      "want": {
+        "PV": 12,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 13,
+        "DR": 3
+      },
+      "source": [
+        [
+          80,
+          81
+        ],
+        [
+          88,
+          89
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024|classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024|",
+      "want": {
+        "PV": 11,
+        "PC": 2,
+        "DEF": 12,
+        "INIT": 13,
+        "DR": 3
+      },
+      "source": [
+        [
+          80,
+          81
+        ],
+        [
+          84,
+          86
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-primitif:class-barbare:cof2-lb-2024|classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024|",
+      "want": {
+        "PV": 12,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          80,
+          81
+        ],
+        [
+          84,
+          86
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-rage:class-barbare:cof2-lb-2024|classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024|",
+      "want": {
+        "PV": 11,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          80,
+          81
+        ],
+        [
+          84,
+          86
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-rage:class-barbare:cof2-lb-2024|classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          80,
+          81
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024|classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          84,
+          86
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-preux:class-chevalier:cof2-lb-2024|classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024|",
+      "want": {
+        "PV": 11,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          84,
+          86
+        ],
+        [
+          84,
+          86
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024|",
+      "want": {
+        "PV": 11,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 13,
+        "DR": 3
+      },
+      "source": [
+        [
+          84,
+          86
+        ],
+        [
+          88,
+          89
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024|classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 12,
+        "INIT": 11,
+        "DR": 3
+      },
+      "source": [
+        [
+          84,
+          86
+        ],
+        [
+          93,
+          96
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-combat:class-guerrier:cof2-lb-2024|classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 13,
+        "DR": 3
+      },
+      "source": [
+        [
+          88,
+          89
+        ],
+        [
+          104,
+          106
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024|classpath:voie-du-sang:class-sorcier:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          88,
+          89
+        ],
+        [
+          108,
+          110
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024|classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024|",
+      "want": {
+        "PV": 13,
+        "PC": 2,
+        "DEF": 13,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          88,
+          89
+        ],
+        [
+          119,
+          121
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-soldat:class-guerrier:cof2-lb-2024|classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          88,
+          89
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024|classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 12,
+        "INIT": 11,
+        "DR": 3
+      },
+      "source": [
+        [
+          93,
+          96
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024|classpath:voie-des-runes:class-forgesort:cof2-lb-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 13,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          93,
+          96
+        ],
+        [
+          99,
+          101
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-de-la-nature:class-druide:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          93,
+          96
+        ],
+        [
+          114,
+          116
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024|classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          93,
+          96
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024|classpath:voie-du-golem:class-forgesort:cof2-lb-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          99,
+          101
+        ],
+        [
+          99,
+          101
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-metal:class-forgesort:cof2-lb-2024|classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          99,
+          101
+        ],
+        [
+          119,
+          121
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-golem:class-forgesort:cof2-lb-2024|classpath:voie-du-ki:class-samourai:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 13,
+        "DR": 4
+      },
+      "source": [
+        [
+          99,
+          101
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024|classpath:voie-du-protecteur:class-druide:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          104,
+          106
+        ],
+        [
+          114,
+          116
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-sabre:class-samourai:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          104,
+          106
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024|classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          104,
+          106
+        ],
+        [
+          123,
+          125
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-demon:class-sorcier:cof2-lb-2024|classpath:voie-des-animaux:class-druide:cof2-lb-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          108,
+          110
+        ],
+        [
+          114,
+          116
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024|classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024|",
+      "want": {
+        "PV": 6,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          108,
+          110
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-du-sang:class-sorcier:cof2-lb-2024|classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          108,
+          110
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-des-animaux:class-druide:cof2-lb-2024|classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          114,
+          116
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-nature:class-druide:cof2-lb-2024|classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          114,
+          116
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024|classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          119,
+          121
+        ],
+        [
+          123,
+          125
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-du-sabre:class-samourai:addon-compagnon-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          119,
+          121
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-du-ki:class-samourai:addon-compagnon-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 13,
+        "DR": 4
+      },
+      "source": [
+        [
+          123,
+          125
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024|classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024|",
+      "want": {
+        "PV": 8,
+        "PC": 2,
+        "DEF": 13,
+        "INIT": 10,
+        "DR": 4
+      },
+      "source": [
+        [
+          123,
+          125
+        ],
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024|classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        "COF1 adaptation",
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|no-profile|classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024|classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024|",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        "COF1 adaptation",
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|standard|classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024|classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024|",
+      "want": {
+        "PV": 9,
+        "PC": 3,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          65,
+          67
+        ],
+        [
+          65,
+          67
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|standard|classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024|classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024|",
+      "want": {
+        "PV": 14,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          88,
+          89
+        ],
+        [
+          88,
+          89
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|standard-mage-r2|classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024|classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024|classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 10,
+        "DR": 3
+      },
+      "source": [
+        [
+          104,
+          106
+        ],
+        [
+          104,
+          106
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|standard-mage-r2|classpath:voie-de-l-empathie:class-psionique:addon-compagnon-2024|classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024|classpath:voie-de-l-empathie:class-psionique:addon-compagnon-2024",
+      "want": {
+        "PV": 7,
+        "PC": 2,
+        "DEF": 11,
+        "INIT": 12,
+        "DR": 3
+      },
+      "source": [
+        "COF1 adaptation",
+        "COF1 adaptation"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}
