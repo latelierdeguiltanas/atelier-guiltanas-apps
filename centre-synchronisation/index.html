@@ -50,7 +50,7 @@
 <div id="view-projects" class="view">
 <section class="project-welcome">
   <div><div class="project-eyebrow">PROJETS & CRÉATIONS</div><h2>Mes projets</h2><p>Tout ce qui compte, au même endroit.</p></div>
-  <button id="project-refresh" type="button" class="project-action-sync" title="Relire le registre et ses journaux sans recharger la page">↻ <span>Synchroniser</span></button>
+  <button id="project-refresh" type="button" class="project-action-sync" title="Actualiser les données accessibles (ne lit pas automatiquement tous les chats ChatGPT)">↻ <span>Synchroniser</span></button>
 </section>
 <div class="project-simple-tools">
   <label for="project-search" class="visually-hidden">Trouver un projet</label>
@@ -75,11 +75,11 @@
  </div>
 </details>
 <div id="project-sync-status" class="project-update project-update-quiet" role="status">Chargement des projets…</div>
-<details id="chat-inventory-panel" class="chat-inventory-panel">
-  <summary>💬 Conversations Work liées aux projets <span id="chat-health-count">· recherche en cours</span></summary>
+<details id="chat-inventory-panel" class="chat-inventory-panel" open>
+  <summary>💬 Suivi des conversations — tous les projets <span id="chat-health-count">· recherche en cours</span></summary>
   <div class="chat-inventory-body">
     <div id="chat-health-stats" class="chat-stats">Lecture des signalements retrouvés…</div>
-    <p id="chat-inventory-note" class="minihelp">Diagnostics issus des interventions accessibles. Un blocage signalé ne signifie pas que le fil est également bloqué sur le site Web.</p>
+    <p id="chat-inventory-note" class="minihelp">Signalements disponibles pour tous les projets, pas seulement Forge. Les nouveaux chats non enregistrés ne sont pas détectables automatiquement depuis ce site ; un silence ne prouve pas un blocage.</p>
     <div class="toolbar chat-actions"><button type="button" class="smallbutton" id="chat-findings-refresh">↻ Vérifier les signalements</button></div>
     <div id="chat-inventory-list"></div>
   </div>
