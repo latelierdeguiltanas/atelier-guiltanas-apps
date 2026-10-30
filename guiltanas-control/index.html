@@ -18,7 +18,7 @@
 </div><div class="foot">Le statut « non mesuré » signifie que la couverture de validation n'est pas établie. Un correctif développé ne vaut pas confirmation de test utilisateur. Le projet reste la référence, jamais le dernier chat.</div></main>
 <script>
 'use strict';
-var state=null;var selected=decodeURIComponent(location.hash.substring(1))||'forge';
+var state=null;var lastGoodAt=null;var selected=decodeURIComponent(location.hash.substring(1))||'forge';
 function el(id){return document.getElementById(id)}
 function safe(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function safeUrl(x){try{var u=new URL(x);return u.protocol==='https:'?u.href:null}catch(e){return null}}
@@ -42,8 +42,11 @@ el('copy').addEventListener('click',function(){copyText(p)});
 el('openChat').addEventListener('click',function(){window.open(safeUrl(p.links&&p.links.chatgpt)||'https://chatgpt.com/','_blank','noopener,noreferrer');copyText(p)});
 }
 var loading=false;
-async function load(manual){if(loading)return;loading=true;var button=el('manualSync');button.disabled=true;button.textContent='↻ Vérification…';try{var r=await fetch('./data/projects.json?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);var incoming=await r.json();if(!Array.isArray(incoming.projects))throw new Error('Registre invalide');var changed=JSON.stringify(incoming)!==JSON.stringify(state);state=incoming;var checked=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});el('sync').textContent=manual?(changed?'✓ Nouvelles données récupérées':'✓ Aucune nouvelle publication'):'✓ Registre chargé';el('updated').textContent='Publié : '+(state.last_published_date||'non daté')+' · Vérifié : '+checked;if(changed){renderList();renderDetail()}}catch(e){el('sync').textContent='⚠ Vérification impossible — dernier état conservé';if(!state)el('detail').innerHTML='<div class="card">Impossible de charger les données du projet. <a href="https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/tree/main/guiltanas-control/data">Voir les données sur GitHub</a>.</div>'}finally{loading=false;button.disabled=false;button.textContent='↻ Vérifier l’état'}}
+async function load(manual){if(loading)return;loading=true;var button=el('manualSync');button.disabled=true;button.textContent='↻ Vérification…';try{var r=await fetch('./data/projects.json?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);var incoming=await r.json();if(!Array.isArray(incoming.projects))throw new Error('Registre invalide');var changed=JSON.stringify(incoming)!==JSON.stringify(state);state=incoming;lastGoodAt=Date.now();var checked=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});el('sync').textContent=manual?(changed?'✓ Nouvelle version du miroir chargée':'✓ Miroir inchangé (sources non synchronisées ici)'):'✓ Miroir chargé (pas de synchronisation des sources)';el('updated').textContent='Publié : '+(state.last_published_date||'non daté')+' · Vérifié : '+checked;if(changed){renderList();renderDetail()}}catch(e){el('sync').textContent='⚠ Vérification impossible — dernier état conservé';if(!state)el('detail').innerHTML='<div class="card">Impossible de charger les données du projet. <a href="https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/tree/main/guiltanas-control/data">Voir les données sur GitHub</a>.</div>'}finally{loading=false;button.disabled=false;button.textContent='↻ Vérifier l’état'}}
 el('search').addEventListener('input',renderList);
+// Vérification périodique du miroir : lecture seule, aucune prétention de synchronisation Drive.
+setInterval(function(){if(!document.hidden)load(false)},300000);
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&lastGoodAt&&Date.now()-lastGoodAt>300000)load(false)});
 addEventListener('hashchange',function(){selected=decodeURIComponent(location.hash.substring(1));renderList();renderDetail()});
 el('manualSync').addEventListener('click',function(){load(true)});
 load(false);
