@@ -1,0 +1,49 @@
+{
+  "source": "Compagnon p.26, adaptation Forge",
+  "scope": "Base/explicit false/explicit true familiar visibility; +0/+0/+2; companion initiative follows corrected owner; save/replay. Not all ability contexts.",
+  "cases": [
+    {
+      "file": "index.html",
+      "visible": "unspecified",
+      "expected": 11,
+      "actual": 11,
+      "saveReplay": true
+    },
+    {
+      "file": "index.html",
+      "visible": false,
+      "expected": 11,
+      "actual": 11,
+      "saveReplay": true
+    },
+    {
+      "file": "index.html",
+      "visible": true,
+      "expected": 13,
+      "actual": 13,
+      "saveReplay": true
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "visible": "unspecified",
+      "expected": 11,
+      "actual": 11,
+      "saveReplay": true
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "visible": false,
+      "expected": 11,
+      "actual": 11,
+      "saveReplay": true
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "visible": true,
+      "expected": 13,
+      "actual": 13,
+      "saveReplay": true
+    }
+  ],
+  "status": "PASS"
+}

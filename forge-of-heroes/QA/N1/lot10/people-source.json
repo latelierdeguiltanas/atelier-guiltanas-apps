@@ -1,0 +1,1159 @@
+{
+  "schema": "FOH_N1_PEOPLE_SOURCE",
+  "scope": "15 people/Mage paths, R1/R2, exact permanent sheet values, structured skill/condition projections and actual save/reload; Companion remains a Forge adaptation, not official COF2 certification.",
+  "products": [
+    {
+      "file": "index.html",
+      "engineSha256": "9c9c23e1fbf98b60113b415889945b63632ea36224464b6293a3500c17cddc21"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "engineSha256": "9c9c23e1fbf98b60113b415889945b63632ea36224464b6293a3500c17cddc21"
+    }
+  ],
+  "cases": [
+    {
+      "file": "index.html",
+      "people": "halfelin",
+      "path": "path:voie-du-halfelin:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 55,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 13,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "halfelin",
+      "path": "path:voie-du-halfelin:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 55,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 12,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "nain",
+      "path": "path:voie-du-nain:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 59,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "nain",
+      "path": "path:voie-du-nain:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 59,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 9,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "demi-orc",
+      "path": "path:voie-du-demi-orc:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 48,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "demi-orc",
+      "path": "path:voie-du-demi-orc:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 48,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "elfe-haut",
+      "path": "path:voie-de-l-elfe-haut:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 50,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "elfe-haut",
+      "path": "path:voie-de-l-elfe-haut:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 50,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "elfe-sylvain",
+      "path": "path:voie-de-l-elfe-sylvain:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 52,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 12,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "elfe-sylvain",
+      "path": "path:voie-de-l-elfe-sylvain:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 52,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "gnome",
+      "path": "path:voie-du-gnome:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 53,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "gnome",
+      "path": "path:voie-du-gnome:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 53,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 3,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "humain",
+      "path": "path:voie-de-l-humain:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 57,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 3,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "humain",
+      "path": "path:voie-de-l-humain:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 57,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 3,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "ame-forgee",
+      "path": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
+      "rank": 1,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 9,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 12,
+        "INIT": 11,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "ame-forgee",
+      "path": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 9,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "centaure",
+      "path": "path:voie-du-centaure:addon-comp2017-cof2",
+      "rank": 1,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 11,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "centaure",
+      "path": "path:voie-du-centaure:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 11,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "demi-ogre",
+      "path": "path:voie-du-demi-ogre:addon-comp2017-cof2",
+      "rank": 1,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 13,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "demi-ogre",
+      "path": "path:voie-du-demi-ogre:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 13,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "gobelin",
+      "path": "path:voie-du-gobelin:addon-comp2017-cof2",
+      "rank": 1,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 15,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 13,
+        "INIT": 14,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "gobelin",
+      "path": "path:voie-du-gobelin:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 15,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 12,
+        "INIT": 14,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "kobold",
+      "path": "path:voie-du-kobold:addon-comp2017-cof2",
+      "rank": 1,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 17,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 7,
+        "DEF": 13,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "kobold",
+      "path": "path:voie-du-kobold:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 17,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 7,
+        "DEF": 14,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "lutin",
+      "path": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+      "rank": 1,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 19,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 14,
+        "INIT": 11,
+        "PC": 3,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "lutin",
+      "path": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 19,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 13,
+        "INIT": 11,
+        "PC": 3,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "minotaure",
+      "path": "path:voie-du-minotaure:addon-comp2017-cof2",
+      "rank": 1,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 21,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "minotaure",
+      "path": "path:voie-du-minotaure:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 21,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "humain",
+      "path": "path:mage:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 7,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "humain",
+      "path": "path:mage:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 7,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "halfelin",
+      "path": "path:voie-du-halfelin:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 55,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 13,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "halfelin",
+      "path": "path:voie-du-halfelin:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 55,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 12,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "nain",
+      "path": "path:voie-du-nain:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 59,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "nain",
+      "path": "path:voie-du-nain:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 59,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 9,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "demi-orc",
+      "path": "path:voie-du-demi-orc:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 48,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "demi-orc",
+      "path": "path:voie-du-demi-orc:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 48,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "elfe-haut",
+      "path": "path:voie-de-l-elfe-haut:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 50,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "elfe-haut",
+      "path": "path:voie-de-l-elfe-haut:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 50,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "elfe-sylvain",
+      "path": "path:voie-de-l-elfe-sylvain:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 52,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 12,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "elfe-sylvain",
+      "path": "path:voie-de-l-elfe-sylvain:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 52,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "gnome",
+      "path": "path:voie-du-gnome:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 53,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "gnome",
+      "path": "path:voie-du-gnome:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 53,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 3,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "humain",
+      "path": "path:voie-de-l-humain:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 57,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 3,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "humain",
+      "path": "path:voie-de-l-humain:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 57,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 3,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "ame-forgee",
+      "path": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
+      "rank": 1,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 9,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 12,
+        "INIT": 11,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "ame-forgee",
+      "path": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 9,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "centaure",
+      "path": "path:voie-du-centaure:addon-comp2017-cof2",
+      "rank": 1,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 11,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "centaure",
+      "path": "path:voie-du-centaure:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 11,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 9,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "demi-ogre",
+      "path": "path:voie-du-demi-ogre:addon-comp2017-cof2",
+      "rank": 1,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 13,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "demi-ogre",
+      "path": "path:voie-du-demi-ogre:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 13,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "gobelin",
+      "path": "path:voie-du-gobelin:addon-comp2017-cof2",
+      "rank": 1,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 15,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 13,
+        "INIT": 14,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "gobelin",
+      "path": "path:voie-du-gobelin:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 15,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 12,
+        "INIT": 14,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "kobold",
+      "path": "path:voie-du-kobold:addon-comp2017-cof2",
+      "rank": 1,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 17,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 7,
+        "DEF": 13,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "kobold",
+      "path": "path:voie-du-kobold:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 17,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 7,
+        "DEF": 14,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "lutin",
+      "path": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+      "rank": 1,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 19,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 14,
+        "INIT": 11,
+        "PC": 3,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "lutin",
+      "path": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 19,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 13,
+        "INIT": 11,
+        "PC": 3,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "minotaure",
+      "path": "path:voie-du-minotaure:addon-comp2017-cof2",
+      "rank": 1,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 21,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "minotaure",
+      "path": "path:voie-du-minotaure:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF1, adaptation Forge",
+        "printedPage": 21,
+        "officialCOF2": false
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 10,
+        "INIT": 11,
+        "PC": 1,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "humain",
+      "path": "path:mage:cof2-lb-2024",
+      "rank": 1,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 7,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "people": "humain",
+      "path": "path:mage:cof2-lb-2024",
+      "rank": 2,
+      "source": {
+        "document": "COF2 Livre de base",
+        "printedPage": 60,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 7,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "ATM": 1
+      },
+      "status": "PASS"
+    }
+  ],
+  "negativeChecks": 50,
+  "replays": 60,
+  "status": "PASS"
+}

@@ -1,0 +1,733 @@
+{
+  "schema": "FOH_N1_PDF_SUMMARY_SEMANTICS",
+  "scope": "All 210 R1/R2 native/shared summary parity, unchanged full descriptions, 39 independent semantic sentinels. No source-completeness or mechanical certification implied.",
+  "status": "PASS",
+  "summaryCount": 210,
+  "sentinels": 39,
+  "rows": [
+    {
+      "abilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Mécanismes",
+      "required": [
+        "rang+2",
+        "siège",
+        "dé bonus"
+      ],
+      "summary": "Mécanismes, pièges mécaniques et armes de siège : tests +rang+2. Attaques avec une arme de siège : dé bonus.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Tir de grenaille (L)",
+      "required": [
+        "rang+2",
+        "10 × 5",
+        "moitié"
+      ],
+      "summary": "Au chargement, choisit la grenaille. Tir (L) : un seul jet contre les cibles du cône de 10 × 5 m ; si DEF atteinte, moitié des DM habituels. Artificier : tests +rang+2.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Pilier de bar",
+      "required": [
+        "rang+2",
+        "alcool",
+        "non létaux",
+        "2"
+      ],
+      "summary": "Tavernes/auberges (interaction) et résistance à l’alcool : tests +rang+2. Mains nues : 1d4° DM non létaux ; DM non létaux subis divisés par 2.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Mort ou vif (L)",
+      "required": [
+        "désarmer",
+        "renverser",
+        "affaiblir",
+        "1d4",
+        "NC",
+        "rang"
+      ],
+      "summary": "Attaque (L), contact ou distance : DM normaux ou temporaires. Si NC cible <rang, choisit désarmer, renverser ou affaiblir 1d4 rounds. Critique : cumule 2 effets.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Défaut dans la cuirasse (A)",
+      "required": [
+        "10+AGI",
+        "immatériel",
+        "round suivant"
+      ],
+      "summary": "Une action A pour viser : au round suivant, tirs contre DEF 10+AGI ; ignore résistance/RD sauf immatériel. Avec Combat de masse en début de round, effet limité aux tirs du round en cours.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:feinte-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Feinte (L)",
+      "required": [
+        "2×rang",
+        "2d4°",
+        "CHA/PER"
+      ],
+      "summary": "Feinte (L) : test opposé CHA/PER. Au round suivant, première attaque au contact contre cette cible : bonus +2×rang pour toucher ; si feinte réussie, +2d4° DM.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:charmant:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Charmant",
+      "required": [
+        "rang+2",
+        "1 PC",
+        "1d4°+CHA"
+      ],
+      "summary": "Séduction, persuasion, mensonge et baratin : tests +rang+2. Dépense 1 PC pour un allié en vue : son test reçoit +1d4°+CHA, au lieu de +10.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:eclectique:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Éclectique",
+      "required": [
+        "aucun cumul",
+        "R1 de peuple"
+      ],
+      "summary": "Tous tests de compétence +1 ; aucun cumul de compétence sauf R1 de peuple. Bonus +1 supplémentaire par voie de barde R4.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:survie:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Survie",
+      "required": [
+        "rang+2",
+        "1d4°"
+      ],
+      "summary": "Survie en nature (dont récupération nocturne) et escalade : tests +rang+2. En dormant en nature, dépenser 1 DR soigne aussi 1d4° PV en plus du soin normal.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:nature-nourriciere:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Nature nourricière",
+      "required": [
+        "1d6 h",
+        "1d4° PV par rang",
+        "10 min"
+      ],
+      "summary": "1/jour, après 1d6 h en nature sauvage : nourriture pour rang personnes. PER (Survie) 10 : plantes pour 1d4° PV par rang, à employer immédiatement ; préparation et effet 10 min chacun, dés répartissables.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Discrétion",
+      "required": [
+        "rang+2",
+        "argotien",
+        "surpris"
+      ],
+      "summary": "Discrétion, déguisement et arme cachée : tests +rang+2 ; apprend l’argotien gestuel. Contre un adversaire surpris : dé bonus en attaque.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:attaque-en-finesse:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Attaque en finesse",
+      "required": [
+        "rang+2",
+        "Intimidation",
+        "AGI",
+        "pas aux DM"
+      ],
+      "summary": "Initiative +AGI. Avec dague, épée courte ou rapière : AGI peut remplacer FOR pour toucher au contact, pas aux DM. Intimidation : tests +rang+2.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:esquive-fatale-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Esquive fatale (G)",
+      "required": [
+        "sauf critique",
+        "second adversaire"
+      ],
+      "summary": "1/combat (G), sauf critique : redirige une attaque sur un autre adversaire à son contact ; son jet doit atteindre la DEF de cette nouvelle cible. Impossible sans second adversaire au contact.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:tour-de-force-g:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Tour de force (G)",
+      "required": [
+        "chemise de mailles",
+        "1d4°",
+        "+10"
+      ],
+      "summary": "Avant le jet (G), sacrifie 1d4° PV : +10 à un test de FOR, jamais attaque/DM. Autorise la chemise de mailles avec les capacités de barbare auparavant limitées au cuir renforcé.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:peau-de-pierre:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Peau de pierre",
+      "required": [
+        "CON",
+        "AGI",
+        "plafond",
+        "+1"
+      ],
+      "summary": "Choisit CON au lieu d’AGI pour la DEF, avec le plafond de l’armure. Si AGI ≥CON : DEF +1 à la place, puis +2 au R4.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:cri-de-guerre-g:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Cri de guerre (G)",
+      "required": [
+        "rang+2",
+        "VOL",
+        "10 m"
+      ],
+      "summary": "1/combat (G), rayon 10 m : ennemis de FOR inférieure, dé malus aux attaques au contact à leur prochain tour. Résistance à la peur (VOL) : tests +rang+2.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:piqures-d-insectes:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Piqûres d’insectes",
+      "required": [
+        "RD 1",
+        "2 en mailles",
+        "3 en plaques"
+      ],
+      "summary": "Contre les attaques à distance : RD 1 en cuir, 2 en mailles, 3 en plaques. Toute attaque inflige au moins 1 DM.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:intercepter-g:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Intercepter (G)",
+      "required": [
+        "sa DEF",
+        "rang aux DM",
+        "avant le résultat"
+      ],
+      "summary": "1/round (G), à annoncer avant le résultat : intercepte pour un allié au contact. Utilise sa DEF et retranche rang aux DM ; cumul avec Piqûres d’insectes/Encaisser un coup.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:proteger-un-allie-g:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Protéger un allié (G)",
+      "required": [
+        "rang+2",
+        "surprise",
+        "avant le résultat"
+      ],
+      "summary": "Non surpris : DEF +2 à un allié au contact contre 1 attaque/round, à annoncer avant le résultat (G). Éviter la surprise : tests +rang+2.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:resilient:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Résilient",
+      "required": [
+        "rang",
+        "étourdi",
+        "affaibli"
+      ],
+      "summary": "Récupération rapide en 10 min (5 min au R4). Résister aux états étourdi et affaibli : tests +rang.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:langage-des-animaux:classpath-voie-des-animaux-class-druide-cof2-lb-2024:r1",
+      "label": "Rang 1 — Langage des animaux",
+      "required": [
+        "mammifères",
+        "rang+2"
+      ],
+      "summary": "Communique avec les mammifères selon leur intelligence ; les influencer : tests +rang+2. Une catégorie d’animaux supplémentaire à chaque voie de druide R4.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:baies-magiques:classpath-voie-du-protecteur-class-druide-cof2-lb-2024:r1",
+      "label": "Rang 1 — Baies magiques (L)*",
+      "required": [
+        "1 effet/jour/personnage",
+        "rang+2"
+      ],
+      "summary": "Devant un végétal vivant : crée PER fruits, chacun nourrit et soigne 1d4°+rang PV après 1 min, 1 effet/jour/personnage. Vigilance et discrétion en nature : tests +rang+2.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:peau-d-ecorce:classpath-voie-des-vegetaux-class-druide-cof2-lb-2024:r1",
+      "label": "Rang 1 — Peau d’écorce (M)*",
+      "required": [
+        "pas de cumul",
+        "armure métallique",
+        "rang+2"
+      ],
+      "summary": "DEF +2 pendant PER min (+1 aux R3/R5) ; pas de cumul avec armure métallique ni autre sort de DEF, sauf Masque du prédateur. Identifier les plantes et leurs propriétés : tests +rang+2.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:soins:classpath:voie-des-soins:class-pretre:cof2-lb-2024:r1",
+      "label": "Rang 1 — Récupération mineure (A)*",
+      "required": [
+        "Usages/jour = rang",
+        "rang+2"
+      ],
+      "summary": "Au contact, soi/allié : soigne 1d4°+CHA PV. Usages/jour = rang, +1 par autre voie de prêtre R3. Médecine/premiers soins : tests +rang+2.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:armure-de-mana:classpath-voie-de-la-magie-protectrice-class-magicien-cof2-lb-2024:r1",
+      "label": "Rang 1 — Armure de mana (M)*",
+      "required": [
+        "Ne se cumule jamais",
+        "armure",
+        "+3"
+      ],
+      "summary": "Armure magique : DEF +3 pendant INT min, +4 au R3, puis +1 par voie de magicien/mage R5. Ne se cumule jamais avec une armure.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability-r1-class-ensorceleur-divination-divination-cof2-lb-2024",
+      "label": "Divination (L)*",
+      "required": [
+        "NC <niveau",
+        "Volontaire",
+        "Init/DEF"
+      ],
+      "summary": "À 10 m, attaque magique opposée si NC <niveau : renseignements publics sur la cible. Volontaire, lignes de la main : sans test/limite NC. Init/DEF +1, +1 au R3 et par voie d’ensorceleur R5.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability-r1-class-ensorceleur-illusions-mirage-cof2-lb-2024",
+      "label": "Mirage (L)*",
+      "required": [
+        "rang+2",
+        "50 m"
+      ],
+      "summary": "À 50 m : illusion visuelle/sonore immobile, côté maximal 2 m×rang, CHA min. Au R4, animée mais durée en rounds. Supercherie/mensonge : tests +rang+2.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:detection-invisible:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Détection de l’invisible (L)*",
+      "required": [
+        "invisibles",
+        "CHA min",
+        "20 m"
+      ],
+      "summary": "Pendant CHA min : détecte créatures invisibles/cachées à 20 m et Clairvoyance. Aveuglé, peut attaquer les créatures sans malus, mais ne distingue pas le décor.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:sommeil:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Sommeil (L)*",
+      "required": [
+        "CHA min",
+        "NC <1",
+        "1/combat"
+      ],
+      "summary": "1/combat, zone diamètre 10 m à 20 m : endort jusqu’à 1d4°+CHA créatures vivantes, NC <1 (R4 : <2 ; R5 : <3), pendant CHA min. Réveil : attaque infligeant 1 DM.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:maitrise-des-elements-m:classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+      "label": "Maîtrise des éléments (M)*",
+      "required": [
+        "échanger",
+        "rang+2",
+        "INT min"
+      ],
+      "summary": "Pendant INT min : réduit de rang+2 les DM de feu, froid, électricité et acide subis ; peut échanger ces éléments dans ses propres sorts.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:foh81:invocateur:voie-des-mutations:r2",
+      "label": "Rang 2 — Mutation protectrice",
+      "required": [
+        "une mutation",
+        "DEF +rang",
+        "immunité"
+      ],
+      "summary": "5+CHA min, une mutation sans cumul : DEF +rang ; feu/acide ÷2 ; froid/foudre ÷2 ; respiration aquatique ; immunité poison ou maladies. Choisit une option à chaque lancement.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:foh81:psionique:voie-de-la-telepathie:r2",
+      "label": "Rang 2 — Radar mental",
+      "required": [
+        "+2/rang",
+        "pas de malus",
+        "invisible"
+      ],
+      "summary": "Détecter un être vivant : tests de PER +2/rang. Au contact, pas de malus pour l’attaquer aveuglé ou s’il est invisible. Dès R4, évalue sommairement sa santé.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:reference:classpath:voie-du-fauve:class-druide:cof2-lb-2024:rank2",
+      "label": "Panthère",
+      "required": [
+        "Panthère",
+        "DEF 13+rang",
+        "PV 4×niveau",
+        "1d4+2"
+      ],
+      "summary": "Panthère/puma obéissant : DEF 13+rang ; PV 4×niveau ; Init du maître ; attaque = attaque magique ; DM 1d4+2. À 0 PV en nature, fuit et revient après 8 h ; morte, remplacement au niveau suivant.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:reference:classpath:voie-des-vegetaux:class-druide:cof2-lb-2024:rank2",
+      "label": "Prison végétale (L)*",
+      "required": [
+        "10 m",
+        "20 m",
+        "PER min",
+        "pas alliés"
+      ],
+      "summary": "Végétation, diamètre 10 m à 20 m, PER min : immobilise ennemis, pas alliés. Se libérer (A) : FOR 10+PER ; réussite, immunité au sort pour ce combat.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:reference:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:rank2",
+      "label": "Sanctuaire (L)*",
+      "required": [
+        "Action offensive",
+        "fin immédiate",
+        "récupération rapide"
+      ],
+      "summary": "1 min : pour attaquer le prêtre, INT 10+CHA, sinon interdit ; niveau <moitié de celui du prêtre, sans test. Action offensive du prêtre : fin immédiate, récupération rapide avant relance.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:reference:classpath:voie-des-soins:class-pretre:cof2-lb-2024:rank2",
+      "label": "Vigueur divine (L)*",
+      "required": [
+        "rang+2",
+        "maladies",
+        "poisons"
+      ],
+      "summary": "Au contact : guérit poison/maladie ; infection surnaturelle, test d’attaque magique selon MJ. Résister aux maladies et poisons : tests +rang+2.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:petite-taille:path:voie-du-halfelin:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Petite taille",
+      "required": [
+        "d6",
+        "d8–d10",
+        ">d10",
+        "interdits"
+      ],
+      "summary": "DEF +1 ; discrétion/subtilisation +3. Armes : d6 maximum à une main, d8–d10 à deux mains ; >d10, arc long et arbalète lourde interdits.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:don-trange:path:voie-du-gnome:cof2-lb-2024:rank1:cof2-lb-2024",
+      "label": "Don étrange",
+      "required": [
+        "Sciences",
+        "10 m",
+        "1/jour"
+      ],
+      "summary": "Sciences (INT) +3 ; capacité d’ensorceleur R1 au choix. En armure : sort limité à 1/jour, coût PM normal. Vision nocturne 10 m comme en pénombre.",
+      "passed": true
+    },
+    {
+      "abilityId": "ability:violence-cibl-e:path:voie-du-demi-ogre:addon-comp2017-cof2:rank2:cof2-lb-2024",
+      "label": "Violence ciblée",
+      "required": [
+        "1d4 rounds",
+        "Même jour",
+        "Provocation volontaire"
+      ],
+      "summary": "Résiste à une Réaction violente : gagne 1 point de violence. Même jour (G), le dépense pour une réaction de 1d4 rounds contre une cible choisie. Provocation volontaire d’un allié : aucun point.",
+      "passed": true
+    }
+  ],
+  "baselineFailures": [
+    {
+      "label": "Mécanismes",
+      "missing": [
+        "rang+2"
+      ]
+    },
+    {
+      "label": "Tir de grenaille (L)",
+      "missing": [
+        "rang+2",
+        "10 × 5"
+      ]
+    },
+    {
+      "label": "Pilier de bar",
+      "missing": [
+        "rang+2",
+        "alcool"
+      ]
+    },
+    {
+      "label": "Mort ou vif (L)",
+      "missing": [
+        "désarmer",
+        "renverser",
+        "affaiblir",
+        "1d4",
+        "NC",
+        "rang"
+      ]
+    },
+    {
+      "label": "Défaut dans la cuirasse (A)",
+      "missing": [
+        "10+AGI",
+        "immatériel",
+        "round suivant"
+      ]
+    },
+    {
+      "label": "Feinte (L)",
+      "missing": [
+        "2×rang",
+        "2d4°",
+        "CHA/PER"
+      ]
+    },
+    {
+      "label": "Charmant",
+      "missing": [
+        "rang+2",
+        "1 PC",
+        "1d4°+CHA"
+      ]
+    },
+    {
+      "label": "Éclectique",
+      "missing": [
+        "aucun cumul",
+        "R1 de peuple"
+      ]
+    },
+    {
+      "label": "Survie",
+      "missing": [
+        "rang+2"
+      ]
+    },
+    {
+      "label": "Nature nourricière",
+      "missing": [
+        "1d6 h",
+        "1d4° PV par rang"
+      ]
+    },
+    {
+      "label": "Discrétion",
+      "missing": [
+        "rang+2"
+      ]
+    },
+    {
+      "label": "Attaque en finesse",
+      "missing": [
+        "rang+2",
+        "Intimidation"
+      ]
+    },
+    {
+      "label": "Esquive fatale (G)",
+      "missing": [
+        "sauf critique",
+        "second adversaire"
+      ]
+    },
+    {
+      "label": "Tour de force (G)",
+      "missing": [
+        "chemise de mailles"
+      ]
+    },
+    {
+      "label": "Peau de pierre",
+      "missing": [
+        "plafond",
+        "+1"
+      ]
+    },
+    {
+      "label": "Cri de guerre (G)",
+      "missing": [
+        "rang+2",
+        "VOL"
+      ]
+    },
+    {
+      "label": "Piqûres d’insectes",
+      "missing": [
+        "RD 1",
+        "2 en mailles",
+        "3 en plaques"
+      ]
+    },
+    {
+      "label": "Intercepter (G)",
+      "missing": [
+        "sa DEF",
+        "rang aux DM",
+        "avant le résultat"
+      ]
+    },
+    {
+      "label": "Protéger un allié (G)",
+      "missing": [
+        "rang+2",
+        "surprise",
+        "avant le résultat"
+      ]
+    },
+    {
+      "label": "Résilient",
+      "missing": [
+        "étourdi",
+        "affaibli"
+      ]
+    },
+    {
+      "label": "Rang 1 — Langage des animaux",
+      "missing": [
+        "rang+2"
+      ]
+    },
+    {
+      "label": "Rang 1 — Baies magiques (L)*",
+      "missing": [
+        "1 effet/jour/personnage",
+        "rang+2"
+      ]
+    },
+    {
+      "label": "Rang 1 — Peau d’écorce (M)*",
+      "missing": [
+        "pas de cumul",
+        "rang+2"
+      ]
+    },
+    {
+      "label": "Rang 1 — Récupération mineure (A)*",
+      "missing": [
+        "Usages/jour = rang",
+        "rang+2"
+      ]
+    },
+    {
+      "label": "Rang 1 — Armure de mana (M)*",
+      "missing": [
+        "Ne se cumule jamais",
+        "armure"
+      ]
+    },
+    {
+      "label": "Divination (L)*",
+      "missing": [
+        "NC <niveau",
+        "Volontaire",
+        "Init/DEF"
+      ]
+    },
+    {
+      "label": "Mirage (L)*",
+      "missing": [
+        "rang+2"
+      ]
+    },
+    {
+      "label": "Détection de l’invisible (L)*",
+      "missing": [
+        "invisibles",
+        "CHA min",
+        "20 m"
+      ]
+    },
+    {
+      "label": "Sommeil (L)*",
+      "missing": [
+        "CHA min",
+        "NC <1",
+        "1/combat"
+      ]
+    },
+    {
+      "label": "Maîtrise des éléments (M)*",
+      "missing": [
+        "échanger",
+        "rang+2"
+      ]
+    },
+    {
+      "label": "Rang 2 — Mutation protectrice",
+      "missing": [
+        "DEF +rang",
+        "immunité"
+      ]
+    },
+    {
+      "label": "Rang 2 — Radar mental",
+      "missing": [
+        "+2/rang",
+        "pas de malus",
+        "invisible"
+      ]
+    },
+    {
+      "label": "Panthère",
+      "missing": [
+        "Panthère",
+        "DEF 13+rang",
+        "PV 4×niveau",
+        "1d4+2"
+      ]
+    },
+    {
+      "label": "Prison végétale (L)*",
+      "missing": [
+        "10 m",
+        "20 m",
+        "PER min",
+        "pas alliés"
+      ]
+    },
+    {
+      "label": "Sanctuaire (L)*",
+      "missing": [
+        "Action offensive",
+        "fin immédiate",
+        "récupération rapide"
+      ]
+    },
+    {
+      "label": "Vigueur divine (L)*",
+      "missing": [
+        "rang+2",
+        "maladies",
+        "poisons"
+      ]
+    },
+    {
+      "label": "Petite taille",
+      "missing": [
+        "d6",
+        "d8–d10",
+        ">d10",
+        "interdits"
+      ]
+    },
+    {
+      "label": "Don étrange",
+      "missing": [
+        "Sciences",
+        "10 m",
+        "1/jour"
+      ]
+    },
+    {
+      "label": "Violence ciblée",
+      "missing": [
+        "1d4 rounds",
+        "Même jour",
+        "Provocation volontaire"
+      ]
+    }
+  ]
+}

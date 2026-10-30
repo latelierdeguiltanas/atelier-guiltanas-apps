@@ -1,3 +1,16 @@
+## Relais du 30 octobre 2026 — lot 10 récupéré, vérification en cours
+
+Correctifs non publiés du précédent chat retrouvés et réunis : oracle N1, langues, familier, peuples R1/R2, résumés PDF, choix du moine en progression. Rejeu actuel : 60 cas peuples/60 sauvegardes/50 retraits, 72 cas langues, 6 contextes familier, 8 variantes moine, 156 plans N3 et six parcours UI/serveur simulés PASS. Oracle 7 600 et campagne générale en cours. Aucun PJ réel modifié, pas de certification universelle ni de recette Android annoncée.
+
+## Jalon du 30 octobre 2026 — correctifs intégrés, publication en attente
+
+- Lots intégrés : langues Chevalier/Samouraï, PV/PC sans profil, maîtrise petits boucliers, familier conditionnel ; 7 600 essais numériques indépendants (7 480 créations / 120 refus attendus).
+- PDF : 210 résumés R1/R2 relus, 96 complétés ; identité hybride, idéal/travers et purge du modèle déjà rempli. Douze vrais exports natifs/partagés : champs/widgets/AP contrôlés et pages officielles sorcier/moine rendues. Aucun PDF privé publié.
+- Peuples : projection des bonus de tests et traits avec conditions, 60 créations/relectures et 50 contrôles négatifs/variantes. Calculs des actions conditionnelles supplémentaires en cours.
+- N3 : lecture seule des six carnets serveur réels, tous N2. Rejeu des 156 plans N3 depuis ces carnets : résultats identiques au service v9 déployé, inventaires et historique N2 conservés. Aucun choix N3 enregistré en production.
+- Point de vigilance résolu par réconciliation en cours : le service v9 déployé contient une couche universelle absente du dépôt courant. Il ne faut pas le remplacer par le moteur plus ancien du dépôt. Conservation explicite requise avant déploiement.
+- État : N1 non certifié globalement ; contrôles indépendants R2 et intégration finale en cours. Les résultats intermédiaires ne remplacent pas le rejeu final après fusion.
+
 ## Reprise du 30 octobre 2026 — intervention ouverte
 
 - Base vérifiée sur GitHub : PR #2, `qa/forge-n1-certification`, commit `6b2aac2` (lot 9). Les mentions historiques de PR #87 ne correspondent pas au dépôt actuel.

@@ -13533,6 +13533,13 @@
                 "géographie",
                 "haute société"
               ]
+            },
+            {
+              "type": "language_choice",
+              "count": 1
+            },
+            {
+              "type": "literacy"
             }
           ]
         },
@@ -17539,6 +17546,9 @@
                 "lettres",
                 "séduction"
               ]
+            },
+            {
+              "type": "literacy"
             }
           ]
         },
@@ -45734,6 +45744,36 @@ function numeric(expression,v){if(typeof expression==='number')return expression
  const parts=s.match(/[+-]?[^+-]+/g)||[];return parts.reduce((n,p)=>{const sign=p[0]==='-'?-1:1,key=p.replace(/^[+-]/,'');const value=/^\d+$/.test(key)?Number(key):v[key];if(!Number.isFinite(value))throw Error('Variable de règle absente : '+key);return n+sign*value;},0);}
 function damagePlus(value,bonus){if(!bonus)return value;const m=String(value||'').match(/^(\d+d\d+°?)([+-]\d+)?$/);if(!m)return String(value)+(bonus>=0?'+':'')+bonus;const sum=Number(m[2]||0)+bonus;return m[1]+(sum?((sum>0?'+':'')+sum):'');}
 function weaponMatch(type,a,w){const props=w.properties||[],n=fold(w.name||a.label);if(type==='melee')return a.type==='contact';if(type==='ranged')return a.type==='distance';if(type==='unarmed')return a.weaponId==='weapon:unarmed';if(type==='light_melee')return a.type==='contact'&&props.includes('light');if(type==='bow')return a.type==='distance'&&w.category==='bow';if(type==='thrown_knife')return a.type==='distance'&&/dague|couteau/.test(n);if(type==='axe_hammer')return /hache|marteau/.test(n);if(type==='crossbow_powder')return w.category==='crossbow'||props.includes('powder')||/arbalete|poudre|mousquet|pistolet|arquebuse/.test(n);return false;}
+// Explicit people test bonuses are projected separately from combat statistics.
+// Context is retained on the entry; e.g. resistance to spells never raises ordinary ATM.
+function projectPeopleBonuses(s,state){
+ const rows=s.acquiredAbilities||[],rank=id=>Math.max(0,...rows.filter(a=>(a.pathId||a.path_id)===id).map(a=>Number(a.rank))),seen=new Set();
+ const historyRules=s.historyPath?.ancestryRules||[],hasHistory=type=>historyRules.some(r=>r.type===type);
+ function skill(a,tests,value,condition=null,excludes=[]){const entry={sourceAbilityId:a.id,tests,value,scope:'self',bonusType:'people',...(condition?{condition}:{}),...(excludes.length?{excludes}:{}),sourceRule:'Voie de peuple, rang '+a.rank};s.skillBonuses=s.skillBonuses||[];const key=a.id+'|'+JSON.stringify(tests);if(seen.has(key))return;seen.add(key);const index=s.skillBonuses.findIndex(x=>x.sourceAbilityId===a.id&&JSON.stringify(x.tests)===JSON.stringify(tests));if(index>=0)s.skillBonuses[index]=entry;else s.skillBonuses.push(entry);}
+ function feature(a,value){s.passiveFeatures.push({...value,sourceAbilityId:a.id});}
+ for(const a of rows){const path=a.pathId||a.path_id,p=path?.split(':')[1],r=Number(a.rank);if(!String(path).startsWith('path:'))continue;
+ if(r===1){
+  if(p==='voie-du-halfelin')skill(a,['discrétion','subtilisation'],3);
+  if(p==='voie-du-nain'){skill(a,['pierre','architecture','mines'],3);skill(a,['passages secrets','pièges'],3,'dans les murs et parois rocheuses');}
+  if(p==='voie-du-demi-orc')skill(a,['intimidation'],3);
+  if(p==='voie-de-l-elfe-haut')skill(a,['érudition','arts'],3);
+  if(p==='voie-de-l-elfe-sylvain'&&!hasHistory('sylvan_history'))skill(a,['escalade','discrétion','chasse','survie'],3,'en forêt');
+  if(p==='voie-du-gnome')skill(a,['sciences ordinaires','sciences occultes'],3);
+  if(p==='voie-du-gobelin')skill(a,['discrétion'],3);
+  if(p==='voie-du-kobold')skill(a,['discrétion','embuscade'],3);
+  if(p==='voie-de-letre-feerique'){skill(a,['comprendre les animaux','calmer les animaux','communiquer avec les animaux'],3);feature(a,{kind:'animal_language'});}
+  if(p==='voie-du-demi-ogre')skill(a,['VOL'],5,'résister ou mettre fin à sa Réaction violente');
+  if(p==='mage')skill(a,['connaissance de la magie','érudition occulte'],rank(path)+2);
+  if(['voie-du-nain','voie-du-demi-orc','voie-du-gnome'].includes(p))feature(a,{kind:'vision',meters:p==='voie-du-gnome'?10:30,darkness:'pénombre dans le noir total'});
+  if(['voie-de-l-elfe-haut','voie-de-l-elfe-sylvain'].includes(p))feature(a,{kind:'vision',condition:'nuit sous la lumière des étoiles',darkness:'pénombre'});
+ }
+ if(r===2){
+  if(['voie-du-halfelin','voie-de-l-elfe-haut'].includes(p))skill(a,['attaque magique opposée'],rank(path),'résister à un sort');
+  if(p==='voie-de-l-elfe-haut')feature(a,{kind:'immunity',targets:['peur','sommeil magique']});
+  if(p==='voie-du-gnome')skill(a,['interaction sociale'],3,null,['intimidation']);
+ }
+ }
+}
 function apply(s,state,db){const rows=ownedRules(s,db,state),before={...s.caracs},delta=Object.fromEntries(STATS.map(k=>[k,0])),errors=[...equipmentRules(state,db,s.acquiredAbilities).sacredErrors],statChanges=[];s.passiveFeatures=[];
  for(const x of rows){const bag=state.abilityChoices?.[x.ability.id]||{};for(const rule of x.rules){let values=null;if(rule.kind==='stats')values=rule.values;if(rule.kind==='stat_choice'){const choice=String(bag[rule.id]||rule.default||'').toLowerCase();if(!rule.values.includes(choice)){errors.push(x.ability.label+' : choisir '+rule.values.map(x=>x.toUpperCase()).join(' ou ')+'.');continue;}values={[choice]:rule.amount};if(choice===rule.bonusDieIf)s.passiveFeatures.push({kind:'bonus_die',stat:choice,sourceAbilityId:x.ability.id});}
  if(values){for(const[k,value]of Object.entries(values))delta[k]+=value;statChanges.push({abilityId:x.ability.id,values:clone(values)});}
@@ -45767,6 +45807,7 @@ function apply(s,state,db){const rows=ownedRules(s,db,state),before={...s.caracs
   for(const x of rows)if(x.rules.some(r=>r.kind==='sabre_formula')&&a.type==='contact'&&/sabre|katana|wakizashi|boken/i.test(a.label||'')){const bag=state.abilityChoices?.[x.ability.id]||{},atk=bag.sabreAttackStat||'AUTO',damage=bag.sabreDamageStat||'AUTO',chosen=atk==='AUTO'?(s.caracs.agi>s.caracs.for?'agi':'for'):atk.toLowerCase(),old=a.attackCharacteristic||'for';a.attackBonus+=s.caracs[chosen]-s.caracs[old];a.attackCharacteristic=chosen;const amount=damage==='AUTO'?Math.max(s.caracs.for,x.rank):damage==='RANG'?x.rank:s.caracs.for;a.damage=damagePlus(a.damage,amount-s.caracs.for);a.damageCharacteristic=damage==='FOR'||damage==='AUTO'&&s.caracs.for>=x.rank?'for':null;a.damageSource=a.damageCharacteristic?'FOR':'RANG';}
   if(a.abilityId){const canonical=[...((db.tables||db).abilities_class||[]),...((db.tables||db).abilities_people||[])].find(x=>x.id===a.abilityId);if(canonical){const condition=availability(canonical,state,db,s.acquiredAbilities);if(!condition.active)a.disabledReason=condition.reason;}}
  }
+ projectPeopleBonuses(s,state);
  s.statGainLedger=statChanges;if(s.characterState){s.characterState.characteristics=clone(s.caracs);s.characterState.attacks=clone(s.attacks||[]);s.characterState.passiveFeatures=clone(s.passiveFeatures);s.characterState.skillBonuses=clone(s.skillBonuses||[]);s.characterState.statGainLedger=clone(statChanges);s.characterState.activeFeatures=clone(s.activeFeatures||[]);}return{errors,statChanges};
 }
 const api={version:'FOH_PERMANENT_RULES_1',ruleSet,numeric,apply,damagePlus,weaponMatch,plannedAbilities,equipmentRules,availability};root.FOHPermanentRules=api;if(typeof module!=='undefined')module.exports=api;
@@ -46770,6 +46811,7 @@ const errors=[];
         }
         continue;
       }
+      if(!['add','add_flat','add_stat'].includes(e.type))continue;
       if(e.target==='PV') sticky.PV+=value;
       if(e.target==='DEF') sticky.DEF+=value;
       if(e.target==='INIT') sticky.INIT+=value;
@@ -46786,8 +46828,9 @@ const errors=[];
     const armorMaxDef=armorCaps.length?Math.min(...armorCaps):0,armorId=String(equip.armorId||''),armor=armorId&&(Data.armors||[]).find(a=>a.id===armorId||a.alias===armorId);
     if(armorId&&!armor)errors.push('Sans profil : armure inconnue.');
     if(armor&&Number(armor.defBonus||armor.def||0)>armorMaxDef)errors.push('Sans profil : armure incompatible avec une voie choisie.');
-    const shields=masteries.length&&masteries.every(m=>m.shields==='all')?'all':'none';
-    if(String(equip.shieldId||'')&&shields!=='all')errors.push('Sans profil : bouclier incompatible avec une voie choisie.');
+    const shields=masteries.length&&masteries.every(m=>m.shields==='all')?'all':masteries.length&&masteries.every(m=>['all','small'].includes(m.shields))?'small':'none',shieldId=String(equip.shieldId||''),shield=shieldId&&(Data.shields||[]).find(x=>x.id===shieldId);
+    if(shieldId&&!shield)errors.push('Sans profil : bouclier inconnu.');
+    else if(shield&&(shields==='none'||(shields==='small'&&Number(shield.defBonus||0)>1)))errors.push('Sans profil : bouclier incompatible avec une voie choisie.');
     errors.push(...validateAncestryEquipmentN1(sticky,state,weapons));
     const union=rows=>Array.from(new Set(rows.flatMap(x=>Array.isArray(x)?x:[])));
     return {errors,weapons,rule:{status:'N1_NATIVE_NO_PROFILE',masteries:{weaponIds:union(masteries.map(m=>m.weaponIds)),armorIds:union(masteries.map(m=>m.armorIds)),armorMaxDef,shields}}};
@@ -46872,7 +46915,6 @@ const errors=[];
     const selectedMechanics=acquisitions.map(a=>a.ability&&a.ability.mechanics).filter(Boolean);
     const hasGrosseTete=acquisitions.some(a=>a.pathId==='classpath:voie-du-golem:class-forgesort:cof2-lb-2024'&&a.rank===1);
     if(state&&state.profileChoices&&state.profileChoices.useIntForPV===true){ if(!hasGrosseTete) return {sticky,errors:['Grosse tête est requise pour remplacer CON par INT dans les PV.']}; sticky.PV += Number(sticky.caracs.int||0)-Number(sticky.caracs.con||0); }
-    if(acquisitions.some(a=>a.pathId==='classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024'&&a.rank===1)&&!String(state&&state.profileChoices&&state.profileChoices.extraLanguage||'').trim()) return {sticky,errors:['Éduqué : choisir une langue supplémentaire.']};
     if(sticky.peupleId==='people:centaure:addon-comp2017-cof2'&&acquisitions.some(a=>a.pathId==='classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024'&&a.rank===1)) return {sticky,errors:['Centaure : la Fidèle monture standard ne peut pas être montée ; choisir une autre voie.']};
     const hasShieldPath=acquisitions.some(a=>a.pathId==='classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024'&&a.rank===1); if(hasShieldPath&&!String((state.equip||{}).shieldId||'')) return {sticky,errors:['Voie du bouclier : un bouclier est obligatoire.']};
     const hasMasterPath=acquisitions.some(a=>a.pathId==='classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024'&&a.rank===1); const pref=String(state&&state.profileChoices&&state.profileChoices.preferredWeaponCategory||''); if(hasMasterPath&&!['swords','axes','maces','spears','thrown'].includes(pref)) return {sticky,errors:['Armes de prédilection : choisir une catégorie autorisée.']};
@@ -46897,7 +46939,7 @@ const errors=[];
     sticky.resources=Object.assign({},sticky.resources||{},{mana:{max:sticky.PM,current:sticky.PM}});
     const elixirRanks=acquisitions.filter(a=>a.pathId==='classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024').map(a=>a.rank); if(elixirRanks.length){const n=Math.max(...elixirRanks);sticky.resources.elixirs={max:n,current:n,refresh:'full_recovery_morning'};}
     sticky.companions=selectedMechanics.flatMap(m=>(m.effects||[]).filter(e=>e.type==='companion').map(e=>JSON.parse(JSON.stringify(e))));
-    const langRule=Data.language_rules||{},catalog=langRule.catalog||[],native=(langRule.peopleLanguages&&langRule.peopleLanguages[sticky.peupleId]||['commun']).slice();let automatic=[...new Set(native)];if(sticky.acquiredAbilities.some(a=>String(a.label).toLowerCase().includes('discrétion'))&&!automatic.includes('argotien'))automatic.push('argotien');let selectedLanguages=Array.isArray(state&&state.languages&&state.languages.selected)?state.languages.selected.map(String):(String(state&&state.profileChoices&&state.profileChoices.extraLanguage||'').trim()?[String(state.profileChoices.extraLanguage).trim()]:[]);if(new Set(selectedLanguages).size!==selectedLanguages.length)return {sticky,errors:['Langues : doublon interdit.']};if(selectedLanguages.some(x=>!catalog.includes(x)||automatic.includes(x)))return {sticky,errors:['Langues : choix illégal ou déjà automatique.']};const languageBonus=sticky.acquiredAbilities.reduce((n,a)=>n+((a.mechanics&&a.mechanics.effects||[]).filter(e=>e.type==='language_choice').reduce((m,e)=>m+Number(e.count||1),0)),0),forcedLiteracy=sticky.acquiredAbilities.some(a=>(a.mechanics&&a.mechanics.effects||[]).some(e=>e.type==='literacy'));let slots=Math.max(0,Number(sticky.caracs.int||0))+languageBonus,cost=selectedLanguages.reduce((n,x)=>n+(x==='argotien'&&!['class:voleur:cof2-lb-2024','class:barde:cof2-lb-2024'].includes(sticky.profileId)?2:1),0);if(cost>slots)return {sticky,errors:['Langues : nombre de choix supérieur à l’INT disponible.']};if(Number(sticky.caracs.int)<=-2)automatic=automatic.filter(x=>x!=='commun').slice(0,1);sticky.languages={automatic,choicesAllowed:catalog.filter(x=>!automatic.includes(x)),selected:selectedLanguages,literacy:forcedLiteracy||Number(sticky.caracs.int)>=0?'literate':(Number(sticky.caracs.int)===-1?'illiterate':'illiterate_limited_common'),remainingSlots:slots-cost};
+    const languageErrors=projectLanguages(sticky,state);if(languageErrors.length)return{sticky,errors:languageErrors};
     const packInput=state&&state.adventurePack||{},canonicalItems=(Data.adventure_pack_n1.items||[]).map(x=>JSON.parse(JSON.stringify(x)));if(Array.isArray(packInput.itemIds)){const expected=canonicalItems.map(x=>x.id).sort(),actual=packInput.itemIds.map(String).sort();if(JSON.stringify(expected)!==JSON.stringify(actual))return {sticky,errors:['Sac d’aventurier : contenu officiel falsifié.']};}const silver=packInput.silverCoins==null?null:Number(packInput.silverCoins);if(silver!==null&&(!Number.isInteger(silver)||silver<2||silver>12))return {sticky,errors:['Sac d’aventurier : la bourse doit provenir de 2d6 pa (2 à 12).']};sticky.adventurePack={items:canonicalItems,money:{currency:'pa',formula:'2d6',value:silver,pendingRoll:silver===null}};
     const ideal=String(state&&state.narrative&&state.narrative.ideal||''),flaw=String(state&&state.narrative&&state.narrative.flaw||'');if(ideal&&!Data.ideals_n1.includes(ideal))return {sticky,errors:['Idéal héroïque inconnu.']};if(flaw&&!Data.flaws_n1.includes(flaw))return {sticky,errors:['Travers inconnu.']};sticky.narrative={ideal:ideal||null,flaw:flaw||null,optional:true};sticky.religion=religion?{id:religion.id,name:religion.name,sacredWeaponId:religion.sacredWeaponId,sacredWeapon:religion.sacredWeapon,divineAbility:religion.divineAbility,divineRank:religion.divineRank,divineAbilityId:religion.divineAbilityId,replacedPriestPathId:String(state.profileChoices.replacedPriestPathId||'')}:null;if(religion){sticky.masteries=sticky.masteries||{};sticky.masteries.sacredWeaponId=religion.sacredWeaponId;}
     const finalFamily=Data.getFamille(sticky.familleId),basePV=Number(finalFamily&&finalFamily.pvBaseN1||0),baseDR=Number(finalFamily&&finalFamily.drBaseCount||0),pcFamily=Number(finalFamily&&finalFamily.pcBonus||0),conFinal=Number(sticky.caracs.con||0),chaFinal=Number(sticky.caracs.cha||0),volFinal=Number(sticky.caracs.vol||0);const armorDef=Number(sticky.equip&&sticky.equip.armureDEF||0),shieldDef=Number(sticky.equip&&sticky.equip.bouclierDEF||0),agiApplied=Math.min(Number(sticky.caracs.agi||0),Number.isFinite(Number(sticky.equipment&&sticky.equipment.agiCap))?Number(sticky.equipment.agiCap):Number(sticky.caracs.agi||0));sticky.calculationTrace={source:'COF2 Livre de base pp.30-31',characteristics:{seriesId:state.serieId,base:Object.assign({},state.baseCaracs||{}),peopleChoices:Object.assign({},state.peupleChoices||{}),final:Object.assign({},sticky.caracs)},PV:{baseFamily:basePV,CON:conFinal,capacityAndOtherModifiers:sticky.PV-basePV-conFinal,final:sticky.PV},DEF:{base:10,AGI:agiApplied,armor:armorDef,shield:shieldDef,capacityAndOtherModifiers:sticky.DEF-10-agiApplied-armorDef-shieldDef,final:sticky.DEF},INIT:{base:10,PER:Number(sticky.caracs.per||0),capacityAndOtherModifiers:sticky.INIT-10-Number(sticky.caracs.per||0),final:sticky.INIT},PC:{base:2,CHA:chaFinal,familyBonus:pcFamily,peopleAndCapacityModifiers:sticky.PC-2-chaFinal-pcFamily,final:sticky.PC},PM:{hasSpell:spells.length>0,VOL:volFinal,spellsLearned:spells.map(x=>({id:x.id,label:x.label,sourcePathId:x.pathId})),formula:spells.length?'VOL + nombre de sorts':'aucun sort = 0',final:sticky.PM},DR:{baseFamily:baseDR,CON:conFinal,otherModifiers:Number(sticky.DR.count)-baseDR-conFinal,count:sticky.DR.count,die:sticky.DR.die},attacks:(sticky.attacks||[]).map(a=>({weaponOrAbilityId:a.weaponId||a.abilityId||a.id,label:a.label,type:a.type,level:1,characteristic:a.type==='distance'?Number(sticky.caracs.agi||0):(a.type==='magique'?volFinal:Number(sticky.caracs.for||0)),capacityAndOtherModifiers:a.attackBonus==null?null:Number(a.attackBonus)-1-(a.type==='distance'?Number(sticky.caracs.agi||0):(a.type==='magique'?volFinal:Number(sticky.caracs.for||0))),final:a.attackBonus,damage:a.damage}))};
@@ -46956,6 +46998,20 @@ const errors=[];
   function validateCharacterStateAdvanced(saved){try{const x=migrateCharacterState(saved);if(x.schemaVersion!=='foh-character-state-5')return {valid:false,errors:['Schéma v5 requis.']};if(!x.creationInput)return {valid:false,errors:['creationInput absent.']};const r=computeCharacterN1(x.creationInput);if(r.errors.length)return {valid:false,errors:r.errors};const c=r.sticky.characterState,keys=['peopleId','familyId','profileId','characteristics','paths','abilities','derived','capacityBudget','pathAssignments','advancedRules','age','historyPath','additionalMagePath'];const errors=[];for(const k of keys)if(JSON.stringify(x[k]??null)!==JSON.stringify(c[k]??null))errors.push('CharacterState falsifié : '+k);return {valid:errors.length===0,errors,recomputed:c};}catch(e){return {valid:false,errors:[String(e.message||e)]};}}
 
 
+  // Language grants are identified by their authored mechanics, never by a shared label.
+  function projectLanguages(s,state){
+    const rule=Data.language_rules||{},catalog=rule.catalog||[],owned=s.acquiredAbilities||[],automatic=[...new Set(rule.peopleLanguages?.[s.peupleId]||['commun'])];
+    if(owned.some(a=>String(a.label).toLowerCase().includes('discrétion'))&&!automatic.includes('argotien'))automatic.push('argotien');
+    const languageAbilities=owned.filter(a=>(a.mechanics?.effects||[]).some(e=>e.type==='language'));
+    let selected=Array.isArray(state?.languages?.selected)?state.languages.selected.map(String):[];
+    for(const a of languageAbilities){const id=state?.abilityChoices?.[a.id]?.extraLanguage??state?.profileChoices?.extraLanguage;if(id&&!selected.includes(String(id)))selected.push(String(id));}
+    if(new Set(selected).size!==selected.length)return['Langues : doublon interdit.'];
+    if(selected.some(id=>!catalog.includes(id)||automatic.includes(id)))return['Langues : choix illégal ou déjà automatique.'];
+    const bonus=owned.reduce((n,a)=>n+(a.mechanics?.effects||[]).filter(e=>e.type==='language_choice').reduce((m,e)=>m+Number(e.count||1),0),0),slots=Math.max(0,Number(s.caracs.int||0))+bonus,cost=selected.reduce((n,id)=>n+(id==='argotien'&&!['class:voleur:cof2-lb-2024','class:barde:cof2-lb-2024'].includes(s.profileId)?2:1),0),literate=owned.some(a=>(a.mechanics?.effects||[]).some(e=>e.type==='literacy'));
+    if(cost>slots)return['Langues : nombre de choix supérieur à l’INT disponible.'];
+    if(Number(s.caracs.int)<=-2)automatic.splice(0,automatic.length,...automatic.filter(id=>id!=='commun').slice(0,1));
+    s.languages={automatic,choicesAllowed:catalog.filter(id=>!automatic.includes(id)),selected,literacy:literate||Number(s.caracs.int)>=0?'literate':(Number(s.caracs.int)===-1?'illiterate':'illiterate_limited_common'),remainingSlots:slots-cost};if(s.characterState)s.characterState.languages=JSON.parse(JSON.stringify(s.languages));return[];
+  }
   function abilityChoiceBag(state,id){return JSON.parse(JSON.stringify(state&&state.abilityChoices&&state.abilityChoices[id]||{}));}
   function allAbilities(){return [...Data.abilities_class,...Data.abilities_people,...Data.abilities_r1_people,...((dbObj.tables||dbObj).history_abilities||[])];}
   function semanticNumber(formula,s,ctx){if(typeof formula==='number')return formula;if(formula==='RANK+2')return Number(ctx.pathRank||ctx.rank||1)+2;if(formula==='RANK'||formula==='RANG')return Number(ctx.pathRank||ctx.rank||1);if(formula==='FOR')return Number(s.caracs.for||0);if(formula==='1+BARDE_RANK4_COUNT')return 1+Number(ctx.bardeRank4Count||0);if(formula==='1+SPECIALIZATION_UPGRADES')return 1+Number(ctx.specializationUpgrades||0);if(formula==='1+ARQUEBUSIER_RANK5_COUNT')return 1+Number(ctx.arquebusierRank5Count||0);return Number(formula)||0;}
@@ -46994,9 +47050,10 @@ const errors=[];
         s.acquiredAbilities.push(grant);queue.push(grant);
         s.grantedAbilities.push({id,sourceAbilityId:source.id,free:true,restrictions:eff.armorRestrictions||null});
         applyProfileN1Effects(s,ability,state);
-        if((ability.mechanics?.effects||[]).some(e=>e.type==='language')){const language=state?.abilityChoices?.[ability.id]?.extraLanguage??state?.profileChoices?.extraLanguage;if(language){s.languages=s.languages||{automatic:[],selected:[]};s.languages.selected=[...new Set([...(s.languages.selected||[]),language])];}}
+
       }
     }
+    const languageErrors=projectLanguages(s,state);if(languageErrors.length)return{sticky:s,errors:languageErrors};
     const allById=new Map(allAbilities().map(a=>[a.id,a]));
     s.spells=s.acquiredAbilities.filter(a=>a.spell).map(a=>({id:a.id,pathId:a.pathId,rank:a.rank,label:a.label}));
     s.PM=s.spells.length?Number(s.caracs.vol||0)+s.spells.length:0;
@@ -47043,9 +47100,11 @@ const errors=[];
     if(ageEnabled&&!cat)return{sticky:null,errors:['Sans profil : catégorie d’âge inconnue.']};
     if(ageEnabled){input.__seriesBase=Object.assign({},input.baseCaracs||{});for(const [k,v] of Object.entries(cat.statMods||{}))input.baseCaracs[k]=Number(input.baseCaracs[k]||0)+Number(v);input.advancedRules=Object.assign({},input.advancedRules,{age:false});delete input.age;}
     const r=computeCharacterN1Base(input);if(r.errors.length)return r;const s=r.sticky;
-    s.PV=Math.floor((Number(familyRules[0].pvBaseN1||0)+Number(familyRules[1].pvBaseN1||0))/2)+Number(s.caracs.con||0);
-    s.PC=2+Number(s.caracs.cha||0)+Math.max(...familyRules.map(x=>Number(x.pcBonus||0)));
-    s.DR={count:Math.max(...familyRules.map(x=>Number(x.drBaseCount||0)))+Number(s.caracs.con||0),die:Math.max(...familyRules.map(x=>Number(x.drDie||0)))};
+    // Replace only the technical family baseline, preserving people and acquired-capacity effects.
+    const technicalFamily=Data.getFamille(canonicalFamilyId),pvModifiers=s.PV-Number(technicalFamily.pvBaseN1||0)-Number(s.caracs.con||0),pcModifiers=s.PC-2-Number(s.caracs.cha||0)-Number(technicalFamily.pcBonus||0),drModifiers=Number(s.DR.count)-Number(technicalFamily.drBaseCount||0)-Number(s.caracs.con||0);
+    s.PV=Math.floor((Number(familyRules[0].pvBaseN1||0)+Number(familyRules[1].pvBaseN1||0))/2)+Number(s.caracs.con||0)+pvModifiers;
+    s.PC=2+Number(s.caracs.cha||0)+Math.max(...familyRules.map(x=>Number(x.pcBonus||0)))+pcModifiers;
+    s.DR={count:Math.max(...familyRules.map(x=>Number(x.drBaseCount||0)))+Number(s.caracs.con||0)+drModifiers,die:Math.max(...familyRules.map(x=>Number(x.drDie||0)))};
     s.totals.PV=s.PV;s.totals.PC=s.PC;s.totals.DR=s.DR;s.profileId=null;s.familleId=null;s.profileLabel='Sans profil';s.profilePaths=rows.map(x=>({pathId:x.id,rank:1,sourceProfileId:x.classId}));
     s.acquiredAbilities.forEach(a=>{const row=rows.find(x=>x.id===a.pathId);if(row){a.sourceProfileId=row.classId;a.origin='no_profile_native';}});
     if(ageEnabled){const spending=Array.isArray(ageRaw.spending)?ageRaw.spending:[],budget=Number(cat.capacityPoints||0);let spent=0;const owned=new Set(s.acquiredAbilities.map(a=>a.pathId+':'+a.rank));for(const buy of spending){const rank=Number(buy.rank),pathId=String(buy.pathId||''),path=rows.find(x=>x.id===pathId);if(!path||!Number.isInteger(rank)||rank<2||rank>Number(cat.maxCreationRank||1))return{sticky:s,errors:['Sans profil : achat de rang illégal pour cet âge.']};if(owned.has(pathId+':'+rank))return{sticky:s,errors:['Sans profil : capacité déjà possédée.']};if(!owned.has(pathId+':'+(rank-1)))return{sticky:s,errors:['Sans profil : rang précédent obligatoire.']};const cost=rank>=3?2:1;spent+=cost;if(spent>budget)return{sticky:s,errors:['Sans profil : budget de points de capacité insuffisant.']};const ability=Data.getClassAbility(pathId,rank);if(!ability)return{sticky:s,errors:['Sans profil : capacité de rang achetée introuvable.']};owned.add(pathId+':'+rank);s.acquiredAbilities.push({id:ability.id,pathId,rank,label:ability.label||'',spell:isSpell(ability),mechanics:ability.mechanics||{},origin:'age_capacity_points',sourceProfileId:path.classId});applyProfileN1Effects(s,ability,original);}const cardSpent=original.advancedRules?.aLaCarte&&Array.isArray(original.aLaCartePurchases)?original.aLaCartePurchases.length:0;if(spent+cardSpent!==budget)return{sticky:s,errors:['Sans profil : tous les points de capacité d’âge doivent être dépensés exactement entre rangs et capacités à la carte.']};s.capacityBudget={age:{total:budget,available:budget,spent,remaining:budget-spent}};s.age={enabled:true,categoryId:cat.id,label:cat.label,maxCreationRank:cat.maxCreationRank,capacityPoints:budget};}
@@ -47088,7 +47147,7 @@ const errors=[];
     return {sticky:s,errors:[]};
   }
 
-  function persistentChoiceDefinitions(ability){const rows=(ability&&ability.mechanics&&ability.mechanics.choices||[]).filter(c=>c.persist).map(c=>Object.assign({},c,{sourceMechanic:'mechanics.choices',required:c.required!=null?!!c.required:c.type!=='boolean',default:c.default!=null?c.default:(c.type==='boolean'?false:undefined)}));for(const e of ability&&ability.mechanics&&ability.mechanics.effects||[])if(e.type==='grant_ability_choice'&&e.persist)rows.push({id:e.choiceId,type:'ability_choice',sourceMechanic:'grant_ability_choice',required:true,persist:true,resolver:'getAvailableAbilityGrantOptions'});const label=String(ability&&ability.label||'').toLowerCase();if((ability&&ability.mechanics&&ability.mechanics.requiresChoice)==='preferredWeaponCategory'&&!rows.some(x=>x.id==='preferredWeaponCategory'))rows.push({id:'preferredWeaponCategory',type:'preferred_weapon_category',sourceMechanic:'legacy.requiresChoice',required:true,persist:true,values:['swords','axes','maces','spears','thrown']});if(label.includes('éduqué')&&!rows.some(x=>x.id==='extraLanguage'))rows.push({id:'extraLanguage',type:'language',sourceMechanic:'canonical.language_choice',required:true,persist:true,resolver:'language_rules.catalog'});if(label.includes('spécialisation'))return rows.filter(x=>!['specializationWeaponCategory','weaponCategory','favoriteWeaponCategory'].includes(x.id));return rows;}
+  function persistentChoiceDefinitions(ability){const rows=(ability&&ability.mechanics&&ability.mechanics.choices||[]).filter(c=>c.persist).map(c=>Object.assign({},c,{sourceMechanic:'mechanics.choices',required:c.required!=null?!!c.required:c.type!=='boolean',default:c.default!=null?c.default:(c.type==='boolean'?false:undefined)}));for(const e of ability&&ability.mechanics&&ability.mechanics.effects||[])if(e.type==='grant_ability_choice'&&e.persist)rows.push({id:e.choiceId,type:'ability_choice',sourceMechanic:'grant_ability_choice',required:true,persist:true,resolver:'getAvailableAbilityGrantOptions'});const label=String(ability&&ability.label||'').toLowerCase();if((ability&&ability.mechanics&&ability.mechanics.requiresChoice)==='preferredWeaponCategory'&&!rows.some(x=>x.id==='preferredWeaponCategory'))rows.push({id:'preferredWeaponCategory',type:'preferred_weapon_category',sourceMechanic:'legacy.requiresChoice',required:true,persist:true,values:['swords','axes','maces','spears','thrown']});if(label.includes('spécialisation'))return rows.filter(x=>!['specializationWeaponCategory','weaponCategory','favoriteWeaponCategory'].includes(x.id));return rows;}
   function weaponCategory(id){const w=Data.getWeapon(String(id))||{},n=String(w.name||w.label||id).toLowerCase();if(/épée|rapière/.test(n))return{id:'swords',label:'Épées et rapières'};if(/hache/.test(n))return{id:'axes',label:'Haches'};if(/masse|marteau/.test(n))return{id:'maces',label:'Masses et marteaux'};if(/lance|épieu/.test(n))return{id:'spears',label:'Lances et épieux'};if(String(id).includes('powder'))return{id:'firearm',label:'Armes à poudre'};return{id:String(id),label:w.name||w.label||String(id)};}
   function getPersistentChoiceOptions(state,abilityId,choiceId){const a=allAbilities().find(x=>x.id===abilityId),c=persistentChoiceDefinitions(a).find(x=>x.id===choiceId);if(!c)return[];if(c.type==='ability_choice')return legalGrantOptions(a,state||{}).map(x=>({id:x.id,label:x.label||x.r1_title||x.id}));if(c.type==='enum_multi')return(c.values||[]).flatMap(id=>Array.from({length:c.maxCopies||1},(_,i)=>({id,label:(c.valueLabels?.[id]||id)+(i?' n°'+(i+1):'')})));if(c.type==='enum')return(c.values||[]).map(id=>({id,label:c.valueLabels?.[id]||({AGI:'Agilité',CON:'Constitution',DEF_PLUS_1:'+1 DEF',PLATE_MASTERY:'Maîtrise de la plaque'})[id]||id}));if(c.type==='weapon_multi'){const seen={};return((state&&state.equip&&state.equip.weaponIds)||[]).map(String).map(id=>{seen[id]=(seen[id]||0)+1;const n=seen[id];return{id,label:((Data.getWeapon(id)||{}).name||id)+(n>1?' n°'+n:'')}})}if(c.type==='weapon_category'){const m=new Map;for(const id of(state&&state.equip&&state.equip.weaponIds)||[]){const x=weaponCategory(id);m.set(x.id,x)}return[...m.values()]}if(c.type==='preferred_weapon_category')return[{id:'swords',label:'Épées'},{id:'axes',label:'Haches'},{id:'maces',label:'Masses'},{id:'spears',label:'Lances'},{id:'thrown',label:'Armes de jet'}];if(c.type==='language'){const known=(state&&state.languages&&state.languages.automatic)||((Data.language_rules||{}).peopleLanguages||{})[state&&state.peupleId]||['commun'];return((Data.language_rules||{}).catalog||[]).filter(id=>!known.includes(id)).map(id=>({id,label:id.charAt(0).toUpperCase()+id.slice(1)}))}return[];}
   function validatePersistentAbilityChoices(state,acquired){const errors=[];for(const row of acquired||[]){const a=allAbilities().find(x=>x.id===row.id);for(const c of persistentChoiceDefinitions(a)){const bag=state&&state.abilityChoices&&state.abilityChoices[a.id]||{},v=bag[c.id]??(state&&state.profileChoices&&state.profileChoices[c.id]),options=getPersistentChoiceOptions(state,a.id,c.id).map(x=>x.id);if(c.type==='boolean'){if(v!=null&&typeof v!=='boolean')errors.push((a.label||a.id)+' : valeur booléenne illégale.');continue;}if(c.required&&(v==null||v===''||(Array.isArray(v)&&v.length<(c.min||1))))errors.push((a.label||a.id)+' : choix obligatoire manquant.');if(c.type==='enum'&&v!=null&&!(c.values||[]).includes(v))errors.push((a.label||a.id)+' : valeur de choix illégale.');if(c.type==='enum_multi'&&v!=null){if(!Array.isArray(v)||v.some(x=>!(c.values||[]).includes(x))||v.length>(c.max||1)||v.some(x=>v.filter(y=>x===y).length>(c.maxCopies||1)))errors.push((a.label||a.id)+' : sélection multiple illégale.');}if(c.type==='weapon_multi'&&Array.isArray(v)){if(v.length<(c.min||0)||v.length>(c.max||Infinity))errors.push((a.label||a.id)+' : choisir entre '+c.min+' et '+c.max+' armes.');if(v.some(id=>!options.includes(id)))errors.push((a.label||a.id)+' : arme non possédée ou inéligible.');}if(['ability_choice','weapon_category','preferred_weapon_category','language'].includes(c.type)&&v&&!options.includes(v))errors.push((a.label||a.id)+' : option illégale.');if(c.type==='entity'&&c.required){const fields=c.fields||[];for(const key of fields.filter(x=>x!=='name'))if(!v||!String(v[key]||'').trim())errors.push((a.label||a.id)+' : '+key+' obligatoire.');}}}return errors;}
