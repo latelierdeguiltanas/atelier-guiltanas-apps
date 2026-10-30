@@ -1,11 +1,16 @@
 {
   "project": "Forge of Heroes",
   "milestone": "Validation exhaustive N1",
-  "snapshot_date": "2026-10-29",
-  "status": "validation_non_demontree",
+  "snapshot_date": "2026-10-30",
+  "status": "validation_n1_en_cours",
   "progress_percent": null,
-  "progress_reason": "Les 12 parcours réels sont requis; résultats d'exécution non confirmés dans les sources lues.",
+  "progress_reason": "Contrôles automatisés du lot 10 PASS ; certification exhaustive et recette Android restent ouvertes.",
   "evidence": [
+    {
+      "type": "github_file",
+      "url": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/26e6b6a0b25031fec08aa2bb51dd7e102819b7b7/forge-of-heroes/QA/N1/status.json",
+      "finding": "Tous les contrôles automatisés du statut passent ; overallCertified reste false."
+    },
     {
       "type": "github_file",
       "url": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/README.md",
@@ -72,7 +77,38 @@
       "status": "non_verifie_dans_cet_audit"
     }
   ],
-  "next_action": "Recouper le dernier état GitHub des 12 parcours, puis exécuter/attester les parcours manquants avant gate N1.",
+  "next_action": "Fermer les réserves source/contexte/choix d'âge et d'équipement, puis les parcours hybrides/sans profil/options et Android avant certification générale et intégration.",
   "conversation_registry": [],
-  "conversation_import_status": "non_inventorie"
+  "conversation_import_status": "non_inventorie",
+  "current_work": "Lot 10 et extension R2 sauvegardés sur PR #3 ; correctif PDF sans profil vérifié.",
+  "work_branch": "fix/forge-final-n1-bastide-n3",
+  "work_commit": "26e6b6a0b25031fec08aa2bb51dd7e102819b7b7",
+  "work_pr": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/pull/3",
+  "production_updated": false,
+  "automated_tests": {
+    "regression_suites": {
+      "passed": 37,
+      "total": 37
+    },
+    "matrix": {
+      "attempted": 179120,
+      "accepted": 159290,
+      "rejected_for_review": 19830,
+      "assertion_failures": 0
+    },
+    "r1_oracle": {
+      "attempted": 7600,
+      "accepted": 7480,
+      "expected_refusals": 120
+    },
+    "r2_oracle": {
+      "attempted": 7140,
+      "accepted": 7020,
+      "expected_refusals": 120,
+      "method": "Exécution complète puis rejeu ciblé de 168 fixtures Artilleur corrigées"
+    },
+    "bastide_n3_plans": 156,
+    "sorcerer_monk_n2_creations": 150,
+    "browser_android_tested": false
+  }
 }
