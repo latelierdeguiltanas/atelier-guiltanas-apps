@@ -1,6 +1,6 @@
 # Manual Freeze Pack — Forge N1
 
-Exécute les 12 tests dans l’ordre sur téléphone ou ordinateur. Aucun test automatique ne remplace ces clics. Note chaque écart dans le fichier concerné.
+Sur téléphone, commence par la [recette courte en trois créations](RECETTE_ANDROID_COURTE.md). Arrête-toi au premier blocage. Les douze fiches ci-dessous servent à approfondir une fonction précise ou à la revérifier après correction.
 
 - MANUAL_01 — Standard débutant
 - MANUAL_02 — Caractéristiques / point-buy
