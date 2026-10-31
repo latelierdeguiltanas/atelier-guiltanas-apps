@@ -47112,7 +47112,47 @@ const errors=[];
     const cs=s.characterState;cs.profileId=null;cs.profileMode='NO_PROFILE';cs.familyId=null;cs.noProfile=JSON.parse(JSON.stringify(s.noProfile));cs.paths=JSON.parse(JSON.stringify(s.profilePaths));cs.abilities=JSON.parse(JSON.stringify(s.acquiredAbilities));cs.derived=Object.assign({},cs.derived,{PV:s.PV,DEF:s.DEF,INIT:s.INIT,PC:s.PC,PM:s.PM,DR:s.DR});cs.creationInput=JSON.parse(JSON.stringify(original));cs.age=s.age||null;
     return{sticky:s,errors:[]};
   }
+  // Historical creation grants one profile path plus two history paths (pp. 170–171).
+  // Keep the selected creation mode when saving, without granting a second profile R1.
+  function computeHistoricalMode(state) {
+    const input = JSON.parse(JSON.stringify(state));
+    const ids = input.voies?.profilePathIds || [];
+    const paths = (dbObj.tables || dbObj).paths_class || [];
+    const path = paths.find(p => p.id === ids[0]);
+    if (ids.length !== 1 || !path) return {sticky:null, errors:['Historiques : choisis une seule voie de profil de départ.']};
+    const origin = Data.getClass(path.classId);
+    const hybrid = input.hybrid;
+    if (hybrid?.enabled) {
+      const secondary = paths.find(p => p.id === hybrid.secondaryPathId);
+      if (!hybrid.gmApproved || origin.id !== hybrid.primaryProfileId || path.id !== hybrid.primaryPathId ||
+          !secondary || secondary.classId !== hybrid.secondaryProfileId || secondary.classId === origin.id)
+        return {sticky:null,errors:['Historiques : profils hybrides, voies et accord du MJ requis.']};
+      input.__hybridEquipment = hybrid;
+      delete input.hybrid;
+    } else if (!input.noProfile?.enabled || input.noProfile.primaryPathId !== path.id) {
+      return {sticky:null,errors:['Historiques : voie de référence incohérente.']};
+    }
+    input.classeId = origin.id;
+    input.familleId = origin.familleId;
+    const result = computeCharacterN1Fix78(input);
+    if (result.errors.length) return result;
+    const s = result.sticky, cs = s.characterState;
+    if (hybrid?.enabled) {
+      cs.hybrid = s.hybrid = hybrid;
+      cs.profileId = s.profileId = 'hybrid:' + origin.id + '+' + hybrid.secondaryProfileId;
+      s.profileLabel = origin.label + ' / ' + Data.getClass(hybrid.secondaryProfileId).label;
+    } else {
+      cs.noProfile = s.noProfile = { ...input.noProfile, pathIds:[path.id], originProfileIds:[origin.id], families:[origin.familleId] };
+      cs.profileId = s.profileId = null;
+      cs.profileMode = 'NO_PROFILE';
+      s.profileLabel = 'Sans profil';
+    }
+    cs.creationInput = JSON.parse(JSON.stringify(state));
+    return result;
+  }
   function computeCharacterN1Core(state){
+    if (state?.advancedRules?.histories && (state.profileMode === 'NO_PROFILE' || state.hybrid?.enabled))
+      return computeHistoricalMode(state);
     if(state&&state.profileMode==='NO_PROFILE')return computeNoProfileN1(state);
     if(!(state&&state.hybrid&&state.hybrid.enabled)) return computeCharacterN1Fix78(state);
     const input=JSON.parse(JSON.stringify(state||{})),h=input.hybrid||{};

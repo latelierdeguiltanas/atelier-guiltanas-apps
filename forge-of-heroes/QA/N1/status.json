@@ -6,7 +6,7 @@
   "n3": "WAITING_FOR_N2",
   "overallCertified": false,
   "checks": {
-    "matrixInputsMatchCurrentEngineAndDatabase": true,
+    "matrixInputsMatchCurrentEngineAndDatabase": false,
     "allEightShardsCompleted": true,
     "matrixAssertions": true,
     "regressions": true,
@@ -30,10 +30,10 @@
     "historyAncestry": true,
     "humanOrigins": true
   },
-  "automatedChecksPass": true,
-  "currentIndexSha256": "813458e5b29dd6fb571c17bbd214c1ce92abbb0b7389100c9b662b606f34c38d",
+  "automatedChecksPass": false,
+  "currentIndexSha256": "2841fea39ac50184c2f8b66496838c2acff990f8aae69428016d66032e278da5",
   "matrixIndexSha256": "c8300f8991b1460fc5e0b749be9fc7845b84644168d001a526e9e958f3178783",
-  "note": "The matrix binds the engine and database, and has been replayed after the N1 size and characteristic-method fixes. Whole-HTML hashes are retained separately; historical inputs stay in lot2.",
+  "note": "La matrice générale documente le moteur précédent. Le changement du 31 octobre est ciblé sur les historiques en modes hybride et sans profil ; voir lot11. Les autres contrôles conservent leur date et leur périmètre.",
   "remainingGate": "QA/N1/README.md — Réserves à fermer avant N2",
   "generatedAt": "2026-10-30T14:51:46.817Z"
 }

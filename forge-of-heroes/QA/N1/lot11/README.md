@@ -1,0 +1,7 @@
+Le 31 octobre, la création avec historiques utilisait une voie de profil dans l’interface, mais les modes hybride et sans profil en exigeaient deux dans le moteur. La variante des historiques conserve une voie de profil au départ, en plus des deux historiques et de la voie de peuple (Voies d’historique p. 170–171). Forge conserve le mode choisi et les profils de référence pour la suite. Le rang 1 secondaire n’est pas offert en supplément.
+
+Chaque version du produit passe 864 cas, soit les 72 paires d’historiques, quatre âges et trois modes. Le profil témoin est guerrier, le secondaire hybride est moine. Chaque cas contrôle les rangs, le budget et la sauvegarde. La matrice générale de 179 120 cas est antérieure à ce changement. La recette Android reste ouverte.
+
+Pour la Bastide, les 176 options N3 des sauvegardes N2 du 30 octobre ont été projetées dans les six fiches interactives, avec une largeur simulée de 390 px. La dague de Prépotente utilise désormais le rang de Roublard dans le rendu de l’inventaire. Les six parcours de validation serveur simulés passent, dont la relecture et la protection contre le double gain. Aucun compte joueur modifié. Le test halfelin_n2_interactive.cjs ouvre et relit quatre variantes du halfelin dans la bibliothèque de fiches personnelles sans PDF.
+
+Pour un halfelin de profil principal moine, les quatre choix de combat à mains nues ont aussi été créés avec chacune des 72 paires d’historiques, puis enregistrés et relus au niveau 2 (288 parcours supplémentaires).
