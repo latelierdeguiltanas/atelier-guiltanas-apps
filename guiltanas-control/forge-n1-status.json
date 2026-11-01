@@ -4,7 +4,7 @@
   "snapshot_date": "2026-11-01",
   "status": "validation_n1_en_cours",
   "progress_percent": null,
-  "progress_reason": "Les trois parcours de création au clic ont été validés dans Chrome. La validation générale du N1 reste ouverte.",
+  "progress_reason": "Quatre parcours de création au clic validés sur Chrome. La validation générale du N1 reste ouverte.",
   "evidence": [
     {
       "type": "github_file",
@@ -176,10 +176,15 @@
         "name": "Sans profil vénérable",
         "passed": true,
         "detail": "Deux historiques R3 et fiche interactive rouverte après correction, PV 10 et DEF 16."
+      },
+      {
+        "name": "Demi-orc Barbare / Forgesort",
+        "passed": true,
+        "detail": "Achat de caractéristiques, Pagne et Runes. INT 0 refusée, répartition corrigée acceptée. FOR +4, PV 11, DEF 15 et INIT 9. Fiche interactive rouverte."
       }
     ],
     "remaining": "Vérifier le parcours Android et les combinaisons de règles dont les calculs attendus restent à comparer indépendamment.",
     "release": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/commit/5b109453c57a36f8b01a753da2bfdb49dd108969",
-    "checks": "36 contrôles de fiche interactive réussis sur les deux versions de Forge (17 profils et le cas sans profil)."
+    "checks": "36 contrôles de fiche interactive réussis sur les deux versions de Forge (17 profils et le cas sans profil). Demi-orc hybride : 16 comparaisons de calculs sur les bonus, malus et armures."
   }
 }
