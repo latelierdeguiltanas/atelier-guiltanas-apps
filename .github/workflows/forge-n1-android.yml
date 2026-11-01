@@ -1,0 +1,47 @@
+name: Forge N1 Android
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-android.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/android_creation_click.cjs'
+permissions:
+  contents: read
+jobs:
+  android-chrome:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Android emulator and test client
+        run: |
+          sdkmanager --install "platform-tools" "emulator" "system-images;android-30;google_apis_playstore;x86_64"
+          npm install --prefix "$RUNNER_TEMP/forge-click" playwright@1.55.0
+          echo "NODE_PATH=$RUNNER_TEMP/forge-click/node_modules" >> "$GITHUB_ENV"
+      - name: Boot Android
+        run: |
+          sudo chmod 666 /dev/kvm
+          image='system-images;android-30;google_apis_playstore;x86_64'
+          echo no | avdmanager create avd -n forge -k "$image" --device pixel_2
+          nohup "$ANDROID_HOME/emulator/emulator" -avd forge -no-window -no-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect > "$RUNNER_TEMP/emulator.log" 2>&1 &
+          adb wait-for-device
+          timeout 360 bash -c 'until adb shell getprop sys.boot_completed | tr -d "\r" | grep -qx 1; do sleep 3; done'
+          adb shell input keyevent 82
+          adb shell pm path com.android.chrome | grep -q '^package:'
+          adb shell wm size 1080x1920
+          adb shell wm density 420
+      - name: Create, validate and reopen a hero using touch
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > "$RUNNER_TEMP/http.log" 2>&1 &
+          adb reverse tcp:4173 tcp:4173
+          node forge-of-heroes/FINAL_FREEZE_TESTS/android_creation_click.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-android-evidence
+          path: |
+            android-state.json
+            android-sheet.png
