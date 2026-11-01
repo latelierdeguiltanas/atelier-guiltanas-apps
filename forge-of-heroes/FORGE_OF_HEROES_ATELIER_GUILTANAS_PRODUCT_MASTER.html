@@ -47138,7 +47138,13 @@ const errors=[];
     if (result.errors.length) return result;
     const s = result.sticky, cs = s.characterState;
     if (hybrid?.enabled) {
-      cs.hybrid = s.hybrid = hybrid;
+      const secondary = Data.getClass(hybrid.secondaryProfileId);
+      const primaryBase = Data.getFamille(origin.familleId).pvBaseN1;
+      const secondaryBase = Data.getFamille(secondary.familleId).pvBaseN1;
+      const pvContributions = [primaryBase / 2, secondaryBase / 2];
+      s.PV += pvContributions[1] - pvContributions[0];
+      s.totals.PV = cs.derived.PV = s.PV;
+      cs.hybrid = s.hybrid = {...hybrid, pvContributions, families:[origin.familleId, secondary.familleId]};
       cs.profileId = s.profileId = 'hybrid:' + origin.id + '+' + hybrid.secondaryProfileId;
       s.profileLabel = origin.label + ' / ' + Data.getClass(hybrid.secondaryProfileId).label;
     } else {
