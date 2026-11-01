@@ -1,10 +1,10 @@
 {
   "project": "Forge of Heroes",
   "milestone": "Validation exhaustive N1",
-  "snapshot_date": "2026-10-31",
+  "snapshot_date": "2026-11-01",
   "status": "validation_n1_en_cours",
   "progress_percent": null,
-  "progress_reason": "Correctifs publiés et contrôles ciblés Bastide N3 / halfelin N2 validés ; certification N1 générale encore ouverte.",
+  "progress_reason": "Les trois parcours de création au clic ont été validés dans Chrome. La validation générale du N1 reste ouverte.",
   "evidence": [
     {
       "type": "github_file",
@@ -158,5 +158,28 @@
     "halfelinInitialStatesWithVerifiedFreeRank": 280,
     "ageEquipmentCases": 1600,
     "extraWeaponOptions": 24
+  },
+  "n1_dashboard": {
+    "phase": "ouvert",
+    "journeys": [
+      {
+        "name": "Ensorceleur",
+        "passed": true,
+        "detail": "Rapière et Sous tension R2 conservées après réouverture."
+      },
+      {
+        "name": "Hybride Voleur / Arquebusier",
+        "passed": true,
+        "detail": "Accord MJ obligatoire, deux voies R1 et armure du Voleur sauvegardées."
+      },
+      {
+        "name": "Sans profil vénérable",
+        "passed": true,
+        "detail": "Deux historiques R3 et fiche interactive rouverte après correction, PV 10 et DEF 16."
+      }
+    ],
+    "remaining": "Vérifier le parcours Android et les combinaisons de règles dont les calculs attendus restent à comparer indépendamment.",
+    "release": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/commit/5b109453c57a36f8b01a753da2bfdb49dd108969",
+    "checks": "36 contrôles de fiche interactive réussis sur les deux versions de Forge (17 profils et le cas sans profil)."
   }
 }

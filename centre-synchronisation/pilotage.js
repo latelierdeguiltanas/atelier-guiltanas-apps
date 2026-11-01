@@ -163,13 +163,6 @@ function projectTag(value){return '<span class="project-pill p-'+escapeHTML(valu
 /* Historical evidence layer: no verification percentages are inferred from lifecycle status.
    All project names/statuses still come from the authenticated private registry. */
 const projectEvidence={
-  forge:{
-    headline:'N1 : certification exhaustive non démontrée sur la version actuelle',
-    verified:'Dépôt de production et suites de tests automatisés retrouvés ; correctifs documentés et pack de 12 scénarios réels existant.',
-    uncertain:'Des validations manuelles anciennes sont consignées, mais des changements ultérieurs ont eu lieu. La recette finale des 12 cas et toutes les combinaisons doivent être rapprochées de la version publiée.',
-    next:'Relever la version actuelle et les résultats datés des 12 scénarios ; marquer séparément « testé automatiquement », « testé par Math » et « à rejouer ».',
-    source:'https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/MANUAL_FREEZE_PACK/README.md'
-  },
   cockpit:{
     headline:'Cockpit opérationnel ; intégration du pilotage en cours',
     verified:'Interface authentifiée, inventaire Supabase, registre des projets, vues GitHub et diagnostics déjà présents dans le code.',
@@ -219,8 +212,13 @@ async function loadForgeWorkEvidence(){
  }catch(err){dest.textContent='Contrôle GitHub impossible : '+String(err.message||err)+'. Aucun diagnostic de chat ne peut en être déduit.'}
 }
 
+function currentProjectEvidence(p){
+ if(p.id!=='forge')return projectEvidence[p.id];
+ if(!forgeStatus)return {headline:forgeStatusMessage,verified:'Le suivi publié est indisponible.',uncertain:'État actuel à relire.',next:'Actualiser le suivi N1.'};
+ return {headline:'Création N1 · '+forgeProgress().phase,verified:forgeStatus.progress_reason,uncertain:forgeStatus.n1_dashboard.remaining,next:forgeStatus.n1_dashboard.remaining,source:forgeStatus.n1_dashboard.release};
+}
 function projectEvidenceMarkup(p){
-  const e=projectEvidence[p.id];
+  const e=currentProjectEvidence(p);
   const title=e?e.headline:'État de validation : non audité individuellement';
   const yes=e?e.verified:'Cette fiche est classée dans le registre privé ; son statut n’est pas une preuve de recette.';
   const no=e?e.uncertain:'Les décisions issues des anciens chats, les preuves réelles et les critères de complétude restent à rapprocher.';
@@ -253,8 +251,8 @@ function renderProjectAuditPulse(){
 }
 
 function projectResumeText(p){
- const evidence=projectEvidence[p.id];
- return 'REPRISE PAR PROJET — '+p.name+'\n\nProtocole Atelier obligatoire : lire centre-synchronisation/PROTOCOLE_INTERVENTION.md et le document « 00 — MÉTHODE GLOBALE DE TRAVAIL — PROJETS » avant de commencer. Ouvrir une intervention EN COURS dans le document Drive du projet AVANT modification ; après chaque grand lot consigner preuves, commits et étapes dans Drive (et dans le journal privé du Copilote si accessible) ; AVANT la réponse finale consigner le bilan et clore TERMINÉ ou PARTIEL. Ne jamais déclarer un chat planté sur la seule absence de jalon.\n\nConsulte le registre « Pilotage Guiltanas » et le document Drive « 00 — ÉTAT DU PROJET » de ce projet AVANT de modifier du code. Inscris le périmètre et le statut EN COURS dans Drive. À chaque jalon, inscris modification, commit, preuves, éventuels échecs et prochaine action. Mets à jour le registre existant, sans créer de projet doublon. Ne considère pas les affirmations des anciens chats comme preuves de validation.\n\nDernier état déclaré : '+(p.progress_note||p.summary||'non renseigné')+'\nStatut : '+(p.lifecycle||'inconnu')+'\nProchaine étape : '+(p.next_action||'à déterminer')+'\n'+(evidence?'\nÉtat de vérification : '+evidence.headline+'\nÀ vérifier : '+evidence.uncertain:'')+'\n\nPrends les sources existantes comme référence, préserve les autres projets et n’invente aucun pourcentage de validation.';
+ const evidence=currentProjectEvidence(p);
+ return 'REPRISE PAR PROJET — '+p.name+'\n\nProtocole Atelier obligatoire : lire centre-synchronisation/PROTOCOLE_INTERVENTION.md et le document « 00 — MÉTHODE GLOBALE DE TRAVAIL — PROJETS » avant de commencer. Ouvrir une intervention EN COURS dans le document Drive du projet AVANT modification ; après chaque grand lot consigner preuves, commits et étapes dans Drive (et dans le journal privé du Copilote si accessible) ; AVANT la réponse finale consigner le bilan et clore TERMINÉ ou PARTIEL. Ne jamais déclarer un chat planté sur la seule absence de jalon.\n\nConsulte le registre « Pilotage Guiltanas » et le document Drive « 00 — ÉTAT DU PROJET » de ce projet AVANT de modifier du code. Inscris le périmètre et le statut EN COURS dans Drive. À chaque jalon, inscris modification, commit, preuves, éventuels échecs et prochaine action. Mets à jour le registre existant, sans créer de projet doublon. Ne considère pas les affirmations des anciens chats comme preuves de validation.\n\nDernier état déclaré : '+(p.id==='forge'?evidence.verified:(p.progress_note||p.summary||'non renseigné'))+'\nStatut : '+(p.lifecycle||'inconnu')+'\nProchaine étape : '+(p.id==='forge'?evidence.next:(p.next_action||'à déterminer'))+'\n'+(evidence?'\nÉtat de vérification : '+evidence.headline+'\nÀ vérifier : '+evidence.uncertain:'')+'\n\nPrends les sources existantes comme référence, préserve les autres projets et n’invente aucun pourcentage de validation.';
 }
 async function resumeProject(id){
  const p=projectData.find(x=>x.id===id);if(!p)return;
@@ -432,6 +430,11 @@ function projectWorkMarkup(p){
 }
 
 function projectProgressTile(p){
+ if(p.id==='forge'){
+  if(!forgeStatus)return '<small>'+escapeHTML(forgeStatusMessage)+'</small>';
+  const {done,total,phase}=forgeProgress();
+  return '<div><small>N1 '+escapeHTML(phase)+'</small><small>'+done+'/'+total+' parcours au clic validés</small></div>';
+ }
  const checkpoints=[
   {ok:!!(p.source_url||p.repo||p.source),label:'Source identifiée'},
   {ok:!!p.repo,label:'Dépôt référencé'},
@@ -440,10 +443,7 @@ function projectProgressTile(p){
  ];
  const supported=checkpoints.filter(x=>x.ok).length;
  const pct=Math.round(100*supported/checkpoints.length);
- const forge=p.id==='forge';
- const audit=forge?forgeAudit:null;
- const note=forge&&audit?' · recette N1 : '+audit.counts.passed+'/'+audit.counts.total+' validés':'';
- return '<div class="project-tile-progress" title="Indice de traçabilité : '+supported+'/'+checkpoints.length+' preuves de localisation et publication'+note+'. Ce n’est pas le pourcentage de développement terminé." aria-label="Traçabilité du projet '+pct+' pour cent"><span class="project-tile-track"><span style="width:'+pct+'%"></span></span><small>'+pct+'%*</small></div>';
+ return '<div class="project-tile-progress" title="Indice de traçabilité : '+supported+'/'+checkpoints.length+' preuves de localisation et publication. Ce n’est pas le pourcentage de développement terminé." aria-label="Traçabilité du projet '+pct+' pour cent"><span class="project-tile-track"><span style="width:'+pct+'%"></span></span><small>'+pct+'%*</small></div>';
 }
 function renderProjects(){
  const box=$('#project-list');if(!box)return;
@@ -467,7 +467,7 @@ function renderProjects(){
  const favorites=main.map(id=>filtered.find(p=>p.id===id)).filter(Boolean);
  const others=filtered.filter(p=>!main.includes(p.id));
  let html='<div class="ecosystem-root ecosystem-home"><img src="icons/pilotage-guiltanas-192.png" alt="" /><div><small>TON ESPACE DE TRAVAIL</small><strong>L’Atelier de Guiltanas</strong><p>Projets, créations et outils au même endroit</p></div></div>';
- html+='<p class="minihelp">* Barres : traçabilité des sources (dépôt, livrable, publication), pas taux de réalisation. Une recette en échec ne remet pas un produit existant à zéro.</p>';
+ html+='<p class="minihelp">* Hors Forge, les barres indiquent la traçabilité des sources (dépôt, livrable, publication), pas taux de réalisation. Une recette en échec ne remet pas un produit existant à zéro.</p>';
  if(favorites.length)html+='<div class="project-shelf-heading"><h3>Accès rapide</h3><small>'+favorites.length+' favoris</small></div><div class="project-tile-grid project-quick-grid">'+favorites.map(card).join('')+'</div>';
  const groups=[['Applications JDR','🎲',others.filter(p=>ecosystemMember(p)&&p.family==='Jouer & raconter')],
                ['Créations & ressources','✦',others.filter(p=>ecosystemMember(p)&&p.family==='Créer & fabriquer')],
@@ -486,14 +486,35 @@ function renderProjects(){
 
 /* Jalons visibles : données de référence publiées, jamais un pourcentage inventé. */
 const PROJECT_MILESTONES={"forge":[["Création N1 — règles COF2","Peuples, profils, hybrides, absence de profil, voies de peuple/profil/compagnon et choix autorisés"],["Création N1 — calculs","Caractéristiques, bonus/malus, défense, initiative, PV, PM, attaques et interactions des rangs 1 et 2"],["Création N1 — persistance","Enregistrement, rechargement, validation et export PDF officiel avec annexes complètes"],["Création N1 — certification","Confronter les 12 parcours manuels du pack de gel aux résultats de la version finale ; documenter chaque échec"],["Passage N1 → N2","Choix de rangs, calculs, export N2 et liaison avec la fiche interactive"],["Passage N2 → N3","Progression des six PJ Bastide, voies, calculs et export N3"]],"hub-bastide":[["Accès et fiches joueurs","Liaisons PJ, restrictions MJ/PJ et données affichées"],["Échanges et inventaires","Messages, objets, notes privées, historique et sac principal"],["Synchronisation en partie","PV, buffs et initiative avec gestionnaire combat sur plusieurs appareils"]],"hub-nespresso":[["Campagne D&D","Fiches PJ, cartes, XP et objets transmis"],["Messagerie et accès","Échanges MJ/PJ et visibilité par joueur"],["Tests multi-appareils","Cohérence téléphone et PC"]],"hub-configurable":[["Création d'espace","Espace MJ, pages PJ et codes d'accès"],["Reproduction Bastide","Modules, permissions et personnalisation nécessaires"],["Synchronisation","Récupération par code, conflits et essais multi-appareils"]],"hub-produit":[["Prototype privé G1","Inventorier les modules MJ/PJ réellement implémentés"],["Personnalisation","Fiches, espaces et permissions configurables"],["Publication produit","Contrôler droits, sécurité et mise en ligne avant diffusion"]],"fiches-pj":[["Création/import","Transfert Forge et import PDF COF2"],["Fiche jouable","PV, PM, inventaire et sauvegarde"],["Reprise multi-appareils","Test N2 sur deux appareils avec conflits de versions"]],"combat-cof2":[["Combats et initiative","Sélection PJ, monstres, frise, états et modifications rapides"],["Liaison Hub","PV, buffs et renommages synchronisés"],["Essais réels","Test simultané MJ et PJ sur téléphone et PC"]],"combat-dnd":[["Version source","Retrouver la version HTML de référence"],["Gestion de combat","Initiative, CA, PV, états et concentration"],["Intégration","Valider l'accès depuis le Hub Nespresso"]],"soundboard-generique":[["Version officielle","Confirmer dépôt Soundboard_final et publication"],["Fonctions audio","Import, lecture, raccourcis et persistance"],["Diffusion","Vérifier fonctionnement PWA et suivi d'usage"]],"soundboard-ile":[["Source et sons","Retrouver le jeu de sons et le code associé"],["Import et lecture","Vérifier les sons muets après import"],["Synchronisation","Tester lecture et partage entre PC"]],"cockpit":[["Registre complet","Vérifier couverture de chaque projet hors Skeryon"],["Avancement vérifiable","Jalons propres à chaque projet et preuves de validation"],["Synchroniser","Comparer les sources GitHub, Drive et Supabase sans inventer la progression"],["Reprise des conversations","Lier les interventions enregistrées et distinguer inactivité et panne"]],"mj-express":[["Messagerie Bastide","Contrôler le parcours MJ et ses permissions"],["Installation PWA","Tester Samsung Internet et Chrome"],["Notifications","Valider réception sur écran verrouillé"],["Multi-campagnes","Adaptateurs Nespresso et hub configurable"]],"pj-express":[["Compagnon COF2","Fiche jouable et accès PJ"],["Liaison facultative","Code personnel vers le hub"],["Messagerie","Adaptateurs par campagne et contrôles de droits"]],"express-universel":[["Portail commun","Accès MJ/PJ et navigation multi-campagnes"],["Modules partagés","Réutiliser fiche et messagerie sans duplication"],["Validation","Essais Android et contrôles de permissions"]],"budget":[["Données privées","Contrôler sauvegarde et confidentialité"],["Multi-appareils","Comparer la même donnée sur deux appareils"]],"missions":[["Éditeur de missions","Colonnes renommables, ajoutables et listes configurables"],["Brouillon","Enregistrer sans publier"],["Publication sécurisée","Publier en un clic après sauvegarde et contrôler les accès"]],"site-atelier":[["Navigation","Pages dédiées par outil"],["Contenu","Descriptions, captures et liens de démonstration"],["Visibilité","SEO, indexation et mesure d'usage"]],"dragonlance-cof2":[["Corpus source","Identifier les règles et références de conversion"],["Mécaniques","Inventorier les conversions réalisées et manquantes"],["Validation","Contrôler la cohérence COF2 et les droits"]],"deck-rencontres-physique":[["Fichiers imprimables","Identifier PDF et ressources graphiques de référence"],["Fabrication","Contrôler faces, dos et format d'impression"],["Distribution","Vérifier droits et fiche produit"]],"deck-succes-critiques":[["Faces et dos","Identifier PDF et images de référence"],["Impression","Contrôler cohérence et découpe"],["Publication","Droits et livrable final"]],"deck-echecs-critiques":[["Faces et dos","Identifier les images disponibles"],["Livrable imprimable","Vérifier PDF final et format"],["Publication","Droits et fiche produit"]],"application-peinture":[["Cadrage","Retrouver les exigences de l'application"],["Source","Identifier le fichier ou dépôt canonique"],["Recette","Définir des tests à partir du périmètre retrouvé"]],"generateur-quetes":[["Source","Retrouver le générateur de référence"],["Fonctions","Inventorier les mécanismes existants"],["Validation","Définir les scénarios de recette"]],"identite-marque":[["Gates de marque","Confronter les validations documentées"],["Direction artistique","Vérifier les livrables vert forêt, doré, bois et ivoire"],["Diffusion","Décliner les supports de marque"]],"scenario-manager":[["Source maître","Retrouver ScenarioManager_MASTER_STABLE.html"],["Fonctions","Auditer les scénarios et leur persistance"],["Intégration","Décider de son rattachement à l'écosystème"]],"kobold":[["Fichier source","Retrouver le HTML local"],["Fonctions","Tester les générations et l'affichage"],["Catalogue","Décider de la publication"]],"critique":[["Version source","Retrouver le module succès/échec"],["Fonctions","Tester les tirages et les résultats"],["Intégration","Raccorder aux outils JDR si pertinent"]],"decks":[["Concept","Définir le format numérique distinct des imprimables"],["Prototype","Identifier un premier livrable"],["Validation","Vérifier droits et expérience d'utilisation"]],"enfants":[["Périmètre","Définir les premiers modules familiaux"],["Sécurité","Établir les accès et données privées"],["Prototype","Tester un premier parcours"]],"messages-enfants":[["Besoins","Définir les échanges autorisés"],["Sécurité","Permissions et confidentialité"],["Prototype","Valider les usages familiaux"]],"archive-audioboard-full":[["Archive","Vérifier la branche et les fichiers historiques"],["Traçabilité","Identifier le lien avec les versions actives"]],"soundboard-archives":[["Archive","Préserver les versions antérieures"],["Traçabilité","Identifier leurs différences avec Soundboard_final"]],"ghdir-guiltanas-control":[["Statut du prototype","Distinguer la page simplifiée du Cockpit principal"],["Miroir de données","Vérifier les publications et leur fraîcheur"],["Synchronisation Drive","Valider une exécution effective avant d'annoncer un succès"]]};
-let forgeAudit=null;
-async function refreshForgeAudit(){try{const r=await fetch('./data/forge-n1-audit.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);forgeAudit=await r.json();renderProjects();if(selected?.kind==='project'&&selected.id==='forge')openProject('forge')}catch(e){console.warn('Audit Forge non disponible',e)}}
-function forgeAuditMarkup(){if(!forgeAudit)return '<p class="minihelp">Audit Forge en cours de chargement…</p>';
+let forgeAudit=null,forgeStatus=null,forgeStatusMessage='Chargement du suivi N1…';
+function forgeProgress(){
+ const data=forgeStatus.n1_dashboard;
+ return {done:data.journeys.filter(j=>j.passed===true).length,total:data.journeys.length,phase:data.phase};
+}
+async function refreshForgeAudit(){
+ const read=async url=>{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()};
+ const [current,history]=await Promise.allSettled([read('../guiltanas-control/forge-n1-status.json'),read('./data/forge-n1-audit.json')]);
+ forgeAudit=history.status==='fulfilled'?history.value:null;
+ forgeStatus=current.status==='fulfilled'&&Array.isArray(current.value?.n1_dashboard?.journeys)?current.value:null;
+ forgeStatusMessage='Suivi N1 indisponible';
+ renderProjects();
+ if(selected?.kind==='project'&&selected.id==='forge')openProject('forge');
+}
+function forgeCurrentMarkup(){
+ if(!forgeStatus)return '<p>'+escapeHTML(forgeStatusMessage)+'</p>';
+ const data=forgeStatus.n1_dashboard,{done,total,phase}=forgeProgress();
+ const date=new Intl.DateTimeFormat('fr-FR',{dateStyle:'long',timeZone:'UTC'}).format(new Date(forgeStatus.snapshot_date));
+ return '<section class="project-milestone-box"><h3>Création N1 · '+escapeHTML(phase)+'</h3><p>'+done+'/'+total+' parcours au clic validés dans Chrome · '+escapeHTML(date)+'</p>'+
+ data.journeys.map(j=>'<p><b>'+escapeHTML(j.name)+'</b> · '+escapeHTML(j.detail)+'</p>').join('')+
+ '<p>'+escapeHTML(data.checks)+'</p><p><b>Pour clôturer le N1</b> · '+escapeHTML(data.remaining)+'</p>'+
+ '<a href="'+escapeHTML(data.release)+'" target="_blank" rel="noopener noreferrer">Voir le correctif vérifié</a></section>';
+}
+function forgeAuditMarkup(){if(!forgeAudit)return '<p class="minihelp">Audit historique indisponible.</p>';
  const c=forgeAudit.counts, executed=c.passed+c.failed;
  const pct=Math.round(100*c.passed/c.total), coverage=Math.round(100*executed/c.total);
  const chart='<div class="forge-donut" style="--passed:'+100*c.passed/c.total+'%;--executed:'+100*executed/c.total+'%" role="img" aria-label="'+c.passed+' réussis, '+c.failed+' échoués, '+c.unavailable+' non testés"><div><strong>'+pct+'%</strong><small>validés</small></div></div>';
  const bar='<div class="forge-progress-track"><span style="width:'+coverage+'%"></span></div>';
- return '<section class="project-milestone-box forge-visual"><h3>Forge N1 · validation documentée</h3><div class="forge-overview">'+chart+'<div class="forge-summary"><strong>'+coverage+'%</strong><small>Tests exécutés</small>'+bar+'<div class="forge-legend"><span>✔ '+c.passed+' réussis</span><span>✕ '+c.failed+' échecs</span><span>◌ '+c.unavailable+' non testés</span></div></div></div><p class="minihelp">Recette historique : ce graphique ne mesure pas la fiabilité globale du code.</p><details class="forge-evidence"><summary>Consulter les '+c.total+' résultats détaillés</summary>'+forgeAudit.cases.map(x=>'<div class="project-milestone"><div class="project-milestone-title"><b>'+escapeHTML(x.id)+'</b><span>'+escapeHTML(x.status)+'</span></div><p>'+escapeHTML(x.issue)+'</p><a href="'+escapeHTML(x.evidence)+'" target="_blank" rel="noopener noreferrer">Preuve source</a></div>').join('')+'</details></section>';
+ return '<section class="project-milestone-box forge-visual"><h3>Archive · recette historique des 12 scénarios</h3><div class="forge-overview">'+chart+'<div class="forge-summary"><strong>'+coverage+'%</strong><small>Tests exécutés</small>'+bar+'<div class="forge-legend"><span>✔ '+c.passed+' réussis</span><span>✕ '+c.failed+' échecs</span><span>◌ '+c.unavailable+' non testés</span></div></div></div><p class="minihelp">Recette historique : ce graphique ne mesure pas la fiabilité globale du code.</p><details class="forge-evidence"><summary>Consulter les '+c.total+' résultats détaillés</summary>'+forgeAudit.cases.map(x=>'<div class="project-milestone"><div class="project-milestone-title"><b>'+escapeHTML(x.id)+'</b><span>'+escapeHTML(x.status)+'</span></div><p>'+escapeHTML(x.issue)+'</p><a href="'+escapeHTML(x.evidence)+'" target="_blank" rel="noopener noreferrer">Preuve source</a></div>').join('')+'</details></section>';
 }
 function projectRecentMilestones(p){
  const runs=workRuns.filter(r=>r.project_id===p.id).sort((a,b)=>Date.parse(b.last_milestone_at||b.updated_at||0)-Date.parse(a.last_milestone_at||a.updated_at||0));
@@ -521,13 +542,15 @@ function openProject(id){
  const next=(p.next_action||'La prochaine étape reste à confirmer.').slice(0,650);
  let content='<div class="project-drawer-head">'+projectIconMarkup(p)+'<div><div class="project-drawer-kicker">'+escapeHTML(p.category||'Projet')+'</div><strong>'+escapeHTML(short)+'</strong><small>'+escapeHTML(projectState(p))+'</small></div></div>';
  content+='<div class="project-hero-summary"><p>'+escapeHTML((p.summary||'Objectif à préciser.').slice(0,500))+'</p></div>';
- content+='<div class="project-next-step"><small>PROCHAIN PAS</small><p>'+escapeHTML(next)+'</p></div>';
+ if(p.id==='forge')content+=forgeCurrentMarkup();
+ else content+='<div class="project-next-step"><small>PROCHAIN PAS</small><p>'+escapeHTML(next)+'</p></div>';
  if(p.repo==='atelier-guiltanas-apps'&&/^[a-z0-9/_-]+\/$/i.test(p.folder||'')&&p.publication==='en_ligne'){
   content+='<div class="detail-links"><a class="smallbutton primary" href="'+escapeHTML(ROOT+p.folder)+'" target="_blank" rel="noopener noreferrer">Ouvrir l’application</a></div>';
  }
  content+='<details class="project-advanced-details"><summary>Avancement, contrôles et preuves</summary>';
  if(p.id==='forge')content+=forgeAuditMarkup();
- content+=projectMilestonesMarkup(p);
+ if(p.id!=='forge')content+=projectMilestonesMarkup(p);
+ else content+=projectRecentMilestones(p);
  content+=projectWorkMarkup(p);
  content+=projectChatMarkup(p);
  content+='</details>';
