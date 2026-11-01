@@ -4,7 +4,7 @@
   "snapshot_date": "2026-11-01",
   "status": "validation_n1_en_cours",
   "progress_percent": null,
-  "progress_reason": "Quatre parcours de création au clic validés sur Chrome. La validation générale du N1 reste ouverte.",
+  "progress_reason": "Cinq parcours au clic validés dans Chrome. La validation générale du N1 reste ouverte.",
   "evidence": [
     {
       "type": "github_file",
@@ -181,10 +181,15 @@
         "name": "Demi-orc Barbare / Forgesort",
         "passed": true,
         "detail": "Achat de caractéristiques, Pagne et Runes. INT 0 refusée, répartition corrigée acceptée. FOR +4, PV 11, DEF 15 et INIT 9. Fiche interactive rouverte."
+      },
+      {
+        "name": "Guerrier / Voleur avec historiques",
+        "passed": true,
+        "detail": "Ancienne sauvegarde à 11 PV rouverte après correction : 10 PV, DEF 17, INIT 11. Fiche interactive à 10/10 après rechargement."
       }
     ],
     "remaining": "Vérifier le parcours Android et les combinaisons de règles dont les calculs attendus restent à comparer indépendamment.",
-    "release": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/commit/5b109453c57a36f8b01a753da2bfdb49dd108969",
+    "release": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/commit/c3ea630c27298e6c6afdbc1083680767a6053ee2",
     "checks": "36 contrôles de fiche interactive réussis sur les deux versions de Forge (17 profils et le cas sans profil). Demi-orc hybride : 16 comparaisons de calculs sur les bonus, malus et armures. Croisement âge, historiques et armure : 60 créations et 60 relectures contrôlées. PV hybrides corrigés."
   }
 }
