@@ -31,4 +31,4 @@ const hide=document.createElement('style');hide.textContent='.home-progression,.
 
 
 // Standalone player sheet: separate storage and no change to the campaign hub.
-(()=>{if(document.querySelector('script[data-foh-player-bridge]'))return;const s=document.createElement('script');s.dataset.fohPlayerBridge='1';s.src=new URL('../fiches-personnages/forge-link.js?v=1',document.baseURI).href;document.head.appendChild(s);})();
+(()=>{if(document.querySelector('script[data-foh-player-bridge]'))return;const s=document.createElement('script');s.dataset.fohPlayerBridge='1';s.src=new URL('../fiches-personnages/forge-link.js?v=20261031-play-n1',document.baseURI).href;document.head.appendChild(s);})();
