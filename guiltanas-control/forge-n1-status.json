@@ -569,7 +569,17 @@
     "pdfGate": {
       "status": "INCOMPLETE",
       "issue": "L'application demande une première importation de la fiche officielle vierge. Tests de génération et d'annexes en cours."
+    },
+    "historyArqN1": {
+      "proof": "forge-of-heroes/QA/N1/arquebusier-history-people-cross.json",
+      "combinations": 2304,
+      "legalAccepted": 2240,
+      "correctlyRejected": 64,
+      "failures": 0,
+      "rule": "Elfe sylvain: interdiction des origines Cités et Campagnes avec historiques, COF2 p.172",
+      "scope": "17 historiques, huit peuples, âge vénérable, R1–R5 historiques, sauvegarde et relecture",
+      "limits": "Effets conditionnels individuels des historiques non certifiés exhaustivement; critère de progression du profil reste ouvert."
     }
   },
-  "current_priority": "Terminer le profil complet Arquebusier N1 à 100 % avant le profil suivant. Suivre séparément les huit peuples. Arbalétrier désormais jouable. Reste : effets conditionnels, historiques, équipements, PDF."
+  "current_priority": "Clôturer l'Arquebusier N1, profil complet indépendant des huit peuples. Historiques légalement compatibles vérifiés: 2240 créations avec sauvegarde + 64 refus Elfe sylvain p.172, zéro erreur. Effets conditionnels historiques et PDF/règles de combat restent à certifier."
 }
