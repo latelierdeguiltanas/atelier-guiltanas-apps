@@ -1,0 +1,51 @@
+name: Forge N1 - variante Arbaletrier staging
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arbaletrier-stage.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_stage.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_stage_click.cjs'
+permissions:
+  contents: read
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Construire les deux produits de préproduction sans remplacer Forge
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_stage.cjs
+      - name: Installer navigateur
+        run: |
+          npm install --prefix "$RUNNER_TEMP/forge-stage-click" playwright@1.55.0
+          echo "NODE_PATH=$RUNNER_TEMP/forge-stage-click/node_modules" >> "$GITHUB_ENV"
+      - name: Créer Arbalétrier en tactile, sauver et rouvrir
+        id: variant
+        continue-on-error: true
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory /tmp/foh-n1-arbaletrier-stage >/tmp/foh-stage-server.log 2>&1 &
+          CHROME_BIN="$(command -v google-chrome || command -v chromium)" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_stage_click.cjs
+      - name: Vérifier les 12 parcours existants sans régression
+        id: legacy
+        if: steps.variant.outcome == 'success'
+        continue-on-error: true
+        run: |
+          CHROME_BIN="$(command -v google-chrome || command -v chromium)" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_creation_browser_pack.cjs
+        env:
+          FORGE_BASE: http://127.0.0.1:4173/forge-of-heroes/
+          CLICK_REPORT: forge-n1-stage-existing-journeys.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: arbaletrier-stage-click-and-regressions
+          path: |
+            arbaletrier-stage-click.json
+            forge-n1-stage-existing-journeys.json
+      - name: Ne publier aucune variante non conforme
+        run: |
+          test "${{ steps.variant.outcome }}" = success
+          test "${{ steps.legacy.outcome }}" = success
