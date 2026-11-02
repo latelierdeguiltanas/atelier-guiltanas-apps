@@ -1,0 +1,226 @@
+{
+  "tables": {
+    "peoples": 16,
+    "paths_people": 15,
+    "abilities_r1_people": 15,
+    "sticky_effects_r1_people": 4,
+    "armors": 8,
+    "shields": 2,
+    "equipment_alias": 8,
+    "abilities_people": 75,
+    "classes": 17,
+    "paths_class": 90,
+    "abilities_class": 450,
+    "people_rules": 8,
+    "weapons_n1": 44,
+    "profile_rules": 17,
+    "religions_n1": 30,
+    "language_rules": "object",
+    "adventure_pack_n1": "object",
+    "ideals_n1": 20,
+    "flaws_n1": 20,
+    "hybrid_n1_rule": "object",
+    "weapon_attack_matrix_n1": 47,
+    "n1_ability_audit": 106,
+    "source_registry_fix77": 5,
+    "age_rules_advanced": "object",
+    "history_paths": 17,
+    "history_rules_n1": "object",
+    "additional_mage_path_rules": "object",
+    "priest_source_crosscheck_fix77": "object",
+    "capacity_spending_matrix_fix78": "object",
+    "advanced_cross_matrix_fix78": "object",
+    "companion_profile_decisions_fix79": 3,
+    "companion_profile_decisions_fix80": 3,
+    "companion_profile_decisions_fix81": 3,
+    "companion_conversion_policy": "object",
+    "rule_completion_audit": "object",
+    "history_abilities": 85,
+    "paths_prestige": 10,
+    "abilities_prestige": 50,
+    "prestige_policy": "object"
+  },
+  "class": {
+    "id": "class:arquebusier:cof2-lb-2024",
+    "label": "Arquebusier",
+    "familleId": "aventurier",
+    "group": "Base",
+    "source": {
+      "bookId": "cof2-livre-base-2024",
+      "edition": "Chroniques Oubliées Fantasy 2e édition",
+      "printedPage": 62,
+      "chapter": "Profils",
+      "section": "Profil : Arquebusier"
+    },
+    "certification": {
+      "scope": "n1",
+      "sourceStatus": "SOURCE_VERIFIED",
+      "functionalStatus": "N1_CERTIFIED",
+      "structured": true,
+      "engineConnected": true,
+      "oracleTested": true,
+      "negativeTested": true,
+      "crossTested": true,
+      "validatedBy": "FIX73",
+      "enabledInCertifiedN1": true
+    }
+  },
+  "profileRule": {
+    "profileId": "class:arquebusier:cof2-lb-2024",
+    "status": "N1_CERTIFIED",
+    "source": {
+      "bookId": "cof2-livre-base-2024",
+      "edition": "Chroniques Oubliées Fantasy 2e édition",
+      "printedPage": 62,
+      "chapter": "Profils",
+      "section": "Arquebusier - Armes & armures / Équipement de départ"
+    },
+    "masteries": {
+      "weapons": {
+        "allMelee": true,
+        "allRanged": true,
+        "maxMeleeHands": 1
+      },
+      "armorMaxDef": 4,
+      "shields": "none"
+    },
+    "initialEquipment": {
+      "requiredArmorId": "armor:cuir-renforce:cof2-lb-2024",
+      "packages": [
+        {
+          "id": "standard",
+          "weaponIds": [
+            "weapon:powder-pistol",
+            "weapon:long-sword",
+            "weapon:dagger"
+          ],
+          "shieldId": ""
+        }
+      ]
+    },
+    "items": [
+      "Munitions et poudre entretenues par l’arquebusier"
+    ]
+  },
+  "warriorMaster": {
+    "id": "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024",
+    "label": "Voie du maître d’armes",
+    "classId": "class:guerrier:cof2-lb-2024",
+    "group": "Base",
+    "source": {
+      "bookId": "cof2-livre-base-2024",
+      "edition": "Chroniques Oubliées Fantasy 2e édition",
+      "printedPage": 87,
+      "chapter": "Profils",
+      "section": "Guerrier — Voie du maître d’armes"
+    },
+    "certification": {
+      "scope": "n1",
+      "sourceStatus": "SOURCE_VERIFIED",
+      "functionalStatus": "N1_CERTIFIED",
+      "structured": true,
+      "engineConnected": true,
+      "oracleTested": true,
+      "negativeTested": true,
+      "crossTested": true,
+      "validatedBy": "FIX72"
+    }
+  },
+  "crossbowWeapons": [
+    {
+      "id": "weapon:hand-crossbow",
+      "name": "Arbalète de poing",
+      "mode": "ranged",
+      "damage": "1d6",
+      "hands": 1,
+      "rangeMeters": 10,
+      "category": "crossbow",
+      "maxDie": 6,
+      "damageCharacteristic": null,
+      "properties": [
+        "reload_move"
+      ],
+      "mastery": "crossbow",
+      "source": {
+        "book": "COF2 Livre de base",
+        "edition": "web v1",
+        "printedPage": 184,
+        "pdfPage": 186
+      },
+      "canonical": true,
+      "sourceTable": "weapons_n1"
+    },
+    {
+      "id": "weapon:light-crossbow",
+      "name": "Arbalète légère",
+      "mode": "ranged",
+      "damage": "2d4",
+      "hands": 2,
+      "rangeMeters": 30,
+      "category": "crossbow",
+      "maxDie": 4,
+      "damageCharacteristic": null,
+      "properties": [
+        "two_handed",
+        "reload_move"
+      ],
+      "mastery": "crossbow",
+      "source": {
+        "book": "COF2 Livre de base",
+        "edition": "web v1",
+        "printedPage": 184,
+        "pdfPage": 186
+      },
+      "canonical": true,
+      "sourceTable": "weapons_n1"
+    },
+    {
+      "id": "weapon:heavy-crossbow",
+      "name": "Arbalète lourde",
+      "mode": "ranged",
+      "damage": "2d6",
+      "hands": 2,
+      "rangeMeters": 60,
+      "category": "crossbow",
+      "maxDie": 6,
+      "damageCharacteristic": null,
+      "properties": [
+        "two_handed",
+        "reload_limited"
+      ],
+      "mastery": "crossbow",
+      "source": {
+        "book": "COF2 Livre de base",
+        "edition": "web v1",
+        "printedPage": 184,
+        "pdfPage": 186
+      },
+      "canonical": true,
+      "technology": "complex",
+      "sourceTable": "weapons_n1"
+    }
+  ],
+  "sourceArquebusierPaths": [
+    {
+      "id": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
+      "label": "Voie de l’artilleur"
+    },
+    {
+      "id": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024",
+      "label": "Voie des explosifs"
+    },
+    {
+      "id": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+      "label": "Voie du mercenaire"
+    },
+    {
+      "id": "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024",
+      "label": "Voie du pistolero"
+    },
+    {
+      "id": "classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024",
+      "label": "Voie de la précision"
+    }
+  ],
+  "sourceArbaletrierOptions": []
+}
