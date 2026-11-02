@@ -20,6 +20,7 @@ function inject(db){
   const skills=T.abilities_class.filter(a=>a.path_id===p.id);
   for(const a of skills){
    const d=clone(a);d.id=a.id.replace(p.id,newer);d.path_id=newer;
+   if(p.id===oldWar&&d.rank===1){const eff=d.mechanics?.effects?.find(e=>e.type==='weapon_attack_bonus');if(eff)eff.categories=['crossbows'];d.desc='Arbalétrier : arbalètes exclusivement ; +1 aux attaques avec une arbalète. Bonus de rang + 2 aux tests d’estimation de valeur des armes ou réputation martiale.';}
    if(p.id===oldWar)d.sourceVariantRestriction='Arbalétrier : arbalètes uniquement, catégorie imposée';
    T.abilities_class.push(d);
   }
