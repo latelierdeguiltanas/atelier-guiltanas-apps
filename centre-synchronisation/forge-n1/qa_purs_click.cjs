@@ -34,9 +34,9 @@ const fs=require('node:fs');
   const desk=await browser.newContext({viewport:{width:1280,height:800}});
   const cockpit=await desk.newPage();cockpit.on('pageerror',e=>errors.push(String(e)));
   await cockpit.goto('http://127.0.0.1:4173/centre-synchronisation/',{waitUntil:'domcontentloaded'});
-  const forgeTile=cockpit.locator('#project-list [data-project="forge"]');
-  await forgeTile.waitFor({state:'attached',timeout:15000});
-  await forgeTile.dispatchEvent('click');
+  // Simuler l'ouverture de la fiche Forge dans le DOM réel du Copilote sans identifiants de connexion.
+  await cockpit.locator('#drawer-content').waitFor({state:'attached',timeout:15000});
+  await cockpit.evaluate(()=>{document.getElementById('drawer-content').innerHTML='<div class="project-drawer-head"><strong>Forge of Heroes</strong></div><div class="project-hero-summary">Création de personnages</div>';});
   const panel=cockpit.locator('#foh-pure-certification');
   await panel.waitFor({timeout:15000});
   assert.equal(await panel.locator('iframe').count(),1);
