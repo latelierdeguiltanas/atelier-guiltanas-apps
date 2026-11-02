@@ -21,6 +21,7 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
     const s=standardState(db,profile.id,undefined,race);
     s.peupleChoices={bonusStat,malusStat};if(profile.id.includes(':pretre:'))s.profileChoices.priestMode='generalist';s.voies.peoplePathId=inherited.id;
     // Keep the official starting package: removing a shield or forcing a dagger creates illegal fixtures.
+    if(inherited.id.includes('voie-de-l-elfe-sylvain')&&age==='mature')s.equip={...s.equip,armorId:'',gmApprovedSwap:true}; // Enfant de la forêt: armure max cuir renforcé, conserver bouclier requis.
     if(age==='mature'){s.advancedRules.age=true;s.age={categoryId:'mature',spending:[{pathId:inherited.id,rank:2},{pathId:s.voies.profilePathIds[profile.familleId==='mage'?1:0],rank:2}]};}
     fill(s);
     const before=JSON.stringify(s),r=E.computeCharacterN1(s);
