@@ -415,6 +415,26 @@
     "fully_verified_peoples": 0,
     "fully_verified_profiles": 0,
     "engine_parity": true,
-    "source_updated_at": "2026-11-02T10:30:12.547Z"
+    "source_updated_at": "2026-11-02T10:30:12.547Z",
+    "browser_current": {
+      "status": "PASS",
+      "passed": 12,
+      "total": 12,
+      "run": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41429470180",
+      "source": "forge-of-heroes/QA/N1/real-chrome-evidence.json",
+      "scope": "12 parcours du gel reproduits sous Chrome avec PV DEF INIT PC PM, sauvegarde, relecture et fiche interactive ; pas examen exhaustif PDF/champs/annexes"
+    },
+    "mechanicalGate": {
+      "automatedChecksPass": true,
+      "source": "forge-of-heroes/QA/N1/status.json",
+      "n1StillOpen": true
+    },
+    "halfElfSource": {
+      "passed": 672,
+      "total": 672,
+      "source": "forge-of-heroes/QA/N1/demi-elfe-source-r1-r2.json",
+      "percent": 63
+    },
+    "companionV2Deferred": true
   }
 }
