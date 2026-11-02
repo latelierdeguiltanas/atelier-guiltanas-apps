@@ -103,5 +103,5 @@ const report={
  ]
 };
 if(items.length!==112)throw Error('Not 112');
-fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n');
+fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,JSON.stringify(report)+'\n');
 console.log(JSON.stringify({profileMode:'PUR',pairs:report.summary.total,certified:report.summary.certified,playable:report.summary.baselinePlayable,criteria:report.summary.criteriaPassed+'/'+report.summary.criteriaTotal,arquebusierNain:items.find(x=>x.profile==='Arquebusier'&&x.people==='Nain')?.percent,halfelinBarbare:items.find(x=>x.profile==='Barbare'&&x.people==='Halfelin')?.purePathPairs}));
