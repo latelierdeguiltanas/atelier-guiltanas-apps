@@ -1,0 +1,46 @@
+name: Forge N1 - historiques Arquebusier tous peuples
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arq-history-people.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_history_people_cross.cjs'
+permissions:
+  contents: write
+jobs:
+  history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vérifier les historiques des huit peuples et leurs rangs de niveau 1
+        id: run
+        continue-on-error: true
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_history_people_cross.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-arquebusier-historiques-races
+          path: forge-of-heroes/QA/N1/arquebusier-history-people-cross.json
+      - name: Publier les constats même en cas d'erreur
+        if: always()
+        run: |
+          if test -f forge-of-heroes/QA/N1/arquebusier-history-people-cross.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add forge-of-heroes/QA/N1/arquebusier-history-people-cross.json
+            if ! git diff --cached --quiet; then
+              git commit -m "audit(forge-n1): historiques Arquebusier par peuple [skip ci]"
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main
+            fi
+          fi
+      - name: Statut des règles
+        if: steps.run.outcome == 'failure'
+        run: exit 1
