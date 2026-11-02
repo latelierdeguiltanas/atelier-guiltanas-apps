@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_OFFICIAL_PROGRESS",
-  "generatedAt": "2026-11-02T10:30:12.547Z",
+  "generatedAt": "2026-11-02T10:47:18.229Z",
   "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
   "databaseSha256": "eae2d572846102c1ea26c69eec204b080bcf928060f887c13341a4cecc762167",
   "scope": {
@@ -30,8 +30,8 @@
       "key": "demi-elfe",
       "label": "Demi-elfe",
       "scope": "official",
-      "percent": 63,
-      "verified": 10,
+      "percent": 69,
+      "verified": 11,
       "total": 16,
       "attempted": 7105,
       "accepted": 7060,
@@ -120,11 +120,11 @@
         },
         {
           "id": "methods",
-          "label": "Méthodes de caractéristiques selon le peuple",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Exhaustivité du domaine point-buy et 3 séries pour un humain témoin.",
-          "remaining": "Tester achat, séries et semi-aléatoire avec les ajustements propres à ce peuple."
+          "label": "Méthodes de caractéristiques × peuple",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes vérifié exhaustivement sur témoin humain, avec 9 configurations indépendantes croisées aux 14 profils et 8 peuples et contrôle de la sauvegarde.",
+          "remaining": ""
         },
         {
           "id": "ages-history",
@@ -174,8 +174,8 @@
       "key": "demi-orc",
       "label": "Demi-orc",
       "scope": "official",
-      "percent": 56,
-      "verified": 9,
+      "percent": 63,
+      "verified": 10,
       "total": 16,
       "attempted": 7105,
       "accepted": 7060,
@@ -264,11 +264,11 @@
         },
         {
           "id": "methods",
-          "label": "Méthodes de caractéristiques selon le peuple",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Exhaustivité du domaine point-buy et 3 séries pour un humain témoin.",
-          "remaining": "Tester achat, séries et semi-aléatoire avec les ajustements propres à ce peuple."
+          "label": "Méthodes de caractéristiques × peuple",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes vérifié exhaustivement sur témoin humain, avec 9 configurations indépendantes croisées aux 14 profils et 8 peuples et contrôle de la sauvegarde.",
+          "remaining": ""
         },
         {
           "id": "ages-history",
@@ -317,294 +317,6 @@
       "id": "people:elfe-haut:cof2-lb-2024",
       "key": "elfe-haut",
       "label": "Elfe haut",
-      "scope": "official",
-      "percent": 56,
-      "verified": 9,
-      "total": 16,
-      "attempted": 7105,
-      "accepted": 7060,
-      "expectedRejected": 45,
-      "unexpectedFailure": 0,
-      "slots": [
-        {
-          "id": "catalogue",
-          "label": "Peuple et caractéristiques référencés",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/version-parity.json",
-          "scope": "Peuple présent dans le catalogue COF2 vérifié et le moteur; traits vérifiés par suite de guides.",
-          "remaining": ""
-        },
-        {
-          "id": "race-stats",
-          "label": "Bonus/malus raciaux : oracle indépendant",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
-          "scope": "Calculs chiffrés des caractéristiques raciales sur scénario officiel.",
-          "remaining": ""
-        },
-        {
-          "id": "people-r1",
-          "label": "Voie de peuple : rang 1",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
-          "scope": "R1 testé; demi-elfe : choix des trois héritages dans le moteur.",
-          "remaining": ""
-        },
-        {
-          "id": "people-r2",
-          "label": "Voie de peuple : rang 2",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
-          "scope": "R2 humain / peuple et persistances, source chiffrée.",
-          "remaining": ""
-        },
-        {
-          "id": "standard",
-          "label": "Profils purs : 14 × 10 paires",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
-          "scope": "Toutes les paires standards du peuple en configuration témoin.",
-          "remaining": ""
-        },
-        {
-          "id": "hybrid",
-          "label": "Hybrides : 14 × 13 × 25",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
-          "scope": "Croisements de voies et profils dans les deux sens en configuration témoin.",
-          "remaining": ""
-        },
-        {
-          "id": "no-profile",
-          "label": "Sans profil : 2 415 paires",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
-          "scope": "Croisements sans profil dans la configuration témoin.",
-          "remaining": ""
-        },
-        {
-          "id": "legal-rejects",
-          "label": "Refus légitimes identifiés",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
-          "scope": "Tous les refus de cette campagne sont reliés à une règle et non assimilés à des créations réussies.",
-          "remaining": ""
-        },
-        {
-          "id": "replay",
-          "label": "Sauvegarde/relecture échantillonnée",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
-          "scope": "Échantillons déterministes de personnages persistés; pas toutes les options.",
-          "remaining": ""
-        },
-        {
-          "id": "origins",
-          "label": "Tous les dons / origines alternatifs",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Origines humaines, Don étrange gnome ou héritages demi-elfes testés en suites dédiées.",
-          "remaining": "Tester les variantes de toutes les capacités raciales et leurs interactions."
-        },
-        {
-          "id": "methods",
-          "label": "Méthodes de caractéristiques selon le peuple",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Exhaustivité du domaine point-buy et 3 séries pour un humain témoin.",
-          "remaining": "Tester achat, séries et semi-aléatoire avec les ajustements propres à ce peuple."
-        },
-        {
-          "id": "ages-history",
-          "label": "Tous les âges × historiques × peuple",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Contrôles généraux, pas le produit complet par peuple.",
-          "remaining": "Rejouer combinaisons d’âge, rangs et historiques propres à ce peuple."
-        },
-        {
-          "id": "equipment",
-          "label": "Alternatives d’équipement et taille",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Le paquetage témoin et les refus de taille sont couverts.",
-          "remaining": "Couvrir les alternatives de paquetage, les échanges, les mains et contraintes conditionnelles."
-        },
-        {
-          "id": "conditional",
-          "label": "Effets actifs/conditionnels de chaque voie raciale",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
-          "scope": "R1/R2 de base testés.",
-          "remaining": "Établir les oracles pour chaque effet conditionnel, coût et usage."
-        },
-        {
-          "id": "export",
-          "label": "Fiche officielle, annexe et reprise de toutes variantes",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/profile-checkpoint.json",
-          "scope": "Fiches et PDF ciblés déjà contrôlés.",
-          "remaining": "Contrôler les champs, annexes et choix pour toutes les variantes licites du peuple."
-        },
-        {
-          "id": "click-mobile",
-          "label": "Parcours création au clic et mobile",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/profile-checkpoint.json",
-          "scope": "Scénarios Chrome et Android émulé partiels.",
-          "remaining": "Exécuter les parcours de gel appropriés sur les modes et options de ce peuple."
-        }
-      ],
-      "proof": "../../forge-of-heroes/QA/N1/native-items.json"
-    },
-    {
-      "id": "people:elfe-sylvain:cof2-lb-2024",
-      "key": "elfe-sylvain",
-      "label": "Elfe sylvain",
-      "scope": "official",
-      "percent": 56,
-      "verified": 9,
-      "total": 16,
-      "attempted": 7105,
-      "accepted": 7060,
-      "expectedRejected": 45,
-      "unexpectedFailure": 0,
-      "slots": [
-        {
-          "id": "catalogue",
-          "label": "Peuple et caractéristiques référencés",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/version-parity.json",
-          "scope": "Peuple présent dans le catalogue COF2 vérifié et le moteur; traits vérifiés par suite de guides.",
-          "remaining": ""
-        },
-        {
-          "id": "race-stats",
-          "label": "Bonus/malus raciaux : oracle indépendant",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
-          "scope": "Calculs chiffrés des caractéristiques raciales sur scénario officiel.",
-          "remaining": ""
-        },
-        {
-          "id": "people-r1",
-          "label": "Voie de peuple : rang 1",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
-          "scope": "R1 testé; demi-elfe : choix des trois héritages dans le moteur.",
-          "remaining": ""
-        },
-        {
-          "id": "people-r2",
-          "label": "Voie de peuple : rang 2",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
-          "scope": "R2 humain / peuple et persistances, source chiffrée.",
-          "remaining": ""
-        },
-        {
-          "id": "standard",
-          "label": "Profils purs : 14 × 10 paires",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
-          "scope": "Toutes les paires standards du peuple en configuration témoin.",
-          "remaining": ""
-        },
-        {
-          "id": "hybrid",
-          "label": "Hybrides : 14 × 13 × 25",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
-          "scope": "Croisements de voies et profils dans les deux sens en configuration témoin.",
-          "remaining": ""
-        },
-        {
-          "id": "no-profile",
-          "label": "Sans profil : 2 415 paires",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
-          "scope": "Croisements sans profil dans la configuration témoin.",
-          "remaining": ""
-        },
-        {
-          "id": "legal-rejects",
-          "label": "Refus légitimes identifiés",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
-          "scope": "Tous les refus de cette campagne sont reliés à une règle et non assimilés à des créations réussies.",
-          "remaining": ""
-        },
-        {
-          "id": "replay",
-          "label": "Sauvegarde/relecture échantillonnée",
-          "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
-          "scope": "Échantillons déterministes de personnages persistés; pas toutes les options.",
-          "remaining": ""
-        },
-        {
-          "id": "origins",
-          "label": "Tous les dons / origines alternatifs",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Origines humaines, Don étrange gnome ou héritages demi-elfes testés en suites dédiées.",
-          "remaining": "Tester les variantes de toutes les capacités raciales et leurs interactions."
-        },
-        {
-          "id": "methods",
-          "label": "Méthodes de caractéristiques selon le peuple",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Exhaustivité du domaine point-buy et 3 séries pour un humain témoin.",
-          "remaining": "Tester achat, séries et semi-aléatoire avec les ajustements propres à ce peuple."
-        },
-        {
-          "id": "ages-history",
-          "label": "Tous les âges × historiques × peuple",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Contrôles généraux, pas le produit complet par peuple.",
-          "remaining": "Rejouer combinaisons d’âge, rangs et historiques propres à ce peuple."
-        },
-        {
-          "id": "equipment",
-          "label": "Alternatives d’équipement et taille",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Le paquetage témoin et les refus de taille sont couverts.",
-          "remaining": "Couvrir les alternatives de paquetage, les échanges, les mains et contraintes conditionnelles."
-        },
-        {
-          "id": "conditional",
-          "label": "Effets actifs/conditionnels de chaque voie raciale",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
-          "scope": "R1/R2 de base testés.",
-          "remaining": "Établir les oracles pour chaque effet conditionnel, coût et usage."
-        },
-        {
-          "id": "export",
-          "label": "Fiche officielle, annexe et reprise de toutes variantes",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/profile-checkpoint.json",
-          "scope": "Fiches et PDF ciblés déjà contrôlés.",
-          "remaining": "Contrôler les champs, annexes et choix pour toutes les variantes licites du peuple."
-        },
-        {
-          "id": "click-mobile",
-          "label": "Parcours création au clic et mobile",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/profile-checkpoint.json",
-          "scope": "Scénarios Chrome et Android émulé partiels.",
-          "remaining": "Exécuter les parcours de gel appropriés sur les modes et options de ce peuple."
-        }
-      ],
-      "proof": "../../forge-of-heroes/QA/N1/native-items.json"
-    },
-    {
-      "id": "people:gnome:cof2-lb-2024",
-      "key": "gnome",
-      "label": "Gnome",
       "scope": "official",
       "percent": 63,
       "verified": 10,
@@ -689,6 +401,294 @@
         {
           "id": "origins",
           "label": "Tous les dons / origines alternatifs",
+          "status": "A_VERIFIER",
+          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
+          "scope": "Origines humaines, Don étrange gnome ou héritages demi-elfes testés en suites dédiées.",
+          "remaining": "Tester les variantes de toutes les capacités raciales et leurs interactions."
+        },
+        {
+          "id": "methods",
+          "label": "Méthodes de caractéristiques × peuple",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes vérifié exhaustivement sur témoin humain, avec 9 configurations indépendantes croisées aux 14 profils et 8 peuples et contrôle de la sauvegarde.",
+          "remaining": ""
+        },
+        {
+          "id": "ages-history",
+          "label": "Tous les âges × historiques × peuple",
+          "status": "A_VERIFIER",
+          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
+          "scope": "Contrôles généraux, pas le produit complet par peuple.",
+          "remaining": "Rejouer combinaisons d’âge, rangs et historiques propres à ce peuple."
+        },
+        {
+          "id": "equipment",
+          "label": "Alternatives d’équipement et taille",
+          "status": "A_VERIFIER",
+          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
+          "scope": "Le paquetage témoin et les refus de taille sont couverts.",
+          "remaining": "Couvrir les alternatives de paquetage, les échanges, les mains et contraintes conditionnelles."
+        },
+        {
+          "id": "conditional",
+          "label": "Effets actifs/conditionnels de chaque voie raciale",
+          "status": "A_VERIFIER",
+          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
+          "scope": "R1/R2 de base testés.",
+          "remaining": "Établir les oracles pour chaque effet conditionnel, coût et usage."
+        },
+        {
+          "id": "export",
+          "label": "Fiche officielle, annexe et reprise de toutes variantes",
+          "status": "A_VERIFIER",
+          "evidence": "../../forge-of-heroes/QA/N1/profile-checkpoint.json",
+          "scope": "Fiches et PDF ciblés déjà contrôlés.",
+          "remaining": "Contrôler les champs, annexes et choix pour toutes les variantes licites du peuple."
+        },
+        {
+          "id": "click-mobile",
+          "label": "Parcours création au clic et mobile",
+          "status": "A_VERIFIER",
+          "evidence": "../../forge-of-heroes/QA/N1/profile-checkpoint.json",
+          "scope": "Scénarios Chrome et Android émulé partiels.",
+          "remaining": "Exécuter les parcours de gel appropriés sur les modes et options de ce peuple."
+        }
+      ],
+      "proof": "../../forge-of-heroes/QA/N1/native-items.json"
+    },
+    {
+      "id": "people:elfe-sylvain:cof2-lb-2024",
+      "key": "elfe-sylvain",
+      "label": "Elfe sylvain",
+      "scope": "official",
+      "percent": 63,
+      "verified": 10,
+      "total": 16,
+      "attempted": 7105,
+      "accepted": 7060,
+      "expectedRejected": 45,
+      "unexpectedFailure": 0,
+      "slots": [
+        {
+          "id": "catalogue",
+          "label": "Peuple et caractéristiques référencés",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/version-parity.json",
+          "scope": "Peuple présent dans le catalogue COF2 vérifié et le moteur; traits vérifiés par suite de guides.",
+          "remaining": ""
+        },
+        {
+          "id": "race-stats",
+          "label": "Bonus/malus raciaux : oracle indépendant",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
+          "scope": "Calculs chiffrés des caractéristiques raciales sur scénario officiel.",
+          "remaining": ""
+        },
+        {
+          "id": "people-r1",
+          "label": "Voie de peuple : rang 1",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
+          "scope": "R1 testé; demi-elfe : choix des trois héritages dans le moteur.",
+          "remaining": ""
+        },
+        {
+          "id": "people-r2",
+          "label": "Voie de peuple : rang 2",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
+          "scope": "R2 humain / peuple et persistances, source chiffrée.",
+          "remaining": ""
+        },
+        {
+          "id": "standard",
+          "label": "Profils purs : 14 × 10 paires",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
+          "scope": "Toutes les paires standards du peuple en configuration témoin.",
+          "remaining": ""
+        },
+        {
+          "id": "hybrid",
+          "label": "Hybrides : 14 × 13 × 25",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
+          "scope": "Croisements de voies et profils dans les deux sens en configuration témoin.",
+          "remaining": ""
+        },
+        {
+          "id": "no-profile",
+          "label": "Sans profil : 2 415 paires",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
+          "scope": "Croisements sans profil dans la configuration témoin.",
+          "remaining": ""
+        },
+        {
+          "id": "legal-rejects",
+          "label": "Refus légitimes identifiés",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
+          "scope": "Tous les refus de cette campagne sont reliés à une règle et non assimilés à des créations réussies.",
+          "remaining": ""
+        },
+        {
+          "id": "replay",
+          "label": "Sauvegarde/relecture échantillonnée",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
+          "scope": "Échantillons déterministes de personnages persistés; pas toutes les options.",
+          "remaining": ""
+        },
+        {
+          "id": "origins",
+          "label": "Tous les dons / origines alternatifs",
+          "status": "A_VERIFIER",
+          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
+          "scope": "Origines humaines, Don étrange gnome ou héritages demi-elfes testés en suites dédiées.",
+          "remaining": "Tester les variantes de toutes les capacités raciales et leurs interactions."
+        },
+        {
+          "id": "methods",
+          "label": "Méthodes de caractéristiques × peuple",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes vérifié exhaustivement sur témoin humain, avec 9 configurations indépendantes croisées aux 14 profils et 8 peuples et contrôle de la sauvegarde.",
+          "remaining": ""
+        },
+        {
+          "id": "ages-history",
+          "label": "Tous les âges × historiques × peuple",
+          "status": "A_VERIFIER",
+          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
+          "scope": "Contrôles généraux, pas le produit complet par peuple.",
+          "remaining": "Rejouer combinaisons d’âge, rangs et historiques propres à ce peuple."
+        },
+        {
+          "id": "equipment",
+          "label": "Alternatives d’équipement et taille",
+          "status": "A_VERIFIER",
+          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
+          "scope": "Le paquetage témoin et les refus de taille sont couverts.",
+          "remaining": "Couvrir les alternatives de paquetage, les échanges, les mains et contraintes conditionnelles."
+        },
+        {
+          "id": "conditional",
+          "label": "Effets actifs/conditionnels de chaque voie raciale",
+          "status": "A_VERIFIER",
+          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
+          "scope": "R1/R2 de base testés.",
+          "remaining": "Établir les oracles pour chaque effet conditionnel, coût et usage."
+        },
+        {
+          "id": "export",
+          "label": "Fiche officielle, annexe et reprise de toutes variantes",
+          "status": "A_VERIFIER",
+          "evidence": "../../forge-of-heroes/QA/N1/profile-checkpoint.json",
+          "scope": "Fiches et PDF ciblés déjà contrôlés.",
+          "remaining": "Contrôler les champs, annexes et choix pour toutes les variantes licites du peuple."
+        },
+        {
+          "id": "click-mobile",
+          "label": "Parcours création au clic et mobile",
+          "status": "A_VERIFIER",
+          "evidence": "../../forge-of-heroes/QA/N1/profile-checkpoint.json",
+          "scope": "Scénarios Chrome et Android émulé partiels.",
+          "remaining": "Exécuter les parcours de gel appropriés sur les modes et options de ce peuple."
+        }
+      ],
+      "proof": "../../forge-of-heroes/QA/N1/native-items.json"
+    },
+    {
+      "id": "people:gnome:cof2-lb-2024",
+      "key": "gnome",
+      "label": "Gnome",
+      "scope": "official",
+      "percent": 69,
+      "verified": 11,
+      "total": 16,
+      "attempted": 7105,
+      "accepted": 7060,
+      "expectedRejected": 45,
+      "unexpectedFailure": 0,
+      "slots": [
+        {
+          "id": "catalogue",
+          "label": "Peuple et caractéristiques référencés",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/version-parity.json",
+          "scope": "Peuple présent dans le catalogue COF2 vérifié et le moteur; traits vérifiés par suite de guides.",
+          "remaining": ""
+        },
+        {
+          "id": "race-stats",
+          "label": "Bonus/malus raciaux : oracle indépendant",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
+          "scope": "Calculs chiffrés des caractéristiques raciales sur scénario officiel.",
+          "remaining": ""
+        },
+        {
+          "id": "people-r1",
+          "label": "Voie de peuple : rang 1",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
+          "scope": "R1 testé; demi-elfe : choix des trois héritages dans le moteur.",
+          "remaining": ""
+        },
+        {
+          "id": "people-r2",
+          "label": "Voie de peuple : rang 2",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
+          "scope": "R2 humain / peuple et persistances, source chiffrée.",
+          "remaining": ""
+        },
+        {
+          "id": "standard",
+          "label": "Profils purs : 14 × 10 paires",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
+          "scope": "Toutes les paires standards du peuple en configuration témoin.",
+          "remaining": ""
+        },
+        {
+          "id": "hybrid",
+          "label": "Hybrides : 14 × 13 × 25",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
+          "scope": "Croisements de voies et profils dans les deux sens en configuration témoin.",
+          "remaining": ""
+        },
+        {
+          "id": "no-profile",
+          "label": "Sans profil : 2 415 paires",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
+          "scope": "Croisements sans profil dans la configuration témoin.",
+          "remaining": ""
+        },
+        {
+          "id": "legal-rejects",
+          "label": "Refus légitimes identifiés",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
+          "scope": "Tous les refus de cette campagne sont reliés à une règle et non assimilés à des créations réussies.",
+          "remaining": ""
+        },
+        {
+          "id": "replay",
+          "label": "Sauvegarde/relecture échantillonnée",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/native-items.json",
+          "scope": "Échantillons déterministes de personnages persistés; pas toutes les options.",
+          "remaining": ""
+        },
+        {
+          "id": "origins",
+          "label": "Tous les dons / origines alternatifs",
           "status": "PASS",
           "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
           "scope": "Origines humaines, Don étrange gnome ou héritages demi-elfes testés en suites dédiées.",
@@ -696,11 +696,11 @@
         },
         {
           "id": "methods",
-          "label": "Méthodes de caractéristiques selon le peuple",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Exhaustivité du domaine point-buy et 3 séries pour un humain témoin.",
-          "remaining": "Tester achat, séries et semi-aléatoire avec les ajustements propres à ce peuple."
+          "label": "Méthodes de caractéristiques × peuple",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes vérifié exhaustivement sur témoin humain, avec 9 configurations indépendantes croisées aux 14 profils et 8 peuples et contrôle de la sauvegarde.",
+          "remaining": ""
         },
         {
           "id": "ages-history",
@@ -750,8 +750,8 @@
       "key": "halfelin",
       "label": "Halfelin",
       "scope": "official",
-      "percent": 56,
-      "verified": 9,
+      "percent": 63,
+      "verified": 10,
       "total": 16,
       "attempted": 7105,
       "accepted": 6055,
@@ -840,11 +840,11 @@
         },
         {
           "id": "methods",
-          "label": "Méthodes de caractéristiques selon le peuple",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Exhaustivité du domaine point-buy et 3 séries pour un humain témoin.",
-          "remaining": "Tester achat, séries et semi-aléatoire avec les ajustements propres à ce peuple."
+          "label": "Méthodes de caractéristiques × peuple",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes vérifié exhaustivement sur témoin humain, avec 9 configurations indépendantes croisées aux 14 profils et 8 peuples et contrôle de la sauvegarde.",
+          "remaining": ""
         },
         {
           "id": "ages-history",
@@ -984,10 +984,10 @@
         },
         {
           "id": "methods",
-          "label": "Méthodes de caractéristiques selon le peuple",
+          "label": "Méthodes de caractéristiques × peuple",
           "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Exhaustivité du domaine point-buy et 3 séries pour un humain témoin.",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes vérifié exhaustivement sur témoin humain, avec 9 configurations indépendantes croisées aux 14 profils et 8 peuples et contrôle de la sauvegarde.",
           "remaining": ""
         },
         {
@@ -1038,8 +1038,8 @@
       "key": "nain",
       "label": "Nain",
       "scope": "official",
-      "percent": 56,
-      "verified": 9,
+      "percent": 63,
+      "verified": 10,
       "total": 16,
       "attempted": 7105,
       "accepted": 7060,
@@ -1128,11 +1128,11 @@
         },
         {
           "id": "methods",
-          "label": "Méthodes de caractéristiques selon le peuple",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Exhaustivité du domaine point-buy et 3 séries pour un humain témoin.",
-          "remaining": "Tester achat, séries et semi-aléatoire avec les ajustements propres à ce peuple."
+          "label": "Méthodes de caractéristiques × peuple",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes vérifié exhaustivement sur témoin humain, avec 9 configurations indépendantes croisées aux 14 profils et 8 peuples et contrôle de la sauvegarde.",
+          "remaining": ""
         },
         {
           "id": "ages-history",
@@ -1184,8 +1184,8 @@
       "key": "arquebusier",
       "label": "Arquebusier",
       "scope": "official",
-      "percent": 63,
-      "verified": 10,
+      "percent": 69,
+      "verified": 11,
       "total": 16,
       "attempted": 7960,
       "expectedRejected": 115,
@@ -1281,11 +1281,11 @@
         },
         {
           "id": "methods",
-          "label": "Toutes méthodes de caractéristiques par profil",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Échantillonnages exhaustifs d’achat et séries sur humain voleur.",
-          "remaining": "Tester toutes les méthodes de répartition sur ce profil et les peuples."
+          "label": "Méthodes de caractéristiques × profil",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes exhaustif sur témoin et 9 configurations croisées à 8 peuples pour chacun des 14 profils, avec contrôle des bonus et sauvegardes.",
+          "remaining": ""
         },
         {
           "id": "context",
@@ -1327,8 +1327,8 @@
       "key": "barbare",
       "label": "Barbare",
       "scope": "official",
-      "percent": 63,
-      "verified": 10,
+      "percent": 69,
+      "verified": 11,
       "total": 16,
       "attempted": 7960,
       "expectedRejected": 385,
@@ -1424,11 +1424,11 @@
         },
         {
           "id": "methods",
-          "label": "Toutes méthodes de caractéristiques par profil",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Échantillonnages exhaustifs d’achat et séries sur humain voleur.",
-          "remaining": "Tester toutes les méthodes de répartition sur ce profil et les peuples."
+          "label": "Méthodes de caractéristiques × profil",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes exhaustif sur témoin et 9 configurations croisées à 8 peuples pour chacun des 14 profils, avec contrôle des bonus et sauvegardes.",
+          "remaining": ""
         },
         {
           "id": "context",
@@ -1470,8 +1470,8 @@
       "key": "barde",
       "label": "Barde",
       "scope": "official",
-      "percent": 63,
-      "verified": 10,
+      "percent": 69,
+      "verified": 11,
       "total": 16,
       "attempted": 7960,
       "expectedRejected": 115,
@@ -1567,11 +1567,11 @@
         },
         {
           "id": "methods",
-          "label": "Toutes méthodes de caractéristiques par profil",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Échantillonnages exhaustifs d’achat et séries sur humain voleur.",
-          "remaining": "Tester toutes les méthodes de répartition sur ce profil et les peuples."
+          "label": "Méthodes de caractéristiques × profil",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes exhaustif sur témoin et 9 configurations croisées à 8 peuples pour chacun des 14 profils, avec contrôle des bonus et sauvegardes.",
+          "remaining": ""
         },
         {
           "id": "context",
@@ -1613,8 +1613,8 @@
       "key": "chevalier",
       "label": "Chevalier",
       "scope": "official",
-      "percent": 63,
-      "verified": 10,
+      "percent": 69,
+      "verified": 11,
       "total": 16,
       "attempted": 7960,
       "expectedRejected": 385,
@@ -1710,11 +1710,11 @@
         },
         {
           "id": "methods",
-          "label": "Toutes méthodes de caractéristiques par profil",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Échantillonnages exhaustifs d’achat et séries sur humain voleur.",
-          "remaining": "Tester toutes les méthodes de répartition sur ce profil et les peuples."
+          "label": "Méthodes de caractéristiques × profil",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes exhaustif sur témoin et 9 configurations croisées à 8 peuples pour chacun des 14 profils, avec contrôle des bonus et sauvegardes.",
+          "remaining": ""
         },
         {
           "id": "context",
@@ -1756,8 +1756,8 @@
       "key": "druide",
       "label": "Druide",
       "scope": "official",
-      "percent": 63,
-      "verified": 10,
+      "percent": 69,
+      "verified": 11,
       "total": 16,
       "attempted": 7960,
       "expectedRejected": 75,
@@ -1853,11 +1853,11 @@
         },
         {
           "id": "methods",
-          "label": "Toutes méthodes de caractéristiques par profil",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Échantillonnages exhaustifs d’achat et séries sur humain voleur.",
-          "remaining": "Tester toutes les méthodes de répartition sur ce profil et les peuples."
+          "label": "Méthodes de caractéristiques × profil",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes exhaustif sur témoin et 9 configurations croisées à 8 peuples pour chacun des 14 profils, avec contrôle des bonus et sauvegardes.",
+          "remaining": ""
         },
         {
           "id": "context",
@@ -1899,8 +1899,8 @@
       "key": "ensorceleur",
       "label": "Ensorceleur",
       "scope": "official",
-      "percent": 63,
-      "verified": 10,
+      "percent": 69,
+      "verified": 11,
       "total": 16,
       "attempted": 7960,
       "expectedRejected": 115,
@@ -1996,11 +1996,11 @@
         },
         {
           "id": "methods",
-          "label": "Toutes méthodes de caractéristiques par profil",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Échantillonnages exhaustifs d’achat et séries sur humain voleur.",
-          "remaining": "Tester toutes les méthodes de répartition sur ce profil et les peuples."
+          "label": "Méthodes de caractéristiques × profil",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes exhaustif sur témoin et 9 configurations croisées à 8 peuples pour chacun des 14 profils, avec contrôle des bonus et sauvegardes.",
+          "remaining": ""
         },
         {
           "id": "context",
@@ -2042,8 +2042,8 @@
       "key": "forgesort",
       "label": "Forgesort",
       "scope": "official",
-      "percent": 63,
-      "verified": 10,
+      "percent": 69,
+      "verified": 11,
       "total": 16,
       "attempted": 7960,
       "expectedRejected": 115,
@@ -2139,11 +2139,11 @@
         },
         {
           "id": "methods",
-          "label": "Toutes méthodes de caractéristiques par profil",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Échantillonnages exhaustifs d’achat et séries sur humain voleur.",
-          "remaining": "Tester toutes les méthodes de répartition sur ce profil et les peuples."
+          "label": "Méthodes de caractéristiques × profil",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes exhaustif sur témoin et 9 configurations croisées à 8 peuples pour chacun des 14 profils, avec contrôle des bonus et sauvegardes.",
+          "remaining": ""
         },
         {
           "id": "context",
@@ -2185,8 +2185,8 @@
       "key": "guerrier",
       "label": "Guerrier",
       "scope": "official",
-      "percent": 63,
-      "verified": 10,
+      "percent": 69,
+      "verified": 11,
       "total": 16,
       "attempted": 7960,
       "expectedRejected": 745,
@@ -2282,11 +2282,11 @@
         },
         {
           "id": "methods",
-          "label": "Toutes méthodes de caractéristiques par profil",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Échantillonnages exhaustifs d’achat et séries sur humain voleur.",
-          "remaining": "Tester toutes les méthodes de répartition sur ce profil et les peuples."
+          "label": "Méthodes de caractéristiques × profil",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes exhaustif sur témoin et 9 configurations croisées à 8 peuples pour chacun des 14 profils, avec contrôle des bonus et sauvegardes.",
+          "remaining": ""
         },
         {
           "id": "context",
@@ -2328,8 +2328,8 @@
       "key": "magicien",
       "label": "Magicien",
       "scope": "official",
-      "percent": 63,
-      "verified": 10,
+      "percent": 69,
+      "verified": 11,
       "total": 16,
       "attempted": 7960,
       "expectedRejected": 115,
@@ -2425,11 +2425,11 @@
         },
         {
           "id": "methods",
-          "label": "Toutes méthodes de caractéristiques par profil",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Échantillonnages exhaustifs d’achat et séries sur humain voleur.",
-          "remaining": "Tester toutes les méthodes de répartition sur ce profil et les peuples."
+          "label": "Méthodes de caractéristiques × profil",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes exhaustif sur témoin et 9 configurations croisées à 8 peuples pour chacun des 14 profils, avec contrôle des bonus et sauvegardes.",
+          "remaining": ""
         },
         {
           "id": "context",
@@ -2471,8 +2471,8 @@
       "key": "moine",
       "label": "Moine",
       "scope": "official",
-      "percent": 63,
-      "verified": 10,
+      "percent": 69,
+      "verified": 11,
       "total": 16,
       "attempted": 7960,
       "expectedRejected": 115,
@@ -2568,11 +2568,11 @@
         },
         {
           "id": "methods",
-          "label": "Toutes méthodes de caractéristiques par profil",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Échantillonnages exhaustifs d’achat et séries sur humain voleur.",
-          "remaining": "Tester toutes les méthodes de répartition sur ce profil et les peuples."
+          "label": "Méthodes de caractéristiques × profil",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes exhaustif sur témoin et 9 configurations croisées à 8 peuples pour chacun des 14 profils, avec contrôle des bonus et sauvegardes.",
+          "remaining": ""
         },
         {
           "id": "context",
@@ -2614,8 +2614,8 @@
       "key": "pretre",
       "label": "Prêtre",
       "scope": "official",
-      "percent": 63,
-      "verified": 10,
+      "percent": 69,
+      "verified": 11,
       "total": 16,
       "attempted": 7960,
       "expectedRejected": 75,
@@ -2711,11 +2711,11 @@
         },
         {
           "id": "methods",
-          "label": "Toutes méthodes de caractéristiques par profil",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Échantillonnages exhaustifs d’achat et séries sur humain voleur.",
-          "remaining": "Tester toutes les méthodes de répartition sur ce profil et les peuples."
+          "label": "Méthodes de caractéristiques × profil",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes exhaustif sur témoin et 9 configurations croisées à 8 peuples pour chacun des 14 profils, avec contrôle des bonus et sauvegardes.",
+          "remaining": ""
         },
         {
           "id": "context",
@@ -2757,8 +2757,8 @@
       "key": "rodeur",
       "label": "Rôdeur",
       "scope": "official",
-      "percent": 63,
-      "verified": 10,
+      "percent": 69,
+      "verified": 11,
       "total": 16,
       "attempted": 7960,
       "expectedRejected": 115,
@@ -2854,11 +2854,11 @@
         },
         {
           "id": "methods",
-          "label": "Toutes méthodes de caractéristiques par profil",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Échantillonnages exhaustifs d’achat et séries sur humain voleur.",
-          "remaining": "Tester toutes les méthodes de répartition sur ce profil et les peuples."
+          "label": "Méthodes de caractéristiques × profil",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes exhaustif sur témoin et 9 configurations croisées à 8 peuples pour chacun des 14 profils, avec contrôle des bonus et sauvegardes.",
+          "remaining": ""
         },
         {
           "id": "context",
@@ -2900,8 +2900,8 @@
       "key": "sorcier",
       "label": "Sorcier",
       "scope": "official",
-      "percent": 63,
-      "verified": 10,
+      "percent": 69,
+      "verified": 11,
       "total": 16,
       "attempted": 7960,
       "expectedRejected": 115,
@@ -2997,11 +2997,11 @@
         },
         {
           "id": "methods",
-          "label": "Toutes méthodes de caractéristiques par profil",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Échantillonnages exhaustifs d’achat et séries sur humain voleur.",
-          "remaining": "Tester toutes les méthodes de répartition sur ce profil et les peuples."
+          "label": "Méthodes de caractéristiques × profil",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes exhaustif sur témoin et 9 configurations croisées à 8 peuples pour chacun des 14 profils, avec contrôle des bonus et sauvegardes.",
+          "remaining": ""
         },
         {
           "id": "context",
@@ -3140,10 +3140,10 @@
         },
         {
           "id": "methods",
-          "label": "Toutes méthodes de caractéristiques par profil",
+          "label": "Méthodes de caractéristiques × profil",
           "status": "PASS",
-          "evidence": "../../forge-of-heroes/QA/N1/regressions.json",
-          "scope": "Échantillonnages exhaustifs d’achat et séries sur humain voleur.",
+          "evidence": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
+          "scope": "Domaine des méthodes exhaustif sur témoin et 9 configurations croisées à 8 peuples pour chacun des 14 profils, avec contrôle des bonus et sauvegardes.",
           "remaining": ""
         },
         {
@@ -3191,6 +3191,7 @@
     "native": "../../forge-of-heroes/QA/N1/native-items.json",
     "people": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
     "regressions": "../../forge-of-heroes/QA/N1/regressions.json",
+    "methods": "../../forge-of-heroes/QA/N1/official-methods-cross.json",
     "demi": "../../forge-of-heroes/QA/N1/demi-elfe-source-r1-r2.json",
     "source": "../../forge-of-heroes/QA/N1/profile-checkpoint.json",
     "parity": "../../forge-of-heroes/QA/N1/version-parity.json"
