@@ -1,0 +1,299 @@
+{
+  "schema": "FOH_N1_ARQUEBUSIER_PURE_AGE_RANK",
+  "timestamp": "2026-11-02T11:20:47.251Z",
+  "scope": "14? No: only Arquebusier pure × 8 official peoples × five different first paths × all ages (very young PC/DR, young, mature, venerable), both product engines. Validates racial and age characteristics against book rules, permanent PV/DEF/INIT under equip, existence of each accessible rank, local save/reopen. Contextual spells/attacks, historical choices, Arbalétrier alternative and PDF are NOT validated.",
+  "source": {
+    "book": "COF2 Livre de base imprimé pp.62–65; Règles avancées p.153 (catégories d’âge)",
+    "familyHpPerLevel": 4,
+    "baseHpN1": 8,
+    "ageEffects": {
+      "very-young": {
+        "agi": 0,
+        "con": 0,
+        "init": -1
+      },
+      "young": {
+        "agi": 0,
+        "con": 0,
+        "init": 0
+      },
+      "mature": {
+        "agi": -1,
+        "con": 0,
+        "init": 0
+      },
+      "venerable": {
+        "agi": -1,
+        "con": -1,
+        "init": 0
+      }
+    },
+    "ranks": {
+      "young": 1,
+      "very-young": 1,
+      "mature": 2,
+      "venerable": 3
+    }
+  },
+  "sourceCommit": "20f17b81e2063315549891a80f26793fba7099e8",
+  "expected": 400,
+  "cases": 400,
+  "pass": 370,
+  "refused": 0,
+  "failed": 30,
+  "failures": [
+    {
+      "tag": "index.html|gnome|voie-de-l-artilleur|young|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "index.html|gnome|voie-de-l-artilleur|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "index.html|gnome|voie-de-l-artilleur|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "index.html|gnome|voie-de-l-artilleur|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "index.html|gnome|voie-de-l-artilleur|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "index.html|gnome|voie-des-explosifs|young|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "index.html|gnome|voie-des-explosifs|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "index.html|gnome|voie-des-explosifs|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "index.html|gnome|voie-des-explosifs|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "index.html|gnome|voie-des-explosifs|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "index.html|gnome|voie-de-la-precision|young|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "index.html|gnome|voie-de-la-precision|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "index.html|gnome|voie-de-la-precision|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "index.html|gnome|voie-de-la-precision|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "index.html|gnome|voie-de-la-precision|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-l-artilleur|young|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-l-artilleur|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-l-artilleur|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-l-artilleur|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-l-artilleur|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-des-explosifs|young|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-des-explosifs|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-des-explosifs|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-des-explosifs|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-des-explosifs|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-la-precision|young|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-la-precision|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-la-precision|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-la-precision|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    },
+    {
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-la-precision|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: INIT mismatch"
+    }
+  ],
+  "perRace": {
+    "humain": {
+      "cases": 50,
+      "pass": 50,
+      "refused": 0,
+      "failed": 0
+    },
+    "nain": {
+      "cases": 50,
+      "pass": 50,
+      "refused": 0,
+      "failed": 0
+    },
+    "demi-elfe": {
+      "cases": 50,
+      "pass": 50,
+      "refused": 0,
+      "failed": 0
+    },
+    "demi-orc": {
+      "cases": 50,
+      "pass": 50,
+      "refused": 0,
+      "failed": 0
+    },
+    "elfe-haut": {
+      "cases": 50,
+      "pass": 50,
+      "refused": 0,
+      "failed": 0
+    },
+    "elfe-sylvain": {
+      "cases": 50,
+      "pass": 50,
+      "refused": 0,
+      "failed": 0
+    },
+    "gnome": {
+      "cases": 50,
+      "pass": 20,
+      "refused": 0,
+      "failed": 30
+    },
+    "halfelin": {
+      "cases": 50,
+      "pass": 50,
+      "refused": 0,
+      "failed": 0
+    }
+  },
+  "perPath": {
+    "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024": {
+      "name": "Voie de l’artilleur",
+      "printedPage": 62,
+      "cases": 80,
+      "pass": 70,
+      "refused": 0,
+      "failed": 10
+    },
+    "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024": {
+      "name": "Voie des explosifs",
+      "printedPage": 63,
+      "cases": 80,
+      "pass": 70,
+      "refused": 0,
+      "failed": 10
+    },
+    "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024": {
+      "name": "Voie du mercenaire",
+      "printedPage": 64,
+      "cases": 80,
+      "pass": 80,
+      "refused": 0,
+      "failed": 0
+    },
+    "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024": {
+      "name": "Voie du pistolero",
+      "printedPage": 65,
+      "cases": 80,
+      "pass": 80,
+      "refused": 0,
+      "failed": 0
+    },
+    "classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024": {
+      "name": "Voie de la précision",
+      "printedPage": 65,
+      "cases": 80,
+      "pass": 70,
+      "refused": 0,
+      "failed": 10
+    }
+  },
+  "products": [
+    {
+      "file": "index.html",
+      "htmlSha256": "77b24833bc3c081f000b67aaeeea837894562ecce86072d4ce6dc9bc720f63e5"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "htmlSha256": "6b89f91607fa28699e3bf696f9a12907339b6d733af0212d695d5c0a6fa9315e"
+    }
+  ],
+  "complete": false
+}
