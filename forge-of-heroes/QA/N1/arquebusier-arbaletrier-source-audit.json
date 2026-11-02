@@ -1,0 +1,51 @@
+{
+  "schema": "FOH_N1_ARQUEBUSIER_ALT_SOURCE_GAP",
+  "generatedAt": "2026-11-02T12:06:50.954Z",
+  "source": {
+    "document": "COF2 Livre de base",
+    "printedPage": 62,
+    "section": "POUDRE OU PAS POUDRE ?",
+    "requirements": [
+      "Remplacer la pétoire par une arbalète de poing",
+      "Remplacer le mousquet par une arbalète lourde",
+      "Remplacer la couleuvrine par une baliste",
+      "Retirer la voie des explosifs",
+      "La remplacer par la voie du maître d’armes du Guerrier, limitée aux arbalètes",
+      "Renommer le profil Arbalétrier"
+    ]
+  },
+  "expected": {
+    "mode": "ARBALETRIER",
+    "allowedPaths": 5,
+    "explosivesRemoved": true,
+    "warriorCrossbowOnly": true
+  },
+  "catalogue": {
+    "mainProfile": true,
+    "alternateProfile": false,
+    "alternatePaths": 0,
+    "warriorMasterOfArmsPresent": true
+  },
+  "products": [
+    {
+      "file": "index.html",
+      "profileAvailable": false,
+      "rulesForArbaletrier": false,
+      "pathsMappedToVariant": 0,
+      "matchingRows": 0,
+      "applicationHasCompleteVariantLabel": false,
+      "sourceSha256": "77b24833bc3c081f000b67aaeeea837894562ecce86072d4ce6dc9bc720f63e5"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "profileAvailable": false,
+      "rulesForArbaletrier": false,
+      "pathsMappedToVariant": 0,
+      "matchingRows": 0,
+      "applicationHasCompleteVariantLabel": false,
+      "sourceSha256": "6b89f91607fa28699e3bf696f9a12907339b6d733af0212d695d5c0a6fa9315e"
+    }
+  ],
+  "verdict": "VARIANTE_OFFICIELLE_NON_ENTIEREMENT_INTEGREE",
+  "remaining": "Créer une configuration de l’Arbalétrier fidèle à la règle p.62 (5 voies dont maître d’armes limité aux arbalètes, sans explosifs, armes de remplacement), puis vérifier ses effets et sa fiche."
+}
