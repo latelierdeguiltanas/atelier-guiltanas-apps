@@ -1,12 +1,12 @@
 {
   "schema": "FOH_N1_VERSION_PARITY",
-  "generatedAt": "2026-11-02T08:25:26.574Z",
-  "gitCommit": "aef15914714cbf3ad67d3fc8d7811c992ef1b6d9",
+  "generatedAt": "2026-11-02T18:32:23.870Z",
+  "gitCommit": "824a1e34824065ef8d1313314e951f9835414867",
   "current": {
-    "index": "77b24833bc3c081f000b67aaeeea837894562ecce86072d4ce6dc9bc720f63e5",
-    "master": "6b89f91607fa28699e3bf696f9a12907339b6d733af0212d695d5c0a6fa9315e",
-    "engine": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
-    "database": "eae2d572846102c1ea26c69eec204b080bcf928060f887c13341a4cecc762167"
+    "index": "2faa37ebdc8e8329fe324c4315359290cd776f11f70c9e24e5886bd04cad79c6",
+    "master": "ddd17158ff9148650cc6c1177b3cecc624a76e5b018197781516b15b80df93e9",
+    "engine": "60d23d2d36c099e0fe0ce370413d74ac4eef438336c516d070a8326a1d082fee",
+    "database": "1a361946d09c1a0ec51ace1aa3f87873fef12199990c69c07fcd1a10765ce081"
   },
   "oldMatrix": {
     "indexSha256": "74a0f6f7d4e9de2f5f8346819c7ee5737b8e35ecb4e759229ff204cd78bb82e9",
@@ -14,16 +14,16 @@
     "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
     "databaseSha256": "eae2d572846102c1ea26c69eec204b080bcf928060f887c13341a4cecc762167"
   },
-  "regressionIndexSha256": "77b24833bc3c081f000b67aaeeea837894562ecce86072d4ce6dc9bc720f63e5",
+  "regressionIndexSha256": "d628864b125c28f6e9530832c5351c23c5c785a3804007baf39d5154f3d08290",
   "checks": {
-    "matrixEngineIdentical": true,
-    "matrixDbIdentical": true,
+    "matrixEngineIdentical": false,
+    "matrixDbIdentical": false,
     "productMasterEngineIdentical": true,
     "productMasterDbIdentical": true,
-    "regressionIndexIdentical": true,
+    "regressionIndexIdentical": false,
     "matrixNoAssertionFailure": true,
     "regressionsPass": true
   },
-  "matrixMechanicsReusable": true,
+  "matrixMechanicsReusable": false,
   "limitations": "Only identical engine and database allow reusing mechanical matrix assertions. UI, PDFs and browser journeys remain separate. Refusal review and untested choices remain outstanding."
 }
