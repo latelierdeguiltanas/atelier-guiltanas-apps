@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - '.github/workflows/forge-n1-postrelease-rules.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_age_profiles_runner.cjs'
+      - 'forge-of-heroes/progression/pdf-labels.json'
 permissions:
   contents: write
 jobs:
@@ -34,6 +36,7 @@ jobs:
           git add forge-of-heroes/QA/N1/regressions.json
           if ! git diff --cached --quiet; then
             git commit -m "test(forge-n1): 37 familles de regles controlees apres variante [skip ci]"
+            git restore --worktree .
             git fetch origin main
             git rebase origin/main
             git push origin HEAD:main
