@@ -1,0 +1,71 @@
+{
+  "terms": [
+    {
+      "term": "Exporter la fiche officielle PDF",
+      "positions": [
+        {
+          "at": 2611549,
+          "near": "put){input=document.createElement('input');input.type='file';input.accept='application/pdf,.pdf';input.id='official-sheet-file';input.hidden=true;input.onchange=async()=>{try{if(!input.files?.[0])return;const bytes=await importTemplate(input.files[0]);const out=await buildOfficialPdf(bytes),name=(P.getDraft().name||'heros').replace(/[^a-z0-9]+/gi,'-').toLowerCase();download(out,'fiche-cof2-'+name+'.pdf');alert('Fiche officielle reconnue et conservée sur cet appareil.')}catch(error){alert(error.message)}finally{input.value=''}};document.body.append(input)}const old=actions.querySelector('[data-print-character-sheet]');if(old){old.textContent='Exporter la fiche officielle PDF';old.onclick=exportOfficial}let change=actions.querySelector('[data-import-official-sheet]');if(!change){change=document.createElement('button');change.type='button';change.className='btn secondary';change.dataset.importOfficialSheet='';change.textContent=localStorage.getItem(KEY)?'Remplacer la fiche officielle':'Importer la fiche officielle';change.onclick=()=>input.click();old?.insertAdjacentElement('afterend',change)}}\nlet queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;enhance()})}).observe(document.querySelector('main'),{childList:true,subtree:true});enhance();window.__FOH_OFFICIAL_PDF__={version:'FIX134',validateTemplate,buildOfficialPdf,exportOfficial,enhance,rankSummary,characterDescription,pdfSafeText,historyPathIds,sheetPathSlots,profilePaths,annexPaths,peopleSelection}})();</script>\n<script src=\"ENGINE/rule_composition_n1.js\"></script>\n<style id=\"DEEP_ENGINE_STYLE\">.deep-rule-panel{margin:14px 0;padding:14px;border:1px solid #b9995a;border-radius:16px;background:#0e0d0966}.deep-rule-panel .two{align-items:end}.deep-rule-panel[hidden]{display:none}</style>\n\n<script id=\"FORGE_EXTRA_LANGUAGE_BUTTONS\">(()=>{'use strict';const q=s=>d"
+        }
+      ]
+    },
+    {
+      "term": "export-official",
+      "positions": []
+    },
+    {
+      "term": "official-pdf",
+      "positions": []
+    },
+    {
+      "term": "export-pdf",
+      "positions": []
+    },
+    {
+      "term": "pdf-export",
+      "positions": []
+    },
+    {
+      "term": "import-pdf",
+      "positions": []
+    },
+    {
+      "term": "pdf-file",
+      "positions": []
+    },
+    {
+      "term": "pdfjs",
+      "positions": []
+    },
+    {
+      "term": "pdf-lib",
+      "positions": [
+        {
+          "at": 2498929,
+          "near": "\"parseSpeed\",[\"number\"]),On(u,\"throwOnInvalidObject\",[\"boolean\"]),g=_(n),[4,Ph.forBytesWithOptions(g,l,u,p).parseDocument()];case 1:return[2,new e(o.sent(),a,d)]}}))}))},e.create=function(t){return void 0===t&&(t={}),i(this,void 0,void 0,(function(){var n,r,i,a,s,l;return o(this,(function(o){return n=t.updateMetadata,r=void 0===n||n,i=Io.create(),a=hh.withContext(i),s=i.register(a),l=lh.withContextAndPages(i,s),i.trailerInfo.Root=i.register(l),[2,new e(i,!1,r)]}))}))},e.prototype.registerFontkit=function(t){this.fontkit=t},e.prototype.getForm=function(){var t=this.formCache.access();return t.hasXFA()&&(console.warn(\"Removing XFA form data as pdf-lib does not support reading or writing XFA\"),t.deleteXFA()),t},e.prototype.getTitle=function(){var t=this.getInfoDict().lookup(Fo.Title);if(t)return Cd(t),t.decodeText()},e.prototype.getAuthor=function(){var t=this.getInfoDict().lookup(Fo.Author);if(t)return Cd(t),t.decodeText()},e.prototype.getSubject=function(){var t=this.getInfoDict().lookup(Fo.Subject);if(t)return Cd(t),t.decodeText()},e.prototype.getKeywords=function(){var t=this.getInfoDict().lookup(Fo.Keywords);if(t)return Cd(t),t.decodeText()},e.prototype.getCreator=function(){var t=this.getInfoDict().lookup(Fo.Creator);if(t)return Cd(t),t.decodeText()},e.prototype.getProducer=function(){var t=this.getInfoDict().lookup(Fo.Producer);if(t)return Cd(t),t.decodeText()},e.prototype.getCreationDate=function(){var t=this.getInfoDict().lookup(Fo.CreationDate);if(t)return Cd(t),t.decodeDate()},e.prototype.getModificationDate=function(){var t=this.getInfoDict().lookup(Fo.ModDate);if(t)return Cd(t),t.decodeDate()},e.prototype.setTitle=function(t,e){On(t,\"title\",[\"string\"]);var n=Fo.of(\"Title\");(this.getInfoDict().set(n,Yo.fromText(t)),null==e?void 0:e.showInWindowTitleBar)&&this.catalog.getOrCreateViewerPreferences().setDisplayDocTitle(!0)},e.prototype.setAuthor=function(t){On(t"
+        },
+        {
+          "at": 2509418,
+          "near": "}return n}(t,[\"dataUri\"]),On(n,\"dataUri\",[\"boolean\"]),[4,this.save(r)];case 1:return i=o.sent(),a=c(i),[2,n?\"data:application/pdf;base64,\"+a:a]}}))}))},e.prototype.findPageForAnnotationRef=function(t){for(var e=this.getPages(),n=0,r=e.length;n<r;n++){var i=e[n],o=i.node.Annots();if(void 0!==(null==o?void 0:o.indexOf(t)))return i}},e.prototype.embedAll=function(t){return i(this,void 0,void 0,(function(){var e,n;return o(this,(function(r){switch(r.label){case 0:e=0,n=t.length,r.label=1;case 1:return e<n?[4,t[e].embed()]:[3,4];case 2:r.sent(),r.label=3;case 3:return e++,[3,1];case 4:return[2]}}))}))},e.prototype.updateInfoDict=function(){var t=\"pdf-lib (https://github.com/Hopding/pdf-lib)\",e=new Date,n=this.getInfoDict();this.setProducer(t),this.setModificationDate(e),n.get(Fo.of(\"Creator\"))||this.setCreator(t),n.get(Fo.of(\"CreationDate\"))||this.setCreationDate(e)},e.prototype.getInfoDict=function(){var t=this.context.lookup(this.context.trailerInfo.Info);if(t instanceof Co)return t;var e=this.context.obj({});return this.context.trailerInfo.Info=this.context.register(e),e},e.prototype.assertFontkit=function(){if(!this.fontkit)throw new Sc;return this.fontkit},e}();function Cd(t){if(!(t instanceof Yo||t instanceof na))throw new Hn([Yo,na],t)}(wd=t.BlendMode||(t.BlendMode={})).Normal=\"Normal\",wd.Multiply=\"Multiply\",wd.Screen=\"Screen\",wd.Overlay=\"Overlay\",wd.Darken=\"Darken\",wd.Lighten=\"Lighten\",wd.ColorDodge=\"ColorDodge\",wd.ColorBurn=\"ColorBurn\",wd.HardLight=\"HardLight\",wd.SoftLight=\"SoftLight\",wd.Difference=\"Difference\",wd.Exclusion=\"Exclusion\";var Ad=function(){function e(t,e,n){this.fontSize=24,this.fontColor=Uu(0,0,0),this.lineHeight=24,this.x=0,this.y=0,On(t,\"leafNode\",[[Uo,\"PDFPageLeaf\"]]),On(e,\"ref\",[[Ro,\"PDFRef\"]]),On(n,\"doc\",[[Sd,\"PDFDocument\"]]),this.node=t,this.ref=e,this.doc=n}return e.prototype.setRotation=function(t){var e=Wh(t);jn(e,\"degreesAngle\",90),this.no"
+        },
+        {
+          "at": 2509454,
+          "near": "Uri\",[\"boolean\"]),[4,this.save(r)];case 1:return i=o.sent(),a=c(i),[2,n?\"data:application/pdf;base64,\"+a:a]}}))}))},e.prototype.findPageForAnnotationRef=function(t){for(var e=this.getPages(),n=0,r=e.length;n<r;n++){var i=e[n],o=i.node.Annots();if(void 0!==(null==o?void 0:o.indexOf(t)))return i}},e.prototype.embedAll=function(t){return i(this,void 0,void 0,(function(){var e,n;return o(this,(function(r){switch(r.label){case 0:e=0,n=t.length,r.label=1;case 1:return e<n?[4,t[e].embed()]:[3,4];case 2:r.sent(),r.label=3;case 3:return e++,[3,1];case 4:return[2]}}))}))},e.prototype.updateInfoDict=function(){var t=\"pdf-lib (https://github.com/Hopding/pdf-lib)\",e=new Date,n=this.getInfoDict();this.setProducer(t),this.setModificationDate(e),n.get(Fo.of(\"Creator\"))||this.setCreator(t),n.get(Fo.of(\"CreationDate\"))||this.setCreationDate(e)},e.prototype.getInfoDict=function(){var t=this.context.lookup(this.context.trailerInfo.Info);if(t instanceof Co)return t;var e=this.context.obj({});return this.context.trailerInfo.Info=this.context.register(e),e},e.prototype.assertFontkit=function(){if(!this.fontkit)throw new Sc;return this.fontkit},e}();function Cd(t){if(!(t instanceof Yo||t instanceof na))throw new Hn([Yo,na],t)}(wd=t.BlendMode||(t.BlendMode={})).Normal=\"Normal\",wd.Multiply=\"Multiply\",wd.Screen=\"Screen\",wd.Overlay=\"Overlay\",wd.Darken=\"Darken\",wd.Lighten=\"Lighten\",wd.ColorDodge=\"ColorDodge\",wd.ColorBurn=\"ColorBurn\",wd.HardLight=\"HardLight\",wd.SoftLight=\"SoftLight\",wd.Difference=\"Difference\",wd.Exclusion=\"Exclusion\";var Ad=function(){function e(t,e,n){this.fontSize=24,this.fontColor=Uu(0,0,0),this.lineHeight=24,this.x=0,this.y=0,On(t,\"leafNode\",[[Uo,\"PDFPageLeaf\"]]),On(e,\"ref\",[[Ro,\"PDFRef\"]]),On(n,\"doc\",[[Sd,\"PDFDocument\"]]),this.node=t,this.ref=e,this.doc=n}return e.prototype.setRotation=function(t){var e=Wh(t);jn(e,\"degreesAngle\",90),this.node.set(Fo.of(\"Rotate\"),this.doc.cont"
+        },
+        {
+          "at": 2536754,
+          "near": "anslate=Yh,t.typedArrayFor=j,t.utf16Decode=et,t.utf16Encode=Z,t.utf8Encode=function(t,e){void 0===e&&(e=!0);var n=[];e&&n.push(239,187,191);for(var r=0,i=t.length;r<i;){var o=t.codePointAt(r);if(o<128){var a=127&o;n.push(a),r+=1}else if(o<2048){a=o>>6&31|192;var s=63&o|128;n.push(a,s),r+=1}else if(o<65536){a=o>>12&15|224,s=o>>6&63|128;var l=63&o|128;n.push(a,s,l),r+=1}else{if(!(o<1114112))throw new Error(\"Invalid code point: 0x\"+m(o));a=o>>18&7|240,s=o>>12&63|128,l=o>>6&63|128;var h=o>>0&63|128;n.push(a,s,l,h),r+=2}}return new Uint8Array(n)},t.values=yn,t.waitForTick=X,Object.defineProperty(t,\"__esModule\",{value:!0})}));\n//# sourceMappingURL=pdf-lib.min.js.map\n</script>\n<script id=\"FORGE_OFFICIAL_PDF_EXPORT_FIX121\">(()=>{'use strict';\nconst q=s=>document.querySelector(s),P=window.__FOH_PRODUCT__,E=window.__FOH_ENGINE__,KEY='foh-official-cof2-template-v1';if(!P||!E)return;\nconst DB=JSON.parse(q('#FOH_DB_JSON').textContent),T=DB.tables||DB,all=[...(T.peoples||[]),...(T.classes||[]),...(T.paths_class||[]),...(T.paths_people||[]),...(T.history_paths||[]),...(T.weapons_n1||[]),...(T.armors||[]),...(T.shields||[])];\nconst label=id=>{const x=all.find(v=>v.id===id);return x?.label||x?.name||id||'—'},family=id=>({aventurier:'Aventurier',combattant:'Combattant',mage:'Mage',mystique:'Mystique'})[id]||id||'—',signed=v=>Number(v)>=0?'+'+Number(v):String(Number(v));\nconst abilities=[...(T.abilities_people||[]),...(T.abilities_class||[]),...(T.abilities_history||[])];\nconst futureRanks={\n'classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024':[\n{rank:3,label:'Sac sans fond',desc:'Le forgesort possède un sac magique dans lequel il peut entreposer 50 kg de matériel par rang dans la voie, tandis que le sac semble toujours peser un kilogramme. Le sac ne fonctionne pas si on tente d’y mettre une créature vivante. Le sac est de plus capable de fournir au forgesort les objets qu’il dés"
+        }
+      ]
+    },
+    {
+      "term": "Export PDF",
+      "positions": []
+    },
+    {
+      "term": "__FOH_PDF",
+      "positions": []
+    }
+  ],
+  "length": 2774245
+}
