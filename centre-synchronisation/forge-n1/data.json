@@ -1,0 +1,869 @@
+{
+  "schema": "FOH_PROFILE_QA_REGISTRY",
+  "version": 1,
+  "asOf": "2026-11-02",
+  "updatedBy": "Audit GitHub: synthèse documentaire, pas de test réexécuté",
+  "certificationRule": "Aucun profil ne peut être marqué CERTIFIE sur la base de tests agrégés ou d'un seul clic. Exiger preuves versionnées détaillées par peuple, voie R1/R2/R3 selon âge, origine/historique et hybridation (sens principal et secondaire), équipements et refus légaux, sauvegarde/PDF, interface navigateur; seules les règles/combinaisons légalement possibles sont exigées.",
+  "phase": "OPEN",
+  "globalCertified": false,
+  "automated": {
+    "regressionFinishedAt": "2026-11-02T05:57:50.501Z",
+    "regressionPass": 37,
+    "regressionTotal": 37,
+    "matrixFinishedAt": "2026-11-01T20:06:49.701Z",
+    "matrixAttempted": 179120,
+    "matrixAccepted": 159290,
+    "matrixRejected": 19830,
+    "matrixAssertionFailures": [],
+    "matrixIndexSha256": "74a0f6f7d4e9de2f5f8346819c7ee5737b8e35ecb4e759229ff204cd78bb82e9",
+    "regressionIndexSha256": "77b24833bc3c081f000b67aaeeea837894562ecce86072d4ce6dc9bc720f63e5",
+    "perProfileAcceptanceAvailable": false,
+    "androidEmulator": {
+      "status": "PASS",
+      "totalJourneys": 1,
+      "commit": "cdfbd1ace63bfc1dd3565a7280e371001a575e00",
+      "run": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41397131045",
+      "scope": "Humain hybride Voleur/Arquebusier Chrome sur émulateur Android ; pas une recette sur appareil physique."
+    },
+    "profileRuleEvidence": {
+      "structuralCoverageProfiles": 17,
+      "numericR1ProfilePairs": 17,
+      "numericR2ProfilePairs": 17,
+      "scope": "Oracles R1/R2 couvrant toutes les paires de voies de profil en humain témoin ; ne prouvent pas toutes les races/hybrides/équipement."
+    }
+  },
+  "sourceFiles": {
+    "matrix": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/QA/N1/matrix.json",
+    "regressions": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/QA/N1/regressions.json",
+    "phase": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/QA/N1/status.json",
+    "readme": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/QA/N1/README.md",
+    "manual": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/N1_REAL_USER_JOURNEY_REPORT_V2.md",
+    "project": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/guiltanas-control/forge-n1-status.json"
+  },
+  "proofs": [
+    {
+      "id": "core-matrix",
+      "title": "Matrice globale profils / peuples / voies",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/QA/N1/matrix.json",
+      "type": "structural",
+      "scope": "17 profils, 16 peuples, toutes les paires de voies standards, hybrides dans les deux sens. Résultats agrégés, sans certification individuelle par profil."
+    },
+    {
+      "id": "numeric-r1",
+      "title": "Oracle numérique R1 humain de référence",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/QA/N1/lot10/pair-numeric.json",
+      "type": "numeric",
+      "scope": "85 voies et paires sans profil dans une configuration humaine sans armure; pas tous les contextes."
+    },
+    {
+      "id": "numeric-r2",
+      "title": "Oracle numérique R2 humain mûr",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/QA/N1/lot10/r2-pair-numeric.json",
+      "type": "numeric",
+      "scope": "85 voies R2 et paires sans profil pour un humain mûr sans armure; pas toutes les conditions."
+    },
+    {
+      "id": "age-packs",
+      "title": "Âges et paquetages",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/QA/N1/lot11/age-equipment-packages.json",
+      "type": "age",
+      "scope": "1600 créations/relectures, 17 profils et 85 voies, avec des âges/équipements définis; pas toutes les combinaisons."
+    },
+    {
+      "id": "regression",
+      "title": "37 suites de régression",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/QA/N1/regressions.json",
+      "type": "regression",
+      "scope": "Résultats de tests automatisés, non parcours Android ou certification de toutes les statistiques."
+    }
+  ],
+  "cases": [
+    {
+      "id": "BROWSER-C1",
+      "title": "Ensorceleur — rapière et Sous tension R2",
+      "type": "chrome",
+      "status": "PASS",
+      "profiles": [
+        "ensorceleur"
+      ],
+      "peoples": [],
+      "detail": "Réouverture et conservation des choix selon le registre du 1er novembre."
+    },
+    {
+      "id": "BROWSER-C2",
+      "title": "Voleur / Arquebusier hybride",
+      "type": "chrome",
+      "status": "PASS",
+      "profiles": [
+        "voleur",
+        "arquebusier"
+      ],
+      "peoples": [],
+      "detail": "Accord MJ, voies R1 et armure sauvegardés, sur un scénario ciblé."
+    },
+    {
+      "id": "BROWSER-C3",
+      "title": "Vénérable sans profil",
+      "type": "chrome",
+      "status": "PASS",
+      "profiles": [],
+      "peoples": [],
+      "detail": "Deux historiques R3, sauvegarde/réouverture, PV 10 DEF 16; concerne le mode sans profil, pas un profil précis."
+    },
+    {
+      "id": "BROWSER-C4",
+      "title": "Demi-orc Barbare / Forgesort",
+      "type": "chrome",
+      "status": "PASS",
+      "profiles": [
+        "barbare",
+        "forgesort"
+      ],
+      "peoples": [
+        "demi-orc"
+      ],
+      "detail": "Achat, Pagne + Runes, FOR+4 PV11 DEF15 INIT9, réouverture. Un seul scénario."
+    },
+    {
+      "id": "BROWSER-C5",
+      "title": "Guerrier / Voleur avec historiques",
+      "type": "chrome",
+      "status": "PASS",
+      "profiles": [
+        "guerrier",
+        "voleur"
+      ],
+      "peoples": [],
+      "detail": "Correction de PV, relecture avec PV10 DEF17 INIT11, réouverture."
+    },
+    {
+      "id": "TARGET-GNOME",
+      "title": "Gnome Forgesort — Don étrange",
+      "type": "automated",
+      "status": "PASS",
+      "profiles": [
+        "forgesort"
+      ],
+      "peoples": [
+        "gnome"
+      ],
+      "detail": "100 créations automatisées et sauvegardes, 20 paires de voies et variantes Mage; pas un clic humain."
+    },
+    {
+      "id": "MANUAL-01",
+      "title": "Standard humain Voleur — ancien échec",
+      "type": "manual",
+      "status": "FAIL_HISTORIC",
+      "profiles": [
+        "voleur"
+      ],
+      "peoples": [
+        "humain"
+      ],
+      "detail": "PV/PC et armure/identité divergent des attentes du manuel. Non rejoué sur la version actuelle."
+    },
+    {
+      "id": "MANUAL-02",
+      "title": "Voleur humain point-buy — ancien échec",
+      "type": "manual",
+      "status": "FAIL_HISTORIC",
+      "profiles": [
+        "voleur"
+      ],
+      "peoples": [
+        "humain"
+      ],
+      "detail": "Armure de paquetage absente dans le résumé. Non rejoué sur la version actuelle."
+    },
+    {
+      "id": "ANDROID-C1",
+      "title": "Android Chrome émulé — Humain Voleur / Arquebusier",
+      "type": "automated",
+      "status": "PASS",
+      "profiles": [
+        "voleur",
+        "arquebusier"
+      ],
+      "peoples": [
+        "humain"
+      ],
+      "detail": "Chrome tactile sur émulateur Android : GitHub Actions PASS le 2 novembre : création hybride, accord MJ, caractéristiques, PV9 DEF13 INIT11, sauvegarde, réouverture de fiche, passage en fiche interactive et rechargement 9/9 PV. Un parcours sur émulateur, pas un téléphone physique ni tous les profils.",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41397131045"
+    }
+  ],
+  "manualPack": [
+    {
+      "id": "MANUAL_01",
+      "status": "FAIL_HISTORIC",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_01_RESULT.md"
+    },
+    {
+      "id": "MANUAL_02",
+      "status": "FAIL_HISTORIC",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_02_RESULT.md"
+    },
+    {
+      "id": "MANUAL_03",
+      "status": "NOT_EXECUTED",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_03_RESULT.md"
+    },
+    {
+      "id": "MANUAL_04",
+      "status": "NOT_EXECUTED",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_04_RESULT.md"
+    },
+    {
+      "id": "MANUAL_05",
+      "status": "NOT_EXECUTED",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_05_RESULT.md"
+    },
+    {
+      "id": "MANUAL_06",
+      "status": "NOT_EXECUTED",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_06_RESULT.md"
+    },
+    {
+      "id": "MANUAL_07",
+      "status": "NOT_EXECUTED",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_07_RESULT.md"
+    },
+    {
+      "id": "MANUAL_08",
+      "status": "NOT_EXECUTED",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_08_RESULT.md"
+    },
+    {
+      "id": "MANUAL_09",
+      "status": "NOT_EXECUTED",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_09_RESULT.md"
+    },
+    {
+      "id": "MANUAL_10",
+      "status": "NOT_EXECUTED",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_10_RESULT.md"
+    },
+    {
+      "id": "MANUAL_11",
+      "status": "NOT_EXECUTED",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_11_RESULT.md"
+    },
+    {
+      "id": "MANUAL_12",
+      "status": "NOT_EXECUTED",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/REAL_USER_JOURNEY/MANUAL_12_RESULT.md"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "class:arquebusier:cof2-lb-2024",
+      "key": "arquebusier",
+      "label": "Arquebusier",
+      "source": "COF2 Livre de base",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [
+        "BROWSER-C2",
+        "ANDROID-C1"
+      ],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:barbare:cof2-lb-2024",
+      "key": "barbare",
+      "label": "Barbare",
+      "source": "COF2 Livre de base",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [
+        "BROWSER-C4"
+      ],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:barde:cof2-lb-2024",
+      "key": "barde",
+      "label": "Barde",
+      "source": "COF2 Livre de base",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:chevalier:cof2-lb-2024",
+      "key": "chevalier",
+      "label": "Chevalier",
+      "source": "COF2 Livre de base",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:druide:cof2-lb-2024",
+      "key": "druide",
+      "label": "Druide",
+      "source": "COF2 Livre de base",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:ensorceleur:cof2-lb-2024",
+      "key": "ensorceleur",
+      "label": "Ensorceleur",
+      "source": "COF2 Livre de base",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [
+        "BROWSER-C1"
+      ],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:forgesort:cof2-lb-2024",
+      "key": "forgesort",
+      "label": "Forgesort",
+      "source": "COF2 Livre de base",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [
+        "BROWSER-C4",
+        "TARGET-GNOME"
+      ],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:guerrier:cof2-lb-2024",
+      "key": "guerrier",
+      "label": "Guerrier",
+      "source": "COF2 Livre de base",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [
+        "BROWSER-C5"
+      ],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:invocateur:addon-compagnon-2024",
+      "key": "invocateur",
+      "label": "Invocateur",
+      "source": "adaptation Forge (Compagnon)",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:magicien:cof2-lb-2024",
+      "key": "magicien",
+      "label": "Magicien",
+      "source": "COF2 Livre de base",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:moine:cof2-lb-2024",
+      "key": "moine",
+      "label": "Moine",
+      "source": "COF2 Livre de base",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:pretre:cof2-lb-2024",
+      "key": "pretre",
+      "label": "Prêtre",
+      "source": "COF2 Livre de base",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:psionique:addon-compagnon-2024",
+      "key": "psionique",
+      "label": "Psionique",
+      "source": "adaptation Forge (Compagnon)",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:rodeur:cof2-lb-2024",
+      "key": "rodeur",
+      "label": "Rôdeur",
+      "source": "COF2 Livre de base",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:samourai:addon-compagnon-2024",
+      "key": "samourai",
+      "label": "Samouraï",
+      "source": "adaptation Forge (Compagnon)",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:sorcier:cof2-lb-2024",
+      "key": "sorcier",
+      "label": "Sorcier",
+      "source": "COF2 Livre de base",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    },
+    {
+      "id": "class:voleur:cof2-lb-2024",
+      "key": "voleur",
+      "label": "Voleur",
+      "source": "COF2 Livre de base",
+      "pathCount": 5,
+      "certification": "NON_CERTIFIE",
+      "caseIds": [
+        "BROWSER-C2",
+        "BROWSER-C5",
+        "MANUAL-01",
+        "MANUAL-02",
+        "ANDROID-C1"
+      ],
+      "raceCountMatrix": 16,
+      "pureWayPairs": 10,
+      "hybridPartnerProfiles": 16,
+      "hybridOrderedOrientations": 2,
+      "hybridWayCrossingsPerPartner": 25,
+      "needsIndividualResults": true,
+      "auditStatus": {
+        "coreCoverage": "PASS_DOCUMENTED",
+        "numericBaselineR1": "PASS_DOCUMENTED",
+        "numericBaselineR2": "PASS_DOCUMENTED",
+        "fullAgeCross": "PARTIAL",
+        "allAncestryVariants": "PARTIAL",
+        "allHybridContextVariants": "PARTIAL",
+        "endToEnd": "PARTIAL",
+        "source": "Matrice N1 et oracles lot10; l'indépendance des chiffres vaut pour les configurations humaines témoins seulement.",
+        "date": "2026-11-02"
+      }
+    }
+  ],
+  "peoples": [
+    {
+      "id": "people:ame-forgee:addon-comp2017-cof2",
+      "key": "ame-forgee",
+      "label": "Âme-forgée",
+      "source": "Adaptation Forge"
+    },
+    {
+      "id": "people:centaure:addon-comp2017-cof2",
+      "key": "centaure",
+      "label": "Centaure",
+      "source": "Adaptation Forge"
+    },
+    {
+      "id": "people:demi-elfe:cof2-lb-2024",
+      "key": "demi-elfe",
+      "label": "Demi-elfe",
+      "source": "COF2"
+    },
+    {
+      "id": "people:demi-ogre:addon-comp2017-cof2",
+      "key": "demi-ogre",
+      "label": "Demi-ogre",
+      "source": "Adaptation Forge"
+    },
+    {
+      "id": "people:demi-orc:cof2-lb-2024",
+      "key": "demi-orc",
+      "label": "Demi-orc",
+      "source": "COF2"
+    },
+    {
+      "id": "people:elfe-haut:cof2-lb-2024",
+      "key": "elfe-haut",
+      "label": "Elfe haut",
+      "source": "COF2"
+    },
+    {
+      "id": "people:elfe-sylvain:cof2-lb-2024",
+      "key": "elfe-sylvain",
+      "label": "Elfe sylvain",
+      "source": "COF2"
+    },
+    {
+      "id": "people:fee:addon-comp2017-cof2",
+      "key": "fee",
+      "label": "Fée",
+      "source": "Adaptation Forge"
+    },
+    {
+      "id": "people:gnome:cof2-lb-2024",
+      "key": "gnome",
+      "label": "Gnome",
+      "source": "COF2"
+    },
+    {
+      "id": "people:gobelin:addon-comp2017-cof2",
+      "key": "gobelin",
+      "label": "Gobelin",
+      "source": "Adaptation Forge"
+    },
+    {
+      "id": "people:halfelin:cof2-lb-2024",
+      "key": "halfelin",
+      "label": "Halfelin",
+      "source": "COF2"
+    },
+    {
+      "id": "people:humain:cof2-lb-2024",
+      "key": "humain",
+      "label": "Humain",
+      "source": "COF2"
+    },
+    {
+      "id": "people:kobold:addon-comp2017-cof2",
+      "key": "kobold",
+      "label": "Kobold",
+      "source": "Adaptation Forge"
+    },
+    {
+      "id": "people:lutin:addon-comp2017-cof2",
+      "key": "lutin",
+      "label": "Lutin",
+      "source": "Adaptation Forge"
+    },
+    {
+      "id": "people:minotaure:addon-comp2017-cof2",
+      "key": "minotaure",
+      "label": "Minotaure",
+      "source": "Adaptation Forge"
+    },
+    {
+      "id": "people:nain:cof2-lb-2024",
+      "key": "nain",
+      "label": "Nain",
+      "source": "COF2"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "matrix-current",
+      "name": "Cohérence des preuves avec le moteur actuel",
+      "status": "OPEN",
+      "reason": "La matrice datée du 1er novembre et les régressions du 2 ont des empreintes index différentes; aucune certification par profil sur le dernier code."
+    },
+    {
+      "id": "numeric",
+      "name": "Effets numériques de tous les rangs accessibles N1",
+      "status": "OPEN",
+      "reason": "Oracles R1/R2 et 25 capacités ciblées; pas de couverture chiffrée indépendante intégrale de tous les contextes."
+    },
+    {
+      "id": "cross",
+      "name": "Toutes les alternatives de peuples / profils / hybrides",
+      "status": "OPEN",
+      "reason": "Matrice structurelle globale; pas de verdict détaillé par croisement ni toutes les alternatives persistantes."
+    },
+    {
+      "id": "advanced",
+      "name": "Âges, historiques, à la carte, équipements, dons",
+      "status": "OPEN",
+      "reason": "Lots ciblés réussis mais pas un produit complet des règles."
+    },
+    {
+      "id": "browser",
+      "name": "12 parcours du gel officiel au clic",
+      "status": "OPEN",
+      "reason": "2 anciens échecs sans retest et 10 non exécutés; 5 autres parcours Chrome réussis."
+    },
+    {
+      "id": "export",
+      "name": "Fiche finale, sauvegarde/reprise et export pour tous les modes",
+      "status": "OPEN",
+      "reason": "Tests et PDF ciblés, pas tous les parcours réels."
+    },
+    {
+      "id": "mobile",
+      "name": "Interaction tactile Android",
+      "status": "OPEN",
+      "reason": "Un parcours Chrome tactile sur émulateur Android (Humain Voleur / Arquebusier) passe au commit de test du 2 novembre. La matrice tactile exhaustive et les appareils physiques restent non vérifiés."
+    }
+  ],
+  "notes": [
+    "Les 16 peuples et 17 profils figurent dans la matrice. Cela prouve un périmètre de génération, pas 272 combinaisons toutes certifiées.",
+    "Les profils compagnons et peuples additionnels utilisent des adaptations Forge de COF1: ne pas les présenter comme options COF2 officiellement éditées.",
+    "Sans profil est un mode distinct. Sans aucune voie n'est pas une création prise en charge dans le moteur actuel.",
+    "Les cinq scénarios Chrome ciblés sont distincts du pack MANUAL_01–12.",
+    "Pour afficher un avancement utile: 17/17 profils ont un socle historique vérifié pour les configurations témoins. Le statut 'certifié complet' reste réservé aux preuves transversales du même profil."
+  ],
+  "dashboardLocation": "centre-synchronisation/forge-n1/",
+  "certificationExplainer": "Socle testé ≠ certificat universel. Les tests antérieurs sont conservés: matrice de combinaisons, oracles numériques R1 et R2, 37 régressions, parcours Chrome/Android ciblés. Les résultats individuels n'étaient pas enregistrés pour chaque croisement."
+}
