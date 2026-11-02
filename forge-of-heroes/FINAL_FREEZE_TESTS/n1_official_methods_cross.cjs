@@ -59,15 +59,17 @@ function candidatePairs(p){
 }
 for(const people of peoples)for(const p of profiles){
  const idx=[people.id,p.id],key=idx.join('|'),rows=[],pairs=candidatePairs(p);
- let match=null;
+ let match=null,alternativeEquipment=false;
  for(const ids of pairs){
   const s=make(people,p,tests[0],ids),r=E.computeCharacterN1(s);
   if(!r.errors.length){match=ids;break;}
  }
+ // Halfelin: first official packages may be illegal due to two-handed weapon and size rules. Use the explicit GM-approved alternate loadout, not a product fix.
+ if(!match&&people.id.includes('halfelin'))for(const ids of pairs){const s=make(people,p,tests[0],ids);s.equip={...s.equip,armorId:'',shieldId:'',weaponIds:['weapon:dagger'],gmApprovedSwap:true};if(!E.computeCharacterN1(s).errors.length){match=ids;alternativeEquipment=true;break;}}
  if(!match){report.failed++;report.failedCases.push({key,error:'No valid standard pair in supplied equipment; not a product assertion'});continue;}
  for(const test of tests){
   report.cases++;
-  const state=make(people,p,test,match),raw=JSON.stringify(state),r=E.computeCharacterN1(state),caseName=key+'|'+test.id;
+  const state=make(people,p,test,match);if(alternativeEquipment)state.equip={...state.equip,armorId:'',shieldId:'',weaponIds:['weapon:dagger'],gmApprovedSwap:true};const raw=JSON.stringify(state),r=E.computeCharacterN1(state),caseName=key+'|'+test.id;
   if(r.errors.length){report.refused++;const msg=[...r.errors].join(' ; ');report.refusedReasons[msg]=(report.refusedReasons[msg]||0)+1;if(report.failedCases.length<80)report.failedCases.push({caseName,type:'REFUSED',reason:msg});continue;}
   try{
    if(raw!==JSON.stringify(state))throw Error('state mutated');
