@@ -45,7 +45,7 @@ function focus(rank){
 }
 const gate=(id,name,ok,validated,missing)=>({id,name,status:ok?'ACQUIS':'A_VERIFIER',validated:ok?validated:'',missing:ok?'':missing});
 const items=[];
-if(profiles.length!==14||catalog.paths.filter(p=>p.kind==='profile'&&p.id.includes(':cof2-lb-2024')&&!p.additionalMagePath).length!==70)throw Error('Scope strict 14×5 changed');
+if(profiles.length!==14||catalog.paths.filter(p=>p.kind==='profile'&&profiles.some(pr=>pr.id===p.classId)&&!p.additionalMagePath).length!==70)throw Error('Scope strict 14×5 changed');
 for(const profile of profiles){
  const pathways=catalog.paths.filter(p=>p.classId===profile.id&&!p.additionalMagePath&&p.kind==='profile');
  if(pathways.length!==5||pathways.some(p=>p.ranks.filter(r=>r.rank<=3).length!==3))throw Error('Incomplete official profile '+profile.label);
