@@ -32,7 +32,7 @@ const results=[],failures=[];
    const btn=page.getByRole('button',{name:/Exporter la fiche officielle PDF/}).first();
    await btn.waitFor({timeout:8000});
    await btn.tap();
-   const input=page.locator('#official-sheet-file');await input.waitFor({timeout:6000});
+   const input=page.locator('#official-sheet-file');await input.waitFor({state:'attached',timeout:6000});
    const evt=page.waitForEvent('download',{timeout:23000});evt.catch(()=>{});
    await input.setInputFiles(templatePath);
    const download=await evt;
