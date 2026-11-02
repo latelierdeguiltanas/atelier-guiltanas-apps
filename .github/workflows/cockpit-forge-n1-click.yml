@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/cockpit-forge-n1-click.yml'
+      - 'centre-synchronisation/forge-n1/qa_click.cjs'
 permissions:
   contents: read
 jobs:
