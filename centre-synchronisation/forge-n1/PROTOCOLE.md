@@ -1,3 +1,21 @@
+# DIRECTIVE DE CERTIFICATION N1 — PRIORITÉ ABSOLUE (02/11/2026)
+
+**Cible finale : 14/14 profils et 8/8 peuples officiels du Livre de base COF2 CERTIFIÉS à 100 %, puis certification séparée des extensions.** Aucun taux global, série massive, simple acquisition de rang ou moyenne de tests ne remplace les preuves individuelles.
+
+## Discipline stricte : UN profil complet à la fois
+
+1. **En cours : Arquebusier** (y compris sa variante officielle Arbalétrier). Le pousser jusqu'à **100 % effectif** ; ne PAS ouvrir la certification détaillée d'un second profil tant que ce certificat n'est pas intégralement fermé. Les tests transversaux nécessaires peuvent tourner en parallèle, sans changement de priorité.
+2. Pour le profil actif, vérifier **les cinq voies, les rangs 1 à 3 accessibles dès N1 selon âge, TOUS les effets permanents, conditionnels et activables, leurs nombres et utilisations, les caractéristiques dérivées, équipement/maîtrises/paquetages, choix raciaux, caractéristiques et méthodes, historiques, sauvegarde/réouverture, fiche PDF officielle à deux pages et annexes, vrais parcours au clic et mobile**. Tous les choix *légaux* nécessaires doivent fonctionner.
+3. Inclure les **huit peuples officiels** dans les tests du profil actif ; couvrir le profil pur, ses deux rôles possibles dans les **hybrides**, et les croisements pertinents des voies en **mode sans profil**. Les modes incompatibles avec une règle spécifique sont refusés **avec une cause légale documentée**, jamais assimilés à des succès.
+4. **100 % ne s'obtient qu'une fois la couverture et chaque résultat prouvés** pour la version exacte (empreintes moteur, DB, rendu, PDF). Si une condition du profil manque, rester à moins de 100 %, corriger et retester. Geler le certificat au périmètre et à l'empreinte validés. Un changement ultérieur ne rouvre que les dépendances affectées.
+5. **Ensuite seulement :** Barbare, Barde, Chevalier, Druide, Ensorceleur, Forgesort, Guerrier, Magicien, Moine, Prêtre, Rôdeur, Sorcier, Voleur, toujours **un seul profil prioritaire jusqu'à 100 %**.
+6. **Peuples en progression transversale automatique** : chaque résultat vérifié sur un profil crédite immédiatement le peuple concerné si et seulement si le critère racial *entier* est prouvé. Le score du peuple n'est pas lié au score du profil, et n'augmente pas juste parce que davantage de créations ont été exécutées. Leurs capacités, options, contraintes, âges, historiques et PDF propres doivent toutes être validés. À la fin des 14 profils, clôturer **un peuple à la fois** pour les seules règles raciales résiduelles, jusqu'à **8/8 à 100 %**.
+7. Ne jamais annoncer **N1 OFFICIEL FERMÉ** avant **14/14 profils + 8/8 peuples à 100 %**, aucun bug ou refus non qualifié, vrais tests au clic et PDF réussis sur la version gelée. Ne pas annoncer **Forge universel** tant que les extensions Compagnon exposées n'ont pas leur propre certification ; ne pas confondre les périmètres.
+
+**Responsabilité :** c'est l'assistant qui effectue les corrections et les tests ; aucune validation manuelle imposée au MJ. Le Copilote affiche **un profil actif + huit progressions de peuples** et l'ordre de la file ; les douze ou treize autres profils ne sont pas déclarés « certifiés » à partir des tests transversaux. Aucun score par voie ou couple profil/peuple sur l'écran principal.
+
+---
+
 # Suivi prioritaire actuel : un profil entier, peuples séparés
 
 **Demande explicite du MJ (02/11/2026) : pas de pourcentage par couple profil + peuple, ni par voie.**
@@ -7,7 +25,7 @@ Le Copilote présente **une seule progression de profil complet (Arquebusier, le
 
 **Chaque peuple** : caractéristiques, bonus/malus, pouvoirs/voies raciales, options initiales, effets conditionnels et dons raciaux, équipements/règles de taille, âge/historique, PDF et navigation. Ce pourcentage ne dépend PAS du choix du profil Arquebusier ni du nombre de voies acquises.
 
-**Aucune moyenne** entre pourcentage du profil et pourcentages des races. La validation des races sera utilisée lors des créations complètes, mais la progression d'un profil ne doit pas être artificiellement dupliquée huit fois. Compagnon V2, hybrides et sans profil restent hors du périmètre courant. Aucun 100 % n'est annoncé avant clôture de son périmètre.
+**Aucune moyenne** entre pourcentage du profil et pourcentages des peuples. Les hybrides et le mode sans profil restent **obligatoires pour le N1 officiel final**, et sont éprouvés dans le profil en cours lorsque ses croisements le concernent. Les extensions Compagnon demeurent une certification distincte, pas un motif pour publier un faux 100 % universel. Aucun 100 % n'est annoncé avant clôture de son périmètre.
 
 ---
 
@@ -19,7 +37,7 @@ Le Copilote suit d'abord **112 combinaisons : 14 profils du Livre de base × 8 p
 
 **Pourcentage par personnage** = nombre de ses **14 critères explicitement acquis / 14** ; un critère partiellement vérifié reste ouvert. Les anciens 69 % par profil/peuple tous modes confondus sont un autre indicateur, conservé dans les archives ; ils ne doivent PAS être recopiés dans la grille des 112. Le numéro de version du moteur est enregistré ; 100 % nécessite toutes les variantes légales de la combinaison, les effets conditionnels, les rangs accessibles, les choix et équipements, les PDF et le parcours complet. Ce point de référence devient le certificat gelé ; tout changement ultérieur ne réouvre que les règles affectées.
 
-**Ordre des phases** : (1) personnages à profils purs 112/112 ; (2) hybrides et mode sans profil ; (3) extensions Compagnon COF2 V2 sur leurs PDF actualisés. Ces derniers n'empêchent pas de clôturer les personnages purs officiels.
+**Ordre des phases (remplacé par la directive prioritaire ci-dessus)** : certification intégrale du profil actif, y compris ses modes purs/hybrides/sans profil pertinents, puis profil suivant. Les 112 combinaisons pures constituent une sous-matrice de preuves, et non une première certification finale indépendante. Les peuples progressent avec ces contrôles, puis leurs règles résiduelles sont closes. Les extensions Compagnon font l'objet d'une certification séparée.
 
 ---
 
