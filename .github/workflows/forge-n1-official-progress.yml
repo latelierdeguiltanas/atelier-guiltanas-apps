@@ -1,0 +1,48 @@
+name: Forge N1 - official progress ledger
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-official-progress.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_official_progress_ledger.cjs'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Classify official refusals and compute source-backed per-item percentages
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_official_progress_ledger.cjs
+      - name: Verify ledger schema and impossible false green
+        run: |
+          node - <<'NODE'
+          const d=require('./centre-synchronisation/forge-n1/progress.json');
+          if(d.peoples.length!==8||d.profiles.length!==14)process.exit(1);
+          if(d.summary.unclassifiedRejected!==0||d.summary.failed!==0)process.exit(1);
+          if(d.peoples.some(x=>x.percent===100)||d.profiles.some(x=>x.percent===100))process.exit(1);
+          console.log('22 official items; scores from explicit evidence gates');
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: forge-n1-official-audit-percentages
+          path: |
+            centre-synchronisation/forge-n1/progress.json
+            forge-of-heroes/QA/N1/native-rejection-legality.json
+      - name: Publish audited percentages to Cockpit only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add centre-synchronisation/forge-n1/progress.json forge-of-heroes/QA/N1/native-rejection-legality.json
+          if ! git diff --cached --quiet; then
+            git commit -m "docs(cockpit): contrôle exhaustivité 8 peuples et 14 profils [skip ci]"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
