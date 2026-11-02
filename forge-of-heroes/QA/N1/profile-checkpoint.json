@@ -1,0 +1,84 @@
+{
+  "schema": "FOH_N1_PROFILE_RECONCILIATION",
+  "generatedAt": "2026-11-02T08:19:27Z",
+  "recordedAt": "2026-11-02",
+  "sourceCommit": "83b1c56a6333eba253dc20bba5d29ed5dbd56efc",
+  "input": {
+    "indexSha256": "77b24833bc3c081f000b67aaeeea837894562ecce86072d4ce6dc9bc720f63e5",
+    "masterSha256": "6b89f91607fa28699e3bf696f9a12907339b6d733af0212d695d5c0a6fa9315e"
+  },
+  "sourceEvidence": {
+    "run": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41411635507",
+    "artifact": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41411635507/artifacts/13125379738",
+    "note": "Récupération des verdicts depuis les logs GitHub Actions : les cinq tests ont terminé à 0, l'étape de publication automatique a échoué par push non fast-forward pendant des modifications concurrentes, sans échec des tests."
+  },
+  "scope": "5 suites réelles exécutées sur la révision identifiée; 17 profils sur la fiche interactive, oracles indépendants R1/R2 en conditions humaines de référence, et deux cas avancés. Ne prouve ni toutes les races ni tous les parcours tactiles.",
+  "checks": [
+    {
+      "id": "profiles-to-interactive-sheet",
+      "status": "PASS",
+      "runner": "n1_player_sheet_all_profiles.cjs",
+      "elapsedSeconds": 1,
+      "scope": "17 profils × deux versions, avec conservation des capacités et bibliothèque interactive; sans profil avec historiques contrôlé",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41411635507"
+    },
+    {
+      "id": "half-orc-hybrid-numeric",
+      "status": "PASS",
+      "runner": "n1_half_orc_hybrid_defence.cjs",
+      "elapsedSeconds": 0,
+      "scope": "Demi-orc Barbare + Forgesort, quatre combinaisons raciales et équipement avec/sans cuir",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41411635507"
+    },
+    {
+      "id": "age-history-equipment",
+      "status": "PASS",
+      "runner": "n1_age_history_armour_oracle.cjs",
+      "elapsedSeconds": 1,
+      "scope": "Trois modes (standard, hybride, sans profil), âge, historiques, armure, projections et relecture",
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41411635507"
+    },
+    {
+      "id": "r1-independent-numerics",
+      "status": "PASS",
+      "runner": "n1_pair_numeric_oracle.cjs",
+      "elapsedSeconds": 99,
+      "analysis": {
+        "counts": {
+          "no-profile": 7140,
+          "expectedShieldRefusals": 120,
+          "standard": 220,
+          "standard-mage-r2": 240
+        },
+        "status": "PASS"
+      },
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41411635507"
+    },
+    {
+      "id": "r2-independent-numerics",
+      "status": "PASS",
+      "runner": "n1_r2_pair_numeric_oracle.cjs",
+      "elapsedSeconds": 171,
+      "analysis": {
+        "counts": {
+          "no-profile": 7140,
+          "expectedShieldRefusals": 120
+        },
+        "status": "PASS"
+      },
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41411635507"
+    }
+  ],
+  "profileBaseline": {
+    "profilesTested": 17,
+    "profilesValidatedInThisScope": 17,
+    "scopeStatus": "PASS",
+    "completeCertification": false
+  },
+  "limitations": [
+    "Les oracles numériques ne couvrent pas tous les peuples et tous les contextes.",
+    "Le mot 'validé' concerne exclusivement les vérifications décrites dans chaque suite.",
+    "Aucun test physique Android ni cycle complet du PDF officiel ajouté par ce lot.",
+    "Les refus légaux sont des restrictions attendues, pas des créations valides."
+  ]
+}
