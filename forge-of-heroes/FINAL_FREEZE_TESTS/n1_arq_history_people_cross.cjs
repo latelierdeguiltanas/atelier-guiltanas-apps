@@ -18,7 +18,7 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
   const hs=result.histories[chosen.id]||(result.histories[chosen.id]={cases:0,passed:0,failed:0});hs.cases++;
   try{
    const s=standardState(db,PROFILE,paths[0].id,'people:'+race+':cof2-lb-2024');
-   s.voies.profilePathIds=[paths[0].id,paths[2].id];
+   s.voies.profilePathIds=[paths[0].id];
    s.peupleChoices={...bonuses[race]};
    s.voies.peoplePathId=T.paths_people.find(p=>p.id.split(':')[1]===heritage[race])?.id;
    if(race==='gnome')s.peupleChoices.grantedAbilityId=T.abilities_class.find(a=>a.rank===1&&a.path_id.includes('voie-de-l-air')&&a.path_id.includes('ensorceleur'))?.id;
