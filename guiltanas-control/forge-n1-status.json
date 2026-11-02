@@ -455,11 +455,11 @@
     }
   },
   "pure_creation_certification": {
-    "priority": "PHASE_1",
+    "priority": "ONE_PROFILE_AT_A_TIME",
     "model": "PROFIL_PUR",
     "scope": "14 profils × 8 peuples officiels du Livre de base COF2, niveau 1",
     "source": "centre-synchronisation/forge-n1/purs.json",
-    "view": "Copilote > Projet Forge, affichage automatique",
+    "view": "https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/centre-synchronisation/",
     "totalCharacters": 112,
     "certifiedCharacters": 0,
     "validatedCreationExamples": 109,
@@ -473,7 +473,86 @@
       "Sans profil",
       "Compagnon V2"
     ],
-    "note": "Avancement propre à chaque couple peuple/profil, avec cinq voies et rangs 1–3, calculs et règles restant à vérifier. Ne pas confondre avec l'ancien pourcentage de contrôles transversaux 69%."
+    "note": "Avancement propre à chaque couple peuple/profil, avec cinq voies et rangs 1–3, calculs et règles restant à vérifier. Ne pas confondre avec l'ancien pourcentage de contrôles transversaux 69%.",
+    "activeProfile": "Arquebusier",
+    "activeProfileId": "class:arquebusier:cof2-lb-2024",
+    "currentPriority": "Terminer les 5 voies (rangs accessibles 1–3), les calculs et conditions de combat, l’armement alternatif Arbalétrier, les âges/historiques, les exports officiels et les parcours au clic pour les 8 peuples.",
+    "pendingProfiles": 13,
+    "activePeoples": 8,
+    "activePeoplesCertified": 0,
+    "activeProfileVerifiedPercent": 40,
+    "activeItemScores": [
+      {
+        "people": "Humain",
+        "percent": 40,
+        "verified": 6,
+        "total": 15,
+        "certified": false
+      },
+      {
+        "people": "Nain",
+        "percent": 40,
+        "verified": 6,
+        "total": 15,
+        "certified": false
+      },
+      {
+        "people": "Demi-elfe",
+        "percent": 40,
+        "verified": 6,
+        "total": 15,
+        "certified": false
+      },
+      {
+        "people": "Demi-orc",
+        "percent": 40,
+        "verified": 6,
+        "total": 15,
+        "certified": false
+      },
+      {
+        "people": "Elfe haut",
+        "percent": 40,
+        "verified": 6,
+        "total": 15,
+        "certified": false
+      },
+      {
+        "people": "Elfe sylvain",
+        "percent": 40,
+        "verified": 6,
+        "total": 15,
+        "certified": false
+      },
+      {
+        "people": "Gnome",
+        "percent": 40,
+        "verified": 6,
+        "total": 15,
+        "certified": false
+      },
+      {
+        "people": "Halfelin",
+        "percent": 40,
+        "verified": 6,
+        "total": 15,
+        "certified": false
+      }
+    ],
+    "rankRuleEvidence": {
+      "ageR1R3": {
+        "pass": 400,
+        "total": 400,
+        "report": "forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json"
+      },
+      "numericEffects": {
+        "Arme à répétition — chargeur 2 + INT et +1 au rang 3": 32,
+        "Poudre puissante — portée +10 m, dommages +1 et projectile magique": 16,
+        "Tir précis — critique sur 19-20 à distance": 16,
+        "Combattant aguerri — défense +1": 16
+      }
+    },
+    "updatedAt": "2026-11-02T11:30:31.653Z"
   },
-  "current_priority": "Certifier les 112 personnages officiels à profil pur niveau 1, peuple par peuple et voie par voie. Le compteur affiché dans la fiche Forge du Copilote est prioritaire."
+  "current_priority": "N1 Phase 1 : 1 seul profil en cours, ARQUEBUSIER PUR sur huit peuples. Ne pas ouvrir les 13 autres profils avant certification 8/8. Après seulement, passer au profil suivant."
 }
