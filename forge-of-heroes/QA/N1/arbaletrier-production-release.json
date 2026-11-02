@@ -1,0 +1,31 @@
+{
+  "schema": "FOH_N1_ARBALETRIER_DEPLOYMENT",
+  "status": "INTEGRATED_NOT_CERTIFIED_FULL",
+  "generatedAt": "2026-11-02T13:01:46.884Z",
+  "scope": "Official COF2 Arbalétrier variant p.62 for pure N1; no changes to the 14 original profiles.",
+  "mainProfil": "Arquebusier",
+  "visibleVariant": "Arbalétrier",
+  "sourceRules": "Replace powder weapons by corresponding crossbows; replace explosives path with warrior master of arms restricted to crossbows; 5 pathways total",
+  "validation": {
+    "realMobileCreation": "PASS",
+    "nonRegressionJourneys": 12,
+    "variantRules": "480/480",
+    "warriorCrossbowRejection": true,
+    "officialPDF": "UNVERIFIED",
+    "allConditionalEffects": "UNVERIFIED"
+  },
+  "sourceFiles": [
+    {
+      "name": "index.html",
+      "sha256": "d628864b125c28f6e9530832c5351c23c5c785a3804007baf39d5154f3d08290",
+      "size": 2808186
+    },
+    {
+      "name": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "sha256": "d2c34d6a5fe753e1c71dcb93b7f68655a67d65df6ebead381a3c80ac10a611a1",
+      "size": 2013898
+    }
+  ],
+  "sourceHashSha256": "eae16c5b1d27324c2e4036dc7d2eaf82975e1a24bf6e41526a76d13637bf2b6e",
+  "globalN1Certified": false
+}
