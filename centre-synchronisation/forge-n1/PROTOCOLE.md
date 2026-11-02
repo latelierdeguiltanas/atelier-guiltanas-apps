@@ -1,3 +1,16 @@
+# Suivi prioritaire actuel : un profil entier, peuples séparés
+
+**Demande explicite du MJ (02/11/2026) : pas de pourcentage par couple profil + peuple, ni par voie.**
+Le Copilote présente **une seule progression de profil complet (Arquebusier, les cinq voies ensemble)** et **huit progressions de peuple, totalement indépendantes**. Les 13 autres profils sont en attente. L'affichage principal lit `centre-synchronisation/forge-n1/focus.json`, produit automatiquement par `n1_focus_split.cjs` depuis les preuves signées et le catalogue. La vue `purs.json` avec les 112 combinaisons reste archivée comme source secondaire de contrôle, pas comme score de progression visible.
+
+**Profil complet** : ensemble des cinq voies, R1–R3 possibles au niveau 1, méthodes de caractéristiques, effets permanents, bonus/malus de compétences, coups spéciaux, armes et armures, variante officielle Arbalétrier, historiques, sauvegarde, PDF, parcours tactile. Chaque obligation terminée est un critère acquis ; un effet partiellement prouvé ne suffit pas à certifier la totalité de son rang.
+
+**Chaque peuple** : caractéristiques, bonus/malus, pouvoirs/voies raciales, options initiales, effets conditionnels et dons raciaux, équipements/règles de taille, âge/historique, PDF et navigation. Ce pourcentage ne dépend PAS du choix du profil Arquebusier ni du nombre de voies acquises.
+
+**Aucune moyenne** entre pourcentage du profil et pourcentages des races. La validation des races sera utilisée lors des créations complètes, mais la progression d'un profil ne doit pas être artificiellement dupliquée huit fois. Compagnon V2, hybrides et sans profil restent hors du périmètre courant. Aucun 100 % n'est annoncé avant clôture de son périmètre.
+
+---
+
 # Première certification N1 — chaque personnage à profil pur
 
 Le Copilote suit d'abord **112 combinaisons : 14 profils du Livre de base × 8 peuples du Livre de base, exclusivement en profil pur**. Un profil peut être validé avec un peuple et encore ouvert avec un autre. Pour chaque combinaison, le registre `purs.json` liste les cinq voies et les rangs 1 à 3, les avantages raciaux, les caractéristiques, les valeurs de combat, les restrictions d'armes et d'armure, les âges, historiques, sauvegardes, interfaces et PDF. Les tests historiques restent des preuves à exploiter, pas l'écran de suivi.
