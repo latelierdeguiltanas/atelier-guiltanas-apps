@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-02T13:03:22.676Z",
+  "generatedAt": "2026-11-02T13:11:45.662Z",
   "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
   "intent": "Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.",
   "profile": {
@@ -10,9 +10,9 @@
     "completed": false,
     "variantPrototypeReady": true,
     "variantIntegrated": true,
-    "passed": 7,
+    "passed": 8,
     "total": 16,
-    "percent": 44,
+    "percent": 50,
     "checks": [
       {
         "id": "paths",
@@ -23,8 +23,8 @@
       {
         "id": "pairs",
         "name": "Toutes les paires de voies légales",
-        "status": "A_VERIFIER",
-        "detail": "Les dix choix possibles de deux voies doivent fonctionner avec les équipements autorisés, y compris l’alternative Halfelin."
+        "status": "ACQUIS",
+        "detail": "Les dix choix possibles de deux voies du profil, avec chacun des huit peuples et les cinq modalités d’âge N1, sont créés, validés et conservés après sauvegarde. Les dix couples de l’Arbalétrier sont aussi éprouvés."
       },
       {
         "id": "r1",
