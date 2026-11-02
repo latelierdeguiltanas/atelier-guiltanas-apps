@@ -24,6 +24,8 @@ const variantGap=deployed?'La variante officielle Arbalétrier est maintenant pr
 const pairsPath=path.resolve(root,'QA/N1/arquebusier-all-pairs-current.json'),pairs=fs.existsSync(pairsPath)?JSON.parse(fs.readFileSync(pairsPath,'utf8')):null;
 const sha=require('node:crypto'),checkCurrent=pairs&&pairs.inputs?.length===2&&pairs.inputs.every(p=>sha.createHash('sha256').update(fs.readFileSync(path.resolve(root,p.file))).digest('hex')===p.sha256);
 const tenPairsVerified=!!(deployed&&checkCurrent&&pairs.status==='PASS'&&pairs.expected===800&&pairs.pass===800&&pairs.failed===0&&Object.keys(pairs.perPeople||{}).length===8&&Object.values(pairs.perPeople).every(r=>r.cases===100&&r.pass===100));
+const arqHistoryFile=path.resolve(root,'QA/N1/arquebusier-history-people-cross.json');const arqHistory=fs.existsSync(arqHistoryFile)?JSON.parse(fs.readFileSync(arqHistoryFile,'utf8')):null;
+const historyCrossPassed=!!arqHistory&&arqHistory.status==='PASS'&&arqHistory.counts.cases===2304&&arqHistory.counts.passed===2304&&arqHistory.counts.failed===0;
 const profile=pure.items.find(x=>x.profile==='Arquebusier'&&x.people==='Nain');
 if(pure.items.length!==112||!profile||profile.powers.length!==5||ages.complete!==true||ages.pass!==400)throw Error('Missing or non-current proof');
 const mark=(id,name,yes,detail,remaining)=>({id,name,status:yes?'ACQUIS':'A_VERIFIER',detail:yes?detail:remaining});
@@ -43,7 +45,7 @@ const profileChecks=[
  mark('r2effects','Tous les effets des cinq capacités de rang 2',false,'','Chargeur 2 + INT validé ; restent le rechargement, la démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse.'),
  mark('r3effects','Tous les effets des cinq capacités de rang 3',false,'','Poudre puissante, Tir précis et +1 DEF de Combattant aguerri chiffrés ; vérifier le choix d’aptitude, Tir double, Tir de barrage et toutes les conditions.'),
  mark('gear','Toutes les armes, armures et variante Arbalétrier',false,'',deployed||arbaletrierMissing?variantGap:'Maîtrises, armure maximum, absence de bouclier, deux mains, armes à poudre, équipements alternatifs et Arbalétrier sans poudre.'),
- mark('history','Origines, métiers et historiques avancés',false,'','Contrôler toutes les voies d’historique et leurs effets sur les aptitudes de l’Arquebusier.'),
+ mark('history','Origines, métiers et historiques avancés',false,'',historyCrossPassed?'Les 17 historiques sont accessibles, leurs rangs et sauvegardes réussissent avec les huit peuples. Restent à vérifier individuellement leurs bonus conditionnels, les restrictions et l’export sur la fiche de l’Arquebusier.':'Contrôler toutes les voies d’historique, leurs rangs accessibles et leurs effets sur les aptitudes de l’Arquebusier.'),
  mark('save','Enregistrer et reprendre les pouvoirs obtenus',ageOK,'Les états de référence des rangs 1, 2 et 3 avec l’âge ont été enregistrés et restaurés à l’identique.','Vérifier la sauvegarde et la reprise.'),
  mark('pdf','Fiche officielle et annexes',false,'','Vérifier les deux pages officielles, toutes les valeurs, les résumés et les descriptions des voies.'),
  mark('click','Créer, sauvegarder et rouvrir au clic sur mobile',false,'','Effectuer toutes les variantes utiles dans l’interface réelle et sur format téléphone.')
