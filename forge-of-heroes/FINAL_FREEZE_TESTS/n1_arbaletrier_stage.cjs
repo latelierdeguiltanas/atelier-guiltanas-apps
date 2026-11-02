@@ -44,6 +44,8 @@ function stage(file){
  updated=replaceScript(updated,'FOH_ENGINE_BUNDLE',rewriteEngine);
  const dest=path.join(process.env.FOH_STAGE_DIR||'/tmp/foh-n1-arbaletrier-stage','forge-of-heroes',file);
  fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,updated);
+ const phrase='native-play-sheet',posOld=html.indexOf(phrase),posNew=updated.indexOf(phrase);
+ console.log(JSON.stringify({probe:file,staticNativeOld:posOld>=0,staticNativeNew:posNew>=0,oldSnippet:posOld>=0?html.slice(Math.max(0,posOld-420),posOld+420):null,newSnippet:posNew>=0?updated.slice(Math.max(0,posNew-420),posNew+420):null,oldNativeCount:html.split(phrase).length-1,newNativeCount:updated.split(phrase).length-1}));
  const staged=load(dest);
  assert.equal(staged.db.tables.classes.filter(c=>c.id==='class:arbaletrier:cof2-variant-2024').length,1);
  assert.equal(staged.db.tables.paths_class.filter(p=>p.classId==='class:arbaletrier:cof2-variant-2024').length,5);
