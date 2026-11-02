@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_ARQUEBUSIER_PURE_AGE_RANK",
-  "timestamp": "2026-11-02T11:20:47.251Z",
+  "timestamp": "2026-11-02T11:22:26.917Z",
   "scope": "14? No: only Arquebusier pure × 8 official peoples × five different first paths × all ages (very young PC/DR, young, mature, venerable), both product engines. Validates racial and age characteristics against book rules, permanent PV/DEF/INIT under equip, existence of each accessible rank, local save/reopen. Contextual spells/attacks, historical choices, Arbalétrier alternative and PDF are NOT validated.",
   "source": {
     "book": "COF2 Livre de base imprimé pp.62–65; Règles avancées p.153 (catégories d’âge)",
@@ -35,7 +35,7 @@
       "venerable": 3
     }
   },
-  "sourceCommit": "20f17b81e2063315549891a80f26793fba7099e8",
+  "sourceCommit": "0ae31da0c1d95be15550d041c653f65a083202b5",
   "expected": 400,
   "cases": 400,
   "pass": 370,
@@ -45,152 +45,152 @@
     {
       "tag": "index.html|gnome|voie-de-l-artilleur|young|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "index.html|gnome|voie-de-l-artilleur|very-young|PC",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 10 actual 11"
     },
     {
       "tag": "index.html|gnome|voie-de-l-artilleur|very-young|DR",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 10 actual 11"
     },
     {
       "tag": "index.html|gnome|voie-de-l-artilleur|mature|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "index.html|gnome|voie-de-l-artilleur|venerable|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "index.html|gnome|voie-des-explosifs|young|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "index.html|gnome|voie-des-explosifs|very-young|PC",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 10 actual 11"
     },
     {
       "tag": "index.html|gnome|voie-des-explosifs|very-young|DR",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 10 actual 11"
     },
     {
       "tag": "index.html|gnome|voie-des-explosifs|mature|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "index.html|gnome|voie-des-explosifs|venerable|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "index.html|gnome|voie-de-la-precision|young|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "index.html|gnome|voie-de-la-precision|very-young|PC",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 10 actual 11"
     },
     {
       "tag": "index.html|gnome|voie-de-la-precision|very-young|DR",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 10 actual 11"
     },
     {
       "tag": "index.html|gnome|voie-de-la-precision|mature|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "index.html|gnome|voie-de-la-precision|venerable|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-l-artilleur|young|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-l-artilleur|very-young|PC",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 10 actual 11"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-l-artilleur|very-young|DR",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 10 actual 11"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-l-artilleur|mature|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-l-artilleur|venerable|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-des-explosifs|young|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-des-explosifs|very-young|PC",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 10 actual 11"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-des-explosifs|very-young|DR",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 10 actual 11"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-des-explosifs|mature|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-des-explosifs|venerable|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-la-precision|young|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-la-precision|very-young|PC",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 10 actual 11"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-la-precision|very-young|DR",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 10 actual 11"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-la-precision|mature|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|gnome|voie-de-la-precision|venerable|",
       "type": "ASSERTION",
-      "reason": "Error: INIT mismatch"
+      "reason": "Error: INIT mismatch: race gnome gift ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024 expected 11 actual 12"
     }
   ],
   "perRace": {
