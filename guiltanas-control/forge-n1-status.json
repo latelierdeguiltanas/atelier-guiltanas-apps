@@ -529,9 +529,35 @@
     "combinationProgressShown": false,
     "pathwayProgressShown": false,
     "meaning": "Le profil a UNE progression complète. Chaque peuple a sa propre progression. Aucun pourcentage par voie, ni par couple profil/peuple, ni moyenne.",
-    "next": "Intégrer la variante Arbalétrier absente, puis achever les tirs spéciaux, les autres effets de rang, historiques, PDF et création mobile.",
-    "updatedAt": "2026-11-02T12:07:44.724Z",
-    "currentBlocker": "Variante officielle Arbalétrier absente de Forge : source Livre de base page 62, rapport QA/N1/arquebusier-arbaletrier-source-audit.json"
+    "next": "Intégrer la variante de manière isolée, vérifier l'interface au clic puis les PDF officiels, les rangs contextuels et la stabilité de tous les profils.",
+    "updatedAt": "2026-11-02T12:37:02.151Z",
+    "currentBlocker": "L'Arbalétrier n'est pas livré en production ; le prototype passe tous les contrôles de création et effets chiffrés ciblés mais doit être intégré, testé en interface, en PDF et contre les non-régressions.",
+    "productionArbaletrier": false,
+    "variantPrototype": {
+      "status": "VALIDATED_IN_MEMORY_NOT_PUBLISHED",
+      "source": "forge-of-heroes/QA/N1/arbaletrier-virtual-prototype.json",
+      "cases": 480,
+      "passed": 480,
+      "failed": 0,
+      "sourceRule": "COF2 Livre de base p.62, voie du maître d’armes p.88–89",
+      "scope": "8 peuples × 10 paires de voies × trois âges × deux versions de Forge, sauvegarde/reprise. Inclut +1 tir R1, critique R2, +1 DM R3 sur arbalètes uniquement, et cumul de Tir précis."
+    },
+    "r1Validated": {
+      "source": "forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json",
+      "bonusCompetences": [
+        "Mécanismes : rang+2",
+        "Tir de grenaille : rang+2 artificier",
+        "Pilier de bar : rang+2"
+      ],
+      "effectsProjected": [
+        "Dé bonus armes de siège",
+        "Grenaille en cône et demi-dégâts",
+        "Dommages non létaux",
+        "Initiative conditionnelle +5",
+        "Couvert partiel/important"
+      ],
+      "limitation": "Effets contextualisés présents sur la fiche mais activation réelle en combat et usages au clic encore à vérifier."
+    }
   },
-  "current_priority": "Fermer à 100% le profil Arquebusier dans son ensemble, cinq voies et tous les rangs accessibles N1. Suivi des huit peuples séparé et indépendant. Les 13 autres profils restent en attente."
+  "current_priority": "Certification stricte du profil entier Arquebusier N1 (44 %) ; chaque peuple séparé (60 %). Poursuivre effets de combat, variante Arbalétrier avant diffusion, PDF et mobile. Autres profils en attente."
 }
