@@ -5,6 +5,10 @@ on:
     paths:
       - '.github/workflows/forge-n1-official-progress.yml'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_official_progress_ledger.cjs'
+      - 'forge-of-heroes/QA/N1/native-items.json'
+      - 'forge-of-heroes/QA/N1/matrix.json'
+      - 'forge-of-heroes/QA/N1/regressions.json'
+      - 'forge-of-heroes/QA/N1/version-parity.json'
 permissions:
   contents: write
 jobs:
