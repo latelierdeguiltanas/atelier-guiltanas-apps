@@ -3,6 +3,16 @@
 > Point d'entrée unique pour reprendre le projet sans recharger tout l'historique des chats.
 > Source de vérité : GitHub, branche `main`.
 
+## État actuel — 2 novembre 2026
+
+- Boutique Nespresso habillée avec l’image de Mila et les meubles ouvrants de Bastide. Le catalogue, les 87 objets, descriptions, stocks, prix D&D et traitements d’achat/vente restent ceux de Nespresso. Potions filtrées dans le matériel D&D ; tiroirs = armures/protections ; coffres = catalogue complet. Aucun pack COF2 ni négociation économique Bastide importé.
+- Gestionnaire D&D restauré depuis le fichier V18 original du projet (`manager.html`, SHA-256 `1b0dc3e87d7dadde2de688f9bdf48507b4ba55eb2695dcc66bf04c6434fed479`). Les fragments p2/p3/p6 concordent exactement avec la source ; p1 manquait, p4 était altéré et p5 tronqué. Le nouveau chargeur ne dépend plus de ces fragments. Sauvegardes `mj_v4_*` et XP V18 conservées, aucune règle modifiée.
+- Liaison optionnelle `battle-bridge.js` : Connecter mon accès MJ → démarrer le combat → Partager ce combat. Correspondances PJ explicites si noms personnalisés. L’ordre des combattants et le tour actif se mettent à jour lors des sauvegardes du gestionnaire. Masquer aux joueurs ou revenir en préparation retire le partage. Un lien MJ existant peut être validé dans le panneau sans en régénérer.
+- Fiche et espace personnel PJ : frise horizontale, cadre bleu pendant le combat partagé, doré à son tour ; aucun halo pour un PJ non lié au combat. Perte de connexion : cadre ambre pointillé et avertissement de dernier ordre à confirmer. Aucun jet/dégât/effet ni PV n’est automatisé par la liaison.
+- Service isolé `nespresso-battle` et table `nespresso_battle`, authentification Nespresso existante, lecture projetée côté serveur, aucune statistique cachée des monstres transmise. Révision, verrou et identifiant de publication protègent contre doubles envois et conflits entre PC MJ. La connexion seule ne publie pas et le combat local reste autonome.
+- Vérifié : catalogue et base Bastide identiques avant/après ; quatre clés PJ actives ; tests SQL annulés après exécution ; rôles/projections serveur simulés ; DOM réel simulé de la boutique et du V18 complet (rayons, panier D&D, partage, changement de tour, masquage, cadre bleu/doré/ambre). Aucun combat de test publié en production. Les sessions réelles avec clés privées et le rendu téléphone restent à confirmer ; aucun navigateur IA utilisé.
+- Fichiers Bastide, gestionnaire COF2, fiches/règles D&D et BD préservés. Le défaut de chargement signalé en octobre est désormais résolu par restauration de la source originale.
+
 ## 1. Verrou de périmètre
 
 - Travailler UNIQUEMENT dans `ile-aux-tempetes/`.
@@ -78,7 +88,7 @@ Le chat n'est pas la mémoire longue du projet : GitHub l'est.
 - `journal/`
 - `rencontres/`
 
-## 4. État courant vérifié — 12 septembre 2026
+## 4. Archive fonctionnelle — 12 septembre 2026
 
 ### Gestion PJ
 
