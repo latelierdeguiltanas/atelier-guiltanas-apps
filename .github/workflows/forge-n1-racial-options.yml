@@ -1,0 +1,46 @@
+name: Forge N1 - COF2 racial options
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-racial-options.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_official_racial_options.cjs'
+permissions:
+  contents: write
+jobs:
+  race-options:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check all official 8 racial stat options and 14 profiles using source assertions
+        id: check
+        continue-on-error: true
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_official_racial_options.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n1-source-racial-options
+          path: forge-of-heroes/QA/N1/official-racial-options.json
+      - name: Save per-item results
+        if: always()
+        run: |
+          if test -f forge-of-heroes/QA/N1/official-racial-options.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add forge-of-heroes/QA/N1/official-racial-options.json
+            if ! git diff --cached --quiet; then
+              git commit -m "test(forge-n1): oracles options raciales officielles [skip ci]"
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main
+            fi
+          fi
+      - name: Require official racial options to pass
+        if: steps.check.outcome == 'failure'
+        run: exit 1
