@@ -1,0 +1,43 @@
+name: Forge N1 - recheck 37 rules after Arbaletrier
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-postrelease-rules.yml'
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Retester les 37 familles de règles N1
+        id: suite
+        continue-on-error: true
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_regression_batch.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n1-retest-37-families
+          path: forge-of-heroes/QA/N1/regressions.json
+      - name: Publier le résultat même en cas de régression
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/QA/N1/regressions.json
+          if ! git diff --cached --quiet; then
+            git commit -m "test(forge-n1): 37 familles de regles controlees apres variante [skip ci]"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Refuser toute régression encore active
+        if: steps.suite.outcome == 'failure'
+        run: exit 1
