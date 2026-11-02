@@ -1,0 +1,44 @@
+name: Forge N1 - actualiser certificat du profil prioritaire
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-focus-refresh.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs'
+      - 'forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json'
+      - 'forge-of-heroes/QA/N1/arquebusier-pdf-real-click.json'
+      - 'forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json'
+      - 'forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json'
+permissions:
+  contents: write
+jobs:
+  focus:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Regénérer les 14 places et huit peuples sans faux 100 pour cent
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+      - name: Exiger l’ordre des profils et la réalité des preuves
+        run: |
+          node - <<'NODE'
+          const f=require('./centre-synchronisation/forge-n1/focus.json');
+          if(f.profile.name!=='Arquebusier'||f.profile.percent!==50||f.summary.profilesCertified!==0||f.summary.peoplesCertified!==0)throw Error('Le taux ne doit pas augmenter sans contrôle intégral');
+          if(f.certificationPlan.queue.length!==14||f.peoples.length!==8)throw Error('Couverture incorrecte');
+          console.log('Priorité stricte : Arquebusier 50 %, huit peuples et certificat non artificiel');
+          NODE
+      - name: Publier uniquement la progression étayée
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add centre-synchronisation/forge-n1/focus.json
+          if ! git diff --cached --quiet; then
+            git commit -m "docs(cockpit): preuves actuelles Arquebusier sans faux 100 % [skip ci]"
+            git restore --worktree .
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
