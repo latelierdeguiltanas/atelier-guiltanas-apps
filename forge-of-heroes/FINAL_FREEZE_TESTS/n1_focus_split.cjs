@@ -86,10 +86,25 @@ const peoples=old.peoples.filter(x=>expectedNames.has(x.label)).map(p=>{
 });
 if(peoples.length!==8||peoples.some(x=>!x.rules))throw Error('8 race progress lines must be complete');
 const copyPaths=profile.powers.map(p=>({name:p.name,page:p.page,abilities:p.abilities.map(a=>({rank:a.rank,name:a.name,focus:a.focus,calculation:a.calculation,status:a.status}))}));
+const profileOrder=['Arquebusier','Barbare','Barde','Chevalier','Druide','Ensorceleur','Forgesort','Guerrier','Magicien','Moine','Prêtre','Rôdeur','Sorcier','Voleur'];
+const activeName='Arquebusier',activeIndex=profileOrder.indexOf(activeName);
+if(profileOrder.length!==14||activeIndex!==0)throw Error('Certification séquentielle : ordre de profils incohérent');
+const queue=profileOrder.map((name,i)=>({name,position:i+1,status:i===activeIndex?'EN_COURS':'EN_ATTENTE',percent:i===activeIndex?Math.round(100*verified/profileChecks.length):null,certified:false}));
 const output={
  schema:'FOH_N1_PROFILE_AND_PEOPLES_SEPARATE',
  generatedAt:new Date().toISOString(),
  engineSha256:pure.engineSha256,
+ certificationPlan:{
+  policy:'UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100',
+  target:{officialProfiles:14,officialPeoples:8,allMustReachPercent:100},
+  current:{name:activeName,position:activeIndex+1,percent:Math.round(100*verified/profileChecks.length),certified:false},
+  next:{name:profileOrder[activeIndex+1],unlocked:false,condition:'profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF'},
+  queue,
+  peoplesProgressRule:'CRITERES_RACIAUX_ACQUIS_PAR_PREUVE_TRANSVERSALE_SEULEMENT',
+  remainingPeoplesPolicy:'Après les 14 profils, fermer les critères raciaux manquants un peuple à la fois',
+  fullOfficialN1Closed:false,
+  companionExtensions:'CERTIFICATION_SEPAREE'
+ },
  intent:'Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.',
  profile:{id:profile.profileId,name:'Arquebusier',priority:'EN_COURS',completed:false,variantPrototypeReady:!!prototypeOK,variantIntegrated:!!deployed,passed:verified,total:profileChecks.length,percent:Math.round(100*verified/profileChecks.length),checks:profileChecks,paths:copyPaths,partialNumericValidated:numericPartial,
   next:deployed?'Arbalétrier disponible : valider maintenant le PDF officiel, les effets conditionnels en combat, les historiques et les alternatives d’équipement.':arbaletrierMissing?'Intégrer la variante Arbalétrier absente, puis achever les tirs spéciaux, les autres effets de rang, historiques, PDF et création mobile.':'Achever les compétences, tirs spéciaux, rechargements, équipement et Arbalétrier ; puis historiques, PDF et parcours au clic.'},
