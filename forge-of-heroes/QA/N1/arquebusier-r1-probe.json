@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-02T12:12:19.782Z",
+  "at": "2026-11-02T12:15:39.725Z",
   "engineAPIs": [
     "buildCanonicalAttack",
     "computeCharacterN1",
@@ -109,6 +109,67 @@
           "scope": "self"
         }
       ],
+      "permanentEffects": [
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "bonus_die",
+            "target": "siege_weapon_attacks"
+          },
+          "stacking": "not_defined_by_source"
+        }
+      ],
+      "conditionalEffects": [
+        {
+          "sourceAbilityId": "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "condition": {
+            "loadedPowderWeapon": true,
+            "specialAmmunition": "grapeshot"
+          },
+          "trigger": "L",
+          "target": null,
+          "mechanicalEffect": [
+            {
+              "type": "multi_target_weapon_attack",
+              "damageMultiplier": 0.5
+            }
+          ],
+          "duration": null,
+          "stacking": "not_defined_by_source",
+          "notes": null,
+          "mechanics": {
+            "kind": "active",
+            "action": "L",
+            "requires": {
+              "loadedPowderWeapon": true,
+              "specialAmmunition": "grapeshot"
+            },
+            "area": {
+              "shape": "cone",
+              "lengthMeters": 10,
+              "widthMeters": 5
+            },
+            "effects": [
+              {
+                "type": "multi_target_weapon_attack",
+                "damageMultiplier": 0.5
+              }
+            ],
+            "skillBonuses": [
+              {
+                "value": 3,
+                "tests": [
+                  "artificer"
+                ]
+              }
+            ],
+            "tags": [
+              "conditional_not_permanent"
+            ]
+          }
+        }
+      ],
+      "passiveFeatures": [],
       "characterStateKeys": [
         "schemaVersion",
         "level",
@@ -280,6 +341,67 @@
           "scope": "self"
         }
       ],
+      "permanentEffects": [
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "bonus_die",
+            "target": "siege_weapon_attacks"
+          },
+          "stacking": "not_defined_by_source"
+        }
+      ],
+      "conditionalEffects": [
+        {
+          "sourceAbilityId": "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "condition": {
+            "loadedPowderWeapon": true,
+            "specialAmmunition": "grapeshot"
+          },
+          "trigger": "L",
+          "target": null,
+          "mechanicalEffect": [
+            {
+              "type": "multi_target_weapon_attack",
+              "damageMultiplier": 0.5
+            }
+          ],
+          "duration": null,
+          "stacking": "not_defined_by_source",
+          "notes": null,
+          "mechanics": {
+            "kind": "active",
+            "action": "L",
+            "requires": {
+              "loadedPowderWeapon": true,
+              "specialAmmunition": "grapeshot"
+            },
+            "area": {
+              "shape": "cone",
+              "lengthMeters": 10,
+              "widthMeters": 5
+            },
+            "effects": [
+              {
+                "type": "multi_target_weapon_attack",
+                "damageMultiplier": 0.5
+              }
+            ],
+            "skillBonuses": [
+              {
+                "value": 3,
+                "tests": [
+                  "artificer"
+                ]
+              }
+            ],
+            "tags": [
+              "conditional_not_permanent"
+            ]
+          }
+        }
+      ],
+      "passiveFeatures": [],
       "characterStateKeys": [
         "schemaVersion",
         "level",
@@ -464,6 +586,37 @@
           "scope": "self"
         }
       ],
+      "permanentEffects": [
+        {
+          "sourceAbilityId": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "weapon_damage_override",
+            "weaponId": "weapon:unarmed",
+            "formula": "1d4",
+            "nonLethal": true
+          },
+          "stacking": "not_defined_by_source"
+        },
+        {
+          "sourceAbilityId": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "conditional_damage_reduction",
+            "damageType": "non_lethal",
+            "divisor": 2
+          },
+          "stacking": "not_defined_by_source"
+        },
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "bonus_die",
+            "target": "siege_weapon_attacks"
+          },
+          "stacking": "not_defined_by_source"
+        }
+      ],
+      "conditionalEffects": [],
+      "passiveFeatures": [],
       "characterStateKeys": [
         "schemaVersion",
         "level",
@@ -634,6 +787,67 @@
           "scope": "self"
         }
       ],
+      "permanentEffects": [
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "bonus_die",
+            "target": "siege_weapon_attacks"
+          },
+          "stacking": "not_defined_by_source"
+        }
+      ],
+      "conditionalEffects": [
+        {
+          "sourceAbilityId": "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "condition": "loaded_powder_weapon_held",
+          "trigger": "conditional",
+          "target": null,
+          "mechanicalEffect": [
+            {
+              "type": "conditional_INIT_bonus",
+              "value": 5
+            },
+            {
+              "type": "remove_contact_ranged_malus",
+              "weapons": [
+                "powder",
+                "crossbow"
+              ],
+              "except": [
+                "couleuvrine"
+              ]
+            }
+          ],
+          "duration": null,
+          "stacking": "not_defined_by_source",
+          "notes": null,
+          "mechanics": {
+            "kind": "conditional",
+            "condition": "loaded_powder_weapon_held",
+            "effects": [
+              {
+                "type": "conditional_INIT_bonus",
+                "value": 5
+              },
+              {
+                "type": "remove_contact_ranged_malus",
+                "weapons": [
+                  "powder",
+                  "crossbow"
+                ],
+                "except": [
+                  "couleuvrine"
+                ]
+              }
+            ],
+            "tags": [
+              "conditional_not_permanent"
+            ]
+          }
+        }
+      ],
+      "passiveFeatures": [],
       "characterStateKeys": [
         "schemaVersion",
         "level",
@@ -802,6 +1016,27 @@
           "scope": "self"
         }
       ],
+      "permanentEffects": [
+        {
+          "sourceAbilityId": "ability:joli-coup:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "cover_penalty_override",
+            "partial": 0,
+            "important": -2
+          },
+          "stacking": "not_defined_by_source"
+        },
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "bonus_die",
+            "target": "siege_weapon_attacks"
+          },
+          "stacking": "not_defined_by_source"
+        }
+      ],
+      "conditionalEffects": [],
+      "passiveFeatures": [],
       "characterStateKeys": [
         "schemaVersion",
         "level",
@@ -965,6 +1200,67 @@
           "scope": "self"
         }
       ],
+      "permanentEffects": [
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "bonus_die",
+            "target": "siege_weapon_attacks"
+          },
+          "stacking": "not_defined_by_source"
+        }
+      ],
+      "conditionalEffects": [
+        {
+          "sourceAbilityId": "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "condition": {
+            "loadedPowderWeapon": true,
+            "specialAmmunition": "grapeshot"
+          },
+          "trigger": "L",
+          "target": null,
+          "mechanicalEffect": [
+            {
+              "type": "multi_target_weapon_attack",
+              "damageMultiplier": 0.5
+            }
+          ],
+          "duration": null,
+          "stacking": "not_defined_by_source",
+          "notes": null,
+          "mechanics": {
+            "kind": "active",
+            "action": "L",
+            "requires": {
+              "loadedPowderWeapon": true,
+              "specialAmmunition": "grapeshot"
+            },
+            "area": {
+              "shape": "cone",
+              "lengthMeters": 10,
+              "widthMeters": 5
+            },
+            "effects": [
+              {
+                "type": "multi_target_weapon_attack",
+                "damageMultiplier": 0.5
+              }
+            ],
+            "skillBonuses": [
+              {
+                "value": 3,
+                "tests": [
+                  "artificer"
+                ]
+              }
+            ],
+            "tags": [
+              "conditional_not_permanent"
+            ]
+          }
+        }
+      ],
+      "passiveFeatures": [],
       "characterStateKeys": [
         "schemaVersion",
         "level",
@@ -1136,6 +1432,67 @@
           "scope": "self"
         }
       ],
+      "permanentEffects": [
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "bonus_die",
+            "target": "siege_weapon_attacks"
+          },
+          "stacking": "not_defined_by_source"
+        }
+      ],
+      "conditionalEffects": [
+        {
+          "sourceAbilityId": "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "condition": {
+            "loadedPowderWeapon": true,
+            "specialAmmunition": "grapeshot"
+          },
+          "trigger": "L",
+          "target": null,
+          "mechanicalEffect": [
+            {
+              "type": "multi_target_weapon_attack",
+              "damageMultiplier": 0.5
+            }
+          ],
+          "duration": null,
+          "stacking": "not_defined_by_source",
+          "notes": null,
+          "mechanics": {
+            "kind": "active",
+            "action": "L",
+            "requires": {
+              "loadedPowderWeapon": true,
+              "specialAmmunition": "grapeshot"
+            },
+            "area": {
+              "shape": "cone",
+              "lengthMeters": 10,
+              "widthMeters": 5
+            },
+            "effects": [
+              {
+                "type": "multi_target_weapon_attack",
+                "damageMultiplier": 0.5
+              }
+            ],
+            "skillBonuses": [
+              {
+                "value": 3,
+                "tests": [
+                  "artificer"
+                ]
+              }
+            ],
+            "tags": [
+              "conditional_not_permanent"
+            ]
+          }
+        }
+      ],
+      "passiveFeatures": [],
       "characterStateKeys": [
         "schemaVersion",
         "level",
@@ -1320,6 +1677,37 @@
           "scope": "self"
         }
       ],
+      "permanentEffects": [
+        {
+          "sourceAbilityId": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "weapon_damage_override",
+            "weaponId": "weapon:unarmed",
+            "formula": "1d4",
+            "nonLethal": true
+          },
+          "stacking": "not_defined_by_source"
+        },
+        {
+          "sourceAbilityId": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "conditional_damage_reduction",
+            "damageType": "non_lethal",
+            "divisor": 2
+          },
+          "stacking": "not_defined_by_source"
+        },
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "bonus_die",
+            "target": "siege_weapon_attacks"
+          },
+          "stacking": "not_defined_by_source"
+        }
+      ],
+      "conditionalEffects": [],
+      "passiveFeatures": [],
       "characterStateKeys": [
         "schemaVersion",
         "level",
@@ -1490,6 +1878,67 @@
           "scope": "self"
         }
       ],
+      "permanentEffects": [
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "bonus_die",
+            "target": "siege_weapon_attacks"
+          },
+          "stacking": "not_defined_by_source"
+        }
+      ],
+      "conditionalEffects": [
+        {
+          "sourceAbilityId": "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "condition": "loaded_powder_weapon_held",
+          "trigger": "conditional",
+          "target": null,
+          "mechanicalEffect": [
+            {
+              "type": "conditional_INIT_bonus",
+              "value": 5
+            },
+            {
+              "type": "remove_contact_ranged_malus",
+              "weapons": [
+                "powder",
+                "crossbow"
+              ],
+              "except": [
+                "couleuvrine"
+              ]
+            }
+          ],
+          "duration": null,
+          "stacking": "not_defined_by_source",
+          "notes": null,
+          "mechanics": {
+            "kind": "conditional",
+            "condition": "loaded_powder_weapon_held",
+            "effects": [
+              {
+                "type": "conditional_INIT_bonus",
+                "value": 5
+              },
+              {
+                "type": "remove_contact_ranged_malus",
+                "weapons": [
+                  "powder",
+                  "crossbow"
+                ],
+                "except": [
+                  "couleuvrine"
+                ]
+              }
+            ],
+            "tags": [
+              "conditional_not_permanent"
+            ]
+          }
+        }
+      ],
+      "passiveFeatures": [],
       "characterStateKeys": [
         "schemaVersion",
         "level",
@@ -1658,6 +2107,27 @@
           "scope": "self"
         }
       ],
+      "permanentEffects": [
+        {
+          "sourceAbilityId": "ability:joli-coup:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "cover_penalty_override",
+            "partial": 0,
+            "important": -2
+          },
+          "stacking": "not_defined_by_source"
+        },
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "mechanicalEffect": {
+            "type": "bonus_die",
+            "target": "siege_weapon_attacks"
+          },
+          "stacking": "not_defined_by_source"
+        }
+      ],
+      "conditionalEffects": [],
+      "passiveFeatures": [],
       "characterStateKeys": [
         "schemaVersion",
         "level",
