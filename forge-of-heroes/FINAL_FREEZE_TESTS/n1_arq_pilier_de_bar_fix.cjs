@@ -47,7 +47,9 @@ for(const file of files){
   const newDb=JSON.parse(dbRaw),originalRow=original.tables.abilities_class.find(a=>a.id===hit[1]),newAbility=newDb.tables.abilities_class.find(a=>a.id===hit[1]);
   assert.ok(originalRow&&newAbility,'Ligne introuvable dans la table');
   assert.equal(newAbility.mechanics.effects.find(e=>e.type==='weapon_damage_override').formula,'1d4°');
-  assert.equal(JSON.stringify(original).replace('"formula":"1d4"','"formula":"1d4°"'),JSON.stringify(newDb),'Seulement la formule ciblée doit changer');
+  const expectedDb=JSON.parse(JSON.stringify(original));
+  expectedDb.tables.abilities_class.find(a=>a.id===hit[1]).mechanics.effects.find(e=>e.type==='weapon_damage_override').formula='1d4°';
+  assert.equal(JSON.stringify(expectedDb),JSON.stringify(newDb),'Seulement la formule ciblée doit changer');
   nextHtml=html.replace(m[1],dbRaw);changed=true;
  }
  // Refuser une version verte si le moteur ne répercute pas effectivement la formule dans l'attaque.
@@ -55,7 +57,7 @@ for(const file of files){
  const {db,engine:E}=load(fp),t=db.tables,p=t.paths_class.find(x=>x.classId===profile&&x.id.includes('voie-du-mercenaire'));
  assert.ok(p,'Voie du Mercenaire absente');
  const s=standardState(db,profile,p.id),v=E.computeCharacterN1(s);
- assert.deepEqual(v.errors,[],'Création rejetée : '+file);
+ assert.equal(v.errors.length,0,'Création rejetée : '+file+' '+v.errors.join(' | '));
  const attack=v.sticky.attacks.find(x=>x.weaponId==='weapon:unarmed');
  assert.ok(attack,'Attaque à mains nues introuvable');
  assert.equal(attack.damage,'1d4°','Le moteur ne restitue pas le dé explosif pour '+file);
