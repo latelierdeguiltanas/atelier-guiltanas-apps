@@ -1,3 +1,15 @@
+# Première certification N1 — chaque personnage à profil pur
+
+Le Copilote suit d'abord **112 combinaisons : 14 profils du Livre de base × 8 peuples du Livre de base, exclusivement en profil pur**. Un profil peut être validé avec un peuple et encore ouvert avec un autre. Pour chaque combinaison, le registre `purs.json` liste les cinq voies et les rangs 1 à 3, les avantages raciaux, les caractéristiques, les valeurs de combat, les restrictions d'armes et d'armure, les âges, historiques, sauvegardes, interfaces et PDF. Les tests historiques restent des preuves à exploiter, pas l'écran de suivi.
+
+**Trois états distincts** : la création témoin a réussi ; les effets des capacités restent à vérifier ; la création du personnage est totalement certifiée. Un texte de rang présent ne vaut PAS un bonus ou un effet validé. Un rang accessible au niveau 1 via l'âge n'est pas écarté parce que son numéro est 2 ou 3. Le refus d'un paquetage interdit (petite taille Halfelin, bouclier, etc.) impose de vérifier les alternatives légales et non de déclarer automatiquement un bug.
+
+**Pourcentage par personnage** = nombre de ses **14 critères explicitement acquis / 14** ; un critère partiellement vérifié reste ouvert. Les anciens 69 % par profil/peuple tous modes confondus sont un autre indicateur, conservé dans les archives ; ils ne doivent PAS être recopiés dans la grille des 112. Le numéro de version du moteur est enregistré ; 100 % nécessite toutes les variantes légales de la combinaison, les effets conditionnels, les rangs accessibles, les choix et équipements, les PDF et le parcours complet. Ce point de référence devient le certificat gelé ; tout changement ultérieur ne réouvre que les règles affectées.
+
+**Ordre des phases** : (1) personnages à profils purs 112/112 ; (2) hybrides et mode sans profil ; (3) extensions Compagnon COF2 V2 sur leurs PDF actualisés. Ces derniers n'empêchent pas de clôturer les personnages purs officiels.
+
+---
+
 # Certification Forge N1 — livre de base COF2 — contrat de gel
 
 ## Périmètre qui doit atteindre 100 %
