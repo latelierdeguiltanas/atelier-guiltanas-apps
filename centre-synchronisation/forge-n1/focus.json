@@ -1,7 +1,130 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-02T18:30:44.570Z",
-  "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
+  "generatedAt": "2026-11-02T18:45:50.143Z",
+  "engineSha256": "60d23d2d36c099e0fe0ce370413d74ac4eef438336c516d070a8326a1d082fee",
+  "certificationPlan": {
+    "policy": "UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100",
+    "target": {
+      "officialProfiles": 14,
+      "officialPeoples": 8,
+      "allMustReachPercent": 100
+    },
+    "current": {
+      "name": "Arquebusier",
+      "position": 1,
+      "percent": 50,
+      "certified": false
+    },
+    "next": {
+      "name": "Barbare",
+      "unlocked": false,
+      "condition": "profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF"
+    },
+    "queue": [
+      {
+        "name": "Arquebusier",
+        "position": 1,
+        "status": "EN_COURS",
+        "percent": 50,
+        "certified": false
+      },
+      {
+        "name": "Barbare",
+        "position": 2,
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
+      },
+      {
+        "name": "Barde",
+        "position": 3,
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
+      },
+      {
+        "name": "Chevalier",
+        "position": 4,
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
+      },
+      {
+        "name": "Druide",
+        "position": 5,
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
+      },
+      {
+        "name": "Ensorceleur",
+        "position": 6,
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
+      },
+      {
+        "name": "Forgesort",
+        "position": 7,
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
+      },
+      {
+        "name": "Guerrier",
+        "position": 8,
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
+      },
+      {
+        "name": "Magicien",
+        "position": 9,
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
+      },
+      {
+        "name": "Moine",
+        "position": 10,
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
+      },
+      {
+        "name": "Prêtre",
+        "position": 11,
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
+      },
+      {
+        "name": "Rôdeur",
+        "position": 12,
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
+      },
+      {
+        "name": "Sorcier",
+        "position": 13,
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
+      },
+      {
+        "name": "Voleur",
+        "position": 14,
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
+      }
+    ],
+    "peoplesProgressRule": "CRITERES_RACIAUX_ACQUIS_PAR_PREUVE_TRANSVERSALE_SEULEMENT",
+    "remainingPeoplesPolicy": "Après les 14 profils, fermer les critères raciaux manquants un peuple à la fois",
+    "fullOfficialN1Closed": false,
+    "companionExtensions": "CERTIFICATION_SEPAREE"
+  },
   "intent": "Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.",
   "profile": {
     "id": "class:arquebusier:cof2-lb-2024",
