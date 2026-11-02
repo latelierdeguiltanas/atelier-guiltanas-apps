@@ -57,7 +57,7 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
    if(sticky.PV!==source.baseHpN1+expected.con)throw Error('PV baseline differs from book ('+sticky.PV+' vs '+(source.baseHpN1+expected.con)+')');
    // Depending on a loaded firearm, Plus vite que son ombre grants a shot initiative,
    // not a passive character-wide INIT; compare only when not using that path.
-   const strangeGift=s.peupleChoices.grantedAbilityId||'';const airGift= race==='gnome'&&(strangeGift.includes('voie-de-l-air')||strangeGift.includes('voie-de-la-divination'))?1:0;
+   const strangeGift=s.peupleChoices.grantedAbilityId||'';const airGift= race==='gnome'&&(strangeGift.includes('ensorceleur-air-murmures-dans-le-vent')||strangeGift.includes('ensorceleur-divination-'))?1:0;
    if(first.id.split(':')[1]!=='voie-du-pistolero'&&second.id.split(':')[1]!=='voie-du-pistolero'&&sticky.INIT!==10+expected.per+a.init+airGift)throw Error('INIT mismatch: race '+race+' gift '+strangeGift+' expected '+(10+expected.per+a.init+airGift)+' actual '+sticky.INIT);
    const rank=source.ranks[age],entry=sticky.characterState.paths.find(p=>p.pathId===first.id);
    if(!entry||entry.rank!==rank)throw Error('Expected path rank '+rank+' got '+entry?.rank);
