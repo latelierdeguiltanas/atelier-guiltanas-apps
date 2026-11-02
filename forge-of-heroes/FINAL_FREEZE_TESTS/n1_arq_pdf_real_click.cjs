@@ -7,12 +7,18 @@ const results=[],failures=[];
  const pdfForm=template.getForm(),fields=['NOM PERSONNAGE','JOUEUR','NIVEAU','FOR','AGI','CON','PER','INT','VOL','CHA','VOIE1','VOIE2','VOIE3','VOIE4','VOIE5','PEUPLE RG1','PROFIL','PV','PV MAX','DEF','INIT','Contact','Dist','Mag','EQUIPEMENT','DESCRIPTION DU PERSONNAGE'];
  fields.forEach((name,i)=>{const fld=pdfForm.createTextField(name);fld.addToPage(template.getPage(i%2),{x:25+(Math.floor(i/2)%2)*285,y:710-Math.floor(i/4)*48,width:265,height:30,borderWidth:.5});fld.setFontSize(8);});
  const templatePath=path.join(os.tmpdir(),'cof2-blank-test-two-pages.pdf');fs.writeFileSync(templatePath,await template.save());
+ // La fiche officielle fournie par le MJ est un PDF 2 pages sans champs AcroForm :
+ // éprouver aussi ce cas et refuser les faux succès limités aux annexes.
+ const flat=await PDFDocument.create(),flatFont=await flat.embedFont(StandardFonts.Helvetica);
+ for(let i=0;i<2;i++){const p=flat.addPage([612,792]);p.drawText('GABARIT VIERGE NON REMPLISSABLE - TEMOIN '+(i+1),{x:24,y:755,font:flatFont,size:10});}
+ const flatPath=path.join(os.tmpdir(),'cof2-blank-flat-two-pages.pdf');fs.writeFileSync(flatPath,await flat.save());
+ const templates=[{kind:'fillable',path:templatePath},{kind:'flat-nonfillable',path:flatPath}];
   const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||undefined,args:['--no-sandbox']});
  try{
- for(const variant of ['Arquebusier','Arbalétrier']){
+ for(const tmpl of templates)for(const variant of ['Arquebusier','Arbalétrier']){
   const ctx=await browser.newContext({viewport:{width:393,height:852},hasTouch:true,isMobile:true,acceptDownloads:true});
   const page=await ctx.newPage();page.setDefaultTimeout(7000);
-  page.on('dialog',async d=>{results.push({variant,dialog:d.message()});await d.accept()});
+  page.on('dialog',async d=>{results.push({variant,templateKind:tmpl.kind,dialog:d.message()});await d.accept()});
   const click=async locator=>page.locator(locator).tap(),next=()=>click('#next-btn');
   const choose=async(sel,name)=>{const o=page.locator(sel),val=await o.locator('option').evaluateAll((xs,v)=>xs.find(x=>x.textContent.toLowerCase().includes(v.toLowerCase()))?.value,name);assert.ok(val,sel+' missing '+name);await o.selectOption(val)};
   const name='Audit PDF '+variant+' N1';
@@ -36,18 +42,20 @@ const results=[],failures=[];
    await btn.tap();
    const input=page.locator('#official-sheet-file');await input.waitFor({state:'attached',timeout:6000});
    const evt=page.waitForEvent('download',{timeout:23000});evt.catch(()=>{});
-   await input.setInputFiles(templatePath);
+   await input.setInputFiles(tmpl.path);
    const download=await evt;
-   const filename=path.join(os.tmpdir(),variant.toLowerCase()+'-n1-export.pdf');
+   const filename=path.join(os.tmpdir(),variant.toLowerCase()+'-'+tmpl.kind+'-n1-export.pdf');
    await download.saveAs(filename);
    const meta=cp.execFileSync('pdfinfo',[filename],{encoding:'utf8'});
    const pages=Number(meta.match(/^Pages:\s+(\d+)/m)?.[1]);
    const extracted=cp.execFileSync('pdftotext',['-layout',filename,'-'],{encoding:'utf8'});
-   const checks={variant,template:'Formulaire de test synthétique, deux pages, champs obligatoires COF2 présents ; ce n’est PAS le graphisme de la fiche officielle',filename:download.suggestedFilename(),pages,size:fs.statSync(filename).size,textLength:extracted.length,containsName:extracted.includes(name),containsProfile:extracted.includes(variant),containsArtillerie:/artilleur|Mécanismes/i.test(extracted),containsMaster:/maître d’armes|Armes de prédilection/i.test(extracted)};
+   const firstTwoPages=cp.execFileSync('pdftotext',['-f','1','-l','2','-layout',filename,'-'],{encoding:'utf8'});
+   const checks={variant,templateKind:tmpl.kind,template:tmpl.kind==='fillable'?'Gabarit témoin à deux pages et champs AcroForm':'Gabarit témoin à deux pages SANS champs, comme la fiche officielle fournie (sans reproduire son graphisme)',filename:download.suggestedFilename(),pages,size:fs.statSync(filename).size,textLength:extracted.length,containsName:extracted.includes(name),containsProfile:extracted.includes(variant),firstTwoPagesHaveName:firstTwoPages.includes(name),firstTwoPagesHaveProfile:firstTwoPages.includes(variant),containsArtillerie:/artilleur|Mécanismes/i.test(extracted),containsMaster:/maître d’armes|Armes de prédilection/i.test(extracted)};
    results.push(checks);
    assert.ok(pages>=3,'Official 2-page sheet and path annexes should be at least 3 pages; got '+pages);
    assert.ok(checks.containsName&&checks.containsProfile,'Name and profile must appear in PDF');
-  }catch(e){failures.push({variant,message:String(e.stack||e),view:await page.locator('body').innerText().then(s=>s.slice(-1000)).catch(()=>'')});}
+   assert.ok(checks.firstTwoPagesHaveName&&checks.firstTwoPagesHaveProfile,'La fiche de deux pages doit avoir NOM et PROFIL : des annexes correctes ne suffisent pas.');
+  }catch(e){failures.push({variant,templateKind:tmpl.kind,message:String(e.stack||e),view:await page.locator('body').innerText().then(s=>s.slice(-1000)).catch(()=>'')});}
   await ctx.close();
  }
  }finally{await browser.close()}
