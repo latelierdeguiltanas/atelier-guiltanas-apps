@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-02T12:17:50.302Z",
+  "generatedAt": "2026-11-02T12:36:31.785Z",
   "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
   "intent": "Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.",
   "profile": {
@@ -8,6 +8,7 @@
     "name": "Arquebusier",
     "priority": "EN_COURS",
     "completed": false,
+    "variantPrototypeReady": true,
     "passed": 7,
     "total": 16,
     "percent": 44,
@@ -82,7 +83,7 @@
         "id": "gear",
         "name": "Toutes les armes, armures et variante Arbalétrier",
         "status": "A_VERIFIER",
-        "detail": "Blocage confirmé dans Forge : la variante officielle Arbalétrier (Livre de base p.62) est absente du catalogue. Il faut remplacer les explosifs par la Voie du maître d’armes limitée aux arbalètes, adapter les armes de départ, puis vérifier armures et maîtrises."
+        "detail": "La variante Arbalétrier est prête dans une version d’essai : les cinq voies, huit peuples, âges, sauvegardes, +1 en attaque, critique amélioré et +1 aux dégâts avec les arbalètes ont été éprouvés. Elle n’est PAS encore intégrée à Forge : il reste l’installation, les choix visibles, l’export PDF et le contrôle au clic."
       },
       {
         "id": "history",
