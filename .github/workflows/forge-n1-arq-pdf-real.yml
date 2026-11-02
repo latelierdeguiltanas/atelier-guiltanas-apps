@@ -1,0 +1,52 @@
+name: Forge N1 - vrais PDF Arquebusier et Arbaletrier
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arq-pdf-real.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_real_click.cjs'
+permissions:
+  contents: write
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Préparer navigateur et PDF
+        run: |
+          npm install --prefix "$RUNNER_TEMP/arq-pdf" playwright@1.55.0
+          echo "NODE_PATH=$RUNNER_TEMP/arq-pdf/node_modules" >> "$GITHUB_ENV"
+          command -v pdfinfo
+          command -v pdftotext
+      - name: Créer, exporter et examiner deux fiches officielles
+        id: check
+        continue-on-error: true
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/arq-pdf-server.log 2>&1 &
+          CHROME_BIN="$(command -v google-chrome || command -v chromium)" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_real_click.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: arq-pdf-n1-evidence
+          path: forge-of-heroes/QA/N1/arquebusier-pdf-real-click.json
+      - name: Sauvegarder le constat, succès ou lacune
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/QA/N1/arquebusier-pdf-real-click.json
+          if ! git diff --cached --quiet; then
+            git commit -m "audit(forge-n1): vrai PDF officiel Arquebusier et Arbaletrier [skip ci]"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Exiger les PDF complets
+        if: steps.check.outcome == 'failure'
+        run: exit 1
