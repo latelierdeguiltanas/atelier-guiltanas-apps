@@ -1,0 +1,43 @@
+name: Forge N1 - corriger et vérifier Pilier de bar COF2
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-pilier-de-bar-fix.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pilier_de_bar_fix.cjs'
+permissions:
+  contents: write
+concurrency:
+  group: forge-n1-pilier-de-bar
+  cancel-in-progress: false
+jobs:
+  rule-fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Exactitude du dé explosif, recalcul et sauvegarde sur les deux versions
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pilier_de_bar_fix.cjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: forge-n1-pilier-de-bar-source
+          path: forge-of-heroes/QA/N1/arquebusier-pilier-de-bar-fix.json
+      - name: Conserver uniquement le correctif testé et sa preuve
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-pilier-de-bar-fix.json
+          if ! git diff --cached --quiet; then
+            git commit -m "fix(forge-n1): Pilier de bar 1d4 explosif conforme p64 [skip ci]"
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              if git rebase origin/main && git push origin HEAD:main; then exit 0; fi
+              if [ "$attempt" = 5 ]; then exit 1; fi
+              sleep 3
+            done
+          fi
