@@ -1,0 +1,40 @@
+name: Forge N1 - 15 effets Arquebusier R1 a R3
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arq-15-effects.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_15_mechanics_snapshot.cjs'
+      - 'forge-of-heroes/index.html'
+      - 'forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html'
+permissions:
+  contents: write
+jobs:
+  source-effects:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Auditer les quinze capacités à partir de la base utilisée par le moteur
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_15_mechanics_snapshot.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n1-arq-mechanics
+          path: forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json
+      - name: Versionner les mécaniques réellement présentes sans certifier les effets non exécutés
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json
+          if ! git diff --cached --quiet; then
+            git commit -m "test(forge-n1): état réel des quinze effets Arquebusier [skip ci]"
+            git restore --worktree .
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
