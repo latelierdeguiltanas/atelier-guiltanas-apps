@@ -23,23 +23,21 @@ jobs:
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "platform-tools" "emulator" "system-images;android-30;google_apis;x86_64"
           npm install --prefix "$RUNNER_TEMP/forge-click" playwright@1.55.0
           echo "NODE_PATH=$RUNNER_TEMP/forge-click/node_modules" >> "$GITHUB_ENV"
-      - name: Boot Android
-        run: |
-          sudo chmod 666 /dev/kvm
-          image='system-images;android-30;google_apis;x86_64'
-          echo no | avdmanager create avd -n forge -k "$image" --device pixel_2
-          nohup "$ANDROID_HOME/emulator/emulator" -avd forge -no-window -no-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect > "$RUNNER_TEMP/emulator.log" 2>&1 &
-          adb wait-for-device
-          timeout 360 bash -c 'until adb shell getprop sys.boot_completed | tr -d "\r" | grep -qx 1; do sleep 3; done'
-          adb shell input keyevent 82
-          adb shell pm path com.android.chrome | grep -q '^package:'
-          adb shell wm size 1080x1920
-          adb shell wm density 420
-      - name: Create, validate and reopen a hero using touch
-        run: |
-          python3 -m http.server 4173 --bind 127.0.0.1 > "$RUNNER_TEMP/http.log" 2>&1 &
-          adb reverse tcp:4173 tcp:4173
-          node forge-of-heroes/FINAL_FREEZE_TESTS/android_creation_click.cjs
+      - name: Enable KVM
+        run: sudo chmod 666 /dev/kvm
+      - name: Run Android creation journey
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          arch: x86_64
+          target: google_apis
+          profile: pixel_2
+          emulator-options: -no-window -gpu swiftshader -noaudio -no-boot-anim -no-snapshot
+          script: |
+            adb shell pm path com.android.chrome
+            python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/http.log 2>&1 &
+            adb reverse tcp:4173 tcp:4173
+            node forge-of-heroes/FINAL_FREEZE_TESTS/android_creation_click.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

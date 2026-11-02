@@ -48,6 +48,7 @@ async function run(browser,n){
    const ranks=n===8?['campagnes','campagnes','campagnes','campagnes']:age==='Mûr'?[first,second]:[first,first,second];
    for(const name of ranks)await p.locator('article.choice').filter({hasText:new RegExp('voie.*'+name,'i')}).getByRole('button',{name:/Acquérir/}).tap();
   }
+  if(n===3)await p.getByRole('button',{name:'Agilité',exact:true}).tap();
   if(n===4)await p.getByRole('button',{name:'Épées',exact:true}).tap();
   if(n===10)await click('[data-extra-language=celestien]');
   if(n===6)await choose('select[data-ability-choice$="|combattantAguerriAbility"]','Archer émérite');
