@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-02T12:15:08.304Z",
+  "generatedAt": "2026-11-02T12:17:50.302Z",
   "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
   "intent": "Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.",
   "profile": {
@@ -118,7 +118,7 @@
             "rank": 1,
             "name": "Mécanismes",
             "focus": "Bonus rang + 2 aux réparations et mécanismes ; dé bonus avec les armes de siège.",
-            "calculation": "Mécanismes vérifié : bonus de rang dans la voie + 2 aux tests de réparation et de compréhension des mécanismes (3 au R1, 4 au R2, 5 au R3). Dé bonus aux armes de siège encore à contrôler en situation.",
+            "calculation": "Mécanismes : bonus de rang + 2 vérifié (3, 4, 5). Dé bonus aux attaques d’armes de siège correctement indiqué sur la fiche, application en combat encore à confirmer.",
             "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
           },
           {
@@ -145,7 +145,7 @@
             "rank": 1,
             "name": "Tir de grenaille (L)",
             "focus": "Attaque de zone avec une arme à poudre ; moitié des dégâts et bonus d’artificier.",
-            "calculation": "Tir de grenaille : bonus d’artificier vérifié, rang + 2 (3, 4 ou 5). Son cône de tir et les dégâts de moitié restent à tester.",
+            "calculation": "Tir de grenaille : rang + 2 aux tests d’artificier vérifié (3, 4, 5). Cône de 10 m sur 5 m et dégâts réduits de moitié correctement décrits ; tir réel encore à confirmer.",
             "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
           },
           {
@@ -172,7 +172,7 @@
             "rank": 1,
             "name": "Pilier de bar",
             "focus": "Bonus rang + 2 aux interactions dans les tavernes ou auberges.",
-            "calculation": "Pilier de bar : bonus de rang + 2 (3, 4 ou 5) aux interactions de taverne et à la résistance à l’alcool vérifié. Dégâts à mains nues et réduction des dommages non létaux restent à tester.",
+            "calculation": "Pilier de bar : rang + 2 en taverne et résistance à l’alcool vérifié (3, 4, 5). 1d4 dommages non létaux à mains nues et réduction de moitié indiqués ; résolution en combat encore à confirmer.",
             "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
           },
           {
@@ -199,8 +199,8 @@
             "rank": 1,
             "name": "Plus vite que son ombre",
             "focus": "Bonus d’initiative de +5 si l’arme à poudre est chargée et tenue.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Plus vite que son ombre : +5 d’initiative seulement avec arme chargée et tenue ; absence du malus au tir au contact pour armes à poudre/arbalètes sauf couleuvrine. Effet indiqué, résolution au clic encore à contrôler.",
+            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
           },
           {
             "rank": 2,
@@ -226,8 +226,8 @@
             "rank": 1,
             "name": "Joli coup",
             "focus": "Ignore une pénalité liée à une couverture partielle.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Joli coup : couvert partiel sans malus ; couvert important réduit à −2. Effet correctement indiqué dans les règles de la fiche, application aux tirs à valider.",
+            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
           },
           {
             "rank": 2,
