@@ -29,10 +29,10 @@ function make(p,ids){const s=standardState(db,p.id,ids[0],people.id);s.voies.pro
  return fill(s);}
 function expectedCaracs(s){const c={...s.baseCaracs},schema=people.schema;if(schema?.key==='humain_weakest_plus1')c[s.peupleChoices.humainStat]++;else for(const [k,f] of [['bonus','bonusStat'],['malus','malusStat']]){const rule=schema?.[k];if(!rule)continue;const id=rule.mode==='choice'?s.peupleChoices[f]:rule.stat||rule.options?.[0];if(id)c[id]+=rule.value;}return c;}
 let serial=0;
-function check(mode,s,profileId,secondaryId){const row=report.counts[mode];row.attempted++;serial++;const prior=JSON.stringify(s),res=E.computeCharacterN1(s);if(JSON.stringify(s)!==prior)return fail('state mutated');
- if(res.errors.length){row.refused++;const reason=[...res.errors].sort().join(' | ');report.refusals[mode+'|'+reason]=(report.refusals[mode+'|'+reason]||0)+1;return;}
+function check(mode,s,profileId,secondaryId){const row=report.counts[mode];row.attempted++;serial++;const participants=mode==="no-profile"?[...new Set(s.voies.profilePathIds.map(id=>paths.find(p=>p.id===id)?.classId).filter(Boolean))]:[profileId,...(secondaryId?[secondaryId]:[])];for(const id of participants){const x=report.profiles[id]||(report.profiles[id]={standard:0,hybridPrimary:0,hybridSecondary:0,noProfilePathPairs:0,rejected:0,failures:0,attempted:0});x.attempted++;}const prior=JSON.stringify(s),res=E.computeCharacterN1(s);if(JSON.stringify(s)!==prior)return fail('state mutated');
+ if(res.errors.length){row.refused++;for(const id of participants)report.profiles[id].rejected++;const reason=[...res.errors].sort().join(' | ');report.refusals[mode+'|'+reason]=(report.refusals[mode+'|'+reason]||0)+1;return;}
  row.accepted++;const item=report.profiles[profileId]||(report.profiles[profileId]={standard:0,hybridPrimary:0,hybridSecondary:0,noProfilePathPairs:0,rejected:0,failures:0});
- if(mode==='standard')item.standard++;if(mode==='hybrid'){item.hybridPrimary++;const other=report.profiles[secondaryId]||(report.profiles[secondaryId]={standard:0,hybridPrimary:0,hybridSecondary:0,noProfilePathPairs:0,rejected:0,failures:0});other.hybridSecondary++;}
+ if(mode==="no-profile")for(const id of participants)report.profiles[id].noProfilePathPairs++;if(mode==='standard')item.standard++;if(mode==='hybrid'){item.hybridPrimary++;const other=report.profiles[secondaryId]||(report.profiles[secondaryId]={standard:0,hybridPrimary:0,hybridSecondary:0,noProfilePathPairs:0,rejected:0,failures:0});other.hybridSecondary++;}
  try{const c=res.sticky.characterState;if(!c||c.level!==1)throw Error('level');
   if(JSON.stringify(cp(c.characteristics))!==JSON.stringify(expectedCaracs(s)))throw Error('ancestry characteristics');
   if(new Set(c.abilities.map(a=>a.id)).size!==c.abilities.length)throw Error('duplicate abilities');
@@ -41,7 +41,7 @@ function check(mode,s,profileId,secondaryId){const row=report.counts[mode];row.a
   if(c.derived.PV<=0||c.derived.PM<0||c.derived.PC<0)throw Error('illegal derived');
   if(serial%53===0){const saved=E.createHeroSavePayload(s,c,{id:'qa-native-'+serial});const back=E.restoreHeroSavePayload(cp(saved));const again=E.computeCharacterN1(back.draft);if(again.errors.length)throw Error('reload rejected');if(JSON.stringify(cp(again.sticky.characterState.derived))!==JSON.stringify(cp(c.derived)))throw Error('reload derived mismatch');row.replays++;}
  }catch(e){fail(e.message);}
- function fail(msg){row.failed++;if(report.assertions.length<150)report.assertions.push({mode,people:people.id,profileId,secondaryId,paths:s.voies.profilePathIds,reason:msg});item.failures++;}
+ function fail(msg){row.failed++;for(const id of participants)report.profiles[id].failures++;if(report.assertions.length<150)report.assertions.push({mode,people:people.id,profileId,secondaryId,paths:s.voies.profilePathIds,reason:msg});}
 }
 for(const p of classes)for(const a of byClass(p.id))for(const b of byClass(p.id)){if(a.id>=b.id)continue;check('standard',make(p,[a.id,b.id]),p.id);}
 for(const primary of classes)for(const secondary of classes){if(primary.id===secondary.id)continue;for(const a of byClass(primary.id))for(const b of byClass(secondary.id)){const s=make(primary,[a.id,b.id]);s.hybrid={enabled:true,gmApproved:true,primaryProfileId:primary.id,secondaryProfileId:secondary.id,primaryPathId:a.id,secondaryPathId:b.id};check('hybrid',s,primary.id,secondary.id);}}
