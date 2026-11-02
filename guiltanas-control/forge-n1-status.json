@@ -460,12 +460,10 @@
     "source": "centre-synchronisation/forge-n1/focus.json",
     "activeProfile": {
       "name": "Arquebusier",
-      "progressPercent": 44,
-      "verified": 7,
+      "progressPercent": 50,
+      "verified": 8,
       "total": 16,
-      "completed": false,
-      "allFivePaths": true,
-      "scope": "toutes les voies et rangs N1 accessibles, équipement, historiques, PDF, navigation"
+      "completed": false
     },
     "peoplesIndependent": [
       {
@@ -530,9 +528,9 @@
     "pathwayProgressShown": false,
     "meaning": "Le profil a UNE progression complète. Chaque peuple a sa propre progression. Aucun pourcentage par voie, ni par couple profil/peuple, ni moyenne.",
     "next": "Intégrer la variante de manière isolée, vérifier l'interface au clic puis les PDF officiels, les rangs contextuels et la stabilité de tous les profils.",
-    "updatedAt": "2026-11-02T12:37:02.151Z",
+    "updatedAt": "2026-11-02T13:11:45.662Z",
     "currentBlocker": "L'Arbalétrier n'est pas livré en production ; le prototype passe tous les contrôles de création et effets chiffrés ciblés mais doit être intégré, testé en interface, en PDF et contre les non-régressions.",
-    "productionArbaletrier": false,
+    "productionArbaletrier": true,
     "variantPrototype": {
       "status": "VALIDATED_IN_MEMORY_NOT_PUBLISHED",
       "source": "forge-of-heroes/QA/N1/arbaletrier-virtual-prototype.json",
@@ -557,7 +555,21 @@
         "Couvert partiel/important"
       ],
       "limitation": "Effets contextualisés présents sur la fiche mais activation réelle en combat et usages au clic encore à vérifier."
+    },
+    "officialVariantRelease": {
+      "status": "INTEGRATED_NOT_FULLY_CERTIFIED",
+      "verifiedPureWayPairs": 800,
+      "verifiedProductionJourneys": 12,
+      "source": "forge-of-heroes/QA/N1/arbaletrier-production-release.json"
+    },
+    "latestRuleProgress": {
+      "pathPairs": "ACQUIS — 10 combinaisons de voies pour tous les 8 peuples aux 5 choix d’âge du N1",
+      "rank1": "Bonus Mécanismes, Artificier et Pilier de bar vérifiés ; effets contextuels encore partiels"
+    },
+    "pdfGate": {
+      "status": "INCOMPLETE",
+      "issue": "L'application demande une première importation de la fiche officielle vierge. Tests de génération et d'annexes en cours."
     }
   },
-  "current_priority": "Certification stricte du profil entier Arquebusier N1 (44 %) ; chaque peuple séparé (60 %). Poursuivre effets de combat, variante Arbalétrier avant diffusion, PDF et mobile. Autres profils en attente."
+  "current_priority": "Terminer le profil complet Arquebusier N1 à 100 % avant le profil suivant. Suivre séparément les huit peuples. Arbalétrier désormais jouable. Reste : effets conditionnels, historiques, équipements, PDF."
 }
