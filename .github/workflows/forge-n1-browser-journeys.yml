@@ -1,0 +1,56 @@
+name: Forge N1 - 12 real Chrome click journeys
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-browser-journeys.yml'
+permissions:
+  contents: write
+jobs:
+  chrome-n1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser test client
+        run: |
+          npm install --prefix "$RUNNER_TEMP/forge-click" playwright@1.55.0
+          echo "NODE_PATH=$RUNNER_TEMP/forge-click/node_modules" >> "$GITHUB_ENV"
+          command -v google-chrome || command -v chromium
+      - name: Serve Forge and replay 12 real browser paths
+        id: browser
+        continue-on-error: true
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/forge-click-server.log 2>&1 &
+          echo "CHROME_BIN=$(command -v google-chrome || command -v chromium)" >> "$GITHUB_ENV"
+          export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+          export CLICK_REPORT="forge-of-heroes/QA/N1/real-chrome-current.json"
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_creation_browser_pack.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n1-real-click-12
+          if-no-files-found: warn
+          path: forge-of-heroes/QA/N1/real-chrome-current.json
+      - name: Publish exact results even when some scenarios fail
+        if: always()
+        run: |
+          if test -f forge-of-heroes/QA/N1/real-chrome-current.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add forge-of-heroes/QA/N1/real-chrome-current.json
+            if ! git diff --cached --quiet; then
+              git commit -m "test(forge-n1): rapport 12 parcours Chrome exécutés [skip ci]"
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main
+            fi
+          fi
+      - name: Require journeys pass
+        if: steps.browser.outcome == 'failure'
+        run: exit 1
