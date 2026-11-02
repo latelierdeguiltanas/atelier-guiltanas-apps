@@ -6,6 +6,17 @@ const read=p=>JSON.parse(fs.readFileSync(path.resolve(root,p),'utf8'));
 const catalog=read('progression/catalog.json'),native=read('QA/N1/native-items.json'),methods=read('QA/N1/official-methods-cross.json'),raceOpts=read('QA/N1/official-racial-options.json'),numeric=read('QA/N1/lot4/source-numeric.json'),parity=read('QA/N1/version-parity.json');
 const profiles=catalog.profiles.filter(p=>p.id.endsWith(':cof2-lb-2024'));
 const arqReportPath=path.resolve(root,'QA/N1/arquebusier-pure-age-ranks.json');const arqReport=fs.existsSync(arqReportPath)?JSON.parse(fs.readFileSync(arqReportPath,'utf8')):null;const arqAgePass=!!arqReport&&arqReport.complete===true&&arqReport.expected===400&&arqReport.pass===400&&arqReport.failed===0;
+const arqNumericPass=arqAgePass&&arqReport.numericEffectAssertions
+ &&arqReport.numericEffectAssertions['Arme à répétition — chargeur 2 + INT et +1 au rang 3']===32
+ &&arqReport.numericEffectAssertions['Poudre puissante — portée +10 m, dommages +1 et projectile magique']===16
+ &&arqReport.numericEffectAssertions['Tir précis — critique sur 19-20 à distance']===16
+ &&arqReport.numericEffectAssertions['Combattant aguerri — défense +1']===16;
+const arqNumericEffects={
+ 'voie-de-l-artilleur|2':'Chargeur vérifié : 2 + INT projectiles, puis +1 avec un rang 3 d’Arquebusier. Rechargement au combat encore à valider.',
+ 'voie-des-explosifs|3':'Poudre puissante vérifiée : +10 m de portée, +1 aux dégâts et projectiles magiques. Les interactions de combat restent à confirmer.',
+ 'voie-du-mercenaire|3':'Combattant aguerri : le +1 en DEF est vérifié. Le choix d’une capacité gratuite et ses restrictions d’armure restent à contrôler.',
+ 'voie-de-la-precision|3':'Tir précis vérifié : critique sur 19–20 à distance, sans changer le seuil des armes de contact.'
+};
 const peoples=['humain','nain','demi-elfe','demi-orc','elfe-haut','elfe-sylvain','gnome','halfelin'];
 const peopleLabels={'humain':'Humain','nain':'Nain','demi-elfe':'Demi-elfe','demi-orc':'Demi-orc','elfe-haut':'Elfe haut','elfe-sylvain':'Elfe sylvain','gnome':'Gnome','halfelin':'Halfelin'};
 const detailMaps={
@@ -77,7 +88,11 @@ for(const profile of profiles){
   const powers=pathways.map(p=>({id:p.id,name:p.name,page:p.source?.printedPage??null,abilities:p.ranks.filter(r=>r.rank<=3).map(r=>{
    const base=String(r.name||'').replace(/[*]/g,'');
    const baseline=grantPass&&r.rank===1;
-   return {rank:r.rank,name:base,page:r.source?.printedPage??p.source?.printedPage??null,focus:focus(r),grant:baseline?'Acquisition du rang 1 vérifiée sur les voies choisies':'Présence dans le livre et dans Forge contrôlée',calculation:'À vérifier pour '+profile.label+' '+peopleLabels[people],status:'EFFETS_A_VERIFIER'};
+   const arqKey=p.id.split(':')[1]+'|'+r.rank,measure=profile.id.includes(':arquebusier:')&&arqNumericPass?arqNumericEffects[arqKey]:null;
+   return {rank:r.rank,name:base,page:r.source?.printedPage??p.source?.printedPage??null,focus:focus(r),
+     grant:baseline?'Acquisition du rang 1 vérifiée sur les voies choisies':profile.id.includes(':arquebusier:')&&arqAgePass?'Acquisition par âge mûr ou vénérable vérifiée, sauvegarde et reprise incluses':'Présence dans le livre et dans Forge contrôlée',
+     calculation:measure||'Effet complet et conditions de la capacité encore à vérifier avec '+profile.label+' '+peopleLabels[people],
+     status:measure?'CHIFFRE_VERIFIE_EFFETS_A_COMPLETER':'EFFETS_A_VERIFIER'};
   })}));
   if(profile.id.includes(':arquebusier:'))checks.push(gate('arbaletrier','Variante Arbalétrier sans poudre',false,'','Poudre ou pas poudre (livre de base p.62) : remplacer les armes à poudre, supprimer la Voie des explosifs et intégrer la Voie du maître d’armes limitée aux arbalètes. Vérifier les maîtrises et les effets de cette variante.'));
   const passed=checks.filter(c=>c.status==='ACQUIS').length;
