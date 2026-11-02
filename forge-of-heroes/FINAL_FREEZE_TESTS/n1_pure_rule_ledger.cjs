@@ -11,6 +11,13 @@ const arqNumericPass=arqAgePass&&arqReport.numericEffectAssertions
  &&arqReport.numericEffectAssertions['Poudre puissante — portée +10 m, dommages +1 et projectile magique']===16
  &&arqReport.numericEffectAssertions['Tir précis — critique sur 19-20 à distance']===16
  &&arqReport.numericEffectAssertions['Combattant aguerri — défense +1']===16;
+const arqSkillPass=arqAgePass&&arqReport.skillEffectAssertions&&
+ arqReport.skillEffectAssertions.mecanismes===160&&arqReport.skillEffectAssertions.grenailleArtificier===160&&arqReport.skillEffectAssertions.pilierDeBar===160;
+const arqSkillEffects={
+ 'voie-de-l-artilleur|1':'Mécanismes vérifié : bonus de rang dans la voie + 2 aux tests de réparation et de compréhension des mécanismes (3 au R1, 4 au R2, 5 au R3). Dé bonus aux armes de siège encore à contrôler en situation.',
+ 'voie-des-explosifs|1':'Tir de grenaille : bonus d’artificier vérifié, rang + 2 (3, 4 ou 5). Son cône de tir et les dégâts de moitié restent à tester.',
+ 'voie-du-mercenaire|1':'Pilier de bar : bonus de rang + 2 (3, 4 ou 5) aux interactions de taverne et à la résistance à l’alcool vérifié. Dégâts à mains nues et réduction des dommages non létaux restent à tester.'
+};
 const arqNumericEffects={
  'voie-de-l-artilleur|2':'Chargeur vérifié : 2 + INT projectiles, puis +1 avec un rang 3 d’Arquebusier. Rechargement au combat encore à valider.',
  'voie-des-explosifs|3':'Poudre puissante vérifiée : +10 m de portée, +1 aux dégâts et projectiles magiques. Les interactions de combat restent à confirmer.',
@@ -88,7 +95,7 @@ for(const profile of profiles){
   const powers=pathways.map(p=>({id:p.id,name:p.name,page:p.source?.printedPage??null,abilities:p.ranks.filter(r=>r.rank<=3).map(r=>{
    const base=String(r.name||'').replace(/[*]/g,'');
    const baseline=grantPass&&r.rank===1;
-   const arqKey=p.id.split(':')[1]+'|'+r.rank,measure=profile.id.includes(':arquebusier:')&&arqNumericPass?arqNumericEffects[arqKey]:null;
+   const arqKey=p.id.split(':')[1]+'|'+r.rank,measure=profile.id.includes(':arquebusier:')?((arqNumericPass?arqNumericEffects[arqKey]:null)||(arqSkillPass?arqSkillEffects[arqKey]:null)):null;
    return {rank:r.rank,name:base,page:r.source?.printedPage??p.source?.printedPage??null,focus:focus(r),
      grant:baseline?'Acquisition du rang 1 vérifiée sur les voies choisies':profile.id.includes(':arquebusier:')&&arqAgePass?'Acquisition par âge mûr ou vénérable vérifiée, sauvegarde et reprise incluses':'Présence dans le livre et dans Forge contrôlée',
      calculation:measure||'Effet complet et conditions de la capacité encore à vérifier avec '+profile.label+' '+peopleLabels[people],
