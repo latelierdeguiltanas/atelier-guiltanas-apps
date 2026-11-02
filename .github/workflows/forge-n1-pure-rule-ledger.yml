@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/forge-n1-pure-rule-ledger.yml'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_pure_rule_ledger.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs'
       - 'forge-of-heroes/QA/N1/official-methods-cross.json'
       - 'forge-of-heroes/QA/N1/official-racial-options.json'
       - 'forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json'
@@ -24,12 +25,18 @@ jobs:
         with:
           node-version: '22'
       - name: Générer les 112 fiches peuple + profil pur
-        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_pure_rule_ledger.cjs
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_pure_rule_ledger.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
       - name: Vérifier la couverture des voies, rangs et preuves
         run: |
           node - <<'NODE'
           const x=require('./centre-synchronisation/forge-n1/purs.json');
           if(x.items.length!==112||x.profiles.length!==14||x.peoples.length!==8)process.exit(1);
+          const f=require('./centre-synchronisation/forge-n1/focus.json');
+          if(f.profile.paths.length!==5||f.peoples.length!==8||f.profile.checks.length!==16||f.peoples.some(p=>p.checks.length!==10))process.exit(1);
+          if(f.profile.percent!==Math.round(100*f.profile.passed/f.profile.total))process.exit(1);
+          if(f.peoples.some(p=>p.percent!==Math.round(100*p.passed/p.total)))process.exit(1);
           if(x.items.some(p=>p.powers.length!==5||p.powers.some(v=>v.abilities.length!==3)))process.exit(1);
           if(x.items.some(p=>p.certified&&!p.checks.every(c=>c.status==='ACQUIS')))process.exit(1);
           console.log('112 personnages de création pure, 560 voies, 1680 pouvoirs accessibles identifiés. Pas de faux 100 %.');
@@ -37,12 +44,14 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: forge-n1-rules-pure-112
-          path: centre-synchronisation/forge-n1/purs.json
+          path: |
+            centre-synchronisation/forge-n1/purs.json
+            centre-synchronisation/forge-n1/focus.json
       - name: Publier les 112 états de création dans le Copilote
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add centre-synchronisation/forge-n1/purs.json
+          git add centre-synchronisation/forge-n1/purs.json centre-synchronisation/forge-n1/focus.json
           if ! git diff --cached --quiet; then
             git commit -m "docs(cockpit): 112 personnages purs et rangs de voies suivis [skip ci]"
             git fetch origin main
