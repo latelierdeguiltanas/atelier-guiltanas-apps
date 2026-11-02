@@ -1,5 +1,5 @@
 'use strict';
-const fs=require('fs'),path=require('path'),{load,standardState}=require('./forge_product_runner');
+const fs=require('fs'),path=require('path'),vm=require('vm'),{load,standardState}=require('./forge_product_runner');
 const root=path.resolve(__dirname,'..'),srcClass='class:arquebusier:cof2-lb-2024',altClass='class:arbaletrier:cof2-variant-2024';
 const oldWar='classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024';
 const clone=x=>JSON.parse(JSON.stringify(x));
@@ -28,8 +28,15 @@ function inject(db){
  return {paths:alts,profileId:altClass,firstEquipment:equipment.initialEquipment.packages[0],counts:{classes:T.classes.length,paths:T.paths_class.length,abilities:T.abilities_class.length},warriorId:alts.find(x=>x.includes('voie-du-maitre-d-armes'))};
 }
 for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
- const {db,engine:E}=load(path.join(root,file));
+ const {db,html}=load(path.join(root,file));
  const install=inject(db);report.install=install;
+ let bundle=html.match(/<script[^>]*id=["']FOH_ENGINE_BUNDLE["'][^>]*>([\s\S]*?)<\/script>/)[1];
+ const replaceStrict=(from,to)=>{if(!bundle.includes(from))throw Error('Engine anchor missing: '+from.slice(0,90));bundle=bundle.replace(from,to);};
+ replaceStrict("rows.push({id:'preferredWeaponCategory',type:'preferred_weapon_category',sourceMechanic:'legacy.requiresChoice',required:true,persist:true,values:['swords','axes','maces','spears','thrown']})",
+  "rows.push({id:'preferredWeaponCategory',type:'preferred_weapon_category',sourceMechanic:'legacy.requiresChoice',required:true,persist:true,values:ability.path_id?.includes(':class-arbaletrier:')?['crossbows']:['swords','axes','maces','spears','thrown']})");
+ replaceStrict("pred=pref&&w.preferredCategory===pref?1:0",
+  "pred=pref&&(w.preferredCategory===pref||(pref==='crossbows'&&w.category==='crossbow'))?1:0");
+ const box={window:{},console};vm.createContext(box);vm.runInContext(bundle,box);const E=box.window.__FOH_ENGINE_FACTORY__(db);
  for(const parts of [[install.paths[0],install.paths[1]],[install.warriorId,install.paths[0]]]){
   let state,errors=[],sticky;
   try{
