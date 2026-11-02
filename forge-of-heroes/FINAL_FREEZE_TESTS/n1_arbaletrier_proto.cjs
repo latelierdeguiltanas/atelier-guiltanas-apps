@@ -38,6 +38,9 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
   "if(c.type==='preferred_weapon_category')return String(abilityId).includes(':class-arbaletrier:')?[{id:'crossbows',label:'Arbalètes'}]:[{id:'swords',label:'Épées'},{id:'axes',label:'Haches'},{id:'maces',label:'Masses'},{id:'spears',label:'Lances'},{id:'thrown',label:'Armes de jet'}]");
  replaceStrict("pred=pref&&w.preferredCategory===pref?1:0",
   "pred=pref&&(w.preferredCategory===pref||(pref==='crossbows'&&w.category==='crossbow'))?1:0");
+ replaceStrict("if(p==='voie-de-la-precision'&&r===3)rules.push({kind:'critical',match:'ranged',amount:'RANG>=5?2:1'});",
+  "if(p==='voie-du-maitre-d-armes'&&String(a.path_id).includes(':class-arbaletrier:')&&r===2)rules.push({kind:'critical',match:'crossbow',amount:'1'});if(p==='voie-du-maitre-d-armes'&&String(a.path_id).includes(':class-arbaletrier:')&&r===3)rules.push({kind:'weapon_bonus',match:'crossbow',damage:'1'});if(p==='voie-de-la-precision'&&r===3)rules.push({kind:'critical',match:'ranged',amount:'RANG>=5?2:1'});");
+ replaceStrict("if(type==='crossbow_powder')return", "if(type==='crossbow')return w.category==='crossbow';if(type==='crossbow_powder')return");
  const box={window:{},console};vm.createContext(box);vm.runInContext(bundle,box);const E=box.window.__FOH_ENGINE_FACTORY__(db);
  for(const parts of [[install.paths[0],install.paths[1]],[install.warriorId,install.paths[0]]]){
   let state,errors=[],sticky;
