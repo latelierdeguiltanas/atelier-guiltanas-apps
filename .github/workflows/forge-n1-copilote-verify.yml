@@ -6,12 +6,13 @@ on:
       - '.github/workflows/forge-n1-copilote-verify.yml'
       - 'centre-synchronisation/forge-n1/index.html'
       - 'centre-synchronisation/forge-n1/focus.json'
+      - 'centre-synchronisation/forge-n1/qa_focus_mobile.cjs'
 permissions:
   contents: read
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -40,3 +41,16 @@ jobs:
           assert(d.peoples.every(x=>x.percent===Math.round(x.passed/x.total*100)));
           console.log('Copilote compilable : 1 profil actif, 13 en attente, 8 peuples, données et DOM cohérents');
           NODE
+      - name: Installer le client et tester réellement les clics mobile
+        run: |
+          npm install --prefix "$RUNNER_TEMP/foh-cockpit" playwright@1.55.0
+          echo "NODE_PATH=$RUNNER_TEMP/foh-cockpit/node_modules" >> "$GITHUB_ENV"
+      - name: Réel affichage mobile, 14 positions, 8 peuples, rafraîchissement
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/foh-cockpit-server.log 2>&1 &
+          CHROME_BIN="$(command -v google-chrome || command -v chromium)" node centre-synchronisation/forge-n1/qa_focus_mobile.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n1-copilote-real-mobile
+          path: centre-synchronisation/forge-n1/qa-focus-mobile-result.json
