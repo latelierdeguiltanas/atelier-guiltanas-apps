@@ -1,11 +1,12 @@
 {
   "schema": "FOH_N1_ARQUEBUSIER_HISTORIES_ALL_PEOPLES",
-  "at": "2026-11-02T18:09:12.857Z",
+  "at": "2026-11-02T18:10:46.098Z",
   "scope": "Arquebusier pur, 8 peuples, toutes les paires histoire géographique + professionnelle, 2 versions, âge vénérable et 4 rangs investis dans une voie d’historique; tests de calcul, acquisition, sauvegarde/reprise et choix persistants; autres modes reportés.",
   "counts": {
     "cases": 2304,
     "passed": 2240,
-    "failed": 64
+    "legallyRejected": 64,
+    "failed": 0
   },
   "inputs": [
     {
@@ -46,7 +47,7 @@
     "elfe-sylvain": {
       "cases": 288,
       "passed": 224,
-      "failed": 64
+      "failed": 0
     },
     "gnome": {
       "cases": 288,
@@ -63,52 +64,52 @@
     "history:campaigns": {
       "cases": 128,
       "passed": 112,
-      "failed": 16
+      "failed": 0
     },
     "history:courtier": {
       "cases": 144,
       "passed": 140,
-      "failed": 4
+      "failed": 0
     },
     "history:scholar": {
       "cases": 144,
       "passed": 140,
-      "failed": 4
+      "failed": 0
     },
     "history:expert": {
       "cases": 144,
       "passed": 140,
-      "failed": 4
+      "failed": 0
     },
     "history:commoner": {
       "cases": 144,
       "passed": 140,
-      "failed": 4
+      "failed": 0
     },
     "history:soldier": {
       "cases": 144,
       "passed": 140,
-      "failed": 4
+      "failed": 0
     },
     "history:pauper": {
       "cases": 144,
       "passed": 140,
-      "failed": 4
+      "failed": 0
     },
     "history:wealthy": {
       "cases": 144,
       "passed": 140,
-      "failed": 4
+      "failed": 0
     },
     "history:nomad": {
       "cases": 144,
       "passed": 140,
-      "failed": 4
+      "failed": 0
     },
     "history:cities": {
       "cases": 128,
       "passed": 112,
-      "failed": 16
+      "failed": 0
     },
     "history:deserts": {
       "cases": 128,
@@ -146,264 +147,7 @@
       "failed": 0
     }
   },
-  "failures": [
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:courtier|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:courtier|history:courtier",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:scholar|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:scholar|history:scholar",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:expert|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:expert|history:expert",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:commoner|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:commoner|history:commoner",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:soldier|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:soldier|history:soldier",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:pauper|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:pauper|history:pauper",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:wealthy|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:wealthy|history:wealthy",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:nomad|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:campaigns|history:nomad|history:nomad",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:courtier|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:courtier|history:courtier",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:scholar|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:scholar|history:scholar",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:expert|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:expert|history:expert",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:commoner|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:commoner|history:commoner",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:soldier|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:soldier|history:soldier",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:pauper|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:pauper|history:pauper",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:wealthy|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:wealthy|history:wealthy",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:nomad|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "index.html|elfe-sylvain|history:cities|history:nomad|history:nomad",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:courtier|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:courtier|history:courtier",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:scholar|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:scholar|history:scholar",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:expert|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:expert|history:expert",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:commoner|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:commoner|history:commoner",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:soldier|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:soldier|history:soldier",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:pauper|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:pauper|history:pauper",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:wealthy|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:wealthy|history:wealthy",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:nomad|history:campaigns",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:nomad|history:nomad",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:courtier|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:courtier|history:courtier",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:scholar|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:scholar|history:scholar",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:expert|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:expert|history:expert",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:commoner|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:commoner|history:commoner",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:soldier|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:soldier|history:soldier",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:pauper|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:pauper|history:pauper",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:wealthy|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:wealthy|history:wealthy",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:nomad|history:cities",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:nomad|history:nomad",
-      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
-    }
-  ],
+  "failures": [],
   "source": "Règles avancées COF2 p.153, voies d’historique pp.170–180",
-  "status": "FAIL"
+  "status": "PASS"
 }
