@@ -28,6 +28,13 @@ function replaceScript(html,id,transform){
  if(occurred!==1)throw Error(id+' missing or duplicated');
  return html;
 }
+function linkAssets(){
+ const destRoot=path.join(process.env.FOH_STAGE_DIR||'/tmp/foh-n1-arbaletrier-stage','forge-of-heroes');fs.mkdirSync(destRoot,{recursive:true});
+ for(const name of fs.readdirSync(root)){
+  if(name==='index.html'||name==='FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html')continue;
+  const dest=path.join(destRoot,name);if(!fs.existsSync(dest))fs.symlinkSync(path.join(root,name),dest);
+ }
+}
 function stage(file){
  const p=path.join(root,file),{html,db}=load(p);
  if(db.tables.classes.some(c=>c.id==='class:arbaletrier:cof2-variant-2024'))throw Error('Already integrated; refuses double patch');
@@ -35,7 +42,7 @@ function stage(file){
  if(result.paths.length!==5)throw Error('Five paths required');
  let updated=replaceScript(html,'FOH_DB_JSON',()=>JSON.stringify(db));
  updated=replaceScript(updated,'FOH_ENGINE_BUNDLE',rewriteEngine);
- const dest=path.join(process.env.FOH_STAGE_DIR||'/tmp/foh-n1-arbaletrier-stage',file);
+ const dest=path.join(process.env.FOH_STAGE_DIR||'/tmp/foh-n1-arbaletrier-stage','forge-of-heroes',file);
  fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,updated);
  const staged=load(dest);
  assert.equal(staged.db.tables.classes.filter(c=>c.id==='class:arbaletrier:cof2-variant-2024').length,1);
@@ -44,5 +51,5 @@ function stage(file){
  const orig=db.tables.classes.filter(c=>c.id!=='class:arbaletrier:cof2-variant-2024').map(c=>c.id);
  assert.equal(orig.length,17);return {file,bytesBefore:Buffer.byteLength(html),bytesAfter:Buffer.byteLength(updated),path:dest};
 }
-const out=['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html'].map(stage);
+linkAssets();const out=['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html'].map(stage);
 console.log(JSON.stringify({status:'STAGED_ONLY',files:out}));
