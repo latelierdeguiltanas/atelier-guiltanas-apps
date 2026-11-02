@@ -30,8 +30,10 @@ try{
  const opts=await opt.locator('option').allTextContents().catch(()=>[]);
  results.push({stage:'weapon-selection',values:opts,section:(await p.locator('#ability-choice-panel').innerText().catch(()=>'' )).slice(0,1400),buttonLabels:(await p.locator('button').allTextContents()).filter(x=>/Épées|Arbalètes|Haches|Maître/.test(x)).slice(0,20),draft:await p.evaluate(()=>({profile:window.__FOH_PRODUCT__?.getDraft?.()?.profileId,classe:window.__FOH_PRODUCT__?.getDraft?.()?.classeId,type:window.__FOH_PRODUCT__?.getDraft?.()?.type})).catch(()=>({}))});
  const crossbow=await opt.locator('option').evaluateAll(items=>items.find(o=>o.textContent.toLowerCase().includes('arbalète'))?.value).catch(()=>undefined);
- assert.ok(crossbow,'Crossbows missing from mastered-weapon selection');
- await opt.selectOption(crossbow);await next();
+ if(crossbow)await opt.selectOption(crossbow);
+ else {const button=p.getByRole('button',{name:'Arbalètes',exact:true});assert.equal(await button.count(),1,'Arbalètes missing from visible weapon choice');await button.tap();}
+ results.push({stage:'chosen-crossbow',buttonVisible:await p.getByRole('button',{name:'Arbalètes',exact:true}).count()});
+ await next();
  await next();
  await p.locator('#reveal-view').tap();
  const summary=await p.locator('#summary-content').innerText();
