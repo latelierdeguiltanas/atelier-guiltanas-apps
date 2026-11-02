@@ -1,11 +1,11 @@
 {
   "schema": "FOH_N1_ARQUEBUSIER_HISTORIES_ALL_PEOPLES",
-  "at": "2026-11-02T18:08:37.213Z",
+  "at": "2026-11-02T18:09:12.857Z",
   "scope": "Arquebusier pur, 8 peuples, toutes les paires histoire géographique + professionnelle, 2 versions, âge vénérable et 4 rangs investis dans une voie d’historique; tests de calcul, acquisition, sauvegarde/reprise et choix persistants; autres modes reportés.",
   "counts": {
     "cases": 2304,
-    "passed": 0,
-    "failed": 2304
+    "passed": 2240,
+    "failed": 64
   },
   "inputs": [
     {
@@ -20,412 +20,388 @@
   "perPeople": {
     "humain": {
       "cases": 288,
-      "passed": 0,
-      "failed": 288
+      "passed": 288,
+      "failed": 0
     },
     "nain": {
       "cases": 288,
-      "passed": 0,
-      "failed": 288
+      "passed": 288,
+      "failed": 0
     },
     "demi-elfe": {
       "cases": 288,
-      "passed": 0,
-      "failed": 288
+      "passed": 288,
+      "failed": 0
     },
     "demi-orc": {
       "cases": 288,
-      "passed": 0,
-      "failed": 288
+      "passed": 288,
+      "failed": 0
     },
     "elfe-haut": {
       "cases": 288,
-      "passed": 0,
-      "failed": 288
+      "passed": 288,
+      "failed": 0
     },
     "elfe-sylvain": {
       "cases": 288,
-      "passed": 0,
-      "failed": 288
+      "passed": 224,
+      "failed": 64
     },
     "gnome": {
       "cases": 288,
-      "passed": 0,
-      "failed": 288
+      "passed": 288,
+      "failed": 0
     },
     "halfelin": {
       "cases": 288,
-      "passed": 0,
-      "failed": 288
+      "passed": 288,
+      "failed": 0
     }
   },
   "histories": {
     "history:campaigns": {
       "cases": 128,
-      "passed": 0,
-      "failed": 128
+      "passed": 112,
+      "failed": 16
     },
     "history:courtier": {
       "cases": 144,
-      "passed": 0,
-      "failed": 144
+      "passed": 140,
+      "failed": 4
     },
     "history:scholar": {
       "cases": 144,
-      "passed": 0,
-      "failed": 144
+      "passed": 140,
+      "failed": 4
     },
     "history:expert": {
       "cases": 144,
-      "passed": 0,
-      "failed": 144
+      "passed": 140,
+      "failed": 4
     },
     "history:commoner": {
       "cases": 144,
-      "passed": 0,
-      "failed": 144
+      "passed": 140,
+      "failed": 4
     },
     "history:soldier": {
       "cases": 144,
-      "passed": 0,
-      "failed": 144
+      "passed": 140,
+      "failed": 4
     },
     "history:pauper": {
       "cases": 144,
-      "passed": 0,
-      "failed": 144
+      "passed": 140,
+      "failed": 4
     },
     "history:wealthy": {
       "cases": 144,
-      "passed": 0,
-      "failed": 144
+      "passed": 140,
+      "failed": 4
     },
     "history:nomad": {
       "cases": 144,
-      "passed": 0,
-      "failed": 144
+      "passed": 140,
+      "failed": 4
     },
     "history:cities": {
       "cases": 128,
-      "passed": 0,
-      "failed": 128
+      "passed": 112,
+      "failed": 16
     },
     "history:deserts": {
       "cases": 128,
-      "passed": 0,
-      "failed": 128
+      "passed": 128,
+      "failed": 0
     },
     "history:forests": {
       "cases": 128,
-      "passed": 0,
-      "failed": 128
+      "passed": 128,
+      "failed": 0
     },
     "history:caves": {
       "cases": 128,
-      "passed": 0,
-      "failed": 128
+      "passed": 128,
+      "failed": 0
     },
     "history:marshes": {
       "cases": 128,
-      "passed": 0,
-      "failed": 128
+      "passed": 128,
+      "failed": 0
     },
     "history:mountains": {
       "cases": 128,
-      "passed": 0,
-      "failed": 128
+      "passed": 128,
+      "failed": 0
     },
     "history:plains": {
       "cases": 128,
-      "passed": 0,
-      "failed": 128
+      "passed": 128,
+      "failed": 0
     },
     "history:shores": {
       "cases": 128,
-      "passed": 0,
-      "failed": 128
+      "passed": 128,
+      "failed": 0
     }
   },
   "failures": [
     {
-      "tag": "index.html|humain|history:campaigns|history:courtier|history:campaigns",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:courtier|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:courtier|history:courtier",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:courtier|history:courtier",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:scholar|history:campaigns",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:scholar|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:scholar|history:scholar",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:scholar|history:scholar",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:expert|history:campaigns",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:expert|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:expert|history:expert",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:expert|history:expert",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:commoner|history:campaigns",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:commoner|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:commoner|history:commoner",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:commoner|history:commoner",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:soldier|history:campaigns",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:soldier|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:soldier|history:soldier",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:soldier|history:soldier",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:pauper|history:campaigns",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:pauper|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:pauper|history:pauper",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:pauper|history:pauper",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:wealthy|history:campaigns",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:wealthy|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:wealthy|history:wealthy",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:wealthy|history:wealthy",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:nomad|history:campaigns",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:nomad|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:campaigns|history:nomad|history:nomad",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:campaigns|history:nomad|history:nomad",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:courtier|history:cities",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:courtier|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:courtier|history:courtier",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:courtier|history:courtier",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:scholar|history:cities",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:scholar|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:scholar|history:scholar",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:scholar|history:scholar",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:expert|history:cities",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:expert|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:expert|history:expert",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:expert|history:expert",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:commoner|history:cities",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:commoner|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:commoner|history:commoner",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:commoner|history:commoner",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:soldier|history:cities",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:soldier|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:soldier|history:soldier",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:soldier|history:soldier",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:pauper|history:cities",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:pauper|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:pauper|history:pauper",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:pauper|history:pauper",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:wealthy|history:cities",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:wealthy|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:wealthy|history:wealthy",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:wealthy|history:wealthy",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:nomad|history:cities",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:nomad|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:cities|history:nomad|history:nomad",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "index.html|elfe-sylvain|history:cities|history:nomad|history:nomad",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:courtier|history:deserts",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:courtier|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:courtier|history:courtier",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:courtier|history:courtier",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:scholar|history:deserts",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:scholar|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:scholar|history:scholar",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:scholar|history:scholar",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:expert|history:deserts",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:expert|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:expert|history:expert",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:expert|history:expert",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:commoner|history:deserts",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:commoner|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:commoner|history:commoner",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:commoner|history:commoner",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:soldier|history:deserts",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:soldier|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:soldier|history:soldier",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:soldier|history:soldier",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:pauper|history:deserts",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:pauper|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:pauper|history:pauper",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:pauper|history:pauper",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:wealthy|history:deserts",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:wealthy|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:wealthy|history:wealthy",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:wealthy|history:wealthy",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:nomad|history:deserts",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:nomad|history:campaigns",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:deserts|history:nomad|history:nomad",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:campaigns|history:nomad|history:nomad",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:courtier|history:forests",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:courtier|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:courtier|history:courtier",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:courtier|history:courtier",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:scholar|history:forests",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:scholar|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:scholar|history:scholar",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:scholar|history:scholar",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:expert|history:forests",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:expert|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:expert|history:expert",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:expert|history:expert",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:commoner|history:forests",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:commoner|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:commoner|history:commoner",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:commoner|history:commoner",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:soldier|history:forests",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:soldier|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:soldier|history:soldier",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:soldier|history:soldier",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:pauper|history:forests",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:pauper|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:pauper|history:pauper",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:pauper|history:pauper",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:wealthy|history:forests",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:wealthy|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:wealthy|history:wealthy",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:wealthy|history:wealthy",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:nomad|history:forests",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:nomad|history:cities",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     },
     {
-      "tag": "index.html|humain|history:forests|history:nomad|history:nomad",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
-    },
-    {
-      "tag": "index.html|humain|history:caves|history:courtier|history:caves",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
-    },
-    {
-      "tag": "index.html|humain|history:caves|history:courtier|history:courtier",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
-    },
-    {
-      "tag": "index.html|humain|history:caves|history:scholar|history:caves",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
-    },
-    {
-      "tag": "index.html|humain|history:caves|history:scholar|history:scholar",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
-    },
-    {
-      "tag": "index.html|humain|history:caves|history:expert|history:caves",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
-    },
-    {
-      "tag": "index.html|humain|history:caves|history:expert|history:expert",
-      "error": "Error: Mode historique : exactement une voie de profil est requise."
+      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|elfe-sylvain|history:cities|history:nomad|history:nomad",
+      "error": "Error: Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172)."
     }
   ],
   "source": "Règles avancées COF2 p.153, voies d’historique pp.170–180",
