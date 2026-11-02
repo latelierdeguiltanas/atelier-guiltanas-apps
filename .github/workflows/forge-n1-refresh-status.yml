@@ -1,0 +1,43 @@
+name: Forge N1 - refresh phase status
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-refresh-status.yml'
+permissions:
+  contents: write
+jobs:
+  mechanical-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Recompute phase status from current SHA and archived proofs
+        id: checks
+        continue-on-error: true
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_phase_status.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n1-current-phase-gate
+          path: forge-of-heroes/QA/N1/status.json
+      - name: Save updated gate status
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/QA/N1/status.json
+          if ! git diff --cached --quiet; then
+            git commit -m "test(forge-n1): statut source de vérité N1 recalculé [skip ci]"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Require automated gate
+        if: steps.checks.outcome == 'failure'
+        run: exit 1
