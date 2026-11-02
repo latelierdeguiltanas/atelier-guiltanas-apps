@@ -1,0 +1,4456 @@
+{
+  "schema": "FOH_N1_OFFICIAL_METHODS_CROSS",
+  "createdAt": "2026-11-02T10:44:52.002Z",
+  "sourceCommit": "8968d0e2ed294446d45dcb074806a2b2864f6adc",
+  "sourceSha256": "77b24833bc3c081f000b67aaeeea837894562ecce86072d4ce6dc9bc720f63e5",
+  "sourceRule": "règles avancées pages imprimées 152–153 : séries, point-buy et semi-aléatoire. Domaine exhaustif des méthodes contrôlé indépendamment par QA/N1/lot2/characteristic-methods.json.",
+  "scope": "14 profils officiels × 8 peuples officiels × 9 états de méthode. Vérification du choix légal, projection des sept caractéristiques et relecture de la sauvegarde; inclut une parité entre série Expert et achat identique. Ce contrôle ne certifie pas les options de voie, les autres équipements ni toute l’interface.",
+  "cases": 981,
+  "passed": 981,
+  "failed": 3,
+  "refused": 0,
+  "failedCases": [
+    {
+      "key": "people:halfelin:cof2-lb-2024|class:barbare:cof2-lb-2024",
+      "error": "No valid standard pair in supplied equipment; not a product assertion"
+    },
+    {
+      "key": "people:halfelin:cof2-lb-2024|class:chevalier:cof2-lb-2024",
+      "error": "No valid standard pair in supplied equipment; not a product assertion"
+    },
+    {
+      "key": "people:halfelin:cof2-lb-2024|class:guerrier:cof2-lb-2024",
+      "error": "No valid standard pair in supplied equipment; not a product assertion"
+    }
+  ],
+  "refusedReasons": {},
+  "items": {
+    "profiles": {
+      "class:arquebusier:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "class:barde:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "class:rodeur:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "class:voleur:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "class:barbare:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barbare:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barbare:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barbare:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barbare:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barbare:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barbare:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barbare:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "class:chevalier:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:chevalier:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:chevalier:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:chevalier:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:chevalier:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:chevalier:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:chevalier:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:chevalier:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "class:guerrier:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:guerrier:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:guerrier:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:guerrier:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:guerrier:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:guerrier:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:guerrier:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:guerrier:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "class:ensorceleur:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "class:forgesort:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "class:magicien:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "class:sorcier:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "class:druide:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "class:moine:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "class:pretre:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ]
+    },
+    "peoples": {
+      "people:demi-elfe:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barbare:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:chevalier:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:guerrier:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:demi-elfe:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "people:demi-orc:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barbare:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:chevalier:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:guerrier:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:demi-orc:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "people:elfe-haut:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barbare:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:chevalier:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:guerrier:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:elfe-haut:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "people:elfe-sylvain:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barbare:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:chevalier:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:guerrier:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:elfe-sylvain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "people:gnome:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barbare:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:chevalier:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:guerrier:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:gnome:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "people:halfelin:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:halfelin:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "people:humain:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barbare:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:chevalier:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:guerrier:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:humain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ],
+      "people:nain:cof2-lb-2024": [
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:arquebusier:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barde:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:rodeur:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:voleur:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:barbare:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:chevalier:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:guerrier:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:ensorceleur:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:forgesort:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:magicien:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:sorcier:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:druide:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:moine:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        },
+        {
+          "attempted": 9,
+          "passed": 9,
+          "refused": 0,
+          "parity": true,
+          "profile": "class:pretre:cof2-lb-2024",
+          "people": "people:nain:cof2-lb-2024",
+          "methodIds": [
+            "series-expert",
+            "series-polyvalent",
+            "series-specialiste",
+            "purchase-expert",
+            "purchase-balanced",
+            "purchase-specialiste",
+            "semi-mixed",
+            "semi-low",
+            "semi-high"
+          ],
+          "status": "PASS"
+        }
+      ]
+    }
+  },
+  "families": {},
+  "methods": [
+    "series-expert",
+    "series-polyvalent",
+    "series-specialiste",
+    "purchase-expert",
+    "purchase-balanced",
+    "purchase-specialiste",
+    "semi-mixed",
+    "semi-low",
+    "semi-high"
+  ],
+  "coverage": {
+    "profiles": 14,
+    "peoples": 8,
+    "methodRepresentatives": 9,
+    "expectedCases": 1008,
+    "complete": false
+  }
+}
