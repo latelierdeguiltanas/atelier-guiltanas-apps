@@ -5,7 +5,7 @@ const {load,standardState}=require('./forge_product_runner');
 const ROOT=path.resolve(__dirname,'..'), copy=x=>JSON.parse(JSON.stringify(x));
 const profile='class:arquebusier:cof2-lb-2024', races=['humain','nain','demi-elfe','demi-orc','elfe-haut','elfe-sylvain','gnome','halfelin'];
 const source={book:'COF2 Livre de base imprimé pp.62–65; Règles avancées p.153 (catégories d’âge)',familyHpPerLevel:4,baseHpN1:8,ageEffects:{'very-young':{agi:0,con:0,init:-1},young:{agi:0,con:0,init:0},mature:{agi:-1,con:0,init:0},venerable:{agi:-1,con:-1,init:0}},ranks:{young:1,'very-young':1,mature:2,venerable:3}};
-const reports={schema:'FOH_N1_ARQUEBUSIER_PURE_AGE_RANK',timestamp:new Date().toISOString(),scope:'14? No: only Arquebusier pure × 8 official peoples × five different first paths × all ages (very young PC/DR, young, mature, venerable), both product engines. Validates racial and age characteristics against book rules, permanent PV/DEF/INIT under equip, existence of each accessible rank, local save/reopen. Contextual spells/attacks, historical choices, Arbalétrier alternative and PDF are NOT validated.',source,sourceCommit:process.env.GITHUB_SHA||null,expected:8*5*5*2,cases:0,pass:0,refused:0,failed:0,failures:[],perRace:{},perPath:{},products:[]};
+const reports={schema:'FOH_N1_ARQUEBUSIER_PURE_AGE_RANK',timestamp:new Date().toISOString(),scope:'14? No: only Arquebusier pure × 8 official peoples × five different first paths × all ages (very young PC/DR, young, mature, venerable), both product engines. Validates racial and age characteristics against book rules, permanent PV/DEF/INIT under equip, existence of each accessible rank, local save/reopen. Contextual spells/attacks, historical choices, Arbalétrier alternative and PDF are NOT validated.',source,sourceCommit:process.env.GITHUB_SHA||null,expected:8*5*5*2,cases:0,pass:0,refused:0,failed:0,failures:[],perRace:{},perPath:{},products:[],samples:[]};
 const raceRules={
  humain:{bonus:'cha',malus:null,humain:true,path:'voie-de-l-humain'},
  nain:{bonus:'con',malus:'agi',path:'voie-du-nain'},
@@ -54,6 +54,10 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
    const actual=copy(result.sticky.caracs),expected={...s.baseCaracs},a=source.ageEffects[age];expected[r.bonus]++;if(r.malus)expected[r.malus]--;expected.agi+=a.agi;expected.con+=a.con;
    if(JSON.stringify(expected)!==JSON.stringify(actual))throw Error('Incorrect ancestry+age stats expected '+JSON.stringify(expected)+' actual '+JSON.stringify(actual));
    const sticky=result.sticky;
+   if(race==='humain'&&(age==='young'||age==='mature'||age==='venerable')){
+    const A=T.abilities_class.filter(a=>a.path_id===first.id&&a.rank<=source.ranks[age]);
+    reports.samples.push({file,race,path:first.id,age,rank:source.ranks[age],snapshot:{PV:sticky.PV,DEF:sticky.DEF,INIT:sticky.INIT,caracs:copy(sticky.caracs),attacks:copy(sticky.attacks||[]),skills:copy(sticky.skills||[]),equip:copy(sticky.equip||{}),effects:copy(sticky.effects||[]),characterStateAbilities:copy(sticky.characterState?.abilities||[])},ranks:A.map(a=>({id:a.id,label:a.label,rank:a.rank,mechanics:a.mechanics,calculationRules:a.calculationRules,certification:a.certification}))});
+   }
    if(sticky.PV!==source.baseHpN1+expected.con)throw Error('PV baseline differs from book ('+sticky.PV+' vs '+(source.baseHpN1+expected.con)+')');
    // Depending on a loaded firearm, Plus vite que son ombre grants a shot initiative,
    // not a passive character-wide INIT; compare only when not using that path.
