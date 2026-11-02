@@ -1,0 +1,49 @@
+{
+  "schema": "FOH_N1_PILIER_DE_BAR_SOURCE_CORRECTION",
+  "source": "COF2 Livre de base p.64",
+  "expected": "1d4° DM non létaux à mains nues",
+  "status": "PASS",
+  "products": [
+    {
+      "file": "index.html",
+      "changed": true,
+      "previous": [
+        {
+          "id": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "formula": "1d4"
+        },
+        {
+          "id": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+          "formula": "1d4"
+        }
+      ],
+      "expected": "1d4°",
+      "attack": "1d4°",
+      "nonLethal": true,
+      "saveReload": "PASS",
+      "beforeSha256": "d628864b125c28f6e9530832c5351c23c5c785a3804007baf39d5154f3d08290",
+      "afterSha256": "2faa37ebdc8e8329fe324c4315359290cd776f11f70c9e24e5886bd04cad79c6"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "changed": true,
+      "previous": [
+        {
+          "id": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "formula": "1d4"
+        },
+        {
+          "id": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+          "formula": "1d4"
+        }
+      ],
+      "expected": "1d4°",
+      "attack": "1d4°",
+      "nonLethal": true,
+      "saveReload": "PASS",
+      "beforeSha256": "d2c34d6a5fe753e1c71dcb93b7f68655a67d65df6ebead381a3c80ac10a611a1",
+      "afterSha256": "ddd17158ff9148650cc6c1177b3cecc624a76e5b018197781516b15b80df93e9"
+    }
+  ],
+  "failures": []
+}
