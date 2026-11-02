@@ -34,7 +34,14 @@ const historyCrossPassed=!!arqHistory&&arqHistory.status==='PASS'&&arqHistory.co
 const profile=pure.items.find(x=>x.profile==='Arquebusier'&&x.people==='Nain');
 if(pure.items.length!==112||!profile||profile.powers.length!==5||ages.complete!==true||ages.pass!==400)throw Error('Missing or non-current proof');
 const mark=(id,name,yes,detail,remaining)=>({id,name,status:yes?'ACQUIS':'A_VERIFIER',detail:yes?detail:remaining});
-const ageOK=ages.complete&&ages.pass===ages.expected;
+const ageOK=ages.complete&&ages.pass===ages.expected&&ages.products?.length===2&&ages.products.every(x=>fs.existsSync(path.join(root,x.file))&&productHash(x.file)===x.htmlSha256);
+const pdfFile=path.join(root,'QA/N1/arquebusier-pdf-real-click.json');
+const pdfEvidence=fs.existsSync(pdfFile)?JSON.parse(fs.readFileSync(pdfFile,'utf8')):null;
+const pdfProbePass=pdfEvidence?.status==='PASS'&&['Arquebusier','Arbalétrier'].every(v=>['fillable','flat-official-digest-simulated'].every(k=>pdfEvidence.results?.some(x=>x.variant===v&&x.templateKind===k&&x.firstTwoPagesHaveName===true&&x.firstTwoPagesHaveProfile===true&&x.pages>=3)));
+const mechanicalFile=path.join(root,'QA/N1/arquebusier-all-mechanics-probe.json');
+const mechanical=fs.existsSync(mechanicalFile)?JSON.parse(fs.readFileSync(mechanicalFile,'utf8')):null;
+const mechanicalCurrent=mechanical?.status==='SNAPSHOT_COHERENT_STRUCTURE_UNEVALUATED'&&mechanical.products?.length===2&&mechanical.products.every(x=>fs.existsSync(path.join(root,x.file))&&productHash(x.file)===x.sha256)&&mechanical.products.every(x=>x.abilities.length===15);
+
 const effects=ages.numericEffectAssertions||{};
 const numericPartial=effects['Arme à répétition — chargeur 2 + INT et +1 au rang 3']===32&&effects['Poudre puissante — portée +10 m, dommages +1 et projectile magique']===16&&effects['Tir précis — critique sur 19-20 à distance']===16&&effects['Combattant aguerri — défense +1']===16;
 const profileChecks=[
@@ -45,14 +52,14 @@ const profileChecks=[
  mark('r3','Recevoir les capacités de rang 3',ageOK,'Les cinq rangs 3 obtenus à N1 par l’âge vénérable sont attribués et sauvegardés.','Vérifier les cinq rangs 3.'),
  mark('age','Dépenses de rangs selon l’âge',ageOK,'Très jeune, jeune, mûr et vénérable : rangs supplémentaires et restrictions vérifiés.','Vérifier tous les choix d’âge.'),
  mark('methods','Méthodes de répartition des caractéristiques',true,'Séries, achat et tirages représentatifs avec toutes les races officielles ; les règles raciales sont comptées à part.','Contrôler les méthodes du profil.'),
- mark('derived','PV, DEF, initiative, chance, mana, attaques et dommages',false,'','Faire correspondre chaque valeur et chaque bonus permanent au Livre de base avec les voies et équipements autorisés.'),
+ mark('derived','PV, DEF, initiative, chance, mana, attaques et dommages',false,'',ageOK?'400/400 oracles sur les 8 peuples × 5 voies × 5 âges × 2 produits : caractéristiques, PV, DEF, INIT, pouvoirs numériques ciblés et sauvegarde. Restent toutes les variantes d’attaques, choix permanents, équipements et effets conditionnels.':'Faire correspondre chaque valeur et chaque bonus permanent au Livre de base avec les voies et équipements autorisés.'),
  mark('r1effects','Tous les effets des cinq capacités de rang 1',false,'',pilierContinuity?'Pilier de bar corrigé : mains nues 1d4° non létaux, calcul et sauvegarde vérifiés sur les deux moteurs. Restent les tests de combat, de compétences, de couverture, de grenaille et d’initiative conditionnelle.':'Vérifier les compétences, les jets, le couvert, les tirs de grenaille et l’initiative avec une arme chargée, selon les conditions du livre.'),
- mark('r2effects','Tous les effets des cinq capacités de rang 2',false,'','Chargeur 2 + INT validé ; restent le rechargement, la démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse.'),
+ mark('r2effects','Tous les effets des cinq capacités de rang 2',false,'',mechanicalCurrent?'15 capacités R1–R3 contrôlées dans les deux bases, et chargeur 2+INT validé. Plusieurs rangs R2 restent des effets à interpréter en combat ; rechargement, Démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse non certifiés en exécution.':'Chargeur 2 + INT validé ; restent le rechargement, la démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse.'),
  mark('r3effects','Tous les effets des cinq capacités de rang 3',false,'','Poudre puissante, Tir précis et +1 DEF de Combattant aguerri chiffrés ; vérifier le choix d’aptitude, Tir double, Tir de barrage et toutes les conditions.'),
  mark('gear','Toutes les armes, armures et variante Arbalétrier',false,'',deployed||arbaletrierMissing?variantGap:'Maîtrises, armure maximum, absence de bouclier, deux mains, armes à poudre, équipements alternatifs et Arbalétrier sans poudre.'),
  mark('history','Origines, métiers et historiques avancés',false,'',historyCrossPassed?'Les 17 historiques sont accessibles, leurs rangs et sauvegardes réussissent avec les huit peuples. Restent à vérifier individuellement leurs bonus conditionnels, les restrictions et l’export sur la fiche de l’Arquebusier.':'Contrôler toutes les voies d’historique, leurs rangs accessibles et leurs effets sur les aptitudes de l’Arquebusier.'),
  mark('save','Enregistrer et reprendre les pouvoirs obtenus',ageOK,'Les états de référence des rangs 1, 2 et 3 avec l’âge ont été enregistrés et restaurés à l’identique.','Vérifier la sauvegarde et la reprise.'),
- mark('pdf','Fiche officielle et annexes',false,'','Vérifier les deux pages officielles, toutes les valeurs, les résumés et les descriptions des voies.'),
+ mark('pdf','Fiche officielle et annexes',false,'',pdfProbePass?'Test réel Chrome et smartphone des exports des deux variantes : 4 PDF de 6 pages, nom et profil présents sur les deux premières pages, PDF sans champs étranger refusé. Empreinte du modèle COF2 reconnue en simulation ; restent le rendu sur le PDF officiel réel et la vérification exhaustive des champs, textes et annexes.':'Vérifier les deux pages officielles, toutes les valeurs, les résumés et les descriptions des voies.'),
  mark('click','Créer, sauvegarder et rouvrir au clic sur mobile',false,'','Effectuer toutes les variantes utiles dans l’interface réelle et sur format téléphone.')
 ];
 const verified=profileChecks.filter(x=>x.status==='ACQUIS').length;
@@ -112,7 +119,7 @@ const output={
  pausedProfiles:13,
  summary:{profilesCertified:0,profilesInProgress:1,profilesPending:13,peoplesCertified:peoples.filter(p=>p.certified).length},
  limitations:'Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.',
- sources:[...(variant?['QA/N1/arquebusier-arbaletrier-source-audit.json']:[]),'COF2 Livre de base pp. 44-65','Règles avancées p.153 et historiques','QA/N1/arquebusier-pure-age-ranks.json','QA/N1/official-methods-cross.json','QA/N1/official-racial-options.json','QA/N1/lot10/people-source.json']
+ sources:[...(variant?['QA/N1/arquebusier-arbaletrier-source-audit.json']:[]),'COF2 Livre de base pp. 44-65','Règles avancées p.153 et historiques','QA/N1/arquebusier-pure-age-ranks.json','QA/N1/arquebusier-pdf-real-click.json','QA/N1/arquebusier-all-mechanics-probe.json','QA/N1/official-methods-cross.json','QA/N1/official-racial-options.json','QA/N1/lot10/people-source.json']
 };
 const dest=path.resolve(root,'..','centre-synchronisation/forge-n1/focus.json');
 fs.writeFileSync(dest,JSON.stringify(output,null,2)+'\n');
