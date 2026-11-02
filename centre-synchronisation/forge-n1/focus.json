@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-02T12:00:01.517Z",
+  "generatedAt": "2026-11-02T12:07:44.724Z",
   "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
   "intent": "Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.",
   "profile": {
@@ -82,7 +82,7 @@
         "id": "gear",
         "name": "Toutes les armes, armures et variante Arbalétrier",
         "status": "A_VERIFIER",
-        "detail": "Maîtrises, armure maximum, absence de bouclier, deux mains, armes à poudre, équipements alternatifs et Arbalétrier sans poudre."
+        "detail": "Blocage confirmé dans Forge : la variante officielle Arbalétrier (Livre de base p.62) est absente du catalogue. Il faut remplacer les explosifs par la Voie du maître d’armes limitée aux arbalètes, adapter les armes de départ, puis vérifier armures et maîtrises."
       },
       {
         "id": "history",
@@ -247,7 +247,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Achever les compétences, tirs spéciaux, rechargements, équipement et Arbalétrier ; puis historiques, PDF et parcours au clic."
+    "next": "Intégrer la variante Arbalétrier absente, puis achever les tirs spéciaux, les autres effets de rang, historiques, PDF et création mobile."
   },
   "peoples": [
     {
@@ -836,6 +836,7 @@
   },
   "limitations": "Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.",
   "sources": [
+    "QA/N1/arquebusier-arbaletrier-source-audit.json",
     "COF2 Livre de base pp. 44-65",
     "Règles avancées p.153 et historiques",
     "QA/N1/arquebusier-pure-age-ranks.json",
