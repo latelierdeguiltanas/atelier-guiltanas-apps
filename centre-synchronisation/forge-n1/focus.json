@@ -1,0 +1,846 @@
+{
+  "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
+  "generatedAt": "2026-11-02T12:00:01.517Z",
+  "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
+  "intent": "Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.",
+  "profile": {
+    "id": "class:arquebusier:cof2-lb-2024",
+    "name": "Arquebusier",
+    "priority": "EN_COURS",
+    "completed": false,
+    "passed": 7,
+    "total": 16,
+    "percent": 44,
+    "checks": [
+      {
+        "id": "paths",
+        "name": "Les cinq voies officielles",
+        "status": "ACQUIS",
+        "detail": "Les cinq voies et leurs 15 rangs accessibles sont présents et référencés."
+      },
+      {
+        "id": "pairs",
+        "name": "Toutes les paires de voies légales",
+        "status": "A_VERIFIER",
+        "detail": "Les dix choix possibles de deux voies doivent fonctionner avec les équipements autorisés, y compris l’alternative Halfelin."
+      },
+      {
+        "id": "r1",
+        "name": "Recevoir les capacités de rang 1",
+        "status": "ACQUIS",
+        "detail": "Les cinq rangs 1 sont attribués et sauvegardés dans les créations de référence."
+      },
+      {
+        "id": "r2",
+        "name": "Recevoir les capacités de rang 2",
+        "status": "ACQUIS",
+        "detail": "Les cinq rangs 2 obtenus à N1 par l’âge mûr sont attribués et sauvegardés."
+      },
+      {
+        "id": "r3",
+        "name": "Recevoir les capacités de rang 3",
+        "status": "ACQUIS",
+        "detail": "Les cinq rangs 3 obtenus à N1 par l’âge vénérable sont attribués et sauvegardés."
+      },
+      {
+        "id": "age",
+        "name": "Dépenses de rangs selon l’âge",
+        "status": "ACQUIS",
+        "detail": "Très jeune, jeune, mûr et vénérable : rangs supplémentaires et restrictions vérifiés."
+      },
+      {
+        "id": "methods",
+        "name": "Méthodes de répartition des caractéristiques",
+        "status": "ACQUIS",
+        "detail": "Séries, achat et tirages représentatifs avec toutes les races officielles ; les règles raciales sont comptées à part."
+      },
+      {
+        "id": "derived",
+        "name": "PV, DEF, initiative, chance, mana, attaques et dommages",
+        "status": "A_VERIFIER",
+        "detail": "Faire correspondre chaque valeur et chaque bonus permanent au Livre de base avec les voies et équipements autorisés."
+      },
+      {
+        "id": "r1effects",
+        "name": "Tous les effets des cinq capacités de rang 1",
+        "status": "A_VERIFIER",
+        "detail": "Vérifier les compétences, les jets, le couvert, les tirs de grenaille et l’initiative avec une arme chargée, selon les conditions du livre."
+      },
+      {
+        "id": "r2effects",
+        "name": "Tous les effets des cinq capacités de rang 2",
+        "status": "A_VERIFIER",
+        "detail": "Chargeur 2 + INT validé ; restent le rechargement, la démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse."
+      },
+      {
+        "id": "r3effects",
+        "name": "Tous les effets des cinq capacités de rang 3",
+        "status": "A_VERIFIER",
+        "detail": "Poudre puissante, Tir précis et +1 DEF de Combattant aguerri chiffrés ; vérifier le choix d’aptitude, Tir double, Tir de barrage et toutes les conditions."
+      },
+      {
+        "id": "gear",
+        "name": "Toutes les armes, armures et variante Arbalétrier",
+        "status": "A_VERIFIER",
+        "detail": "Maîtrises, armure maximum, absence de bouclier, deux mains, armes à poudre, équipements alternatifs et Arbalétrier sans poudre."
+      },
+      {
+        "id": "history",
+        "name": "Origines, métiers et historiques avancés",
+        "status": "A_VERIFIER",
+        "detail": "Contrôler toutes les voies d’historique et leurs effets sur les aptitudes de l’Arquebusier."
+      },
+      {
+        "id": "save",
+        "name": "Enregistrer et reprendre les pouvoirs obtenus",
+        "status": "ACQUIS",
+        "detail": "Les états de référence des rangs 1, 2 et 3 avec l’âge ont été enregistrés et restaurés à l’identique."
+      },
+      {
+        "id": "pdf",
+        "name": "Fiche officielle et annexes",
+        "status": "A_VERIFIER",
+        "detail": "Vérifier les deux pages officielles, toutes les valeurs, les résumés et les descriptions des voies."
+      },
+      {
+        "id": "click",
+        "name": "Créer, sauvegarder et rouvrir au clic sur mobile",
+        "status": "A_VERIFIER",
+        "detail": "Effectuer toutes les variantes utiles dans l’interface réelle et sur format téléphone."
+      }
+    ],
+    "paths": [
+      {
+        "name": "Voie de l’artilleur",
+        "page": 62,
+        "abilities": [
+          {
+            "rank": 1,
+            "name": "Mécanismes",
+            "focus": "Bonus rang + 2 aux réparations et mécanismes ; dé bonus avec les armes de siège.",
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
+          },
+          {
+            "rank": 2,
+            "name": "Arme à répétition",
+            "focus": "Chargeur de 2 + INT projectiles ; recharge par action limitée ; bonus lié aux rangs 3.",
+            "calculation": "Chargeur vérifié : 2 + INT projectiles, puis +1 avec un rang 3 d’Arquebusier. Rechargement au combat encore à valider.",
+            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+          },
+          {
+            "rank": 3,
+            "name": "Tir de barrage (L)",
+            "focus": "Attaque déclenchée par un déplacement ; choix entre dégâts doublés ou arrêt du mouvement.",
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
+          }
+        ]
+      },
+      {
+        "name": "Voie des explosifs",
+        "page": 62,
+        "abilities": [
+          {
+            "rank": 1,
+            "name": "Tir de grenaille (L)",
+            "focus": "Attaque de zone avec une arme à poudre ; moitié des dégâts et bonus d’artificier.",
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
+          },
+          {
+            "rank": 2,
+            "name": "Démolition",
+            "focus": "Dégâts d’explosif sur une structure, temps de préparation et réduction des protections.",
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
+          },
+          {
+            "rank": 3,
+            "name": "Poudre puissante",
+            "focus": "Bonus de portée et de dégâts pour les armes à poudre.",
+            "calculation": "Poudre puissante vérifiée : +10 m de portée, +1 aux dégâts et projectiles magiques. Les interactions de combat restent à confirmer.",
+            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+          }
+        ]
+      },
+      {
+        "name": "Voie du mercenaire",
+        "page": 62,
+        "abilities": [
+          {
+            "rank": 1,
+            "name": "Pilier de bar",
+            "focus": "Bonus rang + 2 aux interactions dans les tavernes ou auberges.",
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
+          },
+          {
+            "rank": 2,
+            "name": "Mort ou vif (L)",
+            "focus": "Attaque spéciale au contact ou à distance avec dégâts supplémentaires.",
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
+          },
+          {
+            "rank": 3,
+            "name": "Combattant aguerri",
+            "focus": "Choix d’une capacité de rang 1 autorisée d’un autre profil.",
+            "calculation": "Combattant aguerri : le +1 en DEF est vérifié. Le choix d’une capacité gratuite et ses restrictions d’armure restent à contrôler.",
+            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+          }
+        ]
+      },
+      {
+        "name": "Voie du pistolero",
+        "page": 62,
+        "abilities": [
+          {
+            "rank": 1,
+            "name": "Plus vite que son ombre",
+            "focus": "Bonus d’initiative de +5 si l’arme à poudre est chargée et tenue.",
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
+          },
+          {
+            "rank": 2,
+            "name": "Ajuster le tir",
+            "focus": "Bonus conditionnel au tir qui suit une attaque à distance ratée.",
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
+          },
+          {
+            "rank": 3,
+            "name": "Tir double (L)",
+            "focus": "Attaques avec deux armes de poing ; mains, cibles et rechargement.",
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
+          }
+        ]
+      },
+      {
+        "name": "Voie de la précision",
+        "page": 62,
+        "abilities": [
+          {
+            "rank": 1,
+            "name": "Joli coup",
+            "focus": "Ignore une pénalité liée à une couverture partielle.",
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
+          },
+          {
+            "rank": 2,
+            "name": "Défaut dans la cuirasse (A)",
+            "focus": "Action de préparation et tir visant la faiblesse d’une cible.",
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
+          },
+          {
+            "rank": 3,
+            "name": "Tir précis",
+            "focus": "Plage de critique des armes à distance.",
+            "calculation": "Tir précis vérifié : critique sur 19–20 à distance, sans changer le seuil des armes de contact.",
+            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+          }
+        ]
+      }
+    ],
+    "partialNumericValidated": true,
+    "next": "Achever les compétences, tirs spéciaux, rechargements, équipement et Arbalétrier ; puis historiques, PDF et parcours au clic."
+  },
+  "peoples": [
+    {
+      "id": "people:demi-elfe:cof2-lb-2024",
+      "key": "demi-elfe",
+      "name": "Demi-elfe",
+      "rules": "Bonus de +1 PER ou CHA, malus de −1 FOR ou CON ; héritage au choix : Humain, Elfe haut ou Elfe sylvain.",
+      "checks": [
+        {
+          "id": "catalogue",
+          "name": "Peuple officiel et voie raciale",
+          "status": "ACQUIS",
+          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+        },
+        {
+          "id": "caracs",
+          "name": "Bonus et malus de caractéristiques",
+          "status": "ACQUIS",
+          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+        },
+        {
+          "id": "options",
+          "name": "Tous les choix raciaux de départ",
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+        },
+        {
+          "id": "r1",
+          "name": "Voie raciale de rang 1",
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+        },
+        {
+          "id": "r2",
+          "name": "Voie raciale de rang 2",
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+        },
+        {
+          "id": "methods",
+          "name": "Caractéristiques et sauvegarde des choix",
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+        },
+        {
+          "id": "ages",
+          "name": "Tous les âges et historiques avec ce peuple",
+          "status": "A_VERIFIER",
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
+        },
+        {
+          "id": "conditional",
+          "name": "Effets conditionnels et dons raciaux",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier chaque pouvoir racial selon ses conditions réelles, y compris dons et résistances."
+        },
+        {
+          "id": "gear",
+          "name": "Équipements et contraintes de taille",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
+        },
+        {
+          "id": "sheet",
+          "name": "Fiche officielle et parcours de création",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
+        }
+      ],
+      "passed": 6,
+      "total": 10,
+      "percent": 60,
+      "certified": false
+    },
+    {
+      "id": "people:demi-orc:cof2-lb-2024",
+      "key": "demi-orc",
+      "name": "Demi-orc",
+      "rules": "Bonus de +1 FOR ou CON et malus de −1 CHA ou INT ; voie du Demi-orc.",
+      "checks": [
+        {
+          "id": "catalogue",
+          "name": "Peuple officiel et voie raciale",
+          "status": "ACQUIS",
+          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+        },
+        {
+          "id": "caracs",
+          "name": "Bonus et malus de caractéristiques",
+          "status": "ACQUIS",
+          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+        },
+        {
+          "id": "options",
+          "name": "Tous les choix raciaux de départ",
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+        },
+        {
+          "id": "r1",
+          "name": "Voie raciale de rang 1",
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+        },
+        {
+          "id": "r2",
+          "name": "Voie raciale de rang 2",
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+        },
+        {
+          "id": "methods",
+          "name": "Caractéristiques et sauvegarde des choix",
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+        },
+        {
+          "id": "ages",
+          "name": "Tous les âges et historiques avec ce peuple",
+          "status": "A_VERIFIER",
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
+        },
+        {
+          "id": "conditional",
+          "name": "Effets conditionnels et dons raciaux",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier chaque pouvoir racial selon ses conditions réelles, y compris dons et résistances."
+        },
+        {
+          "id": "gear",
+          "name": "Équipements et contraintes de taille",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
+        },
+        {
+          "id": "sheet",
+          "name": "Fiche officielle et parcours de création",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
+        }
+      ],
+      "passed": 6,
+      "total": 10,
+      "percent": 60,
+      "certified": false
+    },
+    {
+      "id": "people:elfe-haut:cof2-lb-2024",
+      "key": "elfe-haut",
+      "name": "Elfe haut",
+      "rules": "Bonus de +1 INT ou CHA et malus de −1 FOR ; voie de l’Elfe haut.",
+      "checks": [
+        {
+          "id": "catalogue",
+          "name": "Peuple officiel et voie raciale",
+          "status": "ACQUIS",
+          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+        },
+        {
+          "id": "caracs",
+          "name": "Bonus et malus de caractéristiques",
+          "status": "ACQUIS",
+          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+        },
+        {
+          "id": "options",
+          "name": "Tous les choix raciaux de départ",
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+        },
+        {
+          "id": "r1",
+          "name": "Voie raciale de rang 1",
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+        },
+        {
+          "id": "r2",
+          "name": "Voie raciale de rang 2",
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+        },
+        {
+          "id": "methods",
+          "name": "Caractéristiques et sauvegarde des choix",
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+        },
+        {
+          "id": "ages",
+          "name": "Tous les âges et historiques avec ce peuple",
+          "status": "A_VERIFIER",
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
+        },
+        {
+          "id": "conditional",
+          "name": "Effets conditionnels et dons raciaux",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier chaque pouvoir racial selon ses conditions réelles, y compris dons et résistances."
+        },
+        {
+          "id": "gear",
+          "name": "Équipements et contraintes de taille",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
+        },
+        {
+          "id": "sheet",
+          "name": "Fiche officielle et parcours de création",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
+        }
+      ],
+      "passed": 6,
+      "total": 10,
+      "percent": 60,
+      "certified": false
+    },
+    {
+      "id": "people:elfe-sylvain:cof2-lb-2024",
+      "key": "elfe-sylvain",
+      "name": "Elfe sylvain",
+      "rules": "Bonus de +1 AGI ou PER et malus de −1 FOR ; voie de l’Elfe sylvain.",
+      "checks": [
+        {
+          "id": "catalogue",
+          "name": "Peuple officiel et voie raciale",
+          "status": "ACQUIS",
+          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+        },
+        {
+          "id": "caracs",
+          "name": "Bonus et malus de caractéristiques",
+          "status": "ACQUIS",
+          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+        },
+        {
+          "id": "options",
+          "name": "Tous les choix raciaux de départ",
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+        },
+        {
+          "id": "r1",
+          "name": "Voie raciale de rang 1",
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+        },
+        {
+          "id": "r2",
+          "name": "Voie raciale de rang 2",
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+        },
+        {
+          "id": "methods",
+          "name": "Caractéristiques et sauvegarde des choix",
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+        },
+        {
+          "id": "ages",
+          "name": "Tous les âges et historiques avec ce peuple",
+          "status": "A_VERIFIER",
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
+        },
+        {
+          "id": "conditional",
+          "name": "Effets conditionnels et dons raciaux",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier chaque pouvoir racial selon ses conditions réelles, y compris dons et résistances."
+        },
+        {
+          "id": "gear",
+          "name": "Équipements et contraintes de taille",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
+        },
+        {
+          "id": "sheet",
+          "name": "Fiche officielle et parcours de création",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
+        }
+      ],
+      "passed": 6,
+      "total": 10,
+      "percent": 60,
+      "certified": false
+    },
+    {
+      "id": "people:gnome:cof2-lb-2024",
+      "key": "gnome",
+      "name": "Gnome",
+      "rules": "Bonus de +1 INT ou PER et malus de −1 FOR ; Don étrange et voie du Gnome.",
+      "checks": [
+        {
+          "id": "catalogue",
+          "name": "Peuple officiel et voie raciale",
+          "status": "ACQUIS",
+          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+        },
+        {
+          "id": "caracs",
+          "name": "Bonus et malus de caractéristiques",
+          "status": "ACQUIS",
+          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+        },
+        {
+          "id": "options",
+          "name": "Tous les choix raciaux de départ",
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+        },
+        {
+          "id": "r1",
+          "name": "Voie raciale de rang 1",
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+        },
+        {
+          "id": "r2",
+          "name": "Voie raciale de rang 2",
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+        },
+        {
+          "id": "methods",
+          "name": "Caractéristiques et sauvegarde des choix",
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+        },
+        {
+          "id": "ages",
+          "name": "Tous les âges et historiques avec ce peuple",
+          "status": "A_VERIFIER",
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
+        },
+        {
+          "id": "conditional",
+          "name": "Effets conditionnels et dons raciaux",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier chaque pouvoir racial selon ses conditions réelles, y compris dons et résistances."
+        },
+        {
+          "id": "gear",
+          "name": "Équipements et contraintes de taille",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
+        },
+        {
+          "id": "sheet",
+          "name": "Fiche officielle et parcours de création",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
+        }
+      ],
+      "passed": 6,
+      "total": 10,
+      "percent": 60,
+      "certified": false
+    },
+    {
+      "id": "people:halfelin:cof2-lb-2024",
+      "key": "halfelin",
+      "name": "Halfelin",
+      "rules": "Bonus de +1 AGI ou VOL et malus de −1 FOR ; taille et armes autorisées à contrôler.",
+      "checks": [
+        {
+          "id": "catalogue",
+          "name": "Peuple officiel et voie raciale",
+          "status": "ACQUIS",
+          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+        },
+        {
+          "id": "caracs",
+          "name": "Bonus et malus de caractéristiques",
+          "status": "ACQUIS",
+          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+        },
+        {
+          "id": "options",
+          "name": "Tous les choix raciaux de départ",
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+        },
+        {
+          "id": "r1",
+          "name": "Voie raciale de rang 1",
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+        },
+        {
+          "id": "r2",
+          "name": "Voie raciale de rang 2",
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+        },
+        {
+          "id": "methods",
+          "name": "Caractéristiques et sauvegarde des choix",
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+        },
+        {
+          "id": "ages",
+          "name": "Tous les âges et historiques avec ce peuple",
+          "status": "A_VERIFIER",
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
+        },
+        {
+          "id": "conditional",
+          "name": "Effets conditionnels et dons raciaux",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier chaque pouvoir racial selon ses conditions réelles, y compris dons et résistances."
+        },
+        {
+          "id": "gear",
+          "name": "Équipements et contraintes de taille",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
+        },
+        {
+          "id": "sheet",
+          "name": "Fiche officielle et parcours de création",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
+        }
+      ],
+      "passed": 6,
+      "total": 10,
+      "percent": 60,
+      "certified": false
+    },
+    {
+      "id": "people:humain:cof2-lb-2024",
+      "key": "humain",
+      "name": "Humain",
+      "rules": "Bonus de +1 à l’une des caractéristiques les plus faibles ; voie de l’Humain.",
+      "checks": [
+        {
+          "id": "catalogue",
+          "name": "Peuple officiel et voie raciale",
+          "status": "ACQUIS",
+          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+        },
+        {
+          "id": "caracs",
+          "name": "Bonus et malus de caractéristiques",
+          "status": "ACQUIS",
+          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+        },
+        {
+          "id": "options",
+          "name": "Tous les choix raciaux de départ",
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+        },
+        {
+          "id": "r1",
+          "name": "Voie raciale de rang 1",
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+        },
+        {
+          "id": "r2",
+          "name": "Voie raciale de rang 2",
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+        },
+        {
+          "id": "methods",
+          "name": "Caractéristiques et sauvegarde des choix",
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+        },
+        {
+          "id": "ages",
+          "name": "Tous les âges et historiques avec ce peuple",
+          "status": "A_VERIFIER",
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
+        },
+        {
+          "id": "conditional",
+          "name": "Effets conditionnels et dons raciaux",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier chaque pouvoir racial selon ses conditions réelles, y compris dons et résistances."
+        },
+        {
+          "id": "gear",
+          "name": "Équipements et contraintes de taille",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
+        },
+        {
+          "id": "sheet",
+          "name": "Fiche officielle et parcours de création",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
+        }
+      ],
+      "passed": 6,
+      "total": 10,
+      "percent": 60,
+      "certified": false
+    },
+    {
+      "id": "people:nain:cof2-lb-2024",
+      "key": "nain",
+      "name": "Nain",
+      "rules": "Bonus de +1 CON ou VOL et malus de −1 AGI ; voie du Nain.",
+      "checks": [
+        {
+          "id": "catalogue",
+          "name": "Peuple officiel et voie raciale",
+          "status": "ACQUIS",
+          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+        },
+        {
+          "id": "caracs",
+          "name": "Bonus et malus de caractéristiques",
+          "status": "ACQUIS",
+          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+        },
+        {
+          "id": "options",
+          "name": "Tous les choix raciaux de départ",
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+        },
+        {
+          "id": "r1",
+          "name": "Voie raciale de rang 1",
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+        },
+        {
+          "id": "r2",
+          "name": "Voie raciale de rang 2",
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+        },
+        {
+          "id": "methods",
+          "name": "Caractéristiques et sauvegarde des choix",
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+        },
+        {
+          "id": "ages",
+          "name": "Tous les âges et historiques avec ce peuple",
+          "status": "A_VERIFIER",
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
+        },
+        {
+          "id": "conditional",
+          "name": "Effets conditionnels et dons raciaux",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier chaque pouvoir racial selon ses conditions réelles, y compris dons et résistances."
+        },
+        {
+          "id": "gear",
+          "name": "Équipements et contraintes de taille",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
+        },
+        {
+          "id": "sheet",
+          "name": "Fiche officielle et parcours de création",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
+        }
+      ],
+      "passed": 6,
+      "total": 10,
+      "percent": 60,
+      "certified": false
+    }
+  ],
+  "pausedProfiles": 13,
+  "summary": {
+    "profilesCertified": 0,
+    "profilesInProgress": 1,
+    "profilesPending": 13,
+    "peoplesCertified": 0
+  },
+  "limitations": "Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.",
+  "sources": [
+    "COF2 Livre de base pp. 44-65",
+    "Règles avancées p.153 et historiques",
+    "QA/N1/arquebusier-pure-age-ranks.json",
+    "QA/N1/official-methods-cross.json",
+    "QA/N1/official-racial-options.json",
+    "QA/N1/lot10/people-source.json"
+  ]
+}
