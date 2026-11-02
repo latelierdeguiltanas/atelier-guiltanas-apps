@@ -1,17 +1,17 @@
 {
   "schema": "FOH_N1_PDF_REAL_CHROME",
-  "at": "2026-11-02T13:08:03.781Z",
+  "at": "2026-11-02T13:17:27.654Z",
   "status": "FAIL",
   "results": [],
   "failures": [
     {
       "variant": "Arquebusier",
-      "message": "page.waitForEvent: Timeout 25000ms exceeded while waiting for event \"download\"\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================\n    at /home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_real_click.cjs:31:19",
+      "message": "locator.waitFor: Timeout 6000ms exceeded.\nCall log:\n  - waiting for locator('#official-sheet-file') to be visible\n    16 × locator resolved to hidden <input hidden=\"\" type=\"file\" id=\"official-sheet-file\" accept=\"application/pdf,.pdf\"/>\n\n    at /home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_real_click.cjs:35:65",
       "view": " ton peuple, puis par les autres règles actives.\n\nCarac.\tBase\tPeuple\tÂge / capacités\tFinale\nFOR\t+2\t+0\t+0\t+2\nAGI\t+1\t+0\t+0\t+1\nCON\t+0\t+1\t+0\t+1\nPER\t+1\t+0\t+0\t+1\nINT\t+3\t+0\t+0\t+3\nVOL\t+0\t+0\t+0\t+0\nCHA\t-1\t+0\t+0\t-1\nPV : 9\n8 base de famille + 1 CON ; aucun bonus supplémentaire = 9.\nDEF : 14\n10 + 1 AGI retenue + 3 armure (Cuir renforcé, broigne) + 0 bouclier ; aucun bonus supplémentaire = 14.\nInitiative : 11\n10 +1 PER = 11.\nPoints de chance : 3\n2 -1 CHA +1 famille +1 peuple / capacités = 3.\nRécupération : 3 dés d8\n2 base de famille +1 CON +0 autres ajustements.\nMana : 0 PM\nAucun sort acquis : 0 PM. Une capacité passive comme Runes de défense n’est pas un sort.\nEnregistrer dans Mes héros\nMes héros\nModifier\nExporter la fiche officielle PDF\nImporter la fiche officielle\nCopier le rapport de test\nExporter le rapport technique\nRetour\nRecalculer\nMon héros\n\nProduit autonome UX-01 · Moteur N1 candidat au gel · Règles simplifiées exclues.\n\nÉtat des règles et complétude · Voies de prestige : textes et calculs"
     },
     {
       "variant": "Arbalétrier",
-      "message": "page.waitForEvent: Timeout 25000ms exceeded while waiting for event \"download\"\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================\n    at /home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_real_click.cjs:31:19",
+      "message": "locator.waitFor: Timeout 6000ms exceeded.\nCall log:\n  - waiting for locator('#official-sheet-file') to be visible\n    15 × locator resolved to hidden <input hidden=\"\" type=\"file\" id=\"official-sheet-file\" accept=\"application/pdf,.pdf\"/>\n\n    at /home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_real_click.cjs:35:65",
       "view": " ton peuple, puis par les autres règles actives.\n\nCarac.\tBase\tPeuple\tÂge / capacités\tFinale\nFOR\t+2\t+0\t+0\t+2\nAGI\t+1\t+0\t+0\t+1\nCON\t+0\t+1\t+0\t+1\nPER\t+1\t+0\t+0\t+1\nINT\t+3\t+0\t+0\t+3\nVOL\t+0\t+0\t+0\t+0\nCHA\t-1\t+0\t+0\t-1\nPV : 9\n8 base de famille + 1 CON ; aucun bonus supplémentaire = 9.\nDEF : 14\n10 + 1 AGI retenue + 3 armure (Cuir renforcé, broigne) + 0 bouclier ; aucun bonus supplémentaire = 14.\nInitiative : 11\n10 +1 PER = 11.\nPoints de chance : 3\n2 -1 CHA +1 famille +1 peuple / capacités = 3.\nRécupération : 3 dés d8\n2 base de famille +1 CON +0 autres ajustements.\nMana : 0 PM\nAucun sort acquis : 0 PM. Une capacité passive comme Runes de défense n’est pas un sort.\nEnregistrer dans Mes héros\nMes héros\nModifier\nExporter la fiche officielle PDF\nImporter la fiche officielle\nCopier le rapport de test\nExporter le rapport technique\nRetour\nRecalculer\nMon héros\n\nProduit autonome UX-01 · Moteur N1 candidat au gel · Règles simplifiées exclues.\n\nÉtat des règles et complétude · Voies de prestige : textes et calculs"
     }
   ]
