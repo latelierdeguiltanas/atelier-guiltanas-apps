@@ -5,7 +5,7 @@ const ROOT=path.resolve(__dirname,'..'),PROFILE='class:arquebusier:cof2-lb-2024'
 const races=['humain','nain','demi-elfe','demi-orc','elfe-haut','elfe-sylvain','gnome','halfelin'];
 const bonuses={humain:{humainStat:'cha'},nain:{bonusStat:'con',malusStat:'agi'},'demi-elfe':{bonusStat:'per',malusStat:'for'},'demi-orc':{bonusStat:'for',malusStat:'cha'},'elfe-haut':{bonusStat:'int',malusStat:'for'},'elfe-sylvain':{bonusStat:'agi',malusStat:'for'},gnome:{bonusStat:'int',malusStat:'for'},halfelin:{bonusStat:'agi',malusStat:'for'}};
 const heritage={humain:'voie-de-l-humain',nain:'voie-du-nain','demi-elfe':'voie-de-l-humain','demi-orc':'voie-du-demi-orc','elfe-haut':'voie-de-l-elfe-haut','elfe-sylvain':'voie-de-l-elfe-sylvain',gnome:'voie-du-gnome',halfelin:'voie-du-halfelin'};
-const result={schema:'FOH_N1_ARQUEBUSIER_HISTORIES_ALL_PEOPLES',at:new Date().toISOString(),scope:'Arquebusier pur, 8 peuples, toutes les paires histoire géographique + professionnelle, 2 versions, âge vénérable et 4 rangs investis dans une voie d’historique; tests de calcul, acquisition, sauvegarde/reprise et choix persistants; autres modes reportés.',counts:{cases:0,passed:0,failed:0},inputs:[],perPeople:{},histories:{},failures:[],source:'Règles avancées COF2 p.153, voies d’historique pp.170–180'};
+const result={schema:'FOH_N1_ARQUEBUSIER_HISTORIES_ALL_PEOPLES',at:new Date().toISOString(),scope:'Arquebusier pur, 8 peuples, toutes les paires histoire géographique + professionnelle, 2 versions, âge vénérable et 4 rangs investis dans une voie d’historique; tests de calcul, acquisition, sauvegarde/reprise et choix persistants; autres modes reportés.',counts:{cases:0,passed:0,legallyRejected:0,failed:0},inputs:[],perPeople:{},histories:{},failures:[],source:'Règles avancées COF2 p.153, voies d’historique pp.170–180'};
 for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
  const {db,engine:E,html}=load(path.join(ROOT,file)),T=db.tables;
  result.inputs.push({file,sha256:crypto.createHash('sha256').update(html).digest('hex')});
@@ -35,6 +35,11 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
     else if(c.options?.length)bag[c.id]??=c.options[0].id;
    }
    const computed=E.computeCharacterN1(s);
+   if(race==='elfe-sylvain'&&['history:campaigns','history:cities'].includes(geographic.id)){
+    const official='Elfe sylvain : les origines Cités et Campagnes sont interdites avec les historiques (COF2 p.172).';
+    if(computed.errors.length!==1||computed.errors[0]!==official)throw Error('Interdiction officielle absente ou erronée : '+computed.errors.join(' ; '));
+    result.counts.legallyRejected++;continue;
+   }
    if(computed.errors.length)throw Error(computed.errors.join(' ; '));
    const character=computed.sticky.characterState;
    const obtained=computed.sticky.acquiredAbilities.filter(a=>a.pathId===chosen.id).map(a=>a.rank).sort();
@@ -51,7 +56,7 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
   }catch(e){per.failed++;hs.failed++;result.counts.failed++;if(result.failures.length<70)result.failures.push({tag,error:String(e)})}
  }
 }
-result.status=result.counts.failed===0&&result.counts.passed===result.counts.cases?'PASS':'FAIL';
+result.status=result.counts.failed===0&&result.counts.passed+result.counts.legallyRejected===result.counts.cases?'PASS':'FAIL';
 fs.writeFileSync(path.join(ROOT,'QA/N1/arquebusier-history-people-cross.json'),JSON.stringify(result,null,2)+'\n');
 console.log(JSON.stringify({status:result.status,counts:result.counts,people:result.perPeople,historyCount:Object.keys(result.histories).length,failures:result.failures.slice(0,9)}));
 if(result.status!=='PASS')process.exitCode=1;
