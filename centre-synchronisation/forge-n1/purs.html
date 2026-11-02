@@ -75,7 +75,7 @@ function renderCharacter(){
  const checks='<div class="bar"><span style="width:'+x.percent+'%"></span></div><p class="notes">'+x.passed+' points acquis sur '+x.total+' · '+(full?'Certification complète':'Certification encore ouverte')+'</p>'+
  '<h3>Ce qui fonctionne et ce qui manque</h3><div class="grid">'+x.checks.map(c=>'<div class="rule '+(c.status==='ACQUIS'?'ok':'')+'"><span class="symbol">'+(c.status==='ACQUIS'?'✓':'○')+'</span><div><b>'+safe(c.name)+'</b><small>'+safe(c.status==='ACQUIS'?c.validated:c.missing)+'</small></div></div>').join('')+'</div>';
  const powers='<h3 style="margin-top:17px">Les cinq voies du '+safe(x.profile)+'</h3><p class="notes">Une capacité dont le nom est présent sur la fiche n’est pas automatiquement certifiée : il faut également vérifier ses chiffres et ses conditions d’utilisation.</p>'+
- x.powers.map((p,i)=>'<details class="path" '+(i===0?'open':'')+'><summary>'+safe(p.name)+'<span>Rangs 1, 2 et 3</span></summary>'+p.abilities.map(r=>'<div class="rank"><strong>Rang '+r.rank+' — '+safe(r.name)+'</strong><p>'+safe(r.focus)+'</p><p>'+safe(r.grant)+'</p><em>Calculs et effets : encore à vérifier pour '+safe(x.profile)+' '+safe(x.people)+'.</em></div>').join('')+'</details>').join('');
+ x.powers.map((p,i)=>'<details class="path" '+(i===0?'open':'')+'><summary>'+safe(p.name)+'<span>Rangs 1, 2 et 3</span></summary>'+p.abilities.map(r=>'<div class="rank"><strong>Rang '+r.rank+' — '+safe(r.name)+'</strong><p>'+safe(r.focus)+'</p><p>'+safe(r.grant)+'</p><em>'+safe(r.calculation)+'</em></div>').join('')+'</details>').join('');
  $('character').innerHTML=h+checks+powers;
 }
 function renderMatrix(){
