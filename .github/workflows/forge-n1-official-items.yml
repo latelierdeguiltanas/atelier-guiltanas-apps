@@ -1,0 +1,78 @@
+name: Forge N1 - official item coverage
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-official-items.yml'
+permissions:
+  contents: write
+jobs:
+  by-people:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        race: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check pure hybrid and no-profile combinations for one official people
+        id: test
+        continue-on-error: true
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_official_item_shard.cjs --race=${{ matrix.race }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-people-${{ matrix.race }}
+          if-no-files-found: error
+          path: forge-of-heroes/QA/N1/native-item-shards/race-${{ matrix.race }}.json
+      - name: Fail if item assertions failed
+        if: steps.test.outcome == 'failure'
+        run: exit 1
+  merge:
+    needs: by-people
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: native-people-*
+          merge-multiple: true
+          path: forge-of-heroes/QA/N1/native-item-shards
+      - name: Aggregate documented people and profile verdicts
+        id: merge
+        continue-on-error: true
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_official_item_merge.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n1-official-per-item-report
+          if-no-files-found: error
+          path: forge-of-heroes/QA/N1/native-items.json
+      - name: Publish item report safely
+        if: always()
+        run: |
+          if test -f forge-of-heroes/QA/N1/native-items.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add forge-of-heroes/QA/N1/native-items.json
+            if ! git diff --cached --quiet; then
+              git commit -m "test(forge-n1): preuves itemisées 8 peuples x 14 profils [skip ci]"
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main
+            fi
+          fi
+      - name: Require aggregate assertions
+        if: steps.merge.outcome == 'failure'
+        run: exit 1
