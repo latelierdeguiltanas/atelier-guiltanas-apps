@@ -72,7 +72,7 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
    // Book source p.62–64: skills bonuses are path rank + 2 at R1, including matured and venerable rank increases.
    const skSpecs=[
     {slug:'voie-de-l-artilleur',ability:'mecanismes',tests:['repair_mechanism','understand_mechanism'],counter:'mecanismes'},
-    {slug:'voie-des-explosifs',ability:'tir-de-grenaille',tests:['artificer'],counter:'grenailleArtificier'},
+    {slug:'voie-des-explosifs',ability:'tir-de-grenaille-l',tests:['artificer'],counter:'grenailleArtificier'},
     {slug:'voie-du-mercenaire',ability:'pilier-de-bar',tests:['tavern_social','resist_alcohol'],counter:'pilierDeBar'}
    ];
    for(const info of skSpecs){
