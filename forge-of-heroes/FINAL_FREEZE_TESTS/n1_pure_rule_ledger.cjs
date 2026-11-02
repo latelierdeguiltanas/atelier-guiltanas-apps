@@ -5,6 +5,7 @@ const root=path.resolve(__dirname,'..'),out=path.resolve(root,'..','centre-synch
 const read=p=>JSON.parse(fs.readFileSync(path.resolve(root,p),'utf8'));
 const catalog=read('progression/catalog.json'),native=read('QA/N1/native-items.json'),methods=read('QA/N1/official-methods-cross.json'),raceOpts=read('QA/N1/official-racial-options.json'),numeric=read('QA/N1/lot4/source-numeric.json'),parity=read('QA/N1/version-parity.json');
 const profiles=catalog.profiles.filter(p=>p.id.endsWith(':cof2-lb-2024'));
+const arqReportPath=path.resolve(root,'QA/N1/arquebusier-pure-age-ranks.json');const arqReport=fs.existsSync(arqReportPath)?JSON.parse(fs.readFileSync(arqReportPath,'utf8')):null;const arqAgePass=!!arqReport&&arqReport.complete===true&&arqReport.expected===400&&arqReport.pass===400&&arqReport.failed===0;
 const peoples=['humain','nain','demi-elfe','demi-orc','elfe-haut','elfe-sylvain','gnome','halfelin'];
 const peopleLabels={'humain':'Humain','nain':'Nain','demi-elfe':'Demi-elfe','demi-orc':'Demi-orc','elfe-haut':'Elfe haut','elfe-sylvain':'Elfe sylvain','gnome':'Gnome','halfelin':'Halfelin'};
 const detailMaps={
@@ -67,7 +68,7 @@ for(const profile of profiles){
    gate('rank1','Tous les effets des cinq voies au rang 1',false,'','Prouver chaque bonus permanent, conditionnel et utilisation de rang 1, pas seulement l’apparition de la capacité.'),
    gate('rank2','Tous les effets des cinq voies au rang 2',false,'','Contrôler les cinq rangs 2 accessibles par les règles d’âge et les éventuels rangs de mage.'),
    gate('rank3','Tous les effets des cinq voies au rang 3',false,'','Contrôler les cinq rangs 3 lorsque le personnage est vénérable.'),
-   gate('ages','Très jeune, jeune, mûr et vénérable',false,'','Vérifier les malus d’âge, les bonus, les dépenses de rangs et les plafonds avec ce peuple/profil.'),
+   gate('ages','Très jeune, jeune, mûr et vénérable',profile.id.includes(':arquebusier:')&&arqAgePass,'Les quatre âges, les choix de très jeune et les rangs 1, 2, 3 ont été vérifiés sur les cinq voies avec les huit peuples.','Vérifier les malus d’âge, les bonus, les dépenses de rangs et les plafonds avec ce peuple/profil.'),
    gate('histories','Origine, métier et options d’historique',false,'','Comparer les bonus de compétences, les choix et les rangs d’historique aux règles avancées.'),
    gate('gear','Armures, armes, boucliers et contraintes',false,'','Tester tous les paquetages et alternatives autorisés par ce profil et ce peuple.'),
    gate('pdf','Fiche officielle et annexes des voies',false,'','Vérifier les valeurs, les noms des pouvoirs, les résumés et les descriptions dans le PDF.'),
@@ -78,6 +79,7 @@ for(const profile of profiles){
    const baseline=grantPass&&r.rank===1;
    return {rank:r.rank,name:base,page:r.source?.printedPage??p.source?.printedPage??null,focus:focus(r),grant:baseline?'Acquisition du rang 1 vérifiée sur les voies choisies':'Présence dans le livre et dans Forge contrôlée',calculation:'À vérifier pour '+profile.label+' '+peopleLabels[people],status:'EFFETS_A_VERIFIER'};
   })}));
+  if(profile.id.includes(':arquebusier:'))checks.push(gate('arbaletrier','Variante Arbalétrier sans poudre',false,'','Poudre ou pas poudre (livre de base p.62) : remplacer les armes à poudre, supprimer la Voie des explosifs et intégrer la Voie du maître d’armes limitée aux arbalètes. Vérifier les maîtrises et les effets de cette variante.'));
   const passed=checks.filter(c=>c.status==='ACQUIS').length;
   items.push({id:profile.id+'|'+raceId,profileId:profile.id,profile:profile.label,peopleId:raceId,people:peopleLabels[people],category:'PUR_N1_LIVRE_DE_BASE',percent:Math.round(100*passed/checks.length),passed,total:checks.length,certified:passed===checks.length,canCreateInValidatedScenario:grantPass&&r2Methods,purePathPairs:{approved:pureCount,total:10},checks,powers,source:{profilePage:profile.source?.printedPage??null,rules:'COF2 Livre de base et Règles avancées',sourceProofs:['QA/N1/native-items.json','QA/N1/official-methods-cross.json','QA/N1/official-racial-options.json','QA/N1/lot3/age-profiles.json','QA/N1/lot4/source-numeric.json']}});
  }
@@ -89,12 +91,12 @@ const report={
  engineSha256:parity.current.engine,
  mainAudience:'MJ et joueurs de COF2',
  interpretation:"Chaque pourcentage concerne les vérifications de création N1 pour CE couple précis peuple / profil, exclusivement en profil pur. Il ne mesure pas des tests passés, n'est pas une probabilité de fiabilité et ne prouve pas que tous les personnages de cette catégorie sont sûrs.",
- scope:{profileMode:'PUR',officialProfiles:14,officialPeoples:8,combinations:112,companions:'DIFFÉRÉS',hybrids:'ÉTAPE SUIVANTE',noProfile:'ÉTAPE SUIVANTE'},
- criteria:14,
+ focus:{activeProfileId:'class:arquebusier:cof2-lb-2024',activeProfileName:'Arquebusier',activePeopleCount:8,pausedProfileCount:13,policy:'Une certification après l’autre : seuls les 8 Arquebusiers sont en cours.'},scope:{profileMode:'PUR',officialProfiles:14,officialPeoples:8,combinations:112,companions:'DIFFÉRÉS',hybrids:'ÉTAPE SUIVANTE',noProfile:'ÉTAPE SUIVANTE'},
+ criteria:'14 vérifications ordinaires ; 15 pour Arquebusier avec la variante Arbalétrier',
  profiles:profiles.map(p=>({id:p.id,name:p.label,page:p.source?.printedPage??null})),
  peoples:peoples.map(p=>({id:'people:'+p+':cof2-lb-2024',name:peopleLabels[p]})),
  items,
- summary:{certified:items.filter(x=>x.certified).length,total:items.length,baselinePlayable:items.filter(x=>x.canCreateInValidatedScenario).length,fullyValidatedAbilities:0,criteriaPassed:items.reduce((n,x)=>n+x.passed,0),criteriaTotal:items.length*14},
+ summary:{certified:items.filter(x=>x.certified).length,total:items.length,baselinePlayable:items.filter(x=>x.canCreateInValidatedScenario).length,fullyValidatedAbilities:0,criteriaPassed:items.reduce((n,x)=>n+x.passed,0),criteriaTotal:items.reduce((n,x)=>n+x.total,0)},
  notes:[
  'Un rang affiché avec son texte ne signifie pas que tous ses effets fonctionnent. Les effets non prouvés restent explicitement « À vérifier ».',
  'Les pourcentages précédents 69% incluaient profils hybrides/sans profil et n’étaient pas propres aux 112 couples purs. Ils ne doivent pas être réutilisés ici.',
