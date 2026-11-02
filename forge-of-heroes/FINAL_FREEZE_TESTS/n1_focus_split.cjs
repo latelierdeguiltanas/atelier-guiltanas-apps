@@ -14,10 +14,15 @@ const variantPath=path.resolve(root,'QA/N1/arquebusier-arbaletrier-source-audit.
 const releasePath=path.resolve(root,'QA/N1/arbaletrier-production-release.json');
 const release=fs.existsSync(releasePath)?JSON.parse(fs.readFileSync(releasePath,'utf8')):null;
 const releaseProducts=release?.sourceFiles||[];
-const deployed=release?.status==='INTEGRATED_NOT_CERTIFIED_FULL'&&releaseProducts.length===2&&releaseProducts.every(p=>{
- const file=path.join(root,p.name);
- return fs.existsSync(file)&&require('node:crypto').createHash('sha256').update(fs.readFileSync(file)).digest('hex')===p.sha256
-});
+const hashlib=require('node:crypto'),productHash=p=>hashlib.createHash('sha256').update(fs.readFileSync(path.join(root,p))).digest('hex');
+const pilierPath=path.resolve(root,'QA/N1/arquebusier-pilier-de-bar-fix.json');
+const pilier=fs.existsSync(pilierPath)?JSON.parse(fs.readFileSync(pilierPath,'utf8')):null;
+const currentRelease=releaseProducts.length===2&&releaseProducts.every(p=>fs.existsSync(path.join(root,p.name))&&productHash(p.name)===p.sha256);
+// Une preuve explicite de correction limitée assure la continuité du produit sans
+// attribuer à tort les anciens tests de clic à des changements plus vastes.
+const pilierContinuity=releaseProducts.length===2&&pilier?.status==='PASS'&&pilier.products?.length===2&&
+ releaseProducts.every(p=>{const fix=pilier.products.find(x=>x.file===p.name);return fix?.changed===true&&fix.previous?.length===2&&fix.previous.every(x=>x.formula==='1d4')&&fix.beforeSha256===p.sha256&&fix.afterSha256===productHash(p.name)&&fix.attack==='1d4°'&&fix.nonLethal===true&&fix.saveReload==='PASS';});
+const deployed=release?.status==='INTEGRATED_NOT_CERTIFIED_FULL'&&(currentRelease||pilierContinuity);
 const arbaletrierMissing=variant?.verdict==='VARIANTE_OFFICIELLE_NON_ENTIEREMENT_INTEGREE';
 const prototypePath=path.resolve(root,'QA/N1/arbaletrier-virtual-prototype.json');const prototype=fs.existsSync(prototypePath)?JSON.parse(fs.readFileSync(prototypePath,'utf8')):null;const prototypeOK=prototype?.matrix?.total===480&&prototype?.matrix?.passed===480&&prototype?.matrix?.failed===0;
 const variantGap=deployed?'La variante officielle Arbalétrier est maintenant proposée dans Forge : cinq voies légales, arbalètes, rangs 1 à 3 et sauvegardes validés au clic sur mobile. Restent à valider les contraintes complètes d’équipement et tous les effets conditionnels, ainsi que la fiche officielle PDF et ses annexes.':arbaletrierMissing?(prototypeOK?'La variante Arbalétrier est prête dans une version d’essai : les cinq voies, huit peuples, âges, sauvegardes, +1 en attaque, critique amélioré et +1 aux dégâts avec les arbalètes ont été éprouvés. Elle n’est PAS encore intégrée à Forge : il reste l’installation, les choix visibles, l’export PDF et le contrôle au clic.':'Variante Arbalétrier absente du jeu publié. Les armes à arbalète et la Voie du maître d’armes sont en préparation ; il reste à valider les calculs de critique, de dégâts, les choix visibles et l’installation.'):'';
@@ -41,7 +46,7 @@ const profileChecks=[
  mark('age','Dépenses de rangs selon l’âge',ageOK,'Très jeune, jeune, mûr et vénérable : rangs supplémentaires et restrictions vérifiés.','Vérifier tous les choix d’âge.'),
  mark('methods','Méthodes de répartition des caractéristiques',true,'Séries, achat et tirages représentatifs avec toutes les races officielles ; les règles raciales sont comptées à part.','Contrôler les méthodes du profil.'),
  mark('derived','PV, DEF, initiative, chance, mana, attaques et dommages',false,'','Faire correspondre chaque valeur et chaque bonus permanent au Livre de base avec les voies et équipements autorisés.'),
- mark('r1effects','Tous les effets des cinq capacités de rang 1',false,'','Vérifier les compétences, les jets, le couvert, les tirs de grenaille et l’initiative avec une arme chargée, selon les conditions du livre.'),
+ mark('r1effects','Tous les effets des cinq capacités de rang 1',false,'',pilierContinuity?'Pilier de bar corrigé : mains nues 1d4° non létaux, calcul et sauvegarde vérifiés sur les deux moteurs. Restent les tests de combat, de compétences, de couverture, de grenaille et d’initiative conditionnelle.':'Vérifier les compétences, les jets, le couvert, les tirs de grenaille et l’initiative avec une arme chargée, selon les conditions du livre.'),
  mark('r2effects','Tous les effets des cinq capacités de rang 2',false,'','Chargeur 2 + INT validé ; restent le rechargement, la démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse.'),
  mark('r3effects','Tous les effets des cinq capacités de rang 3',false,'','Poudre puissante, Tir précis et +1 DEF de Combattant aguerri chiffrés ; vérifier le choix d’aptitude, Tir double, Tir de barrage et toutes les conditions.'),
  mark('gear','Toutes les armes, armures et variante Arbalétrier',false,'',deployed||arbaletrierMissing?variantGap:'Maîtrises, armure maximum, absence de bouclier, deux mains, armes à poudre, équipements alternatifs et Arbalétrier sans poudre.'),
