@@ -1,0 +1,46 @@
+name: Forge N1 - Arquebusier pur
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arquebusier-pure.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pure_age_ranks.cjs'
+permissions:
+  contents: write
+jobs:
+  rank-rules:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Tester les 5 voies et rangs selon l'âge sur 8 peuples
+        id: audit
+        continue-on-error: true
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pure_age_ranks.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n1-arquebusier-rules-report
+          path: forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json
+      - name: Publier le rapport, échecs compris
+        if: always()
+        run: |
+          if test -f forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json
+            if ! git diff --cached --quiet; then
+              git commit -m "test(forge-n1): preuves Arquebusier pur R1–R3 par peuple [skip ci]"
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main
+            fi
+          fi
+      - name: Exiger les règles exactes
+        if: steps.audit.outcome == 'failure'
+        run: exit 1
