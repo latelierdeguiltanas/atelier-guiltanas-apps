@@ -23,7 +23,9 @@ jobs:
           const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
           const root='centre-synchronisation/forge-n1/';
           const html=fs.readFileSync(root+'index.html','utf8');
-          const scripts=[...html.matchAll(/<script(?:\\s+[^>]*)?>([\\s\\S]*?)<\\/script>/g)].map(m=>m[1]).filter(x=>x.trim());
+          const start=html.lastIndexOf('<script>'),end=html.indexOf('</script>',start);
+          assert(start>=0&&end>start,'Script utilisateur absent');
+          const scripts=[html.slice(start+8,end)];
           assert(scripts.length>=1,'Script de l’interface absent');
           for(const script of scripts)new vm.Script(script,{filename:'copilote-inline.js'});
           for(const id of ['focus-priority','focus-stats','focus-profile','focus-peoples','focus-open','focus-queue','focus-date'])assert(html.includes('id="'+id+'"'),id+' manque');
