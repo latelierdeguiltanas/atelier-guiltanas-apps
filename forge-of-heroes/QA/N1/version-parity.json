@@ -1,7 +1,7 @@
 {
   "schema": "FOH_N1_VERSION_PARITY",
-  "generatedAt": "2026-11-02T18:32:23.870Z",
-  "gitCommit": "824a1e34824065ef8d1313314e951f9835414867",
+  "generatedAt": "2026-11-02T18:49:06.565Z",
+  "gitCommit": "3473928d752214efe275766d8267cca9cb281336",
   "current": {
     "index": "2faa37ebdc8e8329fe324c4315359290cd776f11f70c9e24e5886bd04cad79c6",
     "master": "ddd17158ff9148650cc6c1177b3cecc624a76e5b018197781516b15b80df93e9",
@@ -9,21 +9,21 @@
     "database": "1a361946d09c1a0ec51ace1aa3f87873fef12199990c69c07fcd1a10765ce081"
   },
   "oldMatrix": {
-    "indexSha256": "74a0f6f7d4e9de2f5f8346819c7ee5737b8e35ecb4e759229ff204cd78bb82e9",
-    "masterSha256": "7fa4db837185f8140d45940773df7a4c84aca97ba2387b271cd1fbcbd7323d3d",
-    "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
-    "databaseSha256": "eae2d572846102c1ea26c69eec204b080bcf928060f887c13341a4cecc762167"
+    "indexSha256": "2faa37ebdc8e8329fe324c4315359290cd776f11f70c9e24e5886bd04cad79c6",
+    "masterSha256": "ddd17158ff9148650cc6c1177b3cecc624a76e5b018197781516b15b80df93e9",
+    "engineSha256": "60d23d2d36c099e0fe0ce370413d74ac4eef438336c516d070a8326a1d082fee",
+    "databaseSha256": "1a361946d09c1a0ec51ace1aa3f87873fef12199990c69c07fcd1a10765ce081"
   },
-  "regressionIndexSha256": "d628864b125c28f6e9530832c5351c23c5c785a3804007baf39d5154f3d08290",
+  "regressionIndexSha256": "2faa37ebdc8e8329fe324c4315359290cd776f11f70c9e24e5886bd04cad79c6",
   "checks": {
-    "matrixEngineIdentical": false,
-    "matrixDbIdentical": false,
+    "matrixEngineIdentical": true,
+    "matrixDbIdentical": true,
     "productMasterEngineIdentical": true,
     "productMasterDbIdentical": true,
-    "regressionIndexIdentical": false,
+    "regressionIndexIdentical": true,
     "matrixNoAssertionFailure": true,
     "regressionsPass": true
   },
-  "matrixMechanicsReusable": false,
+  "matrixMechanicsReusable": true,
   "limitations": "Only identical engine and database allow reusing mechanical matrix assertions. UI, PDFs and browser journeys remain separate. Refusal review and untested choices remain outstanding."
 }
