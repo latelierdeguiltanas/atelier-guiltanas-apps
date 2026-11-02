@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Copilote — personnages purs N1</title>
+<style>
+:root{color-scheme:dark;--bg:#161410;--card:#25231d;--panel:#1e1c18;--line:#484237;--txt:#f6f0e4;--soft:#bdb4a4;--gold:#edce95;--green:#a0d2aa;--amber:#f2c47e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.48 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+h1,h2,h3,p{margin-top:0}h1{font-size:21px;margin-bottom:8px}h2{font-size:17px;margin-bottom:9px}h3{font-size:14px}
+main{max-width:1140px;margin:auto;padding:15px 14px 35px}
+.sub{color:var(--soft);font-size:12px}
+.kicker{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.bar{height:7px;background:#473f33;border-radius:10px;overflow:hidden}.bar>span{height:100%;background:var(--green);display:block}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:13px;margin:12px 0}
+.summary{display:flex;gap:10px;flex-wrap:wrap}.summary div{min-width:100px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:#252119;flex:1}.summary strong{font-size:20px;display:block;color:var(--gold)}
+.selectors{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+label{font-size:12px;color:var(--soft);display:block}select{width:100%;padding:12px 8px;border:1px solid #776744;border-radius:9px;background:#302b23;color:var(--txt);font:inherit;margin-top:5px}
+a{color:var(--gold)}.percent{font-variant-numeric:tabular-nums;font-size:26px;color:var(--gold);font-weight:800}
+.headline{display:flex;align-items:start;justify-content:space-between;gap:12px}.headline h2{font-size:19px;margin-bottom:3px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.rule{display:flex;align-items:flex-start;gap:10px;border:1px solid #403c32;background:#27241e;padding:9px;border-radius:9px;font-size:13px}
+.rule .symbol{color:var(--amber);font-size:17px;flex-shrink:0}
+.rule.ok .symbol{color:var(--green)}.rule b{display:block}.rule small{display:block;color:var(--soft);font-size:11px;margin-top:4px}
+details.path{border:1px solid var(--line);border-radius:10px;margin-top:8px;background:#26231e;overflow:hidden}
+details.path summary{padding:11px 12px;cursor:pointer;font-weight:750;list-style:none;display:flex;justify-content:space-between;gap:8px}
+details.path summary::-webkit-details-marker{display:none}
+details.path summary span{color:var(--amber);font-weight:500;font-size:11px;text-align:right}
+.rank{border-top:1px solid #433d33;padding:10px 12px}
+.rank strong{font-size:13px}.rank p{font-size:12px;color:var(--soft);margin:4px 0}
+.rank em{color:var(--amber);font-style:normal;font-size:11px}
+.matrix-group{padding:9px 0;border-top:1px solid #3c372f}.matrix-group:first-child{border-top:0}
+.matrix-title{font-weight:800;margin-bottom:8px}.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid #5e523d;background:#322d25;border-radius:9px;color:var(--txt);padding:7px 9px;text-align:left;font:inherit;font-size:12px;cursor:pointer}
+.chip b{color:var(--gold);font-size:12px;display:block}
+.chip.active{background:#4b402d;border-color:var(--gold)}.chip:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.notes{font-size:11px;color:var(--soft)}.footer{font-size:11px;color:var(--soft);margin-top:18px}
+@media(max-width:680px){main{padding:12px 10px 26px}.grid{grid-template-columns:1fr}.selectors{grid-template-columns:1fr 1fr}.headline h2{font-size:17px}.chip{min-width:72px;flex:1}.chip b{font-size:13px}}
+@media(max-width:375px){.selectors{grid-template-columns:1fr}}
+</style></head><body>
+<main>
+<p class="kicker">Forge of Heroes · Copilote · Niveau 1</p>
+<h1>Est-ce que je peux créer ce personnage ?</h1>
+<p class="sub">Première étape : <strong>profils purs uniquement.</strong> Chaque case correspond à un peuple et un profil. Tu vois les règles acquises, les pouvoirs de chaque voie et ce qu’il reste à vérifier. Les hybrides, les personnages sans profil et le Compagnon V2 ne sont pas comptés ici.</p>
+<section class="summary" id="summary"><div>Chargement des personnages…</div></section>
+<section class="panel">
+<h2>Choisis ton personnage</h2>
+<div class="selectors"><label>Profil<select id="profile"></select></label><label>Peuple<select id="people"></select></label></div>
+<div id="character"></div>
+</section>
+<section class="panel">
+<h2>Les 112 personnages purs à vérifier</h2>
+<p class="sub">Sélectionne une case pour voir les règles du personnage. Le pourcentage correspond aux vérifications réellement acquises pour cette combinaison, pas au nombre de tests lancés.</p>
+<div id="matrix"></div>
+</section>
+<div class="footer">Sources : Livre de base COF2, Règles avancées et rapports de vérification de Forge. Le 100 % final exige le calcul des effets des pouvoirs, les restrictions de création et l’export de fiche, pas seulement la présence des textes. <a href="./" target="_blank" rel="noopener noreferrer">Voir les anciennes campagnes et les autres modes</a>.</div>
+</main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id),safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const state={data:null,selected:null};
+const names={status:{ACQUIS:'Acquis',A_VERIFIER:'À vérifier'}};
+function renderSummary(){
+ const d=state.data,s=d.summary;
+ $('summary').innerHTML='<div><strong>'+s.certified+'/'+s.total+'</strong><small>Créations complètement certifiées</small></div>'+
+ '<div><strong>'+d.profiles.length+'</strong><small>Profils de base</small></div>'+
+ '<div><strong>'+d.peoples.length+'</strong><small>Peuples de base</small></div>'+
+ '<div><strong>'+s.criteriaPassed+'/'+s.criteriaTotal+'</strong><small>Points de règles déjà vérifiés</small></div>';
+}
+function selectItem(id){
+ state.selected=state.data.items.find(x=>x.id===id)||state.data.items[0];
+ $('profile').value=state.selected.profileId;$('people').value=state.selected.peopleId;
+ renderCharacter();renderMatrix();
+}
+function renderCharacter(){
+ const x=state.selected,full=x.certified;
+ const h='<div class="headline"><div><h2>'+safe(x.profile)+' '+safe(x.people)+'</h2><p class="sub">'+(full?'Les règles de cette création sont entièrement validées.':x.canCreateInValidatedScenario?'Création de base déjà réalisée avec succès, mais toutes les règles particulières ne sont pas encore validées.':'Cette combinaison demande encore des vérifications de création.')+'</p></div><div class="percent">'+x.percent+' %</div></div>';
+ const checks='<div class="bar"><span style="width:'+x.percent+'%"></span></div><p class="notes">'+x.passed+' points acquis sur '+x.total+' · '+(full?'Certification complète':'Certification encore ouverte')+'</p>'+
+ '<h3>Ce qui fonctionne et ce qui manque</h3><div class="grid">'+x.checks.map(c=>'<div class="rule '+(c.status==='ACQUIS'?'ok':'')+'"><span class="symbol">'+(c.status==='ACQUIS'?'✓':'○')+'</span><div><b>'+safe(c.name)+'</b><small>'+safe(c.status==='ACQUIS'?c.validated:c.missing)+'</small></div></div>').join('')+'</div>';
+ const powers='<h3 style="margin-top:17px">Les cinq voies du '+safe(x.profile)+'</h3><p class="notes">Une capacité dont le nom est présent sur la fiche n’est pas automatiquement certifiée : il faut également vérifier ses chiffres et ses conditions d’utilisation.</p>'+
+ x.powers.map((p,i)=>'<details class="path" '+(i===0?'open':'')+'><summary>'+safe(p.name)+'<span>Rangs 1, 2 et 3</span></summary>'+p.abilities.map(r=>'<div class="rank"><strong>Rang '+r.rank+' — '+safe(r.name)+'</strong><p>'+safe(r.focus)+'</p><p>'+safe(r.grant)+'</p><em>Calculs et effets : encore à vérifier pour '+safe(x.profile)+' '+safe(x.people)+'.</em></div>').join('')+'</details>').join('');
+ $('character').innerHTML=h+checks+powers;
+}
+function renderMatrix(){
+ const d=state.data;
+ $('matrix').innerHTML=d.profiles.map(p=>'<div class="matrix-group"><div class="matrix-title">'+safe(p.name)+'</div><div class="chips">'+d.peoples.map(r=>{const x=d.items.find(x=>x.profileId===p.id&&x.peopleId===r.id);return '<button type="button" class="chip '+(x.id===state.selected.id?'active':'')+'" data-key="'+safe(x.id)+'" aria-label="'+safe(p.name+' '+r.name+' : '+x.percent+' %')+'">'+safe(r.name)+'<b>'+x.percent+' %</b></button>';}).join('')+'</div></div>').join('');
+ $('matrix').querySelectorAll('button[data-key]').forEach(b=>b.addEventListener('click',()=>{selectItem(b.dataset.key);$('character').scrollIntoView({block:'start',behavior:'smooth'});}));
+}
+async function load(){
+ try{
+  const r=await fetch('./purs.json?refresh='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('Données de suivi indisponibles');
+  const d=await r.json();if(d.items.length!==112)throw Error('Liste incomplète');
+  state.data=d;
+  $('profile').innerHTML=d.profiles.map(p=>'<option value="'+safe(p.id)+'">'+safe(p.name)+'</option>').join('');
+  $('people').innerHTML=d.peoples.map(p=>'<option value="'+safe(p.id)+'">'+safe(p.name)+'</option>').join('');
+  $('profile').addEventListener('change',()=>selectItem(d.items.find(x=>x.profileId===$('profile').value&&x.peopleId===$('people').value)?.id));
+  $('people').addEventListener('change',()=>selectItem(d.items.find(x=>x.profileId===$('profile').value&&x.peopleId===$('people').value)?.id));
+  const url=new URLSearchParams(location.search);const p=url.get('profil')||'arquebusier',pe=url.get('peuple')||'nain';
+  selectItem(d.items.find(x=>x.profileId.includes(':'+p+':')&&x.peopleId.includes(':'+pe+':'))?.id||d.items[0].id);
+  renderSummary();
+ }catch(e){$('character').innerHTML='<p class="notes">Le suivi des personnages n’a pas pu être chargé : '+safe(e.message)+'. <a href="./">Voir le suivi général</a>.</p>';}
+}
+load();
+</script>
+</body></html>
