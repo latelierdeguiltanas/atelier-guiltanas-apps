@@ -1,0 +1,32 @@
+name: Cockpit - Forge N1 mobile click
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/cockpit-forge-n1-click.yml'
+permissions:
+  contents: read
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install headless Chrome driver
+        run: |
+          npm install --prefix "$RUNNER_TEMP/foh-cockpit" playwright@1.55.0
+          echo "NODE_PATH=$RUNNER_TEMP/foh-cockpit/node_modules" >> "$GITHUB_ENV"
+          command -v google-chrome || command -v chromium
+      - name: Test a real touch-sized browser including 22 items and their percentages
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/cockpit-qa.log 2>&1 &
+          export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+          node centre-synchronisation/forge-n1/qa_click.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cockpit-forge-n1-click-mobile
+          path: forge-cockpit-click.json
