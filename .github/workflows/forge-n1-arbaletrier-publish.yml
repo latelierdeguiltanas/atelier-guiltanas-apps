@@ -1,0 +1,58 @@
+name: Forge N1 - publier Arbaletrier apres tests au clic
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arbaletrier-publish.yml'
+permissions:
+  contents: write
+concurrency:
+  group: forge-n1-release
+  cancel-in-progress: false
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compiler la variante dans un dossier de preproduction
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_stage.cjs
+      - name: Installer les outils de navigation Chrome
+        run: |
+          npm install --prefix "$RUNNER_TEMP/forge-release" playwright@1.55.0
+          echo "NODE_PATH=$RUNNER_TEMP/forge-release/node_modules" >> "$GITHUB_ENV"
+      - name: Lancer le site de preproduction
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory /tmp/foh-n1-arbaletrier-stage >/tmp/foh-release-server.log 2>&1 &
+          echo "CHROME_BIN=$(command -v google-chrome || command -v chromium)" >> "$GITHUB_ENV"
+      - name: Parcours reel Arbaletrier sur telephone avec sauvegarde
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_stage_click.cjs
+      - name: Retester les 12 personnages classiques, age, hybridation et sauvegarde
+        run: |
+          FORGE_BASE=http://127.0.0.1:4173/forge-of-heroes/ CLICK_REPORT=forge-n1-stage-existing-journeys.json node forge-of-heroes/FINAL_FREEZE_TESTS/n1_creation_browser_pack.cjs
+      - name: Publier uniquement si les preuves sont toutes conformes
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_publish.cjs
+      - name: Verifier syntaxe source d'effets
+        run: node --check forge-of-heroes/rules/permanent-rules.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evidence-arbaletrier-production
+          path: |
+            arbaletrier-stage-click.json
+            forge-n1-stage-existing-journeys.json
+            forge-of-heroes/QA/N1/arbaletrier-production-release.json
+      - name: Publier Forge et sa variante sans perturber les autres fichiers
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/rules/permanent-rules.js forge-of-heroes/QA/N1/arbaletrier-production-release.json
+          git commit -m "feat(forge-n1): variante Arbaletrier officielle et calculs limites aux arbaletes [skip ci]"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
