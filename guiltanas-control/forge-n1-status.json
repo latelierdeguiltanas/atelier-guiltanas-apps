@@ -274,135 +274,135 @@
     "peoples": [
       {
         "id": "demi-elfe",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "demi-orc",
-        "verification_percent": 56,
-        "verified": 9,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "elfe-haut",
-        "verification_percent": 56,
-        "verified": 9,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "elfe-sylvain",
-        "verification_percent": 56,
-        "verified": 9,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "gnome",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "halfelin",
-        "verification_percent": 56,
-        "verified": 9,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "humain",
-        "verification_percent": 69,
+        "pct": 69,
         "verified": 11,
         "total": 16
       },
       {
         "id": "nain",
-        "verification_percent": 56,
-        "verified": 9,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       }
     ],
     "profiles": [
       {
         "id": "arquebusier",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "barbare",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "barde",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "chevalier",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "druide",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "ensorceleur",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "forgesort",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "guerrier",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "magicien",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "moine",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "pretre",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "rodeur",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "sorcier",
-        "verification_percent": 63,
-        "verified": 10,
+        "pct": 69,
+        "verified": 11,
         "total": 16
       },
       {
         "id": "voleur",
-        "verification_percent": 69,
+        "pct": 69,
         "verified": 11,
         "total": 16
       }
@@ -435,6 +435,23 @@
       "source": "forge-of-heroes/QA/N1/demi-elfe-source-r1-r2.json",
       "percent": 63
     },
-    "companionV2Deferred": true
+    "companionV2Deferred": true,
+    "updatedAt": "2026-11-02T10:51:58.176Z",
+    "raceCount": 8,
+    "officialProfiles": 14,
+    "fullCertification": false,
+    "verifiedGateCriterion": "16 binary documented checks per item; percentages are verification coverage, not software reliability",
+    "newValidatedEvidence": {
+      "characteristicMethodCross": "forge-of-heroes/QA/N1/official-methods-cross.json",
+      "methodCases": {
+        "passed": 1008,
+        "total": 1008
+      },
+      "racialOptionCross": "forge-of-heroes/QA/N1/official-racial-options.json",
+      "racialOptionCases": {
+        "passed": 784,
+        "total": 784
+      }
+    }
   }
 }
