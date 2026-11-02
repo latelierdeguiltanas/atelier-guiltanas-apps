@@ -1,10 +1,10 @@
 {
   "schema": "FOH_N1_DEMI_ELFE_SOURCE_R1_R2",
-  "generatedAt": "2026-11-02T10:26:42.014Z",
+  "generatedAt": "2026-11-02T10:28:08.856Z",
   "source": "COF2 Livre de base p.46; Règles avancées p.153",
   "cases": 672,
-  "passed": 600,
-  "failed": 72,
+  "passed": 648,
+  "failed": 24,
   "failures": [
     {
       "tag": "index.html|chevalier|voie-de-l-elfe-sylvain|per|for|mature",
@@ -39,116 +39,20 @@
       "error": "index.html|guerrier|voie-de-l-elfe-sylvain|cha|con|mature Enfant de la forêt : capacité accordée illégale avec cet équipement.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité accordée illégale avec cet équipement.'\n+ ]\n- []\n"
     },
     {
-      "tag": "index.html|druide|voie-de-l-elfe-sylvain|per|for|mature",
-      "error": "index.html|druide|voie-de-l-elfe-sylvain|per|for|mature Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|druide|voie-de-l-elfe-sylvain|per|con|mature",
-      "error": "index.html|druide|voie-de-l-elfe-sylvain|per|con|mature Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|druide|voie-de-l-elfe-sylvain|cha|for|mature",
-      "error": "index.html|druide|voie-de-l-elfe-sylvain|cha|for|mature Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|druide|voie-de-l-elfe-sylvain|cha|con|mature",
-      "error": "index.html|druide|voie-de-l-elfe-sylvain|cha|con|mature Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-humain|per|for|young",
-      "error": "index.html|pretre|voie-de-l-humain|per|for|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-humain|per|for|mature",
-      "error": "index.html|pretre|voie-de-l-humain|per|for|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-humain|per|con|young",
-      "error": "index.html|pretre|voie-de-l-humain|per|con|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-humain|per|con|mature",
-      "error": "index.html|pretre|voie-de-l-humain|per|con|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-humain|cha|for|young",
-      "error": "index.html|pretre|voie-de-l-humain|cha|for|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-humain|cha|for|mature",
-      "error": "index.html|pretre|voie-de-l-humain|cha|for|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-humain|cha|con|young",
-      "error": "index.html|pretre|voie-de-l-humain|cha|con|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-humain|cha|con|mature",
-      "error": "index.html|pretre|voie-de-l-humain|cha|con|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-elfe-haut|per|for|young",
-      "error": "index.html|pretre|voie-de-l-elfe-haut|per|for|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-elfe-haut|per|for|mature",
-      "error": "index.html|pretre|voie-de-l-elfe-haut|per|for|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-elfe-haut|per|con|young",
-      "error": "index.html|pretre|voie-de-l-elfe-haut|per|con|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-elfe-haut|per|con|mature",
-      "error": "index.html|pretre|voie-de-l-elfe-haut|per|con|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-elfe-haut|cha|for|young",
-      "error": "index.html|pretre|voie-de-l-elfe-haut|cha|for|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-elfe-haut|cha|for|mature",
-      "error": "index.html|pretre|voie-de-l-elfe-haut|cha|for|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-elfe-haut|cha|con|young",
-      "error": "index.html|pretre|voie-de-l-elfe-haut|cha|con|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-elfe-haut|cha|con|mature",
-      "error": "index.html|pretre|voie-de-l-elfe-haut|cha|con|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-elfe-sylvain|per|for|young",
-      "error": "index.html|pretre|voie-de-l-elfe-sylvain|per|for|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
       "tag": "index.html|pretre|voie-de-l-elfe-sylvain|per|for|mature",
-      "error": "index.html|pretre|voie-de-l-elfe-sylvain|per|for|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-elfe-sylvain|per|con|young",
-      "error": "index.html|pretre|voie-de-l-elfe-sylvain|per|con|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
+      "error": "index.html|pretre|voie-de-l-elfe-sylvain|per|for|mature Enfant de la forêt : capacité accordée illégale avec cet équipement.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité accordée illégale avec cet équipement.'\n+ ]\n- []\n"
     },
     {
       "tag": "index.html|pretre|voie-de-l-elfe-sylvain|per|con|mature",
-      "error": "index.html|pretre|voie-de-l-elfe-sylvain|per|con|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-elfe-sylvain|cha|for|young",
-      "error": "index.html|pretre|voie-de-l-elfe-sylvain|cha|for|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
+      "error": "index.html|pretre|voie-de-l-elfe-sylvain|per|con|mature Enfant de la forêt : capacité accordée illégale avec cet équipement.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité accordée illégale avec cet équipement.'\n+ ]\n- []\n"
     },
     {
       "tag": "index.html|pretre|voie-de-l-elfe-sylvain|cha|for|mature",
-      "error": "index.html|pretre|voie-de-l-elfe-sylvain|cha|for|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "index.html|pretre|voie-de-l-elfe-sylvain|cha|con|young",
-      "error": "index.html|pretre|voie-de-l-elfe-sylvain|cha|con|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
+      "error": "index.html|pretre|voie-de-l-elfe-sylvain|cha|for|mature Enfant de la forêt : capacité accordée illégale avec cet équipement.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité accordée illégale avec cet équipement.'\n+ ]\n- []\n"
     },
     {
       "tag": "index.html|pretre|voie-de-l-elfe-sylvain|cha|con|mature",
-      "error": "index.html|pretre|voie-de-l-elfe-sylvain|cha|con|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
+      "error": "index.html|pretre|voie-de-l-elfe-sylvain|cha|con|mature Enfant de la forêt : capacité accordée illégale avec cet équipement.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité accordée illégale avec cet équipement.'\n+ ]\n- []\n"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|chevalier|voie-de-l-elfe-sylvain|per|for|mature",
@@ -183,116 +87,20 @@
       "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|guerrier|voie-de-l-elfe-sylvain|cha|con|mature Enfant de la forêt : capacité accordée illégale avec cet équipement.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité accordée illégale avec cet équipement.'\n+ ]\n- []\n"
     },
     {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|druide|voie-de-l-elfe-sylvain|per|for|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|druide|voie-de-l-elfe-sylvain|per|for|mature Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|druide|voie-de-l-elfe-sylvain|per|con|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|druide|voie-de-l-elfe-sylvain|per|con|mature Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|druide|voie-de-l-elfe-sylvain|cha|for|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|druide|voie-de-l-elfe-sylvain|cha|for|mature Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|druide|voie-de-l-elfe-sylvain|cha|con|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|druide|voie-de-l-elfe-sylvain|cha|con|mature Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité déjà acquise, choisir une autre capacité.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|per|for|young",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|per|for|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|per|for|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|per|for|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|per|con|young",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|per|con|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|per|con|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|per|con|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|cha|for|young",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|cha|for|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|cha|for|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|cha|for|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|cha|con|young",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|cha|con|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|cha|con|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-humain|cha|con|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|per|for|young",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|per|for|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|per|for|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|per|for|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|per|con|young",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|per|con|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|per|con|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|per|con|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|cha|for|young",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|cha|for|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|cha|for|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|cha|for|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|cha|con|young",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|cha|con|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|cha|con|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-haut|cha|con|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|per|for|young",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|per|for|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|per|for|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|per|for|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|per|con|young",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|per|con|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
+      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|per|for|mature Enfant de la forêt : capacité accordée illégale avec cet équipement.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité accordée illégale avec cet équipement.'\n+ ]\n- []\n"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|per|con|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|per|con|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|cha|for|young",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|cha|for|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
+      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|per|con|mature Enfant de la forêt : capacité accordée illégale avec cet équipement.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité accordée illégale avec cet équipement.'\n+ ]\n- []\n"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|cha|for|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|cha|for|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
-    },
-    {
-      "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|cha|con|young",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|cha|con|young Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
+      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|cha|for|mature Enfant de la forêt : capacité accordée illégale avec cet équipement.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité accordée illégale avec cet équipement.'\n+ ]\n- []\n"
     },
     {
       "tag": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|cha|con|mature",
-      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|cha|con|mature Prêtre : choisir généraliste ou spécialiste.\n+ actual - expected\n\n+ [\n+   'Prêtre : choisir généraliste ou spécialiste.'\n+ ]\n- []\n"
+      "error": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html|pretre|voie-de-l-elfe-sylvain|cha|con|mature Enfant de la forêt : capacité accordée illégale avec cet équipement.\n+ actual - expected\n\n+ [\n+   'Enfant de la forêt : capacité accordée illégale avec cet équipement.'\n+ ]\n- []\n"
     }
   ],
   "profiles": 14,
