@@ -96,6 +96,14 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
      const w=c.attacks.find(a=>a.weaponId==='weapon:hand-crossbow'),sword=c.attacks.find(a=>a.weaponId==='weapon:long-sword');
      if(w.attackBonus!==c.ATK_DISTANCE+1)throw Error('Bonus +1 arbalète absent');
      if(sword.attackBonus!==c.ATK_CONTACT)throw Error('Bonus arbalète illégal sur épée');
+     if(age!=='young'){
+      if(w.criticalThreshold!==19)throw Error('Science du critique R2 : critique 19–20 avec arbalète non appliqué, obtenu '+w.criticalThreshold);
+      if(sword.criticalThreshold!==20)throw Error('Science du critique a modifié l’épée');
+     }
+     if(first===install.warriorId&&age==='venerable'){
+      if(w.damage!=='1d6+1')throw Error('Spécialisation R3 : +1 dommage avec arbalète manquant, DM='+w.damage);
+      if(sword.damage!=='1d8+2')throw Error('Spécialisation R3 a modifié les dégâts de l’épée');
+     }
     }
     const back=E.computeCharacterN1(E.restoreHeroSavePayload(JSON.parse(JSON.stringify(E.createHeroSavePayload(state,c.characterState,{id:'arbaletrier-qa'})))).draft);
     if(back.errors.length||JSON.stringify(back.sticky.characterState.derived)!==JSON.stringify(c.characterState.derived))throw Error('Sauvegarde/reprise non conforme');
