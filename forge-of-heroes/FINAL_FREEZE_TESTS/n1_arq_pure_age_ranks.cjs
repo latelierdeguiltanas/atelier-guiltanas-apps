@@ -57,11 +57,13 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
    if(sticky.PV!==source.baseHpN1+expected.con)throw Error('PV baseline differs from book ('+sticky.PV+' vs '+(source.baseHpN1+expected.con)+')');
    // Depending on a loaded firearm, Plus vite que son ombre grants a shot initiative,
    // not a passive character-wide INIT; compare only when not using that path.
-   if(first.id.split(':')[1]!=='voie-du-pistolero'&&second.id.split(':')[1]!=='voie-du-pistolero'&&sticky.INIT!==10+expected.per+a.init)throw Error('INIT mismatch');
+   const strangeGift=s.peupleChoices.grantedAbilityId||'';const airGift= race==='gnome'&&(strangeGift.includes('voie-de-l-air')||strangeGift.includes('voie-de-la-divination'))?1:0;
+   if(first.id.split(':')[1]!=='voie-du-pistolero'&&second.id.split(':')[1]!=='voie-du-pistolero'&&sticky.INIT!==10+expected.per+a.init+airGift)throw Error('INIT mismatch: race '+race+' gift '+strangeGift+' expected '+(10+expected.per+a.init+airGift)+' actual '+sticky.INIT);
    const rank=source.ranks[age],entry=sticky.characterState.paths.find(p=>p.pathId===first.id);
    if(!entry||entry.rank!==rank)throw Error('Expected path rank '+rank+' got '+entry?.rank);
    for(let n=1;n<=rank;n++)if(!sticky.acquiredAbilities.some(x=>x.pathId===first.id&&x.rank===n))throw Error('Missing ability rank '+n);
    if(rank===3&&first.id.split(':')[1]==='voie-du-mercenaire'&&sticky.DEF<10+expected.agi+1)throw Error('Missing +1 DEF of Combattant aguerri at R3');
+   if(airGift && sticky.DEF<10+expected.agi+1)throw Error('Don étrange du gnome doit donner +1 DEF, selon Murmures dans le vent (Livre de base p.93)');
    const saved=E.createHeroSavePayload(s,sticky.characterState,{id:'arq-'+race+'-'+i+'-'+age}),back=E.computeCharacterN1(E.restoreHeroSavePayload(copy(saved)).draft);
    if(back.errors.length)throw Error('Restored character cannot be created '+back.errors.join('; '));
    if(JSON.stringify(copy(back.sticky.characterState.derived))!==JSON.stringify(copy(sticky.characterState.derived)))throw Error('Derived stats changed after saving');
