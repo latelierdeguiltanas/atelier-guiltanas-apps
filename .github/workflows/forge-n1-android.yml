@@ -20,7 +20,7 @@ jobs:
         run: |
           echo "$ANDROID_HOME/platform-tools" >> "$GITHUB_PATH"
           echo "$ANDROID_HOME/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
-          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "platform-tools" "emulator" "system-images;android-30;google_apis;x86_64"
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "platform-tools" "emulator" "system-images;android-35;google_apis;x86_64"
           npm install --prefix "$RUNNER_TEMP/forge-click" playwright@1.55.0
           echo "NODE_PATH=$RUNNER_TEMP/forge-click/node_modules" >> "$GITHUB_ENV"
       - name: Enable KVM
@@ -28,7 +28,7 @@ jobs:
       - name: Run Android creation journey
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30
+          api-level: 35
           arch: x86_64
           target: google_apis
           profile: pixel_2

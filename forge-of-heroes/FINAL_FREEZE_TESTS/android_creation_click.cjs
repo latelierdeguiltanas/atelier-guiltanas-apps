@@ -6,7 +6,13 @@ const fs=require('node:fs'),assert=require('node:assert/strict');
  let page,report={model:device.model(),steps:[],passed:false};
  try{
   const context=await device.launchBrowser({pkg:'com.android.chrome',args:['--no-first-run','--disable-fre']});
-  page=await context.newPage();
+  const url='http://127.0.0.1:4173/forge-of-heroes/';
+  const opened=context.pages()[0]||await (async()=>{
+   const tab=context.waitForEvent('page',{timeout:20000});
+   await device.shell('am start -a android.intent.action.VIEW -d '+url+' com.android.chrome');
+   return tab;
+  })();
+  page=opened;page.setDefaultTimeout(12000);
   await page.goto('http://127.0.0.1:4173/forge-of-heroes/');
   assert.match(await page.evaluate(()=>navigator.userAgent),/Android/);
   const button=name=>page.getByRole('button',{name,exact:true}),label=name=>page.getByLabel(name,{exact:true});
