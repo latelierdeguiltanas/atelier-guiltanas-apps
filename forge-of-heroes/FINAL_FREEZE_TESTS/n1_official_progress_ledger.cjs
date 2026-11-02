@@ -2,8 +2,9 @@
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),qa=path.join(root,'QA/N1'),read=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
 const native=read('QA/N1/native-items.json'),peopleSrc=read('QA/N1/lot10/people-source.json'),reg=read('QA/N1/regressions.json'),matrix=read('QA/N1/matrix.json'),cp=read('QA/N1/profile-checkpoint.json'),parity=read('QA/N1/version-parity.json');
-const urls={native:'../../forge-of-heroes/QA/N1/native-items.json',people:'../../forge-of-heroes/QA/N1/lot10/people-source.json',regressions:'../../forge-of-heroes/QA/N1/regressions.json',source:'../../forge-of-heroes/QA/N1/profile-checkpoint.json',parity:'../../forge-of-heroes/QA/N1/version-parity.json'};
+const urls={native:'../../forge-of-heroes/QA/N1/native-items.json',people:'../../forge-of-heroes/QA/N1/lot10/people-source.json',regressions:'../../forge-of-heroes/QA/N1/regressions.json',demi:'../../forge-of-heroes/QA/N1/demi-elfe-source-r1-r2.json',source:'../../forge-of-heroes/QA/N1/profile-checkpoint.json',parity:'../../forge-of-heroes/QA/N1/version-parity.json'};
 const names={peoples:{'demi-elfe':'Demi-elfe','demi-orc':'Demi-orc','elfe-haut':'Elfe haut','elfe-sylvain':'Elfe sylvain','gnome':'Gnome','halfelin':'Halfelin','humain':'Humain','nain':'Nain'},profiles:{arquebusier:'Arquebusier',barbare:'Barbare',barde:'Barde',chevalier:'Chevalier',druide:'Druide',ensorceleur:'Ensorceleur',forgesort:'Forgesort',guerrier:'Guerrier',magicien:'Magicien',moine:'Moine',pretre:'Prêtre',rodeur:'Rôdeur',sorcier:'Sorcier',voleur:'Voleur'}};
+const demiFile=path.join(qa,'demi-elfe-source-r1-r2.json');const demiData=fs.existsSync(demiFile)?JSON.parse(fs.readFileSync(demiFile,'utf8')):null;const demiPass=!!demiData&&demiData.cases===672&&demiData.passed===672&&demiData.failed===0;
 const fileShaCompatible=parity.matrixMechanicsReusable&&parity.checks.regressionIndexIdentical&&native.indexSha256===parity.current.index&&peopleSrc.products.every(p=>p.engineSha256===parity.current.engine);
 if(!fileShaCompatible)throw Error('Sources engine SHA mismatch: refuse to generate outdated scores');
 if(native.summary.officialProfiles!==14||native.summary.officialPeoples!==8||reg.passed!==37||cp.profileBaseline.scopeStatus!=='PASS')throw Error('evidence missing');
@@ -23,9 +24,9 @@ const full=r.total.attempted===7105&&r.total.failed===0&&rejectProof.counts.uncl
 const grid=r.attempts;
 const slots=[
 gate('catalogue','Peuple et caractéristiques référencés',true,urls.parity,'Peuple présent dans le catalogue COF2 vérifié et le moteur; traits vérifiés par suite de guides.'),
-gate('race-stats','Bonus/malus raciaux : oracle indépendant',sourceR1,urls.people,'Calculs chiffrés des caractéristiques raciales sur scénario officiel.' ,'Comparer le demi-elfe et toutes ses allocations à une attente source indépendante.'),
+gate('race-stats','Bonus/malus raciaux : oracle indépendant',sourceR1||(key==='demi-elfe'&&demiPass),key==='demi-elfe'?urls.demi:urls.people,'Calculs chiffrés des caractéristiques raciales sur scénario officiel.' ,'Comparer le demi-elfe et toutes ses allocations à une attente source indépendante.'),
 gate('people-r1','Voie de peuple : rang 1',sourceR1||key==='demi-elfe',urls.people,'R1 testé; demi-elfe : choix des trois héritages dans le moteur.'),
-gate('people-r2','Voie de peuple : rang 2',sourceR2,urls.people,'R2 humain / peuple et persistances, source chiffrée.', 'Tester les rangs 2 hérités du demi-elfe dans toutes les options légales.'),
+gate('people-r2','Voie de peuple : rang 2',sourceR2||(key==='demi-elfe'&&demiPass),key==='demi-elfe'?urls.demi:urls.people,'R2 humain / peuple et persistances, source chiffrée.', 'Tester les rangs 2 hérités du demi-elfe dans toutes les options légales.'),
 gate('standard','Profils purs : 14 × 10 paires',full&&grid.standard.attempted===140,urls.native,'Toutes les paires standards du peuple en configuration témoin.'),
 gate('hybrid','Hybrides : 14 × 13 × 25',full&&grid.hybrid.attempted===4550,urls.native,'Croisements de voies et profils dans les deux sens en configuration témoin.'),
 gate('no-profile','Sans profil : 2 415 paires',full&&grid['no-profile'].attempted===2415,urls.native,'Croisements sans profil dans la configuration témoin.'),
