@@ -37,17 +37,17 @@ details.path summary span{color:var(--amber);font-weight:500;font-size:11px;text
 </style></head><body>
 <main>
 <p class="kicker">Forge of Heroes · Copilote · Niveau 1</p>
-<h1>Est-ce que je peux créer ce personnage ?</h1>
-<p class="sub">Première étape : <strong>profils purs uniquement.</strong> Chaque case correspond à un peuple et un profil. Tu vois les règles acquises, les pouvoirs de chaque voie et ce qu’il reste à vérifier. Les hybrides, les personnages sans profil et le Compagnon V2 ne sont pas comptés ici.</p>
+<h1>Certification de l’Arquebusier · niveau 1</h1>
+<p class="sub"><strong>Profil actuellement travaillé : Arquebusier pur, pour les huit peuples officiels.</strong> Ses cinq voies et tous les rangs accessibles dès le N1 sont examinés, avec leurs effets réels. Les 13 autres profils sont en attente : on ne disperse plus la certification. Les hybrides et le Compagnon V2 restent hors de cette première phase.</p>
 <section class="summary" id="summary"><div>Chargement des personnages…</div></section>
 <section class="panel">
-<h2>Choisis ton personnage</h2>
+<h2>Arquebusier : choisis son peuple</h2>
 <div class="selectors"><label>Profil<select id="profile"></select></label><label>Peuple<select id="people"></select></label></div>
 <div id="character"></div>
 </section>
 <section class="panel">
-<h2>Les 112 personnages purs à vérifier</h2>
-<p class="sub">Sélectionne une case pour voir les règles du personnage. Le pourcentage correspond aux vérifications réellement acquises pour cette combinaison, pas au nombre de tests lancés.</p>
+<h2>Arquebusier · les huit peuples à certifier</h2>
+<p class="sub">Sélectionne un peuple pour voir exactement quels calculs de ses voies sont acquis et lesquels empêchent encore la certification complète. Les autres profils restent conservés, mais ne sont pas affichés ici.</p>
 <div id="matrix"></div>
 </section>
 <div class="footer">Sources : Livre de base COF2, Règles avancées et rapports de vérification de Forge. Le 100 % final exige le calcul des effets des pouvoirs, les restrictions de création et l’export de fiche, pas seulement la présence des textes. <a href="./" target="_blank" rel="noopener noreferrer">Voir les anciennes campagnes et les autres modes</a>.</div>
@@ -58,10 +58,10 @@ const $=id=>document.getElementById(id),safe=s=>String(s??'').replace(/[&<>"']/g
 const state={data:null,selected:null};
 const names={status:{ACQUIS:'Acquis',A_VERIFIER:'À vérifier'}};
 function renderSummary(){
- const d=state.data,s=d.summary;
+ const d=state.data,focused=d.items.filter(x=>x.profileId.includes(':arquebusier:')),s={certified:focused.filter(x=>x.certified).length,total:8,criteriaPassed:focused.reduce((n,x)=>n+x.passed,0),criteriaTotal:focused.reduce((n,x)=>n+x.total,0)};
  $('summary').innerHTML='<div><strong>'+s.certified+'/'+s.total+'</strong><small>Créations complètement certifiées</small></div>'+
- '<div><strong>'+d.profiles.length+'</strong><small>Profils de base</small></div>'+
- '<div><strong>'+d.peoples.length+'</strong><small>Peuples de base</small></div>'+
+ '<div><strong>1 / 14</strong><small>Profil en cours : Arquebusier</small></div>'+
+ '<div><strong>8</strong><small>Peuples à examiner pour ce profil</small></div>'+
  '<div><strong>'+s.criteriaPassed+'/'+s.criteriaTotal+'</strong><small>Points de règles déjà vérifiés</small></div>';
 }
 function selectItem(id){
@@ -80,19 +80,19 @@ function renderCharacter(){
 }
 function renderMatrix(){
  const d=state.data;
- $('matrix').innerHTML=d.profiles.map(p=>'<div class="matrix-group"><div class="matrix-title">'+safe(p.name)+'</div><div class="chips">'+d.peoples.map(r=>{const x=d.items.find(x=>x.profileId===p.id&&x.peopleId===r.id);return '<button type="button" class="chip '+(x.id===state.selected.id?'active':'')+'" data-key="'+safe(x.id)+'" aria-label="'+safe(p.name+' '+r.name+' : '+x.percent+' %')+'">'+safe(r.name)+'<b>'+x.percent+' %</b></button>';}).join('')+'</div></div>').join('');
+ $('matrix').innerHTML=d.profiles.filter(p=>p.id.includes(':arquebusier:')).map(p=>'<div class="matrix-group"><div class="matrix-title">'+safe(p.name)+'</div><div class="chips">'+d.peoples.map(r=>{const x=d.items.find(x=>x.profileId===p.id&&x.peopleId===r.id);return '<button type="button" class="chip '+(x.id===state.selected.id?'active':'')+'" data-key="'+safe(x.id)+'" aria-label="'+safe(p.name+' '+r.name+' : '+x.percent+' %')+'">'+safe(r.name)+'<b>'+x.percent+' %</b></button>';}).join('')+'</div></div>').join('');
  $('matrix').querySelectorAll('button[data-key]').forEach(b=>b.addEventListener('click',()=>{selectItem(b.dataset.key);$('character').scrollIntoView({block:'start',behavior:'smooth'});}));
 }
 async function load(){
  try{
   const r=await fetch('./purs.json?refresh='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('Données de suivi indisponibles');
-  const d=await r.json();if(d.items.length!==112)throw Error('Liste incomplète');
+  const d=await r.json();if(d.items.length!==112||!d.focus||d.focus.activeProfileName!=='Arquebusier')throw Error('Liste ou profil actif incomplet');
   state.data=d;
-  $('profile').innerHTML=d.profiles.map(p=>'<option value="'+safe(p.id)+'">'+safe(p.name)+'</option>').join('');
+  $('profile').innerHTML=d.profiles.filter(p=>p.id.includes(':arquebusier:')).map(p=>'<option value="'+safe(p.id)+'">'+safe(p.name)+'</option>').join('');
   $('people').innerHTML=d.peoples.map(p=>'<option value="'+safe(p.id)+'">'+safe(p.name)+'</option>').join('');
   $('profile').addEventListener('change',()=>selectItem(d.items.find(x=>x.profileId===$('profile').value&&x.peopleId===$('people').value)?.id));
   $('people').addEventListener('change',()=>selectItem(d.items.find(x=>x.profileId===$('profile').value&&x.peopleId===$('people').value)?.id));
-  const url=new URLSearchParams(location.search);const p=url.get('profil')||'arquebusier',pe=url.get('peuple')||'nain';
+  const url=new URLSearchParams(location.search);const p='arquebusier',pe=url.get('peuple')||'nain';
   selectItem(d.items.find(x=>x.profileId.includes(':'+p+':')&&x.peopleId.includes(':'+pe+':'))?.id||d.items[0].id);
   renderSummary();
  }catch(e){$('character').innerHTML='<p class="notes">Le suivi des personnages n’a pas pu être chargé : '+safe(e.message)+'. <a href="./">Voir le suivi général</a>.</p>';}
