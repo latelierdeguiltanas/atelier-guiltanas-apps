@@ -126,6 +126,83 @@
       "validatedBy": "FIX72"
     }
   },
+  "warriorR1Ability": {
+    "id": "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+    "path_id": "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024",
+    "rank": 1,
+    "label": "Armes de prédilection",
+    "desc": "Le guerrier choisit une catégorie d’armes de prédilection parmi épées, haches, masses, lances (épieu, lance, pique) et enfin armes de jet (dague de lancer, javelot, etc.), et il gagne +1 en attaque lorsqu’il l’utilise une arme de cette catégorie. De plus, vous ajoutez votre rang + 2 à tous les tests destinés à estimer la valeur d’une arme ou la réputation martiale d’un adversaire.",
+    "source": {
+      "bookId": "cof2-livre-base-2024",
+      "edition": "COF2",
+      "printedPage": 88,
+      "chapter": "Profils",
+      "section": "Armes de prédilection"
+    },
+    "certification": {
+      "scope": "n1",
+      "sourceStatus": "SOURCE_VERIFIED",
+      "functionalStatus": "N1_CERTIFIED",
+      "structured": true,
+      "engineConnected": true,
+      "oracleTested": true,
+      "negativeTested": true,
+      "crossTested": true,
+      "validatedBy": "FIX72",
+      "descriptionVerified": true
+    },
+    "mechanics": {
+      "kind": "passive",
+      "requiresChoice": "preferredWeaponCategory",
+      "effects": [
+        {
+          "type": "weapon_attack_bonus",
+          "value": 1,
+          "categories": [
+            "swords",
+            "axes",
+            "maces",
+            "spears",
+            "thrown"
+          ],
+          "choiceField": "preferredWeaponCategory"
+        }
+      ],
+      "skillBonuses": [
+        {
+          "value": 3,
+          "tests": [
+            "weapon_value",
+            "martial_reputation"
+          ]
+        }
+      ]
+    },
+    "sourceTextOriginal": "Le guerrier choisit une catégorie d’armes de prédilection parmi épées, haches, masses, lances (épieu, lance, pique) et enfin armes de jet (dague de lancer, javelot, etc.), et il gagne +1 en attaque lorsqu’il l’utilise une arme de cette catégorie. De plus, vous ajoutez votre rang + 2 à tous les tests destinés à estimer la valeur d’une arme ou la réputation martiale d’un adversaire.",
+    "sourceOriginal": {
+      "bookId": "cof2-livre-base-2024",
+      "printedPage": 88,
+      "edition": "COF2"
+    },
+    "descriptionStatus": "SOURCE_EXTRACTED"
+  },
+  "engineChoiceSnippets": [
+    {
+      "query": "Armes de prédilection : option illégale.",
+      "index": -1,
+      "code": ""
+    },
+    {
+      "query": "preferredWeaponCategory",
+      "index": 700219,
+      "code": "isit une catégorie d’armes de prédilection parmi épées, haches, masses, lances (épieu, lance, pique) et enfin armes de jet (dague de lancer, javelot, etc.), et il gagne +1 en attaque lorsqu’il l’utilise une arme de cette catégorie. De plus, vous ajoutez votre rang + 2 à tous les tests destinés à estimer la valeur d’une arme ou la réputation martiale d’un adversaire.\",\n        \"source\": {\n          \"bookId\": \"cof2-livre-base-2024\",\n          \"edition\": \"COF2\",\n          \"printedPage\": 88,\n          \"chapter\": \"Profils\",\n          \"section\": \"Armes de prédilection\"\n        },\n        \"certification\": {\n          \"scope\": \"n1\",\n          \"sourceStatus\": \"SOURCE_VERIFIED\",\n          \"functionalStatus\": \"N1_CERTIFIED\",\n          \"structured\": true,\n          \"engineConnected\": true,\n          \"oracleTested\": true,\n          \"negativeTested\": true,\n          \"crossTested\": true,\n          \"validatedBy\": \"FIX72\",\n          \"descriptionVerified\": true\n        },\n        \"mechanics\": {\n          \"kind\": \"passive\",\n          \"requiresChoice\": \"preferredWeaponCategory\",\n          \"effects\": [\n            {\n              \"type\": \"weapon_attack_bonus\",\n              \"value\": 1,\n              \"categories\": [\n                \"swords\",\n                \"axes\",\n                \"maces\",\n                \"spears\",\n                \"thrown\"\n              ],\n              \"choiceField\": \"preferredWeaponCategory\"\n            }\n          ],\n          \"skillBonuses\": [\n            {\n              \"value\": 3,\n              \"tests\": [\n                \"weapon_value\",\n                \"martial_reputation\"\n              ]\n            }\n          ]\n        },\n        \"sourceTextOriginal\": \"Le guerrier choisit une catégorie d’armes de prédilection parmi épées, haches, masses, lances (épieu, lance, pique) et enfin armes de jet (dague de lancer, javelot, etc.), et il gagne +1 en attaque lorsqu’il l’utilise une arme de cette catégorie. De plus, vous ajoutez votre rang + 2 à tous les tests destinés à estimer la valeur d’une arme ou la réputation martiale d’un adversaire.\",\n        \"sourceOriginal\": {\n          \"bookId\": \"cof2-livre-base-2024\",\n          \"printedPage\": 88,\n          \"edition\": \"COF2\"\n        },\n        \"descriptionStatus\": \"SOURCE_EXTRACTED\"\n      },\n      {\n        \"id\": \"ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024\","
+    },
+    {
+      "query": "arme de prédilection",
+      "index": 701832,
+      "code": "  ]\n            }\n          ]\n        },\n        \"sourceTextOriginal\": \"Le guerrier choisit une catégorie d’armes de prédilection parmi épées, haches, masses, lances (épieu, lance, pique) et enfin armes de jet (dague de lancer, javelot, etc.), et il gagne +1 en attaque lorsqu’il l’utilise une arme de cette catégorie. De plus, vous ajoutez votre rang + 2 à tous les tests destinés à estimer la valeur d’une arme ou la réputation martiale d’un adversaire.\",\n        \"sourceOriginal\": {\n          \"bookId\": \"cof2-livre-base-2024\",\n          \"printedPage\": 88,\n          \"edition\": \"COF2\"\n        },\n        \"descriptionStatus\": \"SOURCE_EXTRACTED\"\n      },\n      {\n        \"id\": \"ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024\",\n        \"path_id\": \"classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024\",\n        \"rank\": 2,\n        \"label\": \"Science du critique\",\n        \"desc\": \"Le guerrier augmente de 1 point les chances d’obtenir un critique sur les attaques effectuées avec une arme de prédilection (par exemple, 19‑20 au lieu de 20).\",\n        \"source\": {\n          \"bookId\": \"cof2-livre-base-2024\",\n          \"edition\": \"COF2\",\n          \"printedPage\": 89,\n          \"chapter\": \"Profils\",\n          \"section\": \"Science du critique\"\n        },\n        \"certification\": {\n          \"scope\": \"n1\",\n          \"sourceStatus\": \"SOURCE_VERIFIED\",\n          \"functionalStatus\": \"ADVANCED_N1_CONNECTED\",\n          \"structured\": true,\n          \"ageAccessibleN1\": true,\n          \"descriptionVerified\": true\n        },\n        \"mechanics\": {\n          \"kind\": \"passive_or_contextual\",\n          \"action\": null,\n          \"cost\": {\n            \"resource\": \"capacity\",\n            \"amount\": 1\n          },\n          \"effects\": [\n            {\n              \"type\": \"structured_sheet_effect\",\n              \"targets\": [\n                \"CRITIQUE\",\n                \"ARME\"\n              ],\n              \"sourceText\": \"Le guerrier augmente de 1 point les chances d’obtenir un critique sur les attaques effectuées avec une arme de prédilection (par exemple, 19‑20 au lieu de 20).\",\n              \"persist\": true\n            }\n          ],\n          \"sourceText\": \"Le guerrier augmente de 1 point les chances d’obtenir un critique sur les attaques effectuées avec une arme de prédilection (par exemple, 19‑20 au lieu de 20).\"\n        },\n      "
+    }
+  ],
   "crossbowWeapons": [
     {
       "id": "weapon:hand-crossbow",
