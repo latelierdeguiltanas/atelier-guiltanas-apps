@@ -1,0 +1,42 @@
+name: Forge N1 - reconciliation profils
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-profile-reconciliation.yml'
+permissions:
+  contents: write
+jobs:
+  check-profile-baselines:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Reconcile saved character sheets and independent R1/R2 numerical assertions
+        id: checks
+        continue-on-error: true
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_reconcile_profiles_runner.cjs
+      - name: Archive reproducible JSON checkpoint
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: forge-n1-profiles-checkpoint
+          if-no-files-found: warn
+          path: forge-of-heroes/QA/N1/profile-checkpoint.json
+      - name: Publish checkpoint (not a universal certification)
+        if: always()
+        run: |
+          if test -f forge-of-heroes/QA/N1/profile-checkpoint.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add forge-of-heroes/QA/N1/profile-checkpoint.json
+            git diff --cached --quiet || { git commit -m "test(forge-n1): point de contrôle des profils R1/R2 [skip ci]" && git push; }
+          fi
+      - name: Require checks to pass
+        if: steps.checks.outcome == 'failure'
+        run: exit 1
