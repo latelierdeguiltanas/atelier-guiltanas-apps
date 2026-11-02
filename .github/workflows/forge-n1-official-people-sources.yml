@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - '.github/workflows/forge-n1-official-people-sources.yml'
+      - 'forge-of-heroes/index.html'
+      - 'forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_people_source_runner.cjs'
 permissions:
   contents: write
 jobs:
@@ -31,6 +34,7 @@ jobs:
             if ! git diff --cached --quiet; then
               git commit -m "test(forge-n1): oracle peuple R1 et R2 source [skip ci]"
               git fetch origin main
+              git restore --worktree .
               git rebase origin/main
               git push origin HEAD:main
             fi
