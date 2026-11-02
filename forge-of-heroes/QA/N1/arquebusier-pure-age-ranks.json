@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_ARQUEBUSIER_PURE_AGE_RANK",
-  "timestamp": "2026-11-02T11:25:50.711Z",
+  "timestamp": "2026-11-02T11:29:28.939Z",
   "scope": "14? No: only Arquebusier pure × 8 official peoples × five different first paths × all ages (very young PC/DR, young, mature, venerable), both product engines. Validates racial and age characteristics against book rules, permanent PV/DEF/INIT under equip, existence of each accessible rank, local save/reopen. Contextual spells/attacks, historical choices, Arbalétrier alternative and PDF are NOT validated.",
   "source": {
     "book": "COF2 Livre de base imprimé pp.62–65; Règles avancées p.153 (catégories d’âge)",
@@ -35,7 +35,7 @@
       "venerable": 3
     }
   },
-  "sourceCommit": "1f338b966c8316c3e96f8d48b93726dd87c4d1f0",
+  "sourceCommit": "4beff8c7ce931e029d3a8049a3604559d92aff26",
   "expected": 400,
   "cases": 400,
   "pass": 400,
@@ -10416,5 +10416,11 @@
       ]
     }
   ],
+  "numericEffectAssertions": {
+    "Arme à répétition — chargeur 2 + INT et +1 au rang 3": 32,
+    "Poudre puissante — portée +10 m, dommages +1 et projectile magique": 16,
+    "Tir précis — critique sur 19-20 à distance": 16,
+    "Combattant aguerri — défense +1": 16
+  },
   "complete": true
 }
