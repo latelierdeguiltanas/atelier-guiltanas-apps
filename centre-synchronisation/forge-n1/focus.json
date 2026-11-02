@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-02T12:07:44.724Z",
+  "generatedAt": "2026-11-02T12:15:08.304Z",
   "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
   "intent": "Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.",
   "profile": {
@@ -118,8 +118,8 @@
             "rank": 1,
             "name": "Mécanismes",
             "focus": "Bonus rang + 2 aux réparations et mécanismes ; dé bonus avec les armes de siège.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Mécanismes vérifié : bonus de rang dans la voie + 2 aux tests de réparation et de compréhension des mécanismes (3 au R1, 4 au R2, 5 au R3). Dé bonus aux armes de siège encore à contrôler en situation.",
+            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
           },
           {
             "rank": 2,
@@ -145,8 +145,8 @@
             "rank": 1,
             "name": "Tir de grenaille (L)",
             "focus": "Attaque de zone avec une arme à poudre ; moitié des dégâts et bonus d’artificier.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Tir de grenaille : bonus d’artificier vérifié, rang + 2 (3, 4 ou 5). Son cône de tir et les dégâts de moitié restent à tester.",
+            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
           },
           {
             "rank": 2,
@@ -172,8 +172,8 @@
             "rank": 1,
             "name": "Pilier de bar",
             "focus": "Bonus rang + 2 aux interactions dans les tavernes ou auberges.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Pilier de bar : bonus de rang + 2 (3, 4 ou 5) aux interactions de taverne et à la résistance à l’alcool vérifié. Dégâts à mains nues et réduction des dommages non létaux restent à tester.",
+            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
           },
           {
             "rank": 2,
