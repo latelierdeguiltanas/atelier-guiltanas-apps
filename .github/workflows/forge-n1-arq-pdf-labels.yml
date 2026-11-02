@@ -1,0 +1,31 @@
+name: Forge N1 - completer les textes PDF Arbaletrier
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arq-pdf-labels.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_pdf_labels_sync.cjs'
+permissions:
+  contents: write
+jobs:
+  labels:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Copier les cinq voies et vingt-cinq pouvoirs valides dans le catalogue PDF
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_pdf_labels_sync.cjs
+      - name: Vérifier la parité du catalogue et du produit
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/import_assets_prestige_runner.cjs
+      - name: Publier le catalogue des voies certifiables
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/progression/pdf-labels.json
+          git commit -m "fix(forge-pdf): exporter aussi les cinq voies de la variante Arbaletrier [skip ci]"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
