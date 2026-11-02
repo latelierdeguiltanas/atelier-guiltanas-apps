@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_ARQUEBUSIER_PURE_AGE_RANK",
-  "timestamp": "2026-11-02T11:29:28.939Z",
+  "timestamp": "2026-11-02T12:13:28.809Z",
   "scope": "14? No: only Arquebusier pure × 8 official peoples × five different first paths × all ages (very young PC/DR, young, mature, venerable), both product engines. Validates racial and age characteristics against book rules, permanent PV/DEF/INIT under equip, existence of each accessible rank, local save/reopen. Contextual spells/attacks, historical choices, Arbalétrier alternative and PDF are NOT validated.",
   "source": {
     "book": "COF2 Livre de base imprimé pp.62–65; Règles avancées p.153 (catégories d’âge)",
@@ -35,61 +35,462 @@
       "venerable": 3
     }
   },
-  "sourceCommit": "4beff8c7ce931e029d3a8049a3604559d92aff26",
+  "sourceCommit": "3e86418394a24d44a2c29011eb33280569276193",
   "expected": 400,
   "cases": 400,
-  "pass": 400,
+  "pass": 240,
   "refused": 0,
-  "failed": 0,
-  "failures": [],
+  "failed": 160,
+  "failures": [
+    {
+      "tag": "index.html|humain|voie-de-l-artilleur|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|humain|voie-de-l-artilleur|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|humain|voie-de-l-artilleur|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|humain|voie-de-l-artilleur|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|humain|voie-de-l-artilleur|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|humain|voie-des-explosifs|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|humain|voie-des-explosifs|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|humain|voie-des-explosifs|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|humain|voie-des-explosifs|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|humain|voie-des-explosifs|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 5 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|nain|voie-de-l-artilleur|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|nain|voie-de-l-artilleur|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|nain|voie-de-l-artilleur|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|nain|voie-de-l-artilleur|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|nain|voie-de-l-artilleur|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|nain|voie-des-explosifs|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|nain|voie-des-explosifs|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|nain|voie-des-explosifs|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|nain|voie-des-explosifs|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|nain|voie-des-explosifs|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 5 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-elfe|voie-de-l-artilleur|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-elfe|voie-de-l-artilleur|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-elfe|voie-de-l-artilleur|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-elfe|voie-de-l-artilleur|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-elfe|voie-de-l-artilleur|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-elfe|voie-des-explosifs|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-elfe|voie-des-explosifs|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-elfe|voie-des-explosifs|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-elfe|voie-des-explosifs|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-elfe|voie-des-explosifs|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 5 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-orc|voie-de-l-artilleur|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-orc|voie-de-l-artilleur|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-orc|voie-de-l-artilleur|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-orc|voie-de-l-artilleur|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-orc|voie-de-l-artilleur|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-orc|voie-des-explosifs|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-orc|voie-des-explosifs|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-orc|voie-des-explosifs|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-orc|voie-des-explosifs|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|demi-orc|voie-des-explosifs|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 5 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-haut|voie-de-l-artilleur|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-haut|voie-de-l-artilleur|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-haut|voie-de-l-artilleur|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-haut|voie-de-l-artilleur|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-haut|voie-de-l-artilleur|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-haut|voie-des-explosifs|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-haut|voie-des-explosifs|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-haut|voie-des-explosifs|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-haut|voie-des-explosifs|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-haut|voie-des-explosifs|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 5 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-sylvain|voie-de-l-artilleur|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-sylvain|voie-de-l-artilleur|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-sylvain|voie-de-l-artilleur|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-sylvain|voie-de-l-artilleur|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-sylvain|voie-de-l-artilleur|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-sylvain|voie-des-explosifs|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-sylvain|voie-des-explosifs|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-sylvain|voie-des-explosifs|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-sylvain|voie-des-explosifs|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|elfe-sylvain|voie-des-explosifs|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 5 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|gnome|voie-de-l-artilleur|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|gnome|voie-de-l-artilleur|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|gnome|voie-de-l-artilleur|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|gnome|voie-de-l-artilleur|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|gnome|voie-de-l-artilleur|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|gnome|voie-des-explosifs|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|gnome|voie-des-explosifs|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|gnome|voie-des-explosifs|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|gnome|voie-des-explosifs|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|gnome|voie-des-explosifs|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 5 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|halfelin|voie-de-l-artilleur|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|halfelin|voie-de-l-artilleur|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|halfelin|voie-de-l-artilleur|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|halfelin|voie-de-l-artilleur|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|halfelin|voie-de-l-artilleur|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|halfelin|voie-des-explosifs|young|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|halfelin|voie-des-explosifs|very-young|PC",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|halfelin|voie-des-explosifs|very-young|DR",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 3 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|halfelin|voie-des-explosifs|mature|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 4 [\"artificer\"] got []"
+    },
+    {
+      "tag": "index.html|halfelin|voie-des-explosifs|venerable|",
+      "type": "ASSERTION",
+      "reason": "Error: Wrong voie-des-explosifs bonus: expected 5 [\"artificer\"] got []"
+    }
+  ],
   "perRace": {
     "humain": {
       "cases": 50,
-      "pass": 50,
+      "pass": 30,
       "refused": 0,
-      "failed": 0
+      "failed": 20
     },
     "nain": {
       "cases": 50,
-      "pass": 50,
+      "pass": 30,
       "refused": 0,
-      "failed": 0
+      "failed": 20
     },
     "demi-elfe": {
       "cases": 50,
-      "pass": 50,
+      "pass": 30,
       "refused": 0,
-      "failed": 0
+      "failed": 20
     },
     "demi-orc": {
       "cases": 50,
-      "pass": 50,
+      "pass": 30,
       "refused": 0,
-      "failed": 0
+      "failed": 20
     },
     "elfe-haut": {
       "cases": 50,
-      "pass": 50,
+      "pass": 30,
       "refused": 0,
-      "failed": 0
+      "failed": 20
     },
     "elfe-sylvain": {
       "cases": 50,
-      "pass": 50,
+      "pass": 30,
       "refused": 0,
-      "failed": 0
+      "failed": 20
     },
     "gnome": {
       "cases": 50,
-      "pass": 50,
+      "pass": 30,
       "refused": 0,
-      "failed": 0
+      "failed": 20
     },
     "halfelin": {
       "cases": 50,
-      "pass": 50,
+      "pass": 30,
       "refused": 0,
-      "failed": 0
+      "failed": 20
     }
   },
   "perPath": {
@@ -97,17 +498,17 @@
       "name": "Voie de l’artilleur",
       "printedPage": 62,
       "cases": 80,
-      "pass": 80,
+      "pass": 0,
       "refused": 0,
-      "failed": 0
+      "failed": 80
     },
     "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024": {
       "name": "Voie des explosifs",
       "printedPage": 63,
       "cases": 80,
-      "pass": 80,
+      "pass": 0,
       "refused": 0,
-      "failed": 0
+      "failed": 80
     },
     "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024": {
       "name": "Voie du mercenaire",
@@ -10416,11 +10817,16 @@
       ]
     }
   ],
+  "skillEffectAssertions": {
+    "mecanismes": 160,
+    "grenailleArtificier": 0,
+    "pilierDeBar": 80
+  },
   "numericEffectAssertions": {
-    "Arme à répétition — chargeur 2 + INT et +1 au rang 3": 32,
-    "Poudre puissante — portée +10 m, dommages +1 et projectile magique": 16,
+    "Arme à répétition — chargeur 2 + INT et +1 au rang 3": 0,
+    "Poudre puissante — portée +10 m, dommages +1 et projectile magique": 0,
     "Tir précis — critique sur 19-20 à distance": 16,
     "Combattant aguerri — défense +1": 16
   },
-  "complete": true
+  "complete": false
 }
