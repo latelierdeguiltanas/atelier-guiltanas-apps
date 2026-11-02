@@ -100,7 +100,8 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
      if(w.attackBonus!==c.ATK_DISTANCE+1)throw Error('Bonus +1 arbalète absent');
      if(sword.attackBonus!==c.ATK_CONTACT)throw Error('Bonus arbalète illégal sur épée');
      if(age!=='young'){
-      if(w.criticalThreshold!==19)throw Error('Science du critique R2 : critique 19–20 avec arbalète non appliqué, obtenu '+w.criticalThreshold);
+      const precisionR3=first.split(':')[1]==='voie-de-la-precision'&&age==='venerable';const expectedCrit=precisionR3?18:19;
+      if(w.criticalThreshold!==expectedCrit)throw Error('Science du critique R2 '+(precisionR3?'+ Tir précis R3':'')+' : seuil attendu '+expectedCrit+' obtenu '+w.criticalThreshold);
       if(sword.criticalThreshold!==20)throw Error('Science du critique a modifié l’épée');
      }
      if(first===install.warriorId&&age==='venerable'){
