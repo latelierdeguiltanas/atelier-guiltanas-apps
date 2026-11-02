@@ -22,9 +22,23 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Vérifier que les trois campagnes utilisent les empreintes actuelles
+        id: readiness
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const root='forge-of-heroes/QA/N1/';
+          const read=n=>JSON.parse(fs.readFileSync(root+n+'.json','utf8'));
+          const [p,n,r]=['version-parity','native-items','regressions'].map(read);
+          const ready=!!(p.matrixMechanicsReusable&&p.current.index===n.indexSha256&&p.current.index===r.indexSha256&&r.status==='PASS'&&r.passed===37&&n.summary.failed===0);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,'ready='+ready+'\n');
+          console.log(ready?'PREUVES COURANTES : calcul des pourcentages autorisé':'EN ATTENTE : preuves anciennes, scores conservés sans faux renouvellement');
+          NODE
       - name: Classify official refusals and compute source-backed per-item percentages
+        if: steps.readiness.outputs.ready == 'true'
         run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_official_progress_ledger.cjs
       - name: Verify ledger schema and impossible false green
+        if: steps.readiness.outputs.ready == 'true'
         run: |
           node - <<'NODE'
           const d=require('./centre-synchronisation/forge-n1/progress.json');
@@ -34,12 +48,14 @@ jobs:
           console.log('22 official items; scores from explicit evidence gates');
           NODE
       - uses: actions/upload-artifact@v4
+        if: steps.readiness.outputs.ready == 'true'
         with:
           name: forge-n1-official-audit-percentages
           path: |
             centre-synchronisation/forge-n1/progress.json
             forge-of-heroes/QA/N1/native-rejection-legality.json
       - name: Publish audited percentages to Cockpit only
+        if: steps.readiness.outputs.ready == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
