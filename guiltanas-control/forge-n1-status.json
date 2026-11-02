@@ -1,10 +1,10 @@
 {
   "project": "Forge of Heroes",
   "milestone": "Validation exhaustive N1",
-  "snapshot_date": "2026-11-01",
+  "snapshot_date": "2026-11-02",
   "status": "validation_n1_en_cours",
   "progress_percent": null,
-  "progress_reason": "Cinq parcours au clic validés dans Chrome. La validation générale du N1 reste ouverte.",
+  "progress_reason": "Avancement du développement réel, mais pas de pourcentage global certifiable. Gate N1: 0/12 parcours officiels du gel validés (2 échecs historiques non rejoués, 10 non exécutés), en parallèle de 5 parcours Chrome différents réussis et de nombreuses suites automatisées. Matrice 179120 antérieure aux changements du 31 octobre.",
   "evidence": [
     {
       "type": "github_file",
@@ -82,7 +82,7 @@
       "status": "non_verifie_dans_cet_audit"
     }
   ],
-  "next_action": "Clôturer les variantes N1 d’âge, d’historiques, d’équipement et de contexte encore ouvertes et les parcours mobiles.",
+  "next_action": "Clôturer les 12 parcours de gel au clic via navigateur, réconcilier l'ancienne matrice avec le moteur actuel et vérifier les cas numériques résiduels, sans demander de tests à l'utilisateur.",
   "conversation_registry": [],
   "conversation_import_status": "non_inventorie",
   "current_work": "Terminer les variantes avancées et les parcours mobiles N1.",
@@ -191,5 +191,48 @@
     "remaining": "Vérifier le parcours Android et les combinaisons de règles dont les calculs attendus restent à comparer indépendamment.",
     "release": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/commit/c3ea630c27298e6c6afdbc1083680767a6053ee2",
     "checks": "36 contrôles de fiche interactive réussis sur les deux versions de Forge (17 profils et le cas sans profil). Demi-orc hybride : 16 comparaisons de calculs sur les bonus, malus et armures. Croisement âge, historiques et armure : 60 créations et 60 relectures contrôlées. PV hybrides corrigés."
+  },
+  "audit_n1_gate": {
+    "audited_on": "2026-11-02",
+    "overall_certified": false,
+    "primary_gate": {
+      "name": "12 parcours MANUAL_FREEZE_PACK",
+      "passed": 0,
+      "failed_unretested": 2,
+      "not_executed": 10,
+      "total": 12
+    },
+    "separate_recent_browser_journeys": {
+      "passed": 5,
+      "scope": "Parcours Chrome distincts consignés dans n1_dashboard; ne remplacent pas le pack de gel"
+    },
+    "automated_recorded": {
+      "regression_suites_passed": 37,
+      "regression_suites_total": 37,
+      "matrix_attempted": 179120,
+      "matrix_assertion_failures": 0,
+      "matrix_fresh_on_current_engine": false,
+      "matrix_remaining_rejections_for_review": 19830
+    },
+    "current_phase_status": "N1 OPEN; N2 WAITING_FOR_N1; N3 WAITING_FOR_N2",
+    "current_status_file": "forge-of-heroes/QA/N1/status.json",
+    "android_verified": false,
+    "closure_blockers": [
+      "Rejouer la matrice principale sur la version du moteur du 31 octobre ou plus récente et archiver les empreintes identiques",
+      "Qualifier, corriger si besoin et rejouer MANUAL_01 et MANUAL_02 sur la version publiée actuelle",
+      "Exécuter MANUAL_03 à MANUAL_12 en vrai navigateur et produire les preuves et résultats",
+      "Compléter les comparaisons numériques indépendantes des effets R1/R2 et rangs N1 par âge, options, peuples et hybrides",
+      "Contrôler sauvegarde/reprise, export PDF/import et interfaces mobiles; Android non vérifié",
+      "Clôturer explicitement overallCertified à true seulement après zéro blocage et preuves rapprochées"
+    ],
+    "sources": [
+      "forge-of-heroes/README.md",
+      "forge-of-heroes/QA/N1/README.md",
+      "forge-of-heroes/QA/N1/status.json",
+      "forge-of-heroes/REAL_USER_JOURNEY/N1_REAL_USER_JOURNEY_REPORT_V2.md",
+      "forge-of-heroes/REAL_USER_JOURNEY/MANUAL_01_RESULT.md",
+      "forge-of-heroes/REAL_USER_JOURNEY/MANUAL_02_RESULT.md"
+    ],
+    "note": "Audit documentaire des preuves présentes sur GitHub, non réexécution dans cette intervention. Les deux FAIL sont historiques; ils ne démontrent pas une défaillance de la dernière production sans retest."
   }
 }
