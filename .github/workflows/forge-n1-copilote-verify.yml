@@ -1,0 +1,40 @@
+name: Forge N1 - controle affichage Copilote sequentiel
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-copilote-verify.yml'
+      - 'centre-synchronisation/forge-n1/index.html'
+      - 'centre-synchronisation/forge-n1/focus.json'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Controle statique script et contrat 14 profils 8 peuples
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
+          const root='centre-synchronisation/forge-n1/';
+          const html=fs.readFileSync(root+'index.html','utf8');
+          const scripts=[...html.matchAll(/<script(?:\\s+[^>]*)?>([\\s\\S]*?)<\\/script>/g)].map(m=>m[1]).filter(x=>x.trim());
+          assert(scripts.length>=1,'Script de l’interface absent');
+          for(const script of scripts)new vm.Script(script,{filename:'copilote-inline.js'});
+          for(const id of ['focus-priority','focus-stats','focus-profile','focus-peoples','focus-open','focus-queue','focus-date'])assert(html.includes('id="'+id+'"'),id+' manque');
+          assert(html.includes('readJson("./focus.json")'),'La vue ne charge pas les preuves actives');
+          const d=JSON.parse(fs.readFileSync(root+'focus.json'));
+          assert(d.certificationPlan.policy==='UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100');
+          assert(d.certificationPlan.queue.length===14);
+          assert(d.peoples.length===8);
+          assert(d.certificationPlan.queue.filter(x=>x.status==='EN_COURS').length===1);
+          assert(d.certificationPlan.current.name===d.profile.name);
+          assert(d.profile.percent===Math.round(d.profile.passed/d.profile.total*100));
+          assert(d.peoples.every(x=>x.percent===Math.round(x.passed/x.total*100)));
+          console.log('Copilote compilable : 1 profil actif, 13 en attente, 8 peuples, données et DOM cohérents');
+          NODE
