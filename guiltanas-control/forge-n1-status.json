@@ -237,7 +237,7 @@
   },
   "profile_dashboard": {
     "url": "https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/centre-synchronisation/",
-    "source": "centre-synchronisation/forge-n1/data.json",
+    "source": "centre-synchronisation/forge-n1/progress.json",
     "as_of": "2026-11-02",
     "profiles": 17,
     "peoples": 16,
@@ -262,6 +262,159 @@
       "scope": "profils / fiches interactives, hybride demi-orc, âge/historiques/armure, oracles numériques indépendants R1 et R2",
       "evidence": "forge-of-heroes/QA/N1/profile-checkpoint.json"
     },
-    "qualification": "0 profil certifié exhaustivement ne signifie pas zéro profil testé. Les 17 profils passent les contrôles de socle documentés; les combinaisons/règles avancées, UI et PDF restants n'ont pas tous de preuves complètes."
+    "qualification": "0 profil certifié exhaustivement ne signifie pas zéro profil testé. Les 17 profils passent les contrôles de socle documentés; les combinaisons/règles avancées, UI et PDF restants n'ont pas tous de preuves complètes.",
+    "basePeoples": 8,
+    "baseProfiles": 14,
+    "companionDeferred": true
+  },
+  "official_n1_gate": {
+    "source": "centre-synchronisation/forge-n1/progress.json",
+    "scope": "Livre de base COF2, 8 peuples et 14 profils ; Compagnon V2 différé",
+    "metric": "Contrôles documentés / 16 par item ; pas un % de fiabilité du projet",
+    "peoples": [
+      {
+        "id": "demi-elfe",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "demi-orc",
+        "verification_percent": 56,
+        "verified": 9,
+        "total": 16
+      },
+      {
+        "id": "elfe-haut",
+        "verification_percent": 56,
+        "verified": 9,
+        "total": 16
+      },
+      {
+        "id": "elfe-sylvain",
+        "verification_percent": 56,
+        "verified": 9,
+        "total": 16
+      },
+      {
+        "id": "gnome",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "halfelin",
+        "verification_percent": 56,
+        "verified": 9,
+        "total": 16
+      },
+      {
+        "id": "humain",
+        "verification_percent": 69,
+        "verified": 11,
+        "total": 16
+      },
+      {
+        "id": "nain",
+        "verification_percent": 56,
+        "verified": 9,
+        "total": 16
+      }
+    ],
+    "profiles": [
+      {
+        "id": "arquebusier",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "barbare",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "barde",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "chevalier",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "druide",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "ensorceleur",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "forgesort",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "guerrier",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "magicien",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "moine",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "pretre",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "rodeur",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "sorcier",
+        "verification_percent": 63,
+        "verified": 10,
+        "total": 16
+      },
+      {
+        "id": "voleur",
+        "verification_percent": 69,
+        "verified": 11,
+        "total": 16
+      }
+    ],
+    "mechanical_cases": 56840,
+    "accepted": 55475,
+    "expected_rejected": 1365,
+    "unclassified_rejected": 0,
+    "unexpected_failures": 0,
+    "fully_verified_peoples": 0,
+    "fully_verified_profiles": 0,
+    "engine_parity": true,
+    "source_updated_at": "2026-11-02T10:30:12.547Z"
   }
 }
