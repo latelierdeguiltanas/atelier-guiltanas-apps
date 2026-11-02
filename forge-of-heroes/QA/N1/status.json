@@ -6,7 +6,7 @@
   "n3": "WAITING_FOR_N2",
   "overallCertified": false,
   "checks": {
-    "matrixInputsMatchCurrentEngineAndDatabase": false,
+    "matrixInputsMatchCurrentEngineAndDatabase": true,
     "allEightShardsCompleted": true,
     "matrixAssertions": true,
     "regressions": true,
@@ -30,10 +30,10 @@
     "historyAncestry": true,
     "humanOrigins": true
   },
-  "automatedChecksPass": false,
-  "currentIndexSha256": "760cd85686be75edfea839d4fa7e15f945c99afe7f00b76f96eeb199ffe31b10",
-  "matrixIndexSha256": "c8300f8991b1460fc5e0b749be9fc7845b84644168d001a526e9e958f3178783",
-  "note": "La matrice générale est antérieure aux changements du 31 octobre sur les historiques, les choix du mage hybride et l’arme supplémentaire de l’ensorceleur. Contrôles ciblés du lot 11 ; recette Android ouverte.",
+  "automatedChecksPass": true,
+  "currentIndexSha256": "77b24833bc3c081f000b67aaeeea837894562ecce86072d4ce6dc9bc720f63e5",
+  "matrixIndexSha256": "74a0f6f7d4e9de2f5f8346819c7ee5737b8e35ecb4e759229ff204cd78bb82e9",
+  "note": "The matrix binds the engine and database, and has been replayed after the N1 size and characteristic-method fixes. Whole-HTML hashes are retained separately; historical inputs stay in lot2.",
   "remainingGate": "QA/N1/README.md — Réserves à fermer avant N2",
-  "generatedAt": "2026-10-30T14:51:46.817Z"
+  "generatedAt": "2026-11-02T10:32:12.033Z"
 }
