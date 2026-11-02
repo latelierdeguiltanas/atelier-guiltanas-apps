@@ -29,7 +29,8 @@ function replaceScript(html,id,transform){
  return html;
 }
 function linkAssets(){
- const destRoot=path.join(process.env.FOH_STAGE_DIR||'/tmp/foh-n1-arbaletrier-stage','forge-of-heroes');fs.mkdirSync(destRoot,{recursive:true});
+ const base=process.env.FOH_STAGE_DIR||'/tmp/foh-n1-arbaletrier-stage';const destRoot=path.join(base,'forge-of-heroes');fs.mkdirSync(destRoot,{recursive:true});
+ for(const name of fs.readdirSync(path.resolve(root,'..'))){if(name==='forge-of-heroes'||name==='.git'||name==='node_modules')continue;const target=path.join(base,name);if(!fs.existsSync(target))fs.symlinkSync(path.resolve(root,'..',name),target);}
  for(const name of fs.readdirSync(root)){
   if(name==='index.html'||name==='FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html')continue;
   const dest=path.join(destRoot,name);if(!fs.existsSync(dest))fs.symlinkSync(path.join(root,name),dest);
