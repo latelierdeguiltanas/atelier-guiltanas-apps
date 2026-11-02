@@ -11,9 +11,16 @@ const pure=read('../centre-synchronisation/forge-n1/purs.json');
 const old=read('../centre-synchronisation/forge-n1/progress.json');
 const ages=read('QA/N1/arquebusier-pure-age-ranks.json');
 const variantPath=path.resolve(root,'QA/N1/arquebusier-arbaletrier-source-audit.json');const variant=fs.existsSync(variantPath)?JSON.parse(fs.readFileSync(variantPath,'utf8')):null;
+const releasePath=path.resolve(root,'QA/N1/arbaletrier-production-release.json');
+const release=fs.existsSync(releasePath)?JSON.parse(fs.readFileSync(releasePath,'utf8')):null;
+const releaseProducts=release?.sourceFiles||[];
+const deployed=release?.status==='INTEGRATED_NOT_CERTIFIED_FULL'&&releaseProducts.length===2&&releaseProducts.every(p=>{
+ const file=path.join(root,p.name);
+ return fs.existsSync(file)&&require('node:crypto').createHash('sha256').update(fs.readFileSync(file)).digest('hex')===p.sha256
+});
 const arbaletrierMissing=variant?.verdict==='VARIANTE_OFFICIELLE_NON_ENTIEREMENT_INTEGREE';
 const prototypePath=path.resolve(root,'QA/N1/arbaletrier-virtual-prototype.json');const prototype=fs.existsSync(prototypePath)?JSON.parse(fs.readFileSync(prototypePath,'utf8')):null;const prototypeOK=prototype?.matrix?.total===480&&prototype?.matrix?.passed===480&&prototype?.matrix?.failed===0;
-const variantGap=arbaletrierMissing?(prototypeOK?'La variante Arbalétrier est prête dans une version d’essai : les cinq voies, huit peuples, âges, sauvegardes, +1 en attaque, critique amélioré et +1 aux dégâts avec les arbalètes ont été éprouvés. Elle n’est PAS encore intégrée à Forge : il reste l’installation, les choix visibles, l’export PDF et le contrôle au clic.':'Variante Arbalétrier absente du jeu publié. Les armes à arbalète et la Voie du maître d’armes sont en préparation ; il reste à valider les calculs de critique, de dégâts, les choix visibles et l’installation.'):'';
+const variantGap=deployed?'La variante officielle Arbalétrier est maintenant proposée dans Forge : cinq voies légales, arbalètes, rangs 1 à 3 et sauvegardes validés au clic sur mobile. Restent à valider les contraintes complètes d’équipement et tous les effets conditionnels, ainsi que la fiche officielle PDF et ses annexes.':arbaletrierMissing?(prototypeOK?'La variante Arbalétrier est prête dans une version d’essai : les cinq voies, huit peuples, âges, sauvegardes, +1 en attaque, critique amélioré et +1 aux dégâts avec les arbalètes ont été éprouvés. Elle n’est PAS encore intégrée à Forge : il reste l’installation, les choix visibles, l’export PDF et le contrôle au clic.':'Variante Arbalétrier absente du jeu publié. Les armes à arbalète et la Voie du maître d’armes sont en préparation ; il reste à valider les calculs de critique, de dégâts, les choix visibles et l’installation.'):'';
 const profile=pure.items.find(x=>x.profile==='Arquebusier'&&x.people==='Nain');
 if(pure.items.length!==112||!profile||profile.powers.length!==5||ages.complete!==true||ages.pass!==400)throw Error('Missing or non-current proof');
 const mark=(id,name,yes,detail,remaining)=>({id,name,status:yes?'ACQUIS':'A_VERIFIER',detail:yes?detail:remaining});
@@ -32,7 +39,7 @@ const profileChecks=[
  mark('r1effects','Tous les effets des cinq capacités de rang 1',false,'','Vérifier les compétences, les jets, le couvert, les tirs de grenaille et l’initiative avec une arme chargée, selon les conditions du livre.'),
  mark('r2effects','Tous les effets des cinq capacités de rang 2',false,'','Chargeur 2 + INT validé ; restent le rechargement, la démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse.'),
  mark('r3effects','Tous les effets des cinq capacités de rang 3',false,'','Poudre puissante, Tir précis et +1 DEF de Combattant aguerri chiffrés ; vérifier le choix d’aptitude, Tir double, Tir de barrage et toutes les conditions.'),
- mark('gear','Toutes les armes, armures et variante Arbalétrier',false,'',arbaletrierMissing?variantGap:'Maîtrises, armure maximum, absence de bouclier, deux mains, armes à poudre, équipements alternatifs et Arbalétrier sans poudre.'),
+ mark('gear','Toutes les armes, armures et variante Arbalétrier',false,'',deployed||arbaletrierMissing?variantGap:'Maîtrises, armure maximum, absence de bouclier, deux mains, armes à poudre, équipements alternatifs et Arbalétrier sans poudre.'),
  mark('history','Origines, métiers et historiques avancés',false,'','Contrôler toutes les voies d’historique et leurs effets sur les aptitudes de l’Arquebusier.'),
  mark('save','Enregistrer et reprendre les pouvoirs obtenus',ageOK,'Les états de référence des rangs 1, 2 et 3 avec l’âge ont été enregistrés et restaurés à l’identique.','Vérifier la sauvegarde et la reprise.'),
  mark('pdf','Fiche officielle et annexes',false,'','Vérifier les deux pages officielles, toutes les valeurs, les résumés et les descriptions des voies.'),
@@ -74,8 +81,8 @@ const output={
  generatedAt:new Date().toISOString(),
  engineSha256:pure.engineSha256,
  intent:'Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.',
- profile:{id:profile.profileId,name:'Arquebusier',priority:'EN_COURS',completed:false,variantPrototypeReady:!!prototypeOK,passed:verified,total:profileChecks.length,percent:Math.round(100*verified/profileChecks.length),checks:profileChecks,paths:copyPaths,partialNumericValidated:numericPartial,
-  next:arbaletrierMissing?'Intégrer la variante Arbalétrier absente, puis achever les tirs spéciaux, les autres effets de rang, historiques, PDF et création mobile.':'Achever les compétences, tirs spéciaux, rechargements, équipement et Arbalétrier ; puis historiques, PDF et parcours au clic.'},
+ profile:{id:profile.profileId,name:'Arquebusier',priority:'EN_COURS',completed:false,variantPrototypeReady:!!prototypeOK,variantIntegrated:!!deployed,passed:verified,total:profileChecks.length,percent:Math.round(100*verified/profileChecks.length),checks:profileChecks,paths:copyPaths,partialNumericValidated:numericPartial,
+  next:deployed?'Arbalétrier disponible : valider maintenant le PDF officiel, les effets conditionnels en combat, les historiques et les alternatives d’équipement.':arbaletrierMissing?'Intégrer la variante Arbalétrier absente, puis achever les tirs spéciaux, les autres effets de rang, historiques, PDF et création mobile.':'Achever les compétences, tirs spéciaux, rechargements, équipement et Arbalétrier ; puis historiques, PDF et parcours au clic.'},
  peoples,
  pausedProfiles:13,
  summary:{profilesCertified:0,profilesInProgress:1,profilesPending:13,peoplesCertified:peoples.filter(p=>p.certified).length},
