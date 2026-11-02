@@ -1,0 +1,189 @@
+{
+  "schema": "FOH_N1_REAL_CHROME_CURRENT_VERDICT",
+  "timestamp": "2026-11-02T10:33:57Z",
+  "sourceCommit": "fc4524465244080f09665aa4fa4885919bea5def",
+  "workflow": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41429470180",
+  "script": "forge-of-heroes/FINAL_FREEZE_TESTS/n1_creation_browser_pack.cjs",
+  "total": 12,
+  "passed": 12,
+  "failed": 0,
+  "sourceDocuments": "MANUAL_FREEZE_PACK/MANUAL_01-12.md (same scenario order)",
+  "scope": {
+    "realBrowser": "Chrome sur runner Ubuntu, contexte mobile/tactile Playwright",
+    "numeric": [
+      "PV",
+      "DEF",
+      "INIT",
+      "PC",
+      "PM"
+    ],
+    "persistAndReload": true,
+    "interactiveSheetOpenedAndReloaded": true,
+    "manualNarrativeAndAllGearFieldsChecked": false,
+    "officialPdfRendered": false,
+    "androidPhysical": false
+  },
+  "cases": [
+    {
+      "manualId": "MANUAL_01",
+      "title": "Standard débutant",
+      "status": "PASS",
+      "expected": {
+        "PV": 9,
+        "DEF": 13,
+        "INIT": 11,
+        "PC": 3,
+        "PM": 0
+      },
+      "source": "forge-of-heroes/MANUAL_FREEZE_PACK/MANUAL_01.md"
+    },
+    {
+      "manualId": "MANUAL_02",
+      "title": "Caractéristiques / point-buy",
+      "status": "PASS",
+      "expected": {
+        "PV": 9,
+        "DEF": 14,
+        "INIT": 11,
+        "PC": 4,
+        "PM": 0
+      },
+      "source": "forge-of-heroes/MANUAL_FREEZE_PACK/MANUAL_02.md"
+    },
+    {
+      "manualId": "MANUAL_03",
+      "title": "Mûr + Peau de pierre R2",
+      "status": "PASS",
+      "expected": {
+        "PV": 15,
+        "DEF": 12,
+        "INIT": 11,
+        "PC": 2,
+        "PM": 0
+      },
+      "source": "forge-of-heroes/MANUAL_FREEZE_PACK/MANUAL_03.md"
+    },
+    {
+      "manualId": "MANUAL_04",
+      "title": "Vénérable + Armes de prédilection",
+      "status": "PASS",
+      "expected": {
+        "PV": 10,
+        "DEF": 16,
+        "INIT": 11,
+        "PC": 2,
+        "PM": 0
+      },
+      "source": "forge-of-heroes/MANUAL_FREEZE_PACK/MANUAL_04.md"
+    },
+    {
+      "manualId": "MANUAL_05",
+      "title": "Arme à répétition R2",
+      "status": "PASS",
+      "expected": {
+        "PV": 9,
+        "DEF": 13,
+        "INIT": 11,
+        "PC": 3,
+        "PM": 0
+      },
+      "source": "forge-of-heroes/MANUAL_FREEZE_PACK/MANUAL_05.md"
+    },
+    {
+      "manualId": "MANUAL_06",
+      "title": "Combattant aguerri R3",
+      "status": "PASS",
+      "expected": {
+        "PV": 8,
+        "DEF": 14,
+        "INIT": 12,
+        "PC": 3,
+        "PM": 0
+      },
+      "source": "forge-of-heroes/MANUAL_FREEZE_PACK/MANUAL_06.md"
+    },
+    {
+      "manualId": "MANUAL_07",
+      "title": "Hybride réel",
+      "status": "PASS",
+      "expected": {
+        "PV": 9,
+        "DEF": 13,
+        "INIT": 11,
+        "PC": 3,
+        "PM": 0
+      },
+      "source": "forge-of-heroes/MANUAL_FREEZE_PACK/MANUAL_07.md"
+    },
+    {
+      "manualId": "MANUAL_08",
+      "title": "Historique réel haut rang",
+      "status": "PASS",
+      "expected": {
+        "PV": 8,
+        "DEF": 12,
+        "INIT": 11,
+        "PC": 3,
+        "PM": 0
+      },
+      "source": "forge-of-heroes/MANUAL_FREEZE_PACK/MANUAL_08.md"
+    },
+    {
+      "manualId": "MANUAL_09",
+      "title": "Mage réel avec R2",
+      "status": "PASS",
+      "expected": {
+        "PV": 7,
+        "DEF": 11,
+        "INIT": 11,
+        "PC": 2,
+        "PM": 3
+      },
+      "source": "forge-of-heroes/MANUAL_FREEZE_PACK/MANUAL_09.md"
+    },
+    {
+      "manualId": "MANUAL_10",
+      "title": "Sauvegarde / A-B-A / Éduqué",
+      "status": "PASS",
+      "expected": {
+        "PV": 11,
+        "DEF": 18,
+        "INIT": 11,
+        "PC": 2,
+        "PM": 0
+      },
+      "source": "forge-of-heroes/MANUAL_FREEZE_PACK/MANUAL_10.md"
+    },
+    {
+      "manualId": "MANUAL_11",
+      "title": "Sans profil natif",
+      "status": "PASS",
+      "expected": {
+        "PV": 9,
+        "DEF": 13,
+        "INIT": 11,
+        "PC": 3,
+        "PM": 0
+      },
+      "source": "forge-of-heroes/MANUAL_FREEZE_PACK/MANUAL_11.md"
+    },
+    {
+      "manualId": "MANUAL_12",
+      "title": "Capacités à la carte",
+      "status": "PASS",
+      "expected": {
+        "PV": 9,
+        "DEF": 12,
+        "INIT": 11,
+        "PC": 3,
+        "PM": 0
+      },
+      "source": "forge-of-heroes/MANUAL_FREEZE_PACK/MANUAL_12.md"
+    }
+  ],
+  "remaining": [
+    "Tester l'identité, les paquetages et l'intégralité des champs des deux premières pages du PDF officiel",
+    "Vérifier le contenu exact des annexes de chaque rang et la persistance des choix contextuels",
+    "Tester toutes les variantes avancées non comprises dans ces douze scénarios"
+  ]
+}
