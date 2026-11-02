@@ -1,0 +1,276 @@
+{
+  "schema": "FOH_N1_ARBALETRIER_IN_MEMORY_PROTOTYPE",
+  "createdAt": "2026-11-02T12:21:18.534Z",
+  "source": "COF2 Livre de base p.62, variante sans poudre; Guerrier Voie du maître d’armes pp.88-89",
+  "attempts": [
+    {
+      "file": "index.html",
+      "paths": [
+        "voie-de-l-artilleur",
+        "voie-du-mercenaire"
+      ],
+      "errors": [],
+      "character": {
+        "profileId": "class:arbaletrier:cof2-variant-2024",
+        "masteries": {
+          "weapons": {
+            "allMelee": true,
+            "allRanged": true,
+            "maxMeleeHands": 1
+          },
+          "armorMaxDef": 4,
+          "shields": "none"
+        },
+        "attacks": [
+          {
+            "id": "weapon:hand-crossbow",
+            "damage": "1d6",
+            "mastered": true,
+            "attackBonus": 2
+          },
+          {
+            "id": "weapon:long-sword",
+            "damage": "1d8+2",
+            "mastered": true,
+            "attackBonus": 3
+          },
+          {
+            "id": "weapon:dagger",
+            "damage": "1d4+2",
+            "mastered": true,
+            "attackBonus": 3
+          },
+          {
+            "id": "weapon:dagger",
+            "damage": "1d4",
+            "mastered": true,
+            "attackBonus": 2
+          }
+        ],
+        "paths": [
+          {
+            "path": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+            "rank": 1
+          },
+          {
+            "path": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+            "rank": 1
+          },
+          {
+            "path": "path:voie-de-l-humain:cof2-lb-2024",
+            "rank": 1
+          }
+        ]
+      }
+    },
+    {
+      "file": "index.html",
+      "paths": [
+        "voie-du-maitre-d-armes",
+        "voie-de-l-artilleur"
+      ],
+      "errors": [
+        "Armes de prédilection : option illégale."
+      ],
+      "character": {
+        "profileId": "class:arbaletrier:cof2-variant-2024",
+        "masteries": {
+          "weapons": {
+            "allMelee": true,
+            "allRanged": true,
+            "maxMeleeHands": 1
+          },
+          "armorMaxDef": 4,
+          "shields": "none"
+        },
+        "attacks": [
+          {
+            "id": "weapon:hand-crossbow",
+            "damage": "1d6",
+            "mastered": true,
+            "attackBonus": 2
+          },
+          {
+            "id": "weapon:long-sword",
+            "damage": "1d8+2",
+            "mastered": true,
+            "attackBonus": 3
+          },
+          {
+            "id": "weapon:dagger",
+            "damage": "1d4+2",
+            "mastered": true,
+            "attackBonus": 3
+          },
+          {
+            "id": "weapon:dagger",
+            "damage": "1d4",
+            "mastered": true,
+            "attackBonus": 2
+          }
+        ],
+        "paths": [
+          {
+            "path": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+            "rank": 1
+          },
+          {
+            "path": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+            "rank": 1
+          },
+          {
+            "path": "path:voie-de-l-humain:cof2-lb-2024",
+            "rank": 1
+          }
+        ]
+      }
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "paths": [
+        "voie-de-l-artilleur",
+        "voie-du-mercenaire"
+      ],
+      "errors": [],
+      "character": {
+        "profileId": "class:arbaletrier:cof2-variant-2024",
+        "masteries": {
+          "weapons": {
+            "allMelee": true,
+            "allRanged": true,
+            "maxMeleeHands": 1
+          },
+          "armorMaxDef": 4,
+          "shields": "none"
+        },
+        "attacks": [
+          {
+            "id": "weapon:hand-crossbow",
+            "damage": "1d6",
+            "mastered": true,
+            "attackBonus": 2
+          },
+          {
+            "id": "weapon:long-sword",
+            "damage": "1d8+2",
+            "mastered": true,
+            "attackBonus": 3
+          },
+          {
+            "id": "weapon:dagger",
+            "damage": "1d4+2",
+            "mastered": true,
+            "attackBonus": 3
+          },
+          {
+            "id": "weapon:dagger",
+            "damage": "1d4",
+            "mastered": true,
+            "attackBonus": 2
+          }
+        ],
+        "paths": [
+          {
+            "path": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+            "rank": 1
+          },
+          {
+            "path": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+            "rank": 1
+          },
+          {
+            "path": "path:voie-de-l-humain:cof2-lb-2024",
+            "rank": 1
+          }
+        ]
+      }
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "paths": [
+        "voie-du-maitre-d-armes",
+        "voie-de-l-artilleur"
+      ],
+      "errors": [
+        "Armes de prédilection : option illégale."
+      ],
+      "character": {
+        "profileId": "class:arbaletrier:cof2-variant-2024",
+        "masteries": {
+          "weapons": {
+            "allMelee": true,
+            "allRanged": true,
+            "maxMeleeHands": 1
+          },
+          "armorMaxDef": 4,
+          "shields": "none"
+        },
+        "attacks": [
+          {
+            "id": "weapon:hand-crossbow",
+            "damage": "1d6",
+            "mastered": true,
+            "attackBonus": 2
+          },
+          {
+            "id": "weapon:long-sword",
+            "damage": "1d8+2",
+            "mastered": true,
+            "attackBonus": 3
+          },
+          {
+            "id": "weapon:dagger",
+            "damage": "1d4+2",
+            "mastered": true,
+            "attackBonus": 3
+          },
+          {
+            "id": "weapon:dagger",
+            "damage": "1d4",
+            "mastered": true,
+            "attackBonus": 2
+          }
+        ],
+        "paths": [
+          {
+            "path": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+            "rank": 1
+          },
+          {
+            "path": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+            "rank": 1
+          },
+          {
+            "path": "path:voie-de-l-humain:cof2-lb-2024",
+            "rank": 1
+          }
+        ]
+      }
+    }
+  ],
+  "install": {
+    "paths": [
+      "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+      "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+      "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+      "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+      "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024"
+    ],
+    "profileId": "class:arbaletrier:cof2-variant-2024",
+    "firstEquipment": {
+      "id": "arbaletrier-standard",
+      "weaponIds": [
+        "weapon:hand-crossbow",
+        "weapon:long-sword",
+        "weapon:dagger"
+      ],
+      "shieldId": ""
+    },
+    "counts": {
+      "classes": 18,
+      "paths": 95,
+      "abilities": 475
+    },
+    "warriorId": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024"
+  }
+}
