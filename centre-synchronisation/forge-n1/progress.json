@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_OFFICIAL_PROGRESS",
-  "generatedAt": "2026-11-02T10:21:29.767Z",
+  "generatedAt": "2026-11-02T10:30:12.547Z",
   "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
   "databaseSha256": "eae2d572846102c1ea26c69eec204b080bcf928060f887c13341a4cecc762167",
   "scope": {
@@ -30,8 +30,8 @@
       "key": "demi-elfe",
       "label": "Demi-elfe",
       "scope": "official",
-      "percent": 50,
-      "verified": 8,
+      "percent": 63,
+      "verified": 10,
       "total": 16,
       "attempted": 7105,
       "accepted": 7060,
@@ -49,10 +49,10 @@
         {
           "id": "race-stats",
           "label": "Bonus/malus raciaux : oracle indépendant",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/demi-elfe-source-r1-r2.json",
           "scope": "Calculs chiffrés des caractéristiques raciales sur scénario officiel.",
-          "remaining": "Comparer le demi-elfe et toutes ses allocations à une attente source indépendante."
+          "remaining": ""
         },
         {
           "id": "people-r1",
@@ -65,10 +65,10 @@
         {
           "id": "people-r2",
           "label": "Voie de peuple : rang 2",
-          "status": "A_VERIFIER",
-          "evidence": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
+          "status": "PASS",
+          "evidence": "../../forge-of-heroes/QA/N1/demi-elfe-source-r1-r2.json",
           "scope": "R2 humain / peuple et persistances, source chiffrée.",
-          "remaining": "Tester les rangs 2 hérités du demi-elfe dans toutes les options légales."
+          "remaining": ""
         },
         {
           "id": "standard",
@@ -3191,6 +3191,7 @@
     "native": "../../forge-of-heroes/QA/N1/native-items.json",
     "people": "../../forge-of-heroes/QA/N1/lot10/people-source.json",
     "regressions": "../../forge-of-heroes/QA/N1/regressions.json",
+    "demi": "../../forge-of-heroes/QA/N1/demi-elfe-source-r1-r2.json",
     "source": "../../forge-of-heroes/QA/N1/profile-checkpoint.json",
     "parity": "../../forge-of-heroes/QA/N1/version-parity.json"
   },
