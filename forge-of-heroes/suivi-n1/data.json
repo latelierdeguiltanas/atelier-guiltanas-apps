@@ -17,7 +17,14 @@
     "matrixAssertionFailures": [],
     "matrixIndexSha256": "74a0f6f7d4e9de2f5f8346819c7ee5737b8e35ecb4e759229ff204cd78bb82e9",
     "regressionIndexSha256": "77b24833bc3c081f000b67aaeeea837894562ecce86072d4ce6dc9bc720f63e5",
-    "perProfileAcceptanceAvailable": false
+    "perProfileAcceptanceAvailable": false,
+    "androidEmulator": {
+      "status": "PASS",
+      "totalJourneys": 1,
+      "commit": "cdfbd1ace63bfc1dd3565a7280e371001a575e00",
+      "run": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41397131045",
+      "scope": "Humain hybride Voleur/Arquebusier Chrome sur émulateur Android ; pas une recette sur appareil physique."
+    }
   },
   "sourceFiles": {
     "matrix": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/blob/main/forge-of-heroes/QA/N1/matrix.json",
@@ -161,6 +168,21 @@
         "humain"
       ],
       "detail": "Armure de paquetage absente dans le résumé. Non rejoué sur la version actuelle."
+    },
+    {
+      "id": "ANDROID-C1",
+      "title": "Android Chrome émulé — Humain Voleur / Arquebusier",
+      "type": "android-emulator",
+      "status": "PASS",
+      "profiles": [
+        "voleur",
+        "arquebusier"
+      ],
+      "peoples": [
+        "humain"
+      ],
+      "detail": "GitHub Actions réussie le 2 novembre : création hybride, accord MJ, caractéristiques, PV9 DEF13 INIT11, sauvegarde, réouverture de fiche, passage en fiche interactive et rechargement 9/9 PV. Un parcours sur émulateur, pas un téléphone physique ni tous les profils.",
+      "source": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41397131045"
     }
   ],
   "manualPack": [
@@ -234,7 +256,8 @@
       "pathCount": 5,
       "certification": "NON_CERTIFIE",
       "caseIds": [
-        "BROWSER-C2"
+        "BROWSER-C2",
+        "ANDROID-C1"
       ],
       "raceCountMatrix": 16,
       "pureWayPairs": 10,
@@ -488,7 +511,8 @@
         "BROWSER-C2",
         "BROWSER-C5",
         "MANUAL-01",
-        "MANUAL-02"
+        "MANUAL-02",
+        "ANDROID-C1"
       ],
       "raceCountMatrix": 16,
       "pureWayPairs": 10,
@@ -637,7 +661,7 @@
       "id": "mobile",
       "name": "Interaction tactile Android",
       "status": "OPEN",
-      "reason": "Aucune validation tactile Android attestée."
+      "reason": "Un parcours Chrome tactile sur émulateur Android (Humain Voleur / Arquebusier) passe au commit de test du 2 novembre. La matrice tactile exhaustive et les appareils physiques restent non vérifiés."
     }
   ],
   "notes": [
