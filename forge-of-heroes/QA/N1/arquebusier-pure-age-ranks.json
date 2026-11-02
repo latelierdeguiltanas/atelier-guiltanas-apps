@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_ARQUEBUSIER_PURE_AGE_RANK",
-  "timestamp": "2026-11-02T13:03:24.896Z",
+  "timestamp": "2026-11-02T19:01:49.958Z",
   "scope": "14? No: only Arquebusier pure × 8 official peoples × five different first paths × all ages (very young PC/DR, young, mature, venerable), both product engines. Validates racial and age characteristics against book rules, permanent PV/DEF/INIT under equip, existence of each accessible rank, local save/reopen. Contextual spells/attacks, historical choices, Arbalétrier alternative and PDF are NOT validated.",
   "source": {
     "book": "COF2 Livre de base imprimé pp.62–65; Règles avancées p.153 (catégories d’âge)",
@@ -35,7 +35,7 @@
       "venerable": 3
     }
   },
-  "sourceCommit": "6d0b09e1d1cae9f6fc8f3b1036ee49be336838e8",
+  "sourceCommit": "10e0791d6f424fa1415bfe92cd422cc3f422f30a",
   "expected": 400,
   "cases": 400,
   "pass": 400,
@@ -137,11 +137,11 @@
   "products": [
     {
       "file": "index.html",
-      "htmlSha256": "d628864b125c28f6e9530832c5351c23c5c785a3804007baf39d5154f3d08290"
+      "htmlSha256": "2faa37ebdc8e8329fe324c4315359290cd776f11f70c9e24e5886bd04cad79c6"
     },
     {
       "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "htmlSha256": "d2c34d6a5fe753e1c71dcb93b7f68655a67d65df6ebead381a3c80ac10a611a1"
+      "htmlSha256": "ddd17158ff9148650cc6c1177b3cecc624a76e5b018197781516b15b80df93e9"
     }
   ],
   "samples": [
@@ -1279,7 +1279,7 @@
             "attackBonus": 3,
             "attackCharacteristic": "for",
             "damageCharacteristic": null,
-            "damage": "1d4",
+            "damage": "1d4°",
             "damageType": "physical",
             "rangeMeters": null,
             "hands": 1,
@@ -1370,7 +1370,7 @@
                 {
                   "type": "weapon_damage_override",
                   "weaponId": "weapon:unarmed",
-                  "formula": "1d4",
+                  "formula": "1d4°",
                   "nonLethal": true
                 },
                 {
@@ -1553,7 +1553,7 @@
             "attackBonus": 3,
             "attackCharacteristic": "for",
             "damageCharacteristic": null,
-            "damage": "1d4",
+            "damage": "1d4°",
             "damageType": "physical",
             "rangeMeters": null,
             "hands": 1,
@@ -1644,7 +1644,7 @@
                 {
                   "type": "weapon_damage_override",
                   "weaponId": "weapon:unarmed",
-                  "formula": "1d4",
+                  "formula": "1d4°",
                   "nonLethal": true
                 },
                 {
@@ -1929,7 +1929,7 @@
             "attackBonus": 3,
             "attackCharacteristic": "for",
             "damageCharacteristic": null,
-            "damage": "1d4",
+            "damage": "1d4°",
             "damageType": "physical",
             "rangeMeters": null,
             "hands": 1,
@@ -2020,7 +2020,7 @@
                 {
                   "type": "weapon_damage_override",
                   "weaponId": "weapon:unarmed",
-                  "formula": "1d4",
+                  "formula": "1d4°",
                   "nonLethal": true
                 },
                 {
@@ -2366,7 +2366,7 @@
             "attackBonus": 3,
             "attackCharacteristic": "for",
             "damageCharacteristic": null,
-            "damage": "1d4",
+            "damage": "1d4°",
             "damageType": "physical",
             "rangeMeters": null,
             "hands": 1,
@@ -2414,7 +2414,7 @@
                 {
                   "type": "weapon_damage_override",
                   "weaponId": "weapon:unarmed",
-                  "formula": "1d4",
+                  "formula": "1d4°",
                   "nonLethal": true
                 },
                 {
@@ -2497,7 +2497,7 @@
               {
                 "type": "weapon_damage_override",
                 "weaponId": "weapon:unarmed",
-                "formula": "1d4",
+                "formula": "1d4°",
                 "nonLethal": true
               },
               {
@@ -2628,7 +2628,7 @@
             "attackBonus": 3,
             "attackCharacteristic": "for",
             "damageCharacteristic": null,
-            "damage": "1d4",
+            "damage": "1d4°",
             "damageType": "physical",
             "rangeMeters": null,
             "hands": 1,
@@ -2676,7 +2676,7 @@
                 {
                   "type": "weapon_damage_override",
                   "weaponId": "weapon:unarmed",
-                  "formula": "1d4",
+                  "formula": "1d4°",
                   "nonLethal": true
                 },
                 {
@@ -2830,7 +2830,7 @@
               {
                 "type": "weapon_damage_override",
                 "weaponId": "weapon:unarmed",
-                "formula": "1d4",
+                "formula": "1d4°",
                 "nonLethal": true
               },
               {
@@ -3001,7 +3001,7 @@
             "attackBonus": 3,
             "attackCharacteristic": "for",
             "damageCharacteristic": null,
-            "damage": "1d4",
+            "damage": "1d4°",
             "damageType": "physical",
             "rangeMeters": null,
             "hands": 1,
@@ -3049,7 +3049,7 @@
                 {
                   "type": "weapon_damage_override",
                   "weaponId": "weapon:unarmed",
-                  "formula": "1d4",
+                  "formula": "1d4°",
                   "nonLethal": true
                 },
                 {
@@ -3271,7 +3271,7 @@
               {
                 "type": "weapon_damage_override",
                 "weaponId": "weapon:unarmed",
-                "formula": "1d4",
+                "formula": "1d4°",
                 "nonLethal": true
               },
               {
@@ -6414,7 +6414,7 @@
             "attackBonus": 3,
             "attackCharacteristic": "for",
             "damageCharacteristic": null,
-            "damage": "1d4",
+            "damage": "1d4°",
             "damageType": "physical",
             "rangeMeters": null,
             "hands": 1,
@@ -6505,7 +6505,7 @@
                 {
                   "type": "weapon_damage_override",
                   "weaponId": "weapon:unarmed",
-                  "formula": "1d4",
+                  "formula": "1d4°",
                   "nonLethal": true
                 },
                 {
@@ -6688,7 +6688,7 @@
             "attackBonus": 3,
             "attackCharacteristic": "for",
             "damageCharacteristic": null,
-            "damage": "1d4",
+            "damage": "1d4°",
             "damageType": "physical",
             "rangeMeters": null,
             "hands": 1,
@@ -6779,7 +6779,7 @@
                 {
                   "type": "weapon_damage_override",
                   "weaponId": "weapon:unarmed",
-                  "formula": "1d4",
+                  "formula": "1d4°",
                   "nonLethal": true
                 },
                 {
@@ -7064,7 +7064,7 @@
             "attackBonus": 3,
             "attackCharacteristic": "for",
             "damageCharacteristic": null,
-            "damage": "1d4",
+            "damage": "1d4°",
             "damageType": "physical",
             "rangeMeters": null,
             "hands": 1,
@@ -7155,7 +7155,7 @@
                 {
                   "type": "weapon_damage_override",
                   "weaponId": "weapon:unarmed",
-                  "formula": "1d4",
+                  "formula": "1d4°",
                   "nonLethal": true
                 },
                 {
@@ -7501,7 +7501,7 @@
             "attackBonus": 3,
             "attackCharacteristic": "for",
             "damageCharacteristic": null,
-            "damage": "1d4",
+            "damage": "1d4°",
             "damageType": "physical",
             "rangeMeters": null,
             "hands": 1,
@@ -7549,7 +7549,7 @@
                 {
                   "type": "weapon_damage_override",
                   "weaponId": "weapon:unarmed",
-                  "formula": "1d4",
+                  "formula": "1d4°",
                   "nonLethal": true
                 },
                 {
@@ -7632,7 +7632,7 @@
               {
                 "type": "weapon_damage_override",
                 "weaponId": "weapon:unarmed",
-                "formula": "1d4",
+                "formula": "1d4°",
                 "nonLethal": true
               },
               {
@@ -7763,7 +7763,7 @@
             "attackBonus": 3,
             "attackCharacteristic": "for",
             "damageCharacteristic": null,
-            "damage": "1d4",
+            "damage": "1d4°",
             "damageType": "physical",
             "rangeMeters": null,
             "hands": 1,
@@ -7811,7 +7811,7 @@
                 {
                   "type": "weapon_damage_override",
                   "weaponId": "weapon:unarmed",
-                  "formula": "1d4",
+                  "formula": "1d4°",
                   "nonLethal": true
                 },
                 {
@@ -7965,7 +7965,7 @@
               {
                 "type": "weapon_damage_override",
                 "weaponId": "weapon:unarmed",
-                "formula": "1d4",
+                "formula": "1d4°",
                 "nonLethal": true
               },
               {
@@ -8136,7 +8136,7 @@
             "attackBonus": 3,
             "attackCharacteristic": "for",
             "damageCharacteristic": null,
-            "damage": "1d4",
+            "damage": "1d4°",
             "damageType": "physical",
             "rangeMeters": null,
             "hands": 1,
@@ -8184,7 +8184,7 @@
                 {
                   "type": "weapon_damage_override",
                   "weaponId": "weapon:unarmed",
-                  "formula": "1d4",
+                  "formula": "1d4°",
                   "nonLethal": true
                 },
                 {
@@ -8406,7 +8406,7 @@
               {
                 "type": "weapon_damage_override",
                 "weaponId": "weapon:unarmed",
-                "formula": "1d4",
+                "formula": "1d4°",
                 "nonLethal": true
               },
               {
