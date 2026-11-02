@@ -1,0 +1,44 @@
+name: Forge N1 - dix choix de voies Arquebusier
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arq-all-pairs.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_all_pairs_current.cjs'
+permissions:
+  contents: write
+jobs:
+  pairs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vérifier les dix couples de voies pour huit peuples et tous les âges
+        id: check
+        continue-on-error: true
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_all_pairs_current.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: arquebusier-n1-all-legal-path-pairs
+          path: forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json
+      - name: Conserver la preuve même en cas de refus
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json
+          if ! git diff --cached --quiet; then
+            git commit -m "test(forge-n1): tous couples de voies Arquebusier source et sauvegardes [skip ci]"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Exiger une création autorisée sur chaque cas
+        if: steps.check.outcome == 'failure'
+        run: exit 1
