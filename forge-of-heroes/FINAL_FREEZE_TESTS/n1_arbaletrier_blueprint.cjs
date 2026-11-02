@@ -8,7 +8,7 @@ const data={
  profileRule:T.profile_rules.find(x=>x.profileId===main),
  warriorMaster:T.paths_class.find(x=>x.classId==='class:guerrier:cof2-lb-2024'&&x.id.includes('voie-du-maitre-d-armes')),
  warriorR1Ability:T.abilities_class.find(x=>x.path_id==='classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024'&&x.rank===1),
- engineChoiceSnippets:[...new Set(['Armes de prédilection : option illégale.','preferredWeaponCategory','arme de prédilection'])].map(q=>{const i=html.indexOf(q);return {query:q,index:i,code:i<0?'':html.slice(Math.max(0,i-1050),i+1350)}}),
+ engineChoiceSnippets:[...html.slice(html.indexOf('FOH_ENGINE_BUNDLE')).matchAll(/preferredWeaponCategory|option illégale|weapon_attack_bonus|weaponCategory|crossbows|weapons.*category/g)].slice(0,38).map(m=>{const i=html.indexOf('FOH_ENGINE_BUNDLE')+m.index;return {query:m[0],index:i,code:html.slice(Math.max(0,i-250),i+650)}}),
  crossbowWeapons:Object.entries(T).filter(([k,a])=>/weapons|arms|equip/i.test(k)&&Array.isArray(a)).flatMap(([k,a])=>a.filter(x=>/arbal|balist|crossbow/i.test(JSON.stringify(x))).map(x=>({...x,sourceTable:k}))),
  sourceArquebusierPaths:T.paths_class.filter(x=>x.classId===main).map(x=>({id:x.id,label:x.label,rank1:x.rank1})),
  sourceArbaletrierOptions:T.profile_rules.filter(x=>/arbalet/i.test(JSON.stringify(x)))
