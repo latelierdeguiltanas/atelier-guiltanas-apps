@@ -34,6 +34,8 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
  const replaceStrict=(from,to)=>{if(!bundle.includes(from))throw Error('Engine anchor missing: '+from.slice(0,90));bundle=bundle.replace(from,to);};
  replaceStrict("rows.push({id:'preferredWeaponCategory',type:'preferred_weapon_category',sourceMechanic:'legacy.requiresChoice',required:true,persist:true,values:['swords','axes','maces','spears','thrown']})",
   "rows.push({id:'preferredWeaponCategory',type:'preferred_weapon_category',sourceMechanic:'legacy.requiresChoice',required:true,persist:true,values:ability.path_id?.includes(':class-arbaletrier:')?['crossbows']:['swords','axes','maces','spears','thrown']})");
+ replaceStrict("if(c.type==='preferred_weapon_category')return[{id:'swords',label:'Épées'},{id:'axes',label:'Haches'},{id:'maces',label:'Masses'},{id:'spears',label:'Lances'},{id:'thrown',label:'Armes de jet'}]",
+  "if(c.type==='preferred_weapon_category')return String(abilityId).includes(':class-arbaletrier:')?[{id:'crossbows',label:'Arbalètes'}]:[{id:'swords',label:'Épées'},{id:'axes',label:'Haches'},{id:'maces',label:'Masses'},{id:'spears',label:'Lances'},{id:'thrown',label:'Armes de jet'}]");
  replaceStrict("pred=pref&&w.preferredCategory===pref?1:0",
   "pred=pref&&(w.preferredCategory===pref||(pref==='crossbows'&&w.category==='crossbow'))?1:0");
  const box={window:{},console};vm.createContext(box);vm.runInContext(bundle,box);const E=box.window.__FOH_ENGINE_FACTORY__(db);
