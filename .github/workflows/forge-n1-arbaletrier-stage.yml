@@ -29,6 +29,12 @@ jobs:
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 --directory /tmp/foh-n1-arbaletrier-stage >/tmp/foh-stage-server.log 2>&1 &
           CHROME_BIN="$(command -v google-chrome || command -v chromium)" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_stage_click.cjs
+      - name: Contrôle témoin sur le Forge actuel (hors variante)
+        id: baseline
+        continue-on-error: true
+        run: |
+          python3 -m http.server 4174 --bind 127.0.0.1 >/tmp/foh-original-server.log 2>&1 &
+          CHROME_BIN="$(command -v google-chrome || command -v chromium)" FORGE_BASE="http://127.0.0.1:4174/forge-of-heroes/" CLICK_REPORT="forge-n1-baseline-control.json" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_creation_browser_pack.cjs 1
       - name: Vérifier les 12 parcours existants sans régression
         id: legacy
         if: steps.variant.outcome == 'success'
@@ -43,6 +49,7 @@ jobs:
         with:
           name: arbaletrier-stage-click-and-regressions
           path: |
+            forge-n1-baseline-control.json
             arbaletrier-stage-click.json
             forge-n1-stage-existing-journeys.json
       - name: Ne publier aucune variante non conforme
