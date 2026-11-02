@@ -1,0 +1,40 @@
+name: Forge N1 - official people source oracle
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-official-people-sources.yml'
+permissions:
+  contents: write
+jobs:
+  source-r1-r2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Re-execute race source numerics ranks R1 and R2 with all 8 official peoples and extra options
+        id: oracle
+        continue-on-error: true
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_people_source_runner.cjs
+      - name: Publish source oracle report
+        if: always()
+        run: |
+          if test -f forge-of-heroes/QA/N1/lot10/people-source.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -f forge-of-heroes/QA/N1/lot10/people-source.json
+            if ! git diff --cached --quiet; then
+              git commit -m "test(forge-n1): oracle peuple R1 et R2 source [skip ci]"
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main
+            fi
+          fi
+      - name: Check source oracle verdict
+        if: steps.oracle.outcome == 'failure'
+        run: exit 1
