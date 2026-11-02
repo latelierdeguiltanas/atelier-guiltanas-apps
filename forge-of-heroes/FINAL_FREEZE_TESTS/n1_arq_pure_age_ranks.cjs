@@ -1,0 +1,75 @@
+'use strict';
+/* Audits all five Arquebusier paths at ranks legitimately available at N1 through age. */
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const {load,standardState}=require('./forge_product_runner');
+const ROOT=path.resolve(__dirname,'..'), copy=x=>JSON.parse(JSON.stringify(x));
+const profile='class:arquebusier:cof2-lb-2024', races=['humain','nain','demi-elfe','demi-orc','elfe-haut','elfe-sylvain','gnome','halfelin'];
+const source={book:'COF2 Livre de base imprimé pp.62–65; Règles avancées p.153 (catégories d’âge)',familyHpPerLevel:4,baseHpN1:8,ageEffects:{'very-young':{agi:0,con:0,init:-1},young:{agi:0,con:0,init:0},mature:{agi:-1,con:0,init:0},venerable:{agi:-1,con:-1,init:0}},ranks:{young:1,'very-young':1,mature:2,venerable:3}};
+const reports={schema:'FOH_N1_ARQUEBUSIER_PURE_AGE_RANK',timestamp:new Date().toISOString(),scope:'14? No: only Arquebusier pure × 8 official peoples × five different first paths × all ages (very young PC/DR, young, mature, venerable), both product engines. Validates racial and age characteristics against book rules, permanent PV/DEF/INIT under equip, existence of each accessible rank, local save/reopen. Contextual spells/attacks, historical choices, Arbalétrier alternative and PDF are NOT validated.',source,sourceCommit:process.env.GITHUB_SHA||null,expected:8*5*5*2,cases:0,pass:0,refused:0,failed:0,failures:[],perRace:{},perPath:{},products:[]};
+const raceRules={
+ humain:{bonus:'cha',malus:null,humain:true,path:'voie-de-l-humain'},
+ nain:{bonus:'con',malus:'agi',path:'voie-du-nain'},
+ 'demi-elfe':{bonus:'per',malus:'for',path:'voie-de-l-humain'},
+ 'demi-orc':{bonus:'for',malus:'cha',path:'voie-du-demi-orc'},
+ 'elfe-haut':{bonus:'int',malus:'for',path:'voie-de-l-elfe-haut'},
+ 'elfe-sylvain':{bonus:'agi',malus:'for',path:'voie-de-l-elfe-sylvain'},
+ gnome:{bonus:'int',malus:'for',path:'voie-du-gnome'},
+ halfelin:{bonus:'agi',malus:'for',path:'voie-du-halfelin'}
+};
+const sourceIndex={
+ 'voie-de-l-artilleur':62,'voie-des-explosifs':63,'voie-du-mercenaire':64,'voie-du-pistolero':65,'voie-de-la-precision':65
+};
+const cases=[['young',null],['very-young','PC'],['very-young','DR'],['mature',null],['venerable',null]];
+for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+ const {db,engine:E,html}=load(path.join(ROOT,file)),T=db.tables,paths=T.paths_class.filter(p=>p.classId===profile&&!p.additionalMagePath);
+ if(paths.length!==5)throw Error('Missing five paths');
+ const hash=s=>crypto.createHash('sha256').update(s).digest('hex');
+ reports.products.push({file,htmlSha256:hash(html)});
+ function fill(s){
+  for(let round=0;round<4;round++)for(const a of E.previewAcquiredAbilities(s))for(const ch of E.getPersistentChoicesForAbility(s,a.id)){
+    const b=s.abilityChoices[a.id]||(s.abilityChoices[a.id]={});
+    if(ch.id==='preferredWeaponCategory'){b[ch.id]='swords';s.profileChoices[ch.id]='swords';}
+    else if(ch.id==='extraLanguage'){b[ch.id]='celestien';s.profileChoices[ch.id]='celestien';}
+    else if(ch.id==='forestChildAbility'){b[ch.id]=T.abilities_class.find(x=>x.rank===1&&x.path_id.includes('voie-de-la-survie'))?.id;}
+    else if(b[ch.id]==null){if(ch.type==='boolean')b[ch.id]=false;else if(ch.type==='entity')b[ch.id]={type:'animal',species:'chat',name:'QA'};else if(ch.type==='weapon_multi')b[ch.id]=(ch.options||[]).slice(0,Math.max(1,ch.min||1)).map(x=>x.id);else if(ch.options?.length)b[ch.id]=ch.options[0].id;}
+  }
+  return s;
+ }
+ for(const race of races)for(let i=0;i<paths.length;i++)for(const [age,choice] of cases){
+  const first=paths[i],second=paths[(i+1)%paths.length],tag=[file,race,first.id.split(':')[1],age,choice||''].join('|');reports.cases++;
+  const pr=reports.perRace[race]||(reports.perRace[race]={cases:0,pass:0,refused:0,failed:0}),pp=reports.perPath[first.id]||(reports.perPath[first.id]={name:first.label||first.id,printedPage:sourceIndex[first.id.split(':')[1]],cases:0,pass:0,refused:0,failed:0});
+  pr.cases++;pp.cases++;
+  const r=raceRules[race],s=standardState(db,profile,first.id,'people:'+race+':cof2-lb-2024');
+  s.voies.profilePathIds=[first.id,second.id];s.peupleChoices=r.humain?{humainStat:r.bonus}:{bonusStat:r.bonus,malusStat:r.malus};
+  s.voies.peoplePathId=T.paths_people.find(x=>x.id.split(':')[1]===r.path)?.id;
+  if(!s.voies.peoplePathId)throw Error('Missing race path '+race);
+  if(race==='gnome')s.peupleChoices.grantedAbilityId=T.abilities_class.find(a=>a.rank===1&&!s.voies.profilePathIds.includes(a.path_id)&&T.paths_class.some(p=>p.id===a.path_id&&p.classId.includes(':ensorceleur:')))?.id;
+  s.advancedRules.age=true;
+  const spending=age==='mature'?[{pathId:first.id,rank:2},{pathId:second.id,rank:2}]:age==='venerable'?[{pathId:first.id,rank:2},{pathId:first.id,rank:3},{pathId:second.id,rank:2}]:[];
+  s.age={categoryId:age,choice,spending};fill(s);
+  const before=JSON.stringify(s),result=E.computeCharacterN1(s);
+  if(result.errors.length){reports.refused++;pr.refused++;pp.refused++;if(reports.failures.length<80)reports.failures.push({tag,type:'REFUSED',reason:result.errors.join(' | ')});continue;}
+  try{
+   if(JSON.stringify(s)!==before)throw Error('Input mutated');
+   const actual=copy(result.sticky.caracs),expected={...s.baseCaracs},a=source.ageEffects[age];expected[r.bonus]++;if(r.malus)expected[r.malus]--;expected.agi+=a.agi;expected.con+=a.con;
+   if(JSON.stringify(expected)!==JSON.stringify(actual))throw Error('Incorrect ancestry+age stats expected '+JSON.stringify(expected)+' actual '+JSON.stringify(actual));
+   const sticky=result.sticky;
+   if(sticky.PV!==source.baseHpN1+expected.con)throw Error('PV baseline differs from book ('+sticky.PV+' vs '+(source.baseHpN1+expected.con)+')');
+   // Depending on a loaded firearm, Plus vite que son ombre grants a shot initiative,
+   // not a passive character-wide INIT; compare only when not using that path.
+   if(first.id.split(':')[1]!=='voie-du-pistolero'&&second.id.split(':')[1]!=='voie-du-pistolero'&&sticky.INIT!==10+expected.per+a.init)throw Error('INIT mismatch');
+   const rank=source.ranks[age],entry=sticky.characterState.paths.find(p=>p.pathId===first.id);
+   if(!entry||entry.rank!==rank)throw Error('Expected path rank '+rank+' got '+entry?.rank);
+   for(let n=1;n<=rank;n++)if(!sticky.acquiredAbilities.some(x=>x.pathId===first.id&&x.rank===n))throw Error('Missing ability rank '+n);
+   if(rank===3&&first.id.split(':')[1]==='voie-du-mercenaire'&&sticky.DEF<10+expected.agi+1)throw Error('Missing +1 DEF of Combattant aguerri at R3');
+   const saved=E.createHeroSavePayload(s,sticky.characterState,{id:'arq-'+race+'-'+i+'-'+age}),back=E.computeCharacterN1(E.restoreHeroSavePayload(copy(saved)).draft);
+   if(back.errors.length)throw Error('Restored character cannot be created '+back.errors.join('; '));
+   if(JSON.stringify(copy(back.sticky.characterState.derived))!==JSON.stringify(copy(sticky.characterState.derived)))throw Error('Derived stats changed after saving');
+   reports.pass++;pr.pass++;pp.pass++;
+  }catch(e){reports.failed++;pr.failed++;pp.failed++;if(reports.failures.length<80)reports.failures.push({tag,type:'ASSERTION',reason:String(e)});}
+ }
+}
+reports.complete=reports.cases===reports.expected&&reports.pass===reports.expected&&reports.failed===0&&reports.refused===0;
+const dst=path.join(ROOT,'QA/N1/arquebusier-pure-age-ranks.json');fs.writeFileSync(dst,JSON.stringify(reports,null,2)+'\n');
+console.log(JSON.stringify({complete:reports.complete,attempted:reports.cases,passed:reports.pass,failed:reports.failed,refused:reports.refused,perRace:reports.perRace,failures:reports.failures.slice(0,12)}));
+if(!reports.complete)process.exitCode=1;
