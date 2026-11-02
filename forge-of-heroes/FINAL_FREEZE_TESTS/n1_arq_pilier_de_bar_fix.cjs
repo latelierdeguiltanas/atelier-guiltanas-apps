@@ -18,40 +18,42 @@ for(const file of files){
  const fp=path.join(root,file),html=fs.readFileSync(fp,'utf8'),m=abilityTag.exec(html);
  assert.ok(m,'DB embarquée introuvable dans '+file);
  let dbRaw=m[1],original=JSON.parse(dbRaw);
- const hits=[...dbRaw.matchAll(idrx)].filter(x=>x[1].includes('voie-du-mercenaire'));
- assert.equal(hits.length,1,'Une et une seule capacité Pilier de bar attendue dans '+file);
- const hit=hits[0], start=dbRaw.lastIndexOf('{',hit.index);
- assert.ok(start>=0,'Début de capacité absent');
- let depth=0,inStr=false,escaped=false,end=-1;
- for(let i=start;i<dbRaw.length;i++){
-  const ch=dbRaw[i];
-  if(inStr){if(escaped)escaped=false;else if(ch==='\\')escaped=true;else if(ch==='"')inStr=false;continue;}
-  if(ch==='"'){inStr=true;continue;}
-  if(ch==='{')depth++;else if(ch==='}'&&!--depth){end=i+1;break;}
- }
- assert.ok(end>start,'Fin de capacité absente');
- const oldRow=JSON.parse(dbRaw.slice(start,end));
- assert.equal(oldRow.id,hit[1]);assert.equal(oldRow.rank,1);
- const oldEffect=(oldRow.mechanics?.effects||[]).filter(e=>e.type==='weapon_damage_override'&&e.weaponId==='weapon:unarmed');
- assert.equal(oldEffect.length,1);
- const previous=oldEffect[0].formula;
- assert.ok(['1d4','1d4°'].includes(previous),'Formule inconnue: '+previous);
+ const matches=[...dbRaw.matchAll(idrx)].filter(x=>x[1].includes('voie-du-mercenaire'));
+ const rows=original.tables.abilities_class.filter(x=>matches.some(m=>m[1]===x.id)&&x.rank===1&&x.mechanics?.effects?.some(e=>e.type==='weapon_damage_override'&&e.weaponId==='weapon:unarmed'));
+ assert.ok(rows.length>=1,'Aucun Pilier de bar mécanique dans '+file);
+ const expectedDb=JSON.parse(JSON.stringify(original));
+ const previous=rows.map(x=>({id:x.id,formula:x.mechanics.effects.find(e=>e.type==='weapon_damage_override').formula}));
  let nextHtml=html,changed=false;
- if(previous==='1d4'){
-  const rowRaw=dbRaw.slice(start,end),re=/"type"\s*:\s*"weapon_damage_override"\s*,\s*"weaponId"\s*:\s*"weapon:unarmed"\s*,\s*"formula"\s*:\s*"1d4"/g;
+ // Traitement inverse des positions pour maintenir les indices de la source.
+ for(const hit of [...matches].reverse()){
+  const originalRow=rows.find(x=>x.id===hit[1]);
+  if(!originalRow)continue;
+  const start=dbRaw.lastIndexOf('{',hit.index);
+  assert.ok(start>=0,'Début de capacité absent');
+  let depth=0,inStr=false,escaped=false,end=-1;
+  for(let i=start;i<dbRaw.length;i++){
+   const ch=dbRaw[i];
+   if(inStr){if(escaped)escaped=false;else if(ch==='\\')escaped=true;else if(ch==='"')inStr=false;continue;}
+   if(ch==='"'){inStr=true;continue;}
+   if(ch==='{')depth++;else if(ch==='}'&&!--depth){end=i+1;break;}
+  }
+  assert.ok(end>start,'Fin de capacité absente');
+  const rowRaw=dbRaw.slice(start,end),oldRow=JSON.parse(rowRaw);
+  assert.equal(oldRow.id,hit[1]);assert.equal(oldRow.rank,1);
+  const effect=oldRow.mechanics.effects.filter(e=>e.type==='weapon_damage_override'&&e.weaponId==='weapon:unarmed');
+  assert.equal(effect.length,1);
+  assert.ok(['1d4','1d4°'].includes(effect[0].formula),'Formule inconnue : '+effect[0].formula);
+  if(effect[0].formula!=='1d4')continue;
+  const re=/"type"\s*:\s*"weapon_damage_override"\s*,\s*"weaponId"\s*:\s*"weapon:unarmed"\s*,\s*"formula"\s*:\s*"1d4"/g;
   assert.equal([...rowRaw.matchAll(re)].length,1,'Mécanique introuvable ou ambiguë');
   const newRow=rowRaw.replace(re,x=>x.replace(/"1d4"\s*$/,'"1d4°"'));
-  const row=JSON.parse(newRow);
-  assert.equal(row.mechanics.effects.find(e=>e.type==='weapon_damage_override').formula,'1d4°');
+  assert.equal(JSON.parse(newRow).mechanics.effects.find(e=>e.type==='weapon_damage_override').formula,'1d4°');
   dbRaw=dbRaw.slice(0,start)+newRow+dbRaw.slice(end);
-  const newDb=JSON.parse(dbRaw),originalRow=original.tables.abilities_class.find(a=>a.id===hit[1]),newAbility=newDb.tables.abilities_class.find(a=>a.id===hit[1]);
-  assert.ok(originalRow&&newAbility,'Ligne introuvable dans la table');
-  assert.equal(newAbility.mechanics.effects.find(e=>e.type==='weapon_damage_override').formula,'1d4°');
-  const expectedDb=JSON.parse(JSON.stringify(original));
   expectedDb.tables.abilities_class.find(a=>a.id===hit[1]).mechanics.effects.find(e=>e.type==='weapon_damage_override').formula='1d4°';
-  assert.equal(JSON.stringify(expectedDb),JSON.stringify(newDb),'Seulement la formule ciblée doit changer');
-  nextHtml=html.replace(m[1],dbRaw);changed=true;
+  changed=true;
  }
+ assert.equal(JSON.stringify(expectedDb),JSON.stringify(JSON.parse(dbRaw)),'Seules les capacités ciblées doivent changer');
+ if(changed)nextHtml=html.replace(m[1],dbRaw);
  // Refuser une version verte si le moteur ne répercute pas effectivement la formule dans l'attaque.
  if(changed)fs.writeFileSync(fp,nextHtml);
  const {db,engine:E}=load(fp),t=db.tables,p=t.paths_class.find(x=>x.classId===profile&&x.id.includes('voie-du-mercenaire'));
