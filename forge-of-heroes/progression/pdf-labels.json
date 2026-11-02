@@ -1056,6 +1056,31 @@
       },
       "status": "N1_CERTIFIED",
       "provenance": "FOH_ADAPTED_COF1_TO_COF2"
+    },
+    {
+      "id": "class:arbaletrier:cof2-variant-2024",
+      "label": "Arbalétrier",
+      "familleId": "aventurier",
+      "group": "Variante du Livre de base",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "Chroniques Oubliées Fantasy 2e édition",
+        "printedPage": 62,
+        "chapter": "Profils",
+        "section": "Poudre ou pas poudre ? — Arbalétrier"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "N1_CERTIFIED",
+        "structured": true,
+        "engineConnected": true,
+        "oracleTested": true,
+        "negativeTested": true,
+        "crossTested": true,
+        "validatedBy": "FIX73",
+        "enabledInCertifiedN1": true
+      }
     }
   ],
   "paths_class": [
@@ -3065,6 +3090,126 @@
         "scope": "Full source text, not full effect certification"
       },
       "group": "Additional"
+    },
+    {
+      "id": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+      "label": "Voie de l’artilleur",
+      "classId": "class:arbaletrier:cof2-variant-2024",
+      "group": "Base",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "Chroniques Oubliées Fantasy 2e édition",
+        "printedPage": 62,
+        "chapter": "Profils",
+        "section": "Arbalétrier : Arquebusier — Voie de l’artilleur"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "N1_CERTIFIED",
+        "structured": true,
+        "engineConnected": true,
+        "oracleTested": true,
+        "negativeTested": true,
+        "crossTested": true,
+        "validatedBy": "FIX73"
+      }
+    },
+    {
+      "id": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+      "label": "Voie du mercenaire",
+      "classId": "class:arbaletrier:cof2-variant-2024",
+      "group": "Base",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "Chroniques Oubliées Fantasy 2e édition",
+        "printedPage": 62,
+        "chapter": "Profils",
+        "section": "Arbalétrier : Arquebusier — Voie du mercenaire"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "N1_CERTIFIED",
+        "structured": true,
+        "engineConnected": true,
+        "oracleTested": true,
+        "negativeTested": true,
+        "crossTested": true,
+        "validatedBy": "FIX73"
+      }
+    },
+    {
+      "id": "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+      "label": "Voie du pistolero",
+      "classId": "class:arbaletrier:cof2-variant-2024",
+      "group": "Base",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "Chroniques Oubliées Fantasy 2e édition",
+        "printedPage": 62,
+        "chapter": "Profils",
+        "section": "Arbalétrier : Arquebusier — Voie du pistolero"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "N1_CERTIFIED",
+        "structured": true,
+        "engineConnected": true,
+        "oracleTested": true,
+        "negativeTested": true,
+        "crossTested": true,
+        "validatedBy": "FIX73"
+      }
+    },
+    {
+      "id": "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+      "label": "Voie de la précision",
+      "classId": "class:arbaletrier:cof2-variant-2024",
+      "group": "Base",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "Chroniques Oubliées Fantasy 2e édition",
+        "printedPage": 62,
+        "chapter": "Profils",
+        "section": "Arbalétrier : Arquebusier — Voie de la précision"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "N1_CERTIFIED",
+        "structured": true,
+        "engineConnected": true,
+        "oracleTested": true,
+        "negativeTested": true,
+        "crossTested": true,
+        "validatedBy": "FIX73"
+      }
+    },
+    {
+      "id": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+      "label": "Voie du maître d’armes",
+      "classId": "class:arbaletrier:cof2-variant-2024",
+      "group": "Base",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "Chroniques Oubliées Fantasy 2e édition",
+        "printedPage": 87,
+        "chapter": "Profils",
+        "section": "Arbalétrier : Guerrier — Voie du maître d’armes"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "N1_CERTIFIED",
+        "structured": true,
+        "engineConnected": true,
+        "oracleTested": true,
+        "negativeTested": true,
+        "crossTested": true,
+        "validatedBy": "FIX72"
+      }
     }
   ],
   "paths_people": [
@@ -19302,6 +19447,1083 @@
         "section": "Épidémie (L)*",
         "textStatus": "PHOTO_SOURCE_TRANSCRIBED"
       }
+    },
+    {
+      "id": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "path_id": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+      "rank": 1,
+      "label": "Mécanismes",
+      "desc": "L’arquebusier ajoute son rang + 2 à tous les tests visant à réparer ou à comprendre des mécanismes (cela inclut le fait de désamorcer des pièges mécaniques et de manipuler des armes de siège). Il obtient un dé bonus à tous les tests d’attaque avec des armes de siège (baliste, couleuvrine, canon, trébuchet, catapulte, etc.).",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 62,
+        "chapter": "Profils",
+        "section": "Mécanismes"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "N1_CERTIFIED",
+        "structured": true,
+        "engineConnected": true,
+        "oracleTested": true,
+        "negativeTested": true,
+        "crossTested": true,
+        "validatedBy": "FIX73",
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "passive",
+        "skillBonuses": [
+          {
+            "value": 3,
+            "tests": [
+              "repair_mechanism",
+              "understand_mechanism"
+            ]
+          }
+        ],
+        "effects": [
+          {
+            "type": "bonus_die",
+            "target": "siege_weapon_attacks"
+          }
+        ]
+      },
+      "sourceTextOriginal": "L’arquebusier ajoute son rang + 2 à tous les tests visant à réparer ou à comprendre des mécanismes (cela inclut le fait de désamorcer des pièges mécaniques et de manipuler des armes de siège). Il obtient un dé bonus à tous les tests d’attaque avec des armes de siège (baliste, couleuvrine, canon, trébuchet, catapulte, etc.).",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 62,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "path_id": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+      "rank": 2,
+      "label": "Arme à répétition",
+      "desc": "L’arquebusier modifie jusqu’à deux armes de son choix pour les doter de chargeurs. La capacité du chargeur est égale à [2 + INT] et elle augmente de 1 projectile supplémentaire chaque fois que le personnage atteint le rang 3 dans une voie d’arquebusier. Chaque chargeur doit être ensuite rechargé au rythme d’une action limitée (L) par projectile.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 62,
+        "chapter": "Profils",
+        "section": "Arme à répétition"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "ADVANCED_N1_CONNECTED",
+        "structured": true,
+        "ageAccessibleN1": true,
+        "semanticEngine": "N1_SEMANTIC_ENGINE_REPAIR",
+        "engineConnected": true,
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "mixed",
+        "choices": [
+          {
+            "id": "repeatingWeapons",
+            "type": "weapon_multi",
+            "min": 1,
+            "max": 2,
+            "persist": true
+          }
+        ],
+        "effects": [
+          {
+            "type": "repeating_magazine",
+            "selectedWeaponField": "repeatingWeapons",
+            "capacityFormula": "2+INT+ARQUEBUSIER_RANK3_COUNT",
+            "rankScaling": {
+              "profile": "arquebusier",
+              "thresholdRank": 3,
+              "delta": 1
+            },
+            "persist": true
+          },
+          {
+            "type": "table_runtime",
+            "scope": "reload",
+            "action": "limited_per_projectile"
+          }
+        ]
+      },
+      "sourceTextOriginal": "L’arquebusier modifie jusqu’à deux armes de son choix pour les doter de chargeurs. La capacité du chargeur est égale à [2 + INT] et elle augmente de 1 projectile supplémentaire chaque fois que le personnage atteint le rang 3 dans une voie d’arquebusier. Chaque chargeur doit être ensuite rechargé au rythme d’une action limitée (L) par projectile.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 62,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "path_id": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+      "rank": 3,
+      "label": "Tir de barrage (L)",
+      "desc": "L’arquebusier surveille une zone de 20 m de large face à lui. Si une créature se déplace dans cette zone avant son prochain tour, il peut faire une attaque à distance. En cas de succès la victime choisit entre deux possibilités : soit elle subit le double des dommages, soit elle termine son tour et son déplacement à l’endroit de l’attaque et ne subit pas de dommages. L’arquebusier peut effectuer un tir de barrage sur plusieurs créatures durant le round, tant qu’il n’a pas besoin de recharger.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 62,
+        "chapter": "Profils",
+        "section": "Tir de barrage (L)"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "ADVANCED_N1_CONNECTED",
+        "structured": true,
+        "ageAccessibleN1": true,
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "active",
+        "action": "limited",
+        "cost": {
+          "resource": "capacity",
+          "amount": 2
+        },
+        "effects": [
+          {
+            "type": "structured_sheet_effect",
+            "targets": [
+              "ATTAQUE",
+              "DÉPLACEMENT"
+            ],
+            "sourceText": "L’arquebusier surveille une zone de 20 m de large face à lui. Si une créature se déplace dans cette zone avant son prochain tour, il peut faire une attaque à distance. En cas de succès la victime choisit entre deux possibilités : soit elle subit le double des dommages, soit elle termine son tour et son déplacement à l’endroit de l’attaque et ne subit pas de dommages. L’arquebusier peut effectuer un tir de barrage sur plusieurs créatures durant le round, tant qu’il n’a pas besoin de recharger.",
+            "persist": true
+          },
+          {
+            "type": "table_runtime",
+            "scope": "canonical_runtime",
+            "sourceText": "L’arquebusier surveille une zone de 20 m de large face à lui. Si une créature se déplace dans cette zone avant son prochain tour, il peut faire une attaque à distance. En cas de succès la victime choisit entre deux possibilités : soit elle subit le double des dommages, soit elle termine son tour et son déplacement à l’endroit de l’attaque et ne subit pas de dommages. L’arquebusier peut effectuer un tir de barrage sur plusieurs créatures durant le round, tant qu’il n’a pas besoin de recharger."
+          }
+        ],
+        "sourceText": "L’arquebusier surveille une zone de 20 m de large face à lui. Si une créature se déplace dans cette zone avant son prochain tour, il peut faire une attaque à distance. En cas de succès la victime choisit entre deux possibilités : soit elle subit le double des dommages, soit elle termine son tour et son déplacement à l’endroit de l’attaque et ne subit pas de dommages. L’arquebusier peut effectuer un tir de barrage sur plusieurs créatures durant le round, tant qu’il n’a pas besoin de recharger."
+      },
+      "sourceTextOriginal": "L’arquebusier surveille une zone de 20 m de large face à lui. Si une créature se déplace dans cette zone avant son prochain tour, il peut faire une attaque à distance. En cas de succès la victime choisit entre deux possibilités : soit elle subit le double des dommages, soit elle termine son tour et son déplacement à l’endroit de l’attaque et ne subit pas de dommages. L’arquebusier peut effectuer un tir de barrage sur plusieurs créatures durant le round, tant qu’il n’a pas besoin de recharger.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 62,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:canon-double:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+      "path_id": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+      "rank": 4,
+      "label": "Canon double",
+      "desc": "L’arquebusier peut bricoler ses armes à poudre (mais pas une couleuvrine) pour les doter d’un second canon. Il double le dé de DM de l’arme (mais pas les dés bonus ni les bonus). Il doit recharger chaque canon individuellement (un canon double consomme 2 projectiles). En cas de critique le dé est triplé (au lieu de ×4). Ce type d’arme possède une double détente et il reste possible de décharger un seul canon à la fois.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 63,
+        "chapter": "Profils",
+        "section": "Canon double"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+        "functionalStatus": "not_tested",
+        "descriptionVerified": true
+      },
+      "sourceTextOriginal": "L’arquebusier peut bricoler ses armes à poudre (mais pas une couleuvrine) pour les doter d’un second canon. Il double le dé de DM de l’arme (mais pas les dés bonus ni les bonus). Il doit recharger chaque canon individuellement (un canon double consomme 2 projectiles). En cas de critique le dé est triplé (au lieu de ×4). Ce type d’arme possède une double détente et il reste possible de décharger un seul canon à la fois.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 63,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:couleuvrine-l:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+      "path_id": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+      "rank": 5,
+      "label": "Couleuvrine (L)",
+      "desc": "L’arquebusier obtient une couleuvrine (un petit canon portatif). Sur un test d’attaque à distance réussi (dé bonus), la couleuvrine inflige [5d4° + INT] DM à une portée de 100 m. Il faut ensuite deux rounds (L) pour la recharger. C’est une arme encombrante et il est impossible de transporter plus d’une couleuvrine.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 63,
+        "chapter": "Profils",
+        "section": "Couleuvrine (L)"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+        "functionalStatus": "not_tested",
+        "descriptionVerified": true
+      },
+      "sourceTextOriginal": "L’arquebusier obtient une couleuvrine (un petit canon portatif). Sur un test d’attaque à distance réussi (dé bonus), la couleuvrine inflige [5d4° + INT] DM à une portée de 100 m. Il faut ensuite deux rounds (L) pour la recharger. C’est une arme encombrante et il est impossible de transporter plus d’une couleuvrine.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 63,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "path_id": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+      "rank": 1,
+      "label": "Pilier de bar",
+      "desc": "L’arquebusier obtient un bonus égal à son rang + 2 aux tests d’interaction sociale dans les tavernes ou les auberges (renseignement, négociation, séduction, etc.) ainsi que pour résister aux effets de l’alcool. De plus, il inflige 1d4° DM à mains nues (non létal) et il divise par 2 tous les DM non létaux qu’on lui inflige.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 64,
+        "chapter": "Profils",
+        "section": "Pilier de bar"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "N1_CERTIFIED",
+        "structured": true,
+        "engineConnected": true,
+        "oracleTested": true,
+        "negativeTested": true,
+        "crossTested": true,
+        "validatedBy": "FIX73",
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "passive",
+        "skillBonuses": [
+          {
+            "value": 3,
+            "tests": [
+              "tavern_social",
+              "resist_alcohol"
+            ]
+          }
+        ],
+        "effects": [
+          {
+            "type": "weapon_damage_override",
+            "weaponId": "weapon:unarmed",
+            "formula": "1d4",
+            "nonLethal": true
+          },
+          {
+            "type": "conditional_damage_reduction",
+            "damageType": "non_lethal",
+            "divisor": 2
+          }
+        ]
+      },
+      "sourceTextOriginal": "L’arquebusier obtient un bonus égal à son rang + 2 aux tests d’interaction sociale dans les tavernes ou les auberges (renseignement, négociation, séduction, etc.) ainsi que pour résister aux effets de l’alcool. De plus, il inflige 1d4° DM à mains nues (non létal) et il divise par 2 tous les DM non létaux qu’on lui inflige.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 64,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "path_id": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+      "rank": 2,
+      "label": "Mort ou vif (L)",
+      "desc": "L’arquebusier effectue une attaque au contact ou à distance (avec l’arme en main). Si l’attaque est réussie, il inflige ses DM habituels (mais peut choisir d’infliger des DM temporaires) et il choisit entre désarmer, renverser ou affaiblir (1d4 rounds) un adversaire dont le NC est inférieur au rang atteint dans la voie. Si l’attaque est une réussite critique, il peut choisir de cumuler deux effets.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 64,
+        "chapter": "Profils",
+        "section": "Mort ou vif (L)"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "ADVANCED_N1_CONNECTED",
+        "structured": true,
+        "ageAccessibleN1": true,
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "active",
+        "action": "limited",
+        "cost": {
+          "resource": "capacity",
+          "amount": 1
+        },
+        "effects": [
+          {
+            "type": "structured_sheet_effect",
+            "targets": [
+              "ATTAQUE",
+              "ARME",
+              "DM",
+              "CRITIQUE"
+            ],
+            "sourceText": "L’arquebusier effectue une attaque au contact ou à distance (avec l’arme en main). Si l’attaque est réussie, il inflige ses DM habituels (mais peut choisir d’infliger des DM temporaires) et il choisit entre désarmer, renverser ou affaiblir (1d4 rounds) un adversaire dont le NC est inférieur au rang atteint dans la voie. Si l’attaque est une réussite critique, il peut choisir de cumuler deux effets.",
+            "persist": true
+          },
+          {
+            "type": "table_runtime",
+            "scope": "canonical_runtime",
+            "sourceText": "L’arquebusier effectue une attaque au contact ou à distance (avec l’arme en main). Si l’attaque est réussie, il inflige ses DM habituels (mais peut choisir d’infliger des DM temporaires) et il choisit entre désarmer, renverser ou affaiblir (1d4 rounds) un adversaire dont le NC est inférieur au rang atteint dans la voie. Si l’attaque est une réussite critique, il peut choisir de cumuler deux effets."
+          }
+        ],
+        "sourceText": "L’arquebusier effectue une attaque au contact ou à distance (avec l’arme en main). Si l’attaque est réussie, il inflige ses DM habituels (mais peut choisir d’infliger des DM temporaires) et il choisit entre désarmer, renverser ou affaiblir (1d4 rounds) un adversaire dont le NC est inférieur au rang atteint dans la voie. Si l’attaque est une réussite critique, il peut choisir de cumuler deux effets."
+      },
+      "sourceTextOriginal": "L’arquebusier effectue une attaque au contact ou à distance (avec l’arme en main). Si l’attaque est réussie, il inflige ses DM habituels (mais peut choisir d’infliger des DM temporaires) et il choisit entre désarmer, renverser ou affaiblir (1d4 rounds) un adversaire dont le NC est inférieur au rang atteint dans la voie. Si l’attaque est une réussite critique, il peut choisir de cumuler deux effets.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 64,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "path_id": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+      "rank": 3,
+      "label": "Combattant aguerri",
+      "desc": "L’arquebusier choisit une capacité de rang 1 de son choix de guerrier, de voleur (armure de cuir) ou de rôdeur (armure de cuir renforcé). Il gagne aussi +1 en DEF.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 64,
+        "chapter": "Profils",
+        "section": "Combattant aguerri"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "ADVANCED_N1_CONNECTED",
+        "structured": true,
+        "ageAccessibleN1": true,
+        "semanticEngine": "N1_SEMANTIC_ENGINE_REPAIR",
+        "engineConnected": true,
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "passive",
+        "effects": [
+          {
+            "type": "add",
+            "target": "DEF",
+            "value": 1
+          },
+          {
+            "type": "grant_ability_choice",
+            "choiceId": "combattantAguerriAbility",
+            "allowedProfiles": [
+              "guerrier",
+              "voleur",
+              "rodeur"
+            ],
+            "allowedRanks": [
+              1
+            ],
+            "armorRestrictions": {
+              "voleur": "cuir",
+              "rodeur": "cuir_renforce"
+            },
+            "persist": true
+          }
+        ]
+      },
+      "sourceTextOriginal": "L’arquebusier choisit une capacité de rang 1 de son choix de guerrier, de voleur (armure de cuir) ou de rôdeur (armure de cuir renforcé). Il gagne aussi +1 en DEF.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 64,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:constitution-heroique:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+      "path_id": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+      "rank": 4,
+      "label": "Constitution héroïque",
+      "desc": "L’arquebusier augmente sa valeur de CON de +1 et il obtient un dé bonus aux tests de CON.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 64,
+        "chapter": "Profils",
+        "section": "Constitution héroïque"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+        "functionalStatus": "not_tested",
+        "descriptionVerified": true
+      },
+      "sourceTextOriginal": "L’arquebusier augmente sa valeur de CON de +1 et il obtient un dé bonus aux tests de CON.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 64,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:combat-de-masse:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+      "path_id": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+      "rank": 5,
+      "label": "Combat de masse",
+      "desc": "Si le combat implique au moins 10 créatures actives (en comptant l’arquebusier et ses alliés), l’arquebusier obtient, au choix, une action d’attaque ou une action de mouvement supplémentaire à son tour. De plus, l’arquebusier gagne +1 en DEF. Note : à titre exceptionnel, si la voie du mercenaire est choisie pour construire un profil hybride, elle ne donne pas accès à la maîtrise des armes à poudre. En revanche, elle n’interdit pas le port du bouclier.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 64,
+        "chapter": "Profils",
+        "section": "Combat de masse"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+        "functionalStatus": "not_tested",
+        "descriptionVerified": true
+      },
+      "sourceTextOriginal": "Si le combat implique au moins 10 créatures actives (en comptant l’arquebusier et ses alliés), l’arquebusier obtient, au choix, une action d’attaque ou une action de mouvement supplémentaire à son tour. De plus, l’arquebusier gagne +1 en DEF. Note : à titre exceptionnel, si la voie du mercenaire est choisie pour construire un profil hybride, elle ne donne pas accès à la maîtrise des armes à poudre. En revanche, elle n’interdit pas le port du bouclier.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 64,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "path_id": "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+      "rank": 1,
+      "label": "Plus vite que son ombre",
+      "desc": "Si son arme à poudre est chargée et tenue en main, l’arquebusier peut tirer avec un bonus de +5 à son Initiative. De plus, il ne subit plus de dé malus lorsqu’il tire avec une arme à poudre ou une arbalète en étant engagé en combat au contact (sauf avec la couleuvrine).",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 65,
+        "chapter": "Profils",
+        "section": "Plus vite que son ombre"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "N1_CERTIFIED",
+        "structured": true,
+        "engineConnected": true,
+        "oracleTested": true,
+        "negativeTested": true,
+        "crossTested": true,
+        "validatedBy": "FIX73",
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "conditional",
+        "condition": "loaded_powder_weapon_held",
+        "effects": [
+          {
+            "type": "conditional_INIT_bonus",
+            "value": 5
+          },
+          {
+            "type": "remove_contact_ranged_malus",
+            "weapons": [
+              "powder",
+              "crossbow"
+            ],
+            "except": [
+              "couleuvrine"
+            ]
+          }
+        ],
+        "tags": [
+          "conditional_not_permanent"
+        ]
+      },
+      "sourceTextOriginal": "Si son arme à poudre est chargée et tenue en main, l’arquebusier peut tirer avec un bonus de +5 à son Initiative. De plus, il ne subit plus de dé malus lorsqu’il tire avec une arme à poudre ou une arbalète en étant engagé en combat au contact (sauf avec la couleuvrine).",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 65,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "path_id": "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+      "rank": 2,
+      "label": "Ajuster le tir",
+      "desc": "Après avoir raté une attaque à distance, l’arquebusier déclare qu’il s’agissait d’un tir de réglage. Il obtient +5 sur le test de sa prochaine attaque à distance, si son prochain tir vise la même cible avant la fin du prochain round.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 65,
+        "chapter": "Profils",
+        "section": "Ajuster le tir"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "ADVANCED_N1_CONNECTED",
+        "structured": true,
+        "ageAccessibleN1": true,
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "action": null,
+        "cost": {
+          "resource": "capacity",
+          "amount": 1
+        },
+        "effects": [
+          {
+            "type": "structured_sheet_effect",
+            "targets": [
+              "ATTAQUE"
+            ],
+            "sourceText": "Après avoir raté une attaque à distance, l’arquebusier déclare qu’il s’agissait d’un tir de réglage. Il obtient +5 sur le test de sa prochaine attaque à distance, si son prochain tir vise la même cible avant la fin du prochain round.",
+            "persist": true
+          },
+          {
+            "type": "table_runtime",
+            "scope": "canonical_runtime",
+            "sourceText": "Après avoir raté une attaque à distance, l’arquebusier déclare qu’il s’agissait d’un tir de réglage. Il obtient +5 sur le test de sa prochaine attaque à distance, si son prochain tir vise la même cible avant la fin du prochain round."
+          }
+        ],
+        "sourceText": "Après avoir raté une attaque à distance, l’arquebusier déclare qu’il s’agissait d’un tir de réglage. Il obtient +5 sur le test de sa prochaine attaque à distance, si son prochain tir vise la même cible avant la fin du prochain round."
+      },
+      "sourceTextOriginal": "Après avoir raté une attaque à distance, l’arquebusier déclare qu’il s’agissait d’un tir de réglage. Il obtient +5 sur le test de sa prochaine attaque à distance, si son prochain tir vise la même cible avant la fin du prochain round.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 65,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:tir-double-l:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "path_id": "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+      "rank": 3,
+      "label": "Tir double (L)",
+      "desc": "L’arquebusier est capable de tirer simultanément avec une pétoire (ou une arbalète de poing) dans chaque main avec un malus de ‑2 à chaque attaque. S’il décharge ses deux armes sur la même cible, il ne subit aucun malus.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 65,
+        "chapter": "Profils",
+        "section": "Tir double (L)"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "ADVANCED_N1_CONNECTED",
+        "structured": true,
+        "ageAccessibleN1": true,
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "active",
+        "action": "limited",
+        "cost": {
+          "resource": "capacity",
+          "amount": 2
+        },
+        "effects": [
+          {
+            "type": "structured_sheet_effect",
+            "targets": [
+              "ATTAQUE"
+            ],
+            "sourceText": "L’arquebusier est capable de tirer simultanément avec une pétoire (ou une arbalète de poing) dans chaque main avec un malus de -2 à chaque attaque. S’il décharge ses deux armes sur la même cible, il ne subit aucun malus.",
+            "persist": true
+          },
+          {
+            "type": "table_runtime",
+            "scope": "canonical_runtime",
+            "sourceText": "L’arquebusier est capable de tirer simultanément avec une pétoire (ou une arbalète de poing) dans chaque main avec un malus de -2 à chaque attaque. S’il décharge ses deux armes sur la même cible, il ne subit aucun malus."
+          }
+        ],
+        "sourceText": "L’arquebusier est capable de tirer simultanément avec une pétoire (ou une arbalète de poing) dans chaque main avec un malus de -2 à chaque attaque. S’il décharge ses deux armes sur la même cible, il ne subit aucun malus."
+      },
+      "sourceTextOriginal": "L’arquebusier est capable de tirer simultanément avec une pétoire (ou une arbalète de poing) dans chaque main avec un malus de ‑2 à chaque attaque. S’il décharge ses deux armes sur la même cible, il ne subit aucun malus.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 65,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:agilite-heroique:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+      "path_id": "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+      "rank": 4,
+      "label": "Agilité héroïque",
+      "desc": "L’arquebusier augmente sa valeur d’AGI de +1 et il obtient un dé bonus aux tests d’AGI.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 65,
+        "chapter": "Profils",
+        "section": "Agilité héroïque"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+        "functionalStatus": "not_tested",
+        "descriptionVerified": true
+      },
+      "sourceTextOriginal": "L’arquebusier augmente sa valeur d’AGI de +1 et il obtient un dé bonus aux tests d’AGI.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 65,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:as-de-la-gachette:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+      "path_id": "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+      "rank": 5,
+      "label": "As de la gâchette",
+      "desc": "Lors d’une attaque à distance avec une arme à poudre ou une arbalète, s’il obtient un résultat d’attaque supérieur ou égal à la DEF de son adversaire +10 points, l’arquebusier obtient un bonus de +2d4° aux DM de son attaque.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 65,
+        "chapter": "Profils",
+        "section": "As de la gâchette"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+        "functionalStatus": "not_tested",
+        "descriptionVerified": true
+      },
+      "sourceTextOriginal": "Lors d’une attaque à distance avec une arme à poudre ou une arbalète, s’il obtient un résultat d’attaque supérieur ou égal à la DEF de son adversaire +10 points, l’arquebusier obtient un bonus de +2d4° aux DM de son attaque.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 65,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:joli-coup:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "path_id": "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+      "rank": 1,
+      "label": "Joli coup",
+      "desc": "L’arquebusier ignore la pénalité appliquée pour une couverture partielle de sa cible (‑2 au test devient aucun malus) et réduit la pénalité pour une couverture importante à ‑2 (au lieu de ‑5).",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 65,
+        "chapter": "Profils",
+        "section": "Joli coup"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "N1_CERTIFIED",
+        "structured": true,
+        "engineConnected": true,
+        "oracleTested": true,
+        "negativeTested": true,
+        "crossTested": true,
+        "validatedBy": "FIX73",
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "passive",
+        "effects": [
+          {
+            "type": "cover_penalty_override",
+            "partial": 0,
+            "important": -2
+          }
+        ]
+      },
+      "sourceTextOriginal": "L’arquebusier ignore la pénalité appliquée pour une couverture partielle de sa cible (‑2 au test devient aucun malus) et réduit la pénalité pour une couverture importante à ‑2 (au lieu de ‑5).",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 65,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "path_id": "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+      "rank": 2,
+      "label": "Défaut dans la cuirasse (A)",
+      "desc": "L’arquebusier utilise une action d’attaque pour trouver le point faible de son adversaire et le viser. Au prochain round*, il réalise ses attaques à distance sur cette cible contre une DEF de [10 + AGI de la cible] et il peut ignorer sa résistance aux DM ou sa réduction des DM (sauf si cette dernière est acquise parce que la cible est immatérielle : ombre, fantôme, etc.). * Si l’arquebusier utilise la capacité Combat de masse pour son action d’attaque en début de round, alors la capacité s’applique seulement aux tirs du round en cours.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 65,
+        "chapter": "Profils",
+        "section": "Défaut dans la cuirasse (A)"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "ADVANCED_N1_CONNECTED",
+        "structured": true,
+        "ageAccessibleN1": true,
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "active",
+        "action": "attack",
+        "cost": {
+          "resource": "capacity",
+          "amount": 1
+        },
+        "effects": [
+          {
+            "type": "structured_sheet_effect",
+            "targets": [
+              "ATTAQUE",
+              "DEF",
+              "RÉSISTANCE",
+              "DM"
+            ],
+            "sourceText": "L’arquebusier utilise une action d’attaque pour trouver le point faible de son adversaire et le viser. Au prochain round, il réalise ses attaques à distance sur cette cible contre une DEF de [10 + AGI de la cible] et il peut ignorer sa résistance aux DM ou sa réduction des DM (sauf si cette dernière est acquise parce que la cible est immatérielle : ombre, fantôme, etc.).",
+            "persist": true
+          },
+          {
+            "type": "table_runtime",
+            "scope": "canonical_runtime",
+            "sourceText": "L’arquebusier utilise une action d’attaque pour trouver le point faible de son adversaire et le viser. Au prochain round, il réalise ses attaques à distance sur cette cible contre une DEF de [10 + AGI de la cible] et il peut ignorer sa résistance aux DM ou sa réduction des DM (sauf si cette dernière est acquise parce que la cible est immatérielle : ombre, fantôme, etc.)."
+          }
+        ],
+        "sourceText": "L’arquebusier utilise une action d’attaque pour trouver le point faible de son adversaire et le viser. Au prochain round, il réalise ses attaques à distance sur cette cible contre une DEF de [10 + AGI de la cible] et il peut ignorer sa résistance aux DM ou sa réduction des DM (sauf si cette dernière est acquise parce que la cible est immatérielle : ombre, fantôme, etc.)."
+      },
+      "sourceTextOriginal": "L’arquebusier utilise une action d’attaque pour trouver le point faible de son adversaire et le viser. Au prochain round*, il réalise ses attaques à distance sur cette cible contre une DEF de [10 + AGI de la cible] et il peut ignorer sa résistance aux DM ou sa réduction des DM (sauf si cette dernière est acquise parce que la cible est immatérielle : ombre, fantôme, etc.). * Si l’arquebusier utilise la capacité Combat de masse pour son action d’attaque en début de round, alors la capacité s’applique seulement aux tirs du round en cours.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 65,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:tir-precis:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "path_id": "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+      "rank": 3,
+      "label": "Tir précis",
+      "desc": "L’arquebusier inflige des critiques sur 19‑20 sur ses attaques avec une arme à distance. La plage de critique passe à 18‑20 à partir du rang 5.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 65,
+        "chapter": "Profils",
+        "section": "Tir précis"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "ADVANCED_N1_CONNECTED",
+        "structured": true,
+        "ageAccessibleN1": true,
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "action": null,
+        "cost": {
+          "resource": "capacity",
+          "amount": 2
+        },
+        "effects": [
+          {
+            "type": "structured_sheet_effect",
+            "targets": [
+              "ARME",
+              "CRITIQUE"
+            ],
+            "sourceText": "L’arquebusier inflige des critiques sur 19-20 sur ses attaques avec une arme à distance. La plage de critique passe à 18-20 à partir du rang 5.",
+            "persist": true
+          }
+        ],
+        "sourceText": "L’arquebusier inflige des critiques sur 19-20 sur ses attaques avec une arme à distance. La plage de critique passe à 18-20 à partir du rang 5."
+      },
+      "sourceTextOriginal": "L’arquebusier inflige des critiques sur 19‑20 sur ses attaques avec une arme à distance. La plage de critique passe à 18‑20 à partir du rang 5.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 65,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:tireur-delite-l:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+      "path_id": "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+      "rank": 4,
+      "label": "Tireur d’élite (L)",
+      "desc": "L’arquebusier prend le temps d’ajuster une cible au loin (distance minimum de 10 m). Il double la portée de son arme et ajoute +2d4° aux DM. Il ne peut pas utiliser cette capacité s’il est au contact d’un adversaire ou dans une position instable (par exemple dans un véhicule).",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 65,
+        "chapter": "Profils",
+        "section": "Tireur d’élite (L)"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+        "functionalStatus": "not_tested",
+        "descriptionVerified": true
+      },
+      "sourceTextOriginal": "L’arquebusier prend le temps d’ajuster une cible au loin (distance minimum de 10 m). Il double la portée de son arme et ajoute +2d4° aux DM. Il ne peut pas utiliser cette capacité s’il est au contact d’un adversaire ou dans une position instable (par exemple dans un véhicule).",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 65,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:tir-fatal-l:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+      "path_id": "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+      "rank": 5,
+      "label": "Tir fatal (L)",
+      "desc": "S’il tire sur une créature dont le niveau (NC) est inférieur à la moitié du sien (arrondi au supérieur), l’arquebusier peut faire un test d’INT difficulté [10 + NC de la créature]. En cas de réussite, elle est morte. Dans tous les autres cas, elle subit les DM normaux.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 65,
+        "chapter": "Profils",
+        "section": "Tir fatal (L)"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+        "functionalStatus": "not_tested",
+        "descriptionVerified": true
+      },
+      "sourceTextOriginal": "S’il tire sur une créature dont le niveau (NC) est inférieur à la moitié du sien (arrondi au supérieur), l’arquebusier peut faire un test d’INT difficulté [10 + NC de la créature]. En cas de réussite, elle est morte. Dans tous les autres cas, elle subit les DM normaux.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 65,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED"
+    },
+    {
+      "id": "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "path_id": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+      "rank": 1,
+      "label": "Armes de prédilection",
+      "desc": "Arbalétrier : arbalètes exclusivement ; +1 aux attaques avec une arbalète. Bonus de rang + 2 aux tests d’estimation de valeur des armes ou réputation martiale.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 88,
+        "chapter": "Profils",
+        "section": "Armes de prédilection"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "N1_CERTIFIED",
+        "structured": true,
+        "engineConnected": true,
+        "oracleTested": true,
+        "negativeTested": true,
+        "crossTested": true,
+        "validatedBy": "FIX72",
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "passive",
+        "requiresChoice": "preferredWeaponCategory",
+        "effects": [
+          {
+            "type": "weapon_attack_bonus",
+            "value": 1,
+            "categories": [
+              "crossbows"
+            ],
+            "choiceField": "preferredWeaponCategory"
+          }
+        ],
+        "skillBonuses": [
+          {
+            "value": 3,
+            "tests": [
+              "weapon_value",
+              "martial_reputation"
+            ]
+          }
+        ]
+      },
+      "sourceTextOriginal": "Le guerrier choisit une catégorie d’armes de prédilection parmi épées, haches, masses, lances (épieu, lance, pique) et enfin armes de jet (dague de lancer, javelot, etc.), et il gagne +1 en attaque lorsqu’il l’utilise une arme de cette catégorie. De plus, vous ajoutez votre rang + 2 à tous les tests destinés à estimer la valeur d’une arme ou la réputation martiale d’un adversaire.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 88,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED",
+      "sourceVariantRestriction": "Arbalétrier : arbalètes uniquement, catégorie imposée"
+    },
+    {
+      "id": "ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "path_id": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+      "rank": 2,
+      "label": "Science du critique",
+      "desc": "Le guerrier augmente de 1 point les chances d’obtenir un critique sur les attaques effectuées avec une arme de prédilection (par exemple, 19‑20 au lieu de 20).",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 89,
+        "chapter": "Profils",
+        "section": "Science du critique"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "ADVANCED_N1_CONNECTED",
+        "structured": true,
+        "ageAccessibleN1": true,
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "action": null,
+        "cost": {
+          "resource": "capacity",
+          "amount": 1
+        },
+        "effects": [
+          {
+            "type": "structured_sheet_effect",
+            "targets": [
+              "CRITIQUE",
+              "ARME"
+            ],
+            "sourceText": "Le guerrier augmente de 1 point les chances d’obtenir un critique sur les attaques effectuées avec une arme de prédilection (par exemple, 19‑20 au lieu de 20).",
+            "persist": true
+          }
+        ],
+        "sourceText": "Le guerrier augmente de 1 point les chances d’obtenir un critique sur les attaques effectuées avec une arme de prédilection (par exemple, 19‑20 au lieu de 20)."
+      },
+      "sourceTextOriginal": "Le guerrier augmente de 1 point les chances d’obtenir un critique sur les attaques effectuées avec une arme de prédilection (par exemple, 19‑20 au lieu de 20).",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 89,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED",
+      "sourceVariantRestriction": "Arbalétrier : arbalètes uniquement, catégorie imposée"
+    },
+    {
+      "id": "ability:specialisation:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "path_id": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+      "rank": 3,
+      "label": "Spécialisation",
+      "desc": "Lorsque le guerrier emploie une arme de prédilection, il gagne un bonus de +1 DM. Chaque fois que le personnage atteint le rang 5 dans une voie de guerrier, il peut choisir une nouvelle catégorie d’arme de prédilection (il gagne les avantages des rangs 1 à 3) ou décider d’augmenter de +1 le bonus aux DM d’une catégorie qu’il connaît déjà (pour un maximum de +6 pour un guerrier ayant atteint le rang 5 dans les cinq voies).",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 89,
+        "chapter": "Profils",
+        "section": "Spécialisation"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "SOURCE_VERIFIED",
+        "functionalStatus": "ADVANCED_N1_CONNECTED",
+        "structured": true,
+        "ageAccessibleN1": true,
+        "semanticEngine": "N1_SEMANTIC_ENGINE_REPAIR",
+        "engineConnected": true,
+        "descriptionVerified": true
+      },
+      "mechanics": {
+        "kind": "passive",
+        "choices": [
+          {
+            "id": "favoriteWeaponCategory",
+            "type": "weapon_category",
+            "persist": true
+          }
+        ],
+        "effects": [
+          {
+            "type": "weapon_damage_bonus",
+            "weaponCategoryChoiceField": "favoriteWeaponCategory",
+            "valueFormula": "1+SPECIALIZATION_UPGRADES",
+            "persist": true
+          }
+        ]
+      },
+      "sourceTextOriginal": "Lorsque le guerrier emploie une arme de prédilection, il gagne un bonus de +1 DM. Chaque fois que le personnage atteint le rang 5 dans une voie de guerrier, il peut choisir une nouvelle catégorie d’arme de prédilection (il gagne les avantages des rangs 1 à 3) ou décider d’augmenter de +1 le bonus aux DM d’une catégorie qu’il connaît déjà (pour un maximum de +6 pour un guerrier ayant atteint le rang 5 dans les cinq voies).",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 89,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED",
+      "sourceVariantRestriction": "Arbalétrier : arbalètes uniquement, catégorie imposée"
+    },
+    {
+      "id": "ability:attaque-parfaite-l:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+      "path_id": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+      "rank": 4,
+      "label": "Attaque parfaite (L)",
+      "desc": "Vous obtenez un dé bonus en attaque au contact (ou à distance pour une arme de lancer) et ajoutez +1d4° DM. Vous devez utiliser une arme de prédilection. Éventuellement, le guerrier peut choisir de ne pas infliger les DM de son attaque parfaite pour désarmer une cible dont le NC est inférieur à son bonus de DM de spécialisation.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 89,
+        "chapter": "Profils",
+        "section": "Attaque parfaite (L)"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+        "functionalStatus": "not_tested",
+        "descriptionVerified": true
+      },
+      "sourceTextOriginal": "Vous obtenez un dé bonus en attaque au contact (ou à distance pour une arme de lancer) et ajoutez +1d4° DM. Vous devez utiliser une arme de prédilection. Éventuellement, le guerrier peut choisir de ne pas infliger les DM de son attaque parfaite pour désarmer une cible dont le NC est inférieur à son bonus de DM de spécialisation.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 89,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED",
+      "sourceVariantRestriction": "Arbalétrier : arbalètes uniquement, catégorie imposée"
+    },
+    {
+      "id": "ability:riposte-g:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+      "path_id": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+      "rank": 5,
+      "label": "Riposte (G)",
+      "desc": "Lorsqu’un adversaire rate une attaque de contact contre lui, le personnage obtient immédiatement une attaque au contact contre cet adversaire. Le personnage ne peut obtenir qu’une seule attaque supplémentaire de cette façon à chaque round et si plusieurs adversaires le ratent, il choisit contre lequel il effectue la riposte.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 89,
+        "chapter": "Profils",
+        "section": "Riposte (G)"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "reference_migrated_ability_conflict_audit_pending",
+        "functionalStatus": "not_tested",
+        "descriptionVerified": true
+      },
+      "sourceTextOriginal": "Lorsqu’un adversaire rate une attaque de contact contre lui, le personnage obtient immédiatement une attaque au contact contre cet adversaire. Le personnage ne peut obtenir qu’une seule attaque supplémentaire de cette façon à chaque round et si plusieurs adversaires le ratent, il choisit contre lequel il effectue la riposte.",
+      "sourceOriginal": {
+        "bookId": "cof2-livre-base-2024",
+        "printedPage": 89,
+        "edition": "COF2"
+      },
+      "descriptionStatus": "SOURCE_EXTRACTED",
+      "sourceVariantRestriction": "Arbalétrier : arbalètes uniquement, catégorie imposée"
     }
   ],
   "abilities_people": [
