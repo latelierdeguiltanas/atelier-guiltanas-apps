@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-02T18:29:38.357Z",
+  "generatedAt": "2026-11-02T18:30:44.570Z",
   "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
   "intent": "Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.",
   "profile": {
@@ -9,10 +9,10 @@
     "priority": "EN_COURS",
     "completed": false,
     "variantPrototypeReady": true,
-    "variantIntegrated": false,
-    "passed": 7,
+    "variantIntegrated": true,
+    "passed": 8,
     "total": 16,
-    "percent": 44,
+    "percent": 50,
     "checks": [
       {
         "id": "paths",
@@ -23,8 +23,8 @@
       {
         "id": "pairs",
         "name": "Toutes les paires de voies légales",
-        "status": "A_VERIFIER",
-        "detail": "Les dix choix possibles de deux voies doivent fonctionner avec les équipements autorisés, y compris l’alternative Halfelin."
+        "status": "ACQUIS",
+        "detail": "Les dix choix possibles de deux voies du profil, avec chacun des huit peuples et les cinq modalités d’âge N1, sont créés, validés et conservés après sauvegarde. Les dix couples de l’Arbalétrier sont aussi éprouvés."
       },
       {
         "id": "r1",
@@ -66,7 +66,7 @@
         "id": "r1effects",
         "name": "Tous les effets des cinq capacités de rang 1",
         "status": "A_VERIFIER",
-        "detail": "Vérifier les compétences, les jets, le couvert, les tirs de grenaille et l’initiative avec une arme chargée, selon les conditions du livre."
+        "detail": "Pilier de bar corrigé : mains nues 1d4° non létaux, calcul et sauvegarde vérifiés sur les deux moteurs. Restent les tests de combat, de compétences, de couverture, de grenaille et d’initiative conditionnelle."
       },
       {
         "id": "r2effects",
@@ -84,7 +84,7 @@
         "id": "gear",
         "name": "Toutes les armes, armures et variante Arbalétrier",
         "status": "A_VERIFIER",
-        "detail": "La variante Arbalétrier est prête dans une version d’essai : les cinq voies, huit peuples, âges, sauvegardes, +1 en attaque, critique amélioré et +1 aux dégâts avec les arbalètes ont été éprouvés. Elle n’est PAS encore intégrée à Forge : il reste l’installation, les choix visibles, l’export PDF et le contrôle au clic."
+        "detail": "La variante officielle Arbalétrier est maintenant proposée dans Forge : cinq voies légales, arbalètes, rangs 1 à 3 et sauvegardes validés au clic sur mobile. Restent à valider les contraintes complètes d’équipement et tous les effets conditionnels, ainsi que la fiche officielle PDF et ses annexes."
       },
       {
         "id": "history",
@@ -249,7 +249,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Intégrer la variante Arbalétrier absente, puis achever les tirs spéciaux, les autres effets de rang, historiques, PDF et création mobile."
+    "next": "Arbalétrier disponible : valider maintenant le PDF officiel, les effets conditionnels en combat, les historiques et les alternatives d’équipement."
   },
   "peoples": [
     {
