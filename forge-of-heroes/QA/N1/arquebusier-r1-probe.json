@@ -1,0 +1,1726 @@
+{
+  "at": "2026-11-02T12:12:19.782Z",
+  "engineAPIs": [
+    "buildCanonicalAttack",
+    "computeCharacterN1",
+    "computeSticky",
+    "getAbilityCalculationDetails",
+    "getAvailableAbilityGrantOptions",
+    "getPersistentChoicesForAbility",
+    "validatePersistentAbilityChoices"
+  ],
+  "cases": [
+    {
+      "file": "index.html",
+      "path": "voie-de-l-artilleur",
+      "errors": [],
+      "keys": [
+        "identite",
+        "familleId",
+        "peupleId",
+        "serieId",
+        "caracs",
+        "niveau",
+        "PV",
+        "DR",
+        "PC",
+        "DEF",
+        "INIT",
+        "ATK_CONTACT",
+        "ATK_DISTANCE",
+        "ATK_MAGIC",
+        "equip",
+        "voiePeuple",
+        "bonuses",
+        "profileId",
+        "peopleRule",
+        "movement",
+        "traits",
+        "restrictions",
+        "equipment",
+        "voieMage",
+        "totals",
+        "PM",
+        "profilePaths",
+        "acquiredAbilities",
+        "spells",
+        "masteries",
+        "attacks",
+        "permanentEffects",
+        "conditionalEffects",
+        "resources",
+        "companions",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "calculationTrace",
+        "characterState",
+        "capacityBudget",
+        "advancedRules",
+        "age",
+        "historyPath",
+        "pathAssignments",
+        "grantedAbilities",
+        "semanticErrors",
+        "persistentChoices",
+        "permissions",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "ruleCompletionLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "abilityCalculations",
+        "abilityRuntimeCatalog",
+        "equipmentRules",
+        "inactiveAbilities"
+      ],
+      "derived": {
+        "PV": 9,
+        "DR": {
+          "count": 3,
+          "die": 8
+        },
+        "PC": 3,
+        "PM": 0,
+        "DEF": 14,
+        "INIT": 11,
+        "ATC": 3,
+        "ATD": 2,
+        "ATM": 1
+      },
+      "skillBonuses": [
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "repair_mechanism",
+            "understand_mechanism"
+          ],
+          "value": 3,
+          "scope": "self"
+        },
+        {
+          "sourceAbilityId": "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "artificer"
+          ],
+          "value": 3,
+          "scope": "self"
+        }
+      ],
+      "characterStateKeys": [
+        "schemaVersion",
+        "level",
+        "identity",
+        "peopleId",
+        "familyId",
+        "profileId",
+        "characteristics",
+        "paths",
+        "abilities",
+        "spells",
+        "resources",
+        "derived",
+        "equipment",
+        "masteries",
+        "attacks",
+        "calculationTrace",
+        "companions",
+        "permanentEffects",
+        "conditionalEffects",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "hybrid",
+        "permanentChoices",
+        "portraitRef",
+        "ageRule",
+        "creationInput",
+        "migration",
+        "history",
+        "persistentChoices",
+        "creationDecisions",
+        "permissions",
+        "grantedAbilities",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "activeFeatures",
+        "equipmentRules",
+        "inactiveAbilities",
+        "rulesVersion",
+        "abilityRuntimeCatalog",
+        "ruleCompletionLedger",
+        "abilityCalculations"
+      ],
+      "acquired": [
+        {
+          "label": "Mécanismes",
+          "mechanics": {
+            "kind": "passive",
+            "skillBonuses": [
+              {
+                "value": 3,
+                "tests": [
+                  "repair_mechanism",
+                  "understand_mechanism"
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "bonus_die",
+                "target": "siege_weapon_attacks"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "index.html",
+      "path": "voie-des-explosifs",
+      "errors": [],
+      "keys": [
+        "identite",
+        "familleId",
+        "peupleId",
+        "serieId",
+        "caracs",
+        "niveau",
+        "PV",
+        "DR",
+        "PC",
+        "DEF",
+        "INIT",
+        "ATK_CONTACT",
+        "ATK_DISTANCE",
+        "ATK_MAGIC",
+        "equip",
+        "voiePeuple",
+        "bonuses",
+        "profileId",
+        "peopleRule",
+        "movement",
+        "traits",
+        "restrictions",
+        "equipment",
+        "voieMage",
+        "totals",
+        "PM",
+        "profilePaths",
+        "acquiredAbilities",
+        "spells",
+        "masteries",
+        "attacks",
+        "permanentEffects",
+        "conditionalEffects",
+        "resources",
+        "companions",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "calculationTrace",
+        "characterState",
+        "capacityBudget",
+        "advancedRules",
+        "age",
+        "historyPath",
+        "pathAssignments",
+        "grantedAbilities",
+        "semanticErrors",
+        "persistentChoices",
+        "permissions",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "ruleCompletionLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "abilityCalculations",
+        "abilityRuntimeCatalog",
+        "equipmentRules",
+        "inactiveAbilities"
+      ],
+      "derived": {
+        "PV": 9,
+        "DR": {
+          "count": 3,
+          "die": 8
+        },
+        "PC": 3,
+        "PM": 0,
+        "DEF": 14,
+        "INIT": 11,
+        "ATC": 3,
+        "ATD": 2,
+        "ATM": 1
+      },
+      "skillBonuses": [
+        {
+          "sourceAbilityId": "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "artificer"
+          ],
+          "value": 3,
+          "scope": "self"
+        },
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "repair_mechanism",
+            "understand_mechanism"
+          ],
+          "value": 3,
+          "scope": "self"
+        }
+      ],
+      "characterStateKeys": [
+        "schemaVersion",
+        "level",
+        "identity",
+        "peopleId",
+        "familyId",
+        "profileId",
+        "characteristics",
+        "paths",
+        "abilities",
+        "spells",
+        "resources",
+        "derived",
+        "equipment",
+        "masteries",
+        "attacks",
+        "calculationTrace",
+        "companions",
+        "permanentEffects",
+        "conditionalEffects",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "hybrid",
+        "permanentChoices",
+        "portraitRef",
+        "ageRule",
+        "creationInput",
+        "migration",
+        "history",
+        "persistentChoices",
+        "creationDecisions",
+        "permissions",
+        "grantedAbilities",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "activeFeatures",
+        "equipmentRules",
+        "inactiveAbilities",
+        "rulesVersion",
+        "abilityRuntimeCatalog",
+        "ruleCompletionLedger",
+        "abilityCalculations"
+      ],
+      "acquired": [
+        {
+          "label": "Tir de grenaille (L)",
+          "mechanics": {
+            "kind": "active",
+            "action": "L",
+            "requires": {
+              "loadedPowderWeapon": true,
+              "specialAmmunition": "grapeshot"
+            },
+            "area": {
+              "shape": "cone",
+              "lengthMeters": 10,
+              "widthMeters": 5
+            },
+            "effects": [
+              {
+                "type": "multi_target_weapon_attack",
+                "damageMultiplier": 0.5
+              }
+            ],
+            "skillBonuses": [
+              {
+                "value": 3,
+                "tests": [
+                  "artificer"
+                ]
+              }
+            ],
+            "tags": [
+              "conditional_not_permanent"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "index.html",
+      "path": "voie-du-mercenaire",
+      "errors": [],
+      "keys": [
+        "identite",
+        "familleId",
+        "peupleId",
+        "serieId",
+        "caracs",
+        "niveau",
+        "PV",
+        "DR",
+        "PC",
+        "DEF",
+        "INIT",
+        "ATK_CONTACT",
+        "ATK_DISTANCE",
+        "ATK_MAGIC",
+        "equip",
+        "voiePeuple",
+        "bonuses",
+        "profileId",
+        "peopleRule",
+        "movement",
+        "traits",
+        "restrictions",
+        "equipment",
+        "voieMage",
+        "totals",
+        "PM",
+        "profilePaths",
+        "acquiredAbilities",
+        "spells",
+        "masteries",
+        "attacks",
+        "permanentEffects",
+        "conditionalEffects",
+        "resources",
+        "companions",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "calculationTrace",
+        "characterState",
+        "capacityBudget",
+        "advancedRules",
+        "age",
+        "historyPath",
+        "pathAssignments",
+        "grantedAbilities",
+        "semanticErrors",
+        "persistentChoices",
+        "permissions",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "ruleCompletionLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "abilityCalculations",
+        "abilityRuntimeCatalog",
+        "equipmentRules",
+        "inactiveAbilities"
+      ],
+      "derived": {
+        "PV": 9,
+        "DR": {
+          "count": 3,
+          "die": 8
+        },
+        "PC": 3,
+        "PM": 0,
+        "DEF": 14,
+        "INIT": 11,
+        "ATC": 3,
+        "ATD": 2,
+        "ATM": 1
+      },
+      "skillBonuses": [
+        {
+          "sourceAbilityId": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "tavern_social",
+            "resist_alcohol"
+          ],
+          "value": 3,
+          "scope": "self"
+        },
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "repair_mechanism",
+            "understand_mechanism"
+          ],
+          "value": 3,
+          "scope": "self"
+        }
+      ],
+      "characterStateKeys": [
+        "schemaVersion",
+        "level",
+        "identity",
+        "peopleId",
+        "familyId",
+        "profileId",
+        "characteristics",
+        "paths",
+        "abilities",
+        "spells",
+        "resources",
+        "derived",
+        "equipment",
+        "masteries",
+        "attacks",
+        "calculationTrace",
+        "companions",
+        "permanentEffects",
+        "conditionalEffects",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "hybrid",
+        "permanentChoices",
+        "portraitRef",
+        "ageRule",
+        "creationInput",
+        "migration",
+        "history",
+        "persistentChoices",
+        "creationDecisions",
+        "permissions",
+        "grantedAbilities",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "activeFeatures",
+        "equipmentRules",
+        "inactiveAbilities",
+        "rulesVersion",
+        "abilityRuntimeCatalog",
+        "ruleCompletionLedger",
+        "abilityCalculations"
+      ],
+      "acquired": [
+        {
+          "label": "Pilier de bar",
+          "mechanics": {
+            "kind": "passive",
+            "skillBonuses": [
+              {
+                "value": 3,
+                "tests": [
+                  "tavern_social",
+                  "resist_alcohol"
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "weapon_damage_override",
+                "weaponId": "weapon:unarmed",
+                "formula": "1d4",
+                "nonLethal": true
+              },
+              {
+                "type": "conditional_damage_reduction",
+                "damageType": "non_lethal",
+                "divisor": 2
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "index.html",
+      "path": "voie-du-pistolero",
+      "errors": [],
+      "keys": [
+        "identite",
+        "familleId",
+        "peupleId",
+        "serieId",
+        "caracs",
+        "niveau",
+        "PV",
+        "DR",
+        "PC",
+        "DEF",
+        "INIT",
+        "ATK_CONTACT",
+        "ATK_DISTANCE",
+        "ATK_MAGIC",
+        "equip",
+        "voiePeuple",
+        "bonuses",
+        "profileId",
+        "peopleRule",
+        "movement",
+        "traits",
+        "restrictions",
+        "equipment",
+        "voieMage",
+        "totals",
+        "PM",
+        "profilePaths",
+        "acquiredAbilities",
+        "spells",
+        "masteries",
+        "attacks",
+        "permanentEffects",
+        "conditionalEffects",
+        "resources",
+        "companions",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "calculationTrace",
+        "characterState",
+        "capacityBudget",
+        "advancedRules",
+        "age",
+        "historyPath",
+        "pathAssignments",
+        "grantedAbilities",
+        "semanticErrors",
+        "persistentChoices",
+        "permissions",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "ruleCompletionLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "abilityCalculations",
+        "abilityRuntimeCatalog",
+        "equipmentRules",
+        "inactiveAbilities"
+      ],
+      "derived": {
+        "PV": 9,
+        "DR": {
+          "count": 3,
+          "die": 8
+        },
+        "PC": 3,
+        "PM": 0,
+        "DEF": 14,
+        "INIT": 11,
+        "ATC": 3,
+        "ATD": 2,
+        "ATM": 1
+      },
+      "skillBonuses": [
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "repair_mechanism",
+            "understand_mechanism"
+          ],
+          "value": 3,
+          "scope": "self"
+        }
+      ],
+      "characterStateKeys": [
+        "schemaVersion",
+        "level",
+        "identity",
+        "peopleId",
+        "familyId",
+        "profileId",
+        "characteristics",
+        "paths",
+        "abilities",
+        "spells",
+        "resources",
+        "derived",
+        "equipment",
+        "masteries",
+        "attacks",
+        "calculationTrace",
+        "companions",
+        "permanentEffects",
+        "conditionalEffects",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "hybrid",
+        "permanentChoices",
+        "portraitRef",
+        "ageRule",
+        "creationInput",
+        "migration",
+        "history",
+        "persistentChoices",
+        "creationDecisions",
+        "permissions",
+        "grantedAbilities",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "activeFeatures",
+        "equipmentRules",
+        "inactiveAbilities",
+        "rulesVersion",
+        "abilityRuntimeCatalog",
+        "ruleCompletionLedger",
+        "abilityCalculations"
+      ],
+      "acquired": [
+        {
+          "label": "Plus vite que son ombre",
+          "mechanics": {
+            "kind": "conditional",
+            "condition": "loaded_powder_weapon_held",
+            "effects": [
+              {
+                "type": "conditional_INIT_bonus",
+                "value": 5
+              },
+              {
+                "type": "remove_contact_ranged_malus",
+                "weapons": [
+                  "powder",
+                  "crossbow"
+                ],
+                "except": [
+                  "couleuvrine"
+                ]
+              }
+            ],
+            "tags": [
+              "conditional_not_permanent"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "index.html",
+      "path": "voie-de-la-precision",
+      "errors": [],
+      "keys": [
+        "identite",
+        "familleId",
+        "peupleId",
+        "serieId",
+        "caracs",
+        "niveau",
+        "PV",
+        "DR",
+        "PC",
+        "DEF",
+        "INIT",
+        "ATK_CONTACT",
+        "ATK_DISTANCE",
+        "ATK_MAGIC",
+        "equip",
+        "voiePeuple",
+        "bonuses",
+        "profileId",
+        "peopleRule",
+        "movement",
+        "traits",
+        "restrictions",
+        "equipment",
+        "voieMage",
+        "totals",
+        "PM",
+        "profilePaths",
+        "acquiredAbilities",
+        "spells",
+        "masteries",
+        "attacks",
+        "permanentEffects",
+        "conditionalEffects",
+        "resources",
+        "companions",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "calculationTrace",
+        "characterState",
+        "capacityBudget",
+        "advancedRules",
+        "age",
+        "historyPath",
+        "pathAssignments",
+        "grantedAbilities",
+        "semanticErrors",
+        "persistentChoices",
+        "permissions",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "ruleCompletionLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "abilityCalculations",
+        "abilityRuntimeCatalog",
+        "equipmentRules",
+        "inactiveAbilities"
+      ],
+      "derived": {
+        "PV": 9,
+        "DR": {
+          "count": 3,
+          "die": 8
+        },
+        "PC": 3,
+        "PM": 0,
+        "DEF": 14,
+        "INIT": 11,
+        "ATC": 3,
+        "ATD": 2,
+        "ATM": 1
+      },
+      "skillBonuses": [
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "repair_mechanism",
+            "understand_mechanism"
+          ],
+          "value": 3,
+          "scope": "self"
+        }
+      ],
+      "characterStateKeys": [
+        "schemaVersion",
+        "level",
+        "identity",
+        "peopleId",
+        "familyId",
+        "profileId",
+        "characteristics",
+        "paths",
+        "abilities",
+        "spells",
+        "resources",
+        "derived",
+        "equipment",
+        "masteries",
+        "attacks",
+        "calculationTrace",
+        "companions",
+        "permanentEffects",
+        "conditionalEffects",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "hybrid",
+        "permanentChoices",
+        "portraitRef",
+        "ageRule",
+        "creationInput",
+        "migration",
+        "history",
+        "persistentChoices",
+        "creationDecisions",
+        "permissions",
+        "grantedAbilities",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "activeFeatures",
+        "equipmentRules",
+        "inactiveAbilities",
+        "rulesVersion",
+        "abilityRuntimeCatalog",
+        "ruleCompletionLedger",
+        "abilityCalculations"
+      ],
+      "acquired": [
+        {
+          "label": "Joli coup",
+          "mechanics": {
+            "kind": "passive",
+            "effects": [
+              {
+                "type": "cover_penalty_override",
+                "partial": 0,
+                "important": -2
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "path": "voie-de-l-artilleur",
+      "errors": [],
+      "keys": [
+        "identite",
+        "familleId",
+        "peupleId",
+        "serieId",
+        "caracs",
+        "niveau",
+        "PV",
+        "DR",
+        "PC",
+        "DEF",
+        "INIT",
+        "ATK_CONTACT",
+        "ATK_DISTANCE",
+        "ATK_MAGIC",
+        "equip",
+        "voiePeuple",
+        "bonuses",
+        "profileId",
+        "peopleRule",
+        "movement",
+        "traits",
+        "restrictions",
+        "equipment",
+        "voieMage",
+        "totals",
+        "PM",
+        "profilePaths",
+        "acquiredAbilities",
+        "spells",
+        "masteries",
+        "attacks",
+        "permanentEffects",
+        "conditionalEffects",
+        "resources",
+        "companions",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "calculationTrace",
+        "characterState",
+        "capacityBudget",
+        "advancedRules",
+        "age",
+        "historyPath",
+        "pathAssignments",
+        "grantedAbilities",
+        "semanticErrors",
+        "persistentChoices",
+        "permissions",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "ruleCompletionLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "abilityCalculations",
+        "abilityRuntimeCatalog",
+        "equipmentRules",
+        "inactiveAbilities"
+      ],
+      "derived": {
+        "PV": 9,
+        "DR": {
+          "count": 3,
+          "die": 8
+        },
+        "PC": 3,
+        "PM": 0,
+        "DEF": 14,
+        "INIT": 11,
+        "ATC": 3,
+        "ATD": 2,
+        "ATM": 1
+      },
+      "skillBonuses": [
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "repair_mechanism",
+            "understand_mechanism"
+          ],
+          "value": 3,
+          "scope": "self"
+        },
+        {
+          "sourceAbilityId": "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "artificer"
+          ],
+          "value": 3,
+          "scope": "self"
+        }
+      ],
+      "characterStateKeys": [
+        "schemaVersion",
+        "level",
+        "identity",
+        "peopleId",
+        "familyId",
+        "profileId",
+        "characteristics",
+        "paths",
+        "abilities",
+        "spells",
+        "resources",
+        "derived",
+        "equipment",
+        "masteries",
+        "attacks",
+        "calculationTrace",
+        "companions",
+        "permanentEffects",
+        "conditionalEffects",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "hybrid",
+        "permanentChoices",
+        "portraitRef",
+        "ageRule",
+        "creationInput",
+        "migration",
+        "history",
+        "persistentChoices",
+        "creationDecisions",
+        "permissions",
+        "grantedAbilities",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "activeFeatures",
+        "equipmentRules",
+        "inactiveAbilities",
+        "rulesVersion",
+        "abilityRuntimeCatalog",
+        "ruleCompletionLedger",
+        "abilityCalculations"
+      ],
+      "acquired": [
+        {
+          "label": "Mécanismes",
+          "mechanics": {
+            "kind": "passive",
+            "skillBonuses": [
+              {
+                "value": 3,
+                "tests": [
+                  "repair_mechanism",
+                  "understand_mechanism"
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "bonus_die",
+                "target": "siege_weapon_attacks"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "path": "voie-des-explosifs",
+      "errors": [],
+      "keys": [
+        "identite",
+        "familleId",
+        "peupleId",
+        "serieId",
+        "caracs",
+        "niveau",
+        "PV",
+        "DR",
+        "PC",
+        "DEF",
+        "INIT",
+        "ATK_CONTACT",
+        "ATK_DISTANCE",
+        "ATK_MAGIC",
+        "equip",
+        "voiePeuple",
+        "bonuses",
+        "profileId",
+        "peopleRule",
+        "movement",
+        "traits",
+        "restrictions",
+        "equipment",
+        "voieMage",
+        "totals",
+        "PM",
+        "profilePaths",
+        "acquiredAbilities",
+        "spells",
+        "masteries",
+        "attacks",
+        "permanentEffects",
+        "conditionalEffects",
+        "resources",
+        "companions",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "calculationTrace",
+        "characterState",
+        "capacityBudget",
+        "advancedRules",
+        "age",
+        "historyPath",
+        "pathAssignments",
+        "grantedAbilities",
+        "semanticErrors",
+        "persistentChoices",
+        "permissions",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "ruleCompletionLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "abilityCalculations",
+        "abilityRuntimeCatalog",
+        "equipmentRules",
+        "inactiveAbilities"
+      ],
+      "derived": {
+        "PV": 9,
+        "DR": {
+          "count": 3,
+          "die": 8
+        },
+        "PC": 3,
+        "PM": 0,
+        "DEF": 14,
+        "INIT": 11,
+        "ATC": 3,
+        "ATD": 2,
+        "ATM": 1
+      },
+      "skillBonuses": [
+        {
+          "sourceAbilityId": "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "artificer"
+          ],
+          "value": 3,
+          "scope": "self"
+        },
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "repair_mechanism",
+            "understand_mechanism"
+          ],
+          "value": 3,
+          "scope": "self"
+        }
+      ],
+      "characterStateKeys": [
+        "schemaVersion",
+        "level",
+        "identity",
+        "peopleId",
+        "familyId",
+        "profileId",
+        "characteristics",
+        "paths",
+        "abilities",
+        "spells",
+        "resources",
+        "derived",
+        "equipment",
+        "masteries",
+        "attacks",
+        "calculationTrace",
+        "companions",
+        "permanentEffects",
+        "conditionalEffects",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "hybrid",
+        "permanentChoices",
+        "portraitRef",
+        "ageRule",
+        "creationInput",
+        "migration",
+        "history",
+        "persistentChoices",
+        "creationDecisions",
+        "permissions",
+        "grantedAbilities",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "activeFeatures",
+        "equipmentRules",
+        "inactiveAbilities",
+        "rulesVersion",
+        "abilityRuntimeCatalog",
+        "ruleCompletionLedger",
+        "abilityCalculations"
+      ],
+      "acquired": [
+        {
+          "label": "Tir de grenaille (L)",
+          "mechanics": {
+            "kind": "active",
+            "action": "L",
+            "requires": {
+              "loadedPowderWeapon": true,
+              "specialAmmunition": "grapeshot"
+            },
+            "area": {
+              "shape": "cone",
+              "lengthMeters": 10,
+              "widthMeters": 5
+            },
+            "effects": [
+              {
+                "type": "multi_target_weapon_attack",
+                "damageMultiplier": 0.5
+              }
+            ],
+            "skillBonuses": [
+              {
+                "value": 3,
+                "tests": [
+                  "artificer"
+                ]
+              }
+            ],
+            "tags": [
+              "conditional_not_permanent"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "path": "voie-du-mercenaire",
+      "errors": [],
+      "keys": [
+        "identite",
+        "familleId",
+        "peupleId",
+        "serieId",
+        "caracs",
+        "niveau",
+        "PV",
+        "DR",
+        "PC",
+        "DEF",
+        "INIT",
+        "ATK_CONTACT",
+        "ATK_DISTANCE",
+        "ATK_MAGIC",
+        "equip",
+        "voiePeuple",
+        "bonuses",
+        "profileId",
+        "peopleRule",
+        "movement",
+        "traits",
+        "restrictions",
+        "equipment",
+        "voieMage",
+        "totals",
+        "PM",
+        "profilePaths",
+        "acquiredAbilities",
+        "spells",
+        "masteries",
+        "attacks",
+        "permanentEffects",
+        "conditionalEffects",
+        "resources",
+        "companions",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "calculationTrace",
+        "characterState",
+        "capacityBudget",
+        "advancedRules",
+        "age",
+        "historyPath",
+        "pathAssignments",
+        "grantedAbilities",
+        "semanticErrors",
+        "persistentChoices",
+        "permissions",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "ruleCompletionLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "abilityCalculations",
+        "abilityRuntimeCatalog",
+        "equipmentRules",
+        "inactiveAbilities"
+      ],
+      "derived": {
+        "PV": 9,
+        "DR": {
+          "count": 3,
+          "die": 8
+        },
+        "PC": 3,
+        "PM": 0,
+        "DEF": 14,
+        "INIT": 11,
+        "ATC": 3,
+        "ATD": 2,
+        "ATM": 1
+      },
+      "skillBonuses": [
+        {
+          "sourceAbilityId": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "tavern_social",
+            "resist_alcohol"
+          ],
+          "value": 3,
+          "scope": "self"
+        },
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "repair_mechanism",
+            "understand_mechanism"
+          ],
+          "value": 3,
+          "scope": "self"
+        }
+      ],
+      "characterStateKeys": [
+        "schemaVersion",
+        "level",
+        "identity",
+        "peopleId",
+        "familyId",
+        "profileId",
+        "characteristics",
+        "paths",
+        "abilities",
+        "spells",
+        "resources",
+        "derived",
+        "equipment",
+        "masteries",
+        "attacks",
+        "calculationTrace",
+        "companions",
+        "permanentEffects",
+        "conditionalEffects",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "hybrid",
+        "permanentChoices",
+        "portraitRef",
+        "ageRule",
+        "creationInput",
+        "migration",
+        "history",
+        "persistentChoices",
+        "creationDecisions",
+        "permissions",
+        "grantedAbilities",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "activeFeatures",
+        "equipmentRules",
+        "inactiveAbilities",
+        "rulesVersion",
+        "abilityRuntimeCatalog",
+        "ruleCompletionLedger",
+        "abilityCalculations"
+      ],
+      "acquired": [
+        {
+          "label": "Pilier de bar",
+          "mechanics": {
+            "kind": "passive",
+            "skillBonuses": [
+              {
+                "value": 3,
+                "tests": [
+                  "tavern_social",
+                  "resist_alcohol"
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "type": "weapon_damage_override",
+                "weaponId": "weapon:unarmed",
+                "formula": "1d4",
+                "nonLethal": true
+              },
+              {
+                "type": "conditional_damage_reduction",
+                "damageType": "non_lethal",
+                "divisor": 2
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "path": "voie-du-pistolero",
+      "errors": [],
+      "keys": [
+        "identite",
+        "familleId",
+        "peupleId",
+        "serieId",
+        "caracs",
+        "niveau",
+        "PV",
+        "DR",
+        "PC",
+        "DEF",
+        "INIT",
+        "ATK_CONTACT",
+        "ATK_DISTANCE",
+        "ATK_MAGIC",
+        "equip",
+        "voiePeuple",
+        "bonuses",
+        "profileId",
+        "peopleRule",
+        "movement",
+        "traits",
+        "restrictions",
+        "equipment",
+        "voieMage",
+        "totals",
+        "PM",
+        "profilePaths",
+        "acquiredAbilities",
+        "spells",
+        "masteries",
+        "attacks",
+        "permanentEffects",
+        "conditionalEffects",
+        "resources",
+        "companions",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "calculationTrace",
+        "characterState",
+        "capacityBudget",
+        "advancedRules",
+        "age",
+        "historyPath",
+        "pathAssignments",
+        "grantedAbilities",
+        "semanticErrors",
+        "persistentChoices",
+        "permissions",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "ruleCompletionLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "abilityCalculations",
+        "abilityRuntimeCatalog",
+        "equipmentRules",
+        "inactiveAbilities"
+      ],
+      "derived": {
+        "PV": 9,
+        "DR": {
+          "count": 3,
+          "die": 8
+        },
+        "PC": 3,
+        "PM": 0,
+        "DEF": 14,
+        "INIT": 11,
+        "ATC": 3,
+        "ATD": 2,
+        "ATM": 1
+      },
+      "skillBonuses": [
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "repair_mechanism",
+            "understand_mechanism"
+          ],
+          "value": 3,
+          "scope": "self"
+        }
+      ],
+      "characterStateKeys": [
+        "schemaVersion",
+        "level",
+        "identity",
+        "peopleId",
+        "familyId",
+        "profileId",
+        "characteristics",
+        "paths",
+        "abilities",
+        "spells",
+        "resources",
+        "derived",
+        "equipment",
+        "masteries",
+        "attacks",
+        "calculationTrace",
+        "companions",
+        "permanentEffects",
+        "conditionalEffects",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "hybrid",
+        "permanentChoices",
+        "portraitRef",
+        "ageRule",
+        "creationInput",
+        "migration",
+        "history",
+        "persistentChoices",
+        "creationDecisions",
+        "permissions",
+        "grantedAbilities",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "activeFeatures",
+        "equipmentRules",
+        "inactiveAbilities",
+        "rulesVersion",
+        "abilityRuntimeCatalog",
+        "ruleCompletionLedger",
+        "abilityCalculations"
+      ],
+      "acquired": [
+        {
+          "label": "Plus vite que son ombre",
+          "mechanics": {
+            "kind": "conditional",
+            "condition": "loaded_powder_weapon_held",
+            "effects": [
+              {
+                "type": "conditional_INIT_bonus",
+                "value": 5
+              },
+              {
+                "type": "remove_contact_ranged_malus",
+                "weapons": [
+                  "powder",
+                  "crossbow"
+                ],
+                "except": [
+                  "couleuvrine"
+                ]
+              }
+            ],
+            "tags": [
+              "conditional_not_permanent"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "path": "voie-de-la-precision",
+      "errors": [],
+      "keys": [
+        "identite",
+        "familleId",
+        "peupleId",
+        "serieId",
+        "caracs",
+        "niveau",
+        "PV",
+        "DR",
+        "PC",
+        "DEF",
+        "INIT",
+        "ATK_CONTACT",
+        "ATK_DISTANCE",
+        "ATK_MAGIC",
+        "equip",
+        "voiePeuple",
+        "bonuses",
+        "profileId",
+        "peopleRule",
+        "movement",
+        "traits",
+        "restrictions",
+        "equipment",
+        "voieMage",
+        "totals",
+        "PM",
+        "profilePaths",
+        "acquiredAbilities",
+        "spells",
+        "masteries",
+        "attacks",
+        "permanentEffects",
+        "conditionalEffects",
+        "resources",
+        "companions",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "calculationTrace",
+        "characterState",
+        "capacityBudget",
+        "advancedRules",
+        "age",
+        "historyPath",
+        "pathAssignments",
+        "grantedAbilities",
+        "semanticErrors",
+        "persistentChoices",
+        "permissions",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "ruleCompletionLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "abilityCalculations",
+        "abilityRuntimeCatalog",
+        "equipmentRules",
+        "inactiveAbilities"
+      ],
+      "derived": {
+        "PV": 9,
+        "DR": {
+          "count": 3,
+          "die": 8
+        },
+        "PC": 3,
+        "PM": 0,
+        "DEF": 14,
+        "INIT": 11,
+        "ATC": 3,
+        "ATD": 2,
+        "ATM": 1
+      },
+      "skillBonuses": [
+        {
+          "sourceAbilityId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+          "tests": [
+            "repair_mechanism",
+            "understand_mechanism"
+          ],
+          "value": 3,
+          "scope": "self"
+        }
+      ],
+      "characterStateKeys": [
+        "schemaVersion",
+        "level",
+        "identity",
+        "peopleId",
+        "familyId",
+        "profileId",
+        "characteristics",
+        "paths",
+        "abilities",
+        "spells",
+        "resources",
+        "derived",
+        "equipment",
+        "masteries",
+        "attacks",
+        "calculationTrace",
+        "companions",
+        "permanentEffects",
+        "conditionalEffects",
+        "languages",
+        "adventurePack",
+        "narrative",
+        "religion",
+        "hybrid",
+        "permanentChoices",
+        "portraitRef",
+        "ageRule",
+        "creationInput",
+        "migration",
+        "history",
+        "persistentChoices",
+        "creationDecisions",
+        "permissions",
+        "grantedAbilities",
+        "entities",
+        "skillBonuses",
+        "semanticLedger",
+        "passiveFeatures",
+        "statGainLedger",
+        "activeFeatures",
+        "equipmentRules",
+        "inactiveAbilities",
+        "rulesVersion",
+        "abilityRuntimeCatalog",
+        "ruleCompletionLedger",
+        "abilityCalculations"
+      ],
+      "acquired": [
+        {
+          "label": "Joli coup",
+          "mechanics": {
+            "kind": "passive",
+            "effects": [
+              {
+                "type": "cover_penalty_override",
+                "partial": 0,
+                "important": -2
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
