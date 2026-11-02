@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - '.github/workflows/forge-n1-browser-journeys.yml'
+      - 'forge-of-heroes/index.html'
+      - 'forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_creation_browser_pack.cjs'
 permissions:
   contents: write
 jobs:
