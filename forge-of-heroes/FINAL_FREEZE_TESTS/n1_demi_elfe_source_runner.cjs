@@ -10,7 +10,7 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
  assert.ok(heritage.every(Boolean),'missing inherited people choices');
  function fill(s){for(let round=0;round<4;round++)for(const a of E.previewAcquiredAbilities(s))for(const c of E.getPersistentChoicesForAbility(s,a.id)){
  const b=s.abilityChoices[a.id]||(s.abilityChoices[a.id]={});
- if(c.id==='forestChildAbility'){const other=T.abilities_class.find(x=>x.rank===1&&x.path_id.includes('voie-des-animaux'));if(!other)throw Error('animal gift missing');b[c.id]=other.id;}
+ if(c.id==='forestChildAbility'){const other=T.abilities_class.find(x=>x.rank===1&&x.path_id.includes('voie-de-la-survie'));if(!other)throw Error('animal gift missing');b[c.id]=other.id;}
  if(c.id==='preferredWeaponCategory'){s.profileChoices[c.id]||='swords';b[c.id]??='swords';}
  else if(c.id==='extraLanguage'){s.profileChoices[c.id]||='celestien';b[c.id]??='celestien';}
  else if(b[c.id]==null){if(c.type==='boolean')b[c.id]=false;else if(c.type==='entity')b[c.id]={type:'animal',species:'chat',name:'Contrôle'};else if(c.type==='weapon_multi')b[c.id]=c.options.slice(0,Math.max(1,c.min||1)).map(x=>x.id);else if(c.options?.length)b[c.id]=c.options[0].id;}
@@ -19,7 +19,7 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
   const tag=[file,profile.id.split(':')[1],inherited.id.split(':')[1],bonusStat,malusStat,age].join('|');
   try{
     const s=standardState(db,profile.id,undefined,race);
-    s.peupleChoices={bonusStat,malusStat};s.voies.peoplePathId=inherited.id;
+    s.peupleChoices={bonusStat,malusStat};if(profile.id.includes(':pretre:'))s.profileChoices.priestMode='generalist';s.voies.peoplePathId=inherited.id;
     // Keep the official starting package: removing a shield or forcing a dagger creates illegal fixtures.
     if(age==='mature'){s.advancedRules.age=true;s.age={categoryId:'mature',spending:[{pathId:inherited.id,rank:2},{pathId:s.voies.profilePathIds[profile.familleId==='mage'?1:0],rank:2}]};}
     fill(s);
