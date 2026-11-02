@@ -1,0 +1,46 @@
+name: Forge N1 - version parity
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-version-parity.yml'
+permissions:
+  contents: write
+jobs:
+  compare-engine-and-database:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare mechanical SHA to previously executed matrix
+        id: compare
+        continue-on-error: true
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_version_parity.cjs
+      - name: Upload independent evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: forge-n1-matrix-parity
+          path: forge-of-heroes/QA/N1/version-parity.json
+      - name: Commit source-sha comparison
+        if: always()
+        run: |
+          if test -f forge-of-heroes/QA/N1/version-parity.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add forge-of-heroes/QA/N1/version-parity.json
+            if ! git diff --cached --quiet; then
+              git commit -m "test(forge-n1): parité moteur/DB avec matrice [skip ci]"
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main
+            fi
+          fi
+      - name: Require parity script to execute successfully
+        if: steps.compare.outcome == 'failure'
+        run: exit 1
