@@ -1,0 +1,3764 @@
+{
+  "schema": "FOH_N1_SYSTEMATIC_MATRIX",
+  "version": 1,
+  "shard": {
+    "index": 6,
+    "total": 8
+  },
+  "phase": "N1_ONLY",
+  "overallCertified": false,
+  "smoke": false,
+  "startedAt": "2026-11-01T20:02:31.524Z",
+  "finishedAt": "2026-11-01T20:05:12.974Z",
+  "inputs": {
+    "indexSha256": "74a0f6f7d4e9de2f5f8346819c7ee5737b8e35ecb4e759229ff204cd78bb82e9",
+    "masterSha256": "7fa4db837185f8140d45940773df7a4c84aca97ba2387b271cd1fbcbd7323d3d",
+    "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
+    "databaseSha256": "eae2d572846102c1ea26c69eec204b080bcf928060f887c13341a4cecc762167"
+  },
+  "scope": {
+    "profiles": 17,
+    "peoples": 16,
+    "mainProfilePaths": 85,
+    "standard": "Every same-profile unordered pair, each people, ancestry choices and alternative mage R2",
+    "hybrid": "Every ordered distinct-profile pair, all 25 path crossings, each people; first required-choice option only",
+    "noProfile": "Every unordered distinct-path pair, each people; all reverse orders on humans; small shield equipped when the shield path requires it",
+    "stats": "One official standard distribution; same series redistributed for lutin/fée (FOR -1). Other distributions/point-buy in separate suites",
+    "withoutPaths": "Zero-path standard/no-profile states must be refused; no such supported creation mode found",
+    "replay": "Every 17th case; mutation immutability for every case",
+    "negative": "Every 31st accepted case: zero paths must be refused for a path-related reason",
+    "browserClicks": false,
+    "pdfValidation": false
+  },
+  "results": {
+    "standard": {
+      "attempted": 320,
+      "accepted": 250,
+      "rejectedForReview": 70,
+      "assertionFailures": 0,
+      "replayChecks": 17,
+      "negativeChecks": 6
+    },
+    "ancestry-choices": {
+      "attempted": 700,
+      "accepted": 560,
+      "rejectedForReview": 140,
+      "assertionFailures": 0,
+      "replayChecks": 31,
+      "negativeChecks": 19
+    },
+    "hybrid": {
+      "attempted": 12800,
+      "accepted": 10000,
+      "rejectedForReview": 2800,
+      "assertionFailures": 0,
+      "replayChecks": 588,
+      "negativeChecks": 321
+    },
+    "no-profile": {
+      "attempted": 6720,
+      "accepted": 6030,
+      "rejectedForReview": 690,
+      "assertionFailures": 0,
+      "replayChecks": 356,
+      "negativeChecks": 196
+    },
+    "no-profile-reverse": {
+      "attempted": 420,
+      "accepted": 378,
+      "rejectedForReview": 42,
+      "assertionFailures": 0,
+      "replayChecks": 22,
+      "negativeChecks": 12
+    }
+  },
+  "coverage": {
+    "profiles": {
+      "count": 10,
+      "values": [
+        "class:barbare:cof2-lb-2024",
+        "class:barde:cof2-lb-2024",
+        "class:ensorceleur:cof2-lb-2024",
+        "class:guerrier:cof2-lb-2024",
+        "class:invocateur:addon-compagnon-2024",
+        "class:magicien:cof2-lb-2024",
+        "class:moine:cof2-lb-2024",
+        "class:rodeur:cof2-lb-2024",
+        "class:samourai:addon-compagnon-2024",
+        "class:sorcier:cof2-lb-2024"
+      ]
+    },
+    "peoples": {
+      "count": 16,
+      "values": [
+        "people:ame-forgee:addon-comp2017-cof2",
+        "people:centaure:addon-comp2017-cof2",
+        "people:demi-elfe:cof2-lb-2024",
+        "people:demi-ogre:addon-comp2017-cof2",
+        "people:demi-orc:cof2-lb-2024",
+        "people:elfe-haut:cof2-lb-2024",
+        "people:elfe-sylvain:cof2-lb-2024",
+        "people:fee:addon-comp2017-cof2",
+        "people:gnome:cof2-lb-2024",
+        "people:gobelin:addon-comp2017-cof2",
+        "people:halfelin:cof2-lb-2024",
+        "people:humain:cof2-lb-2024",
+        "people:kobold:addon-comp2017-cof2",
+        "people:lutin:addon-comp2017-cof2",
+        "people:minotaure:addon-comp2017-cof2",
+        "people:nain:cof2-lb-2024"
+      ]
+    },
+    "profilePaths": {
+      "count": 85,
+      "values": [
+        "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-l-arc-et-du-cheval:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
+        "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+        "classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024",
+        "classpath:voie-de-l-empathie:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+        "classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-l-escrime:class-barde:cof2-lb-2024",
+        "classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024",
+        "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024",
+        "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024",
+        "classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024",
+        "classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-la-nature:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024",
+        "classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024",
+        "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024",
+        "classpath:voie-de-la-rage:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024",
+        "classpath:voie-de-la-seduction:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024",
+        "classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024",
+        "classpath:voie-des-animaux:class-druide:cof2-lb-2024",
+        "classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024",
+        "classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024",
+        "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-des-portes:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-des-runes:class-forgesort:cof2-lb-2024",
+        "classpath:voie-des-soins:class-pretre:cof2-lb-2024",
+        "classpath:voie-des-vegetaux:class-druide:cof2-lb-2024",
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024",
+        "classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024",
+        "classpath:voie-du-demon:class-sorcier:cof2-lb-2024",
+        "classpath:voie-du-deplacement:class-voleur:cof2-lb-2024",
+        "classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024",
+        "classpath:voie-du-familier:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-du-fauve:class-druide:cof2-lb-2024",
+        "classpath:voie-du-golem:class-forgesort:cof2-lb-2024",
+        "classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
+        "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+        "classpath:voie-du-metal:class-forgesort:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-pagne:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024",
+        "classpath:voie-du-poing:class-moine:cof2-lb-2024",
+        "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-preux:class-chevalier:cof2-lb-2024",
+        "classpath:voie-du-primitif:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-protecteur:class-druide:cof2-lb-2024",
+        "classpath:voie-du-roublard:class-voleur:cof2-lb-2024",
+        "classpath:voie-du-sabre:class-samourai:addon-compagnon-2024",
+        "classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024",
+        "classpath:voie-du-sang:class-sorcier:cof2-lb-2024",
+        "classpath:voie-du-soldat:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-spadassin:class-voleur:cof2-lb-2024",
+        "classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024",
+        "classpath:voie-du-vagabond:class-barde:cof2-lb-2024",
+        "classpath:voie-du-vent:class-moine:cof2-lb-2024"
+      ]
+    },
+    "hybridPairs": {
+      "count": 32,
+      "values": [
+        "class:guerrier:cof2-lb-2024|class:arquebusier:cof2-lb-2024",
+        "class:guerrier:cof2-lb-2024|class:barbare:cof2-lb-2024",
+        "class:guerrier:cof2-lb-2024|class:barde:cof2-lb-2024",
+        "class:guerrier:cof2-lb-2024|class:chevalier:cof2-lb-2024",
+        "class:guerrier:cof2-lb-2024|class:druide:cof2-lb-2024",
+        "class:guerrier:cof2-lb-2024|class:ensorceleur:cof2-lb-2024",
+        "class:guerrier:cof2-lb-2024|class:forgesort:cof2-lb-2024",
+        "class:guerrier:cof2-lb-2024|class:invocateur:addon-compagnon-2024",
+        "class:guerrier:cof2-lb-2024|class:magicien:cof2-lb-2024",
+        "class:guerrier:cof2-lb-2024|class:moine:cof2-lb-2024",
+        "class:guerrier:cof2-lb-2024|class:pretre:cof2-lb-2024",
+        "class:guerrier:cof2-lb-2024|class:psionique:addon-compagnon-2024",
+        "class:guerrier:cof2-lb-2024|class:rodeur:cof2-lb-2024",
+        "class:guerrier:cof2-lb-2024|class:samourai:addon-compagnon-2024",
+        "class:guerrier:cof2-lb-2024|class:sorcier:cof2-lb-2024",
+        "class:guerrier:cof2-lb-2024|class:voleur:cof2-lb-2024",
+        "class:moine:cof2-lb-2024|class:arquebusier:cof2-lb-2024",
+        "class:moine:cof2-lb-2024|class:barbare:cof2-lb-2024",
+        "class:moine:cof2-lb-2024|class:barde:cof2-lb-2024",
+        "class:moine:cof2-lb-2024|class:chevalier:cof2-lb-2024",
+        "class:moine:cof2-lb-2024|class:druide:cof2-lb-2024",
+        "class:moine:cof2-lb-2024|class:ensorceleur:cof2-lb-2024",
+        "class:moine:cof2-lb-2024|class:forgesort:cof2-lb-2024",
+        "class:moine:cof2-lb-2024|class:guerrier:cof2-lb-2024",
+        "class:moine:cof2-lb-2024|class:invocateur:addon-compagnon-2024",
+        "class:moine:cof2-lb-2024|class:magicien:cof2-lb-2024",
+        "class:moine:cof2-lb-2024|class:pretre:cof2-lb-2024",
+        "class:moine:cof2-lb-2024|class:psionique:addon-compagnon-2024",
+        "class:moine:cof2-lb-2024|class:rodeur:cof2-lb-2024",
+        "class:moine:cof2-lb-2024|class:samourai:addon-compagnon-2024",
+        "class:moine:cof2-lb-2024|class:sorcier:cof2-lb-2024",
+        "class:moine:cof2-lb-2024|class:voleur:cof2-lb-2024"
+      ]
+    },
+    "noProfilePairs": {
+      "count": 378,
+      "values": [
+        "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-l-arc-et-du-cheval:class-samourai:addon-compagnon-2024|classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-l-arc-et-du-cheval:class-samourai:addon-compagnon-2024|classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-l-arc-et-du-cheval:class-samourai:addon-compagnon-2024|classpath:voie-de-la-meditation:class-moine:cof2-lb-2024",
+        "classpath:voie-de-l-arc-et-du-cheval:class-samourai:addon-compagnon-2024|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-l-arc-et-du-cheval:class-samourai:addon-compagnon-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-l-arc-et-du-cheval:class-samourai:addon-compagnon-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-l-arc-et-du-cheval:class-samourai:addon-compagnon-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-l-arc-et-du-cheval:class-samourai:addon-compagnon-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024|classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024|classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024|classpath:voie-de-la-meditation:class-moine:cof2-lb-2024",
+        "classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024|classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-l-empathie:class-psionique:addon-compagnon-2024|classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-l-empathie:class-psionique:addon-compagnon-2024|classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-l-empathie:class-psionique:addon-compagnon-2024|classpath:voie-de-la-meditation:class-moine:cof2-lb-2024",
+        "classpath:voie-de-l-empathie:class-psionique:addon-compagnon-2024|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-l-empathie:class-psionique:addon-compagnon-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-l-empathie:class-psionique:addon-compagnon-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-l-empathie:class-psionique:addon-compagnon-2024|classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-l-empathie:class-psionique:addon-compagnon-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-l-empathie:class-psionique:addon-compagnon-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024|classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024|classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024|classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024|classpath:voie-de-la-meditation:class-moine:cof2-lb-2024",
+        "classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024|classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024|classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024|classpath:voie-de-la-meditation:class-moine:cof2-lb-2024",
+        "classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024|classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-de-la-meditation:class-moine:cof2-lb-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-des-portes:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-du-familier:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024|classpath:voie-du-sabre:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-de-la-meditation:class-moine:cof2-lb-2024",
+        "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-de-la-meditation:class-moine:cof2-lb-2024",
+        "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-de-la-meditation:class-moine:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-de-la-nature:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-de-la-priere:class-pretre:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-des-animaux:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-des-portes:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-des-soins:class-pretre:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-des-vegetaux:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-demon:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-familier:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-fauve:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-poing:class-moine:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-protecteur:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-sabre:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-sang:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024|classpath:voie-du-vent:class-moine:cof2-lb-2024",
+        "classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-de-la-priere:class-pretre:cof2-lb-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-des-portes:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-des-soins:class-pretre:cof2-lb-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-du-familier:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-du-poing:class-moine:cof2-lb-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-du-sabre:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024|classpath:voie-du-vent:class-moine:cof2-lb-2024",
+        "classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-nature:class-druide:cof2-lb-2024|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-la-nature:class-druide:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-nature:class-druide:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-de-la-nature:class-druide:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-nature:class-druide:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-nature:class-druide:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024|classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+        "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-rage:class-barbare:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-rage:class-barbare:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-rage:class-barbare:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-seduction:class-barde:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-des-animaux:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-des-portes:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-des-soins:class-pretre:cof2-lb-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-des-vegetaux:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-du-familier:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-du-fauve:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-du-poing:class-moine:cof2-lb-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-du-protecteur:class-druide:cof2-lb-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-du-sabre:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024|classpath:voie-du-vent:class-moine:cof2-lb-2024",
+        "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024|classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024|classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
+        "classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-des-animaux:class-druide:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-des-animaux:class-druide:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-des-animaux:class-druide:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-des-animaux:class-druide:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-des-animaux:class-druide:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024|classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+        "classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-des-portes:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-des-runes:class-forgesort:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-des-soins:class-pretre:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-des-vegetaux:class-druide:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-demon:class-sorcier:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-familier:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-fauve:class-druide:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-golem:class-forgesort:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-metal:class-forgesort:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-poing:class-moine:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-protecteur:class-druide:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-sabre:class-samourai:addon-compagnon-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-sang:class-sorcier:cof2-lb-2024",
+        "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024|classpath:voie-du-vent:class-moine:cof2-lb-2024",
+        "classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-des-portes:class-invocateur:addon-compagnon-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-des-portes:class-invocateur:addon-compagnon-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-des-portes:class-invocateur:addon-compagnon-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-des-runes:class-forgesort:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-des-runes:class-forgesort:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-des-runes:class-forgesort:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-des-soins:class-pretre:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-des-soins:class-pretre:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-des-soins:class-pretre:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-des-soins:class-pretre:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-des-vegetaux:class-druide:cof2-lb-2024|classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-des-vegetaux:class-druide:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-des-vegetaux:class-druide:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-des-vegetaux:class-druide:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-fauve:class-druide:cof2-lb-2024",
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-protecteur:class-druide:cof2-lb-2024",
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024|classpath:voie-du-soldat:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024|classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+        "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-demon:class-sorcier:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-deplacement:class-voleur:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-familier:class-invocateur:addon-compagnon-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-fauve:class-druide:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-golem:class-forgesort:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-metal:class-forgesort:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-pagne:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-poing:class-moine:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-preux:class-chevalier:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-primitif:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-protecteur:class-druide:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-roublard:class-voleur:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-sabre:class-samourai:addon-compagnon-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-sang:class-sorcier:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-soldat:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-spadassin:class-voleur:cof2-lb-2024",
+        "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024|classpath:voie-du-vent:class-moine:cof2-lb-2024",
+        "classpath:voie-du-combat:class-guerrier:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-combat:class-guerrier:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024|classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
+        "classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-demon:class-sorcier:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-demon:class-sorcier:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-deplacement:class-voleur:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-familier:class-invocateur:addon-compagnon-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-familier:class-invocateur:addon-compagnon-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-fauve:class-druide:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-fauve:class-druide:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-golem:class-forgesort:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-golem:class-forgesort:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-ki:class-samourai:addon-compagnon-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-ki:class-samourai:addon-compagnon-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-ki:class-samourai:addon-compagnon-2024|classpath:voie-du-sabre:class-samourai:addon-compagnon-2024",
+        "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-metal:class-forgesort:cof2-lb-2024|classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+        "classpath:voie-du-metal:class-forgesort:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-pagne:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-poing:class-moine:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-preux:class-chevalier:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-primitif:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-protecteur:class-druide:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-roublard:class-voleur:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-sabre:class-samourai:addon-compagnon-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-sang:class-sorcier:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-soldat:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-spadassin:class-voleur:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-vagabond:class-barde:cof2-lb-2024",
+        "classpath:voie-du-musicien:class-barde:cof2-lb-2024|classpath:voie-du-vent:class-moine:cof2-lb-2024",
+        "classpath:voie-du-poing:class-moine:cof2-lb-2024|classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024|classpath:voie-du-preux:class-chevalier:cof2-lb-2024",
+        "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024|classpath:voie-du-primitif:class-barbare:cof2-lb-2024",
+        "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024|classpath:voie-du-protecteur:class-druide:cof2-lb-2024",
+        "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024|classpath:voie-du-sabre:class-samourai:addon-compagnon-2024",
+        "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024|classpath:voie-du-sang:class-sorcier:cof2-lb-2024",
+        "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024|classpath:voie-du-soldat:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024|classpath:voie-du-vent:class-moine:cof2-lb-2024"
+      ]
+    }
+  },
+  "assertionFailures": [],
+  "rejectionGroups": [
+    {
+      "mode": "standard",
+      "reasons": [
+        "Arme interdite par la petite taille du peuple.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
+      ],
+      "count": 30,
+      "samples": [
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "ea0c825395ff8300a5f01b46c79a86e9452f96264f390494728acb64acef0af9",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-du-combat:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:halfelin:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-combat:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "772983f16fdb69ec754157f1cf3d9014a03047259f4b482442efaf780eb8e5bf",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:halfelin:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {
+              "preferredWeaponCategory": "swords"
+            },
+            "abilityChoices": {
+              "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024": {
+                "preferredWeaponCategory": "swords"
+              }
+            },
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "c59ba1b0a6eea21fdd38a8c36ab03ce39f44975483e189962f8205c580d69d3d",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:halfelin:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "ancestry-choices",
+      "reasons": [
+        "Arme interdite par la petite taille du peuple.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
+      ],
+      "count": 60,
+      "samples": [
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "ea0c825395ff8300a5f01b46c79a86e9452f96264f390494728acb64acef0af9",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-du-combat:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:halfelin:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-combat:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "3bbfe61a20f3319cf323f09547a3ef204ddf65cb1ff2dd846e0f6d14c5f30cb6",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-du-combat:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:halfelin:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "vol"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-combat:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "772983f16fdb69ec754157f1cf3d9014a03047259f4b482442efaf780eb8e5bf",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:halfelin:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {
+              "preferredWeaponCategory": "swords"
+            },
+            "abilityChoices": {
+              "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024": {
+                "preferredWeaponCategory": "swords"
+              }
+            },
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "standard",
+      "reasons": [
+        "Être féerique : l’armure doit être fabriquée à sa taille."
+      ],
+      "count": 20,
+      "samples": [
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "6f14f6b481b099f90a5d1c7d28900129791c4b5f5eccac7196350f0216b566c2",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-du-combat:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-combat:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "33bc20925d282784e1a8f29e047a036c2b77547dc1def5f97f8dd9e0d73a0358",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {
+              "preferredWeaponCategory": "swords"
+            },
+            "abilityChoices": {
+              "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024": {
+                "preferredWeaponCategory": "swords"
+              }
+            },
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "00bdc44b85df29fa91ac94ce968eaa204e45c6fa9915325cb68a50f39adffe97",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "ancestry-choices",
+      "reasons": [
+        "Être féerique : l’armure doit être fabriquée à sa taille."
+      ],
+      "count": 40,
+      "samples": [
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "6f14f6b481b099f90a5d1c7d28900129791c4b5f5eccac7196350f0216b566c2",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-du-combat:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-combat:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "ea69593a2bdb371b51d8de3c16ecc298b9dac5fe52365a547b0cfbfdff3db08f",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-du-combat:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "int"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-combat:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "33bc20925d282784e1a8f29e047a036c2b77547dc1def5f97f8dd9e0d73a0358",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {
+              "preferredWeaponCategory": "swords"
+            },
+            "abilityChoices": {
+              "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024": {
+                "preferredWeaponCategory": "swords"
+              }
+            },
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "standard",
+      "reasons": [
+        "Être féerique : arme limitée au d4."
+      ],
+      "count": 20,
+      "samples": [
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "baa2d2f3b0f35014d797374b9eb6c42bf20ba27c76885a3aae4fa6565735c989",
+            "profile": "class:moine:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+              "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "mystique",
+            "classeId": "class:moine:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+                "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "",
+              "shieldId": "",
+              "weaponIds": [
+                "weapon:iron-staff"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {
+              "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1": {
+                "unarmedDamageStat": "FOR"
+              }
+            },
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "a98d40615ae3b5b1189fd7e56ae20892653ec5a5dbc39af2b31a1706cb0680a6",
+            "profile": "class:moine:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+              "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "mystique",
+            "classeId": "class:moine:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+                "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "",
+              "shieldId": "",
+              "weaponIds": [
+                "weapon:iron-staff"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {
+              "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1": {
+                "unarmedDamageStat": "FOR"
+              }
+            },
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "standard",
+            "caseId": "06bd55371b069ef8d5717b8d4edcf31e5457b31785ae1ef83282d8ade4c58f8d",
+            "profile": "class:moine:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+              "classpath:voie-du-poing:class-moine:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "mystique",
+            "classeId": "class:moine:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+                "classpath:voie-du-poing:class-moine:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "",
+              "shieldId": "",
+              "weaponIds": [
+                "weapon:iron-staff"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {
+              "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1": {
+                "unarmedDamageStat": "FOR"
+              },
+              "ability:poings-de-fer:classpath-voie-du-poing-class-moine-cof2-lb-2024:r1": {
+                "unarmedAttackStat": "FOR"
+              }
+            },
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "ancestry-choices",
+      "reasons": [
+        "Être féerique : arme limitée au d4."
+      ],
+      "count": 40,
+      "samples": [
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "baa2d2f3b0f35014d797374b9eb6c42bf20ba27c76885a3aae4fa6565735c989",
+            "profile": "class:moine:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+              "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "mystique",
+            "classeId": "class:moine:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+                "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "",
+              "shieldId": "",
+              "weaponIds": [
+                "weapon:iron-staff"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {
+              "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1": {
+                "unarmedDamageStat": "FOR"
+              }
+            },
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "f8f28704ee31e478cbf2167a51b67021f7ddb5d08c724cfd0175913263dfecd1",
+            "profile": "class:moine:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+              "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "mystique",
+            "classeId": "class:moine:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "int"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+                "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "",
+              "shieldId": "",
+              "weaponIds": [
+                "weapon:iron-staff"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {
+              "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1": {
+                "unarmedDamageStat": "FOR"
+              }
+            },
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "ancestry-choices",
+            "caseId": "a98d40615ae3b5b1189fd7e56ae20892653ec5a5dbc39af2b31a1706cb0680a6",
+            "profile": "class:moine:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+              "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "mystique",
+            "classeId": "class:moine:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+                "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "",
+              "shieldId": "",
+              "weaponIds": [
+                "weapon:iron-staff"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {
+              "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1": {
+                "unarmedDamageStat": "FOR"
+              }
+            },
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "reasons": [
+        "Arme interdite par la petite taille du peuple.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
+      ],
+      "count": 1200,
+      "samples": [
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "565982181929df64c88cf0dc898f4710f204d1d0f5772ce5e932e65b1e935765",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:halfelin:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:guerrier:cof2-lb-2024",
+              "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "00521b555d0e5ec33d7e6e32e02624e1fbc577def73325d55ffb699f907ba029",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:halfelin:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:guerrier:cof2-lb-2024",
+              "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "03cd79e8eed7ab0b9ce6916e40b1c192204980cf4a2a6ddb85791b39a8e9de6f",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:halfelin:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:halfelin:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-halfelin:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:guerrier:cof2-lb-2024",
+              "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "reasons": [
+        "Être féerique : l’armure doit être fabriquée à sa taille."
+      ],
+      "count": 800,
+      "samples": [
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "e899d931da2db1636f21929304578ccf3f27aedb4adc360ec89a17868a2bc503",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:guerrier:cof2-lb-2024",
+              "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "f6fd8e6f3082631ab2e204de4029e56bf3f854519812e55ed98bb60433b84ae7",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:guerrier:cof2-lb-2024",
+              "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "460f5d84530174c2d69079ece325254d8dff6ac13603487285e1b62782544700",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "greatsword-dagger",
+              "armorId": "armor:chemise-de-mailles:cof2-lb-2024",
+              "shieldId": "shield:grand:cof2-lb-2024",
+              "weaponIds": [
+                "weapon:long-sword",
+                "weapon:great-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:guerrier:cof2-lb-2024",
+              "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "reasons": [
+        "Être féerique : arme limitée au d4."
+      ],
+      "count": 800,
+      "samples": [
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "257d85108e51d06d29aa221b2e46b22033318e009e15d538f5928b5f9a872d0b",
+            "profile": "class:moine:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+              "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "mystique",
+            "classeId": "class:moine:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+                "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "",
+              "shieldId": "",
+              "weaponIds": [
+                "weapon:iron-staff"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {
+              "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1": {
+                "unarmedDamageStat": "FOR"
+              }
+            },
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:moine:cof2-lb-2024",
+              "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "b8ad8bff48265392e97b6935987ce9d6480f9aea8cb1c48ca48fe299dc8ac3e1",
+            "profile": "class:moine:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+              "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "mystique",
+            "classeId": "class:moine:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+                "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "",
+              "shieldId": "",
+              "weaponIds": [
+                "weapon:iron-staff"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {
+              "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1": {
+                "unarmedDamageStat": "FOR"
+              }
+            },
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:moine:cof2-lb-2024",
+              "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "2b76b2c3c8c21bf7a16a52d0e0b02969cdcdf6b20e301e8891cede91edde954e",
+            "profile": "class:moine:cof2-lb-2024",
+            "people": "people:lutin:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+              "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "mystique",
+            "classeId": "class:moine:cof2-lb-2024",
+            "peupleId": "people:lutin:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+                "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "",
+              "shieldId": "",
+              "weaponIds": [
+                "weapon:iron-staff"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {
+              "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1": {
+                "unarmedDamageStat": "FOR"
+              }
+            },
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:moine:cof2-lb-2024",
+              "secondaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "no-profile",
+      "reasons": [
+        "Sans profil : bouclier incompatible avec une voie choisie."
+      ],
+      "count": 630,
+      "samples": [
+        {
+          "case": {
+            "mode": "no-profile",
+            "caseId": "b375aefc0299ff31e3a351cf386408b57e5cf1a279b0dc6235338f9ca3088ee1",
+            "profile": "class:barde:cof2-lb-2024",
+            "people": "people:demi-elfe:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "aventurier",
+            "classeId": "class:barde:cof2-lb-2024",
+            "peupleId": "people:demi-elfe:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "per",
+              "malusStat": "for"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "weaponIds": [],
+              "tinyFitted": true,
+              "shieldId": "shield:petit:cof2-lb-2024"
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "profileMode": "NO_PROFILE",
+            "noProfile": {
+              "enabled": true,
+              "primaryPathId": "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+              "pathIds": [
+                "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+              ]
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "no-profile",
+            "caseId": "a03a420cf68ac1854667b22fd055cf76c3fb4cd6e637302028878abc8a6c1b10",
+            "profile": "class:rodeur:cof2-lb-2024",
+            "people": "people:demi-elfe:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "aventurier",
+            "classeId": "class:rodeur:cof2-lb-2024",
+            "peupleId": "people:demi-elfe:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "per",
+              "malusStat": "for"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "weaponIds": [],
+              "tinyFitted": true,
+              "shieldId": "shield:petit:cof2-lb-2024"
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "profileMode": "NO_PROFILE",
+            "noProfile": {
+              "enabled": true,
+              "primaryPathId": "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+              "pathIds": [
+                "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+              ]
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "no-profile",
+            "caseId": "add236aec68bf4b2f7c38ec3aaf2e9739af8aaa5c125fb041dd1988bd309b2f2",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:demi-elfe:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:demi-elfe:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "per",
+              "malusStat": "for"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "weaponIds": [],
+              "tinyFitted": true,
+              "shieldId": "shield:petit:cof2-lb-2024"
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "profileMode": "NO_PROFILE",
+            "noProfile": {
+              "enabled": true,
+              "primaryPathId": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "pathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "no-profile-reverse",
+      "reasons": [
+        "Sans profil : bouclier incompatible avec une voie choisie."
+      ],
+      "count": 42,
+      "samples": [
+        {
+          "case": {
+            "mode": "no-profile-reverse",
+            "caseId": "49b473d0ec9ec40ed4e45ec50e4eb27fd3640f103fdfbd75c3990488a86e6149",
+            "profile": "class:barde:cof2-lb-2024",
+            "people": "people:humain:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-du-musicien:class-barde:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "aventurier",
+            "classeId": "class:barde:cof2-lb-2024",
+            "peupleId": "people:humain:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "humainStat": "cha"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-musicien:class-barde:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "weaponIds": [],
+              "tinyFitted": true,
+              "shieldId": "shield:petit:cof2-lb-2024"
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "profileMode": "NO_PROFILE",
+            "noProfile": {
+              "enabled": true,
+              "primaryPathId": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "pathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-musicien:class-barde:cof2-lb-2024"
+              ]
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "no-profile-reverse",
+            "caseId": "6ad53e78d4cf11ee6e216a65512830a923022c52a8ae8efa9b7e96ed9e802110",
+            "profile": "class:rodeur:cof2-lb-2024",
+            "people": "people:humain:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "aventurier",
+            "classeId": "class:rodeur:cof2-lb-2024",
+            "peupleId": "people:humain:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "humainStat": "cha"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "weaponIds": [],
+              "tinyFitted": true,
+              "shieldId": "shield:petit:cof2-lb-2024"
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "profileMode": "NO_PROFILE",
+            "noProfile": {
+              "enabled": true,
+              "primaryPathId": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "pathIds": [
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+                "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024"
+              ]
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "no-profile-reverse",
+            "caseId": "41779d31b3b68ed2291766ab3816b81566b04077826cd4cc33696ac1293d60b8",
+            "profile": "class:guerrier:cof2-lb-2024",
+            "people": "people:humain:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024",
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:guerrier:cof2-lb-2024",
+            "peupleId": "people:humain:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "humainStat": "cha"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024",
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "weaponIds": [],
+              "tinyFitted": true,
+              "shieldId": "shield:petit:cof2-lb-2024"
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "profileMode": "NO_PROFILE",
+            "noProfile": {
+              "enabled": true,
+              "primaryPathId": "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024",
+              "pathIds": [
+                "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024",
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "no-profile",
+      "reasons": [
+        "Centaure : la Fidèle monture standard ne peut pas être montée ; choisir une autre voie."
+      ],
+      "count": 3,
+      "samples": [
+        {
+          "case": {
+            "mode": "no-profile",
+            "caseId": "395b7a8852f376f10d40170bd979f2ed09677357f4b5cee9f2907052ceaeb50b",
+            "profile": "class:barde:cof2-lb-2024",
+            "people": "people:centaure:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "aventurier",
+            "classeId": "class:barde:cof2-lb-2024",
+            "peupleId": "people:centaure:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "con"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-centaure:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "weaponIds": [],
+              "tinyFitted": true
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "profileMode": "NO_PROFILE",
+            "noProfile": {
+              "enabled": true,
+              "primaryPathId": "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+              "pathIds": [
+                "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024"
+              ]
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "no-profile",
+            "caseId": "7ac89441cb2fe6f17ef74fcba91f28e448a85e97eb5f5ad4a65bee8eca562599",
+            "profile": "class:rodeur:cof2-lb-2024",
+            "people": "people:centaure:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "aventurier",
+            "classeId": "class:rodeur:cof2-lb-2024",
+            "peupleId": "people:centaure:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "con"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-centaure:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "weaponIds": [],
+              "tinyFitted": true
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "profileMode": "NO_PROFILE",
+            "noProfile": {
+              "enabled": true,
+              "primaryPathId": "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+              "pathIds": [
+                "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024"
+              ]
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "no-profile",
+            "caseId": "4ee42bd19b6b53fe8060d678d08025f5fe79a1d0e70fb0203b59b0b20fc7a07e",
+            "profile": "class:barbare:cof2-lb-2024",
+            "people": "people:centaure:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+              "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:barbare:cof2-lb-2024",
+            "peupleId": "people:centaure:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "con"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-du-centaure:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "weaponIds": [],
+              "tinyFitted": true
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "profileMode": "NO_PROFILE",
+            "noProfile": {
+              "enabled": true,
+              "primaryPathId": "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+              "pathIds": [
+                "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+                "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "no-profile",
+      "reasons": [
+        "Fée : impossible de voler avec un bouclier."
+      ],
+      "count": 57,
+      "samples": [
+        {
+          "case": {
+            "mode": "no-profile",
+            "caseId": "7e8b377f87ed1190466449b9e97cd5c93739ee504ebeec23b807ad900bbcdf0a",
+            "profile": "class:barde:cof2-lb-2024",
+            "people": "people:fee:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "aventurier",
+            "classeId": "class:barde:cof2-lb-2024",
+            "peupleId": "people:fee:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "weaponIds": [],
+              "tinyFitted": true,
+              "shieldId": "shield:petit:cof2-lb-2024"
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "profileMode": "NO_PROFILE",
+            "noProfile": {
+              "enabled": true,
+              "primaryPathId": "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+              "pathIds": [
+                "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+              ]
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "no-profile",
+            "caseId": "f8e732c589857d41709f81169ee4b3d1c6cb338abf56cc5790e03eef68b08c00",
+            "profile": "class:rodeur:cof2-lb-2024",
+            "people": "people:fee:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "aventurier",
+            "classeId": "class:rodeur:cof2-lb-2024",
+            "peupleId": "people:fee:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "weaponIds": [],
+              "tinyFitted": true,
+              "shieldId": "shield:petit:cof2-lb-2024"
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "profileMode": "NO_PROFILE",
+            "noProfile": {
+              "enabled": true,
+              "primaryPathId": "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+              "pathIds": [
+                "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+              ]
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "no-profile",
+            "caseId": "073860d6e6cfa80b2a628fa23e122e6675c257f1bd0c2763ddcd1c180848f924",
+            "profile": "class:barbare:cof2-lb-2024",
+            "people": "people:fee:addon-comp2017-cof2",
+            "paths": [
+              "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+              "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "combattant",
+            "classeId": "class:barbare:cof2-lb-2024",
+            "peupleId": "people:fee:addon-comp2017-cof2",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": -1,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": 0
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "agi"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "weaponIds": [],
+              "tinyFitted": true,
+              "shieldId": "shield:petit:cof2-lb-2024"
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "profileMode": "NO_PROFILE",
+            "noProfile": {
+              "enabled": true,
+              "primaryPathId": "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+              "pathIds": [
+                "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+                "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "remaining": [
+    "Review every rejection group; rejection is not a passed legal creation",
+    "All persistent-choice alternatives, characteristic distributions, equipment and advanced rules combinations",
+    "Independent PDF-derived numeric expectations for every accessible capacity",
+    "UI/browser and official PDF lifecycle"
+  ]
+}

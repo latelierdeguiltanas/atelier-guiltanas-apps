@@ -1,8 +1,8 @@
 {
   "schema": "FOH_N1_REGRESSION_BATCH",
   "scope": "N1 creation and advanced-age projections; no progression work; some high-rank reference projections remain in reused suites",
-  "indexSha256": "834d41af988ac1ce254b4f361b024425f22c51bb8ab2da4e2b709c8e19e78a3c",
-  "finishedAt": "2026-10-30T13:48:51.202Z",
+  "indexSha256": "77b24833bc3c081f000b67aaeeea837894562ecce86072d4ce6dc9bc720f63e5",
+  "finishedAt": "2026-11-02T05:57:50.501Z",
   "passed": 37,
   "total": 37,
   "status": "PASS",
@@ -68,7 +68,7 @@
       "file": "n1_age_profiles_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "a57df546eac8dc098ad13c1d0f5da6447686609fa14d9b329217fe2bfe0b17b2",
+      "runnerSha256": "cf9713a6168eedbe06beb3f3a809f552362bcbb438145b912ae28a7a9d6a8779",
       "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 850,\n  \"replays\": 850,\n  \"profiles\": 17,\n  \"paths\": 85,\n  \"failures\": []\n}\n"
     },
     {
@@ -76,7 +76,7 @@
       "status": "PASS",
       "exitCode": 0,
       "runnerSha256": "6b5aba38a9b7abe1fd41348899498cc19125a731c532b21a89e915c0b55e0dbc",
-      "output": "{\n  \"schema\": \"FOH_N1_AGE_SOURCE_CHECK\",\n  \"sources\": [\n    {\n      \"file\": \"règles avancées.pdf\",\n      \"pdfPage\": 1,\n      \"printedPage\": 153,\n      \"visuallyRead\": true,\n      \"rule\": \"Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.\"\n    }\n  ],\n  \"cases\": [\n    {\n      \"id\": \"index.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:DR\",\n      \"status\": \"PASS\"\n    }\n  ],\n  \"replays\": 22,\n  \"failures\": [],\n  \"engineSha256\": \"9c9c23e1fbf98b60113b415889945b63632ea36224464b6293a3500c17cddc21\",\n  \"status\": \"PASS\"\n}\n"
+      "output": "{\n  \"schema\": \"FOH_N1_AGE_SOURCE_CHECK\",\n  \"sources\": [\n    {\n      \"file\": \"règles avancées.pdf\",\n      \"pdfPage\": 1,\n      \"printedPage\": 153,\n      \"visuallyRead\": true,\n      \"rule\": \"Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.\"\n    }\n  ],\n  \"cases\": [\n    {\n      \"id\": \"index.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:DR\",\n      \"status\": \"PASS\"\n    }\n  ],\n  \"replays\": 22,\n  \"failures\": [],\n  \"engineSha256\": \"a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492\",\n  \"status\": \"PASS\"\n}\n"
     },
     {
       "file": "n1_size_equipment_runner.cjs",
@@ -215,7 +215,7 @@
       "file": "profile_people_guide_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "ee95e961ac4182a154c9ef7cbec1d177a9480b099e20cb0903c738524f10f11d",
+      "runnerSha256": "0a6432e8e94f1238cc29202f5f822a871066585404ea8c1c1544281015442559",
       "output": "PASS 14 profils de base / 16 peuples : priorités, bonus conditionnels, malus, aide affichée en trois étapes, aucun choix ou calcul modifié.\nPASS profil d’abord : retour au peuple avant caractéristiques ; parcours habituel et validation conservés.\n"
     },
     {
@@ -250,14 +250,8 @@
       "file": "precision_transition_runner.js",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "0ba480a174aa9e4ee8039333701c5cfb43568bfd6f4803ec2d5e60df9b88eca0",
-      "output": "Targeted rerun PASS: 53/53 transitions, 53/53 ABA, 13/13 ghost, 10/10 anti-false-green, 14/14 negative reason checks. See current QA/N1/N1_PRECISION*.json and N1_ANTI_FALSE_GREEN_V2.json.",
-      "previousAttempt": {
-        "status": "FAIL",
-        "exitCode": 1,
-        "output": "{\n  \"contracts\": [\n    50,\n    53\n  ],\n  \"aba\": [\n    53,\n    53\n  ],\n  \"ghost\": [\n    13,\n    13\n  ],\n  \"anti\": [\n    10,\n    10\n  ],\n  \"negative\": [\n    14,\n    14\n  ]\n}\n",
-        "cause": "Expected new passive vision traits absent from historical PEOPLE transition contract; three affected contracts now require the exact source vision kind/range/condition. No stat assertion relaxed."
-      }
+      "runnerSha256": "b1a54a1dfc8189791e73bbd26f6c131b30e6c8c8250720e9e97b87e585e8642b",
+      "output": "{\n  \"contracts\": [\n    53,\n    53\n  ],\n  \"aba\": [\n    53,\n    53\n  ],\n  \"ghost\": [\n    13,\n    13\n  ],\n  \"anti\": [\n    10,\n    10\n  ],\n  \"negative\": [\n    14,\n    14\n  ]\n}\n"
     },
     {
       "file": "manual_scenario_assertions.js",
@@ -273,6 +267,5 @@
       "runnerSha256": "09632b3e373975be961eb58be77cc4312aeab8c070ccf3cd47a1b24a1967e001",
       "output": "PASS {\"pointBuy\":279936,\"pointBuyValid\":27568,\"pointBuyInvalid\":252368,\"pointBuyCreations\":284,\"classicCreations\":2940,\"semiTriples\":1331,\"semiCreations\":9381,\"balancedLowCreations\":64,\"replayChecks\":407,\"invalidInputs\":12,\"uiFixtureChecks\":8}\n"
     }
-  ],
-  "postBatchChange": "PDF no-profile columns corrected outside engine; 12 exports, summaries and equipment UI rechecked separately. Targeted transition-contract rerun after batch retained in previousAttempt."
+  ]
 }
