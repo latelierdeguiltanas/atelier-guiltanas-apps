@@ -5,7 +5,7 @@ const fs=require('node:fs'),assert=require('node:assert/strict');
  const [device]=await _android.devices();assert.ok(device,'Android absent');
  let page,report={model:device.model(),steps:[],passed:false};
  try{
-  const context=await device.launchBrowser({pkg:'com.android.chrome',args:['--no-first-run','--disable-fre']});
+  const context=await device.launchBrowser({pkg:'com.android.chrome',hasTouch:true,isMobile:true,args:['--no-first-run','--disable-fre']});
   const url='http://127.0.0.1:4173/forge-of-heroes/';
   const opened=context.pages()[0]||await (async()=>{
    const tab=context.waitForEvent('page',{timeout:20000});
@@ -14,9 +14,9 @@ const fs=require('node:fs'),assert=require('node:assert/strict');
   })();
   page=opened;page.setDefaultTimeout(12000);
   await page.goto('http://127.0.0.1:4173/forge-of-heroes/');
-  assert.match(await page.evaluate(()=>navigator.userAgent),/Android/);
+  report.userAgent=await page.evaluate(()=>navigator.userAgent);assert.match(report.userAgent,/Android/);
   const button=name=>page.getByRole('button',{name,exact:true}),label=name=>page.getByLabel(name,{exact:true});
-  const tap=async loc=>{const box=await loc.boundingBox();assert.ok(box);await loc.tap();};
+  const tap=loc=>loc.tap();
   const next=()=>tap(button('Continuer'));
   await tap(button('Créer un héros'));await tap(page.locator('#mode-classic'));
   assert.equal(await button('Continuer').isEnabled(),false);
@@ -37,6 +37,6 @@ const fs=require('node:fs'),assert=require('node:assert/strict');
   const sheet=page.frameLocator('#sheet');await sheet.getByRole('heading',{name:'Android Forge N1'}).waitFor();
   await page.reload();await sheet.getByRole('heading',{name:'Android Forge N1'}).waitFor();
   assert.equal(await sheet.getByText('9/9',{exact:true}).count(),1);
-  await page.screenshot({path:'android-sheet.png'});report.steps.push('fiche interactive rechargée à 9/9 PV');report.passed=true;
+  await page.screenshot({path:'android-sheet.png'});report.steps.push('fiche interactive rechargée à 9/9 PV');report.passed=true;console.log(JSON.stringify(report));
  }finally{if(page&&!report.passed)await page.screenshot({path:'android-sheet.png'}).catch(()=>{});fs.writeFileSync('android-state.json',JSON.stringify(report,null,2));await device.close();}
 })().catch(e=>{console.error(e);process.exitCode=1});
