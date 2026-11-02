@@ -20,6 +20,22 @@ a{color:var(--gold)}button,input,select{font:inherit}button{cursor:pointer}butto
 #notice{min-height:0}
 @media(max-width:850px){.layout{grid-template-columns:1fr}.profiles{max-height:220px;grid-template-columns:repeat(2,minmax(0,1fr))}.profile{padding:9px}.metricgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.races{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:390px){.brand strong{font-size:19px}.metric b{font-size:23px}.races{grid-template-columns:repeat(2,minmax(0,1fr))}.profiles{grid-template-columns:repeat(2,minmax(0,1fr))}.profile .name{font-size:12px}}
+.official-title{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap}
+.official-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.official-group{min-width:0}.official-group h3{margin:0 0 8px;color:var(--gold);font-size:15px}
+.item-card{padding:10px 11px;border:1px solid var(--line);border-radius:11px;background:#29251e;margin:0 0 7px}
+.item-card summary{display:flex;list-style:none;align-items:center;justify-content:space-between;gap:9px;cursor:pointer}
+.item-card summary::-webkit-details-marker{display:none}.item-card summary strong{font-size:13px}.item-card summary small{font-size:10px;color:var(--muted)}
+.item-percent{font-size:16px;font-weight:850;min-width:48px;text-align:right;color:var(--gold);font-variant-numeric:tabular-nums}
+.item-progress{height:6px;background:#433d33;border-radius:99px;overflow:hidden;margin-top:7px}
+.item-progress span{display:block;height:100%;background:#a8c28d;border-radius:99px}
+.item-check{display:flex;gap:8px;border-top:1px solid #443f35;padding:8px 0;font-size:12px}
+.item-check:first-child{margin-top:10px}.item-check .sym{font-size:15px;flex-shrink:0}.item-check strong{display:block}.item-check p{margin:2px 0 0;color:var(--muted)}
+.item-check a{display:inline-block;font-size:11px;margin-top:2px}.item-summary{font-size:11px;color:var(--muted);margin:7px 0}
+.official-overview{display:flex;gap:9px;flex-wrap:wrap;margin-top:9px}
+.official-stat{border:1px solid var(--line);border-radius:10px;padding:9px 10px;background:#28241e;font-size:12px}
+.official-stat b{font-size:20px;display:block;color:var(--gold)}
+@media(max-width:660px){.official-columns{grid-template-columns:1fr}}
 </style></head>
 <body><main class="wrap">
 <header class="top"><div class="brand">L'ATELIER DE GUILTANAS<strong>COPILOTE · FORGE N1</strong></div><div class="actions"><a class="btn" href="../" title="Retour au Pilotage Guiltanas">← Cockpit</a><button class="btn primary" id="refresh" type="button">↻ Actualiser</button></div></header>
@@ -29,6 +45,7 @@ a{color:var(--gold)}button,input,select{font:inherit}button{cursor:pointer}butto
 <section class="section"><div class="overview"><div><h2>Clôture du niveau 1 : ouverte</h2><p class="note" id="dates">Lecture des rapports en cours…</p></div><span class="pill bad">Aucune validation finale générale</span></div>
 <div class="progress"><div class="done"></div><div class="open"></div></div><p class="note">12 scénarios de gel : 2 anciens échecs à requalifier, 10 non exécutés. Cette bande représente leurs statuts, <strong>pas</strong> un pourcentage global du développement.</p>
 <div id="freshness" class="notice"></div><div id="checkpoint" class="notice" style="margin-top:9px"></div></section>
+<section class="section" id="official-progress"><div class="official-title"><h2>Validation officielle COF2 N1 · par item</h2><span class="pill">Compagnon hors périmètre</span></div><p class="note">16 contrôles explicites par peuple et par profil. <strong>Pourcentage = contrôles acquis / contrôles exigés.</strong> Un scénario partiel ne compte pas. Déplie une ligne pour voir ce qui passe et ce qui manque, avec la preuve.</p><div id="official-stats" class="official-overview"></div><div class="official-columns"><div class="official-group"><h3>8 peuples du livre de base</h3><div id="official-peoples"><p class="note">Lecture des preuves…</p></div></div><div class="official-group"><h3>14 profils du livre de base</h3><div id="official-profiles"><p class="note">Lecture des preuves…</p></div></div></div><p class="note" id="official-date"></p></section>
 <div class="layout">
 <section class="listbox" aria-label="Liste des profils"><h2>17 profils</h2><div class="toolbar"><input id="search" type="search" placeholder="Rechercher un profil…" aria-label="Rechercher un profil"><select id="filter" aria-label="Filtrer les profils"><option value="all">Tous les profils</option><option value="chrome">Avec parcours Chrome ciblé</option><option value="historic">Avec ancien échec à revoir</option><option value="companion">Adaptations Compagnon</option></select></div><div class="profiles" id="profiles"></div></section>
 <section class="section" id="detail" aria-live="polite"><h2>Chargement du registre…</h2></section>
@@ -39,7 +56,7 @@ a{color:var(--gold)}button,input,select{font:inherit}button{cursor:pointer}butto
 </main>
 <script>
 "use strict";
-const state={registry:null,matrix:null,regression:null,phase:null,checkpoint:null,parity:null,selected:null,loaded:false};
+const state={registry:null,matrix:null,regression:null,phase:null,checkpoint:null,parity:null,official:null,selected:null,loaded:false};
 const $=id=>document.getElementById(id);
 const clean=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const french=d=>{if(!d)return "date inconnue";const x=new Date(d);return isNaN(x.getTime())?clean(d):x.toLocaleString("fr-FR",{day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Paris"});};
@@ -81,6 +98,17 @@ $("detail").innerHTML='<div class="profiletitle"><div><div class="brand">FICHE D
 '<h3>Résultats associés à ce profil</h3><div class="cases">'+cards+'</div>'+
 '<div class="notice" style="margin-top:14px"><strong>Pourquoi je ne ferme pas encore ce profil :</strong> il manque les attestations individuelles versionnées des alternatives, des chiffres et du parcours complet. Une fois ces preuves enregistrées, il pourra être gelé et exclu des batteries lourdes tant que ses dépendances ne changent pas.</div>';
 }
+
+function officialCards(items){
+ return items.map(x=>'<details class="item-card"><summary><span><strong>'+clean(x.label)+'</strong><small style="display:block">'+x.verified+'/'+x.total+' points acquis · '+x.attempted.toLocaleString("fr-FR")+' cas</small></span><span class="item-percent">'+x.percent+'%</span></summary><div class="item-progress"><span style="width:'+x.percent+'%"></span></div><p class="item-summary">'+x.accepted?.toLocaleString("fr-FR")+' créations acceptées · '+x.expectedRejected+' refus de règles · '+x.unexpectedFailure+' échecs d’assertion</p><div>'+x.slots.map(g=>'<div class="item-check"><span class="sym" style="color:'+(g.status==="PASS"?"#89c19b":"#e4b76d")+'">'+(g.status==="PASS"?"✓":"○")+'</span><div><strong>'+clean(g.label)+'</strong><p>'+clean(g.status==="PASS"?g.scope:g.remaining||g.scope)+'</p><a href="'+clean(g.evidence)+'" target="_blank" rel="noopener noreferrer">Preuve ↗</a></div></div>').join("")+'</div></details>').join("");
+}
+function officialSummary(){
+ const d=state.official;if(!d){$("official-peoples").innerHTML='<p class="note">Rapport individuel non encore disponible. Aucun pourcentage ne sera inventé.</p>';$("official-profiles").innerHTML='';return;}
+ $("official-peoples").innerHTML=officialCards(d.peoples);
+ $("official-profiles").innerHTML=officialCards(d.profiles);
+ $("official-stats").innerHTML='<div class="official-stat"><b>'+d.summary.racesComplete+'/8</b>Peuples à 100 %</div><div class="official-stat"><b>'+d.summary.profilesComplete+'/14</b>Profils à 100 %</div><div class="official-stat"><b>'+d.summary.nativeAttempts.toLocaleString("fr-FR")+'</b>Cas associés aux items</div><div class="official-stat"><b>'+d.summary.expectedRejected.toLocaleString("fr-FR")+'</b>Refus légaux identifiés</div>';
+ $("official-date").textContent='Dernier état mesuré : '+french(d.generatedAt)+' · moteur : '+d.engineSha256.slice(0,12)+' · tous les effets avancés, options et exports ne sont pas encore certifiés.';
+}
 function overview(){
 const r=state.registry;if(!r)return;
 const matrix=state.matrix,reg=state.regression,phase=state.phase;
@@ -106,13 +134,13 @@ $("sources").innerHTML=src.map(x=>'<a href="'+clean(x[1])+'" target="_blank" rel
 async function load(){
 $("refresh").disabled=true;$("refresh").textContent="Lecture…";
 $("notice").innerHTML='<p class="note">Lecture de GitHub Pages et du registre de preuve…</p>';
-const calls=await Promise.allSettled([readJson("./data.json"),readJson("../../forge-of-heroes/QA/N1/matrix.json"),readJson("../../forge-of-heroes/QA/N1/regressions.json"),readJson("../../forge-of-heroes/QA/N1/status.json"),readJson("../../forge-of-heroes/QA/N1/profile-checkpoint.json"),readJson("../../forge-of-heroes/QA/N1/version-parity.json")]);
+const calls=await Promise.allSettled([readJson("./data.json"),readJson("../../forge-of-heroes/QA/N1/matrix.json"),readJson("../../forge-of-heroes/QA/N1/regressions.json"),readJson("../../forge-of-heroes/QA/N1/status.json"),readJson("../../forge-of-heroes/QA/N1/profile-checkpoint.json"),readJson("../../forge-of-heroes/QA/N1/version-parity.json"),readJson("./progress.json")]);
 if(calls[0].status!=="fulfilled"){$("notice").innerHTML='<div class="notice"><strong>Registre indisponible.</strong> '+clean(calls[0].reason.message)+' — réessayer après publication de GitHub Pages.</div>';$("refresh").disabled=false;$("refresh").textContent="↻ Actualiser";return;}
-state.registry=calls[0].value;state.matrix=calls[1].status==="fulfilled"?calls[1].value:null;state.regression=calls[2].status==="fulfilled"?calls[2].value:null;state.phase=calls[3].status==="fulfilled"?calls[3].value:null;state.checkpoint=calls[4].status==="fulfilled"?calls[4].value:null;state.parity=calls[5].status==="fulfilled"?calls[5].value:null;
+state.registry=calls[0].value;state.matrix=calls[1].status==="fulfilled"?calls[1].value:null;state.regression=calls[2].status==="fulfilled"?calls[2].value:null;state.phase=calls[3].status==="fulfilled"?calls[3].value:null;state.checkpoint=calls[4].status==="fulfilled"?calls[4].value:null;state.parity=calls[5].status==="fulfilled"?calls[5].value:null;state.official=calls[6].status==="fulfilled"?calls[6].value:null;
 const errs=calls.slice(1).filter(x=>x.status==="rejected").length;
 $("notice").innerHTML=errs?'<div class="notice">Certains fichiers de preuves dynamiques sont indisponibles ('+errs+'/5). Le registre statique reste affiché, avec la date de son dernier audit.</div>':'';
 const params=new URLSearchParams(location.search);const key=params.get("profil");if(!state.selected||!state.registry.profiles.some(p=>p.key===state.selected))state.selected=state.registry.profiles.some(p=>p.key===key)?key:"arquebusier";
-overview();listProfiles();showDetail();state.loaded=true;$("refresh").disabled=false;$("refresh").textContent="↻ Actualiser";
+overview();officialSummary();listProfiles();showDetail();state.loaded=true;$("refresh").disabled=false;$("refresh").textContent="↻ Actualiser";
 }
 $("refresh").addEventListener("click",load);
 $("search").addEventListener("input",listProfiles);
