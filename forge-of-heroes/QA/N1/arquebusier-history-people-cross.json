@@ -1,0 +1,433 @@
+{
+  "schema": "FOH_N1_ARQUEBUSIER_HISTORIES_ALL_PEOPLES",
+  "at": "2026-11-02T18:08:37.213Z",
+  "scope": "Arquebusier pur, 8 peuples, toutes les paires histoire géographique + professionnelle, 2 versions, âge vénérable et 4 rangs investis dans une voie d’historique; tests de calcul, acquisition, sauvegarde/reprise et choix persistants; autres modes reportés.",
+  "counts": {
+    "cases": 2304,
+    "passed": 0,
+    "failed": 2304
+  },
+  "inputs": [
+    {
+      "file": "index.html",
+      "sha256": "d628864b125c28f6e9530832c5351c23c5c785a3804007baf39d5154f3d08290"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "sha256": "d2c34d6a5fe753e1c71dcb93b7f68655a67d65df6ebead381a3c80ac10a611a1"
+    }
+  ],
+  "perPeople": {
+    "humain": {
+      "cases": 288,
+      "passed": 0,
+      "failed": 288
+    },
+    "nain": {
+      "cases": 288,
+      "passed": 0,
+      "failed": 288
+    },
+    "demi-elfe": {
+      "cases": 288,
+      "passed": 0,
+      "failed": 288
+    },
+    "demi-orc": {
+      "cases": 288,
+      "passed": 0,
+      "failed": 288
+    },
+    "elfe-haut": {
+      "cases": 288,
+      "passed": 0,
+      "failed": 288
+    },
+    "elfe-sylvain": {
+      "cases": 288,
+      "passed": 0,
+      "failed": 288
+    },
+    "gnome": {
+      "cases": 288,
+      "passed": 0,
+      "failed": 288
+    },
+    "halfelin": {
+      "cases": 288,
+      "passed": 0,
+      "failed": 288
+    }
+  },
+  "histories": {
+    "history:campaigns": {
+      "cases": 128,
+      "passed": 0,
+      "failed": 128
+    },
+    "history:courtier": {
+      "cases": 144,
+      "passed": 0,
+      "failed": 144
+    },
+    "history:scholar": {
+      "cases": 144,
+      "passed": 0,
+      "failed": 144
+    },
+    "history:expert": {
+      "cases": 144,
+      "passed": 0,
+      "failed": 144
+    },
+    "history:commoner": {
+      "cases": 144,
+      "passed": 0,
+      "failed": 144
+    },
+    "history:soldier": {
+      "cases": 144,
+      "passed": 0,
+      "failed": 144
+    },
+    "history:pauper": {
+      "cases": 144,
+      "passed": 0,
+      "failed": 144
+    },
+    "history:wealthy": {
+      "cases": 144,
+      "passed": 0,
+      "failed": 144
+    },
+    "history:nomad": {
+      "cases": 144,
+      "passed": 0,
+      "failed": 144
+    },
+    "history:cities": {
+      "cases": 128,
+      "passed": 0,
+      "failed": 128
+    },
+    "history:deserts": {
+      "cases": 128,
+      "passed": 0,
+      "failed": 128
+    },
+    "history:forests": {
+      "cases": 128,
+      "passed": 0,
+      "failed": 128
+    },
+    "history:caves": {
+      "cases": 128,
+      "passed": 0,
+      "failed": 128
+    },
+    "history:marshes": {
+      "cases": 128,
+      "passed": 0,
+      "failed": 128
+    },
+    "history:mountains": {
+      "cases": 128,
+      "passed": 0,
+      "failed": 128
+    },
+    "history:plains": {
+      "cases": 128,
+      "passed": 0,
+      "failed": 128
+    },
+    "history:shores": {
+      "cases": 128,
+      "passed": 0,
+      "failed": 128
+    }
+  },
+  "failures": [
+    {
+      "tag": "index.html|humain|history:campaigns|history:courtier|history:campaigns",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:courtier|history:courtier",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:scholar|history:campaigns",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:scholar|history:scholar",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:expert|history:campaigns",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:expert|history:expert",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:commoner|history:campaigns",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:commoner|history:commoner",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:soldier|history:campaigns",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:soldier|history:soldier",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:pauper|history:campaigns",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:pauper|history:pauper",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:wealthy|history:campaigns",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:wealthy|history:wealthy",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:nomad|history:campaigns",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:campaigns|history:nomad|history:nomad",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:courtier|history:cities",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:courtier|history:courtier",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:scholar|history:cities",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:scholar|history:scholar",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:expert|history:cities",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:expert|history:expert",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:commoner|history:cities",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:commoner|history:commoner",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:soldier|history:cities",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:soldier|history:soldier",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:pauper|history:cities",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:pauper|history:pauper",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:wealthy|history:cities",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:wealthy|history:wealthy",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:nomad|history:cities",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:cities|history:nomad|history:nomad",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:courtier|history:deserts",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:courtier|history:courtier",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:scholar|history:deserts",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:scholar|history:scholar",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:expert|history:deserts",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:expert|history:expert",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:commoner|history:deserts",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:commoner|history:commoner",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:soldier|history:deserts",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:soldier|history:soldier",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:pauper|history:deserts",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:pauper|history:pauper",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:wealthy|history:deserts",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:wealthy|history:wealthy",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:nomad|history:deserts",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:deserts|history:nomad|history:nomad",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:courtier|history:forests",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:courtier|history:courtier",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:scholar|history:forests",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:scholar|history:scholar",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:expert|history:forests",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:expert|history:expert",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:commoner|history:forests",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:commoner|history:commoner",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:soldier|history:forests",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:soldier|history:soldier",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:pauper|history:forests",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:pauper|history:pauper",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:wealthy|history:forests",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:wealthy|history:wealthy",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:nomad|history:forests",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:forests|history:nomad|history:nomad",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:caves|history:courtier|history:caves",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:caves|history:courtier|history:courtier",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:caves|history:scholar|history:caves",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:caves|history:scholar|history:scholar",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:caves|history:expert|history:caves",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    },
+    {
+      "tag": "index.html|humain|history:caves|history:expert|history:expert",
+      "error": "Error: Mode historique : exactement une voie de profil est requise."
+    }
+  ],
+  "source": "Règles avancées COF2 p.153, voies d’historique pp.170–180",
+  "status": "FAIL"
+}
