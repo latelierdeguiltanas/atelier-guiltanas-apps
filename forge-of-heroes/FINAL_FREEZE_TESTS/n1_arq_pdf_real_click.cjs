@@ -12,13 +12,23 @@ const results=[],failures=[];
  const flat=await PDFDocument.create(),flatFont=await flat.embedFont(StandardFonts.Helvetica);
  for(let i=0;i<2;i++){const p=flat.addPage([612,792]);p.drawText('GABARIT VIERGE NON REMPLISSABLE - TEMOIN '+(i+1),{x:24,y:755,font:flatFont,size:10});}
  const flatPath=path.join(os.tmpdir(),'cof2-blank-flat-two-pages.pdf');fs.writeFileSync(flatPath,await flat.save());
- const templates=[{kind:'fillable',path:templatePath},{kind:'flat-nonfillable',path:flatPath}];
+ const templates=[{kind:'fillable',path:templatePath},{kind:'flat-unrecognized',path:flatPath},{kind:'flat-official-digest-simulated',path:flatPath}];
+ const officialSha='cb97958e6cd2cf394a3910c5d48af1026a7280da72c4e5f331737e5b41ebddf4'; // Empreinte réelle du PDF officiel 2p fourni, contrôlée hors CI.
   const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||undefined,args:['--no-sandbox']});
  try{
  for(const tmpl of templates)for(const variant of ['Arquebusier','Arbalétrier']){
   const ctx=await browser.newContext({viewport:{width:393,height:852},hasTouch:true,isMobile:true,acceptDownloads:true});
-  const page=await ctx.newPage();page.setDefaultTimeout(7000);
-  page.on('dialog',async d=>{results.push({variant,templateKind:tmpl.kind,dialog:d.message()});await d.accept()});
+  if(tmpl.kind==='flat-official-digest-simulated')await ctx.addInitScript(({sha,byteLength})=>{
+    const native=SubtleCrypto.prototype.digest;
+    SubtleCrypto.prototype.digest=function(algorithm,data){
+      if(String(algorithm).toUpperCase()==='SHA-256'&&data?.byteLength===byteLength){
+        return Promise.resolve(Uint8Array.from(sha.match(/../g),h=>parseInt(h,16)).buffer);
+      }
+      return native.call(this,algorithm,data);
+    };
+  },{sha:officialSha,byteLength:fs.statSync(flatPath).size});
+  const page=await ctx.newPage();page.setDefaultTimeout(7000);const dialogs=[];
+  page.on('dialog',async d=>{dialogs.push(d.message());results.push({variant,templateKind:tmpl.kind,dialog:d.message()});await d.accept()});
   const click=async locator=>page.locator(locator).tap(),next=()=>click('#next-btn');
   const choose=async(sel,name)=>{const o=page.locator(sel),val=await o.locator('option').evaluateAll((xs,v)=>xs.find(x=>x.textContent.toLowerCase().includes(v.toLowerCase()))?.value,name);assert.ok(val,sel+' missing '+name);await o.selectOption(val)};
   const name='Audit PDF '+variant+' N1';
@@ -41,6 +51,12 @@ const results=[],failures=[];
    await btn.waitFor({timeout:8000});
    await btn.tap();
    const input=page.locator('#official-sheet-file');await input.waitFor({state:'attached',timeout:6000});
+   if(tmpl.kind==='flat-unrecognized'){
+     await input.setInputFiles(tmpl.path);
+     await page.waitForTimeout(600);
+     assert.ok(dialogs.some(x=>x.includes('Ce PDF sans champs ne correspond pas au modèle COF2 fourni')),'Le rejet légal du PDF étranger doit être expliqué');
+     results.push({variant,templateKind:tmpl.kind,status:'EXPECTED_REJECTED',explanation:'Modèle vierge sans champs mais empreinte différente de la fiche COF2 officielle : rejet de sécurité attendu'});
+   }else{
    const evt=page.waitForEvent('download',{timeout:23000});evt.catch(()=>{});
    await input.setInputFiles(tmpl.path);
    const download=await evt;
@@ -50,11 +66,12 @@ const results=[],failures=[];
    const pages=Number(meta.match(/^Pages:\s+(\d+)/m)?.[1]);
    const extracted=cp.execFileSync('pdftotext',['-layout',filename,'-'],{encoding:'utf8'});
    const firstTwoPages=cp.execFileSync('pdftotext',['-f','1','-l','2','-layout',filename,'-'],{encoding:'utf8'});
-   const checks={variant,templateKind:tmpl.kind,template:tmpl.kind==='fillable'?'Gabarit témoin à deux pages et champs AcroForm':'Gabarit témoin à deux pages SANS champs, comme la fiche officielle fournie (sans reproduire son graphisme)',filename:download.suggestedFilename(),pages,size:fs.statSync(filename).size,textLength:extracted.length,containsName:extracted.includes(name),containsProfile:extracted.includes(variant),firstTwoPagesHaveName:firstTwoPages.includes(name),firstTwoPagesHaveProfile:firstTwoPages.includes(variant),containsArtillerie:/artilleur|Mécanismes/i.test(extracted),containsMaster:/maître d’armes|Armes de prédilection/i.test(extracted)};
+   const checks={variant,templateKind:tmpl.kind,template:tmpl.kind==='fillable'?'Gabarit témoin à deux pages et champs AcroForm':'Simulation du contrôle d’empreinte officielle sur PDF plat synthétique 2p, non une reproduction graphique de la fiche originale',filename:download.suggestedFilename(),pages,size:fs.statSync(filename).size,textLength:extracted.length,containsName:extracted.includes(name),containsProfile:extracted.includes(variant),firstTwoPagesHaveName:firstTwoPages.includes(name),firstTwoPagesHaveProfile:firstTwoPages.includes(variant),containsArtillerie:/artilleur|Mécanismes/i.test(extracted),containsMaster:/maître d’armes|Armes de prédilection/i.test(extracted)};
    results.push(checks);
    assert.ok(pages>=3,'Official 2-page sheet and path annexes should be at least 3 pages; got '+pages);
    assert.ok(checks.containsName&&checks.containsProfile,'Name and profile must appear in PDF');
    assert.ok(checks.firstTwoPagesHaveName&&checks.firstTwoPagesHaveProfile,'La fiche de deux pages doit avoir NOM et PROFIL : des annexes correctes ne suffisent pas.');
+   }
   }catch(e){failures.push({variant,templateKind:tmpl.kind,message:String(e.stack||e),view:await page.locator('body').innerText().then(s=>s.slice(-1000)).catch(()=>'')});}
   await ctx.close();
  }
