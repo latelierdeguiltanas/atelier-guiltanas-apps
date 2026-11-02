@@ -92,7 +92,7 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
    const presence=[
     ['voie-de-l-artilleur',hasPermanent('voie-de-l-artilleur',e=>e?.type==='bonus_die'&&e.target==='siege_weapon_attacks'),'mecanismesSiege'],
     ['voie-des-explosifs',hasConditional('voie-des-explosifs',x=>x.condition?.loadedPowderWeapon===true&&x.condition?.specialAmmunition==='grapeshot'&&x.trigger==='L'&&x.mechanics?.area?.shape==='cone'&&x.mechanics.area.lengthMeters===10&&x.mechanics.area.widthMeters===5&&x.mechanicalEffect?.some(e=>e.type==='multi_target_weapon_attack'&&e.damageMultiplier===0.5)),'grenailleCone'],
-    ['voie-du-mercenaire',hasPermanent('voie-du-mercenaire',e=>e?.type==='weapon_damage_override'&&e.weaponId==='weapon:unarmed'&&e.formula==='1d4'&&e.nonLethal===true)&&hasPermanent('voie-du-mercenaire',e=>e?.type==='conditional_damage_reduction'&&e.damageType==='non_lethal'&&e.divisor===2),'pilierNonLethal'],
+    ['voie-du-mercenaire',hasPermanent('voie-du-mercenaire',e=>e?.type==='weapon_damage_override'&&e.weaponId==='weapon:unarmed'&&e.formula==='1d4°'&&e.nonLethal===true)&&hasPermanent('voie-du-mercenaire',e=>e?.type==='conditional_damage_reduction'&&e.damageType==='non_lethal'&&e.divisor===2),'pilierNonLethal'],
     ['voie-du-pistolero',hasConditional('voie-du-pistolero',x=>x.condition==='loaded_powder_weapon_held'&&x.mechanicalEffect?.some(e=>e.type==='conditional_INIT_bonus'&&e.value===5)&&x.mechanicalEffect?.some(e=>e.type==='remove_contact_ranged_malus'&&e.except?.includes('couleuvrine'))),'pistoleroLoaded'],
     ['voie-de-la-precision',hasPermanent('voie-de-la-precision',e=>e?.type==='cover_penalty_override'&&e.partial===0&&e.important===-2),'precisionCover']
    ];
