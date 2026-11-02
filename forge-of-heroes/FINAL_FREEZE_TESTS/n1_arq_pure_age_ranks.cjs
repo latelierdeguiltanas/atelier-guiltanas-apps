@@ -5,7 +5,7 @@ const {load,standardState}=require('./forge_product_runner');
 const ROOT=path.resolve(__dirname,'..'), copy=x=>JSON.parse(JSON.stringify(x));
 const profile='class:arquebusier:cof2-lb-2024', races=['humain','nain','demi-elfe','demi-orc','elfe-haut','elfe-sylvain','gnome','halfelin'];
 const source={book:'COF2 Livre de base imprimé pp.62–65; Règles avancées p.153 (catégories d’âge)',familyHpPerLevel:4,baseHpN1:8,ageEffects:{'very-young':{agi:0,con:0,init:-1},young:{agi:0,con:0,init:0},mature:{agi:-1,con:0,init:0},venerable:{agi:-1,con:-1,init:0}},ranks:{young:1,'very-young':1,mature:2,venerable:3}};
-const reports={schema:'FOH_N1_ARQUEBUSIER_PURE_AGE_RANK',timestamp:new Date().toISOString(),scope:'14? No: only Arquebusier pure × 8 official peoples × five different first paths × all ages (very young PC/DR, young, mature, venerable), both product engines. Validates racial and age characteristics against book rules, permanent PV/DEF/INIT under equip, existence of each accessible rank, local save/reopen. Contextual spells/attacks, historical choices, Arbalétrier alternative and PDF are NOT validated.',source,sourceCommit:process.env.GITHUB_SHA||null,expected:8*5*5*2,cases:0,pass:0,refused:0,failed:0,failures:[],perRace:{},perPath:{},products:[],samples:[]};
+const reports={schema:'FOH_N1_ARQUEBUSIER_PURE_AGE_RANK',timestamp:new Date().toISOString(),scope:'14? No: only Arquebusier pure × 8 official peoples × five different first paths × all ages (very young PC/DR, young, mature, venerable), both product engines. Validates racial and age characteristics against book rules, permanent PV/DEF/INIT under equip, existence of each accessible rank, local save/reopen. Contextual spells/attacks, historical choices, Arbalétrier alternative and PDF are NOT validated.',source,sourceCommit:process.env.GITHUB_SHA||null,expected:8*5*5*2,cases:0,pass:0,refused:0,failed:0,failures:[],perRace:{},perPath:{},products:[],samples:[],numericEffectAssertions:{'Arme à répétition — chargeur 2 + INT et +1 au rang 3':0,'Poudre puissante — portée +10 m, dommages +1 et projectile magique':0,'Tir précis — critique sur 19-20 à distance':0,'Combattant aguerri — défense +1':0}}};
 const raceRules={
  humain:{bonus:'cha',malus:null,humain:true,path:'voie-de-l-humain'},
  nain:{bonus:'con',malus:'agi',path:'voie-du-nain'},
@@ -68,6 +68,27 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
    for(let n=1;n<=rank;n++)if(!sticky.acquiredAbilities.some(x=>x.pathId===first.id&&x.rank===n))throw Error('Missing ability rank '+n);
    if(rank===3&&first.id.split(':')[1]==='voie-du-mercenaire'&&sticky.DEF<10+expected.agi+1)throw Error('Missing +1 DEF of Combattant aguerri at R3');
    if(airGift && sticky.DEF<10+expected.agi+1)throw Error('Don étrange du gnome doit donner +1 DEF, selon Murmures dans le vent (Livre de base p.93)');
+   const pathSlug=first.id.split(':')[1],weapon=sticky.attacks?.find(a=>a.weaponId==='weapon:powder-pistol');
+   if(pathSlug==='voie-de-l-artilleur'&&(age==='mature'||age==='venerable')){
+    const want=2+expected.int+(age==='venerable'?1:0);
+    if(!weapon?.magazine||weapon.magazine.capacity!==want||weapon.magazine.current!==want)throw Error('Arme à répétition: chargeur attendu '+want+' obtenu '+JSON.stringify(weapon?.magazine));
+    reports.numericEffectAssertions['Arme à répétition — chargeur 2 + INT et +1 au rang 3']++;
+   }
+   if(pathSlug==='voie-des-explosifs'&&age==='venerable'){
+    if(!weapon||weapon.rangeMeters!==30||weapon.damage!=='1d10+1'||!weapon.tags?.includes('magical_projectile'))throw Error('Poudre puissante: +10m, +1DM et munitions magiques absents '+JSON.stringify(weapon));
+    reports.numericEffectAssertions['Poudre puissante — portée +10 m, dommages +1 et projectile magique']++;
+   }
+   if(pathSlug==='voie-de-la-precision'&&age==='venerable'){
+    const distance=sticky.attacks?.filter(a=>a.type==='distance')||[],melee=sticky.attacks?.filter(a=>a.type==='contact')||[];
+    if(!distance.length||distance.some(a=>a.criticalThreshold!==19)||melee.some(a=>a.criticalThreshold!==20))throw Error('Tir précis: seuil 19-20 distance uniquement '+JSON.stringify(sticky.attacks));
+    reports.numericEffectAssertions['Tir précis — critique sur 19-20 à distance']++;
+   }
+   if(pathSlug==='voie-du-mercenaire'&&age==='venerable'){
+    const armor=T.armors.find(a=>a.id===s.equip.armorId),armorDEF=armor?.defBonus??armor?.def??0;
+    const expectedDEF=10+Math.min(expected.agi,Number(armor?.agiCap??99))+armorDEF+airGift+1;
+    if(sticky.DEF<expectedDEF)throw Error('Combattant aguerri: +1 DEF obligatoire, attendu au moins '+expectedDEF+' obtenu '+sticky.DEF);
+    reports.numericEffectAssertions['Combattant aguerri — défense +1']++;
+   }
    const saved=E.createHeroSavePayload(s,sticky.characterState,{id:'arq-'+race+'-'+i+'-'+age}),back=E.computeCharacterN1(E.restoreHeroSavePayload(copy(saved)).draft);
    if(back.errors.length)throw Error('Restored character cannot be created '+back.errors.join('; '));
    if(JSON.stringify(copy(back.sticky.characterState.derived))!==JSON.stringify(copy(sticky.characterState.derived)))throw Error('Derived stats changed after saving');
