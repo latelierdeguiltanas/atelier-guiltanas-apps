@@ -41,9 +41,9 @@ a{color:var(--gold)}button,input,select{font:inherit}button{cursor:pointer}butto
 <header class="top"><div class="brand">L'ATELIER DE GUILTANAS<strong>COPILOTE · FORGE N1</strong></div><div class="actions"><a class="btn" href="../" title="Retour au Pilotage Guiltanas">← Cockpit</a><button class="btn primary" id="refresh" type="button">↻ Actualiser</button></div></header>
 <p class="intro"><strong>Les contrôles existants sont conservés :</strong> 17 profils et 16 peuples présents dans la matrice, oracles chiffrés R1/R2 en configuration témoin, puis vérifications ciblées sur le code courant. Le certificat exhaustif est une étape supplémentaire, pas un effacement des acquis.</p>
 <div id="notice" role="status"></div>
-<div class="metricgrid"><div class="metric"><b id="mprofiles">—</b><small>Profils officiels couverts</small></div><div class="metric"><b id="mcert">0 / 17</b><small>Profils officiels à 100 %</small></div><div class="metric"><b id="mtests">—</b><small>Suites automatiques (dernier rapport)</small></div><div class="metric"><b id="mmanual">0 / 12</b><small>Scénarios officiels certifiés</small></div></div>
+<div class="metricgrid"><div class="metric"><b id="mprofiles">—</b><small>Profils officiels couverts</small></div><div class="metric"><b id="mcert">0 / 17</b><small>Profils officiels à 100 %</small></div><div class="metric"><b id="mtests">—</b><small>Suites automatiques (dernier rapport)</small></div><div class="metric"><b id="mmanual">0 / 12</b><small>Parcours Chrome numériques et reprise</small></div></div>
 <section class="section"><div class="overview"><div><h2>Clôture du niveau 1 : ouverte</h2><p class="note" id="dates">Lecture des rapports en cours…</p></div><span class="pill bad">Aucune validation finale générale</span></div>
-<div class="progress"><div class="done"></div><div class="open"></div></div><p class="note">12 scénarios de gel : 2 anciens échecs à requalifier, 10 non exécutés. Cette bande représente leurs statuts, <strong>pas</strong> un pourcentage global du développement.</p>
+<div class="progress"><div class="done"></div><div class="open"></div></div><p class="note">La recette ancienne comptait 2 échecs et 10 scénarios non exécutés. Les 12 parcours Chrome ont depuis été relancés : valeurs numériques, sauvegarde, réouverture et fiche interactive. Les champs complets du PDF et toutes les variantes ne sont pas certifiés par ces seuls parcours.</p>
 <div id="freshness" class="notice"></div><div id="checkpoint" class="notice" style="margin-top:9px"></div></section>
 <section class="section" id="official-progress"><div class="official-title"><h2>Validation officielle COF2 N1 · par item</h2><span class="pill">Compagnon hors périmètre</span></div><p class="note">16 contrôles explicites par peuple et par profil. <strong>Pourcentage = contrôles acquis / contrôles exigés.</strong> Un scénario partiel ne compte pas. Déplie une ligne pour voir ce qui passe et ce qui manque, avec la preuve.</p><div id="official-stats" class="official-overview"></div><div class="official-columns"><div class="official-group"><h3>8 peuples du livre de base</h3><div id="official-peoples"><p class="note">Lecture des preuves…</p></div></div><div class="official-group"><h3>14 profils du livre de base</h3><div id="official-profiles"><p class="note">Lecture des preuves…</p></div></div></div><p class="note" id="official-date"></p></section>
 <details class="section"><summary style="cursor:pointer;font-weight:700">Archives et preuves historiques détaillées · inclut les profils Compagnon reportés</summary><div class="layout">
@@ -56,7 +56,7 @@ a{color:var(--gold)}button,input,select{font:inherit}button{cursor:pointer}butto
 </main>
 <script>
 "use strict";
-const state={registry:null,matrix:null,regression:null,phase:null,checkpoint:null,parity:null,official:null,selected:null,loaded:false};
+const state={registry:null,matrix:null,regression:null,phase:null,checkpoint:null,parity:null,official:null,chrome:null,selected:null,loaded:false};
 const $=id=>document.getElementById(id);
 const clean=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const french=d=>{if(!d)return "date inconnue";const x=new Date(d);return isNaN(x.getTime())?clean(d):x.toLocaleString("fr-FR",{day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Paris"});};
@@ -114,7 +114,7 @@ const r=state.registry;if(!r)return;
 const matrix=state.matrix,reg=state.regression,phase=state.phase;
 $("mprofiles").textContent=(state.official?.profiles.length??14)+" / 14";
 $("mcert").textContent=(state.official?.summary.profilesComplete??0)+" / 14";
-$("mmanual").textContent=r.manualPack.filter(x=>x.status==="PASS").length+" / 12";
+$("mmanual").textContent=(state.chrome?.passed??0)+" / "+(state.chrome?.total??12);if(state.chrome?.total===12){$("mmanual").title="12 scénarios au clic : valeurs, sauvegarde, réouverture, fiche, hors vérification exhaustive des champs PDF";document.querySelector(".progress .done").style.width=(100*state.chrome.passed/12)+"%";document.querySelector(".progress .done").style.background="#89c19b";}
 $("mtests").textContent=(reg?.passed??r.automated.regressionPass)+" / "+(reg?.total??r.automated.regressionTotal);
 $("dates").textContent="Matrice : "+french(matrix?.finishedAt||r.automated.matrixFinishedAt)+" · Régressions : "+french(reg?.finishedAt||r.automated.regressionFinishedAt);
 const msha=matrix?.inputs?.indexSha256??r.automated.matrixIndexSha256;
@@ -134,9 +134,9 @@ $("sources").innerHTML=src.map(x=>'<a href="'+clean(x[1])+'" target="_blank" rel
 async function load(){
 $("refresh").disabled=true;$("refresh").textContent="Lecture…";
 $("notice").innerHTML='<p class="note">Lecture de GitHub Pages et du registre de preuve…</p>';
-const calls=await Promise.allSettled([readJson("./data.json"),readJson("../../forge-of-heroes/QA/N1/matrix.json"),readJson("../../forge-of-heroes/QA/N1/regressions.json"),readJson("../../forge-of-heroes/QA/N1/status.json"),readJson("../../forge-of-heroes/QA/N1/profile-checkpoint.json"),readJson("../../forge-of-heroes/QA/N1/version-parity.json"),readJson("./progress.json")]);
+const calls=await Promise.allSettled([readJson("./data.json"),readJson("../../forge-of-heroes/QA/N1/matrix.json"),readJson("../../forge-of-heroes/QA/N1/regressions.json"),readJson("../../forge-of-heroes/QA/N1/status.json"),readJson("../../forge-of-heroes/QA/N1/profile-checkpoint.json"),readJson("../../forge-of-heroes/QA/N1/version-parity.json"),readJson("./progress.json"),readJson("../../forge-of-heroes/QA/N1/real-chrome-evidence.json")]);
 if(calls[0].status!=="fulfilled"){$("notice").innerHTML='<div class="notice"><strong>Registre indisponible.</strong> '+clean(calls[0].reason.message)+' — réessayer après publication de GitHub Pages.</div>';$("refresh").disabled=false;$("refresh").textContent="↻ Actualiser";return;}
-state.registry=calls[0].value;state.matrix=calls[1].status==="fulfilled"?calls[1].value:null;state.regression=calls[2].status==="fulfilled"?calls[2].value:null;state.phase=calls[3].status==="fulfilled"?calls[3].value:null;state.checkpoint=calls[4].status==="fulfilled"?calls[4].value:null;state.parity=calls[5].status==="fulfilled"?calls[5].value:null;state.official=calls[6].status==="fulfilled"?calls[6].value:null;
+state.registry=calls[0].value;state.matrix=calls[1].status==="fulfilled"?calls[1].value:null;state.regression=calls[2].status==="fulfilled"?calls[2].value:null;state.phase=calls[3].status==="fulfilled"?calls[3].value:null;state.checkpoint=calls[4].status==="fulfilled"?calls[4].value:null;state.parity=calls[5].status==="fulfilled"?calls[5].value:null;state.official=calls[6].status==="fulfilled"?calls[6].value:null;state.chrome=calls[7].status==="fulfilled"?calls[7].value:null;
 const errs=calls.slice(1).filter(x=>x.status==="rejected").length;
 $("notice").innerHTML=errs?'<div class="notice">Certains fichiers de preuves dynamiques sont indisponibles ('+errs+'/5). Le registre statique reste affiché, avec la date de son dernier audit.</div>':'';
 const params=new URLSearchParams(location.search);const key=params.get("profil");if(!state.selected||!state.registry.profiles.some(p=>p.key===state.selected))state.selected=state.registry.profiles.some(p=>p.key===key)?key:"arquebusier";
