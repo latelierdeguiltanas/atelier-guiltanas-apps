@@ -5,7 +5,7 @@ const {load,standardState}=require('./forge_product_runner');
 const ROOT=path.resolve(__dirname,'..'), copy=x=>JSON.parse(JSON.stringify(x));
 const profile='class:arquebusier:cof2-lb-2024', races=['humain','nain','demi-elfe','demi-orc','elfe-haut','elfe-sylvain','gnome','halfelin'];
 const source={book:'COF2 Livre de base imprimé pp.62–65; Règles avancées p.153 (catégories d’âge)',familyHpPerLevel:4,baseHpN1:8,ageEffects:{'very-young':{agi:0,con:0,init:-1},young:{agi:0,con:0,init:0},mature:{agi:-1,con:0,init:0},venerable:{agi:-1,con:-1,init:0}},ranks:{young:1,'very-young':1,mature:2,venerable:3}};
-const reports={schema:'FOH_N1_ARQUEBUSIER_PURE_AGE_RANK',timestamp:new Date().toISOString(),scope:'14? No: only Arquebusier pure × 8 official peoples × five different first paths × all ages (very young PC/DR, young, mature, venerable), both product engines. Validates racial and age characteristics against book rules, permanent PV/DEF/INIT under equip, existence of each accessible rank, local save/reopen. Contextual spells/attacks, historical choices, Arbalétrier alternative and PDF are NOT validated.',source,sourceCommit:process.env.GITHUB_SHA||null,expected:8*5*5*2,cases:0,pass:0,refused:0,failed:0,failures:[],perRace:{},perPath:{},products:[],samples:[],skillEffectAssertions:{mecanismes:0,grenailleArtificier:0,pilierDeBar:0},numericEffectAssertions:{'Arme à répétition — chargeur 2 + INT et +1 au rang 3':0,'Poudre puissante — portée +10 m, dommages +1 et projectile magique':0,'Tir précis — critique sur 19-20 à distance':0,'Combattant aguerri — défense +1':0}};
+const reports={schema:'FOH_N1_ARQUEBUSIER_PURE_AGE_RANK',timestamp:new Date().toISOString(),scope:'14? No: only Arquebusier pure × 8 official peoples × five different first paths × all ages (very young PC/DR, young, mature, venerable), both product engines. Validates racial and age characteristics against book rules, permanent PV/DEF/INIT under equip, existence of each accessible rank, local save/reopen. Contextual spells/attacks, historical choices, Arbalétrier alternative and PDF are NOT validated.',source,sourceCommit:process.env.GITHUB_SHA||null,expected:8*5*5*2,cases:0,pass:0,refused:0,failed:0,failures:[],perRace:{},perPath:{},products:[],samples:[],skillEffectAssertions:{mecanismes:0,grenailleArtificier:0,pilierDeBar:0},r1RuleProjectionAssertions:{mecanismesSiege:0,grenailleCone:0,pilierNonLethal:0,pistoleroLoaded:0,precisionCover:0},numericEffectAssertions:{'Arme à répétition — chargeur 2 + INT et +1 au rang 3':0,'Poudre puissante — portée +10 m, dommages +1 et projectile magique':0,'Tir précis — critique sur 19-20 à distance':0,'Combattant aguerri — défense +1':0}};
 const raceRules={
  humain:{bonus:'cha',malus:null,humain:true,path:'voie-de-l-humain'},
  nain:{bonus:'con',malus:'agi',path:'voie-du-nain'},
@@ -83,6 +83,23 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
     const want=rankForPath+2;
     if(matches.length!==1||matches[0].value!==want||JSON.stringify(matches[0].tests)!==JSON.stringify(info.tests)||matches[0].scope!=='self')throw Error('Wrong '+info.slug+' bonus: expected '+want+' '+JSON.stringify(info.tests)+' got '+JSON.stringify(matches));
     reports.skillEffectAssertions[info.counter]++;
+   }
+
+   
+   const projectedPaths=new Set([first.id.split(':')[1],second.id.split(':')[1]]);
+   const hasPermanent=(slug,effect)=>sticky.permanentEffects?.some(z=>z.sourceAbilityId?.includes('classpath:'+slug+':class-arquebusier:')&&effect(z.mechanicalEffect));
+   const hasConditional=(slug,effect)=>sticky.conditionalEffects?.some(z=>z.sourceAbilityId?.includes('classpath:'+slug+':class-arquebusier:')&&effect(z));
+   const presence=[
+    ['voie-de-l-artilleur',hasPermanent('voie-de-l-artilleur',e=>e?.type==='bonus_die'&&e.target==='siege_weapon_attacks'),'mecanismesSiege'],
+    ['voie-des-explosifs',hasConditional('voie-des-explosifs',x=>x.condition?.loadedPowderWeapon===true&&x.condition?.specialAmmunition==='grapeshot'&&x.trigger==='L'&&x.mechanics?.area?.shape==='cone'&&x.mechanics.area.lengthMeters===10&&x.mechanics.area.widthMeters===5&&x.mechanicalEffect?.some(e=>e.type==='multi_target_weapon_attack'&&e.damageMultiplier===0.5)),'grenailleCone'],
+    ['voie-du-mercenaire',hasPermanent('voie-du-mercenaire',e=>e?.type==='weapon_damage_override'&&e.weaponId==='weapon:unarmed'&&e.formula==='1d4'&&e.nonLethal===true)&&hasPermanent('voie-du-mercenaire',e=>e?.type==='conditional_damage_reduction'&&e.damageType==='non_lethal'&&e.divisor===2),'pilierNonLethal'],
+    ['voie-du-pistolero',hasConditional('voie-du-pistolero',x=>x.condition==='loaded_powder_weapon_held'&&x.mechanicalEffect?.some(e=>e.type==='conditional_INIT_bonus'&&e.value===5)&&x.mechanicalEffect?.some(e=>e.type==='remove_contact_ranged_malus'&&e.except?.includes('couleuvrine'))),'pistoleroLoaded'],
+    ['voie-de-la-precision',hasPermanent('voie-de-la-precision',e=>e?.type==='cover_penalty_override'&&e.partial===0&&e.important===-2),'precisionCover']
+   ];
+   for(const [slug,present,counter]of presence){
+    const wanted=projectedPaths.has(slug);
+    if(present!==wanted)throw Error('Projection de rang 1 incorrecte '+slug+' : attendue '+wanted+' obtenue '+present);
+    if(present)reports.r1RuleProjectionAssertions[counter]++;
    }
 
    const pathSlug=first.id.split(':')[1],weapon=sticky.attacks?.find(a=>a.weaponId==='weapon:powder-pistol');
