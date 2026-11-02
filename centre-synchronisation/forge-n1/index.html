@@ -39,7 +39,7 @@ a{color:var(--gold)}button,input,select{font:inherit}button{cursor:pointer}butto
 </main>
 <script>
 "use strict";
-const state={registry:null,matrix:null,regression:null,phase:null,checkpoint:null,selected:null,loaded:false};
+const state={registry:null,matrix:null,regression:null,phase:null,checkpoint:null,parity:null,selected:null,loaded:false};
 const $=id=>document.getElementById(id);
 const clean=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const french=d=>{if(!d)return "date inconnue";const x=new Date(d);return isNaN(x.getTime())?clean(d):x.toLocaleString("fr-FR",{day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Paris"});};
@@ -98,18 +98,19 @@ $("freshness").innerHTML='<strong>Validité des preuves :</strong> '+(agree?"La 
 (psha&&psha!==msha?" Le rapport de phase référence également une empreinte différente.":"")+
 ' Ces différences demandent une réconciliation du code courant ; elles ne prouvent pas à elles seules un bug du moteur. <strong>0 profil ne possède de certificat complet.</strong> '+
 '<span style="display:block;margin-top:5px">Matrice : '+(matrix?Object.values(matrix.results).reduce((a,v)=>a+v.attempted,0):r.automated.matrixAttempted).toLocaleString("fr-FR")+' tentatives · '+(matrix?Object.values(matrix.results).reduce((a,v)=>a+v.assertionFailures,0):r.automated.matrixAssertionFailures)+' échec(s) d’assertion déclaré(s), hors contrôles indépendants de tous les effets.</span>';
-$("blocks").innerHTML=r.blocks.map(x=>'<div class="check"><i>○</i><div><strong>'+clean(x.name)+'</strong><div class="note">'+clean(x.reason)+'</div></div></div>').join("");
+if(state.parity?.matrixMechanicsReusable){$("freshness").innerHTML="<strong>Matrice mécanique conservée :</strong> moteur et base actuels identiques aux 179 120 essais. Les résultats mécaniques restent exploitables sans rejeu complet. Les contrôles de navigation et PDF demeurent séparés. <strong>Ce n’est pas un retour à zéro.</strong>";}
+$("blocks").innerHTML=r.blocks.map(x=>{const ok=x.id==="matrix-current"&&state.parity?.matrixMechanicsReusable;return '<div class="check"><i style="color:'+(ok?"#89c19b":"#e4b76d")+'">'+(ok?"✓":"○")+'</i><div><strong>'+clean(x.name)+(ok?" — ACQUIS":"")+'</strong><div class="note">'+clean(ok?"Parité moteur et base de règles vérifiée pour le code courant. Les assertions de la matrice sont conservées.":x.reason)+'</div></div></div>';}).join("");
 const src=[["Matrice N1",r.sourceFiles.matrix],["37 régressions",r.sourceFiles.regressions],["Statut du gate",r.sourceFiles.phase],["Réserves officielles",r.sourceFiles.readme],["12 parcours au clic",r.sourceFiles.manual],["État du projet",r.sourceFiles.project]];
 $("sources").innerHTML=src.map(x=>'<a href="'+clean(x[1])+'" target="_blank" rel="noopener noreferrer">'+clean(x[0])+' ↗</a>').join("");
 }
 async function load(){
 $("refresh").disabled=true;$("refresh").textContent="Lecture…";
 $("notice").innerHTML='<p class="note">Lecture de GitHub Pages et du registre de preuve…</p>';
-const calls=await Promise.allSettled([readJson("./data.json"),readJson("../../forge-of-heroes/QA/N1/matrix.json"),readJson("../../forge-of-heroes/QA/N1/regressions.json"),readJson("../../forge-of-heroes/QA/N1/status.json"),readJson("../../forge-of-heroes/QA/N1/profile-checkpoint.json")]);
+const calls=await Promise.allSettled([readJson("./data.json"),readJson("../../forge-of-heroes/QA/N1/matrix.json"),readJson("../../forge-of-heroes/QA/N1/regressions.json"),readJson("../../forge-of-heroes/QA/N1/status.json"),readJson("../../forge-of-heroes/QA/N1/profile-checkpoint.json"),readJson("../../forge-of-heroes/QA/N1/version-parity.json")]);
 if(calls[0].status!=="fulfilled"){$("notice").innerHTML='<div class="notice"><strong>Registre indisponible.</strong> '+clean(calls[0].reason.message)+' — réessayer après publication de GitHub Pages.</div>';$("refresh").disabled=false;$("refresh").textContent="↻ Actualiser";return;}
-state.registry=calls[0].value;state.matrix=calls[1].status==="fulfilled"?calls[1].value:null;state.regression=calls[2].status==="fulfilled"?calls[2].value:null;state.phase=calls[3].status==="fulfilled"?calls[3].value:null;state.checkpoint=calls[4].status==="fulfilled"?calls[4].value:null;
+state.registry=calls[0].value;state.matrix=calls[1].status==="fulfilled"?calls[1].value:null;state.regression=calls[2].status==="fulfilled"?calls[2].value:null;state.phase=calls[3].status==="fulfilled"?calls[3].value:null;state.checkpoint=calls[4].status==="fulfilled"?calls[4].value:null;state.parity=calls[5].status==="fulfilled"?calls[5].value:null;
 const errs=calls.slice(1).filter(x=>x.status==="rejected").length;
-$("notice").innerHTML=errs?'<div class="notice">Certains fichiers de preuves dynamiques sont indisponibles ('+errs+'/3). Le registre statique reste affiché, avec la date de son dernier audit.</div>':'';
+$("notice").innerHTML=errs?'<div class="notice">Certains fichiers de preuves dynamiques sont indisponibles ('+errs+'/5). Le registre statique reste affiché, avec la date de son dernier audit.</div>':'';
 const params=new URLSearchParams(location.search);const key=params.get("profil");if(!state.selected||!state.registry.profiles.some(p=>p.key===state.selected))state.selected=state.registry.profiles.some(p=>p.key===key)?key:"arquebusier";
 overview();listProfiles();showDetail();state.loaded=true;$("refresh").disabled=false;$("refresh").textContent="↻ Actualiser";
 }
