@@ -542,7 +542,7 @@ function openProject(id){
  const next=(p.next_action||'La prochaine étape reste à confirmer.').slice(0,650);
  let content='<div class="project-drawer-head">'+projectIconMarkup(p)+'<div><div class="project-drawer-kicker">'+escapeHTML(p.category||'Projet')+'</div><strong>'+escapeHTML(short)+'</strong><small>'+escapeHTML(projectState(p))+'</small></div></div>';
  content+='<div class="project-hero-summary"><p>'+escapeHTML((p.summary||'Objectif à préciser.').slice(0,500))+'</p></div>';
- if(p.id==='forge')content+=forgeCurrentMarkup();
+ if(p.id==='forge')content+='<p class="minihelp">Le suivi prioritaire des personnages N1 est juste au-dessus. Les anciennes campagnes de vérification restent consultables dans les archives plus bas.</p>';
  else content+='<div class="project-next-step"><small>PROCHAIN PAS</small><p>'+escapeHTML(next)+'</p></div>';
  if(p.repo==='atelier-guiltanas-apps'&&/^[a-z0-9/_-]+\/$/i.test(p.folder||'')&&p.publication==='en_ligne'){
   content+='<div class="detail-links"><a class="smallbutton primary" href="'+escapeHTML(ROOT+p.folder)+'" target="_blank" rel="noopener noreferrer">Ouvrir l’application</a></div>';
