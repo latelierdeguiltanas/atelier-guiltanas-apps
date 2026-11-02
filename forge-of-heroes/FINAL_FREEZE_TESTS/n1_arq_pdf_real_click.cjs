@@ -3,7 +3,9 @@ const {chromium}=require('playwright'),{PDFDocument,StandardFonts}=require('pdf-
 const results=[],failures=[];
 (async()=>{
  const template=await PDFDocument.create();const f=await template.embedFont(StandardFonts.Helvetica);
- for(let i=0;i<2;i++){const page=template.addPage([612,792]);page.drawText('FICHE VIERGE DE CONTRÔLE - TEST AUTOMATIQUE '+(i+1),{x:24,y:755,size:11,font:f});}
+ for(let i=0;i<2;i++){const page=template.addPage([612,792]);page.drawText('FICHE FORMULAIRE SYNTHÉTIQUE - TEST AUTOMATIQUE '+(i+1),{x:24,y:755,size:11,font:f});}
+ const pdfForm=template.getForm(),fields=['NOM PERSONNAGE','JOUEUR','NIVEAU','FOR','AGI','CON','PER','INT','VOL','CHA','VOIE1','VOIE2','VOIE3','VOIE4','VOIE5','PEUPLE RG1','PROFIL','PV','PV MAX','DEF','INIT','Contact','Dist','Mag','EQUIPEMENT','DESCRIPTION DU PERSONNAGE'];
+ fields.forEach((name,i)=>{const fld=pdfForm.createTextField(name);fld.addToPage(template.getPage(i%2),{x:25+(Math.floor(i/2)%2)*285,y:710-Math.floor(i/4)*48,width:265,height:30,borderWidth:.5});fld.setFontSize(8);});
  const templatePath=path.join(os.tmpdir(),'cof2-blank-test-two-pages.pdf');fs.writeFileSync(templatePath,await template.save());
   const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||undefined,args:['--no-sandbox']});
  try{
@@ -41,7 +43,7 @@ const results=[],failures=[];
    const meta=cp.execFileSync('pdfinfo',[filename],{encoding:'utf8'});
    const pages=Number(meta.match(/^Pages:\s+(\d+)/m)?.[1]);
    const extracted=cp.execFileSync('pdftotext',['-layout',filename,'-'],{encoding:'utf8'});
-   const checks={variant,template:'Fiche vierge de test 2 pages, format Letter (modèle officiel réel non fourni au serveur de test)',filename:download.suggestedFilename(),pages,size:fs.statSync(filename).size,textLength:extracted.length,containsName:extracted.includes(name),containsProfile:extracted.includes(variant),containsArtillerie:/artilleur|Mécanismes/i.test(extracted),containsMaster:/maître d’armes|Armes de prédilection/i.test(extracted)};
+   const checks={variant,template:'Formulaire de test synthétique, deux pages, champs obligatoires COF2 présents ; ce n’est PAS le graphisme de la fiche officielle',filename:download.suggestedFilename(),pages,size:fs.statSync(filename).size,textLength:extracted.length,containsName:extracted.includes(name),containsProfile:extracted.includes(variant),containsArtillerie:/artilleur|Mécanismes/i.test(extracted),containsMaster:/maître d’armes|Armes de prédilection/i.test(extracted)};
    results.push(checks);
    assert.ok(pages>=3,'Official 2-page sheet and path annexes should be at least 3 pages; got '+pages);
    assert.ok(checks.containsName&&checks.containsProfile,'Name and profile must appear in PDF');
