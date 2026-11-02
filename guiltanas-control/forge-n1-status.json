@@ -4,7 +4,7 @@
   "snapshot_date": "2026-11-02",
   "status": "validation_n1_en_cours",
   "progress_percent": null,
-  "progress_reason": "Avancement du développement réel, mais pas de pourcentage global certifiable. Gate N1: 0/12 parcours officiels du gel validés (2 échecs historiques non rejoués, 10 non exécutés), en parallèle de 5 parcours Chrome différents réussis et de nombreuses suites automatisées. Matrice 179120 antérieure aux changements du 31 octobre.",
+  "progress_reason": "Socle mécanique documenté et réutilisable : matrice de 179120 essais, moteur et DB identiques au code de référence (preuve SHA), 37/37 suites de régression, nouveau checkpoint 5/5 des profils (17/17 dans son périmètre). Pas de pourcentage universel crédible avant la couverture des alternatives UI/âge/hybrides/historiques/PDF.",
   "evidence": [
     {
       "type": "github_file",
@@ -82,7 +82,7 @@
       "status": "non_verifie_dans_cet_audit"
     }
   ],
-  "next_action": "Clôturer les 12 parcours de gel au clic via navigateur, réconcilier l'ancienne matrice avec le moteur actuel et vérifier les cas numériques résiduels, sans demander de tests à l'utilisateur.",
+  "next_action": "Dans le Copilote, consolider les preuves manquantes par profil sans rejouer la matrice mécanique conservée. Requalifier les 2 anciens FAIL de la recette N1 et réaliser les 10 parcours non exécutés au navigateur.",
   "conversation_registry": [],
   "conversation_import_status": "non_inventorie",
   "current_work": "Terminer les variantes avancées et les parcours mobiles N1.",
@@ -246,6 +246,22 @@
     "view": "fiche projet Forge > Certification de la creation N1",
     "testedFoundationProfiles": 17,
     "testedFoundationNote": "17 profils présents dans la matrice et dans les oracles de calcul R1/R2 en configurations témoins. Pas 0 profil testé ; 0 certificat universel seulement.",
-    "latestTargetedWorkflow": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41411635507"
+    "latestTargetedWorkflow": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/41411635507",
+    "location": "Projet Forge of Heroes > Certification de la création N1",
+    "testedFoundationStatus": "PASS_CIBLE",
+    "fullyCertifiedProfiles": 0,
+    "matrix": {
+      "attempts": 179120,
+      "mechanicalReuseConfirmed": true,
+      "engineAndDbParities": true,
+      "validationEvidence": "forge-of-heroes/QA/N1/version-parity.json"
+    },
+    "currentFocusedRun": {
+      "suitesPassed": 5,
+      "suitesTotal": 5,
+      "scope": "profils / fiches interactives, hybride demi-orc, âge/historiques/armure, oracles numériques indépendants R1 et R2",
+      "evidence": "forge-of-heroes/QA/N1/profile-checkpoint.json"
+    },
+    "qualification": "0 profil certifié exhaustivement ne signifie pas zéro profil testé. Les 17 profils passent les contrôles de socle documentés; les combinaisons/règles avancées, UI et PDF restants n'ont pas tous de preuves complètes."
   }
 }
