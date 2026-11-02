@@ -43,7 +43,10 @@ try{
  await p.reload();await p.locator('#open-heroes').tap();
  await p.getByRole('button',{name:'Voir la fiche',exact:true}).first().tap();
  assert.match(await p.locator('#summary-content').innerText(),/Arbalétrier/);
- results.push({stage:'saved',status:'PASS'});
+ const sheetButton=p.locator('#native-play-sheet');
+ results.push({stage:'sheet-button',count:await sheetButton.count(),alternateButtons:(await p.locator('button').allTextContents()).filter(x=>/fiche|jouer|interactive/i.test(x)).slice(0,14)});
+ if(await sheetButton.count())await sheetButton.tap();
+  results.push({stage:'saved',status:'PASS'});
  assert.equal(errors.length,0,'JS errors '+errors.join(', '));
  await ctx.close();
 }catch(e){failures.push({error:String(e.stack||e)});}
