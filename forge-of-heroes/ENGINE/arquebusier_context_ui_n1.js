@@ -9,7 +9,7 @@
   mecanismes:[['Réparer ou comprendre un mécanisme',{skill:'repair_mechanism'}],['Attaquer avec une baliste ou arme de siège',{skill:'siege_weapon_attack'}]],
   'arme-a-repetition':[['Chargeur modifié, un rang 3 acquis',{selectedRepeatingWeapon:true,rankedThreeArquebusierPaths:1}],['Recharger trois projectiles',{action:'reload',selectedRepeatingWeapon:true,projectilesToReload:3}]],
   'tir-de-barrage-l':[['Cible en mouvement dans la zone, attaque réussie',{weaponLoaded:true,rangedAttack:true,targetMovedInZoneBeforeNextTurn:true,attackHit:true,targetDistanceMeters:10}],['Arme vide, tir impossible',{weaponLoaded:false,rangedAttack:true,targetMovedInZoneBeforeNextTurn:true}]],
-  'tir-de-grenaille-l':[['Grenaille chargée, tir en cône',{weaponKind:'powder',weaponLoaded:true,ammunition:'grapeshot'}],['Test d’artificier',{skill:'artificer'}]],
+  'tir-de-grenaille-l':[['Grenaille chargée, tir en cône',{weaponKind:'powder',weaponLoaded:true,ammunition:'grapeshot'}],['Test d’artificier',{skill:'artificer'}],['Rang 1 acquis dans un profil hybride : aucun risque d’explosion involontaire',{action:'powder_safety'}]],
   demolition:[['Explosif sur une structure après 3 rounds',{structureTarget:true,preparationRounds:3,chargesRemaining:1}],['Déflagration à 2 m après préparation',{blastRadiusTarget:true,preparationRounds:3,chargesRemaining:1}]],
   'poudre-puissante':[['Arme à poudre',{weaponKind:'powder'}],['Arbalète, pas de poudre',{weaponKind:'crossbow'}]],
   'pilier-de-bar':[['Coup à mains nues',{attack:'unarmed'}],['Dégâts non létaux reçus',{incomingDamageType:'non_lethal'}],['Test de résistance à l’alcool',{skill:'resist_alcohol'}]],
