@@ -130,7 +130,9 @@ function solve(character,slug,c={}){
  }
  case 'tir-de-barrage-l':{
   if(!loaded||!ranged||!bool(c.targetMovedInZoneBeforeNextTurn))return fail(o,'Arme à distance chargée et cible ayant bougé dans la zone surveillée avant le prochain tour');
-  if(num(c.targetDistanceMeters)!==null&&num(c.targetDistanceMeters)>20)return fail(o,'Zone de surveillance limitée à 20 m de large');
+  // Livre de base p.62 : 20 m désigne la LARGEUR de la zone, jamais la portée de l'arme.
+  if(c.targetWithinFacingZone===false)return fail(o,'Cible hors de la zone surveillée, large de 20 m devant le tireur');
+  if(num(c.weaponRangeMeters)!==null&&num(c.targetDistanceMeters)!==null&&num(c.targetDistanceMeters)>num(c.weaponRangeMeters))return fail(o,'Cible au-delà de la portée réelle de l’arme');
   success(o,'action limitée de surveillance, puis tir sur déplacement');
   o.modifiers.zoneWidthMeters=20;o.modifiers.attackTriggeredByMovement=true;
   o.choices=bool(c.attackHit)?['doubler les dommages','interrompre immédiatement le déplacement sans dommages']:[];
