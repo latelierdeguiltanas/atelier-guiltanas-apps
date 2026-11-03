@@ -22,7 +22,13 @@ const currentRelease=releaseProducts.length===2&&releaseProducts.every(p=>fs.exi
 // attribuer à tort les anciens tests de clic à des changements plus vastes.
 const pilierContinuity=releaseProducts.length===2&&pilier?.status==='PASS'&&pilier.products?.length===2&&
  releaseProducts.every(p=>{const fix=pilier.products.find(x=>x.file===p.name);return fix?.changed===true&&fix.previous?.length===2&&fix.previous.every(x=>x.formula==='1d4')&&fix.beforeSha256===p.sha256&&fix.afterSha256===productHash(p.name)&&fix.attack==='1d4°'&&fix.nonLethal===true&&fix.saveReload==='PASS';});
-const deployed=release?.status==='INTEGRATED_NOT_CERTIFIED_FULL'&&(currentRelease||pilierContinuity);
+const contextProofFile=path.resolve(root,'QA/N1/arquebusier-context-publish.json');
+const contextProof=fs.existsSync(contextProofFile)?JSON.parse(fs.readFileSync(contextProofFile,'utf8')):null;
+const contextOnlyContinuity=contextProof?.status==='PASS'&&contextProof.products?.length===2&&contextProof.products.every(p=>{
+ const previous=pilier?.products?.find(x=>x.file===p.file);
+ return p.onlyContextAdded===true&&p.readyForOffline===true&&previous?.afterSha256===p.baselineAfterRemovingContext&&p.afterSha256===productHash(p.file)&&p.engineSha256==='60d23d2d36c099e0fe0ce370413d74ac4eef438336c516d070a8326a1d082fee'&&p.databaseSha256==='1a361946d09c1a0ec51ace1aa3f87873fef12199990c69c07fcd1a10765ce081';
+});
+const deployed=release?.status==='INTEGRATED_NOT_CERTIFIED_FULL'&&(currentRelease||pilierContinuity||contextOnlyContinuity);
 const arbaletrierMissing=variant?.verdict==='VARIANTE_OFFICIELLE_NON_ENTIEREMENT_INTEGREE';
 const prototypePath=path.resolve(root,'QA/N1/arbaletrier-virtual-prototype.json');const prototype=fs.existsSync(prototypePath)?JSON.parse(fs.readFileSync(prototypePath,'utf8')):null;const prototypeOK=prototype?.matrix?.total===480&&prototype?.matrix?.passed===480&&prototype?.matrix?.failed===0;
 const variantGap=deployed?'La variante officielle Arbalétrier est maintenant proposée dans Forge : cinq voies légales, arbalètes, rangs 1 à 3 et sauvegardes validés au clic sur mobile. Restent à valider les contraintes complètes d’équipement et tous les effets conditionnels, ainsi que la fiche officielle PDF et ses annexes.':arbaletrierMissing?(prototypeOK?'La variante Arbalétrier est prête dans une version d’essai : les cinq voies, huit peuples, âges, sauvegardes, +1 en attaque, critique amélioré et +1 aux dégâts avec les arbalètes ont été éprouvés. Elle n’est PAS encore intégrée à Forge : il reste l’installation, les choix visibles, l’export PDF et le contrôle au clic.':'Variante Arbalétrier absente du jeu publié. Les armes à arbalète et la Voie du maître d’armes sont en préparation ; il reste à valider les calculs de critique, de dégâts, les choix visibles et l’installation.'):'';
@@ -44,6 +50,23 @@ const mechanicalCurrent=mechanical?.status==='SNAPSHOT_COHERENT_STRUCTURE_UNEVAL
 
 const effects=ages.numericEffectAssertions||{};
 const numericPartial=effects['Arme à répétition — chargeur 2 + INT et +1 au rang 3']===32&&effects['Poudre puissante — portée +10 m, dommages +1 et projectile magique']===16&&effects['Tir précis — critique sur 19-20 à distance']===16&&effects['Combattant aguerri — défense +1']===16;
+const expectedFiles=['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html'];
+const sameCurrentHashes=inputs=>inputs?.length===2&&inputs.every(p=>expectedFiles.includes(p.file)&&p.sha256===productHash(p.file));
+const contextualPath=path.resolve(root,'QA/N1/arquebusier-context-canonical.json');
+const contextual=fs.existsSync(contextualPath)?JSON.parse(fs.readFileSync(contextualPath,'utf8')):null;
+const hybridPath=path.resolve(root,'QA/N1/arquebusier-hybrid-powder-safety.json');
+const hybrid=fs.existsSync(hybridPath)?JSON.parse(fs.readFileSync(hybridPath,'utf8')):null;
+const clickPath=path.resolve(root,'QA/N1/arquebusier-context-real-click.json');
+const contextClick=fs.existsSync(clickPath)?JSON.parse(fs.readFileSync(clickPath,'utf8')):null;
+const twentyPath=path.resolve(root,'QA/N1/arquebusier-20-real-mobile-pairs.json');
+const twenty=fs.existsSync(twentyPath)?JSON.parse(fs.readFileSync(twentyPath,'utf8')):null;
+const allR1Names=['mecanismes','tir-de-grenaille-l','pilier-de-bar','plus-vite-que-son-ombre','joli-coup'];
+const r1RealClick=!!contextClick&&contextClick.indexSha256===productHash('index.html')&&contextClick.status==='PASS'&&contextClick.passed===4&&contextClick.failed===0&&allR1Names.every(slug=>contextClick.cases.some(c=>c.status==='PASS'&&c.checks.some(x=>x.ability===slug)));
+const contextualComplete=!!contextual&&contextual.status==='PASS'&&contextual.failed===0&&contextual.passed>=55&&contextual.all15===true&&sameCurrentHashes(contextual.inputSha256);
+const hybridComplete=!!hybrid&&hybrid.status==='PASS'&&hybrid.passed===4&&hybrid.failed===0&&sameCurrentHashes(hybrid.products);
+const r1Complete=ageOK&&contextualComplete&&hybridComplete&&r1RealClick&&contextOnlyContinuity;
+const twentyRealClick=!!twenty&&twenty.status==='PASS'&&twenty.passed===20&&twenty.failed===0&&twenty.indexSha256===productHash('index.html');
+
 const profileChecks=[
  mark('paths','Les cinq voies officielles',profile.powers.length===5,'Les cinq voies et leurs 15 rangs accessibles sont présents et référencés.','Vérifier les cinq voies du livre.'),
  mark('pairs','Toutes les paires de voies légales',tenPairsVerified,'Les dix choix possibles de deux voies du profil, avec chacun des huit peuples et les cinq modalités d’âge N1, sont créés, validés et conservés après sauvegarde. Les dix couples de l’Arbalétrier sont aussi éprouvés.','Les dix choix possibles de deux voies doivent fonctionner avec les équipements autorisés, y compris l’alternative Halfelin.'),
@@ -53,14 +76,14 @@ const profileChecks=[
  mark('age','Dépenses de rangs selon l’âge',ageOK,'Très jeune, jeune, mûr et vénérable : rangs supplémentaires et restrictions vérifiés.','Vérifier tous les choix d’âge.'),
  mark('methods','Méthodes de répartition des caractéristiques',true,'Séries, achat et tirages représentatifs avec toutes les races officielles ; les règles raciales sont comptées à part.','Contrôler les méthodes du profil.'),
  mark('derived','PV, DEF, initiative, chance, mana, attaques et dommages',false,'',ageOK?'400/400 oracles sur les 8 peuples × 5 voies × 5 âges × 2 produits : caractéristiques, PV, DEF, INIT, pouvoirs numériques ciblés et sauvegarde. Restent toutes les variantes d’attaques, choix permanents, équipements et effets conditionnels.':'Faire correspondre chaque valeur et chaque bonus permanent au Livre de base avec les voies et équipements autorisés.'),
- mark('r1effects','Tous les effets des cinq capacités de rang 1',false,'',pilierContinuity?'Pilier de bar corrigé : mains nues 1d4° non létaux, calcul et sauvegarde vérifiés sur les deux moteurs. Restent les tests de combat, de compétences, de couverture, de grenaille et d’initiative conditionnelle.':'Vérifier les compétences, les jets, le couvert, les tirs de grenaille et l’initiative avec une arme chargée, selon les conditions du livre.'),
+ mark('r1effects','Tous les effets des cinq capacités de rang 1',r1Complete,'Cinq capacités R1 calculées selon contexte dans l’interface réelle : mécanismes et armes de siège, grenaille en cône, Pilier de bar 1d4° et résistance non létale, initiative armée chargée, couvert, ainsi que l’exception poudre des hybrides. 55 cas oracle + quatre situations au clic et quatre hybrides réels validés, pour les deux produits.','Compléter les preuves sur les 5 effets R1, les cas négatifs, le cas spécial poudre hybride et le vrai parcours au clic sur la version courante.'),
  mark('r2effects','Tous les effets des cinq capacités de rang 2',false,'',mechanicalCurrent?'15 capacités R1–R3 contrôlées dans les deux bases, et chargeur 2+INT validé. Plusieurs rangs R2 restent des effets à interpréter en combat ; rechargement, Démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse non certifiés en exécution.':'Chargeur 2 + INT validé ; restent le rechargement, la démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse.'),
  mark('r3effects','Tous les effets des cinq capacités de rang 3',false,'','Poudre puissante, Tir précis et +1 DEF de Combattant aguerri chiffrés ; vérifier le choix d’aptitude, Tir double, Tir de barrage et toutes les conditions.'),
  mark('gear','Toutes les armes, armures et variante Arbalétrier',false,'',deployed||arbaletrierMissing?variantGap:'Maîtrises, armure maximum, absence de bouclier, deux mains, armes à poudre, équipements alternatifs et Arbalétrier sans poudre.'),
  mark('history','Origines, métiers et historiques avancés',false,'',historyCrossPassed?'Les 17 historiques sont accessibles, leurs rangs et sauvegardes réussissent avec les huit peuples. Restent à vérifier individuellement leurs bonus conditionnels, les restrictions et l’export sur la fiche de l’Arquebusier.':'Contrôler toutes les voies d’historique, leurs rangs accessibles et leurs effets sur les aptitudes de l’Arquebusier.'),
  mark('save','Enregistrer et reprendre les pouvoirs obtenus',ageOK,'Les états de référence des rangs 1, 2 et 3 avec l’âge ont été enregistrés et restaurés à l’identique.','Vérifier la sauvegarde et la reprise.'),
  mark('pdf','Fiche officielle et annexes',false,'',pdfProbePass?'Test réel Chrome et smartphone des exports des deux variantes : 4 PDF de 6 pages, nom et profil présents sur les deux premières pages, PDF sans champs étranger refusé. Empreinte du modèle COF2 reconnue en simulation ; restent le rendu sur le PDF officiel réel et la vérification exhaustive des champs, textes et annexes.':'Vérifier les deux pages officielles, toutes les valeurs, les résumés et les descriptions des voies.'),
- mark('click','Créer, sauvegarder et rouvrir au clic sur mobile',false,'','Effectuer toutes les variantes utiles dans l’interface réelle et sur format téléphone.')
+ mark('click','Créer, sauvegarder et rouvrir au clic sur mobile',false,'',twentyRealClick?'20/20 parcours tactiles des dix paires Arquebusier et dix paires Arbalétrier passés : création, sauvegarde, reprise et fiche interactive. Les huit peuples, âges et modes hybrides doivent encore être couverts au clic avant le gel du critère.':'Effectuer toutes les variantes utiles dans l’interface réelle et sur format téléphone.')
 ];
 const verified=profileChecks.filter(x=>x.status==='ACQUIS').length;
 const lore={
