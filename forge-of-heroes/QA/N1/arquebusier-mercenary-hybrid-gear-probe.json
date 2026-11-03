@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_MERCENAIRE_HYBRIDE_PROBE",
-  "at": "2026-11-03T11:59:54.478Z",
+  "at": "2026-11-03T12:06:22.352Z",
   "source": "COF2 Livre de base, page imprimée 65, exception Voie du mercenaire hybride",
   "expected": {
     "noPowderMastery": true,
@@ -53,8 +53,12 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+      "powderErrors": [],
+      "powderAttacks": [
+        {
+          "mastered": true,
+          "attackBonus": 2
+        }
       ]
     },
     {
@@ -84,12 +88,8 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 2
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -128,8 +128,12 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+      "powderErrors": [],
+      "powderAttacks": [
+        {
+          "mastered": true,
+          "attackBonus": 1
+        }
       ]
     },
     {
@@ -159,12 +163,8 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 1
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -203,8 +203,12 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+      "powderErrors": [],
+      "powderAttacks": [
+        {
+          "mastered": true,
+          "attackBonus": 2
+        }
       ]
     },
     {
@@ -234,12 +238,8 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 2
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -278,8 +278,12 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+      "powderErrors": [],
+      "powderAttacks": [
+        {
+          "mastered": true,
+          "attackBonus": 2
+        }
       ]
     },
     {
@@ -309,12 +313,8 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 2
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -353,8 +353,12 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+      "powderErrors": [],
+      "powderAttacks": [
+        {
+          "mastered": true,
+          "attackBonus": 2
+        }
       ]
     },
     {
@@ -384,12 +388,8 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 2
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -428,43 +428,43 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
-      ]
-    },
-    {
-      "file": "index.html",
-      "race": "elfe-sylvain",
-      "orientation": "mercenary-first",
-      "profile": "class:arquebusier:cof2-lb-2024",
-      "paths": [
-        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
-        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
-      ],
-      "shieldId": "shield:petit:cof2-lb-2024",
-      "powderMasteryExpected": false,
-      "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
-      "derived": {
-        "DEF": 13,
-        "PV": 8
-      },
-      "equipment": {
-        "armureDEF": 0,
-        "bouclierDEF": 1,
-        "armureAgiCap": null
-      },
-      "noShieldErrors": [],
-      "shieldDefenseDelta": 1,
       "powderErrors": [],
       "powderAttacks": [
         {
           "mastered": true,
           "attackBonus": 3
         }
+      ]
+    },
+    {
+      "file": "index.html",
+      "race": "elfe-sylvain",
+      "orientation": "mercenary-first",
+      "profile": "class:arquebusier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [
+        "Bouclier interdit par le profil."
+      ],
+      "allowed": false,
+      "derived": {
+        "DEF": 13,
+        "PV": 8
+      },
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      },
+      "noShieldErrors": [],
+      "shieldDefenseDelta": 1,
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -503,8 +503,12 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+      "powderErrors": [],
+      "powderAttacks": [
+        {
+          "mastered": true,
+          "attackBonus": 2
+        }
       ]
     },
     {
@@ -534,12 +538,8 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 0,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 2
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -579,7 +579,7 @@
         "Voie du bouclier : un bouclier est obligatoire."
       ],
       "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
       ]
     },
     {
@@ -609,12 +609,9 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 3
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
       ]
     },
     {
@@ -653,37 +650,6 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
-      ]
-    },
-    {
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "race": "humain",
-      "orientation": "mercenary-first",
-      "profile": "class:arquebusier:cof2-lb-2024",
-      "paths": [
-        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
-        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
-      ],
-      "shieldId": "shield:petit:cof2-lb-2024",
-      "powderMasteryExpected": false,
-      "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
-      "derived": {
-        "DEF": 12,
-        "PV": 9
-      },
-      "equipment": {
-        "armureDEF": 0,
-        "bouclierDEF": 1,
-        "armureAgiCap": null
-      },
-      "noShieldErrors": [],
-      "shieldDefenseDelta": 1,
       "powderErrors": [],
       "powderAttacks": [
         {
@@ -694,6 +660,37 @@
     },
     {
       "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "race": "humain",
+      "orientation": "mercenary-first",
+      "profile": "class:arquebusier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [
+        "Bouclier interdit par le profil."
+      ],
+      "allowed": false,
+      "derived": {
+        "DEF": 12,
+        "PV": 9
+      },
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      },
+      "noShieldErrors": [],
+      "shieldDefenseDelta": 1,
+      "powderErrors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
       "race": "nain",
       "orientation": "warrior-first",
       "profile": "class:guerrier:cof2-lb-2024",
@@ -728,37 +725,6 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
-      ]
-    },
-    {
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "race": "nain",
-      "orientation": "mercenary-first",
-      "profile": "class:arquebusier:cof2-lb-2024",
-      "paths": [
-        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
-        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
-      ],
-      "shieldId": "shield:petit:cof2-lb-2024",
-      "powderMasteryExpected": false,
-      "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
-      "derived": {
-        "DEF": 11,
-        "PV": 9
-      },
-      "equipment": {
-        "armureDEF": 0,
-        "bouclierDEF": 1,
-        "armureAgiCap": null
-      },
-      "noShieldErrors": [],
-      "shieldDefenseDelta": 1,
       "powderErrors": [],
       "powderAttacks": [
         {
@@ -769,6 +735,37 @@
     },
     {
       "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "race": "nain",
+      "orientation": "mercenary-first",
+      "profile": "class:arquebusier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [
+        "Bouclier interdit par le profil."
+      ],
+      "allowed": false,
+      "derived": {
+        "DEF": 11,
+        "PV": 9
+      },
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      },
+      "noShieldErrors": [],
+      "shieldDefenseDelta": 1,
+      "powderErrors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
       "race": "demi-elfe",
       "orientation": "warrior-first",
       "profile": "class:guerrier:cof2-lb-2024",
@@ -803,8 +800,12 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+      "powderErrors": [],
+      "powderAttacks": [
+        {
+          "mastered": true,
+          "attackBonus": 2
+        }
       ]
     },
     {
@@ -834,12 +835,8 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 2
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -878,8 +875,12 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+      "powderErrors": [],
+      "powderAttacks": [
+        {
+          "mastered": true,
+          "attackBonus": 2
+        }
       ]
     },
     {
@@ -909,12 +910,8 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 2
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -953,8 +950,12 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+      "powderErrors": [],
+      "powderAttacks": [
+        {
+          "mastered": true,
+          "attackBonus": 2
+        }
       ]
     },
     {
@@ -984,12 +985,8 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 2
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -1028,43 +1025,43 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
-      ]
-    },
-    {
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "race": "elfe-sylvain",
-      "orientation": "mercenary-first",
-      "profile": "class:arquebusier:cof2-lb-2024",
-      "paths": [
-        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
-        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
-      ],
-      "shieldId": "shield:petit:cof2-lb-2024",
-      "powderMasteryExpected": false,
-      "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
-      "derived": {
-        "DEF": 13,
-        "PV": 8
-      },
-      "equipment": {
-        "armureDEF": 0,
-        "bouclierDEF": 1,
-        "armureAgiCap": null
-      },
-      "noShieldErrors": [],
-      "shieldDefenseDelta": 1,
       "powderErrors": [],
       "powderAttacks": [
         {
           "mastered": true,
           "attackBonus": 3
         }
+      ]
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "race": "elfe-sylvain",
+      "orientation": "mercenary-first",
+      "profile": "class:arquebusier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [
+        "Bouclier interdit par le profil."
+      ],
+      "allowed": false,
+      "derived": {
+        "DEF": 13,
+        "PV": 8
+      },
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      },
+      "noShieldErrors": [],
+      "shieldDefenseDelta": 1,
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -1103,8 +1100,12 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+      "powderErrors": [],
+      "powderAttacks": [
+        {
+          "mastered": true,
+          "attackBonus": 2
+        }
       ]
     },
     {
@@ -1134,12 +1135,8 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 0,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 2
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -1179,7 +1176,7 @@
         "Voie du bouclier : un bouclier est obligatoire."
       ],
       "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
       ]
     },
     {
@@ -1209,12 +1206,9 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 3
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
       ]
     }
   ],
@@ -1256,8 +1250,12 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+      "powderErrors": [],
+      "powderAttacks": [
+        {
+          "mastered": true,
+          "attackBonus": 2
+        }
       ]
     },
     {
@@ -1287,12 +1285,8 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 2
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -1331,8 +1325,12 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+      "powderErrors": [],
+      "powderAttacks": [
+        {
+          "mastered": true,
+          "attackBonus": 2
+        }
       ]
     },
     {
@@ -1362,12 +1360,8 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 2
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -1407,7 +1401,7 @@
         "Voie du bouclier : un bouclier est obligatoire."
       ],
       "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
       ]
     },
     {
@@ -1437,12 +1431,9 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 3
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
       ]
     },
     {
@@ -1481,8 +1472,12 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+      "powderErrors": [],
+      "powderAttacks": [
+        {
+          "mastered": true,
+          "attackBonus": 2
+        }
       ]
     },
     {
@@ -1512,12 +1507,8 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 2
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -1556,8 +1547,12 @@
       "noShieldErrors": [
         "Voie du bouclier : un bouclier est obligatoire."
       ],
-      "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+      "powderErrors": [],
+      "powderAttacks": [
+        {
+          "mastered": true,
+          "attackBonus": 2
+        }
       ]
     },
     {
@@ -1587,12 +1582,8 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 2
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil."
       ]
     },
     {
@@ -1632,7 +1623,7 @@
         "Voie du bouclier : un bouclier est obligatoire."
       ],
       "powderErrors": [
-        "Voie du bouclier : un bouclier est obligatoire."
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
       ]
     },
     {
@@ -1662,13 +1653,258 @@
       },
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
-      "powderErrors": [],
-      "powderAttacks": [
-        {
-          "mastered": true,
-          "attackBonus": 3
-        }
+      "powderErrors": [
+        "Bouclier interdit par le profil.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
       ]
     }
-  ]
+  ],
+  "accepted": 16,
+  "unexpectedRefusals": [
+    {
+      "race": "humain",
+      "orientation": "mercenary-first",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "nain",
+      "orientation": "mercenary-first",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "demi-elfe",
+      "orientation": "mercenary-first",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "demi-orc",
+      "orientation": "mercenary-first",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "elfe-haut",
+      "orientation": "mercenary-first",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "elfe-sylvain",
+      "orientation": "mercenary-first",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "gnome",
+      "orientation": "mercenary-first",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "halfelin",
+      "orientation": "mercenary-first",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "humain",
+      "orientation": "mercenary-first",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "nain",
+      "orientation": "mercenary-first",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "demi-elfe",
+      "orientation": "mercenary-first",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "demi-orc",
+      "orientation": "mercenary-first",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "elfe-haut",
+      "orientation": "mercenary-first",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "elfe-sylvain",
+      "orientation": "mercenary-first",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "gnome",
+      "orientation": "mercenary-first",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "halfelin",
+      "orientation": "mercenary-first",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    }
+  ],
+  "faultyPowder": [
+    {
+      "race": "humain",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "nain",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "demi-elfe",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "demi-orc",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "elfe-haut",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "elfe-sylvain",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "gnome",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "halfelin",
+      "file": "index.html",
+      "errors": [
+        "Bouclier interdit par le profil.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
+      ]
+    },
+    {
+      "race": "humain",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "nain",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "demi-elfe",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "demi-orc",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "elfe-haut",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "elfe-sylvain",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "gnome",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil."
+      ]
+    },
+    {
+      "race": "halfelin",
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "errors": [
+        "Bouclier interdit par le profil.",
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
+      ]
+    }
+  ],
+  "status": "FAIL"
 }
