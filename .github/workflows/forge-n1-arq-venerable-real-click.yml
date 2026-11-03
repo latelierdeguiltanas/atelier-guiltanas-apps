@@ -1,0 +1,58 @@
+name: Forge N1 - venerable vrai clic 15 pouvoirs Arquebusier
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arq-venerable-real-click.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_venerable_context_click.cjs'
+      - 'forge-of-heroes/index.html'
+permissions:
+  contents: write
+jobs:
+  chrome:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer Playwright
+        run: |
+          npm install --prefix "$RUNNER_TEMP/arq-venerable" playwright@1.55.0
+          echo "NODE_PATH=$RUNNER_TEMP/arq-venerable/node_modules" >> "$GITHUB_ENV"
+      - name: Cinq personnages N1 vénérables, rangs R1 R2 R3, clics contextuels
+        id: click
+        continue-on-error: true
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/foh-venerable-server.log 2>&1 &
+          CHROME_BIN="$(command -v google-chrome || command -v chromium)" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_venerable_context_click.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: foh-n1-arq-venerable-real-click
+          path: forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json
+      - name: Publier les constats, y compris les défaillances
+        if: always()
+        run: |
+          if test -f forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json
+            if ! git diff --cached --quiet; then
+              git commit -m "test(forge-n1): 5 vénérables au clic, résultats authentiques [skip ci]"
+              git restore --worktree .
+              for attempt in 1 2 3 4 5; do
+                git fetch origin main
+                if git rebase origin/main && git push origin HEAD:main; then exit 0; fi
+                git rebase --abort || true
+                if [ "$attempt" = 5 ]; then exit 1; fi
+                sleep 2
+              done
+            fi
+          fi
+      - name: Échouer sur un rang manquant
+        if: steps.click.outcome == 'failure'
+        run: exit 1
