@@ -1,0 +1,61 @@
+{
+  "schema": "FOH_N1_HYBRID_POWDER_SAFETY",
+  "at": "2026-11-03T09:00:48.375Z",
+  "source": "COF2 Livre de base imprimé p63, introduction Voie des Explosifs",
+  "products": [
+    {
+      "file": "index.html",
+      "sha256": "bf46eabb413bd7bef593c168998a258e0bbe4cbd8b06e70b7d982f0113112366"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "sha256": "5b296470f41637458a7d65fbe264fdfc59e7c4b0c7935efc9bae4aeb0e642d3f"
+    }
+  ],
+  "cases": [
+    {
+      "file": "index.html",
+      "primary": "class:voleur:cof2-lb-2024",
+      "secondary": "class:arquebusier:cof2-lb-2024",
+      "status": "PASS",
+      "profileId": "hybrid:class:voleur:cof2-lb-2024+class:arquebusier:cof2-lb-2024",
+      "effect": {
+        "accidentalPowderExplosionRisk": false
+      }
+    },
+    {
+      "file": "index.html",
+      "primary": "class:arquebusier:cof2-lb-2024",
+      "secondary": "class:voleur:cof2-lb-2024",
+      "status": "PASS",
+      "profileId": "hybrid:class:arquebusier:cof2-lb-2024+class:voleur:cof2-lb-2024",
+      "effect": {
+        "accidentalPowderExplosionRisk": false
+      }
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "primary": "class:voleur:cof2-lb-2024",
+      "secondary": "class:arquebusier:cof2-lb-2024",
+      "status": "PASS",
+      "profileId": "hybrid:class:voleur:cof2-lb-2024+class:arquebusier:cof2-lb-2024",
+      "effect": {
+        "accidentalPowderExplosionRisk": false
+      }
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "primary": "class:arquebusier:cof2-lb-2024",
+      "secondary": "class:voleur:cof2-lb-2024",
+      "status": "PASS",
+      "profileId": "hybrid:class:arquebusier:cof2-lb-2024+class:voleur:cof2-lb-2024",
+      "effect": {
+        "accidentalPowderExplosionRisk": false
+      }
+    }
+  ],
+  "passed": 4,
+  "failed": 0,
+  "status": "PASS",
+  "limits": "Test d’acquisition et du calculateur conditionnel, pas simulation du risque d’une panne aléatoire de l’arme."
+}
