@@ -1,0 +1,24 @@
+name: Forge N1 - localiser anomalie Mercenaire hybride
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-mercenary-engine-anchors.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_mercenary_engine_anchors.cjs'
+permissions:
+  contents: read
+jobs:
+  locate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Examiner précisément le traitement actuel dans le moteur
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_mercenary_engine_anchors.cjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: foh-arq-mercenary-gear-engine-anchors
+          path: forge-of-heroes/QA/N1/arquebusier-mercenary-engine-anchors.json
