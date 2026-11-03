@@ -1,0 +1,157 @@
+name: Forge N1 - recette de cloture Arquebusier courante
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arq-closure-current.yml'
+permissions:
+  contents: write
+concurrency:
+  group: forge-n1-arq-closure-courante
+  cancel-in-progress: false
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer et préparer Chrome tactile
+        run: |
+          npm install --prefix "$RUNNER_TEMP/foh-arq" playwright@1.55.0
+          echo "NODE_PATH=$RUNNER_TEMP/foh-arq/node_modules" >> "$GITHUB_ENV"
+      - name: Vingt combinaisons de voies et quatre scénarios R1 réels
+        id: test
+        continue-on-error: true
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/foh-arq-latest.log 2>&1 &
+          CHROME_BIN="$(command -v google-chrome || command -v chromium)" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_twenty_real_mobile_clicks.cjs
+          CHROME_BIN="$(command -v google-chrome || command -v chromium)" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_live_click.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: foh-arq-closure-mobile
+          path: |
+            forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json
+            forge-of-heroes/QA/N1/arquebusier-context-real-click.json
+      - name: Publier les deux campagnes de clic signées
+        if: always()
+        run: |
+          if test -f forge-of-heroes/QA/N1/arquebusier-context-real-click.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json forge-of-heroes/QA/N1/arquebusier-context-real-click.json
+            if ! git diff --cached --quiet; then
+              git commit -m "test(forge-n1): 20 creations et calculs contextuels au clic, preuves actuelles [skip ci]"
+              git restore --worktree .
+              for attempt in 1 2 3 4 5; do
+                git fetch origin main
+                if git rebase origin/main && git push origin HEAD:main; then exit 0; fi
+                git rebase --abort || true
+                if [ "$attempt" = 5 ]; then exit 1; fi
+                sleep 2
+              done
+            fi
+          fi
+      - name: Refuser les clics en échec
+        if: steps.test.outcome == 'failure'
+        run: exit 1
+  regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 19
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Rejouer les trente-sept familles de règles
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_regression_batch.cjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: foh-arq-closure-rules
+          path: forge-of-heroes/QA/N1/regressions.json
+      - name: Publier le rapport sur la source courante
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/QA/N1/regressions.json
+          if ! git diff --cached --quiet; then
+            git commit -m "test(forge-n1): 37 familles réévaluées sur version R1-R3 [skip ci]"
+            git restore --worktree .
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              if git rebase origin/main && git push origin HEAD:main; then exit 0; fi
+              git rebase --abort || true
+              if [ "$attempt" = 5 ]; then exit 1; fi
+              sleep 2
+            done
+          fi
+  consolidated:
+    needs: [mobile, regressions]
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Récupérer les preuves actuelles et vérifier leur version
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_version_parity.cjs
+      - name: Rejouer 400 âges, 800 paires, 2304 historiques et tous effets contextuels
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pure_age_ranks.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_all_pairs_current.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_history_people_cross.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_15_mechanics_snapshot.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_hybrid_powder_safety.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_pure_rule_ledger.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+      - name: Vérifier le 100 pour cent impossible sans le travail restant
+        run: |
+          node - <<'NODE'
+          const f=require('./centre-synchronisation/forge-n1/focus.json');
+          const pairs=require('./forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json');
+          const oracle=require('./forge-of-heroes/QA/N1/arquebusier-context-canonical.json');
+          const hybrid=require('./forge-of-heroes/QA/N1/arquebusier-hybrid-powder-safety.json');
+          if(f.profile.percent>94||f.profile.passed>=f.profile.total)throw Error('Ne jamais déclarer le N1 complet avec des réserves');
+          if(!f.profile.checks.find(x=>x.id==='r1effects'&&x.status==='ACQUIS'))throw Error('Toutes les preuves R1 ne sont pas reconnues');
+          if(pairs.status!=='PASS'||pairs.pass!==800||oracle.status!=='PASS'||hybrid.status!=='PASS')throw Error('Incohérence de preuves');
+          console.log('PREUVES R1 CERTIFIÉES ; '+f.profile.percent+' pour cent de critères clos, autres critères ouverts');
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: foh-arq-closure-consolidated
+          path: |
+            forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json
+            forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json
+            forge-of-heroes/QA/N1/arquebusier-history-people-cross.json
+            forge-of-heroes/QA/N1/arquebusier-context-canonical.json
+            forge-of-heroes/QA/N1/arquebusier-hybrid-powder-safety.json
+            centre-synchronisation/forge-n1/focus.json
+      - name: Publier les preuves et les barres de progression sans inventer
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/arquebusier-history-people-cross.json forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json forge-of-heroes/QA/N1/arquebusier-context-canonical.json forge-of-heroes/QA/N1/arquebusier-hybrid-powder-safety.json forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/version-parity.json centre-synchronisation/forge-n1/purs.json centre-synchronisation/forge-n1/focus.json
+          if ! git diff --cached --quiet; then
+            git commit -m "test(forge-n1): recompter Arquebusier à partir de preuves R1 complètes [skip ci]"
+            git restore --worktree .
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              if git rebase origin/main && git push origin HEAD:main; then exit 0; fi
+              git rebase --abort || true
+              if [ "$attempt" = 5 ]; then exit 1; fi
+              sleep 2
+            done
+          fi
