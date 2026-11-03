@@ -1,0 +1,50 @@
+name: Forge N1 - artilleur quinze capacites contexte
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arq-context.yml'
+      - 'forge-of-heroes/ENGINE/arquebusier_context_n1.js'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs'
+      - 'forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json'
+permissions:
+  contents: write
+jobs:
+  contextual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vérifier syntaxe et toutes les situations de rang 1 à 3
+        id: tests
+        continue-on-error: true
+        run: |
+          node --check forge-of-heroes/ENGINE/arquebusier_context_n1.js
+          node --check forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n1-arq-context-scenario-evidence
+          path: forge-of-heroes/QA/N1/arquebusier-context-canonical.json
+      - name: Archiver le statut sans fausse validation
+        if: always()
+        run: |
+          if test -f forge-of-heroes/QA/N1/arquebusier-context-canonical.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add forge-of-heroes/QA/N1/arquebusier-context-canonical.json
+            if ! git diff --cached --quiet; then
+              git commit -m "test(forge-n1): oracle conditionnel 15 capacités [skip ci]"
+              git restore --worktree .
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main
+            fi
+          fi
+      - name: Échouer pour toute divergence avec les règles
+        if: steps.tests.outcome == 'failure'
+        run: exit 1
