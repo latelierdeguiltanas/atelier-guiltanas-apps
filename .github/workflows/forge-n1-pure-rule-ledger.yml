@@ -20,6 +20,9 @@ on:
       - 'forge-of-heroes/progression/catalog.json'
 permissions:
   contents: write
+concurrency:
+  group: forge-n1-pure-rule-ledger-current
+  cancel-in-progress: false
 jobs:
   pure:
     runs-on: ubuntu-latest
@@ -54,14 +57,22 @@ jobs:
           path: |
             centre-synchronisation/forge-n1/purs.json
             centre-synchronisation/forge-n1/focus.json
-      - name: Publier les 112 états de création dans le Copilote
+      - name: Publier la dernière version vérifiée, sans conflit de rebase
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add centre-synchronisation/forge-n1/purs.json centre-synchronisation/forge-n1/focus.json
-          if ! git diff --cached --quiet; then
-            git commit -m "docs(cockpit): 112 personnages purs et rangs de voies suivis [skip ci]"
+          for attempt in 1 2 3 4 5; do
             git fetch origin main
-            git rebase origin/main
-            git push origin HEAD:main
-          fi
+            git reset --hard origin/main
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_pure_rule_ledger.cjs
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+            git add centre-synchronisation/forge-n1/purs.json centre-synchronisation/forge-n1/focus.json
+            if git diff --cached --quiet; then
+              echo "Barres déjà à jour"
+              exit 0
+            fi
+            git commit -m "docs(cockpit): progression de 112 personnages purs et Arquebusier courant [skip ci]"
+            if git push origin HEAD:main; then exit 0; fi
+            if [ "$attempt" = 5 ]; then exit 1; fi
+            sleep 2
+          done
