@@ -26,6 +26,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Rafraîchir la parité des nouvelles régressions et de la matrice courante
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_version_parity.cjs
       - name: Vérifier que les trois campagnes utilisent les empreintes actuelles
         id: readiness
         run: |
