@@ -21,6 +21,7 @@ try{
  await choose('#hybrid-primary-path','Mercenaire');await choose('#hybrid-secondary-path','Bouclier');
  await inspect('paths');
  await next();await inspect('equipment-or-next');
+ await p.locator('#equipment-swap-approved').tap();await inspect('swap-authorized');
  await next();await inspect('before-reveal');
  report.status='PROBED';
 }catch(e){report.status='INCOMPLETE';report.errors.push(String(e.stack||e));}finally{await ctx.close();await browser.close();}
