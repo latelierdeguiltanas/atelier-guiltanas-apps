@@ -1,0 +1,141 @@
+{
+  "schema": "FOH_N1_ARQUEBUSIER_VENERABLE_CONTEXT_REAL_CLICK",
+  "at": "2026-11-03T09:05:46.368Z",
+  "indexSha256": "5b28489ecd67343c997bce78bb7d98262630e0c56b341a98112e1bdb43ab2be3",
+  "scope": "5 voies Arquebusier x rang 3 accessibles à N1 vénérable, Humain, vrai clic Chrome mobile et calculs contextuels. N’est pas un certificat universel des races/équipements.",
+  "passed": 5,
+  "failed": 0,
+  "status": "PASS",
+  "cases": [
+    {
+      "first": "artilleur",
+      "second": "mercenaire",
+      "status": "PASS",
+      "abilities": [
+        {
+          "slug": "mecanismes",
+          "result": "Capacité applicable dans la situation choisie.\nBonus de compétence : 5\nRéférence : livre de base COF2, p. 62."
+        },
+        {
+          "slug": "arme-a-repetition",
+          "result": "Capacité applicable dans la situation choisie.\nCapacité du chargeur : 6\nActions limitées par projectile rechargé : 1\nLimite : Maximum deux armes à répétition modifiées\nRéférence : livre de base COF2, p. 62."
+        },
+        {
+          "slug": "tir-de-barrage-l",
+          "result": "Capacité applicable dans la situation choisie.\nLargeur de zone surveillée (m) : 20\nDéclenché par déplacement : oui\nMultiplicateur de dommages si choisi : 2\nChoix : doubler les dommages / interrompre immédiatement le déplacement sans dommages\nLimite : Plusieurs cibles possibles uniquement tant qu’aucun rechargement n’est requis\nRéférence : livre de "
+        }
+      ],
+      "steps": [
+        "age-rank-artilleur",
+        "age-rank-artilleur",
+        "age-rank-mercenaire",
+        "hero"
+      ],
+      "error": null
+    },
+    {
+      "first": "explosifs",
+      "second": "mercenaire",
+      "status": "PASS",
+      "abilities": [
+        {
+          "slug": "tir-de-grenaille-l",
+          "result": "Capacité applicable dans la situation choisie.\nZone d’effet : {\"shape\":\"cone\",\"lengthMeters\":10,\"widthMeters\":5}\nNombre de tests d’attaque : 1\ntargetRule : un même résultat contre chaque DEF du cône\nFraction des dommages habituels : 0.5\nLimite : Une seule attaque de zone pour les cibles face au tireur\nRéférence : livre de base COF2, p. 63."
+        },
+        {
+          "slug": "demolition",
+          "result": "Capacité applicable dans la situation choisie.\nRounds nécessaires : 3\nCharges maximales par jour : 3\nCharges consommées : 1\nFormule de dommages : 3d4° + INT\nFraction de RD retenue : 0.5\nRéférence : livre de base COF2, p. 63."
+        },
+        {
+          "slug": "poudre-puissante",
+          "result": "Capacité applicable dans la situation choisie.\nPortée supplémentaire (m) : 10\nDM supplémentaires : 1\nProjectile magique : oui\nÀ noter : Ces bonus sont normalement déjà compris dans les attaques canoniques : ne pas les additionner deux fois\nRéférence : livre de base COF2, p. 63."
+        }
+      ],
+      "steps": [
+        "age-rank-explosifs",
+        "age-rank-explosifs",
+        "age-rank-mercenaire",
+        "hero"
+      ],
+      "error": null
+    },
+    {
+      "first": "mercenaire",
+      "second": "artilleur",
+      "status": "PASS",
+      "abilities": [
+        {
+          "slug": "pilier-de-bar",
+          "result": "Capacité applicable dans la situation choisie.\nDM à mains nues : 1d4°\nDégâts non létaux : oui\nRéférence : livre de base COF2, p. 64."
+        },
+        {
+          "slug": "mort-ou-vif-l",
+          "result": "Capacité applicable dans la situation choisie.\nDommages normaux : oui\nOption dégâts temporaires : oui\nNombre d’effets préjudiciables possibles : 2\nDurée de l’affaiblissement : 1d4\nChoix : désarmer / renverser / affaiblir\nRéférence : livre de base COF2, p. 64."
+        },
+        {
+          "slug": "combattant-aguerri",
+          "result": "Capacité applicable dans la situation choisie.\nDEF supplémentaire : 1\nChoix : capacité de rang 1 de Guerrier / capacité de rang 1 de Voleur / capacité de rang 1 de Rôdeur\nLimite : Voleur : armure cuir ; Rôdeur : armure cuir renforcé\nÀ noter : Le moteur canonique additionne déjà le +1 DEF ; pas de double application\nRéférence : livre de base COF2, p"
+        }
+      ],
+      "steps": [
+        "age-rank-mercenaire",
+        "age-rank-mercenaire",
+        "age-rank-artilleur",
+        "hero"
+      ],
+      "error": null
+    },
+    {
+      "first": "pistolero",
+      "second": "précision",
+      "status": "PASS",
+      "abilities": [
+        {
+          "slug": "plus-vite-que-son-ombre",
+          "result": "Capacité applicable dans la situation choisie.\nBonus d’initiative pour ce tir : 5\nRéférence : livre de base COF2, p. 65."
+        },
+        {
+          "slug": "ajuster-le-tir",
+          "result": "Capacité applicable dans la situation choisie.\nBonus du prochain tir : 5\nRéférence : livre de base COF2, p. 65."
+        },
+        {
+          "slug": "tir-double-l",
+          "result": "Capacité applicable dans la situation choisie.\nAttaques : 2\nMalus par attaque : -2\nLimite : Les deux projectiles doivent être disponibles et sont consommés\nRéférence : livre de base COF2, p. 65."
+        }
+      ],
+      "steps": [
+        "age-rank-pistolero",
+        "age-rank-pistolero",
+        "age-rank-précision",
+        "hero"
+      ],
+      "error": null
+    },
+    {
+      "first": "précision",
+      "second": "pistolero",
+      "status": "PASS",
+      "abilities": [
+        {
+          "slug": "joli-coup",
+          "result": "Capacité applicable dans la situation choisie.\nMalus d’attaque pour le couvert : 0\nRéférence : livre de base COF2, p. 65."
+        },
+        {
+          "slug": "defaut-dans-la-cuirasse-a",
+          "result": "Capacité applicable dans la situation choisie.\nDEF à atteindre : 12\nIgnorer résistance aux DM : oui\nIgnorer réduction des DM : oui\nRéférence : livre de base COF2, p. 65."
+        },
+        {
+          "slug": "tir-precis",
+          "result": "Capacité applicable dans la situation choisie.\nCritique dès (d20) : 19\nÀ noter : Le moteur d’attaque peut avoir déjà appliqué ce seuil : ne pas l’abaisser une seconde fois\nRéférence : livre de base COF2, p. 65."
+        }
+      ],
+      "steps": [
+        "age-rank-précision",
+        "age-rank-précision",
+        "age-rank-pistolero",
+        "hero"
+      ],
+      "error": null
+    }
+  ]
+}
