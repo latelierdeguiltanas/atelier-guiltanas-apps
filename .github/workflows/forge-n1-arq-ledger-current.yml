@@ -1,0 +1,68 @@
+name: Forge N1 - recertifier immédiatement Arquebusier R1 et barres
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arq-ledger-current.yml'
+permissions:
+  contents: write
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Lire le code et les preuves au dernier commit distant
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs
+      - name: Rejouer les capacités, les 8 peuples, âges, voies et hybrides
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pure_age_ranks.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_all_pairs_current.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_history_people_cross.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_15_mechanics_snapshot.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_hybrid_powder_safety.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_pure_rule_ledger.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_version_parity.cjs
+      - name: Exiger la certification R1 sans 100 fictif
+        run: |
+          node - <<'NODE'
+          const f=require('./centre-synchronisation/forge-n1/focus.json');
+          if(f.profile.name!=='Arquebusier'||f.profile.total!==16||f.profile.percent!==56||f.profile.passed!==9)throw Error('Certification du R1 non attribuée : '+JSON.stringify(f.profile.checks.filter(x=>x.status==='ACQUIS').map(x=>x.id)));
+          if(f.summary.profilesCertified!==0||f.summary.peoplesCertified!==0)throw Error('Faux 100 %');
+          console.log('Arquebusier '+f.profile.percent+' %, '+f.profile.passed+'/16 domaines COMPLETS et prouvés');
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: foh-arq-current-9-of-16-gates
+          path: |
+            forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json
+            forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json
+            forge-of-heroes/QA/N1/arquebusier-hybrid-powder-safety.json
+            forge-of-heroes/QA/N1/arquebusier-context-canonical.json
+            centre-synchronisation/forge-n1/focus.json
+      - name: Publier le registre certifié sans conflit avec les autres chats
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/arquebusier-history-people-cross.json forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json forge-of-heroes/QA/N1/arquebusier-context-canonical.json forge-of-heroes/QA/N1/arquebusier-hybrid-powder-safety.json forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/version-parity.json centre-synchronisation/forge-n1/purs.json centre-synchronisation/forge-n1/focus.json
+          if ! git diff --cached --quiet; then
+            git commit -m "test(forge-n1): 9 domaines Arquebusier certifiés sur 16 avec preuve source [skip ci]"
+            git restore --worktree .
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              if git rebase origin/main && git push origin HEAD:main; then exit 0; fi
+              git rebase --abort || true
+              if [ "$attempt" = 5 ]; then exit 1; fi
+              sleep 2
+            done
+          fi
