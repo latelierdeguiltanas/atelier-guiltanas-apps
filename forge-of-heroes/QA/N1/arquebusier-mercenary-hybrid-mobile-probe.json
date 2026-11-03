@@ -1,0 +1,1084 @@
+{
+  "schema": "FOH_N1_ARQ_MERCENAIRE_HYBRIDE_REAL_UI_DIAGNOSTIC",
+  "at": "2026-11-03T12:21:18.272Z",
+  "steps": [
+    {
+      "stage": "paths",
+      "nextEnabled": true,
+      "activeStep": "Voies et capacités\n\nLes rangs illégaux ne sont jamais proposés.\n\nVoie, rang, capacité\n\nUne voie est un domaine d’apprentissage. Son rang indique jusqu’où ton héros y progresse. Chaque rang donne une capacité. Ici, tu choisis les domaines que ton héros commence à développer.\n\nVoie de Arquebusier — profil principal\nVoie de l’artilleur\nVoie des explosifs\nVoie du mercenaire\nVoie du pistolero\nVoie de la précision\nVoie du mercenaire\nRang 1 : Pilier de bar — L’arquebusier obtient un bonus égal à son rang + 2 aux tests d’interaction sociale dans les tavernes ou les auberges (renseignement, négociation, séduction, etc.) ainsi que pour résister aux\nChanger\nVoir les 5 rangs\nVoie de Guerrier — profil secondaire\nVoie du bouclier\nVoie du combat\nVoie du maître d’armes\nVoie de la résistance\nVoie du soldat\nVoie du bouclier\nRang 1 : Protéger un allié (G) — S’il n’est pas surpris, le guerrier peut accorder un bonus de DEF de +2 à un allié à son contact contre une attaque par round. Il doit annoncer son intention avant de connaître le résultat d\nChanger\nVoir les 5 rangs\nVoie du mercenaire\nPilier de bar\nL’arquebusier obtient un bonus égal à son rang + 2 aux tests d’interaction sociale dans les tavernes ou les auberges (renseignement, négociation, séduction, etc.) ainsi que pour ré\nEn savoir plus\nVoie du bouclier\nProtéger un allié (G)\nS’il n’est pas surpris, le guerrier peut accorder un bonus de DEF de +2 à un allié à son contact contre une attaque par round. Il doit annoncer son intention avant de connaître le\nEn savoir plus",
+      "controls": [
+        {
+          "tag": "SELECT",
+          "id": "path-one",
+          "role": null,
+          "type": "select-one",
+          "value": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
+          "text": "Voie de l’artilleurVoie des explosifsVoie du mercenaireVoie du pistoleroVoie de la précision",
+          "options": [
+            {
+              "value": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
+              "text": "Voie de l’artilleur"
+            },
+            {
+              "value": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024",
+              "text": "Voie des explosifs"
+            },
+            {
+              "value": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+              "text": "Voie du mercenaire"
+            },
+            {
+              "value": "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024",
+              "text": "Voie du pistolero"
+            },
+            {
+              "value": "classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024",
+              "text": "Voie de la précision"
+            }
+          ]
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Changer",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Voir les 5 rangs",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "SELECT",
+          "id": "path-two",
+          "role": null,
+          "type": "select-one",
+          "value": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024",
+          "text": "Voie des explosifsVoie du mercenaireVoie du pistoleroVoie de la précision",
+          "options": [
+            {
+              "value": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024",
+              "text": "Voie des explosifs"
+            },
+            {
+              "value": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+              "text": "Voie du mercenaire"
+            },
+            {
+              "value": "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024",
+              "text": "Voie du pistolero"
+            },
+            {
+              "value": "classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024",
+              "text": "Voie de la précision"
+            }
+          ]
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Changer",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Voir les 5 rangs",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "SELECT",
+          "id": "hybrid-primary-path",
+          "role": null,
+          "type": "select-one",
+          "value": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+          "text": "Voie de l’artilleur\nVoie des explosifs\nVoie du mercenaire\nVoie du pistolero\nVoie de la précision",
+          "options": [
+            {
+              "value": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
+              "text": "Voie de l’artilleur"
+            },
+            {
+              "value": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024",
+              "text": "Voie des explosifs"
+            },
+            {
+              "value": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+              "text": "Voie du mercenaire"
+            },
+            {
+              "value": "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024",
+              "text": "Voie du pistolero"
+            },
+            {
+              "value": "classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024",
+              "text": "Voie de la précision"
+            }
+          ]
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Changer",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Voir les 5 rangs",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "SELECT",
+          "id": "hybrid-secondary-path",
+          "role": null,
+          "type": "select-one",
+          "value": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+          "text": "Voie du bouclier\nVoie du combat\nVoie du maître d’armes\nVoie de la résistance\nVoie du soldat",
+          "options": [
+            {
+              "value": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+              "text": "Voie du bouclier"
+            },
+            {
+              "value": "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+              "text": "Voie du combat"
+            },
+            {
+              "value": "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024",
+              "text": "Voie du maître d’armes"
+            },
+            {
+              "value": "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024",
+              "text": "Voie de la résistance"
+            },
+            {
+              "value": "classpath:voie-du-soldat:class-guerrier:cof2-lb-2024",
+              "text": "Voie du soldat"
+            }
+          ]
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Changer",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Voir les 5 rangs",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "Choisir",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "submit",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "INPUT",
+          "id": "mage-path-replacement",
+          "role": null,
+          "type": "checkbox",
+          "value": "on",
+          "checked": false,
+          "text": "",
+          "options": null
+        },
+        {
+          "tag": "SELECT",
+          "id": "mage-r2",
+          "role": null,
+          "type": "select-one",
+          "value": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+          "text": "Mort ou vif (L) — Voie du mercenaire",
+          "options": [
+            {
+              "value": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+              "text": "Mort ou vif (L) — Voie du mercenaire"
+            }
+          ]
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "En savoir plus",
+          "options": null
+        },
+        {
+          "tag": "INPUT",
+          "id": "tracker-resource-swap",
+          "role": null,
+          "type": "checkbox",
+          "value": "on",
+          "checked": false,
+          "text": "",
+          "options": null
+        }
+      ],
+      "draft": {
+        "d": {
+          "step": 7,
+          "name": "QA Mercenaire bouclier",
+          "sex": "male",
+          "type": "hybrid",
+          "peopleId": "people:humain:cof2-lb-2024",
+          "peopleChosen": true,
+          "peopleBonusStat": "",
+          "peopleMalusStat": "",
+          "primaryId": "class:arquebusier:cof2-lb-2024",
+          "profileChosen": true,
+          "secondaryId": "class:guerrier:cof2-lb-2024",
+          "series": "expert",
+          "characteristicMethod": "STANDARD_SERIES",
+          "semiRolls": [
+            7,
+            7,
+            7
+          ],
+          "base": {
+            "for": 2,
+            "agi": 1,
+            "con": 0,
+            "per": 1,
+            "int": 3,
+            "vol": 0,
+            "cha": -1
+          },
+          "humanStat": "con",
+          "age": false,
+          "histories": false,
+          "extraMage": false,
+          "aLaCarte": false,
+          "aLaCartePurchases": [],
+          "repeatingPistolCount": 1,
+          "preferredWeaponCategory": "",
+          "extraLanguage": "",
+          "ageId": "young",
+          "ageChoice": "PC",
+          "ageAgiPenaltyStat": "agi",
+          "geoId": "history:campaigns",
+          "proId": "history:courtier",
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "path1": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
+          "path2": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024",
+          "hybridPath1": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+          "hybridPath2": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+          "mageR2": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+          "useMagePath": false,
+          "traqueurSwap": false,
+          "acquisitionPurchases": [],
+          "packageId": "standard",
+          "wearArmor": true,
+          "equipmentOverride": null,
+          "priestMode": "generalist",
+          "religionId": "religion:arcanna:cof2-lb-2024",
+          "gmApproved": true,
+          "abilityChoices": {},
+          "divineReplacementPathId": ""
+        },
+        "errors": [
+          "Arme non maîtrisée par le profil : Pétoire."
+        ]
+      }
+    },
+    {
+      "stage": "equipment-or-next",
+      "nextEnabled": true,
+      "activeStep": "Équipement et religion\n\nChoisis un paquetage ou un échange de matériel validé par le MJ.\n\nÉquipement\n\nChoisis un paquetage proposé par ton profil. Les obligations et incompatibilités sont déjà contrôlées par le moteur.\n\nPaquetage de départ sélectionné.\nPaquetage de départ\nstandard\nPorter l’armure du paquetage\nDécoche pour combattre sans armure et activer les capacités qui l’exigent.\nArmure : Armure prévue par le profil. Armes : Pétoire, Épée longue, Dague\nÉchange de matériel validé par le MJ\nChoisis le matériel convenu avec le MJ. Les restrictions du personnage restent vérifiées.",
+      "controls": [
+        {
+          "tag": "SELECT",
+          "id": "equipment-package",
+          "role": null,
+          "type": "select-one",
+          "value": "standard",
+          "text": "standard",
+          "options": [
+            {
+              "value": "standard",
+              "text": "standard"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "id": "extra-mastery-weapon",
+          "role": null,
+          "type": "select-one",
+          "value": "",
+          "text": "",
+          "options": []
+        },
+        {
+          "tag": "INPUT",
+          "id": "wear-armor",
+          "role": null,
+          "type": "checkbox",
+          "value": "on",
+          "checked": true,
+          "text": "",
+          "options": null
+        },
+        {
+          "tag": "INPUT",
+          "id": "equipment-swap-approved",
+          "role": null,
+          "type": "checkbox",
+          "value": "on",
+          "checked": false,
+          "text": "",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "1 Pétoire",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "2 Pétoires",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Tester une 3e Pétoire",
+          "options": null
+        },
+        {
+          "tag": "SELECT",
+          "id": "priest-mode",
+          "role": null,
+          "type": "select-one",
+          "value": "generalist",
+          "text": "GénéralisteSpécialiste d'une divinité",
+          "options": [
+            {
+              "value": "generalist",
+              "text": "Généraliste"
+            },
+            {
+              "value": "specialist",
+              "text": "Spécialiste d'une divinité"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "id": "religion",
+          "role": null,
+          "type": "select-one",
+          "value": "religion:arcanna:cof2-lb-2024",
+          "text": "ArcannaArwendéeAurillaAxënderBasileCéresDénoraEllonaForthurGaëlmGoromGuardalHellionIrrionJewelnLinnarréMélennaMéphistèreMirandiaMornOrbisOumarosPerind",
+          "options": [
+            {
+              "value": "religion:arcanna:cof2-lb-2024",
+              "text": "Arcanna"
+            },
+            {
+              "value": "religion:arwendee:cof2-lb-2024",
+              "text": "Arwendée"
+            },
+            {
+              "value": "religion:aurilla:cof2-lb-2024",
+              "text": "Aurilla"
+            },
+            {
+              "value": "religion:axender:cof2-lb-2024",
+              "text": "Axënder"
+            },
+            {
+              "value": "religion:basile:cof2-lb-2024",
+              "text": "Basile"
+            },
+            {
+              "value": "religion:ceres:cof2-lb-2024",
+              "text": "Céres"
+            },
+            {
+              "value": "religion:denora:cof2-lb-2024",
+              "text": "Dénora"
+            },
+            {
+              "value": "religion:ellona:cof2-lb-2024",
+              "text": "Ellona"
+            },
+            {
+              "value": "religion:forthur:cof2-lb-2024",
+              "text": "Forthur"
+            },
+            {
+              "value": "religion:gaelm:cof2-lb-2024",
+              "text": "Gaëlm"
+            },
+            {
+              "value": "religion:gorom:cof2-lb-2024",
+              "text": "Gorom"
+            },
+            {
+              "value": "religion:guardal:cof2-lb-2024",
+              "text": "Guardal"
+            },
+            {
+              "value": "religion:hellion:cof2-lb-2024",
+              "text": "Hellion"
+            },
+            {
+              "value": "religion:irrion:cof2-lb-2024",
+              "text": "Irrion"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "id": "divine-replacement-path",
+          "role": null,
+          "type": "select-one",
+          "value": "",
+          "text": "",
+          "options": []
+        }
+      ],
+      "draft": {
+        "d": {
+          "step": 8,
+          "name": "QA Mercenaire bouclier",
+          "sex": "male",
+          "type": "hybrid",
+          "peopleId": "people:humain:cof2-lb-2024",
+          "peopleChosen": true,
+          "peopleBonusStat": "",
+          "peopleMalusStat": "",
+          "primaryId": "class:arquebusier:cof2-lb-2024",
+          "profileChosen": true,
+          "secondaryId": "class:guerrier:cof2-lb-2024",
+          "series": "expert",
+          "characteristicMethod": "STANDARD_SERIES",
+          "semiRolls": [
+            7,
+            7,
+            7
+          ],
+          "base": {
+            "for": 2,
+            "agi": 1,
+            "con": 0,
+            "per": 1,
+            "int": 3,
+            "vol": 0,
+            "cha": -1
+          },
+          "humanStat": "con",
+          "age": false,
+          "histories": false,
+          "extraMage": false,
+          "aLaCarte": false,
+          "aLaCartePurchases": [],
+          "repeatingPistolCount": 1,
+          "preferredWeaponCategory": "",
+          "extraLanguage": "",
+          "ageId": "young",
+          "ageChoice": "PC",
+          "ageAgiPenaltyStat": "agi",
+          "geoId": "history:campaigns",
+          "proId": "history:courtier",
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "path1": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
+          "path2": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024",
+          "hybridPath1": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+          "hybridPath2": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+          "mageR2": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+          "useMagePath": false,
+          "traqueurSwap": false,
+          "acquisitionPurchases": [],
+          "packageId": "standard",
+          "wearArmor": true,
+          "equipmentOverride": null,
+          "priestMode": "generalist",
+          "religionId": "religion:arcanna:cof2-lb-2024",
+          "gmApproved": true,
+          "abilityChoices": {},
+          "divineReplacementPathId": ""
+        },
+        "errors": [
+          "Arme non maîtrisée par le profil : Pétoire."
+        ]
+      }
+    },
+    {
+      "stage": "before-reveal",
+      "nextEnabled": true,
+      "activeStep": "Valider et jouer — ma fiche interactive\nMes fiches de jeu\n\nPasser au niveau suivant →\n\nFiche de héros\n\nTon héros COF2 niveau 1, prêt à être consulté, sauvegardé et repris.\n\nIl reste un choix à corriger :\nArme non maîtrisée par le profil : Pétoire.\nCorriger dans Équipement\nCalculs de capacités en situation (Arquebusier / Arbalétrier)\nEnregistrer dans Mes héros\nMes héros\nModifier\nExporter la fiche officielle PDF\nImporter la fiche officielle",
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "id": "native-play-sheet",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Valider et jouer — ma fiche interactive",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "native-next-level",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Passer au niveau suivant →",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Corriger dans Équipement",
+          "options": null
+        },
+        {
+          "tag": "SELECT",
+          "id": "foh-n1-context-ability",
+          "role": null,
+          "type": "select-one",
+          "value": "mecanismes",
+          "text": "",
+          "options": [
+            {
+              "value": "mecanismes",
+              "text": "Mécanismes"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "id": "foh-n1-context-example",
+          "role": null,
+          "type": "select-one",
+          "value": "0",
+          "text": "",
+          "options": [
+            {
+              "value": "0",
+              "text": "Réparer ou comprendre un mécanisme"
+            },
+            {
+              "value": "1",
+              "text": "Attaquer avec une baliste ou arme de siège"
+            }
+          ]
+        },
+        {
+          "tag": "BUTTON",
+          "id": "foh-n1-context-run",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Enregistrer dans Mes héros",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Mes héros",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Modifier",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Exporter la fiche officielle PDF",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Importer la fiche officielle",
+          "options": null
+        }
+      ],
+      "draft": {
+        "d": {
+          "step": 9,
+          "name": "QA Mercenaire bouclier",
+          "sex": "male",
+          "type": "hybrid",
+          "peopleId": "people:humain:cof2-lb-2024",
+          "peopleChosen": true,
+          "peopleBonusStat": "",
+          "peopleMalusStat": "",
+          "primaryId": "class:arquebusier:cof2-lb-2024",
+          "profileChosen": true,
+          "secondaryId": "class:guerrier:cof2-lb-2024",
+          "series": "expert",
+          "characteristicMethod": "STANDARD_SERIES",
+          "semiRolls": [
+            7,
+            7,
+            7
+          ],
+          "base": {
+            "for": 2,
+            "agi": 1,
+            "con": 0,
+            "per": 1,
+            "int": 3,
+            "vol": 0,
+            "cha": -1
+          },
+          "humanStat": "con",
+          "age": false,
+          "histories": false,
+          "extraMage": false,
+          "aLaCarte": false,
+          "aLaCartePurchases": [],
+          "repeatingPistolCount": 1,
+          "preferredWeaponCategory": "",
+          "extraLanguage": "",
+          "ageId": "young",
+          "ageChoice": "PC",
+          "ageAgiPenaltyStat": "agi",
+          "geoId": "history:campaigns",
+          "proId": "history:courtier",
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "path1": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
+          "path2": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024",
+          "hybridPath1": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+          "hybridPath2": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+          "mageR2": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+          "useMagePath": false,
+          "traqueurSwap": false,
+          "acquisitionPurchases": [],
+          "packageId": "standard",
+          "wearArmor": true,
+          "equipmentOverride": null,
+          "priestMode": "generalist",
+          "religionId": "religion:arcanna:cof2-lb-2024",
+          "gmApproved": true,
+          "abilityChoices": {},
+          "divineReplacementPathId": "",
+          "heroLibraryId": "b4ff3418-6fbe-4dc7-9382-9b3651c1b236"
+        },
+        "errors": [
+          "Arme non maîtrisée par le profil : Pétoire."
+        ]
+      }
+    }
+  ],
+  "status": "PROBED",
+  "errors": [],
+  "source": "COF2 Livre de base pages 65 et 177"
+}
