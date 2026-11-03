@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-02T19:08:50.901Z",
+  "generatedAt": "2026-11-03T09:02:41.173Z",
   "engineSha256": "60d23d2d36c099e0fe0ce370413d74ac4eef438336c516d070a8326a1d082fee",
   "certificationPlan": {
     "policy": "UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100",
@@ -12,7 +12,7 @@
     "current": {
       "name": "Arquebusier",
       "position": 1,
-      "percent": 50,
+      "percent": 13,
       "certified": false
     },
     "next": {
@@ -25,7 +25,7 @@
         "name": "Arquebusier",
         "position": 1,
         "status": "EN_COURS",
-        "percent": 50,
+        "percent": 13,
         "certified": false
       },
       {
@@ -133,9 +133,9 @@
     "completed": false,
     "variantPrototypeReady": true,
     "variantIntegrated": true,
-    "passed": 8,
+    "passed": 2,
     "total": 16,
-    "percent": 50,
+    "percent": 13,
     "checks": [
       {
         "id": "paths",
@@ -146,32 +146,32 @@
       {
         "id": "pairs",
         "name": "Toutes les paires de voies légales",
-        "status": "ACQUIS",
-        "detail": "Les dix choix possibles de deux voies du profil, avec chacun des huit peuples et les cinq modalités d’âge N1, sont créés, validés et conservés après sauvegarde. Les dix couples de l’Arbalétrier sont aussi éprouvés."
+        "status": "A_VERIFIER",
+        "detail": "Les dix choix possibles de deux voies doivent fonctionner avec les équipements autorisés, y compris l’alternative Halfelin."
       },
       {
         "id": "r1",
         "name": "Recevoir les capacités de rang 1",
-        "status": "ACQUIS",
-        "detail": "Les cinq rangs 1 sont attribués et sauvegardés dans les créations de référence."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier les cinq rangs 1."
       },
       {
         "id": "r2",
         "name": "Recevoir les capacités de rang 2",
-        "status": "ACQUIS",
-        "detail": "Les cinq rangs 2 obtenus à N1 par l’âge mûr sont attribués et sauvegardés."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier les cinq rangs 2."
       },
       {
         "id": "r3",
         "name": "Recevoir les capacités de rang 3",
-        "status": "ACQUIS",
-        "detail": "Les cinq rangs 3 obtenus à N1 par l’âge vénérable sont attribués et sauvegardés."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier les cinq rangs 3."
       },
       {
         "id": "age",
         "name": "Dépenses de rangs selon l’âge",
-        "status": "ACQUIS",
-        "detail": "Très jeune, jeune, mûr et vénérable : rangs supplémentaires et restrictions vérifiés."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier tous les choix d’âge."
       },
       {
         "id": "methods",
@@ -183,19 +183,19 @@
         "id": "derived",
         "name": "PV, DEF, initiative, chance, mana, attaques et dommages",
         "status": "A_VERIFIER",
-        "detail": "400/400 oracles sur les 8 peuples × 5 voies × 5 âges × 2 produits : caractéristiques, PV, DEF, INIT, pouvoirs numériques ciblés et sauvegarde. Restent toutes les variantes d’attaques, choix permanents, équipements et effets conditionnels."
+        "detail": "Faire correspondre chaque valeur et chaque bonus permanent au Livre de base avec les voies et équipements autorisés."
       },
       {
         "id": "r1effects",
         "name": "Tous les effets des cinq capacités de rang 1",
         "status": "A_VERIFIER",
-        "detail": "Pilier de bar corrigé : mains nues 1d4° non létaux, calcul et sauvegarde vérifiés sur les deux moteurs. Restent les tests de combat, de compétences, de couverture, de grenaille et d’initiative conditionnelle."
+        "detail": "Compléter les preuves sur les 5 effets R1, les cas négatifs, le cas spécial poudre hybride et le vrai parcours au clic sur la version courante."
       },
       {
         "id": "r2effects",
         "name": "Tous les effets des cinq capacités de rang 2",
         "status": "A_VERIFIER",
-        "detail": "15 capacités R1–R3 contrôlées dans les deux bases, et chargeur 2+INT validé. Plusieurs rangs R2 restent des effets à interpréter en combat ; rechargement, Démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse non certifiés en exécution."
+        "detail": "Chargeur 2 + INT validé ; restent le rechargement, la démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse."
       },
       {
         "id": "r3effects",
@@ -218,8 +218,8 @@
       {
         "id": "save",
         "name": "Enregistrer et reprendre les pouvoirs obtenus",
-        "status": "ACQUIS",
-        "detail": "Les états de référence des rangs 1, 2 et 3 avec l’âge ont été enregistrés et restaurés à l’identique."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier la sauvegarde et la reprise."
       },
       {
         "id": "pdf",
