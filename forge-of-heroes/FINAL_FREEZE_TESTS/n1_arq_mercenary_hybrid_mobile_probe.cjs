@@ -1,6 +1,6 @@
 'use strict';
-const fs=require('node:fs'),{chromium}=require('playwright');
-const report={schema:'FOH_N1_ARQ_MERCENAIRE_HYBRIDE_REAL_UI_DIAGNOSTIC',at:new Date().toISOString(),steps:[],status:'PENDING',errors:[],source:'COF2 Livre de base pages 65 et 177'};
+const fs=require('node:fs'),assert=require('node:assert/strict'),crypto=require('node:crypto'),{chromium}=require('playwright');
+const report={indexSha256:crypto.createHash('sha256').update(fs.readFileSync('forge-of-heroes/index.html')).digest('hex'),schema:'FOH_N1_ARQ_MERCENAIRE_HYBRIDE_REAL_UI_DIAGNOSTIC',at:new Date().toISOString(),steps:[],status:'PENDING',errors:[],source:'COF2 Livre de base pages 65 et 177'};
 (async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||undefined,args:['--no-sandbox']});const ctx=await browser.newContext({viewport:{width:393,height:852},isMobile:true,hasTouch:true});const p=await ctx.newPage();p.setDefaultTimeout(9000);
 const next=()=>p.locator('#next-btn').tap();
 const choose=async(sel,part)=>{const el=p.locator(sel),v=await el.locator('option').evaluateAll((xs,term)=>xs.find(o=>o.textContent.toLowerCase().includes(term.toLowerCase()))?.value,part);if(!v)throw Error('Missing '+part+' in '+sel+' options '+(await el.locator('option').allTextContents()).join(','));await el.selectOption(v)};
@@ -26,8 +26,23 @@ try{
  await p.locator('#equipment-swap-shield').selectOption('shield:petit:cof2-lb-2024');
  await inspect('legal-swap');
  await next();await inspect('before-reveal');
- report.status='PROBED';
-}catch(e){report.status='INCOMPLETE';report.errors.push(String(e.stack||e));}finally{await ctx.close();await browser.close();}
+ assert.equal(report.steps.find(x=>x.stage==='legal-swap')?.draft?.errors?.length,0,'La correction de l’équipement doit rendre le personnage valide');
+ await p.locator('#reveal-view').tap();
+ const before=await p.locator('#summary-content').innerText();
+ assert.match(before,/QA Mercenaire bouclier/);
+ assert.match(before,/Arquebusier/);
+ assert.ok(!before.includes('Il reste un choix à corriger'),'Aucune erreur après le choix d’équipement légal');
+ await p.getByRole('button',{name:'Enregistrer dans Mes héros',exact:true}).tap();
+ await p.reload({waitUntil:'domcontentloaded'});
+ await p.locator('#open-heroes').tap();
+ await p.getByRole('button',{name:'Voir la fiche',exact:true}).first().tap();
+ const after=await p.locator('#summary-content').innerText();
+ assert.equal(after,before,'Résumé différent après sauvegarde/réouverture');
+ await p.locator('#native-play-sheet').tap();
+ await p.frameLocator('#sheet').getByRole('heading',{name:'QA Mercenaire bouclier',exact:true}).waitFor({timeout:9000});
+ report.steps.push({stage:'confirmed-saved-hero-and-interactive-sheet',success:true,character:'Arquebusier hybride Mercenaire + Guerrier Bouclier'});
+ report.status='PASS';
+}catch(e){report.status='FAIL';report.errors.push(String(e.stack||e));process.exitCode=1;}finally{await ctx.close();await browser.close();}
 fs.writeFileSync('forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-mobile-probe.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({status:report.status,errors:report.errors,steps:report.steps.map(x=>({stage:x.stage,nextEnabled:x.nextEnabled,controls:x.controls?.slice(0,25),errors:x.draft?.errors}))}).slice(0,9800));
 })().catch(e=>{console.error(e);process.exitCode=1});
