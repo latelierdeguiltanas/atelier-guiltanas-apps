@@ -2,16 +2,30 @@
   "schema": "FOH_N1_OFFICIAL_REJECTION_CLASSIFICATION",
   "sourceBook": "COF2 Livre de base, peuple Halfelin p.55; Règles avancées, création sans profil p.154",
   "counts": {
-    "classified": 1365,
+    "classified": 1885,
     "unclassified": 0
   },
   "groups": [
+    {
+      "people": "demi-elfe",
+      "reason": "hybrid|Arme non maîtrisée par le profil : Pétoire.",
+      "count": 65,
+      "category": "MERCENAIRE_HYBRID_POWDER_UNTRAINED",
+      "source": "Livre de base COF2 p.65 (Mercenaire hybride : pas de maîtrise poudre) et p.177 (second profil : maîtrise après deux rangs) ; correction vérifiée 32 cas × deux sens × huit peuples × deux produits"
+    },
     {
       "people": "demi-elfe",
       "reason": "no-profile|Sans profil : bouclier incompatible avec une voie choisie.",
       "count": 45,
       "category": "INCOMPATIBLE_PATH_SHIELD",
       "source": "Règles avancées p.154 + vérifications négatives sans profil"
+    },
+    {
+      "people": "demi-orc",
+      "reason": "hybrid|Arme non maîtrisée par le profil : Pétoire.",
+      "count": 65,
+      "category": "MERCENAIRE_HYBRID_POWDER_UNTRAINED",
+      "source": "Livre de base COF2 p.65 (Mercenaire hybride : pas de maîtrise poudre) et p.177 (second profil : maîtrise après deux rangs) ; correction vérifiée 32 cas × deux sens × huit peuples × deux produits"
     },
     {
       "people": "demi-orc",
@@ -22,6 +36,13 @@
     },
     {
       "people": "elfe-haut",
+      "reason": "hybrid|Arme non maîtrisée par le profil : Pétoire.",
+      "count": 65,
+      "category": "MERCENAIRE_HYBRID_POWDER_UNTRAINED",
+      "source": "Livre de base COF2 p.65 (Mercenaire hybride : pas de maîtrise poudre) et p.177 (second profil : maîtrise après deux rangs) ; correction vérifiée 32 cas × deux sens × huit peuples × deux produits"
+    },
+    {
+      "people": "elfe-haut",
       "reason": "no-profile|Sans profil : bouclier incompatible avec une voie choisie.",
       "count": 45,
       "category": "INCOMPATIBLE_PATH_SHIELD",
@@ -29,10 +50,24 @@
     },
     {
       "people": "elfe-sylvain",
+      "reason": "hybrid|Arme non maîtrisée par le profil : Pétoire.",
+      "count": 65,
+      "category": "MERCENAIRE_HYBRID_POWDER_UNTRAINED",
+      "source": "Livre de base COF2 p.65 (Mercenaire hybride : pas de maîtrise poudre) et p.177 (second profil : maîtrise après deux rangs) ; correction vérifiée 32 cas × deux sens × huit peuples × deux produits"
+    },
+    {
+      "people": "elfe-sylvain",
       "reason": "no-profile|Sans profil : bouclier incompatible avec une voie choisie.",
       "count": 45,
       "category": "INCOMPATIBLE_PATH_SHIELD",
       "source": "Règles avancées p.154 + vérifications négatives sans profil"
+    },
+    {
+      "people": "gnome",
+      "reason": "hybrid|Arme non maîtrisée par le profil : Pétoire.",
+      "count": 65,
+      "category": "MERCENAIRE_HYBRID_POWDER_UNTRAINED",
+      "source": "Livre de base COF2 p.65 (Mercenaire hybride : pas de maîtrise poudre) et p.177 (second profil : maîtrise après deux rangs) ; correction vérifiée 32 cas × deux sens × huit peuples × deux produits"
     },
     {
       "people": "gnome",
@@ -57,6 +92,13 @@
     },
     {
       "people": "halfelin",
+      "reason": "hybrid|Arme non maîtrisée par le profil : Pétoire.",
+      "count": 65,
+      "category": "MERCENAIRE_HYBRID_POWDER_UNTRAINED",
+      "source": "Livre de base COF2 p.65 (Mercenaire hybride : pas de maîtrise poudre) et p.177 (second profil : maîtrise après deux rangs) ; correction vérifiée 32 cas × deux sens × huit peuples × deux produits"
+    },
+    {
+      "people": "halfelin",
       "reason": "hybrid|Arme interdite par la petite taille du peuple.",
       "count": 325,
       "category": "HALFELIN_SIZE_WEAPON",
@@ -78,10 +120,24 @@
     },
     {
       "people": "humain",
+      "reason": "hybrid|Arme non maîtrisée par le profil : Pétoire.",
+      "count": 65,
+      "category": "MERCENAIRE_HYBRID_POWDER_UNTRAINED",
+      "source": "Livre de base COF2 p.65 (Mercenaire hybride : pas de maîtrise poudre) et p.177 (second profil : maîtrise après deux rangs) ; correction vérifiée 32 cas × deux sens × huit peuples × deux produits"
+    },
+    {
+      "people": "humain",
       "reason": "no-profile|Sans profil : bouclier incompatible avec une voie choisie.",
       "count": 45,
       "category": "INCOMPATIBLE_PATH_SHIELD",
       "source": "Règles avancées p.154 + vérifications négatives sans profil"
+    },
+    {
+      "people": "nain",
+      "reason": "hybrid|Arme non maîtrisée par le profil : Pétoire.",
+      "count": 65,
+      "category": "MERCENAIRE_HYBRID_POWDER_UNTRAINED",
+      "source": "Livre de base COF2 p.65 (Mercenaire hybride : pas de maîtrise poudre) et p.177 (second profil : maîtrise après deux rangs) ; correction vérifiée 32 cas × deux sens × huit peuples × deux produits"
     },
     {
       "people": "nain",
