@@ -2001,6 +2001,11 @@ function solve(character,slug,c={}){
   return fail(o,'Test de réparation, compréhension, désamorçage ou tir avec arme de siège requis');
  }
  case 'tir-de-grenaille-l':{
+  if(c.action==='powder_safety'){
+   const hybrid=String(character?.profileId||'').startsWith('hybrid:')||bool(character?.hybrid?.enabled);
+   if(!hybrid)return fail(o,'La dispense de risque d’explosion s’applique à la voie des explosifs acquise dans un profil hybride');
+   success(o,'capacité R1 voie des explosifs en profil hybride');o.modifiers.accidentalPowderExplosionRisk=false;return o;
+  }
   if(c.skill==='artificer'){success(o,'test d’artificier');o.modifiers.skillBonus=rank+2;return o}
   if(!(kind==='powder'&&loaded&&c.ammunition==='grapeshot'))return fail(o,'Arme à poudre chargée d’une munition de grenaille requise');
   success(o,'action limitée, tir de zone');
