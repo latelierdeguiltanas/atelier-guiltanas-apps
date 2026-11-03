@@ -1,0 +1,340 @@
+{
+  "schema": "FOH_N1_ARQ_CONTEXT_INDEPENDENT_TEST",
+  "at": "2026-11-03T08:48:05.497Z",
+  "engineVersion": "FOH-ARQ-CONTEXT-N1-1",
+  "sourceBook": "Chroniques Oubliées Fantasy 2e ed. Livre de base p.62-65",
+  "inputSha256": [
+    {
+      "file": "index.html",
+      "sha256": "2faa37ebdc8e8329fe324c4315359290cd776f11f70c9e24e5886bd04cad79c6"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "sha256": "ddd17158ff9148650cc6c1177b3cecc624a76e5b018197781516b15b80df93e9"
+    }
+  ],
+  "cases": [
+    {
+      "tag": "mecanismes/{\"skill\":\"repair_mechanism\"}",
+      "status": "PASS",
+      "proof": {
+        "skillBonus": 5
+      }
+    },
+    {
+      "tag": "mecanismes/{\"skill\":\"siege_weapon_attack\"}",
+      "status": "PASS",
+      "proof": {
+        "bonusDie": true
+      }
+    },
+    {
+      "tag": "mecanismes/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "mecanismes/unowned",
+      "status": "PASS"
+    },
+    {
+      "tag": "arme-a-repetition/{\"selectedRepeatingWeapon\":true,\"rankedThreeArquebusierPaths\":1}",
+      "status": "PASS",
+      "proof": {
+        "capacity": 6,
+        "limitedActionsPerProjectile": 1
+      }
+    },
+    {
+      "tag": "arme-a-repetition/{\"selectedRepeatingWeapon\":true,\"action\":\"reload\",\"projectilesToReload\":3}",
+      "status": "PASS",
+      "proof": {
+        "totalLimitedActions": 3
+      }
+    },
+    {
+      "tag": "arme-a-repetition/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "arme-a-repetition/unowned",
+      "status": "PASS"
+    },
+    {
+      "tag": "tir-de-barrage-l/{\"weaponLoaded\":true,\"rangedAttack\":true,\"targetMovedInZoneBeforeNextTurn\":true,\"attackHit\":true}",
+      "status": "PASS",
+      "proof": {
+        "zoneWidthMeters": 20,
+        "damageIfVictimChoosesDamage": 2
+      }
+    },
+    {
+      "tag": "tir-de-barrage-l/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "tir-de-barrage-l/unowned",
+      "status": "PASS"
+    },
+    {
+      "tag": "tir-de-grenaille-l/{\"weaponKind\":\"powder\",\"weaponLoaded\":true,\"ammunition\":\"grapeshot\"}",
+      "status": "PASS",
+      "proof": {
+        "area": {
+          "shape": "cone",
+          "lengthMeters": 10,
+          "widthMeters": 5
+        },
+        "damageFraction": 0.5,
+        "attackRolls": 1
+      }
+    },
+    {
+      "tag": "tir-de-grenaille-l/{\"skill\":\"artificer\"}",
+      "status": "PASS",
+      "proof": {
+        "skillBonus": 5
+      }
+    },
+    {
+      "tag": "tir-de-grenaille-l/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "tir-de-grenaille-l/unowned",
+      "status": "PASS"
+    },
+    {
+      "tag": "demolition/{\"structureTarget\":true,\"preparationRounds\":3,\"chargesRemaining\":1}",
+      "status": "PASS",
+      "proof": {
+        "damageFormula": "3d4° + INT",
+        "targetDamageReductionMultiplier": 0.5,
+        "dailyChargesMax": 3
+      }
+    },
+    {
+      "tag": "demolition/{\"blastRadiusTarget\":true,\"preparationRounds\":3,\"chargesRemaining\":1}",
+      "status": "PASS",
+      "proof": {
+        "damageFormula": "2d4°",
+        "blastRadiusMeters": 2
+      }
+    },
+    {
+      "tag": "demolition/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "demolition/unowned",
+      "status": "PASS"
+    },
+    {
+      "tag": "poudre-puissante/{\"weaponKind\":\"powder\"}",
+      "status": "PASS",
+      "proof": {
+        "weaponRangeBonusMeters": 10,
+        "weaponDamageBonus": 1,
+        "projectileMagical": true
+      }
+    },
+    {
+      "tag": "poudre-puissante/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "poudre-puissante/unowned",
+      "status": "PASS"
+    },
+    {
+      "tag": "pilier-de-bar/{\"attack\":\"unarmed\"}",
+      "status": "PASS",
+      "proof": {
+        "damageDice": "1d4°",
+        "nonLethal": true
+      }
+    },
+    {
+      "tag": "pilier-de-bar/{\"incomingDamageType\":\"non_lethal\"}",
+      "status": "PASS",
+      "proof": {
+        "incomingDamageDivisor": 2
+      }
+    },
+    {
+      "tag": "pilier-de-bar/{\"skill\":\"resist_alcohol\"}",
+      "status": "PASS",
+      "proof": {
+        "skillBonus": 5
+      }
+    },
+    {
+      "tag": "pilier-de-bar/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "pilier-de-bar/unowned",
+      "status": "PASS"
+    },
+    {
+      "tag": "mort-ou-vif-l/{\"attackHit\":true,\"attackType\":\"ranged\",\"targetNC\":2,\"criticalHit\":true}",
+      "status": "PASS",
+      "proof": {
+        "normalWeaponDamage": true,
+        "maxConditionChoices": 2,
+        "weakenRounds": "1d4"
+      }
+    },
+    {
+      "tag": "mort-ou-vif-l/{\"attackHit\":true,\"attackType\":\"melee\",\"targetNC\":3}",
+      "status": "PASS",
+      "proof": {
+        "normalWeaponDamage": true
+      }
+    },
+    {
+      "tag": "mort-ou-vif-l/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "mort-ou-vif-l/unowned",
+      "status": "PASS"
+    },
+    {
+      "tag": "combattant-aguerri/{}",
+      "status": "PASS",
+      "proof": {
+        "defenseBonus": 1
+      }
+    },
+    {
+      "tag": "combattant-aguerri/unowned",
+      "status": "PASS"
+    },
+    {
+      "tag": "plus-vite-que-son-ombre/{\"phase\":\"initiative_attack\",\"weaponKind\":\"powder\",\"weaponLoaded\":true,\"weaponHeld\":true}",
+      "status": "PASS",
+      "proof": {
+        "initiativeBonusForShot": 5
+      }
+    },
+    {
+      "tag": "plus-vite-que-son-ombre/{\"weaponKind\":\"crossbow\",\"engagedInMelee\":true}",
+      "status": "PASS",
+      "proof": {
+        "removeRangedContactDisadvantage": true
+      }
+    },
+    {
+      "tag": "plus-vite-que-son-ombre/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "plus-vite-que-son-ombre/unowned",
+      "status": "PASS"
+    },
+    {
+      "tag": "ajuster-le-tir/{\"previousRangedAttackMiss\":true,\"sameTarget\":true,\"nextShotBeforeEndOfFollowingRound\":true}",
+      "status": "PASS",
+      "proof": {
+        "nextRangedAttackBonus": 5
+      }
+    },
+    {
+      "tag": "ajuster-le-tir/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "ajuster-le-tir/unowned",
+      "status": "PASS"
+    },
+    {
+      "tag": "tir-double-l/{\"twoLoadedOneHandRangedWeapons\":true,\"weaponKind\":\"crossbow\",\"sameTarget\":true}",
+      "status": "PASS",
+      "proof": {
+        "attackCount": 2,
+        "attackPenaltyEach": 0
+      }
+    },
+    {
+      "tag": "tir-double-l/{\"twoLoadedOneHandRangedWeapons\":true,\"weaponKind\":\"powder\",\"sameTarget\":false}",
+      "status": "PASS",
+      "proof": {
+        "attackCount": 2,
+        "attackPenaltyEach": -2
+      }
+    },
+    {
+      "tag": "tir-double-l/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "tir-double-l/unowned",
+      "status": "PASS"
+    },
+    {
+      "tag": "joli-coup/{\"rangedAttack\":true,\"cover\":\"partial\"}",
+      "status": "PASS",
+      "proof": {
+        "coverAttackPenalty": 0
+      }
+    },
+    {
+      "tag": "joli-coup/{\"rangedAttack\":true,\"cover\":\"important\"}",
+      "status": "PASS",
+      "proof": {
+        "coverAttackPenalty": -2
+      }
+    },
+    {
+      "tag": "joli-coup/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "joli-coup/unowned",
+      "status": "PASS"
+    },
+    {
+      "tag": "defaut-dans-la-cuirasse-a/{\"preparedTargetLastRound\":true,\"sameTarget\":true,\"rangedAttack\":true,\"targetAGI\":3,\"targetImmaterial\":false}",
+      "status": "PASS",
+      "proof": {
+        "targetDEF": 13,
+        "ignoreDamageReduction": true
+      }
+    },
+    {
+      "tag": "defaut-dans-la-cuirasse-a/{\"preparedTargetLastRound\":true,\"sameTarget\":true,\"rangedAttack\":true,\"targetAGI\":3,\"targetImmaterial\":true}",
+      "status": "PASS",
+      "proof": {
+        "targetDEF": 13,
+        "ignoreDamageReduction": false
+      }
+    },
+    {
+      "tag": "defaut-dans-la-cuirasse-a/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "defaut-dans-la-cuirasse-a/unowned",
+      "status": "PASS"
+    },
+    {
+      "tag": "tir-precis/{\"rangedAttack\":true}",
+      "status": "PASS",
+      "proof": {
+        "criticalThreshold": 19
+      }
+    },
+    {
+      "tag": "tir-precis/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "tir-precis/unowned",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS",
+  "passed": 55,
+  "failed": 0,
+  "all15": true
+}
