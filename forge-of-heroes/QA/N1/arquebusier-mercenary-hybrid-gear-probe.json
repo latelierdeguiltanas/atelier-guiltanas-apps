@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_MERCENAIRE_HYBRIDE_PROBE",
-  "at": "2026-11-03T12:06:22.352Z",
+  "at": "2026-11-03T12:09:22.065Z",
   "source": "COF2 Livre de base, page imprimée 65, exception Voie du mercenaire hybride",
   "expected": {
     "noPowderMastery": true,
@@ -9,11 +9,11 @@
   "products": [
     {
       "file": "index.html",
-      "sha256": "afc55046c3e12d16d94d477852fc95b0380be51f5c2bea166546c232b5ec131d"
+      "sha256": "6e6e098cf7e2c920b02f5a33de8d9518b69192525ef396b7f321d3839e70d218"
     },
     {
       "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "sha256": "2257665859671746672930283f774f8d5ca7127578a8ffea8b1fb48648d428a5"
+      "sha256": "e8070fc9519568eeffa54e55b038cffc0c0cde7e1b93fceef54b6947530817bb"
     }
   ],
   "cases": [
@@ -73,14 +73,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 12,
-        "PV": 9
+        "PV": 10
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -89,7 +97,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -148,14 +156,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 11,
-        "PV": 9
+        "PV": 10
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -164,7 +180,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -223,14 +239,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 12,
-        "PV": 8
+        "PV": 9
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -239,7 +263,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -298,14 +322,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 12,
-        "PV": 8
+        "PV": 9
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -314,7 +346,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -373,14 +405,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 12,
-        "PV": 8
+        "PV": 9
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -389,7 +429,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -448,14 +488,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 13,
-        "PV": 8
+        "PV": 9
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -464,7 +512,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -523,23 +571,31 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
-      "derived": {
-        "DEF": 12,
-        "PV": 8
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
       },
+      "derived": {
+        "DEF": 13,
+        "PV": 9
+      },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
         "armureAgiCap": null
       },
       "noShieldErrors": [],
-      "shieldDefenseDelta": 0,
+      "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -594,14 +650,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 14,
-        "PV": 8
+        "PV": 9
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -610,7 +674,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil.",
+        "Arme non maîtrisée par le profil : Pétoire.",
         "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
       ]
     },
@@ -670,14 +734,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 12,
-        "PV": 9
+        "PV": 10
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -686,7 +758,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -745,14 +817,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 11,
-        "PV": 9
+        "PV": 10
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -761,7 +841,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -820,14 +900,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 12,
-        "PV": 8
+        "PV": 9
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -836,7 +924,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -895,14 +983,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 12,
-        "PV": 8
+        "PV": 9
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -911,7 +1007,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -970,14 +1066,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 12,
-        "PV": 8
+        "PV": 9
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -986,7 +1090,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -1045,14 +1149,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 13,
-        "PV": 8
+        "PV": 9
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -1061,7 +1173,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -1120,23 +1232,31 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
-      "derived": {
-        "DEF": 12,
-        "PV": 8
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
       },
+      "derived": {
+        "DEF": 13,
+        "PV": 9
+      },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
         "armureAgiCap": null
       },
       "noShieldErrors": [],
-      "shieldDefenseDelta": 0,
+      "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -1191,14 +1311,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 14,
-        "PV": 8
+        "PV": 9
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -1207,7 +1335,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil.",
+        "Arme non maîtrisée par le profil : Pétoire.",
         "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
       ]
     }
@@ -1270,14 +1398,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 12,
-        "PV": 9
+        "PV": 10
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -1286,7 +1422,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -1345,14 +1481,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 12,
-        "PV": 8
+        "PV": 9
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -1361,7 +1505,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -1416,14 +1560,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 14,
-        "PV": 8
+        "PV": 9
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -1432,7 +1584,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil.",
+        "Arme non maîtrisée par le profil : Pétoire.",
         "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
       ]
     },
@@ -1492,14 +1644,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 12,
-        "PV": 9
+        "PV": 10
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -1508,7 +1668,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -1567,14 +1727,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 12,
-        "PV": 8
+        "PV": 9
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -1583,7 +1751,7 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil."
+        "Arme non maîtrisée par le profil : Pétoire."
       ]
     },
     {
@@ -1638,14 +1806,22 @@
       "shieldId": "shield:petit:cof2-lb-2024",
       "powderMasteryExpected": false,
       "shieldAllowedExpected": true,
-      "errors": [
-        "Bouclier interdit par le profil."
-      ],
-      "allowed": false,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "none",
+          "all"
+        ],
+        "armorMaxDef": 5
+      },
       "derived": {
         "DEF": 14,
-        "PV": 8
+        "PV": 9
       },
+      "powderRelatedAttacks": [],
       "equipment": {
         "armureDEF": 0,
         "bouclierDEF": 1,
@@ -1654,257 +1830,13 @@
       "noShieldErrors": [],
       "shieldDefenseDelta": 1,
       "powderErrors": [
-        "Bouclier interdit par le profil.",
+        "Arme non maîtrisée par le profil : Pétoire.",
         "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
       ]
     }
   ],
-  "accepted": 16,
-  "unexpectedRefusals": [
-    {
-      "race": "humain",
-      "orientation": "mercenary-first",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "nain",
-      "orientation": "mercenary-first",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "demi-elfe",
-      "orientation": "mercenary-first",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "demi-orc",
-      "orientation": "mercenary-first",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "elfe-haut",
-      "orientation": "mercenary-first",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "elfe-sylvain",
-      "orientation": "mercenary-first",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "gnome",
-      "orientation": "mercenary-first",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "halfelin",
-      "orientation": "mercenary-first",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "humain",
-      "orientation": "mercenary-first",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "nain",
-      "orientation": "mercenary-first",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "demi-elfe",
-      "orientation": "mercenary-first",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "demi-orc",
-      "orientation": "mercenary-first",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "elfe-haut",
-      "orientation": "mercenary-first",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "elfe-sylvain",
-      "orientation": "mercenary-first",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "gnome",
-      "orientation": "mercenary-first",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "halfelin",
-      "orientation": "mercenary-first",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    }
-  ],
-  "faultyPowder": [
-    {
-      "race": "humain",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "nain",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "demi-elfe",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "demi-orc",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "elfe-haut",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "elfe-sylvain",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "gnome",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "halfelin",
-      "file": "index.html",
-      "errors": [
-        "Bouclier interdit par le profil.",
-        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
-      ]
-    },
-    {
-      "race": "humain",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "nain",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "demi-elfe",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "demi-orc",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "elfe-haut",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "elfe-sylvain",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "gnome",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil."
-      ]
-    },
-    {
-      "race": "halfelin",
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "errors": [
-        "Bouclier interdit par le profil.",
-        "Cette arme exige deux mains pour ce peuple : bouclier incompatible."
-      ]
-    }
-  ],
-  "status": "FAIL"
+  "accepted": 32,
+  "unexpectedRefusals": [],
+  "faultyPowder": [],
+  "status": "PASS"
 }

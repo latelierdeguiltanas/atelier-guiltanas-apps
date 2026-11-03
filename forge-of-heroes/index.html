@@ -1169,7 +1169,10 @@ const errors=[];
     if(armorId&&!armor)errors.push('Armure inconnue.');
     const sorcierBone=profile&&profile.id==='class:sorcier:cof2-lb-2024'&&String(state&&state.voies&&state.voies.mageRank2PathId||'')==='classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024'&&armorId==='armor:os-sorcier:cof2-lb-2024';
     if(armor&&!window.FOHPermanentRules.equipmentRules(state,dbObj).mastered)errors.push('Armure non maîtrisée par les profils ou capacités acquis.');
-    if(shieldId&&rule.masteries.shields==='none')errors.push('Bouclier interdit par le profil.');
+    const hybridEquipmentState=state?.hybrid||state?.__hybridEquipment||sticky?.hybrid||null;
+    const mercenaryHybridPath=[...(state?.voies?.profilePathIds||[]),...(sticky?.acquiredAbilities||[]).map(a=>a.pathId||a.path_id||'')].some(id=>/classpath:voie-du-mercenaire:class-(?:arquebusier|arbaletrier):/.test(String(id)));
+    const mercenaryHybridException=!!((hybridEquipmentState?.enabled||String(sticky?.profileId||'').startsWith('hybrid:'))&&mercenaryHybridPath);
+    if(shieldId&&rule.masteries.shields==='none'&&!mercenaryHybridException)errors.push('Bouclier interdit par le profil.');
     if(shieldId&&rule.masteries.shields==='small'&&shieldId!=='shield:petit:cof2-lb-2024')errors.push('Seul le petit bouclier est maîtrisé par le profil.');
     const extra=String(state&&state.profileChoices&&state.profileChoices.extraMasteryWeaponId||'');
     if(extra){const ew=Data.getWeapon(extra);if(!ew)errors.push('Arme supplémentaire inconnue.');else if((!/^1d[1-6]$/i.test(ew.damage)||!rule.masteries.extraWeaponChoice||ew.hands<1)&&!(rule.masteries.extraWeaponChoice.allowIds||[]).includes(extra))errors.push('Arme supplémentaire interdite : dégâts supérieurs au d6.');}
@@ -1184,7 +1187,21 @@ const errors=[];
       if(mw.allRanged===false&&w.mode==='ranged') mastered=false;
       if((mw.forbiddenCategories||[]).includes(w.category)||(mw.forbiddenTechnology||[]).includes(w.technology)) mastered=false;
       if(profile&&profile.id==='class:pretre:cof2-lb-2024'&&String(state&&state.profileChoices&&state.profileChoices.priestMode||'')==='specialist'){const rel=Data.getReligion(String(state.profileChoices.deityId||''));if(rel&&rel.sacredWeaponId===w.id)mastered=true;}
-      if(window.FOHPermanentRules.equipmentRules(state,dbObj).masteredWeaponIds.includes(w.id))mastered=true;if(!mastered)errors.push('Arme non maîtrisée par le profil : '+w.name+'.');
+      const permanentEquipment=window.FOHPermanentRules.equipmentRules(state,dbObj);
+      if(permanentEquipment.masteredWeaponIds.includes(w.id))mastered=true;
+      // Mercenaire hybride : aucune maîtrise de poudre GRATUITE (Livre de base p65).
+      // La maîtrise provenant réellement d'un autre profil à au moins deux rangs
+      // est préservée (Livre de base p177).
+      if(mercenaryHybridException&&profile?.id==='class:arquebusier:cof2-lb-2024'&&(String(w.id).includes('powder')||w.technology==='powder')){
+        const independent=(permanentEquipment.masteryProfiles||[]).some(id=>{
+          if(id===profile.id)return false;
+          const alt=Data.getProfileRule(id)?.masteries||{},mw=alt.weapons||{};
+          if((alt.weaponIds||[]).includes(w.id))return true;
+          return !!(mw.allRanged&&w.mode==='ranged'&&!(mw.forbiddenTechnology||[]).includes(w.technology)&&!(mw.forbiddenCategories||[]).includes(w.category));
+        });
+        if(!independent)mastered=false;
+      }
+      if(!mastered)errors.push('Arme non maîtrisée par le profil : '+w.name+'.');
     }
     errors.push(...validateAncestryEquipmentN1(sticky,state,weapons));
     if(!equip.initialPackageId) errors.push('Choix du paquetage initial obligatoire pour ce profil certifié.');

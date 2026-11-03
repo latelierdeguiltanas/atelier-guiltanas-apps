@@ -1,11 +1,11 @@
 {
   "schema": "FOH_N1_VERSION_PARITY",
-  "generatedAt": "2026-11-03T11:54:07.336Z",
-  "gitCommit": "fb751de3e1e5be8d34b9c0d89ad77dd81967c08e",
+  "generatedAt": "2026-11-03T12:10:18.612Z",
+  "gitCommit": "2a13936d3da2eb7c5234a3db93e03e208ae7a985",
   "current": {
-    "index": "afc55046c3e12d16d94d477852fc95b0380be51f5c2bea166546c232b5ec131d",
-    "master": "2257665859671746672930283f774f8d5ca7127578a8ffea8b1fb48648d428a5",
-    "engine": "60d23d2d36c099e0fe0ce370413d74ac4eef438336c516d070a8326a1d082fee",
+    "index": "6e6e098cf7e2c920b02f5a33de8d9518b69192525ef396b7f321d3839e70d218",
+    "master": "e8070fc9519568eeffa54e55b038cffc0c0cde7e1b93fceef54b6947530817bb",
+    "engine": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
     "database": "1a361946d09c1a0ec51ace1aa3f87873fef12199990c69c07fcd1a10765ce081"
   },
   "oldMatrix": {
@@ -14,9 +14,9 @@
     "engineSha256": "60d23d2d36c099e0fe0ce370413d74ac4eef438336c516d070a8326a1d082fee",
     "databaseSha256": "1a361946d09c1a0ec51ace1aa3f87873fef12199990c69c07fcd1a10765ce081"
   },
-  "regressionIndexSha256": "2faa37ebdc8e8329fe324c4315359290cd776f11f70c9e24e5886bd04cad79c6",
+  "regressionIndexSha256": "5b28489ecd67343c997bce78bb7d98262630e0c56b341a98112e1bdb43ab2be3",
   "checks": {
-    "matrixEngineIdentical": true,
+    "matrixEngineIdentical": false,
     "matrixDbIdentical": true,
     "productMasterEngineIdentical": true,
     "productMasterDbIdentical": true,
@@ -24,6 +24,6 @@
     "matrixNoAssertionFailure": true,
     "regressionsPass": true
   },
-  "matrixMechanicsReusable": true,
+  "matrixMechanicsReusable": false,
   "limitations": "Only identical engine and database allow reusing mechanical matrix assertions. UI, PDFs and browser journeys remain separate. Refusal review and untested choices remain outstanding."
 }
