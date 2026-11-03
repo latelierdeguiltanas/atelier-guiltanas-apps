@@ -2,10 +2,10 @@
   "schema": "FOH_N1_REGRESSION_BATCH",
   "scope": "N1 creation and advanced-age projections; no progression work; some high-rank reference projections remain in reused suites",
   "indexSha256": "6e6e098cf7e2c920b02f5a33de8d9518b69192525ef396b7f321d3839e70d218",
-  "finishedAt": "2026-11-03T12:14:55.904Z",
-  "passed": 36,
+  "finishedAt": "2026-11-03T12:21:14.693Z",
+  "passed": 37,
   "total": 37,
-  "status": "FAIL",
+  "status": "PASS",
   "browserClicks": false,
   "suites": [
     {
@@ -94,10 +94,10 @@
     },
     {
       "file": "n1_gnome_hybrid_duplicate_runner.cjs",
-      "status": "FAIL",
-      "exitCode": 1,
-      "runnerSha256": "79ac754ad7ced2bf366eacd709ff75dc91abcb7b165ab4e38fdfed08ae604e9d",
-      "output": "node:assert:883\n    throw err;\n    ^\n\nAssertionError [ERR_ASSERTION]: The input did not match the regular expression /Don étrange.*différente/. Input:\n\n'Arme non maîtrisée par le profil : Pétoire.'\n\n    at Object.<anonymous> (/home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_gnome_hybrid_duplicate_runner.cjs:6:186)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10)\n    at Module.load (node:internal/modules/cjs/loader:1505:32)\n    at Function._load (node:internal/modules/cjs/loader:1309:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)\n    at node:internal/main/run_main_module:36:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 'Arme non maîtrisée par le profil : Pétoire.',\n  expected: /Don étrange.*différente/,\n  operator: 'match',\n  diff: 'simple'\n}\n\nNode.js v22.23.4\n"
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "4c0442572fd1b8bc95a7bfc2b81257f50823e46a71faed8286d8229e9208e9ce",
+      "output": "PASS 160 Gnome hybrid cases across both products: duplicate rejected for the right reason, alternative gift accepted, both chosen paths retained, immutable input and save/reload.\n"
     },
     {
       "file": "no_profile_budget_runner.js",
