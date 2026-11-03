@@ -4,12 +4,12 @@
   "phase": "N1_ONLY",
   "overallCertified": false,
   "smoke": false,
-  "startedAt": "2026-11-02T18:35:32.581Z",
-  "finishedAt": "2026-11-02T18:46:47.930Z",
+  "startedAt": "2026-11-03T12:11:35.964Z",
+  "finishedAt": "2026-11-03T12:18:16.775Z",
   "inputs": {
-    "indexSha256": "2faa37ebdc8e8329fe324c4315359290cd776f11f70c9e24e5886bd04cad79c6",
-    "masterSha256": "ddd17158ff9148650cc6c1177b3cecc624a76e5b018197781516b15b80df93e9",
-    "engineSha256": "60d23d2d36c099e0fe0ce370413d74ac4eef438336c516d070a8326a1d082fee",
+    "indexSha256": "6e6e098cf7e2c920b02f5a33de8d9518b69192525ef396b7f321d3839e70d218",
+    "masterSha256": "e8070fc9519568eeffa54e55b038cffc0c0cde7e1b93fceef54b6947530817bb",
+    "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
     "databaseSha256": "1a361946d09c1a0ec51ace1aa3f87873fef12199990c69c07fcd1a10765ce081"
   },
   "scope": {
@@ -53,11 +53,11 @@
     },
     "hybrid": {
       "attempted": 122400,
-      "accepted": 100856,
-      "rejectedForReview": 21544,
+      "accepted": 99680,
+      "rejectedForReview": 22720,
       "assertionFailures": 0,
-      "replayChecks": 5938,
-      "negativeChecks": 3248
+      "replayChecks": 5869,
+      "negativeChecks": 3211
     },
     "no-profile": {
       "attempted": 64080,
@@ -6006,6 +6006,261 @@
     {
       "mode": "hybrid",
       "reasons": [
+        "Arme non maîtrisée par le profil : Pétoire."
+      ],
+      "count": 1190,
+      "samples": [
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "cd301f3b7b004ae9384713e3d1b8426294250fa996425514bd98fe7a59dbe3ba",
+            "profile": "class:arquebusier:cof2-lb-2024",
+            "people": "people:demi-elfe:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+              "classpath:voie-de-l-escrime:class-barde:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "aventurier",
+            "classeId": "class:arquebusier:cof2-lb-2024",
+            "peupleId": "people:demi-elfe:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "per",
+              "malusStat": "for"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+                "classpath:voie-de-l-escrime:class-barde:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "armor:cuir-renforce:cof2-lb-2024",
+              "shieldId": "",
+              "weaponIds": [
+                "weapon:powder-pistol",
+                "weapon:long-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "secondaryProfileId": "class:barde:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-de-l-escrime:class-barde:cof2-lb-2024"
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "0a7a6a09a30c14e5f018958c04e82260ecced061ed42812686eafe500c10ffb1",
+            "profile": "class:arquebusier:cof2-lb-2024",
+            "people": "people:demi-elfe:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+              "classpath:voie-du-musicien:class-barde:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "aventurier",
+            "classeId": "class:arquebusier:cof2-lb-2024",
+            "peupleId": "people:demi-elfe:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "per",
+              "malusStat": "for"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+                "classpath:voie-du-musicien:class-barde:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "armor:cuir-renforce:cof2-lb-2024",
+              "shieldId": "",
+              "weaponIds": [
+                "weapon:powder-pistol",
+                "weapon:long-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "secondaryProfileId": "class:barde:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-du-musicien:class-barde:cof2-lb-2024"
+            }
+          }
+        },
+        {
+          "case": {
+            "mode": "hybrid",
+            "caseId": "45d9636a5d0526b55a798a9a7d4382d1db2aeb0a06319bcd71c8211419d1da95",
+            "profile": "class:arquebusier:cof2-lb-2024",
+            "people": "people:demi-elfe:cof2-lb-2024",
+            "paths": [
+              "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+              "classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024"
+            ]
+          },
+          "state": {
+            "identite": {
+              "nom": "Convergence produit"
+            },
+            "familleId": "aventurier",
+            "classeId": "class:arquebusier:cof2-lb-2024",
+            "peupleId": "people:demi-elfe:cof2-lb-2024",
+            "serieId": "expert",
+            "baseCaracs": {
+              "for": 2,
+              "agi": 1,
+              "con": 0,
+              "per": 1,
+              "int": 3,
+              "vol": 0,
+              "cha": -1
+            },
+            "characteristicMethod": {
+              "type": "STANDARD_SERIES",
+              "rolls": [
+                2,
+                7,
+                12
+              ]
+            },
+            "peupleChoices": {
+              "bonusStat": "per",
+              "malusStat": "for"
+            },
+            "voies": {
+              "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+              "keepPeoplePathId": "",
+              "profilePathIds": [
+                "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+                "classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024"
+              ],
+              "mageRank2PathId": ""
+            },
+            "equip": {
+              "initialPackageId": "standard",
+              "armorId": "armor:cuir-renforce:cof2-lb-2024",
+              "shieldId": "",
+              "weaponIds": [
+                "weapon:powder-pistol",
+                "weapon:long-sword",
+                "weapon:dagger"
+              ]
+            },
+            "profileChoices": {},
+            "abilityChoices": {},
+            "options": {},
+            "advancedRules": {
+              "modelVersion": "FIX78",
+              "age": false,
+              "histories": false,
+              "additionalMagePaths": false
+            },
+            "narrative": {
+              "ideal": "",
+              "flaw": ""
+            },
+            "hybrid": {
+              "enabled": true,
+              "gmApproved": true,
+              "primaryProfileId": "class:arquebusier:cof2-lb-2024",
+              "secondaryProfileId": "class:barde:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+              "secondaryPathId": "classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "mode": "hybrid",
+      "reasons": [
         "Être féerique : l’armure doit être fabriquée à sa taille."
       ],
       "count": 8500,
@@ -6260,7 +6515,7 @@
       "reasons": [
         "Armes de prédilection : option illégale."
       ],
-      "count": 2334,
+      "count": 2320,
       "samples": [
         {
           "case": {
@@ -6441,11 +6696,11 @@
         {
           "case": {
             "mode": "hybrid",
-            "caseId": "c6cff317bcb2aff71ca2721a9961ae9da23052be749d3ece9d035e839f9bd9bf",
+            "caseId": "bac2a32fc693fca9c73b0cf904b0e6c8293f2e634eb0c82f335d41655f2a888a",
             "profile": "class:arquebusier:cof2-lb-2024",
             "people": "people:demi-elfe:cof2-lb-2024",
             "paths": [
-              "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+              "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024",
               "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024"
             ]
           },
@@ -6482,7 +6737,7 @@
               "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
               "keepPeoplePathId": "",
               "profilePathIds": [
-                "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+                "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024",
                 "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024"
               ],
               "mageRank2PathId": ""
@@ -6521,7 +6776,7 @@
               "gmApproved": true,
               "primaryProfileId": "class:arquebusier:cof2-lb-2024",
               "secondaryProfileId": "class:arbaletrier:cof2-variant-2024",
-              "primaryPathId": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+              "primaryPathId": "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024",
               "secondaryPathId": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024"
             }
           }
