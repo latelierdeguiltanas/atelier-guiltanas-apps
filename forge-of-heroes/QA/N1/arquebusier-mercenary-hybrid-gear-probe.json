@@ -1,0 +1,652 @@
+{
+  "schema": "FOH_N1_MERCENAIRE_HYBRIDE_PROBE",
+  "at": "2026-11-03T11:58:16.648Z",
+  "source": "COF2 Livre de base, page imprimée 65, exception Voie du mercenaire hybride",
+  "expected": {
+    "noPowderMastery": true,
+    "shieldAllowed": true
+  },
+  "products": [
+    {
+      "file": "index.html",
+      "sha256": "afc55046c3e12d16d94d477852fc95b0380be51f5c2bea166546c232b5ec131d"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "sha256": "2257665859671746672930283f774f8d5ca7127578a8ffea8b1fb48648d428a5"
+    }
+  ],
+  "cases": [
+    {
+      "file": "index.html",
+      "race": "humain",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 12,
+        "PV": 10
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "index.html",
+      "race": "nain",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 11,
+        "PV": 10
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "index.html",
+      "race": "demi-elfe",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [
+        "Voie de peuple obligatoire."
+      ],
+      "allowed": false,
+      "derived": {
+        "DEF": null,
+        "PV": 10
+      },
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1
+      }
+    },
+    {
+      "file": "index.html",
+      "race": "demi-orc",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 12,
+        "PV": 9
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "index.html",
+      "race": "elfe-haut",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 12,
+        "PV": 9
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "index.html",
+      "race": "elfe-sylvain",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 13,
+        "PV": 9
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "index.html",
+      "race": "gnome",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 13,
+        "PV": 9
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "index.html",
+      "race": "halfelin",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
+        "Arme interdite par la petite taille du peuple."
+      ],
+      "allowed": false,
+      "derived": {
+        "DEF": 14,
+        "PV": 10
+      },
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "race": "humain",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 12,
+        "PV": 10
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "race": "nain",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 11,
+        "PV": 10
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "race": "demi-elfe",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [
+        "Voie de peuple obligatoire."
+      ],
+      "allowed": false,
+      "derived": {
+        "DEF": null,
+        "PV": 10
+      },
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1
+      }
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "race": "demi-orc",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 12,
+        "PV": 9
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "race": "elfe-haut",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 12,
+        "PV": 9
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "race": "elfe-sylvain",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 13,
+        "PV": 9
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "race": "gnome",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 13,
+        "PV": 9
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "race": "halfelin",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [
+        "Cette arme exige deux mains pour ce peuple : bouclier incompatible.",
+        "Arme interdite par la petite taille du peuple."
+      ],
+      "allowed": false,
+      "derived": {
+        "DEF": 14,
+        "PV": 10
+      },
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    }
+  ],
+  "classification": "DIAGNOSTIC_NON_CERTIFIANT",
+  "samples": [
+    {
+      "file": "index.html",
+      "race": "humain",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 12,
+        "PV": 10
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "index.html",
+      "race": "nain",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 11,
+        "PV": 10
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "race": "humain",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 12,
+        "PV": 10
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "race": "nain",
+      "profile": "class:guerrier:cof2-lb-2024",
+      "paths": [
+        "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+        "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
+      ],
+      "shieldId": "shield:petit:cof2-lb-2024",
+      "powderMasteryExpected": false,
+      "shieldAllowedExpected": true,
+      "errors": [],
+      "allowed": true,
+      "masteries": {
+        "weaponIds": [],
+        "armorIds": [],
+        "shields": [
+          "all",
+          "none"
+        ],
+        "armorMaxDef": 5
+      },
+      "derived": {
+        "DEF": 11,
+        "PV": 10
+      },
+      "powderRelatedAttacks": [],
+      "equipment": {
+        "armureDEF": 0,
+        "bouclierDEF": 1,
+        "armureAgiCap": null
+      }
+    }
+  ]
+}
