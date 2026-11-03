@@ -22,7 +22,8 @@ const expected={
   [{selectedRepeatingWeapon:true,action:'reload',projectilesToReload:3},{totalLimitedActions:3}]
  ],
  'tir-de-barrage-l':[
-  [{weaponLoaded:true,rangedAttack:true,targetMovedInZoneBeforeNextTurn:true,attackHit:true},{zoneWidthMeters:20,damageIfVictimChoosesDamage:2}]
+  [{weaponLoaded:true,rangedAttack:true,targetMovedInZoneBeforeNextTurn:true,attackHit:true},{zoneWidthMeters:20,damageIfVictimChoosesDamage:2}],
+  [{weaponLoaded:true,rangedAttack:true,targetMovedInZoneBeforeNextTurn:true,attackHit:true,targetDistanceMeters:30,weaponRangeMeters:40},{zoneWidthMeters:20,attackTriggeredByMovement:true}]
  ],
  'tir-de-grenaille-l':[
   [{weaponKind:'powder',weaponLoaded:true,ammunition:'grapeshot'},{area:{shape:'cone',lengthMeters:10,widthMeters:5},damageFraction:0.5,attackRolls:1}],
@@ -94,6 +95,15 @@ for(const [slug,rows]of Object.entries(expected)){
  if(!['combattant-aguerri'].includes(slug)){
   try{assert.equal(empty.applies,false,'Missing context must not trigger '+slug);report.passed++;report.cases.push({tag:slug+'/no-context',status:'PASS'});}
   catch(e){report.failed++;report.cases.push({tag:slug+'/no-context',status:'FAIL',error:String(e),actual:empty});}
+ }
+ if(slug==='tir-de-barrage-l'){
+  for(const [name,ctx] of [
+   ['outside-facing-zone',{weaponLoaded:true,rangedAttack:true,targetMovedInZoneBeforeNextTurn:true,targetWithinFacingZone:false}],
+   ['beyond-actual-weapon-range',{weaponLoaded:true,rangedAttack:true,targetMovedInZoneBeforeNextTurn:true,targetDistanceMeters:41,weaponRangeMeters:40}]
+  ]){
+   try{assert.equal(API.resolve(character,slug,ctx).applies,false,'Invalid context must be refused : '+name);report.passed++;report.cases.push({tag:slug+'/'+name,status:'PASS'});}
+   catch(e){report.failed++;report.cases.push({tag:slug+'/'+name,status:'FAIL',error:String(e)});}
+  }
  }
  const missing=API.resolve({abilities:[],paths:[]},slug,rows[0][0]);
  try{assert.equal(missing.applies,false,'Unowned ability cannot apply');report.passed++;report.cases.push({tag:slug+'/unowned',status:'PASS'});}
