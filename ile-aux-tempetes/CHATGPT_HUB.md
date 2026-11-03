@@ -3,6 +3,16 @@
 > Point d'entrée unique pour reprendre le projet sans recharger tout l'historique des chats.
 > Source de vérité : GitHub, branche `main`.
 
+## Vérification de reprise — 3 novembre 2026
+
+- Séance prévue jeudi 5 novembre. Frise : bleu en combat, doré au tour du joueur (scrutation 3 s), violet intérieur si effets actifs ; les deux halos restent simultanément visibles. Effets = conditions du gestionnaire + rappels de buffs saisis dans « Associer les combattants ». Pas d’automatisation de règles D&D ajoutée.
+- Monstres : état qualitatif seulement (Indemne / Blessé / Très blessé / À terre). Adaptateur calcule localement puis serveur whitelist ; aucun PV, maximum, ratio, CA ou chiffre d’initiative transmis. Exclusion des non-participants et contrôles MJ inchangés.
+- Boutique : achats/catalogue et revente à moitié prix inchangés. Référencer depuis l’espace MJ les objets hors catalogue détectés dans les sacs (nom exact + prix D&D ; stock 0 possible pour reprise sans achat initial). Un objet équipé doit être déséquipé, un contenant vidé. Aucun prix arbitraire créé, les 87 articles existants ne sont pas modifiés.
+- XP : source utilisateur retrouvée du 22 septembre + journal Chronique III = 4 zombies vaincus sur la plage, 41 XP par PJ ; 2 PO pour Prométhée et Vax (aucune monnaie réattribuée). Au débarquement ils avaient évité ces zombies, ce n’est pas un deuxième combat. Prologue 3 Traqueurs joué, XP non chiffrée de manière fiable ; ne pas annoncer 41 comme cumul exhaustif certain.
+- `assets/xp-reprise.js` initialise uniquement un compteur V18 vierge à 41 XP documentées et marque marins joué. Ne touche pas aux sauvegardes déjà commencées, supérieures ou avec combat inachevé. Note visible des limites et trace historique ; sauvegarde préalable si ancienne valeur vide. Original manager.html byte exact, moteur XP automatique de victoire et clôture de zone manuelle à 300 puis 900 cumulés conservés. Le suivi MJ reste local au navigateur : hébergement ne signifie pas synchronisation de ses sauvegardes entre appareils.
+- Tests : DOM simulé du V18 et des interfaces (panier, vente, mise à jour état, partage, effets, monstres, tour, masquage) ; serveur filtrage sans chiffres ; reprise XP, gain une fois, progression locale conservée. SQL réel en transaction annulée : référencement MJ d’un objet inconnu, revente, crédit/débit sac et monnaie, panier mixte, idempotence, refus atomique fonds insuffisants. Catalogue 87 et données joueurs révision 0 inchangés après rollback.
+- Blocage réel au contrôle serveur : les quatre clés sont actives mais les quatre sacs `initialized=false`, révision 0. L’import de leurs sauvegardes locales n’a pas eu lieu ; achat/vente bloqués avant import. Ne pas certifier les sessions privées ni un test visuel téléphone : tests DOM simulés sans clés joueurs.
+
 ## État actuel — 2 novembre 2026
 
 - Boutique Nespresso habillée avec l’image de Mila et les meubles ouvrants de Bastide. Le catalogue, les 87 objets, descriptions, stocks, prix D&D et traitements d’achat/vente restent ceux de Nespresso. Potions filtrées dans le matériel D&D ; tiroirs = armures/protections ; coffres = catalogue complet. Aucun pack COF2 ni négociation économique Bastide importé.

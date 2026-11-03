@@ -14,7 +14,7 @@ async function identity(req:Request){const token=(req.headers.get('x-campaign-to
 export function cleanBattle(input:any){
  if(!input||typeof input!=='object'||typeof input.active!=='boolean'||!Array.isArray(input.order)||input.order.length>100)throw Error('Combat invalide');
  if(!input.active)return{active:false,order:[],activeId:''};
- const order=input.order.map((f:any)=>{if(!f||!String(f.id||'').trim()||!String(f.name||'').trim())throw Error('Combattant invalide');const playerId=String(f.playerId||'');if(playerId&&!ids.includes(playerId))throw Error('Personnage étranger à Nespresso');return{id:String(f.id).slice(0,100),name:String(f.name).slice(0,120),playerId};});
+ const order=input.order.map((f:any)=>{if(!f||!String(f.id||'').trim()||!String(f.name||'').trim())throw Error('Combattant invalide');const playerId=String(f.playerId||'');if(playerId&&!ids.includes(playerId))throw Error('Personnage étranger à Nespresso');const effects=playerId&&Array.isArray(f.effects)?[...new Set(f.effects.filter((x:any)=>typeof x==='string').map((x:string)=>x.trim().slice(0,100)).filter(Boolean))].slice(0,20):[];const health=!playerId&&['Indemne','Blessé','Très blessé','À terre'].includes(f.health)?f.health:'';return{id:String(f.id).slice(0,100),name:String(f.name).slice(0,120),playerId,effects,health};});
  if(!order.length||new Set(order.map((f:any)=>f.id)).size!==order.length)throw Error('Ordre de combat invalide');
  const players=order.map((f:any)=>f.playerId).filter(Boolean);if(new Set(players).size!==players.length)throw Error('Un personnage ne peut être lié qu’à un combattant');
  const activeId=String(input.activeId||'');if(activeId&&!order.some((f:any)=>f.id===activeId))throw Error('Tour actif invalide');

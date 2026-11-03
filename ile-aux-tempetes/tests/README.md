@@ -8,3 +8,5 @@ Les tests ne créent aucune session utilisateur et ne publient aucun combat rée
 - Les tests existants `economy-api.cjs`, `automatic-import.cjs`, `supervision.cjs` restent applicables.
 
 Source de restauration V18 : fichier original fourni au projet, contrôlé par SHA-256 dans CHATGPT_HUB.md. Les formules, données, sauvegardes et scripts internes de ce fichier ne sont pas réécrits.
+
+Contrôle de reprise du 3 novembre : `node ile-aux-tempetes/tests/reprise-xp.cjs` vérifie 41 XP documentées, absence de double gain et préservation de progression. `interface-connections.cjs` vérifie désormais vente et état après achat, halo effets et santé qualitative ; `battle-server.cjs` vérifie la whitelist sans statistiques.
