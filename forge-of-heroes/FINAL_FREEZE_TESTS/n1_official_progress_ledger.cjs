@@ -10,9 +10,13 @@ const demiFile=path.join(qa,'demi-elfe-source-r1-r2.json');const demiData=fs.exi
 const fileShaCompatible=parity.matrixMechanicsReusable&&parity.checks.regressionIndexIdentical&&native.indexSha256===parity.current.index&&peopleSrc.products.every(p=>p.engineSha256===parity.current.engine);
 if(!fileShaCompatible)throw Error('Sources engine SHA mismatch: refuse to generate outdated scores');
 if(native.summary.officialProfiles!==14||native.summary.officialPeoples!==8||reg.passed!==37||cp.profileBaseline.scopeStatus!=='PASS')throw Error('evidence missing');
+const mercenaryFix=read('QA/N1/arquebusier-mercenary-hybrid-fix.json');
+const mercenaryGear=read('QA/N1/arquebusier-mercenary-hybrid-gear-probe.json');
+const mercenaryPowderProof=mercenaryFix.status==='PASS'&&mercenaryFix.changed.length===2&&mercenaryGear.status==='PASS'&&mercenaryGear.accepted===32&&mercenaryGear.faultyPowder.length===0&&mercenaryGear.products?.every(p=>p.sha256===parity.current[p.file==='index.html'?'index':'master']);
 const rejectProof={schema:'FOH_N1_OFFICIAL_REJECTION_CLASSIFICATION',sourceBook:'COF2 Livre de base, peuple Halfelin p.55; Règles avancées, création sans profil p.154',counts:{classified:0,unclassified:0},groups:[]};
 for(const race of native.peoples)for(const [reason,count]of Object.entries(race.refusalReasons)){const id=race.id.split(':')[1];let category=null,source=null;
 if(reason==='no-profile|Sans profil : bouclier incompatible avec une voie choisie.'){category='INCOMPATIBLE_PATH_SHIELD';source='Règles avancées p.154 + vérifications négatives sans profil';}
+if(reason==='hybrid|Arme non maîtrisée par le profil : Pétoire.'&&mercenaryPowderProof){category='MERCENAIRE_HYBRID_POWDER_UNTRAINED';source='Livre de base COF2 p.65 (Mercenaire hybride : pas de maîtrise poudre) et p.177 (second profil : maîtrise après deux rangs) ; correction vérifiée 32 cas × deux sens × huit peuples × deux produits';}
 if(id==='halfelin'&&reason.startsWith('hybrid|')&&reason.includes('Arme interdite par la petite taille du peuple.')){category='HALFELIN_SIZE_WEAPON';source='COF2 Livre de base p.55 + contrôle équipement 120 cas';}
 if(id==='halfelin'&&reason.startsWith('standard|')&&reason.includes('Arme interdite par la petite taille du peuple.')){category='HALFELIN_SIZE_WEAPON';source='COF2 Livre de base p.55 + contrôle équipement 120 cas';}
 if(category)rejectProof.counts.classified+=count;else rejectProof.counts.unclassified+=count;
