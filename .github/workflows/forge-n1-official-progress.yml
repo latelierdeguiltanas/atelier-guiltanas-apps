@@ -12,6 +12,9 @@ on:
       - 'forge-of-heroes/QA/N1/lot10/people-source.json'
 permissions:
   contents: write
+concurrency:
+  group: forge-n1-official-progress-current
+  cancel-in-progress: false
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -55,16 +58,23 @@ jobs:
           path: |
             centre-synchronisation/forge-n1/progress.json
             forge-of-heroes/QA/N1/native-rejection-legality.json
-      - name: Publish audited percentages to Cockpit only
+      - name: Recalculer les pourcentages certifiables sur main au moment de publier
         if: steps.readiness.outputs.ready == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add centre-synchronisation/forge-n1/progress.json forge-of-heroes/QA/N1/native-rejection-legality.json
-          if ! git diff --cached --quiet; then
-            git commit -m "docs(cockpit): contrôle exhaustivité 8 peuples et 14 profils [skip ci]"
+          for attempt in 1 2 3 4 5; do
             git fetch origin main
-            git restore --worktree .
-            git rebase origin/main
-            git push origin HEAD:main
-          fi
+            git reset --hard origin/main
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_version_parity.cjs
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_official_progress_ledger.cjs
+            git add forge-of-heroes/QA/N1/version-parity.json centre-synchronisation/forge-n1/progress.json forge-of-heroes/QA/N1/native-rejection-legality.json
+            if git diff --cached --quiet; then
+              echo "La progression officielle est déjà publiée"
+              exit 0
+            fi
+            git commit -m "docs(cockpit): audit actuel des 14 profils et 8 peuples, 520 refus Mercenaire qualifiés [skip ci]"
+            if git push origin HEAD:main; then exit 0; fi
+            if [ "$attempt" = 5 ]; then exit 1; fi
+            sleep 3
+          done
