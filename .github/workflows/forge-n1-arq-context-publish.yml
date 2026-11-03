@@ -43,18 +43,23 @@ jobs:
           path: |
             forge-of-heroes/QA/N1/arquebusier-context-publish.json
             forge-of-heroes/QA/N1/version-parity.json
-      - name: Publier le correctif réel sur le dépôt Forge
+      - name: Publier depuis la dernière version GitHub, sans conflit de rebase
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/version-parity.json
-          if ! git diff --cached --quiet; then
-            git commit -m "feat(forge-n1): calculs conditionnels R1-R3 visibles sur deux produits [skip ci]"
-            git restore --worktree .
-            for attempt in 1 2 3 4 5; do
-              git fetch origin main
-              if git rebase origin/main && git push origin HEAD:main; then exit 0; fi
-              if [ "$attempt" = 5 ]; then exit 1; fi
-              sleep 3
-            done
-          fi
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs --write
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_version_parity.cjs
+            git add forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/version-parity.json
+            if git diff --cached --quiet; then
+              echo "Source et preuves déjà courantes"
+              exit 0
+            fi
+            git commit -m "feat(forge-n1): publier le calculateur d'effets R1-R3 conforme au dernier dépôt [skip ci]"
+            if git push origin HEAD:main; then exit 0; fi
+            if [ "$attempt" = 5 ]; then exit 1; fi
+            sleep 2
+          done
