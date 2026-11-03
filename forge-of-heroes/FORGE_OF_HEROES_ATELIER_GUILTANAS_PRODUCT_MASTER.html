@@ -1953,5 +1953,266 @@ q('#heroes-dialog').insertAdjacentHTML('afterend','<dialog id="concept-mode-dial
 <style id="FORGE_EXTRA_LANGUAGE_BUTTONS_STYLE">#ability-choice-fields label:has(#legacy-extra-language),#ability-choice-fields label:has(select[data-ability-choice$="|extraLanguage"]){display:none!important}#extra-language-direct{display:block!important;margin-top:12px}#extra-language-direct .preferred-weapon-buttons{display:grid!important}</style>
 <script id="FORGE_EXTRA_LANGUAGE_BUTTONS_FIX103">(()=>{'use strict';const host=document.querySelector('#ability-choice-fields'),P=window.__FOH_PRODUCT__;if(!host||!P)return;let queued=false;function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')}function enhance(){const native=host.querySelector('#legacy-extra-language,select[data-ability-choice$="|extraLanguage"]');let box=document.querySelector('#extra-language-direct');if(!native){if(box)box.hidden=true;return}const options=[...native.options].filter(o=>o.value).map(o=>({id:o.value,label:o.textContent}));if(!options.length)return;if(!box){box=document.createElement('fieldset');box.id='extra-language-direct';box.innerHTML='<legend>Éduqué — choisis une langue supplémentaire</legend><div class="preferred-weapon-buttons"></div>';host.append(box)}box.hidden=false;const draft=P.getDraft(),saved=draft.extraLanguage||native.value||'',buttons=box.querySelector('.preferred-weapon-buttons'),html=options.map(o=>'<button type="button" data-extra-language="'+esc(o.id)+'" class="'+(saved===o.id?'selected':'')+'" aria-pressed="'+(saved===o.id?'true':'false')+'">'+esc(o.label)+'</button>').join('');if(buttons.innerHTML!==html)buttons.innerHTML=html}host.addEventListener('click',event=>{const button=event.target.closest?.('[data-extra-language]');if(!button)return;event.preventDefault();event.stopPropagation();const native=host.querySelector('#legacy-extra-language,select[data-ability-choice$="|extraLanguage"]'),draft=P.getDraft(),value=button.dataset.extraLanguage;draft.extraLanguage=value;if(native?.dataset.abilityChoice){const [abilityId,choiceId]=native.dataset.abilityChoice.split('|');draft.abilityChoices=draft.abilityChoices||{};draft.abilityChoices[abilityId]=draft.abilityChoices[abilityId]||{};draft.abilityChoices[abilityId][choiceId]=value}P.setDraft(draft)});new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;enhance()})}).observe(host,{childList:true,subtree:true});enhance();window.__FOH_EXTRA_LANGUAGE_BUTTONS_FIX103__={enhance}})();</script>
 <footer style="text-align:center;padding:20px"><a href="rules/coverage.html">État des règles et complétude</a> · <a href="rules/prestige.html">Voies de prestige : textes et calculs</a></footer>
+<script id="FOH_ARQ_CONTEXT_RUNTIME_N1">
+/* COF2 N1 - Contrats de résolution contextuelle de l'Arquebusier.
+ * Conçu pour les rangs 1, 2 et 3 accessibles au niveau 1 avec les règles d'âge.
+ * Source: Chroniques Oubliées Fantasy 2e éd., Livre de base, pages imprimées 62-65.
+ * Les jets de dés et les décisions adverses restent à arbitrer au moment du combat.
+ * Aucun bonus conditionnel n'est ajouté en permanence à la fiche par ce module.
+ */
+(function(root,factory){
+  const api=factory();
+  if(typeof module==='object'&&module.exports)module.exports=api;
+  if(root)root.FOH_ARQ_CONTEXT_N1=api;
+})(typeof window!=='undefined'?window:null,function(){
+'use strict';
+const PAGES={mecanismes:62,'arme-a-repetition':62,'tir-de-barrage-l':62,'tir-de-grenaille-l':63,demolition:63,'poudre-puissante':63,'pilier-de-bar':64,'mort-ou-vif-l':64,'combattant-aguerri':64,'plus-vite-que-son-ombre':65,'ajuster-le-tir':65,'tir-double-l':65,'joli-coup':65,'defaut-dans-la-cuirasse-a':65,'tir-precis':65};
+const abilities=Object.keys(PAGES);
+const num=n=>Number.isFinite(Number(n))?Number(n):null;
+const bool=x=>x===true;
+function abilityRow(character,slug){
+ const rows=character?.abilities||character?.acquiredAbilities||[];
+ return rows.find(a=>String(a.id||'').startsWith('ability:'+slug+':')&&(String(a.id||'').includes('class-arquebusier')||String(a.id||'').includes('class-arbaletrier')||String(a.pathId||'').includes('class-arquebusier')||String(a.pathId||'').includes('class-arbaletrier')));
+}
+function rankOf(character,a){
+ if(!a)return 0;
+ const match=(character.paths||[]).find(p=>String(p.pathId||p.id)===String(a.pathId||a.path_id));
+ return Math.max(1,Number(match?.rank||a.rank||1));
+}
+function result(slug,exists,rank){
+ return {ability:slug,sourcePage:PAGES[slug],owned:!!exists,rank:rank||0,applies:false,trigger:null,modifiers:{},requirements:[],choices:[],limits:[],notes:[]};
+}
+function fail(o,requirement){o.requirements.push(requirement);return o;}
+function success(o,trigger){o.applies=true;o.trigger=trigger;return o;}
+function ownedProfile(character){return String(character?.profileId||'').includes('arquebusier')||String(character?.profileId||'').includes('arbaletrier')||(character?.abilities||[]).some(a=>String(a.pathId||'').includes('class-arquebusier'))}
+function solve(character,slug,c={}){
+ if(!Object.prototype.hasOwnProperty.call(PAGES,slug))throw Error('Capacité inconnue '+slug);
+ const a=abilityRow(character,slug),rank=rankOf(character,a),o=result(slug,a,rank);
+ if(!a)return fail(o,'Capacité non acquise : aucun bonus ne doit être appliqué.');
+ const kind=String(c.weaponKind||'').toLowerCase();
+ const loaded=bool(c.weaponLoaded),held=bool(c.weaponHeld);
+ const ranged=bool(c.rangedAttack);
+ switch(slug){
+ case 'mecanismes':{
+  if(['repair_mechanism','understand_mechanism','disarm_mechanical_trap','siege_weapon_operation'].includes(c.skill)){
+   success(o,'test de mécanisme');o.modifiers.skillBonus=rank+2;return o;
+  }
+  if(c.skill==='siege_weapon_attack'){success(o,'attaque avec arme de siège');o.modifiers.bonusDie=true;return o}
+  return fail(o,'Test de réparation, compréhension, désamorçage ou tir avec arme de siège requis');
+ }
+ case 'tir-de-grenaille-l':{
+  if(c.skill==='artificer'){success(o,'test d’artificier');o.modifiers.skillBonus=rank+2;return o}
+  if(!(kind==='powder'&&loaded&&c.ammunition==='grapeshot'))return fail(o,'Arme à poudre chargée d’une munition de grenaille requise');
+  success(o,'action limitée, tir de zone');
+  o.modifiers.area={shape:'cone',lengthMeters:10,widthMeters:5};
+  o.modifiers.attackRolls=1;o.modifiers.targetRule='un même résultat contre chaque DEF du cône';o.modifiers.damageFraction=0.5;
+  o.limits.push('Une seule attaque de zone pour les cibles face au tireur');
+  return o;
+ }
+ case 'pilier-de-bar':{
+  if(['tavern_social','resist_alcohol'].includes(c.skill)){success(o,'test en taverne ou de résistance à l’alcool');o.modifiers.skillBonus=rank+2;return o;}
+  if(c.attack==='unarmed'){success(o,'attaque à mains nues');o.modifiers.damageDice='1d4°';o.modifiers.nonLethal=true;return o;}
+  if(c.incomingDamageType==='non_lethal'){success(o,'dégâts non létaux reçus');o.modifiers.incomingDamageDivisor=2;return o;}
+  return fail(o,'Effet de taverne, attaque à mains nues ou dégâts non létaux requis');
+ }
+ case 'plus-vite-que-son-ombre':{
+  if(c.phase==='initiative_attack'&&kind==='powder'&&loaded&&held){success(o,'tir au départ avec arme à poudre chargée tenue en main');o.modifiers.initiativeBonusForShot=5;return o;}
+  if(c.engagedInMelee&&(kind==='powder'||kind==='crossbow')&&kind!=='couleuvrine'&&!bool(c.couleuvrine)){
+   success(o,'tir au contact avec arme admissible');o.modifiers.removeRangedContactDisadvantage=true;return o;
+  }
+  return fail(o,'Arme à poudre chargée et tenue pour +5 à l’initiative du tir, ou tir poudre/arbalète au contact hors couleuvrine');
+ }
+ case 'joli-coup':{
+  if(!ranged)return fail(o,'Une attaque à distance est requise');
+  if(c.cover==='partial'){success(o,'couvert partiel');o.modifiers.coverAttackPenalty=0;return o}
+  if(c.cover==='important'){success(o,'couvert important');o.modifiers.coverAttackPenalty=-2;return o}
+  return fail(o,'Cible avec couvert partiel ou important requise');
+ }
+ case 'arme-a-repetition':{
+  if(c.action==='reload'&&bool(c.selectedRepeatingWeapon)){
+   success(o,'rechargement du chargeur');o.modifiers.limitedActionsPerProjectile=1;o.modifiers.projectiles=num(c.projectilesToReload)||1;
+   o.modifiers.totalLimitedActions=o.modifiers.projectiles;
+   return o;
+  }
+  if(!bool(c.selectedRepeatingWeapon))return fail(o,'Arme appartenant aux deux armes modifiées par cette capacité requise');
+  const intel=num(character?.characteristics?.int??character?.caracs?.int??c.INT);
+  if(intel===null)return fail(o,'INT définitive du personnage requise');
+  const r3=Number(c.rankedThreeArquebusierPaths);
+  const rank3=Number.isInteger(r3)&&r3>=0?r3:(character.paths||[]).filter(p=>String(p.pathId||'').includes('class-arquebusier')&&Number(p.rank)>=3).length;
+  success(o,'capacité de chargeur');o.modifiers.capacity=2+intel+rank3;
+  o.modifiers.limitedActionsPerProjectile=1;o.limits.push('Maximum deux armes à répétition modifiées');
+  return o;
+ }
+ case 'demolition':{
+  if(!bool(c.structureTarget)&&!bool(c.blastRadiusTarget))return fail(o,'Structure à démolir ou cible à 2 m de l’explosion requise');
+  if((num(c.preparationRounds)||0)<3)return fail(o,'Trois rounds complets de préparation et pose requis');
+  if(num(c.chargesRemaining)!==null&&num(c.chargesRemaining)<=0)return fail(o,'Plus aucune charge explosive disponible');
+  success(o,'explosif préparé');
+  o.modifiers.preparationRounds=3;o.modifiers.dailyChargesMax=rank;o.modifiers.dailyChargesCost=1;
+  if(bool(c.structureTarget)){o.modifiers.damageFormula='3d4° + INT';o.modifiers.targetDamageReductionMultiplier=0.5;}
+  else{o.modifiers.damageFormula='2d4°';o.modifiers.blastRadiusMeters=2;}
+  return o;
+ }
+ case 'mort-ou-vif-l':{
+  if(!bool(c.attackHit))return fail(o,'Attaque au contact ou à distance réussie requise');
+  if(!['melee','ranged'].includes(c.attackType))return fail(o,'Arme au contact ou à distance tenue en main requise');
+  success(o,'action limitée et attaque réussie');
+  o.modifiers.normalWeaponDamage=true;o.modifiers.canUseTemporaryDamage=true;
+  const nc=num(c.targetNC);if(nc!==null&&nc<rank){
+   o.choices=['désarmer','renverser','affaiblir'];
+   o.modifiers.maxConditionChoices=bool(c.criticalHit)?2:1;o.modifiers.weakenRounds='1d4';
+  }else o.notes.push('NC non renseigné ou supérieur/égal au rang : aucun état supplémentaire autorisé');
+  return o;
+ }
+ case 'ajuster-le-tir':{
+  if(!bool(c.previousRangedAttackMiss))return fail(o,'Une attaque à distance ratée doit avoir été déclarée tir de réglage');
+  if(!bool(c.sameTarget))return fail(o,'Le prochain tir doit viser la même cible');
+  if(!bool(c.nextShotBeforeEndOfFollowingRound))return fail(o,'L’attaque suivante doit intervenir avant la fin du round suivant');
+  success(o,'prochaine attaque à distance après réglage');o.modifiers.nextRangedAttackBonus=5;return o;
+ }
+ case 'defaut-dans-la-cuirasse-a':{
+  if(!bool(c.preparedTargetLastRound)&&!bool(c.preparedTargetThisRoundByMassCombat))return fail(o,'Action d’attaque de préparation au round précédent, ou exception Combat de masse');
+  if(!bool(c.sameTarget)||!ranged)return fail(o,'Tirs à distance sur la cible préparée requis');
+  const agi=num(c.targetAGI);if(agi===null)return fail(o,'AGI de la cible requise');
+  success(o,'tir contre la faiblesse ciblée');o.modifiers.targetDEF=10+agi;
+  o.modifiers.ignoreDamageResistance=!bool(c.targetImmaterial);
+  o.modifiers.ignoreDamageReduction=!bool(c.targetImmaterial);
+  return o;
+ }
+ case 'tir-de-barrage-l':{
+  if(!loaded||!ranged||!bool(c.targetMovedInZoneBeforeNextTurn))return fail(o,'Arme à distance chargée et cible ayant bougé dans la zone surveillée avant le prochain tour');
+  if(num(c.targetDistanceMeters)!==null&&num(c.targetDistanceMeters)>20)return fail(o,'Zone de surveillance limitée à 20 m de large');
+  success(o,'action limitée de surveillance, puis tir sur déplacement');
+  o.modifiers.zoneWidthMeters=20;o.modifiers.attackTriggeredByMovement=true;
+  o.choices=bool(c.attackHit)?['doubler les dommages','interrompre immédiatement le déplacement sans dommages']:[];
+  o.modifiers.damageIfVictimChoosesDamage=bool(c.attackHit)?2:null;
+  o.limits.push('Plusieurs cibles possibles uniquement tant qu’aucun rechargement n’est requis');
+  return o;
+ }
+ case 'poudre-puissante':{
+  if(kind!=='powder')return fail(o,'Arme à poudre requise');
+  success(o,'préparation de poudre puissante');
+  o.modifiers.weaponRangeBonusMeters=10;
+  o.modifiers.weaponDamageBonus=1+Number(c.numberOfRank5ArquebusierPaths||0);
+  o.modifiers.projectileMagical=true;
+  o.notes.push('Ces bonus sont normalement déjà compris dans les attaques canoniques : ne pas les additionner deux fois');
+  return o;
+ }
+ case 'combattant-aguerri':{
+  success(o,'bonus permanent et choix additionnel');
+  o.modifiers.defenseBonus=1;
+  o.choices=['capacité de rang 1 de Guerrier','capacité de rang 1 de Voleur','capacité de rang 1 de Rôdeur'];
+  o.limits.push('Voleur : armure cuir ; Rôdeur : armure cuir renforcé');
+  o.notes.push('Le moteur canonique additionne déjà le +1 DEF ; pas de double application');
+  return o;
+ }
+ case 'tir-double-l':{
+  if(!(bool(c.twoLoadedOneHandRangedWeapons)&&['powder','crossbow'].includes(kind)))return fail(o,'Deux pétoires ou deux arbalètes de poing chargées, une par main, requises');
+  success(o,'action limitée de double tir');
+  o.modifiers.attackCount=2;
+  o.modifiers.attackPenaltyEach=bool(c.sameTarget)?0:-2;
+  o.limits.push('Les deux projectiles doivent être disponibles et sont consommés');
+  return o;
+ }
+ case 'tir-precis':{
+  if(!ranged)return fail(o,'Une attaque avec arme à distance requise');
+  success(o,'attaque à distance');
+  o.modifiers.criticalThreshold=rank>=5?18:19;
+  o.notes.push('Le moteur d’attaque peut avoir déjà appliqué ce seuil : ne pas l’abaisser une seconde fois');
+  return o;
+ }
+ }
+ return o;
+}
+return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-1',sourcePages:PAGES,abilities,resolve:solve,isOwned:(character,slug)=>!!abilityRow(character,slug),ownedProfile});
+});
+
+</script>
+<script id="FOH_ARQ_CONTEXT_UI_N1">
+/* Forge N1 : présentation accessible des calculs contextuels (sans doubler les totaux).
+ * Les situations sont choisies EXPLICITEMENT par le joueur/MJ ; aucun état adversaire
+ * ni dé n'est inventé. N'impacte ni la création, ni les sauvegardes.
+ */
+(function(){'use strict';
+ const API=window.FOH_ARQ_CONTEXT_N1,P=window.__FOH_PRODUCT__,E=window.__FOH_ENGINE__;
+ if(!API||!P||!E)return;
+ const examples={
+  mecanismes:[['Réparer ou comprendre un mécanisme',{skill:'repair_mechanism'}],['Attaquer avec une baliste ou arme de siège',{skill:'siege_weapon_attack'}]],
+  'arme-a-repetition':[['Chargeur modifié, un rang 3 acquis',{selectedRepeatingWeapon:true,rankedThreeArquebusierPaths:1}],['Recharger trois projectiles',{action:'reload',selectedRepeatingWeapon:true,projectilesToReload:3}]],
+  'tir-de-barrage-l':[['Cible en mouvement dans la zone, attaque réussie',{weaponLoaded:true,rangedAttack:true,targetMovedInZoneBeforeNextTurn:true,attackHit:true,targetDistanceMeters:10}],['Arme vide, tir impossible',{weaponLoaded:false,rangedAttack:true,targetMovedInZoneBeforeNextTurn:true}]],
+  'tir-de-grenaille-l':[['Grenaille chargée, tir en cône',{weaponKind:'powder',weaponLoaded:true,ammunition:'grapeshot'}],['Test d’artificier',{skill:'artificer'}]],
+  demolition:[['Explosif sur une structure après 3 rounds',{structureTarget:true,preparationRounds:3,chargesRemaining:1}],['Déflagration à 2 m après préparation',{blastRadiusTarget:true,preparationRounds:3,chargesRemaining:1}]],
+  'poudre-puissante':[['Arme à poudre',{weaponKind:'powder'}],['Arbalète, pas de poudre',{weaponKind:'crossbow'}]],
+  'pilier-de-bar':[['Coup à mains nues',{attack:'unarmed'}],['Dégâts non létaux reçus',{incomingDamageType:'non_lethal'}],['Test de résistance à l’alcool',{skill:'resist_alcohol'}]],
+  'mort-ou-vif-l':[['Attaque touchée, cible NC 1, critique',{attackHit:true,attackType:'ranged',targetNC:1,criticalHit:true}],['Attaque touchée, cible NC 9',{attackHit:true,attackType:'ranged',targetNC:9}]],
+  'combattant-aguerri':[['DEF permanente et choix de rang 1',{}]],
+  'plus-vite-que-son-ombre':[['Tir à la poudre chargée en main : Initiative',{phase:'initiative_attack',weaponKind:'powder',weaponLoaded:true,weaponHeld:true}],['Arbalète au contact : pas de dé malus',{weaponKind:'crossbow',engagedInMelee:true}]],
+  'ajuster-le-tir':[['Tir raté, même cible avant fin du round suivant',{previousRangedAttackMiss:true,sameTarget:true,nextShotBeforeEndOfFollowingRound:true}],['Cible différente : aucun bonus',{previousRangedAttackMiss:true,sameTarget:false,nextShotBeforeEndOfFollowingRound:true}]],
+  'tir-double-l':[['Deux pétoires sur deux cibles',{twoLoadedOneHandRangedWeapons:true,weaponKind:'powder',sameTarget:false}],['Deux arbalètes de poing sur la même cible',{twoLoadedOneHandRangedWeapons:true,weaponKind:'crossbow',sameTarget:true}]],
+  'joli-coup':[['Cible à couvert partiel',{rangedAttack:true,cover:'partial'}],['Cible à couvert important',{rangedAttack:true,cover:'important'}]],
+  'defaut-dans-la-cuirasse-a':[['Cible AGI +2, préparée, visible',{preparedTargetLastRound:true,sameTarget:true,rangedAttack:true,targetAGI:2}],['Cible immatérielle AGI +2',{preparedTargetLastRound:true,sameTarget:true,rangedAttack:true,targetAGI:2,targetImmaterial:true}]],
+  'tir-precis':[['Attaque avec arme à distance',{rangedAttack:true}],['Attaque au contact : seuil normal',{rangedAttack:false}]]
+ };
+ const titles={'mecanismes':'Mécanismes','arme-a-repetition':'Arme à répétition','tir-de-barrage-l':'Tir de barrage','tir-de-grenaille-l':'Tir de grenaille',demolition:'Démolition','poudre-puissante':'Poudre puissante','pilier-de-bar':'Pilier de bar','mort-ou-vif-l':'Mort ou vif','combattant-aguerri':'Combattant aguerri','plus-vite-que-son-ombre':'Plus vite que son ombre','ajuster-le-tir':'Ajuster le tir','tir-double-l':'Tir double','joli-coup':'Joli coup','defaut-dans-la-cuirasse-a':'Défaut dans la cuirasse','tir-precis':'Tir précis'};
+ const labels={skillBonus:'Bonus de compétence',bonusDie:'Dé bonus',damageDice:'DM à mains nues',nonLethal:'Dégâts non létaux',incomingDamageDivisor:'Diviseur des dégâts non létaux reçus',initiativeBonusForShot:'Bonus d’initiative pour ce tir',removeRangedContactDisadvantage:'Dé malus du tir au contact supprimé',coverAttackPenalty:'Malus d’attaque pour le couvert',capacity:'Capacité du chargeur',limitedActionsPerProjectile:'Actions limitées par projectile rechargé',totalLimitedActions:'Total actions limitées',attackRolls:'Nombre de tests d’attaque',damageFraction:'Fraction des dommages habituels',area:'Zone d’effet',preparationRounds:'Rounds nécessaires',dailyChargesMax:'Charges maximales par jour',dailyChargesCost:'Charges consommées',damageFormula:'Formule de dommages',targetDamageReductionMultiplier:'Fraction de RD retenue',blastRadiusMeters:'Rayon de déflagration (m)',normalWeaponDamage:'Dommages normaux',canUseTemporaryDamage:'Option dégâts temporaires',maxConditionChoices:'Nombre d’effets préjudiciables possibles',weakenRounds:'Durée de l’affaiblissement',nextRangedAttackBonus:'Bonus du prochain tir',targetDEF:'DEF à atteindre',ignoreDamageResistance:'Ignorer résistance aux DM',ignoreDamageReduction:'Ignorer réduction des DM',zoneWidthMeters:'Largeur de zone surveillée (m)',attackTriggeredByMovement:'Déclenché par déplacement',damageIfVictimChoosesDamage:'Multiplicateur de dommages si choisi',weaponRangeBonusMeters:'Portée supplémentaire (m)',weaponDamageBonus:'DM supplémentaires',projectileMagical:'Projectile magique',defenseBonus:'DEF supplémentaire',attackCount:'Attaques',attackPenaltyEach:'Malus par attaque',criticalThreshold:'Critique dès (d20)'};
+ const display=v=>typeof v==='boolean'?(v?'oui':'non'):typeof v==='object'?JSON.stringify(v):String(v);
+ let panel=null;
+ const $=(el,tag,cls)=>{const x=document.createElement(tag);if(cls)x.className=cls;el.appendChild(x);return x;};
+ function state(){
+  const computed=E.computeCharacterN1(P.buildState());
+  if(computed.errors?.length||!computed.sticky?.characterState)return null;
+  return computed.sticky.characterState;
+ }
+ function render(){
+  try{
+   const host=document.getElementById('summary-content');if(!host||host.hidden)return;
+   const st=state();if(!st)return;
+   const owned=API.abilities.filter(a=>API.isOwned(st,a));if(!owned.length){if(panel)panel.hidden=true;return;}
+   if(!panel){
+    panel=document.createElement('details');panel.id='foh-n1-context-situations';
+    panel.style.cssText='margin:14px 0;padding:12px;border:1px solid #877553;border-radius:10px;background:rgba(16,15,13,.86);color:#f5f0e5;font:14px/1.5 system-ui';
+    const title=$ (panel,'summary');title.textContent='Calculs de capacités en situation (Arquebusier / Arbalétrier)';
+    title.style.cssText='cursor:pointer;font-weight:700';
+    const note=$(panel,'p');note.textContent='Choisis une capacité et une situation réelle. Les bonus sont conditionnels et ne s’ajoutent pas deux fois aux caractéristiques de la fiche. Le MJ conserve la décision sur les jets et les choix adverses.';
+    note.style.cssText='font-size:12px;color:#d3c6ab';
+    const l1=$(panel,'label');l1.textContent='Capacité acquise : ';const a=$(l1,'select');a.id='foh-n1-context-ability';
+    const l2=$(panel,'label');l2.textContent=' Situation : ';const b=$(l2,'select');b.id='foh-n1-context-example';
+    for(const l of [l1,l2])l.style.cssText='display:block;margin:9px 0';
+    for(const select of [a,b])select.style.cssText='max-width:100%;width:100%;padding:9px;border-radius:7px;background:#171511;color:#fff;border:1px solid #877553';
+    const button=$(panel,'button');button.type='button';button.textContent='Calculer les effets';button.id='foh-n1-context-run';button.style.cssText='padding:8px 12px;border-radius:8px;border:1px solid #bd9865;background:#433927;color:#fff;cursor:pointer';
+    const out=$(panel,'div');out.id='foh-n1-context-result';out.setAttribute('aria-live','polite');out.style.cssText='margin-top:9px;font-size:13px;white-space:pre-wrap';
+    a.addEventListener('change',()=>{const presets=examples[a.value]||[];b.replaceChildren();presets.forEach((p,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=p[0];b.appendChild(o)});out.textContent='';});
+    button.addEventListener('click',()=>{try{
+      const current=state();if(!current)throw Error('Fiche incomplète.');const slug=a.value;
+      const setup=examples[slug]?.[Number(b.value)||0];if(!setup)throw Error('Situation non reconnue');
+      const r=API.resolve(current,slug,setup[1]);const lines=[r.applies?'Capacité applicable dans la situation choisie.':'Capacité NON applicable dans cette situation.'];
+      for(const [key,val]of Object.entries(r.modifiers))lines.push((labels[key]||key)+' : '+display(val));
+      if(r.choices.length)lines.push('Choix : '+r.choices.join(' / '));
+      for(const message of r.requirements)lines.push('Condition manquante : '+message);
+      for(const message of r.limits)lines.push('Limite : '+message);
+      for(const message of r.notes)lines.push('À noter : '+message);
+      lines.push('Référence : livre de base COF2, p. '+r.sourcePage+'.');
+      out.textContent=lines.join('\n');
+    }catch(e){out.textContent='Calcul impossible : '+e.message}});
+    host.insertAdjacentElement('afterend',panel);
+   }
+   panel.hidden=false;
+   const a=panel.querySelector('#foh-n1-context-ability');
+   const last=a.value,available=owned.join('|');
+   if(a.dataset.available!==available){
+     a.replaceChildren();owned.forEach(slug=>{const o=document.createElement('option');o.value=slug;o.textContent=titles[slug]||slug;a.appendChild(o)});
+     a.dataset.available=available;if(owned.includes(last))a.value=last;a.dispatchEvent(new Event('change'));
+   }
+  }catch(e){/* Le module complémentaire ne doit jamais bloquer la création ni la fiche officielle. */}
+ }
+ let queued=false;
+ const schedule=()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;render()})};
+ const host=document.querySelector('main')||document.body;
+ if(host)new MutationObserver(schedule).observe(host,{subtree:true,childList:true});
+ document.addEventListener('click',schedule,true);document.addEventListener('change',schedule,true);
+ schedule();
+ window.__FOH_ARQ_CONTEXT_UI__={version:'FOH-ARQ-CONTEXT-UI-N1-1',render,examples};
+})();
+</script>
 </body>
 </html>
