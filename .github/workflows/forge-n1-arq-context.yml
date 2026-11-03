@@ -10,6 +10,9 @@ on:
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_hybrid_powder_safety.cjs'
 permissions:
   contents: write
+concurrency:
+  group: forge-n1-arq-context-proof
+  cancel-in-progress: false
 jobs:
   contextual:
     runs-on: ubuntu-latest
@@ -36,25 +39,27 @@ jobs:
             forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json
             forge-of-heroes/QA/N1/arquebusier-context-canonical.json
             forge-of-heroes/QA/N1/arquebusier-hybrid-powder-safety.json
-      - name: Archiver le statut sans fausse validation
-        if: always()
+      - name: Recalculer et publier les preuves sur la dernière version du dépôt
+        if: steps.tests.outcome == 'success'
         run: |
-          if test -f forge-of-heroes/QA/N1/arquebusier-context-canonical.json; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pure_age_ranks.cjs
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_hybrid_powder_safety.cjs
             git add forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-context-canonical.json forge-of-heroes/QA/N1/arquebusier-hybrid-powder-safety.json
-            if ! git diff --cached --quiet; then
-              git commit -m "test(forge-n1): oracle conditionnel 15 capacités [skip ci]"
-              git restore --worktree .
-              git restore --worktree .
-              for attempt in 1 2 3 4 5; do
-                git fetch origin main
-                if git rebase origin/main && git push origin HEAD:main; then exit 0; fi
-                if [ "$attempt" = 5 ]; then exit 1; fi
-                sleep 3
-              done
+            if git diff --cached --quiet; then
+              echo "Preuves identiques déjà archivées"
+              exit 0
             fi
-          fi
+            git commit -m "test(forge-n1): R1 R2 R3 conditionnels vérifiés sur dernière release [skip ci]"
+            if git push origin HEAD:main; then exit 0; fi
+            if [ "$attempt" = 5 ]; then exit 1; fi
+            sleep 3
+          done
       - name: Échouer pour toute divergence avec les règles
         if: steps.tests.outcome == 'failure'
         run: exit 1
