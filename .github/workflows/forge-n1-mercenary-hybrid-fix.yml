@@ -1,0 +1,68 @@
+name: Forge N1 - corriger Mercenaire hybride dans les deux moteurs
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-mercenary-hybrid-fix.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_mercenary_hybrid_fix.cjs'
+permissions:
+  contents: write
+concurrency:
+  group: forge-n1-mercenaire-hybride-correctif
+  cancel-in-progress: false
+jobs:
+  correct-and-certify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vérifier les outils avant toute modification
+        run: |
+          node --check forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_mercenary_hybrid_fix.cjs
+          node --check forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_mercenary_hybrid_gear_probe.cjs
+      - name: Corriger uniquement les deux conditions du Livre de base page 65
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_mercenary_hybrid_fix.cjs
+      - name: Exiger 32 configurations légales et aucune maîtrise de poudre indue
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_mercenary_hybrid_gear_probe.cjs --assert
+      - name: Contrôler les âges, bonus, sauvegardes et les dix paires de voies
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pure_age_ranks.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_all_pairs_current.cjs
+      - name: Audit moteur, base inchangée, matrice à requalifier
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_version_parity.cjs
+          node - <<'NODE'
+          const fs=require('fs'),d=require('./forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-fix.json');
+          if(d.status!=='PASS'||d.changed.length!==2||d.changed.some(x=>x.diffStatements!==2))throw Error('Patch non strict');
+          const r=require('./forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-gear-probe.json');
+          if(r.status!=='PASS'||r.accepted!==32||r.faultyPowder.length)throw Error('Erreur Mercenaire non réparée');
+          console.log('2 fichiers, deux points corrigés, 32/32 hybrides acceptés');
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n1-mercenary-hybrid-fix-proof
+          path: |
+            forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-fix.json
+            forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-gear-probe.json
+            forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json
+            forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json
+            forge-of-heroes/QA/N1/version-parity.json
+      - name: Publier uniquement après toutes les preuves vertes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-fix.json forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-gear-probe.json forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/version-parity.json
+          git commit -m "fix(forge-n1): Mercenaire hybride bouclier et maîtrise poudre exactement selon COF2 p65 [skip ci]"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if git rebase origin/main && git push origin HEAD:main; then exit 0; fi
+            git rebase --abort || true
+            if [ "$attempt" = 5 ]; then exit 1; fi
+            sleep 3
+          done
