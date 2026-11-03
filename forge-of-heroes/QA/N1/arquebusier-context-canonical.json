@@ -1,16 +1,16 @@
 {
   "schema": "FOH_N1_ARQ_CONTEXT_INDEPENDENT_TEST",
-  "at": "2026-11-03T11:54:24.194Z",
+  "at": "2026-11-03T11:57:25.418Z",
   "engineVersion": "FOH-ARQ-CONTEXT-N1-1",
   "sourceBook": "Chroniques Oubliées Fantasy 2e ed. Livre de base p.62-65",
   "inputSha256": [
     {
       "file": "index.html",
-      "sha256": "5b28489ecd67343c997bce78bb7d98262630e0c56b341a98112e1bdb43ab2be3"
+      "sha256": "afc55046c3e12d16d94d477852fc95b0380be51f5c2bea166546c232b5ec131d"
     },
     {
       "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "sha256": "09a099bccb4822cef277c8bef4045ec88db9ff9a46e411b3e30f05ea42fcdae5"
+      "sha256": "2257665859671746672930283f774f8d5ca7127578a8ffea8b1fb48648d428a5"
     }
   ],
   "cases": [
@@ -68,7 +68,23 @@
       }
     },
     {
+      "tag": "tir-de-barrage-l/{\"weaponLoaded\":true,\"rangedAttack\":true,\"targetMovedInZoneBeforeNextTurn\":true,\"attackHit\":true,\"targetDistanceMeters\":30,\"weaponRangeMeters\":40}",
+      "status": "PASS",
+      "proof": {
+        "zoneWidthMeters": 20,
+        "attackTriggeredByMovement": true
+      }
+    },
+    {
       "tag": "tir-de-barrage-l/no-context",
+      "status": "PASS"
+    },
+    {
+      "tag": "tir-de-barrage-l/outside-facing-zone",
+      "status": "PASS"
+    },
+    {
+      "tag": "tir-de-barrage-l/beyond-actual-weapon-range",
       "status": "PASS"
     },
     {
@@ -334,7 +350,7 @@
     }
   ],
   "status": "PASS",
-  "passed": 55,
+  "passed": 58,
   "failed": 0,
   "all15": true
 }
