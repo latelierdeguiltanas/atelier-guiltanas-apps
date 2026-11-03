@@ -39,7 +39,7 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
    const noShield={...s,equip:{...s.equip,shieldId:''}},without=E.computeCharacterN1(noShield);
    row.noShieldErrors=without.errors;
    if(!without.errors.length&&out.sticky)row.shieldDefenseDelta=out.sticky.DEF-without.sticky.DEF;
-   const withPowder={...s,equip:{...s.equip,weaponIds:['weapon:powder-pistol'],shieldId:''}},powder=E.computeCharacterN1(withPowder);
+   const withPowder={...s,equip:{...s.equip,weaponIds:['weapon:powder-pistol']}},powder=E.computeCharacterN1(withPowder);
    row.powderErrors=powder.errors;
    row.powderAttacks=powder.sticky?.attacks?.filter(x=>x.weaponId==='weapon:powder-pistol').map(x=>({mastered:x.mastered,attackBonus:x.attackBonus}));
   }catch(e){row.exception=String(e)}
@@ -47,5 +47,11 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
  }
 }
 report.samples=report.cases.filter(x=>x.race==='humain'||x.race==='demi-elfe'||x.race==='halfelin');
+report.accepted=report.cases.filter(x=>x.allowed).length;
+report.unexpectedRefusals=report.cases.filter(x=>!x.allowed).map(x=>({race:x.race,orientation:x.orientation,file:x.file,errors:x.errors}));
+report.faultyPowder=report.cases.filter(x=>x.orientation==='mercenary-first'&&!x.powderErrors?.some(e=>e.includes('Arme non maîtrisée par le profil'))).map(x=>({race:x.race,file:x.file,errors:x.powderErrors,attacks:x.powderAttacks}));
+report.status=report.accepted===32&&report.faultyPowder.length===0?'PASS':'FAIL';
+if(process.argv.includes('--assert')&&report.status!=='PASS')process.exitCode=1;
+
 fs.writeFileSync(path.join(root,'QA/N1/arquebusier-mercenary-hybrid-gear-probe.json'),JSON.stringify(report,null,2)+'\n');
-console.log(JSON.stringify({classification:report.classification,cases:report.cases.length,accepted:report.cases.filter(x=>x.allowed).length,examples:report.samples.map(x=>({file:x.file,race:x.race,errors:x.errors,masteries:x.masteries,shield:x.equipment?.shieldId}))}).slice(0,8000));
+console.log(JSON.stringify({status:report.status,classification:report.classification,cases:report.cases.length,accepted:report.accepted,unexpectedRefusals:report.unexpectedRefusals.slice(0,12),faultyPowder:report.faultyPowder.slice(0,12)}).slice(0,8000));
