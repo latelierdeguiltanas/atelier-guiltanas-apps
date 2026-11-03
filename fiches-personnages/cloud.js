@@ -1,7 +1,7 @@
 (function(root){'use strict';
 const L=root.FOHPlayerLibrary;
 const ID='guiltanas_player_cloud_v1';
-const URL='https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-player-vault';
+const API_URL='https://jitatmdbipjkvjstcgdc.supabase.co/functions/v1/guiltanas-player-vault';
 const tokenFormat=(text)=>String(text||'').replace(/[^0-9a-f]/gi,'').toLowerCase();
 function nowConfig(){try{return JSON.parse(localStorage.getItem(ID)||'null')}catch{return null}}
 function setConfig(c){localStorage.setItem(ID,JSON.stringify(c));}
@@ -13,7 +13,7 @@ function randomCode(){const x=crypto.getRandomValues(new Uint8Array(32));return 
 async function api(action,body){
  const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),12000);
  try{
-  const r=await fetch(URL+'?action='+action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:ctrl.signal});
+  const r=await fetch(API_URL+'?action='+action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:ctrl.signal});
   const d=await r.json();if(!r.ok)throw Object.assign(new Error(d.error||'Erreur serveur'),{conflict:d.conflict===true});
   return d;
  }finally{clearTimeout(timer)}
@@ -27,7 +27,7 @@ async function create(){
   const area=document.getElementById('cloud-code');
   if(area){area.hidden=false;area.value=codeFormat(code);area.select();}
   summary('✓ Coffre personnel créé en ligne. Copie et conserve ton code privé pour ouvrir tes fiches sur un autre appareil.');
-  render();
+  render();return result;
  }catch(e){summary('Création cloud impossible : '+e.message,true)}
  finally{busy=false}
 }
@@ -102,7 +102,11 @@ function setup(){
  document.getElementById('play-library').onclick=()=>{history.pushState(null,'',new URL('./',location.href));window.dispatchEvent(new Event('popstate'));};
  window.addEventListener('online',()=>{if(nowConfig()?.key&&!conflicted)sync({quiet:false})});
  window.addEventListener('visibilitychange',()=>{if(!document.hidden&&nowConfig()?.key&&!conflicted)sync({quiet:true})});
- if(nowConfig()?.key)sync({quiet:false});
+ const address=new root.URL(location.href),incoming=new URLSearchParams(address.hash.slice(1)).get('vault');
+ const fromForge=address.searchParams.get('fromForge')==='1';address.searchParams.delete('fromForge');history.replaceState(null,'',address.href);
+ if(incoming){if(!/^[a-f0-9]{64}$/.test(incoming)){summary('Lien personnel invalide.',true);return;}if(nowConfig()?.key===incoming)sync({quiet:false});else connect(incoming);}
+ else if(nowConfig()?.key)sync({quiet:false});
+ else if(fromForge)create();
 }
 root.GuiltanasPlayerCloud={create,connect,sync,trigger,render,setup,config:nowConfig};
 })(window);
