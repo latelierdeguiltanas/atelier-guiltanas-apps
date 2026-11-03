@@ -30,17 +30,17 @@ const weaponAfter=`const permanentEquipment=window.FOHPermanentRules.equipmentRu
 const report={schema:'FOH_N1_MERCENAIRE_HYBRIDE_ENGINE_CORRECTION',at:new Date().toISOString(),source:['COF2 Livre de base p65 : exception mercenaire hybride','COF2 Livre de base p177 : maîtrise second profil à partir de deux rangs'],status:'PASS',changed:[],twoCasesOnly:true};
 for(const file of files){
  const target=path.join(root,file),html=fs.readFileSync(target,'utf8');
- const start=html.indexOf('<script id="FOH_ENGINE_BUNDLE"'),close=start<0?-1:html.indexOf('>',start)+1,end=html.indexOf('</script>',close);
+ const engineAttr=html.indexOf('id="FOH_ENGINE_BUNDLE"'),start=engineAttr<0?-1:html.lastIndexOf('<script',engineAttr),close=start<0?-1:html.indexOf('>',engineAttr)+1,end=html.indexOf('</script>',close);
  if(start<0||close<0||end<0)throw Error('Engine bundle missing '+file);
- const engine=html.slice(close,end),dbStart=html.indexOf('<script id="FOH_DB_JSON"');
+ const engine=html.slice(close,end),dbAttr=html.indexOf('id="FOH_DB_JSON"'),dbStart=dbAttr<0?-1:html.lastIndexOf('<script',dbAttr);
  if(dbStart<0)throw Error('DB anchor missing');
- const beforeDb=html.slice(dbStart,html.indexOf('</script>',dbStart)+9);
+ const beforeDb=html.slice(dbStart,html.indexOf('</script>',dbAttr)+9);
  const beforeMatches=[shieldBefore,weaponBefore].map(x=>engine.split(x).length-1);
  assert.deepEqual(beforeMatches,[1,1],file+' ambiguity or already installed: '+beforeMatches);
  const updatedEngine=engine.replace(shieldBefore,shieldAfter).replace(weaponBefore,weaponAfter);
  assert.equal(updatedEngine.length-engine.length,shieldAfter.length-shieldBefore.length+weaponAfter.length-weaponBefore.length);
  const updatedHtml=html.slice(0,close)+updatedEngine+html.slice(end);
- assert.equal(updatedHtml.slice(updatedHtml.indexOf('<script id="FOH_DB_JSON"'),updatedHtml.indexOf('</script>',updatedHtml.indexOf('<script id="FOH_DB_JSON"'))+9),beforeDb,'DB must not change');
+ assert.equal(updatedHtml.slice(updatedHtml.lastIndexOf('<script',updatedHtml.indexOf('id="FOH_DB_JSON"')),updatedHtml.indexOf('</script>',updatedHtml.indexOf('id="FOH_DB_JSON"'))+9),beforeDb,'DB must not change');
  fs.writeFileSync(target,updatedHtml,'utf8');
  report.changed.push({file,beforeSha256:hash(html),afterSha256:hash(updatedHtml),engineBefore:hash(engine),engineAfter:hash(updatedEngine),dbSha256:hash(beforeDb),diffStatements:2});
 }
