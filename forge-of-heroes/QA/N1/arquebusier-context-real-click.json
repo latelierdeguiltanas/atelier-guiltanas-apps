@@ -1,0 +1,46 @@
+{
+  "schema": "FOH_N1_ARQ_CONTEXT_REAL_CHROME",
+  "at": "2026-11-03T08:52:30.694Z",
+  "source": "Livre de base COF2 pp.62-65",
+  "cases": [
+    {
+      "variant": "Arquebusier",
+      "first": "pistolero",
+      "second": "précision",
+      "checks": [],
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 13000ms exceeded.\nCall log:\n  - waiting for locator('#foh-n1-context-situations') to be visible\n\n    at /home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_live_click.cjs:36:15",
+      "browserErrors": []
+    },
+    {
+      "variant": "Arquebusier",
+      "first": "mercenaire",
+      "second": "explosifs",
+      "checks": [],
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 13000ms exceeded.\nCall log:\n  - waiting for locator('#foh-n1-context-situations') to be visible\n\n    at /home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_live_click.cjs:36:15",
+      "browserErrors": []
+    },
+    {
+      "variant": "Arquebusier",
+      "first": "artilleur",
+      "second": "mercenaire",
+      "checks": [],
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 13000ms exceeded.\nCall log:\n  - waiting for locator('#foh-n1-context-situations') to be visible\n\n    at /home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_live_click.cjs:36:15",
+      "browserErrors": []
+    },
+    {
+      "variant": "Arbalétrier",
+      "first": "maître d’armes",
+      "second": "pistolero",
+      "checks": [],
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 13000ms exceeded.\nCall log:\n  - waiting for locator('#foh-n1-context-situations') to be visible\n\n    at /home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_live_click.cjs:36:15",
+      "browserErrors": []
+    }
+  ],
+  "passed": 0,
+  "failed": 4,
+  "status": "FAIL"
+}
