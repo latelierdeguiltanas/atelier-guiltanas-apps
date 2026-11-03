@@ -9,7 +9,9 @@ const variants=[
  {label:'Arquebusier',paths:['artilleur','explosifs','mercenaire','pistolero','précision']},
  {label:'Arbalétrier',paths:['artilleur','mercenaire','pistolero','précision','maître d’armes']}
 ];
-const report={schema:'FOH_N1_ARQ_BOTH_VARIANTS_ALL_TEN_PAIRS_REAL_CLICKS',at:new Date().toISOString(),scope:'20 parcours utilisateur Chrome tactile 393x852, peuple Humain jeune, création et choix de deux voies, fiche, sauvegarde, réouverture, contrôles JavaScript et feuille interactive. Ni huit peuples, ni âges avancés, ni tous effets contextuels.',cases:[],status:'PENDING',passed:0,failed:0};
+const crypto=require('node:crypto');
+const shaIndex=crypto.createHash('sha256').update(fs.readFileSync('forge-of-heroes/index.html')).digest('hex');
+const report={indexSha256:shaIndex,schema:'FOH_N1_ARQ_BOTH_VARIANTS_ALL_TEN_PAIRS_REAL_CLICKS',at:new Date().toISOString(),scope:'20 parcours utilisateur Chrome tactile 393x852, peuple Humain jeune, création et choix de deux voies, fiche, sauvegarde, réouverture, contrôles JavaScript et feuille interactive. Ni huit peuples, ni âges avancés, ni tous effets contextuels.',cases:[],status:'PENDING',passed:0,failed:0};
 (async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||undefined,args:['--no-sandbox']});
 try{
   for(const variant of variants)for(let i=0;i<variant.paths.length;i++)for(let j=i+1;j<variant.paths.length;j++){
