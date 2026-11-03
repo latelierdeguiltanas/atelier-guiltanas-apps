@@ -1,7 +1,7 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-03T12:12:58.529Z",
-  "engineSha256": "60d23d2d36c099e0fe0ce370413d74ac4eef438336c516d070a8326a1d082fee",
+  "generatedAt": "2026-11-03T12:19:21.387Z",
+  "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
   "certificationPlan": {
     "policy": "UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100",
     "target": {
@@ -12,7 +12,7 @@
     "current": {
       "name": "Arquebusier",
       "position": 1,
-      "percent": 50,
+      "percent": 56,
       "certified": false
     },
     "next": {
@@ -25,7 +25,7 @@
         "name": "Arquebusier",
         "position": 1,
         "status": "EN_COURS",
-        "percent": 50,
+        "percent": 56,
         "certified": false
       },
       {
@@ -133,9 +133,9 @@
     "completed": false,
     "variantPrototypeReady": true,
     "variantIntegrated": true,
-    "passed": 8,
+    "passed": 9,
     "total": 16,
-    "percent": 50,
+    "percent": 56,
     "checks": [
       {
         "id": "paths",
@@ -188,8 +188,8 @@
       {
         "id": "r1effects",
         "name": "Tous les effets des cinq capacités de rang 1",
-        "status": "A_VERIFIER",
-        "detail": "Compléter les preuves sur les 5 effets R1, les cas négatifs, le cas spécial poudre hybride et le vrai parcours au clic sur la version courante."
+        "status": "ACQUIS",
+        "detail": "Cinq capacités R1 calculées selon contexte dans l’interface réelle : mécanismes et armes de siège, grenaille en cône, Pilier de bar 1d4° et résistance non létale, initiative armée chargée, couvert, ainsi que l’exception poudre des hybrides. 55 cas oracle + quatre situations au clic et quatre hybrides réels validés, pour les deux produits."
       },
       {
         "id": "r2effects",
@@ -231,7 +231,7 @@
         "id": "click",
         "name": "Créer, sauvegarder et rouvrir au clic sur mobile",
         "status": "A_VERIFIER",
-        "detail": "Effectuer toutes les variantes utiles dans l’interface réelle et sur format téléphone."
+        "detail": "20/20 parcours tactiles des dix paires Arquebusier et dix paires Arbalétrier passés : création, sauvegarde, reprise et fiche interactive. Les huit peuples, âges et modes hybrides doivent encore être couverts au clic avant le gel du critère."
       }
     ],
     "paths": [
