@@ -1,0 +1,7 @@
+# Retour de séance — 3 novembre 2026
+
+- Référence visuelle consultée : latelierdeguiltanas/latelierdeguiltanas-site, site.css, navigation compacte (entête 66 px, marque 16 px, navigation discrète et espacements proportionnés). La feuille atelier-density.css applique une densité ordinateur à partir de 901 px, conserve les cibles tactiles et évite les champs minuscules sur téléphone. Aucun changement de règles ni de synchronisation.
+- Objets du scénario : trois créations maison validées par Math, ajoutées en production dans bastide_scenario_items uniquement. Rouge Tison : 5 PA ; vert Lanterne : 8 PA ; transparent Gorge de verre : 3 PA. Reprises conseillées : 2/4/1 PA. Le SQL idempotent est versionné sous supabase/bastide_mushrooms_20261103.sql.
+- Envoi MJ : option Révéler les effets au destinataire. Désactivée par défaut pour une entrée avec player_description ; nom générique, apparence seulement, aucun prix ni effet secret dans le payload inconnu. Si identifiés, les champignons portent leur prix indicatif et un prix de reprise validé. Les notes MJ ne sont jamais expédiées.
+- Aucun ancien champignon PJ remplacé, aucune quantité distribuée, spores de vent bleues et tête-de-cœur de Tarak inchangés. Le MJ choisit les destinataires et le moment de la révélation.
+- Vérification : trois lignes réelles relues après insertion ; tests payload identifié/inconnu/prix/reprise/absence de notes privées, syntaxe inline et suites combat/protection saisie passent. Pas de validation visuelle au navigateur ni d'envoi de test dans un inventaire réel.

@@ -1,0 +1,15 @@
+/* Proportions based on latelierdeguiltanas-site/site.css compact navigation.
+   Desktop controls remain compact; mobile controls retain usable touch targets. */
+@media(min-width:901px){
+ html{font-size:14px}body{line-height:1.4}
+ header{padding:10px clamp(18px,4vw,58px)}header h1{font-size:16px;font-weight:600}.manager-heading{gap:12px}header .sub{font-size:10px}
+ nav{gap:18px;margin-top:5px}nav button{font-size:11px;font-weight:600;letter-spacing:.06em;min-height:32px;padding:5px 12px}
+ main{max-width:1440px;padding:12px clamp(18px,3vw,42px)}
+ button{font-size:12px;padding:6px 10px;border-radius:6px;font-weight:600}input,select,textarea{font-size:13px;padding:6px 8px;border-radius:5px}
+ .manager-back{min-height:32px}.card{padding:14px;margin:10px 0;border-radius:8px}.card h2{font-size:20px}.card h3{font-size:16px}.tiny,.muted{font-size:12px}
+ .overviewTools{gap:8px;flex-wrap:wrap;overflow:visible}.overviewTools button{font-size:11px;padding:6px 10px}
+ .initChip{flex-basis:155px;padding:10px!important}.initChip>button{font-size:12px;min-height:28px}.initChip .chipHp,.initChip .chipDef{font-size:11px}.initChip input{font-size:13px}
+ .partyPicker{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}.partyMember{padding:10px}.partyStats input{font-size:13px}.partyStats label{font-size:11px}
+ dialog{max-width:820px;padding:22px;border-radius:10px}dialog h2{font-size:22px}.combatantModalStats b{font-size:21px}.quickHp{grid-template-columns:80px 1fr 1fr;gap:8px}.quickHp input,.quickHp button{font-size:13px;padding:8px}
+}
+@media(max-width:900px){header{padding:8px 14px}header h1{font-size:14px}nav button{font-size:11px;min-height:40px}.initChip>button{min-height:36px;font-size:12px}.initChip input{font-size:16px}.initStrip{gap:8px}.initChip .chipHp,.initChip .chipDef{font-size:11px}dialog{padding:14px}.quickHp input,.quickHp button{font-size:14px;padding:9px}.tiny{font-size:11px}}
