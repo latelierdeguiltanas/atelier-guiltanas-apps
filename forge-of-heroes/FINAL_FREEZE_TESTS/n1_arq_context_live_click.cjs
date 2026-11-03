@@ -13,7 +13,9 @@ const scenarios=[
  {variant:'Arbalétrier',first:'maître d’armes',second:'pistolero',checks:[
   ['plus-vite-que-son-ombre',1,'oui']]}
 ];
-const report={schema:'FOH_N1_ARQ_CONTEXT_REAL_CHROME',at:new Date().toISOString(),source:'Livre de base COF2 pp.62-65',cases:[],passed:0,failed:0,status:'PENDING'};
+const crypto=require('node:crypto');
+const shaIndex=crypto.createHash('sha256').update(fs.readFileSync('forge-of-heroes/index.html')).digest('hex');
+const report={indexSha256:shaIndex,schema:'FOH_N1_ARQ_CONTEXT_REAL_CHROME',at:new Date().toISOString(),source:'Livre de base COF2 pp.62-65',cases:[],passed:0,failed:0,status:'PENDING'};
 (async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||undefined,args:['--no-sandbox']});
 try{for(const sample of scenarios){
  const ctx=await browser.newContext({viewport:{width:393,height:852},isMobile:true,hasTouch:true});
