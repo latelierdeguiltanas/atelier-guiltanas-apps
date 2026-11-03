@@ -10,7 +10,7 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const root=path.resolve(__dirname,'..'),hash=s=>crypto.createHash('sha256').update(s).digest('hex');
 const files=['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html'];
 const shieldBefore="if(shieldId&&rule.masteries.shields==='none')errors.push('Bouclier interdit par le profil.');";
-const shieldAfter="const mercenaryHybridException=!!(state&&state.hybrid&&state.hybrid.enabled&&Array.isArray(state.voies?.profilePathIds)&&state.voies.profilePathIds.some(id=>/classpath:voie-du-mercenaire:class-(?:arquebusier|arbaletrier):/.test(String(id))));\n    if(shieldId&&rule.masteries.shields==='none'&&!mercenaryHybridException)errors.push('Bouclier interdit par le profil.');";
+const shieldAfter="const hybridEquipmentState=state?.hybrid||state?.__hybridEquipment||sticky?.hybrid||null;\n    const mercenaryHybridPath=[...(state?.voies?.profilePathIds||[]),...(sticky?.acquiredAbilities||[]).map(a=>a.pathId||a.path_id||'')].some(id=>/classpath:voie-du-mercenaire:class-(?:arquebusier|arbaletrier):/.test(String(id)));\n    const mercenaryHybridException=!!((hybridEquipmentState?.enabled||String(sticky?.profileId||'').startsWith('hybrid:'))&&mercenaryHybridPath);\n    if(shieldId&&rule.masteries.shields==='none'&&!mercenaryHybridException)errors.push('Bouclier interdit par le profil.');";
 const weaponBefore="if(window.FOHPermanentRules.equipmentRules(state,dbObj).masteredWeaponIds.includes(w.id))mastered=true;if(!mastered)errors.push('Arme non maîtrisée par le profil : '+w.name+'.');";
 const weaponAfter=`const permanentEquipment=window.FOHPermanentRules.equipmentRules(state,dbObj);
       if(permanentEquipment.masteredWeaponIds.includes(w.id))mastered=true;
