@@ -1,0 +1,56 @@
+name: Forge N1 - vingt parcours mobiles Arquebusier Arbaletrier
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arq-twenty-real-clicks.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_twenty_real_mobile_clicks.cjs'
+      - 'forge-of-heroes/index.html'
+      - 'forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html'
+permissions:
+  contents: write
+jobs:
+  chrome:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer Playwright
+        run: |
+          npm install --prefix "$RUNNER_TEMP/arq-click" playwright@1.55.0
+          echo "NODE_PATH=$RUNNER_TEMP/arq-click/node_modules" >> "$GITHUB_ENV"
+      - name: Vingt parcours tactiles réels, dix couples chacun
+        id: clicks
+        continue-on-error: true
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/arq-server.log 2>&1 &
+          CHROME_BIN="$(command -v google-chrome || command -v chromium)" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_twenty_real_mobile_clicks.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n1-arq-20-real-mobile-clicks
+          path: forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json
+      - name: Publier la preuve, y compris ses échecs
+        if: always()
+        run: |
+          if test -f forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json
+            if ! git diff --cached --quiet; then
+              git commit -m "test(forge-n1): preuve de vingt parcours mobiles, verdict exact [skip ci]"
+              git restore --worktree .
+              for attempt in 1 2 3 4 5; do
+                git fetch origin main
+                if git rebase origin/main && git push origin HEAD:main; then exit 0; fi
+                if [ "$attempt" = 5 ]; then exit 1; fi
+                sleep 3
+              done
+            fi
+          fi
+      - name: Refuser certification des clics en cas d'échec
+        if: steps.clicks.outcome == 'failure'
+        run: exit 1
