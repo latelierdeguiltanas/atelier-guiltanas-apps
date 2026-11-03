@@ -1,46 +1,96 @@
 {
   "schema": "FOH_N1_ARQ_CONTEXT_REAL_CHROME",
-  "at": "2026-11-03T08:52:30.694Z",
+  "at": "2026-11-03T08:56:09.664Z",
   "source": "Livre de base COF2 pp.62-65",
   "cases": [
     {
       "variant": "Arquebusier",
       "first": "pistolero",
       "second": "précision",
-      "checks": [],
-      "status": "FAIL",
-      "error": "locator.waitFor: Timeout 13000ms exceeded.\nCall log:\n  - waiting for locator('#foh-n1-context-situations') to be visible\n\n    at /home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_live_click.cjs:36:15",
-      "browserErrors": []
+      "checks": [
+        {
+          "ability": "plus-vite-que-son-ombre",
+          "preset": 0,
+          "expected": "5",
+          "pass": true
+        },
+        {
+          "ability": "plus-vite-que-son-ombre",
+          "preset": 1,
+          "expected": "oui",
+          "pass": true
+        },
+        {
+          "ability": "joli-coup",
+          "preset": 1,
+          "expected": "-2",
+          "pass": true
+        }
+      ],
+      "status": "PASS"
     },
     {
       "variant": "Arquebusier",
       "first": "mercenaire",
       "second": "explosifs",
-      "checks": [],
-      "status": "FAIL",
-      "error": "locator.waitFor: Timeout 13000ms exceeded.\nCall log:\n  - waiting for locator('#foh-n1-context-situations') to be visible\n\n    at /home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_live_click.cjs:36:15",
-      "browserErrors": []
+      "checks": [
+        {
+          "ability": "pilier-de-bar",
+          "preset": 0,
+          "expected": "1d4°",
+          "pass": true
+        },
+        {
+          "ability": "pilier-de-bar",
+          "preset": 1,
+          "expected": "2",
+          "pass": true
+        },
+        {
+          "ability": "tir-de-grenaille-l",
+          "preset": 0,
+          "expected": "0.5",
+          "pass": true
+        }
+      ],
+      "status": "PASS"
     },
     {
       "variant": "Arquebusier",
       "first": "artilleur",
       "second": "mercenaire",
-      "checks": [],
-      "status": "FAIL",
-      "error": "locator.waitFor: Timeout 13000ms exceeded.\nCall log:\n  - waiting for locator('#foh-n1-context-situations') to be visible\n\n    at /home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_live_click.cjs:36:15",
-      "browserErrors": []
+      "checks": [
+        {
+          "ability": "mecanismes",
+          "preset": 0,
+          "expected": "3",
+          "pass": true
+        },
+        {
+          "ability": "mecanismes",
+          "preset": 1,
+          "expected": "oui",
+          "pass": true
+        }
+      ],
+      "status": "PASS"
     },
     {
       "variant": "Arbalétrier",
       "first": "maître d’armes",
       "second": "pistolero",
-      "checks": [],
-      "status": "FAIL",
-      "error": "locator.waitFor: Timeout 13000ms exceeded.\nCall log:\n  - waiting for locator('#foh-n1-context-situations') to be visible\n\n    at /home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_live_click.cjs:36:15",
-      "browserErrors": []
+      "checks": [
+        {
+          "ability": "plus-vite-que-son-ombre",
+          "preset": 1,
+          "expected": "oui",
+          "pass": true
+        }
+      ],
+      "status": "PASS"
     }
   ],
-  "passed": 0,
-  "failed": 4,
-  "status": "FAIL"
+  "passed": 4,
+  "failed": 0,
+  "status": "PASS"
 }
