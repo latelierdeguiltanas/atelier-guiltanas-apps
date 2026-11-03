@@ -1,0 +1,42 @@
+name: Forge N1 - controles d equipement Mercenaire hybride au clic
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-mercenary-hybrid-mobile-probe.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_mercenary_hybrid_mobile_probe.cjs'
+permissions:
+  contents: write
+jobs:
+  chrome:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer Playwright
+        run: |
+          npm install --prefix "$RUNNER_TEMP/foh-mercenary" playwright@1.55.0
+          echo "NODE_PATH=$RUNNER_TEMP/foh-mercenary/node_modules" >> "$GITHUB_ENV"
+      - name: Inspecter étape équipement sur vrai navigateur tactile
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/mercenary-ui.log 2>&1 &
+          CHROME_BIN="$(command -v google-chrome || command -v chromium)" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_mercenary_hybrid_mobile_probe.cjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: forge-n1-mercenary-equipment-mobile-diagnostic
+          path: forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-mobile-probe.json
+      - name: Archiver les informations pour corriger le parcours
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-mobile-probe.json
+          if ! git diff --cached --quiet; then
+            git commit -m "test(forge-n1): diagnostic des choix d équipement hybride au toucher [skip ci]"
+            git restore --worktree .
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
