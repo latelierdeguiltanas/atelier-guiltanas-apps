@@ -1,0 +1,60 @@
+name: Forge N1 - integrer 15 calculs conditionnels dans Forge
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arq-context-publish.yml'
+      - 'forge-of-heroes/ENGINE/arquebusier_context_n1.js'
+      - 'forge-of-heroes/ENGINE/arquebusier_context_ui_n1.js'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs'
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vérifier le JS de résolution et d’interface
+        run: |
+          node --check forge-of-heroes/ENGINE/arquebusier_context_n1.js
+          node --check forge-of-heroes/ENGINE/arquebusier_context_ui_n1.js
+          node --check forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs
+      - name: Installer et vérifier les moteurs contextuels sur les deux HTML
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs --write
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs
+      - name: Contrôler la parité du moteur et des règles malgré la nouvelle interface
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_version_parity.cjs
+          node - <<'NODE'
+          const d=require('./forge-of-heroes/QA/N1/version-parity.json');
+          if(!d.checks.productMasterEngineIdentical||!d.checks.productMasterDbIdentical||!d.matrixMechanicsReusable)throw Error('Moteur ou DB dérivé dans la publication');
+          console.log('Moteur & DB inchangés, matrice mécanique préservée');
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: forge-n1-arq-context-production
+          path: |
+            forge-of-heroes/QA/N1/arquebusier-context-publish.json
+            forge-of-heroes/QA/N1/version-parity.json
+      - name: Publier le correctif réel sur le dépôt Forge
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/version-parity.json
+          if ! git diff --cached --quiet; then
+            git commit -m "feat(forge-n1): calculs conditionnels R1-R3 visibles sur deux produits [skip ci]"
+            git restore --worktree .
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              if git rebase origin/main && git push origin HEAD:main; then exit 0; fi
+              if [ "$attempt" = 5 ]; then exit 1; fi
+              sleep 3
+            done
+          fi
