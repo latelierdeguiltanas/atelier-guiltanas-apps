@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_ARQ_MERCENAIRE_HYBRIDE_REAL_UI_DIAGNOSTIC",
-  "at": "2026-11-03T12:21:18.272Z",
+  "at": "2026-11-03T12:23:43.670Z",
   "steps": [
     {
       "stage": "paths",
@@ -892,6 +892,582 @@
       }
     },
     {
+      "stage": "swap-authorized",
+      "nextEnabled": true,
+      "activeStep": "Équipement et religion\n\nChoisis un paquetage ou un échange de matériel validé par le MJ.\n\nÉquipement\n\nChoisis un paquetage proposé par ton profil. Les obligations et incompatibilités sont déjà contrôlées par le moteur.\n\nPaquetage de départ sélectionné.\nPaquetage de départ\nstandard\nÉchange validé par le MJ · Armes : Pétoire, Épée longue, Dague · Armure : aucune · Bouclier : aucun\nÉchange de matériel validé par le MJ\nChoisis le matériel convenu avec le MJ. Les restrictions du personnage restent vérifiées.\nArme 1\nAucun\nMains nues\nBâton\nBâton ferré\nDague\nÉpée à deux mains\nÉpée bâtarde\nÉpée courte\nÉpée longue\nÉpieu\nFléau\nFléau à deux mains\nGourdin\nHache\nHache à deux mains\nLance\nLance de cavalerie\nMarteau\nMasse\nPique\nRapière\nStylet\nVivelame\nArbalète de poing\nArbalète légère\nArbalète lourde\nArc court\nArc long\nCouteaux de lancer\nFronde\nHachette\nJavelot\nLance-pierre\nPétoire\nMousquet\nCimeterre\nMarteau de guerre\nFaux\nPioche\nTrident\nRouleau à pâtisserie\nPoêle\nVivelame (katana)\nDemi-lame (wakizashi)\nSabre de bois (boken)\nArme 2\nAucun\nMains nues\nBâton\nBâton ferré\nDague\nÉpée à deux mains\nÉpée bâtarde\nÉpée courte\nÉpée longue\nÉpieu\nFléau\nFléau à deux mains\nGourdin\nHache\nHache à deux mains\nLance\nLance de cavalerie\nMarteau\nMasse\nPique\nRapière\nStylet\nVivelame\nArbalète de poing\nArbalète légère\nArbalète lourde\nArc court\nArc long\nCouteaux de lancer\nFronde\nHachette\nJavelot\nLance-pierre\nPétoire\nMousquet\nCimeterre\nMarteau de guerre\nFaux\nPioche\nTrident\nRouleau à pâtisserie\nPoêle\nVivelame (katana)\nDemi-lame (wakizashi)\nSabre de bois (boken)\nArme 3\nAucun\nMains nues\nBâton\nBâton ferré\nDague\nÉpée à deux mains\nÉpée bâtarde\nÉpée courte\nÉpée longue\nÉpieu\nFléau\nFléau à deux mains\nGourdin\nHache\nHache à deux mains\nLance\nLance de cavalerie\nMarteau\nMasse\nPique\nRapière\nStylet\nVivelame\nArbalète de poing\nArbalète légère\nArbalète lourde\nArc court\nArc long\nCouteaux de lancer\nFronde\nHachette\nJavelot\nLance-pierre\nPétoire\nMousquet\nCimeterre\nMarteau de guerre\nFaux\nPioche\nTrident\nRouleau à pâtisserie\nPoêle\nVivelame (katana)\nDemi-lame (wakizashi)\nSabre de bois (boken)\nArme 4\nAucun\nMains nues\nBâton\nBâton ferré\nDague\nÉpée à deux mains\nÉpée bâtarde\nÉpée courte\nÉpée longue\nÉpieu\nFléau\nFléau à deux mains\nGourdin\nHache\nHache à deux mains\nLance\nLance de cavalerie\nMarteau\nMasse\nPique\nRapière\nStylet\nVivelame\nArbalète de poing\nArbalète légère\nArbalète lourde\nArc court\nArc long\nCouteaux de lancer\nFronde\nHachette\nJavelot\nLance-pierre\nPétoire\nMousquet\nCimeterre\nMarteau de guerre\nFaux\nPioche\nTrident\nRouleau à pâtisserie\nPoêle\nVivelame (katana)\nDemi-lame (wakizashi)\nSabre de bois (boken)\nArmure\nAucun\nTissus matelassés, fourrures\nCuir simple\nCuir renforcé, broigne\nChemise de mailles\nCotte de mailles\nArmure de plaques\nPlaque complète\nArmure d’os de sorcier\nBouclier\nAucun\nPetit bouclier\nGrand bouclier",
+      "controls": [
+        {
+          "tag": "SELECT",
+          "id": "equipment-package",
+          "role": null,
+          "type": "select-one",
+          "value": "standard",
+          "text": "standard",
+          "options": [
+            {
+              "value": "standard",
+              "text": "standard"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "id": "extra-mastery-weapon",
+          "role": null,
+          "type": "select-one",
+          "value": "",
+          "text": "",
+          "options": []
+        },
+        {
+          "tag": "INPUT",
+          "id": "wear-armor",
+          "role": null,
+          "type": "checkbox",
+          "value": "on",
+          "checked": true,
+          "text": "",
+          "options": null
+        },
+        {
+          "tag": "INPUT",
+          "id": "equipment-swap-approved",
+          "role": null,
+          "type": "checkbox",
+          "value": "on",
+          "checked": true,
+          "text": "",
+          "options": null
+        },
+        {
+          "tag": "SELECT",
+          "id": "equipment-swap-weapon-0",
+          "role": null,
+          "type": "select-one",
+          "value": "weapon:powder-pistol",
+          "text": "Aucun\nMains nues\nBâton\nBâton ferré\nDague\nÉpée à deux mains\nÉpée bâtarde\nÉpée courte\nÉpée longue\nÉpieu\nFléau\nFléau à deux mains\nGourdin\nHache\nHache à d",
+          "options": [
+            {
+              "value": "",
+              "text": "Aucun"
+            },
+            {
+              "value": "weapon:unarmed",
+              "text": "Mains nues"
+            },
+            {
+              "value": "weapon:staff",
+              "text": "Bâton"
+            },
+            {
+              "value": "weapon:iron-staff",
+              "text": "Bâton ferré"
+            },
+            {
+              "value": "weapon:dagger",
+              "text": "Dague"
+            },
+            {
+              "value": "weapon:great-sword",
+              "text": "Épée à deux mains"
+            },
+            {
+              "value": "weapon:bastard-sword",
+              "text": "Épée bâtarde"
+            },
+            {
+              "value": "weapon:short-sword",
+              "text": "Épée courte"
+            },
+            {
+              "value": "weapon:long-sword",
+              "text": "Épée longue"
+            },
+            {
+              "value": "weapon:spear",
+              "text": "Épieu"
+            },
+            {
+              "value": "weapon:flail",
+              "text": "Fléau"
+            },
+            {
+              "value": "weapon:great-flail",
+              "text": "Fléau à deux mains"
+            },
+            {
+              "value": "weapon:club",
+              "text": "Gourdin"
+            },
+            {
+              "value": "weapon:axe",
+              "text": "Hache"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "id": "equipment-swap-weapon-1",
+          "role": null,
+          "type": "select-one",
+          "value": "weapon:long-sword",
+          "text": "Aucun\nMains nues\nBâton\nBâton ferré\nDague\nÉpée à deux mains\nÉpée bâtarde\nÉpée courte\nÉpée longue\nÉpieu\nFléau\nFléau à deux mains\nGourdin\nHache\nHache à d",
+          "options": [
+            {
+              "value": "",
+              "text": "Aucun"
+            },
+            {
+              "value": "weapon:unarmed",
+              "text": "Mains nues"
+            },
+            {
+              "value": "weapon:staff",
+              "text": "Bâton"
+            },
+            {
+              "value": "weapon:iron-staff",
+              "text": "Bâton ferré"
+            },
+            {
+              "value": "weapon:dagger",
+              "text": "Dague"
+            },
+            {
+              "value": "weapon:great-sword",
+              "text": "Épée à deux mains"
+            },
+            {
+              "value": "weapon:bastard-sword",
+              "text": "Épée bâtarde"
+            },
+            {
+              "value": "weapon:short-sword",
+              "text": "Épée courte"
+            },
+            {
+              "value": "weapon:long-sword",
+              "text": "Épée longue"
+            },
+            {
+              "value": "weapon:spear",
+              "text": "Épieu"
+            },
+            {
+              "value": "weapon:flail",
+              "text": "Fléau"
+            },
+            {
+              "value": "weapon:great-flail",
+              "text": "Fléau à deux mains"
+            },
+            {
+              "value": "weapon:club",
+              "text": "Gourdin"
+            },
+            {
+              "value": "weapon:axe",
+              "text": "Hache"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "id": "equipment-swap-weapon-2",
+          "role": null,
+          "type": "select-one",
+          "value": "weapon:dagger",
+          "text": "Aucun\nMains nues\nBâton\nBâton ferré\nDague\nÉpée à deux mains\nÉpée bâtarde\nÉpée courte\nÉpée longue\nÉpieu\nFléau\nFléau à deux mains\nGourdin\nHache\nHache à d",
+          "options": [
+            {
+              "value": "",
+              "text": "Aucun"
+            },
+            {
+              "value": "weapon:unarmed",
+              "text": "Mains nues"
+            },
+            {
+              "value": "weapon:staff",
+              "text": "Bâton"
+            },
+            {
+              "value": "weapon:iron-staff",
+              "text": "Bâton ferré"
+            },
+            {
+              "value": "weapon:dagger",
+              "text": "Dague"
+            },
+            {
+              "value": "weapon:great-sword",
+              "text": "Épée à deux mains"
+            },
+            {
+              "value": "weapon:bastard-sword",
+              "text": "Épée bâtarde"
+            },
+            {
+              "value": "weapon:short-sword",
+              "text": "Épée courte"
+            },
+            {
+              "value": "weapon:long-sword",
+              "text": "Épée longue"
+            },
+            {
+              "value": "weapon:spear",
+              "text": "Épieu"
+            },
+            {
+              "value": "weapon:flail",
+              "text": "Fléau"
+            },
+            {
+              "value": "weapon:great-flail",
+              "text": "Fléau à deux mains"
+            },
+            {
+              "value": "weapon:club",
+              "text": "Gourdin"
+            },
+            {
+              "value": "weapon:axe",
+              "text": "Hache"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "id": "equipment-swap-weapon-3",
+          "role": null,
+          "type": "select-one",
+          "value": "",
+          "text": "Aucun\nMains nues\nBâton\nBâton ferré\nDague\nÉpée à deux mains\nÉpée bâtarde\nÉpée courte\nÉpée longue\nÉpieu\nFléau\nFléau à deux mains\nGourdin\nHache\nHache à d",
+          "options": [
+            {
+              "value": "",
+              "text": "Aucun"
+            },
+            {
+              "value": "weapon:unarmed",
+              "text": "Mains nues"
+            },
+            {
+              "value": "weapon:staff",
+              "text": "Bâton"
+            },
+            {
+              "value": "weapon:iron-staff",
+              "text": "Bâton ferré"
+            },
+            {
+              "value": "weapon:dagger",
+              "text": "Dague"
+            },
+            {
+              "value": "weapon:great-sword",
+              "text": "Épée à deux mains"
+            },
+            {
+              "value": "weapon:bastard-sword",
+              "text": "Épée bâtarde"
+            },
+            {
+              "value": "weapon:short-sword",
+              "text": "Épée courte"
+            },
+            {
+              "value": "weapon:long-sword",
+              "text": "Épée longue"
+            },
+            {
+              "value": "weapon:spear",
+              "text": "Épieu"
+            },
+            {
+              "value": "weapon:flail",
+              "text": "Fléau"
+            },
+            {
+              "value": "weapon:great-flail",
+              "text": "Fléau à deux mains"
+            },
+            {
+              "value": "weapon:club",
+              "text": "Gourdin"
+            },
+            {
+              "value": "weapon:axe",
+              "text": "Hache"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "id": "equipment-swap-armor",
+          "role": null,
+          "type": "select-one",
+          "value": "armor:cuir-renforce:cof2-lb-2024",
+          "text": "Aucun\nTissus matelassés, fourrures\nCuir simple\nCuir renforcé, broigne\nChemise de mailles\nCotte de mailles\nArmure de plaques\nPlaque complète\nArmure d’o",
+          "options": [
+            {
+              "value": "",
+              "text": "Aucun"
+            },
+            {
+              "value": "armor:tissu-matelasse:cof2-lb-2024",
+              "text": "Tissus matelassés, fourrures"
+            },
+            {
+              "value": "armor:cuir-simple:cof2-lb-2024",
+              "text": "Cuir simple"
+            },
+            {
+              "value": "armor:cuir-renforce:cof2-lb-2024",
+              "text": "Cuir renforcé, broigne"
+            },
+            {
+              "value": "armor:chemise-de-mailles:cof2-lb-2024",
+              "text": "Chemise de mailles"
+            },
+            {
+              "value": "armor:cotte-de-mailles:cof2-lb-2024",
+              "text": "Cotte de mailles"
+            },
+            {
+              "value": "armor:plaques:cof2-lb-2024",
+              "text": "Armure de plaques"
+            },
+            {
+              "value": "armor:plaque-complete:cof2-lb-2024",
+              "text": "Plaque complète"
+            },
+            {
+              "value": "armor:os-sorcier:cof2-lb-2024",
+              "text": "Armure d’os de sorcier"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "id": "equipment-swap-shield",
+          "role": null,
+          "type": "select-one",
+          "value": "",
+          "text": "Aucun\nPetit bouclier\nGrand bouclier",
+          "options": [
+            {
+              "value": "",
+              "text": "Aucun"
+            },
+            {
+              "value": "shield:petit:cof2-lb-2024",
+              "text": "Petit bouclier"
+            },
+            {
+              "value": "shield:grand:cof2-lb-2024",
+              "text": "Grand bouclier"
+            }
+          ]
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "1 Pétoire",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "2 Pétoires",
+          "options": null
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "role": null,
+          "type": "button",
+          "value": "",
+          "text": "Tester une 3e Pétoire",
+          "options": null
+        },
+        {
+          "tag": "SELECT",
+          "id": "priest-mode",
+          "role": null,
+          "type": "select-one",
+          "value": "generalist",
+          "text": "GénéralisteSpécialiste d'une divinité",
+          "options": [
+            {
+              "value": "generalist",
+              "text": "Généraliste"
+            },
+            {
+              "value": "specialist",
+              "text": "Spécialiste d'une divinité"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "id": "religion",
+          "role": null,
+          "type": "select-one",
+          "value": "religion:arcanna:cof2-lb-2024",
+          "text": "ArcannaArwendéeAurillaAxënderBasileCéresDénoraEllonaForthurGaëlmGoromGuardalHellionIrrionJewelnLinnarréMélennaMéphistèreMirandiaMornOrbisOumarosPerind",
+          "options": [
+            {
+              "value": "religion:arcanna:cof2-lb-2024",
+              "text": "Arcanna"
+            },
+            {
+              "value": "religion:arwendee:cof2-lb-2024",
+              "text": "Arwendée"
+            },
+            {
+              "value": "religion:aurilla:cof2-lb-2024",
+              "text": "Aurilla"
+            },
+            {
+              "value": "religion:axender:cof2-lb-2024",
+              "text": "Axënder"
+            },
+            {
+              "value": "religion:basile:cof2-lb-2024",
+              "text": "Basile"
+            },
+            {
+              "value": "religion:ceres:cof2-lb-2024",
+              "text": "Céres"
+            },
+            {
+              "value": "religion:denora:cof2-lb-2024",
+              "text": "Dénora"
+            },
+            {
+              "value": "religion:ellona:cof2-lb-2024",
+              "text": "Ellona"
+            },
+            {
+              "value": "religion:forthur:cof2-lb-2024",
+              "text": "Forthur"
+            },
+            {
+              "value": "religion:gaelm:cof2-lb-2024",
+              "text": "Gaëlm"
+            },
+            {
+              "value": "religion:gorom:cof2-lb-2024",
+              "text": "Gorom"
+            },
+            {
+              "value": "religion:guardal:cof2-lb-2024",
+              "text": "Guardal"
+            },
+            {
+              "value": "religion:hellion:cof2-lb-2024",
+              "text": "Hellion"
+            },
+            {
+              "value": "religion:irrion:cof2-lb-2024",
+              "text": "Irrion"
+            }
+          ]
+        },
+        {
+          "tag": "SELECT",
+          "id": "divine-replacement-path",
+          "role": null,
+          "type": "select-one",
+          "value": "",
+          "text": "",
+          "options": []
+        }
+      ],
+      "draft": {
+        "d": {
+          "step": 8,
+          "name": "QA Mercenaire bouclier",
+          "sex": "male",
+          "type": "hybrid",
+          "peopleId": "people:humain:cof2-lb-2024",
+          "peopleChosen": true,
+          "peopleBonusStat": "",
+          "peopleMalusStat": "",
+          "primaryId": "class:arquebusier:cof2-lb-2024",
+          "profileChosen": true,
+          "secondaryId": "class:guerrier:cof2-lb-2024",
+          "series": "expert",
+          "characteristicMethod": "STANDARD_SERIES",
+          "semiRolls": [
+            7,
+            7,
+            7
+          ],
+          "base": {
+            "for": 2,
+            "agi": 1,
+            "con": 0,
+            "per": 1,
+            "int": 3,
+            "vol": 0,
+            "cha": -1
+          },
+          "humanStat": "con",
+          "age": false,
+          "histories": false,
+          "extraMage": false,
+          "aLaCarte": false,
+          "aLaCartePurchases": [],
+          "repeatingPistolCount": 1,
+          "preferredWeaponCategory": "",
+          "extraLanguage": "",
+          "ageId": "young",
+          "ageChoice": "PC",
+          "ageAgiPenaltyStat": "agi",
+          "geoId": "history:campaigns",
+          "proId": "history:courtier",
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "path1": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
+          "path2": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024",
+          "hybridPath1": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+          "hybridPath2": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+          "mageR2": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+          "useMagePath": false,
+          "traqueurSwap": false,
+          "acquisitionPurchases": [],
+          "packageId": "standard",
+          "wearArmor": true,
+          "equipmentOverride": {
+            "enabled": true,
+            "weaponIds": [
+              "weapon:powder-pistol",
+              "weapon:long-sword",
+              "weapon:dagger"
+            ],
+            "armorId": "armor:cuir-renforce:cof2-lb-2024",
+            "shieldId": ""
+          },
+          "priestMode": "generalist",
+          "religionId": "religion:arcanna:cof2-lb-2024",
+          "gmApproved": true,
+          "abilityChoices": {},
+          "divineReplacementPathId": ""
+        },
+        "errors": [
+          "Arme non maîtrisée par le profil : Pétoire."
+        ]
+      }
+    },
+    {
       "stage": "before-reveal",
       "nextEnabled": true,
       "activeStep": "Valider et jouer — ma fiche interactive\nMes fiches de jeu\n\nPasser au niveau suivant →\n\nFiche de héros\n\nTon héros COF2 niveau 1, prêt à être consulté, sauvegardé et repris.\n\nIl reste un choix à corriger :\nArme non maîtrisée par le profil : Pétoire.\nCorriger dans Équipement\nCalculs de capacités en situation (Arquebusier / Arbalétrier)\nEnregistrer dans Mes héros\nMes héros\nModifier\nExporter la fiche officielle PDF\nImporter la fiche officielle",
@@ -1064,13 +1640,22 @@
           "acquisitionPurchases": [],
           "packageId": "standard",
           "wearArmor": true,
-          "equipmentOverride": null,
+          "equipmentOverride": {
+            "enabled": true,
+            "weaponIds": [
+              "weapon:powder-pistol",
+              "weapon:long-sword",
+              "weapon:dagger"
+            ],
+            "armorId": "armor:cuir-renforce:cof2-lb-2024",
+            "shieldId": ""
+          },
           "priestMode": "generalist",
           "religionId": "religion:arcanna:cof2-lb-2024",
           "gmApproved": true,
           "abilityChoices": {},
           "divineReplacementPathId": "",
-          "heroLibraryId": "b4ff3418-6fbe-4dc7-9382-9b3651c1b236"
+          "heroLibraryId": "978a53ee-8ad9-4141-b58b-cbc21a9aef21"
         },
         "errors": [
           "Arme non maîtrisée par le profil : Pétoire."
