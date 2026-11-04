@@ -1985,7 +1985,7 @@ q('#heroes-dialog').insertAdjacentHTML('afterend','<dialog id="concept-mode-dial
 'use strict';
 const PAGES={mecanismes:62,'arme-a-repetition':62,'tir-de-barrage-l':62,'tir-de-grenaille-l':63,demolition:63,'poudre-puissante':63,'pilier-de-bar':64,'mort-ou-vif-l':64,'combattant-aguerri':64,'plus-vite-que-son-ombre':65,'ajuster-le-tir':65,'tir-double-l':65,'joli-coup':65,'defaut-dans-la-cuirasse-a':65,'tir-precis':65};
 const abilities=Object.keys(PAGES);
-const num=n=>Number.isFinite(Number(n))?Number(n):null;
+const num=n=>(typeof n==='number'||(typeof n==='string'&&n.trim()!==''))&&Number.isFinite(Number(n))?Number(n):null;
 const bool=x=>x===true;
 function abilityRow(character,slug){
  const rows=character?.abilities||character?.acquiredAbilities||[];
@@ -2052,15 +2052,16 @@ function solve(character,slug,c={}){
  }
  case 'arme-a-repetition':{
   if(c.action==='reload'&&bool(c.selectedRepeatingWeapon)){
-   success(o,'rechargement du chargeur');o.modifiers.limitedActionsPerProjectile=1;o.modifiers.projectiles=num(c.projectilesToReload)||1;
+   const projectiles=c.projectilesToReload===undefined?1:num(c.projectilesToReload);
+   if(!Number.isInteger(projectiles)||projectiles<1)return fail(o,'Nombre entier positif de projectiles à recharger requis');
+   success(o,'rechargement du chargeur');o.modifiers.limitedActionsPerProjectile=1;o.modifiers.projectiles=projectiles;
    o.modifiers.totalLimitedActions=o.modifiers.projectiles;
    return o;
   }
   if(!bool(c.selectedRepeatingWeapon))return fail(o,'Arme appartenant aux deux armes modifiées par cette capacité requise');
   const intel=num(character?.characteristics?.int??character?.caracs?.int??c.INT);
   if(intel===null)return fail(o,'INT définitive du personnage requise');
-  const r3=Number(c.rankedThreeArquebusierPaths);
-  const rank3=Number.isInteger(r3)&&r3>=0?r3:(character.paths||[]).filter(p=>String(p.pathId||'').includes('class-arquebusier')&&Number(p.rank)>=3).length;
+  const rank3=(character.paths||[]).filter(p=>/class-(arquebusier|arbaletrier):/.test(String(p.pathId||p.id||''))&&Number(p.rank)>=3).length;
   success(o,'capacité de chargeur');o.modifiers.capacity=2+intel+rank3;
   o.modifiers.limitedActionsPerProjectile=1;o.limits.push('Maximum deux armes à répétition modifiées');
   return o;
@@ -2118,6 +2119,7 @@ function solve(character,slug,c={}){
   o.modifiers.zoneWidthMeters=20;o.modifiers.attackTriggeredByMovement=true;
   o.choices=bool(c.attackHit)?['doubler les dommages','interrompre immédiatement le déplacement sans dommages']:[];
   o.modifiers.damageIfVictimChoosesDamage=bool(c.attackHit)?2:null;
+  if(bool(c.attackHit))o.modifiers.victimStopsTurnIfNoDamage=true;
   o.limits.push('Plusieurs cibles possibles uniquement tant qu’aucun rechargement n’est requis');
   return o;
  }
@@ -2156,7 +2158,7 @@ function solve(character,slug,c={}){
  }
  return o;
 }
-return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-1',sourcePages:PAGES,abilities,resolve:solve,isOwned:(character,slug)=>!!abilityRow(character,slug),ownedProfile});
+return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities,resolve:solve,isOwned:(character,slug)=>!!abilityRow(character,slug),ownedProfile});
 });
 
 </script>
@@ -2170,7 +2172,7 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-1',sourcePages:PAGES,abilities
  if(!API||!P||!E)return;
  const examples={
   mecanismes:[['Réparer ou comprendre un mécanisme',{skill:'repair_mechanism'}],['Attaquer avec une baliste ou arme de siège',{skill:'siege_weapon_attack'}]],
-  'arme-a-repetition':[['Chargeur modifié, un rang 3 acquis',{selectedRepeatingWeapon:true,rankedThreeArquebusierPaths:1}],['Recharger trois projectiles',{action:'reload',selectedRepeatingWeapon:true,projectilesToReload:3}]],
+  'arme-a-repetition':[['Chargeur de l’arme modifiée, selon les rangs acquis',{selectedRepeatingWeapon:true}],['Recharger trois projectiles',{action:'reload',selectedRepeatingWeapon:true,projectilesToReload:3}]],
   'tir-de-barrage-l':[['Cible en mouvement dans la zone, attaque réussie',{weaponLoaded:true,rangedAttack:true,targetMovedInZoneBeforeNextTurn:true,attackHit:true,targetDistanceMeters:10}],['Arme vide, tir impossible',{weaponLoaded:false,rangedAttack:true,targetMovedInZoneBeforeNextTurn:true}]],
   'tir-de-grenaille-l':[['Grenaille chargée, tir en cône',{weaponKind:'powder',weaponLoaded:true,ammunition:'grapeshot'}],['Test d’artificier',{skill:'artificer'}],['Rang 1 acquis dans un profil hybride : aucun risque d’explosion involontaire',{action:'powder_safety'}]],
   demolition:[['Explosif sur une structure après 3 rounds',{structureTarget:true,preparationRounds:3,chargesRemaining:1}],['Déflagration à 2 m après préparation',{blastRadiusTarget:true,preparationRounds:3,chargesRemaining:1}]],
@@ -2186,7 +2188,7 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-1',sourcePages:PAGES,abilities
   'tir-precis':[['Attaque avec arme à distance',{rangedAttack:true}],['Attaque au contact : seuil normal',{rangedAttack:false}]]
  };
  const titles={'mecanismes':'Mécanismes','arme-a-repetition':'Arme à répétition','tir-de-barrage-l':'Tir de barrage','tir-de-grenaille-l':'Tir de grenaille',demolition:'Démolition','poudre-puissante':'Poudre puissante','pilier-de-bar':'Pilier de bar','mort-ou-vif-l':'Mort ou vif','combattant-aguerri':'Combattant aguerri','plus-vite-que-son-ombre':'Plus vite que son ombre','ajuster-le-tir':'Ajuster le tir','tir-double-l':'Tir double','joli-coup':'Joli coup','defaut-dans-la-cuirasse-a':'Défaut dans la cuirasse','tir-precis':'Tir précis'};
- const labels={skillBonus:'Bonus de compétence',bonusDie:'Dé bonus',damageDice:'DM à mains nues',nonLethal:'Dégâts non létaux',incomingDamageDivisor:'Diviseur des dégâts non létaux reçus',initiativeBonusForShot:'Bonus d’initiative pour ce tir',removeRangedContactDisadvantage:'Dé malus du tir au contact supprimé',coverAttackPenalty:'Malus d’attaque pour le couvert',capacity:'Capacité du chargeur',limitedActionsPerProjectile:'Actions limitées par projectile rechargé',totalLimitedActions:'Total actions limitées',attackRolls:'Nombre de tests d’attaque',damageFraction:'Fraction des dommages habituels',area:'Zone d’effet',preparationRounds:'Rounds nécessaires',dailyChargesMax:'Charges maximales par jour',dailyChargesCost:'Charges consommées',damageFormula:'Formule de dommages',targetDamageReductionMultiplier:'Fraction de RD retenue',blastRadiusMeters:'Rayon de déflagration (m)',normalWeaponDamage:'Dommages normaux',canUseTemporaryDamage:'Option dégâts temporaires',maxConditionChoices:'Nombre d’effets préjudiciables possibles',weakenRounds:'Durée de l’affaiblissement',nextRangedAttackBonus:'Bonus du prochain tir',targetDEF:'DEF à atteindre',ignoreDamageResistance:'Ignorer résistance aux DM',ignoreDamageReduction:'Ignorer réduction des DM',zoneWidthMeters:'Largeur de zone surveillée (m)',attackTriggeredByMovement:'Déclenché par déplacement',damageIfVictimChoosesDamage:'Multiplicateur de dommages si choisi',weaponRangeBonusMeters:'Portée supplémentaire (m)',weaponDamageBonus:'DM supplémentaires',projectileMagical:'Projectile magique',defenseBonus:'DEF supplémentaire',attackCount:'Attaques',attackPenaltyEach:'Malus par attaque',criticalThreshold:'Critique dès (d20)'};
+ const labels={skillBonus:'Bonus de compétence',bonusDie:'Dé bonus',damageDice:'DM à mains nues',nonLethal:'Dégâts non létaux',incomingDamageDivisor:'Diviseur des dégâts non létaux reçus',initiativeBonusForShot:'Bonus d’initiative pour ce tir',removeRangedContactDisadvantage:'Dé malus du tir au contact supprimé',coverAttackPenalty:'Malus d’attaque pour le couvert',capacity:'Capacité du chargeur',limitedActionsPerProjectile:'Actions limitées par projectile rechargé',totalLimitedActions:'Total actions limitées',attackRolls:'Nombre de tests d’attaque',damageFraction:'Fraction des dommages habituels',area:'Zone d’effet',preparationRounds:'Rounds nécessaires',dailyChargesMax:'Charges maximales par jour',dailyChargesCost:'Charges consommées',damageFormula:'Formule de dommages',targetDamageReductionMultiplier:'Fraction de RD retenue',blastRadiusMeters:'Rayon de déflagration (m)',normalWeaponDamage:'Dommages normaux',canUseTemporaryDamage:'Option dégâts temporaires',maxConditionChoices:'Nombre d’effets préjudiciables possibles',weakenRounds:'Durée de l’affaiblissement',nextRangedAttackBonus:'Bonus du prochain tir',targetDEF:'DEF à atteindre',ignoreDamageResistance:'Ignorer résistance aux DM',ignoreDamageReduction:'Ignorer réduction des DM',zoneWidthMeters:'Largeur de zone surveillée (m)',attackTriggeredByMovement:'Déclenché par déplacement',damageIfVictimChoosesDamage:'Multiplicateur de dommages si choisi',victimStopsTurnIfNoDamage:'La victime termine son tour et son déplacement si elle évite les dommages',weaponRangeBonusMeters:'Portée supplémentaire (m)',weaponDamageBonus:'DM supplémentaires',projectileMagical:'Projectile magique',defenseBonus:'DEF supplémentaire',attackCount:'Attaques',attackPenaltyEach:'Malus par attaque',criticalThreshold:'Critique dès (d20)'};
  const display=v=>typeof v==='boolean'?(v?'oui':'non'):typeof v==='object'?JSON.stringify(v):String(v);
  let panel=null;
  const $=(el,tag,cls)=>{const x=document.createElement(tag);if(cls)x.className=cls;el.appendChild(x);return x;};
