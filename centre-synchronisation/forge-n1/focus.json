@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-04T10:56:49.717Z",
+  "generatedAt": "2026-11-04T10:59:04.391Z",
   "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
   "certificationPlan": {
     "policy": "UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100",
@@ -243,15 +243,15 @@
             "rank": 1,
             "name": "Mécanismes",
             "focus": "Bonus rang + 2 aux réparations et mécanismes ; dé bonus avec les armes de siège.",
-            "calculation": "Mécanismes : bonus de rang + 2 vérifié (3, 4, 5). Dé bonus aux attaques d’armes de siège correctement indiqué sur la fiche, application en combat encore à confirmer.",
-            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+            "calculation": "Effet R1 et conditions contrôlés par oracle et parcours réel au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 2,
             "name": "Arme à répétition",
             "focus": "Chargeur de 2 + INT projectiles ; recharge par action limitée ; bonus lié aux rangs 3.",
-            "calculation": "Chargeur vérifié : 2 + INT projectiles, puis +1 avec un rang 3 d’Arquebusier. Rechargement au combat encore à valider.",
-            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 3,
@@ -270,15 +270,15 @@
             "rank": 1,
             "name": "Tir de grenaille (L)",
             "focus": "Attaque de zone avec une arme à poudre ; moitié des dégâts et bonus d’artificier.",
-            "calculation": "Tir de grenaille : rang + 2 aux tests d’artificier vérifié (3, 4, 5). Cône de 10 m sur 5 m et dégâts réduits de moitié correctement décrits ; tir réel encore à confirmer.",
-            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+            "calculation": "Effet R1 et conditions contrôlés par oracle et parcours réel au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 2,
             "name": "Démolition",
             "focus": "Dégâts d’explosif sur une structure, temps de préparation et réduction des protections.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 3,
@@ -297,15 +297,15 @@
             "rank": 1,
             "name": "Pilier de bar",
             "focus": "Bonus rang + 2 aux interactions dans les tavernes ou auberges.",
-            "calculation": "Pilier de bar : rang + 2 en taverne et résistance à l’alcool vérifié (3, 4, 5). 1d4 dommages non létaux à mains nues et réduction de moitié indiqués ; résolution en combat encore à confirmer.",
-            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+            "calculation": "Effet R1 et conditions contrôlés par oracle et parcours réel au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 2,
             "name": "Mort ou vif (L)",
             "focus": "Attaque spéciale au contact ou à distance avec dégâts supplémentaires.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 3,
@@ -324,15 +324,15 @@
             "rank": 1,
             "name": "Plus vite que son ombre",
             "focus": "Bonus d’initiative de +5 si l’arme à poudre est chargée et tenue.",
-            "calculation": "Plus vite que son ombre : +5 d’initiative seulement avec arme chargée et tenue ; absence du malus au tir au contact pour armes à poudre/arbalètes sauf couleuvrine. Effet indiqué, résolution au clic encore à contrôler.",
-            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+            "calculation": "Effet R1 et conditions contrôlés par oracle et parcours réel au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 2,
             "name": "Ajuster le tir",
             "focus": "Bonus conditionnel au tir qui suit une attaque à distance ratée.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 3,
@@ -351,15 +351,15 @@
             "rank": 1,
             "name": "Joli coup",
             "focus": "Ignore une pénalité liée à une couverture partielle.",
-            "calculation": "Joli coup : couvert partiel sans malus ; couvert important réduit à −2. Effet correctement indiqué dans les règles de la fiche, application aux tirs à valider.",
-            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+            "calculation": "Effet R1 et conditions contrôlés par oracle et parcours réel au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 2,
             "name": "Défaut dans la cuirasse (A)",
             "focus": "Action de préparation et tir visant la faiblesse d’une cible.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 3,
@@ -372,7 +372,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Arbalétrier disponible : valider maintenant le PDF officiel, les effets conditionnels en combat, les historiques et les alternatives d’équipement."
+    "next": "Tous les effets des cinq capacités de rang 3 ; Origines, métiers et historiques avancés ; Créer, sauvegarder et rouvrir au clic sur mobile"
   },
   "peoples": [
     {
@@ -961,6 +961,10 @@
   },
   "limitations": "Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.",
   "sources": [
+    "QA/N1/arquebusier-derived-source.json",
+    "QA/N1/arquebusier-powder-weapon-boundary.json",
+    "QA/N1/arquebusier-two-preferences.json",
+    "QA/N1/arquebusier-official-template.json",
     "QA/N1/arquebusier-arbaletrier-source-audit.json",
     "COF2 Livre de base pp. 44-65",
     "Règles avancées p.153 et historiques",

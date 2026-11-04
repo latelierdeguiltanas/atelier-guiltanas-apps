@@ -1,0 +1,737 @@
+{
+  "schema": "FOH_N1_ARQ_SOURCE_REGRESSIONS_20261104",
+  "scope": "Deux défauts reproduits avant correction, puis contrôlés sur les deux produits. Ne certifie pas tout le profil.",
+  "corrections": [
+    {
+      "id": "powder",
+      "source": "Livre de base p.63 — Poudre puissante",
+      "rule": "La présence du rechargement limité ne doit pas transformer une arbalète en arme à poudre.",
+      "before": {
+        "schema": "FOH_N1_ARQ_POWDER_WEAPON_BOUNDARY",
+        "source": "Livre de base p.63 Poudre puissante ; armes pp.183–185",
+        "at": "2026-11-04T10:32:29.014Z",
+        "scope": "Humain Arquebusier vénérable, Explosifs R3/Pistolero R2, neuf armes à distance, deux allocations, deux produits. Les arbalètes à rechargement limité ne sont pas des armes à poudre.",
+        "passed": 32,
+        "failed": 4,
+        "products": [
+          {
+            "file": "index.html",
+            "sha256": "3fff8283d0657e0dc970a75e213423560f61036268af907774153349ec066c63"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "sha256": "1541f8d19260eee37d8eb3f5c03caf47da37727e5eb1dd8679e55ccfa58e6c97"
+          }
+        ],
+        "cases": [
+          {
+            "file": "index.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:powder-pistol",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:musket",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:heavy-crossbow",
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Damage\n\n'2d6+1' !== '2d6'\n"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:light-crossbow",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:hand-crossbow",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:shortbow",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:longbow",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:dagger",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:throwing-knives",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:powder-pistol",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:musket",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:heavy-crossbow",
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Damage\n\n'2d6+1' !== '2d6'\n"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:light-crossbow",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:hand-crossbow",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:shortbow",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:longbow",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:dagger",
+            "status": "PASS"
+          },
+          {
+            "file": "index.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:throwing-knives",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:powder-pistol",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:musket",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:heavy-crossbow",
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Damage\n\n'2d6+1' !== '2d6'\n"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:light-crossbow",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:hand-crossbow",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:shortbow",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:longbow",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:dagger",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 3,
+              "agi": 2,
+              "con": 1,
+              "per": 1,
+              "int": 0,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:throwing-knives",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:powder-pistol",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:musket",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:heavy-crossbow",
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Damage\n\n'2d6+1' !== '2d6'\n"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:light-crossbow",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:hand-crossbow",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:shortbow",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:longbow",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:dagger",
+            "status": "PASS"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "base": {
+              "for": 2,
+              "agi": 2,
+              "con": 2,
+              "per": 1,
+              "int": 1,
+              "vol": 0,
+              "cha": -1
+            },
+            "weapon": "weapon:throwing-knives",
+            "status": "PASS"
+          }
+        ],
+        "status": "FAIL"
+      },
+      "afterReport": "arquebusier-powder-weapon-boundary.json",
+      "after": {
+        "passed": 36,
+        "failed": 0,
+        "products": [
+          {
+            "file": "index.html",
+            "sha256": "2c53694c89b95c547675ba06589ba67524c9e38676c26f486d429361c9d31977"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "sha256": "b98192f161eaff77919e03ec7967373e286acff172025865a62ec08f6bdcab42"
+          }
+        ],
+        "status": "PASS"
+      }
+    },
+    {
+      "id": "preferences",
+      "source": "Livre de base pp.64 et 88 — Maître d’armes et Armes de prédilection",
+      "rule": "Chaque choix de prédilection acquis est appliqué ; pas de double bonus sur une même arme.",
+      "before": {
+        "schema": "FOH_N1_ARBALETRIER_TWO_WEAPON_PREFERENCES",
+        "at": "2026-11-04T10:43:05.644Z",
+        "scope": "Arbalétrier vénérable Mercenaire R3/Maître d’armes R2, Armes de prédilection accordée par Combattant aguerri, cinq catégories autorisées et deux allocations, deux produits. Deux choix distincts, pas de double bonus sur la même catégorie.",
+        "passed": 0,
+        "failed": 20,
+        "products": [
+          {
+            "file": "index.html",
+            "sha256": "69f9c8a2faba49a51f92a48deab295c06b6b627d9e2ff65f71779c3a3c2b3f47"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "sha256": "b921ed66a0a8bbf144096e5fdf34c813c7f8fbad34fb1c3f375f6947939c6c20"
+          }
+        ],
+        "cases": [
+          {
+            "file": "index.html",
+            "category": "swords",
+            "swap": false,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n3 !== 4\n"
+          },
+          {
+            "file": "index.html",
+            "category": "swords",
+            "swap": true,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n2 !== 3\n"
+          },
+          {
+            "file": "index.html",
+            "category": "axes",
+            "swap": false,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n3 !== 4\n"
+          },
+          {
+            "file": "index.html",
+            "category": "axes",
+            "swap": true,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n2 !== 3\n"
+          },
+          {
+            "file": "index.html",
+            "category": "maces",
+            "swap": false,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n3 !== 4\n"
+          },
+          {
+            "file": "index.html",
+            "category": "maces",
+            "swap": true,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n2 !== 3\n"
+          },
+          {
+            "file": "index.html",
+            "category": "spears",
+            "swap": false,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n3 !== 4\n"
+          },
+          {
+            "file": "index.html",
+            "category": "spears",
+            "swap": true,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n2 !== 3\n"
+          },
+          {
+            "file": "index.html",
+            "category": "thrown",
+            "swap": false,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n1 !== 2\n"
+          },
+          {
+            "file": "index.html",
+            "category": "thrown",
+            "swap": true,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n3 !== 4\n"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "category": "swords",
+            "swap": false,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n3 !== 4\n"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "category": "swords",
+            "swap": true,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n2 !== 3\n"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "category": "axes",
+            "swap": false,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n3 !== 4\n"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "category": "axes",
+            "swap": true,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n2 !== 3\n"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "category": "maces",
+            "swap": false,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n3 !== 4\n"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "category": "maces",
+            "swap": true,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n2 !== 3\n"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "category": "spears",
+            "swap": false,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n3 !== 4\n"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "category": "spears",
+            "swap": true,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n2 !== 3\n"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "category": "thrown",
+            "swap": false,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n1 !== 2\n"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "category": "thrown",
+            "swap": true,
+            "status": "FAIL",
+            "error": "AssertionError [ERR_ASSERTION]: Granted category\n\n3 !== 4\n"
+          }
+        ],
+        "status": "FAIL"
+      },
+      "afterReport": "arquebusier-two-preferences.json",
+      "after": {
+        "passed": 20,
+        "failed": 0,
+        "products": [
+          {
+            "file": "index.html",
+            "sha256": "2c53694c89b95c547675ba06589ba67524c9e38676c26f486d429361c9d31977"
+          },
+          {
+            "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+            "sha256": "b98192f161eaff77919e03ec7967373e286acff172025865a62ec08f6bdcab42"
+          }
+        ],
+        "status": "PASS"
+      }
+    }
+  ]
+}
