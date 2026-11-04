@@ -1,0 +1,75 @@
+name: Forge N1 - une matrice rapide profil pur
+on:
+  workflow_dispatch:
+    inputs:
+      profil:
+        description: Profil pur a valider
+        required: true
+        default: Arquebusier
+        type: choice
+        options:
+          - Arquebusier
+          - Barbare
+          - Barde
+          - Chevalier
+          - Druide
+          - Ensorceleur
+          - Forgesort
+          - Guerrier
+          - Magicien
+          - Moine
+          - Prêtre
+          - Rôdeur
+          - Sorcier
+          - Voleur
+  push:
+    paths:
+      - '.github/workflows/forge-n1-pure-fast-batch.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_pure_fast_batch.cjs'
+permissions:
+  contents: write
+concurrency:
+  group: forge-n1-pure-fast-current
+  cancel-in-progress: false
+jobs:
+  pure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run unique pure profile source-derived batch on live production
+        id: batch
+        continue-on-error: true
+        env:
+          PURE_PROFILE: ${{ github.event.inputs.profil || 'Arquebusier' }}
+        run: |
+          node --check forge-of-heroes/FINAL_FREEZE_TESTS/n1_pure_fast_batch.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_pure_fast_batch.cjs "--profile=$PURE_PROFILE"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n1-pure-fast-proof
+          path: forge-of-heroes/QA/N1/pure-profile-fast-*.json
+      - name: Archive true results including failures
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forge-of-heroes/QA/N1/pure-profile-fast-*.json
+          if ! git diff --cached --quiet; then
+            git commit -m "test(forge-n1): pure profile matrix current engine evidence [skip ci]"
+            git restore --worktree .
+            for i in 1 2 3 4; do
+              git fetch origin main
+              if git rebase origin/main && git push origin HEAD:main; then exit 0; fi
+              git rebase --abort || true
+              if [ "$i" = 4 ]; then exit 1; fi
+              sleep 2
+            done
+          fi
+      - name: Stop if pure character construction not fully successful
+        if: steps.batch.outcome == 'failure'
+        run: exit 1
