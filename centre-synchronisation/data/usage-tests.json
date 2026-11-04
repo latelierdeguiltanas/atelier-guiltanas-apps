@@ -1,0 +1,1124 @@
+{
+  "schema": "GUILTANAS_USAGE_TESTS_V1",
+  "created_at": "2026-11-04",
+  "meaning": "Les pourcentages mesurent uniquement la part des parcours de recette ayant une preuve de réussite. Ne pas les confondre avec le pourcentage de code développé.",
+  "statuses": [
+    "not_run",
+    "passed",
+    "failed",
+    "blocked"
+  ],
+  "rules": "Un test passe seulement après exécution observable avec preuve vérifiable (capture, rapport, URL ou commit de résultat). Un test bloqué/échoué reste non validé. Ne pas déduire PASS de l'existence du code.",
+  "projects": {
+    "hub-bastide": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "hub-bastide-U01",
+          "name": "Accès et fiches joueurs",
+          "scenario": "MJ ouvre la campagne, voit les six PJ et les accès interdits restent bloqués",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "hub-bastide-U02",
+          "name": "Échanges et inventaires",
+          "scenario": "MJ attribue un objet, PJ le voit, le vend et l'inventaire reste cohérent après reconnexion",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "hub-bastide-U03",
+          "name": "Synchronisation en partie",
+          "scenario": "MJ démarre un combat, joueurs voient le tour actif, PV/buffs synchronisés sans écraser un champ en cours de saisie",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "hub-nespresso": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "hub-nespresso-U01",
+          "name": "Campagne D&D",
+          "scenario": "MJ et quatre PJ ouvrent leur espace D&D avec leurs fiches et droits",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "hub-nespresso-U02",
+          "name": "Messagerie et accès",
+          "scenario": "MJ crée un objet, PJ achète puis revend via boutique Mila, inventaire et monnaie cohérents",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "hub-nespresso-U03",
+          "name": "Tests multi-appareils",
+          "scenario": "Combat partagé : initiative et tour actif visibles, halo buff, PV ennemis masqués aux PJ",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "hub-configurable": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "hub-configurable-U01",
+          "name": "Création d'espace",
+          "scenario": "MJ crée un hub et un lien PJ unique, ouvre depuis autre appareil",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "hub-configurable-U02",
+          "name": "Reproduction Bastide",
+          "scenario": "MJ choisit fiches seules puis active espace joueur sans perdre la fiche",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "hub-configurable-U03",
+          "name": "Synchronisation",
+          "scenario": "Modules campagne, cartes, PNJ, boutique et droits testés avec deux comptes",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "hub-produit": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "hub-produit-U01",
+          "name": "Prototype privé G1",
+          "scenario": "Un MJ initialise un espace produit sans accès aux autres campagnes",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "hub-produit-U02",
+          "name": "Personnalisation",
+          "scenario": "Activation et désactivation des modules, fiche joueur et droits vérifiés",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "hub-produit-U03",
+          "name": "Publication produit",
+          "scenario": "Installation, connexion, sauvegarde et reprise fonctionnent hors environnement de développement",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "fiches-pj": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "fiches-pj-U01",
+          "name": "Création/import",
+          "scenario": "Créer une fiche individuelle depuis Forge ou importer un PDF, contrôler les champs",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "fiches-pj-U02",
+          "name": "Fiche jouable",
+          "scenario": "Modifier PV, PM et inventaire puis retrouver les valeurs après fermeture",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "fiches-pj-U03",
+          "name": "Reprise multi-appareils",
+          "scenario": "Rattacher la fiche à un Hub par code sans perdre son identité ni ses données",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "combat-cof2": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "combat-cof2-U01",
+          "name": "Combats et initiative",
+          "scenario": "Créer un combat et modifier l'initiative, l'ordre et les états",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "combat-cof2-U02",
+          "name": "Liaison Hub",
+          "scenario": "Changer PV et buffs depuis le Hub puis vérifier la mise à jour côté combat",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "combat-cof2-U03",
+          "name": "Essais réels",
+          "scenario": "Deux appareils affichent le même tour ; PJ ne voit pas les PV chiffrés des monstres",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "combat-dnd": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "combat-dnd-U01",
+          "name": "Version source",
+          "scenario": "Charger la version D&D du gestionnaire et les PJ du Hub Nespresso",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "combat-dnd-U02",
+          "name": "Gestion de combat",
+          "scenario": "Jouer plusieurs tours, modifier PV, CA, états et concentration",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "combat-dnd-U03",
+          "name": "Intégration",
+          "scenario": "Frise partagée sur deux appareils, tour actif et confidentialité monstres",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "soundboard-generique": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "soundboard-generique-U01",
+          "name": "Version officielle",
+          "scenario": "Importer un dossier de sons et retrouver noms et catégories",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "soundboard-generique-U02",
+          "name": "Fonctions audio",
+          "scenario": "Lire, arrêter et déclencher un son via raccourci sans doublon",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "soundboard-generique-U03",
+          "name": "Diffusion",
+          "scenario": "Fermer, rouvrir et installer en PWA : sons et réglages conservés",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "soundboard-ile": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "soundboard-ile-U01",
+          "name": "Source et sons",
+          "scenario": "Ouvrir le soundboard dédié et retrouver la bibliothèque des sons de campagne",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "soundboard-ile-U02",
+          "name": "Import et lecture",
+          "scenario": "Importer un dossier depuis un second ordinateur et écouter chaque son",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "soundboard-ile-U03",
+          "name": "Synchronisation",
+          "scenario": "Tester persistance et accès aux sons sur deux appareils, signaler les fichiers locaux manquants",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "cockpit": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "cockpit-U01",
+          "name": "Registre complet",
+          "scenario": "Afficher chaque projet une seule fois avec sa progression d'usage",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "cockpit-U02",
+          "name": "Avancement vérifiable",
+          "scenario": "Ouvrir une fiche et voir chaque parcours, résultat, preuve et blocage",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "cockpit-U03",
+          "name": "Synchroniser",
+          "scenario": "Synchroniser GitHub/Drive/Supabase sans effacer les données manuelles",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "cockpit-U04",
+          "name": "Reprise des conversations",
+          "scenario": "Lier les interventions enregistrées et distinguer inactivité et panne",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "mj-express": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "mj-express-U01",
+          "name": "Messagerie Bastide",
+          "scenario": "Contrôler le parcours MJ et ses permissions",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "mj-express-U02",
+          "name": "Installation PWA",
+          "scenario": "Tester Samsung Internet et Chrome",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "mj-express-U03",
+          "name": "Notifications",
+          "scenario": "Valider réception sur écran verrouillé",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "mj-express-U04",
+          "name": "Multi-campagnes",
+          "scenario": "Adaptateurs Nespresso et hub configurable",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "pj-express": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "pj-express-U01",
+          "name": "Compagnon COF2",
+          "scenario": "Fiche jouable et accès PJ",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "pj-express-U02",
+          "name": "Liaison facultative",
+          "scenario": "Code personnel vers le hub",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "pj-express-U03",
+          "name": "Messagerie",
+          "scenario": "Adaptateurs par campagne et contrôles de droits",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "express-universel": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "express-universel-U01",
+          "name": "Portail commun",
+          "scenario": "Accès MJ/PJ et navigation multi-campagnes",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "express-universel-U02",
+          "name": "Modules partagés",
+          "scenario": "Réutiliser fiche et messagerie sans duplication",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "express-universel-U03",
+          "name": "Validation",
+          "scenario": "Essais Android et contrôles de permissions",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "budget": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "budget-U01",
+          "name": "Données privées",
+          "scenario": "Contrôler sauvegarde et confidentialité",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "budget-U02",
+          "name": "Multi-appareils",
+          "scenario": "Comparer la même donnée sur deux appareils",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "missions": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "missions-U01",
+          "name": "Éditeur de missions",
+          "scenario": "Colonnes renommables, ajoutables et listes configurables",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "missions-U02",
+          "name": "Brouillon",
+          "scenario": "Enregistrer sans publier",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "missions-U03",
+          "name": "Publication sécurisée",
+          "scenario": "Publier en un clic après sauvegarde et contrôler les accès",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "site-atelier": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "site-atelier-U01",
+          "name": "Navigation",
+          "scenario": "Depuis l'accueil accéder aux applications publiées",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "site-atelier-U02",
+          "name": "Contenu",
+          "scenario": "Chaque page décrit correctement l'outil et pointe vers une démonstration valide",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "site-atelier-U03",
+          "name": "Visibilité",
+          "scenario": "Recherche web, partage de lien et affichage mobile contrôlés",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "dragonlance-cof2": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "dragonlance-cof2-U01",
+          "name": "Corpus source",
+          "scenario": "Identifier les règles et références de conversion",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "dragonlance-cof2-U02",
+          "name": "Mécaniques",
+          "scenario": "Inventorier les conversions réalisées et manquantes",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "dragonlance-cof2-U03",
+          "name": "Validation",
+          "scenario": "Contrôler la cohérence COF2 et les droits",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "deck-rencontres-physique": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "deck-rencontres-physique-U01",
+          "name": "Fichiers imprimables",
+          "scenario": "Identifier PDF et ressources graphiques de référence",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "deck-rencontres-physique-U02",
+          "name": "Fabrication",
+          "scenario": "Contrôler faces, dos et format d'impression",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "deck-rencontres-physique-U03",
+          "name": "Distribution",
+          "scenario": "Vérifier droits et fiche produit",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "deck-succes-critiques": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "deck-succes-critiques-U01",
+          "name": "Faces et dos",
+          "scenario": "Identifier PDF et images de référence",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "deck-succes-critiques-U02",
+          "name": "Impression",
+          "scenario": "Contrôler cohérence et découpe",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "deck-succes-critiques-U03",
+          "name": "Publication",
+          "scenario": "Droits et livrable final",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "deck-echecs-critiques": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "deck-echecs-critiques-U01",
+          "name": "Faces et dos",
+          "scenario": "Identifier les images disponibles",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "deck-echecs-critiques-U02",
+          "name": "Livrable imprimable",
+          "scenario": "Vérifier PDF final et format",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "deck-echecs-critiques-U03",
+          "name": "Publication",
+          "scenario": "Droits et fiche produit",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "application-peinture": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "application-peinture-U01",
+          "name": "Cadrage",
+          "scenario": "Retrouver les exigences de l'application",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "application-peinture-U02",
+          "name": "Source",
+          "scenario": "Identifier le fichier ou dépôt canonique",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "application-peinture-U03",
+          "name": "Recette",
+          "scenario": "Définir des tests à partir du périmètre retrouvé",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "generateur-quetes": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "generateur-quetes-U01",
+          "name": "Source",
+          "scenario": "Retrouver le générateur de référence",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "generateur-quetes-U02",
+          "name": "Fonctions",
+          "scenario": "Inventorier les mécanismes existants",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "generateur-quetes-U03",
+          "name": "Validation",
+          "scenario": "Définir les scénarios de recette",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "identite-marque": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "identite-marque-U01",
+          "name": "Gates de marque",
+          "scenario": "Confronter les validations documentées",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "identite-marque-U02",
+          "name": "Direction artistique",
+          "scenario": "Vérifier les livrables vert forêt, doré, bois et ivoire",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "identite-marque-U03",
+          "name": "Diffusion",
+          "scenario": "Décliner les supports de marque",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "scenario-manager": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "scenario-manager-U01",
+          "name": "Source maître",
+          "scenario": "Retrouver ScenarioManager_MASTER_STABLE.html",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "scenario-manager-U02",
+          "name": "Fonctions",
+          "scenario": "Auditer les scénarios et leur persistance",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "scenario-manager-U03",
+          "name": "Intégration",
+          "scenario": "Décider de son rattachement à l'écosystème",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "kobold": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "kobold-U01",
+          "name": "Fichier source",
+          "scenario": "Retrouver le HTML local",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "kobold-U02",
+          "name": "Fonctions",
+          "scenario": "Tester les générations et l'affichage",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "kobold-U03",
+          "name": "Catalogue",
+          "scenario": "Décider de la publication",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "critique": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "critique-U01",
+          "name": "Version source",
+          "scenario": "Retrouver le module succès/échec",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "critique-U02",
+          "name": "Fonctions",
+          "scenario": "Tester les tirages et les résultats",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "critique-U03",
+          "name": "Intégration",
+          "scenario": "Raccorder aux outils JDR si pertinent",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "decks": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "decks-U01",
+          "name": "Concept",
+          "scenario": "Définir le format numérique distinct des imprimables",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "decks-U02",
+          "name": "Prototype",
+          "scenario": "Identifier un premier livrable",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "decks-U03",
+          "name": "Validation",
+          "scenario": "Vérifier droits et expérience d'utilisation",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "enfants": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "enfants-U01",
+          "name": "Périmètre",
+          "scenario": "Définir les premiers modules familiaux",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "enfants-U02",
+          "name": "Sécurité",
+          "scenario": "Établir les accès et données privées",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "enfants-U03",
+          "name": "Prototype",
+          "scenario": "Tester un premier parcours",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "messages-enfants": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "messages-enfants-U01",
+          "name": "Besoins",
+          "scenario": "Définir les échanges autorisés",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "messages-enfants-U02",
+          "name": "Sécurité",
+          "scenario": "Permissions et confidentialité",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "messages-enfants-U03",
+          "name": "Prototype",
+          "scenario": "Valider les usages familiaux",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "archive-audioboard-full": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "archive-audioboard-full-U01",
+          "name": "Archive",
+          "scenario": "Vérifier la branche et les fichiers historiques",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "archive-audioboard-full-U02",
+          "name": "Traçabilité",
+          "scenario": "Identifier le lien avec les versions actives",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "soundboard-archives": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "soundboard-archives-U01",
+          "name": "Archive",
+          "scenario": "Préserver les versions antérieures",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "soundboard-archives-U02",
+          "name": "Traçabilité",
+          "scenario": "Identifier leurs différences avec Soundboard_final",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    },
+    "ghdir-guiltanas-control": {
+      "purpose": "Validation de parcours réels, pas de jalons techniques",
+      "tests": [
+        {
+          "id": "ghdir-guiltanas-control-U01",
+          "name": "Statut du prototype",
+          "scenario": "Distinguer la page simplifiée du Cockpit principal",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "ghdir-guiltanas-control-U02",
+          "name": "Miroir de données",
+          "scenario": "Vérifier les publications et leur fraîcheur",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        },
+        {
+          "id": "ghdir-guiltanas-control-U03",
+          "name": "Synchronisation Drive",
+          "scenario": "Valider une exécution effective avant d'annoncer un succès",
+          "acceptance": "Exécuter le scénario dans l'application ou sur le livrable de référence ; comparer le résultat attendu à l'état sauvegardé et à la réouverture ; constater l'absence de régression.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": ""
+        }
+      ]
+    }
+  }
+}
