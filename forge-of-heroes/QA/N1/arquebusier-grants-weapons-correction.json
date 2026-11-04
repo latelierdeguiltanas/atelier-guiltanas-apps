@@ -1,0 +1,79 @@
+{
+  "source": "COF2 Livre de base p.76",
+  "before": {
+    "passed": 40,
+    "failed": 8,
+    "failures": [
+      {
+        "file": "index.html",
+        "variant": "arquebusier",
+        "slug": "doigts-agiles",
+        "armorDef": 1,
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Thrown knives\n\n'1d4' !== '1d4+1'\n"
+      },
+      {
+        "file": "index.html",
+        "variant": "arquebusier",
+        "slug": "doigts-agiles",
+        "armorDef": 2,
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Thrown knives\n\n'1d4' !== '1d4+1'\n"
+      },
+      {
+        "file": "index.html",
+        "variant": "arbaletrier",
+        "slug": "doigts-agiles",
+        "armorDef": 1,
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Thrown knives\n\n'1d4' !== '1d4+1'\n"
+      },
+      {
+        "file": "index.html",
+        "variant": "arbaletrier",
+        "slug": "doigts-agiles",
+        "armorDef": 2,
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Thrown knives\n\n'1d4' !== '1d4+1'\n"
+      },
+      {
+        "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+        "variant": "arquebusier",
+        "slug": "doigts-agiles",
+        "armorDef": 1,
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Thrown knives\n\n'1d4' !== '1d4+1'\n"
+      },
+      {
+        "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+        "variant": "arquebusier",
+        "slug": "doigts-agiles",
+        "armorDef": 2,
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Thrown knives\n\n'1d4' !== '1d4+1'\n"
+      },
+      {
+        "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+        "variant": "arbaletrier",
+        "slug": "doigts-agiles",
+        "armorDef": 1,
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Thrown knives\n\n'1d4' !== '1d4+1'\n"
+      },
+      {
+        "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+        "variant": "arbaletrier",
+        "slug": "doigts-agiles",
+        "armorDef": 2,
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Thrown knives\n\n'1d4' !== '1d4+1'\n"
+      }
+    ]
+  },
+  "after": {
+    "passed": 48,
+    "failed": 0,
+    "status": "PASS"
+  },
+  "change": "Doigts agiles R1 : couteaux de lancer ajoutés aux armes affectées par le bonus de dégâts à distance. Textes source, dégâts au contact et restrictions d’armure conservés."
+}

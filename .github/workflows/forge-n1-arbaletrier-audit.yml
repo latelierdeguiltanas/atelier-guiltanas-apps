@@ -5,41 +5,28 @@ on:
     paths:
       - '.github/workflows/forge-n1-arbaletrier-audit.yml'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_arbaletrier_audit.cjs'
-      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_blueprint.cjs'
-      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_proto.cjs'
 permissions:
-  contents: write
+  contents: read
 jobs:
   audit:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
-        with:
-          persist-credentials: true
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Comparer la variante du Livre de base avec Forge
+      - name: Comparer la variante intégrée avec le Livre de base
         run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_powderless_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_arbaletrier_audit.cjs
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_blueprint.cjs
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_proto.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_equipment_oracle.cjs
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: audit-variant-arbaletrier-source
           path: |
             forge-of-heroes/QA/N1/arquebusier-arbaletrier-source-audit.json
-            forge-of-heroes/QA/N1/arbaletrier-blueprint.json
-            forge-of-heroes/QA/N1/arbaletrier-virtual-prototype.json
-      - name: Conserver le constat, même si la variante manque
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add forge-of-heroes/QA/N1/arquebusier-arbaletrier-source-audit.json forge-of-heroes/QA/N1/arbaletrier-blueprint.json forge-of-heroes/QA/N1/arbaletrier-virtual-prototype.json
-          if ! git diff --cached --quiet; then
-            git commit -m "audit(forge-n1): variante Arbaletrier exacte selon COF2 p62 [skip ci]"
-            git fetch origin main
-            git rebase origin/main
-            git push origin HEAD:main
-          fi
+            forge-of-heroes/QA/N1/arquebusier-equipment-source.json
+# The historical virtual prototype is retained in git history. Production source
+# and real UI are now checked by the source-fixes workflow, which owns publication.
