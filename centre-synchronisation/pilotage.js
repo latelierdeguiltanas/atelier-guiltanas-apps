@@ -430,20 +430,11 @@ function projectWorkMarkup(p){
 }
 
 function projectProgressTile(p){
- if(p.id==='forge'){
-  if(!forgeStatus)return '<small>'+escapeHTML(forgeStatusMessage)+'</small>';
-  const {done,total,phase}=forgeProgress();
-  return '<div><small>N1 '+escapeHTML(phase)+'</small><small>'+done+'/'+total+' parcours au clic validés</small></div>';
- }
- const checkpoints=[
-  {ok:!!(p.source_url||p.repo||p.source),label:'Source identifiée'},
-  {ok:!!p.repo,label:'Dépôt référencé'},
-  {ok:!!p.folder,label:'Livrable localisé'},
-  {ok:p.publication==='en_ligne',label:'Publication en ligne'}
- ];
- const supported=checkpoints.filter(x=>x.ok).length;
- const pct=Math.round(100*supported/checkpoints.length);
- return '<div class="project-tile-progress" title="Indice de traçabilité : '+supported+'/'+checkpoints.length+' preuves de localisation et publication. Ce n’est pas le pourcentage de développement terminé." aria-label="Traçabilité du projet '+pct+' pour cent"><span class="project-tile-track"><span style="width:'+pct+'%"></span></span><small>'+pct+'%*</small></div>';
+ if(p.id==='forge')return '<small>Suivi détaillé des profils et peuples</small>';
+ const verified=Number.isFinite(p.verified_checks)?p.verified_checks:null,total=Number.isFinite(p.total_checks)?p.total_checks:null;
+ const valid=verified!==null&&total!==null&&total>0&&verified>=0&&verified<=total;
+ const pct=valid?Math.round(100*verified/total):null;
+ return '<div class="project-tile-progress" title="'+(valid?'Couverture des contrôles fonctionnels attestés':'Avancement d’utilisation non mesuré : contrôles fonctionnels à qualifier')+'"><span class="project-tile-track"><span style="width:'+(pct??0)+'%"></span></span><small>'+(pct===null?'À mesurer':pct+'%')+'</small></div>';
 }
 function renderProjects(){
  const box=$('#project-list');if(!box)return;
@@ -527,6 +518,7 @@ function projectRecentMilestones(p){
  marks.slice(-3).map(m=>'<p class="minihelp">• '+escapeHTML(m.label||'Jalon')+' — '+escapeHTML(m.state||'état non précisé')+'</p>').join('');
  }).join('')+'</div>';
 }
+function usageJourneyMarkup(p){if(p.id==='forge')return '';const steps=PROJECT_MILESTONES[p.id]||[['Utilisation attendue',p.summary||'Parcours à définir'],['Reprise du projet',p.next_action||'À préciser']];return '<section class="project-milestone-box"><h3>Progression par utilisation</h3><p class="minihelp">Chaque ligne correspond à ce que tu dois pouvoir faire avec le projet. Les étapes sans preuve de validation restent à qualifier, sans faux pourcentage.</p>'+steps.map(step=>'<div class="project-milestone"><div class="project-milestone-title"><b>'+escapeHTML(step[0])+'</b><span>À qualifier</span></div><p>'+escapeHTML(step[1])+'</p></div>').join('')+'</section>'}
 function projectMilestonesMarkup(p){
  const steps=PROJECT_MILESTONES[p.id]||[['État connu du projet',p.progress_note||'Aucune preuve enregistrée'],['Action de reprise',p.next_action||'À définir à partir de la source']];
  const verified=Number.isFinite(p.verified_checks)?p.verified_checks:null,total=Number.isFinite(p.total_checks)?p.total_checks:null;
@@ -550,6 +542,7 @@ function openProject(id){
  if(p.repo==='atelier-guiltanas-apps'&&/^[a-z0-9/_-]+\/$/i.test(p.folder||'')&&p.publication==='en_ligne'){
   content+='<div class="detail-links"><a class="smallbutton primary" href="'+escapeHTML(ROOT+p.folder)+'" target="_blank" rel="noopener noreferrer">Ouvrir l’application</a></div>';
  }
+ content+=usageJourneyMarkup(p);
  content+='<details class="project-advanced-details"><summary>Avancement, contrôles et preuves</summary>';
  if(p.id==='forge')content+=forgeAuditMarkup();
  if(p.id!=='forge')content+=projectMilestonesMarkup(p);
