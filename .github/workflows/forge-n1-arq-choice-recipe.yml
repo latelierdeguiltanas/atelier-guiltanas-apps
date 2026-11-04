@@ -1,0 +1,78 @@
+name: Forge N1 - recette complète peuples et âges au clic
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arq-choice-recipe.yml'
+permissions:
+  contents: write
+concurrency:
+  group: forge-n1-arq-choice-recipe
+  cancel-in-progress: true
+jobs:
+  choices-mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vérifier les preuves du produit déjà publié
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_r2_gate.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_gear_gate.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_gate.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_derived_gate.cjs
+      - name: Installer Playwright
+        run: |
+          npm install --prefix "$RUNNER_TEMP/foh-choices" playwright@1.55.0
+          echo "NODE_PATH=$RUNNER_TEMP/foh-choices/node_modules" >> "$GITHUB_ENV"
+      - name: Créer et rouvrir vingt personnages sur téléphone
+        env:
+          CHOICES_SHARD: ${{ matrix.shard }}
+          CHOICES_SHARDS: '4'
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/foh-choice-http.log 2>&1 &
+          export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_choices_click.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-arq-mobile-choice-${{ matrix.shard }}
+          path: forge-of-heroes/QA/N1/arquebusier-choices-shard-${{ matrix.shard }}.json
+  consolidate-choices:
+    needs: choices-mobile
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: forge-arq-mobile-choice-*
+          path: ${{ runner.temp }}/foh-choice-proofs
+      - name: Publier les preuves uniquement si les produits restent identiques
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_choices_merge.cjs "$RUNNER_TEMP/foh-choice-proofs"
+            git add forge-of-heroes/QA/N1/arquebusier-80-real-mobile-choices.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m 'test(forge): 80 créations mobiles peuples âges et choix vérifiés [skip ci]'
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
