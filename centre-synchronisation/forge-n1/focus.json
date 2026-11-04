@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-03T12:19:21.387Z",
+  "generatedAt": "2026-11-04T08:11:01.763Z",
   "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
   "certificationPlan": {
     "policy": "UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100",
@@ -207,7 +207,7 @@
         "id": "gear",
         "name": "Toutes les armes, armures et variante Arbalétrier",
         "status": "A_VERIFIER",
-        "detail": "Correction du Mercenaire hybride conforme au Livre de base p.65 : 32/32 contrôles sur 8 peuples × deux orientations × deux produits, bouclier permis et maîtrise poudre non accordée à tort. Les autres restrictions d’armes, d’armures, paquetages et variantes Arbalétrier restent à fermer."
+        "detail": "Périmètre PROFIL PUR seulement : contrôler les interdictions de boucliers, le plafond chemise de mailles, les catégories d’armes et les paquetages, ainsi que la variante officielle Arbalétrier sans armes à poudre. Les 32 tests hybrides réussis restent hors de ce certificat."
       },
       {
         "id": "history",
@@ -231,7 +231,7 @@
         "id": "click",
         "name": "Créer, sauvegarder et rouvrir au clic sur mobile",
         "status": "A_VERIFIER",
-        "detail": "20/20 parcours tactiles des dix paires Arquebusier et dix paires Arbalétrier passés : création, sauvegarde, reprise et fiche interactive. Les huit peuples, âges et modes hybrides doivent encore être couverts au clic avant le gel du critère."
+        "detail": "20/20 parcours tactiles des dix paires Arquebusier et dix paires Arbalétrier passés : création, sauvegarde, reprise et fiche interactive. Les huit peuples et tous les choix d’âge du PROFIL PUR doivent encore être couverts au clic avant le gel du critère. Les hybrides sont exclus de cette campagne."
       }
     ],
     "paths": [
@@ -396,8 +396,8 @@
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier les choix raciaux."
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
         },
         {
           "id": "r1",
@@ -414,8 +414,8 @@
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "A_VERIFIER",
-          "detail": "Valider les variantes et sauvegardes des caractéristiques."
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
         },
         {
           "id": "ages",
@@ -442,9 +442,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 4,
+      "passed": 6,
       "total": 10,
-      "percent": 40,
+      "percent": 60,
       "certified": false
     },
     {
@@ -468,8 +468,8 @@
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier les choix raciaux."
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
         },
         {
           "id": "r1",
@@ -486,8 +486,8 @@
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "A_VERIFIER",
-          "detail": "Valider les variantes et sauvegardes des caractéristiques."
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
         },
         {
           "id": "ages",
@@ -514,9 +514,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 4,
+      "passed": 6,
       "total": 10,
-      "percent": 40,
+      "percent": 60,
       "certified": false
     },
     {
@@ -540,8 +540,8 @@
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier les choix raciaux."
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
         },
         {
           "id": "r1",
@@ -558,8 +558,8 @@
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "A_VERIFIER",
-          "detail": "Valider les variantes et sauvegardes des caractéristiques."
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
         },
         {
           "id": "ages",
@@ -586,9 +586,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 4,
+      "passed": 6,
       "total": 10,
-      "percent": 40,
+      "percent": 60,
       "certified": false
     },
     {
@@ -612,8 +612,8 @@
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier les choix raciaux."
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
         },
         {
           "id": "r1",
@@ -630,8 +630,8 @@
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "A_VERIFIER",
-          "detail": "Valider les variantes et sauvegardes des caractéristiques."
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
         },
         {
           "id": "ages",
@@ -658,9 +658,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 4,
+      "passed": 6,
       "total": 10,
-      "percent": 40,
+      "percent": 60,
       "certified": false
     },
     {
@@ -684,8 +684,8 @@
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier les choix raciaux."
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
         },
         {
           "id": "r1",
@@ -702,8 +702,8 @@
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "A_VERIFIER",
-          "detail": "Valider les variantes et sauvegardes des caractéristiques."
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
         },
         {
           "id": "ages",
@@ -730,9 +730,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 4,
+      "passed": 6,
       "total": 10,
-      "percent": 40,
+      "percent": 60,
       "certified": false
     },
     {
@@ -756,8 +756,8 @@
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier les choix raciaux."
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
         },
         {
           "id": "r1",
@@ -774,8 +774,8 @@
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "A_VERIFIER",
-          "detail": "Valider les variantes et sauvegardes des caractéristiques."
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
         },
         {
           "id": "ages",
@@ -802,9 +802,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 4,
+      "passed": 6,
       "total": 10,
-      "percent": 40,
+      "percent": 60,
       "certified": false
     },
     {
@@ -828,8 +828,8 @@
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier les choix raciaux."
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
         },
         {
           "id": "r1",
@@ -846,8 +846,8 @@
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "A_VERIFIER",
-          "detail": "Valider les variantes et sauvegardes des caractéristiques."
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
         },
         {
           "id": "ages",
@@ -874,9 +874,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 4,
+      "passed": 6,
       "total": 10,
-      "percent": 40,
+      "percent": 60,
       "certified": false
     },
     {
@@ -900,8 +900,8 @@
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier les choix raciaux."
+          "status": "ACQUIS",
+          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
         },
         {
           "id": "r1",
@@ -918,8 +918,8 @@
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "A_VERIFIER",
-          "detail": "Valider les variantes et sauvegardes des caractéristiques."
+          "status": "ACQUIS",
+          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
         },
         {
           "id": "ages",
@@ -946,9 +946,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 4,
+      "passed": 6,
       "total": 10,
-      "percent": 40,
+      "percent": 60,
       "certified": false
     }
   ],
