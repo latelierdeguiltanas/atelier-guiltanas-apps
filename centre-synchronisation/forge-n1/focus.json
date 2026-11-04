@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-04T21:54:50.037Z",
+  "generatedAt": "2026-11-04T21:55:40.685Z",
   "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
   "certificationPlan": {
     "policy": "UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100",
@@ -201,7 +201,7 @@
         "id": "r3effects",
         "name": "Tous les effets des cinq capacités de rang 3",
         "status": "A_VERIFIER",
-        "detail": "Poudre puissante, Tir précis et +1 DEF de Combattant aguerri chiffrés ; vérifier le choix d’aptitude, Tir double, Tir de barrage et toutes les conditions."
+        "detail": "Les cinq capacités R3 du profil disposent de calculs contextuels et de parcours vénérables au clic. Les quinze dons de Combattant aguerri sont accessibles, conservés et contrôlés dans les calculs permanents. Restent à vérifier intégralement les conditions d’exécution des capacités accordées, notamment Vivacité, Teigneux, Attaque à suivre et Protéger un allié ; ce critère reste ouvert."
       },
       {
         "id": "gear",
@@ -257,8 +257,8 @@
             "rank": 3,
             "name": "Tir de barrage (L)",
             "focus": "Attaque déclenchée par un déplacement ; choix entre dégâts doublés ou arrêt du mouvement.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Effet R3 et cas négatifs contrôlés par oracle et parcours vénérable au clic ; les capacités empruntées restent suivies séparément.",
+            "status": "EFFETS_VERIFIES"
           }
         ]
       },
@@ -284,8 +284,8 @@
             "rank": 3,
             "name": "Poudre puissante",
             "focus": "Bonus de portée et de dégâts pour les armes à poudre.",
-            "calculation": "Poudre puissante vérifiée : +10 m de portée, +1 aux dégâts et projectiles magiques. Les interactions de combat restent à confirmer.",
-            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+            "calculation": "Effet R3 et cas négatifs contrôlés par oracle et parcours vénérable au clic ; les capacités empruntées restent suivies séparément.",
+            "status": "EFFETS_VERIFIES"
           }
         ]
       },
@@ -311,7 +311,7 @@
             "rank": 3,
             "name": "Combattant aguerri",
             "focus": "Choix d’une capacité de rang 1 autorisée d’un autre profil.",
-            "calculation": "Combattant aguerri : le +1 en DEF est vérifié. Le choix d’une capacité gratuite et ses restrictions d’armure restent à contrôler.",
+            "calculation": "DEF +1, quinze dons et restrictions d’armure vérifiés. Restent les conditions d’exécution des capacités empruntées.",
             "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
           }
         ]
@@ -338,8 +338,8 @@
             "rank": 3,
             "name": "Tir double (L)",
             "focus": "Attaques avec deux armes de poing ; mains, cibles et rechargement.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Effet R3 et cas négatifs contrôlés par oracle et parcours vénérable au clic ; les capacités empruntées restent suivies séparément.",
+            "status": "EFFETS_VERIFIES"
           }
         ]
       },
@@ -365,8 +365,8 @@
             "rank": 3,
             "name": "Tir précis",
             "focus": "Plage de critique des armes à distance.",
-            "calculation": "Tir précis vérifié : critique sur 19–20 à distance, sans changer le seuil des armes de contact.",
-            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+            "calculation": "Effet R3 et cas négatifs contrôlés par oracle et parcours vénérable au clic ; les capacités empruntées restent suivies séparément.",
+            "status": "EFFETS_VERIFIES"
           }
         ]
       }
