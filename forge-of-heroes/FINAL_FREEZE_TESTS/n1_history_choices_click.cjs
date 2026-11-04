@@ -37,6 +37,7 @@ try{
     }else{
       const select=page.locator('select[data-ability-choice$="|courtierGrantedAbility"]'),value=await select.locator('option').evaluateAll(xs=>xs.find(o=>o.value.startsWith('ability:combattant-aguerri:')&&o.value.includes('class-arquebusier:'))?.value);assert(value,'Rang 3 aventurier proposé');await select.selectOption(value);await choose('select[data-ability-choice$="|combattantAguerriAbility"]','Robustesse');
     }
+    const layout=await page.evaluate(()=>({viewport:innerWidth,bodyWidth:document.documentElement.scrollWidth,choiceWidth:document.querySelector('#ability-choice-fields')?.getBoundingClientRect().width}));assert(layout.bodyWidth<=layout.viewport+2,'Persistent choices overflow the mobile viewport: '+JSON.stringify(layout));rec.steps.push('choices-fit-mobile-viewport');
     await next();rec.steps.push('one-profile-path-and-two-histories');
     await next();await page.locator('#reveal-view').tap();
     const before=await page.locator('#summary-content').innerText();

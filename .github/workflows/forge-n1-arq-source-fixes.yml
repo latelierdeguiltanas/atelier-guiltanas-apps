@@ -52,7 +52,7 @@ jobs:
         run: |
           npm install --prefix "$RUNNER_TEMP/foh-source" playwright@1.55.0
           echo "NODE_PATH=$RUNNER_TEMP/foh-source/node_modules" >> "$GITHUB_ENV"
-      - name: Construire les deux produits et vérifier les règles corrigées
+      - name: Construire les deux produits
         run: |
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_powderless_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_doigts_agiles_knives_fix.cjs --write
@@ -65,6 +65,14 @@ jobs:
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_very_young_choice_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_choices_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs --write
+      - name: Démarrer le serveur de recette mobile
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/foh-source-http.log 2>&1 &
+          echo "CHROME_BIN=$(command -v google-chrome || command -v chromium)" >> "$GITHUB_ENV"
+      - name: Six créations Érudit et Courtisan rang 5
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_choices_click.cjs
+      - name: Vérifier les règles et calculs corrigés
+        run: |
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_choices_oracle.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_history_people_cross.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/history_completeness_runner.cjs
@@ -82,10 +90,6 @@ jobs:
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_grant_armor.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_grant_weapons.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_granted_pdf_annex.cjs
-      - name: Démarrer le serveur de recette mobile
-        run: |
-          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/foh-source-http.log 2>&1 &
-          echo "CHROME_BIN=$(command -v google-chrome || command -v chromium)" >> "$GITHUB_ENV"
       - name: Vingt créations et reprises des paires au clic
         run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_twenty_real_mobile_clicks.cjs
       - name: Quatre scénarios contextuels au clic
@@ -96,8 +100,6 @@ jobs:
         run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_thrower_click.cjs
       - name: Quatre créations Courtisan et Expert
         run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_history_rank_click.cjs
-      - name: Six créations Érudit et Courtisan rang 5
-        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_choices_click.cjs
       - name: Actualiser le suivi sans déclarer de clôture non prouvée
         run: |
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_15_mechanics_snapshot.cjs
