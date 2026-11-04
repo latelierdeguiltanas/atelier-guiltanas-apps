@@ -1,16 +1,16 @@
 {
   "schema": "FOH_N1_ARQ_CONTEXT_INDEPENDENT_TEST",
-  "at": "2026-11-04T08:43:32.669Z",
+  "at": "2026-11-04T08:54:11.338Z",
   "engineVersion": "FOH-ARQ-CONTEXT-N1-2",
   "sourceBook": "Chroniques Oubliées Fantasy 2e ed. Livre de base p.62-65",
   "inputSha256": [
     {
       "file": "index.html",
-      "sha256": "d80964b5c465483a291335c1c68bbbe5c3a306ab849b7183abae031ed4910b15"
+      "sha256": "8116f5e45822f89823ff0ff2e6de8405298090f8f0bb0c8e735ccea09eb190a1"
     },
     {
       "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "sha256": "20a13715e5ada5103dd9fe7d2ef6996a137b6d13113bea282ff4af953246a069"
+      "sha256": "8ace6d0b893e38bdd82454a8db0a193e6ec5b2517bfe94081e4f5e762bc24322"
     }
   ],
   "cases": [
@@ -361,6 +361,14 @@
       "status": "PASS"
     },
     {
+      "tag": "n1-cannot-invent-r5-powder",
+      "status": "PASS"
+    },
+    {
+      "tag": "immaterial-only-preserves-reduction",
+      "status": "PASS"
+    },
+    {
       "tag": "arbaletrier-r3-magazine",
       "status": "PASS"
     },
@@ -402,7 +410,7 @@
     }
   ],
   "status": "PASS",
-  "passed": 71,
+  "passed": 73,
   "failed": 0,
   "all15": true
 }
