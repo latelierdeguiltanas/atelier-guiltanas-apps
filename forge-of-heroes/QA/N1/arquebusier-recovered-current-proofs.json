@@ -1,0 +1,65 @@
+{
+  "schema": "FOH_N1_ARQ_RECOVERED_CURRENT_PROOFS",
+  "sourceRun": 41808599204,
+  "at": "2026-11-04T09:45:50.559Z",
+  "status": "PASS",
+  "checks": [
+    {
+      "file": "arquebusier-20-real-mobile-pairs.json",
+      "passed": 20,
+      "status": "PASS"
+    },
+    {
+      "file": "arquebusier-context-real-click.json",
+      "passed": 4,
+      "status": "PASS"
+    },
+    {
+      "file": "arquebusier-venerable-context-click.json",
+      "passed": 5,
+      "status": "PASS"
+    },
+    {
+      "file": "arquebusier-context-canonical.json",
+      "passed": 73,
+      "status": "PASS"
+    },
+    {
+      "file": "arquebusier-all-pairs-current.json",
+      "passed": 800,
+      "status": "PASS"
+    },
+    {
+      "file": "arquebusier-grants-armor.json",
+      "passed": 240,
+      "status": "PASS"
+    },
+    {
+      "file": "arquebusier-grants-weapons.json",
+      "passed": 48,
+      "status": "PASS"
+    },
+    {
+      "file": "arquebusier-granted-pdf-annex.json",
+      "passed": 60,
+      "status": "PASS"
+    },
+    {
+      "file": "arquebusier-equipment-source.json",
+      "passed": 200,
+      "status": "PASS"
+    }
+  ],
+  "products": [
+    {
+      "file": "index.html",
+      "sha256": "3fff8283d0657e0dc970a75e213423560f61036268af907774153349ec066c63"
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "sha256": "1541f8d19260eee37d8eb3f5c03caf47da37727e5eb1dd8679e55ccfa58e6c97"
+    }
+  ],
+  "browserJourneys": 29,
+  "note": "All source hashes match exactly. Only equipment evidence was regenerated after final packaging; browser proofs are the original successful 29 journeys."
+}
