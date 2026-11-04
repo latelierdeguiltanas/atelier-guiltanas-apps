@@ -411,3 +411,12 @@
 .project-tile-track>span{display:block;height:100%;border-radius:20px;background:#c5a15c}
 .project-tile-progress small{font-size:10px;min-width:27px;text-align:right;opacity:.85;font-variant-numeric:tabular-nums}
 .project-advanced-details>summary{cursor:pointer}
+
+/* Suivi fonctionnel par profil, isolé du moteur Forge */
+.usage-profile{border-top:1px solid var(--line,rgba(128,128,128,.25));padding:10px 0}
+.usage-profile>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none}
+.usage-profile>summary::-webkit-details-marker{display:none}
+.usage-profile-meter{display:flex;align-items:center;gap:9px;min-width:140px}
+.usage-profile-meter .project-tile-track{width:95px;display:block}
+.usage-profile-meter small{min-width:35px;text-align:right}
+.usage-profile>.project-milestone{margin:8px 0 0 12px}
