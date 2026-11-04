@@ -23242,8 +23242,21 @@
         "kind": "passive_or_contextual",
         "effects": [
           {
-            "type": "source_text",
-            "automated": false
+            "type": "grant_ability_choice",
+            "choiceId": "courtierGrantedAbility",
+            "allowedRanks": [
+              1,
+              2,
+              3
+            ],
+            "allowedProfiles": [
+              "arquebusier",
+              "arbaletrier",
+              "barde",
+              "rodeur",
+              "voleur"
+            ],
+            "persist": true
           }
         ]
       },
@@ -23263,12 +23276,53 @@
       "desc": "L’érudit sait parler, lire et écrire une langue supplémentaire par rang atteint dans la voie. Il gagne un bonus égal à son rang + 2 dans un domaine de son choix : histoire et géographie, occultisme et magie, sciences et techniques, plantes et créatures.",
       "mechanics": {
         "kind": "passive_or_contextual",
+        "choices": [
+          {
+            "id": "scholarDomain",
+            "label": "Domaine principal d’érudition",
+            "type": "enum",
+            "values": [
+              "history_geography",
+              "occultism_magic",
+              "science_technology",
+              "plants_creatures"
+            ],
+            "valueLabels": {
+              "history_geography": "Histoire et géographie",
+              "occultism_magic": "Occultisme et magie",
+              "science_technology": "Sciences et techniques",
+              "plants_creatures": "Plantes et créatures"
+            },
+            "persist": true,
+            "required": true
+          },
+          {
+            "id": "scholarLanguages",
+            "label": "Langues supplémentaires de l’Érudit",
+            "type": "enum_multi",
+            "values": [
+              "commun",
+              "sylvestre",
+              "runique",
+              "noir-parle",
+              "draconique",
+              "abyssal",
+              "celestien",
+              "argotien",
+              "profond",
+              "aquarien"
+            ],
+            "persist": true,
+            "required": true,
+            "min": 1,
+            "max": 5,
+            "maxCopies": 1
+          }
+        ],
         "effects": [
           {
-            "type": "language_and_domain",
-            "languageChoicesPerRank": 1,
-            "valueFormula": "rank+2",
-            "tests": []
+            "type": "scholar_domain_bonus",
+            "choiceField": "scholarDomain"
           }
         ]
       },
@@ -23311,10 +23365,33 @@
       "desc": "Le joueur choisit un nouveau domaine d’érudition pour son personnage. Il obtient +3 aux tests en relation avec ce domaine ; ce bonus est considéré comme un bonus de voie de peuple.",
       "mechanics": {
         "kind": "passive_or_contextual",
+        "choices": [
+          {
+            "id": "scholarSecondaryDomain",
+            "label": "Domaine secondaire d’érudition",
+            "type": "enum",
+            "values": [
+              "history_geography",
+              "occultism_magic",
+              "science_technology",
+              "plants_creatures"
+            ],
+            "valueLabels": {
+              "history_geography": "Histoire et géographie",
+              "occultism_magic": "Occultisme et magie",
+              "science_technology": "Sciences et techniques",
+              "plants_creatures": "Plantes et créatures"
+            },
+            "persist": true,
+            "required": true
+          }
+        ],
         "effects": [
           {
-            "type": "source_text",
-            "automated": false
+            "type": "scholar_domain_bonus",
+            "choiceField": "scholarSecondaryDomain",
+            "value": 3,
+            "bonusType": "people"
           }
         ]
       },
