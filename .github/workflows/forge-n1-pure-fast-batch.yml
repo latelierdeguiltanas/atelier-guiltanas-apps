@@ -26,6 +26,7 @@ on:
     paths:
       - '.github/workflows/forge-n1-pure-fast-batch.yml'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_pure_fast_batch.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pure_gear_probe.cjs'
 permissions:
   contents: write
 concurrency:
@@ -48,17 +49,23 @@ jobs:
         run: |
           node --check forge-of-heroes/FINAL_FREEZE_TESTS/n1_pure_fast_batch.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_pure_fast_batch.cjs "--profile=$PURE_PROFILE"
+          if [ "$PURE_PROFILE" = "Arquebusier" ]; then
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pure_gear_probe.cjs
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: forge-n1-pure-fast-proof
-          path: forge-of-heroes/QA/N1/pure-profile-fast-*.json
+          path: |
+            forge-of-heroes/QA/N1/pure-profile-fast-*.json
+            forge-of-heroes/QA/N1/arquebusier-pure-gear-diagnostic.json
       - name: Archive true results including failures
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add forge-of-heroes/QA/N1/pure-profile-fast-*.json
+          git add forge-of-heroes/QA/N1/arquebusier-pure-gear-diagnostic.json || true
           if ! git diff --cached --quiet; then
             git commit -m "test(forge-n1): pure profile matrix current engine evidence [skip ci]"
             git restore --worktree .
