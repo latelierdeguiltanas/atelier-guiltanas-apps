@@ -1,0 +1,47 @@
+{
+  "source": "COF2 Livre de base p.62 — Arbalétrier sans poudre",
+  "before": {
+    "passed": 196,
+    "failed": 4,
+    "failures": [
+      {
+        "file": "index.html",
+        "variant": "arbaletrier",
+        "tag": "weapon:powder-pistol",
+        "expected": "REFUSED",
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: []"
+      },
+      {
+        "file": "index.html",
+        "variant": "arbaletrier",
+        "tag": "weapon:musket",
+        "expected": "REFUSED",
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: []"
+      },
+      {
+        "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+        "variant": "arbaletrier",
+        "tag": "weapon:powder-pistol",
+        "expected": "REFUSED",
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: []"
+      },
+      {
+        "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+        "variant": "arbaletrier",
+        "tag": "weapon:musket",
+        "expected": "REFUSED",
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: []"
+      }
+    ]
+  },
+  "after": {
+    "passed": 200,
+    "failed": 0,
+    "status": "PASS"
+  },
+  "change": "forbiddenCategories=[powder] dans la maîtrise des armes de la seule variante Arbalétrier ; moteur et autres règles inchangés"
+}
