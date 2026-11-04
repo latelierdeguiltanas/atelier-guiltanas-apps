@@ -1,0 +1,59 @@
+{
+  "indexSha256": "778cadb2c79fc3eee8ffe5892f7b680a4490ed4ce162cdf8ed214ac663d67e60",
+  "schema": "FOH_N1_ARQ_HISTORY_RANK_BONUS_REAL_CLICK",
+  "at": "2026-11-04T13:50:05.367Z",
+  "scope": "Quatre créations humaines au N1, deux variantes et deux historiques : choix au clic, bonus canonique +3, sauvegarde et réouverture",
+  "cases": [
+    {
+      "variant": "Arquebusier",
+      "history": "courtier",
+      "name": "QA Historique Arquebusier Courtisan",
+      "status": "PASS",
+      "steps": [
+        "one-profile-path-and-two-histories",
+        "sheet",
+        "save-reopen",
+        "canonical-bonus-after-reopen"
+      ]
+    },
+    {
+      "variant": "Arquebusier",
+      "history": "expert",
+      "name": "QA Historique Arquebusier Expert",
+      "status": "PASS",
+      "steps": [
+        "one-profile-path-and-two-histories",
+        "sheet",
+        "save-reopen",
+        "canonical-bonus-after-reopen"
+      ]
+    },
+    {
+      "variant": "Arbalétrier",
+      "history": "courtier",
+      "name": "QA Historique Arbalétrier Courtisan",
+      "status": "PASS",
+      "steps": [
+        "one-profile-path-and-two-histories",
+        "sheet",
+        "save-reopen",
+        "canonical-bonus-after-reopen"
+      ]
+    },
+    {
+      "variant": "Arbalétrier",
+      "history": "expert",
+      "name": "QA Historique Arbalétrier Expert",
+      "status": "PASS",
+      "steps": [
+        "one-profile-path-and-two-histories",
+        "sheet",
+        "save-reopen",
+        "canonical-bonus-after-reopen"
+      ]
+    }
+  ],
+  "status": "PASS",
+  "passed": 4,
+  "failed": 0
+}
