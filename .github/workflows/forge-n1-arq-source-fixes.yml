@@ -25,11 +25,15 @@ on:
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_rank_bonus_fix.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_history_rank_bonus.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_history_rank_click.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_very_young_choice_fix.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_very_young_choice_renderer.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_choices_click.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_choices_merge.cjs'
 permissions:
   contents: write
 concurrency:
   group: forge-n1-arq-source-fixes
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   verify-publish:
     runs-on: ubuntu-latest
@@ -55,7 +59,9 @@ jobs:
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_preferences_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_archer_thrower_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_rank_bonus_fix.cjs --write
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_very_young_choice_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs --write
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_very_young_choice_renderer.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_history_rank_bonus.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_thrower_oracle.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_powder_weapon_oracle.cjs
@@ -69,15 +75,20 @@ jobs:
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_grant_armor.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_grant_weapons.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_granted_pdf_annex.cjs
-      - name: Vérifier les créations et capacités dans Chrome mobile
+      - name: Démarrer le serveur de recette mobile
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/foh-source-http.log 2>&1 &
-          export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_twenty_real_mobile_clicks.cjs
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_live_click.cjs
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_venerable_context_click.cjs
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_thrower_click.cjs
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_history_rank_click.cjs
+          echo "CHROME_BIN=$(command -v google-chrome || command -v chromium)" >> "$GITHUB_ENV"
+      - name: Vingt créations et reprises des paires au clic
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_twenty_real_mobile_clicks.cjs
+      - name: Quatre scénarios contextuels au clic
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_live_click.cjs
+      - name: Cinq voies vénérables au clic
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_venerable_context_click.cjs
+      - name: Deux créations avec variante lanceur
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_thrower_click.cjs
+      - name: Quatre créations Courtisan et Expert
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_history_rank_click.cjs
       - name: Actualiser le suivi sans déclarer de clôture non prouvée
         run: |
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_15_mechanics_snapshot.cjs
@@ -111,7 +122,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add forge-of-heroes/QA/N1/arquebusier-history-rank-bonus.json forge-of-heroes/QA/N1/arquebusier-history-rank-click.json forge-of-heroes/QA/N1/arquebusier-granted-thrower.json forge-of-heroes/QA/N1/arquebusier-granted-thrower-click.json forge-of-heroes/QA/N1/arquebusier-derived-source.json forge-of-heroes/QA/N1/arquebusier-powder-weapon-boundary.json forge-of-heroes/QA/N1/arquebusier-two-preferences.json forge-of-heroes/QA/N1/arquebusier-granted-pdf-annex.json forge-of-heroes/progression/pdf-labels.json forge-of-heroes/QA/N1/arquebusier-grants-weapons.json forge-of-heroes/QA/N1/arquebusier-equipment-source.json forge-of-heroes/QA/N1/arquebusier-arbaletrier-source-audit.json forge-of-heroes/progression/official-pdf-engine.js forge-of-heroes/QA/N1/arquebusier-grants-armor.json forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-context-canonical.json forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/arquebusier-context-real-click.json forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json centre-synchronisation/forge-n1/focus.json centre-synchronisation/forge-n1/purs.json
+          git add forge-of-heroes/QA/N1/very-young-resource-renderer.json forge-of-heroes/QA/N1/arquebusier-history-rank-bonus.json forge-of-heroes/QA/N1/arquebusier-history-rank-click.json forge-of-heroes/QA/N1/arquebusier-granted-thrower.json forge-of-heroes/QA/N1/arquebusier-granted-thrower-click.json forge-of-heroes/QA/N1/arquebusier-derived-source.json forge-of-heroes/QA/N1/arquebusier-powder-weapon-boundary.json forge-of-heroes/QA/N1/arquebusier-two-preferences.json forge-of-heroes/QA/N1/arquebusier-granted-pdf-annex.json forge-of-heroes/progression/pdf-labels.json forge-of-heroes/QA/N1/arquebusier-grants-weapons.json forge-of-heroes/QA/N1/arquebusier-equipment-source.json forge-of-heroes/QA/N1/arquebusier-arbaletrier-source-audit.json forge-of-heroes/progression/official-pdf-engine.js forge-of-heroes/QA/N1/arquebusier-grants-armor.json forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-context-canonical.json forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/arquebusier-context-real-click.json forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json centre-synchronisation/forge-n1/focus.json centre-synchronisation/forge-n1/purs.json
           if ! git diff --cached --quiet; then
             git commit -m 'fix(forge): dons et bonus historiques calculés et conservés au clic [skip ci]'
             git restore --worktree .
@@ -136,3 +147,65 @@ jobs:
             done
             exit 1
           fi
+
+  choices-mobile:
+    needs: verify-publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer Playwright
+        run: |
+          npm install --prefix "$RUNNER_TEMP/foh-choices" playwright@1.55.0
+          echo "NODE_PATH=$RUNNER_TEMP/foh-choices/node_modules" >> "$GITHUB_ENV"
+      - name: Créer et rouvrir vingt personnages sur téléphone
+        env:
+          CHOICES_SHARD: ${{ matrix.shard }}
+          CHOICES_SHARDS: '4'
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/foh-choice-http.log 2>&1 &
+          export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_choices_click.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-arq-mobile-choice-${{ matrix.shard }}
+          path: forge-of-heroes/QA/N1/arquebusier-choices-shard-${{ matrix.shard }}.json
+  consolidate-choices:
+    needs: choices-mobile
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: forge-arq-mobile-choice-*
+          path: ${{ runner.temp }}/foh-choice-proofs
+      - name: Publier les preuves uniquement si les produits restent identiques
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_choices_merge.cjs "$RUNNER_TEMP/foh-choice-proofs"
+            git add forge-of-heroes/QA/N1/arquebusier-80-real-mobile-choices.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m 'test(forge): 80 créations mobiles peuples âges et choix vérifiés [skip ci]'
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
