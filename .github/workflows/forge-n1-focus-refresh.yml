@@ -37,11 +37,24 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add centre-synchronisation/forge-n1/focus.json
-          if ! git diff --cached --quiet; then
-            git commit -m "docs(cockpit): preuves actuelles Arquebusier sans faux 100 % [skip ci]"
-            git restore --worktree .
+          for attempt in 1 2 3 4 5; do
             git fetch origin main
-            git rebase origin/main
-            git push origin HEAD:main
-          fi
+            # Isolated CI checkout: recompute against the latest product and proofs.
+            git reset --hard origin/main
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_r2_gate.cjs
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_gear_gate.cjs
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_gate.cjs
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_derived_gate.cjs
+            node - <<'NODE'
+          const fs=require('node:fs'),cp=require('node:child_process'),file='centre-synchronisation/forge-n1/focus.json';
+          const before=cp.execFileSync('git',['show','HEAD:'+file],{encoding:'utf8'}),a=JSON.parse(before),b=JSON.parse(fs.readFileSync(file,'utf8'));
+          delete a.generatedAt;delete b.generatedAt;
+          if(JSON.stringify(a)===JSON.stringify(b))fs.writeFileSync(file,before);
+          NODE
+            git add centre-synchronisation/forge-n1/focus.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "docs(cockpit): preuves actuelles Arquebusier sans faux 100 % [skip ci]"
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
