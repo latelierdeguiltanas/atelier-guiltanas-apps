@@ -1,0 +1,43 @@
+{
+  "schema": "FOH_N1_ARQ_GRANTED_THROWER_REAL_CLICK",
+  "at": "2026-11-04T13:32:35.907Z",
+  "indexSha256": "1922b17e4dc614ec4ca235087d9a16abe78022532ad2ba8821daf40ed1c8563c",
+  "scope": "Deux créations vénérables Humain, variante lanceur accordée par Combattant aguerri, vrai clic tactile, sauvegarde et réouverture.",
+  "passed": 2,
+  "failed": 0,
+  "status": "PASS",
+  "cases": [
+    {
+      "variant": "Arquebusier",
+      "first": "mercenaire",
+      "second": "explosifs",
+      "status": "PASS",
+      "abilities": [],
+      "steps": [
+        "age-rank-mercenaire",
+        "age-rank-mercenaire",
+        "age-rank-explosifs",
+        "thrower-off-on-off-on",
+        "hero",
+        "save-reopen-choice-retained"
+      ],
+      "error": null
+    },
+    {
+      "variant": "Arbalétrier",
+      "first": "mercenaire",
+      "second": "pistolero",
+      "status": "PASS",
+      "abilities": [],
+      "steps": [
+        "age-rank-mercenaire",
+        "age-rank-mercenaire",
+        "age-rank-pistolero",
+        "thrower-off-on-off-on",
+        "hero",
+        "save-reopen-choice-retained"
+      ],
+      "error": null
+    }
+  ]
+}
