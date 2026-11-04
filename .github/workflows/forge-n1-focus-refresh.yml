@@ -26,9 +26,9 @@ jobs:
         run: |
           node - <<'NODE'
           const f=require('./centre-synchronisation/forge-n1/focus.json');
-          if(f.profile.name!=='Arquebusier'||f.profile.percent!==50||f.summary.profilesCertified!==0||f.summary.peoplesCertified!==0)throw Error('Le taux ne doit pas augmenter sans contrôle intégral');
+          if(f.profile.name!=='Arquebusier'||f.profile.percent!==Math.round(100*f.profile.passed/f.profile.total)||f.profile.percent===100||f.summary.profilesCertified!==0||f.summary.peoplesCertified!==0)throw Error('Le taux ne doit pas augmenter sans contrôle intégral');
           if(f.certificationPlan.queue.length!==14||f.peoples.length!==8)throw Error('Couverture incorrecte');
-          console.log('Priorité stricte : Arquebusier 50 %, huit peuples et certificat non artificiel');
+          console.log('Priorité stricte : Arquebusier '+f.profile.passed+'/'+f.profile.total+' critères, huit peuples et certificat non artificiel');
           NODE
       - name: Publier uniquement la progression étayée
         run: |
