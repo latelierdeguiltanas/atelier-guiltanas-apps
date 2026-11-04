@@ -500,6 +500,8 @@ async function refreshForgeAudit(){
  renderProjects();
  if(selected?.kind==='project'&&selected.id==='forge')openProject('forge');
 }
+async function refreshForgeUsage(){try{const r=await fetch('./forge-n1/progress.json',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const d=await r.json();forgeUsage=Array.isArray(d.profiles)?d:null}catch(e){forgeUsage=null}if(selected?.kind==='project'&&selected.id==='forge')openProject('forge')}
+function forgeOtherProfilesMarkup(){if(!forgeUsage)return '<p class="minihelp">Suivi des autres profils indisponible.</p>';const profiles=forgeUsage.profiles.filter(x=>x.key!=='arquebusier'&&x.label!=='Arquebusier');return '<section class="project-milestone-box"><h3>Autres profils N1 · '+profiles.length+'</h3><p class="minihelp">Même matrice officielle de 16 contrôles que l’Arquebusier. Progression des preuves documentées, non certification finale.</p>'+profiles.map(x=>'<details class="usage-profile"><summary><b>'+escapeHTML(x.label)+'</b><span class="usage-profile-meter"><span class="project-tile-track"><span style="width:'+x.percent+'%"></span></span><small>'+x.percent+' %</small></span></summary>'+x.slots.map(slot=>'<div class="project-milestone"><div class="project-milestone-title"><b>'+escapeHTML(slot.label)+'</b><span>'+(slot.status==='PASS'?'Validé':'À vérifier')+'</span></div>'+(slot.status!=='PASS'?'<p>'+escapeHTML(slot.remaining||'Preuve à compléter')+'</p>':'')+'</div>').join('')+'</details>').join('')+'</section>'}
 function forgeCurrentMarkup(){
  if(!forgeStatus)return '<p>'+escapeHTML(forgeStatusMessage)+'</p>';
  const data=forgeStatus.n1_dashboard,{done,total,phase}=forgeProgress();
@@ -542,6 +544,7 @@ function openProject(id){
  const next=(p.next_action||'La prochaine étape reste à confirmer.').slice(0,650);
  let content='<div class="project-drawer-head">'+projectIconMarkup(p)+'<div><div class="project-drawer-kicker">'+escapeHTML(p.category||'Projet')+'</div><strong>'+escapeHTML(short)+'</strong><small>'+escapeHTML(projectState(p))+'</small></div></div>';
  content+='<div class="project-hero-summary"><p>'+escapeHTML((p.summary||'Objectif à préciser.').slice(0,500))+'</p></div>';
+ if(p.id==='forge')content+=forgeOtherProfilesMarkup();
  if(p.id==='forge')content+='<p class="minihelp">Le suivi prioritaire des personnages N1 est juste au-dessus. Les anciennes campagnes de vérification restent consultables dans les archives plus bas.</p>';
  else content+='<div class="project-next-step"><small>PROCHAIN PAS</small><p>'+escapeHTML(next)+'</p></div>';
  if(p.repo==='atelier-guiltanas-apps'&&/^[a-z0-9/_-]+\/$/i.test(p.folder||'')&&p.publication==='en_ligne'){
@@ -585,7 +588,7 @@ async function loadRegistry(force=false){
   const d=await registryRequest(force?'list&force=1':'list');projectData=d.projects||[];projectScan=d.scan||null;
   const scan=projectScan;
   if(indicator)indicator.textContent='Registre Supabase à jour · '+projectData.length+' projets · GitHub public : '+(scan?.last_error?'contrôle impossible ('+scan.last_error+')':'contrôlé le '+time(scan?.last_github_at))+' · dépôts privés à suivre via connexion autorisée';
-  renderProjects();renderProjectAuditPulse();await Promise.all([loadChatInventory(),loadWorkRuns(),refreshForgeAudit()]);if(selected?.kind==='project'&&projectData.some(p=>p.id===selected.id))openProject(selected.id);
+  renderProjects();renderProjectAuditPulse();await Promise.all([loadChatInventory(),loadWorkRuns(),refreshForgeAudit(),refreshForgeUsage()]);if(selected?.kind==='project'&&projectData.some(p=>p.id===selected.id))openProject(selected.id);
   if(model){const label=$('#metrics .metric:nth-child(2) strong');if(label)label.textContent=String(projectData.length);const cap=$('#metrics .metric:nth-child(2) span');if(cap)cap.textContent='projets catalogués'}
  }catch(e){if(indicator)indicator.textContent='Registre indisponible : '+e.message}
 }
