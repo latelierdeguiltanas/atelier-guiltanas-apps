@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-04T14:24:09.180Z",
+  "generatedAt": "2026-11-04T21:37:11.916Z",
   "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
   "certificationPlan": {
     "policy": "UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100",
@@ -12,7 +12,7 @@
     "current": {
       "name": "Arquebusier",
       "position": 1,
-      "percent": 88,
+      "percent": 81,
       "certified": false
     },
     "next": {
@@ -25,7 +25,7 @@
         "name": "Arquebusier",
         "position": 1,
         "status": "EN_COURS",
-        "percent": 88,
+        "percent": 81,
         "certified": false
       },
       {
@@ -133,9 +133,9 @@
     "completed": false,
     "variantPrototypeReady": true,
     "variantIntegrated": true,
-    "passed": 14,
+    "passed": 13,
     "total": 16,
-    "percent": 88,
+    "percent": 81,
     "checks": [
       {
         "id": "paths",
@@ -224,8 +224,8 @@
       {
         "id": "pdf",
         "name": "Fiche officielle et annexes",
-        "status": "ACQUIS",
-        "detail": "28 exports sur le vrai modèle officiel : cinq voies et rangs R1–R3 des deux variantes, deux exporteurs, bonus de Doigts agiles actif/inactif selon l’armure. 4 368 widgets relus (valeurs et apparences), fiche et annexe inspectées visuellement. Quinze dons contrôlés dans 60 annexes, uniquement leurs rangs acquis et textes intégraux. Les exports propres aux peuples et historiques restent suivis séparément."
+        "status": "A_VERIFIER",
+        "detail": "Test réel Chrome et smartphone des exports des deux variantes : 4 PDF de 6 pages, nom et profil présents sur les deux premières pages, PDF sans champs étranger refusé. Empreinte du modèle COF2 reconnue en simulation ; restent le rendu sur le PDF officiel réel et la vérification exhaustive des champs, textes et annexes."
       },
       {
         "id": "click",
@@ -372,7 +372,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Tous les effets des cinq capacités de rang 3 ; Origines, métiers et historiques avancés"
+    "next": "Tous les effets des cinq capacités de rang 3 ; Origines, métiers et historiques avancés ; Fiche officielle et annexes"
   },
   "peoples": [
     {
