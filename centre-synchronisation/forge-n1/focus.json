@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-04T08:16:44.704Z",
+  "generatedAt": "2026-11-04T08:25:50.166Z",
   "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
   "certificationPlan": {
     "policy": "UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100",
@@ -12,7 +12,7 @@
     "current": {
       "name": "Arquebusier",
       "position": 1,
-      "percent": 56,
+      "percent": 44,
       "certified": false
     },
     "next": {
@@ -25,7 +25,7 @@
         "name": "Arquebusier",
         "position": 1,
         "status": "EN_COURS",
-        "percent": 56,
+        "percent": 44,
         "certified": false
       },
       {
@@ -132,10 +132,10 @@
     "priority": "EN_COURS",
     "completed": false,
     "variantPrototypeReady": true,
-    "variantIntegrated": true,
-    "passed": 9,
+    "variantIntegrated": false,
+    "passed": 7,
     "total": 16,
-    "percent": 56,
+    "percent": 44,
     "checks": [
       {
         "id": "paths",
@@ -146,8 +146,8 @@
       {
         "id": "pairs",
         "name": "Toutes les paires de voies légales",
-        "status": "ACQUIS",
-        "detail": "Les dix choix possibles de deux voies du profil, avec chacun des huit peuples et les cinq modalités d’âge N1, sont créés, validés et conservés après sauvegarde. Les dix couples de l’Arbalétrier sont aussi éprouvés."
+        "status": "A_VERIFIER",
+        "detail": "Les dix choix possibles de deux voies doivent fonctionner avec les équipements autorisés, y compris l’alternative Halfelin."
       },
       {
         "id": "r1",
@@ -188,8 +188,8 @@
       {
         "id": "r1effects",
         "name": "Tous les effets des cinq capacités de rang 1",
-        "status": "ACQUIS",
-        "detail": "Cinq capacités R1 calculées selon contexte dans l’interface réelle : mécanismes et armes de siège, grenaille en cône, Pilier de bar 1d4° et résistance non létale, initiative armée chargée, couvert, ainsi que l’exception poudre des hybrides. 55 cas oracle + quatre situations au clic et quatre hybrides réels validés, pour les deux produits."
+        "status": "A_VERIFIER",
+        "detail": "Compléter les preuves sur les 5 effets R1, les cas négatifs, le cas spécial poudre hybride et le vrai parcours au clic sur la version courante."
       },
       {
         "id": "r2effects",
@@ -207,7 +207,7 @@
         "id": "gear",
         "name": "Toutes les armes, armures et variante Arbalétrier",
         "status": "A_VERIFIER",
-        "detail": "Périmètre PROFIL PUR seulement : contrôler les interdictions de boucliers, le plafond chemise de mailles, les catégories d’armes et les paquetages, ainsi que la variante officielle Arbalétrier sans armes à poudre. Les 32 tests hybrides réussis restent hors de ce certificat."
+        "detail": "La variante Arbalétrier est prête dans une version d’essai : les cinq voies, huit peuples, âges, sauvegardes, +1 en attaque, critique amélioré et +1 aux dégâts avec les arbalètes ont été éprouvés. Elle n’est PAS encore intégrée à Forge : il reste l’installation, les choix visibles, l’export PDF et le contrôle au clic."
       },
       {
         "id": "history",
@@ -231,7 +231,7 @@
         "id": "click",
         "name": "Créer, sauvegarder et rouvrir au clic sur mobile",
         "status": "A_VERIFIER",
-        "detail": "20/20 parcours tactiles des dix paires Arquebusier et dix paires Arbalétrier passés : création, sauvegarde, reprise et fiche interactive. Les huit peuples et tous les choix d’âge du PROFIL PUR doivent encore être couverts au clic avant le gel du critère. Les hybrides sont exclus de cette campagne."
+        "detail": "Effectuer toutes les variantes utiles dans l’interface réelle et sur format téléphone."
       }
     ],
     "paths": [
@@ -372,7 +372,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Arbalétrier disponible : valider maintenant le PDF officiel, les effets conditionnels en combat, les historiques et les alternatives d’équipement."
+    "next": "Intégrer la variante Arbalétrier absente, puis achever les tirs spéciaux, les autres effets de rang, historiques, PDF et création mobile."
   },
   "peoples": [
     {
