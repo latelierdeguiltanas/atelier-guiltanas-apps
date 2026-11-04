@@ -1119,6 +1119,111 @@
           "notes": ""
         }
       ]
+    },
+    "guiltanas-install": {
+      "purpose": "Parcours à valider après identification de la source et de son périmètre exact",
+      "tests": [
+        {
+          "id": "guiltanas-install-U01",
+          "name": "Installer une application",
+          "scenario": "Ouvrir une application depuis Android, déclencher installation PWA et vérifier le raccourci créé",
+          "acceptance": "Exécuter le parcours sur la source de référence, contrôler le résultat et joindre une preuve datée.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": "Identifiant de rattachement au registre à confirmer"
+        },
+        {
+          "id": "guiltanas-install-U02",
+          "name": "Lancer depuis raccourci",
+          "scenario": "Lancer l'application depuis l'écran d'accueil et vérifier que la bonne page s'ouvre",
+          "acceptance": "Exécuter le parcours sur la source de référence, contrôler le résultat et joindre une preuve datée.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": "Identifiant de rattachement au registre à confirmer"
+        },
+        {
+          "id": "guiltanas-install-U03",
+          "name": "Mettre à jour sans casser",
+          "scenario": "Installer puis actualiser la PWA, vérifier que les données locales restent accessibles",
+          "acceptance": "Exécuter le parcours sur la source de référence, contrôler le résultat et joindre une preuve datée.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": "Identifiant de rattachement au registre à confirmer"
+        }
+      ]
+    },
+    "ecole-de-magie": {
+      "purpose": "Parcours à valider après identification de la source et de son périmètre exact",
+      "tests": [
+        {
+          "id": "ecole-de-magie-U01",
+          "name": "Ouvrir l'outil MJ",
+          "scenario": "Charger le fichier HTML de référence et accéder à l'écran principal",
+          "acceptance": "Exécuter le parcours sur la source de référence, contrôler le résultat et joindre une preuve datée.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": "Identifiant de rattachement au registre à confirmer"
+        },
+        {
+          "id": "ecole-de-magie-U02",
+          "name": "Préparer une séance",
+          "scenario": "Créer ou modifier un élément pédagogique/magique prévu par l'outil et retrouver la modification",
+          "acceptance": "Exécuter le parcours sur la source de référence, contrôler le résultat et joindre une preuve datée.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": "Identifiant de rattachement au registre à confirmer"
+        },
+        {
+          "id": "ecole-de-magie-U03",
+          "name": "Reprendre une séance",
+          "scenario": "Fermer et rouvrir le document, vérifier la persistance des éléments saisis",
+          "acceptance": "Exécuter le parcours sur la source de référence, contrôler le résultat et joindre une preuve datée.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": "Identifiant de rattachement au registre à confirmer"
+        }
+      ]
+    },
+    "outil-mj-modulaire": {
+      "purpose": "Parcours à valider après identification de la source et de son périmètre exact",
+      "tests": [
+        {
+          "id": "outil-mj-modulaire-U01",
+          "name": "Ouvrir le gestionnaire",
+          "scenario": "Charger le HTML source et afficher les modules disponibles",
+          "acceptance": "Exécuter le parcours sur la source de référence, contrôler le résultat et joindre une preuve datée.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": "Identifiant de rattachement au registre à confirmer"
+        },
+        {
+          "id": "outil-mj-modulaire-U02",
+          "name": "Configurer les modules",
+          "scenario": "Activer puis désactiver un module et constater les changements dans l'interface",
+          "acceptance": "Exécuter le parcours sur la source de référence, contrôler le résultat et joindre une preuve datée.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": "Identifiant de rattachement au registre à confirmer"
+        },
+        {
+          "id": "outil-mj-modulaire-U03",
+          "name": "Sauvegarder et reprendre",
+          "scenario": "Enregistrer la configuration, rouvrir l'outil et vérifier la restitution",
+          "acceptance": "Exécuter le parcours sur la source de référence, contrôler le résultat et joindre une preuve datée.",
+          "status": "not_run",
+          "evidence": [],
+          "verified_at": null,
+          "notes": "Identifiant de rattachement au registre à confirmer"
+        }
+      ]
     }
   }
 }
