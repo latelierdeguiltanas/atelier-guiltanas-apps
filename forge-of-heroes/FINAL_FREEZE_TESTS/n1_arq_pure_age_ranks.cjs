@@ -24,7 +24,12 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
  const {db,engine:E,html}=load(path.join(ROOT,file)),T=db.tables,paths=T.paths_class.filter(p=>p.classId===profile&&!p.additionalMagePath);
  if(paths.length!==5)throw Error('Missing five paths');
  const hash=s=>crypto.createHash('sha256').update(s).digest('hex');
- const embedded=id=>html.match(new RegExp('<script[^>]*id=["\\\']'+id+'["\\\'][^>]*>([\\\\s\\\\S]*?)<\\\\/script>'))?.[1];
+ const embedded=id=>{
+  const idx=html.indexOf('id="'+id+'"');
+  if(idx<0)return null;
+  const start=html.indexOf('>',idx)+1,end=html.indexOf('</script>',start);
+  return start>idx&&end>start?html.slice(start,end):null;
+ };
  const engineSource=embedded('FOH_ENGINE_BUNDLE'),dbSource=embedded('FOH_DB_JSON');
  if(!engineSource||!dbSource)throw Error('Embedded rule source unavailable');
  reports.products.push({file,htmlSha256:hash(html),engineSha256:hash(engineSource),dbSha256:hash(dbSource)});
