@@ -51,11 +51,21 @@
       "tag": "cannot-invent-r3-magazine",
       "status": "FAIL",
       "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n10 !== 5\n"
+    },
+    {
+      "tag": "n1-cannot-invent-r5-powder",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n6 !== 1\n"
+    },
+    {
+      "tag": "immaterial-only-preserves-reduction",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n"
     }
   ],
   "after": {
     "status": "PASS",
-    "passed": 71,
+    "passed": 73,
     "failed": 0
   }
 }

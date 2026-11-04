@@ -128,6 +128,8 @@ const crossbow=JSON.parse(JSON.stringify(repeating));
 crossbow.paths.forEach(p=>p.pathId=p.pathId.replace('class-arquebusier','class-arbaletrier'));
 crossbow.abilities.forEach(a=>{a.id=a.id.replace('class-arquebusier','class-arbaletrier');a.pathId=a.pathId.replace('class-arquebusier','class-arbaletrier');});
 const boundaryCases=[
+ ['n1-cannot-invent-r5-powder',()=>assert.equal(API.resolve(sample('poudre-puissante'),'poudre-puissante',{weaponKind:'powder',numberOfRank5ArquebusierPaths:5}).modifiers.weaponDamageBonus,1)],
+ ['immaterial-only-preserves-reduction',()=>{const r=API.resolve(sample('defaut-dans-la-cuirasse-a'),'defaut-dans-la-cuirasse-a',{preparedTargetLastRound:true,sameTarget:true,rangedAttack:true,targetAGI:2,targetImmaterial:true});assert.equal(r.modifiers.ignoreDamageResistance,true);assert.equal(r.modifiers.ignoreDamageReduction,false);}],
  ['arbaletrier-r3-magazine',()=>assert.equal(API.resolve(crossbow,'arme-a-repetition',{selectedRepeatingWeapon:true}).modifiers.capacity,6)],
  ['cannot-invent-r3-magazine',()=>assert.equal(API.resolve(mature,'arme-a-repetition',{selectedRepeatingWeapon:true,rankedThreeArquebusierPaths:5}).modifiers.capacity,5)],
  ['mature-magazine-without-r3',()=>assert.equal(API.resolve(mature,'arme-a-repetition',{selectedRepeatingWeapon:true}).modifiers.capacity,5)],

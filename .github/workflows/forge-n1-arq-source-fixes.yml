@@ -7,6 +7,8 @@ on:
       - 'forge-of-heroes/ENGINE/arquebusier_context_n1.js'
       - 'forge-of-heroes/ENGINE/arquebusier_context_ui_n1.js'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_summaries.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_grant_armor.cjs'
 permissions:
   contents: write
 concurrency:
@@ -27,10 +29,12 @@ jobs:
           echo "NODE_PATH=$RUNNER_TEMP/foh-source/node_modules" >> "$GITHUB_ENV"
       - name: Construire les deux produits et vérifier les règles corrigées
         run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_summaries.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pure_age_ranks.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_all_pairs_current.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_grant_armor.cjs
       - name: Vérifier les créations et capacités dans Chrome mobile
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/foh-source-http.log 2>&1 &
@@ -53,15 +57,33 @@ jobs:
             forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json
             forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json
             forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json
+            forge-of-heroes/QA/N1/arquebusier-grants-armor.json
       - name: Publier uniquement après réussite des calculs et clics
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-context-canonical.json forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/arquebusier-context-real-click.json forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json centre-synchronisation/forge-n1/focus.json centre-synchronisation/forge-n1/purs.json
+          git add forge-of-heroes/progression/official-pdf-engine.js forge-of-heroes/QA/N1/arquebusier-grants-armor.json forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-context-canonical.json forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/arquebusier-context-real-click.json forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json centre-synchronisation/forge-n1/focus.json centre-synchronisation/forge-n1/purs.json
           if ! git diff --cached --quiet; then
             git commit -m 'fix(forge): chargeurs acquis et contrôles contextuels vérifiés au clic [skip ci]'
             git restore --worktree .
-            git fetch origin main
-            git rebase origin/main
-            git push origin HEAD:main
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              if ! git rebase origin/main; then
+                # Only timestamp/evidence conflicts may use this run's tested reports.
+                # Never resolve a product or source conflict automatically.
+                mapfile -t conflicts < <(git diff --name-only --diff-filter=U)
+                for file in "${conflicts[@]}"; do
+                  case "$file" in
+                    forge-of-heroes/QA/N1/*.json|centre-synchronisation/forge-n1/*.json)
+                      git checkout --theirs -- "$file"
+                      git add -- "$file"
+                      ;;
+                    *) git rebase --abort; exit 1 ;;
+                  esac
+                done
+                GIT_EDITOR=true git rebase --continue
+              fi
+              if git push origin HEAD:main; then exit 0; fi
+            done
+            exit 1
           fi
