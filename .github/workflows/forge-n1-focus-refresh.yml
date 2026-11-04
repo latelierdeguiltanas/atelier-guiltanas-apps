@@ -22,7 +22,9 @@ jobs:
         with:
           node-version: '22'
       - name: Regénérer les 14 places et huit peuples sans faux 100 pour cent
-        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_r2_gate.cjs
       - name: Exiger l’ordre des profils et la réalité des preuves
         run: |
           node - <<'NODE'

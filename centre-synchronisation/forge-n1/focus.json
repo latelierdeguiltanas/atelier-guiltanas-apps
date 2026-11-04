@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-04T08:57:28.480Z",
+  "generatedAt": "2026-11-04T08:58:10.951Z",
   "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
   "certificationPlan": {
     "policy": "UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100",
@@ -12,7 +12,7 @@
     "current": {
       "name": "Arquebusier",
       "position": 1,
-      "percent": 56,
+      "percent": 63,
       "certified": false
     },
     "next": {
@@ -25,7 +25,7 @@
         "name": "Arquebusier",
         "position": 1,
         "status": "EN_COURS",
-        "percent": 56,
+        "percent": 63,
         "certified": false
       },
       {
@@ -133,9 +133,9 @@
     "completed": false,
     "variantPrototypeReady": true,
     "variantIntegrated": true,
-    "passed": 9,
+    "passed": 10,
     "total": 16,
-    "percent": 56,
+    "percent": 63,
     "checks": [
       {
         "id": "paths",
@@ -194,8 +194,8 @@
       {
         "id": "r2effects",
         "name": "Tous les effets des cinq capacités de rang 2",
-        "status": "A_VERIFIER",
-        "detail": "15 capacités R1–R3 contrôlées dans les deux bases, et chargeur 2+INT validé. Plusieurs rangs R2 restent des effets à interpréter en combat ; rechargement, Démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse non certifiés en exécution."
+        "status": "ACQUIS",
+        "detail": "Cinq capacités R2 contrôlées par oracles contextuels (cas applicables, absence de contexte et capacité non acquise) et cinq créations vénérables au clic sur la version courante. Chargeurs calculés depuis les rangs acquis, rechargement, charges/préparation de Démolition, NC/critique de Mort ou vif, cible/délai d’Ajuster le tir et préparation/DEF/RD de Défaut dans la cuirasse. Rangs et sauvegardes croisés aux huit peuples."
       },
       {
         "id": "r3effects",
@@ -231,7 +231,7 @@
         "id": "click",
         "name": "Créer, sauvegarder et rouvrir au clic sur mobile",
         "status": "A_VERIFIER",
-        "detail": "20/20 parcours tactiles des dix paires Arquebusier et dix paires Arbalétrier passés : création, sauvegarde, reprise et fiche interactive. Les huit peuples et tous les choix d’âge du PROFIL PUR doivent encore être couverts au clic avant le gel du critère. Les hybrides sont exclus de cette campagne."
+        "detail": "Effectuer toutes les variantes utiles dans l’interface réelle et sur format téléphone."
       }
     ],
     "paths": [
