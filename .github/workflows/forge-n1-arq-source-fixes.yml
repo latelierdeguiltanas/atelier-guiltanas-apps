@@ -1,0 +1,67 @@
+name: Forge N1 - corrections source et recette Arquebusier
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-arq-source-fixes.yml'
+      - 'forge-of-heroes/ENGINE/arquebusier_context_n1.js'
+      - 'forge-of-heroes/ENGINE/arquebusier_context_ui_n1.js'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs'
+permissions:
+  contents: write
+concurrency:
+  group: forge-n1-arq-source-fixes
+  cancel-in-progress: false
+jobs:
+  verify-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Installer les outils de recette tactile
+        run: |
+          npm install --prefix "$RUNNER_TEMP/foh-source" playwright@1.55.0
+          echo "NODE_PATH=$RUNNER_TEMP/foh-source/node_modules" >> "$GITHUB_ENV"
+      - name: Construire les deux produits et vérifier les règles corrigées
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs --write
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pure_age_ranks.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_all_pairs_current.cjs
+      - name: Vérifier les créations et capacités dans Chrome mobile
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/foh-source-http.log 2>&1 &
+          export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_twenty_real_mobile_clicks.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_live_click.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_venerable_context_click.cjs
+      - name: Actualiser le suivi sans déclarer de clôture non prouvée
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_15_mechanics_snapshot.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_pure_rule_ledger.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-arquebusier-correctifs-source
+          path: |
+            forge-of-heroes/QA/N1/arquebusier-context-*.json
+            forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json
+            forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json
+            forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json
+            forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json
+      - name: Publier uniquement après réussite des calculs et clics
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-context-canonical.json forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/arquebusier-context-real-click.json forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json centre-synchronisation/forge-n1/focus.json centre-synchronisation/forge-n1/purs.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'fix(forge): chargeurs acquis et contrôles contextuels vérifiés au clic [skip ci]'
+            git restore --worktree .
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi

@@ -12,7 +12,7 @@
 'use strict';
 const PAGES={mecanismes:62,'arme-a-repetition':62,'tir-de-barrage-l':62,'tir-de-grenaille-l':63,demolition:63,'poudre-puissante':63,'pilier-de-bar':64,'mort-ou-vif-l':64,'combattant-aguerri':64,'plus-vite-que-son-ombre':65,'ajuster-le-tir':65,'tir-double-l':65,'joli-coup':65,'defaut-dans-la-cuirasse-a':65,'tir-precis':65};
 const abilities=Object.keys(PAGES);
-const num=n=>Number.isFinite(Number(n))?Number(n):null;
+const num=n=>(typeof n==='number'||(typeof n==='string'&&n.trim()!==''))&&Number.isFinite(Number(n))?Number(n):null;
 const bool=x=>x===true;
 function abilityRow(character,slug){
  const rows=character?.abilities||character?.acquiredAbilities||[];
@@ -79,15 +79,16 @@ function solve(character,slug,c={}){
  }
  case 'arme-a-repetition':{
   if(c.action==='reload'&&bool(c.selectedRepeatingWeapon)){
-   success(o,'rechargement du chargeur');o.modifiers.limitedActionsPerProjectile=1;o.modifiers.projectiles=num(c.projectilesToReload)||1;
+   const projectiles=c.projectilesToReload===undefined?1:num(c.projectilesToReload);
+   if(!Number.isInteger(projectiles)||projectiles<1)return fail(o,'Nombre entier positif de projectiles à recharger requis');
+   success(o,'rechargement du chargeur');o.modifiers.limitedActionsPerProjectile=1;o.modifiers.projectiles=projectiles;
    o.modifiers.totalLimitedActions=o.modifiers.projectiles;
    return o;
   }
   if(!bool(c.selectedRepeatingWeapon))return fail(o,'Arme appartenant aux deux armes modifiées par cette capacité requise');
   const intel=num(character?.characteristics?.int??character?.caracs?.int??c.INT);
   if(intel===null)return fail(o,'INT définitive du personnage requise');
-  const r3=Number(c.rankedThreeArquebusierPaths);
-  const rank3=Number.isInteger(r3)&&r3>=0?r3:(character.paths||[]).filter(p=>String(p.pathId||'').includes('class-arquebusier')&&Number(p.rank)>=3).length;
+  const rank3=(character.paths||[]).filter(p=>/class-(arquebusier|arbaletrier):/.test(String(p.pathId||p.id||''))&&Number(p.rank)>=3).length;
   success(o,'capacité de chargeur');o.modifiers.capacity=2+intel+rank3;
   o.modifiers.limitedActionsPerProjectile=1;o.limits.push('Maximum deux armes à répétition modifiées');
   return o;
@@ -145,6 +146,7 @@ function solve(character,slug,c={}){
   o.modifiers.zoneWidthMeters=20;o.modifiers.attackTriggeredByMovement=true;
   o.choices=bool(c.attackHit)?['doubler les dommages','interrompre immédiatement le déplacement sans dommages']:[];
   o.modifiers.damageIfVictimChoosesDamage=bool(c.attackHit)?2:null;
+  if(bool(c.attackHit))o.modifiers.victimStopsTurnIfNoDamage=true;
   o.limits.push('Plusieurs cibles possibles uniquement tant qu’aucun rechargement n’est requis');
   return o;
  }
@@ -183,5 +185,5 @@ function solve(character,slug,c={}){
  }
  return o;
 }
-return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-1',sourcePages:PAGES,abilities,resolve:solve,isOwned:(character,slug)=>!!abilityRow(character,slug),ownedProfile});
+return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities,resolve:solve,isOwned:(character,slug)=>!!abilityRow(character,slug),ownedProfile});
 });

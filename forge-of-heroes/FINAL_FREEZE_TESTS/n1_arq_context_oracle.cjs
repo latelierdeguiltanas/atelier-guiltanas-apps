@@ -119,6 +119,25 @@ for(const [slug,rows]of Object.entries(expected)){
  try{assert.equal(missing.applies,false,'Unowned ability cannot apply');report.passed++;report.cases.push({tag:slug+'/unowned',status:'PASS'});}
  catch(e){report.failed++;report.cases.push({tag:slug+'/unowned',status:'FAIL',error:String(e)});}
 }
+// Source p.62: the chargeur scales with acquired rank-3 paths, never a UI example.
+const repeating=sample('arme-a-repetition');
+const mature=JSON.parse(JSON.stringify(repeating));
+mature.paths.forEach(p=>p.rank=2);
+for(const a of mature.abilities) if(a.rank>2) a.rank=2;
+const crossbow=JSON.parse(JSON.stringify(repeating));
+crossbow.paths.forEach(p=>p.pathId=p.pathId.replace('class-arquebusier','class-arbaletrier'));
+crossbow.abilities.forEach(a=>{a.id=a.id.replace('class-arquebusier','class-arbaletrier');a.pathId=a.pathId.replace('class-arquebusier','class-arbaletrier');});
+const boundaryCases=[
+ ['arbaletrier-r3-magazine',()=>assert.equal(API.resolve(crossbow,'arme-a-repetition',{selectedRepeatingWeapon:true}).modifiers.capacity,6)],
+ ['cannot-invent-r3-magazine',()=>assert.equal(API.resolve(mature,'arme-a-repetition',{selectedRepeatingWeapon:true,rankedThreeArquebusierPaths:5}).modifiers.capacity,5)],
+ ['mature-magazine-without-r3',()=>assert.equal(API.resolve(mature,'arme-a-repetition',{selectedRepeatingWeapon:true}).modifiers.capacity,5)],
+ ['empty-target-agi',()=>assert.equal(API.resolve(sample('defaut-dans-la-cuirasse-a'),'defaut-dans-la-cuirasse-a',{preparedTargetLastRound:true,sameTarget:true,rangedAttack:true,targetAGI:''}).applies,false)],
+ ['null-target-agi',()=>assert.equal(API.resolve(sample('defaut-dans-la-cuirasse-a'),'defaut-dans-la-cuirasse-a',{preparedTargetLastRound:true,sameTarget:true,rangedAttack:true,targetAGI:null}).applies,false)],
+ ...[-1,0,1.5].map(n=>['invalid-reload-'+n,()=>assert.equal(API.resolve(repeating,'arme-a-repetition',{action:'reload',selectedRepeatingWeapon:true,projectilesToReload:n}).applies,false)]),
+ ['barrage-ends-victim-turn',()=>assert.equal(API.resolve(sample('tir-de-barrage-l'),'tir-de-barrage-l',{weaponLoaded:true,rangedAttack:true,targetMovedInZoneBeforeNextTurn:true,attackHit:true}).modifiers.victimStopsTurnIfNoDamage,true)],
+ ['ui-magazine-does-not-invent-r3',()=>assert(!fs.readFileSync(path.join(root,'ENGINE/arquebusier_context_ui_n1.js'),'utf8').includes('rankedThreeArquebusierPaths:1'))]
+];
+for(const [tag,check] of boundaryCases){try{check();report.passed++;report.cases.push({tag,status:'PASS'});}catch(e){report.failed++;report.cases.push({tag,status:'FAIL',error:String(e)});}}
 report.all15=Object.keys(expected).every(x=>report.cases.some(y=>y.tag.startsWith(x+'/')&&y.status==='PASS'));
 report.status=report.failed===0&&report.all15?'PASS':'FAIL';
 fs.writeFileSync(path.join(root,'QA/N1/arquebusier-context-canonical.json'),JSON.stringify(report,null,2)+'\n');

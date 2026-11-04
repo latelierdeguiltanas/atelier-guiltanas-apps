@@ -1,0 +1,61 @@
+{
+  "source": "Livre de base COF2 pp.62 et 65",
+  "before": {
+    "passed": 62,
+    "failed": 7,
+    "failures": [
+      {
+        "tag": "empty-target-agi",
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n"
+      },
+      {
+        "tag": "null-target-agi",
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n"
+      },
+      {
+        "tag": "invalid-reload--1",
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n"
+      },
+      {
+        "tag": "invalid-reload-0",
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n"
+      },
+      {
+        "tag": "invalid-reload-1.5",
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n"
+      },
+      {
+        "tag": "barrage-ends-victim-turn",
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- true\n"
+      },
+      {
+        "tag": "ui-magazine-does-not-invent-r3",
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(!fs.readFileSync(path.join(root,'ENGINE/arquebusier_context_ui_n1.js'),'utf8').includes('rankedThreeArquebusierPaths:1'))\n"
+      }
+    ]
+  },
+  "additionalBefore": [
+    {
+      "tag": "arbaletrier-r3-magazine",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n5 !== 6\n"
+    },
+    {
+      "tag": "cannot-invent-r3-magazine",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n10 !== 5\n"
+    }
+  ],
+  "after": {
+    "status": "PASS",
+    "passed": 71,
+    "failed": 0
+  }
+}
