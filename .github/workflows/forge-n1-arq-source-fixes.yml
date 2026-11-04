@@ -179,6 +179,7 @@ jobs:
         if: always()
         with:
           name: forge-arq-mobile-choice-${{ matrix.shard }}
+          overwrite: true
           path: forge-of-heroes/QA/N1/arquebusier-choices-shard-${{ matrix.shard }}.json
   consolidate-choices:
     needs: choices-mobile
@@ -203,6 +204,11 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_choices_merge.cjs "$RUNNER_TEMP/foh-choice-proofs"
+            if test -f forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_click_gate.cjs; then
+              node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+              node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_click_gate.cjs
+              git add centre-synchronisation/forge-n1/focus.json
+            fi
             git add forge-of-heroes/QA/N1/arquebusier-80-real-mobile-choices.json
             if git diff --cached --quiet; then exit 0; fi
             git commit -m 'test(forge): 80 créations mobiles peuples âges et choix vérifiés [skip ci]'

@@ -47,6 +47,10 @@ jobs:
             node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_gate.cjs
             node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_derived_gate.cjs
             node - <<'NODE'
+          const cp=require('node:child_process'),f=require('./centre-synchronisation/forge-n1/focus.json');
+          if(f.profile.checks.find(c=>c.id==='click')?.status==='ACQUIS')cp.execFileSync(process.execPath,['forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_click_gate.cjs'],{stdio:'inherit'});
+          NODE
+            node - <<'NODE'
           const fs=require('node:fs'),cp=require('node:child_process'),file='centre-synchronisation/forge-n1/focus.json';
           const before=cp.execFileSync('git',['show','HEAD:'+file],{encoding:'utf8'}),a=JSON.parse(before),b=JSON.parse(fs.readFileSync(file,'utf8'));
           delete a.generatedAt;delete b.generatedAt;

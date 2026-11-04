@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-04T14:08:08.711Z",
+  "generatedAt": "2026-11-04T14:20:32.594Z",
   "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
   "certificationPlan": {
     "policy": "UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100",
@@ -12,7 +12,7 @@
     "current": {
       "name": "Arquebusier",
       "position": 1,
-      "percent": 81,
+      "percent": 88,
       "certified": false
     },
     "next": {
@@ -25,7 +25,7 @@
         "name": "Arquebusier",
         "position": 1,
         "status": "EN_COURS",
-        "percent": 81,
+        "percent": 88,
         "certified": false
       },
       {
@@ -133,9 +133,9 @@
     "completed": false,
     "variantPrototypeReady": true,
     "variantIntegrated": true,
-    "passed": 13,
+    "passed": 14,
     "total": 16,
-    "percent": 81,
+    "percent": 88,
     "checks": [
       {
         "id": "paths",
@@ -230,8 +230,8 @@
       {
         "id": "click",
         "name": "Créer, sauvegarder et rouvrir au clic sur mobile",
-        "status": "A_VERIFIER",
-        "detail": "20/20 parcours tactiles des dix paires Arquebusier et dix paires Arbalétrier passés : création, sauvegarde, reprise et fiche interactive. Les huit peuples et tous les choix d’âge du PROFIL PUR doivent encore être couverts au clic avant le gel du critère. Les hybrides sont exclus de cette campagne."
+        "status": "ACQUIS",
+        "detail": "80 créations tactiles des huit peuples × cinq modalités d’âge × deux variantes : jeune, très jeune PC/DR, mûr et vénérable. Fiches, valeurs et attaques identiques après sauvegarde/rechargement/réouverture. Quinze dons de Combattant aguerri et cinq catégories de prédilection sélectionnés dans chaque variante. Complète les vingt paires, les cinq voies vénérables et les situations contextuelles déjà vérifiées au clic."
       }
     ],
     "paths": [
@@ -372,7 +372,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Tous les effets des cinq capacités de rang 3 ; Origines, métiers et historiques avancés ; Créer, sauvegarder et rouvrir au clic sur mobile"
+    "next": "Tous les effets des cinq capacités de rang 3 ; Origines, métiers et historiques avancés"
   },
   "peoples": [
     {

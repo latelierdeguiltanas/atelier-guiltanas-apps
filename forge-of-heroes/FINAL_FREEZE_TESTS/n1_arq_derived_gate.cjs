@@ -6,6 +6,8 @@ function score(change){let focus;const mock={...fs,readFileSync(file,...args){co
 // Only run the positive assertion on a fully current successful dataset.
 const original=score(()=>{});assert.equal(original,'ACQUIS','Run after the source-bound age, oracle and five mobile reports');
 const mutations=[
+ ['stale-thrower',(p,r)=>{if(p.endsWith('/arquebusier-granted-thrower.json'))r.products[0].sha256='obsolete';}],
+ ['failed-thrower',(p,r)=>{if(p.endsWith('/arquebusier-granted-thrower.json'))r.failed=1;}],
  ['stale-derived',(p,r)=>{if(p.endsWith('/arquebusier-derived-source.json'))r.products[0].sha256='obsolete';}],
  ['partial-derived',(p,r)=>{if(p.endsWith('/arquebusier-derived-source.json'))r.status='PARTIAL_DIAGNOSTIC';}],
  ['missing-people',(p,r)=>{if(p.endsWith('/arquebusier-derived-source.json'))delete r.perPeople.humain;}],
@@ -15,4 +17,4 @@ const mutations=[
  ['failed-preferences',(p,r)=>{if(p.endsWith('/arquebusier-two-preferences.json'))r.failed=1;}]
 ];
 for(const[name,change]of mutations)assert.equal(score(change),'A_VERIFIER',name+' must reopen derived');
-console.log('PASS current derived certificate and seven anti-false-green mutations');
+console.log('PASS current derived certificate and nine anti-false-green mutations');
