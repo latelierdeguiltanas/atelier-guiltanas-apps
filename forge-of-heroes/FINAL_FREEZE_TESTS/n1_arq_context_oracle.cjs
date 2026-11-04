@@ -96,6 +96,16 @@ for(const [slug,rows]of Object.entries(expected)){
   try{assert.equal(empty.applies,false,'Missing context must not trigger '+slug);report.passed++;report.cases.push({tag:slug+'/no-context',status:'PASS'});}
   catch(e){report.failed++;report.cases.push({tag:slug+'/no-context',status:'FAIL',error:String(e),actual:empty});}
  }
+ if(slug==='defaut-dans-la-cuirasse-a'){
+  for(const [name,ctx] of [
+   ['mass-combat-r5-not-available-at-n1',{preparedTargetThisRoundByMassCombat:true,sameTarget:true,rangedAttack:true,targetAGI:2}],
+   ['mass-combat-r5-still-not-available-with-fake-used-action',{preparedTargetThisRoundByMassCombat:true,bonusAttackFromMassCombatUsed:true,sameTarget:true,rangedAttack:true,targetAGI:2}],
+   ['prepared-on-previous-round-but-wrong-target',{preparedTargetLastRound:true,sameTarget:false,rangedAttack:true,targetAGI:2}]
+  ]){
+   try{assert.equal(API.resolve(character,slug,ctx).applies,false,'R5 can never be used by N1: '+name);report.passed++;report.cases.push({tag:slug+'/'+name,status:'PASS'});}
+   catch(e){report.failed++;report.cases.push({tag:slug+'/'+name,status:'FAIL',error:String(e)});}
+  }
+ }
  if(slug==='tir-de-barrage-l'){
   for(const [name,ctx] of [
    ['outside-facing-zone',{weaponLoaded:true,rangedAttack:true,targetMovedInZoneBeforeNextTurn:true,targetWithinFacingZone:false}],
