@@ -3,7 +3,6 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - '.github/workflows/forge-n1-arq-source-fixes.yml'
       - 'forge-of-heroes/ENGINE/arquebusier_context_n1.js'
       - 'forge-of-heroes/ENGINE/arquebusier_context_ui_n1.js'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs'
@@ -39,11 +38,11 @@ jobs:
         run: |
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_powderless_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_doigts_agiles_knives_fix.cjs --write
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_equipment_oracle.cjs
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_arbaletrier_audit.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_granted_pdf_annex_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_summaries.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs --write
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_equipment_oracle.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_arbaletrier_audit.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pure_age_ranks.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_all_pairs_current.cjs
