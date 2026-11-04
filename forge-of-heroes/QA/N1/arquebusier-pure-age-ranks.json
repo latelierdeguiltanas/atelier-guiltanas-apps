@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_ARQUEBUSIER_PURE_AGE_RANK",
-  "timestamp": "2026-11-04T08:19:26.997Z",
+  "timestamp": "2026-11-04T08:25:01.527Z",
   "scope": "14? No: only Arquebusier pure × 8 official peoples × five different first paths × all ages (very young PC/DR, young, mature, venerable), both product engines. Validates racial and age characteristics against book rules, permanent PV/DEF/INIT under equip, existence of each accessible rank, local save/reopen. Contextual spells/attacks, historical choices, Arbalétrier alternative and PDF are NOT validated.",
   "source": {
     "book": "COF2 Livre de base imprimé pp.62–65; Règles avancées p.153 (catégories d’âge)",
@@ -35,7 +35,7 @@
       "venerable": 3
     }
   },
-  "sourceCommit": "91030328d053ed9eefea64d20ef47da89d06ca31",
+  "sourceCommit": "3001adf0a8dc8d56bc1b67ba08f7fb81407aff07",
   "expected": 400,
   "cases": 400,
   "pass": 400,
@@ -137,11 +137,15 @@
   "products": [
     {
       "file": "index.html",
-      "htmlSha256": "3b5c0ec907bd27a3be8ee3077c2f7f43daecf14f6505f22f7deba32f072a2700"
+      "htmlSha256": "3b5c0ec907bd27a3be8ee3077c2f7f43daecf14f6505f22f7deba32f072a2700",
+      "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
+      "dbSha256": "1a361946d09c1a0ec51ace1aa3f87873fef12199990c69c07fcd1a10765ce081"
     },
     {
       "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "htmlSha256": "fcfab7fc7b3d5486c4fa7d6c2d451f824427d246877211341c643274a549bec9"
+      "htmlSha256": "fcfab7fc7b3d5486c4fa7d6c2d451f824427d246877211341c643274a549bec9",
+      "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
+      "dbSha256": "1a361946d09c1a0ec51ace1aa3f87873fef12199990c69c07fcd1a10765ce081"
     }
   ],
   "samples": [
