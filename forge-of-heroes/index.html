@@ -2527,7 +2527,15 @@ function solve(character,slug,c={}){
   success(o,'prochaine attaque à distance après réglage');o.modifiers.nextRangedAttackBonus=5;return o;
  }
  case 'defaut-dans-la-cuirasse-a':{
-  if(!bool(c.preparedTargetLastRound)&&!bool(c.preparedTargetThisRoundByMassCombat))return fail(o,'Action d’attaque de préparation au round précédent, ou exception Combat de masse');
+  // Livre de base p.65 : l'exception dans le même round exige réellement
+  // Combat de masse (Mercenaire R5) et son action d'attaque additionnelle.
+  // Ce rang 5 n'est pas disponible à la création d'un personnage N1.
+  if(bool(c.preparedTargetThisRoundByMassCombat)&&!bool(c.preparedTargetLastRound)){
+   const combatDeMasse=(character.abilities||character.acquiredAbilities||[]).find(x=>String(x.id||'').startsWith('ability:combat-de-masse:')&&Number(x.rank||5)>=5);
+   if(!combatDeMasse)return fail(o,'Combat de masse de rang 5 non acquis : impossible d’utiliser son exception au N1');
+   if(!bool(c.bonusAttackFromMassCombatUsed))return fail(o,'L’action d’attaque supplémentaire de Combat de masse doit avoir été utilisée pour préparer la cible');
+  }
+  if(!bool(c.preparedTargetLastRound)&&!bool(c.preparedTargetThisRoundByMassCombat))return fail(o,'Action d’attaque de préparation au round précédent requise');
   if(!bool(c.sameTarget)||!ranged)return fail(o,'Tirs à distance sur la cible préparée requis');
   const agi=num(c.targetAGI);if(agi===null)return fail(o,'AGI de la cible requise');
   success(o,'tir contre la faiblesse ciblée');o.modifiers.targetDEF=10+agi;
