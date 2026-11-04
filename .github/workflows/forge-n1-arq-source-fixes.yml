@@ -14,6 +14,11 @@ on:
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_grant_weapons.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_granted_pdf_annex_fix.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_granted_pdf_annex.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_powder_category_fix.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_preferences_fix.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_powder_weapon_oracle.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_two_preferences_oracle.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_derived_source_oracle.cjs'
 permissions:
   contents: write
 concurrency:
@@ -22,7 +27,7 @@ concurrency:
 jobs:
   verify-publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
         with:
@@ -40,7 +45,12 @@ jobs:
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_doigts_agiles_knives_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_granted_pdf_annex_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_summaries.cjs --write
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_powder_category_fix.cjs --write
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_preferences_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs --write
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_powder_weapon_oracle.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_two_preferences_oracle.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_derived_source_oracle.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_equipment_oracle.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_arbaletrier_audit.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pure_age_ranks.cjs
@@ -64,11 +74,15 @@ jobs:
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_r2_gate.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_gear_gate.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_gate.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_derived_gate.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: forge-arquebusier-correctifs-source
           path: |
+            forge-of-heroes/QA/N1/arquebusier-derived-source.json
+            forge-of-heroes/QA/N1/arquebusier-powder-weapon-boundary.json
+            forge-of-heroes/QA/N1/arquebusier-two-preferences.json
             forge-of-heroes/QA/N1/arquebusier-context-*.json
             forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json
             forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json
@@ -83,9 +97,9 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add forge-of-heroes/QA/N1/arquebusier-granted-pdf-annex.json forge-of-heroes/progression/pdf-labels.json forge-of-heroes/QA/N1/arquebusier-grants-weapons.json forge-of-heroes/QA/N1/arquebusier-equipment-source.json forge-of-heroes/QA/N1/arquebusier-arbaletrier-source-audit.json forge-of-heroes/progression/official-pdf-engine.js forge-of-heroes/QA/N1/arquebusier-grants-armor.json forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-context-canonical.json forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/arquebusier-context-real-click.json forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json centre-synchronisation/forge-n1/focus.json centre-synchronisation/forge-n1/purs.json
+          git add forge-of-heroes/QA/N1/arquebusier-derived-source.json forge-of-heroes/QA/N1/arquebusier-powder-weapon-boundary.json forge-of-heroes/QA/N1/arquebusier-two-preferences.json forge-of-heroes/QA/N1/arquebusier-granted-pdf-annex.json forge-of-heroes/progression/pdf-labels.json forge-of-heroes/QA/N1/arquebusier-grants-weapons.json forge-of-heroes/QA/N1/arquebusier-equipment-source.json forge-of-heroes/QA/N1/arquebusier-arbaletrier-source-audit.json forge-of-heroes/progression/official-pdf-engine.js forge-of-heroes/QA/N1/arquebusier-grants-armor.json forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-context-canonical.json forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/arquebusier-context-real-click.json forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json centre-synchronisation/forge-n1/focus.json centre-synchronisation/forge-n1/purs.json
           if ! git diff --cached --quiet; then
-            git commit -m 'fix(forge): chargeurs acquis et contrôles contextuels vérifiés au clic [skip ci]'
+            git commit -m 'fix(forge): poudre et doubles prédilections vérifiées au clic [skip ci]'
             git restore --worktree .
             for attempt in 1 2 3 4 5; do
               git fetch origin main
