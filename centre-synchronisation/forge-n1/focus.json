@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-04T08:28:25.970Z",
+  "generatedAt": "2026-11-04T08:29:53.214Z",
   "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
   "certificationPlan": {
     "policy": "UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100",
@@ -12,7 +12,7 @@
     "current": {
       "name": "Arquebusier",
       "position": 1,
-      "percent": 50,
+      "percent": 56,
       "certified": false
     },
     "next": {
@@ -25,7 +25,7 @@
         "name": "Arquebusier",
         "position": 1,
         "status": "EN_COURS",
-        "percent": 50,
+        "percent": 56,
         "certified": false
       },
       {
@@ -133,9 +133,9 @@
     "completed": false,
     "variantPrototypeReady": true,
     "variantIntegrated": true,
-    "passed": 8,
+    "passed": 9,
     "total": 16,
-    "percent": 50,
+    "percent": 56,
     "checks": [
       {
         "id": "paths",
@@ -188,8 +188,8 @@
       {
         "id": "r1effects",
         "name": "Tous les effets des cinq capacités de rang 1",
-        "status": "A_VERIFIER",
-        "detail": "Compléter les preuves sur les 5 effets R1, les cas négatifs, le vrai parcours au clic sur la version courante ; aucun test hybride requis."
+        "status": "ACQUIS",
+        "detail": "Cinq capacités R1 calculées selon contexte dans l’interface réelle : mécanismes et armes de siège, grenaille en cône, Pilier de bar 1d4° et résistance non létale, initiative armée chargée, couvert, sans faire intervenir les hybrides. Plus de 60 cas oracle + quatre situations réelles au clic, pour les deux produits."
       },
       {
         "id": "r2effects",
