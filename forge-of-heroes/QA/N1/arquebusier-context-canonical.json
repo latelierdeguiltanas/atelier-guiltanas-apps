@@ -1,16 +1,16 @@
 {
   "schema": "FOH_N1_ARQ_CONTEXT_INDEPENDENT_TEST",
-  "at": "2026-11-04T08:19:45.663Z",
-  "engineVersion": "FOH-ARQ-CONTEXT-N1-1",
+  "at": "2026-11-04T08:43:32.669Z",
+  "engineVersion": "FOH-ARQ-CONTEXT-N1-2",
   "sourceBook": "Chroniques Oubliées Fantasy 2e ed. Livre de base p.62-65",
   "inputSha256": [
     {
       "file": "index.html",
-      "sha256": "3b5c0ec907bd27a3be8ee3077c2f7f43daecf14f6505f22f7deba32f072a2700"
+      "sha256": "d80964b5c465483a291335c1c68bbbe5c3a306ab849b7183abae031ed4910b15"
     },
     {
       "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "sha256": "fcfab7fc7b3d5486c4fa7d6c2d451f824427d246877211341c643274a549bec9"
+      "sha256": "20a13715e5ada5103dd9fe7d2ef6996a137b6d13113bea282ff4af953246a069"
     }
   ],
   "cases": [
@@ -359,10 +359,50 @@
     {
       "tag": "tir-precis/unowned",
       "status": "PASS"
+    },
+    {
+      "tag": "arbaletrier-r3-magazine",
+      "status": "PASS"
+    },
+    {
+      "tag": "cannot-invent-r3-magazine",
+      "status": "PASS"
+    },
+    {
+      "tag": "mature-magazine-without-r3",
+      "status": "PASS"
+    },
+    {
+      "tag": "empty-target-agi",
+      "status": "PASS"
+    },
+    {
+      "tag": "null-target-agi",
+      "status": "PASS"
+    },
+    {
+      "tag": "invalid-reload--1",
+      "status": "PASS"
+    },
+    {
+      "tag": "invalid-reload-0",
+      "status": "PASS"
+    },
+    {
+      "tag": "invalid-reload-1.5",
+      "status": "PASS"
+    },
+    {
+      "tag": "barrage-ends-victim-turn",
+      "status": "PASS"
+    },
+    {
+      "tag": "ui-magazine-does-not-invent-r3",
+      "status": "PASS"
     }
   ],
   "status": "PASS",
-  "passed": 61,
+  "passed": 71,
   "failed": 0,
   "all15": true
 }
