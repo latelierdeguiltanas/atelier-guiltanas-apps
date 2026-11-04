@@ -3,6 +3,11 @@
 > Point d'entrée unique pour reprendre le projet sans recharger tout l'historique des chats.
 > Source de vérité : GitHub, branche `main`.
 
+## Accès MJ — correction du 4 novembre 2026
+
+Portail 0804 et accès serveur étaient distincts, sans indication suffisante. Le portail affiche désormais le statut serveur et permet de copier son lien privé pour un autre appareil. La validation serveur ouvre le portail ; aucune clé ne peut être tirée du simple code 0804. Gestionnaire : connexion automatique avec jeton existant, reprise à la réception d’un changement de clé d’un autre onglet et au retour sur la page. Aucune publication automatique d’un combat. Une clé entrante MJ est mémorisée seulement après validation et ne remplace pas une clé valide en cas d’échec. L’accès reste commun aux services selon l’architecture existante campaign_admin_tokens.
+Un lien de secours MJ supplémentaire a été délivré en conversation privée pour rétablir le PC, sans révoquer ni modifier les jetons existants. Aucun secret dans GitHub ou dans ce document. Contrôle HTTP authentifié des services Nespresso avant remise du lien. Tests mj-access.cjs et interface-connections.cjs : validation, absence de clé, préservation, capture et partage.
+
 ## Vérification de reprise — 3 novembre 2026
 
 - Séance prévue jeudi 5 novembre. Frise : bleu en combat, doré au tour du joueur (scrutation 3 s), violet intérieur si effets actifs ; les deux halos restent simultanément visibles. Effets = conditions du gestionnaire + rappels de buffs saisis dans « Associer les combattants ». Pas d’automatisation de règles D&D ajoutée.
