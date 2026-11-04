@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_ARQ_CONTEXT_INDEPENDENT_TEST",
-  "at": "2026-11-03T12:14:05.183Z",
+  "at": "2026-11-04T08:18:53.660Z",
   "engineVersion": "FOH-ARQ-CONTEXT-N1-1",
   "sourceBook": "Chroniques Oubliées Fantasy 2e ed. Livre de base p.62-65",
   "inputSha256": [
@@ -330,6 +330,18 @@
       "status": "PASS"
     },
     {
+      "tag": "defaut-dans-la-cuirasse-a/mass-combat-r5-not-available-at-n1",
+      "status": "PASS"
+    },
+    {
+      "tag": "defaut-dans-la-cuirasse-a/mass-combat-r5-still-not-available-with-fake-used-action",
+      "status": "PASS"
+    },
+    {
+      "tag": "defaut-dans-la-cuirasse-a/prepared-on-previous-round-but-wrong-target",
+      "status": "PASS"
+    },
+    {
       "tag": "defaut-dans-la-cuirasse-a/unowned",
       "status": "PASS"
     },
@@ -350,7 +362,7 @@
     }
   ],
   "status": "PASS",
-  "passed": 58,
+  "passed": 61,
   "failed": 0,
   "all15": true
 }
