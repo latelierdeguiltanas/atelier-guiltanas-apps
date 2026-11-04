@@ -2540,7 +2540,7 @@ function solve(character,slug,c={}){
   if(!bool(c.sameTarget)||!ranged)return fail(o,'Tirs à distance sur la cible préparée requis');
   const agi=num(c.targetAGI);if(agi===null)return fail(o,'AGI de la cible requise');
   success(o,'tir contre la faiblesse ciblée');o.modifiers.targetDEF=10+agi;
-  o.modifiers.ignoreDamageResistance=!bool(c.targetImmaterial);
+  o.modifiers.ignoreDamageResistance=true;
   o.modifiers.ignoreDamageReduction=!bool(c.targetImmaterial);
   return o;
  }
@@ -2561,7 +2561,7 @@ function solve(character,slug,c={}){
   if(kind!=='powder')return fail(o,'Arme à poudre requise');
   success(o,'préparation de poudre puissante');
   o.modifiers.weaponRangeBonusMeters=10;
-  o.modifiers.weaponDamageBonus=1+Number(c.numberOfRank5ArquebusierPaths||0);
+  o.modifiers.weaponDamageBonus=1+(character.paths||[]).filter(p=>String(p.pathId||p.id||'').includes('class-arquebusier:')&&Number(p.rank)>=5).length;
   o.modifiers.projectileMagical=true;
   o.notes.push('Ces bonus sont normalement déjà compris dans les attaques canoniques : ne pas les additionner deux fois');
   return o;
