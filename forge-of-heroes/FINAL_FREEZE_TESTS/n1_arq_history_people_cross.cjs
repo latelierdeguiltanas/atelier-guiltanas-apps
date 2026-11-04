@@ -30,6 +30,7 @@ for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTE
     if(c.id==='expertStat')bag[c.id]='for';
     else if(c.id==='preferredWeaponCategory'){bag[c.id]='swords';s.profileChoices[c.id]='swords'}
     else if(c.type==='boolean')bag[c.id]??=false;
+    else if(c.type==='enum_multi')bag[c.id]??=(c.id==='scholarLanguages'?c.options.filter(o=>o.id!=='argotien').slice(0,c.max):c.options.slice(0,c.min||1)).map(o=>o.id);
     else if(c.type==='entity')bag[c.id]??={type:'animal',species:'chat',name:'Historique QA'};
     else if(c.type==='weapon_multi')bag[c.id]??=(c.options||[]).slice(0,Math.max(1,c.min||1)).map(o=>o.id);
     else if(c.options?.length)bag[c.id]??=c.options[0].id;

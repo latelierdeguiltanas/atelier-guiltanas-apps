@@ -37,6 +37,7 @@ for (const geo of histories.filter(h => h.category === 'geographic')) {
         for (const choice of engine.getPersistentChoicesForAbility(state, ability.id)) {
           const values = state.abilityChoices[ability.id] ||= {};
           if (choice.type === 'boolean') values[choice.id] = false;
+          else if (choice.type === 'enum_multi') values[choice.id]=(choice.id==='scholarLanguages'?choice.options.filter(o=>o.id!=='argotien').slice(0,choice.max):choice.options.slice(0,choice.min||1)).map(o=>o.id);
           else if (choice.type === 'entity') values[choice.id] = {type:'animal', species:'chat', name:'Témoin'};
           else if (choice.options?.length) values[choice.id] = choice.options[0].id;
         }
