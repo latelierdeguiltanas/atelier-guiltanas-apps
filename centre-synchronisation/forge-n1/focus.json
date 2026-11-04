@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-04T08:25:50.166Z",
+  "generatedAt": "2026-11-04T08:28:21.715Z",
   "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
   "certificationPlan": {
     "policy": "UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100",
@@ -12,7 +12,7 @@
     "current": {
       "name": "Arquebusier",
       "position": 1,
-      "percent": 44,
+      "percent": 50,
       "certified": false
     },
     "next": {
@@ -25,7 +25,7 @@
         "name": "Arquebusier",
         "position": 1,
         "status": "EN_COURS",
-        "percent": 44,
+        "percent": 50,
         "certified": false
       },
       {
@@ -132,10 +132,10 @@
     "priority": "EN_COURS",
     "completed": false,
     "variantPrototypeReady": true,
-    "variantIntegrated": false,
-    "passed": 7,
+    "variantIntegrated": true,
+    "passed": 8,
     "total": 16,
-    "percent": 44,
+    "percent": 50,
     "checks": [
       {
         "id": "paths",
@@ -146,8 +146,8 @@
       {
         "id": "pairs",
         "name": "Toutes les paires de voies légales",
-        "status": "A_VERIFIER",
-        "detail": "Les dix choix possibles de deux voies doivent fonctionner avec les équipements autorisés, y compris l’alternative Halfelin."
+        "status": "ACQUIS",
+        "detail": "Les dix choix possibles de deux voies du profil, avec chacun des huit peuples et les cinq modalités d’âge N1, sont créés, validés et conservés après sauvegarde. Les dix couples de l’Arbalétrier sont aussi éprouvés."
       },
       {
         "id": "r1",
@@ -189,7 +189,7 @@
         "id": "r1effects",
         "name": "Tous les effets des cinq capacités de rang 1",
         "status": "A_VERIFIER",
-        "detail": "Compléter les preuves sur les 5 effets R1, les cas négatifs, le cas spécial poudre hybride et le vrai parcours au clic sur la version courante."
+        "detail": "Compléter les preuves sur les 5 effets R1, les cas négatifs, le vrai parcours au clic sur la version courante ; aucun test hybride requis."
       },
       {
         "id": "r2effects",
@@ -207,7 +207,7 @@
         "id": "gear",
         "name": "Toutes les armes, armures et variante Arbalétrier",
         "status": "A_VERIFIER",
-        "detail": "La variante Arbalétrier est prête dans une version d’essai : les cinq voies, huit peuples, âges, sauvegardes, +1 en attaque, critique amélioré et +1 aux dégâts avec les arbalètes ont été éprouvés. Elle n’est PAS encore intégrée à Forge : il reste l’installation, les choix visibles, l’export PDF et le contrôle au clic."
+        "detail": "La variante officielle Arbalétrier est maintenant proposée dans Forge : cinq voies légales, arbalètes, rangs 1 à 3 et sauvegardes validés au clic sur mobile. Restent à valider les contraintes complètes d’équipement et tous les effets conditionnels, ainsi que la fiche officielle PDF et ses annexes."
       },
       {
         "id": "history",
@@ -372,7 +372,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Intégrer la variante Arbalétrier absente, puis achever les tirs spéciaux, les autres effets de rang, historiques, PDF et création mobile."
+    "next": "Arbalétrier disponible : valider maintenant le PDF officiel, les effets conditionnels en combat, les historiques et les alternatives d’équipement."
   },
   "peoples": [
     {
