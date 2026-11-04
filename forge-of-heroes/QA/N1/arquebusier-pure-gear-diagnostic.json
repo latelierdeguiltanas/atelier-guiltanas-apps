@@ -1,0 +1,1098 @@
+{
+  "schema": "FOH_N1_ARQ_PURE_GEAR_SOURCE_DIAGNOSIS",
+  "at": "2026-11-04T08:24:43.294Z",
+  "source": "COF2 Livre de base pp.62 et 188",
+  "pureOnly": true,
+  "sourceRules": {
+    "allOneHandMeleeAndRanged": true,
+    "powderMastery": true,
+    "armorAbilitiesMaxDef": 4,
+    "shieldForbiddenForAbilities": true,
+    "startingArmorDef": 3
+  },
+  "products": [
+    {
+      "file": "index.html",
+      "sha256": "3b5c0ec907bd27a3be8ee3077c2f7f43daecf14f6505f22f7deba32f072a2700",
+      "rule": {
+        "profileId": "class:arquebusier:cof2-lb-2024",
+        "masteries": {
+          "weapons": {
+            "allMelee": true,
+            "allRanged": true,
+            "maxMeleeHands": 1
+          },
+          "armorMaxDef": 4,
+          "shields": "none"
+        },
+        "initialEquipment": {
+          "requiredArmorId": "armor:cuir-renforce:cof2-lb-2024",
+          "packages": [
+            {
+              "id": "standard",
+              "weaponIds": [
+                "weapon:powder-pistol",
+                "weapon:long-sword",
+                "weapon:dagger"
+              ],
+              "shieldId": ""
+            }
+          ]
+        }
+      },
+      "legalArmor": [
+        {
+          "id": "armor:tissu-matelasse:cof2-lb-2024",
+          "def": 1,
+          "agiCap": 7
+        },
+        {
+          "id": "armor:cuir-simple:cof2-lb-2024",
+          "def": 2,
+          "agiCap": 6
+        },
+        {
+          "id": "armor:cuir-renforce:cof2-lb-2024",
+          "def": 3,
+          "agiCap": 5
+        },
+        {
+          "id": "armor:chemise-de-mailles:cof2-lb-2024",
+          "def": 4,
+          "agiCap": 4
+        },
+        {
+          "id": "armor:os-sorcier:cof2-lb-2024",
+          "def": 3,
+          "agiCap": 5
+        }
+      ],
+      "heavyArmor": [
+        {
+          "id": "armor:cotte-de-mailles:cof2-lb-2024",
+          "def": 5
+        },
+        {
+          "id": "armor:plaques:cof2-lb-2024",
+          "def": 6
+        },
+        {
+          "id": "armor:plaque-complete:cof2-lb-2024",
+          "def": 7
+        }
+      ],
+      "shields": [
+        {
+          "id": "shield:petit:cof2-lb-2024",
+          "def": 1
+        },
+        {
+          "id": "shield:grand:cof2-lb-2024",
+          "def": 2
+        }
+      ],
+      "races": [
+        {
+          "race": "humain",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "race": "nain",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "race": "demi-elfe",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "race": "demi-orc",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "race": "elfe-haut",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "race": "elfe-sylvain",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "race": "gnome",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "race": "halfelin",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 3
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
+      "sha256": "fcfab7fc7b3d5486c4fa7d6c2d451f824427d246877211341c643274a549bec9",
+      "rule": {
+        "profileId": "class:arquebusier:cof2-lb-2024",
+        "masteries": {
+          "weapons": {
+            "allMelee": true,
+            "allRanged": true,
+            "maxMeleeHands": 1
+          },
+          "armorMaxDef": 4,
+          "shields": "none"
+        },
+        "initialEquipment": {
+          "requiredArmorId": "armor:cuir-renforce:cof2-lb-2024",
+          "packages": [
+            {
+              "id": "standard",
+              "weaponIds": [
+                "weapon:powder-pistol",
+                "weapon:long-sword",
+                "weapon:dagger"
+              ],
+              "shieldId": ""
+            }
+          ]
+        }
+      },
+      "legalArmor": [
+        {
+          "id": "armor:tissu-matelasse:cof2-lb-2024",
+          "def": 1,
+          "agiCap": 7
+        },
+        {
+          "id": "armor:cuir-simple:cof2-lb-2024",
+          "def": 2,
+          "agiCap": 6
+        },
+        {
+          "id": "armor:cuir-renforce:cof2-lb-2024",
+          "def": 3,
+          "agiCap": 5
+        },
+        {
+          "id": "armor:chemise-de-mailles:cof2-lb-2024",
+          "def": 4,
+          "agiCap": 4
+        },
+        {
+          "id": "armor:os-sorcier:cof2-lb-2024",
+          "def": 3,
+          "agiCap": 5
+        }
+      ],
+      "heavyArmor": [
+        {
+          "id": "armor:cotte-de-mailles:cof2-lb-2024",
+          "def": 5
+        },
+        {
+          "id": "armor:plaques:cof2-lb-2024",
+          "def": 6
+        },
+        {
+          "id": "armor:plaque-complete:cof2-lb-2024",
+          "def": 7
+        }
+      ],
+      "shields": [
+        {
+          "id": "shield:petit:cof2-lb-2024",
+          "def": 1
+        },
+        {
+          "id": "shield:grand:cof2-lb-2024",
+          "def": 2
+        }
+      ],
+      "races": [
+        {
+          "race": "humain",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "race": "nain",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "race": "demi-elfe",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "race": "demi-orc",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "race": "elfe-haut",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "race": "elfe-sylvain",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "race": "gnome",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "race": "halfelin",
+          "legal": 5,
+          "refused": [],
+          "heavy": [
+            {
+              "armor": "armor:cotte-de-mailles:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaques:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            },
+            {
+              "armor": "armor:plaque-complete:cof2-lb-2024",
+              "errors": [
+                "Armure non maîtrisée par les profils ou capacités acquis."
+              ],
+              "accepted": false
+            }
+          ],
+          "shield": [
+            {
+              "shield": "shield:petit:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            },
+            {
+              "shield": "shield:grand:cof2-lb-2024",
+              "errors": [
+                "Bouclier interdit par le profil."
+              ],
+              "accepted": false
+            }
+          ],
+          "powder": [
+            {
+              "weapon": "weapon:powder-pistol",
+              "accepted": true,
+              "errors": [],
+              "attacks": [
+                {
+                  "mastered": true,
+                  "attackBonus": 3
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "legalArmorChecks": 80,
+  "legalArmorFailures": 0,
+  "diagnostics": [],
+  "errors": [],
+  "status": "LEGAL_GEAR_PASS_OTHER_RESTRICTIONS_AUDIT_PENDING"
+}
