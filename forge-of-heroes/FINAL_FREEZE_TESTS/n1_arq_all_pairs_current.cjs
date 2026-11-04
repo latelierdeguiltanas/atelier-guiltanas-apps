@@ -8,7 +8,10 @@ const report={schema:'FOH_N1_ARQUEBUSIER_ALL_TEN_PATH_PAIRS_CURRENT',generatedAt
 for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
  const {db,html,engine:E}=load(path.join(ROOT,file));const T=db.tables,paths=T.paths_class.filter(p=>p.classId===CL&&!p.additionalMagePath);
  if(paths.length!==5)throw Error('Expected exactly five official paths');
- report.inputs.push({file,sha256:crypto.createHash('sha256').update(html).digest('hex')});
+ const hash=x=>crypto.createHash('sha256').update(x).digest('hex');
+ const embedded=id=>{const i=html.indexOf('id="'+id+'"');if(i<0)return null;const start=html.indexOf('>',i)+1,end=html.indexOf('</script>',start);return start>i&&end>start?html.slice(start,end):null};
+ const engine=embedded('FOH_ENGINE_BUNDLE'),rules=embedded('FOH_DB_JSON');if(!engine||!rules)throw Error('Missing source');
+ report.inputs.push({file,sha256:hash(html),engineSha256:hash(engine),dbSha256:hash(rules)});
  for(const race of races)for(let i=0;i<paths.length;i++)for(let j=i+1;j<paths.length;j++)for(const [age,choice]of ageCases){
   const first=paths[i].id,second=paths[j].id,raceId='people:'+race+':cof2-lb-2024',id=[file,race,i,j,age,choice||''].join('|');
   const per=report.perPeople[race]||(report.perPeople[race]={cases:0,pass:0,failed:0});report.cases++;per.cases++;
