@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-04T10:49:04.616Z",
+  "generatedAt": "2026-11-04T10:56:49.717Z",
   "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
   "certificationPlan": {
     "policy": "UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100",
@@ -12,7 +12,7 @@
     "current": {
       "name": "Arquebusier",
       "position": 1,
-      "percent": 69,
+      "percent": 81,
       "certified": false
     },
     "next": {
@@ -25,7 +25,7 @@
         "name": "Arquebusier",
         "position": 1,
         "status": "EN_COURS",
-        "percent": 69,
+        "percent": 81,
         "certified": false
       },
       {
@@ -133,9 +133,9 @@
     "completed": false,
     "variantPrototypeReady": true,
     "variantIntegrated": true,
-    "passed": 11,
+    "passed": 13,
     "total": 16,
-    "percent": 69,
+    "percent": 81,
     "checks": [
       {
         "id": "paths",
@@ -182,8 +182,8 @@
       {
         "id": "derived",
         "name": "PV, DEF, initiative, chance, mana, attaques et dommages",
-        "status": "A_VERIFIER",
-        "detail": "Compléter les preuves arithmétiques indépendantes sur les deux produits courants, toutes les attaques et les dons ; refuser tout rapport partiel ou périmé."
+        "status": "ACQUIS",
+        "detail": "20 480 comparaisons arithmétiques indépendantes : deux variantes, huit peuples, vingt paires ordonnées, cinq modalités d’âge, deux séries et deux armures, quinze dons et échange PC/DR. Attaques, dégâts, portée, critique, pouvoirs permanents et sauvegardes. 36 contrôles des frontières poudre/arbalètes et 20 doubles choix de prédilection. Les activations de combat restent au critère R3."
       },
       {
         "id": "r1effects",
@@ -224,8 +224,8 @@
       {
         "id": "pdf",
         "name": "Fiche officielle et annexes",
-        "status": "A_VERIFIER",
-        "detail": "Test réel Chrome et smartphone des exports des deux variantes : 4 PDF de 6 pages, nom et profil présents sur les deux premières pages, PDF sans champs étranger refusé. Empreinte du modèle COF2 reconnue en simulation ; restent le rendu sur le PDF officiel réel et la vérification exhaustive des champs, textes et annexes."
+        "status": "ACQUIS",
+        "detail": "28 exports sur le vrai modèle officiel : cinq voies et rangs R1–R3 des deux variantes, deux exporteurs, bonus de Doigts agiles actif/inactif selon l’armure. 4 368 widgets relus (valeurs et apparences), fiche et annexe inspectées visuellement. Quinze dons contrôlés dans 60 annexes, uniquement leurs rangs acquis et textes intégraux. Les exports propres aux peuples et historiques restent suivis séparément."
       },
       {
         "id": "click",
