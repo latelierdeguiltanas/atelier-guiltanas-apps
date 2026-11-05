@@ -31,7 +31,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-pilier-de-bar-fix.json
+          git add forge-of-heroes/index.html forge-of-heroes/QA/N1/arquebusier-pilier-de-bar-fix.json
           if ! git diff --cached --quiet; then
             git commit -m "fix(forge-n1): Pilier de bar 1d4 explosif conforme p64 [skip ci]"
             for attempt in 1 2 3 4 5; do
