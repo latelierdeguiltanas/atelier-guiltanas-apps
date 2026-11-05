@@ -202,7 +202,10 @@ const output={
  canonicalIndexSha256:productHash('index.html'),
  certificationBasis:'Une seule Forge: seules les preuves attachées à index.html et à son SHA actuel comptent; les anciennes références au maître supprimé sont archivées.',
  generatedAt:new Date().toISOString(),
- engineSha256:pure.engineSha256,
+ engineSha256:components('index.html').engineSha256,
+ databaseSha256:components('index.html').dbSha256,
+ peoplesEvidenceCurrent:old.engineSha256===components('index.html').engineSha256,
+ peoplesEvidenceSourceEngineSha256:old.engineSha256,
  certificationPlan:{
   policy:'UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100',
   target:{officialProfiles:14,officialPeoples:8,allMustReachPercent:100},
