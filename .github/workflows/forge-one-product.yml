@@ -1,0 +1,67 @@
+name: Forge - produit unique de production et de test
+on:
+  push:
+    paths:
+      - '.github/workflows/forge-one-product.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: forge-one-product-migration
+  cancel-in-progress: false
+jobs:
+  consolidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare the sole published Forge without modifying its HTML
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check forge-of-heroes/scripts/consolidate-single-forge.cjs
+          before="$(sha256sum forge-of-heroes/index.html | cut -d' ' -f1)"
+          node forge-of-heroes/scripts/consolidate-single-forge.cjs
+          after="$(sha256sum forge-of-heroes/index.html | cut -d' ' -f1)"
+          test "$before" = "$after"
+          test ! -e forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html
+          test "$(find forge-of-heroes -maxdepth 1 -name '*.html' | wc -l)" -eq 1
+          git diff --check
+      - name: Check syntax and load the real N1 engine
+        shell: bash
+        run: |
+          set -euo pipefail
+          find forge-of-heroes/FINAL_FREEZE_TESTS forge-of-heroes/ENGINE forge-of-heroes/rules forge-of-heroes/progression forge-of-heroes/scripts -type f \( -name '*.js' -o -name '*.cjs' -o -name '*.mjs' \) -print0 | xargs -0 -n 1 node --check
+          node - <<'NODE'
+          const assert=require('node:assert/strict');
+          const path=require('node:path');
+          const product=require('./forge-of-heroes/FINAL_FREEZE_TESTS/forge_product_runner.js');
+          const p=path.resolve('forge-of-heroes/index.html');
+          assert.equal(product.PRODUCT,p);
+          const {html,db,engine}=product.load(p);
+          assert(html.includes('FOH_ENGINE_BUNDLE'));
+          assert(db.tables.classes.length>=14);
+          assert.equal(typeof engine.computeCharacterN1,'function');
+          console.log('Single canonical Forge loaded:',db.tables.classes.length,'profiles');
+          NODE
+      - name: Commit the single-source consolidation only after verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A .github/workflows forge-of-heroes
+          if git diff --cached --quiet; then
+            echo 'Already consolidated'
+            exit 0
+          fi
+          git commit -m 'refactor(forge): un seul index publie et teste, suppression du maitre [skip ci]'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
