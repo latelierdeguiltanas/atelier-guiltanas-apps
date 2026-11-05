@@ -32,6 +32,11 @@ on:
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_choices_fix.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_choices_oracle.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_choices_click.cjs'
+      - 'forge-of-heroes/ENGINE/history_context_n1.js'
+      - 'forge-of-heroes/ENGINE/history_context_ui_n1.js'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_fix.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_click.cjs'
 permissions:
   contents: write
 concurrency:
@@ -64,6 +69,7 @@ jobs:
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_rank_bonus_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_very_young_choice_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_choices_fix.cjs --write
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_fix.cjs --write
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs --write
       - name: Démarrer le serveur de recette mobile
         run: |
@@ -71,8 +77,11 @@ jobs:
           echo "CHROME_BIN=$(command -v google-chrome || command -v chromium)" >> "$GITHUB_ENV"
       - name: Six créations Érudit et Courtisan rang 5
         run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_choices_click.cjs
+      - name: Six historiques avec calculs en situation au clic
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_click.cjs
       - name: Vérifier les règles et calculs corrigés
         run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_choices_oracle.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_history_people_cross.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/history_completeness_runner.cjs
@@ -115,6 +124,7 @@ jobs:
           name: forge-arquebusier-correctifs-source
           path: |
             forge-of-heroes/QA/N1/arquebusier-history-choices*.json
+            forge-of-heroes/QA/N1/arquebusier-history-conditions*.json
             forge-of-heroes/QA/N1/arquebusier-history-rank-*.json
             forge-of-heroes/QA/N1/arquebusier-granted-thrower*.json
             forge-of-heroes/QA/N1/arquebusier-derived-source.json
@@ -134,7 +144,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add forge-of-heroes/QA/N1/arquebusier-history-choices.json forge-of-heroes/QA/N1/arquebusier-history-choices-click.json forge-of-heroes/QA/N1/arquebusier-history-people-cross.json forge-of-heroes/QA/N1/very-young-resource-renderer.json forge-of-heroes/QA/N1/arquebusier-history-rank-bonus.json forge-of-heroes/QA/N1/arquebusier-history-rank-click.json forge-of-heroes/QA/N1/arquebusier-granted-thrower.json forge-of-heroes/QA/N1/arquebusier-granted-thrower-click.json forge-of-heroes/QA/N1/arquebusier-derived-source.json forge-of-heroes/QA/N1/arquebusier-powder-weapon-boundary.json forge-of-heroes/QA/N1/arquebusier-two-preferences.json forge-of-heroes/QA/N1/arquebusier-granted-pdf-annex.json forge-of-heroes/progression/pdf-labels.json forge-of-heroes/QA/N1/arquebusier-grants-weapons.json forge-of-heroes/QA/N1/arquebusier-equipment-source.json forge-of-heroes/QA/N1/arquebusier-arbaletrier-source-audit.json forge-of-heroes/progression/official-pdf-engine.js forge-of-heroes/QA/N1/arquebusier-grants-armor.json forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-context-canonical.json forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/arquebusier-context-real-click.json forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json centre-synchronisation/forge-n1/focus.json centre-synchronisation/forge-n1/purs.json
+          git add forge-of-heroes/QA/N1/arquebusier-history-conditions.json forge-of-heroes/QA/N1/arquebusier-history-conditions-click.json forge-of-heroes/QA/N1/arquebusier-history-choices.json forge-of-heroes/QA/N1/arquebusier-history-choices-click.json forge-of-heroes/QA/N1/arquebusier-history-people-cross.json forge-of-heroes/QA/N1/very-young-resource-renderer.json forge-of-heroes/QA/N1/arquebusier-history-rank-bonus.json forge-of-heroes/QA/N1/arquebusier-history-rank-click.json forge-of-heroes/QA/N1/arquebusier-granted-thrower.json forge-of-heroes/QA/N1/arquebusier-granted-thrower-click.json forge-of-heroes/QA/N1/arquebusier-derived-source.json forge-of-heroes/QA/N1/arquebusier-powder-weapon-boundary.json forge-of-heroes/QA/N1/arquebusier-two-preferences.json forge-of-heroes/QA/N1/arquebusier-granted-pdf-annex.json forge-of-heroes/progression/pdf-labels.json forge-of-heroes/QA/N1/arquebusier-grants-weapons.json forge-of-heroes/QA/N1/arquebusier-equipment-source.json forge-of-heroes/QA/N1/arquebusier-arbaletrier-source-audit.json forge-of-heroes/progression/official-pdf-engine.js forge-of-heroes/QA/N1/arquebusier-grants-armor.json forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-context-canonical.json forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/arquebusier-context-real-click.json forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json centre-synchronisation/forge-n1/focus.json centre-synchronisation/forge-n1/purs.json
           if ! git diff --cached --quiet; then
             git commit -m 'fix(forge): dons et bonus historiques calculés et conservés au clic [skip ci]'
             git restore --worktree .
