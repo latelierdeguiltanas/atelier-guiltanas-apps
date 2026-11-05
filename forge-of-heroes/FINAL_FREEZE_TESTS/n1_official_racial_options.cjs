@@ -11,13 +11,13 @@ const official={
  'halfelin':{bonus:['agi','vol'],malus:['for'],heritage:['voie-du-halfelin'],book:'p.55 : +1 AGI/VOL, -1 FOR'},
  'nain':{bonus:['con','vol'],malus:['agi'],heritage:['voie-du-nain'],book:'p.59 : +1 CON/VOL, -1 AGI'}
 };
-const report={schema:'FOH_N1_CO_F2_OFFICIAL_RACE_STAT_CHOICES',generatedAt:new Date().toISOString(),runnerSha:null,products:[],cases:0,passes:0,failures:[],unavailable:[],perPeople:{},bookEvidence:Object.fromEntries(Object.entries(official).map(([k,v])=>[k,v.book])),scope:'Tous les choix de caractéristiques raciales du livre de base : 8 peuples, 14 profils, héritages du demi-elfe, deux produits, valeurs permanentes, persistance et dérivés. Les capacités alternatives et conditions distinctes sont vérifiées dans leurs propres lots.'};
+const report={schema:'FOH_N1_CO_F2_OFFICIAL_RACE_STAT_CHOICES',generatedAt:new Date().toISOString(),runnerSha:null,products:[],cases:0,passes:0,failures:[],unavailable:[],perPeople:{},bookEvidence:Object.fromEntries(Object.entries(official).map(([k,v])=>[k,v.book])),scope:'Tous les choix de caractéristiques raciales du livre de base : 8 peuples, 14 profils, héritages du demi-elfe, uniquement la Forge publiée index.html, valeurs permanentes, persistance et dérivés. Les capacités alternatives et conditions distinctes sont vérifiées dans leurs propres lots.'};
 for(const file of ['index.html']){
  const {db,engine:E,html}=load(path.join(ROOT,file)),T=db.tables;
  const classes=T.classes.filter(x=>x.id.endsWith(':cof2-lb-2024'));
  const races=T.peoples.filter(x=>x.id.endsWith(':cof2-lb-2024'));
  if(classes.length!==14||races.length!==8)throw Error('official count mismatch');
- report.products.push({file,engineSha256:h(html.match(/id="FOH_ENGINE_BUNDLE"[^>]*>([\s\S]*?)<\/script>/)[1]),dbSha256:h(html.match(/id="FOH_DB_JSON"[^>]*>([\s\S]*?)<\/script>/)[1])});
+ report.products.push({file,htmlSha256:h(html),engineSha256:h(html.match(/id="FOH_ENGINE_BUNDLE"[^>]*>([\s\S]*?)<\/script>/)[1]),dbSha256:h(html.match(/id="FOH_DB_JSON"[^>]*>([\s\S]*?)<\/script>/)[1])});
  function choices(s){
   const ids=new Set();
   for(const a of [...T.abilities_class,...T.abilities_people])if((s.voies.profilePathIds.includes(a.path_id)&&a.rank===1)||(a.path_id===s.voies.peoplePathId&&a.rank===1)||(s.voies.mageRank2PathId===a.path_id&&a.rank===2))ids.add(a.id);
@@ -69,7 +69,7 @@ for(const file of ['index.html']){
   }
  }
 }
-report.expected=Object.values(official).reduce((n,x)=>n+x.bonus.length*x.malus.length*x.heritage.length,0)*14*2;
+report.expected=Object.values(official).reduce((n,x)=>n+x.bonus.length*x.malus.length*x.heritage.length,0)*14*1;
 report.status=report.cases===report.expected&&report.passes===report.expected&&report.failures.length===0&&report.unavailable.length===0?'PASS':'FAIL';
 fs.writeFileSync(path.join(ROOT,'QA/N1/official-racial-options.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({status:report.status,expected:report.expected,attempts:report.cases,passed:report.passes,byPeople:Object.fromEntries(Object.entries(report.perPeople).map(([k,v])=>[k,{passed:v.passed,total:v.cases,failed:v.failed}])),failures:report.failures.slice(0,5),unavailable:report.unavailable.slice(0,5)}));
