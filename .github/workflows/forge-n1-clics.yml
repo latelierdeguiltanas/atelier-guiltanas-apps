@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_creation_browser_pack.cjs'
+      - 'forge-of-heroes/index.html'
       - '.github/workflows/forge-n1-clics.yml'
   workflow_dispatch:
 permissions:
