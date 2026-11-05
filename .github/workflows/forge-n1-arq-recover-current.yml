@@ -49,7 +49,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/progression/pdf-labels.json forge-of-heroes/progression/official-pdf-engine.js forge-of-heroes/QA/N1/*.json centre-synchronisation/forge-n1/focus.json centre-synchronisation/forge-n1/purs.json
+          git add forge-of-heroes/index.html forge-of-heroes/progression/pdf-labels.json forge-of-heroes/progression/official-pdf-engine.js forge-of-heroes/QA/N1/*.json centre-synchronisation/forge-n1/focus.json centre-synchronisation/forge-n1/purs.json
           if ! git diff --cached --quiet; then
             git commit -m 'fix(forge): équipements, dons et annexes vérifiés sur les produits courants [skip ci]'
             git restore --worktree .
