@@ -196,8 +196,11 @@ const profileOrder=['Arquebusier','Barbare','Barde','Chevalier','Druide','Ensorc
 const activeName='Arquebusier',activeIndex=profileOrder.indexOf(activeName);
 if(profileOrder.length!==14||activeIndex!==0)throw Error('Certification séquentielle : ordre de profils incohérent');
 const queue=profileOrder.map((name,i)=>({name,position:i+1,status:i===activeIndex?'EN_COURS':'EN_ATTENTE',percent:i===activeIndex?Math.round(100*verified/profileChecks.length):null,certified:false}));
+const racialOptions=optionalProof('official-racial-options.json');
+const racialOptionsCurrent=racialOptions?.status==='PASS'&&racialOptions.expected===392&&racialOptions.cases===392&&racialOptions.passes===392&&racialOptions.failures?.length===0&&racialOptions.unavailable?.length===0&&racialOptions.products?.length===1&&racialOptions.products[0]?.file==='index.html'&&racialOptions.products[0]?.htmlSha256===productHash('index.html');
 const output={
  schema:'FOH_N1_PROFILE_AND_PEOPLES_SEPARATE',
+ racialOptionsCurrent:{valid:!!racialOptionsCurrent,passed:racialOptionsCurrent?392:0,total:392,scope:'Options de caractéristiques des huit peuples croisees avec quatorze profils sur index.html; ne certifie ni les pouvoirs conditionnels ni toutes les restrictions de taille.'},
  canonicalProduct:'forge-of-heroes/index.html',
  canonicalIndexSha256:productHash('index.html'),
  certificationBasis:'Une seule Forge: seules les preuves attachées à index.html et à son SHA actuel comptent; les anciennes références au maître supprimé sont archivées.',
