@@ -57,7 +57,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-fix.json forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-gear-probe.json forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/version-parity.json
+          git add forge-of-heroes/index.html forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-fix.json forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-gear-probe.json forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/version-parity.json
           git commit -m "fix(forge-n1): Mercenaire hybride bouclier et maîtrise poudre exactement selon COF2 p65 [skip ci]"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
