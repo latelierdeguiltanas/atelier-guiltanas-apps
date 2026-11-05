@@ -23173,8 +23173,16 @@
         "kind": "passive_or_contextual",
         "effects": [
           {
-            "type": "source_text",
-            "automated": false
+            "type": "rank_bonus",
+            "valueFormula": "rank+2",
+            "tests": [
+              "informations secrètes ou sensibles",
+              "perception auditive"
+            ],
+            "domains": [
+              "informations secrètes ou sensibles",
+              "perception auditive"
+            ]
           }
         ]
       },
@@ -23196,8 +23204,18 @@
         "kind": "passive_or_contextual",
         "effects": [
           {
-            "type": "source_text",
-            "automated": false
+            "type": "rank_bonus",
+            "valueFormula": "rank+2",
+            "tests": [
+              "perception visuelle",
+              "percer un mensonge",
+              "décoder le langage corporel"
+            ],
+            "domains": [
+              "perception visuelle",
+              "percer un mensonge",
+              "décoder le langage corporel"
+            ]
           }
         ]
       },
@@ -23344,8 +23362,14 @@
         "kind": "passive_or_contextual",
         "effects": [
           {
-            "type": "source_text",
-            "automated": false
+            "type": "rank_bonus",
+            "valueFormula": "rank+2",
+            "tests": [
+              "CHA pour convaincre"
+            ],
+            "domains": [
+              "CHA pour convaincre"
+            ]
           }
         ]
       },
