@@ -23,6 +23,16 @@ jobs:
         id: run
         continue-on-error: true
         run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_history_people_cross.cjs
+      - name: Actualiser les critères historiques sans les déclarer entièrement certifiés
+        if: steps.run.outcome == 'success'
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+          node - <<'NODE'
+          const p=require('./forge-of-heroes/QA/N1/arquebusier-history-people-cross.json');
+          const f=require('./centre-synchronisation/forge-n1/focus.json');
+          if(p.counts.cases!==1152 || p.counts.passed!==1120 || p.counts.legallyRejected!==32 || p.counts.failed || p.inputs[0].sha256!==f.canonicalIndexSha256 || f.profile.checks.find(x=>x.id==='history')?.status==='ACQUIS')process.exit(1);
+          console.log('Historique sur index officiel : 1120 PASS, 32 rejets légaux, zéro échec. Critère historique complet reste ouvert.');
+          NODE
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -34,7 +44,7 @@ jobs:
           if test -f forge-of-heroes/QA/N1/arquebusier-history-people-cross.json; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add forge-of-heroes/QA/N1/arquebusier-history-people-cross.json
+            git add forge-of-heroes/QA/N1/arquebusier-history-people-cross.json centre-synchronisation/forge-n1/focus.json
             if ! git diff --cached --quiet; then
               git commit -m "audit(forge-n1): historiques Arquebusier par peuple [skip ci]"
               git fetch origin main
