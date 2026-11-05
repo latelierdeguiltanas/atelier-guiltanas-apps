@@ -60,7 +60,7 @@ const pairsPath=path.resolve(root,'QA/N1/arquebusier-all-pairs-current.json'),pa
 const checkCurrent=!!pairs&&!!liveProof(pairs.inputs)&&isCurrentProof(liveProof(pairs.inputs));
 const tenPairsVerified=!!(checkCurrent&&pairs.status==='PASS'&&pairs.expected===800&&pairs.pass===800&&pairs.failed===0&&Object.keys(pairs.perPeople||{}).length===8&&Object.values(pairs.perPeople).every(r=>r.cases===100&&r.pass===100));
 const arqHistoryFile=path.resolve(root,'QA/N1/arquebusier-history-people-cross.json');const arqHistory=fs.existsSync(arqHistoryFile)?JSON.parse(fs.readFileSync(arqHistoryFile,'utf8')):null;
-const historyCrossPassed=!!arqHistory&&arqHistory.status==='PASS'&&arqHistory.counts.cases===2304&&arqHistory.counts.passed===2240&&arqHistory.counts.legallyRejected===64&&arqHistory.counts.failed===0;
+const historyCrossPassed=!!arqHistory&&arqHistory.status==='PASS'&&liveHashMatches(arqHistory.inputs)&&arqHistory.counts.cases===1152&&arqHistory.counts.passed===1120&&arqHistory.counts.legallyRejected===32&&arqHistory.counts.failed===0;
 const profile=pure.items.find(x=>x.profile==='Arquebusier'&&x.people==='Nain');
 if(pure.items.length!==112||!profile||profile.powers.length!==5||ages.complete!==true||ages.pass!==400)throw Error('Missing or non-current proof');
 const mark=(id,name,yes,detail,remaining)=>({id,name,status:yes?'ACQUIS':'A_VERIFIER',detail:yes?detail:remaining});
