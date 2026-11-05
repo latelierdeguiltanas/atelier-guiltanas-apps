@@ -1,6 +1,9 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
-  "generatedAt": "2026-11-05T06:25:30.453Z",
+  "canonicalProduct": "forge-of-heroes/index.html",
+  "canonicalIndexSha256": "a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4",
+  "certificationBasis": "Une seule Forge: seules les preuves attachées à index.html et à son SHA actuel comptent; les anciennes références au maître supprimé sont archivées.",
+  "generatedAt": "2026-11-05T13:57:45.018Z",
   "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
   "certificationPlan": {
     "policy": "UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100",
@@ -12,7 +15,7 @@
     "current": {
       "name": "Arquebusier",
       "position": 1,
-      "percent": 88,
+      "percent": 81,
       "certified": false
     },
     "next": {
@@ -25,7 +28,7 @@
         "name": "Arquebusier",
         "position": 1,
         "status": "EN_COURS",
-        "percent": 88,
+        "percent": 81,
         "certified": false
       },
       {
@@ -133,9 +136,9 @@
     "completed": false,
     "variantPrototypeReady": true,
     "variantIntegrated": true,
-    "passed": 14,
+    "passed": 13,
     "total": 16,
-    "percent": 88,
+    "percent": 81,
     "checks": [
       {
         "id": "paths",
@@ -176,8 +179,8 @@
       {
         "id": "methods",
         "name": "Méthodes de répartition des caractéristiques",
-        "status": "ACQUIS",
-        "detail": "Séries, achat et tirages représentatifs avec toutes les races officielles ; règles raciales évaluées séparément."
+        "status": "A_VERIFIER",
+        "detail": "Contrôler les méthodes du profil."
       },
       {
         "id": "derived",
@@ -189,7 +192,7 @@
         "id": "r1effects",
         "name": "Tous les effets des cinq capacités de rang 1",
         "status": "ACQUIS",
-        "detail": "Cinq capacités R1 calculées selon contexte dans l’interface réelle : mécanismes et armes de siège, grenaille en cône, Pilier de bar 1d4° et résistance non létale, initiative armée chargée, couvert, sans faire intervenir les hybrides. Plus de 60 cas oracle + quatre situations réelles au clic, pour les deux produits."
+        "detail": "Cinq capacités R1 calculées selon contexte dans l’interface réelle : mécanismes et armes de siège, grenaille en cône, Pilier de bar 1d4° et résistance non létale, initiative armée chargée, couvert, sans faire intervenir les hybrides. Plus de 60 cas oracle historiques + quatre situations réelles au clic sur la Forge publiée."
       },
       {
         "id": "r2effects",
@@ -207,7 +210,7 @@
         "id": "gear",
         "name": "Toutes les armes, armures et variante Arbalétrier",
         "status": "ACQUIS",
-        "detail": "200 contrôles des frontières d’équipement du profil : 41 armes du Livre de base, sept armures, deux boucliers, deux variantes et deux produits, avec sauvegardes. Variante sans poudre : pétoire et mousquet refusés. 240 contrôles complémentaires des dons et plafonds d’armure et vingt créations réelles au clic. Les restrictions raciales de taille restent suivies dans les critères propres aux peuples."
+        "detail": "100 contrôles des frontières d’équipement sur la Forge publiée (200 dans l’ancien rapport comprenant le maître supprimé) : 41 armes, sept armures, deux boucliers et deux variantes, avec sauvegardes. Variante sans poudre : pétoire et mousquet refusés. 120 contrôles des dons et plafonds d’armure sur la Forge publiée et vingt créations réelles au clic. Les restrictions raciales de taille restent suivies dans les critères propres aux peuples."
       },
       {
         "id": "history",
@@ -372,7 +375,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Tous les effets des cinq capacités de rang 3 ; Origines, métiers et historiques avancés"
+    "next": "Méthodes de répartition des caractéristiques ; Tous les effets des cinq capacités de rang 3 ; Origines, métiers et historiques avancés"
   },
   "peoples": [
     {
