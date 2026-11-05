@@ -53,7 +53,7 @@ jobs:
             node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs --write
             node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs
             node forge-of-heroes/FINAL_FREEZE_TESTS/n1_version_parity.cjs
-            git add forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/version-parity.json
+            git add forge-of-heroes/index.html forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/version-parity.json
             if git diff --cached --quiet; then
               echo "Source et preuves déjà courantes"
               exit 0
