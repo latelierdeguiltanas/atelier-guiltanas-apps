@@ -23,6 +23,16 @@ jobs:
         id: run
         continue-on-error: true
         run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_official_methods_cross.cjs
+      - name: Recalculer la barre du vrai index uniquement si les 1008 cas passent
+        if: steps.run.outcome == 'success'
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+          node - <<'NODE'
+          const f=require('./centre-synchronisation/forge-n1/focus.json');
+          const p=require('./forge-of-heroes/QA/N1/official-methods-cross.json');
+          if(p.sourceSha256!==f.canonicalIndexSha256 || p.passed!==1008 || p.failed || p.refused || f.profile.checks.find(x=>x.id==='methods')?.status!=='ACQUIS')process.exit(1);
+          console.log('Forge unique : méthodes 1008/1008 PASS, profil '+f.profile.passed+'/'+f.profile.total+' sur SHA '+f.canonicalIndexSha256);
+          NODE
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -35,7 +45,7 @@ jobs:
           if test -f forge-of-heroes/QA/N1/official-methods-cross.json; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add forge-of-heroes/QA/N1/official-methods-cross.json
+            git add forge-of-heroes/QA/N1/official-methods-cross.json centre-synchronisation/forge-n1/focus.json
             if ! git diff --cached --quiet; then
               git commit -m "test(forge-n1): statut méthodes x peuples/profils [skip ci]"
               git fetch origin main
