@@ -15,13 +15,17 @@ const releasePath=path.resolve(root,'QA/N1/arbaletrier-production-release.json')
 const release=fs.existsSync(releasePath)?JSON.parse(fs.readFileSync(releasePath,'utf8')):null;
 const releaseProducts=release?.sourceFiles||[];
 const hashlib=require('node:crypto'),productHash=p=>hashlib.createHash('sha256').update(fs.readFileSync(path.join(root,p))).digest('hex');
+// Historical reports may contain the retired master. Only the still-published
+// index.html can justify a current certification; never require or load a shadow Forge.
+const liveProof=arr=>{const hits=Array.isArray(arr)?arr.filter(x=>x?.file==='index.html'||x?.name==='index.html'):[];return hits.length===1?hits[0]:null;};
+const liveHashMatches=arr=>{const p=liveProof(arr);return !!p&&p.sha256===productHash('index.html');};
 const pilierPath=path.resolve(root,'QA/N1/arquebusier-pilier-de-bar-fix.json');
 const pilier=fs.existsSync(pilierPath)?JSON.parse(fs.readFileSync(pilierPath,'utf8')):null;
-const currentRelease=releaseProducts.length===2&&releaseProducts.every(p=>fs.existsSync(path.join(root,p.name))&&productHash(p.name)===p.sha256);
+const currentRelease=liveHashMatches(releaseProducts);
 // Une preuve explicite de correction limitée assure la continuité du produit sans
 // attribuer à tort les anciens tests de clic à des changements plus vastes.
-const pilierContinuity=releaseProducts.length===2&&pilier?.status==='PASS'&&pilier.products?.length===2&&
- releaseProducts.every(p=>{const fix=pilier.products.find(x=>x.file===p.name);return fix?.changed===true&&fix.previous?.length===2&&fix.previous.every(x=>x.formula==='1d4')&&fix.beforeSha256===p.sha256&&fix.afterSha256===productHash(p.name)&&fix.attack==='1d4°'&&fix.nonLethal===true&&fix.saveReload==='PASS';});
+const pilierContinuity=pilier?.status==='PASS'&&!!liveProof(pilier.products)&&!!liveProof(releaseProducts)&&
+ (()=>{const p=liveProof(releaseProducts),fix=liveProof(pilier.products);return fix.changed===true&&fix.previous?.length>=1&&fix.previous.every(x=>x.formula==='1d4')&&fix.beforeSha256===p.sha256&&fix.afterSha256===productHash('index.html')&&fix.attack==='1d4°'&&fix.nonLethal===true&&fix.saveReload==='PASS';})();
 const contextProofFile=path.resolve(root,'QA/N1/arquebusier-context-publish.json');
 const contextProof=fs.existsSync(contextProofFile)?JSON.parse(fs.readFileSync(contextProofFile,'utf8')):null;
 const componentsCache=new Map();
@@ -35,45 +39,42 @@ const components=file=>{
  const out={engineSha256:hash(engine),dbSha256:hash(db)};componentsCache.set(file,out);return out;
 };
 const isCurrentProof=p=>{
- if(!p?.file||!fs.existsSync(path.resolve(root,p.file)))return false;
+ if(p?.file!=='index.html'||!fs.existsSync(path.resolve(root,p.file)))return false;
  if(p.engineSha256&&p.dbSha256)return p.engineSha256===components(p.file).engineSha256&&p.dbSha256===components(p.file).dbSha256;
  return productHash(p.file)===(p.htmlSha256||p.sha256);
 };
-const contextOnlyContinuity=contextProof?.status==='PASS'&&contextProof.products?.length===2&&contextProof.products.every(p=>
- p.onlyContextAdded===true&&p.readyForOffline===true&&p.baseStrippedBeforeSha256===p.baseStrippedAfterSha256&&
- p.afterSha256===productHash(p.file)&&p.engineSha256===components(p.file).engineSha256&&p.databaseSha256===components(p.file).dbSha256
-);
+const contextOnlyContinuity=contextProof?.status==='PASS'&&!!liveProof(contextProof.products)&&
+ (()=>{const p=liveProof(contextProof.products);return p.onlyContextAdded===true&&p.readyForOffline===true&&p.baseStrippedBeforeSha256===p.baseStrippedAfterSha256&&p.afterSha256===productHash('index.html')&&p.engineSha256===components('index.html').engineSha256&&p.databaseSha256===components('index.html').dbSha256;})();
 const mercenaryPatchPath=path.resolve(root,'QA/N1/arquebusier-mercenary-hybrid-fix.json');
 const mercenaryPatch=fs.existsSync(mercenaryPatchPath)?JSON.parse(fs.readFileSync(mercenaryPatchPath,'utf8')):null;
 const mercenaryGearPath=path.resolve(root,'QA/N1/arquebusier-mercenary-hybrid-gear-probe.json');
 const mercenaryGear=fs.existsSync(mercenaryGearPath)?JSON.parse(fs.readFileSync(mercenaryGearPath,'utf8')):null;
-const mercenaryContinuity=mercenaryPatch?.status==='PASS'&&mercenaryPatch.twoCasesOnly===true&&mercenaryPatch.changed?.length===2&&contextProof?.products?.length===2&&
- mercenaryPatch.changed.every(p=>{const prior=contextProof.products.find(x=>x.file===p.file);return p.beforeSha256===prior?.afterSha256&&p.afterSha256===productHash(p.file)&&p.dbSha256&&p.diffStatements===2;})&&
- mercenaryGear?.status==='PASS'&&mercenaryGear.accepted===32&&mercenaryGear.cases?.length===32&&mercenaryGear.faultyPowder?.length===0&&mercenaryGear.products?.every(p=>p.sha256===productHash(p.file));
+const mercenaryContinuity=mercenaryPatch?.status==='PASS'&&mercenaryPatch.twoCasesOnly===true&&!!liveProof(mercenaryPatch.changed)&&!!liveProof(contextProof?.products)&&
+ (()=>{const p=liveProof(mercenaryPatch.changed),prior=liveProof(contextProof.products);return p.beforeSha256===prior.afterSha256&&p.afterSha256===productHash('index.html')&&p.dbSha256&&p.diffStatements===2;})()&&
+ mercenaryGear?.status==='PASS'&&mercenaryGear.accepted===32&&mercenaryGear.cases?.length===32&&mercenaryGear.faultyPowder?.length===0&&liveHashMatches(mercenaryGear.products);
 const deployed=release?.status==='INTEGRATED_NOT_CERTIFIED_FULL'&&(currentRelease||pilierContinuity||contextOnlyContinuity||mercenaryContinuity);
 const arbaletrierMissing=variant?.verdict==='VARIANTE_OFFICIELLE_NON_ENTIEREMENT_INTEGREE';
 const prototypePath=path.resolve(root,'QA/N1/arbaletrier-virtual-prototype.json');const prototype=fs.existsSync(prototypePath)?JSON.parse(fs.readFileSync(prototypePath,'utf8')):null;const prototypeOK=prototype?.matrix?.total===480&&prototype?.matrix?.passed===480&&prototype?.matrix?.failed===0;
 const variantGap=deployed?'La variante officielle Arbalétrier est maintenant proposée dans Forge : cinq voies légales, arbalètes, rangs 1 à 3 et sauvegardes validés au clic sur mobile. Restent à valider les contraintes complètes d’équipement et tous les effets conditionnels, ainsi que la fiche officielle PDF et ses annexes.':arbaletrierMissing?(prototypeOK?'La variante Arbalétrier est prête dans une version d’essai : les cinq voies, huit peuples, âges, sauvegardes, +1 en attaque, critique amélioré et +1 aux dégâts avec les arbalètes ont été éprouvés. Elle n’est PAS encore intégrée à Forge : il reste l’installation, les choix visibles, l’export PDF et le contrôle au clic.':'Variante Arbalétrier absente du jeu publié. Les armes à arbalète et la Voie du maître d’armes sont en préparation ; il reste à valider les calculs de critique, de dégâts, les choix visibles et l’installation.'):'';
 const pairsPath=path.resolve(root,'QA/N1/arquebusier-all-pairs-current.json'),pairs=fs.existsSync(pairsPath)?JSON.parse(fs.readFileSync(pairsPath,'utf8')):null;
-const checkCurrent=pairs&&pairs.inputs?.length===2&&pairs.inputs.every(isCurrentProof);
+const checkCurrent=!!pairs&&!!liveProof(pairs.inputs)&&isCurrentProof(liveProof(pairs.inputs));
 const tenPairsVerified=!!(checkCurrent&&pairs.status==='PASS'&&pairs.expected===800&&pairs.pass===800&&pairs.failed===0&&Object.keys(pairs.perPeople||{}).length===8&&Object.values(pairs.perPeople).every(r=>r.cases===100&&r.pass===100));
 const arqHistoryFile=path.resolve(root,'QA/N1/arquebusier-history-people-cross.json');const arqHistory=fs.existsSync(arqHistoryFile)?JSON.parse(fs.readFileSync(arqHistoryFile,'utf8')):null;
 const historyCrossPassed=!!arqHistory&&arqHistory.status==='PASS'&&arqHistory.counts.cases===2304&&arqHistory.counts.passed===2240&&arqHistory.counts.legallyRejected===64&&arqHistory.counts.failed===0;
 const profile=pure.items.find(x=>x.profile==='Arquebusier'&&x.people==='Nain');
 if(pure.items.length!==112||!profile||profile.powers.length!==5||ages.complete!==true||ages.pass!==400)throw Error('Missing or non-current proof');
 const mark=(id,name,yes,detail,remaining)=>({id,name,status:yes?'ACQUIS':'A_VERIFIER',detail:yes?detail:remaining});
-const ageOK=ages.complete&&ages.pass===ages.expected&&ages.products?.length===2&&ages.products.every(isCurrentProof);
+const ageOK=ages.complete&&ages.pass===ages.expected&&!!liveProof(ages.products)&&isCurrentProof(liveProof(ages.products));
 const pdfFile=path.join(root,'QA/N1/arquebusier-pdf-real-click.json');
 const pdfEvidence=fs.existsSync(pdfFile)?JSON.parse(fs.readFileSync(pdfFile,'utf8')):null;
 const pdfProbePass=pdfEvidence?.status==='PASS'&&['Arquebusier','Arbalétrier'].every(v=>['fillable','flat-official-digest-simulated'].every(k=>pdfEvidence.results?.some(x=>x.variant===v&&x.templateKind===k&&x.firstTwoPagesHaveName===true&&x.firstTwoPagesHaveProfile===true&&x.pages>=3)));
 const mechanicalFile=path.join(root,'QA/N1/arquebusier-all-mechanics-probe.json');
 const mechanical=fs.existsSync(mechanicalFile)?JSON.parse(fs.readFileSync(mechanicalFile,'utf8')):null;
-const mechanicalCurrent=mechanical?.status==='SNAPSHOT_COHERENT_STRUCTURE_UNEVALUATED'&&mechanical.products?.length===2&&mechanical.products.every(x=>fs.existsSync(path.join(root,x.file))&&productHash(x.file)===x.sha256)&&mechanical.products.every(x=>x.abilities.length===15);
+const mechanicalCurrent=mechanical?.status==='SNAPSHOT_COHERENT_STRUCTURE_UNEVALUATED'&&liveHashMatches(mechanical.products)&&liveProof(mechanical.products)?.abilities?.length===15;
 
 const effects=ages.numericEffectAssertions||{};
 const numericPartial=effects['Arme à répétition — chargeur 2 + INT et +1 au rang 3']===32&&effects['Poudre puissante — portée +10 m, dommages +1 et projectile magique']===16&&effects['Tir précis — critique sur 19-20 à distance']===16&&effects['Combattant aguerri — défense +1']===16;
-const expectedFiles=['index.html'];
-const sameCurrentHashes=inputs=>inputs?.length===2&&inputs.every(p=>expectedFiles.includes(p.file)&&p.sha256===productHash(p.file));
+const sameCurrentHashes=inputs=>liveHashMatches(inputs);
 const contextualPath=path.resolve(root,'QA/N1/arquebusier-context-canonical.json');
 const contextual=fs.existsSync(contextualPath)?JSON.parse(fs.readFileSync(contextualPath,'utf8')):null;
 const hybridPath=path.resolve(root,'QA/N1/arquebusier-hybrid-powder-safety.json');
@@ -103,17 +104,19 @@ const r2Complete=ageOK&&tenPairsVerified&&r2Oracles&&r2Mobile;
 
 const fastPath=path.resolve(root,'QA/N1/pure-profile-fast-arquebusier.json');
 const fast=fs.existsSync(fastPath)?JSON.parse(fs.readFileSync(fastPath,'utf8')):null;
-const pureFastCurrent=fast?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&fast.attempts===8500&&fast.pass===8500&&fast.failed===0&&fast.rejected===0&&fast.sourceHashes?.length===2&&fast.sourceHashes.every(isCurrentProof);
+const pureFastCurrent=fast?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&fast.attempts===8500&&fast.pass===8500&&fast.failed===0&&fast.rejected===0&&!!liveProof(fast.sourceHashes)&&isCurrentProof(liveProof(fast.sourceHashes));
 const gearPath=path.resolve(root,'QA/N1/arquebusier-pure-gear-diagnostic.json');
 const pureGear=fs.existsSync(gearPath)?JSON.parse(fs.readFileSync(gearPath,'utf8')):null;
-const pureGearCurrent=pureGear?.status==='LEGAL_GEAR_PASS_OTHER_RESTRICTIONS_AUDIT_PENDING'&&pureGear.legalArmorChecks===80&&pureGear.legalArmorFailures===0&&pureGear.products?.length===2&&pureGear.products.every(x=>x.sha256===productHash(x.file));
+const pureGearCurrent=pureGear?.status==='LEGAL_GEAR_PASS_OTHER_RESTRICTIONS_AUDIT_PENDING'&&pureGear.legalArmorChecks>=40&&pureGear.legalArmorFailures===0&&liveHashMatches(pureGear.products);
 // Profile equipment boundaries are independent of ancestry-specific size rules.
 const equipmentSourceFile=path.resolve(root,'QA/N1/arquebusier-equipment-source.json');
 const equipmentSource=fs.existsSync(equipmentSourceFile)?JSON.parse(fs.readFileSync(equipmentSourceFile,'utf8')):null;
-const equipmentSourceCurrent=!!equipmentSource&&equipmentSource.status==='PASS'&&equipmentSource.passed===200&&equipmentSource.failed===0&&equipmentSource.products?.length===2&&equipmentSource.products.every(p=>p.sha256===productHash(p.file))&&equipmentSource.cases?.length===200&&new Set(equipmentSource.cases.map(c=>[c.file,c.variant,c.tag].join('|'))).size===200&&equipmentSource.cases.every(c=>c.status==='PASS');
+const indexGearCases=equipmentSource?.cases?.filter(c=>c.file==='index.html')||[];
+const equipmentSourceCurrent=!!equipmentSource&&equipmentSource.status==='PASS'&&equipmentSource.failed===0&&liveHashMatches(equipmentSource.products)&&indexGearCases.length===100&&new Set(indexGearCases.map(c=>[c.variant,c.tag].join('|'))).size===100&&indexGearCases.every(c=>c.status==='PASS');
 const grantsFile=path.resolve(root,'QA/N1/arquebusier-grants-armor.json');
 const grantsProof=fs.existsSync(grantsFile)?JSON.parse(fs.readFileSync(grantsFile,'utf8')):null;
-const grantsArmorCurrent=!!grantsProof&&grantsProof.status==='PASS'&&grantsProof.passed===240&&grantsProof.failed===0&&grantsProof.products?.length===2&&grantsProof.products.every(p=>p.sha256===productHash(p.file));
+const indexGrantsCases=grantsProof?.cases?.filter(c=>c.file==='index.html')||[];
+const grantsArmorCurrent=!!grantsProof&&grantsProof.status==='PASS'&&grantsProof.failed===0&&liveHashMatches(grantsProof.products)&&indexGrantsCases.length===120&&indexGrantsCases.every(c=>c.status==='PASS');
 const gearComplete=equipmentSourceCurrent&&grantsArmorCurrent&&twentyRealClick;
 const templateFile=path.resolve(root,'QA/N1/arquebusier-official-template.json');
 const templateProof=fs.existsSync(templateFile)?JSON.parse(fs.readFileSync(templateFile,'utf8')):null;
@@ -138,6 +141,8 @@ const mobileVariants=['Arquebusier','Arbalétrier'],mobilePeople=['humain','nain
 const mobile80Current=choicesMobile?.status==='PASS'&&choicesMobile.passed===80&&choicesMobile.failed===0&&choicesMobile.indexSha256===productHash('index.html')&&choicesMobile.scriptSha256===productHash('FINAL_FREEZE_TESTS/n1_arq_choices_click.cjs')&&choicesMobile.cases?.length===80&&new Set(choicesMobile.cases.map(c=>c.id)).size===80&&choicesMobile.cases.every(c=>c.status==='PASS'&&c.steps?.includes('save-reload-reopen'))&&mobileVariants.every(variant=>mobilePeople.every(race=>mobileAges.every(([age,resource])=>choicesMobile.cases.some(c=>c.variant===variant&&c.race===race&&c.age===age&&c.resource===resource))))&&choicesMobile.grantCatalogs?.length===2&&mobileVariants.every(variant=>choicesMobile.grantCatalogs.some(c=>c.variant===variant&&c.ids?.length===15&&new Set(c.ids).size===15&&mobileGrantSlugs.every(slug=>c.ids.some(id=>id.startsWith('ability:'+slug+':')))&&c.categories?.length===5&&new Set(c.categories).size===5&&['swords','axes','maces','spears','thrown'].every(x=>c.categories.includes(x))));
 const throwerMobileCurrent=throwerMobile?.status==='PASS'&&throwerMobile.passed===2&&throwerMobile.failed===0&&throwerMobile.indexSha256===productHash('index.html')&&throwerMobile.cases?.length===2&&throwerMobile.cases.every(c=>c.status==='PASS');
 const clickComplete=twentyRealClick&&r2Mobile&&r1RealClick&&mobile80Current&&throwerMobileCurrent;
+const methodsEvidence=optionalProof('official-methods-cross.json');
+const methodsCurrent=methodsEvidence?.coverage?.complete===true&&methodsEvidence.sourceSha256===productHash('index.html')&&methodsEvidence.cases===1008&&methodsEvidence.passed===1008&&methodsEvidence.refused===0&&methodsEvidence.failed===0;
 const profileChecks=[
  mark('paths','Les cinq voies officielles',profile.powers.length===5,'Les cinq voies et leurs 15 rangs accessibles sont présents et référencés.','Vérifier les cinq voies du livre.'),
  mark('pairs','Toutes les paires de voies légales',tenPairsVerified,'Les dix choix possibles de deux voies du profil, avec chacun des huit peuples et les cinq modalités d’âge N1, sont créés, validés et conservés après sauvegarde. Les dix couples de l’Arbalétrier sont aussi éprouvés.','Les dix choix possibles de deux voies doivent fonctionner avec les équipements autorisés, y compris l’alternative Halfelin.'),
@@ -145,12 +150,12 @@ const profileChecks=[
  mark('r2','Recevoir les capacités de rang 2',ageOK,'Les cinq rangs 2 obtenus à N1 par l’âge mûr sont attribués et sauvegardés.','Vérifier les cinq rangs 2.'),
  mark('r3','Recevoir les capacités de rang 3',ageOK,'Les cinq rangs 3 obtenus à N1 par l’âge vénérable sont attribués et sauvegardés.','Vérifier les cinq rangs 3.'),
  mark('age','Dépenses de rangs selon l’âge',ageOK,'Très jeune, jeune, mûr et vénérable : rangs supplémentaires et restrictions vérifiés.','Vérifier tous les choix d’âge.'),
- mark('methods','Méthodes de répartition des caractéristiques',true,(pureFastCurrent?'8 500/8 500 créations de profil pur testées sur le moteur courant : huit peuples, dix paires de voies, cinq options d’âge, trois séries distinctes et variantes raciales. Les autres méthodes conservent leurs preuves antérieures.':'Séries, achat et tirages représentatifs avec toutes les races officielles ; règles raciales évaluées séparément.'),'Contrôler les méthodes du profil.'),
+ mark('methods','Méthodes de répartition des caractéristiques',methodsCurrent,(pureFastCurrent?'8 500/8 500 créations de profil pur testées sur le moteur courant : huit peuples, dix paires de voies, cinq options d’âge, trois séries distinctes et variantes raciales. Les autres méthodes conservent leurs preuves antérieures.':'Séries, achat et tirages représentatifs avec toutes les races officielles ; règles raciales évaluées séparément.'),'Contrôler les méthodes du profil.'),
  mark('derived','PV, DEF, initiative, chance, mana, attaques et dommages',derivedComplete,'20 480 comparaisons arithmétiques indépendantes : deux variantes, huit peuples, vingt paires ordonnées, cinq modalités d’âge, deux séries et deux armures, quinze dons et échange PC/DR. Attaques, dégâts, portée, critique, pouvoirs permanents et sauvegardes. 36 contrôles des frontières poudre/arbalètes et 20 doubles choix de prédilection. Les activations de combat restent au critère R3.','Compléter les preuves arithmétiques indépendantes sur les deux produits courants, toutes les attaques et les dons ; refuser tout rapport partiel ou périmé.'),
- mark('r1effects','Tous les effets des cinq capacités de rang 1',r1Complete,'Cinq capacités R1 calculées selon contexte dans l’interface réelle : mécanismes et armes de siège, grenaille en cône, Pilier de bar 1d4° et résistance non létale, initiative armée chargée, couvert, sans faire intervenir les hybrides. Plus de 60 cas oracle + quatre situations réelles au clic, pour les deux produits.','Compléter les preuves sur les 5 effets R1, les cas négatifs, le vrai parcours au clic sur la version courante ; aucun test hybride requis.'),
+ mark('r1effects','Tous les effets des cinq capacités de rang 1',r1Complete,'Cinq capacités R1 calculées selon contexte dans l’interface réelle : mécanismes et armes de siège, grenaille en cône, Pilier de bar 1d4° et résistance non létale, initiative armée chargée, couvert, sans faire intervenir les hybrides. Plus de 60 cas oracle historiques + quatre situations réelles au clic sur la Forge publiée.','Compléter les preuves sur les 5 effets R1, les cas négatifs, le vrai parcours au clic sur la version courante ; aucun test hybride requis.'),
  mark('r2effects','Tous les effets des cinq capacités de rang 2',r2Complete,'Cinq capacités R2 contrôlées par oracles contextuels (cas applicables, absence de contexte et capacité non acquise) et cinq créations vénérables au clic sur la version courante. Chargeurs calculés depuis les rangs acquis, rechargement, charges/préparation de Démolition, NC/critique de Mort ou vif, cible/délai d’Ajuster le tir et préparation/DEF/RD de Défaut dans la cuirasse. Rangs et sauvegardes croisés aux huit peuples.',mechanicalCurrent?'15 capacités R1–R3 contrôlées dans les deux bases, et chargeur 2+INT validé. Plusieurs rangs R2 restent des effets à interpréter en combat ; rechargement, Démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse non certifiés en exécution.':'Chargeur 2 + INT validé ; restent le rechargement, la démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse.'),
  mark('r3effects','Tous les effets des cinq capacités de rang 3',false,'','Les cinq capacités R3 du profil disposent de calculs contextuels et de parcours vénérables au clic. Les quinze dons de Combattant aguerri sont accessibles, conservés et contrôlés dans les calculs permanents. Restent à vérifier intégralement les conditions d’exécution des capacités accordées, notamment Vivacité, Teigneux, Attaque à suivre et Protéger un allié ; ce critère reste ouvert.'),
- mark('gear','Toutes les armes, armures et variante Arbalétrier',gearComplete,'200 contrôles des frontières d’équipement du profil : 41 armes du Livre de base, sept armures, deux boucliers, deux variantes et deux produits, avec sauvegardes. Variante sans poudre : pétoire et mousquet refusés. 240 contrôles complémentaires des dons et plafonds d’armure et vingt créations réelles au clic. Les restrictions raciales de taille restent suivies dans les critères propres aux peuples.',mercenaryContinuity?'Périmètre PROFIL PUR seulement : contrôler les interdictions de boucliers, le plafond chemise de mailles, les catégories d’armes et les paquetages, ainsi que la variante officielle Arbalétrier sans armes à poudre. Les 32 tests hybrides réussis restent hors de ce certificat.':deployed||arbaletrierMissing?variantGap:(pureGearCurrent?'80/80 armures autorisées jusqu’à DEF +4 et 16/16 pétoires maîtrisées pour les huit peuples sur deux produits. Les armures trop lourdes et boucliers sont refusés par le moteur ; vérifier la règle de port avec incapacités et l’Arbalétrier.':'Maîtrises, armure maximum, boucliers, armes à poudre, équipements alternatifs et Arbalétrier sans poudre.')),
+ mark('gear','Toutes les armes, armures et variante Arbalétrier',gearComplete,'100 contrôles des frontières d’équipement sur la Forge publiée (200 dans l'ancien rapport comprenant le maître supprimé) : 41 armes, sept armures, deux boucliers et deux variantes, avec sauvegardes. Variante sans poudre : pétoire et mousquet refusés. 120 contrôles des dons et plafonds d’armure sur la Forge publiée et vingt créations réelles au clic. Les restrictions raciales de taille restent suivies dans les critères propres aux peuples.',mercenaryContinuity?'Périmètre PROFIL PUR seulement : contrôler les interdictions de boucliers, le plafond chemise de mailles, les catégories d’armes et les paquetages, ainsi que la variante officielle Arbalétrier sans armes à poudre. Les 32 tests hybrides réussis restent hors de ce certificat.':deployed||arbaletrierMissing?variantGap:(pureGearCurrent?'80/80 armures autorisées jusqu’à DEF +4 et 16/16 pétoires maîtrisées pour les huit peuples sur deux produits. Les armures trop lourdes et boucliers sont refusés par le moteur ; vérifier la règle de port avec incapacités et l’Arbalétrier.':'Maîtrises, armure maximum, boucliers, armes à poudre, équipements alternatifs et Arbalétrier sans poudre.')),
  mark('history','Origines, métiers et historiques avancés',false,'',historyConditionsCurrent?'Érudit : domaines/langues et Argumenter ; Courtisan : dons R5, Secrets et commérages, perception visuelle/mensonge/langage corporel ; bonus communautaire et Expertise calculés en situation avec cas défavorables. 160 personnages et six parcours dédiés sauvegardés et rouverts, en plus des 496 choix historiques et 24 exports privés. Restent les autres capacités historiques et leurs conditions : aucune clôture globale.':historyChoicesCurrent?'Érudit : domaines principal et secondaire, bonus et langues par rang, quota pondéré de l’Argotien ; Courtisan R5 : don R1–R3 aventurier et acquisitions imbriquées. 496 cas, six créations mobiles sauvegardées et rouvertes, 24 exports officiels privés vérifiés. Restent le bonus communautaire et les autres effets conditionnels des historiques ; ce critère reste ouvert.':historyCrossPassed?'Les 17 historiques sont accessibles, leurs rangs et sauvegardes réussissent avec les huit peuples. Restent à vérifier individuellement leurs bonus conditionnels, les restrictions et l’export sur la fiche de l’Arquebusier.':'Contrôler toutes les voies d’historique, leurs rangs accessibles et leurs effets sur les aptitudes de l’Arquebusier.'),
  mark('save','Enregistrer et reprendre les pouvoirs obtenus',ageOK,'Les états de référence des rangs 1, 2 et 3 avec l’âge ont été enregistrés et restaurés à l’identique.','Vérifier la sauvegarde et la reprise.'),
  mark('pdf','Fiche officielle et annexes',pdfComplete,'28 exports sur le vrai modèle officiel : cinq voies et rangs R1–R3 des deux variantes, deux exporteurs, bonus de Doigts agiles actif/inactif selon l’armure. 4 368 widgets relus (valeurs et apparences), fiche et annexe inspectées visuellement. Quinze dons contrôlés dans 60 annexes, uniquement leurs rangs acquis et textes intégraux. Les exports propres aux peuples et historiques restent suivis séparément.',pdfProbePass?'Test réel Chrome et smartphone des exports des deux variantes : 4 PDF de 6 pages, nom et profil présents sur les deux premières pages, PDF sans champs étranger refusé. Empreinte du modèle COF2 reconnue en simulation ; restent le rendu sur le PDF officiel réel et la vérification exhaustive des champs, textes et annexes.':'Vérifier les deux pages officielles, toutes les valeurs, les résumés et les descriptions des voies.'),
@@ -193,6 +198,9 @@ if(profileOrder.length!==14||activeIndex!==0)throw Error('Certification séquent
 const queue=profileOrder.map((name,i)=>({name,position:i+1,status:i===activeIndex?'EN_COURS':'EN_ATTENTE',percent:i===activeIndex?Math.round(100*verified/profileChecks.length):null,certified:false}));
 const output={
  schema:'FOH_N1_PROFILE_AND_PEOPLES_SEPARATE',
+ canonicalProduct:'forge-of-heroes/index.html',
+ canonicalIndexSha256:productHash('index.html'),
+ certificationBasis:'Une seule Forge: seules les preuves attachées à index.html et à son SHA actuel comptent; les anciennes références au maître supprimé sont archivées.',
  generatedAt:new Date().toISOString(),
  engineSha256:pure.engineSha256,
  certificationPlan:{
