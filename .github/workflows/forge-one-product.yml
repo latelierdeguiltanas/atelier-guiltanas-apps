@@ -4,6 +4,11 @@ on:
     paths:
       - '.github/workflows/forge-one-product.yml'
       - 'forge-of-heroes/scripts/consolidate-single-forge.cjs'
+      - 'forge-of-heroes/index.html'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/**'
+      - 'forge-of-heroes/ENGINE/**'
+      - 'forge-of-heroes/rules/**'
+      - 'forge-of-heroes/scripts/**'
   workflow_dispatch:
 permissions:
   contents: write
@@ -33,6 +38,11 @@ jobs:
           test "$before" = "$after"
           test ! -e forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html
           test "$(find forge-of-heroes -maxdepth 1 -name '*.html' | wc -l)" -eq 1
+          legacy='FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER'
+          if grep -R -F "${legacy}.html" .github/workflows --exclude=forge-one-product.yml; then
+            echo 'Un workflow cible encore l ancien produit Forge' >&2
+            exit 1
+          fi
           git diff --check
       - name: Check syntax and load the real N1 engine
         shell: bash
