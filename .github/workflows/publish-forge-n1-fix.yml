@@ -32,6 +32,6 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add forge-of-heroes/index.html forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html
+          git add forge-of-heroes/index.html
           git commit -m "Forge N1: stopper la boucle des rangs 2 de l'Arquebusier"
           git push
