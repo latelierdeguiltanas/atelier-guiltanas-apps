@@ -1,3 +1,9 @@
+# Contrôle des pourcentages — 5 novembre 2026
+
+**Statut actuel : Arquebusier/Arbalétrier 14/16 (88 %)** sur le seul `index.html` ; deux critères complets restent ouverts (R3 accordés et effets historiques). Sur ce même index : 1 008/1 008 méthodes, 392/392 options raciales et 1 152 historiques dont 1 120 réussis/32 refus légaux (zéro échec). Les 69 % des autres profils et 60 % des peuples sont des acquis historiques sur un ancien moteur, **pas un certificat courant**. Document signé : [Réconciliation Forge unique](QA/N1/RECONCILIATION_FORGE_UNIQUE_2026-11-05.md).
+
+---
+
 # Architecture Forge unique — 5 novembre 2026
 
 Seule Forge utilisée et testée : forge-of-heroes/index.html.
