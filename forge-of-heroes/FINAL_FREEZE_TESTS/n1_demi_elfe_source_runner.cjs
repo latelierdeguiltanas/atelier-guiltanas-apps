@@ -4,7 +4,7 @@ const {load,standardState}=require('./forge_product_runner');
 const ROOT=path.resolve(__dirname,'..'),cp=x=>JSON.parse(JSON.stringify(x)),results=[],failures=[];
 const race='people:demi-elfe:cof2-lb-2024';
 const heritageTerms=['voie-de-l-humain','voie-de-l-elfe-haut','voie-de-l-elfe-sylvain'];
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,engine:E,html}=load(path.join(ROOT,file)),T=db.tables,classes=T.classes.filter(x=>x.id.includes('cof2-lb-2024'));
  const heritage=heritageTerms.map(t=>T.paths_people.find(p=>p.id.split(':')[1]===t));
  assert.ok(heritage.every(Boolean),'missing inherited people choices');

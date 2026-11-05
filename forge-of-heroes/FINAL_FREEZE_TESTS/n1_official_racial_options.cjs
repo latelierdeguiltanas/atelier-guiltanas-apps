@@ -12,7 +12,7 @@ const official={
  'nain':{bonus:['con','vol'],malus:['agi'],heritage:['voie-du-nain'],book:'p.59 : +1 CON/VOL, -1 AGI'}
 };
 const report={schema:'FOH_N1_CO_F2_OFFICIAL_RACE_STAT_CHOICES',generatedAt:new Date().toISOString(),runnerSha:null,products:[],cases:0,passes:0,failures:[],unavailable:[],perPeople:{},bookEvidence:Object.fromEntries(Object.entries(official).map(([k,v])=>[k,v.book])),scope:'Tous les choix de caractéristiques raciales du livre de base : 8 peuples, 14 profils, héritages du demi-elfe, deux produits, valeurs permanentes, persistance et dérivés. Les capacités alternatives et conditions distinctes sont vérifiées dans leurs propres lots.'};
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,engine:E,html}=load(path.join(ROOT,file)),T=db.tables;
  const classes=T.classes.filter(x=>x.id.endsWith(':cof2-lb-2024'));
  const races=T.peoples.filter(x=>x.id.endsWith(':cof2-lb-2024'));

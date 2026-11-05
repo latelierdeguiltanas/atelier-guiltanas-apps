@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('assert/strict'),path=require('path'),R=require('../rules/permanent-rules'),A=require('../rules/ability-runtime'),{load,standardState}=require('./forge_product_runner'),copy=x=>JSON.parse(JSON.stringify(x));let cases=0;
-for(const product of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const product of ['index.html']){
  const {db,engine}=load(path.resolve(__dirname,'..',product)),t=db.tables,priest='class:pretre:cof2-lb-2024',spirit='classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024',a=t.abilities_class.find(a=>a.path_id===spirit&&a.rank===1),mail='armor:cotte-de-mailles:cof2-lb-2024';
  const st=standardState(db,priest,spirit);st.profileChoices.priestMode='generalist';st.equip.armorId='';st.equip.gmApprovedSwap=true;
  const calc=s=>{const before=JSON.stringify(s),r=copy(engine.computeCharacterN1(s));assert.equal(JSON.stringify(s),before);assert.equal(r.errors.length,0,r.errors.join('; '));cases++;return r.sticky;};

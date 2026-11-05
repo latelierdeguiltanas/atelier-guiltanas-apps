@@ -15,7 +15,7 @@ const ages=[
  {id:'venerable',agi:0,con:0,init:11,pc:2,dr:2,rank:3}
 ];
 let count=0;
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,engine}=load(path.join(__dirname,'..',file));
  for(const mode of ['standard','hybrid','no-profile'])for(const age of ages)for(const armor of [false,true]){
   const state=standardState(db,warrior,soldier);

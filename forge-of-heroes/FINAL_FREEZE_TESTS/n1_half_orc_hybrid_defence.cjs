@@ -8,7 +8,7 @@ const primary = 'class:barbare:cof2-lb-2024', secondary = 'class:forgesort:cof2-
 const first = 'classpath:voie-du-pagne:class-barbare:cof2-lb-2024';
 const second = 'classpath:voie-des-runes:class-forgesort:cof2-lb-2024';
 let cases = 0;
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,engine} = load(path.join(__dirname,'..',file));
  for(const bonusStat of ['for','con'])for(const malusStat of ['int','cha'])for(const leather of [true,false]){
   const state = standardState(db,primary,first,'people:demi-orc:cof2-lb-2024');

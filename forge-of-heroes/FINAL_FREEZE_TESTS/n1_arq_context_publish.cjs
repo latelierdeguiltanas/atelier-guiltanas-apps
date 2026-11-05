@@ -7,7 +7,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
 const root=path.resolve(__dirname,'..'),sha=s=>crypto.createHash('sha256').update(s).digest('hex');
 const moduleSource=fs.readFileSync(path.join(root,'ENGINE/arquebusier_context_n1.js'),'utf8');
 const uiSource=fs.readFileSync(path.join(root,'ENGINE/arquebusier_context_ui_n1.js'),'utf8');
-const files=['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html'],write=process.argv.includes('--write');
+const files=['index.html'],write=process.argv.includes('--write');
 function locate(html,id){
  const needle='id="'+id+'"',i=html.indexOf(needle);
  if(i<0)return null;

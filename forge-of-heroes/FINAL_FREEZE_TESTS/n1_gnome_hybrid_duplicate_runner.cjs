@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('node:assert/strict'),path=require('node:path'),fs=require('node:fs'),{load}=require('./forge_product_runner'),root=path.resolve(__dirname,'..'),fixture=require('../QA/N1/defects/gnome-hybrid-duplicate.json');
 let count=0;
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,engine}=load(root+'/'+file),T=db.tables,options=T.abilities_class.filter(a=>a.rank===1&&T.paths_class.some(p=>p.id===a.path_id&&p.classId==='class:ensorceleur:cof2-lb-2024'));
  for(const row of fixture.cases){const state=JSON.parse(JSON.stringify(row.state));
   // COF2 p.65: la voie du Mercenaire en hybride n'accorde plus

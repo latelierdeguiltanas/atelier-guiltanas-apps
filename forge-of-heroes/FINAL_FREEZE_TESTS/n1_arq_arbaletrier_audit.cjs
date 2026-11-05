@@ -16,7 +16,7 @@ const profileRows=catalog.profiles.filter(p=>p.id===orig||p.id===alt);
 const mapped=catalog.paths.filter(p=>p.classId===alt||p.allowedClassIds?.includes(alt));
 const warrior=catalog.paths.find(p=>p.id.includes('voie-du-maitre-d-armes')&&p.classId==='class:guerrier:cof2-lb-2024');
 const products=[];
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,html}=load(path.join(root,file));
  const tables=db.tables;
  const appTerms=html.toLowerCase();

@@ -28,7 +28,7 @@ const specs=[
  ['psionique','voie-de-la-telekinesie','voie-de-l-attaque-mentale',2,3,null,r=>({DEF:r})]
 ];
 const report={schema:'FOH_N1_SOURCE_NUMERIC',scope:'Absolute numerical expectations for 25 official/adapted abilities at creation ranks 1–3. Unarmored human, neutral second path, no combat activation. Not a claim of all N1 effects.',cases:[],failures:[],inputs:{}};
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){const{db,engine:E,html}=load(root+'/'+file),T=db.tables;report.inputs[file]={engineSha256:crypto.createHash('sha256').update(html.match(/id="FOH_ENGINE_BUNDLE"[^>]*>([\s\S]*?)<\/script>/)[1]).digest('hex')};
+for(const file of ['index.html']){const{db,engine:E,html}=load(root+'/'+file),T=db.tables;report.inputs[file]={engineSha256:crypto.createHash('sha256').update(html.match(/id="FOH_ENGINE_BUNDLE"[^>]*>([\s\S]*?)<\/script>/)[1]).digest('hex')};
 for(const [profile,target,neutral,min,max,pdfPage,bonus]of specs)for(let rank=min;rank<=max;rank++){
  const edition=['psionique','samourai'].includes(profile)?'addon-compagnon-2024':'cof2-lb-2024',pid='class:'+profile+':'+edition,pathId=n=>'classpath:'+n+':class-'+profile+':'+edition,s=standardState(db,pid,pathId(target)),targetId=pathId(target),neutralId=pathId(neutral);s.baseCaracs={for:1,agi:1,con:0,per:profile==='psionique'?2:0,int:3,vol:profile==='psionique'?0:2,cha:-1};s.voies.profilePathIds=[targetId,neutralId];s.equip.armorId='';s.equip.shieldId='';s.equip.gmApprovedSwap=true;if(profile==='pretre')s.profileChoices.priestMode='generalist';
  if(s.familleId==='mage')s.voies.mageRank2PathId=rank===1?neutralId:targetId;

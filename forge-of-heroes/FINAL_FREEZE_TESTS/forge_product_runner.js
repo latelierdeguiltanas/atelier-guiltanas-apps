@@ -1,6 +1,6 @@
 'use strict';
 const fs=require('fs'),path=require('path'),vm=require('vm');
-const ROOT=path.resolve(__dirname,'..'),PRODUCT=path.join(ROOT,'FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html');
+const ROOT=path.resolve(__dirname,'..'),PRODUCT=path.join(ROOT,'index.html');
 function extract(h,id){const m=h.match(new RegExp(`<script[^>]*id=["']${id}["'][^>]*>([\\s\\S]*?)<\\/script>`));if(!m)throw new Error('missing '+id);return m[1]}
 function load(productPath=PRODUCT){const html=fs.readFileSync(productPath,'utf8'),db=JSON.parse(extract(html,'FOH_DB_JSON')),box={window:{},console};vm.createContext(box);vm.runInContext(extract(html,'FOH_ENGINE_BUNDLE'),box);return{html,db,engine:box.window.__FOH_ENGINE_FACTORY__(db)}}
 function standardState(db,profileId,pathId,peopleId='people:humain:cof2-lb-2024'){

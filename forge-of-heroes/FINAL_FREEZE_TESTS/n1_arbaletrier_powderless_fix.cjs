@@ -2,7 +2,7 @@
 // COF2 p.62: powderless variant must replace firearms, including GM-approved swaps.
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
 const root=path.resolve(__dirname,'..'),write=process.argv.includes('--write'),hash=x=>crypto.createHash('sha256').update(x).digest('hex'),rows=[];
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const fp=path.join(root,file),before=fs.readFileSync(fp,'utf8'),match=before.match(/(<script[^>]*id="FOH_DB_JSON"[^>]*>)([\s\S]*?)(<\/script>)/);assert(match);
  const db=JSON.parse(match[2]),original=JSON.stringify(db),rule=db.tables.profile_rules.find(r=>r.profileId==='class:arbaletrier:cof2-variant-2024');assert(rule);
  const mw=rule.masteries.weapons,previous=mw.forbiddenCategories;

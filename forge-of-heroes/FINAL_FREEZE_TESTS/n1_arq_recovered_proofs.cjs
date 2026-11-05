@@ -4,7 +4,7 @@
 // Do not transfer ANY proof to a different product or shared PDF renderer.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict'),root=path.resolve(__dirname,'..');
 const hash=f=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,f))).digest('hex'),read=f=>JSON.parse(fs.readFileSync(path.join(root,'QA/N1',f),'utf8'));
-const products=['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html'],current=f=>products.includes(f),report={schema:'FOH_N1_ARQ_RECOVERED_CURRENT_PROOFS',sourceRun:41808599204,at:new Date().toISOString(),status:'PENDING',checks:[]};
+const products=['index.html'],current=f=>products.includes(f),report={schema:'FOH_N1_ARQ_RECOVERED_CURRENT_PROOFS',sourceRun:41808599204,at:new Date().toISOString(),status:'PENDING',checks:[]};
 function requireResult(file,count){const r=read(file);assert.equal(r.status,'PASS',file);assert.equal(r.passed??r.pass,count,file);assert.equal(r.failed,0,file);report.checks.push({file,passed:count,status:'PASS'});return r;}
 function inputs(rows,key){assert.equal(rows.length,2);assert.equal(new Set(rows.map(p=>p.file)).size,2);for(const p of rows){assert(current(p.file));assert.equal(p[key],hash(p.file),'Stale proof '+p.file);}}
 for(const[file,count]of [['arquebusier-20-real-mobile-pairs.json',20],['arquebusier-context-real-click.json',4],['arquebusier-venerable-context-click.json',5]]){const r=requireResult(file,count);assert.equal(r.indexSha256,hash('index.html'),file);}

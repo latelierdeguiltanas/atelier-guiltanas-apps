@@ -6,7 +6,7 @@ const races=['humain','nain','demi-elfe','demi-orc','elfe-haut','elfe-sylvain','
 const bonuses={humain:{humainStat:'cha'},nain:{bonusStat:'con',malusStat:'agi'},'demi-elfe':{bonusStat:'per',malusStat:'for'},'demi-orc':{bonusStat:'for',malusStat:'cha'},'elfe-haut':{bonusStat:'int',malusStat:'for'},'elfe-sylvain':{bonusStat:'agi',malusStat:'for'},gnome:{bonusStat:'int',malusStat:'for'},halfelin:{bonusStat:'agi',malusStat:'for'}};
 const heritage={humain:'voie-de-l-humain',nain:'voie-du-nain','demi-elfe':'voie-de-l-humain','demi-orc':'voie-du-demi-orc','elfe-haut':'voie-de-l-elfe-haut','elfe-sylvain':'voie-de-l-elfe-sylvain',gnome:'voie-du-gnome',halfelin:'voie-du-halfelin'};
 const result={schema:'FOH_N1_ARQUEBUSIER_HISTORIES_ALL_PEOPLES',at:new Date().toISOString(),scope:'Arquebusier pur, 8 peuples, toutes les paires histoire géographique + professionnelle, 2 versions, âge vénérable et 4 rangs investis dans une voie d’historique; tests de calcul, acquisition, sauvegarde/reprise et choix persistants; autres modes reportés.',counts:{cases:0,passed:0,legallyRejected:0,failed:0},inputs:[],perPeople:{},histories:{},failures:[],source:'Règles avancées COF2 p.153, voies d’historique pp.170–180'};
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,engine:E,html}=load(path.join(ROOT,file)),T=db.tables;
  result.inputs.push({file,sha256:crypto.createHash('sha256').update(html).digest('hex')});
  const geo=T.history_paths.filter(p=>p.category==='geographic'),job=T.history_paths.filter(p=>p.category==='professional');

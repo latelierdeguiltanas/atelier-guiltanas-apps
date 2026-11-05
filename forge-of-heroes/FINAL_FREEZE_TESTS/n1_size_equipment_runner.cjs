@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),path=require('node:path'),{load,standardState}=require('./forge_product_runner'),root=path.resolve(__dirname,'..');let count=0;
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,engine:E}=load(root+'/'+file),T=db.tables;
  function base(people,mode,weapon,shield=''){
   const s=standardState(db,'class:guerrier:cof2-lb-2024',undefined,people);s.peupleChoices={bonusStat:'agi'};s.voies.profilePathIds=T.paths_class.filter(p=>p.classId===s.classeId&&!/bouclier|maitre-d-armes/.test(p.id)).slice(0,2).map(p=>p.id);

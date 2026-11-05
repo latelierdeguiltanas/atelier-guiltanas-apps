@@ -1,3 +1,13 @@
+# Architecture Forge unique — 5 novembre 2026
+
+Seule Forge utilisée et testée : forge-of-heroes/index.html.
+Tous les tests et correctifs doivent viser exactement cette entrée publiée.
+Les mentions « deux produits » ci-dessous sont des notes de recette historiques.
+Le produit maître alternatif a été supprimé sans toucher au code du produit publié.
+Les anciens certificats liés au maître ne valent pas validation du fichier courant.
+Cette consolidation ne clôture pas à elle seule les réserves N1.
+
+---
 PUBLICATION VÉRIFIÉE — 30 octobre 2026
 Main : 4aaee2ae366e95c56f6a7f19f6e019558c4a69d5 ; service bastide-character v12. Les cinq ressources servies (entrée Forge, core, catalogue, adaptateur natif, application de progression) correspondent exactement aux fichiers testés. Catalogue complet conservé : 122 voies, 17 profils ; portée de l’adaptateur natif explicitement maintenue à huit profils. Accès HTTP anonyme au service : 401. Les six carnets ont été relus : tous N2, révisions inchangées, aucun niveau attribué par les tests.
 Résultats ciblés : 176 plans N3 des six vrais carnets ; 420 bases et 54 520 plans N2 halfelin sorcier/moine ; 12 PDF officiels et dialogues/sauvegardes/rejeux PASS. Les cas exacts et limites sont dans QA/N3/lot2/README.md. Les correctifs de DEF de Scanlan et de DM des dagues de Prépotante s’appliquent si ces rangs sont choisis. Les choix de monture et de chargeur sont conservés/exportés. N1 général toujours non certifié ; poursuivre ses réserves explicites, sans transformer ce périmètre ciblé en garantie universelle.

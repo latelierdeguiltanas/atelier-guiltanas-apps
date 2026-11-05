@@ -1,20 +1,11 @@
-# Forge of Heroes — N1
+# Forge of Heroes — source unique
 
-Version N1 de recette de **Forge of Heroes — L’Atelier de Guiltanas**.
+Une seule Forge de production et de test : forge-of-heroes/index.html.
+Cette entrée GitHub Pages est la seule à recevoir les corrections et les recettes.
+Les tests du moteur, les vrais clics et les exports officiels doivent cibler cette entrée.
 
-## Fichiers principaux
-
-- `index.html` : entrée GitHub Pages, copie byte-à-byte du Product Master.
-- `FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html` : Master N1 figé.
-- `FINAL_FREEZE/` : preuves automatisées correspondant au Master.
-- `FINAL_FREEZE_TESTS/` : certificateurs reproductibles.
-- `MANUAL_FREEZE_PACK/` : 12 parcours de recette utilisateur.
-- `REAL_USER_JOURNEY/` : résultats de recette, à actualiser après exécution réelle au clic.
-
-## Intégrité
-
-SHA-256 du Product Master et de `index.html` :
-
-`565cc873e6429ce524fcea371d0a3fe11fe5ab96e6757e4177d4f7d8433b5559`
-
-Ne pas déclarer le gate N1 prêt tant que les 12 parcours réels ne sont pas exécutés et validés.
+FINAL_FREEZE_TESTS et QA conservent les tests et rapports, sans HTML alternatif.
+Les rapports anciens qui évoquent un produit maître sont des preuves historiques.
+Ils ne certifient pas automatiquement la version actuellement publiée.
+Ne pas régénérer un second HTML pour la validation.
+Le N1 général reste ouvert jusqu’à clôture indépendante de toutes ses réserves.

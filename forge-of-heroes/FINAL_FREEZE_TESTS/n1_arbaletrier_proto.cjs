@@ -27,7 +27,7 @@ function inject(db){
  }
  return {paths:alts,profileId:altClass,firstEquipment:equipment.initialEquipment.packages[0],counts:{classes:T.classes.length,paths:T.paths_class.length,abilities:T.abilities_class.length},warriorId:alts.find(x=>x.includes('voie-du-maitre-d-armes'))};
 }
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,html}=load(path.join(root,file));
  const install=inject(db);report.install=install;
  let bundle=html.match(/<script[^>]*id=["']FOH_ENGINE_BUNDLE["'][^>]*>([\s\S]*?)<\/script>/)[1];

@@ -39,7 +39,7 @@ function fill(E,T,s){
  }
  return s;
 }
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {html,db,engine:E}=load(path.join(root,file)),T=db.tables||db,original=fs.readFileSync(path.join(root,file),'utf8');
  const cls=T.classes.find(c=>c.group==='Base'&&c.label.toLowerCase()===profileLabel.toLowerCase());
  assert(cls,'Unknown pure base profile '+profileLabel);

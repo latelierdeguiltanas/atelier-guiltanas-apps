@@ -20,7 +20,7 @@ const sourceIndex={
  'voie-de-l-artilleur':62,'voie-des-explosifs':63,'voie-du-mercenaire':64,'voie-du-pistolero':65,'voie-de-la-precision':65
 };
 const cases=[['young',null],['very-young','PC'],['very-young','DR'],['mature',null],['venerable',null]];
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,engine:E,html}=load(path.join(ROOT,file)),T=db.tables,paths=T.paths_class.filter(p=>p.classId===profile&&!p.additionalMagePath);
  if(paths.length!==5)throw Error('Missing five paths');
  const hash=s=>crypto.createHash('sha256').update(s).digest('hex');

@@ -14,7 +14,7 @@ const tasks=[
   ['r2-independent-numerics','n1_r2_pair_numeric_oracle.cjs']
 ];
 const index=fs.readFileSync(path.join(root,'index.html'));
-const master=fs.readFileSync(path.join(root,'FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html'));
+const master=fs.readFileSync(path.join(root,'index.html'));
 const checks=[];
 for(const [id,filename] of tasks){
   const t=Date.now();

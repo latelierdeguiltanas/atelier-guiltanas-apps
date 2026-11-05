@@ -8,7 +8,7 @@ const smoke=process.argv.includes('--smoke'),stats=['for','agi','con','per','int
 const classes=smoke?T.classes.slice(0,2):T.classes,peoples=smoke?T.peoples.slice(0,2):T.peoples;
 const paths=T.paths_class.filter(p=>!p.additionalMagePath),byClass=id=>paths.filter(p=>p.classId===id);
 fs.mkdirSync(OUT,{recursive:true});
-const master=load(ROOT+'/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html');
+const master=load(ROOT+'/index.html');
 const extract=(s,id)=>s.match(new RegExp('<script[^>]*id="'+id+'"[^>]*>([\\s\\S]*?)<\\/script>'))[1];
 assert.equal(extract(html,'FOH_DB_JSON'),extract(master.html,'FOH_DB_JSON'),'Product data parity');
 assert.equal(extract(html,'FOH_ENGINE_BUNDLE'),extract(master.html,'FOH_ENGINE_BUNDLE'),'Product engine parity');

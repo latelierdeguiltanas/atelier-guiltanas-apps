@@ -9,7 +9,7 @@ assert.equal(click.status,'PASS','Arbalétrier failed real Chrome click');
 assert.equal(browser.length,12,'All existing 12 journeys must run');
 assert.ok(browser.every(x=>x.status==='PASS'),'A pre-existing character journey failed: '+JSON.stringify(browser.filter(x=>x.status!=='PASS')));
 assert.deepEqual([prototype.matrix.total,prototype.matrix.passed,prototype.matrix.failed],[480,480,0],'Full race/path/age prototype missing');
-const sourceFiles=['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html'];
+const sourceFiles=['index.html'];
 const products=[];
 for(const name of sourceFiles){
  const orig=load(path.join(root,name)),staged=load(path.join(stageBase,'forge-of-heroes',name));

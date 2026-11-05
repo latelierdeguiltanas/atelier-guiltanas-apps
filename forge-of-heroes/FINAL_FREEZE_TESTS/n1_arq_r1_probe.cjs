@@ -2,7 +2,7 @@
 const fs=require('fs'),path=require('path'),{load,standardState}=require('./forge_product_runner');
 const root=path.resolve(__dirname,'..');const ids=['voie-de-l-artilleur','voie-des-explosifs','voie-du-mercenaire','voie-du-pistolero','voie-de-la-precision'];
 const results={at:new Date().toISOString(),engineAPIs:[],cases:[]};
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,engine:E}=load(path.join(root,file)),T=db.tables,p='class:arquebusier:cof2-lb-2024';
  results.engineAPIs=Object.keys(E).filter(k=>/skill|effect|condition|context|combat|weapon|attack|ability|compute/i.test(k)).sort();
  for(const target of ids){

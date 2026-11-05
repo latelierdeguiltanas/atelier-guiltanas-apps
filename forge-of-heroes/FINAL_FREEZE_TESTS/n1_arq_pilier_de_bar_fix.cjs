@@ -7,7 +7,7 @@
  */
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
 const {load,standardState}=require('./forge_product_runner');
-const root=path.resolve(__dirname,'..'), files=['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html'];
+const root=path.resolve(__dirname,'..'), files=['index.html'];
 const sha=s=>crypto.createHash('sha256').update(s).digest('hex');
 const report={schema:'FOH_N1_PILIER_DE_BAR_SOURCE_CORRECTION',source:'COF2 Livre de base p.64',expected:'1d4° DM non létaux à mains nues',status:'PASS',products:[],failures:[]};
 const idrx=/"id"\s*:\s*"(ability:pilier-de-bar:[^"]+)"/g;

@@ -4,7 +4,7 @@ const root=path.resolve(__dirname,'..'),copy=x=>JSON.parse(JSON.stringify(x));
 // Expectations authored from COF2 Livre de base p.86 and Compagnon p.31.
 // Same title is not a shared rule: only the knight learns an extra language.
 const report={schema:'FOH_N1_EDUCATED_SOURCE',scope:'Two educated abilities: requirements, granted literacy, extra language allowance, active choice projection and save/reload in standard/hybrid/no-profile. Not a global N1 certification.',sources:[{document:'COF2 Livre de base',printedPage:86},{document:'Compagnon COF1, adaptation Forge',printedPage:31}],cases:[],failures:[],inputs:{}};
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){const {db,engine:E,html}=load(root+'/'+file);report.inputs[file]=crypto.createHash('sha256').update(html).digest('hex');
+for(const file of ['index.html']){const {db,engine:E,html}=load(root+'/'+file);report.inputs[file]=crypto.createHash('sha256').update(html).digest('hex');
 for(const who of ['chevalier','samourai'])for(const mode of ['standard','hybrid','no-profile'])for(const int of [-1,0,3])for(const storage of ['ability','legacy']){
  const edition=who==='chevalier'?'cof2-lb-2024':'addon-compagnon-2024',profile='class:'+who+':'+edition,target='classpath:'+(who==='chevalier'?'voie-de-la-noblesse':'voie-du-dirigeant')+':class-'+who+':'+edition,s=standardState(db,profile,target),neutral='classpath:voie-du-soldat:class-guerrier:cof2-lb-2024';
  s.baseCaracs=int===-1?{for:2,agi:1,con:0,per:1,int:-1,vol:0,cha:3}:int===0?{for:2,agi:1,con:0,per:1,int:0,vol:3,cha:-1}:{for:2,agi:1,con:0,per:1,int:3,vol:0,cha:-1};

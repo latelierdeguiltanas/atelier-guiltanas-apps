@@ -7,7 +7,7 @@ const fs=require('fs'),path=require('path'),crypto=require('crypto'),assert=requ
 const {load,standardState}=require('./forge_product_runner'),API=require('../ENGINE/arquebusier_context_n1.js'),root=path.resolve(__dirname,'..');
 const A='class:arquebusier:cof2-lb-2024',V='class:voleur:cof2-lb-2024';
 const report={schema:'FOH_N1_HYBRID_POWDER_SAFETY',at:new Date().toISOString(),source:'COF2 Livre de base imprimé p63, introduction Voie des Explosifs',products:[],cases:[],passed:0,failed:0,status:'PENDING',limits:'Test d’acquisition et du calculateur conditionnel, pas simulation du risque d’une panne aléatoire de l’arme.'};
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,engine:E,html}=load(path.join(root,file));
  const t=db.tables,pA=t.paths_class.find(p=>p.classId===A&&p.id.includes('voie-des-explosifs')),pV=t.paths_class.find(p=>p.classId===V&&p.id.includes('voie-de-l-assassin'));
  assert(pA&&pV,'voie requise absente');

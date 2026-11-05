@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('assert/strict'),fs=require('fs'),path=require('path'),vm=require('vm'),{load}=require('./forge_product_runner');
 const dir=path.resolve(__dirname,'..');
-for(const name of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const name of ['index.html']){
  const {db,html}=load(path.join(dir,name)),T=db.tables;
  const profiles=T.paths_class.filter(p=>!p.id.includes('fix77-advanced'));
  for(const p of profiles)for(let rank=1;rank<=5;rank++){

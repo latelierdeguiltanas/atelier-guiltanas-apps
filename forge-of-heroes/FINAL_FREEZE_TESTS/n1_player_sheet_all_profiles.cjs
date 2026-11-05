@@ -4,7 +4,7 @@ const F=require('./forge_product_runner'),A=require('../native-progression');
 const cat=require('../progression/catalog.json'),L=require('../../fiches-personnages/library');
 const store=new Map(),storage={getItem:k=>store.get(k)??null,setItem:(k,v)=>store.set(k,v)};
 let count=0;
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,engine}=F.load(path.join(__dirname,'..',file));
  for(const profile of db.tables.classes){
   const state=F.standardState(db,profile.id);if(profile.id.includes('pretre'))state.profileChoices.priestMode='generalist';

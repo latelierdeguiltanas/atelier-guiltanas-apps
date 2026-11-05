@@ -72,7 +72,7 @@ const mechanicalCurrent=mechanical?.status==='SNAPSHOT_COHERENT_STRUCTURE_UNEVAL
 
 const effects=ages.numericEffectAssertions||{};
 const numericPartial=effects['Arme à répétition — chargeur 2 + INT et +1 au rang 3']===32&&effects['Poudre puissante — portée +10 m, dommages +1 et projectile magique']===16&&effects['Tir précis — critique sur 19-20 à distance']===16&&effects['Combattant aguerri — défense +1']===16;
-const expectedFiles=['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html'];
+const expectedFiles=['index.html'];
 const sameCurrentHashes=inputs=>inputs?.length===2&&inputs.every(p=>expectedFiles.includes(p.file)&&p.sha256===productHash(p.file));
 const contextualPath=path.resolve(root,'QA/N1/arquebusier-context-canonical.json');
 const contextual=fs.existsSync(contextualPath)?JSON.parse(fs.readFileSync(contextualPath,'utf8')):null;

@@ -6,7 +6,7 @@ const bonuses={
  'ability:history:scholar:r2':['CHA pour convaincre']
 };
 const moduleText=fs.readFileSync(root+'/ENGINE/history_context_n1.js','utf8'),uiText=fs.readFileSync(root+'/ENGINE/history_context_ui_n1.js','utf8');
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html','progression/pdf-labels.json']){
+for(const file of ['index.html','progression/pdf-labels.json']){
  const fp=path.join(root,file),before=fs.readFileSync(fp,'utf8'),embedded=file.endsWith('.html'),m=embedded?before.match(/(<script[^>]*id="FOH_DB_JSON"[^>]*>)([\s\S]*?)(<\/script>)/):null,db=JSON.parse(embedded?m[2]:before),T=db.tables||db;
  for(const[id,tests]of Object.entries(bonuses)){const a=T.history_abilities.find(a=>a.id===id);assert(a);a.mechanics={...a.mechanics,effects:[{type:'rank_bonus',valueFormula:'rank+2',tests,domains:tests}]};}
  let after=embedded?before.replace(m[0],()=>m[1]+JSON.stringify(db)+m[3]):JSON.stringify(db,null,2)+'\n';

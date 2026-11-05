@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const vm = require('node:vm');
 const path = require('node:path');
 const {load} = require('./forge_product_runner');
-for (const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']) {
+for (const file of ['index.html']) {
   const {html,db} = load(path.resolve(__dirname,'..',file));
   const T=db.tables, geo='history:campaigns', pro='history:courtier';
   const d={age:true,ageId:'venerable',histories:true,geoId:geo,proId:pro,acquisitionPurchases:[]};

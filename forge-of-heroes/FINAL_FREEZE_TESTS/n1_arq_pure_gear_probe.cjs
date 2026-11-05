@@ -10,7 +10,7 @@ const ROOT=path.resolve(__dirname,'..'),SHA=x=>crypto.createHash('sha256').updat
 const cls='class:arquebusier:cof2-lb-2024',races=['humain','nain','demi-elfe','demi-orc','elfe-haut','elfe-sylvain','gnome','halfelin'],ruleBonus={
  humain:{humainStat:'con'},nain:{bonusStat:'con',malusStat:'agi'},'demi-elfe':{bonusStat:'per',malusStat:'for'},'demi-orc':{bonusStat:'for',malusStat:'cha'},'elfe-haut':{bonusStat:'int',malusStat:'for'},'elfe-sylvain':{bonusStat:'agi',malusStat:'for'},gnome:{bonusStat:'int',malusStat:'for'},halfelin:{bonusStat:'agi',malusStat:'for'}};
 const report={schema:'FOH_N1_ARQ_PURE_GEAR_SOURCE_DIAGNOSIS',at:new Date().toISOString(),source:'COF2 Livre de base pp.62 et 188',pureOnly:true,sourceRules:{allOneHandMeleeAndRanged:true,powderMastery:true,armorAbilitiesMaxDef:4,shieldForbiddenForAbilities:true,startingArmorDef:3},products:[],legalArmorChecks:0,legalArmorFailures:0,diagnostics:[],errors:[],status:'PENDING'};
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {html,db,engine:E}=load(path.join(ROOT,file)),T=db.tables;
  const paths=T.paths_class.filter(x=>x.classId===cls&&!x.additionalMagePath),rule=T.profile_rules.find(x=>x.profileId===cls);
  assert.equal(paths.length,5);assert(rule);

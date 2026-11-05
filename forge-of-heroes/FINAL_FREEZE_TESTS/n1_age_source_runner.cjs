@@ -1,7 +1,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto'),{load,standardState,withRank}=require('./forge_product_runner'),root=path.resolve(__dirname,'..'),copy=x=>JSON.parse(JSON.stringify(x));
 const report={schema:'FOH_N1_AGE_SOURCE_CHECK',sources:[{file:'règles avancées.pdf',pdfPage:1,printedPage:153,visuallyRead:true,rule:'Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.'}],cases:[],replays:0,failures:[]};
-for(const file of process.argv[2]?[process.argv[2]]:['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of process.argv[2]?[process.argv[2]]:['index.html']){
  const full=path.isAbsolute(file)?file:root+'/'+file,{db,engine:E,html}=load(full);report.engineSha256=crypto.createHash('sha256').update(html.match(/id="FOH_ENGINE_BUNDLE"[^>]*>([\s\S]*?)<\/script>/)[1]).digest('hex');
  for(const category of ['very-young','young','mature','venerable'])for(const choice of [null,'PC','DR']){
   const s=standardState(db,'class:voleur:cof2-lb-2024');s.advancedRules.age=true;s.age={categoryId:category,choice,spending:[]};if(category==='mature')withRank(db,s,s.voies.profilePathIds[0],2);if(category==='venerable')withRank(db,s,s.voies.profilePathIds[0],3);s.age.choice=choice;

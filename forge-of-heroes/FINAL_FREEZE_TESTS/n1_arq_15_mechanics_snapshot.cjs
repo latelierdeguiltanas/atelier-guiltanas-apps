@@ -8,7 +8,7 @@ const root=path.resolve(__dirname,'..');
 const ids=['voie-de-l-artilleur','voie-des-explosifs','voie-du-mercenaire','voie-du-pistolero','voie-de-la-precision'];
 const target='class:arquebusier:cof2-lb-2024';
 const out={schema:'FOH_N1_ARQUEBUSIER_FIFTEEN_MECHANICS_SOURCE_AUDIT',at:new Date().toISOString(),source:'COF2 Livre de base p.62 à 65; rangs 1,2,3 accessibles au niveau 1 selon âge',products:[],missing:[],status:'DIAGNOSTIC_NON_CERTIFIANT'};
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,html}=load(path.join(root,file)),t=db.tables,paths=t.paths_class.filter(x=>x.classId===target);
  const sorted=ids.map(n=>paths.find(p=>p.id.split(':')[1]===n));
  if(sorted.some(x=>!x))throw Error('Une des cinq voies officielles manque dans '+file);

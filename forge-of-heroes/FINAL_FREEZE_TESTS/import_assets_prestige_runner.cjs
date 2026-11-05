@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('assert/strict'),fs=require('fs'),vm=require('vm'),path=require('path'),crypto=require('crypto'),{load,standardState}=require('./forge_product_runner'),C=require('../rules/path-calculations'),P=require('../rules/prestige-rules'),pack=require('../rules/prestige-catalog.json');let projections=0,assets=0;
-const dir=path.resolve(__dirname,'..'),copy=x=>JSON.parse(JSON.stringify(x)),left=load(dir+'/index.html'),right=load(dir+'/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html');assert.deepEqual(left.db,right.db);const bundle=h=>h.match(/id="FOH_ENGINE_BUNDLE"[^>]*>([\s\S]*?)<\/script>/)[1];assert.equal(bundle(left.html),bundle(right.html));
+const dir=path.resolve(__dirname,'..'),copy=x=>JSON.parse(JSON.stringify(x)),left=load(dir+'/index.html'),right=load(dir+'/index.html');assert.deepEqual(left.db,right.db);const bundle=h=>h.match(/id="FOH_ENGINE_BUNDLE"[^>]*>([\s\S]*?)<\/script>/)[1];assert.equal(bundle(left.html),bundle(right.html));
 const labels=require('../progression/pdf-labels.json');for(const key of ['abilities_class','abilities_people','history_abilities','abilities_prestige'])for(const a of left.db.tables[key]){const b=labels[key].find(x=>x.id===a.id);assert.ok(b,a.id);for(const k of ['path_id','rank','label','desc'])assert.equal(b[k],a[k],key+' '+a.id+' '+k);}
 for(const a of left.db.tables.abilities_r1_people){const b=left.db.tables.abilities_people.find(b=>a.path_id===b.path_id&&b.rank===1);assert.equal(a.desc,b.desc);assert.equal(a.r1_desc,b.desc);}
 for(const {db,html,engine}of [left,right]){

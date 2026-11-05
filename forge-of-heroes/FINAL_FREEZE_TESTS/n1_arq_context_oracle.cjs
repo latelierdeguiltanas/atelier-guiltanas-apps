@@ -7,7 +7,7 @@ const API=require('../ENGINE/arquebusier_context_n1.js');
 const root=path.resolve(__dirname,'..');
 const ages=JSON.parse(fs.readFileSync(path.join(root,'QA/N1/arquebusier-pure-age-ranks.json'),'utf8'));
 const report={schema:'FOH_N1_ARQ_CONTEXT_INDEPENDENT_TEST',at:new Date().toISOString(),engineVersion:API.version,sourceBook:'Chroniques Oubliées Fantasy 2e ed. Livre de base p.62-65',inputSha256:[],cases:[],status:'FAIL',passed:0,failed:0,all15:false};
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const hash=crypto.createHash('sha256').update(fs.readFileSync(path.join(root,file))).digest('hex');
  report.inputSha256.push({file,sha256:hash});
  assert(ages.products.some(p=>p.file===file&&p.htmlSha256===hash),'Old age/ability proof for '+file);

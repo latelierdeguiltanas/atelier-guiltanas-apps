@@ -8,7 +8,7 @@ const fs=require('fs'),path=require('path'),crypto=require('crypto'),{load,stand
 const root=path.resolve(__dirname,'..'),g='class:guerrier:cof2-lb-2024',a='class:arquebusier:cof2-lb-2024',races=['humain','nain','demi-elfe','demi-orc','elfe-haut','elfe-sylvain','gnome','halfelin'];
 const choices={humain:{humainStat:'con'},nain:{bonusStat:'con',malusStat:'agi'},'demi-elfe':{bonusStat:'per',malusStat:'for'},'demi-orc':{bonusStat:'for',malusStat:'cha'},'elfe-haut':{bonusStat:'int',malusStat:'for'},'elfe-sylvain':{bonusStat:'agi',malusStat:'for'},gnome:{bonusStat:'int',malusStat:'for'},halfelin:{bonusStat:'agi',malusStat:'for'}};
 const report={schema:'FOH_N1_MERCENAIRE_HYBRIDE_PROBE',at:new Date().toISOString(),source:'COF2 Livre de base, page imprimée 65, exception Voie du mercenaire hybride',expected:{noPowderMastery:true,shieldAllowed:true},products:[],cases:[],classification:'DIAGNOSTIC_NON_CERTIFIANT'};
-for(const file of ['index.html','FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html']){
+for(const file of ['index.html']){
  const {db,engine:E,html}=load(path.join(root,file)),T=db.tables;
  const primary=T.paths_class.find(x=>x.classId===g&&x.id.includes('voie-du-bouclier'));
  const secondary=T.paths_class.find(x=>x.classId===a&&x.id.includes('voie-du-mercenaire'));
