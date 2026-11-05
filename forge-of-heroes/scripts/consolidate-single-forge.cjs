@@ -10,6 +10,7 @@ if(!fs.existsSync(index))throw Error('Published index.html missing');
 const before=hash(index),changes=[];
 function walk(p){if(!fs.existsSync(p))return[];return fs.readdirSync(p,{withFileTypes:true}).flatMap(x=>{const f=path.join(p,x.name);return x.isDirectory()?walk(f):x.isFile()?[f]:[]});}
 for(const p of [...walk(path.join(root,'.github','workflows')),...walk(forge)]){
+ if(p===__filename)continue;
  if(!/\.(?:cjs|mjs|js|yml|yaml)$/i.test(p))continue;
  const old=fs.readFileSync(p,'utf8');
  if(!old.includes(legacy))continue;
@@ -80,7 +81,7 @@ if(!previous.startsWith('# Architecture Forge unique')){
 if(hash(index)!==before)throw Error('STOP: published Forge index.html was modified');
 if(fs.existsSync(oldHtml))throw Error('STOP: old Forge HTML still exists');
 const refs=[...walk(path.join(root,'.github','workflows')),...walk(forge)]
- .filter(p=>/\.(?:cjs|mjs|js|yml|yaml)$/i.test(p)&&fs.readFileSync(p,'utf8').includes(legacy))
+ .filter(p=>p!==__filename&&/\.(?:cjs|mjs|js|yml|yaml)$/i.test(p)&&fs.readFileSync(p,'utf8').includes(legacy))
  .map(p=>path.relative(root,p));
 if(refs.length)throw Error('STOP: active legacy references: '+refs.join(', '));
 console.log(JSON.stringify({status:'SINGLE_PRODUCT_PREPARED',canonical:'forge-of-heroes/index.html',indexSha256:before,changed:changes},null,2));
