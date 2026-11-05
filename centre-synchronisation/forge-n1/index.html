@@ -106,7 +106,8 @@ function renderFocus(){
  const line=(name,pct,extra)=>'<div class="focus-line"><strong>'+clean(name)+'</strong><span class="stat">'+pct+' %</span><div class="track"><span class="fill" style="width:'+pct+'%"></span></div>'+(extra?'<div class="note">'+clean(extra)+'</div>':'')+'</div>';
  const active=f.profile,plan=f.certificationPlan;
  $("focus-profile").innerHTML=line(active.name,active.percent,active.passed+'/'+active.total+' critères intégraux acquis')+'<p class="note">'+clean(active.next)+'</p>';
- $("focus-peoples").innerHTML=f.peoples.map(x=>line(x.name,x.percent,x.passed+'/'+x.total+' critères raciaux acquis')).join("");
+ const racesProofCurrent=f.peoplesEvidenceCurrent===true;
+ $("focus-peoples").innerHTML=(racesProofCurrent?'':'<p class="notice"><strong>Socle racial historique :</strong> les 60 % proviennent de contrôles sur un moteur antérieur. Ils restent à recertifier sur la Forge actuellement publiée.</p>')+f.peoples.map(x=>line(x.name,x.percent,x.passed+'/'+x.total+(racesProofCurrent?' critères raciaux acquis':' critères historiques à reconfirmer'))).join("");
  $("focus-open").innerHTML=active.checks.filter(x=>x.status!=="ACQUIS").map(x=>'<div class="focus-check"><i>○</i><div><b>'+clean(x.name)+'</b><div class="note">'+clean(x.detail)+'</div></div></div>').join("")||'<p class="note">Aucun point ouvert dans le dernier registre ; vérifier le certificat versionné avant déverrouillage.</p>';
  $("focus-queue").innerHTML=(plan.queue||[]).map(x=>'<span class="'+(x.status==="EN_COURS"?'':x.certified?'':'focus-pending')+'">'+(x.certified?'✓ ':x.status==="EN_COURS"?'◉ ':'○ ')+clean(x.name)+(x.status==="EN_COURS"?' · '+x.percent+' %':'')+'</span>').join("");
  $("focus-stats").innerHTML='<div class="official-stat"><b>'+f.summary.profilesCertified+'/14</b>Profils certifiés</div><div class="official-stat"><b>'+f.summary.peoplesCertified+'/8</b>Peuples certifiés</div><div class="official-stat"><b>'+clean(plan.current.position)+'/14</b>Profil prioritaire</div>';
@@ -120,7 +121,8 @@ function officialSummary(){
  $("official-peoples").innerHTML=officialCards(d.peoples);
  $("official-profiles").innerHTML=officialCards(d.profiles);
  $("official-stats").innerHTML='<div class="official-stat"><b>'+d.summary.racesComplete+'/8</b>Peuples à 100 %</div><div class="official-stat"><b>'+d.summary.profilesComplete+'/14</b>Profils à 100 %</div><div class="official-stat"><b>'+d.summary.nativeAttempts.toLocaleString("fr-FR")+'</b>Cas associés aux items</div><div class="official-stat"><b>'+d.summary.expectedRejected.toLocaleString("fr-FR")+'</b>Refus légaux identifiés</div>';
- $("official-date").textContent='Dernier état mesuré : '+french(d.generatedAt)+' · moteur : '+d.engineSha256.slice(0,12)+' · tous les effets avancés, options et exports ne sont pas encore certifiés.';
+ const archiveCurrent=!!state.focus&&d.engineSha256===state.focus.engineSha256;
+ $("official-date").textContent=archiveCurrent?'Données source à jour : '+french(d.generatedAt)+' · effets avancés et exports incomplets.':'ARCHIVE NON REVALIDÉE sur la Forge actuelle : anciens 69 % (11/16) du '+french(d.generatedAt)+' · empreinte moteur différente de celle du produit publié. Valeurs historiques, pas certificats actuels.';
 }
 function overview(){
 const r=state.registry;if(!r)return;
@@ -134,13 +136,17 @@ const msha=matrix?.inputs?.indexSha256??r.automated.matrixIndexSha256;
 const rsha=reg?.indexSha256??r.automated.regressionIndexSha256;
 const psha=phase?.currentIndexSha256;
 const agree=msha===rsha;
+ const currentIndex=state.focus?.canonicalIndexSha256;
+ const freshMatrix=!!currentIndex&&msha===currentIndex;
+ const freshReg=!!currentIndex&&rsha===currentIndex;
+ const parityCurrent=!!state.parity?.matrixMechanicsReusable&&!!currentIndex&&state.parity.current?.index===currentIndex&&state.parity.current?.engine===state.focus?.engineSha256;
 const cp=state.checkpoint;const pass=cp?.checks?.filter(x=>x.status==="PASS").length??0;const total=cp?.checks?.length??0;$("checkpoint").innerHTML=cp?"<strong>Dernier contrôle ciblé des profils :</strong> "+pass+"/"+total+" suites réussies. Socle des 17 profils : "+(cp.profileBaseline?.scopeStatus==="PASS"?"VALIDÉ DANS SON PÉRIMÈTRE":"NON VALIDÉ SUR CETTE EXÉCUTION")+". Version "+clean((cp.sourceCommit||"").slice(0,8))+". <span style=\"display:block;margin-top:6px\">"+cp.checks.map(x=>clean(x.id)+" : "+clean(x.status)).join(" · ")+"</span>":"<strong>Point de contrôle ciblé :</strong> aucun nouveau rapport consolidé enregistré. Les oracles et preuves historiques restent accessibles.";
-$("freshness").innerHTML='<strong>Validité des preuves :</strong> '+(agree?"La matrice et les régressions indiquent la même empreinte de fichier index.":"Les rapports de matrice et de régression n’ont pas la même empreinte de fichier index.")+
+$("freshness").innerHTML='<strong>Validité des preuves :</strong> '+(freshMatrix&&freshReg?"Matrice et régressions datent de la Forge publiée.":agree?"Matrice et régressions concordent entre elles, mais leur empreinte est antérieure à la Forge courante.":"Matrice et régressions archivées sur des empreintes différentes.")+
 (psha&&psha!==msha?" Le rapport de phase référence également une empreinte différente.":"")+
 ' Ces différences demandent une réconciliation du code courant ; elles ne prouvent pas à elles seules un bug du moteur. <strong>0 profil ne possède de certificat complet.</strong> '+
 '<span style="display:block;margin-top:5px">Matrice : '+(matrix?Object.values(matrix.results).reduce((a,v)=>a+v.attempted,0):r.automated.matrixAttempted).toLocaleString("fr-FR")+' tentatives · '+(matrix?Object.values(matrix.results).reduce((a,v)=>a+v.assertionFailures,0):r.automated.matrixAssertionFailures)+' échec(s) d’assertion déclaré(s), hors contrôles indépendants de tous les effets.</span>';
-if(state.parity?.matrixMechanicsReusable){const n=matrix?Object.values(matrix.results).reduce((a,v)=>a+(v.attempted||0),0).toLocaleString("fr-FR"):"nombre de";$("freshness").innerHTML='<strong>Matrice mécanique conservée :</strong> moteur et base actuels identiques aux '+n+' essais. Les résultats mécaniques restent exploitables sans rejeu complet. Les contrôles de navigation et PDF demeurent séparés. <strong>Ce n’est pas un retour à zéro.</strong>';}
-$("blocks").innerHTML=r.blocks.map(x=>{const ok=x.id==="matrix-current"&&state.parity?.matrixMechanicsReusable;return '<div class="check"><i style="color:'+(ok?"#89c19b":"#e4b76d")+'">'+(ok?"✓":"○")+'</i><div><strong>'+clean(x.name)+(ok?" — ACQUIS":"")+'</strong><div class="note">'+clean(ok?"Parité moteur et base de règles vérifiée pour le code courant. Les assertions de la matrice sont conservées.":x.reason)+'</div></div></div>';}).join("");
+if(parityCurrent){const n=matrix?Object.values(matrix.results).reduce((a,v)=>a+(v.attempted||0),0).toLocaleString("fr-FR"):"nombre de";$("freshness").innerHTML='<strong>Matrice mécanique conservée :</strong> moteur et base actuels identiques aux '+n+' essais. Les résultats mécaniques restent exploitables sans rejeu complet. Les contrôles de navigation et PDF demeurent séparés. <strong>Ce n’est pas un retour à zéro.</strong>';}
+$("blocks").innerHTML=r.blocks.map(x=>{const ok=x.id==="matrix-current"&&parityCurrent;return '<div class="check"><i style="color:'+(ok?"#89c19b":"#e4b76d")+'">'+(ok?"✓":"○")+'</i><div><strong>'+clean(x.name)+(ok?" — ACQUIS":"")+'</strong><div class="note">'+clean(ok?"Parité moteur et base de règles vérifiée pour le code courant. Les assertions de la matrice sont conservées.":x.reason)+'</div></div></div>';}).join("");
 const src=[["Matrice N1",r.sourceFiles.matrix],["37 régressions",r.sourceFiles.regressions],["Statut du gate",r.sourceFiles.phase],["Réserves officielles",r.sourceFiles.readme],["12 parcours au clic",r.sourceFiles.manual],["État du projet",r.sourceFiles.project]];
 $("sources").innerHTML=src.map(x=>'<a href="'+clean(x[1])+'" target="_blank" rel="noopener noreferrer">'+clean(x[0])+' ↗</a>').join("");
 }
