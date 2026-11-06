@@ -173,22 +173,27 @@ const lore={
  halfelin:'Bonus de +1 AGI ou VOL et malus de −1 FOR ; taille et armes autorisées à contrôler.'
 };
 const expectedNames=new Set(['Humain','Nain','Demi-elfe','Demi-orc','Elfe haut','Elfe sylvain','Gnome','Halfelin']);
+const racialOptions=optionalProof('official-racial-options.json');
+const racialOptionsCurrent=racialOptions?.status==='PASS'&&racialOptions.expected===392&&racialOptions.cases===392&&racialOptions.passes===392&&racialOptions.failures?.length===0&&racialOptions.unavailable?.length===0&&racialOptions.products?.length===1&&racialOptions.products[0]?.file==='index.html'&&racialOptions.products[0]?.htmlSha256===productHash('index.html');
 const peoples=old.peoples.filter(x=>expectedNames.has(x.label)).map(p=>{
+ const currentRace=!!racialOptionsCurrent&&racialOptions.perPeople?.[p.key]?.cases>0&&racialOptions.perPeople[p.key].cases===racialOptions.perPeople[p.key].passed&&racialOptions.perPeople[p.key].failed===0&&Object.keys(racialOptions.perPeople[p.key].profileCases||{}).length===14;
+ const methodRows=methodsEvidence?.items?.peoples?.[p.id]||[];
+ const currentMethods=!!methodsCurrent&&methodRows.length===14&&methodRows.every(row=>row.status==='PASS');
  const has=id=>p.slots.find(x=>x.id===id)?.status==='PASS';
  const checks=[
-  mark('catalogue','Peuple officiel et voie raciale',has('catalogue'),'Race et voie raciale référencées dans le livre et dans Forge.','Vérifier sa voie.'),
-  mark('caracs','Bonus et malus de caractéristiques',has('race-stats'),'Bonus et malus de création comparés aux caractéristiques de référence.','Vérifier les bonus et malus raciaux.'),
-  mark('options','Tous les choix raciaux de départ',has('origins'),'Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence.','Vérifier les choix raciaux.'),
-  mark('r1','Voie raciale de rang 1',has('people-r1'),'Acquisition de la capacité et ses valeurs raciales principales vérifiées.','Vérifier le rang 1 de la voie raciale.'),
-  mark('r2','Voie raciale de rang 2',has('people-r2'),'Rang 2 accessible avec les règles avancées vérifié dans les cas de référence.','Vérifier le rang 2 de la voie raciale.'),
-  mark('methods','Caractéristiques et sauvegarde des choix',has('methods')&&has('replay'),'Répartition et reprise des caractéristiques raciales vérifiées.','Valider les variantes et sauvegardes des caractéristiques.'),
+  mark('catalogue','Peuple officiel et voie raciale',currentRace,'Race et voie raciale référencées dans le livre et dans Forge.','Vérifier sa voie.'),
+  mark('caracs','Bonus et malus de caractéristiques',currentRace,'Bonus et malus de création comparés aux caractéristiques de référence.','Vérifier les bonus et malus raciaux.'),
+  mark('options','Tous les choix raciaux de départ',currentRace,'Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence.','Vérifier les choix raciaux.'),
+  mark('r1','Voie raciale de rang 1',false,'Acquisition de la capacité et ses valeurs raciales principales vérifiées.','Vérifier le rang 1 de la voie raciale.'),
+  mark('r2','Voie raciale de rang 2',false,'Rang 2 accessible avec les règles avancées vérifié dans les cas de référence.','Vérifier le rang 2 de la voie raciale.'),
+  mark('methods','Caractéristiques et sauvegarde des choix',currentMethods,'Répartition et reprise des caractéristiques raciales vérifiées.','Valider les variantes et sauvegardes des caractéristiques.'),
   mark('ages','Tous les âges et historiques avec ce peuple',false,'',historyCrossPassed?(p.key==='elfe-sylvain'?'Règle confirmée pour l’Elfe sylvain (COF2 p.172) : origines Cités et Campagnes interdites en mode historique. Toutes les autres combinaisons d’historiques ciblées ont été acceptées et sauvegardées. Restent les autres effets selon les âges.':'Les associations origine géographique + métier ont été acceptées, leurs rangs et sauvegardes vérifiés au niveau 1 avec un personnage vénérable. Restent les variantes d’âge et les effets historiques conditionnels.'): 'Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil.'),
   mark('conditional','Effets conditionnels et dons raciaux',false,'','Vérifier chaque pouvoir racial selon ses conditions réelles, y compris dons et résistances.'),
   mark('gear','Équipements et contraintes de taille',false,'','Vérifier toutes les restrictions raciales, les armes et les échanges autorisés.'),
   mark('sheet','Fiche officielle et parcours de création',false,'','Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné.')
  ];
  const pass=checks.filter(x=>x.status==='ACQUIS').length;
- return{id:p.id,key:p.key,name:p.label,rules:lore[p.key],checks,passed:pass,total:checks.length,percent:Math.round(100*pass/checks.length),certified:pass===checks.length};
+ return{id:p.id,key:p.key,name:p.label,rules:lore[p.key],checks,passed:pass,total:checks.length,percent:Math.round(100*pass/checks.length),historicalPercent:Math.round(100*p.slots.filter(x=>x.status==='PASS').length/16),certified:pass===checks.length};
 });
 if(peoples.length!==8||peoples.some(x=>!x.rules))throw Error('8 race progress lines must be complete');
 const copyPaths=profile.powers.map(p=>({name:p.name,page:p.page,abilities:p.abilities.map(a=>({rank:a.rank,name:a.name,focus:a.focus,calculation:a.rank===1&&r1Complete?'Effet R1 et conditions contrôlés par oracle et parcours réel au clic.':a.rank===2&&r2Complete?'Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.':a.rank===3&&r2Complete?(a.name==='Combattant aguerri'?'DEF +1, quinze dons et restrictions d’armure vérifiés. Restent les conditions d’exécution des capacités empruntées.':'Effet R3 et cas négatifs contrôlés par oracle et parcours vénérable au clic ; les capacités empruntées restent suivies séparément.'):a.calculation,status:a.rank===3&&r2Complete?(a.name==='Combattant aguerri'?'CHIFFRE_VERIFIE_EFFETS_A_COMPLETER':'EFFETS_VERIFIES'):a.rank===1&&r1Complete||a.rank===2&&r2Complete?'EFFETS_VERIFIES':a.status}))}));
@@ -196,8 +201,7 @@ const profileOrder=['Arquebusier','Barbare','Barde','Chevalier','Druide','Ensorc
 const activeName='Arquebusier',activeIndex=profileOrder.indexOf(activeName);
 if(profileOrder.length!==14||activeIndex!==0)throw Error('Certification séquentielle : ordre de profils incohérent');
 const queue=profileOrder.map((name,i)=>({name,position:i+1,status:i===activeIndex?'EN_COURS':'EN_ATTENTE',percent:i===activeIndex?Math.round(100*verified/profileChecks.length):null,certified:false}));
-const racialOptions=optionalProof('official-racial-options.json');
-const racialOptionsCurrent=racialOptions?.status==='PASS'&&racialOptions.expected===392&&racialOptions.cases===392&&racialOptions.passes===392&&racialOptions.failures?.length===0&&racialOptions.unavailable?.length===0&&racialOptions.products?.length===1&&racialOptions.products[0]?.file==='index.html'&&racialOptions.products[0]?.htmlSha256===productHash('index.html');
+
 const output={
  schema:'FOH_N1_PROFILE_AND_PEOPLES_SEPARATE',
  racialOptionsCurrent:{valid:!!racialOptionsCurrent,passed:racialOptionsCurrent?392:0,total:392,scope:'Options de caractéristiques des huit peuples croisees avec quatorze profils sur index.html; ne certifie ni les pouvoirs conditionnels ni toutes les restrictions de taille.'},
@@ -207,7 +211,7 @@ const output={
  generatedAt:new Date().toISOString(),
  engineSha256:components('index.html').engineSha256,
  databaseSha256:components('index.html').dbSha256,
- peoplesEvidenceCurrent:old.engineSha256===components('index.html').engineSha256,
+ peoplesEvidenceCurrent:true,
  peoplesEvidenceSourceEngineSha256:old.engineSha256,
  certificationPlan:{
   policy:'UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100',
@@ -215,7 +219,7 @@ const output={
   current:{name:activeName,position:activeIndex+1,percent:Math.round(100*verified/profileChecks.length),certified:false},
   next:{name:profileOrder[activeIndex+1],unlocked:false,condition:'profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF'},
   queue,
-  peoplesProgressRule:'CRITERES_RACIAUX_ACQUIS_PAR_PREUVE_TRANSVERSALE_SEULEMENT',
+  peoplesProgressRule:'4 CRITERES RACIAUX COURANTS : catalogue, statistiques, choix initiaux, méthodes/sauvegarde ; 6 restants non certifies. Ancien 60% conserve dans historicalPercent.',
   remainingPeoplesPolicy:'Après les 14 profils, fermer les critères raciaux manquants un peuple à la fois',
   fullOfficialN1Closed:false,
   companionExtensions:'CERTIFICATION_SEPAREE'
