@@ -1,13 +1,13 @@
 {
   "schema": "FOH_GLOBAL_CERTIFICATION_V1",
-  "generatedAt": "2026-11-06T15:02:59.115Z",
+  "generatedAt": "2026-11-06T15:21:20.744Z",
   "sourceProduct": "forge-of-heroes/index.html",
   "source": {
     "indexSha256": "a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4",
     "engineSha256": "8101edad805fa44c90e1d185a56394de168b565914c515f529ed06d82e5ea022",
     "databaseSha256": "8ced62df8ee6381ac3c23c269c27623ea8d35c76cf2e77f6299b1525888bad2d",
     "focusSha256": "a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4",
-    "focusAt": "2026-11-06T08:05:35.326Z"
+    "focusAt": "2026-11-06T15:10:44.551Z"
   },
   "status": "MEASURED",
   "scope": "Forge COF2 Livre de base, N1 à N3, hybrides/sans profil, export PDF et liaison Hub. Compagnon et futur Guide du joueur hors dénominateur jusqu’à intégration et ajout explicite des critères.",
@@ -26,6 +26,13 @@
       "status": "SCORE_COURANT",
       "description": "16 vérifications complètes par profil. Seul Arquebusier dispose d’un score de profil actuel intégralement étayé ; les anciens 69 % restent archivés.",
       "source": "forge-n1/focus.json",
+      "targetedProof": {
+        "label": "Familles de régression N1",
+        "passed": 37,
+        "total": 37,
+        "evidence": "forge-of-heroes/QA/N1/regressions.json",
+        "limitations": "Contrôles ciblés N1 sur index courant ; ne prouvent pas tous les effets R3/historiques ni 14/14 profils à 100 %."
+      },
       "percent": 6,
       "complete": false
     },
@@ -104,6 +111,7 @@
         }
       ],
       "targetedProof": {
+        "label": "Tests ciblés N2",
         "passed": 3,
         "total": 3,
         "evidence": "forge-of-heroes/QA/N3/lot2/forge-unique-progression-retest.json",
@@ -152,6 +160,7 @@
         }
       ],
       "targetedProof": {
+        "label": "Tests ciblés N3",
         "passed": 5,
         "total": 5,
         "evidence": "forge-of-heroes/QA/N3/lot2/forge-unique-progression-retest.json",
