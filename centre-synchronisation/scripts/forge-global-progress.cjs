@@ -90,6 +90,16 @@ if(fs.existsSync(progressionPath)){
   }
  }catch(e){console.warn('Preuve N2/N3 illisible',e.message)}
 }
+const regressionsPath=path.join(forge,'QA/N1/regressions.json');
+let n1Targeted=null;
+if(fs.existsSync(regressionsPath)){
+ try{
+  const r=JSON.parse(fs.readFileSync(regressionsPath,'utf8'));
+  if(r.schema==='FOH_N1_REGRESSION_BATCH'&&r.indexSha256===indexSha256&&r.status==='PASS'&&r.passed===37&&r.total===37&&r.suites?.length===37&&r.suites.every(s=>s.status==='PASS')){
+   n1Targeted={label:'Familles de régression N1',passed:37,total:37,evidence:'forge-of-heroes/QA/N1/regressions.json',limitations:'Contrôles ciblés N1 sur index courant ; ne prouvent pas tous les effets R3/historiques ni 14/14 profils à 100 %.'};
+  }
+ }catch(e){console.warn('Rapport de régression N1 indisponible',e.message)}
+}
 const modules=[
  {id:'n1-profils',name:'N1 · 14 profils officiels',passed:provenProfiles,total:14*16,status:sourceCurrent?'SCORE_COURANT':'SOURCE_PERIMEE',description:'16 vérifications complètes par profil. Seul Arquebusier dispose d’un score de profil actuel intégralement étayé ; les anciens 69 % restent archivés.',source:'forge-n1/focus.json'},
  {id:'n1-peuples',name:'N1 · 8 peuples officiels',passed:provenPeoples,total:8*10,status:sourceCurrent&&hasRaceInputs?'SCORE_COURANT':'PREUVES_INCOMPLETES',description:'10 vérifications par peuple : les choix raciaux et méthodes prouvés sont acquis ; les autres effets et contraintes restent ouverts.',source:'forge-n1/focus.json'},
@@ -99,8 +109,9 @@ const modules=[
  })
 ];
 for(const m of modules){
+ if(m.id==='n1-profils'&&n1Targeted)m.targetedProof=n1Targeted;
  if(progressionTargeted&&(m.id==='niveau-2'||m.id==='niveau-3')){
-  m.targetedProof={...progressionTargeted[m.id==='niveau-2'?'n2':'n3'],evidence:progressionTargeted.evidence,limitations:progressionTargeted.note};
+  m.targetedProof={label:m.id==='niveau-2'?'Tests ciblés N2':'Tests ciblés N3',...progressionTargeted[m.id==='niveau-2'?'n2':'n3'],evidence:progressionTargeted.evidence,limitations:progressionTargeted.note};
  }
  m.percent=Math.round(m.passed/m.total*100);m.complete=m.passed===m.total;
 }
