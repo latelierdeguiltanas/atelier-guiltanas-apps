@@ -1,7 +1,7 @@
 'use strict';
 // COF2 p.76-77 thief grants: ranged daggers AND knives; finesse never changes damage stat.
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto'),F=require('./forge_product_runner'),root=path.resolve(__dirname,'..');
-const report={schema:'FOH_N1_ARQ_GRANTED_WEAPON_NUMERICS',at:new Date().toISOString(),scope:'Humain vénérable, Doigts agiles / Attaque en finesse / Armes de prédilection, quatre armures, deux variantes, deux produits. Oracle source des bonus de dommages, caractéristique d’attaque et catégories.',source:'COF2 Livre de base, Combattant aguerri p.64 et voies du roublard/spadassin/maître d’armes',passed:0,failed:0,cases:[],products:[],status:'PENDING'};
+const report={schema:'FOH_N1_ARQ_GRANTED_WEAPON_NUMERICS',at:new Date().toISOString(),scope:'Humain vénérable, Doigts agiles / Attaque en finesse / Armes de prédilection, quatre armures, deux variantes, un seul fichier index.html. Oracle source des bonus de dommages, caractéristique d’attaque et catégories.',source:'COF2 Livre de base, Combattant aguerri p.64 et voies du roublard/spadassin/maître d’armes',passed:0,failed:0,cases:[],products:[],status:'PENDING'};
 for(const file of ['index.html']){const{db,engine:E,html}=F.load(root+'/'+file),T=db.tables;report.products.push({file,sha256:crypto.createHash('sha256').update(html).digest('hex')});for(const variant of ['arquebusier','arbaletrier'])for(const slug of ['doigts-agiles','attaque-en-finesse','armes-de-predilection'])for(const armorDef of [1,2,3,4]){
  const row={file,variant,slug,armorDef,status:'FAIL'};report.cases.push(row);try{
  const p=T.paths_class.find(p=>p.id.includes('voie-du-mercenaire:class-'+variant+':')),s=F.withRank(db,F.standardState(db,p.classId,p.id),p.id,3);
@@ -18,4 +18,4 @@ for(const file of ['index.html']){const{db,engine:E,html}=F.load(root+'/'+file),
  row.status='PASS';report.passed++;
  }catch(e){row.error=String(e);report.failed++;}
 }}
-report.status=report.passed===48&&!report.failed?'PASS':'FAIL';fs.writeFileSync(root+'/QA/N1/arquebusier-grants-weapons.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({status:report.status,passed:report.passed,failed:report.failed,failures:report.cases.filter(c=>c.status!=='PASS').slice(0,8)}));if(report.status!=='PASS')process.exitCode=1;
+report.status=report.passed===24&&!report.failed?'PASS':'FAIL';fs.writeFileSync(root+'/QA/N1/arquebusier-grants-weapons.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({status:report.status,passed:report.passed,failed:report.failed,failures:report.cases.filter(c=>c.status!=='PASS').slice(0,8)}));if(report.status!=='PASS')process.exitCode=1;
