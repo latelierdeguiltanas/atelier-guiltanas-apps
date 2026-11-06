@@ -4,7 +4,7 @@ const {load,standardState}=require('./forge_product_runner'),ROOT=path.resolve(_
 const races=['humain','nain','demi-elfe','demi-orc','elfe-haut','elfe-sylvain','gnome','halfelin'],ageCases=[['young',null],['very-young','PC'],['very-young','DR'],['mature',null],['venerable',null]];
 const options={'humain':{humainStat:'cha'},'nain':{bonusStat:'con',malusStat:'agi'},'demi-elfe':{bonusStat:'per',malusStat:'for'},'demi-orc':{bonusStat:'for',malusStat:'cha'},'elfe-haut':{bonusStat:'int',malusStat:'for'},'elfe-sylvain':{bonusStat:'agi',malusStat:'for'},'gnome':{bonusStat:'int',malusStat:'for'},'halfelin':{bonusStat:'agi',malusStat:'for'}};
 const heritage={'humain':'voie-de-l-humain','nain':'voie-du-nain','demi-elfe':'voie-de-l-humain','demi-orc':'voie-du-demi-orc','elfe-haut':'voie-de-l-elfe-haut','elfe-sylvain':'voie-de-l-elfe-sylvain','gnome':'voie-du-gnome','halfelin':'voie-du-halfelin'};
-const report={schema:'FOH_N1_ARQUEBUSIER_ALL_TEN_PATH_PAIRS_CURRENT',generatedAt:new Date().toISOString(),rules:'COF2 base pages 62–65 et âges avancés',cases:0,pass:0,failed:0,errors:[],perPeople:{},inputs:[],expected:8*10*5*2};
+const report={schema:'FOH_N1_ARQUEBUSIER_ALL_TEN_PATH_PAIRS_CURRENT',generatedAt:new Date().toISOString(),rules:'COF2 base pages 62–65 et âges avancés',cases:0,pass:0,failed:0,errors:[],perPeople:{},inputs:[],expected:8*10*5};
 for(const file of ['index.html']){
  const {db,html,engine:E}=load(path.join(ROOT,file));const T=db.tables,paths=T.paths_class.filter(p=>p.classId===CL&&!p.additionalMagePath);
  if(paths.length!==5)throw Error('Expected exactly five official paths');
