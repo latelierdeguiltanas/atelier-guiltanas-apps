@@ -1,5 +1,5 @@
 'use strict';
-/* Gate de régression ACTUELLE : exécute seulement sur l'unique index.html,
+/* Gate de régression ACTUELLE (ré-exécution après correction de l’oracle H_PRO) : exécute seulement sur l'unique index.html,
    préserve les constats FAIL et n'accorde aucun pourcentage par simple volume.
    Un rapport de test n'est pas un certificat exhaustif de fonctionnalité.
  */
