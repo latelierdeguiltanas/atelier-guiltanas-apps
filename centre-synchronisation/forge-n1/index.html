@@ -37,6 +37,11 @@ a{color:var(--gold)}button,input,select{font:inherit}button{cursor:pointer}butto
 .official-stat{border:1px solid var(--line);border-radius:10px;padding:9px 10px;background:#28241e;font-size:12px}
 .official-stat b{font-size:20px;display:block;color:var(--gold)}
 @media(max-width:660px){.official-columns{grid-template-columns:1fr}}
+.focus-criteria-detail{border:1px solid #514732;border-radius:10px;margin:7px 0 10px;padding:7px 10px;background:#211f1b}
+.focus-criteria-detail>summary{cursor:pointer;color:var(--gold);font-size:12px;font-weight:650}
+.focus-criteria-detail .focus-check{border-top:1px solid #403a30;padding:7px 0;margin:0}
+.focus-criteria-detail .focus-check:first-of-type{margin-top:9px}
+.focus-criteria-detail .note{font-size:11px;color:var(--muted)}
 </style></head>
 <body><main class="wrap">
 <header class="top"><div class="brand">L'ATELIER DE GUILTANAS<strong>COPILOTE · FORGE N1</strong></div><div class="actions"><a class="btn" href="../" title="Retour au Pilotage Guiltanas">← Cockpit</a><button class="btn primary" id="refresh" type="button">↻ Actualiser</button></div></header>
@@ -105,9 +110,16 @@ function renderFocus(){
  const f=state.focus;if(!f||!f.profile||!Array.isArray(f.peoples)||!f.certificationPlan){$("focus-profile").innerHTML='<div class="notice focus-broken">Suivi actif indisponible. Le gel des profils n’est pas certifié.</div>';return;}
  const line=(name,pct,extra)=>'<div class="focus-line"><strong>'+clean(name)+'</strong><span class="stat">'+pct+' %</span><div class="track"><span class="fill" style="width:'+pct+'%"></span></div>'+(extra?'<div class="note">'+clean(extra)+'</div>':'')+'</div>';
  const active=f.profile,plan=f.certificationPlan;
- $("focus-profile").innerHTML=line(active.name,active.percent,active.passed+'/'+active.total+' critères intégraux acquis')+'<p class="note">'+clean(active.next)+'</p>';
+ const statusList=active.checks.map(x=>'<div class="focus-check"><i style="color:'+(x.status==='ACQUIS'?'#89c19b':'#e4b76d')+'">'+(x.status==='ACQUIS'?'✓':'○')+'</i><div><b>'+clean(x.name)+'</b><div class="note">'+clean(x.detail)+'</div></div></div>').join('');
+ $("focus-profile").innerHTML=line(active.name,active.percent,active.passed+'/'+active.total+' critères intégraux acquis')+
+  '<details class="focus-criteria-detail"><summary>Voir les '+active.total+' critères (dont '+active.passed+' validés)</summary>'+statusList+'</details>'+
+  '<p class="note">'+clean(active.next)+'</p>';
  const racesProofCurrent=f.peoplesEvidenceCurrent===true;
- $("focus-peoples").innerHTML=(racesProofCurrent?'':'<p class="notice"><strong>Socle racial historique :</strong> les 60 % proviennent de contrôles sur un moteur antérieur. "+(f.racialOptionsCurrent?.valid?"En revanche, 392/392 nouveaux contrôles des choix raciaux passent sur la Forge actuelle. ":"")+"Les autres critères raciaux restent à recertifier sur la Forge actuellement publiée.</p>')+f.peoples.map(x=>line(x.name,x.percent,x.passed+'/'+x.total+(racesProofCurrent?' critères raciaux acquis':' critères historiques à reconfirmer'))).join("");
+ $("focus-peoples").innerHTML='<p class="note">Pourcentages recalculés sur la Forge publiée : actuellement quatre critères complets sur dix par peuple (catalogue, caractéristiques, options initiales et méthodes/sauvegarde). L’ancien 60 % reste archivé jusqu’à revalidation de ses autres critères.</p>'+
+   f.peoples.map(x=>'<div>'+line(x.name,x.percent,x.passed+'/'+x.total+' critères raciaux prouvés sur ce moteur')+
+     '<details class="focus-criteria-detail"><summary>Voir les '+x.total+' critères de '+clean(x.name)+'</summary>'+
+     x.checks.map(c=>'<div class="focus-check"><i style="color:'+(c.status==='ACQUIS'?'#89c19b':'#e4b76d')+'">'+(c.status==='ACQUIS'?'✓':'○')+'</i><div><b>'+clean(c.name)+'</b><div class="note">'+clean(c.detail)+'</div></div></div>').join('')+
+     '</details></div>').join("");
  $("focus-open").innerHTML=active.checks.filter(x=>x.status!=="ACQUIS").map(x=>'<div class="focus-check"><i>○</i><div><b>'+clean(x.name)+'</b><div class="note">'+clean(x.detail)+'</div></div></div>').join("")||'<p class="note">Aucun point ouvert dans le dernier registre ; vérifier le certificat versionné avant déverrouillage.</p>';
  $("focus-queue").innerHTML=(plan.queue||[]).map(x=>'<span class="'+(x.status==="EN_COURS"?'':x.certified?'':'focus-pending')+'">'+(x.certified?'✓ ':x.status==="EN_COURS"?'◉ ':'○ ')+clean(x.name)+(x.status==="EN_COURS"?' · '+x.percent+' %':'')+'</span>').join("");
  $("focus-stats").innerHTML='<div class="official-stat"><b>'+f.summary.profilesCertified+'/14</b>Profils certifiés</div><div class="official-stat"><b>'+f.summary.peoplesCertified+'/8</b>Peuples certifiés</div><div class="official-stat"><b>'+clean(plan.current.position)+'/14</b>Profil prioritaire</div>';
