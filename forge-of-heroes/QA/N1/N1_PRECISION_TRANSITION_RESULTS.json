@@ -1846,20 +1846,36 @@
       },
       "errors": {
         "A": [],
-        "B": [
-          "Érudition : choisir exactement 1 points de langues supplémentaires distinctes (Argotien coûte 2 hors Voleur/Barde)."
-        ]
+        "B": []
       },
       "evaluation": {
-        "status": "FAIL",
-        "errors": {
-          "A": [],
-          "B": [
-            "Érudition : choisir exactement 1 points de langues supplémentaires distinctes (Argotien coûte 2 hors Voleur/Barde)."
-          ]
-        }
+        "status": "PASS",
+        "actualChangedPaths": [
+          "abilities",
+          "abilityCalculations",
+          "abilityRuntimeCatalog",
+          "capacityBudget.standard.freeAssignments",
+          "historyPath.professional.ability.effect.domains",
+          "historyPath.professional.ability.effect.languageChoicesPerRank",
+          "historyPath.professional.ability.effect.type",
+          "historyPath.professional.ability.name",
+          "historyPath.professional.ability.sourceText",
+          "historyPath.professional.name",
+          "languages.automatic",
+          "languages.choicesAllowed",
+          "languages.literacyLanguages",
+          "languages.scholarLanguages",
+          "persistentChoices.ability:history:scholar:r1",
+          "skillBonuses"
+        ],
+        "missingExpectedChanges": [],
+        "unexpectedChanges": [],
+        "unchangedViolations": [],
+        "exactValueFailures": [],
+        "beforeHash": "e476725ca0a83e6829371ae26e2e37dd8f05aff8c41b1b56aed004c3273c55f7",
+        "afterHash": "9ee3981bd6df84cc6c018cabb90e5a393a19853a6eae764de793beb81630c87d"
       },
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "id": "H_PATH",
@@ -4057,7 +4073,7 @@
       "status": "PASS"
     }
   ],
-  "passed": 52,
+  "passed": 53,
   "total": 53,
   "missingExpectedChanges": 0,
   "unexpectedChanges": 0,
@@ -4065,5 +4081,5 @@
     "passed": 17,
     "total": 17
   },
-  "status": "FAIL"
+  "status": "PASS"
 }
