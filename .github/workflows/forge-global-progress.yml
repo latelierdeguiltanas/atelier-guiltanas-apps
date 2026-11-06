@@ -1,0 +1,61 @@
+name: Copilote - progression globale Forge certifiee
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-global-progress.yml'
+      - 'forge-of-heroes/index.html'
+      - 'centre-synchronisation/forge-n1/focus.json'
+      - 'centre-synchronisation/data/forge-global-gates.json'
+      - 'centre-synchronisation/scripts/forge-global-progress.cjs'
+permissions:
+  contents: write
+concurrency:
+  group: forge-global-progress
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Recalculer exclusivement sur index.html publie
+        run: |
+          set -euo pipefail
+          node --check centre-synchronisation/scripts/forge-global-progress.cjs
+          node centre-synchronisation/scripts/forge-global-progress.cjs
+          node - <<'NODE'
+          const a=require('node:assert/strict'),r=require('./centre-synchronisation/data/forge-global-progress.json');
+          a.equal(r.modules.length,7);a.equal(r.sourceProduct,'forge-of-heroes/index.html');
+          if(r.status==='MEASURED'){
+            a.equal(r.modules[0].total,224);a.equal(r.modules[1].total,80);
+            a.equal(r.certified,r.modules.every(m=>m.passed===m.total));
+            a.equal(r.percent,Math.round(r.modules.reduce((n,m)=>n+m.passed/m.total,0)/7*100));
+          }else a.equal(r.percent,null);
+          console.log('PASS : score global coherent; aucun faux 100%');
+          NODE
+          git diff --check
+      - uses: actions/upload-artifact@v4
+        with:
+          name: foh-global-certification
+          path: centre-synchronisation/data/forge-global-progress.json
+      - name: Publier le score verifie dans le meme depot que le Copilote
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add centre-synchronisation/data/forge-global-progress.json
+          if git diff --cached --quiet; then
+            echo 'Score global deja a jour'
+            exit 0
+          fi
+          git commit -m 'data(copilote): mise a jour couverture globale Forge [skip ci]'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
