@@ -2,10 +2,10 @@
   "schema": "FOH_N1_REGRESSION_BATCH",
   "scope": "N1 creation and advanced-age projections; no progression work; some high-rank reference projections remain in reused suites",
   "indexSha256": "a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4",
-  "finishedAt": "2026-11-06T15:10:44.715Z",
-  "passed": 36,
+  "finishedAt": "2026-11-06T15:19:53.454Z",
+  "passed": 37,
   "total": 37,
-  "status": "FAIL",
+  "status": "PASS",
   "browserClicks": false,
   "suites": [
     {
@@ -248,10 +248,10 @@
     },
     {
       "file": "precision_transition_runner.js",
-      "status": "FAIL",
-      "exitCode": 1,
-      "runnerSha256": "b1a54a1dfc8189791e73bbd26f6c131b30e6c8c8250720e9e97b87e585e8642b",
-      "output": "{\n  \"contracts\": [\n    52,\n    53\n  ],\n  \"aba\": [\n    53,\n    53\n  ],\n  \"ghost\": [\n    13,\n    13\n  ],\n  \"anti\": [\n    10,\n    10\n  ],\n  \"negative\": [\n    14,\n    14\n  ]\n}\n"
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "780669dfcc520911d497fe47c0d0b39e812d8f1e00150f09bc42bbe7f3237663",
+      "output": "TRANSITIONS_EN_ECHEC []\n{\n  \"contracts\": [\n    53,\n    53\n  ],\n  \"aba\": [\n    53,\n    53\n  ],\n  \"ghost\": [\n    13,\n    13\n  ],\n  \"anti\": [\n    10,\n    10\n  ],\n  \"negative\": [\n    14,\n    14\n  ]\n}\n"
     },
     {
       "file": "manual_scenario_assertions.js",
