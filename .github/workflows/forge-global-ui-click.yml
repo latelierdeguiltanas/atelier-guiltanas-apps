@@ -1,0 +1,51 @@
+name: Copilote - verif clic de la progression globale Forge
+on:
+  push:
+    paths:
+      - '.github/workflows/forge-global-ui-click.yml'
+      - 'centre-synchronisation/index.html'
+      - 'centre-synchronisation/pilotage.js'
+      - 'centre-synchronisation/pilotage.css'
+      - 'centre-synchronisation/forge-n1/index.html'
+      - 'centre-synchronisation/data/forge-global-progress.json'
+      - 'centre-synchronisation/scripts/forge-global-ui-click.cjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vérifier la syntaxe et les données issues du produit unique
+        run: |
+          node --check centre-synchronisation/pilotage.js
+          node --check centre-synchronisation/scripts/forge-global-ui-click.cjs
+          node --check centre-synchronisation/scripts/forge-global-progress.cjs
+          node - <<'NODE'
+          const fs=require('fs'),crypto=require('crypto'),assert=require('assert/strict');
+          const g=require('./centre-synchronisation/data/forge-global-progress.json');
+          const sha=crypto.createHash('sha256').update(fs.readFileSync('forge-of-heroes/index.html')).digest('hex');
+          assert.equal(g.source.indexSha256,sha);
+          assert.equal(g.status,'MEASURED');
+          assert.equal(g.modules.length,7);
+          assert(g.percent>=0&&g.percent<100);
+          NODE
+      - name: Installer Playwright et Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/forge-ui" playwright@1.55.0
+          "$RUNNER_TEMP/forge-ui/node_modules/.bin/playwright" install --with-deps chromium
+          echo "NODE_PATH=$RUNNER_TEMP/forge-ui/node_modules" >> "$GITHUB_ENV"
+      - name: Tester de vrais clics sur la carte Forge et les listes de critères
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/forge-cockpit-server.log 2>&1 &
+          node centre-synchronisation/scripts/forge-global-ui-click.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-global-copilote-mobile-click
+          path: centre-synchronisation/data/forge-global-ui-click.json
