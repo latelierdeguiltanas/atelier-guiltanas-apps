@@ -1,0 +1,251 @@
+{
+  "schema": "FOH_GLOBAL_CERTIFICATION_V1",
+  "generatedAt": "2026-11-06T08:08:13.854Z",
+  "sourceProduct": "forge-of-heroes/index.html",
+  "source": {
+    "indexSha256": "a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4",
+    "engineSha256": "8101edad805fa44c90e1d185a56394de168b565914c515f529ed06d82e5ea022",
+    "databaseSha256": "8ced62df8ee6381ac3c23c269c27623ea8d35c76cf2e77f6299b1525888bad2d",
+    "focusSha256": "a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4",
+    "focusAt": "2026-11-06T08:05:35.326Z"
+  },
+  "status": "MEASURED",
+  "scope": "Forge COF2 Livre de base, N1 à N3, hybrides/sans profil, export PDF et liaison Hub. Compagnon et futur Guide du joueur hors dénominateur jusqu’à intégration et ajout explicite des critères.",
+  "measure": "Couverture des critères de certification, pas % de code écrit ni probabilité d’absence de bug.",
+  "scoring": "Sept domaines de même poids. Chaque domaine vaut 1/7 du total et progresse selon ses propres critères intégralement prouvés. Aucune moyenne de tests automatisés ne vaut certificat.",
+  "moduleCount": 7,
+  "percent": 7,
+  "exactPercent": 6.61,
+  "certified": false,
+  "modules": [
+    {
+      "id": "n1-profils",
+      "name": "N1 · 14 profils officiels",
+      "passed": 14,
+      "total": 224,
+      "status": "SCORE_COURANT",
+      "description": "16 vérifications complètes par profil. Seul Arquebusier dispose d’un score de profil actuel intégralement étayé ; les anciens 69 % restent archivés.",
+      "source": "forge-n1/focus.json",
+      "percent": 6,
+      "complete": false
+    },
+    {
+      "id": "n1-peuples",
+      "name": "N1 · 8 peuples officiels",
+      "passed": 32,
+      "total": 80,
+      "status": "SCORE_COURANT",
+      "description": "10 vérifications par peuple : les choix raciaux et méthodes prouvés sont acquis ; les autres effets et contraintes restent ouverts.",
+      "source": "forge-n1/focus.json",
+      "percent": 40,
+      "complete": false
+    },
+    {
+      "id": "n1-modes",
+      "name": "N1 · hybrides et sans profil",
+      "passed": 0,
+      "total": 2,
+      "status": "A_CERTIFIER",
+      "description": "Chaque validation demande un rapport dédié sur le SHA du produit publié. Une fonction présente sans preuve complète ne compte pas.",
+      "checks": [
+        {
+          "id": "hybrides",
+          "name": "Hybridations de profils dans les deux sens, caractéristiques, rangs et contraintes",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "sans-profil",
+          "name": "Créations sans profil, voies à la carte, âge, calculs et sauvegarde",
+          "passed": false,
+          "evidence": null
+        }
+      ],
+      "percent": 0,
+      "complete": false
+    },
+    {
+      "id": "niveau-2",
+      "name": "Passage N1 → N2",
+      "passed": 0,
+      "total": 5,
+      "status": "A_CERTIFIER",
+      "description": "Chaque validation demande un rapport dédié sur le SHA du produit publié. Une fonction présente sans preuve complète ne compte pas.",
+      "checks": [
+        {
+          "id": "n2-rangs",
+          "name": "Acquisition et coût des rangs de niveau 2 dans tous les profils",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "n2-caracs",
+          "name": "Calculs et conditions de pouvoirs N2, peuples et hybrides",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "n2-sauvegarde",
+          "name": "Sauvegarde, remplacement et réouverture après passage N2",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "n2-pdf",
+          "name": "PDF officiel N2 et annexes complètes",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "n2-clic",
+          "name": "Parcours réels au clic N1 → N2 sur mobile et navigateur",
+          "passed": false,
+          "evidence": null
+        }
+      ],
+      "percent": 0,
+      "complete": false
+    },
+    {
+      "id": "niveau-3",
+      "name": "Passage N2 → N3",
+      "passed": 0,
+      "total": 5,
+      "status": "A_CERTIFIER",
+      "description": "Chaque validation demande un rapport dédié sur le SHA du produit publié. Une fonction présente sans preuve complète ne compte pas.",
+      "checks": [
+        {
+          "id": "n3-rangs",
+          "name": "Rangs et choix autorisés de niveau 3 pour tous les profils",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "n3-caracs",
+          "name": "Calculs de rangs et pouvoirs conditionnels, peuples et hybrides",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "n3-sauvegarde",
+          "name": "Sauvegarde, reprise et absence de régression N2 → N3",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "n3-pdf",
+          "name": "PDF officiel N3 et annexes complètes",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "n3-clic",
+          "name": "Parcours réels N2 → N3 sur mobile et navigateur",
+          "passed": false,
+          "evidence": null
+        }
+      ],
+      "percent": 0,
+      "complete": false
+    },
+    {
+      "id": "export",
+      "name": "Fiches officielles et annexes",
+      "passed": 0,
+      "total": 5,
+      "status": "A_CERTIFIER",
+      "description": "Chaque validation demande un rapport dédié sur le SHA du produit publié. Une fonction présente sans preuve complète ne compte pas.",
+      "checks": [
+        {
+          "id": "pdf-n1",
+          "name": "Export de tous les personnages N1 du Livre de base",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "pdf-n2",
+          "name": "Export exhaustif des personnages N2",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "pdf-n3",
+          "name": "Export exhaustif des personnages N3",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "pdf-rangs",
+          "name": "Fidélité des textes de voies et seuls rangs acquis dans les annexes",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "pdf-deux-pages",
+          "name": "Valeurs correctes sur les deux pages du modèle COF2 officiel",
+          "passed": false,
+          "evidence": null
+        }
+      ],
+      "percent": 0,
+      "complete": false
+    },
+    {
+      "id": "liaison",
+      "name": "Sauvegardes et liaison Hub",
+      "passed": 0,
+      "total": 5,
+      "status": "A_CERTIFIER",
+      "description": "Chaque validation demande un rapport dédié sur le SHA du produit publié. Une fonction présente sans preuve complète ne compte pas.",
+      "checks": [
+        {
+          "id": "save-last",
+          "name": "Dernier état du personnage conservé, brouillon inclus",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "save-version",
+          "name": "Reprise et migration des sauvegardes existantes sans pertes",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "hub-export",
+          "name": "Ouverture d’une fiche interactive depuis la Forge",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "hub-level",
+          "name": "Propagation des passages de niveau aux fiches Hub",
+          "passed": false,
+          "evidence": null
+        },
+        {
+          "id": "hub-devices",
+          "name": "Cohérence multi-appareils et droits des joueurs",
+          "passed": false,
+          "evidence": null
+        }
+      ],
+      "percent": 0,
+      "complete": false
+    }
+  ],
+  "openModules": [
+    "n1-profils",
+    "n1-peuples",
+    "n1-modes",
+    "niveau-2",
+    "niveau-3",
+    "export",
+    "liaison"
+  ],
+  "limitations": [
+    "88% d’un profil n’est pas 88% de toute l’application.",
+    "0% de certification sur un module signifie preuve globale manquante, non absence de code fonctionnel.",
+    "Après toute modification de index.html, les preuves périmées sont neutralisées avant nouveau score.",
+    "Les nouveaux livres/règles devront élargir le périmètre et le dénominateur dès leur intégration."
+  ]
+}
