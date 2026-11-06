@@ -11,39 +11,36 @@ on:
       - 'forge-of-heroes/scripts/**'
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 concurrency:
-  group: forge-one-product-migration
-  cancel-in-progress: false
+  group: forge-one-product-guard
+  cancel-in-progress: true
 jobs:
-  consolidate:
+  verify-single-source:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
           ref: main
-          persist-credentials: true
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Prepare the sole published Forge without modifying its HTML
+      - name: Vérifier que seul index.html reste une Forge exécutable
         shell: bash
         run: |
           set -euo pipefail
-          node --check forge-of-heroes/scripts/consolidate-single-forge.cjs
           before="$(sha256sum forge-of-heroes/index.html | cut -d' ' -f1)"
-          node forge-of-heroes/scripts/consolidate-single-forge.cjs
-          after="$(sha256sum forge-of-heroes/index.html | cut -d' ' -f1)"
-          test "$before" = "$after"
           test ! -e forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html
           test "$(find forge-of-heroes -maxdepth 1 -name '*.html' | wc -l)" -eq 1
           legacy='FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER'
           if grep -R -F "${legacy}.html" .github/workflows --exclude=forge-one-product.yml; then
-            echo 'Un workflow cible encore l ancien produit Forge' >&2
+            echo 'Un workflow utilise encore la seconde Forge' >&2
             exit 1
           fi
-          git diff --check
+          test "$before" = "$(sha256sum forge-of-heroes/index.html | cut -d' ' -f1)"
+          git diff --exit-code -- forge-of-heroes/index.html
       - name: Check syntax and load the real N1 engine
         shell: bash
         run: |
@@ -61,18 +58,3 @@ jobs:
           assert.equal(typeof engine.computeCharacterN1,'function');
           console.log('Single canonical Forge loaded:',db.tables.classes.length,'profiles');
           NODE
-      - name: Commit the single-source consolidation only after verification
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A forge-of-heroes
-          if git diff --cached --quiet; then
-            echo 'Already consolidated'
-            exit 0
-          fi
-          git commit -m 'refactor(forge): un seul index publie et teste, suppression du maitre [skip ci]'
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
