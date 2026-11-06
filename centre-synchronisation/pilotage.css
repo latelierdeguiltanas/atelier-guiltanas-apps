@@ -420,3 +420,26 @@
 .usage-profile-meter .project-tile-track{width:95px;display:block}
 .usage-profile-meter small{min-width:35px;text-align:right}
 .usage-profile>.project-milestone{margin:8px 0 0 12px}
+
+
+/* Forge — one compact application-wide certification indicator, homepage + drawer */
+.forge-global-tile{display:flex;align-items:center;gap:5px;width:100%;margin-top:7px}
+.forge-global-tile .project-tile-track{min-width:20px}
+.forge-global-tile small{white-space:nowrap;font-size:10px;min-width:60px;text-align:right;color:#f4e1ac;font-variant-numeric:tabular-nums}
+.forge-global-overview{border-color:#a38a4f;background:linear-gradient(150deg,#1b3023,#13261d)}
+.forge-global-overview h3{margin:0 0 12px}
+.forge-global-score{display:flex;align-items:center;gap:15px}
+.forge-global-score>strong{font-size:clamp(30px,7vw,42px);white-space:nowrap;color:#f4d795;line-height:1}
+.forge-global-score p{margin:5px 0 0}
+.forge-global-track{width:100%;height:8px;margin:5px 0}
+.forge-global-big-track{height:12px;margin:13px 0 9px;background:#233c2b}
+.forge-global-breakdown{margin-top:12px;border-top:1px solid #526747;padding-top:11px}
+.forge-global-breakdown>summary,.forge-global-checks>summary{cursor:pointer;font-size:13px;color:#f1d6a0;font-weight:650}
+.forge-global-module{padding:13px 0;border-bottom:1px solid #38513e}
+.forge-global-module-head{display:flex;gap:12px;justify-content:space-between;font-size:13px}
+.forge-global-module-head b{color:#f0dba3;font-variant-numeric:tabular-nums}
+.forge-global-module small{color:#b8cabb}
+.forge-global-checks{margin-top:8px}
+.forge-global-checks .project-milestone{padding:7px 0}
+.forge-global-checks .project-milestone b{font-size:12px;font-weight:500}
+@media(max-width:420px){.forge-global-score{align-items:flex-start;gap:10px}.forge-global-score>strong{font-size:29px}.forge-global-tile small{font-size:9px;min-width:52px}}
