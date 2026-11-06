@@ -44,6 +44,7 @@ jobs:
           git add forge-of-heroes/QA/N1/N1_PRECISION_TRANSITION_RESULTS.json forge-of-heroes/QA/N1/N1_PRECISION_TRANSITION_CONTRACTS.json
           if ! git diff --cached --quiet; then
             git commit -m 'test(forge): verifier contrats N1 sur le seul index [skip ci]'
+            git restore --worktree .
             git fetch origin main
             git rebase origin/main
             git push origin HEAD:main
