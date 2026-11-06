@@ -1,0 +1,182 @@
+{
+  "schema": "FOH_SINGLE_INDEX_REGRESSION_CAMPAIGN_V1",
+  "at": "2026-11-06T14:58:03.073Z",
+  "scope": "18 suites sur la Forge index.html publiée ; rapport de tests ciblés, PAS certification exhaustive des profils, peuples, effets contextuels, PDF au clic ou passages N2/N3",
+  "source": {
+    "file": "forge-of-heroes/index.html",
+    "sha256": "a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4",
+    "unchanged": true
+  },
+  "suites": [
+    {
+      "id": "historique-catalogue",
+      "script": "FINAL_FREEZE_TESTS/history_completeness_runner.cjs",
+      "status": "PASS",
+      "durationMs": 224,
+      "exitCode": 0,
+      "stdoutTail": "PASS 85 history source texts per product, exact path/ability/PDF-appendix data parity; four full historical acquisitions save/replay; novice/bodyguard owner math and reversible contact condition.\n",
+      "stderrTail": ""
+    },
+    {
+      "id": "historique-ages",
+      "script": "FINAL_FREEZE_TESTS/n1_history_modes_probe.cjs",
+      "status": "PASS",
+      "durationMs": 9656,
+      "exitCode": 0,
+      "stdoutTail": "{\n  \"file\": \"index.html\",\n  \"cases\": 864,\n  \"failures\": []\n}\n",
+      "stderrTail": ""
+    },
+    {
+      "id": "historique-ascendance",
+      "script": "FINAL_FREEZE_TESTS/n1_history_ancestry_runner.cjs",
+      "status": "PASS",
+      "durationMs": 2420,
+      "exitCode": 0,
+      "stdoutTail": "{\n  \"status\": \"PASS\",\n  \"cases\": 144,\n  \"replays\": 136,\n  \"refusals\": 8,\n  \"offChecks\": 136,\n  \"failures\": [],\n  \"totalFailures\": 0\n}\n",
+      "stderrTail": ""
+    },
+    {
+      "id": "historique-calculs",
+      "script": "FINAL_FREEZE_TESTS/n1_age_history_armour_oracle.cjs",
+      "status": "PASS",
+      "durationMs": 430,
+      "exitCode": 0,
+      "stdoutTail": "30 cas vérifiés, puis relus après sauvegarde.\n",
+      "stderrTail": ""
+    },
+    {
+      "id": "historique-choix",
+      "script": "FINAL_FREEZE_TESTS/n1_history_choices_oracle.cjs",
+      "status": "FAIL",
+      "durationMs": 14573,
+      "exitCode": 1,
+      "stdoutTail": "{\"schema\":\"FOH_N1_ARQ_HISTORY_CHOICES\",\"at\":\"2026-11-06T14:58:15.840Z\",\"source\":\"Voies d’historique pp.176–177, document fourni page PDF 4\",\"scope\":\"Érudit domaines/langues R1–5, domaine secondaire, don Courtisan R5 ; deux variantes et deux produits. Acquisition, quotas, exclusions, sauvegarde et changement historique. Ne certifie pas toutes les capacités accordées ou historiques.\",\"passed\":248,\"failed\":0,\"scholarCases\":88,\"courtierCases\":146,\"negativeChecks\":444,\"weightedCases\":8,\"boundaryCases\":6,\"failures\":[],\"status\":\"FAIL\"}\n",
+      "stderrTail": ""
+    },
+    {
+      "id": "historique-conditions",
+      "script": "FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs",
+      "status": "FAIL",
+      "durationMs": 2652,
+      "exitCode": 1,
+      "stdoutTail": "{\"schema\":\"FOH_N1_HISTORY_CONDITIONS\",\"at\":\"2026-11-06T14:58:30.414Z\",\"source\":\"Voies d’historique pp.176–177\",\"scope\":\"8 professions × 5 rangs × 2 variantes × 2 produits ; communauté, Courtisan R2/R3, Érudit R2, Expert R2. Ne certifie pas tous les historiques.\",\"products\":[{\"file\":\"index.html\",\"sha256\":\"a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4\"}],\"expected\":160,\"passed\":80,\"failed\":0,\"contexts\":720,\"negativeChecks\":2188,\"failures\":[],\"moduleSha256\":\"43bbd411718c69e60750234543394bddf489970574a36a91a23f44bc488a81fa\",\"status\":\"FAIL\"}\n",
+      "stderrTail": ""
+    },
+    {
+      "id": "historique-pdf",
+      "script": "FINAL_FREEZE_TESTS/n1_history_choices_pdf.cjs",
+      "status": "FAIL",
+      "durationMs": 48,
+      "exitCode": 1,
+      "stdoutTail": "",
+      "stderrTail": "node:internal/errors:540\n      throw error;\n      ^\n\nTypeError [ERR_INVALID_ARG_TYPE]: The \"path\" argument must be of type string or an instance of Buffer or URL. Received undefined\n    at Object.openSync (node:fs:561:5)\n    at Object.readFileSync (node:fs:444:35)\n    at Object.<anonymous> (/home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_choices_pdf.cjs:2:267)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10)\n    at Module.load (node:internal/modules/cjs/loader:1505:32)\n    at Function._load (node:internal/modules/cjs/loader:1309:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)\n    at node:internal/main/run_main_module:36:49 {\n  code: 'ERR_INVALID_ARG_TYPE'\n}\n\nNode.js v22.23.4\n"
+    },
+    {
+      "id": "historique-arquebusier-peuples",
+      "script": "FINAL_FREEZE_TESTS/n1_arq_history_people_cross.cjs",
+      "status": "PASS",
+      "durationMs": 28222,
+      "exitCode": 0,
+      "stdoutTail": "{\"status\":\"PASS\",\"counts\":{\"cases\":1152,\"passed\":1120,\"legallyRejected\":32,\"failed\":0},\"people\":{\"humain\":{\"cases\":144,\"passed\":144,\"failed\":0},\"nain\":{\"cases\":144,\"passed\":144,\"failed\":0},\"demi-elfe\":{\"cases\":144,\"passed\":144,\"failed\":0},\"demi-orc\":{\"cases\":144,\"passed\":144,\"failed\":0},\"elfe-haut\":{\"cases\":144,\"passed\":144,\"failed\":0},\"elfe-sylvain\":{\"cases\":144,\"passed\":112,\"failed\":0},\"gnome\":{\"cases\":144,\"passed\":144,\"failed\":0},\"halfelin\":{\"cases\":144,\"passed\":144,\"failed\":0}},\"historyCount\":17,\"failures\":[]}\n",
+      "stderrTail": ""
+    },
+    {
+      "id": "arquebusier-mecanismes-15",
+      "script": "FINAL_FREEZE_TESTS/n1_arq_15_mechanics_snapshot.cjs",
+      "status": "PASS",
+      "durationMs": 61,
+      "exitCode": 0,
+      "stdoutTail": "{\"status\":\"SNAPSHOT_COHERENT_STRUCTURE_UNEVALUATED\",\"missing\":[],\"products\":[{\"file\":\"index.html\",\"paths\":5,\"abilities\":15,\"mechanicsPresent\":15,\"unstructured\":[]}]}\n",
+      "stderrTail": ""
+    },
+    {
+      "id": "arquebusier-contextes",
+      "script": "FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs",
+      "status": "PASS",
+      "durationMs": 32,
+      "exitCode": 0,
+      "stdoutTail": "{\"status\":\"PASS\",\"passed\":73,\"failed\":0,\"all15\":true,\"errors\":[]}\n",
+      "stderrTail": ""
+    },
+    {
+      "id": "arquebusier-pures-ages",
+      "script": "FINAL_FREEZE_TESTS/n1_arq_pure_age_ranks.cjs",
+      "status": "FAIL",
+      "durationMs": 6597,
+      "exitCode": 1,
+      "stdoutTail": "{\"complete\":false,\"attempted\":200,\"passed\":200,\"failed\":0,\"refused\":0,\"perRace\":{\"humain\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"nain\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"demi-elfe\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"demi-orc\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"elfe-haut\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"elfe-sylvain\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"gnome\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"halfelin\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0}},\"failures\":[]}\n",
+      "stderrTail": ""
+    },
+    {
+      "id": "arquebusier-toutes-paires",
+      "script": "FINAL_FREEZE_TESTS/n1_arq_all_pairs_current.cjs",
+      "status": "FAIL",
+      "durationMs": 12594,
+      "exitCode": 1,
+      "stdoutTail": "{\"status\":\"FAIL\",\"pass\":400,\"total\":400,\"perPeople\":{\"humain\":{\"cases\":50,\"pass\":50,\"failed\":0},\"nain\":{\"cases\":50,\"pass\":50,\"failed\":0},\"demi-elfe\":{\"cases\":50,\"pass\":50,\"failed\":0},\"demi-orc\":{\"cases\":50,\"pass\":50,\"failed\":0},\"elfe-haut\":{\"cases\":50,\"pass\":50,\"failed\":0},\"elfe-sylvain\":{\"cases\":50,\"pass\":50,\"failed\":0},\"gnome\":{\"cases\":50,\"pass\":50,\"failed\":0},\"halfelin\":{\"cases\":50,\"pass\":50,\"failed\":0}},\"firstErrors\":[]}\n",
+      "stderrTail": ""
+    },
+    {
+      "id": "arquebusier-grants-armor",
+      "script": "FINAL_FREEZE_TESTS/n1_arq_grant_armor.cjs",
+      "status": "FAIL",
+      "durationMs": 13852,
+      "exitCode": 1,
+      "stdoutTail": "{\"status\":\"FAIL\",\"passed\":120,\"failed\":0,\"failures\":[]}\n",
+      "stderrTail": ""
+    },
+    {
+      "id": "arquebusier-grants-weapons",
+      "script": "FINAL_FREEZE_TESTS/n1_arq_grant_weapons.cjs",
+      "status": "FAIL",
+      "durationMs": 1232,
+      "exitCode": 1,
+      "stdoutTail": "{\"status\":\"FAIL\",\"passed\":24,\"failed\":0,\"failures\":[]}\n",
+      "stderrTail": ""
+    },
+    {
+      "id": "arquebusier-grants-pdf",
+      "script": "FINAL_FREEZE_TESTS/n1_arq_granted_pdf_annex.cjs",
+      "status": "PASS",
+      "durationMs": 1482,
+      "exitCode": 0,
+      "stdoutTail": "{\"status\":\"PASS\",\"passed\":60,\"failed\":0,\"failures\":[]}\n",
+      "stderrTail": ""
+    },
+    {
+      "id": "arquebusier-derivees",
+      "script": "FINAL_FREEZE_TESTS/n1_arq_derived_source_oracle.cjs",
+      "status": "FAIL",
+      "durationMs": 90049,
+      "exitCode": null,
+      "stdoutTail": "index.html arquebusier 5120 PASS / 0 FAIL\n",
+      "stderrTail": "",
+      "problem": "Error: spawnSync /opt/hostedtoolcache/node/22.23.4/x64/bin/node ETIMEDOUT"
+    },
+    {
+      "id": "arquebusier-export-officiel",
+      "script": "FINAL_FREEZE_TESTS/n1_arq_official_template.cjs",
+      "status": "FAIL",
+      "durationMs": 46,
+      "exitCode": 1,
+      "stdoutTail": "",
+      "stderrTail": "node:internal/errors:540\n      throw error;\n      ^\n\nTypeError [ERR_INVALID_ARG_TYPE]: The \"path\" argument must be of type string or an instance of Buffer or URL. Received undefined\n    at Object.openSync (node:fs:561:5)\n    at Object.readFileSync (node:fs:444:35)\n    at Object.<anonymous> (/home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_official_template.cjs:5:53)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10)\n    at Module.load (node:internal/modules/cjs/loader:1505:32)\n    at Function._load (node:internal/modules/cjs/loader:1309:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)\n    at node:internal/main/run_main_module:36:49 {\n  code: 'ERR_INVALID_ARG_TYPE'\n}\n\nNode.js v22.23.4\n"
+    },
+    {
+      "id": "regressions-n1",
+      "script": "FINAL_FREEZE_TESTS/n1_regression_batch.cjs",
+      "status": "FAIL",
+      "durationMs": 90012,
+      "exitCode": null,
+      "stdoutTail": "n1_human_origins_runner.cjs: PASS\nn1_history_ancestry_runner.cjs: PASS\nn1_equipment_ui_runner.cjs: PASS\nn1_religion_ui_runner.cjs: PASS\nn1_religion_creation_runner.cjs: PASS\nn1_history_cross_runner.cjs: PASS\nn1_mage_rank_projection_runner.cjs: PASS\nn1_source_numeric_runner.cjs: PASS\nn1_age_profiles_runner.cjs: PASS\nn1_age_source_runner.cjs: PASS\nn1_size_equipment_runner.cjs: PASS\nn1_rejection_review_runner.cjs: PASS\nn1_gnome_hybrid_duplicate_runner.cjs: PASS\nno_profile_budget_runner.js: PASS\nhybrid_point_buy_runner.cjs: PASS\npermanent_rules_runner.cjs: PASS\ngrants_attacks_companions_runner.cjs: PASS\ngrant_prerequisites_runner.cjs: PASS\nforgesort_paths_runner.cjs: PASS\nequipment_condition_runner.js: PASS\nequipment_runtime_companions_runner.cjs: PASS\npath_calculations_runner.cjs: PASS\nability_runtime_runner.cjs: PASS\nadvanced_paths_runner.cjs: PASS\nsacred_mana_runner.cjs: PASS\nconjuration_runner.cjs: PASS\ngnome_gift_help_runner.cjs: PASS\nstorage_safety_runner.js: PASS\nnavigation_runner.js: PASS\nprofile_people_guide_runner.cjs: PASS\npath_descriptions_runner.cjs: PASS\nhistory_completeness_runner.cjs: PASS\ncalculation_trace_runner.js: PASS\nimport_assets_prestige_runner.cjs: PASS\nprecision_transition_runner.js: FAIL\nmanual_scenario_assertions.js: PASS\n",
+      "stderrTail": "",
+      "problem": "Error: spawnSync /opt/hostedtoolcache/node/22.23.4/x64/bin/node ETIMEDOUT"
+    }
+  ],
+  "summary": {
+    "total": 18,
+    "executed": 18,
+    "passed": 8,
+    "failed": 10
+  }
+}
