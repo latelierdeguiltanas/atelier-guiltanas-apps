@@ -1,6 +1,6 @@
 {
   "schema": "FOH_PROGRESSIONS_TARGETED_TESTS_V1",
-  "at": "2026-11-06T15:00:37.029Z",
+  "at": "2026-11-06T15:01:23.159Z",
   "sourceProduct": "forge-of-heroes/index.html",
   "indexSha256": "a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4",
   "sourceUnchanged": true,
@@ -15,7 +15,7 @@
       "script": "FINAL_FREEZE_TESTS/progression_runner.js",
       "args": [],
       "status": "PASS",
-      "ms": 1118,
+      "ms": 1443,
       "stdoutTail": "PASS all six bases recognized; all 40 profile paths have five described ranks\n226 ordered N2 plans replayed\nPASS exhaustive ordered legal N2 plans preserve N1, serialize and replay identically\nPASS PV and attack gains for all six profiles with independent expected values\nPASS rank-dependent archer and wolf grow without applying old bonuses twice\nPASS bard feline bonuses and priest shield are permanent; temporary combat effects stay contextual\nPASS mage PM grows by new spells; old advanced N1 R3 remains intact and next R4 unavailable\nPASS history has its own one-point costs and ignores normal rank level floors\nPASS sylvan gift validates prerequisites and applies new druid bonuses once\nPASS missing budget, duplicate ranks, skipped prerequisites, alien paths and unspent budget refused\nPASS corrupt values or tampered ledger refused on load; stale import cannot undo locks\nPASS actual storage adapter: freeze, pending save, fresh session, commit, export/import and fresh session\nPASS quota, stale tab, corrupt library and invalid batch never overwrite prior bytes\nPASS Forge guard blocks altered N1 even from duplicated identity, permits unrelated creation\n13 progression checks passed. Browser rendering and real device storage are not covered.\n",
       "stderrTail": ""
     },
@@ -27,7 +27,7 @@
         "--sorcier"
       ],
       "status": "PASS",
-      "ms": 119,
+      "ms": 148,
       "stdoutTail": "4 PASS halfelin N2 choices opened and reread in the interactive player library, PDF absent.\n",
       "stderrTail": ""
     },
@@ -37,7 +37,7 @@
       "script": "FINAL_FREEZE_TESTS/halfelin_n2_interactive.cjs",
       "args": [],
       "status": "PASS",
-      "ms": 115,
+      "ms": 144,
       "stdoutTail": "4 PASS halfelin N2 choices opened and reread in the interactive player library, PDF absent.\n",
       "stderrTail": ""
     },
@@ -47,7 +47,7 @@
       "script": "FINAL_FREEZE_TESTS/level3_runner.cjs",
       "args": [],
       "status": "PASS",
-      "ms": 1368,
+      "ms": 1746,
       "stdoutTail": "PASS Prépôtante: 23 plans N3, N2 immuable, données et inventaire conservés\nPASS Scanlan: 11 plans N3, N2 immuable, données et inventaire conservés\nPASS Wilfried: 31 plans N3, N2 immuable, données et inventaire conservés\nPASS Vivelame: 28 plans N3, N2 immuable, données et inventaire conservés\nPASS Zepheline: 7 plans N3, N2 immuable, données et inventaire conservés\nPASS Faëlar: 56 plans N3, N2 immuable, données et inventaire conservés\nPASS 156 plans N3, effets poudre/loup/PM, grisement budget, niveau 4 fermé, rejeu client vérifié.\n",
       "stderrTail": ""
     },
@@ -57,7 +57,7 @@
       "script": "FINAL_FREEZE_TESTS/bastide_n3_all_choices_runner.cjs",
       "args": [],
       "status": "PASS",
-      "ms": 722,
+      "ms": 917,
       "stdoutTail": "{\n  \"scope\": \"All structurally legal N3 choices for six actual N2 ledgers or reproducible fixtures; independently constructed rank/cost options, woodland gifts, tracker exchange, fairy mount variants and owned repeating weapons. No database writes. Conditional bonuses remain conditional.\",\n  \"live\": false,\n  \"players\": [\n    {\n      \"id\": \"prepotante\",\n      \"generated\": 23,\n      \"passed\": 23\n    },\n    {\n      \"id\": \"scanlan\",\n      \"generated\": 11,\n      \"passed\": 11\n    },\n    {\n      \"id\": \"wilfried\",\n      \"generated\": 31,\n      \"passed\": 31\n    },\n    {\n      \"id\": \"vivelame\",\n      \"generated\": 28,\n      \"passed\": 28\n    },\n    {\n      \"id\": \"zepheline\",\n      \"generated\": 8,\n      \"passed\": 8\n    },\n    {\n      \"id\": \"faelar\",\n      \"generated\": 75,\n      \"passed\": 75\n    }\n  ],\n  \"failures\": [],\n  \"plans\": 176,\n  \"sources\": [\n    \"COF2 Livre de base: family progression, profile abilities R1–R3\",\n    \"Compagnon: adopted table fairy/goblin rules; not official COF2\"\n  ],\n  \"coreSha256\": \"a87922bbb5b0062b58aaf6d875fb31f45fea686f2665074d5b7ab6680aaac48a\",\n  \"status\": \"PASS\"\n}\n",
       "stderrTail": ""
     },
@@ -67,7 +67,7 @@
       "script": "FINAL_FREEZE_TESTS/level3_ui_runner.cjs",
       "args": [],
       "status": "PASS",
-      "ms": 1341,
+      "ms": 652,
       "stdoutTail": "PASS 6 parcours N2 serveur → choix N3 → validation directe → hub → PDF indépendant → réouverture ; échec réseau sans faux niveau. Fixture DOM, pas de navigateur réel.\n",
       "stderrTail": ""
     },
@@ -77,9 +77,9 @@
       "script": "FINAL_FREEZE_TESTS/level3_hub_runner.cjs",
       "args": [],
       "status": "PASS",
-      "ms": 589,
+      "ms": 723,
       "stdoutTail": "PASS Prépôtante / level 2 export → server replay → import → reload; altered/wrong hero refused\nPASS Scanlan / level 2 export → server replay → import → reload; altered/wrong hero refused\nPASS Wilfried / level 2 export → server replay → import → reload; altered/wrong hero refused\nPASS Vivelame / level 2 export → server replay → import → reload; altered/wrong hero refused\nPASS Zepheline / level 2 export → server replay → import → reload; altered/wrong hero refused\nPASS Faëlar / level 2 export → server replay → import → reload; altered/wrong hero refused\nPASS six N3 imports, relecture, idempotence et refus retour N2\nPASS repeated imports do not apply gains twice; admin access restricted to six IDs; old descriptions refresh without numerical changes\n",
-      "stderrTail": "(node:2223) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+      "stderrTail": "(node:2504) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
     },
     {
       "id": "n3-dialogues",
@@ -87,7 +87,7 @@
       "script": "FINAL_FREEZE_TESTS/bastide_n3_choice_dialogs.cjs",
       "args": [],
       "status": "PASS",
-      "ms": 250,
+      "ms": 308,
       "stdoutTail": "PASS two mount dialogs, owned repeating weapon dialog, pending save/reopen, exact companion/chargeur, full source with selected choice and six invalid choices. DOM fixture, not Android.\n",
       "stderrTail": ""
     }
