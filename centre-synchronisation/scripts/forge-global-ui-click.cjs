@@ -1,0 +1,55 @@
+'use strict';
+/* Browser validation: real public HTML/CSS/JS, without personal credentials. */
+const fs=require('node:fs'),assert=require('node:assert/strict'),{chromium}=require('playwright');
+const ROOT='http://127.0.0.1:4173';
+const out='centre-synchronisation/data/forge-global-ui-click.json';
+const data=JSON.parse(fs.readFileSync('centre-synchronisation/data/forge-global-progress.json','utf8'));
+(async()=>{
+ const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||undefined,args:['--no-sandbox']});
+ const result={schema:'FOH_GLOBAL_UI_CLICK_V1',at:new Date().toISOString(),sourceSha256:data.source.indexSha256,score:data.percent,checks:[],errors:[],status:'FAIL'};
+ const check=(name,ok)=>{assert(ok,name);result.checks.push({name,status:'PASS'});};
+ try{
+  const context=await browser.newContext({viewport:{width:393,height:852},isMobile:true,hasTouch:true});
+  const page=await context.newPage();
+  const js=fs.readFileSync('centre-synchronisation/pilotage.js','utf8');
+  const old='initRouteHistory();wire();window.PilotageReload=load;load();';
+  check('script principal conservé',js.includes(old));
+  const replacement='initRouteHistory();wire();window.__FOH_TEST__={setData:function(d,p){forgeGlobal=d;projectData=p;renderProjects();},readCard:projectProgressTile,readDetail:forgeGlobalMarkup};';
+  const intercept=js.replace(old,replacement);
+  await page.route(/\/centre-synchronisation\/pilotage\.js(?:\?.*)?$/,route=>route.fulfill({status:200,body:intercept,contentType:'text/javascript'}));
+  const errors=[];page.on('pageerror',e=>errors.push(String(e)));
+  await page.goto(ROOT+'/centre-synchronisation/',{waitUntil:'load'});
+  await page.evaluate(({d})=>{
+   document.getElementById('content').hidden=false;document.getElementById('locked').hidden=true;
+   window.__FOH_TEST__.setData(d,[{id:'forge',name:'Forge of Heroes',lifecycle:'developpement',family:'Jouer & raconter',category:'Application COF2',summary:'Une Forge publiée, N1-N3',progress_note:'',next_action:''}]);
+  },{d:data});
+  const tile=page.locator('[data-project="forge"]');await tile.waitFor();
+  const pct=await tile.locator('.forge-global-tile').innerText();
+  check('carte d’accueil affiche un pourcentage global explicite',pct.includes(data.percent+' %')&&pct.includes('global'));
+  const prog=tile.locator('[role="progressbar"]');
+  check('pourcentage issu du rapport et non du profil isolé à 88%',Number(await prog.getAttribute('aria-valuenow'))===data.percent&&data.percent!==88);
+  await tile.tap();
+  await page.locator('.forge-global-overview').waitFor();
+  check('un clic ouvre le détail de progression',await page.locator('.forge-global-overview h3').innerText()==='Avancement global de l’application');
+  await page.locator('.forge-global-breakdown summary').tap();
+  check('sept domaines visibles',await page.locator('.forge-global-module').count()===7);
+  check('N2 identifié parmi les domaines',(await page.locator('.forge-global-module').allInnerTexts()).some(t=>t.includes('Passage N1 → N2')));
+  check('pas d’erreur JS durant le clic',errors.length===0);
+  await page.evaluate(({d})=>window.__FOH_TEST__.setData({...d,percent:null,status:'SOURCE_STALE'},[{id:'forge',name:'Forge of Heroes',lifecycle:'actif',family:'Jouer & raconter',category:'Application COF2'}]),{d:data});
+  const stale=await page.locator('[data-project="forge"]').innerText();
+  check('score suspendu quand preuves obsolètes',!stale.includes(data.percent+' %')&&stale.includes('à revalider'));
+  const p=await context.newPage(),errs=[];
+  p.on('pageerror',e=>errs.push(String(e)));
+  await p.goto(ROOT+'/centre-synchronisation/forge-n1/',{waitUntil:'load'});
+  await p.locator('#focus-profile .focus-criteria-detail summary').waitFor({timeout:18000});
+  check('profil prioritaire 14 critères sur 16',(await p.locator('#focus-profile').innerText()).includes('14/16'));
+  await p.locator('#focus-profile .focus-criteria-detail summary').tap();
+  check('seize sous-critères affichés',await p.locator('#focus-profile .focus-criteria-detail .focus-check').count()===16);
+  check('huit peuples, dix critères chacun',await p.locator('#focus-peoples .focus-line').count()===8&&await p.locator('#focus-peoples .focus-criteria-detail').count()===8);
+  check('pas d’erreur JS dans le registre N1',errs.length===0);
+  result.status='PASS';await context.close();
+ }catch(e){result.errors.push(String(e.stack||e));result.status='FAIL'}finally{await browser.close()}
+ fs.writeFileSync(out,JSON.stringify(result,null,2)+'\n');
+ console.log(JSON.stringify({status:result.status,checks:result.checks.length,errors:result.errors,score:result.score}));
+ if(result.status!=='PASS')process.exitCode=1;
+})().catch(e=>{console.error(e);process.exitCode=1});
