@@ -31,7 +31,7 @@ const data=JSON.parse(fs.readFileSync('centre-synchronisation/data/forge-global-
   await tile.tap();
   await page.locator('.forge-global-overview').waitFor();
   check('un clic ouvre le détail de progression',await page.locator('.forge-global-overview h3').innerText()==='Avancement global de l’application');
-  await page.locator('.forge-global-breakdown summary').tap();
+  await page.locator('.forge-global-breakdown > summary').tap();
   check('sept domaines visibles',await page.locator('.forge-global-module').count()===7);
   check('N2 identifié parmi les domaines',(await page.locator('.forge-global-module').allInnerTexts()).some(t=>t.includes('Passage N1 → N2')));
   check('pas d’erreur JS durant le clic',errors.length===0);
