@@ -21,8 +21,9 @@ for(const file of ['index.html']){
  }
  out.products.push({file,sha256:crypto.createHash('sha256').update(html).digest('hex'),paths:sorted.length,abilities:rows,mechanicsPresent:rows.filter(x=>x.mechanics).length,unstructured:rows.filter(x=>!x.mechanics||x.mechanics.kind==='structured_sheet_effect').map(x=>x.label)});
 }
-const a=out.products[0],b=out.products[1];
-if(out.missing.length||out.products.some(x=>x.abilities.length!==15)||a.abilities.map(x=>JSON.stringify(x.mechanics)).join('\n')!==b.abilities.map(x=>JSON.stringify(x.mechanics)).join('\n')){out.status='FAIL';}
+const a=out.products[0];
+// Un seul produit exécutable : la Forge effectivement publiée.
+if(out.missing.length||out.products.length!==1||a.file!=='index.html'||a.abilities.length!==15||a.mechanicsPresent!==15){out.status='FAIL';}
 else out.status='SNAPSHOT_COHERENT_STRUCTURE_UNEVALUATED';
 const dest=path.join(root,'QA/N1/arquebusier-all-mechanics-probe.json');fs.writeFileSync(dest,JSON.stringify(out,null,2)+'\n');
 console.log(JSON.stringify({status:out.status,missing:out.missing,products:out.products.map(x=>({file:x.file,paths:x.paths,abilities:x.abilities.length,mechanicsPresent:x.mechanicsPresent,unstructured:x.unstructured}))}));
