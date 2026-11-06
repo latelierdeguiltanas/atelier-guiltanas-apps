@@ -25,7 +25,7 @@ jobs:
         run: |
           node --check forge-of-heroes/FINAL_FREEZE_TESTS/progressions_one_forge_campaign.cjs
           test -f forge-of-heroes/index.html
-          test ! -f forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html
+          test "$(find forge-of-heroes -maxdepth 1 -name '*MASTER*.html' | wc -l)" -eq 0
       - name: Huit séries N2 N3 sauvegarde Hub et interfaces
         id: verification
         continue-on-error: true
