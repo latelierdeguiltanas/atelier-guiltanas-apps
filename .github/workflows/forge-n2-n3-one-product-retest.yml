@@ -1,0 +1,55 @@
+name: Forge N2 N3 - revérifier modules sur le seul index
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n2-n3-one-product-retest.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/progressions_one_forge_campaign.cjs'
+permissions:
+  contents: write
+concurrency:
+  group: forge-progressions-single-product
+  cancel-in-progress: false
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Valider que les progressions appartiennent a la Forge officielle
+        run: |
+          node --check forge-of-heroes/FINAL_FREEZE_TESTS/progressions_one_forge_campaign.cjs
+          test -f forge-of-heroes/index.html
+          test ! -f forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html
+      - name: Huit séries N2 N3 sauvegarde Hub et interfaces
+        id: verification
+        continue-on-error: true
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/progressions_one_forge_campaign.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n2-n3-unique-current-index
+          path: forge-of-heroes/QA/N3/lot2/forge-unique-progression-retest.json
+      - name: Versionner les résultats, même si une validation échoue
+        if: always()
+        run: |
+          set -euo pipefail
+          if test -f forge-of-heroes/QA/N3/lot2/forge-unique-progression-retest.json; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add forge-of-heroes/QA/N3/lot2/forge-unique-progression-retest.json
+            if ! git diff --cached --quiet; then
+              git commit -m 'test(forge): constat réel N2/N3 sur index unique [skip ci]'
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main
+            fi
+          fi
+      - name: Refuser la certification si suite non réussie
+        if: steps.verification.outcome == 'failure'
+        run: exit 1
