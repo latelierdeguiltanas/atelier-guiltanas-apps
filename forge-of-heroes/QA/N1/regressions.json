@@ -1,89 +1,89 @@
 {
   "schema": "FOH_N1_REGRESSION_BATCH",
   "scope": "N1 creation and advanced-age projections; no progression work; some high-rank reference projections remain in reused suites",
-  "indexSha256": "6e6e098cf7e2c920b02f5a33de8d9518b69192525ef396b7f321d3839e70d218",
-  "finishedAt": "2026-11-03T12:21:14.693Z",
-  "passed": 37,
+  "indexSha256": "a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4",
+  "finishedAt": "2026-11-06T15:10:44.715Z",
+  "passed": 36,
   "total": 37,
-  "status": "PASS",
+  "status": "FAIL",
   "browserClicks": false,
   "suites": [
     {
       "file": "n1_human_origins_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "30243e9ea6778fee23797587c141c24f6f341acbbdff26cafe06fdc3905103fe",
-      "output": "{\n  \"schema\": \"FOH_N1_HUMAN_ORIGINS\",\n  \"source\": {\n    \"document\": \"COF2 Livre de base\",\n    \"printedPages\": [\n      57,\n      58\n    ],\n    \"pdfPages\": [\n      59,\n      60\n    ]\n  },\n  \"cases\": 3024,\n  \"replays\": 3024,\n  \"negativeChecks\": 14,\n  \"historyChecks\": 6,\n  \"legacyChecks\": 8,\n  \"uiProducts\": [\n    \"index.html\",\n    \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html\"\n  ],\n  \"profiles\": [\n    \"class:arquebusier:cof2-lb-2024\",\n    \"class:barde:cof2-lb-2024\",\n    \"class:rodeur:cof2-lb-2024\",\n    \"class:voleur:cof2-lb-2024\",\n    \"class:barbare:cof2-lb-2024\",\n    \"class:chevalier:cof2-lb-2024\",\n    \"class:guerrier:cof2-lb-2024\",\n    \"class:ensorceleur:cof2-lb-2024\",\n    \"class:forgesort:cof2-lb-2024\",\n    \"class:magicien:cof2-lb-2024\",\n    \"class:sorcier:cof2-lb-2024\",\n    \"class:invocateur:addon-compagnon-2024\",\n    \"class:psionique:addon-compagnon-2024\",\n    \"class:druide:cof2-lb-2024\",\n    \"class:moine:cof2-lb-2024\",\n    \"class:pretre:cof2-lb-2024\",\n    \"class:samourai:addon-compagnon-2024\",\n    \"class:arbaletrier:cof2-variant-2024\"\n  ],\n  \"failures\": [],\n  \"status\": \"PASS\"\n}\n"
+      "runnerSha256": "b0b3bde16e48d5eb9f025c157501fa4454fd95d582c75050059e0a7c12e8df0a",
+      "output": "{\n  \"schema\": \"FOH_N1_HUMAN_ORIGINS\",\n  \"source\": {\n    \"document\": \"COF2 Livre de base\",\n    \"printedPages\": [\n      57,\n      58\n    ],\n    \"pdfPages\": [\n      59,\n      60\n    ]\n  },\n  \"cases\": 1512,\n  \"replays\": 1512,\n  \"negativeChecks\": 7,\n  \"historyChecks\": 3,\n  \"legacyChecks\": 4,\n  \"uiProducts\": [\n    \"index.html\"\n  ],\n  \"profiles\": [\n    \"class:arquebusier:cof2-lb-2024\",\n    \"class:barde:cof2-lb-2024\",\n    \"class:rodeur:cof2-lb-2024\",\n    \"class:voleur:cof2-lb-2024\",\n    \"class:barbare:cof2-lb-2024\",\n    \"class:chevalier:cof2-lb-2024\",\n    \"class:guerrier:cof2-lb-2024\",\n    \"class:ensorceleur:cof2-lb-2024\",\n    \"class:forgesort:cof2-lb-2024\",\n    \"class:magicien:cof2-lb-2024\",\n    \"class:sorcier:cof2-lb-2024\",\n    \"class:invocateur:addon-compagnon-2024\",\n    \"class:psionique:addon-compagnon-2024\",\n    \"class:druide:cof2-lb-2024\",\n    \"class:moine:cof2-lb-2024\",\n    \"class:pretre:cof2-lb-2024\",\n    \"class:samourai:addon-compagnon-2024\",\n    \"class:arbaletrier:cof2-variant-2024\"\n  ],\n  \"failures\": [],\n  \"status\": \"PASS\"\n}\n"
     },
     {
       "file": "n1_history_ancestry_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "614da73bed0537d4049c4c767a0723e4bb608d37b4237eadcdde053dc6ac099e",
-      "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 288,\n  \"replays\": 272,\n  \"refusals\": 16,\n  \"offChecks\": 272,\n  \"failures\": [],\n  \"totalFailures\": 0\n}\n"
+      "runnerSha256": "7efa5ef2d0b80f420d5f5eaa522d058331350ba33ed90732665bf91ce90cee54",
+      "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 144,\n  \"replays\": 136,\n  \"refusals\": 8,\n  \"offChecks\": 136,\n  \"failures\": [],\n  \"totalFailures\": 0\n}\n"
     },
     {
       "file": "n1_equipment_ui_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "c8bc2a5b87e6a16f118bb8231b01041dad40f7d09109bef563dfcf43c030d007",
-      "output": "PASS 36 DOM-to-engine equipment cases, 36 replays, 30 ancestry refusals; approval toggle, return to package and serialized UI draft preservation.\n"
+      "runnerSha256": "86ba0fe0b2e164318b7f80ebbe6f32d244937dc89687773cf08da08a4f92016f",
+      "output": "PASS 18 DOM-to-engine equipment cases, 18 replays, 15 ancestry refusals; approval toggle, return to package and serialized UI draft preservation.\n"
     },
     {
       "file": "n1_religion_ui_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "de66167953100d172b88ae086a0014ddc42bd79a53b83c7c77ec33282660908b",
-      "output": "PASS 20 native priest replacement DOM checks across both HTMLs; no real browser/Android claim.\n"
+      "runnerSha256": "29beff460df1550eb09514dc459b645c57c6d092c82d5447f5dab592a4dc2f25",
+      "output": "PASS 10 native priest replacement DOM checks across both HTMLs; no real browser/Android claim.\n"
     },
     {
       "file": "n1_religion_creation_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "47fa9ecb9d2f5289c642b8ac3a9c60333aee31f9444903fc3d6d80c913f67051",
-      "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 360,\n  \"replays\": 360,\n  \"religions\": 30,\n  \"failures\": [],\n  \"totalFailures\": 0\n}\n"
+      "runnerSha256": "faace041a322cd3ea7448ea3dab432c3f138d43f3e1a503aba56e0ae8195b77c",
+      "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 180,\n  \"replays\": 180,\n  \"religions\": 30,\n  \"failures\": [],\n  \"totalFailures\": 0\n}\n"
     },
     {
       "file": "n1_history_cross_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "f82f6210068faa246a297fc59068667a11a5ebca6e32b066794d887286ba9d89",
-      "output": "{\"status\":\"PASS\",\"cases\":684,\"replays\":684,\"pairs\":72,\"paths\":17,\"failures\":0}\n"
+      "runnerSha256": "354fedb046b8e5deeaaef3e25ce1d196927b7fe772633037866be49f158a6486",
+      "output": "{\"status\":\"PASS\",\"cases\":342,\"replays\":342,\"pairs\":72,\"paths\":17,\"failures\":0}\n"
     },
     {
       "file": "n1_mage_rank_projection_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "17d94409c8bfd258a1629227288f8773c204ee9f687932dd7f26c512aacf4809",
-      "output": "{\"status\":\"PASS\",\"cases\":180,\"replays\":180,\"profiles\":6,\"failures\":0}\n"
+      "runnerSha256": "4bfc277b537532e0a71bbf830a903094440aa43b42856a657749b7835856b9b4",
+      "output": "{\"status\":\"PASS\",\"cases\":90,\"replays\":90,\"profiles\":6,\"failures\":0}\n"
     },
     {
       "file": "n1_source_numeric_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "73c8ed9ec59e56ff3bb248a2d8b61f5748fe3d40c08206d9b081b1a644b97df4",
-      "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 132,\n  \"failures\": []\n}\n"
+      "runnerSha256": "0b00178770ab9e80871e6c8d6563e818f0d10eb3e2b8bb4d504578b59c255f76",
+      "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 66,\n  \"failures\": []\n}\n"
     },
     {
       "file": "n1_age_profiles_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "0de4f4a17fade06c3e31b629df568ec3dfcb828273aef8cf9453089884949be6",
-      "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 900,\n  \"replays\": 900,\n  \"profiles\": 18,\n  \"paths\": 90,\n  \"failures\": []\n}\n"
+      "runnerSha256": "16537fbca3424a7fa747d9fbf865ae4add919e129b6f4bdf70a8a07e04e21bb0",
+      "output": "{\n  \"status\": \"PASS\",\n  \"cases\": 450,\n  \"replays\": 450,\n  \"profiles\": 18,\n  \"paths\": 90,\n  \"failures\": []\n}\n"
     },
     {
       "file": "n1_age_source_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "6b5aba38a9b7abe1fd41348899498cc19125a731c532b21a89e915c0b55e0dbc",
-      "output": "{\n  \"schema\": \"FOH_N1_AGE_SOURCE_CHECK\",\n  \"sources\": [\n    {\n      \"file\": \"règles avancées.pdf\",\n      \"pdfPage\": 1,\n      \"printedPage\": 153,\n      \"visuallyRead\": true,\n      \"rule\": \"Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.\"\n    }\n  ],\n  \"cases\": [\n    {\n      \"id\": \"index.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html:venerable:DR\",\n      \"status\": \"PASS\"\n    }\n  ],\n  \"replays\": 22,\n  \"failures\": [],\n  \"engineSha256\": \"a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79\",\n  \"status\": \"PASS\"\n}\n"
+      "runnerSha256": "4675ad40dfc156d809ae520c2d6c8df5f69a3b818f4ed267096d53c5c4a944ae",
+      "output": "{\n  \"schema\": \"FOH_N1_AGE_SOURCE_CHECK\",\n  \"sources\": [\n    {\n      \"file\": \"règles avancées.pdf\",\n      \"pdfPage\": 1,\n      \"printedPage\": 153,\n      \"visuallyRead\": true,\n      \"rule\": \"Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.\"\n    }\n  ],\n  \"cases\": [\n    {\n      \"id\": \"index.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:DR\",\n      \"status\": \"PASS\"\n    }\n  ],\n  \"replays\": 11,\n  \"failures\": [],\n  \"engineSha256\": \"8101edad805fa44c90e1d185a56394de168b565914c515f529ed06d82e5ea022\",\n  \"status\": \"PASS\"\n}\n"
     },
     {
       "file": "n1_size_equipment_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "221ed13b1db6f03443ee17713bfbef1e6dee07919637c40089157d0825f599b3",
-      "output": "PASS 120 size/equipment cases across both engines: 2d6 rejected, d8 at two hands without shield, hand count/damage/save/reload, no-profile racial limits, legal d4 counterparts and ordinary-human regression. Sources COF2 Livre de base p.55 (PDF p.57), Compagnon pp.15,17; Forge tiny-equipment policy.\n"
+      "runnerSha256": "5f2941afea8bb988db3a3f80a6cf9cbdc5a08e9023284a3cd317b360b988be19",
+      "output": "PASS 60 size/equipment cases across both engines: 2d6 rejected, d8 at two hands without shield, hand count/damage/save/reload, no-profile racial limits, legal d4 counterparts and ordinary-human regression. Sources COF2 Livre de base p.55 (PDF p.57), Compagnon pp.15,17; Forge tiny-equipment policy.\n"
     },
     {
       "file": "n1_rejection_review_runner.cjs",
@@ -96,8 +96,8 @@
       "file": "n1_gnome_hybrid_duplicate_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "4c0442572fd1b8bc95a7bfc2b81257f50823e46a71faed8286d8229e9208e9ce",
-      "output": "PASS 160 Gnome hybrid cases across both products: duplicate rejected for the right reason, alternative gift accepted, both chosen paths retained, immutable input and save/reload.\n"
+      "runnerSha256": "ff17f27448bc1c673516b6ef9062003569058b6448848f7b7643b32209958c66",
+      "output": "PASS 80 Gnome hybrid cases across both products: duplicate rejected for the right reason, alternative gift accepted, both chosen paths retained, immutable input and save/reload.\n"
     },
     {
       "file": "no_profile_budget_runner.js",
@@ -152,8 +152,8 @@
       "file": "equipment_runtime_companions_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "4ae16881939879e49b23e8137de64d55922c73bc07ed29850e8af253a0fdba93",
-      "output": "PASS 16 creation/replay fixtures; 60 entity distributions; canonical armor permissions and spell surcharge, target quotas, shared rage/fury pool, lifetime counters, native high-rank companions and strict corruption checks.\n"
+      "runnerSha256": "52437d1f7ab9babbc597819f36bb5515c6e8198a648888b0fe4236956903e16a",
+      "output": "PASS 8 creation/replay fixtures; 30 entity distributions; canonical armor permissions and spell surcharge, target quotas, shared rage/fury pool, lifetime counters, native high-rank companions and strict corruption checks.\n"
     },
     {
       "file": "path_calculations_runner.cjs",
@@ -173,22 +173,22 @@
       "file": "advanced_paths_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "19e215098a48d3d4b17a3d1b5e66365ef3d4a4d173131363dd12b7235b50685f",
-      "output": "PASS 10 optional-path creations/replays; 25 full source ranks per product, Corruption replacement, physical spell attack, conditional web damage, free/movement voice costs, nine shape NC/level/cost thresholds, per-target temptation and guard-dog statistics. Mechanical completeness remains false.\n"
+      "runnerSha256": "abb673a6aede8fcd1d926fc42b81729c345586dca89fa939a554831eeae5db64",
+      "output": "PASS 5 optional-path creations/replays; 25 full source ranks per product, Corruption replacement, physical spell attack, conditional web damage, free/movement voice costs, nine shape NC/level/cost thresholds, per-target temptation and guard-dog statistics. Mechanical completeness remains false.\n"
     },
     {
       "file": "sacred_mana_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "c89c08832247367711acb9952598a99d9507b1815b20084de3c6326ad54fd676",
-      "output": "PASS 40 sacred vestments and mana-burn cases across both products. No dice rolled; source COF2 pp.125,228.\n"
+      "runnerSha256": "d0caf1a7adda5bd5ee9cf6fb441441d3a39b9993e5efeeaa88a74b143a57dc4b",
+      "output": "PASS 20 sacred vestments and mana-burn cases across both products. No dice rolled; source COF2 pp.125,228.\n"
     },
     {
       "file": "conjuration_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "924c9bed68ca74275488f6a2d955eeb16f08f7b8b5a6e16ff160196c5898ff6d",
-      "output": "PASS 25 conjuration cases: eight tiers, reinforcement, pack downgrades, carapace, army, source/house provenance, both products and immutable replay. No balance playtest.\n"
+      "runnerSha256": "2c574fbaf16f0249e74644287ae047a25111c0a91130b2cbf354ba6feac0e86a",
+      "output": "PASS 23 conjuration cases: eight tiers, reinforcement, pack downgrades, carapace, army, source/house provenance, both products and immutable replay. No balance playtest.\n"
     },
     {
       "file": "gnome_gift_help_runner.cjs",
@@ -222,14 +222,14 @@
       "file": "path_descriptions_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "f80ca0f21b63aa112371e17d3952f04a9f5de0f3e7938bb9254e9ee9a5a095bb",
-      "output": "PASS index.html: 90 voies, 425 descriptions, rangs uniques, cinq rangs rendus ; sorcier et moine complets.\nPASS FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html: 90 voies, 425 descriptions, rangs uniques, cinq rangs rendus ; sorcier et moine complets.\n"
+      "runnerSha256": "da08f8a12f0c946947dde48b6032a086ce7c3fd5b5e28d6d3aff162a37c1ffc7",
+      "output": "PASS index.html: 90 voies, 425 descriptions, rangs uniques, cinq rangs rendus ; sorcier et moine complets.\n"
     },
     {
       "file": "history_completeness_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "9fe58072e069e51bd841f20fd7893165dd6bcf0c33bd2c6fca80f55088ef6712",
+      "runnerSha256": "ce1c3c48bc5352117e653ac9a9791fe9f63473bdbcd45aa630f4035d1a5b7b57",
       "output": "PASS 85 history source texts per product, exact path/ability/PDF-appendix data parity; four full historical acquisitions save/replay; novice/bodyguard owner math and reversible contact condition.\n"
     },
     {
@@ -243,15 +243,15 @@
       "file": "import_assets_prestige_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "0845293d88bce6549e0f0dda7446695c96808cd41302118e434174a3fb274d7f",
+      "runnerSha256": "236f165a45d17434f6af40054206ff60c88a7c47a429b5bd86729293cb651f21",
       "output": "PASS exact product DB/engine parity, 660 canonical/PDF texts, 15 ancestry aliases, source section relocation, 100 prestige projections and 14 companion projections including alpha R4, optional sorcerer R5 counts and actual native stats. Prestige purchase remains explicitly unavailable.\nPASS reference-page renderer for all 10 paths, invalid-rank feedback and footer placement outside generated print templates. No browser clicking claimed.\n"
     },
     {
       "file": "precision_transition_runner.js",
-      "status": "PASS",
-      "exitCode": 0,
+      "status": "FAIL",
+      "exitCode": 1,
       "runnerSha256": "b1a54a1dfc8189791e73bbd26f6c131b30e6c8c8250720e9e97b87e585e8642b",
-      "output": "{\n  \"contracts\": [\n    53,\n    53\n  ],\n  \"aba\": [\n    53,\n    53\n  ],\n  \"ghost\": [\n    13,\n    13\n  ],\n  \"anti\": [\n    10,\n    10\n  ],\n  \"negative\": [\n    14,\n    14\n  ]\n}\n"
+      "output": "{\n  \"contracts\": [\n    52,\n    53\n  ],\n  \"aba\": [\n    53,\n    53\n  ],\n  \"ghost\": [\n    13,\n    13\n  ],\n  \"anti\": [\n    10,\n    10\n  ],\n  \"negative\": [\n    14,\n    14\n  ]\n}\n"
     },
     {
       "file": "manual_scenario_assertions.js",
@@ -264,8 +264,8 @@
       "file": "n1_characteristic_methods_runner.cjs",
       "status": "PASS",
       "exitCode": 0,
-      "runnerSha256": "09632b3e373975be961eb58be77cc4312aeab8c070ccf3cd47a1b24a1967e001",
-      "output": "PASS {\"pointBuy\":279936,\"pointBuyValid\":27568,\"pointBuyInvalid\":252368,\"pointBuyCreations\":284,\"classicCreations\":2940,\"semiTriples\":1331,\"semiCreations\":9381,\"balancedLowCreations\":64,\"replayChecks\":407,\"invalidInputs\":12,\"uiFixtureChecks\":8}\n"
+      "runnerSha256": "bb71e7eabc7b51e212ca1729d90a512d680820a05907af250a8d4eeeddb9057f",
+      "output": "PASS {\"pointBuy\":279936,\"pointBuyValid\":27568,\"pointBuyInvalid\":252368,\"pointBuyCreations\":284,\"classicCreations\":2940,\"semiTriples\":1331,\"semiCreations\":9381,\"balancedLowCreations\":64,\"replayChecks\":407,\"invalidInputs\":12,\"uiFixtureChecks\":4}\n"
     }
   ]
 }
