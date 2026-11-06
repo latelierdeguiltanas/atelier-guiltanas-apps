@@ -1,0 +1,53 @@
+name: Forge N1 - contrat precision sur index unique
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-precision-current.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/precision_transition_runner.js'
+permissions:
+  contents: write
+concurrency:
+  group: forge-n1-precision-single
+  cancel-in-progress: false
+jobs:
+  precision:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Tester les transitions sur le moteur réellement publié
+        id: test
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          node --check forge-of-heroes/FINAL_FREEZE_TESTS/precision_transition_runner.js
+          FOH_QA_OUTPUT=forge-of-heroes/QA/N1 node forge-of-heroes/FINAL_FREEZE_TESTS/precision_transition_runner.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n1-precision-contrats-courants
+          path: |
+            forge-of-heroes/QA/N1/N1_PRECISION_TRANSITION_RESULTS.json
+            forge-of-heroes/QA/N1/N1_PRECISION_TRANSITION_CONTRACTS.json
+      - name: Sauvegarder tous les résultats et anomalies
+        if: always()
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add forge-of-heroes/QA/N1/N1_PRECISION_TRANSITION_RESULTS.json forge-of-heroes/QA/N1/N1_PRECISION_TRANSITION_CONTRACTS.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'test(forge): verifier contrats N1 sur le seul index [skip ci]'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Ne pas valider un contrat incomplet
+        if: steps.test.outcome == 'failure'
+        run: exit 1
