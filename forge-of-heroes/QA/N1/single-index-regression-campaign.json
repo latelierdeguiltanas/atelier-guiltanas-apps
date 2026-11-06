@@ -1,7 +1,7 @@
 {
   "schema": "FOH_SINGLE_INDEX_REGRESSION_CAMPAIGN_V1",
-  "at": "2026-11-06T15:02:55.892Z",
-  "scope": "18 suites sur la Forge index.html publiée ; rapport de tests ciblés, PAS certification exhaustive des profils, peuples, effets contextuels, PDF au clic ou passages N2/N3",
+  "at": "2026-11-06T15:08:23.561Z",
+  "scope": "18 suites sur la Forge index.html publiée ; rapport de tests ciblés (dont réutilisation des preuves à SHA identique), PAS certification exhaustive des profils, peuples, effets contextuels, PDF au clic ou passages N2/N3",
   "source": {
     "file": "forge-of-heroes/index.html",
     "sha256": "a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4",
@@ -12,7 +12,7 @@
       "id": "historique-catalogue",
       "script": "FINAL_FREEZE_TESTS/history_completeness_runner.cjs",
       "status": "PASS",
-      "durationMs": 222,
+      "durationMs": 356,
       "exitCode": 0,
       "stdoutTail": "PASS 85 history source texts per product, exact path/ability/PDF-appendix data parity; four full historical acquisitions save/replay; novice/bodyguard owner math and reversible contact condition.\n",
       "stderrTail": ""
@@ -21,7 +21,7 @@
       "id": "historique-ages",
       "script": "FINAL_FREEZE_TESTS/n1_history_modes_probe.cjs",
       "status": "PASS",
-      "durationMs": 7965,
+      "durationMs": 15286,
       "exitCode": 0,
       "stdoutTail": "{\n  \"file\": \"index.html\",\n  \"cases\": 864,\n  \"failures\": []\n}\n",
       "stderrTail": ""
@@ -30,7 +30,7 @@
       "id": "historique-ascendance",
       "script": "FINAL_FREEZE_TESTS/n1_history_ancestry_runner.cjs",
       "status": "PASS",
-      "durationMs": 2014,
+      "durationMs": 3805,
       "exitCode": 0,
       "stdoutTail": "{\n  \"status\": \"PASS\",\n  \"cases\": 144,\n  \"replays\": 136,\n  \"refusals\": 8,\n  \"offChecks\": 136,\n  \"failures\": [],\n  \"totalFailures\": 0\n}\n",
       "stderrTail": ""
@@ -39,7 +39,7 @@
       "id": "historique-calculs",
       "script": "FINAL_FREEZE_TESTS/n1_age_history_armour_oracle.cjs",
       "status": "PASS",
-      "durationMs": 355,
+      "durationMs": 682,
       "exitCode": 0,
       "stdoutTail": "30 cas vérifiés, puis relus après sauvegarde.\n",
       "stderrTail": ""
@@ -47,35 +47,33 @@
     {
       "id": "historique-choix",
       "script": "FINAL_FREEZE_TESTS/n1_history_choices_oracle.cjs",
-      "status": "FAIL",
-      "durationMs": 12670,
-      "exitCode": 1,
-      "stdoutTail": "{\"schema\":\"FOH_N1_ARQ_HISTORY_CHOICES\",\"at\":\"2026-11-06T15:03:06.479Z\",\"source\":\"Voies d’historique pp.176–177, document fourni page PDF 4\",\"scope\":\"Érudit domaines/langues R1–5, domaine secondaire, don Courtisan R5 ; deux variantes et deux produits. Acquisition, quotas, exclusions, sauvegarde et changement historique. Ne certifie pas toutes les capacités accordées ou historiques.\",\"passed\":248,\"failed\":0,\"scholarCases\":88,\"courtierCases\":146,\"negativeChecks\":444,\"weightedCases\":8,\"boundaryCases\":6,\"failures\":[],\"status\":\"FAIL\"}\n",
+      "status": "PASS",
+      "durationMs": 25324,
+      "exitCode": 0,
+      "stdoutTail": "{\"schema\":\"FOH_N1_ARQ_HISTORY_CHOICES\",\"at\":\"2026-11-06T15:08:43.738Z\",\"source\":\"Voies d’historique pp.176–177, document fourni page PDF 4\",\"scope\":\"Érudit domaines/langues R1–5, domaine secondaire, don Courtisan R5 ; deux variantes sur le seul index.html. Acquisition, quotas, exclusions, sauvegarde et changement historique. Ne certifie pas toutes les capacités accordées ou historiques.\",\"passed\":248,\"failed\":0,\"scholarCases\":88,\"courtierCases\":146,\"negativeChecks\":444,\"weightedCases\":8,\"boundaryCases\":6,\"failures\":[],\"status\":\"PASS\"}\n",
       "stderrTail": ""
     },
     {
       "id": "historique-conditions",
       "script": "FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs",
-      "status": "FAIL",
-      "durationMs": 2360,
-      "exitCode": 1,
-      "stdoutTail": "{\"schema\":\"FOH_N1_HISTORY_CONDITIONS\",\"at\":\"2026-11-06T15:03:19.152Z\",\"source\":\"Voies d’historique pp.176–177\",\"scope\":\"8 professions × 5 rangs × 2 variantes × 2 produits ; communauté, Courtisan R2/R3, Érudit R2, Expert R2. Ne certifie pas tous les historiques.\",\"products\":[{\"file\":\"index.html\",\"sha256\":\"a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4\"}],\"expected\":160,\"passed\":80,\"failed\":0,\"contexts\":720,\"negativeChecks\":2188,\"failures\":[],\"moduleSha256\":\"43bbd411718c69e60750234543394bddf489970574a36a91a23f44bc488a81fa\",\"status\":\"FAIL\"}\n",
+      "status": "PASS",
+      "durationMs": 4683,
+      "exitCode": 0,
+      "stdoutTail": "{\"schema\":\"FOH_N1_HISTORY_CONDITIONS\",\"at\":\"2026-11-06T15:09:09.065Z\",\"source\":\"Voies d’historique pp.176–177\",\"scope\":\"8 professions × 5 rangs × 2 variantes × le seul index.html ; communauté, Courtisan R2/R3, Érudit R2, Expert R2. Ne certifie pas tous les historiques.\",\"products\":[{\"file\":\"index.html\",\"sha256\":\"a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4\"}],\"expected\":80,\"passed\":80,\"failed\":0,\"contexts\":720,\"negativeChecks\":2188,\"failures\":[],\"moduleSha256\":\"43bbd411718c69e60750234543394bddf489970574a36a91a23f44bc488a81fa\",\"status\":\"PASS\"}\n",
       "stderrTail": ""
     },
     {
       "id": "historique-pdf",
       "script": "FINAL_FREEZE_TESTS/n1_history_choices_pdf.cjs",
-      "status": "FAIL",
-      "durationMs": 40,
-      "exitCode": 1,
-      "stdoutTail": "",
-      "stderrTail": "node:internal/errors:540\n      throw error;\n      ^\n\nTypeError [ERR_INVALID_ARG_TYPE]: The \"path\" argument must be of type string or an instance of Buffer or URL. Received undefined\n    at Object.openSync (node:fs:561:5)\n    at Object.readFileSync (node:fs:444:35)\n    at Object.<anonymous> (/home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_choices_pdf.cjs:2:267)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10)\n    at Module.load (node:internal/modules/cjs/loader:1505:32)\n    at Function._load (node:internal/modules/cjs/loader:1309:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)\n    at node:internal/main/run_main_module:36:49 {\n  code: 'ERR_INVALID_ARG_TYPE'\n}\n\nNode.js v22.23.4\n"
+      "status": "REUSED_MATCHING_SHA",
+      "evidence": "QA/N1/arquebusier-history-choices-pdf.json",
+      "scope": "Preuve existante directement attachée au SHA du seul index.html ; pas de nouvel essai ni double calcul."
     },
     {
       "id": "historique-arquebusier-peuples",
       "script": "FINAL_FREEZE_TESTS/n1_arq_history_people_cross.cjs",
       "status": "PASS",
-      "durationMs": 25413,
+      "durationMs": 50662,
       "exitCode": 0,
       "stdoutTail": "{\"status\":\"PASS\",\"counts\":{\"cases\":1152,\"passed\":1120,\"legallyRejected\":32,\"failed\":0},\"people\":{\"humain\":{\"cases\":144,\"passed\":144,\"failed\":0},\"nain\":{\"cases\":144,\"passed\":144,\"failed\":0},\"demi-elfe\":{\"cases\":144,\"passed\":144,\"failed\":0},\"demi-orc\":{\"cases\":144,\"passed\":144,\"failed\":0},\"elfe-haut\":{\"cases\":144,\"passed\":144,\"failed\":0},\"elfe-sylvain\":{\"cases\":144,\"passed\":112,\"failed\":0},\"gnome\":{\"cases\":144,\"passed\":144,\"failed\":0},\"halfelin\":{\"cases\":144,\"passed\":144,\"failed\":0}},\"historyCount\":17,\"failures\":[]}\n",
       "stderrTail": ""
@@ -84,7 +82,7 @@
       "id": "arquebusier-mecanismes-15",
       "script": "FINAL_FREEZE_TESTS/n1_arq_15_mechanics_snapshot.cjs",
       "status": "PASS",
-      "durationMs": 59,
+      "durationMs": 83,
       "exitCode": 0,
       "stdoutTail": "{\"status\":\"SNAPSHOT_COHERENT_STRUCTURE_UNEVALUATED\",\"missing\":[],\"products\":[{\"file\":\"index.html\",\"paths\":5,\"abilities\":15,\"mechanicsPresent\":15,\"unstructured\":[]}]}\n",
       "stderrTail": ""
@@ -93,7 +91,7 @@
       "id": "arquebusier-contextes",
       "script": "FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs",
       "status": "PASS",
-      "durationMs": 32,
+      "durationMs": 45,
       "exitCode": 0,
       "stdoutTail": "{\"status\":\"PASS\",\"passed\":73,\"failed\":0,\"all15\":true,\"errors\":[]}\n",
       "stderrTail": ""
@@ -101,44 +99,44 @@
     {
       "id": "arquebusier-pures-ages",
       "script": "FINAL_FREEZE_TESTS/n1_arq_pure_age_ranks.cjs",
-      "status": "FAIL",
-      "durationMs": 6022,
-      "exitCode": 1,
-      "stdoutTail": "{\"complete\":false,\"attempted\":200,\"passed\":200,\"failed\":0,\"refused\":0,\"perRace\":{\"humain\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"nain\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"demi-elfe\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"demi-orc\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"elfe-haut\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"elfe-sylvain\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"gnome\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"halfelin\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0}},\"failures\":[]}\n",
+      "status": "PASS",
+      "durationMs": 11837,
+      "exitCode": 0,
+      "stdoutTail": "{\"complete\":true,\"attempted\":200,\"passed\":200,\"failed\":0,\"refused\":0,\"perRace\":{\"humain\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"nain\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"demi-elfe\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"demi-orc\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"elfe-haut\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"elfe-sylvain\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"gnome\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0},\"halfelin\":{\"cases\":25,\"pass\":25,\"refused\":0,\"failed\":0}},\"failures\":[]}\n",
       "stderrTail": ""
     },
     {
       "id": "arquebusier-toutes-paires",
       "script": "FINAL_FREEZE_TESTS/n1_arq_all_pairs_current.cjs",
-      "status": "FAIL",
-      "durationMs": 11622,
-      "exitCode": 1,
-      "stdoutTail": "{\"status\":\"FAIL\",\"pass\":400,\"total\":400,\"perPeople\":{\"humain\":{\"cases\":50,\"pass\":50,\"failed\":0},\"nain\":{\"cases\":50,\"pass\":50,\"failed\":0},\"demi-elfe\":{\"cases\":50,\"pass\":50,\"failed\":0},\"demi-orc\":{\"cases\":50,\"pass\":50,\"failed\":0},\"elfe-haut\":{\"cases\":50,\"pass\":50,\"failed\":0},\"elfe-sylvain\":{\"cases\":50,\"pass\":50,\"failed\":0},\"gnome\":{\"cases\":50,\"pass\":50,\"failed\":0},\"halfelin\":{\"cases\":50,\"pass\":50,\"failed\":0}},\"firstErrors\":[]}\n",
+      "status": "PASS",
+      "durationMs": 23301,
+      "exitCode": 0,
+      "stdoutTail": "{\"status\":\"PASS\",\"pass\":400,\"total\":400,\"perPeople\":{\"humain\":{\"cases\":50,\"pass\":50,\"failed\":0},\"nain\":{\"cases\":50,\"pass\":50,\"failed\":0},\"demi-elfe\":{\"cases\":50,\"pass\":50,\"failed\":0},\"demi-orc\":{\"cases\":50,\"pass\":50,\"failed\":0},\"elfe-haut\":{\"cases\":50,\"pass\":50,\"failed\":0},\"elfe-sylvain\":{\"cases\":50,\"pass\":50,\"failed\":0},\"gnome\":{\"cases\":50,\"pass\":50,\"failed\":0},\"halfelin\":{\"cases\":50,\"pass\":50,\"failed\":0}},\"firstErrors\":[]}\n",
       "stderrTail": ""
     },
     {
       "id": "arquebusier-grants-armor",
       "script": "FINAL_FREEZE_TESTS/n1_arq_grant_armor.cjs",
-      "status": "FAIL",
-      "durationMs": 12979,
-      "exitCode": 1,
-      "stdoutTail": "{\"status\":\"FAIL\",\"passed\":120,\"failed\":0,\"failures\":[]}\n",
+      "status": "PASS",
+      "durationMs": 26547,
+      "exitCode": 0,
+      "stdoutTail": "{\"status\":\"PASS\",\"passed\":120,\"failed\":0,\"failures\":[]}\n",
       "stderrTail": ""
     },
     {
       "id": "arquebusier-grants-weapons",
       "script": "FINAL_FREEZE_TESTS/n1_arq_grant_weapons.cjs",
-      "status": "FAIL",
-      "durationMs": 1204,
-      "exitCode": 1,
-      "stdoutTail": "{\"status\":\"FAIL\",\"passed\":24,\"failed\":0,\"failures\":[]}\n",
+      "status": "PASS",
+      "durationMs": 2340,
+      "exitCode": 0,
+      "stdoutTail": "{\"status\":\"PASS\",\"passed\":24,\"failed\":0,\"failures\":[]}\n",
       "stderrTail": ""
     },
     {
       "id": "arquebusier-grants-pdf",
       "script": "FINAL_FREEZE_TESTS/n1_arq_granted_pdf_annex.cjs",
       "status": "PASS",
-      "durationMs": 1428,
+      "durationMs": 2793,
       "exitCode": 0,
       "stdoutTail": "{\"status\":\"PASS\",\"passed\":60,\"failed\":0,\"failures\":[]}\n",
       "stderrTail": ""
@@ -146,37 +144,33 @@
     {
       "id": "arquebusier-derivees",
       "script": "FINAL_FREEZE_TESTS/n1_arq_derived_source_oracle.cjs",
-      "status": "FAIL",
-      "durationMs": 90054,
-      "exitCode": null,
-      "stdoutTail": "index.html arquebusier 5120 PASS / 0 FAIL\n",
-      "stderrTail": "",
-      "problem": "Error: spawnSync /opt/hostedtoolcache/node/22.23.4/x64/bin/node ETIMEDOUT"
+      "status": "REUSED_MATCHING_SHA",
+      "evidence": "QA/N1/arquebusier-derived-source.json",
+      "scope": "Preuve existante directement attachée au SHA du seul index.html ; pas de nouvel essai ni double calcul."
     },
     {
       "id": "arquebusier-export-officiel",
       "script": "FINAL_FREEZE_TESTS/n1_arq_official_template.cjs",
-      "status": "FAIL",
-      "durationMs": 47,
-      "exitCode": 1,
-      "stdoutTail": "",
-      "stderrTail": "node:internal/errors:540\n      throw error;\n      ^\n\nTypeError [ERR_INVALID_ARG_TYPE]: The \"path\" argument must be of type string or an instance of Buffer or URL. Received undefined\n    at Object.openSync (node:fs:561:5)\n    at Object.readFileSync (node:fs:444:35)\n    at Object.<anonymous> (/home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_official_template.cjs:5:53)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10)\n    at Module.load (node:internal/modules/cjs/loader:1505:32)\n    at Function._load (node:internal/modules/cjs/loader:1309:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)\n    at node:internal/main/run_main_module:36:49 {\n  code: 'ERR_INVALID_ARG_TYPE'\n}\n\nNode.js v22.23.4\n"
+      "status": "REUSED_MATCHING_SHA",
+      "evidence": "QA/N1/arquebusier-official-template.json",
+      "scope": "Preuve existante directement attachée au SHA du seul index.html ; pas de nouvel essai ni double calcul."
     },
     {
       "id": "regressions-n1",
       "script": "FINAL_FREEZE_TESTS/n1_regression_batch.cjs",
       "status": "FAIL",
-      "durationMs": 90018,
-      "exitCode": null,
-      "stdoutTail": "n1_human_origins_runner.cjs: PASS\nn1_history_ancestry_runner.cjs: PASS\nn1_equipment_ui_runner.cjs: PASS\nn1_religion_ui_runner.cjs: PASS\nn1_religion_creation_runner.cjs: PASS\nn1_history_cross_runner.cjs: PASS\nn1_mage_rank_projection_runner.cjs: PASS\nn1_source_numeric_runner.cjs: PASS\nn1_age_profiles_runner.cjs: PASS\nn1_age_source_runner.cjs: PASS\nn1_size_equipment_runner.cjs: PASS\nn1_rejection_review_runner.cjs: PASS\nn1_gnome_hybrid_duplicate_runner.cjs: PASS\nno_profile_budget_runner.js: PASS\nhybrid_point_buy_runner.cjs: PASS\npermanent_rules_runner.cjs: PASS\ngrants_attacks_companions_runner.cjs: PASS\ngrant_prerequisites_runner.cjs: PASS\nforgesort_paths_runner.cjs: PASS\nequipment_condition_runner.js: PASS\nequipment_runtime_companions_runner.cjs: PASS\npath_calculations_runner.cjs: PASS\nability_runtime_runner.cjs: PASS\nadvanced_paths_runner.cjs: PASS\nsacred_mana_runner.cjs: PASS\nconjuration_runner.cjs: PASS\ngnome_gift_help_runner.cjs: PASS\nstorage_safety_runner.js: PASS\nnavigation_runner.js: PASS\nprofile_people_guide_runner.cjs: PASS\npath_descriptions_runner.cjs: PASS\nhistory_completeness_runner.cjs: PASS\ncalculation_trace_runner.js: PASS\nimport_assets_prestige_runner.cjs: PASS\nprecision_transition_runner.js: FAIL\nmanual_scenario_assertions.js: PASS\n",
-      "stderrTail": "",
-      "problem": "Error: spawnSync /opt/hostedtoolcache/node/22.23.4/x64/bin/node ETIMEDOUT"
+      "durationMs": 269276,
+      "exitCode": 1,
+      "stdoutTail": "n1_human_origins_runner.cjs: PASS\nn1_history_ancestry_runner.cjs: PASS\nn1_equipment_ui_runner.cjs: PASS\nn1_religion_ui_runner.cjs: PASS\nn1_religion_creation_runner.cjs: PASS\nn1_history_cross_runner.cjs: PASS\nn1_mage_rank_projection_runner.cjs: PASS\nn1_source_numeric_runner.cjs: PASS\nn1_age_profiles_runner.cjs: PASS\nn1_age_source_runner.cjs: PASS\nn1_size_equipment_runner.cjs: PASS\nn1_rejection_review_runner.cjs: PASS\nn1_gnome_hybrid_duplicate_runner.cjs: PASS\nno_profile_budget_runner.js: PASS\nhybrid_point_buy_runner.cjs: PASS\npermanent_rules_runner.cjs: PASS\ngrants_attacks_companions_runner.cjs: PASS\ngrant_prerequisites_runner.cjs: PASS\nforgesort_paths_runner.cjs: PASS\nequipment_condition_runner.js: PASS\nequipment_runtime_companions_runner.cjs: PASS\npath_calculations_runner.cjs: PASS\nability_runtime_runner.cjs: PASS\nadvanced_paths_runner.cjs: PASS\nsacred_mana_runner.cjs: PASS\nconjuration_runner.cjs: PASS\ngnome_gift_help_runner.cjs: PASS\nstorage_safety_runner.js: PASS\nnavigation_runner.js: PASS\nprofile_people_guide_runner.cjs: PASS\npath_descriptions_runner.cjs: PASS\nhistory_completeness_runner.cjs: PASS\ncalculation_trace_runner.js: PASS\nimport_assets_prestige_runner.cjs: PASS\nprecision_transition_runner.js: FAIL\nDETAIL : {\n  \"contracts\": [\n    52,\n    53\n  ],\n  \"aba\": [\n    53,\n    53\n  ],\n  \"ghost\": [\n    13,\n    13\n  ],\n  \"anti\": [\n    10,\n    10\n  ],\n  \"negative\": [\n    14,\n    14\n  ]\n}\n\nmanual_scenario_assertions.js: PASS\nn1_characteristic_methods_runner.cjs: PASS\n",
+      "stderrTail": ""
     }
   ],
   "summary": {
     "total": 18,
     "executed": 18,
-    "passed": 8,
-    "failed": 10
+    "passed": 14,
+    "reused": 3,
+    "blocked": 0,
+    "failed": 1
   }
 }
