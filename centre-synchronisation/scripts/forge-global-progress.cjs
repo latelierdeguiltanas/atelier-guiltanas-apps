@@ -74,6 +74,22 @@ function validGate(id){
  return j.schema==='FOH_GLOBAL_GATE_EVIDENCE_V1'&&j.gateId===id&&j.indexSha256===indexSha256&&j.status==='PASS'&&
   Array.isArray(j.checks)&&j.checks.length>0&&j.checks.every(c=>c.status==='PASS'&&c.evidence&&String(c.evidence).length>8);
 }
+const progressionPath=path.join(forge,'QA/N3/lot2/forge-unique-progression-retest.json');
+let progressionTargeted=null;
+if(fs.existsSync(progressionPath)){
+ try{
+  const p=JSON.parse(fs.readFileSync(progressionPath,'utf8'));
+  if(p.schema==='FOH_PROGRESSIONS_TARGETED_TESTS_V1'&&p.indexSha256===indexSha256&&p.sourceUnchanged===true&&Array.isArray(p.cases)&&p.cases.length===8){
+   progressionTargeted={
+    scope:p.scope,evidence:'forge-of-heroes/QA/N3/lot2/forge-unique-progression-retest.json',
+    n2:{passed:p.cases.filter(c=>c.id.startsWith('n2-')&&c.status==='PASS').length,total:3},
+    n3:{passed:p.cases.filter(c=>c.id.startsWith('n3-')&&c.status==='PASS').length,total:5},
+    allPassed:p.passed===8&&p.failed===0,
+    note:'Campagnes fonctionnelles ciblées ; ni certificat universel N2/N3, ni preuve PDF réel/mobile ni serveur en ligne.'
+   };
+  }
+ }catch(e){console.warn('Preuve N2/N3 illisible',e.message)}
+}
 const modules=[
  {id:'n1-profils',name:'N1 · 14 profils officiels',passed:provenProfiles,total:14*16,status:sourceCurrent?'SCORE_COURANT':'SOURCE_PERIMEE',description:'16 vérifications complètes par profil. Seul Arquebusier dispose d’un score de profil actuel intégralement étayé ; les anciens 69 % restent archivés.',source:'forge-n1/focus.json'},
  {id:'n1-peuples',name:'N1 · 8 peuples officiels',passed:provenPeoples,total:8*10,status:sourceCurrent&&hasRaceInputs?'SCORE_COURANT':'PREUVES_INCOMPLETES',description:'10 vérifications par peuple : les choix raciaux et méthodes prouvés sont acquis ; les autres effets et contraintes restent ouverts.',source:'forge-n1/focus.json'},
@@ -82,7 +98,12 @@ const modules=[
   return{id:m.id,name:m.name,passed:checks.filter(c=>c.passed).length,total:checks.length,status:checks.every(c=>c.passed)?'CERTIFIE':'A_CERTIFIER',description:'Chaque validation demande un rapport dédié sur le SHA du produit publié. Une fonction présente sans preuve complète ne compte pas.',checks};
  })
 ];
-for(const m of modules){m.percent=Math.round(m.passed/m.total*100);m.complete=m.passed===m.total}
+for(const m of modules){
+ if(progressionTargeted&&(m.id==='niveau-2'||m.id==='niveau-3')){
+  m.targetedProof={...progressionTargeted[m.id==='niveau-2'?'n2':'n3'],evidence:progressionTargeted.evidence,limitations:progressionTargeted.note};
+ }
+ m.percent=Math.round(m.passed/m.total*100);m.complete=m.passed===m.total;
+}
 const complete=modules.every(m=>m.complete);
 const exact=sourceCurrent?modules.reduce((s,m)=>s+m.passed/m.total,0)/modules.length*100:null;
 const output={
