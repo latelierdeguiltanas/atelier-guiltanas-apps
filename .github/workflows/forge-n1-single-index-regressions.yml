@@ -1,0 +1,61 @@
+name: Forge N1 - régressions larges sur le vrai index
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-single-index-regressions.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_single_index_regression_campaign.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_15_mechanics_snapshot.cjs'
+permissions:
+  contents: write
+concurrency:
+  group: forge-n1-single-index-regressions
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 23
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Contrôler le script, ses conditions et le seul produit
+        run: |
+          set -euo pipefail
+          node --check forge-of-heroes/FINAL_FREEZE_TESTS/n1_single_index_regression_campaign.cjs
+          node --check forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_15_mechanics_snapshot.cjs
+          test -f forge-of-heroes/index.html
+          test ! -f forge-of-heroes/FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html
+      - name: Exécuter 18 suites N1 contre index.html sans toucher au produit
+        id: tests
+        continue-on-error: true
+        run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_single_index_regression_campaign.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-n1-regressions-18-suites
+          if-no-files-found: warn
+          path: forge-of-heroes/QA/N1/single-index-regression-campaign.json
+      - name: Publier résultats y compris en cas de régression
+        if: always()
+        run: |
+          set -euo pipefail
+          if test -f forge-of-heroes/QA/N1/single-index-regression-campaign.json; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add forge-of-heroes/QA/N1/single-index-regression-campaign.json
+            if ! git diff --cached --quiet; then
+              git commit -m 'test(forge): 18 vérifications réelles sur index [skip ci]'
+              git restore --worktree .
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main
+            fi
+          fi
+      - name: Exiger une campagne entièrement réussie
+        if: steps.tests.outcome == 'failure'
+        run: exit 1
