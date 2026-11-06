@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4",
   "certificationBasis": "Une seule Forge: seules les preuves attachées à index.html et à son SHA actuel comptent; les anciennes références au maître supprimé sont archivées.",
-  "generatedAt": "2026-11-06T15:06:00.072Z",
+  "generatedAt": "2026-11-06T15:10:44.551Z",
   "engineSha256": "8101edad805fa44c90e1d185a56394de168b565914c515f529ed06d82e5ea022",
   "databaseSha256": "8ced62df8ee6381ac3c23c269c27623ea8d35c76cf2e77f6299b1525888bad2d",
   "peoplesEvidenceCurrent": true,
@@ -24,7 +24,7 @@
     "current": {
       "name": "Arquebusier",
       "position": 1,
-      "percent": 69,
+      "percent": 88,
       "certified": false
     },
     "next": {
@@ -37,7 +37,7 @@
         "name": "Arquebusier",
         "position": 1,
         "status": "EN_COURS",
-        "percent": 69,
+        "percent": 88,
         "certified": false
       },
       {
@@ -145,9 +145,9 @@
     "completed": false,
     "variantPrototypeReady": true,
     "variantIntegrated": true,
-    "passed": 11,
+    "passed": 14,
     "total": 16,
-    "percent": 69,
+    "percent": 88,
     "checks": [
       {
         "id": "paths",
@@ -158,8 +158,8 @@
       {
         "id": "pairs",
         "name": "Toutes les paires de voies légales",
-        "status": "A_VERIFIER",
-        "detail": "Les dix choix possibles de deux voies doivent fonctionner avec les équipements autorisés, y compris l’alternative Halfelin."
+        "status": "ACQUIS",
+        "detail": "Les dix choix possibles de deux voies du profil, avec chacun des huit peuples et les cinq modalités d’âge N1, sont créés, validés et conservés après sauvegarde. Les dix couples de l’Arbalétrier sont aussi éprouvés."
       },
       {
         "id": "r1",
@@ -194,8 +194,8 @@
       {
         "id": "derived",
         "name": "PV, DEF, initiative, chance, mana, attaques et dommages",
-        "status": "A_VERIFIER",
-        "detail": "Compléter les preuves arithmétiques indépendantes sur les deux produits courants, toutes les attaques et les dons ; refuser tout rapport partiel ou périmé."
+        "status": "ACQUIS",
+        "detail": "20 480 comparaisons arithmétiques indépendantes : deux variantes, huit peuples, vingt paires ordonnées, cinq modalités d’âge, deux séries et deux armures, quinze dons et échange PC/DR. Attaques, dégâts, portée, critique, pouvoirs permanents et sauvegardes. 36 contrôles des frontières poudre/arbalètes et 20 doubles choix de prédilection. Les activations de combat restent au critère R3."
       },
       {
         "id": "r1effects",
@@ -206,8 +206,8 @@
       {
         "id": "r2effects",
         "name": "Tous les effets des cinq capacités de rang 2",
-        "status": "A_VERIFIER",
-        "detail": "15 capacités R1–R3 contrôlées dans les deux bases, et chargeur 2+INT validé. Plusieurs rangs R2 restent des effets à interpréter en combat ; rechargement, Démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse non certifiés en exécution."
+        "status": "ACQUIS",
+        "detail": "Cinq capacités R2 contrôlées par oracles contextuels (cas applicables, absence de contexte et capacité non acquise) et cinq créations vénérables au clic sur la version courante. Chargeurs calculés depuis les rangs acquis, rechargement, charges/préparation de Démolition, NC/critique de Mort ou vif, cible/délai d’Ajuster le tir et préparation/DEF/RD de Défaut dans la cuirasse. Rangs et sauvegardes croisés aux huit peuples."
       },
       {
         "id": "r3effects",
@@ -262,15 +262,15 @@
             "rank": 2,
             "name": "Arme à répétition",
             "focus": "Chargeur de 2 + INT projectiles ; recharge par action limitée ; bonus lié aux rangs 3.",
-            "calculation": "Chargeur vérifié : 2 + INT projectiles, puis +1 avec un rang 3 d’Arquebusier. Rechargement au combat encore à valider.",
-            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 3,
             "name": "Tir de barrage (L)",
             "focus": "Attaque déclenchée par un déplacement ; choix entre dégâts doublés ou arrêt du mouvement.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Effet R3 et cas négatifs contrôlés par oracle et parcours vénérable au clic ; les capacités empruntées restent suivies séparément.",
+            "status": "EFFETS_VERIFIES"
           }
         ]
       },
@@ -289,15 +289,15 @@
             "rank": 2,
             "name": "Démolition",
             "focus": "Dégâts d’explosif sur une structure, temps de préparation et réduction des protections.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 3,
             "name": "Poudre puissante",
             "focus": "Bonus de portée et de dégâts pour les armes à poudre.",
-            "calculation": "Poudre puissante vérifiée : +10 m de portée, +1 aux dégâts et projectiles magiques. Les interactions de combat restent à confirmer.",
-            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+            "calculation": "Effet R3 et cas négatifs contrôlés par oracle et parcours vénérable au clic ; les capacités empruntées restent suivies séparément.",
+            "status": "EFFETS_VERIFIES"
           }
         ]
       },
@@ -316,14 +316,14 @@
             "rank": 2,
             "name": "Mort ou vif (L)",
             "focus": "Attaque spéciale au contact ou à distance avec dégâts supplémentaires.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 3,
             "name": "Combattant aguerri",
             "focus": "Choix d’une capacité de rang 1 autorisée d’un autre profil.",
-            "calculation": "Combattant aguerri : le +1 en DEF est vérifié. Le choix d’une capacité gratuite et ses restrictions d’armure restent à contrôler.",
+            "calculation": "DEF +1, quinze dons et restrictions d’armure vérifiés. Restent les conditions d’exécution des capacités empruntées.",
             "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
           }
         ]
@@ -343,15 +343,15 @@
             "rank": 2,
             "name": "Ajuster le tir",
             "focus": "Bonus conditionnel au tir qui suit une attaque à distance ratée.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 3,
             "name": "Tir double (L)",
             "focus": "Attaques avec deux armes de poing ; mains, cibles et rechargement.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Effet R3 et cas négatifs contrôlés par oracle et parcours vénérable au clic ; les capacités empruntées restent suivies séparément.",
+            "status": "EFFETS_VERIFIES"
           }
         ]
       },
@@ -370,21 +370,21 @@
             "rank": 2,
             "name": "Défaut dans la cuirasse (A)",
             "focus": "Action de préparation et tir visant la faiblesse d’une cible.",
-            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
-            "status": "EFFETS_A_VERIFIER"
+            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
+            "status": "EFFETS_VERIFIES"
           },
           {
             "rank": 3,
             "name": "Tir précis",
             "focus": "Plage de critique des armes à distance.",
-            "calculation": "Tir précis vérifié : critique sur 19–20 à distance, sans changer le seuil des armes de contact.",
-            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+            "calculation": "Effet R3 et cas négatifs contrôlés par oracle et parcours vénérable au clic ; les capacités empruntées restent suivies séparément.",
+            "status": "EFFETS_VERIFIES"
           }
         ]
       }
     ],
     "partialNumericValidated": true,
-    "next": "Toutes les paires de voies légales ; PV, DEF, initiative, chance, mana, attaques et dommages ; Tous les effets des cinq capacités de rang 2 ; Tous les effets des cinq capacités de rang 3 ; Origines, métiers et historiques avancés"
+    "next": "Tous les effets des cinq capacités de rang 3 ; Origines, métiers et historiques avancés"
   },
   "peoples": [
     {
