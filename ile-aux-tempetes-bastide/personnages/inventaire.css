@@ -183,3 +183,8 @@
     align-items: flex-start;
   }
 }
+
+/* Carnet myconide de Zéphéline : lecture et annotation dans l'inventaire synchronisé. */
+.inventory-item[data-item="carnet-myconides-zepheline"]{border-color:#9f8b5d;background:linear-gradient(140deg,#fff8e8,#f3ecda)}
+.inventory-item[data-item="carnet-myconides-zepheline"]>summary strong::before{content:"📖 ";}
+.inventory-item[data-item="carnet-myconides-zepheline"] textarea[data-item-field="notes"]{min-height:320px;line-height:1.65;font-family:Georgia,serif;font-size:1rem;white-space:pre-wrap;resize:vertical}
