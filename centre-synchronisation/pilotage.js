@@ -47,7 +47,7 @@ function initRouteHistory(){
  if(!history.state?.pilotage)history.replaceState({pilotage:true,depth:0,route:snapshotRoute()},'',location.href);
  refreshBackButton();
  window.addEventListener('popstate',e=>restoreRoute(e.state?.pilotage?e.state.route:null));
- for(const dlg of document.querySelectorAll('dialog'))dlg.addEventListener('cancel',e=>{e.preventDefault();goBack()});
+ for(const dlg of document.querySelectorAll('dialog'))dlg.addEventListener('cancel',e=>{if(dlg.id==='owner-password-reset-dialog'){e.preventDefault();dlg.close();return}e.preventDefault();goBack()});
 }
 function hideDrawer(){
  $('#drawer').classList.remove('show');$('#drawer').setAttribute('aria-hidden','true');$('#shade').hidden=true;
@@ -765,7 +765,7 @@ async function load(){
    throw Error(data.error||'Service indisponible');
   }
   if(!Array.isArray(data.repos)||!Array.isArray(data.apps)||!data.metrics)throw Error('Inventaire incomplet');
-  model=data;$('#locked').hidden=true;$('#content').hidden=false;$('#owner-logout').hidden=false;
+  model=data;$('#locked').hidden=true;$('#content').hidden=false;$('#owner-logout').hidden=false;$('#owner-password-reset-open').hidden=false;
   $('#live-status').className='online ok';$('#live-status').innerHTML='<i></i> À jour';
   populate();await loadRegistry();
   if(!routeRestoredOnce){routeRestoredOnce=true;if(history.state?.pilotage&&history.state?.route)restoreRoute(history.state.route)}
