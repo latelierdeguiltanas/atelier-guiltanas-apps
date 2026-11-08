@@ -179,3 +179,15 @@ Preuve initiale du 29 octobre : PR ouverte en brouillon (non fusionnée), 9 comm
 **Contrôles de cette passe** : sources GitHub index/JS/CSS/protocole relues, JavaScript syntaxiquement valide, IDs statiques vérifiés, rendu du composant de cartes et statut de six variantes du journal testés par simulation. Les chemins des icônes ont été rapprochés des manifestes PWA du dépôt. Le test à l'écran avec une session Copilote authentifiée sur Android reste à effectuer ; ne pas annoncer la validation UX mobile ou l'accès réel au flux Edge tant que ce test manque.
 
 **Limitation structurelle** : les anciens fils ChatGPT ne sont pas modifiés rétroactivement par ce protocole. Le bouton « Reprendre dans ChatGPT » fournit ces consignes à la prochaine conversation ; leur application nécessite que la nouvelle intervention possède les outils/permissions Drive et Supabase. Les logs HAR/console du domaine chatgpt.com ne sont pas lisibles depuis une application hébergée sur github.io, pour des raisons de sécurité entre origines. Aucun accès privé à un flux de diagnostic interne d'OpenAI n'est disponible ici.
+
+
+
+## Récupération d’accès propriétaire — 08/11/2026
+
+Le système utilise toujours son mot de passe propriétaire indépendant des Hubs, conservé sous forme de vérificateur PBKDF2 salé dans Supabase. **Longueur minimale désormais 8 caractères**, sans règle de composition supplémentaire, pour l’activation et le changement d’accès (maximum 120). Les mots de passe ne figurent jamais dans GitHub.
+
+Un propriétaire dont le mot de passe est oublié peut désormais récupérer son accès **depuis un appareil où une session propriétaire Atelier est encore valide** : ouvrir le Copilote, toucher l’icône 🔑 du bandeau, saisir puis confirmer un nouveau mot de passe. L’interface appelle `POST guiltanas-owner-auth?action=recover-from-session` avec le jeton propriétaire dans l’en-tête. La fonction exige et vérifie l’existence d’une session non expirée avant d’accepter l’opération, dérive un nouveau vérificateur PBKDF2 avec sel aléatoire et révoque toutes les sessions existantes après modification. L'utilisateur se reconnecte ensuite sur tous ses appareils avec son mot de passe choisi. **Aucun mot de passe provisoire ou droit d’accès public n’est créé.**
+
+Sur un appareil déconnecté, « Mot de passe oublié ? » explique cette méthode ; cette page ne réinitialise pas les identifiants par une requête anonyme. Si plus aucun appareil ne possède de session valide, la récupération exige une procédure administrative supplémentaire, sans contournement anonyme.
+
+**Tests** : Edge `guiltanas-owner-auth` version 4 ACTIVE, minimum serveur et formulaire harmonisés, code client JavaScript syntaxiquement valide, sélecteurs contrôlés, garde par session propriétaire vérifiée dans le code, révocation des sessions après changement. Aucun nouveau mot de passe n’a été choisi, appliqué ni stocké lors du développement ; les deux sessions existantes n’ont pas été révoquées. Vérifier le clic réel et la reconnexion propriétaire sur le téléphone et le PC après une saisie volontaire du nouveau mot de passe.
