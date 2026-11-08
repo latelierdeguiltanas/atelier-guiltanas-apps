@@ -17,7 +17,7 @@
   <div class="rail-foot"><button id="open-guide" title="Comprendre l'écosystème">ⓘ <span>Comprendre</span></button><span class="rail-sub">v1 · cockpit</span></div>
 </aside>
 <div class="workspace">
-<header class="topbar"><div><div class="eyebrow">L’ATELIER DE GUILTANAS / PROJETS</div><h1 id="page-title">Pilotage <span class="slim">de l’Atelier</span></h1></div><div class="top-actions"><button class="backbtn" id="cockpit-back" aria-label="Retour à la vue précédente" title="Retour" hidden>‹</button><span class="online" id="live-status"><i></i> Connexion…</span><button class="installbtn" id="install-app" title="Installer le cockpit sur cet appareil"><span>⇩</span> Installer</button><button class="iconbtn" id="owner-logout" title="Se déconnecter de l’Atelier" hidden>⇥</button><button class="iconbtn" id="reload" title="Actualiser les données techniques" hidden>↻</button><button class="iconbtn" id="help" title="Lexique et fonctionnement">?</button></div></header>
+<header class="topbar"><div><div class="eyebrow">L’ATELIER DE GUILTANAS / PROJETS</div><h1 id="page-title">Pilotage <span class="slim">de l’Atelier</span></h1></div><div class="top-actions"><button class="backbtn" id="cockpit-back" aria-label="Retour à la vue précédente" title="Retour" hidden>‹</button><span class="online" id="live-status"><i></i> Connexion…</span><button class="installbtn" id="install-app" title="Installer le cockpit sur cet appareil"><span>⇩</span> Installer</button><button class="iconbtn" id="owner-password-reset-open" title="Changer ou réinitialiser mon mot de passe" aria-label="Réinitialiser mon mot de passe" hidden>🔑</button><button class="iconbtn" id="owner-logout" title="Se déconnecter de l’Atelier" hidden>⇥</button><button class="iconbtn" id="reload" title="Actualiser les données techniques" hidden>↻</button><button class="iconbtn" id="help" title="Lexique et fonctionnement">?</button></div></header>
 <section id="locked" class="lock owner-login" hidden>
 <div class="lockglyph"><img src="icons/pilotage-guiltanas-192.png?v=2" alt="" width="58" height="58"></div>
 <h2 id="auth-title">Connexion à Pilotage Guiltanas</h2>
@@ -26,14 +26,16 @@
 <label for="owner-password">Mot de passe Atelier</label>
 <input id="owner-password" type="password" required autocomplete="current-password" placeholder="Mot de passe propriétaire">
 <button id="owner-login-submit" class="owner-primary" type="submit">Accéder à mon cockpit</button>
+<button id="owner-forgot-help" type="button" class="owner-textbtn">Mot de passe oublié ?</button>
+<p id="owner-forgot-instructions" class="owner-hint" hidden>Depuis ton téléphone déjà connecté au Copilote, touche 🔑 puis choisis un nouveau mot de passe. Il te servira ensuite sur ton ordinateur.</p>
 </form>
 <form id="owner-setup-form" class="owner-form" hidden>
 <label for="owner-bootstrap">Code d'activation unique de l'Atelier</label>
 <input id="owner-bootstrap" type="text" required spellcheck="false" autocapitalize="characters" autocomplete="off" placeholder="GC-XXXXXX-XXXXXX-XXXXXX-XXXXXX">
-<label for="owner-setup-password">Créer mon mot de passe Atelier (14 caractères minimum)</label>
-<input id="owner-setup-password" type="password" minlength="14" maxlength="120" required autocomplete="new-password">
+<label for="owner-setup-password">Créer mon mot de passe Atelier (8 caractères minimum)</label>
+<input id="owner-setup-password" type="password" minlength="8" maxlength="120" required autocomplete="new-password">
 <label for="owner-setup-confirm">Confirmer mon mot de passe</label>
-<input id="owner-setup-confirm" type="password" minlength="14" maxlength="120" required autocomplete="new-password">
+<input id="owner-setup-confirm" type="password" minlength="8" maxlength="120" required autocomplete="new-password">
 <button id="owner-setup-submit" class="owner-primary" type="submit">Activer mon cockpit</button>
 <p class="owner-hint">Une seule activation, sur l’appareil de ton choix. Ensuite, ton mot de passe fonctionne sur tous tes ordinateurs et téléphones.</p>
 </form>
@@ -110,5 +112,17 @@
 <input type="hidden" name="id"><input type="hidden" name="app_id">
 <div class="project-form-actions"><button class="smallbutton" type="button" id="project-cancel">Annuler</button><button class="smallbutton primary" type="submit" id="project-submit">Enregistrer dans le registre</button></div>
 <div id="project-form-result" role="status"></div>
-</form></dialog><dialog id="install-dialog"><div class="dialog-head"><div><span class="eyebrow">RACCOURCI MOBILE / PC</span><h2>Installer Pilotage Guiltanas</h2></div><button id="install-close">×</button></div><div id="install-instructions" class="install-steps"></div><button class="smallbutton" id="copy-cockpit-link">Copier le lien du cockpit</button></dialog><dialog id="glossary"><div class="dialog-head"><div><span class="eyebrow">MODE D'EMPLOI</span><h2 id="term-title"></h2></div><button id="term-close">×</button></div><div id="term-body"></div></dialog>
-<script src="owner-auth.js?v=1"></script><script src="owner-login-ui.js?v=1"></script><script src="pilotage.js?v=28"></script><script src="forge-quality-panel.js?v=2"></script></body></html>
+</form></dialog><dialog id="owner-password-reset-dialog" class="owner-password-reset-dialog">
+  <div class="dialog-head"><div><span class="eyebrow">ACCÈS PROPRIÉTAIRE</span><h2>Créer un nouveau mot de passe</h2></div><button type="button" id="owner-password-reset-close" aria-label="Fermer">×</button></div>
+  <p>Pas besoin de connaître l'ancien : ta session propriétaire sur cet appareil sert de vérification.</p>
+  <form id="owner-password-reset-form" class="owner-form">
+   <label for="owner-password-reset-new">Nouveau mot de passe (8 caractères minimum)</label>
+   <input id="owner-password-reset-new" type="password" minlength="8" maxlength="120" required autocomplete="new-password" placeholder="8 caractères ou plus"/>
+   <label for="owner-password-reset-repeat">Confirmer le nouveau mot de passe</label>
+   <input id="owner-password-reset-repeat" type="password" minlength="8" maxlength="120" required autocomplete="new-password"/>
+   <p class="owner-hint">Après confirmation, tous tes appareils seront déconnectés. Connecte-toi ensuite avec ce nouveau mot de passe.</p>
+   <button id="owner-password-reset-submit" class="owner-primary" type="submit">Enregistrer mon nouveau mot de passe</button>
+   <div id="owner-password-reset-result" class="owner-error" role="status" aria-live="polite"></div>
+  </form>
+</dialog><dialog id="install-dialog"><div class="dialog-head"><div><span class="eyebrow">RACCOURCI MOBILE / PC</span><h2>Installer Pilotage Guiltanas</h2></div><button id="install-close">×</button></div><div id="install-instructions" class="install-steps"></div><button class="smallbutton" id="copy-cockpit-link">Copier le lien du cockpit</button></dialog><dialog id="glossary"><div class="dialog-head"><div><span class="eyebrow">MODE D'EMPLOI</span><h2 id="term-title"></h2></div><button id="term-close">×</button></div><div id="term-body"></div></dialog>
+<script src="owner-auth.js?v=1"></script><script src="owner-login-ui.js?v=2"></script><script src="pilotage.js?v=29"></script><script src="forge-quality-panel.js?v=2"></script></body></html>
