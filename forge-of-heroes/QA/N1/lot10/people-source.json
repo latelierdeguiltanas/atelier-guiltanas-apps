@@ -4,6 +4,7 @@
   "products": [
     {
       "file": "index.html",
+      "sha256": "737b3932977f206c1ccff19b2d87422ffe92e121b00ab5439096d1ca186a3b1f",
       "engineSha256": "e4caf53cadacbce30b826708335b38316b185c8417d470e9af850581bd491744"
     }
   ],
@@ -617,7 +618,51 @@
       "status": "PASS"
     }
   ],
-  "negativeChecks": 26,
+  "negativeChecks": 23,
   "replays": 32,
+  "inheritedPaths": [
+    {
+      "file": "index.html",
+      "path": "path:voie-de-l-humain:cof2-lb-2024",
+      "rank": 1,
+      "sourcePage": 46,
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "path": "path:voie-de-l-humain:cof2-lb-2024",
+      "rank": 2,
+      "sourcePage": 46,
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "path": "path:voie-de-l-elfe-haut:cof2-lb-2024",
+      "rank": 1,
+      "sourcePage": 46,
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "path": "path:voie-de-l-elfe-haut:cof2-lb-2024",
+      "rank": 2,
+      "sourcePage": 46,
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "path": "path:voie-de-l-elfe-sylvain:cof2-lb-2024",
+      "rank": 1,
+      "sourcePage": 46,
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "path": "path:voie-de-l-elfe-sylvain:cof2-lb-2024",
+      "rank": 2,
+      "sourcePage": 46,
+      "status": "PASS"
+    }
+  ],
   "status": "PASS"
 }
