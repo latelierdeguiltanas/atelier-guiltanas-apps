@@ -1,33 +1,31 @@
-name: Forge N1 - consolider les preuves
+name: Forge N1 - historiques au clic
 on:
   push:
     branches: [forge-n1-validation-nov9]
 permissions:
   contents: write
-  actions: read
 jobs:
-  consolidate:
+  histories:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/setup-node@v4
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          run-id: 42670590120
-          pattern: preuves-*
-          merge-multiple: true
-          path: .
-      - name: Consolider les preuves vérifiées
+          node-version: '22'
+      - name: Créer, sauvegarder et rouvrir les historiques sur mobile
         run: |
-          git apply .github/forge-n1-validation.patch
-          git apply .github/forge-n1-pdf-test.patch
-          mv .github/forge-n1-pdf-proof.json forge-of-heroes/QA/N1/arquebusier-official-template.json
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_choices_merge.cjs
+          npm install --prefix "$RUNNER_TEMP/foh-n1" playwright@1.55.0
+          export NODE_PATH="$RUNNER_TEMP/foh-n1/node_modules"
+          export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+          python3 -m http.server 4173 --bind 127.0.0.1 > "$RUNNER_TEMP/http.log" 2>&1 &
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_choices_click.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_click.cjs
+      - name: Mettre à jour les preuves
+        run: |
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add forge-of-heroes centre-synchronisation/forge-n1/focus.json
-          git rm .github/forge-n1-validation.patch .github/forge-n1-pdf-test.patch
-          git add -u .github/forge-n1-pdf-proof.json
-          git commit -m 'Valider Forge N1 sur la version actuelle [skip ci]'
+          git add forge-of-heroes/QA/N1 centre-synchronisation/forge-n1/focus.json
+          git commit -m 'test(forge): vérifier les historiques N1 au clic [skip ci]'
           git push origin HEAD:forge-n1-validation-nov9
