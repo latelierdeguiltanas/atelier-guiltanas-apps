@@ -210,7 +210,7 @@ function syncResourceDelta(){if(adminView||!sharedResource)return;const dh=S.hp-
 // long-form reading page. Flush the latest display once that interaction ends.
 const pendingSheetPaints=new Map();
 const guardedSheetRoots=['bag','companion','notes','rest','atelier','play','abilities','stats','shared-contracts','shared-confidences','resources'];
-const fullPageReaders=new Set(['notes','abilities','shared-contracts','shared-confidences']);
+const fullPageReaders=new Set(['notes','shared-contracts','shared-confidences']);
 let wasReading=false;
 function sheetRootLocked(rootId,root=document.getElementById(rootId)){
  if(!root?.isConnected)return false;
