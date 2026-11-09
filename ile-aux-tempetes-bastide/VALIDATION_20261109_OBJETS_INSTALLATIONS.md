@@ -23,3 +23,11 @@ Les effets limités sont suivis manuellement. La page « Objets et envois » cha
 - Tests d’identités du hub, de la bibliothèque et de deux fiches ; retours directs et fermeture des couches ; aucun secret transmis pour un objet non identifié.
 - Test du vrai gestionnaire de clic avec six confirmations annulées, sans appel réseau ; profils conservés après filtrage serveur ; bouclier testé sans cumul de DEF.
 - En production avant l’opération : aucune ligne correspondant aux six objets, clé primaire sur `id`, aucun déclencheur sur le catalogue, six inventaires et 97 événements d’inventaire relevés. Le relevé avant/après est réalisé séparément de ce commit.
+
+## Résultats de production
+
+- Correctif publié sur `main` : [`03f792428e6dd6e022f97798bba16926bd0d64e7`](https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/commit/03f792428e6dd6e022f97798bba16926bd0d64e7). [Déploiement GitHub Pages](https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/42643052623) terminé avec succès. URL d’environnement : https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/.
+- Supabase Bastide : 0 → 6 objets du lot, tous actifs. Empreinte des six inventaires inchangée ; 97 événements avant et après, dernier événement inchangé. Aucun envoi ni équipement automatique effectué.
+- Les six lignes relues en production ont été passées au gestionnaire de clic publié et au filtre d’équipement du serveur v30. Les six confirmations simulées ont été annulées ; zéro appel d’envoi. L’API de lecture MJ répond 401 sans accès, comme prévu.
+- Le contrôle GitHub « Player sheets E2E » s’est arrêté à l’installation de Chromium : Playwright 1.55 ne prend pas en charge les dépendances du runner Ubuntu 26.04. L’accueil a été ouvert en Chrome avant la bascule ; la session navigateur est ensuite devenue indisponible. Les tests de manifestes ont réussi localement, mais ni le parcours Chrome après déploiement ni l’installation sur téléphone ne sont certifiés.
+- Le gestionnaire Combat COF2 est hors périmètre et n’a pas été modifié.
