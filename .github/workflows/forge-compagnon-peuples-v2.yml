@@ -1,0 +1,37 @@
+name: Forge et Bastide — peuples du Compagnon COF2
+on:
+  push:
+    branches: [forge-compagnon-peuples-v2]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  recette:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Construire Forge et vérifier les deux peuples
+        run: |
+          if [ -f .github/peuples-v2-integration.patch ]; then git apply .github/peuples-v2-integration.patch; fi
+          node forge-of-heroes/ENGINE/apply-companion-people-v2.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/companion_people_v2_runner.cjs
+      - name: Tester Forge et les deux fiches Bastide sur mobile
+        run: |
+          npm install --prefix "$RUNNER_TEMP/foh-companion" playwright@1.55.0
+          python3 -m http.server 4173 --bind 127.0.0.1 > "$RUNNER_TEMP/foh-companion-http.log" 2>&1 &
+          NODE_PATH="$RUNNER_TEMP/foh-companion/node_modules" CHROME_BIN="$(command -v google-chrome)" node forge-of-heroes/FINAL_FREEZE_TESTS/companion_people_v2_browser.cjs
+      - name: Enregistrer la version vérifiée sur la branche de recette
+        if: github.ref_name == 'forge-compagnon-peuples-v2'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [ -f .github/peuples-v2-integration.patch ]; then git rm .github/peuples-v2-integration.patch; fi
+          git add -u forge-of-heroes gestionnaire-combat-cof2 ile-aux-tempetes-bastide
+          if ! git diff --cached --quiet; then
+            git commit -m 'build(forge): données Âme-forgée et Lutins COF2 vérifiées [skip ci]'
+            git push origin HEAD:forge-compagnon-peuples-v2
+          fi
