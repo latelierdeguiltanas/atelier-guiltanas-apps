@@ -3,14 +3,11 @@
   "source": "Règles avancées p.153 / PDF p.1, visually read; relative age effects, baseline profile numbers not independently certified here.",
   "inputs": {
     "index.html": {
-      "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492"
-    },
-    "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html": {
-      "engineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492"
+      "engineSha256": "e4caf53cadacbce30b826708335b38316b185c8417d470e9af850581bd491744"
     }
   },
-  "cases": 850,
-  "replays": 850,
+  "cases": 450,
+  "replays": 450,
   "profiles": [
     "class:arquebusier:cof2-lb-2024",
     "class:barde:cof2-lb-2024",
@@ -28,7 +25,8 @@
     "class:druide:cof2-lb-2024",
     "class:moine:cof2-lb-2024",
     "class:pretre:cof2-lb-2024",
-    "class:samourai:addon-compagnon-2024"
+    "class:samourai:addon-compagnon-2024",
+    "class:arbaletrier:cof2-variant-2024"
   ],
   "paths": [
     "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
@@ -115,7 +113,12 @@
     "classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024",
     "classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024",
     "classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
-    "classpath:voie-du-sabre:class-samourai:addon-compagnon-2024"
+    "classpath:voie-du-sabre:class-samourai:addon-compagnon-2024",
+    "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+    "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+    "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+    "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+    "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024"
   ],
   "failures": [],
   "status": "PASS"

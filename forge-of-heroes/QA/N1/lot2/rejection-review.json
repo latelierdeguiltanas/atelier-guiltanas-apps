@@ -8,7 +8,7 @@
     "engineSha256": "472f654b1d92f60b7777cbfa9fcf6fb4aacab036a7bce845c340574f1eb30d3e",
     "databaseSha256": "ba4b75a3eb170eb08e789d7705b8b7fffa532ec082d2489561a2bdb512db8df2"
   },
-  "currentEngineSha256": "a4ca64d642bcdba138bc50df5def2e44fae36f6bbfe63dc2c3e71b82c5410492",
+  "currentEngineSha256": "e4caf53cadacbce30b826708335b38316b185c8417d470e9af850581bd491744",
   "groupCount": 27,
   "underlyingSourceCases": 19560,
   "sampledCases": 81,
@@ -587,7 +587,7 @@
         "TINY_FITTED"
       ],
       "source": "Politique Forge des équipements ajustés de l’être féerique ; Compagnon p.19 pour le peuple, adaptation COF2 déclarée",
-      "conclusion": "Le jeu de test avait omis tinyFitted, alors que le constructeur de l’interface l’active déjà. Contrepartie à équipement ajusté vérifiée.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -601,13 +601,11 @@
               "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : l’armure doit être fabriquée à sa taille."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -649,13 +647,13 @@
               },
               "equip": {
                 "initialPackageId": "standard",
-                "armorId": "",
+                "armorId": "armor:cuir-renforce:cof2-lb-2024",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:powder-pistol",
+                  "weapon:long-sword",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -673,8 +671,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 18,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -690,13 +688,11 @@
               "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : l’armure doit être fabriquée à sa taille."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -738,13 +734,13 @@
               },
               "equip": {
                 "initialPackageId": "standard",
-                "armorId": "",
+                "armorId": "armor:cuir-renforce:cof2-lb-2024",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:powder-pistol",
+                  "weapon:long-sword",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -762,8 +758,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 18,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -779,13 +775,11 @@
               "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : l’armure doit être fabriquée à sa taille."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -827,13 +821,13 @@
               },
               "equip": {
                 "initialPackageId": "standard",
-                "armorId": "",
+                "armorId": "armor:cuir-renforce:cof2-lb-2024",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:powder-pistol",
+                  "weapon:long-sword",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -851,8 +845,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 18,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -871,7 +865,7 @@
         "TINY_FITTED"
       ],
       "source": "Politique Forge des équipements ajustés de l’être féerique ; Compagnon p.19 pour le peuple, adaptation COF2 déclarée",
-      "conclusion": "Le jeu de test avait omis tinyFitted, alors que le constructeur de l’interface l’active déjà. Contrepartie à équipement ajusté vérifiée.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -885,13 +879,11 @@
               "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : l’armure doit être fabriquée à sa taille."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -933,13 +925,13 @@
               },
               "equip": {
                 "initialPackageId": "standard",
-                "armorId": "",
+                "armorId": "armor:cuir-renforce:cof2-lb-2024",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:powder-pistol",
+                  "weapon:long-sword",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -957,8 +949,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 18,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -974,13 +966,11 @@
               "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : l’armure doit être fabriquée à sa taille."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -1022,13 +1012,13 @@
               },
               "equip": {
                 "initialPackageId": "standard",
-                "armorId": "",
+                "armorId": "armor:cuir-renforce:cof2-lb-2024",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:powder-pistol",
+                  "weapon:long-sword",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -1046,8 +1036,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 13,
-              "INIT": 11
+              "DEF": 18,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -1063,13 +1053,11 @@
               "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : l’armure doit être fabriquée à sa taille."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -1111,13 +1099,13 @@
               },
               "equip": {
                 "initialPackageId": "standard",
-                "armorId": "",
+                "armorId": "armor:cuir-renforce:cof2-lb-2024",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:powder-pistol",
+                  "weapon:long-sword",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -1135,8 +1123,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 18,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -1156,7 +1144,7 @@
         "TINY_D4"
       ],
       "source": "Politique Forge tiny_equipment.maximumWeaponDie=4, liée à l’adaptation du Compagnon",
-      "conclusion": "Le paquetage sélectionné contient une arme trop grande. Une arme d4 maîtrisée est testée, avec échange MJ seulement si aucun paquetage normal ne convient.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -1170,14 +1158,11 @@
               "classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -1222,10 +1207,10 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:dagger",
+                  "weapon:iron-staff",
+                  "weapon:hammer"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -1243,8 +1228,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -1260,14 +1245,11 @@
               "classpath:voie-du-metal:class-forgesort:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -1312,10 +1294,10 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:dagger",
+                  "weapon:iron-staff",
+                  "weapon:hammer"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -1333,8 +1315,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -1350,14 +1332,11 @@
               "classpath:voie-du-golem:class-forgesort:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -1402,10 +1381,10 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:dagger",
+                  "weapon:iron-staff",
+                  "weapon:hammer"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {
@@ -1427,8 +1406,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -1448,7 +1427,7 @@
         "TINY_D4"
       ],
       "source": "Politique Forge tiny_equipment.maximumWeaponDie=4, liée à l’adaptation du Compagnon",
-      "conclusion": "Le paquetage sélectionné contient une arme trop grande. Une arme d4 maîtrisée est testée, avec échange MJ seulement si aucun paquetage normal ne convient.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -1462,14 +1441,11 @@
               "classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -1514,10 +1490,10 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:dagger",
+                  "weapon:iron-staff",
+                  "weapon:hammer"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -1535,8 +1511,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -1552,14 +1528,11 @@
               "classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -1604,10 +1577,10 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:dagger",
+                  "weapon:iron-staff",
+                  "weapon:hammer"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -1625,8 +1598,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 13,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -1642,14 +1615,11 @@
               "classpath:voie-du-metal:class-forgesort:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -1694,10 +1664,10 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:dagger",
+                  "weapon:iron-staff",
+                  "weapon:hammer"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -1715,8 +1685,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -1736,7 +1706,7 @@
         "TINY_D4"
       ],
       "source": "Politique Forge tiny_equipment.maximumWeaponDie=4, liée à l’adaptation du Compagnon",
-      "conclusion": "Le paquetage sélectionné contient une arme trop grande. Une arme d4 maîtrisée est testée, avec échange MJ seulement si aucun paquetage normal ne convient.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -1750,14 +1720,11 @@
               "classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -1802,10 +1769,10 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:dagger",
+                  "weapon:iron-staff",
+                  "weapon:hammer"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -1823,8 +1790,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -1840,14 +1807,11 @@
               "classpath:voie-du-metal:class-forgesort:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -1892,10 +1856,10 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:dagger",
+                  "weapon:iron-staff",
+                  "weapon:hammer"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -1913,8 +1877,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -1930,14 +1894,11 @@
               "classpath:voie-du-golem:class-forgesort:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -1982,10 +1943,10 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:dagger",
+                  "weapon:iron-staff",
+                  "weapon:hammer"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {
@@ -2007,8 +1968,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -2029,7 +1990,7 @@
         "TINY_D4"
       ],
       "source": "Politique Forge tiny_equipment.maximumWeaponDie=4, liée à l’adaptation du Compagnon",
-      "conclusion": "Le paquetage sélectionné contient une arme trop grande. Une arme d4 maîtrisée est testée, avec échange MJ seulement si aucun paquetage normal ne convient.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -2043,15 +2004,11 @@
               "classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -2096,10 +2053,11 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:foh-vivelame",
+                  "weapon:foh-boken",
+                  "weapon:dagger",
+                  "weapon:shortbow"
+                ]
               },
               "profileChoices": {
                 "extraLanguage": "celestien"
@@ -2123,8 +2081,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -2140,15 +2098,11 @@
               "classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -2193,10 +2147,11 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:foh-vivelame",
+                  "weapon:foh-boken",
+                  "weapon:dagger",
+                  "weapon:shortbow"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -2214,8 +2169,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -2231,15 +2186,11 @@
               "classpath:voie-du-ki:class-samourai:addon-compagnon-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -2284,10 +2235,11 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:foh-vivelame",
+                  "weapon:foh-boken",
+                  "weapon:dagger",
+                  "weapon:shortbow"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -2305,8 +2257,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 14
+              "DEF": 15,
+              "INIT": 15
             },
             "saveReplay": "PASS"
           }
@@ -2327,7 +2279,7 @@
         "TINY_D4"
       ],
       "source": "Politique Forge tiny_equipment.maximumWeaponDie=4, liée à l’adaptation du Compagnon",
-      "conclusion": "Le paquetage sélectionné contient une arme trop grande. Une arme d4 maîtrisée est testée, avec échange MJ seulement si aucun paquetage normal ne convient.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -2341,15 +2293,11 @@
               "classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -2394,10 +2342,11 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:foh-vivelame",
+                  "weapon:foh-boken",
+                  "weapon:dagger",
+                  "weapon:shortbow"
+                ]
               },
               "profileChoices": {
                 "extraLanguage": "celestien"
@@ -2421,8 +2370,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -2438,15 +2387,11 @@
               "classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -2491,10 +2436,11 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:foh-vivelame",
+                  "weapon:foh-boken",
+                  "weapon:dagger",
+                  "weapon:shortbow"
+                ]
               },
               "profileChoices": {
                 "extraLanguage": "celestien"
@@ -2518,8 +2464,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 13,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -2535,15 +2481,11 @@
               "classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -2588,10 +2530,11 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:foh-vivelame",
+                  "weapon:foh-boken",
+                  "weapon:dagger",
+                  "weapon:shortbow"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -2609,8 +2552,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -2932,7 +2875,7 @@
         "TINY_FITTED"
       ],
       "source": "Politique Forge des équipements ajustés de l’être féerique ; Compagnon p.19 pour le peuple, adaptation COF2 déclarée",
-      "conclusion": "Le jeu de test avait omis tinyFitted, alors que le constructeur de l’interface l’active déjà. Contrepartie à équipement ajusté vérifiée.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -2946,13 +2889,11 @@
               "classpath:voie-de-l-escrime:class-barde:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : l’armure doit être fabriquée à sa taille."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -2994,13 +2935,13 @@
               },
               "equip": {
                 "initialPackageId": "standard",
-                "armorId": "",
+                "armorId": "armor:cuir-renforce:cof2-lb-2024",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:powder-pistol",
+                  "weapon:long-sword",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -3026,8 +2967,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 18,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -3043,13 +2984,11 @@
               "classpath:voie-du-musicien:class-barde:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : l’armure doit être fabriquée à sa taille."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -3091,13 +3030,13 @@
               },
               "equip": {
                 "initialPackageId": "standard",
-                "armorId": "",
+                "armorId": "armor:cuir-renforce:cof2-lb-2024",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:powder-pistol",
+                  "weapon:long-sword",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -3123,8 +3062,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 18,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -3140,13 +3079,11 @@
               "classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : l’armure doit être fabriquée à sa taille."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -3188,13 +3125,13 @@
               },
               "equip": {
                 "initialPackageId": "standard",
-                "armorId": "",
+                "armorId": "armor:cuir-renforce:cof2-lb-2024",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:powder-pistol",
+                  "weapon:long-sword",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -3220,8 +3157,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 18,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -3241,7 +3178,7 @@
         "TINY_D4"
       ],
       "source": "Politique Forge tiny_equipment.maximumWeaponDie=4, liée à l’adaptation du Compagnon",
-      "conclusion": "Le paquetage sélectionné contient une arme trop grande. Une arme d4 maîtrisée est testée, avec échange MJ seulement si aucun paquetage normal ne convient.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -3255,14 +3192,11 @@
               "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -3307,10 +3241,10 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:dagger",
+                  "weapon:iron-staff",
+                  "weapon:hammer"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -3336,8 +3270,8 @@
             },
             "expectedDerived": {
               "PV": 7,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -3353,14 +3287,11 @@
               "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -3405,10 +3336,10 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:dagger",
+                  "weapon:iron-staff",
+                  "weapon:hammer"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -3434,8 +3365,8 @@
             },
             "expectedDerived": {
               "PV": 7,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -3451,14 +3382,11 @@
               "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -3503,10 +3431,10 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:dagger",
+                  "weapon:iron-staff",
+                  "weapon:hammer"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -3532,8 +3460,8 @@
             },
             "expectedDerived": {
               "PV": 7,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -3554,7 +3482,7 @@
         "TINY_D4"
       ],
       "source": "Politique Forge tiny_equipment.maximumWeaponDie=4, liée à l’adaptation du Compagnon",
-      "conclusion": "Le paquetage sélectionné contient une arme trop grande. Une arme d4 maîtrisée est testée, avec échange MJ seulement si aucun paquetage normal ne convient.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -3568,15 +3496,11 @@
               "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -3621,10 +3545,11 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:foh-vivelame",
+                  "weapon:foh-boken",
+                  "weapon:dagger",
+                  "weapon:shortbow"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -3650,8 +3575,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -3667,15 +3592,11 @@
               "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -3720,10 +3641,11 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:foh-vivelame",
+                  "weapon:foh-boken",
+                  "weapon:dagger",
+                  "weapon:shortbow"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -3749,8 +3671,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -3766,15 +3688,11 @@
               "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4.",
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -3819,10 +3737,11 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
-                  "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                  "weapon:foh-vivelame",
+                  "weapon:foh-boken",
+                  "weapon:dagger",
+                  "weapon:shortbow"
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -3848,8 +3767,8 @@
             },
             "expectedDerived": {
               "PV": 8,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -4795,7 +4714,7 @@
         "FAIRY_SHIELD"
       ],
       "source": "Politique Forge flight_equipment.shieldAllowed=false ; Compagnon p.19 pour le vol, adaptation déclarée",
-      "conclusion": "Le mode de vol actuel refuse le bouclier. La contrepartie n’utilise ni bouclier ni voie l’imposant ; un mode terrestre avec bouclier reste hors périmètre.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -4811,7 +4730,7 @@
           },
           "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
           "errors": [
-            "Fée : impossible de voler avec un bouclier."
+            "Sans profil : bouclier incompatible avec une voie choisie."
           ],
           "counterpart": {
             "variant": "different-compatible-paths-and-light-equipment",
@@ -4889,7 +4808,7 @@
             },
             "expectedDerived": {
               "PV": 9,
-              "DEF": 14,
+              "DEF": 15,
               "INIT": 14
             },
             "saveReplay": "PASS"
@@ -4908,7 +4827,7 @@
           },
           "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
           "errors": [
-            "Fée : impossible de voler avec un bouclier."
+            "Sans profil : bouclier incompatible avec une voie choisie."
           ],
           "counterpart": {
             "variant": "different-compatible-paths-and-light-equipment",
@@ -4986,7 +4905,7 @@
             },
             "expectedDerived": {
               "PV": 9,
-              "DEF": 14,
+              "DEF": 15,
               "INIT": 14
             },
             "saveReplay": "PASS"
@@ -5005,7 +4924,7 @@
           },
           "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
           "errors": [
-            "Fée : impossible de voler avec un bouclier."
+            "Sans profil : bouclier incompatible avec une voie choisie."
           ],
           "counterpart": {
             "variant": "different-compatible-paths-and-light-equipment",
@@ -5083,7 +5002,7 @@
             },
             "expectedDerived": {
               "PV": 9,
-              "DEF": 14,
+              "DEF": 15,
               "INIT": 14
             },
             "saveReplay": "PASS"
@@ -5103,7 +5022,7 @@
         "TINY_D4"
       ],
       "source": "Politique Forge tiny_equipment.maximumWeaponDie=4, liée à l’adaptation du Compagnon",
-      "conclusion": "Le paquetage sélectionné contient une arme trop grande. Une arme d4 maîtrisée est testée, avec échange MJ seulement si aucun paquetage normal ne convient.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -5117,13 +5036,11 @@
               "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -5168,10 +5085,9 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:iron-staff",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -5189,8 +5105,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -5206,13 +5122,11 @@
               "classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -5257,10 +5171,9 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:iron-staff",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -5278,8 +5191,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -5295,13 +5208,11 @@
               "classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -5346,10 +5257,9 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:iron-staff",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -5367,8 +5277,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -5387,7 +5297,7 @@
         "TINY_D4"
       ],
       "source": "Politique Forge tiny_equipment.maximumWeaponDie=4, liée à l’adaptation du Compagnon",
-      "conclusion": "Le paquetage sélectionné contient une arme trop grande. Une arme d4 maîtrisée est testée, avec échange MJ seulement si aucun paquetage normal ne convient.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -5401,13 +5311,11 @@
               "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -5452,10 +5360,9 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:iron-staff",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -5473,8 +5380,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -5490,13 +5397,11 @@
               "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -5541,10 +5446,9 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:iron-staff",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -5562,8 +5466,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 13,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -5579,13 +5483,11 @@
               "classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -5630,10 +5532,9 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:iron-staff",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -5651,8 +5552,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -5671,7 +5572,7 @@
         "TINY_D4"
       ],
       "source": "Politique Forge tiny_equipment.maximumWeaponDie=4, liée à l’adaptation du Compagnon",
-      "conclusion": "Le paquetage sélectionné contient une arme trop grande. Une arme d4 maîtrisée est testée, avec échange MJ seulement si aucun paquetage normal ne convient.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -5685,13 +5586,11 @@
               "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -5736,10 +5635,9 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:iron-staff",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -5757,8 +5655,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -5774,13 +5672,11 @@
               "classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -5825,10 +5721,9 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:iron-staff",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -5846,8 +5741,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -5863,13 +5758,11 @@
               "classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -5914,10 +5807,9 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:iron-staff",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -5935,8 +5827,8 @@
             },
             "expectedDerived": {
               "PV": 6,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -5955,7 +5847,7 @@
         "TINY_D4"
       ],
       "source": "Politique Forge tiny_equipment.maximumWeaponDie=4, liée à l’adaptation du Compagnon",
-      "conclusion": "Le paquetage sélectionné contient une arme trop grande. Une arme d4 maîtrisée est testée, avec échange MJ seulement si aucun paquetage normal ne convient.",
+      "conclusion": "Ancien motif de refus. Rejeu selon le Compagnon COF2 p.27 avec dégâts d4/d6 et contrôles de maîtrise.",
       "status": "CLASSIFIED_WITH_TESTED_COUNTERPART",
       "samples": [
         {
@@ -5969,13 +5861,11 @@
               "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -6020,10 +5910,9 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:iron-staff",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -6049,8 +5938,8 @@
             },
             "expectedDerived": {
               "PV": 7,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -6066,13 +5955,11 @@
               "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -6117,10 +6004,9 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:iron-staff",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -6146,8 +6032,8 @@
             },
             "expectedDerived": {
               "PV": 7,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }
@@ -6163,13 +6049,11 @@
               "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024"
             ]
           },
-          "currentBaseline": "REJECTED_FOR_RELEVANT_REASON",
-          "errors": [
-            "Être féerique : arme limitée au d4."
-          ],
+          "currentBaseline": "NOW_ACCEPTED_AFTER_FIX",
+          "errors": [],
           "counterpart": {
-            "variant": "explicit-MJ-exchange:dagger-without-armor-shield",
-            "requiresMJEquipmentExchange": true,
+            "variant": "same-state-after-fix",
+            "requiresMJEquipmentExchange": false,
             "changesSelectedPaths": false,
             "interfaceNotVerified": true,
             "state": {
@@ -6214,10 +6098,9 @@
                 "armorId": "",
                 "shieldId": "",
                 "weaponIds": [
+                  "weapon:iron-staff",
                   "weapon:dagger"
-                ],
-                "tinyFitted": true,
-                "gmApprovedSwap": true
+                ]
               },
               "profileChoices": {},
               "abilityChoices": {},
@@ -6243,8 +6126,8 @@
             },
             "expectedDerived": {
               "PV": 7,
-              "DEF": 14,
-              "INIT": 11
+              "DEF": 15,
+              "INIT": 12
             },
             "saveReplay": "PASS"
           }

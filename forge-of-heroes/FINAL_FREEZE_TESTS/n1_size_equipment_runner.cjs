@@ -18,8 +18,18 @@ for(const file of ['index.html']){
    const ordinary=base('people:humain:cof2-lb-2024',mode,'weapon:long-sword');ordinary.peupleChoices={humainStat:'con'};const human=E.computeCharacterN1(ordinary);assert.equal(human.errors.length,0,human.errors.join(' | '));assert.equal(human.sticky.attacks.find(a=>a.weaponId==='weapon:long-sword').hands,1);count++;
   }
   for(const people of ['people:lutin:addon-comp2017-cof2','people:fee:addon-comp2017-cof2']){
-   const bad=base(people,mode,'weapon:great-sword');assert.match(E.computeCharacterN1(bad).errors.join(' '),/féerique.*d4/);bad.equip.weaponIds=['weapon:dagger'];const good=E.computeCharacterN1(bad);assert.equal(good.errors.length,0,good.errors.join(' | '));assert.equal(good.sticky.attacks[0].damage,'1d4-1');bad.equip.armorId='armor:cuir-simple:cof2-lb-2024';bad.equip.tinyFitted=false;assert.match(E.computeCharacterN1(bad).errors.join(' '),/taille|ajust/);count++;
+   for(const [weapon,expected,hands] of [['weapon:great-sword','1d6',2],['weapon:dagger','1d4',1]]){
+    const s=base(people,mode,weapon),r=E.computeCharacterN1(s);
+    assert.equal(r.errors.length,0,r.errors.join(' | '));
+    const hit=r.sticky.attacks.find(a=>a.weaponId===weapon);
+    assert.equal(hit.hands,hands);assert.equal(hit.damage,expected);
+    const saved=E.createHeroSavePayload(s,r.sticky.characterState,{id:'tiny-size'});
+    const restored=E.computeCharacterN1(E.restoreHeroSavePayload(JSON.parse(JSON.stringify(saved))).draft);
+    assert.equal(restored.errors.length,0);
+    assert.equal(restored.sticky.attacks.find(a=>a.weaponId===weapon).damage,expected);
+    count++;
+   }
   }
  }
 }
-console.log('PASS '+count+' size/equipment cases across both engines: 2d6 rejected, d8 at two hands without shield, hand count/damage/save/reload, no-profile racial limits, legal d4 counterparts and ordinary-human regression. Sources COF2 Livre de base p.55 (PDF p.57), Compagnon pp.15,17; Forge tiny-equipment policy.');
+console.log('PASS '+count+' size/equipment cases across the production engine: 2d6 rejected, d8 at two hands without shield, hand count/damage/save/reload, no-profile racial limits, d4/d6 for Fée and Farfadet and ordinary-human regression. Sources COF2 Livre de base p.55 (PDF p.57), Compagnon pp.15,17; Compagnon COF2 p.27.');
