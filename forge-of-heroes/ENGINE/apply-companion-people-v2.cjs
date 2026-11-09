@@ -79,7 +79,7 @@ if(!html.includes(marker)){
   equipmentChecks.forEach(x=>change(x,''));
   change("const damageStat=d.damageCharacteristic===undefined?(d.mode==='melee'?'for':null):d.damageCharacteristic;", "const tinyWeapon=w.id!=='weapon:unarmed'&&"+JSON.stringify(tinyIds)+".includes(sticky.peupleId);\n    if(tinyWeapon&&!o)damage=Number(d.hands||w.hands||1)===2?'1d6':'1d4';\n    const damageStat=tinyWeapon?null:(d.damageCharacteristic===undefined?(d.mode==='melee'?'for':null):d.damageCharacteristic);");
   change("if(thrower){trackedDamageStat='for';", "if(thrower&&!tinyWeapon){trackedDamageStat='for';");
-  change("if(actualHands!==Number(d.hands||1))properties.push('two_handed_for_size');", "if(actualHands!==Number(d.hands||1))properties.push('two_handed_for_size');if(tinyWeapon)properties.push('tiny_weapon_damage','extra_evolution_die_max_counts_as_one');");
+  change("if(actualHands!==Number(d.hands||1))properties.push('two_handed_for_size');", "if(actualHands!==Number(d.hands||1))properties.push('two_handed_for_size');if(tinyWeapon){if(!o)properties.push('tiny_weapon_damage');properties.push('extra_evolution_die_max_counts_as_one');}");
   change("a.damageCharacteristic||(!a.abilityId&&a.type==='contact'?'for':null)", "a.properties?.includes('tiny_weapon_damage')?null:a.damageCharacteristic||(!a.abilityId&&a.type==='contact'?'for':null)");
   change("'voie-de-letre-feerique':['per','cha']", "'voie-de-letre-feerique':['cha','vol'],'voie-de-la-fee':['per','cha']");
   change("  if(p==='voie-de-letre-feerique'){skill(a,['comprendre les animaux','calmer les animaux','communiquer avec les animaux'],3);feature(a,{kind:'animal_language'});}", `  if(['voie-de-letre-feerique','voie-de-la-fee'].includes(p)){
@@ -125,7 +125,7 @@ if(!html.includes(marker)){
   change("let input=JSON.parse(JSON.stringify(state||{}));delete input.__hybridEquipment;", `let input=JSON.parse(JSON.stringify(state||{}));delete input.__hybridEquipment;
     if(input.peupleId===${JSON.stringify(ids.fairy)}){
       const from=${JSON.stringify(paths.sprite)},to=${JSON.stringify(paths.fairy)};
-      for(const key of ['peoplePathId','peopleR1PathId','retainedPeoplePathId'])if(input.voies?.[key]===from)input.voies[key]=to;
+      for(const key of ['peoplePathId','peopleR1PathId','retainedPeoplePathId','keepPeoplePathId'])if(input.voies?.[key]===from)input.voies[key]=to;
       if(input.peoplePathId===from)input.peoplePathId=to;
       for(const pick of input.age?.spending||[])if(pick.pathId===from)pick.pathId=to;
     }

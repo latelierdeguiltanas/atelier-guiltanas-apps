@@ -1,35 +1,31 @@
 {
   "schema": "FOH_N1_ARQ_DERIVED_INDEPENDENT_SOURCE",
-  "at": "2026-11-05T06:01:26.867Z",
+  "at": "2026-11-09T18:03:54.965Z",
   "source": "Livre de base COF2 : familles/caractéristiques/peuples, Arquebusier pp.62–65 et quinze capacités R1 accordées ; âges avancés p.153",
   "scope": "Deux variantes, huit peuples, vingt paires ordonnées, cinq modalités d’âge, deux séries, deux armures, quinze dons et échange PC/DR. Statistiques canoniques et attaques permanentes ; les activations de combat et variantes non exposées ne sont pas certifiées ici.",
-  "expected": 20480,
-  "passed": 20480,
+  "expected": 10240,
+  "passed": 10240,
   "failed": 0,
-  "saves": 212,
+  "saves": 106,
   "products": [
     {
       "file": "index.html",
-      "sha256": "a423612a720bd568802b4195452019fc97524440ea86b870da3598c8fdd4a4a4"
-    },
-    {
-      "file": "FORGE_OF_HEROES_ATELIER_GUILTANAS_PRODUCT_MASTER.html",
-      "sha256": "6926fd3a2918566074c9e39802db663212b447b9786efa6b752d3d56cd596417"
+      "sha256": "737b3932977f206c1ccff19b2d87422ffe92e121b00ab5439096d1ca186a3b1f"
     }
   ],
   "perVariant": {
-    "arquebusier": 10240,
-    "arbaletrier": 10240
+    "arquebusier": 5120,
+    "arbaletrier": 5120
   },
   "perPeople": {
-    "humain": 2560,
-    "nain": 2560,
-    "demi-elfe": 2560,
-    "demi-orc": 2560,
-    "elfe-haut": 2560,
-    "elfe-sylvain": 2560,
-    "gnome": 2560,
-    "halfelin": 2560
+    "humain": 1280,
+    "nain": 1280,
+    "demi-elfe": 1280,
+    "demi-orc": 1280,
+    "elfe-haut": 1280,
+    "elfe-sylvain": 1280,
+    "gnome": 1280,
+    "halfelin": 1280
   },
   "failures": [],
   "status": "PASS"

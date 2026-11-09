@@ -1,0 +1,397 @@
+{
+  "schema": "FOH_N1_ARQ_MOBILE_CHOICES_SHARD",
+  "at": "2026-11-09T18:03:50.792Z",
+  "indexSha256": "737b3932977f206c1ccff19b2d87422ffe92e121b00ab5439096d1ca186a3b1f",
+  "scriptSha256": "2161925aaccd28337fefadc534a76bbfdf7996bb5ac103c99925ebb7d755842c",
+  "shard": 0,
+  "totalShards": 4,
+  "expected": 20,
+  "passed": 20,
+  "failed": 0,
+  "cases": [
+    {
+      "id": "Arquebusier/humain/young/",
+      "variant": "Arquebusier",
+      "race": "humain",
+      "raceIndex": 0,
+      "ageIndex": 0,
+      "age": "young",
+      "resource": null,
+      "first": "artilleur",
+      "second": "explosifs",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arquebusier/humain/venerable/",
+      "variant": "Arquebusier",
+      "race": "humain",
+      "raceIndex": 0,
+      "ageIndex": 4,
+      "age": "venerable",
+      "resource": null,
+      "first": "artilleur",
+      "second": "explosifs",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arquebusier/nain/mature/",
+      "variant": "Arquebusier",
+      "race": "nain",
+      "raceIndex": 1,
+      "ageIndex": 3,
+      "age": "mature",
+      "resource": null,
+      "first": "explosifs",
+      "second": "mercenaire",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arquebusier/demi-elfe/very-young/DR",
+      "variant": "Arquebusier",
+      "race": "demi-elfe",
+      "raceIndex": 2,
+      "ageIndex": 2,
+      "age": "very-young",
+      "resource": "DR",
+      "first": "mercenaire",
+      "second": "pistolero",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arquebusier/demi-orc/very-young/PC",
+      "variant": "Arquebusier",
+      "race": "demi-orc",
+      "raceIndex": 3,
+      "ageIndex": 1,
+      "age": "very-young",
+      "resource": "PC",
+      "first": "pistolero",
+      "second": "précision",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arquebusier/elfe-haut/young/",
+      "variant": "Arquebusier",
+      "race": "elfe-haut",
+      "raceIndex": 4,
+      "ageIndex": 0,
+      "age": "young",
+      "resource": null,
+      "first": "précision",
+      "second": "artilleur",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arquebusier/elfe-haut/venerable/",
+      "variant": "Arquebusier",
+      "race": "elfe-haut",
+      "raceIndex": 4,
+      "ageIndex": 4,
+      "age": "venerable",
+      "resource": null,
+      "first": "précision",
+      "second": "artilleur",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arquebusier/elfe-sylvain/mature/",
+      "variant": "Arquebusier",
+      "race": "elfe-sylvain",
+      "raceIndex": 5,
+      "ageIndex": 3,
+      "age": "mature",
+      "resource": null,
+      "first": "artilleur",
+      "second": "explosifs",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arquebusier/gnome/very-young/DR",
+      "variant": "Arquebusier",
+      "race": "gnome",
+      "raceIndex": 6,
+      "ageIndex": 2,
+      "age": "very-young",
+      "resource": "DR",
+      "first": "explosifs",
+      "second": "mercenaire",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arquebusier/halfelin/very-young/PC",
+      "variant": "Arquebusier",
+      "race": "halfelin",
+      "raceIndex": 7,
+      "ageIndex": 1,
+      "age": "very-young",
+      "resource": "PC",
+      "first": "mercenaire",
+      "second": "pistolero",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arbalétrier/humain/young/",
+      "variant": "Arbalétrier",
+      "race": "humain",
+      "raceIndex": 0,
+      "ageIndex": 0,
+      "age": "young",
+      "resource": null,
+      "first": "artilleur",
+      "second": "mercenaire",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arbalétrier/humain/venerable/",
+      "variant": "Arbalétrier",
+      "race": "humain",
+      "raceIndex": 0,
+      "ageIndex": 4,
+      "age": "venerable",
+      "resource": null,
+      "first": "artilleur",
+      "second": "mercenaire",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "repeating-projectile-selected",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arbalétrier/nain/mature/",
+      "variant": "Arbalétrier",
+      "race": "nain",
+      "raceIndex": 1,
+      "ageIndex": 3,
+      "age": "mature",
+      "resource": null,
+      "first": "mercenaire",
+      "second": "pistolero",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arbalétrier/demi-elfe/very-young/DR",
+      "variant": "Arbalétrier",
+      "race": "demi-elfe",
+      "raceIndex": 2,
+      "ageIndex": 2,
+      "age": "very-young",
+      "resource": "DR",
+      "first": "pistolero",
+      "second": "précision",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arbalétrier/demi-orc/very-young/PC",
+      "variant": "Arbalétrier",
+      "race": "demi-orc",
+      "raceIndex": 3,
+      "ageIndex": 1,
+      "age": "very-young",
+      "resource": "PC",
+      "first": "précision",
+      "second": "maître d’armes",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arbalétrier/elfe-haut/young/",
+      "variant": "Arbalétrier",
+      "race": "elfe-haut",
+      "raceIndex": 4,
+      "ageIndex": 0,
+      "age": "young",
+      "resource": null,
+      "first": "maître d’armes",
+      "second": "artilleur",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arbalétrier/elfe-haut/venerable/",
+      "variant": "Arbalétrier",
+      "race": "elfe-haut",
+      "raceIndex": 4,
+      "ageIndex": 4,
+      "age": "venerable",
+      "resource": null,
+      "first": "maître d’armes",
+      "second": "artilleur",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "repeating-projectile-selected",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arbalétrier/elfe-sylvain/mature/",
+      "variant": "Arbalétrier",
+      "race": "elfe-sylvain",
+      "raceIndex": 5,
+      "ageIndex": 3,
+      "age": "mature",
+      "resource": null,
+      "first": "artilleur",
+      "second": "mercenaire",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "repeating-projectile-selected",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arbalétrier/gnome/very-young/DR",
+      "variant": "Arbalétrier",
+      "race": "gnome",
+      "raceIndex": 6,
+      "ageIndex": 2,
+      "age": "very-young",
+      "resource": "DR",
+      "first": "mercenaire",
+      "second": "pistolero",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    },
+    {
+      "id": "Arbalétrier/halfelin/very-young/PC",
+      "variant": "Arbalétrier",
+      "race": "halfelin",
+      "raceIndex": 7,
+      "ageIndex": 1,
+      "age": "very-young",
+      "resource": "PC",
+      "first": "pistolero",
+      "second": "précision",
+      "catalog": false,
+      "status": "PASS",
+      "steps": [
+        "race-age-paths",
+        "save-reload-reopen"
+      ],
+      "grantChoices": [],
+      "preferredCategories": []
+    }
+  ],
+  "status": "PASS"
+}
