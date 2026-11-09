@@ -286,47 +286,38 @@
     },
     {
       "id": "people:ame-forgee:addon-comp2017-cof2",
-      "label": "ÂME-FORGÉE",
+      "label": "Âme-forgée",
       "group": "Compagnon",
-      "bonuses_raw": "FOH adapté COF2 : +1 CON ou VOL ; -1 CHA.",
+      "bonuses_raw": "+1 CON ; −1 CHA ou INT",
       "schema": {
         "type": "stat_mods",
         "bonus": {
-          "value": 1,
-          "mode": "choice",
-          "options": [
-            "con",
-            "vol"
-          ]
-        },
-        "malus": {
-          "value": -1,
           "mode": "fixed",
           "options": [
-            "cha"
-          ]
+            "con"
+          ],
+          "value": 1
         },
-        "raw": "FOH adapté COF2 : +1 CON ou VOL ; -1 CHA."
+        "malus": {
+          "mode": "choice",
+          "options": [
+            "cha",
+            "int"
+          ],
+          "value": -1
+        },
+        "raw": "+1 CON ; −1 CHA ou INT"
       },
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "Chroniques Oubliées Fantasy 1re édition",
-        "printedPage": 8,
-        "chapter": "Nouveaux peuples",
-        "section": "ÂME-FORGÉE"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 7,
+        "chapter": "Peuples optionnels"
       },
       "certification": {
         "scope": "n1_extension",
-        "sourceStatus": "official_cof1_source_located",
-        "ruleTextStatus": "present_non_certified",
-        "conversionStatus": "FOH_VALIDATED",
-        "functionalStatus": "tested_n1",
-        "enabledInCertifiedN1": true,
-        "origin": "official_cof1",
-        "conversion": "foh_cof2_canonical",
-        "balanceStatus": "validated_lot_a_fix67",
-        "legacyAdaptationStatus": "candidate_not_oracle",
-        "validatedBy": "FIX67"
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
       }
     },
     {
@@ -557,92 +548,80 @@
     },
     {
       "id": "people:lutin:addon-comp2017-cof2",
-      "label": "LUTIN",
+      "label": "Lutin · Farfadet",
       "group": "Compagnon",
-      "bonuses_raw": "FOH adapté COF2 : +1 AGI ou INT ; -1 CON.",
+      "bonuses_raw": "+1 AGI et PER ; −1 CON ; −2 FOR",
       "schema": {
         "type": "stat_mods",
         "bonus": {
-          "value": 1,
-          "mode": "choice",
+          "mode": "fixed",
           "options": [
-            "agi",
-            "int"
-          ]
+            "agi"
+          ],
+          "value": 1
         },
         "malus": {
-          "value": -1,
           "mode": "fixed",
           "options": [
             "con"
-          ]
+          ],
+          "value": -1
         },
-        "raw": "FOH adapté COF2 : +1 AGI ou INT ; -1 CON."
+        "extra": {
+          "per": 1,
+          "for": -2
+        },
+        "raw": "+1 AGI et PER ; −1 CON ; −2 FOR"
       },
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "Chroniques Oubliées Fantasy 1re édition",
-        "printedPage": 18,
-        "chapter": "Nouveaux peuples",
-        "section": "LUTIN"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 27,
+        "chapter": "Peuples optionnels"
       },
       "certification": {
         "scope": "n1_extension",
-        "sourceStatus": "official_cof1_source_extracted",
-        "ruleTextStatus": "certified_source_text",
-        "conversionStatus": "FOH_VALIDATED",
-        "functionalStatus": "tested_n1",
-        "enabledInCertifiedN1": true,
-        "origin": "official_cof1",
-        "conversion": "foh_cof2_canonical",
-        "balanceStatus": "validated_lot_b_fix68",
-        "legacyAdaptationStatus": "replaced",
-        "validatedBy": "FIX68"
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
       }
     },
     {
       "id": "people:fee:addon-comp2017-cof2",
-      "label": "FÉE",
+      "label": "Lutin · Fée",
       "group": "Compagnon",
-      "bonuses_raw": "FOH adapté COF2 : +1 AGI ou CHA ; -1 CON.",
+      "bonuses_raw": "+1 AGI et CHA ; −1 CON ; −2 FOR",
       "schema": {
         "type": "stat_mods",
         "bonus": {
-          "value": 1,
-          "mode": "choice",
+          "mode": "fixed",
           "options": [
-            "agi",
-            "cha"
-          ]
+            "agi"
+          ],
+          "value": 1
         },
         "malus": {
-          "value": -1,
           "mode": "fixed",
           "options": [
             "con"
-          ]
+          ],
+          "value": -1
         },
-        "raw": "FOH adapté COF2 : +1 AGI ou CHA ; -1 CON."
+        "extra": {
+          "cha": 1,
+          "for": -2
+        },
+        "raw": "+1 AGI et CHA ; −1 CON ; −2 FOR"
       },
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "Chroniques Oubliées Fantasy 1re édition",
-        "printedPage": 18,
-        "chapter": "Nouveaux peuples",
-        "section": "FÉE"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 27,
+        "chapter": "Peuples optionnels"
       },
       "certification": {
         "scope": "n1_extension",
-        "sourceStatus": "official_cof1_source_extracted",
-        "ruleTextStatus": "certified_source_text",
-        "conversionStatus": "FOH_VALIDATED",
-        "functionalStatus": "tested_n1",
-        "enabledInCertifiedN1": true,
-        "origin": "official_cof1",
-        "conversion": "foh_cof2_canonical",
-        "balanceStatus": "validated_lot_b_fix68",
-        "legacyAdaptationStatus": "replaced",
-        "validatedBy": "FIX68"
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
       }
     }
   ],
@@ -3334,28 +3313,20 @@
     },
     {
       "id": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
-      "label": "VOIE DE L’ÂME-FORGÉE",
+      "label": "Voie de l’Âme-forgée",
       "people_id": "people:ame-forgee:addon-comp2017-cof2",
+      "group": "Compagnon",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "Chroniques Oubliées Fantasy 1re édition",
-        "printedPage": 9,
-        "chapter": "Nouveaux peuples",
-        "section": "VOIE DE L’ÂME-FORGÉE"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 7,
+        "chapter": "Peuples optionnels"
       },
       "certification": {
         "scope": "n1_extension",
-        "sourceStatus": "official_cof1_source_located",
-        "ruleTextStatus": "present_non_certified",
-        "conversionStatus": "FOH_VALIDATED",
-        "functionalStatus": "tested_n1",
-        "enabledInCertifiedN1": true,
-        "origin": "official_cof1",
-        "conversion": "foh_cof2_canonical",
-        "balanceStatus": "validated_lot_a_fix67",
-        "validatedBy": "FIX67"
-      },
-      "group": "Compagnon"
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      }
     },
     {
       "id": "path:voie-du-centaure:addon-comp2017-cof2",
@@ -3503,32 +3474,36 @@
     },
     {
       "id": "path:voie-de-letre-feerique:addon-comp2017-cof2",
-      "label": "VOIE DE L’ÊTRE FÉERIQUE",
+      "label": "Voie du Farfadet",
       "people_id": "people:lutin:addon-comp2017-cof2",
-      "allowedPeopleIds": [
-        "people:lutin:addon-comp2017-cof2",
-        "people:fee:addon-comp2017-cof2"
-      ],
       "group": "Compagnon",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "Chroniques Oubliées Fantasy 1re édition",
-        "printedPage": 19,
-        "chapter": "Nouveaux peuples",
-        "section": "VOIE DE L’ÊTRE FÉERIQUE"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 28,
+        "chapter": "Peuples optionnels"
       },
       "certification": {
         "scope": "n1_extension",
-        "sourceStatus": "official_cof1_source_extracted",
-        "ruleTextStatus": "certified_source_text",
-        "conversionStatus": "FOH_VALIDATED",
-        "functionalStatus": "tested_n1",
-        "enabledInCertifiedN1": true,
-        "origin": "official_cof1",
-        "conversion": "foh_cof2_canonical",
-        "balanceStatus": "validated_lot_b_fix68",
-        "legacyAdaptationStatus": "replaced",
-        "validatedBy": "FIX68"
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      }
+    },
+    {
+      "id": "path:voie-de-la-fee:compagnon-cof2",
+      "label": "Voie de la Fée",
+      "people_id": "people:fee:addon-comp2017-cof2",
+      "group": "Compagnon",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 27,
+        "chapter": "Peuples optionnels"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
       }
     }
   ],
@@ -21141,87 +21116,128 @@
       "id": "ability:main-lourde:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank1:cof2-lb-2024",
       "path_id": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
       "rank": 1,
-      "label": "Main lourde",
-      "desc": "À mains nues, l’âme-forgée inflige 1d6 DM létaux.",
+      "label": "Métallique",
+      "desc": "+1 DEF. Mains nues létales (1d3 + FOR). RD 5 contre le feu, le froid et les drains de vie. Immunité au saignement. Vision à 10 m dans le noir total comme en pénombre.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 9,
-        "chapter": "Nouveaux peuples",
-        "section": "Main lourde"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 7,
+        "chapter": "Peuples optionnels"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Adaptation N1 déjà en place conservée ; texte original complet joint."
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "+1 DEF. Mains nues létales (1d3 + FOR). RD 5 contre le feu, le froid et les drains de vie. Immunité au saignement. Vision à 10 m dans le noir total comme en pénombre.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": [
+          {
+            "type": "weapon_damage_override",
+            "weaponId": "weapon:unarmed",
+            "formula": "1d3+FOR",
+            "nonLethal": false
+          }
         ]
-      }
+      },
+      "r1_title": "Métallique",
+      "r1_desc": "+1 DEF. Mains nues létales (1d3 + FOR). RD 5 contre le feu, le froid et les drains de vie. Immunité au saignement. Vision à 10 m dans le noir total comme en pénombre."
     },
     {
       "id": "ability:choc-lectrique:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank2:cof2-lb-2024",
       "path_id": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
       "rank": 2,
-      "label": "Choc électrique (L)",
-      "desc": "Sur une attaque à mains nues réussie, l’âme forgée inflige 1d6 DM d’électricité par rang dans cette voie (dégâts de l’attaque à mains nues inclus).",
+      "label": "Choc électrique",
+      "desc": "Une fois par round, ajoute 1d4° DM électriques à une attaque à mains nues réussie.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 9,
-        "chapter": "Nouveaux peuples",
-        "section": "Choc électrique (L)"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 7,
+        "chapter": "Peuples optionnels"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "Une fois par round, ajoute 1d4° DM électriques à une attaque à mains nues réussie.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
       "id": "ability:camouflage:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank3:cof2-lb-2024",
       "path_id": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
       "rank": 3,
-      "label": "Camouflage",
-      "desc": "Vous pouvez faire croire à ceux qui vous entourent que vous êtes un humain pendant 1 heure. Vous ne pouvez utiliser cette capacité qu’une fois par jour. Vous ne pouvez pas prendre l’apparence d’une personne en particulier.",
+      "label": "Infiltration (M)",
+      "desc": "Une fois par jour, illusion visuelle d’humain, d’orc ou d’elfe durant 1 h par rang. Elle ne copie pas un individu et ne résiste pas à un examen tactile poussé. Activation ou désactivation par action de mouvement.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 9,
-        "chapter": "Nouveaux peuples",
-        "section": "Camouflage"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 8,
+        "chapter": "Peuples optionnels"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "Une fois par jour, illusion visuelle d’humain, d’orc ou d’elfe durant 1 h par rang. Elle ne copie pas un individu et ne résiste pas à un examen tactile poussé. Activation ou désactivation par action de mouvement.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
       "id": "ability:forg-dans:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank4:cof2-lb-2024",
       "path_id": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
       "rank": 4,
-      "label": "Forgé dans la bataille",
-      "desc": "Une fois par combat, l’âme-forgée peut totalement ignorer les dégâts subis par une attaque.",
+      "label": "Rayon ardent (L)",
+      "desc": "Une fois par combat à 30 m, test d’attaque magique contre la DEF. Inflige 4d4° + CON DM. Cristaux transparents : électricité ; rouges : feu ; bleus : froid.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 9,
-        "chapter": "Nouveaux peuples",
-        "section": "Forgé dans la bataille"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 8,
+        "chapter": "Peuples optionnels"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "Une fois par combat à 30 m, test d’attaque magique contre la DEF. Inflige 4d4° + CON DM. Cristaux transparents : électricité ; rouges : feu ; bleus : froid.",
+      "mechanics": {
+        "kind": "active",
+        "rangeMeters": 30,
+        "choices": [
+          {
+            "id": "eyeCrystal",
+            "label": "Cristaux oculaires",
+            "type": "enum",
+            "values": [
+              "lightning",
+              "fire",
+              "cold"
+            ],
+            "valueLabels": {
+              "lightning": "Transparents — électricité",
+              "fire": "Rouges — feu",
+              "cold": "Bleus — froid"
+            },
+            "persist": true,
+            "required": true
+          }
+        ],
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "4d4°+CON",
+            "attackType": "magic",
+            "damageType": "elemental",
+            "usesPerCombat": 1
+          }
         ]
       }
     },
@@ -21230,22 +21246,22 @@
       "path_id": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
       "rank": 5,
       "label": "Machine de guerre",
-      "desc": "L’âme-forgée devient une force impossible à ignorer sur le champ de bataille, elle augmente ses scores de CON et de FOR de +1",
+      "desc": "+1 CON et +1 FOR.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 9,
-        "chapter": "Nouveaux peuples",
-        "section": "Machine de guerre"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 8,
+        "chapter": "Peuples optionnels"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2.",
-          "Gain de caractéristique +2 COF1 remplacé par +1 COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "+1 CON et +1 FOR.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
@@ -21696,43 +21712,60 @@
       "id": "ability:langage-des-animaux:path:voie-de-letre-feerique:addon-comp2017-cof2:r1:foh-cof2-v1",
       "path_id": "path:voie-de-letre-feerique:addon-comp2017-cof2",
       "rank": 1,
-      "label": "Langage des animaux",
-      "desc": "Le personnage comprend et peut parler aux animaux. Il gagne +3 aux tests destinés à les comprendre, les calmer ou communiquer avec eux.",
+      "label": "Né d’un chou",
+      "desc": "Vision à 20 m dans le noir total comme en pénombre. Téléportation de 10 m par action de mouvement vers un point visible au départ. RD égale au rang de la voie contre les armes autres qu’en fer froid.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 19,
-        "chapter": "Nouveaux peuples",
-        "section": "Langage des animaux"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 28,
+        "chapter": "Peuples optionnels"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Adaptation N1 déjà en place conservée ; texte original complet joint."
-        ]
-      }
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "Vision à 20 m dans le noir total comme en pénombre. Téléportation de 10 m par action de mouvement vers un point visible au départ. RD égale au rang de la voie contre les armes autres qu’en fer froid.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Né d’un chou",
+      "r1_desc": "Vision à 20 m dans le noir total comme en pénombre. Téléportation de 10 m par action de mouvement vers un point visible au départ. RD égale au rang de la voie contre les armes autres qu’en fer froid."
     },
     {
       "id": "ability:etre-feerique-r2:path:voie-de-letre-feerique:addon-comp2017-cof2:r2:foh-cof2-v1",
       "path_id": "path:voie-de-letre-feerique:addon-comp2017-cof2",
       "rank": 2,
-      "label": "Invisibilité (L)",
-      "desc": "Le personnage peut se rendre invisible comme s’il utilisait la capacité de magicien du même nom (Voie de la magie universelle) une fois par jour par rang atteint dans la Voie. S’il possède déjà cette capacité, il obtient une capacité d’ensorceleur de rang 1 de son choix.",
+      "label": "Langage des animaux",
+      "desc": "Obtient Langage des animaux (druide). Si déjà acquis, choisit une capacité R1 de rôdeur ou de druide. Un sort obtenu ainsi est utilisable en armure.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 19,
-        "chapter": "Nouveaux peuples",
-        "section": "Invisibilité (L)"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 28,
+        "chapter": "Peuples optionnels"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "Obtient Langage des animaux (druide). Si déjà acquis, choisit une capacité R1 de rôdeur ou de druide. Un sort obtenu ainsi est utilisable en armure.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": [
+          {
+            "type": "racial_spell_choice",
+            "choiceId": "spriteAnimals",
+            "allowedRanks": [
+              1
+            ],
+            "allowedProfiles": [
+              "druide",
+              "rodeur"
+            ],
+            "persist": true
+          }
         ]
       }
     },
@@ -21740,21 +21773,35 @@
       "id": "ability:etre-feerique-r3:path:voie-de-letre-feerique:addon-comp2017-cof2:r3:foh-cof2-v1",
       "path_id": "path:voie-de-letre-feerique:addon-comp2017-cof2",
       "rank": 3,
-      "label": "Monture féerique",
-      "desc": "Le personnage apprivoise un animal qui lui sert de monture, souvent une monture volante comme un aigle pour un lutin et une monture terrestre comme un loup ou une panthère pour une fée. Monture : Init 16, DEF 16, PV [niveau × 4], attaque au contact = [niveau du personnage +1], DM 1d6+2, FOR +2, AGI +2*, CON +2*, INT -2, PER+2*, CHA -2. La monture volante inflige seulement 1d6 DM avec une FOR de +0.",
+      "label": "Invisibilité (L)",
+      "desc": "Trois fois par jour, Invisibilité du magicien sans coût ni gain de PM, même en armure. Si déjà acquise, choisir Télékinésie ou Confusion dans les mêmes conditions.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 19,
-        "chapter": "Nouveaux peuples",
-        "section": "Monture féerique"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 28,
+        "chapter": "Peuples optionnels"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "Trois fois par jour, Invisibilité du magicien sans coût ni gain de PM, même en armure. Si déjà acquise, choisir Télékinésie ou Confusion dans les mêmes conditions.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": [
+          {
+            "type": "racial_spell_choice",
+            "choiceId": "spriteInvisibility",
+            "allowedRanks": [
+              3
+            ],
+            "allowedProfiles": [
+              "magicien",
+              "ensorceleur"
+            ],
+            "persist": true
+          }
         ]
       }
     },
@@ -21762,22 +21809,23 @@
       "id": "ability:etre-feerique-r4:path:voie-de-letre-feerique:addon-comp2017-cof2:r4:foh-cof2-v1",
       "path_id": "path:voie-de-letre-feerique:addon-comp2017-cof2",
       "rank": 4,
-      "label": "Grande taille (L)",
-      "desc": "Le lutin ou la fée est capable de prendre une taille humaine pendant [1d6 + CHA] minutes trois fois par jour. Sous cette forme, il obtient un bonus de +2 au FOR (et donc en attaque et aux DM) et il peut infliger des DM normalement selon l’arme utilisée.",
+      "label": "Monture féerique",
+      "desc": "Monture apprivoisée, éventuellement volante. Télépathie à 50 m. DEF 16, INIT 16, PV = 4 × niveau, attaque égale à l’attaque magique du héros. DM 1d4° +2 au sol, 1d4° en vol.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 19,
-        "chapter": "Nouveaux peuples",
-        "section": "Grande taille (L)"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 28,
+        "chapter": "Peuples optionnels"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "Monture apprivoisée, éventuellement volante. Télépathie à 50 m. DEF 16, INIT 16, PV = 4 × niveau, attaque égale à l’attaque magique du héros. DM 1d4° +2 au sol, 1d4° en vol.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
@@ -21785,22 +21833,22 @@
       "path_id": "path:voie-de-letre-feerique:addon-comp2017-cof2",
       "rank": 5,
       "label": "Seigneur féerique",
-      "desc": "le personnage devient plus sage et charismatique, il est considéré parmi les siens comme un individu de haut rang. Il augmente ses valeurs de PER et de CHA de +1.",
+      "desc": "+1 CHA et +1 VOL.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 19,
-        "chapter": "Nouveaux peuples",
-        "section": "Seigneur féerique"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 28,
+        "chapter": "Peuples optionnels"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2.",
-          "Gain de caractéristique +2 COF1 remplacé par +1 COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "+1 CHA et +1 VOL.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
@@ -22005,6 +22053,140 @@
         "printedPage": 60,
         "chapter": "Création du personnage",
         "section": "Tempête de mana"
+      }
+    },
+    {
+      "id": "ability:fee-r1:path:voie-de-la-fee:compagnon-cof2",
+      "path_id": "path:voie-de-la-fee:compagnon-cof2",
+      "rank": 1,
+      "label": "Née d’une fleur",
+      "desc": "Vol de 10 m par action de mouvement. Vision à 20 m dans le noir total comme en pénombre. RD égale au rang de la voie contre les armes autres qu’en fer froid.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 27,
+        "chapter": "Peuples optionnels"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "Vol de 10 m par action de mouvement. Vision à 20 m dans le noir total comme en pénombre. RD égale au rang de la voie contre les armes autres qu’en fer froid.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Née d’une fleur",
+      "r1_desc": "Vol de 10 m par action de mouvement. Vision à 20 m dans le noir total comme en pénombre. RD égale au rang de la voie contre les armes autres qu’en fer froid."
+    },
+    {
+      "id": "ability:fee-r2:path:voie-de-la-fee:compagnon-cof2",
+      "path_id": "path:voie-de-la-fee:compagnon-cof2",
+      "rank": 2,
+      "label": "Pirouette",
+      "desc": "Une fois par combat, après une attaque qui touche, ignore ses DM. Peut à volonté éclairer à 2 m autour de son corps.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 27,
+        "chapter": "Peuples optionnels"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "Une fois par combat, après une attaque qui touche, ignore ses DM. Peut à volonté éclairer à 2 m autour de son corps.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:fee-r3:path:voie-de-la-fee:compagnon-cof2",
+      "path_id": "path:voie-de-la-fee:compagnon-cof2",
+      "rank": 3,
+      "label": "Poudre de fée",
+      "desc": "Choisis une capacité R1 de magicien ou d’ensorceleur sans bonus de DEF, ou un sort R2 utilisable sans armure. Trois utilisations par jour, sans coût ni gain de PM. Le choix R1 est utilisable en armure.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 27,
+        "chapter": "Peuples optionnels"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "Choisis une capacité R1 de magicien ou d’ensorceleur sans bonus de DEF, ou un sort R2 utilisable sans armure. Trois utilisations par jour, sans coût ni gain de PM. Le choix R1 est utilisable en armure.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": [
+          {
+            "type": "racial_spell_choice",
+            "choiceId": "fairyDustAbility",
+            "allowedRanks": [
+              1,
+              2
+            ],
+            "allowedProfiles": [
+              "magicien",
+              "ensorceleur"
+            ],
+            "armorRestrictions": {
+              "rank1": "allowed_without_penalty"
+            },
+            "persist": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "ability:fee-r4:path:voie-de-la-fee:compagnon-cof2",
+      "path_id": "path:voie-de-la-fee:compagnon-cof2",
+      "rank": 4,
+      "label": "Fée révérée",
+      "desc": "Trois fois par jour, taille humaine durant 1d4° + CHA minutes. Sous cette forme, +3 FOR et dégâts d’arme ordinaires.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 27,
+        "chapter": "Peuples optionnels"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "Trois fois par jour, taille humaine durant 1d4° + CHA minutes. Sous cette forme, +3 FOR et dégâts d’arme ordinaires.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:fee-r5:path:voie-de-la-fee:compagnon-cof2",
+      "path_id": "path:voie-de-la-fee:compagnon-cof2",
+      "rank": 5,
+      "label": "Lady fée",
+      "desc": "+1 PER et +1 CHA.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 28,
+        "chapter": "Peuples optionnels"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      },
+      "playSummary": "+1 PER et +1 CHA.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     }
   ],
