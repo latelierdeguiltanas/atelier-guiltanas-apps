@@ -1,0 +1,80 @@
+name: Forge N1 - validation de la version courante
+on:
+  push:
+    branches: [forge-n1-validation-nov9]
+permissions:
+  contents: write
+jobs:
+  checks:
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [regressions, raciaux, profil, calculs, mobile, mobile-0, mobile-1, mobile-2, mobile-3]
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Appliquer la correction de recette
+        run: git apply .github/forge-n1-validation.patch
+      - name: Vérifier
+        env:
+          SUITE: ${{ matrix.suite }}
+        run: |
+          run() { node "forge-of-heroes/FINAL_FREEZE_TESTS/$1.cjs"; }
+          case "$SUITE" in
+            regressions) run companion_people_v2_runner; run n1_regression_batch ;;
+            raciaux) run n1_people_source_runner; run n1_official_racial_options; run n1_official_methods_cross ;;
+            profil)
+              for script in n1_arq_context_publish n1_arq_pure_age_ranks n1_arq_all_pairs_current n1_arq_context_oracle n1_arq_history_people_cross n1_arq_equipment_oracle n1_arq_grant_armor n1_arq_granted_pdf_annex; do run "$script"; done ;;
+            calculs)
+              for script in n1_arq_thrower_oracle n1_arq_powder_weapon_oracle n1_arq_two_preferences_oracle n1_arq_derived_source_oracle; do run "$script"; done ;;
+            mobile*)
+              npm install --prefix "$RUNNER_TEMP/foh-n1" playwright@1.55.0
+              export NODE_PATH="$RUNNER_TEMP/foh-n1/node_modules"
+              export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+              python3 -m http.server 4173 --bind 127.0.0.1 > "$RUNNER_TEMP/http.log" 2>&1 &
+              if [ "$SUITE" = mobile ]; then
+                for script in n1_arq_context_live_click n1_arq_twenty_real_mobile_clicks n1_arq_venerable_context_click n1_arq_thrower_click; do node "forge-of-heroes/FINAL_FREEZE_TESTS/$script.cjs"; done
+              else
+                CHOICES_SHARD="${SUITE#mobile-}" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_choices_click.cjs
+              fi ;;
+          esac
+      - name: Extraire les seules preuves produites
+        if: always()
+        run: |
+          mkdir -p "$RUNNER_TEMP/proofs"
+          git ls-files -m -o --exclude-standard -z -- forge-of-heroes/QA/N1 | while IFS= read -r -d '' file; do
+            if [[ "$file" = *.json ]]; then cp --parents -- "$file" "$RUNNER_TEMP/proofs"; fi
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: preuves-${{ matrix.suite }}
+          path: ${{ runner.temp }}/proofs
+  consolidate:
+    needs: checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: preuves-*
+          path: .
+          merge-multiple: true
+      - name: Consolider les preuves sur la même version et publier la recette
+        run: |
+          git apply .github/forge-n1-validation.patch
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_choices_merge.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/forge-n1-validation.patch
+          git add forge-of-heroes centre-synchronisation/forge-n1/focus.json
+          git commit -m 'test(forge): consolider la validation N1 de la version publiée [skip ci]'
+          git push origin HEAD:forge-n1-validation-nov9
