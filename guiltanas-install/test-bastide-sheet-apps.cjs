@@ -1,0 +1,15 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const origin='https://latelierdeguiltanas.github.io',root='/atelier-guiltanas-apps/',sheets=root+'fiches-personnages/';
+const hub=JSON.parse(fs.readFileSync(__dirname+'/../ile-aux-tempetes-bastide/index.install.webmanifest'));
+const library=JSON.parse(fs.readFileSync(__dirname+'/../fiches-personnages/manifest.webmanifest'));
+const identity=m=>new URL(m.id,origin+'/').href;
+assert.equal(identity(hub),origin+'/');
+assert.equal(new URL(hub.start_url,origin).pathname,root+'ile-aux-tempetes-bastide/');
+assert.equal(hub.scope,hub.start_url);
+assert.equal(identity(library),origin+sheets);
+const handlers={},self={location:new URL(origin+sheets+'install-sw.js'),addEventListener:(event,fn)=>handlers[event]=fn};
+vm.runInNewContext(fs.readFileSync(__dirname+'/../fiches-personnages/install-sw.js','utf8'),{self,URL,Response,Promise,JSON,encodeURIComponent});
+(async()=>{for(const hero of ['', 'hero-1','héros 2']){let response;const url=new URL(origin+sheets+'manifest.webmanifest');if(hero)url.searchParams.set('hero',hero);
+handlers.fetch({request:{url:url.href,method:'GET'},respondWith:p=>response=p});
+const m=await(await response).json();assert.equal(identity(m),origin+sheets+(hero?'?hero='+encodeURIComponent(hero):''));assert.equal(new URL(m.start_url,url).pathname,sheets);assert.equal(new URL(m.start_url,url).searchParams.get('hero')||'',hero);
+}console.log('PASS identités distinctes : Bastide, bibliothèque et fiches individuelles.');})().catch(e=>{console.error(e);process.exitCode=1});
