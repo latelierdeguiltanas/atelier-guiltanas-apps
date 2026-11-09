@@ -35,7 +35,7 @@ const base='http://127.0.0.1:4173';
       const errors=[];sheet.on('pageerror',e=>errors.push(String(e)));
       const box={window:{}};
       vm.runInNewContext(fs.readFileSync('ile-aux-tempetes-bastide/personnages/'+id+'/data.js','utf8'),box);
-      const character=box.window.BASTIDE_CHARACTER;character.level=3;
+      const character=JSON.parse(JSON.stringify(box.window.BASTIDE_CHARACTER));character.level=3;
       character.combat.pvMax=id==='zepheline'?6:19;
       if(id==='zepheline'){
         character.paths[0].ranks.find(r=>r.rank===3).owned=true;
