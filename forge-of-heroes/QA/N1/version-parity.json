@@ -1,12 +1,11 @@
 {
-  "schema": "FOH_N1_VERSION_PARITY",
-  "generatedAt": "2026-11-04T08:53:32.023Z",
-  "gitCommit": "6882fe5dff706de7c6e5cd25b6b3c6bb84ebf330",
+  "schema": "FOH_N1_SINGLE_PRODUCT_VALIDATION",
+  "generatedAt": "2026-11-09T14:53:49.925Z",
+  "publishedProduct": "forge-of-heroes/index.html",
   "current": {
-    "index": "8116f5e45822f89823ff0ff2e6de8405298090f8f0bb0c8e735ccea09eb190a1",
-    "master": "8ace6d0b893e38bdd82454a8db0a193e6ec5b2517bfe94081e4f5e762bc24322",
-    "engine": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
-    "database": "1a361946d09c1a0ec51ace1aa3f87873fef12199990c69c07fcd1a10765ce081"
+    "index": "d77ddc8a00962db0442b8ad1b650be92c57ced1cb3dc6342f7b554dab4d2cd4b",
+    "engine": "9a798433b63bde7bdfeb09d576abe1526719eec2947c7bed80ac531a961bc9e4",
+    "database": "4cd5c55d8f346630ef5f1c36cbc451441a7c135cd32ac12e696de7e86b934277"
   },
   "oldMatrix": {
     "indexSha256": "6e6e098cf7e2c920b02f5a33de8d9518b69192525ef396b7f321d3839e70d218",
@@ -14,16 +13,13 @@
     "engineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
     "databaseSha256": "1a361946d09c1a0ec51ace1aa3f87873fef12199990c69c07fcd1a10765ce081"
   },
-  "regressionIndexSha256": "6e6e098cf7e2c920b02f5a33de8d9518b69192525ef396b7f321d3839e70d218",
   "checks": {
-    "matrixEngineIdentical": true,
-    "matrixDbIdentical": true,
-    "productMasterEngineIdentical": true,
-    "productMasterDbIdentical": true,
+    "matrixEngineIdentical": false,
+    "matrixDbIdentical": false,
     "regressionIndexIdentical": false,
     "matrixNoAssertionFailure": true,
     "regressionsPass": true
   },
-  "matrixMechanicsReusable": true,
-  "limitations": "Only identical engine and database allow reusing mechanical matrix assertions. UI, PDFs and browser journeys remain separate. Refusal review and untested choices remain outstanding."
+  "matrixMechanicsReusable": false,
+  "limitations": "Only matching engine and database allow reuse of historical matrix proofs. UI, PDF and Android need separate current evidence."
 }
