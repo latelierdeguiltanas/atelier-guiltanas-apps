@@ -56,14 +56,9 @@
   },
   {
     "n": 6,
-    "status": "PASS",
-    "expected": [
-      8,
-      14,
-      12,
-      3,
-      0
-    ]
+    "status": "FAIL",
+    "message": "locator.tap: Timeout 4000ms exceeded.\nCall log:\n  - waiting for locator('#next-btn')\n    - locator resolved to <button id=\"next-btn\" type=\"button\" class=\"btn primary\" aria-disabled=\"false\" data-testid=\"continue\">Continuer</button>\n  - attempting tap action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing tap action\n",
+    "screen": "Équipement et religion\n\nChoisis un paquetage ou un échange de matériel validé par le MJ.\n\nÉquipement\n\nChoisis un paquetage proposé par ton profil. Les obligations et incompatibilités sont déjà contrôlées par le moteur.\n\nPaquetage de départ sélectionné.\nPaquetage de départ\nstandard\nPorter l’armure du paquetage\nDécoche pour combattre sans armure et activer les capacités qui l’exigent.\nArmure : Armure prévue par le profil. Armes : Pétoire, Épée longue, Dague\nÉchange de matériel validé par le MJ\nChoisis le matériel convenu avec le MJ. Les restrictions du personnage restent vérifiées.\nPétoires et chargeurs\n\nChoisis combien de Pétoires ton arquebusier possède et transforme en armes à répétition.\n\n1 Pétoire\n2 Pétoires\nTester une 3e Pétoire\n1 Pétoire à répétition\nChargeur : 6 munitions par Pétoire · 6 munitions chargées au total."
   },
   {
     "n": 7,
