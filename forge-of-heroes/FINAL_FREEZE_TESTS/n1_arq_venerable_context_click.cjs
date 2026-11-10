@@ -35,7 +35,7 @@ try{
   const btn=area.getByRole('button',{name:/Acquérir/}).first();
   await btn.tap();rec.steps.push('age-rank-'+name);
  }
- if(job.first==='mercenaire')await choose('select[data-ability-choice$="|combattantAguerriAbility"]','Archer émérite');
+ if(job.first==='mercenaire')await choose('select[data-ability-choice$="|combattantAguerriAbility"]','Vivacité');
  await next();
  if(job.first==='artilleur'||job.second==='artilleur'){
   const count=p.locator('[data-pistol-count="1"]');
@@ -54,6 +54,17 @@ try{
  await p.locator('#foh-n1-context-ability').selectOption(job.r2[0]);
  await p.locator('#foh-n1-context-example').selectOption(String(job.r2[1]));
  await p.locator('#foh-n1-context-run').tap();assert((await p.locator('#foh-n1-context-result').innerText()).includes(job.r2[2]),'R2 formula '+job.r2[0]+' absent');
+ if(job.first==='mercenaire'){
+  await p.locator('#foh-n1-context-ability').selectOption('don:vivacite');
+  const result=p.locator('#foh-n1-context-result');
+  await p.locator('#foh-n1-context-example').selectOption('0');
+  await p.locator('#foh-n1-context-run').tap();
+  assert.match(await result.innerText(),/Actions de mouvement en plus : 1/);
+  await p.locator('#foh-n1-context-example').selectOption('1');
+  await p.locator('#foh-n1-context-run').tap();
+  assert.match(await result.innerText(),/NON applicable/);
+  rec.steps.push('vivacite-condition-verified');
+ }
  assert.equal(errors.length,0,'Erreurs navigateur '+errors.join(' ; '));
  rec.status='PASS';report.passed++;
 }catch(e){rec.error=String(e.stack||e).slice(0,2200);rec.browserErrors=errors.slice(0,5);rec.view=await p.locator('.step.active').innerText().then(x=>x.slice(0,700)).catch(()=>null);report.failed++;}
