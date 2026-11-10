@@ -1,0 +1,634 @@
+diff --git a/forge-of-heroes/ENGINE/arquebusier_context_n1.js b/forge-of-heroes/ENGINE/arquebusier_context_n1.js
+index 877e5ce..4cd99c0 100644
+--- a/forge-of-heroes/ENGINE/arquebusier_context_n1.js
++++ b/forge-of-heroes/ENGINE/arquebusier_context_n1.js
+@@ -185,5 +185,106 @@ function solve(character,slug,c={}){
+  }
+  return o;
+ }
+-return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities,resolve:solve,isOwned:(character,slug)=>!!abilityRow(character,slug),ownedProfile});
++const grantPages={
++ 'archer-emerite':70,'le-loup':71,survie:72,eclaireur:72,'attaque-a-suivre-g':73,
++ discretion:74,baratin:75,agile:75,'doigts-agiles':76,'attaque-en-finesse':77,
++ 'proteger-un-allie-g':87,vivacite:88,'armes-de-predilection':88,robustesse:89,'teigneux-g':90
++};
++const grantAbilities=Object.keys(grantPages);
++function grantedRow(character,slug){
++ const source=abilityRow(character,'combattant-aguerri');
++ return source&&(character.abilities||character.acquiredAbilities||[]).find(a=>a.id.startsWith('ability:'+slug+':')&&a.rank===1&&a.grantedByAbilityId===source.id);
++}
++function resolveGrant(character,slug,c={}){
++ if(!Object.hasOwn(grantPages,slug))throw Error('Capacité accordée inconnue '+slug);
++ const a=grantedRow(character,slug),o=result(slug,a,a?.rank);
++ o.sourcePage=grantPages[slug];
++ if(!a)return fail(o,'Capacité non accordée par Combattant aguerri.');
++ const armor=character.calculationTrace?.DEF?.armor;
++ const ceiling=a.id.includes('class-voleur:')?2:a.id.includes('class-rodeur:')?3:null;
++ if(ceiling!==null&&(!Number.isFinite(armor)||armor>ceiling))return fail(o,'Armure incompatible : '+(ceiling===2?'cuir simple':'cuir renforcé')+' au maximum.');
++ const attacks=character.attacks||[];
++ const contact=attacks.find(row=>row.weaponId===c.weaponId&&row.type==='contact'&&row.hands===1&&row.mastered);
++ const skill=a.mechanics?.skillBonuses?.find(row=>row.tests.includes(c.test));
++ if(skill&&(slug!=='survie'||c.test==='climb'||c.inWilderness===true)&&(slug!=='vivacite'||['agi','for'].includes(c.characteristic))){
++   o.modifiers.skillBonus=skill.value;
++   return success(o,'test concerné par la capacité');
++ }
++ switch(slug){
++  case 'attaque-a-suivre-g': {
++   const weapon=attacks.find(row=>row.weaponId===c.weaponId&&row.hands===1&&row.mastered&&(row.type==='contact'||row.properties?.includes('thrown')));
++   if(c.mainHandAttackMissed!==true||c.inOtherHand!==true||c.usedThisRound!==false||!weapon)return fail(o,'Attaque principale ratée, arme admissible tenue dans l’autre main et capacité encore disponible ce round.');
++   o.modifiers.freeAttack=true;
++   o.modifiers.penaltyDie=!['weapon:dagger','weapon:throwing-hatchet','weapon:short-sword'].includes(c.weaponId);
++   return success(o,'attaque gratuite avec l’autre main');
++  }
++  case 'proteger-un-allie-g':
++   if(!character.equipment?.shieldId||c.surprised!==false||c.allyInContact!==true||c.beforeAttackResult!==true||c.usedThisRound!==false)return fail(o,'Bouclier manié, allié au contact, personnage non surpris et annonce avant le résultat. Une fois par round.');
++   o.modifiers.allyDefenseBonus=2;
++   return success(o,'protection contre une attaque');
++  case 'vivacite':
++   if(c.ownTurn!==true||c.usedThisCombat!==false)return fail(o,'Tour du personnage et action supplémentaire encore disponible dans ce combat.');
++   o.modifiers.extraMovementActions=1;
++   return success(o,'mouvement supplémentaire');
++  case 'teigneux-g':
++   if(c.enemyInContact!==true||c.enemyMovingAway!==true||c.usedThisRound!==false)return fail(o,'Créature au contact qui s’éloigne, capacité encore disponible ce round.');
++   o.modifiers.freeMeleeAttack=true;
++   return success(o,'attaque au contact en action gratuite');
++  case 'discretion':
++   if(c.attacking!==true||c.targetSurprised!==true)return fail(o,'Attaque contre un adversaire surpris requise.');
++   o.modifiers.bonusDie=true;
++   return success(o,'attaque contre un adversaire surpris');
++  case 'baratin': {
++   const rank=num(c.spellRank);
++   if(!['scroll','wand'].includes(c.item)||!Number.isInteger(rank)||rank<1||rank>5)return fail(o,'Parchemin ou baguette et rang du sort compris entre 1 et 5 requis.');
++   o.modifiers.magicAttackDifficulty=10+2*rank;
++   o.modifiers.limitedAction=true;
++   o.notes.push('Le sort est lancé si le test réussit. Une nouvelle tentative est possible en cas d’échec.');
++   return success(o,'utilisation d’un objet magique');
++  }
++  case 'survie':
++   if(c.inWilderness!==true||c.sleeping!==true||c.spendsRecoveryDie!==true)return fail(o,'Nuit en milieu naturel avec dépense d’un dé de récupération requise.');
++   o.modifiers.extraRecovery='1d4° PV';
++   return success(o,'récupération en milieu naturel');
++  case 'eclaireur':
++   if(c.inWilderness!==true||!['wilderness_stealth','wilderness_vigilance','tracking'].includes(c.test))return fail(o,'Discrétion, vigilance ou pistage en milieu naturel requis.');
++   o.modifiers.skillBonus=3;
++   return success(o,'test en milieu naturel');
++  case 'le-loup': {
++   const wolf=(character.companions||[]).find(x=>x.companionId==='companion:wolf');
++   if(!wolf)return fail(o,'Compagnon absent de la fiche.');
++   o.modifiers.companion='Loup';
++   o.notes.push('Il attaque au tour de son maître et comprend des ordres simples. Consulter la fiche du compagnon pour ses valeurs.');
++   return success(o,'compagnon animal');
++  }
++  case 'agile':
++   o.modifiers.permanentEffect='DEF et initiative +1, déjà compris dans la fiche';
++   return success(o,'bonus permanents');
++  case 'robustesse':
++   o.modifiers.permanentEffect='PV max +3, déjà compris dans la fiche';
++   return success(o,'bonus permanent');
++  case 'attaque-en-finesse':
++   if(!contact||!['weapon:dagger','weapon:short-sword','weapon:rapier'].includes(c.weaponId))return fail(o,'Dague, épée courte ou rapière équipée pour une attaque au contact.');
++   o.modifiers.attackCharacteristic='AGI';
++   o.modifiers.damageCharacteristic='FOR';
++   return success(o,'attaque au contact en finesse');
++  case 'doigts-agiles':
++   if(!['weapon:dagger','weapon:throwing-knives'].includes(c.weaponId)||!attacks.some(row=>row.weaponId===c.weaponId&&row.type==='distance'))return fail(o,'Attaque à distance avec une dague ou des couteaux de lancer équipés.');
++   o.modifiers.permanentEffect='DM +1, déjà compris dans l’attaque à distance';
++   return success(o,'lancer de dague ou de couteaux');
++  case 'archer-emerite': {
++   const isThrower=character.creationInput?.abilityChoices?.[a.id]?.throwerVariant===true;
++   o.modifiers.permanentEffect=isThrower?'Armes de jet : FOR aux DM et portée doublée, déjà calculées. Aucun bonus d’initiative.':'Arc : PER aux DM et initiative +1, déjà calculés.';
++   return success(o,'variante sélectionnée sur la fiche');
++  }
++  case 'armes-de-predilection': {
++   const category=character.creationInput?.abilityChoices?.[a.id]?.preferredWeaponCategory||character.creationInput?.profileChoices?.preferredWeaponCategory;
++   if(!category)return fail(o,'Catégorie de prédilection manquante sur la fiche.');
++   o.modifiers.permanentEffect='Attaque +1 avec la catégorie choisie, déjà compris dans les attaques concernées';
++   return success(o,'catégorie de prédilection');
++  }
++ }
++ return o;
++}
++return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-3',grantAbilities,resolveGrant,granted:(c,slug)=>grantedRow(c,slug),sourcePages:PAGES,abilities,resolve:solve,isOwned:(character,slug)=>!!abilityRow(character,slug),ownedProfile});
+ });
+diff --git a/forge-of-heroes/ENGINE/arquebusier_context_ui_n1.js b/forge-of-heroes/ENGINE/arquebusier_context_ui_n1.js
+index 6a466e1..ddb8a64 100644
+--- a/forge-of-heroes/ENGINE/arquebusier_context_ui_n1.js
++++ b/forge-of-heroes/ENGINE/arquebusier_context_ui_n1.js
+@@ -22,6 +22,33 @@
+   'defaut-dans-la-cuirasse-a':[['Cible AGI +2, préparée, visible',{preparedTargetLastRound:true,sameTarget:true,rangedAttack:true,targetAGI:2}],['Cible immatérielle AGI +2',{preparedTargetLastRound:true,sameTarget:true,rangedAttack:true,targetAGI:2,targetImmaterial:true}]],
+   'tir-precis':[['Attaque avec arme à distance',{rangedAttack:true}],['Attaque au contact : seuil normal',{rangedAttack:false}]]
+  };
++ const follow={mainHandAttackMissed:true,inOtherHand:true,usedThisRound:false};
++ const protect={surprised:false,allyInContact:true,beforeAttackResult:true,usedThisRound:false};
++ const quick={ownTurn:true,usedThisCombat:false};
++ const pursue={enemyInContact:true,enemyMovingAway:true,usedThisRound:false};
++ const dagger={weaponId:'weapon:dagger'};
++ const nature={inWilderness:true};
++ const rest={...nature,sleeping:true,spendsRecoveryDie:true};
++ const grantExamples={
++  'archer-emerite':[['Effets de la variante choisie',{}]],
++  'le-loup':[['Compagnon et ordre simple',{}]],
++  survie:[['Récupérer en milieu naturel en dépensant un DR',rest],['Récupérer sans dé de récupération',{...rest,spendsRecoveryDie:false}],['Escalader',{test:'climb'}],['Survie en milieu naturel',{...nature,test:'wilderness_survival'}]],
++  eclaireur:[['Pister en milieu naturel',{...nature,test:'tracking'}],['Pister en ville',{test:'tracking'}],['Discrétion en milieu naturel',{...nature,test:'wilderness_stealth'}],['Vigilance en milieu naturel',{...nature,test:'wilderness_vigilance'}]],
++  'attaque-a-suivre-g':[['Rater avec la main principale, dague dans l’autre main',{...follow,...dagger}],['Déjà utilisé ce round',{...follow,...dagger,usedThisRound:true}],['Autre arme à une main : épée longue',{...follow,weaponId:'weapon:long-sword'}]],
++  discretion:[['Attaquer un adversaire surpris',{attacking:true,targetSurprised:true}],['Attaquer un adversaire qui n’est pas surpris',{attacking:true,targetSurprised:false}],['Test de discrétion',{test:'stealth'}]],
++  baratin:[...['scroll','wand'].flatMap(item=>[1,2,3,4,5].map(spellRank=>[(item==='scroll'?'Parchemin':'Baguette')+' de rang '+spellRank,{item,spellRank}])),['Test de négociation',{test:'negotiate'}]],
++  agile:[['Défense et initiative sur la fiche',{}],['Test pour échapper à une emprise',{test:'escape_grapple'}]],
++  'doigts-agiles':[['Lancer une dague équipée',dagger],['Lancer des couteaux équipés',{weaponId:'weapon:throwing-knives'}],['Test de crochetage',{test:'lockpick'}]],
++  'attaque-en-finesse':[['Dague équipée au contact',dagger],['Épée courte équipée au contact',{weaponId:'weapon:short-sword'}],['Rapière équipée au contact',{weaponId:'weapon:rapier'}],['Test d’intimidation',{test:'intimidation'}]],
++  'proteger-un-allie-g':[['Protéger un allié au contact, avant le résultat',protect],['Le résultat de l’attaque est déjà connu',{...protect,beforeAttackResult:false}],['Test pour éviter d’être surpris',{test:'avoid_surprise'}]],
++  vivacite:[['Premier mouvement supplémentaire du combat, à mon tour',quick],['Mouvement supplémentaire déjà utilisé',{...quick,usedThisCombat:true}],['Test de FOR contre le renversement',{characteristic:'for',test:'avoid_prone'}],['Test d’AGI contre l’immobilisation',{characteristic:'agi',test:'avoid_immobilized'}]],
++  'armes-de-predilection':[['Catégorie choisie sur la fiche',{}],['Estimer la valeur d’une arme',{test:'weapon_value'}],['Évaluer une réputation martiale',{test:'martial_reputation'}]],
++  robustesse:[['PV supplémentaires sur la fiche',{}],['Résister à un effort physique',{test:'physical_effort'}],['Résister à la chaleur naturelle',{test:'natural_heat'}],['Résister au froid naturel',{test:'natural_cold'}]],
++  'teigneux-g':[['Un adversaire au contact s’éloigne',pursue],['Déjà utilisé ce round',{...pursue,usedThisRound:true}],['Résister à l’alcool',{test:'alcohol'}],['Résister à la privation de nourriture',{test:'food_deprivation'}],['Résister à la privation de sommeil',{test:'sleep_deprivation'}]]
++ };
++ const grantLabels={freeAttack:'Attaque gratuite',penaltyDie:'Dé malus',allyDefenseBonus:'Bonus de DEF de l’allié',extraMovementActions:'Actions de mouvement en plus',freeMeleeAttack:'Attaque au contact gratuite',magicAttackDifficulty:'Difficulté du test d’attaque magique',limitedAction:'Action limitée',extraRecovery:'Récupération supplémentaire',companion:'Compagnon',permanentEffect:'Effet sur la fiche',attackCharacteristic:'Caractéristique d’attaque',damageCharacteristic:'Caractéristique de dégâts'};
++ const isGrant=key=>key.startsWith('don:');
++ const presetsFor=key=>isGrant(key)?grantExamples[key.slice(4)]:examples[key];
+  const titles={'mecanismes':'Mécanismes','arme-a-repetition':'Arme à répétition','tir-de-barrage-l':'Tir de barrage','tir-de-grenaille-l':'Tir de grenaille',demolition:'Démolition','poudre-puissante':'Poudre puissante','pilier-de-bar':'Pilier de bar','mort-ou-vif-l':'Mort ou vif','combattant-aguerri':'Combattant aguerri','plus-vite-que-son-ombre':'Plus vite que son ombre','ajuster-le-tir':'Ajuster le tir','tir-double-l':'Tir double','joli-coup':'Joli coup','defaut-dans-la-cuirasse-a':'Défaut dans la cuirasse','tir-precis':'Tir précis'};
+  const labels={skillBonus:'Bonus de compétence',bonusDie:'Dé bonus',damageDice:'DM à mains nues',nonLethal:'Dégâts non létaux',incomingDamageDivisor:'Diviseur des dégâts non létaux reçus',initiativeBonusForShot:'Bonus d’initiative pour ce tir',removeRangedContactDisadvantage:'Dé malus du tir au contact supprimé',coverAttackPenalty:'Malus d’attaque pour le couvert',capacity:'Capacité du chargeur',limitedActionsPerProjectile:'Actions limitées par projectile rechargé',totalLimitedActions:'Total actions limitées',attackRolls:'Nombre de tests d’attaque',damageFraction:'Fraction des dommages habituels',area:'Zone d’effet',preparationRounds:'Rounds nécessaires',dailyChargesMax:'Charges maximales par jour',dailyChargesCost:'Charges consommées',damageFormula:'Formule de dommages',targetDamageReductionMultiplier:'Fraction de RD retenue',blastRadiusMeters:'Rayon de déflagration (m)',normalWeaponDamage:'Dommages normaux',canUseTemporaryDamage:'Option dégâts temporaires',maxConditionChoices:'Nombre d’effets préjudiciables possibles',weakenRounds:'Durée de l’affaiblissement',nextRangedAttackBonus:'Bonus du prochain tir',targetDEF:'DEF à atteindre',ignoreDamageResistance:'Ignorer résistance aux DM',ignoreDamageReduction:'Ignorer réduction des DM',zoneWidthMeters:'Largeur de zone surveillée (m)',attackTriggeredByMovement:'Déclenché par déplacement',damageIfVictimChoosesDamage:'Multiplicateur de dommages si choisi',victimStopsTurnIfNoDamage:'La victime termine son tour et son déplacement si elle évite les dommages',weaponRangeBonusMeters:'Portée supplémentaire (m)',weaponDamageBonus:'DM supplémentaires',projectileMagical:'Projectile magique',defenseBonus:'DEF supplémentaire',attackCount:'Attaques',attackPenaltyEach:'Malus par attaque',criticalThreshold:'Critique dès (d20)'};
+  const display=v=>typeof v==='boolean'?(v?'oui':'non'):typeof v==='object'?JSON.stringify(v):String(v);
+@@ -36,7 +63,8 @@
+   try{
+    const host=document.getElementById('summary-content');if(!host||host.hidden)return;
+    const st=state();if(!st)return;
+-   const owned=API.abilities.filter(a=>API.isOwned(st,a));if(!owned.length){if(panel)panel.hidden=true;return;}
++   const grants=API.grantAbilities.filter(slug=>API.granted(st,slug));
++   const owned=[...API.abilities.filter(a=>API.isOwned(st,a)),...grants.map(slug=>'don:'+slug)];if(!owned.length){if(panel)panel.hidden=true;return;}
+    if(!panel){
+     panel=document.createElement('details');panel.id='foh-n1-context-situations';
+     panel.style.cssText='margin:14px 0;padding:12px;border:1px solid #877553;border-radius:10px;background:rgba(16,15,13,.86);color:#f5f0e5;font:14px/1.5 system-ui';
+@@ -50,12 +78,12 @@
+     for(const select of [a,b])select.style.cssText='max-width:100%;width:100%;padding:9px;border-radius:7px;background:#171511;color:#fff;border:1px solid #877553';
+     const button=$(panel,'button');button.type='button';button.textContent='Calculer les effets';button.id='foh-n1-context-run';button.style.cssText='padding:8px 12px;border-radius:8px;border:1px solid #bd9865;background:#433927;color:#fff;cursor:pointer';
+     const out=$(panel,'div');out.id='foh-n1-context-result';out.setAttribute('aria-live','polite');out.style.cssText='margin-top:9px;font-size:13px;white-space:pre-wrap';
+-    a.addEventListener('change',()=>{const presets=examples[a.value]||[];b.replaceChildren();presets.forEach((p,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=p[0];b.appendChild(o)});out.textContent='';});
++    a.addEventListener('change',()=>{const presets=presetsFor(a.value)||[];b.replaceChildren();presets.forEach((p,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=p[0];b.appendChild(o)});out.textContent='';});
+     button.addEventListener('click',()=>{try{
+       const current=state();if(!current)throw Error('Fiche incomplète.');const slug=a.value;
+-      const setup=examples[slug]?.[Number(b.value)||0];if(!setup)throw Error('Situation non reconnue');
+-      const r=API.resolve(current,slug,setup[1]);const lines=[r.applies?'Capacité applicable dans la situation choisie.':'Capacité NON applicable dans cette situation.'];
+-      for(const [key,val]of Object.entries(r.modifiers))lines.push((labels[key]||key)+' : '+display(val));
++      const setup=presetsFor(slug)?.[Number(b.value)||0];if(!setup)throw Error('Situation non reconnue');
++      const r=isGrant(slug)?API.resolveGrant(current,slug.slice(4),setup[1]):API.resolve(current,slug,setup[1]);const lines=[r.applies?'Capacité applicable dans la situation choisie.':'Capacité NON applicable dans cette situation.'];
++      for(const [key,val]of Object.entries(r.modifiers))lines.push((labels[key]||grantLabels[key]||key)+' : '+display(val));
+       if(r.choices.length)lines.push('Choix : '+r.choices.join(' / '));
+       for(const message of r.requirements)lines.push('Condition manquante : '+message);
+       for(const message of r.limits)lines.push('Limite : '+message);
+@@ -69,7 +97,7 @@
+    const a=panel.querySelector('#foh-n1-context-ability');
+    const last=a.value,available=owned.join('|');
+    if(a.dataset.available!==available){
+-     a.replaceChildren();owned.forEach(slug=>{const o=document.createElement('option');o.value=slug;o.textContent=titles[slug]||slug;a.appendChild(o)});
++     a.replaceChildren();owned.forEach(slug=>{const o=document.createElement('option');o.value=slug;o.textContent=isGrant(slug)?API.granted(st,slug.slice(4)).label+' (Combattant aguerri)':titles[slug]||slug;a.appendChild(o)});
+      a.dataset.available=available;if(owned.includes(last))a.value=last;a.dispatchEvent(new Event('change'));
+    }
+   }catch(e){/* Le module complémentaire ne doit jamais bloquer la création ni la fiche officielle. */}
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_grant_context.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_grant_context.cjs
+new file mode 100644
+index 0000000..97c161d
+--- /dev/null
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_grant_context.cjs
+@@ -0,0 +1,92 @@
++'use strict';
++const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs'),path=require('node:path');
++const F=require('./forge_product_runner'),API=require('../ENGINE/arquebusier_context_n1');
++const root=path.resolve(__dirname,'..'),{html,db,engine:E}=F.load(root+'/index.html'),T=db.tables;
++const product={file:'index.html',sha256:crypto.createHash('sha256').update(html).digest('hex')};
++const report={status:'PENDING',products:[product],cases:[],refusals:0};
++const test=(name,other={})=>({test:name,...other});
++const follow={weaponId:'weapon:dagger',mainHandAttackMissed:true,inOtherHand:true,usedThisRound:false};
++const protect={surprised:false,allyInContact:true,beforeAttackResult:true,usedThisRound:false};
++const recovery={inWilderness:true,sleeping:true,spendsRecoveryDie:true};
++const pursuit={enemyInContact:true,enemyMovingAway:true,usedThisRound:false};
++const tests={
++ 'archer-emerite':[[{},'permanentEffect',/PER/]],
++ 'le-loup':[[{},'companion','Loup']],
++ survie:[[test('climb'),'skillBonus',3],[test('night_recovery',{inWilderness:true}),'skillBonus',3],[recovery,'extraRecovery','1d4° PV'],[{...recovery,spendsRecoveryDie:false}],[{...recovery,inWilderness:false}],[test('night_recovery')]],
++ eclaireur:[...['wilderness_stealth','wilderness_vigilance','tracking'].map(t=>[test(t,{inWilderness:true}),'skillBonus',3]),[test('tracking')]],
++ 'attaque-a-suivre-g':[[follow,'penaltyDie',false],[{...follow,weaponId:'weapon:long-sword'},'penaltyDie',true],[{...follow,mainHandAttackMissed:false}],[{...follow,inOtherHand:false}],[{...follow,usedThisRound:true}],[{...follow,weaponId:'weapon:great-sword'}]],
++ discretion:[[{attacking:true,targetSurprised:true},'bonusDie',true],[{attacking:true,targetSurprised:false}],[test('hide_weapon'),'skillBonus',3]],
++ baratin:[[{item:'scroll',spellRank:1},'magicAttackDifficulty',12],[{item:'wand',spellRank:5},'magicAttackDifficulty',20],[{item:'scroll',spellRank:6}],[{item:'sword',spellRank:2}],[test('black_market'),'skillBonus',3]],
++ agile:[[{},'permanentEffect',/DEF et initiative \+1/],[test('escape_grapple'),'skillBonus',3]],
++ 'doigts-agiles':[[{weaponId:'weapon:dagger'},'permanentEffect',/DM \+1/],[{weaponId:'weapon:long-sword'}],[test('lockpick'),'skillBonus',3]],
++ 'attaque-en-finesse':[[{weaponId:'weapon:dagger'},'attackCharacteristic','AGI'],[{weaponId:'weapon:dagger'},'damageCharacteristic','FOR'],[{weaponId:'weapon:long-sword'}],[test('intimidation'),'skillBonus',3]],
++ 'proteger-un-allie-g':[[protect],[test('avoid_surprise'),'skillBonus',3]],
++ vivacite:[[{ownTurn:true,usedThisCombat:false},'extraMovementActions',1],[{ownTurn:false,usedThisCombat:false}],[{ownTurn:true,usedThisCombat:true}],[test('avoid_prone',{characteristic:'for'}),'skillBonus',3],[test('avoid_prone',{characteristic:'con'})]],
++ 'armes-de-predilection':[[{},'permanentEffect',/Attaque \+1/],[test('weapon_value'),'skillBonus',3],[test('martial_reputation'),'skillBonus',3]],
++ robustesse:[[{},'permanentEffect',/PV max \+3/],...['physical_effort','natural_heat','natural_cold'].map(t=>[test(t),'skillBonus',3])],
++ 'teigneux-g':[[pursuit,'freeMeleeAttack',true],[{...pursuit,enemyInContact:false}],[{...pursuit,enemyMovingAway:false}],[{...pursuit,usedThisRound:true}],...['alcohol','food_deprivation','sleep_deprivation'].map(t=>[test(t),'skillBonus',3])]
++};
++function fill(s){
++ for(let i=0;i<4;i++)for(const a of E.previewAcquiredAbilities(s))for(const c of E.getPersistentChoicesForAbility(s,a.id)){
++  const bag=s.abilityChoices[a.id]||(s.abilityChoices[a.id]={});
++  if(c.id==='preferredWeaponCategory')bag[c.id]=s.profileChoices[c.id]='swords';
++  else if(c.type==='boolean')bag[c.id]??=false;
++  else if(c.type==='entity')bag[c.id]??={type:'animal',species:'chat',name:'Témoin'};
++  else if(c.type==='weapon_multi')bag[c.id]??=c.options.slice(0,c.min||1).map(x=>x.id);
++  else if(c.options?.length)bag[c.id]??=c.options[0].id;
++ }
++}
++const slugOf=a=>a.id.split(':')[1];
++function check(c,slug,scenario){
++ const [context,key,wanted]=scenario;
++ const actual=API.resolveGrant(c,slug,context);
++ assert.equal(actual.applies,!!key,slug+' '+JSON.stringify(context)+' '+actual.requirements.join(' '));
++ if(wanted instanceof RegExp)assert.match(actual.modifiers[key],wanted);
++ else if(key)assert.equal(actual.modifiers[key],wanted,slug);
++ else{assert.deepEqual(actual.modifiers,{});report.refusals++;}
++}
++for(const variant of ['arquebusier','arbaletrier']){
++ const merc=T.paths_class.find(p=>p.id.includes('voie-du-mercenaire:class-'+variant+':'));
++ const base=F.withRank(db,F.standardState(db,merc.classId,merc.id),merc.id,3);
++ const source=E.previewAcquiredAbilities(base).find(a=>slugOf(a)==='combattant-aguerri');
++ const options=E.getPersistentChoicesForAbility(base,source.id).find(x=>x.id==='combattantAguerriAbility').options;
++ assert.deepEqual(options.map(slugOf).sort(),Object.keys(tests).sort());
++ for(const option of options){
++  const slug=slugOf(option),draft=JSON.parse(JSON.stringify(base));
++  draft.abilityChoices[source.id]={combattantAguerriAbility:option.id};
++  draft.equip={...draft.equip,armorId:T.armors.find(a=>a.defBonus===2).id,gmApprovedSwap:true};
++  fill(draft);
++  const computed=E.computeCharacterN1(draft);
++  assert.equal(computed.errors.length,0,computed.errors.join(' | '));
++  const c=computed.sticky.characterState,before=JSON.stringify(c);
++  assert.equal(API.granted(c,slug)?.id,option.id);
++  const scenarios=tests[slug];
++  for(const scenario of scenarios)check(c,slug,scenario);
++  assert.equal(JSON.stringify(c),before);
++  const payload=E.createHeroSavePayload(draft,c,{id:'mercenary-'+slug}),restored=E.restoreHeroSavePayload(JSON.parse(JSON.stringify(payload)));
++  const reopened=E.computeCharacterN1(restored.draft);
++  assert.deepEqual(Array.from(reopened.errors),[]);
++  for(const scenario of scenarios)check(reopened.sticky.characterState,slug,scenario);
++  const withoutSource={...c,abilities:c.abilities.filter(a=>a.id!==source.id)};
++  check(withoutSource,slug,[scenarios[0][0]]);
++  if(/class-(voleur|rodeur):/.test(option.id)){
++   const armorDef=option.id.includes('class-voleur:')?3:4;
++   draft.equip.armorId=T.armors.find(a=>a.defBonus===armorDef).id;
++   const blocked=E.computeCharacterN1(draft);
++   assert.deepEqual(Array.from(blocked.errors),[]);
++   const activeScenario=scenarios.find(s=>s[1]);
++   check(blocked.sticky.characterState,slug,[activeScenario[0]]);
++  }
++  if(slug==='proteger-un-allie-g'){
++   // Pure variants cannot equip shields. Isolate the legal equipped case and
++   // each trigger boundary, without pretending a pure creation could equip it.
++   const shield={...c,equipment:{...c.equipment,shieldId:'shield:shield'}};
++   check(shield,slug,[protect,'allyDefenseBonus',2]);
++   for(const [key,value] of [['surprised',true],['allyInContact',false],['beforeAttackResult',false],['usedThisRound',true]])check(shield,slug,[{...protect,[key]:value}]);
++  }
++  report.cases.push({variant,slug,status:'PASS',checks:scenarios.length,saveReload:true});
++ }
++}
++report.status='PASS';
++fs.writeFileSync(root+'/QA/N1/arquebusier-grant-context.json',JSON.stringify(report,null,2)+'\n');
++console.log(JSON.stringify({status:report.status,grants:report.cases.length,refusals:report.refusals}));
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_venerable_context_click.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_venerable_context_click.cjs
+index e849fc3..8a51119 100644
+--- a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_venerable_context_click.cjs
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_venerable_context_click.cjs
+@@ -35,7 +35,7 @@ try{
+   const btn=area.getByRole('button',{name:/Acquérir/}).first();
+   await btn.tap();rec.steps.push('age-rank-'+name);
+  }
+- if(job.first==='mercenaire')await choose('select[data-ability-choice$="|combattantAguerriAbility"]','Archer émérite');
++ if(job.first==='mercenaire')await choose('select[data-ability-choice$="|combattantAguerriAbility"]','Vivacité');
+  await next();
+  if(job.first==='artilleur'||job.second==='artilleur'){
+   const count=p.locator('[data-pistol-count="1"]');
+@@ -54,6 +54,17 @@ try{
+  await p.locator('#foh-n1-context-ability').selectOption(job.r2[0]);
+  await p.locator('#foh-n1-context-example').selectOption(String(job.r2[1]));
+  await p.locator('#foh-n1-context-run').tap();assert((await p.locator('#foh-n1-context-result').innerText()).includes(job.r2[2]),'R2 formula '+job.r2[0]+' absent');
++ if(job.first==='mercenaire'){
++  await p.locator('#foh-n1-context-ability').selectOption('don:vivacite');
++  const result=p.locator('#foh-n1-context-result');
++  await p.locator('#foh-n1-context-example').selectOption('0');
++  await p.locator('#foh-n1-context-run').tap();
++  assert.match(await result.innerText(),/Actions de mouvement en plus : 1/);
++  await p.locator('#foh-n1-context-example').selectOption('1');
++  await p.locator('#foh-n1-context-run').tap();
++  assert.match(await result.innerText(),/NON applicable/);
++  rec.steps.push('vivacite-condition-verified');
++ }
+  assert.equal(errors.length,0,'Erreurs navigateur '+errors.join(' ; '));
+  rec.status='PASS';report.passed++;
+ }catch(e){rec.error=String(e.stack||e).slice(0,2200);rec.browserErrors=errors.slice(0,5);rec.view=await p.locator('.step.active').innerText().then(x=>x.slice(0,700)).catch(()=>null);report.failed++;}
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+index 74d88a1..6740a4a 100644
+--- a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+@@ -143,6 +143,10 @@ const throwerMobileCurrent=throwerMobile?.status==='PASS'&&throwerMobile.passed=
+ const clickComplete=twentyRealClick&&r2Mobile&&r1RealClick&&mobile80Current&&throwerMobileCurrent;
+ const methodsEvidence=optionalProof('official-methods-cross.json');
+ const methodsCurrent=methodsEvidence?.coverage?.complete===true&&methodsEvidence.sourceSha256===productHash('index.html')&&methodsEvidence.cases===1008&&methodsEvidence.passed===1008&&methodsEvidence.refused===0&&methodsEvidence.failed===0;
++const grantContext=optionalProof('arquebusier-grant-context.json');
++const grantContextCurrent=grantContext?.status==='PASS'&&sameCurrentHashes(grantContext.products)&&grantContext.cases?.length===30&&grantContext.refusals>=100&&['arquebusier','arbaletrier'].every(variant=>new Set(grantContext.cases.filter(c=>c.variant===variant&&c.status==='PASS'&&c.saveReload&&c.checks>0).map(c=>c.slug)).size===15);
++const borrowedMobileCurrent=r2Mobile&&advanced.cases?.some(c=>c.status==='PASS'&&c.steps?.includes('vivacite-condition-verified'));
++const r3EffectsCurrent=contextualComplete&&grantContextCurrent&&borrowedMobileCurrent&&gearComplete&&pdfComplete;
+ const profileChecks=[
+  mark('paths','Les cinq voies officielles',profile.powers.length===5,'Les cinq voies et leurs 15 rangs accessibles sont présents et référencés.','Vérifier les cinq voies du livre.'),
+  mark('pairs','Toutes les paires de voies légales',tenPairsVerified,'Les dix choix possibles de deux voies du profil, avec chacun des huit peuples et les cinq modalités d’âge N1, sont créés, validés et conservés après sauvegarde. Les dix couples de l’Arbalétrier sont aussi éprouvés.','Les dix choix possibles de deux voies doivent fonctionner avec les équipements autorisés, y compris l’alternative Halfelin.'),
+@@ -154,7 +158,7 @@ const profileChecks=[
+  mark('derived','PV, DEF, initiative, chance, mana, attaques et dommages',derivedComplete,'10 240 comparaisons arithmétiques indépendantes : deux variantes, huit peuples, vingt paires ordonnées, cinq modalités d’âge, deux séries et deux armures, quinze dons et échange PC/DR. Attaques, dégâts, portée, critique, pouvoirs permanents et sauvegardes. 18 contrôles des frontières poudre/arbalètes et 10 doubles choix de prédilection. Les activations de combat restent au critère R3.','Compléter les preuves arithmétiques indépendantes sur le seul index publié, toutes les attaques et les dons ; refuser tout rapport partiel ou périmé.'),
+  mark('r1effects','Tous les effets des cinq capacités de rang 1',r1Complete,'Cinq capacités R1 calculées selon contexte dans l’interface réelle : mécanismes et armes de siège, grenaille en cône, Pilier de bar 1d4° et résistance non létale, initiative armée chargée, couvert, sans faire intervenir les hybrides. Plus de 60 cas oracle historiques + quatre situations réelles au clic sur la Forge publiée.','Compléter les preuves sur les 5 effets R1, les cas négatifs, le vrai parcours au clic sur la version courante ; aucun test hybride requis.'),
+  mark('r2effects','Tous les effets des cinq capacités de rang 2',r2Complete,'Cinq capacités R2 contrôlées par oracles contextuels (cas applicables, absence de contexte et capacité non acquise) et cinq créations vénérables au clic sur la version courante. Chargeurs calculés depuis les rangs acquis, rechargement, charges/préparation de Démolition, NC/critique de Mort ou vif, cible/délai d’Ajuster le tir et préparation/DEF/RD de Défaut dans la cuirasse. Rangs et sauvegardes croisés aux huit peuples.',mechanicalCurrent?'15 capacités R1–R3 contrôlées dans les deux bases, et chargeur 2+INT validé. Plusieurs rangs R2 restent des effets à interpréter en combat ; rechargement, Démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse non certifiés en exécution.':'Chargeur 2 + INT validé ; restent le rechargement, la démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse.'),
+- mark('r3effects','Tous les effets des cinq capacités de rang 3',false,'','Les cinq capacités R3 du profil disposent de calculs contextuels et de parcours vénérables au clic. Les quinze dons de Combattant aguerri sont accessibles, conservés et contrôlés dans les calculs permanents. Restent à vérifier intégralement les conditions d’exécution des capacités accordées, notamment Vivacité, Teigneux, Attaque à suivre et Protéger un allié ; ce critère reste ouvert.'),
++ mark('r3effects','Tous les effets des cinq capacités de rang 3',r3EffectsCurrent,'Calcul des cinq capacités R3, plus les 15 dons de Combattant aguerri dans les deux variantes. Conditions, restrictions d’armure, réouverture et non-application vérifiées. Vivacité testée au clic dans les deux situations.', 'Vérifier les cinq capacités et les dons de Combattant aguerri avec leurs restrictions, sur la fiche et au clic.'),
+  mark('gear','Toutes les armes, armures et variante Arbalétrier',gearComplete,'100 contrôles des frontières d’équipement sur la Forge publiée (200 dans l’ancien rapport comprenant le maître supprimé) : 41 armes, sept armures, deux boucliers et deux variantes, avec sauvegardes. Variante sans poudre : pétoire et mousquet refusés. 120 contrôles des dons et plafonds d’armure sur la Forge publiée et vingt créations réelles au clic. Les restrictions raciales de taille restent suivies dans les critères propres aux peuples.',mercenaryContinuity?'Périmètre PROFIL PUR seulement : contrôler les interdictions de boucliers, le plafond chemise de mailles, les catégories d’armes et les paquetages, ainsi que la variante officielle Arbalétrier sans armes à poudre. Les 32 tests hybrides réussis restent hors de ce certificat.':deployed||arbaletrierMissing?variantGap:(pureGearCurrent?'80/80 armures autorisées jusqu’à DEF +4 et 16/16 pétoires maîtrisées pour les huit peuples sur deux produits. Les armures trop lourdes et boucliers sont refusés par le moteur ; vérifier la règle de port avec incapacités et l’Arbalétrier.':'Maîtrises, armure maximum, boucliers, armes à poudre, équipements alternatifs et Arbalétrier sans poudre.')),
+  mark('history','Origines, métiers et historiques avancés',false,'',historyConditionsCurrent?'Érudit : domaines/langues et Argumenter ; Courtisan : dons R5, Secrets et commérages, perception visuelle/mensonge/langage corporel ; bonus communautaire et Expertise calculés en situation avec cas défavorables. 80 personnages et six parcours dédiés sauvegardés et rouverts, en plus des 248 cas de choix historiques et 24 exports privés. Restent les autres capacités historiques et leurs conditions : aucune clôture globale.':historyChoicesCurrent?'Érudit : domaines principal et secondaire, bonus et langues par rang, quota pondéré de l’Argotien ; Courtisan R5 : don R1–R3 aventurier et acquisitions imbriquées. 496 cas, six créations mobiles sauvegardées et rouvertes, 24 exports officiels privés vérifiés. Restent le bonus communautaire et les autres effets conditionnels des historiques ; ce critère reste ouvert.':historyCrossPassed?'Les 17 historiques sont accessibles, leurs rangs et sauvegardes réussissent avec les huit peuples. Restent à vérifier individuellement leurs bonus conditionnels, les restrictions et l’export sur la fiche de l’Arquebusier.':'Contrôler toutes les voies d’historique, leurs rangs accessibles et leurs effets sur les aptitudes de l’Arquebusier.'),
+  mark('save','Enregistrer et reprendre les pouvoirs obtenus',ageOK,'Les états de référence des rangs 1, 2 et 3 avec l’âge ont été enregistrés et restaurés à l’identique.','Vérifier la sauvegarde et la reprise.'),
+@@ -181,6 +185,8 @@ const inheritedPaths=['voie-de-l-humain','voie-de-l-elfe-haut','voie-de-l-elfe-s
+ const racialRankCurrent=(people,rank)=>peopleSourceCurrent&&(people==='demi-elfe'
+  ? inheritedPaths.every(path=>peopleSource.inheritedPaths?.some(row=>row.file==='index.html'&&row.path===path&&row.rank===rank&&row.sourcePage===46&&row.status==='PASS'))
+  : peopleSource.cases?.some(row=>row.file==='index.html'&&row.people===people&&row.rank===rank&&row.path!=='path:mage:cof2-lb-2024'&&row.source?.document==='COF2 Livre de base'&&row.source.officialCOF2&&row.status==='PASS'));
++const peopleGear=optionalProof('official-people-equipment.json');
++const peopleGearCurrent=peopleGear?.status==='PASS'&&sameCurrentHashes(peopleGear.products);
+ const peoples=old.peoples.filter(x=>expectedNames.has(x.label)).map(p=>{
+  const currentRace=!!racialOptionsCurrent&&racialOptions.perPeople?.[p.key]?.cases>0&&racialOptions.perPeople[p.key].cases===racialOptions.perPeople[p.key].passed&&racialOptions.perPeople[p.key].failed===0&&Object.keys(racialOptions.perPeople[p.key].profileCases||{}).length===14;
+  const methodRows=methodsEvidence?.items?.peoples?.[p.id]||[];
+@@ -195,7 +201,7 @@ const peoples=old.peoples.filter(x=>expectedNames.has(x.label)).map(p=>{
+   mark('methods','Caractéristiques et sauvegarde des choix',currentMethods,'Répartition et reprise des caractéristiques raciales vérifiées.','Valider les variantes et sauvegardes des caractéristiques.'),
+   mark('ages','Tous les âges et historiques avec ce peuple',false,'',historyCrossPassed?(p.key==='elfe-sylvain'?'Règle confirmée pour l’Elfe sylvain (COF2 p.172) : origines Cités et Campagnes interdites en mode historique. Toutes les autres combinaisons d’historiques ciblées ont été acceptées et sauvegardées. Restent les autres effets selon les âges.':'Les associations origine géographique + métier ont été acceptées, leurs rangs et sauvegardes vérifiés au niveau 1 avec un personnage vénérable. Restent les variantes d’âge et les effets historiques conditionnels.'): 'Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil.'),
+   mark('conditional','Effets conditionnels et dons raciaux',false,'','Vérifier chaque pouvoir racial selon ses conditions réelles, y compris dons et résistances.'),
+-  mark('gear','Équipements et contraintes de taille',false,'','Vérifier toutes les restrictions raciales, les armes et les échanges autorisés.'),
++  mark('gear','Équipements et contraintes de taille',peopleGearCurrent&&peopleGear.peoples?.[p.key]?.status==='PASS'&&peopleGear.peoples[p.key].weapons===41&&peopleGear.peoples[p.key].armorAndShields===9&&peopleGear.peoples[p.key].saveReload,'41 armes du livre de base, sept armures et deux boucliers évalués avec un profil Guerrier. Les contraintes raciales du Halfelin et la sauvegarde sont contrôlées.','Vérifier toutes les restrictions raciales, les armes et les échanges autorisés.'),
+   mark('sheet','Fiche officielle et parcours de création',false,'','Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné.')
+  ];
+  const pass=checks.filter(x=>x.status==='ACQUIS').length;
+@@ -237,7 +243,7 @@ const output={
+  pausedProfiles:13,
+  summary:{profilesCertified:0,profilesInProgress:1,profilesPending:13,peoplesCertified:peoples.filter(p=>p.certified).length},
+  limitations:'Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.',
+- sources:['QA/N1/lot10/people-source.json','QA/N1/arquebusier-derived-source.json','QA/N1/arquebusier-powder-weapon-boundary.json','QA/N1/arquebusier-two-preferences.json','QA/N1/arquebusier-official-template.json',...(variant?['QA/N1/arquebusier-arbaletrier-source-audit.json']:[]),'COF2 Livre de base pp. 44-65','Règles avancées p.153 et historiques','QA/N1/arquebusier-pure-age-ranks.json','QA/N1/arquebusier-pdf-real-click.json','QA/N1/arquebusier-all-mechanics-probe.json','QA/N1/official-methods-cross.json','QA/N1/official-racial-options.json','QA/N1/lot10/people-source.json']
++ sources:['QA/N1/official-people-equipment.json','QA/N1/arquebusier-grant-context.json','QA/N1/lot10/people-source.json','QA/N1/arquebusier-derived-source.json','QA/N1/arquebusier-powder-weapon-boundary.json','QA/N1/arquebusier-two-preferences.json','QA/N1/arquebusier-official-template.json',...(variant?['QA/N1/arquebusier-arbaletrier-source-audit.json']:[]),'COF2 Livre de base pp. 44-65','Règles avancées p.153 et historiques','QA/N1/arquebusier-pure-age-ranks.json','QA/N1/arquebusier-pdf-real-click.json','QA/N1/arquebusier-all-mechanics-probe.json','QA/N1/official-methods-cross.json','QA/N1/official-racial-options.json','QA/N1/lot10/people-source.json']
+ };
+ const dest=path.resolve(root,'..','centre-synchronisation/forge-n1/focus.json');
+ fs.writeFileSync(dest,JSON.stringify(output,null,2)+'\n');
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_people_equipment_oracle.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_people_equipment_oracle.cjs
+new file mode 100644
+index 0000000..a80b93c
+--- /dev/null
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_people_equipment_oracle.cjs
+@@ -0,0 +1,78 @@
++'use strict';
++const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs'),path=require('node:path');
++const F=require('./forge_product_runner');
++const root=path.resolve(__dirname,'..'),{html,db,engine:E}=F.load(root+'/index.html'),T=db.tables;
++const report={status:'PENDING',products:[{file:'index.html',sha256:crypto.createHash('sha256').update(html).digest('hex')}],source:'COF2 Livre de base pp.44–59, 86, 183–188',peoples:{}};
++const peopleChoices={
++ humain:{humainStat:'con'},nain:{bonusStat:'con'},
++ 'demi-elfe':{bonusStat:'per',malusStat:'for'},'demi-orc':{bonusStat:'for',malusStat:'cha'},
++ 'elfe-haut':{bonusStat:'int'},'elfe-sylvain':{bonusStat:'agi'},
++ gnome:{bonusStat:'int'},halfelin:{bonusStat:'agi'}
++};
++const standardWeapons=T.weapons_n1.filter(w=>w.source?.book==='COF2 Livre de base');
++assert.equal(standardWeapons.length,41);
++// Independent list from the equipment damage dice and Halfelin's Petite taille.
++const forbidden=new Set(['great-sword','great-axe','cavalry-lance','heavy-crossbow','longbow','musket']);
++const twoHands=new Set(['bastard-sword','long-sword','great-flail','axe','pike','vivelame','light-crossbow','powder-pistol','scimitar','scythe','pickaxe']);
++const armors=T.armors.filter(a=>!a.id.includes('os-sorcier'));
++assert.equal(armors.length,7);
++const shield=T.shields.find(x=>x.id.includes(':petit:'));
++function draft(key){
++ const s=F.standardState(db,'class:guerrier:cof2-lb-2024',undefined,'people:'+key+':cof2-lb-2024');
++ s.peupleChoices={...peopleChoices[key]};
++ if(key==='demi-elfe')s.voies.peoplePathId='path:voie-de-l-humain:cof2-lb-2024';
++ if(key==='gnome')s.peupleChoices.grantedAbilityId=T.abilities_class.find(a=>a.rank===1&&a.path_id.includes('voie-des-illusions')).id;
++ s.voies.profilePathIds=T.paths_class.filter(p=>p.classId===s.classeId&&!/bouclier|maitre-d-armes/.test(p.id)).slice(0,2).map(p=>p.id);
++ s.equip={...s.equip,armorId:'',shieldId:'',weaponIds:['weapon:dagger'],gmApprovedSwap:true};
++ return s;
++}
++for(const key of Object.keys(peopleChoices)){
++ const s=draft(key),row={weapons:0,armorAndShields:0,saveReload:false,status:'PENDING'};
++ for(const w of standardWeapons){
++  s.equip.weaponIds=[w.id];
++  const r=E.computeCharacterN1(s),id=w.id.split(':')[1];
++  if(key==='halfelin'&&forbidden.has(id))assert.match(r.errors.join(' '),/interdite par la petite taille/,w.id);
++  else{
++   assert.deepEqual(Array.from(r.errors),[],key+' '+w.id);
++   const attack=r.sticky.attacks.find(a=>a.weaponId===w.id);
++   assert(attack?.mastered,key+' '+w.id);
++   assert.equal(attack.hands,key==='halfelin'&&twoHands.has(id)?2:(w.hands||1),key+' '+w.id);
++   if(key==='halfelin'&&twoHands.has(id)){
++    s.equip.shieldId=shield.id;
++    assert.match(E.computeCharacterN1(s).errors.join(' '),/deux mains/,w.id);
++    s.equip.shieldId='';
++   }
++  }
++  row.weapons++;
++ }
++ s.equip.weaponIds=['weapon:dagger'];
++ for(const armor of armors){
++  s.equip.armorId=armor.id;
++  const r=E.computeCharacterN1(s);
++  if(armor.defBonus>5)assert.match(r.errors.join(' '),/Armure non maîtrisée/);
++  else{
++   assert.deepEqual(Array.from(r.errors),[]);
++   assert.equal(r.sticky.characterState.calculationTrace.DEF.armor,armor.defBonus);
++  }
++  row.armorAndShields++;
++ }
++ s.equip.armorId='';
++ for(const shield of T.shields){
++  s.equip.shieldId=shield.id;
++  const r=E.computeCharacterN1(s);
++  assert.deepEqual(Array.from(r.errors),[]);
++  assert.equal(r.sticky.characterState.equipment.shieldId,shield.id);
++  row.armorAndShields++;
++ }
++ const result=E.computeCharacterN1(s);
++ const saved=E.createHeroSavePayload(s,result.sticky.characterState,{id:'equipment-'+key});
++ const restored=E.computeCharacterN1(E.restoreHeroSavePayload(JSON.parse(JSON.stringify(saved))).draft);
++ assert.deepEqual(Array.from(restored.errors),[]);
++ assert.equal(JSON.stringify(restored.sticky.characterState.equipment),JSON.stringify(result.sticky.characterState.equipment));
++ row.saveReload=true;
++ row.status='PASS';
++ report.peoples[key]=row;
++}
++report.status='PASS';
++fs.writeFileSync(root+'/QA/N1/official-people-equipment.json',JSON.stringify(report,null,2)+'\n');
++console.log(JSON.stringify(report));
+diff --git a/forge-of-heroes/index.html b/forge-of-heroes/index.html
+index 2f5f81c..a169b5f 100644
+--- a/forge-of-heroes/index.html
++++ b/forge-of-heroes/index.html
+@@ -2758,7 +2758,108 @@ function solve(character,slug,c={}){
+  }
+  return o;
+ }
+-return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities,resolve:solve,isOwned:(character,slug)=>!!abilityRow(character,slug),ownedProfile});
++const grantPages={
++ 'archer-emerite':70,'le-loup':71,survie:72,eclaireur:72,'attaque-a-suivre-g':73,
++ discretion:74,baratin:75,agile:75,'doigts-agiles':76,'attaque-en-finesse':77,
++ 'proteger-un-allie-g':87,vivacite:88,'armes-de-predilection':88,robustesse:89,'teigneux-g':90
++};
++const grantAbilities=Object.keys(grantPages);
++function grantedRow(character,slug){
++ const source=abilityRow(character,'combattant-aguerri');
++ return source&&(character.abilities||character.acquiredAbilities||[]).find(a=>a.id.startsWith('ability:'+slug+':')&&a.rank===1&&a.grantedByAbilityId===source.id);
++}
++function resolveGrant(character,slug,c={}){
++ if(!Object.hasOwn(grantPages,slug))throw Error('Capacité accordée inconnue '+slug);
++ const a=grantedRow(character,slug),o=result(slug,a,a?.rank);
++ o.sourcePage=grantPages[slug];
++ if(!a)return fail(o,'Capacité non accordée par Combattant aguerri.');
++ const armor=character.calculationTrace?.DEF?.armor;
++ const ceiling=a.id.includes('class-voleur:')?2:a.id.includes('class-rodeur:')?3:null;
++ if(ceiling!==null&&(!Number.isFinite(armor)||armor>ceiling))return fail(o,'Armure incompatible : '+(ceiling===2?'cuir simple':'cuir renforcé')+' au maximum.');
++ const attacks=character.attacks||[];
++ const contact=attacks.find(row=>row.weaponId===c.weaponId&&row.type==='contact'&&row.hands===1&&row.mastered);
++ const skill=a.mechanics?.skillBonuses?.find(row=>row.tests.includes(c.test));
++ if(skill&&(slug!=='survie'||c.test==='climb'||c.inWilderness===true)&&(slug!=='vivacite'||['agi','for'].includes(c.characteristic))){
++   o.modifiers.skillBonus=skill.value;
++   return success(o,'test concerné par la capacité');
++ }
++ switch(slug){
++  case 'attaque-a-suivre-g': {
++   const weapon=attacks.find(row=>row.weaponId===c.weaponId&&row.hands===1&&row.mastered&&(row.type==='contact'||row.properties?.includes('thrown')));
++   if(c.mainHandAttackMissed!==true||c.inOtherHand!==true||c.usedThisRound!==false||!weapon)return fail(o,'Attaque principale ratée, arme admissible tenue dans l’autre main et capacité encore disponible ce round.');
++   o.modifiers.freeAttack=true;
++   o.modifiers.penaltyDie=!['weapon:dagger','weapon:throwing-hatchet','weapon:short-sword'].includes(c.weaponId);
++   return success(o,'attaque gratuite avec l’autre main');
++  }
++  case 'proteger-un-allie-g':
++   if(!character.equipment?.shieldId||c.surprised!==false||c.allyInContact!==true||c.beforeAttackResult!==true||c.usedThisRound!==false)return fail(o,'Bouclier manié, allié au contact, personnage non surpris et annonce avant le résultat. Une fois par round.');
++   o.modifiers.allyDefenseBonus=2;
++   return success(o,'protection contre une attaque');
++  case 'vivacite':
++   if(c.ownTurn!==true||c.usedThisCombat!==false)return fail(o,'Tour du personnage et action supplémentaire encore disponible dans ce combat.');
++   o.modifiers.extraMovementActions=1;
++   return success(o,'mouvement supplémentaire');
++  case 'teigneux-g':
++   if(c.enemyInContact!==true||c.enemyMovingAway!==true||c.usedThisRound!==false)return fail(o,'Créature au contact qui s’éloigne, capacité encore disponible ce round.');
++   o.modifiers.freeMeleeAttack=true;
++   return success(o,'attaque au contact en action gratuite');
++  case 'discretion':
++   if(c.attacking!==true||c.targetSurprised!==true)return fail(o,'Attaque contre un adversaire surpris requise.');
++   o.modifiers.bonusDie=true;
++   return success(o,'attaque contre un adversaire surpris');
++  case 'baratin': {
++   const rank=num(c.spellRank);
++   if(!['scroll','wand'].includes(c.item)||!Number.isInteger(rank)||rank<1||rank>5)return fail(o,'Parchemin ou baguette et rang du sort compris entre 1 et 5 requis.');
++   o.modifiers.magicAttackDifficulty=10+2*rank;
++   o.modifiers.limitedAction=true;
++   o.notes.push('Le sort est lancé si le test réussit. Une nouvelle tentative est possible en cas d’échec.');
++   return success(o,'utilisation d’un objet magique');
++  }
++  case 'survie':
++   if(c.inWilderness!==true||c.sleeping!==true||c.spendsRecoveryDie!==true)return fail(o,'Nuit en milieu naturel avec dépense d’un dé de récupération requise.');
++   o.modifiers.extraRecovery='1d4° PV';
++   return success(o,'récupération en milieu naturel');
++  case 'eclaireur':
++   if(c.inWilderness!==true||!['wilderness_stealth','wilderness_vigilance','tracking'].includes(c.test))return fail(o,'Discrétion, vigilance ou pistage en milieu naturel requis.');
++   o.modifiers.skillBonus=3;
++   return success(o,'test en milieu naturel');
++  case 'le-loup': {
++   const wolf=(character.companions||[]).find(x=>x.companionId==='companion:wolf');
++   if(!wolf)return fail(o,'Compagnon absent de la fiche.');
++   o.modifiers.companion='Loup';
++   o.notes.push('Il attaque au tour de son maître et comprend des ordres simples. Consulter la fiche du compagnon pour ses valeurs.');
++   return success(o,'compagnon animal');
++  }
++  case 'agile':
++   o.modifiers.permanentEffect='DEF et initiative +1, déjà compris dans la fiche';
++   return success(o,'bonus permanents');
++  case 'robustesse':
++   o.modifiers.permanentEffect='PV max +3, déjà compris dans la fiche';
++   return success(o,'bonus permanent');
++  case 'attaque-en-finesse':
++   if(!contact||!['weapon:dagger','weapon:short-sword','weapon:rapier'].includes(c.weaponId))return fail(o,'Dague, épée courte ou rapière équipée pour une attaque au contact.');
++   o.modifiers.attackCharacteristic='AGI';
++   o.modifiers.damageCharacteristic='FOR';
++   return success(o,'attaque au contact en finesse');
++  case 'doigts-agiles':
++   if(!['weapon:dagger','weapon:throwing-knives'].includes(c.weaponId)||!attacks.some(row=>row.weaponId===c.weaponId&&row.type==='distance'))return fail(o,'Attaque à distance avec une dague ou des couteaux de lancer équipés.');
++   o.modifiers.permanentEffect='DM +1, déjà compris dans l’attaque à distance';
++   return success(o,'lancer de dague ou de couteaux');
++  case 'archer-emerite': {
++   const isThrower=character.creationInput?.abilityChoices?.[a.id]?.throwerVariant===true;
++   o.modifiers.permanentEffect=isThrower?'Armes de jet : FOR aux DM et portée doublée, déjà calculées. Aucun bonus d’initiative.':'Arc : PER aux DM et initiative +1, déjà calculés.';
++   return success(o,'variante sélectionnée sur la fiche');
++  }
++  case 'armes-de-predilection': {
++   const category=character.creationInput?.abilityChoices?.[a.id]?.preferredWeaponCategory||character.creationInput?.profileChoices?.preferredWeaponCategory;
++   if(!category)return fail(o,'Catégorie de prédilection manquante sur la fiche.');
++   o.modifiers.permanentEffect='Attaque +1 avec la catégorie choisie, déjà compris dans les attaques concernées';
++   return success(o,'catégorie de prédilection');
++  }
++ }
++ return o;
++}
++return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-3',grantAbilities,resolveGrant,granted:(c,slug)=>grantedRow(c,slug),sourcePages:PAGES,abilities,resolve:solve,isOwned:(character,slug)=>!!abilityRow(character,slug),ownedProfile});
+ });
+ 
+ </script>
+@@ -2787,6 +2888,33 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities
+   'defaut-dans-la-cuirasse-a':[['Cible AGI +2, préparée, visible',{preparedTargetLastRound:true,sameTarget:true,rangedAttack:true,targetAGI:2}],['Cible immatérielle AGI +2',{preparedTargetLastRound:true,sameTarget:true,rangedAttack:true,targetAGI:2,targetImmaterial:true}]],
+   'tir-precis':[['Attaque avec arme à distance',{rangedAttack:true}],['Attaque au contact : seuil normal',{rangedAttack:false}]]
+  };
++ const follow={mainHandAttackMissed:true,inOtherHand:true,usedThisRound:false};
++ const protect={surprised:false,allyInContact:true,beforeAttackResult:true,usedThisRound:false};
++ const quick={ownTurn:true,usedThisCombat:false};
++ const pursue={enemyInContact:true,enemyMovingAway:true,usedThisRound:false};
++ const dagger={weaponId:'weapon:dagger'};
++ const nature={inWilderness:true};
++ const rest={...nature,sleeping:true,spendsRecoveryDie:true};
++ const grantExamples={
++  'archer-emerite':[['Effets de la variante choisie',{}]],
++  'le-loup':[['Compagnon et ordre simple',{}]],
++  survie:[['Récupérer en milieu naturel en dépensant un DR',rest],['Récupérer sans dé de récupération',{...rest,spendsRecoveryDie:false}],['Escalader',{test:'climb'}],['Survie en milieu naturel',{...nature,test:'wilderness_survival'}]],
++  eclaireur:[['Pister en milieu naturel',{...nature,test:'tracking'}],['Pister en ville',{test:'tracking'}],['Discrétion en milieu naturel',{...nature,test:'wilderness_stealth'}],['Vigilance en milieu naturel',{...nature,test:'wilderness_vigilance'}]],
++  'attaque-a-suivre-g':[['Rater avec la main principale, dague dans l’autre main',{...follow,...dagger}],['Déjà utilisé ce round',{...follow,...dagger,usedThisRound:true}],['Autre arme à une main : épée longue',{...follow,weaponId:'weapon:long-sword'}]],
++  discretion:[['Attaquer un adversaire surpris',{attacking:true,targetSurprised:true}],['Attaquer un adversaire qui n’est pas surpris',{attacking:true,targetSurprised:false}],['Test de discrétion',{test:'stealth'}]],
++  baratin:[...['scroll','wand'].flatMap(item=>[1,2,3,4,5].map(spellRank=>[(item==='scroll'?'Parchemin':'Baguette')+' de rang '+spellRank,{item,spellRank}])),['Test de négociation',{test:'negotiate'}]],
++  agile:[['Défense et initiative sur la fiche',{}],['Test pour échapper à une emprise',{test:'escape_grapple'}]],
++  'doigts-agiles':[['Lancer une dague équipée',dagger],['Lancer des couteaux équipés',{weaponId:'weapon:throwing-knives'}],['Test de crochetage',{test:'lockpick'}]],
++  'attaque-en-finesse':[['Dague équipée au contact',dagger],['Épée courte équipée au contact',{weaponId:'weapon:short-sword'}],['Rapière équipée au contact',{weaponId:'weapon:rapier'}],['Test d’intimidation',{test:'intimidation'}]],
++  'proteger-un-allie-g':[['Protéger un allié au contact, avant le résultat',protect],['Le résultat de l’attaque est déjà connu',{...protect,beforeAttackResult:false}],['Test pour éviter d’être surpris',{test:'avoid_surprise'}]],
++  vivacite:[['Premier mouvement supplémentaire du combat, à mon tour',quick],['Mouvement supplémentaire déjà utilisé',{...quick,usedThisCombat:true}],['Test de FOR contre le renversement',{characteristic:'for',test:'avoid_prone'}],['Test d’AGI contre l’immobilisation',{characteristic:'agi',test:'avoid_immobilized'}]],
++  'armes-de-predilection':[['Catégorie choisie sur la fiche',{}],['Estimer la valeur d’une arme',{test:'weapon_value'}],['Évaluer une réputation martiale',{test:'martial_reputation'}]],
++  robustesse:[['PV supplémentaires sur la fiche',{}],['Résister à un effort physique',{test:'physical_effort'}],['Résister à la chaleur naturelle',{test:'natural_heat'}],['Résister au froid naturel',{test:'natural_cold'}]],
++  'teigneux-g':[['Un adversaire au contact s’éloigne',pursue],['Déjà utilisé ce round',{...pursue,usedThisRound:true}],['Résister à l’alcool',{test:'alcohol'}],['Résister à la privation de nourriture',{test:'food_deprivation'}],['Résister à la privation de sommeil',{test:'sleep_deprivation'}]]
++ };
++ const grantLabels={freeAttack:'Attaque gratuite',penaltyDie:'Dé malus',allyDefenseBonus:'Bonus de DEF de l’allié',extraMovementActions:'Actions de mouvement en plus',freeMeleeAttack:'Attaque au contact gratuite',magicAttackDifficulty:'Difficulté du test d’attaque magique',limitedAction:'Action limitée',extraRecovery:'Récupération supplémentaire',companion:'Compagnon',permanentEffect:'Effet sur la fiche',attackCharacteristic:'Caractéristique d’attaque',damageCharacteristic:'Caractéristique de dégâts'};
++ const isGrant=key=>key.startsWith('don:');
++ const presetsFor=key=>isGrant(key)?grantExamples[key.slice(4)]:examples[key];
+  const titles={'mecanismes':'Mécanismes','arme-a-repetition':'Arme à répétition','tir-de-barrage-l':'Tir de barrage','tir-de-grenaille-l':'Tir de grenaille',demolition:'Démolition','poudre-puissante':'Poudre puissante','pilier-de-bar':'Pilier de bar','mort-ou-vif-l':'Mort ou vif','combattant-aguerri':'Combattant aguerri','plus-vite-que-son-ombre':'Plus vite que son ombre','ajuster-le-tir':'Ajuster le tir','tir-double-l':'Tir double','joli-coup':'Joli coup','defaut-dans-la-cuirasse-a':'Défaut dans la cuirasse','tir-precis':'Tir précis'};
+  const labels={skillBonus:'Bonus de compétence',bonusDie:'Dé bonus',damageDice:'DM à mains nues',nonLethal:'Dégâts non létaux',incomingDamageDivisor:'Diviseur des dégâts non létaux reçus',initiativeBonusForShot:'Bonus d’initiative pour ce tir',removeRangedContactDisadvantage:'Dé malus du tir au contact supprimé',coverAttackPenalty:'Malus d’attaque pour le couvert',capacity:'Capacité du chargeur',limitedActionsPerProjectile:'Actions limitées par projectile rechargé',totalLimitedActions:'Total actions limitées',attackRolls:'Nombre de tests d’attaque',damageFraction:'Fraction des dommages habituels',area:'Zone d’effet',preparationRounds:'Rounds nécessaires',dailyChargesMax:'Charges maximales par jour',dailyChargesCost:'Charges consommées',damageFormula:'Formule de dommages',targetDamageReductionMultiplier:'Fraction de RD retenue',blastRadiusMeters:'Rayon de déflagration (m)',normalWeaponDamage:'Dommages normaux',canUseTemporaryDamage:'Option dégâts temporaires',maxConditionChoices:'Nombre d’effets préjudiciables possibles',weakenRounds:'Durée de l’affaiblissement',nextRangedAttackBonus:'Bonus du prochain tir',targetDEF:'DEF à atteindre',ignoreDamageResistance:'Ignorer résistance aux DM',ignoreDamageReduction:'Ignorer réduction des DM',zoneWidthMeters:'Largeur de zone surveillée (m)',attackTriggeredByMovement:'Déclenché par déplacement',damageIfVictimChoosesDamage:'Multiplicateur de dommages si choisi',victimStopsTurnIfNoDamage:'La victime termine son tour et son déplacement si elle évite les dommages',weaponRangeBonusMeters:'Portée supplémentaire (m)',weaponDamageBonus:'DM supplémentaires',projectileMagical:'Projectile magique',defenseBonus:'DEF supplémentaire',attackCount:'Attaques',attackPenaltyEach:'Malus par attaque',criticalThreshold:'Critique dès (d20)'};
+  const display=v=>typeof v==='boolean'?(v?'oui':'non'):typeof v==='object'?JSON.stringify(v):String(v);
+@@ -2801,7 +2929,8 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities
+   try{
+    const host=document.getElementById('summary-content');if(!host||host.hidden)return;
+    const st=state();if(!st)return;
+-   const owned=API.abilities.filter(a=>API.isOwned(st,a));if(!owned.length){if(panel)panel.hidden=true;return;}
++   const grants=API.grantAbilities.filter(slug=>API.granted(st,slug));
++   const owned=[...API.abilities.filter(a=>API.isOwned(st,a)),...grants.map(slug=>'don:'+slug)];if(!owned.length){if(panel)panel.hidden=true;return;}
+    if(!panel){
+     panel=document.createElement('details');panel.id='foh-n1-context-situations';
+     panel.style.cssText='margin:14px 0;padding:12px;border:1px solid #877553;border-radius:10px;background:rgba(16,15,13,.86);color:#f5f0e5;font:14px/1.5 system-ui';
+@@ -2815,12 +2944,12 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities
+     for(const select of [a,b])select.style.cssText='max-width:100%;width:100%;padding:9px;border-radius:7px;background:#171511;color:#fff;border:1px solid #877553';
+     const button=$(panel,'button');button.type='button';button.textContent='Calculer les effets';button.id='foh-n1-context-run';button.style.cssText='padding:8px 12px;border-radius:8px;border:1px solid #bd9865;background:#433927;color:#fff;cursor:pointer';
+     const out=$(panel,'div');out.id='foh-n1-context-result';out.setAttribute('aria-live','polite');out.style.cssText='margin-top:9px;font-size:13px;white-space:pre-wrap';
+-    a.addEventListener('change',()=>{const presets=examples[a.value]||[];b.replaceChildren();presets.forEach((p,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=p[0];b.appendChild(o)});out.textContent='';});
++    a.addEventListener('change',()=>{const presets=presetsFor(a.value)||[];b.replaceChildren();presets.forEach((p,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=p[0];b.appendChild(o)});out.textContent='';});
+     button.addEventListener('click',()=>{try{
+       const current=state();if(!current)throw Error('Fiche incomplète.');const slug=a.value;
+-      const setup=examples[slug]?.[Number(b.value)||0];if(!setup)throw Error('Situation non reconnue');
+-      const r=API.resolve(current,slug,setup[1]);const lines=[r.applies?'Capacité applicable dans la situation choisie.':'Capacité NON applicable dans cette situation.'];
+-      for(const [key,val]of Object.entries(r.modifiers))lines.push((labels[key]||key)+' : '+display(val));
++      const setup=presetsFor(slug)?.[Number(b.value)||0];if(!setup)throw Error('Situation non reconnue');
++      const r=isGrant(slug)?API.resolveGrant(current,slug.slice(4),setup[1]):API.resolve(current,slug,setup[1]);const lines=[r.applies?'Capacité applicable dans la situation choisie.':'Capacité NON applicable dans cette situation.'];
++      for(const [key,val]of Object.entries(r.modifiers))lines.push((labels[key]||grantLabels[key]||key)+' : '+display(val));
+       if(r.choices.length)lines.push('Choix : '+r.choices.join(' / '));
+       for(const message of r.requirements)lines.push('Condition manquante : '+message);
+       for(const message of r.limits)lines.push('Limite : '+message);
+@@ -2834,7 +2963,7 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities
+    const a=panel.querySelector('#foh-n1-context-ability');
+    const last=a.value,available=owned.join('|');
+    if(a.dataset.available!==available){
+-     a.replaceChildren();owned.forEach(slug=>{const o=document.createElement('option');o.value=slug;o.textContent=titles[slug]||slug;a.appendChild(o)});
++     a.replaceChildren();owned.forEach(slug=>{const o=document.createElement('option');o.value=slug;o.textContent=isGrant(slug)?API.granted(st,slug.slice(4)).label+' (Combattant aguerri)':titles[slug]||slug;a.appendChild(o)});
+      a.dataset.available=available;if(owned.includes(last))a.value=last;a.dispatchEvent(new Event('change'));
+    }
+   }catch(e){/* Le module complémentaire ne doit jamais bloquer la création ni la fiche officielle. */}
