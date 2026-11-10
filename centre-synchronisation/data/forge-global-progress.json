@@ -1,27 +1,27 @@
 {
   "schema": "FOH_GLOBAL_CERTIFICATION_V1",
-  "generatedAt": "2026-11-09T23:19:59.315Z",
+  "generatedAt": "2026-11-10T07:29:45.252Z",
   "sourceProduct": "forge-of-heroes/index.html",
   "source": {
-    "indexSha256": "737b3932977f206c1ccff19b2d87422ffe92e121b00ab5439096d1ca186a3b1f",
+    "indexSha256": "ad4bc3f015acefad64724f58bac0bef19687acb95833023fff4c74fce943f0a6",
     "engineSha256": "e4caf53cadacbce30b826708335b38316b185c8417d470e9af850581bd491744",
     "databaseSha256": "4cd5c55d8f346630ef5f1c36cbc451441a7c135cd32ac12e696de7e86b934277",
-    "focusSha256": "737b3932977f206c1ccff19b2d87422ffe92e121b00ab5439096d1ca186a3b1f",
-    "focusAt": "2026-11-09T23:19:30.649Z"
+    "focusSha256": "ad4bc3f015acefad64724f58bac0bef19687acb95833023fff4c74fce943f0a6",
+    "focusAt": "2026-11-10T07:29:45.175Z"
   },
   "status": "MEASURED",
   "scope": "Forge COF2 Livre de base, N1 à N3, hybrides/sans profil, export PDF et liaison Hub. Compagnon et futur Guide du joueur hors dénominateur jusqu’à intégration et ajout explicite des critères.",
   "measure": "Couverture des critères de certification, pas % de code écrit ni probabilité d’absence de bug.",
   "scoring": "Sept domaines de même poids. Chaque domaine vaut 1/7 du total et progresse selon ses propres critères intégralement prouvés. Aucune moyenne de tests automatisés ne vaut certificat.",
   "moduleCount": 7,
-  "percent": 9,
-  "exactPercent": 9.46,
+  "percent": 11,
+  "exactPercent": 10.78,
   "certified": false,
   "modules": [
     {
       "id": "n1-profils",
       "name": "N1 · 14 profils officiels",
-      "passed": 14,
+      "passed": 15,
       "total": 224,
       "status": "SCORE_COURANT",
       "description": "16 vérifications complètes par profil. Seul Arquebusier dispose d’un score de profil actuel intégralement étayé ; les anciens 69 % restent archivés.",
@@ -33,18 +33,18 @@
         "evidence": "forge-of-heroes/QA/N1/regressions.json",
         "limitations": "Contrôles ciblés N1 sur index courant ; ne prouvent pas tous les effets R3/historiques ni 14/14 profils à 100 %."
       },
-      "percent": 6,
+      "percent": 7,
       "complete": false
     },
     {
       "id": "n1-peuples",
       "name": "N1 · 8 peuples officiels",
-      "passed": 48,
+      "passed": 55,
       "total": 80,
       "status": "SCORE_COURANT",
       "description": "10 vérifications par peuple : les choix raciaux et méthodes prouvés sont acquis ; les autres effets et contraintes restent ouverts.",
       "source": "forge-n1/focus.json",
-      "percent": 60,
+      "percent": 69,
       "complete": false
     },
     {
