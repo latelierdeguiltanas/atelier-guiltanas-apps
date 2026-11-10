@@ -1,8 +1,8 @@
 diff --git a/forge-of-heroes/ENGINE/arquebusier_context_n1.js b/forge-of-heroes/ENGINE/arquebusier_context_n1.js
-index 877e5ce..4cd99c0 100644
+index 877e5ce..8d20a6b 100644
 --- a/forge-of-heroes/ENGINE/arquebusier_context_n1.js
 +++ b/forge-of-heroes/ENGINE/arquebusier_context_n1.js
-@@ -185,5 +185,106 @@ function solve(character,slug,c={}){
+@@ -185,5 +185,107 @@ function solve(character,slug,c={}){
   }
   return o;
  }
@@ -34,7 +34,8 @@ index 877e5ce..4cd99c0 100644
 + }
 + switch(slug){
 +  case 'attaque-a-suivre-g': {
-+   const weapon=attacks.find(row=>row.weaponId===c.weaponId&&row.hands===1&&row.mastered&&(row.type==='contact'||row.properties?.includes('thrown')));
++   const throwingWeapons=['weapon:dagger','weapon:throwing-hatchet','weapon:throwing-knives','weapon:javelin'];
++   const weapon=attacks.find(row=>row.weaponId===c.weaponId&&row.hands===1&&row.mastered&&(row.type==='contact'||throwingWeapons.includes(row.weaponId)));
 +   if(c.mainHandAttackMissed!==true||c.inOtherHand!==true||c.usedThisRound!==false||!weapon)return fail(o,'Attaque principale ratée, arme admissible tenue dans l’autre main et capacité encore disponible ce round.');
 +   o.modifiers.freeAttack=true;
 +   o.modifiers.penaltyDie=!['weapon:dagger','weapon:throwing-hatchet','weapon:short-sword'].includes(c.weaponId);
@@ -111,7 +112,7 @@ index 877e5ce..4cd99c0 100644
 +return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-3',grantAbilities,resolveGrant,granted:(c,slug)=>grantedRow(c,slug),sourcePages:PAGES,abilities,resolve:solve,isOwned:(character,slug)=>!!abilityRow(character,slug),ownedProfile});
  });
 diff --git a/forge-of-heroes/ENGINE/arquebusier_context_ui_n1.js b/forge-of-heroes/ENGINE/arquebusier_context_ui_n1.js
-index 6a466e1..ddb8a64 100644
+index 6a466e1..88d097e 100644
 --- a/forge-of-heroes/ENGINE/arquebusier_context_ui_n1.js
 +++ b/forge-of-heroes/ENGINE/arquebusier_context_ui_n1.js
 @@ -22,6 +22,33 @@
@@ -130,7 +131,7 @@ index 6a466e1..ddb8a64 100644
 +  'le-loup':[['Compagnon et ordre simple',{}]],
 +  survie:[['Récupérer en milieu naturel en dépensant un DR',rest],['Récupérer sans dé de récupération',{...rest,spendsRecoveryDie:false}],['Escalader',{test:'climb'}],['Survie en milieu naturel',{...nature,test:'wilderness_survival'}]],
 +  eclaireur:[['Pister en milieu naturel',{...nature,test:'tracking'}],['Pister en ville',{test:'tracking'}],['Discrétion en milieu naturel',{...nature,test:'wilderness_stealth'}],['Vigilance en milieu naturel',{...nature,test:'wilderness_vigilance'}]],
-+  'attaque-a-suivre-g':[['Rater avec la main principale, dague dans l’autre main',{...follow,...dagger}],['Déjà utilisé ce round',{...follow,...dagger,usedThisRound:true}],['Autre arme à une main : épée longue',{...follow,weaponId:'weapon:long-sword'}]],
++  'attaque-a-suivre-g':[['Rater avec la main principale, dague dans l’autre main',{...follow,...dagger}],['Déjà utilisé ce round',{...follow,...dagger,usedThisRound:true}],['Hachette de lancer dans l’autre main',{...follow,weaponId:'weapon:throwing-hatchet'}],['Épée courte dans l’autre main',{...follow,weaponId:'weapon:short-sword'}],['Autre arme à une main : épée longue',{...follow,weaponId:'weapon:long-sword'}]],
 +  discretion:[['Attaquer un adversaire surpris',{attacking:true,targetSurprised:true}],['Attaquer un adversaire qui n’est pas surpris',{attacking:true,targetSurprised:false}],['Test de discrétion',{test:'stealth'}]],
 +  baratin:[...['scroll','wand'].flatMap(item=>[1,2,3,4,5].map(spellRank=>[(item==='scroll'?'Parchemin':'Baguette')+' de rang '+spellRank,{item,spellRank}])),['Test de négociation',{test:'negotiate'}]],
 +  agile:[['Défense et initiative sur la fiche',{}],['Test pour échapper à une emprise',{test:'escape_grapple'}]],
@@ -186,10 +187,10 @@ index 6a466e1..ddb8a64 100644
    }catch(e){/* Le module complémentaire ne doit jamais bloquer la création ni la fiche officielle. */}
 diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_grant_context.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_grant_context.cjs
 new file mode 100644
-index 0000000..97c161d
+index 0000000..4f010b8
 --- /dev/null
 +++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_grant_context.cjs
-@@ -0,0 +1,92 @@
+@@ -0,0 +1,108 @@
 +'use strict';
 +const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs'),path=require('node:path');
 +const F=require('./forge_product_runner'),API=require('../ENGINE/arquebusier_context_n1');
@@ -206,7 +207,7 @@ index 0000000..97c161d
 + 'le-loup':[[{},'companion','Loup']],
 + survie:[[test('climb'),'skillBonus',3],[test('night_recovery',{inWilderness:true}),'skillBonus',3],[recovery,'extraRecovery','1d4° PV'],[{...recovery,spendsRecoveryDie:false}],[{...recovery,inWilderness:false}],[test('night_recovery')]],
 + eclaireur:[...['wilderness_stealth','wilderness_vigilance','tracking'].map(t=>[test(t,{inWilderness:true}),'skillBonus',3]),[test('tracking')]],
-+ 'attaque-a-suivre-g':[[follow,'penaltyDie',false],[{...follow,weaponId:'weapon:long-sword'},'penaltyDie',true],[{...follow,mainHandAttackMissed:false}],[{...follow,inOtherHand:false}],[{...follow,usedThisRound:true}],[{...follow,weaponId:'weapon:great-sword'}]],
++ 'attaque-a-suivre-g':[[follow,'penaltyDie',false],[{...follow,weaponId:'weapon:throwing-hatchet'},'penaltyDie',false],[{...follow,weaponId:'weapon:short-sword'},'penaltyDie',false],[{...follow,weaponId:'weapon:javelin'},'penaltyDie',true],[{...follow,weaponId:'weapon:long-sword'},'penaltyDie',true],[{...follow,mainHandAttackMissed:false}],[{...follow,inOtherHand:false}],[{...follow,usedThisRound:true}],[{...follow,weaponId:'weapon:great-sword'}]],
 + discretion:[[{attacking:true,targetSurprised:true},'bonusDie',true],[{attacking:true,targetSurprised:false}],[test('hide_weapon'),'skillBonus',3]],
 + baratin:[[{item:'scroll',spellRank:1},'magicAttackDifficulty',12],[{item:'wand',spellRank:5},'magicAttackDifficulty',20],[{item:'scroll',spellRank:6}],[{item:'sword',spellRank:2}],[test('black_market'),'skillBonus',3]],
 + agile:[[{},'permanentEffect',/DEF et initiative \+1/],[test('escape_grapple'),'skillBonus',3]],
@@ -247,6 +248,7 @@ index 0000000..97c161d
 +  const slug=slugOf(option),draft=JSON.parse(JSON.stringify(base));
 +  draft.abilityChoices[source.id]={combattantAguerriAbility:option.id};
 +  draft.equip={...draft.equip,armorId:T.armors.find(a=>a.defBonus===2).id,gmApprovedSwap:true};
++  if(slug==='attaque-a-suivre-g')draft.equip.weaponIds.push('weapon:throwing-hatchet','weapon:short-sword','weapon:javelin');
 +  fill(draft);
 +  const computed=E.computeCharacterN1(draft);
 +  assert.equal(computed.errors.length,0,computed.errors.join(' | '));
@@ -270,10 +272,25 @@ index 0000000..97c161d
 +   check(blocked.sticky.characterState,slug,[activeScenario[0]]);
 +  }
 +  if(slug==='proteger-un-allie-g'){
-+   // Pure variants cannot equip shields. Isolate the legal equipped case and
-+   // each trigger boundary, without pretending a pure creation could equip it.
-+   const shield={...c,equipment:{...c.equipment,shieldId:'shield:shield'}};
++   // The pure profiles cannot carry a shield. Build the official hybrid
++   // exception, with the last age point invested in the people path.
++   const warrior=T.paths_class.find(p=>p.id.includes('voie-de-la-resistance:class-guerrier:'));
++   const hybrid=F.standardState(db,merc.classId,merc.id);
++   hybrid.voies.profilePathIds=[merc.id,warrior.id];
++   hybrid.hybrid={enabled:true,gmApproved:true,primaryProfileId:merc.classId,secondaryProfileId:warrior.classId,primaryPathId:merc.id,secondaryPathId:warrior.id};
++   hybrid.equip={...hybrid.equip,weaponIds:['weapon:dagger'],armorId:'',shieldId:T.shields[0].id,gmApprovedSwap:true};
++   F.withRank(db,hybrid,merc.id,3);
++   hybrid.age.spending.at(-1).pathId=hybrid.voies.peoplePathId;
++   hybrid.abilityChoices[source.id]={combattantAguerriAbility:option.id};
++   fill(hybrid);
++   const withShield=E.computeCharacterN1(hybrid);
++   assert.deepEqual(Array.from(withShield.errors),[]);
++   const shield=withShield.sticky.characterState;
 +   check(shield,slug,[protect,'allyDefenseBonus',2]);
++   const hybridSave=E.createHeroSavePayload(hybrid,shield,{id:'mercenary-shield'});
++   const hybridReopened=E.computeCharacterN1(E.restoreHeroSavePayload(JSON.parse(JSON.stringify(hybridSave))).draft);
++   assert.deepEqual(Array.from(hybridReopened.errors),[]);
++   check(hybridReopened.sticky.characterState,slug,[protect,'allyDefenseBonus',2]);
 +   for(const [key,value] of [['surprised',true],['allyInContact',false],['beforeAttackResult',false],['usedThisRound',true]])check(shield,slug,[{...protect,[key]:value}]);
 +  }
 +  report.cases.push({variant,slug,status:'PASS',checks:scenarios.length,saveReload:true});
@@ -449,10 +466,10 @@ index 0000000..a80b93c
 +fs.writeFileSync(root+'/QA/N1/official-people-equipment.json',JSON.stringify(report,null,2)+'\n');
 +console.log(JSON.stringify(report));
 diff --git a/forge-of-heroes/index.html b/forge-of-heroes/index.html
-index 2f5f81c..a169b5f 100644
+index 2f5f81c..b4b2947 100644
 --- a/forge-of-heroes/index.html
 +++ b/forge-of-heroes/index.html
-@@ -2758,7 +2758,108 @@ function solve(character,slug,c={}){
+@@ -2758,7 +2758,109 @@ function solve(character,slug,c={}){
   }
   return o;
  }
@@ -484,7 +501,8 @@ index 2f5f81c..a169b5f 100644
 + }
 + switch(slug){
 +  case 'attaque-a-suivre-g': {
-+   const weapon=attacks.find(row=>row.weaponId===c.weaponId&&row.hands===1&&row.mastered&&(row.type==='contact'||row.properties?.includes('thrown')));
++   const throwingWeapons=['weapon:dagger','weapon:throwing-hatchet','weapon:throwing-knives','weapon:javelin'];
++   const weapon=attacks.find(row=>row.weaponId===c.weaponId&&row.hands===1&&row.mastered&&(row.type==='contact'||throwingWeapons.includes(row.weaponId)));
 +   if(c.mainHandAttackMissed!==true||c.inOtherHand!==true||c.usedThisRound!==false||!weapon)return fail(o,'Attaque principale ratée, arme admissible tenue dans l’autre main et capacité encore disponible ce round.');
 +   o.modifiers.freeAttack=true;
 +   o.modifiers.penaltyDie=!['weapon:dagger','weapon:throwing-hatchet','weapon:short-sword'].includes(c.weaponId);
@@ -562,7 +580,7 @@ index 2f5f81c..a169b5f 100644
  });
  
  </script>
-@@ -2787,6 +2888,33 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities
+@@ -2787,6 +2889,33 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities
    'defaut-dans-la-cuirasse-a':[['Cible AGI +2, préparée, visible',{preparedTargetLastRound:true,sameTarget:true,rangedAttack:true,targetAGI:2}],['Cible immatérielle AGI +2',{preparedTargetLastRound:true,sameTarget:true,rangedAttack:true,targetAGI:2,targetImmaterial:true}]],
    'tir-precis':[['Attaque avec arme à distance',{rangedAttack:true}],['Attaque au contact : seuil normal',{rangedAttack:false}]]
   };
@@ -578,7 +596,7 @@ index 2f5f81c..a169b5f 100644
 +  'le-loup':[['Compagnon et ordre simple',{}]],
 +  survie:[['Récupérer en milieu naturel en dépensant un DR',rest],['Récupérer sans dé de récupération',{...rest,spendsRecoveryDie:false}],['Escalader',{test:'climb'}],['Survie en milieu naturel',{...nature,test:'wilderness_survival'}]],
 +  eclaireur:[['Pister en milieu naturel',{...nature,test:'tracking'}],['Pister en ville',{test:'tracking'}],['Discrétion en milieu naturel',{...nature,test:'wilderness_stealth'}],['Vigilance en milieu naturel',{...nature,test:'wilderness_vigilance'}]],
-+  'attaque-a-suivre-g':[['Rater avec la main principale, dague dans l’autre main',{...follow,...dagger}],['Déjà utilisé ce round',{...follow,...dagger,usedThisRound:true}],['Autre arme à une main : épée longue',{...follow,weaponId:'weapon:long-sword'}]],
++  'attaque-a-suivre-g':[['Rater avec la main principale, dague dans l’autre main',{...follow,...dagger}],['Déjà utilisé ce round',{...follow,...dagger,usedThisRound:true}],['Hachette de lancer dans l’autre main',{...follow,weaponId:'weapon:throwing-hatchet'}],['Épée courte dans l’autre main',{...follow,weaponId:'weapon:short-sword'}],['Autre arme à une main : épée longue',{...follow,weaponId:'weapon:long-sword'}]],
 +  discretion:[['Attaquer un adversaire surpris',{attacking:true,targetSurprised:true}],['Attaquer un adversaire qui n’est pas surpris',{attacking:true,targetSurprised:false}],['Test de discrétion',{test:'stealth'}]],
 +  baratin:[...['scroll','wand'].flatMap(item=>[1,2,3,4,5].map(spellRank=>[(item==='scroll'?'Parchemin':'Baguette')+' de rang '+spellRank,{item,spellRank}])),['Test de négociation',{test:'negotiate'}]],
 +  agile:[['Défense et initiative sur la fiche',{}],['Test pour échapper à une emprise',{test:'escape_grapple'}]],
@@ -596,7 +614,7 @@ index 2f5f81c..a169b5f 100644
   const titles={'mecanismes':'Mécanismes','arme-a-repetition':'Arme à répétition','tir-de-barrage-l':'Tir de barrage','tir-de-grenaille-l':'Tir de grenaille',demolition:'Démolition','poudre-puissante':'Poudre puissante','pilier-de-bar':'Pilier de bar','mort-ou-vif-l':'Mort ou vif','combattant-aguerri':'Combattant aguerri','plus-vite-que-son-ombre':'Plus vite que son ombre','ajuster-le-tir':'Ajuster le tir','tir-double-l':'Tir double','joli-coup':'Joli coup','defaut-dans-la-cuirasse-a':'Défaut dans la cuirasse','tir-precis':'Tir précis'};
   const labels={skillBonus:'Bonus de compétence',bonusDie:'Dé bonus',damageDice:'DM à mains nues',nonLethal:'Dégâts non létaux',incomingDamageDivisor:'Diviseur des dégâts non létaux reçus',initiativeBonusForShot:'Bonus d’initiative pour ce tir',removeRangedContactDisadvantage:'Dé malus du tir au contact supprimé',coverAttackPenalty:'Malus d’attaque pour le couvert',capacity:'Capacité du chargeur',limitedActionsPerProjectile:'Actions limitées par projectile rechargé',totalLimitedActions:'Total actions limitées',attackRolls:'Nombre de tests d’attaque',damageFraction:'Fraction des dommages habituels',area:'Zone d’effet',preparationRounds:'Rounds nécessaires',dailyChargesMax:'Charges maximales par jour',dailyChargesCost:'Charges consommées',damageFormula:'Formule de dommages',targetDamageReductionMultiplier:'Fraction de RD retenue',blastRadiusMeters:'Rayon de déflagration (m)',normalWeaponDamage:'Dommages normaux',canUseTemporaryDamage:'Option dégâts temporaires',maxConditionChoices:'Nombre d’effets préjudiciables possibles',weakenRounds:'Durée de l’affaiblissement',nextRangedAttackBonus:'Bonus du prochain tir',targetDEF:'DEF à atteindre',ignoreDamageResistance:'Ignorer résistance aux DM',ignoreDamageReduction:'Ignorer réduction des DM',zoneWidthMeters:'Largeur de zone surveillée (m)',attackTriggeredByMovement:'Déclenché par déplacement',damageIfVictimChoosesDamage:'Multiplicateur de dommages si choisi',victimStopsTurnIfNoDamage:'La victime termine son tour et son déplacement si elle évite les dommages',weaponRangeBonusMeters:'Portée supplémentaire (m)',weaponDamageBonus:'DM supplémentaires',projectileMagical:'Projectile magique',defenseBonus:'DEF supplémentaire',attackCount:'Attaques',attackPenaltyEach:'Malus par attaque',criticalThreshold:'Critique dès (d20)'};
   const display=v=>typeof v==='boolean'?(v?'oui':'non'):typeof v==='object'?JSON.stringify(v):String(v);
-@@ -2801,7 +2929,8 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities
+@@ -2801,7 +2930,8 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities
    try{
     const host=document.getElementById('summary-content');if(!host||host.hidden)return;
     const st=state();if(!st)return;
@@ -606,7 +624,7 @@ index 2f5f81c..a169b5f 100644
     if(!panel){
      panel=document.createElement('details');panel.id='foh-n1-context-situations';
      panel.style.cssText='margin:14px 0;padding:12px;border:1px solid #877553;border-radius:10px;background:rgba(16,15,13,.86);color:#f5f0e5;font:14px/1.5 system-ui';
-@@ -2815,12 +2944,12 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities
+@@ -2815,12 +2945,12 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities
      for(const select of [a,b])select.style.cssText='max-width:100%;width:100%;padding:9px;border-radius:7px;background:#171511;color:#fff;border:1px solid #877553';
      const button=$(panel,'button');button.type='button';button.textContent='Calculer les effets';button.id='foh-n1-context-run';button.style.cssText='padding:8px 12px;border-radius:8px;border:1px solid #bd9865;background:#433927;color:#fff;cursor:pointer';
      const out=$(panel,'div');out.id='foh-n1-context-result';out.setAttribute('aria-live','polite');out.style.cssText='margin-top:9px;font-size:13px;white-space:pre-wrap';
@@ -623,7 +641,7 @@ index 2f5f81c..a169b5f 100644
        if(r.choices.length)lines.push('Choix : '+r.choices.join(' / '));
        for(const message of r.requirements)lines.push('Condition manquante : '+message);
        for(const message of r.limits)lines.push('Limite : '+message);
-@@ -2834,7 +2963,7 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities
+@@ -2834,7 +2964,7 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-2',sourcePages:PAGES,abilities
     const a=panel.querySelector('#foh-n1-context-ability');
     const last=a.value,available=owned.join('|');
     if(a.dataset.available!==available){
