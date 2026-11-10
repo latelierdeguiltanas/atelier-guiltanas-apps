@@ -1,0 +1,30 @@
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+index 6740a4a..48fb5b0 100644
+--- a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+@@ -201,7 +201,7 @@ const peoples=old.peoples.filter(x=>expectedNames.has(x.label)).map(p=>{
+   mark('methods','Caractéristiques et sauvegarde des choix',currentMethods,'Répartition et reprise des caractéristiques raciales vérifiées.','Valider les variantes et sauvegardes des caractéristiques.'),
+   mark('ages','Tous les âges et historiques avec ce peuple',false,'',historyCrossPassed?(p.key==='elfe-sylvain'?'Règle confirmée pour l’Elfe sylvain (COF2 p.172) : origines Cités et Campagnes interdites en mode historique. Toutes les autres combinaisons d’historiques ciblées ont été acceptées et sauvegardées. Restent les autres effets selon les âges.':'Les associations origine géographique + métier ont été acceptées, leurs rangs et sauvegardes vérifiés au niveau 1 avec un personnage vénérable. Restent les variantes d’âge et les effets historiques conditionnels.'): 'Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil.'),
+   mark('conditional','Effets conditionnels et dons raciaux',false,'','Vérifier chaque pouvoir racial selon ses conditions réelles, y compris dons et résistances.'),
+-  mark('gear','Équipements et contraintes de taille',peopleGearCurrent&&peopleGear.peoples?.[p.key]?.status==='PASS'&&peopleGear.peoples[p.key].weapons===41&&peopleGear.peoples[p.key].armorAndShields===9&&peopleGear.peoples[p.key].saveReload,'41 armes du livre de base, sept armures et deux boucliers évalués avec un profil Guerrier. Les contraintes raciales du Halfelin et la sauvegarde sont contrôlées.','Vérifier toutes les restrictions raciales, les armes et les échanges autorisés.'),
++  mark('gear','Équipements et contraintes de taille',peopleGearCurrent&&peopleGear.peoples?.[p.key]?.status==='PASS'&&peopleGear.peoples[p.key].weapons===41&&peopleGear.peoples[p.key].armorAndShields===9&&peopleGear.peoples[p.key].saveReload,'41 armes du livre de base, sept armures et deux boucliers évalués avec un profil Guerrier. Les contraintes raciales du Halfelin et la sauvegarde sont contrôlées.',peopleGearCurrent&&peopleGear.peoples?.[p.key]?.openIssue||'Vérifier toutes les restrictions raciales, les armes et les échanges autorisés.'),
+   mark('sheet','Fiche officielle et parcours de création',false,'','Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné.')
+  ];
+  const pass=checks.filter(x=>x.status==='ACQUIS').length;
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_people_equipment_oracle.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_people_equipment_oracle.cjs
+index a80b93c..be0751b 100644
+--- a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_people_equipment_oracle.cjs
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_people_equipment_oracle.cjs
+@@ -70,7 +70,11 @@ for(const key of Object.keys(peopleChoices)){
+  assert.deepEqual(Array.from(restored.errors),[]);
+  assert.equal(JSON.stringify(restored.sticky.characterState.equipment),JSON.stringify(result.sticky.characterState.equipment));
+  row.saveReload=true;
+- row.status='PASS';
++ // Page 55 explicitly names the rapier as unsuitable in one hand, while
++ // the p. 183 catalogue gives it 1d6, the one-handed cutoff. Preserve
++ // both source statements and keep the size criterion open.
++ row.status=key==='halfelin'?'A_VERIFIER':'PASS';
++ if(key==='halfelin')row.openIssue='Rapière : p. 55, exception à une main ; p. 183, DM 1d6. Arbitrage à vérifier.';
+  report.peoples[key]=row;
+ }
+ report.status='PASS';

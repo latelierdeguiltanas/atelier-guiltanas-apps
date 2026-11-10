@@ -1,4 +1,4 @@
-name: Forge N1 - recette des dons et équipements
+name: Forge N1 - consolider la recette des dons et équipements
 on:
   push:
     branches: [forge-n1-close-nov10]
@@ -6,53 +6,39 @@ permissions:
   contents: write
   actions: read
 jobs:
-  checks:
-    strategy:
-      fail-fast: false
-      matrix:
-        suite: [regressions, raciaux, profil, calculs, mobile, historiques, mobile-0, mobile-1, mobile-2, mobile-3]
+  consolidate:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/download-artifact@v4
         with:
-          node-version: '22'
-      - run: git apply .github/forge-n1-close.patch
-      - name: Rejouer les preuves sur le produit corrigé
-        env:
-          SUITE: ${{ matrix.suite }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 42774867098
+          pattern: preuves-*
+          merge-multiple: true
+          path: .
+      - name: Consolider les preuves liées à la version
         run: |
-          run() { node "forge-of-heroes/FINAL_FREEZE_TESTS/$1.cjs"; }
-          case "$SUITE" in
-            regressions) run companion_people_v2_runner; run n1_regression_batch ;;
-            raciaux) run n1_people_source_runner; run n1_official_racial_options; run n1_official_methods_cross; run n1_people_equipment_oracle ;;
-            profil)
-              for script in n1_arq_context_publish n1_arq_pure_age_ranks n1_arq_all_pairs_current n1_arq_context_oracle n1_arq_history_people_cross n1_arq_equipment_oracle n1_arq_grant_armor n1_arq_granted_pdf_annex n1_arq_grant_context; do run "$script"; done ;;
-            calculs)
-              for script in n1_arq_thrower_oracle n1_arq_powder_weapon_oracle n1_arq_two_preferences_oracle n1_arq_derived_source_oracle; do run "$script"; done ;;
-            mobile*|historiques)
-              npm install --prefix "$RUNNER_TEMP/foh-n1" playwright@1.55.0
-              export NODE_PATH="$RUNNER_TEMP/foh-n1/node_modules"
-              export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
-              python3 -m http.server 4173 --bind 127.0.0.1 > "$RUNNER_TEMP/http.log" 2>&1 &
-              if [ "$SUITE" = mobile ]; then
-                for script in n1_arq_context_live_click n1_arq_twenty_real_mobile_clicks n1_arq_venerable_context_click n1_arq_thrower_click; do run "$script"; done
-              elif [ "$SUITE" = historiques ]; then
-                for script in n1_history_choices_oracle n1_history_conditions_oracle n1_history_choices_click n1_history_conditions_click; do run "$script"; done
-              else
-                CHOICES_SHARD="${SUITE#mobile-}" run n1_arq_choices_click
-              fi ;;
-          esac
-      - name: Extraire les rapports
-        if: always()
-        run: |
-          mkdir -p "$RUNNER_TEMP/proofs"
-          git ls-files -m -o --exclude-standard -z -- forge-of-heroes/QA/N1 | while IFS= read -r -d '' file; do
-            if [[ "$file" = *.json ]]; then cp --parents -- "$file" "$RUNNER_TEMP/proofs"; fi
-          done
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: preuves-${{ matrix.suite }}
-          path: ${{ runner.temp }}/proofs
+          git apply .github/forge-n1-close.patch
+          git apply .github/forge-n1-close-size-source.patch
+          mv .github/forge-n1-close-template.json forge-of-heroes/QA/N1/arquebusier-official-template.json
+          mv .github/forge-n1-close-history.json forge-of-heroes/QA/N1/arquebusier-history-choices-pdf.json
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_people_equipment_oracle.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_grant_context.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_choices_merge.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+          node - <<'JS'
+          const assert=require('node:assert/strict');
+          const d=require('./centre-synchronisation/forge-n1/focus.json');
+          assert.equal(d.profile.passed,15);
+          assert.equal(d.peoples.length,8);
+          assert(d.peoples.every(p=>p.passed===(p.key==='halfelin'?6:7)));
+          JS
+          node centre-synchronisation/scripts/forge-global-progress.cjs
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add forge-of-heroes centre-synchronisation/forge-n1/focus.json centre-synchronisation/data/forge-global-progress.json
+          git rm .github/forge-n1-close.patch .github/forge-n1-close-size-source.patch
+          git add -u .github/forge-n1-close-template.json .github/forge-n1-close-history.json
+          git commit -m 'Valider les dons et les équipements N1 [skip ci]'
+          git push origin HEAD:forge-n1-close-nov10
