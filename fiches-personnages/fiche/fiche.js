@@ -67,10 +67,63 @@ function effectiveCondition(value){
  return tattoo?'Ralenti':value;
 }
 function isTourDeForce(a){return Number(a.rank)===2&&slug(a.path)==='voie-de-la-brute'&&/^tour-de-force(?:-g)?$/.test(slug(a.name))}
+function isCharge(a){return Number(a.rank)===2&&slug(a.path)==='voie-du-pourfendeur'&&/^charge(?:-l)?$/.test(slug(a.name))}
+function isDefyDeath(a){return Number(a.rank)===2&&slug(a.path)==='voie-de-la-rage'&&slug(a.name)==='defier-la-mort'}
+function ownsBerserk(){return ownedAbilities().some(a=>slug(a.path)==='voie-de-la-rage'&&[3,5].includes(Number(a.rank)))}
+function barbareCombatHtml(a){
+ if(isCharge(a))return `<div class="ability-actions">
+  <label>Distance en ligne droite (m) <input type="number" inputmode="decimal" min="5" max="10" step="any" data-charge-distance></label>
+  <label><input type="checkbox" data-charge-contact> Je suis déjà au contact d’un adversaire</label>
+  <button type="button" class="mini-button primary" data-barbare-combat="${esc(a.id)}">Vérifier la charge</button>
+  <p role="status" data-barbare-result></p>
+ </div>`;
+ if(!isDefyDeath(a))return'';
+ if(S.uses[usageKey(a)]>=1)return'<p>Déjà utilisée dans ce combat.</p>';
+ return `<div class="ability-actions">
+  <label>DM finaux d’une attaque <input type="number" inputmode="numeric" min="1" step="1" data-defy-damage></label>
+  <label>Total du test de CON (difficulté 10) <input type="number" inputmode="numeric" step="1" data-defy-test></label>
+  ${ownsBerserk()?'<label><input type="checkbox" data-defy-rage> Je suis enragé</label>':''}
+  <button type="button" class="mini-button primary" data-barbare-combat="${esc(a.id)}">Résoudre Défier la mort</button>
+  <p role="status" data-barbare-result></p>
+ </div>`;
+}
+function resolveBarbareCombat(button){
+ const a=ownedAbilities().find(x=>x.id===button.dataset.barbareCombat),card=button.closest('.ability');
+ if(!a||!card)return;
+ const input=selector=>card.querySelector(selector);
+ const result=input('[data-barbare-result]');
+ if(isCharge(a)){
+  const distance=Number(input('[data-charge-distance]').value);
+  result.textContent=input('[data-charge-contact]').checked?'Charge impossible au contact d’un adversaire.':
+   distance>=5&&distance<=10?'Charge possible. Fais une attaque au contact avec un dé bonus. Si elle touche, ajoute +1d'+evolvingDie()+' aux DM.':
+   'Une charge exige entre 5 et 10 m en ligne droite.';
+  return;
+ }
+ if(!isDefyDeath(a)||S.uses[usageKey(a)]>=1)return;
+ const damage=Number(input('[data-defy-damage]').value),test=input('[data-defy-test]').value;
+ const rage=ownsBerserk()&&input('[data-defy-rage]')?.checked;
+ if(!Number.isSafeInteger(damage)||damage<1||S.hp<=0||damage<S.hp){
+  result.textContent='Cette capacité se déclenche quand une attaque te ferait passer de PV positifs à 0 PV.';
+  return;
+ }
+ if(!rage&&(test===''||!Number.isSafeInteger(Number(test)))){
+  result.textContent='Indique le total de ton test de CON.';
+  return;
+ }
+ const survived=rage||Number(test)>=10;
+ S.hp=survived?1:0;
+ S.uses[usageKey(a)]=1;
+ updateAfterAction();
+ const message=survived?'Défier la mort : tu conserves 1 PV.':'Défier la mort : le test échoue, tu tombes à 0 PV.';
+ const updated=document.querySelector('dialog [data-barbare-outcome]');
+ if(updated)updated.textContent=message;
+ toast(message);
+}
 function actionType(a){
  const explicit=(a.name||'').match(/\(([LAMG])\)/i);
  if(explicit)return explicit[1].toUpperCase();
  if(isTourDeForce(a))return'G';
+ if(isCharge(a))return'L';
  if(Number(a.rank)===2&&slug(a.path)==='voie-du-primitif'&&slug(a.name)==='armure-de-vent')return'Passif';
  const text=(a.text||'').toLowerCase();
  if(/action limitée/.test(text))return'L';
@@ -79,13 +132,13 @@ function actionType(a){
  if(/action gratuite/.test(text))return'G';
  return'Passif';
 }
-function tourDeForceDie(){return [4,6,8,10,12][Math.max(0,Math.min(4,Math.floor((Number(D.level)||1)/3)-1))]}
+function evolvingDie(){return [4,6,8,10,12][Math.max(0,Math.min(4,Math.floor((Number(D.level)||1)/3)-1))]}
 function tourDeForceHtml(a){
  if(!isTourDeForce(a))return'';
- const die=tourDeForceDie();
+ const die=evolvingDie();
  return `<div class="ability-actions"><label>Résultat du d${die} <input data-tour-de-force-roll type="number" inputmode="numeric" min="1" max="${die}" step="1"></label><button type="button" class="mini-button primary" data-tour-de-force="${esc(a.id)}">Déduire les PV</button></div>`;
 }
-function usage(a){if(a.manualUsage!=null)return{scope:'day',max:a.manualUsage,label:a.manualUsage+' utilisations'};if(id==='vivelame'&&a.path?.includes('explosif')&&a.rank>=2){const rank=Math.max(...(D.paths||[]).filter(p=>p.pathId?.includes('voie-des-explosifs')).flatMap(p=>p.ranks.filter(r=>r.owned).map(r=>r.rank)),2);return{scope:'day',max:rank,label:rank+' charges/jour',pool:'charges-explosives'}}const text=((a.name||'')+' '+(a.text||'')).toLowerCase();if(/une fois par (jour|journée) par rang/.test(text))return{scope:'day',max:Number(a.rank)||1,label:(Number(a.rank)||1)+' fois/jour'};if(/une fois par (jour|journée)|1 fois par (jour|journée)/.test(text))return{scope:'day',max:1,label:'1 fois/jour'};if(/une fois par combat|1 fois par combat/.test(text))return{scope:'combat',max:1,label:'1 fois/combat'};const m=text.match(/(\d+) fois par (jour|journée|combat)/);if(m)return{scope:m[2]==='combat'?'combat':'day',max:Number(m[1]),label:m[1]+' fois/'+(m[2]==='combat'?'combat':'jour')};return null}
+function usage(a){if(isDefyDeath(a))return{scope:'combat',max:1,label:'1 fois/combat'};if(a.manualUsage!=null)return{scope:'day',max:a.manualUsage,label:a.manualUsage+' utilisations'};if(id==='vivelame'&&a.path?.includes('explosif')&&a.rank>=2){const rank=Math.max(...(D.paths||[]).filter(p=>p.pathId?.includes('voie-des-explosifs')).flatMap(p=>p.ranks.filter(r=>r.owned).map(r=>r.rank)),2);return{scope:'day',max:rank,label:rank+' charges/jour',pool:'charges-explosives'}}const text=((a.name||'')+' '+(a.text||'')).toLowerCase();if(/une fois par (jour|journée) par rang/.test(text))return{scope:'day',max:Number(a.rank)||1,label:(Number(a.rank)||1)+' fois/jour'};if(/une fois par (jour|journée)|1 fois par (jour|journée)/.test(text))return{scope:'day',max:1,label:'1 fois/jour'};if(/une fois par combat|1 fois par combat/.test(text))return{scope:'combat',max:1,label:'1 fois/combat'};const m=text.match(/(\d+) fois par (jour|journée|combat)/);if(m)return{scope:m[2]==='combat'?'combat':'day',max:Number(m[1]),label:m[1]+' fois/'+(m[2]==='combat'?'combat':'jour')};return null}
 function usageKey(a){return usage(a)?.pool||a.id}
 function resourceCost(a){if(a.manualCost>0)return{kind:'pm',amount:a.manualCost,label:a.manualCost+' PM'};const text=(a.text||'');const pm=text.match(/(?:pour|coûte|dépense|dépenser)\s+(\d+)\s*PM/i);const pc=text.match(/(?:pour|coûte|dépense|dépenser)\s+(\d+)\s*(?:PC|points? de chance)/i);const dr=text.match(/(?:pour|coûte|dépense|dépenser)\s+(\d+)\s*DR/i);if(pm)return{kind:'pm',amount:+pm[1],label:pm[1]+' PM'};if(pc)return{kind:'pc',amount:+pc[1],label:pc[1]+' PC'};if(dr)return{kind:'dr',amount:+dr[1],label:dr[1]+' DR'};if(/\*/.test(a.name||''))return{kind:'pm',amount:Number(a.rank)||1,label:(Number(a.rank)||1)+' PM (rang du sort)'};return null}
 const conditionsInfo={Affaibli:'Dé malus aux tests utilisant FOR, AGI ou CON.',Aveuglé:'-5 en attaque au contact et en DEF ; -10 pour attaquer à distance.',Étourdi:'Aucune action et -5 en DEF.',Immobilisé:'Aucun déplacement et dé malus en attaque.',Ralenti:'Une seule action de mouvement ou d’attaque.',Renversé:'-5 en DEF ; une action d’attaque est nécessaire pour se relever.',Surpris:'Ne peut pas agir avant son premier tour et vulnérable à certains effets.',Inconscient:'Ne peut pas agir. La situation exacte est tranchée par le MJ.'};
@@ -125,7 +178,7 @@ function fullResourcesHtml(){S.hp=clamp(S.hp,0,max.hp);S.pc=clamp(S.pc,0,max.pc)
 function renderResources(){const full=fullResourcesHtml();$('#resources').innerHTML=sheetView==='complete'?full:`<div class="resource"><small>Points de vie</small><div class="counter"><button data-count="hp" data-delta="-1" aria-label="Retirer un point de vie">−</button><b>${S.hp}/${max.hp}</b><button data-count="hp" data-delta="1" aria-label="Ajouter un point de vie">+</button></div></div><div class="resource"><small>Défense</small><b>${esc(finalValue('def'))}</b></div><div class="resource"><small>Vitesse</small><b>${movement().meters} m</b></div><button class="resource resource-more" data-ui-modal="resources">Mana, chance<br>et récupération →</button>`;save();if(infoDialog.open&&uiTopic==='resources')drawInfo()}
 
 function attackHtml(a){const ammo=a.ammo||a.magazine;return`<article class="attack"><div class="attack-head"><h3>${esc(a.name)} · ${signed(a.attack)}</h3><span class="tag">${esc(a.type)}</span></div><p><b>${esc(a.damage)} DM</b> · ${esc(a.range||'—')}${a.damageType?' · '+esc(a.damageType):''}${a.special?' · '+esc(a.special):''}</p>${ammo?`<div class="ability-actions"><span class="tag">Munitions ${Number(S.ammo[a.id]??ammo.current??ammo.capacity)}/${esc(ammo.capacity)}</span><button class="mini-button" data-ammo="${esc(a.id)}" data-ammo-delta="-1">Tirer</button><button class="mini-button" data-ammo="${esc(a.id)}" data-ammo-delta="1">Recharger</button></div>`:''}</article>`}
-function abilityHtml(a){const type=actionType(a),u=usage(a),cost=resourceCost(a),used=Number(S.uses[usageKey(a)])||0,remaining=u?Math.max(0,u.max-used):null;return`<article class="ability"><div class="ability-head"><div><span class="tag action">${type}</span> <span class="tag">Rang ${a.rank}</span></div>${u?`<span class="tag ${remaining===0?'used':''}">${remaining}/${u.max} disponible</span>`:''}</div><h3>${esc(a.name)}</h3><p><b>${esc(a.path)}</b></p><p>${esc(a.text)}</p>${a.source?`<small class="source">${esc(a.source.edition||a.source.document||'Source')} · p. ${esc(a.source.printedPage||'—')}${a.source.bookId==='cof1-compagnon-2017'?' · adaptation vers COF2':''}</small>`:''}${u||cost?`<div class="ability-actions">${u?`<button class="mini-button primary" data-use="${a.id}" ${remaining===0?'disabled':''}>Utiliser</button><button class="mini-button" data-refund="${a.id}" ${used===0?'disabled':''}>Annuler</button>`:cost?`<button class="mini-button primary" data-spend="${a.id}">Dépenser ${cost.label}</button>`:''}${cost?`<span class="tag">Coût : ${cost.label}</span>`:''}</div>`:''}${tourDeForceHtml(a)}</article>`}
+function abilityHtml(a){const type=actionType(a),u=usage(a),cost=resourceCost(a),used=Number(S.uses[usageKey(a)])||0,remaining=u?Math.max(0,u.max-used):null;return`<article class="ability"><div class="ability-head"><div><span class="tag action">${type}</span> <span class="tag">Rang ${a.rank}</span></div>${u?`<span class="tag ${remaining===0?'used':''}">${remaining}/${u.max} disponible</span>`:''}</div><h3>${esc(a.name)}</h3><p><b>${esc(a.path)}</b></p><p>${esc(a.text)}</p>${a.source?`<small class="source">${esc(a.source.edition||a.source.document||'Source')} · p. ${esc(a.source.printedPage||'—')}${a.source.bookId==='cof1-compagnon-2017'?' · adaptation vers COF2':''}</small>`:''}${!isDefyDeath(a)&&(u||cost)?`<div class="ability-actions">${u?`<button class="mini-button primary" data-use="${a.id}" ${remaining===0?'disabled':''}>Utiliser</button><button class="mini-button" data-refund="${a.id}" ${used===0?'disabled':''}>Annuler</button>`:cost?`<button class="mini-button primary" data-spend="${a.id}">Dépenser ${cost.label}</button>`:''}${cost?`<span class="tag">Coût : ${cost.label}</span>`:''}</div>`:''}${tourDeForceHtml(a)}${barbareCombatHtml(a)}${isDefyDeath(a)?'<p role="status" data-barbare-outcome></p>':''}</article>`}
 function manaGuide(compact=false){if(max.pm<1)return'';return`<article class="mana-guide ${compact?'compact':''}"><div class="mana-title"><div><small>AIDE DU LANCEUR DE SORTS</small><h3>Mana : ${S.pm}/${max.pm} PM</h3></div><span class="tag mana-tag">${esc(D.profile||'Magie')}</span></div><div class="mana-steps"><p><b>1 · Lancer</b><span>Le coût normal d’un sort est égal à son rang. Retire ces PM après le lancement.</span></p><p><b>2 · Économiser</b><span>Un sort noté (A) peut devenir une action limitée (L) pour coûter 2 PM de moins.</span></p><p><b>3 · À court de mana</b><span>Brûlure : chaque PM manquant inflige ${esc(D.combat.recoveryDie)} DM, sans réduction. Impossible pour un sort de soin.</span></p><p><b>4 · Récupérer</b><span>La récupération rapide ne rend pas de PM. Une récupération complète de 8 h les remet au maximum, au plus une fois par jour.</span></p></div>${compact?'':`<div class="ability-actions"><button class="mini-button" data-page-jump="rest">Ouvrir la récupération</button></div>`}</article>`}
 function petoireStock(){const raw=S.ammo?.['petoire-stock'];if(raw==null||raw==='')return null;const n=Number(raw);return Number.isFinite(n)?clamp(Math.floor(n),0,999):null}
 function petoireCounter(){if(id!=='vivelame')return'';const n=petoireStock(),loaded=S.ammo?.['petoire-loaded'];return `<article class="card"><h3>Pétoire : ${loaded===true?'chargée · 1 tir prêt':loaded===false?'déchargée':'état à renseigner'}</h3><p>Après chaque tir, recharge avec une action limitée (L). Impossible de recharger avec un adversaire actif au contact. Le pistolero permet de tirer au contact, pas d’y recharger.</p><div class="ability-actions"><button class="mini-button primary" data-petoire-fire="true" ${loaded!==true||n===0?'disabled':''}>Tirer · arme déchargée ensuite</button><button class="mini-button" data-petoire-load="true" ${loaded===true?'disabled':''}>${loaded==null?'Marquer déjà chargée / recharger (L)':'Recharger (L)'}</button><button class="mini-button" data-petoire-empty="true" ${loaded===false?'disabled':''}>Corriger : déchargée</button></div><p>Règles COF2 : aucun quota de tirs par jour. Les munitions ordinaires ne sont normalement pas décomptées.</p><details><summary>Stock de munitions facultatif${n==null?' · non suivi':' · '+n+' restantes'}</summary><p>À utiliser seulement si le MJ fait suivre la réserve. Le livre indique 20 à 50 projectiles comme réserve usuelle en cas de suivi exceptionnel, sans imposer un stock initial. Le total inclut la munition chargée ; seul Tirer retire une munition.</p><label>Stock restant <input id="petoire-stock-value" type="number" min="0" max="999" step="1" value="${n??''}" inputmode="numeric"></label> <button class="mini-button" data-petoire-set="true">Enregistrer le stock</button><button class="mini-button" data-petoire-untrack="true">Ne pas suivre le stock</button></details><p><small>Livre de base, p. 185 et 187 ; artilleur rang 2, p. 63. Pas de chargeur à répétition acquis. Sauvegarde sur cet appareil. Les actions restent à gérer à la table.</small></p></article>`}
@@ -184,11 +237,11 @@ document.addEventListener('click',async event=>{const t=event.target.closest('bu
 document.addEventListener('change',async event=>{const field=event.target.dataset.itemField,profileKey=event.target.dataset.equipmentProfile!==undefined?event.target.value:'',weaponBonus=event.target.dataset.weaponBonus;if(!field&&!profileKey&&!weaponBonus)return;const holder=event.target.closest('[data-item]'),item=S.inventory.find(x=>x.id===holder?.dataset.item);if(!item)return;if(profileKey){const profile=EQUIPMENT_PROFILES[profileKey]||EQUIPMENT_PROFILES.none;item.equipment=JSON.parse(JSON.stringify(profile.equipment));if(profile.category)item.category=profile.category;if(profile.base)item.base=profile.base;if(profileKey==='none')item.equipped=false}else if(weaponBonus){const value=Number(event.target.value)||0;(item.equipment?.weapon?.modes||[]).forEach(mode=>mode[weaponBonus]=value)}else{item[field]=['quantity','charges','chargesMax'].includes(field)?Math.max(0,Number(event.target.value)||0):event.target.value;if(field==='chargesMax')item.charges=Math.min(item.charges,item.chargesMax);if(field==='charges')item.charges=item.chargesMax?Math.min(item.charges,item.chargesMax):item.charges}save();renderAll();await apiItem(item);toast(profileKey?'Profil d’équipement appliqué.':weaponBonus?'Bonus de l’arme appliqué.':'Objet mis à jour.');});
 function openMedia(url,title){const modal=document.createElement('div');modal.className='media-modal';modal.innerHTML=`<header><b>${esc(title)}</b><button aria-label="Fermer">×</button></header><div class="media-stage"><img src="${esc(url)}" alt="${esc(title)}"></div><p>Pince avec deux doigts ou utilise la molette pour zoomer.</p>`;document.body.appendChild(modal);const img=modal.querySelector('img'),stage=modal.querySelector('.media-stage');let scale=1;stage.addEventListener('wheel',e=>{e.preventDefault();scale=clamp(scale+(e.deltaY<0?.2:-.2),1,5);img.style.transform=`scale(${scale})`},{passive:false});modal.querySelector('button').onclick=()=>modal.remove()}
 let companionSaveTimer=null;document.addEventListener('input',event=>{if(event.target.id!=='companion-name'||id!=='faelar')return;S.companion.name=event.target.value.slice(0,80);save();clearTimeout(companionSaveTimer);companionSaveTimer=setTimeout(()=>apiCompanion(),500)});
-document.addEventListener('click',async event=>{const t=event.target.closest('button');if(!t)return;if(t.dataset.tourDeForce){
+document.addEventListener('click',async event=>{const t=event.target.closest('button');if(!t)return;if(t.dataset.barbareCombat){resolveBarbareCombat(t);return}if(t.dataset.tourDeForce){
  const ability=ownedAbilities().find(a=>a.id===t.dataset.tourDeForce);
  if(!ability||!isTourDeForce(ability))return;
  const roll=Number(t.closest('.ability')?.querySelector('[data-tour-de-force-roll]')?.value);
- const die=tourDeForceDie();
+ const die=evolvingDie();
  if(!Number.isInteger(roll)||roll<1||roll>die){toast('Entre le résultat du d'+die+' avant le test de FOR.');return}
  if(S.hp<=0){toast('Aucun PV disponible.');return}
  S.hp=Math.max(0,S.hp-roll);

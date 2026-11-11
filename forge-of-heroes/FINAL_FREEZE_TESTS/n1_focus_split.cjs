@@ -226,6 +226,10 @@ const queue=profileOrder.map((name,i)=>({name,position:i+1,status:i===activeInde
 const barbareMatrix=optionalProof('pure-profile-fast-barbare.json');
 const barbareClick=optionalProof('barbare-choices-click.json');
 const barbarePdf=optionalProof('barbare-official-pdf.json');
+const barbareCombat=optionalProof('barbare-charge-defier-mort.json');
+const barbareCombatCurrent=barbareCombat?.status==='PASS'&&
+ barbareCombat.sheetSha256===productHash('../fiches-personnages/fiche/fiche.js')&&
+ barbareCombat.testSha256===productHash('../fiches-personnages/tests/barbare-combat.cjs');
 const barbareRankTwoPaths=['brute','pagne','pourfendeur','primitif','rage'];
 const barbareRankTwoCurrent=barbareClick?.status==='PASS'&&barbareClick.indexSha256===productHash('index.html')&&
  barbareRankTwoPaths.every(path=>barbareClick.cases?.some(row=>row.rankTwo===path&&row.status==='PASS'&&row.result?.rank===2));
@@ -237,7 +241,8 @@ const barbareProgress={
   {name:'Peau de pierre, Tatouages et équipement',status:barbareCurrent?'ACQUIS':'A_VERIFIER',detail:barbareCurrent?'3 parcours mobiles, dont le Halfelin avec une hache simple approuvée par le MJ.':'Rejouer les choix au clic et les sauvegardes.',proof:'barbare-choices-click.json'},
   {name:'Rang 2 des cinq voies au clic',status:barbareRankTwoCurrent?'ACQUIS':'A_VERIFIER',detail:barbareRankTwoCurrent?'Cinq parcours mobiles Mûr. Acquisition, PV, DEF, initiative et réouverture vérifiés.':'Rejouer l’acquisition du rang 2 de chaque voie et contrôler la réouverture.',proof:'barbare-choices-click.json'},
   {name:'Fiche PDF officielle',status:barbareCurrent?'ACQUIS':'A_VERIFIER',detail:barbareCurrent?'12 exports couvrant les cinq voies.':'Vérifier les exports des cinq voies.',proof:'barbare-official-pdf.json'},
-  {name:'Effets en combat des cinq voies',status:'A_VERIFIER',detail:'Vérifier les déclencheurs, les durées et les cas où les effets ne s’appliquent pas.'},
+  {name:'Charge et Défier la mort en jeu',status:barbareCombatCurrent?'ACQUIS':'A_VERIFIER',detail:barbareCombatCurrent?'Charge à 5–10 m et hors contact. Défier la mort sur une attaque létale, quota par combat et sauvegarde des PV vérifiés sur mobile.':'Rejouer les deux capacités dans la fiche interactive.',proof:'barbare-charge-defier-mort.json'},
+  {name:'Autres effets en combat',status:'A_VERIFIER',detail:'Vérifier les autres déclencheurs et durées en jeu, dont les cibles et le dé malus du Cri de guerre.'},
   {name:'Parcours restants',status:'A_VERIFIER',detail:'Étendre les tests au clic aux autres choix de voies, peuples et équipements.'}
  ]
 };

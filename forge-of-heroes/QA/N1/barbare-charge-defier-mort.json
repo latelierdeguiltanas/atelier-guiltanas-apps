@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "scope": "Fiche interactive Forge, contrôles au clic mobile. Déplacement, contact, dégâts finaux, test de CON et état de rage renseignés par le joueur.",
+  "source": "COF2 Livre de base, p. 81–82",
+  "run": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/43093860541/job/130777567411",
+  "sheetSha256": "0b5618c568d53a3b7d36a092ab09a8230dbf8e21824ba65d88dbabd66faa8600",
+  "testSha256": "bea2bc13128e212bb2d13e20345eb33c2966c9b87d10b28774189e4785b41e32",
+  "cases": [
+    "Charge à 5 m et 10 m : dé bonus au contact et +1d4° DM en cas de réussite.",
+    "Charge à 4,99 m, 10,01 m ou déjà au contact : refusée.",
+    "Défier la mort : une attaque non létale ou un test manquant ne consomme pas la capacité.",
+    "Défier la mort : 10 au test laisse 1 PV ; 9 au test laisse 0 PV ; la rage permet de conserver 1 PV sans jet.",
+    "Défier la mort : PV et usage conservés au rechargement ; usage rétabli à la fin du combat."
+  ]
+}
