@@ -16,7 +16,13 @@
 <link rel="manifest" href="index.install.webmanifest">
 <meta name="application-name" content="Île aux Tempêtes">
 <script data-guiltanas-install src="../../../../guiltanas-install/install.js?v=1" defer></script>
-</head>
+<style>
+.scenario-filters{display:grid;gap:5px;margin:8px 0 12px}.scenario-filters input,.scenario-filters select,#saved-search{width:100%;box-sizing:border-box}
+#scenario-ready{display:grid;gap:8px}#scenario-ready details{padding:8px 10px;border:1px solid var(--line,#5b543f);border-radius:9px}
+#scenario-ready summary,#scenario-prepare>summary{cursor:pointer;font-weight:700}#scenario-ready .excerpt{white-space:pre-wrap;margin:9px 0}
+#scenario-ready img{width:min(100%,680px);display:block;margin:8px 0}
+.mj-embedded .top{display:none}#saved-search{margin:6px 0 12px}
+</style></head>
 <body>
   <div class="gate" id="gate">
     <form class="gateBox" id="gateForm">
@@ -32,9 +38,12 @@
 
   <main class="wrap hidden" id="app">
     <div class="top"><a class="back" href="../../">← Table du MJ</a><span class="badge">Distribution en direct</span></div>
-    <header class="hero"><small>Objets, cartes et indices</small><h1>Donner une découverte</h1><p>Crée une carte, un objet ou un fragment de texte, puis choisis exactement quels aventuriers peuvent le consulter.</p></header>
-    <section class="layout">
-      <form class="panel" id="createForm">
+    <header class="hero"><small>Objets, cartes et indices</small><h1>Objets de scénario</h1><p>Choisis ce que les PJ découvrent, lis le texte à table ou révèle-le aux destinataires de ton choix.</p></header>
+    <section class="panel" aria-labelledby="scenario-ready-title">
+<h2 id="scenario-ready-title">Prêts pour la séance</h2>
+<div class="scenario-filters"><label for="scenario-search">Rechercher un objet ou un indice</label><input id="scenario-search" type="search" placeholder="Ex. boussole, portrait, journal…"><label for="scenario-scene">Scène</label><select id="scenario-scene"><option value="">Toutes les scènes</option><option>Repos du Dragon</option><option>Épave de la Rose des Vents</option></select></div>
+<div id="scenario-ready"></div></section><section class="layout">
+      <details class="panel" id="scenario-prepare"><summary>Préparer une découverte à révéler</summary><form id="createForm">
         <h2>Nouvelle découverte</h2>
         <p>Elle apparaît sur les appareils des joueurs dès l’attribution.</p>
         <div class="field"><label for="preparedTemplate">Modèle préparé</label><select id="preparedTemplate">
@@ -55,22 +64,22 @@
         <div class="field hidden" id="textField"><label for="contentText">Contenu visible par le joueur</label><textarea id="contentText" maxlength="20000" placeholder="Transcription, propriétés de l’objet, histoire de la malédiction…"></textarea></div>
         <div class="field"><label>Destinataires</label><div class="recipientRow" id="recipients"></div></div>
         <div class="actions"><button class="btn primary" id="createButton" type="submit">Créer et attribuer</button><span class="status" id="createStatus"></span></div>
-      </form>
+      </form></details>
 
-      <aside class="panel">
+      <details class="panel"><summary>Gérer les liens des joueurs</summary>
         <h2>Liens personnels des joueurs</h2>
         <p>Crée un lien une seule fois, puis envoie-le au joueur. Il restera reconnu sur son appareil. Recréer un lien invalide l’ancien.</p>
         <div class="playerLinks" id="playerLinks"></div>
         <div class="linkResult hidden" id="linkResult"><strong id="linkResultTitle"></strong><input id="linkResultValue" readonly><div class="actions"><button class="btn" id="copyLink" type="button">Copier le lien</button><button class="btn" id="shareLink" type="button">Partager</button></div></div>
-      </aside>
+      </details>
 
       <section class="panel inventory">
         <div class="inventoryHead"><div><h2>Objets déjà créés</h2><p style="margin-bottom:0">Clique sur un nom de joueur pour attribuer ou retirer l’objet.</p><div class="statusLegend" aria-label="Légende des statuts"><span class="assigned">Attribué : en attente du téléphone</span><span class="delivered">Livré : chargé sur son espace</span><span class="viewed">Consulté : ouvert ou marqué comme lu</span></div></div><button class="btn" id="refreshButton" type="button">Actualiser</button></div>
-        <div class="inventoryList" id="inventory"><div class="empty">Chargement de l’inventaire…</div></div>
+        <label for="saved-search">Rechercher parmi les découvertes enregistrées</label><input id="saved-search" type="search" placeholder="Nom, carte, objet ou indice…"><div class="inventoryList" id="inventory"><div class="empty">Chargement de l’inventaire…</div></div>
       </section>
     </section>
   </main>
   <script src="../../../assets/handouts-api.js?v=1"></script>
-  <script src="partage.js?v=6"></script>
-<script src="../../../assets/social-nav.js?v=1"></script></body>
+  <script src="partage.js?v=objets2"></script>
+<script src="../../../assets/social-nav.js?v=desk1"></script><script src="../../../assets/mj-desk.js?v=2"></script></body>
 </html>

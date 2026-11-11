@@ -29,3 +29,4 @@ body.mj-single-screen{padding-top:0!important}
 .mj-single-screen #combat .liveTop{top:calc(var(--mj-header,112px) + var(--mj-controls,48px) + 4px)}
 .mj-single-screen #nespresso-bridge{padding:8px 10px}.mj-single-screen #nespresso-bridge h3{margin:0 0 4px}.mj-single-screen #nespresso-bridge p{margin:4px 0}
 @media(max-width:640px){.mj-shortcuts{grid-template-columns:1fr}}
+.mj-combat-drawer iframe[hidden]{display:none!important}

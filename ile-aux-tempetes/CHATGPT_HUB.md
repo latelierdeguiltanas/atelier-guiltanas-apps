@@ -1,3 +1,10 @@
+## Retrouver les objets pendant la séance
+
+- Les listes Mila de l’envoi et de la boutique MJ ont une recherche par nom et un filtre par catégorie. Dix résultats maximum, en plus de l’éventuelle sélection en cours.
+- « Objets de scénario » ouvre les découvertes du MJ depuis la Table MJ, les objets et le combat. Cinq modèles existants : carte de Runara, boussole, portrait, journal du capitaine et talisman. Recherche et filtre par scène, texte ou image consultable avant révélation, réutilisation d’une découverte déjà créée.
+- « Préparer la révélation » remplit le formulaire existant. Les PJ ne reçoivent la découverte qu’après choix des destinataires et attribution. Une découverte narrative va dans leur espace de découvertes ; l’envoi d’un équipement ou de pièces reste dans Récompenses.
+- Le tiroir du combat conserve deux vues distinctes afin de garder les brouillons d’envoi et de découverte. Tests DOM avec données fictives, aucun envoi réel.
+
 ## Table MJ sur un écran — 11 novembre 2026
 
 - Accueil par tâches : combat, récompenses, sacs et messages. Les commandes de connexion restent accessibles mais se replient après validation.

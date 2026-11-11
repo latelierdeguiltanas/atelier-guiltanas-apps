@@ -94,13 +94,52 @@
     });
   }
 
+  const fold = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const matches = (query, value) => fold(query).trim().split(/\s+/).filter(Boolean).every(word => fold(value).includes(word));
+  const ready = document.getElementById('scenario-ready');
+  const search = document.getElementById('scenario-search');
+  const scene = document.getElementById('scenario-scene');
+  const savedSearch = document.getElementById('saved-search');
+  function renderReady() {
+    if (!ready) return;
+    ready.replaceChildren();
+    for (const [id, item] of Object.entries(preparedTemplates)) {
+      const location = id === 'runara-map' ? 'Repos du Dragon' : 'Épave de la Rose des Vents';
+      if ((scene.value && location !== scene.value) || !matches(search.value, item.title + ' ' + location + ' ' + kindLabel(item.kind))) continue;
+      const card = document.createElement('details');
+      const title = document.createElement('summary');
+      title.textContent = item.title + ' · ' + location;
+      card.append(title);
+      if (item.fileUrl) { const image = document.createElement('img'); image.src = item.fileUrl; image.alt = item.title; image.loading = 'lazy'; card.append(image); }
+      if (item.content) { const content = document.createElement('p'); content.className = 'excerpt'; content.textContent = item.content; card.append(content); }
+      const button = document.createElement('button');
+      button.type = 'button'; button.className = 'btn primary';
+      const saved = state.handouts.some(h => h.title === item.title && h.kind === item.kind);
+      button.textContent = saved ? 'Voir la découverte déjà créée' : 'Préparer la révélation';
+      button.onclick = () => {
+        if (saved) { savedSearch.value = item.title; renderInventory(); savedSearch.focus(); return; }
+        const select = document.getElementById('preparedTemplate');
+        document.getElementById('scenario-prepare').open = true;
+        select.value = id; select.dispatchEvent(new Event('change'));
+        document.getElementById('title').focus();
+      };
+      card.append(button); ready.append(card);
+    }
+    if (!ready.childElementCount) ready.textContent = 'Aucun objet ne correspond à cette recherche.';
+  }
+  search?.addEventListener('input', renderReady);
+  scene?.addEventListener('change', renderReady);
+  savedSearch?.addEventListener('input', renderInventory);
+
   function renderInventory() {
     inventory.textContent = '';
     if (!state.handouts.length) {
       inventory.innerHTML = '<div class="empty">Aucun objet créé. Commence avec la carte de Runara ou un premier fragment de la malédiction.</div>';
       return;
     }
-    state.handouts.forEach(function (handout) {
+    const filtered = state.handouts.filter(handout => matches(savedSearch?.value, handout.title + ' ' + kindLabel(handout.kind)));
+    if (!filtered.length) { inventory.textContent = 'Aucune découverte ne correspond à cette recherche.'; return; }
+    filtered.forEach(function (handout) {
       const active = activeAssignments(handout.id);
       const card = document.createElement('article');
       card.className = 'card' + (handout.image_url ? '' : ' noImage');
@@ -159,6 +198,7 @@
     renderRecipients();
     renderPlayerLinks();
     renderInventory();
+    renderReady();
   }
 
   async function unlock(candidate) {
@@ -312,9 +352,8 @@
   };
   document.getElementById('refreshButton').onclick = function () { loadDashboard().catch(function (error) { alert(error.message); }); };
 
-  if (token) unlock(token).catch(function () {
-    localStorage.removeItem(tokenKey);
-    token = '';
-    setStatus(gateStatus, 'Le lien enregistré n’est plus valable. Colle ta nouvelle clé MJ.', 'error');
+  if (token) unlock(token).catch(function (error) {
+    const rejected = error.status === 401 || error.status === 403;
+    setStatus(gateStatus, rejected ? 'Accès MJ refusé. Ouvre ton lien privé de connexion.' : 'Le serveur ne répond pas. Actualise la page pour réessayer.', 'error');
   });
 })();
