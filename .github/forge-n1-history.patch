@@ -1,0 +1,447 @@
+diff --git a/forge-of-heroes/ENGINE/history_context_n1.js b/forge-of-heroes/ENGINE/history_context_n1.js
+index 8aa1472..8012c72 100644
+--- a/forge-of-heroes/ENGINE/history_context_n1.js
++++ b/forge-of-heroes/ENGINE/history_context_n1.js
+@@ -1,4 +1,4 @@
+-/* COF2, Voies d'historique pp.176-177. Les contextes sont déclarés par le joueur/MJ.
++/* COF2, Voies d'historique pp.172-177. Les contextes sont déclarés par le joueur/MJ.
+  * Aucun bonus social ou professionnel ne modifie une caractéristique permanente.
+  */
+ (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.FOH_HISTORY_CONTEXT_N1=api;})(typeof window!=='undefined'?window:null,function(){
+@@ -11,6 +11,72 @@ const rules={
+  scholar_persuasion:{title:'Argumenter',id:'ability:history:scholar:r2',page:177},
+  expert_work:{title:'Expertise',id:'ability:history:expert:r2',page:177}
+ };
++// Voies d’historique, pp. 172–175. Each situation is selected explicitly by
++// the player or GM and is resolved without changing the saved character.
++const extraDamage={extraDamage:'1d4°'};
++const terrainCombat={attackBonus:2,defenseBonus:2};
++const originGroups={
++ campaigns:{page:172,ranks:[
++  ['C’est pas tout prêt', [['Réparer un objet ou travailler dur',{skillBonus:5}]]],
++  ['Les outils sont des armes', [['Attaquer avec une arme servant aussi d’outil',{attackBonus:1}]]],
++  ['C’est pas tout près', [['Pendant une période de marche',{extraTravelKm:2,armorPenaltyDivisor:2},'Arrondir la pénalité d’armure à l’inférieur.']]],
++  ['Adversaire des campagnes', [['Attaquer un humanoïde en armure métallique',extraDamage]]]
++ ]},
++ cities:{page:172,ranks:[
++  ['Survie dans les coupe-gorge', [['PER pour s’orienter ou détecter une embuscade en ville',{skillBonus:3}],['CHA face à un gang ou à la garde en ville',{skillBonus:3}]]],
++  ['Fendre la foule', [['Se déplacer dans une foule',{ignoreCrowdSlowdown:true}],['Combattre dans une foule',terrainCombat]]],
++  ['Pistage urbain', [['CHA pour suivre une piste en interrogeant les témoins en ville',{skillBonus:5},'Difficulté de 15 à 30 selon les circonstances.'],['Survie en milieu urbain',{skillBonus:5}]]],
++  ['Expert des rixes', [['Combattre un humanoïde',{extraTemporaryDamage:'1d4°'}]]]
++ ]},
++ deserts:{page:173,ranks:[
++  ['À boire !', [['Point d’eau à moins d’une heure de marche',{perceptionDifficulty:10}],['Point d’eau entre une heure et moins d’un jour de marche',{perceptionDifficulty:15}],['Point d’eau à un jour de marche ou davantage',{perceptionDifficulty:20}]]],
++  ['Soleil de plomb', [['Subir du feu ou de la chaleur',{damageReduction:3}]]],
++  ['Se mettre à l’abri', [['Chercher un abri contre la chaleur, le froid nocturne ou un événement climatique',{automaticShelter:true}]]],
++  ['Adversaire des déserts', [['Attaquer un arthropode géant',extraDamage]]]
++ ]},
++ forests:{page:173,ranks:[
++  ['Nature généreuse (forêts)', [['Chercher de la nourriture en avançant en forêt',{selfForage:true,forageThreshold:10,forageInterval:5}]]],
++  ['Chasseur', [['Attaquer un animal ou un animal géant',extraDamage]]],
++  ['Terrain de prédilection (forêts)', [['Traverser une forêt dense',{normalTravelSpeed:true}],['Combattre en forêt',{defenseBonus:2}]]],
++  ['Passage par les arbres', [['Se déplacer d’arbre en arbre',{movementMultiplier:0.5,ignoreClimbAndBalanceTests:true}]]]
++ ]},
++ caves:{page:174,ranks:[
++  ['Sens de l’orientation (souterrains)', [['S’orienter dans les souterrains',{directWayToSurface:true}],['Voir dans la pénombre',{dimLightAsDay:true}],['Utiliser une vision dans le noir déjà acquise',{darkvisionMultiplier:2}]]],
++  ['Combat confiné', [['Combattre sous terre ou dans un espace étroit',{attackBonus:2}]]],
++  ['Combat en aveugle', [['Combattre au contact un ennemi invisible à mes yeux',{ignoreUnseenMeleePenalty:true}],['Frapper avec une torche enflammée',{torchDamage:'1d6 + AGI'}],['Éblouir un adversaire au contact dans le noir avec la torche',{enemyMeleePenalty:-1}],['Éblouir un animal au contact dans le noir avec la torche',{enemyMeleePenalty:-2}]]],
++  ['Adversaire des souterrains', [['Attaquer un elfe des profondeurs, un orc ou un goblinoïde',extraDamage]]]
++ ]},
++ marshes:{page:174,ranks:[
++  ['Résistance aux miasmes', [['Résister à une maladie ou à un poison',{skillBonus:3}]]],
++  ['Vision améliorée', [['Voir dans un brouillard léger',{effectiveFog:'Aucun brouillard'}],['Voir dans un brouillard dense',{effectiveFog:'Brouillard léger'}],['Échapper aux sables mouvants',{automaticEscape:true}]]],
++  ['Résistance aux toxines', [['Subir du poison ou de l’acide',{damageReduction:3}]]],
++  ['Adversaire des marécages', [['Attaquer un reptile ou un amphibien',extraDamage]]]
++ ]},
++ mountains:{page:174,ranks:[
++  ['Grimpeur', [['Faire un test d’escalade',{skillBonus:3}],['Subir des dommages de chute',{damageDivisor:2}]]],
++  ['Résistance au froid', [['Subir des dommages de froid',{damageReduction:3}]]],
++  ['Terrain de prédilection (montagnes)', [['Combattre sur une forte pente ou dans un escalier',terrainCombat]]],
++  ['Danger des montagnes', [['Combattre un géant',{defenseBonus:2,...extraDamage}]]]
++ ]},
++ plains:{page:175,ranks:[
++  ['Cavalier', [['Attaquer en étant monté',{attackBonus:1}],['Monter en selle ou descendre',{freeAction:true}]]],
++  ['Œil de faucon', [['Observer des détails à 100 m ou davantage',{skillBonus:5}],['Attaquer à distance',{rangeBonusMeters:10}]]],
++  ['Engagement', [['Au premier round, se rapprocher et/ou attaquer au contact',{freeRangedAttack:true}]]],
++  ['Adversaire des plaines', [['Attaquer une créature volante',extraDamage]]]
++ ]},
++ shores:{page:175,ranks:[
++  ['Nature généreuse (rivages)', [['Chercher de la nourriture en avançant en bord de rivière ou en mer',{selfForage:true,forageThreshold:10,forageInterval:5}]]],
++  ['Comme un poisson dans l’eau', [['Combattre dans l’eau',{ignoreWaterCombatPenalty:true},'Conserver les pénalités propres au type d’arme.']]],
++  ['Sens de l’eau', [['S’orienter en mer',{direction:'Terre la plus proche'}],['S’orienter sur terre',{direction:'Étendue d’eau la plus proche'}]]],
++  ['Adversaire des étendues d’eau', [['Attaquer une créature aquatique',extraDamage]]]
++ ]}
++};
++for(const [origin,{page,ranks}] of Object.entries(originGroups)){
++ ranks.forEach(([title,situations],index)=>{
++  const id='ability:history:'+origin+':r'+(index+2);
++  rules[id]={title,id,page,situations};
++ });
++}
+ const rows=c=>c?.abilities||c?.acquiredAbilities||[];
+ const path=a=>a.pathId||a.path_id||'';
+ const professional=c=>rows(c).find(a=>professions.some(p=>path(a)==='history:'+p)&&Number(a.rank)>=1);
+@@ -19,6 +85,15 @@ function resolve(c,key,context={}){
+  const rule=rules[key];if(!rule)throw Error('Règle historique inconnue : '+key);
+  const out={rule:key,sourcePage:rule.page,owned:owned(c,key),applies:false,modifiers:{},requirements:[],limits:[],notes:[]};
+  if(!out.owned){out.requirements.push('Capacité non acquise.');return out;}
++ if(rule.situations){
++  const selected=Number.isInteger(context.situation)?rule.situations[context.situation]:null;
++  if(!selected){out.requirements.push('Les conditions de cette capacité ne sont pas réunies.');return out;}
++  const [,modifiers,note]=selected;
++  Object.assign(out.modifiers,modifiers);
++  if(note)out.notes.push(note);
++  out.applies=true;
++  return out;
++ }
+  const ability=rows(c).find(a=>a.id===rule.id),rank=ability?Math.max(Number(ability.rank),...rows(c).filter(a=>path(a)===path(ability)).map(a=>Number(a.rank))):0;
+  if(key==='community'){
+   if(context.socialInteraction!==true||context.sameProfessionalCommunity!==true){out.requirements.push('Interaction sociale avec un autre membre de la même communauté professionnelle requise.');return out;}
+@@ -37,5 +112,5 @@ function resolve(c,key,context={}){
+  }
+  out.applies=true;return out;
+ }
+-return Object.freeze({version:'FOH-HISTORY-CONTEXT-N1-1',rules,available:c=>Object.keys(rules).filter(k=>owned(c,k)),isOwned:owned,resolve});
++return Object.freeze({version:'FOH-HISTORY-CONTEXT-N1-2',rules,available:c=>Object.keys(rules).filter(k=>owned(c,k)),isOwned:owned,resolve});
+ });
+diff --git a/forge-of-heroes/ENGINE/history_context_ui_n1.js b/forge-of-heroes/ENGINE/history_context_ui_n1.js
+index b45432f..e0d347f 100644
+--- a/forge-of-heroes/ENGINE/history_context_ui_n1.js
++++ b/forge-of-heroes/ENGINE/history_context_ui_n1.js
+@@ -8,6 +8,22 @@ const examples={
+  scholar_persuasion:[['Test de CHA pour convaincre',{test:'convince',characteristic:'cha'}],['Test d’INT : ce bonus ne s’applique pas',{test:'convince',characteristic:'int'}]],
+  expert_work:[['Test ou travail dans mon métier',{relatesToChosenProfession:true}],['Activité étrangère à mon métier',{relatesToChosenProfession:false}]]
+ };
++const labels={
++ attackBonus:'Bonus d’attaque',defenseBonus:'Bonus de DEF',extraDamage:'Dommages supplémentaires',extraTemporaryDamage:'Dommages temporaires supplémentaires',
++ extraTravelKm:'Kilomètres supplémentaires',armorPenaltyDivisor:'Diviseur de la pénalité d’armure',ignoreCrowdSlowdown:'Ignore le ralentissement dans la foule',
++ perceptionDifficulty:'Difficulté du test de PER',damageReduction:'Réduction des dommages',automaticShelter:'Abri trouvé automatiquement',
++ selfForage:'Se nourrit en avançant',forageThreshold:'Seuil du test de PER (Survie)',forageInterval:'Points au-dessus du seuil par personne supplémentaire',
++ normalTravelSpeed:'Vitesse de déplacement normale',movementMultiplier:'Multiplicateur de déplacement',ignoreClimbAndBalanceTests:'Sans test d’escalade ou d’équilibre',
++ directWayToSurface:'Chemin direct vers la surface',dimLightAsDay:'Voit dans la pénombre comme en plein jour',darkvisionMultiplier:'Multiplicateur de portée de vision dans le noir',
++ ignoreUnseenMeleePenalty:'Ignore le malus au contact contre un ennemi non visible',torchDamage:'Dommages de la torche',enemyMeleePenalty:'Malus d’attaque au contact de l’adversaire',
++ effectiveFog:'Brouillard pris en compte',automaticEscape:'Échappe automatiquement aux sables mouvants',damageDivisor:'Diviseur des dommages',
++ freeAction:'Action gratuite',rangeBonusMeters:'Portée supplémentaire en mètres',freeRangedAttack:'Attaque à distance gratuite',
++ ignoreWaterCombatPenalty:'Ignore les pénalités du combat dans l’eau',direction:'Direction connue'
++};
++function situations(key){
++ const options=API.rules[key]?.situations;
++ return options?[...options.map(([label],index)=>[label,{situation:index}]),['Conditions non réunies',{}]]:(examples[key]||[]);
++}
+ let panel;const node=(parent,tag,text)=>{const el=document.createElement(tag);if(text)el.textContent=text;parent.appendChild(el);return el;};
+ const character=()=>{const r=E.computeCharacterN1(P.buildState());return r.errors?.length?null:r.sticky?.characterState;};
+ function render(){try{const host=document.getElementById('summary-content');if(!host||host.hidden)return;const c=character();if(!c)return;const owned=API.available(c);if(!owned.length){if(panel)panel.hidden=true;return;}
+@@ -16,8 +32,8 @@ function render(){try{const host=document.getElementById('summary-content');if(!
+   const label2=node(panel,'label','Situation : '),b=node(label2,'select');b.id='foh-history-example';
+   for(const l of [label,label2])l.style.cssText='display:grid;gap:7px;margin:10px 0;min-width:0';for(const select of [a,b])select.style.cssText='width:100%;min-width:0;max-width:100%;box-sizing:border-box;padding:9px;background:#171511;color:white';
+   const button=node(panel,'button','Calculer les effets');button.type='button';button.id='foh-history-run';const out=node(panel,'div');out.id='foh-history-result';out.setAttribute('aria-live','polite');out.style.cssText='white-space:pre-wrap;margin-top:10px';
+-  a.addEventListener('change',()=>{b.replaceChildren();examples[a.value].forEach(([text],i)=>{const o=node(b,'option',text);o.value=String(i);});out.textContent='';});
+-  button.addEventListener('click',()=>{try{const current=character();if(!current)throw Error('Fiche incomplète.');const r=API.resolve(current,a.value,examples[a.value][Number(b.value)][1]),lines=[r.applies?'Règle applicable dans cette situation.':'Règle NON applicable dans cette situation.'];if(r.modifiers.skillBonus!=null)lines.push('Bonus de compétence : +'+r.modifiers.skillBonus);if(r.modifiers.bonusDie)lines.push('Dé bonus : oui');if(r.modifiers.workTimeMultiplier!=null)lines.push('Temps de travail : × '+r.modifiers.workTimeMultiplier);for(const message of [...r.requirements,...r.notes])lines.push(message);lines.push('Référence : voies d’historique COF2, p. '+r.sourcePage+'.');out.textContent=lines.join('\n');}catch(e){out.textContent='Calcul impossible : '+e.message;}});
++  a.addEventListener('change',()=>{b.replaceChildren();situations(a.value).forEach(([text],i)=>{const o=node(b,'option',text);o.value=String(i);});out.textContent='';});
++  button.addEventListener('click',()=>{try{const current=character();if(!current)throw Error('Fiche incomplète.');const r=API.resolve(current,a.value,situations(a.value)[Number(b.value)]?.[1]||{}),lines=[r.applies?'Règle applicable dans cette situation.':'Règle NON applicable dans cette situation.'];if(r.modifiers.skillBonus!=null)lines.push('Bonus de compétence : +'+r.modifiers.skillBonus);if(r.modifiers.bonusDie)lines.push('Dé bonus : oui');if(r.modifiers.workTimeMultiplier!=null)lines.push('Temps de travail : × '+r.modifiers.workTimeMultiplier);for(const [key,label] of Object.entries(labels)){const value=r.modifiers[key];if(value!=null)lines.push(label+' : '+(value===true?'oui':value));}for(const message of [...r.requirements,...r.notes])lines.push(message);lines.push('Référence : voies d’historique COF2, p. '+r.sourcePage+'.');out.textContent=lines.join('\n');}catch(e){out.textContent='Calcul impossible : '+e.message;}});
+   host.insertAdjacentElement('afterend',panel);
+  }
+  panel.hidden=false;const a=panel.querySelector('#foh-history-ability'),signature=owned.join('|');if(a.dataset.available!==signature){const previous=a.value;a.replaceChildren();for(const key of owned){const o=node(a,'option',API.rules[key].title);o.value=key;}a.dataset.available=signature;if(owned.includes(previous))a.value=previous;a.dispatchEvent(new Event('change'));}
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+index 48fb5b0..27635e4 100644
+--- a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+@@ -147,6 +147,9 @@ const grantContext=optionalProof('arquebusier-grant-context.json');
+ const grantContextCurrent=grantContext?.status==='PASS'&&sameCurrentHashes(grantContext.products)&&grantContext.cases?.length===30&&grantContext.refusals>=100&&['arquebusier','arbaletrier'].every(variant=>new Set(grantContext.cases.filter(c=>c.variant===variant&&c.status==='PASS'&&c.saveReload&&c.checks>0).map(c=>c.slug)).size===15);
+ const borrowedMobileCurrent=r2Mobile&&advanced.cases?.some(c=>c.status==='PASS'&&c.steps?.includes('vivacite-condition-verified'));
+ const r3EffectsCurrent=contextualComplete&&grantContextCurrent&&borrowedMobileCurrent&&gearComplete&&pdfComplete;
++const origins=optionalProof('arquebusier-history-origins.json');
++const originsCurrent=origins?.status==='PASS'&&origins.indexSha256===productHash('index.html')&&origins.cases===90&&origins.reopened===90&&origins.positive===180&&origins.negative===1440;
++const originProgress=originsCurrent?' Les 36 capacités des rangs 2 à 5 des neuf origines ont des résultats en situation vérifiés sur les deux variantes, avec réouverture.':'';
+ const profileChecks=[
+  mark('paths','Les cinq voies officielles',profile.powers.length===5,'Les cinq voies et leurs 15 rangs accessibles sont présents et référencés.','Vérifier les cinq voies du livre.'),
+  mark('pairs','Toutes les paires de voies légales',tenPairsVerified,'Les dix choix possibles de deux voies du profil, avec chacun des huit peuples et les cinq modalités d’âge N1, sont créés, validés et conservés après sauvegarde. Les dix couples de l’Arbalétrier sont aussi éprouvés.','Les dix choix possibles de deux voies doivent fonctionner avec les équipements autorisés, y compris l’alternative Halfelin.'),
+@@ -160,7 +163,7 @@ const profileChecks=[
+  mark('r2effects','Tous les effets des cinq capacités de rang 2',r2Complete,'Cinq capacités R2 contrôlées par oracles contextuels (cas applicables, absence de contexte et capacité non acquise) et cinq créations vénérables au clic sur la version courante. Chargeurs calculés depuis les rangs acquis, rechargement, charges/préparation de Démolition, NC/critique de Mort ou vif, cible/délai d’Ajuster le tir et préparation/DEF/RD de Défaut dans la cuirasse. Rangs et sauvegardes croisés aux huit peuples.',mechanicalCurrent?'15 capacités R1–R3 contrôlées dans les deux bases, et chargeur 2+INT validé. Plusieurs rangs R2 restent des effets à interpréter en combat ; rechargement, Démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse non certifiés en exécution.':'Chargeur 2 + INT validé ; restent le rechargement, la démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse.'),
+  mark('r3effects','Tous les effets des cinq capacités de rang 3',r3EffectsCurrent,'Calcul des cinq capacités R3, plus les 15 dons de Combattant aguerri dans les deux variantes. Conditions, restrictions d’armure, réouverture et non-application vérifiées. Vivacité testée au clic dans les deux situations.', 'Vérifier les cinq capacités et les dons de Combattant aguerri avec leurs restrictions, sur la fiche et au clic.'),
+  mark('gear','Toutes les armes, armures et variante Arbalétrier',gearComplete,'100 contrôles des frontières d’équipement sur la Forge publiée (200 dans l’ancien rapport comprenant le maître supprimé) : 41 armes, sept armures, deux boucliers et deux variantes, avec sauvegardes. Variante sans poudre : pétoire et mousquet refusés. 120 contrôles des dons et plafonds d’armure sur la Forge publiée et vingt créations réelles au clic. Les restrictions raciales de taille restent suivies dans les critères propres aux peuples.',mercenaryContinuity?'Périmètre PROFIL PUR seulement : contrôler les interdictions de boucliers, le plafond chemise de mailles, les catégories d’armes et les paquetages, ainsi que la variante officielle Arbalétrier sans armes à poudre. Les 32 tests hybrides réussis restent hors de ce certificat.':deployed||arbaletrierMissing?variantGap:(pureGearCurrent?'80/80 armures autorisées jusqu’à DEF +4 et 16/16 pétoires maîtrisées pour les huit peuples sur deux produits. Les armures trop lourdes et boucliers sont refusés par le moteur ; vérifier la règle de port avec incapacités et l’Arbalétrier.':'Maîtrises, armure maximum, boucliers, armes à poudre, équipements alternatifs et Arbalétrier sans poudre.')),
+- mark('history','Origines, métiers et historiques avancés',false,'',historyConditionsCurrent?'Érudit : domaines/langues et Argumenter ; Courtisan : dons R5, Secrets et commérages, perception visuelle/mensonge/langage corporel ; bonus communautaire et Expertise calculés en situation avec cas défavorables. 80 personnages et six parcours dédiés sauvegardés et rouverts, en plus des 248 cas de choix historiques et 24 exports privés. Restent les autres capacités historiques et leurs conditions : aucune clôture globale.':historyChoicesCurrent?'Érudit : domaines principal et secondaire, bonus et langues par rang, quota pondéré de l’Argotien ; Courtisan R5 : don R1–R3 aventurier et acquisitions imbriquées. 496 cas, six créations mobiles sauvegardées et rouvertes, 24 exports officiels privés vérifiés. Restent le bonus communautaire et les autres effets conditionnels des historiques ; ce critère reste ouvert.':historyCrossPassed?'Les 17 historiques sont accessibles, leurs rangs et sauvegardes réussissent avec les huit peuples. Restent à vérifier individuellement leurs bonus conditionnels, les restrictions et l’export sur la fiche de l’Arquebusier.':'Contrôler toutes les voies d’historique, leurs rangs accessibles et leurs effets sur les aptitudes de l’Arquebusier.'),
++ mark('history','Origines, métiers et historiques avancés',false,'',originProgress+(historyConditionsCurrent?'Érudit : domaines/langues et Argumenter ; Courtisan : dons R5, Secrets et commérages, perception visuelle/mensonge/langage corporel ; bonus communautaire et Expertise calculés en situation avec cas défavorables. 80 personnages et six parcours dédiés sauvegardés et rouverts, en plus des 248 cas de choix historiques et 24 exports privés. Restent les autres capacités historiques et leurs conditions : aucune clôture globale.':historyChoicesCurrent?'Érudit : domaines principal et secondaire, bonus et langues par rang, quota pondéré de l’Argotien ; Courtisan R5 : don R1–R3 aventurier et acquisitions imbriquées. 496 cas, six créations mobiles sauvegardées et rouvertes, 24 exports officiels privés vérifiés. Restent le bonus communautaire et les autres effets conditionnels des historiques ; ce critère reste ouvert.':historyCrossPassed?'Les 17 historiques sont accessibles, leurs rangs et sauvegardes réussissent avec les huit peuples. Restent à vérifier individuellement leurs bonus conditionnels, les restrictions et l’export sur la fiche de l’Arquebusier.':'Contrôler toutes les voies d’historique, leurs rangs accessibles et leurs effets sur les aptitudes de l’Arquebusier.')),
+  mark('save','Enregistrer et reprendre les pouvoirs obtenus',ageOK,'Les états de référence des rangs 1, 2 et 3 avec l’âge ont été enregistrés et restaurés à l’identique.','Vérifier la sauvegarde et la reprise.'),
+  mark('pdf','Fiche officielle et annexes',pdfComplete,'28 exports sur le vrai modèle officiel : cinq voies et rangs R1–R3 des deux variantes, deux exporteurs, bonus de Doigts agiles actif/inactif selon l’armure. 4 368 widgets relus (valeurs et apparences), fiche et annexe inspectées visuellement. Quinze dons contrôlés dans 60 annexes, uniquement leurs rangs acquis et textes intégraux. Les exports propres aux peuples et historiques restent suivis séparément.',pdfProbePass?'Test réel Chrome et smartphone des exports des deux variantes : 4 PDF de 6 pages, nom et profil présents sur les deux premières pages, PDF sans champs étranger refusé. Empreinte du modèle COF2 reconnue en simulation ; restent le rendu sur le PDF officiel réel et la vérification exhaustive des champs, textes et annexes.':'Vérifier les deux pages officielles, toutes les valeurs, les résumés et les descriptions des voies.'),
+  mark('click','Créer, sauvegarder et rouvrir au clic sur mobile',clickComplete,'80 créations tactiles des huit peuples × cinq modalités d’âge × deux variantes : jeune, très jeune PC/DR, mûr et vénérable. Fiches, valeurs et attaques identiques après sauvegarde/rechargement/réouverture. Quinze dons de Combattant aguerri et cinq catégories de prédilection sélectionnés dans chaque variante. Complète les vingt paires, les cinq voies vénérables et les situations contextuelles déjà vérifiées au clic.','Compléter les quatre-vingts parcours des peuples et âges, le choix PC/DR visible, les quinze dons et les reprises sur les empreintes de production courantes. Les hybrides restent hors de cette campagne.')
+@@ -243,7 +246,7 @@ const output={
+  pausedProfiles:13,
+  summary:{profilesCertified:0,profilesInProgress:1,profilesPending:13,peoplesCertified:peoples.filter(p=>p.certified).length},
+  limitations:'Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.',
+- sources:['QA/N1/official-people-equipment.json','QA/N1/arquebusier-grant-context.json','QA/N1/lot10/people-source.json','QA/N1/arquebusier-derived-source.json','QA/N1/arquebusier-powder-weapon-boundary.json','QA/N1/arquebusier-two-preferences.json','QA/N1/arquebusier-official-template.json',...(variant?['QA/N1/arquebusier-arbaletrier-source-audit.json']:[]),'COF2 Livre de base pp. 44-65','Règles avancées p.153 et historiques','QA/N1/arquebusier-pure-age-ranks.json','QA/N1/arquebusier-pdf-real-click.json','QA/N1/arquebusier-all-mechanics-probe.json','QA/N1/official-methods-cross.json','QA/N1/official-racial-options.json','QA/N1/lot10/people-source.json']
++ sources:['QA/N1/arquebusier-history-origins.json','QA/N1/official-people-equipment.json','QA/N1/arquebusier-grant-context.json','QA/N1/lot10/people-source.json','QA/N1/arquebusier-derived-source.json','QA/N1/arquebusier-powder-weapon-boundary.json','QA/N1/arquebusier-two-preferences.json','QA/N1/arquebusier-official-template.json',...(variant?['QA/N1/arquebusier-arbaletrier-source-audit.json']:[]),'COF2 Livre de base pp. 44-65','Règles avancées p.153 et historiques','QA/N1/arquebusier-pure-age-ranks.json','QA/N1/arquebusier-pdf-real-click.json','QA/N1/arquebusier-all-mechanics-probe.json','QA/N1/official-methods-cross.json','QA/N1/official-racial-options.json','QA/N1/lot10/people-source.json']
+ };
+ const dest=path.resolve(root,'..','centre-synchronisation/forge-n1/focus.json');
+ fs.writeFileSync(dest,JSON.stringify(output,null,2)+'\n');
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_click.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_click.cjs
+index dd71ac6..32d59df 100644
+--- a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_click.cjs
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_click.cjs
+@@ -50,7 +50,22 @@ try{
+     const character=await page.evaluate(()=>{const r=window.__FOH_ENGINE__.computeCharacterN1(window.__FOH_PRODUCT__.buildState());return{errors:r.errors,skills:r.sticky?.skillBonuses,languages:r.sticky?.languages,abilities:r.sticky?.acquiredAbilities,PV:r.sticky?.PV,DEF:r.sticky?.DEF};});assert.equal(character.errors.length,0,character.errors.join('; '));
+     const panel=page.locator('#foh-history-context');await panel.waitFor({state:'visible'});await panel.locator('summary').tap();
+     const expected=job.key==='courtier'?['community','courtier_secrets','courtier_details']:job.key==='scholar'?['community','scholar_persuasion']:['community','expert_work'];
+-    assert.deepEqual(await page.locator('#foh-history-ability option').evaluateAll(xs=>xs.map(x=>x.value)),expected);
++    const originKeys=Array.from({length:5-job.rank},(_,index)=>'ability:history:mountains:r'+(index+2));
++    assert.deepEqual(await page.locator('#foh-history-ability option').evaluateAll(xs=>xs.map(x=>x.value)),[...expected,...originKeys]);
++    const checks=[['Bonus de compétence : +3','Diviseur des dommages : 2'],['Réduction des dommages : 3'],['Bonus de DEF : 2']];
++    for(const [index,key] of originKeys.entries()){
++      await page.locator('#foh-history-ability').selectOption(key);
++      for(const [situation,value] of checks[index].entries()){
++        await page.locator('#foh-history-example').selectOption(String(situation));
++        await page.locator('#foh-history-run').tap();
++        assert((await page.locator('#foh-history-result').innerText()).includes(value));
++      }
++      const last=await page.locator('#foh-history-example option').count()-1;
++      await page.locator('#foh-history-example').selectOption(String(last));
++      await page.locator('#foh-history-run').tap();
++      assert.match(await page.locator('#foh-history-result').innerText(),/NON applicable/);
++      rec.steps.push('origin-positive-negative-'+key);
++    }
+     for(const key of expected){
+       await page.locator('#foh-history-ability').selectOption(key);
+       await page.locator('#foh-history-example').selectOption('0');await page.locator('#foh-history-run').tap();
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs
+index 79c6537..b333fe5 100644
+--- a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs
+@@ -13,9 +13,9 @@ for(const file of ['index.html']){const{db,engine:E,html}=F.load(root+'/'+file);
+   if(key!=='expert_work'){const found=r.sticky.skillBonuses.filter(b=>b.sourceAbilityId===spec.id);assert.equal(found.length,expected?1:0);if(expected)assert.equal(found[0].value,rank+2);}
+  }
+  assert.equal(JSON.stringify(c),before,'Resolver must not change permanent character');const save=E.createHeroSavePayload(s,c,{id:'history-context'}),back=E.computeCharacterN1(E.restoreHeroSavePayload(copy(save)).draft);assert.equal(back.errors.length,0);assert.deepEqual(copy(back.sticky.skillBonuses),copy(r.sticky.skillBonuses));assert.deepEqual(API.available(back.sticky.characterState),API.available(c));
+- const switched=copy(s);switched.history.professionalPathId='history:commoner';if(switched.age)switched.age.spending=switched.age.spending.map(x=>({...x,pathId:'history:mountains'}));if(switched.age)switched.age.spending=[2,3,4,5].map(rank=>({pathId:'history:mountains',rank}));const changed=E.computeCharacterN1(switched);assert.equal(changed.errors.length,0);assert.deepEqual(API.available(changed.sticky.characterState),['community']);
++ const switched=copy(s);switched.history.professionalPathId='history:commoner';if(switched.age)switched.age.spending=switched.age.spending.map(x=>({...x,pathId:'history:mountains'}));if(switched.age)switched.age.spending=[2,3,4,5].map(rank=>({pathId:'history:mountains',rank}));const changed=E.computeCharacterN1(switched);assert.equal(changed.errors.length,0);assert.deepEqual(API.available(changed.sticky.characterState).filter(key=>!API.rules[key].situations),['community']);
+  report.passed++;
+  }catch(e){report.failed++;if(report.failures.length<12)report.failures.push({tag,error:String(e.stack||e).slice(0,1500)});}
+ }}
+-for(const key of Object.keys(API.rules)){assert.equal(API.resolve({abilities:[]},key,{}).applies,false);report.negativeChecks++;}assert.throws(()=>API.resolve({},'unknown'));report.negativeChecks++;
++for(const key of Object.keys(API.rules).filter(key=>!API.rules[key].situations)){assert.equal(API.resolve({abilities:[]},key,{}).applies,false);report.negativeChecks++;}assert.throws(()=>API.resolve({},'unknown'));report.negativeChecks++;
+ report.status=report.passed===report.expected&&!report.failed?'PASS':'FAIL';fs.writeFileSync(root+'/QA/N1/arquebusier-history-conditions.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));if(report.status!=='PASS')process.exitCode=1;
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_origins_oracle.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_origins_oracle.cjs
+new file mode 100644
+index 0000000..982c6bd
+--- /dev/null
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_origins_oracle.cjs
+@@ -0,0 +1,76 @@
++'use strict';
++const assert=require('node:assert/strict');
++const {createHash}=require('node:crypto');
++const fs=require('node:fs');
++const path=require('node:path');
++const F=require('./forge_product_runner');
++const API=require('../ENGINE/history_context_n1');
++const root=path.resolve(__dirname,'..');
++const {html,db,engine:E}=F.load(root+'/index.html');
++const expected={
++ campaigns:[{skillBonus:5},{attackBonus:1},{extraTravelKm:2,armorPenaltyDivisor:2},{extraDamage:'1d4°'}],
++ cities:[{skillBonus:3},{ignoreCrowdSlowdown:true},{skillBonus:5},{extraTemporaryDamage:'1d4°'}],
++ deserts:[{perceptionDifficulty:10},{damageReduction:3},{automaticShelter:true},{extraDamage:'1d4°'}],
++ forests:[{selfForage:true,forageThreshold:10,forageInterval:5},{extraDamage:'1d4°'},{normalTravelSpeed:true},{movementMultiplier:0.5,ignoreClimbAndBalanceTests:true}],
++ caves:[{directWayToSurface:true},{attackBonus:2},{ignoreUnseenMeleePenalty:true},{extraDamage:'1d4°'}],
++ marshes:[{skillBonus:3},{effectiveFog:'Aucun brouillard'},{damageReduction:3},{extraDamage:'1d4°'}],
++ mountains:[{skillBonus:3},{damageReduction:3},{attackBonus:2,defenseBonus:2},{defenseBonus:2,extraDamage:'1d4°'}],
++ plains:[{attackBonus:1},{skillBonus:5},{freeRangedAttack:true},{extraDamage:'1d4°'}],
++ shores:[{selfForage:true,forageThreshold:10,forageInterval:5},{ignoreWaterCombatPenalty:true},{direction:'Terre la plus proche'},{extraDamage:'1d4°'}]
++};
++const otherScenarios=[
++ ['deserts',2,1,{perceptionDifficulty:15}],['deserts',2,2,{perceptionDifficulty:20}],
++ ['caves',2,2,{darkvisionMultiplier:2}],['caves',4,1,{torchDamage:'1d6 + AGI'}],
++ ['caves',4,2,{enemyMeleePenalty:-1}],['caves',4,3,{enemyMeleePenalty:-2}],
++ ['mountains',2,1,{damageDivisor:2}],['plains',3,1,{rangeBonusMeters:10}]
++];
++const id=(origin,rank)=>'ability:history:'+origin+':r'+rank;
++const report={status:'PASS',source:'Voies d’historique COF2 pp.172–175',indexSha256:createHash('sha256').update(html).digest('hex'),cases:0,positive:0,negative:0,reopened:0,matrix:{}};
++for(const variant of ['arquebusier','arbaletrier']){
++ const cls=db.tables.classes.find(c=>c.id.includes('class:'+variant+':'));
++ const profilePath=db.tables.paths_class.find(p=>p.classId===cls.id&&p.id.includes('artilleur'));
++ for(const [origin,rankEffects] of Object.entries(expected))for(let rank=1;rank<=5;rank++){
++  const draft=F.standardState(db,cls.id,profilePath.id);
++  draft.voies.profilePathIds=[profilePath.id];
++  draft.advancedRules.histories=true;
++  draft.history={geographicPathId:'history:'+origin,professionalPathId:'history:nomad',humanProfession:'Charpentier'};
++  if(rank>1){
++   draft.advancedRules.age=true;
++   draft.age={categoryId:'venerable',spending:[...Array.from({length:rank-1},(_,i)=>({pathId:'history:'+origin,rank:i+2})),...Array.from({length:5-rank},(_,i)=>({pathId:'history:nomad',rank:i+2}))]};
++  }
++  const computed=E.computeCharacterN1(draft);
++  assert.equal(computed.errors.length,0,variant+' '+origin+' R'+rank+' '+computed.errors.join(' | '));
++  const character=computed.sticky.characterState,before=JSON.stringify(character);
++  const saved=E.createHeroSavePayload(draft,character,{id:'origin-'+origin});
++  const reopened=E.computeCharacterN1(E.restoreHeroSavePayload(JSON.parse(JSON.stringify(saved))).draft);
++  assert.equal(reopened.errors.length,0);
++  for(const [index,modifiers] of rankEffects.entries()){
++   const abilityRank=index+2,key=id(origin,abilityRank);
++   const source=db.tables.history_abilities.find(a=>a.id===key);
++   assert.equal(API.rules[key].page,source.source.printedPage);
++   assert.equal(API.available(character).includes(key),abilityRank<=rank);
++   if(abilityRank<=rank){
++    const resolved=API.resolve(character,key,{situation:0});
++    assert(resolved.applies);
++    assert.deepEqual(resolved.modifiers,modifiers);
++    assert.deepEqual(API.resolve(reopened.sticky.characterState,key,{situation:0}),resolved);
++    report.positive++;
++   }else assert.deepEqual(API.resolve(character,key,{situation:0}).modifiers,{});
++   for(const context of [{},{situation:-1},{situation:99},{situation:'0'}]){
++    assert(!API.resolve(character,key,context).applies);
++    report.negative++;
++   }
++  }
++  for(const [key,abilityRank,situation,modifiers] of otherScenarios){
++   if(key===origin&&abilityRank<=rank)assert.deepEqual(API.resolve(character,id(key,abilityRank),{situation}).modifiers,modifiers);
++  }
++  assert.equal(JSON.stringify(character),before);
++  report.matrix[variant]??={};
++  report.matrix[variant][origin]=(report.matrix[variant][origin]||0)+1;
++  report.cases++;
++  report.reopened++;
++ }
++}
++assert.equal(report.cases,90);
++fs.writeFileSync(root+'/QA/N1/arquebusier-history-origins.json',JSON.stringify(report,null,2)+'\n');
++console.log(JSON.stringify(report));
+diff --git a/forge-of-heroes/index.html b/forge-of-heroes/index.html
+index b4b2947..b78b5a0 100644
+--- a/forge-of-heroes/index.html
++++ b/forge-of-heroes/index.html
+@@ -2979,7 +2979,7 @@ return Object.freeze({version:'FOH-ARQ-CONTEXT-N1-3',grantAbilities,resolveGrant
+ })();
+ </script>
+ <script id="FOH_HISTORY_CONTEXT_N1">
+-/* COF2, Voies d'historique pp.176-177. Les contextes sont déclarés par le joueur/MJ.
++/* COF2, Voies d'historique pp.172-177. Les contextes sont déclarés par le joueur/MJ.
+  * Aucun bonus social ou professionnel ne modifie une caractéristique permanente.
+  */
+ (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.FOH_HISTORY_CONTEXT_N1=api;})(typeof window!=='undefined'?window:null,function(){
+@@ -2992,6 +2992,72 @@ const rules={
+  scholar_persuasion:{title:'Argumenter',id:'ability:history:scholar:r2',page:177},
+  expert_work:{title:'Expertise',id:'ability:history:expert:r2',page:177}
+ };
++// Voies d’historique, pp. 172–175. Each situation is selected explicitly by
++// the player or GM and is resolved without changing the saved character.
++const extraDamage={extraDamage:'1d4°'};
++const terrainCombat={attackBonus:2,defenseBonus:2};
++const originGroups={
++ campaigns:{page:172,ranks:[
++  ['C’est pas tout prêt', [['Réparer un objet ou travailler dur',{skillBonus:5}]]],
++  ['Les outils sont des armes', [['Attaquer avec une arme servant aussi d’outil',{attackBonus:1}]]],
++  ['C’est pas tout près', [['Pendant une période de marche',{extraTravelKm:2,armorPenaltyDivisor:2},'Arrondir la pénalité d’armure à l’inférieur.']]],
++  ['Adversaire des campagnes', [['Attaquer un humanoïde en armure métallique',extraDamage]]]
++ ]},
++ cities:{page:172,ranks:[
++  ['Survie dans les coupe-gorge', [['PER pour s’orienter ou détecter une embuscade en ville',{skillBonus:3}],['CHA face à un gang ou à la garde en ville',{skillBonus:3}]]],
++  ['Fendre la foule', [['Se déplacer dans une foule',{ignoreCrowdSlowdown:true}],['Combattre dans une foule',terrainCombat]]],
++  ['Pistage urbain', [['CHA pour suivre une piste en interrogeant les témoins en ville',{skillBonus:5},'Difficulté de 15 à 30 selon les circonstances.'],['Survie en milieu urbain',{skillBonus:5}]]],
++  ['Expert des rixes', [['Combattre un humanoïde',{extraTemporaryDamage:'1d4°'}]]]
++ ]},
++ deserts:{page:173,ranks:[
++  ['À boire !', [['Point d’eau à moins d’une heure de marche',{perceptionDifficulty:10}],['Point d’eau entre une heure et moins d’un jour de marche',{perceptionDifficulty:15}],['Point d’eau à un jour de marche ou davantage',{perceptionDifficulty:20}]]],
++  ['Soleil de plomb', [['Subir du feu ou de la chaleur',{damageReduction:3}]]],
++  ['Se mettre à l’abri', [['Chercher un abri contre la chaleur, le froid nocturne ou un événement climatique',{automaticShelter:true}]]],
++  ['Adversaire des déserts', [['Attaquer un arthropode géant',extraDamage]]]
++ ]},
++ forests:{page:173,ranks:[
++  ['Nature généreuse (forêts)', [['Chercher de la nourriture en avançant en forêt',{selfForage:true,forageThreshold:10,forageInterval:5}]]],
++  ['Chasseur', [['Attaquer un animal ou un animal géant',extraDamage]]],
++  ['Terrain de prédilection (forêts)', [['Traverser une forêt dense',{normalTravelSpeed:true}],['Combattre en forêt',{defenseBonus:2}]]],
++  ['Passage par les arbres', [['Se déplacer d’arbre en arbre',{movementMultiplier:0.5,ignoreClimbAndBalanceTests:true}]]]
++ ]},
++ caves:{page:174,ranks:[
++  ['Sens de l’orientation (souterrains)', [['S’orienter dans les souterrains',{directWayToSurface:true}],['Voir dans la pénombre',{dimLightAsDay:true}],['Utiliser une vision dans le noir déjà acquise',{darkvisionMultiplier:2}]]],
++  ['Combat confiné', [['Combattre sous terre ou dans un espace étroit',{attackBonus:2}]]],
++  ['Combat en aveugle', [['Combattre au contact un ennemi invisible à mes yeux',{ignoreUnseenMeleePenalty:true}],['Frapper avec une torche enflammée',{torchDamage:'1d6 + AGI'}],['Éblouir un adversaire au contact dans le noir avec la torche',{enemyMeleePenalty:-1}],['Éblouir un animal au contact dans le noir avec la torche',{enemyMeleePenalty:-2}]]],
++  ['Adversaire des souterrains', [['Attaquer un elfe des profondeurs, un orc ou un goblinoïde',extraDamage]]]
++ ]},
++ marshes:{page:174,ranks:[
++  ['Résistance aux miasmes', [['Résister à une maladie ou à un poison',{skillBonus:3}]]],
++  ['Vision améliorée', [['Voir dans un brouillard léger',{effectiveFog:'Aucun brouillard'}],['Voir dans un brouillard dense',{effectiveFog:'Brouillard léger'}],['Échapper aux sables mouvants',{automaticEscape:true}]]],
++  ['Résistance aux toxines', [['Subir du poison ou de l’acide',{damageReduction:3}]]],
++  ['Adversaire des marécages', [['Attaquer un reptile ou un amphibien',extraDamage]]]
++ ]},
++ mountains:{page:174,ranks:[
++  ['Grimpeur', [['Faire un test d’escalade',{skillBonus:3}],['Subir des dommages de chute',{damageDivisor:2}]]],
++  ['Résistance au froid', [['Subir des dommages de froid',{damageReduction:3}]]],
++  ['Terrain de prédilection (montagnes)', [['Combattre sur une forte pente ou dans un escalier',terrainCombat]]],
++  ['Danger des montagnes', [['Combattre un géant',{defenseBonus:2,...extraDamage}]]]
++ ]},
++ plains:{page:175,ranks:[
++  ['Cavalier', [['Attaquer en étant monté',{attackBonus:1}],['Monter en selle ou descendre',{freeAction:true}]]],
++  ['Œil de faucon', [['Observer des détails à 100 m ou davantage',{skillBonus:5}],['Attaquer à distance',{rangeBonusMeters:10}]]],
++  ['Engagement', [['Au premier round, se rapprocher et/ou attaquer au contact',{freeRangedAttack:true}]]],
++  ['Adversaire des plaines', [['Attaquer une créature volante',extraDamage]]]
++ ]},
++ shores:{page:175,ranks:[
++  ['Nature généreuse (rivages)', [['Chercher de la nourriture en avançant en bord de rivière ou en mer',{selfForage:true,forageThreshold:10,forageInterval:5}]]],
++  ['Comme un poisson dans l’eau', [['Combattre dans l’eau',{ignoreWaterCombatPenalty:true},'Conserver les pénalités propres au type d’arme.']]],
++  ['Sens de l’eau', [['S’orienter en mer',{direction:'Terre la plus proche'}],['S’orienter sur terre',{direction:'Étendue d’eau la plus proche'}]]],
++  ['Adversaire des étendues d’eau', [['Attaquer une créature aquatique',extraDamage]]]
++ ]}
++};
++for(const [origin,{page,ranks}] of Object.entries(originGroups)){
++ ranks.forEach(([title,situations],index)=>{
++  const id='ability:history:'+origin+':r'+(index+2);
++  rules[id]={title,id,page,situations};
++ });
++}
+ const rows=c=>c?.abilities||c?.acquiredAbilities||[];
+ const path=a=>a.pathId||a.path_id||'';
+ const professional=c=>rows(c).find(a=>professions.some(p=>path(a)==='history:'+p)&&Number(a.rank)>=1);
+@@ -3000,6 +3066,15 @@ function resolve(c,key,context={}){
+  const rule=rules[key];if(!rule)throw Error('Règle historique inconnue : '+key);
+  const out={rule:key,sourcePage:rule.page,owned:owned(c,key),applies:false,modifiers:{},requirements:[],limits:[],notes:[]};
+  if(!out.owned){out.requirements.push('Capacité non acquise.');return out;}
++ if(rule.situations){
++  const selected=Number.isInteger(context.situation)?rule.situations[context.situation]:null;
++  if(!selected){out.requirements.push('Les conditions de cette capacité ne sont pas réunies.');return out;}
++  const [,modifiers,note]=selected;
++  Object.assign(out.modifiers,modifiers);
++  if(note)out.notes.push(note);
++  out.applies=true;
++  return out;
++ }
+  const ability=rows(c).find(a=>a.id===rule.id),rank=ability?Math.max(Number(ability.rank),...rows(c).filter(a=>path(a)===path(ability)).map(a=>Number(a.rank))):0;
+  if(key==='community'){
+   if(context.socialInteraction!==true||context.sameProfessionalCommunity!==true){out.requirements.push('Interaction sociale avec un autre membre de la même communauté professionnelle requise.');return out;}
+@@ -3018,7 +3093,7 @@ function resolve(c,key,context={}){
+  }
+  out.applies=true;return out;
+ }
+-return Object.freeze({version:'FOH-HISTORY-CONTEXT-N1-1',rules,available:c=>Object.keys(rules).filter(k=>owned(c,k)),isOwned:owned,resolve});
++return Object.freeze({version:'FOH-HISTORY-CONTEXT-N1-2',rules,available:c=>Object.keys(rules).filter(k=>owned(c,k)),isOwned:owned,resolve});
+ });
+ 
+ </script>
+@@ -3033,6 +3108,22 @@ const examples={
+  scholar_persuasion:[['Test de CHA pour convaincre',{test:'convince',characteristic:'cha'}],['Test d’INT : ce bonus ne s’applique pas',{test:'convince',characteristic:'int'}]],
+  expert_work:[['Test ou travail dans mon métier',{relatesToChosenProfession:true}],['Activité étrangère à mon métier',{relatesToChosenProfession:false}]]
+ };
++const labels={
++ attackBonus:'Bonus d’attaque',defenseBonus:'Bonus de DEF',extraDamage:'Dommages supplémentaires',extraTemporaryDamage:'Dommages temporaires supplémentaires',
++ extraTravelKm:'Kilomètres supplémentaires',armorPenaltyDivisor:'Diviseur de la pénalité d’armure',ignoreCrowdSlowdown:'Ignore le ralentissement dans la foule',
++ perceptionDifficulty:'Difficulté du test de PER',damageReduction:'Réduction des dommages',automaticShelter:'Abri trouvé automatiquement',
++ selfForage:'Se nourrit en avançant',forageThreshold:'Seuil du test de PER (Survie)',forageInterval:'Points au-dessus du seuil par personne supplémentaire',
++ normalTravelSpeed:'Vitesse de déplacement normale',movementMultiplier:'Multiplicateur de déplacement',ignoreClimbAndBalanceTests:'Sans test d’escalade ou d’équilibre',
++ directWayToSurface:'Chemin direct vers la surface',dimLightAsDay:'Voit dans la pénombre comme en plein jour',darkvisionMultiplier:'Multiplicateur de portée de vision dans le noir',
++ ignoreUnseenMeleePenalty:'Ignore le malus au contact contre un ennemi non visible',torchDamage:'Dommages de la torche',enemyMeleePenalty:'Malus d’attaque au contact de l’adversaire',
++ effectiveFog:'Brouillard pris en compte',automaticEscape:'Échappe automatiquement aux sables mouvants',damageDivisor:'Diviseur des dommages',
++ freeAction:'Action gratuite',rangeBonusMeters:'Portée supplémentaire en mètres',freeRangedAttack:'Attaque à distance gratuite',
++ ignoreWaterCombatPenalty:'Ignore les pénalités du combat dans l’eau',direction:'Direction connue'
++};
++function situations(key){
++ const options=API.rules[key]?.situations;
++ return options?[...options.map(([label],index)=>[label,{situation:index}]),['Conditions non réunies',{}]]:(examples[key]||[]);
++}
+ let panel;const node=(parent,tag,text)=>{const el=document.createElement(tag);if(text)el.textContent=text;parent.appendChild(el);return el;};
+ const character=()=>{const r=E.computeCharacterN1(P.buildState());return r.errors?.length?null:r.sticky?.characterState;};
+ function render(){try{const host=document.getElementById('summary-content');if(!host||host.hidden)return;const c=character();if(!c)return;const owned=API.available(c);if(!owned.length){if(panel)panel.hidden=true;return;}
+@@ -3041,8 +3132,8 @@ function render(){try{const host=document.getElementById('summary-content');if(!
+   const label2=node(panel,'label','Situation : '),b=node(label2,'select');b.id='foh-history-example';
+   for(const l of [label,label2])l.style.cssText='display:grid;gap:7px;margin:10px 0;min-width:0';for(const select of [a,b])select.style.cssText='width:100%;min-width:0;max-width:100%;box-sizing:border-box;padding:9px;background:#171511;color:white';
+   const button=node(panel,'button','Calculer les effets');button.type='button';button.id='foh-history-run';const out=node(panel,'div');out.id='foh-history-result';out.setAttribute('aria-live','polite');out.style.cssText='white-space:pre-wrap;margin-top:10px';
+-  a.addEventListener('change',()=>{b.replaceChildren();examples[a.value].forEach(([text],i)=>{const o=node(b,'option',text);o.value=String(i);});out.textContent='';});
+-  button.addEventListener('click',()=>{try{const current=character();if(!current)throw Error('Fiche incomplète.');const r=API.resolve(current,a.value,examples[a.value][Number(b.value)][1]),lines=[r.applies?'Règle applicable dans cette situation.':'Règle NON applicable dans cette situation.'];if(r.modifiers.skillBonus!=null)lines.push('Bonus de compétence : +'+r.modifiers.skillBonus);if(r.modifiers.bonusDie)lines.push('Dé bonus : oui');if(r.modifiers.workTimeMultiplier!=null)lines.push('Temps de travail : × '+r.modifiers.workTimeMultiplier);for(const message of [...r.requirements,...r.notes])lines.push(message);lines.push('Référence : voies d’historique COF2, p. '+r.sourcePage+'.');out.textContent=lines.join('\n');}catch(e){out.textContent='Calcul impossible : '+e.message;}});
++  a.addEventListener('change',()=>{b.replaceChildren();situations(a.value).forEach(([text],i)=>{const o=node(b,'option',text);o.value=String(i);});out.textContent='';});
++  button.addEventListener('click',()=>{try{const current=character();if(!current)throw Error('Fiche incomplète.');const r=API.resolve(current,a.value,situations(a.value)[Number(b.value)]?.[1]||{}),lines=[r.applies?'Règle applicable dans cette situation.':'Règle NON applicable dans cette situation.'];if(r.modifiers.skillBonus!=null)lines.push('Bonus de compétence : +'+r.modifiers.skillBonus);if(r.modifiers.bonusDie)lines.push('Dé bonus : oui');if(r.modifiers.workTimeMultiplier!=null)lines.push('Temps de travail : × '+r.modifiers.workTimeMultiplier);for(const [key,label] of Object.entries(labels)){const value=r.modifiers[key];if(value!=null)lines.push(label+' : '+(value===true?'oui':value));}for(const message of [...r.requirements,...r.notes])lines.push(message);lines.push('Référence : voies d’historique COF2, p. '+r.sourcePage+'.');out.textContent=lines.join('\n');}catch(e){out.textContent='Calcul impossible : '+e.message;}});
+   host.insertAdjacentElement('afterend',panel);
+  }
+  panel.hidden=false;const a=panel.querySelector('#foh-history-ability'),signature=owned.join('|');if(a.dataset.available!==signature){const previous=a.value;a.replaceChildren();for(const key of owned){const o=node(a,'option',API.rules[key].title);o.value=key;}a.dataset.available=signature;if(owned.includes(previous))a.value=previous;a.dispatchEvent(new Event('change'));}
