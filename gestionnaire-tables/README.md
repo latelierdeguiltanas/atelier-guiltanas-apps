@@ -1,37 +1,41 @@
-# L’Atelier de Guiltanas — Gestionnaire de tables (prototype v0.1)
+# Gestionnaire de tables — Atelier de Guiltanas (v0.2)
 
-Prototype autonome de **gestion de tables JDR**, pensé pour servir de base à un produit commercial. Ouvrir `index.html` dans un navigateur moderne ; conserver les quatre fichiers `index.html`, `style.css`, `domain.js`, `app.js` dans le même dossier.
+## Objectif
+Gerer des tables independantes et creer des packs de scenarios reutilisables. Le hub original Bastide reste intact. Les donnees d'autres campagnes ne sont jamais melangees.
 
-## Capacités déjà utilisables
-- Création de tables isolées, à partir d'un scénario original ou d'un scénario JSON importé.
-- Duplication de table avec remise à zéro des séances et scènes jouées. Personnages copiés avec de nouveaux identifiants, sans synchronisation des fiches.
-- Bibliothèque de scénarios, création d'un scénario vierge, duplication et export de modèles.
-- Ajout de modules et de scènes propres à une table.
-- Personnages : liste avec nom, joueur, niveau, URL HTTPS de fiche personnelle (raccourci uniquement).
-- Gestion de séances, compte rendu, notes MJ, progression des scènes.
-- Export/import de sauvegarde JSON complète ; aucune connexion nécessaire.
-- Interface responsive mobile/desktop.
+## La Bastide en lecture seule
+La page **Mes tables** comprend une carte pour ouvrir directement la vraie Bastide, sa boutique et son combat synchronise. Le bouton « Verifier les donnees actuelles » lit uniquement l'etat depuis l'API existante si cet appareil possede deja une cle MJ valide. La carte n'est pas une migration des donnees.
 
-## Important — ce qui n'est PAS encore prêt
-- Pas d'authentification multi-MJ ni de mots de passe.
-- Pas d'invitations PJ, de rôles ni de synchronisation en temps réel.
-- Pas de synchronisation de personnages avec Forge of Heroes.
-- Les liens vers les outils de combat et de fiches ouvrent les applications existantes **sans transmission de données**.
-- Stockage local dans le navigateur : sauvegarder régulièrement. Ce prototype n'est pas un service commercial en production.
+## Importer le pack « Ile aux Tempetes » sans PJ
+1. Sur le **meme navigateur et la meme origine GitHub Pages** que le hub MJ Bastide, ouvrir une fois le lien MJ prive existant (cela enregistre la cle localement dans le navigateur).
+2. Ouvrir Gestionnaire de tables → Scenarios → **Importer depuis mon acces MJ Bastide**.
+3. Le bouton verifie l'acces MJ, puis lit les ressources avec les API historiques en **GET uniquement**.
+4. L'import cree un scenario local contenant les articles actifs de Mila, objets de scenario, cartes, PNJ et rencontres et les definitions de combats personnalises disponibles.
+5. La bibliotheque permet ensuite de **creer une table vide de PJ**, ou d'exporter le modele JSON et de le transmettre a un MJ autorise, qui l'importe sur son propre appareil.
+6. Les PJ sont rattaches manuellement via leurs liens HTTPS de fiches depuis l'onglet Personnages.
 
-## Isolation et propriété intellectuelle
-- Aucun fichier ni donnée du hub Bastide n'est importé, modifié ou migré.
-- Aucun accès au serveur Supabase Bastide, aucune clé de sa campagne, aucun ancien compte MJ.
-- Le scénario démonstration **Le Phare des Brumes** est original.
-- Les contenus sous licence doivent rester des packs externes/importés en usage autorisé ; ne pas les inclure dans une distribution commerciale sans droits.
+### Ce qui est exclu de l'import
+- Aucun PJ historique, aucune fiche, aucun inventaire joueur, aucun evenement, aucun message, aucun historique de combat.
+- Aucune cle MJ ou joueur et aucun token stocke ou exporte.
+- Pas de synchronisation bidirectionnelle vers la Bastide, ni de modification de ses tables ou de ses fichiers.
+- Les modules du scenario sont des **catalogues de lieux et rencontres**, pas une chronologie officielle complete.
+- Aucune extraction/publication automatique des pages du scenario commercial sous licence : le MJ doit disposer de sa propre copie autorisee.
 
-## Modèle de scénario JSON
-```
-{"name":"Mon aventure","category":"one-shot","system":"COF2","copyright":"external-personal-use","description":"Résumé","modules":[{"name":"La forêt","duration":60,"summary":"Explorer","scenes":[{"title":"Rencontre","description":"Ce que voient les joueurs","gmNotes":"Ce que sait le MJ","encounters":[{"name":"Une menace","notes":"Stats à définir"}]}]}]}
-```
+## Outils sur une nouvelle table
+- Onglet **Ressources** : boutique de Mila (catalogue et stocks locaux), objets, cartes, PNJ et notes MJ.
+- Onglet **Outils** : ouverture d'une campagne de combat COF2 scopee sur l'identifiant de la table, avec equipe initialement vide. Les definitions personnalisees du combat importe sont reprises si disponibles ; les rencontres du pack officiel COF2 non personnalisees ne sont pas automatiquement converties.
+- **Dupliquer sans PJ** : cree une copie independante sans PJ, seances, progression.
+- Les modifications de stock et la bibliotheque de combats sont locales a l'appareil : pas encore synchronisees avec les fiches joueurs.
 
-## Prochaine étape technique
-Développer un backend **isolé de celui de la Bastide** (auth, tables, invitations, memberships, RLS) avant tout vrai partage multi-MJ. Tester les restrictions entre deux MJ, la sauvegarde multi-appareils et les droits de lecture/écriture des fiches.
+## Limites importantes
+- Version de prototype **sans comptes MJ, serveur dedie ni invitations joueurs**.
+- L'import a besoin du navigateur deja autorise comme MJ de la Bastide. Sur un navigateur non autorise, aucun contenu prive n'est accessible.
+- Les scenarios et tables sont dans localStorage : exporter regulierement une sauvegarde.
+- Les packs exportes peuvent contenir les notes privees du MJ et du contenu sous licence : partage restreint a des utilisateurs autorises, jamais commercialise avec le gestionnaire.
+- Ne pas ouvrir le combat Bastide depuis la nouvelle table : chaque mode utilise un lien et une cle de scope differents.
 
-## Test
-`node tests.mjs`
+## Suivi
+Priorites suivantes : backend multi-MJ isole avec authentification et RLS, bibliotheque privee de packs, invitations PJ, veritable synchronisation des fiches, boutique transactionnelle isolee, synchronisation des combats entre appareils.
+
+## Tests techniques
+Validation de syntaxe JavaScript, creation et duplication sans PJ, retention des objets/cartes/boutique/PNJ, exclusion des joueurs et des cles d'une simulation d'export pack.
