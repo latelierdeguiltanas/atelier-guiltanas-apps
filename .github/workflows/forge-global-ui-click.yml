@@ -38,7 +38,7 @@ jobs:
       - name: Installer Playwright et Chromium
         run: |
           npm install --prefix "$RUNNER_TEMP/forge-ui" playwright@1.55.0
-          "$RUNNER_TEMP/forge-ui/node_modules/.bin/playwright" install --with-deps chromium
+          echo "CHROME_BIN=$(command -v google-chrome || command -v chromium)" >> "$GITHUB_ENV"
           echo "NODE_PATH=$RUNNER_TEMP/forge-ui/node_modules" >> "$GITHUB_ENV"
       - name: Tester de vrais clics sur la carte Forge et les listes de critères
         run: |

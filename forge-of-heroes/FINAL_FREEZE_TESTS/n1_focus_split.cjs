@@ -227,6 +227,16 @@ const barbareMatrix=optionalProof('pure-profile-fast-barbare.json');
 const barbareClick=optionalProof('barbare-choices-click.json');
 const barbarePdf=optionalProof('barbare-official-pdf.json');
 const barbareCurrent=barbareMatrix?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&barbareMatrix.profile==='Barbare'&&barbareMatrix.pass===4250&&barbareMatrix.failed===0&&barbareMatrix.rejected===0&&barbareMatrix.sourceHashes?.some(s=>s.file==='index.html'&&s.htmlSha256===productHash('index.html'))&&barbareClick?.status==='PASS'&&barbareClick.indexSha256===productHash('index.html')&&barbareClick.passed===3&&barbarePdf?.status==='PASS'&&barbarePdf.indexSha256===productHash('index.html')&&barbarePdf.exports?.length===12;
+const barbareProgress={
+ name:'Barbare',
+ checks:[
+  {name:'Créations et réouvertures',status:barbareCurrent?'ACQUIS':'A_VERIFIER',detail:barbareCurrent?'4 250 créations, dont 326 réouvertures vérifiées.':'Vérifier la matrice sur la version publiée.',proof:'pure-profile-fast-barbare.json'},
+  {name:'Peau de pierre, Tatouages et équipement',status:barbareCurrent?'ACQUIS':'A_VERIFIER',detail:barbareCurrent?'3 parcours mobiles, dont le Halfelin avec une hache simple approuvée par le MJ.':'Rejouer les choix au clic et les sauvegardes.',proof:'barbare-choices-click.json'},
+  {name:'Fiche PDF officielle',status:barbareCurrent?'ACQUIS':'A_VERIFIER',detail:barbareCurrent?'12 exports couvrant les cinq voies.':'Vérifier les exports des cinq voies.',proof:'barbare-official-pdf.json'},
+  {name:'Effets en combat des cinq voies',status:'A_VERIFIER',detail:'Vérifier les déclencheurs, les durées et les cas où les effets ne s’appliquent pas.'},
+  {name:'Parcours restants',status:'A_VERIFIER',detail:'Étendre les tests au clic aux autres choix de voies, peuples et équipements.'}
+ ]
+};
 const output={
  schema:'FOH_N1_PROFILE_AND_PEOPLES_SEPARATE',
  racialOptionsCurrent:{valid:!!racialOptionsCurrent,passed:racialOptionsCurrent?392:0,total:392,scope:'Options de caractéristiques des huit peuples croisees avec quatorze profils sur index.html; ne certifie ni les pouvoirs conditionnels ni toutes les restrictions de taille.'},
@@ -244,6 +254,7 @@ const output={
   current:{name:profileOrder[priorityIndex],position:priorityIndex+1,percent:profileComplete?null:percent,certified:false},
   next:{name:profileOrder[activeIndex+1],unlocked:profileComplete,condition:'profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF'},
   queue,
+  priorityProgress:profileComplete?barbareProgress:null,
   peoplesProgressRule:'Chaque critère de peuple est validé par une preuve liée à la version courante. Les effets conditionnels, les équipements, les âges et historiques et le parcours avec PDF sont suivis séparément.',
   remainingPeoplesPolicy:'Après les 14 profils, fermer les critères raciaux manquants un peuple à la fois',
   fullOfficialN1Closed:false,

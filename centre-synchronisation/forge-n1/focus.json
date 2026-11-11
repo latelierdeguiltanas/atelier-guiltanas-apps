@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "3358aa4fcbd516287f051f3707f8fdf59ac7544b8a69ebc1c072e9244c01e4cd",
   "certificationBasis": "Une seule Forge: seules les preuves attachées à index.html et à son SHA actuel comptent; les anciennes références au maître supprimé sont archivées.",
-  "generatedAt": "2026-11-11T12:35:52.468Z",
+  "generatedAt": "2026-11-11T12:33:57.978Z",
   "engineSha256": "1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd",
   "databaseSha256": "d0955396d6df4ea3e28ead0f8338ffec02ab6c1336f3260ff370f326fe992d88",
   "peoplesEvidenceCurrent": true,
@@ -132,6 +132,39 @@
         "certified": false
       }
     ],
+    "priorityProgress": {
+      "name": "Barbare",
+      "checks": [
+        {
+          "name": "Créations et réouvertures",
+          "status": "ACQUIS",
+          "detail": "4 250 créations, dont 326 réouvertures vérifiées.",
+          "proof": "pure-profile-fast-barbare.json"
+        },
+        {
+          "name": "Peau de pierre, Tatouages et équipement",
+          "status": "ACQUIS",
+          "detail": "3 parcours mobiles, dont le Halfelin avec une hache simple approuvée par le MJ.",
+          "proof": "barbare-choices-click.json"
+        },
+        {
+          "name": "Fiche PDF officielle",
+          "status": "ACQUIS",
+          "detail": "12 exports couvrant les cinq voies.",
+          "proof": "barbare-official-pdf.json"
+        },
+        {
+          "name": "Effets en combat des cinq voies",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les déclencheurs, les durées et les cas où les effets ne s’appliquent pas."
+        },
+        {
+          "name": "Parcours restants",
+          "status": "A_VERIFIER",
+          "detail": "Étendre les tests au clic aux autres choix de voies, peuples et équipements."
+        }
+      ]
+    },
     "peoplesProgressRule": "Chaque critère de peuple est validé par une preuve liée à la version courante. Les effets conditionnels, les équipements, les âges et historiques et le parcours avec PDF sont suivis séparément.",
     "remainingPeoplesPolicy": "Après les 14 profils, fermer les critères raciaux manquants un peuple à la fois",
     "fullOfficialN1Closed": false,

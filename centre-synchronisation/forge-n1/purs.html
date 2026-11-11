@@ -35,11 +35,12 @@ a{color:var(--gold)}.footer{font-size:11px;color:var(--muted);margin-top:19px}
 <p class="soft">On termine les cinq voies de l’Arquebusier, puis on passera au profil suivant. Les peuples possèdent chacun leur propre validation, indépendante du profil. Aucun pourcentage par voie ni par combinaison « profil + peuple ».</p>
 <section class="panel" aria-label="Progression du profil">
 <div class="kicker">PROFIL À CERTIFIER · 13 AUTRES EN ATTENTE</div>
-<div class="head"><div><h2 id="profile-name">Arquebusier</h2><p class="soft">Les cinq voies, tous les rangs disponibles au niveau 1 et leurs calculs</p></div><span class="big" id="profile-percent">—</span></div>
-<div class="track"><span id="profile-bar" style="width:0"></span></div>
+<div class="head"><div><h2 id="profile-name">Profil en cours</h2><p class="soft">Les cinq voies, tous les rangs disponibles au niveau 1 et leurs calculs</p></div><span class="big" id="profile-percent">—</span></div>
+<div class="track" id="profile-track"><span id="profile-bar" style="width:0"></span></div>
 <p class="note" id="profile-recap">Lecture des règles…</p>
 <details id="details-profile"><summary>Voir les règles du profil acquises et à terminer</summary><div class="checks" id="profile-checks"></div></details>
 <details id="details-paths"><summary>Voir les pouvoirs des cinq voies (sans pourcentage par voie)</summary><div id="profile-paths"></div></details>
+<details id="profile-archive" hidden><summary id="profile-archive-title"></summary><div id="profile-archive-checks"></div></details>
 </section>
 <section class="panel" aria-label="Progression des peuples">
 <div class="kicker">VALIDATION RACIALE INDÉPENDANTE</div>
@@ -63,13 +64,21 @@ function showRace(id){
  '<p class="note">'+p.passed+'/'+p.total+' règles raciales acquises · '+(p.certified?'Peuple certifié':'Certification du peuple ouverte')+'</p>'+rows(p.checks);
 }
 function render(d){
- report=d;const p=d.profile;
+ report=d;
+ const archive=d.profile,plan=d.certificationPlan;
+ const p=plan.current.name===archive.name?archive:plan.priorityProgress?.name===plan.current.name?plan.priorityProgress:{name:plan.current.name,checks:[]};
+ const scored=Number.isFinite(p.percent);
+ $('profile-track').hidden=!scored;
+ $('details-paths').hidden=!p.paths;
+ $('profile-archive').hidden=p===archive;
+ $('profile-archive-title').textContent=archive.name+' · '+archive.percent+' %'+(archive.completed?' · certifié':'');
+ $('profile-archive-checks').innerHTML=rows(archive.checks);
  $('profile-name').textContent=p.name;
- $('profile-percent').textContent=p.percent+' %';
- $('profile-bar').style.width=p.percent+'%';
- $('profile-recap').textContent=p.passed+'/'+p.total+' règles du profil acquises. '+(p.completed?'Profil entièrement certifié.':'Certification encore ouverte.');
+ $('profile-percent').textContent=scored?p.percent+' %':'En cours';
+ $('profile-bar').style.width=scored?p.percent+'%':'0%';
+ $('profile-recap').textContent=scored?p.passed+'/'+p.total+' règles du profil acquises.':'Contrôles vérifiés et points ouverts du profil en cours.';
  $('profile-checks').innerHTML=rows(p.checks);
- $('profile-paths').innerHTML=p.paths.map(x=>'<details><summary>'+e(x.name)+'</summary>'+
+ $('profile-paths').innerHTML=(p.paths||[]).map(x=>'<details><summary>'+e(x.name)+'</summary>'+
  x.abilities.map(a=>'<div class="detail"><b>Rang '+a.rank+' · '+e(a.name)+'</b><p>'+e(a.focus)+'</p><small class="'+(a.status==='CHIFFRE_VERIFIE_EFFETS_A_COMPLETER'?'valid':'')+'">'+e(a.calculation)+'</small></div>').join('')+'</details>').join('');
  $('races').innerHTML=d.peoples.map(p=>'<button type="button" class="race" data-id="'+e(p.id)+'" aria-pressed="false">'+
  '<strong>'+e(p.name)+'</strong><div class="value">'+p.percent+' %</div><small>'+p.passed+'/'+p.total+' règles raciales</small>'+
@@ -79,6 +88,6 @@ function render(d){
  showRace(d.peoples.find(p=>p.key===chosen)?.id||d.peoples[0].id);
 }
 fetch('./focus.json?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('suivi indisponible');return r.json()}).then(d=>{
- if(!d.profile||d.profile.paths?.length!==5||d.peoples?.length!==8)throw Error('suivi incomplet');render(d)
+ if(!d.profile||d.profile.paths?.length!==5||!d.certificationPlan?.current||d.peoples?.length!==8)throw Error('suivi incomplet');render(d)
 }).catch(err=>{$('profile-recap').textContent='Le suivi ne peut pas être chargé : '+err.message;$('races').textContent='Données momentanément indisponibles.'});
 </script></body></html>

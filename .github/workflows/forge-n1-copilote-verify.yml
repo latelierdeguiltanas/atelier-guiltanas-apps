@@ -7,6 +7,8 @@ on:
       - 'centre-synchronisation/forge-n1/index.html'
       - 'centre-synchronisation/forge-n1/focus.json'
       - 'centre-synchronisation/forge-n1/qa_focus_mobile.cjs'
+      - 'fiches-personnages/fiche/fiche.js'
+      - 'fiches-personnages/tests/tatouages-etats.cjs'
 permissions:
   contents: read
 jobs:
@@ -52,7 +54,9 @@ jobs:
       - name: Réel affichage mobile, 14 positions, 8 peuples, rafraîchissement
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/foh-cockpit-server.log 2>&1 &
-          CHROME_BIN="$(command -v google-chrome || command -v chromium)" node centre-synchronisation/forge-n1/qa_focus_mobile.cjs
+          export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+          node centre-synchronisation/forge-n1/qa_focus_mobile.cjs
+          node fiches-personnages/tests/tatouages-etats.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

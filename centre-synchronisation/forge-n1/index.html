@@ -109,18 +109,19 @@ $("detail").innerHTML='<div class="profiletitle"><div><div class="brand">FICHE D
 function renderFocus(){
  const f=state.focus;if(!f||!f.profile||!Array.isArray(f.peoples)||!f.certificationPlan){$("focus-profile").innerHTML='<div class="notice focus-broken">Suivi actif indisponible. Le gel des profils n’est pas certifié.</div>';return;}
  const line=(name,pct,extra)=>'<div class="focus-line"><strong>'+clean(name)+'</strong><span class="stat">'+pct+' %</span><div class="track"><span class="fill" style="width:'+pct+'%"></span></div>'+(extra?'<div class="note">'+clean(extra)+'</div>':'')+'</div>';
- const active=f.profile,plan=f.certificationPlan;
- const statusList=active.checks.map(x=>'<div class="focus-check"><i style="color:'+(x.status==='ACQUIS'?'#89c19b':'#e4b76d')+'">'+(x.status==='ACQUIS'?'✓':'○')+'</i><div><b>'+clean(x.name)+'</b><div class="note">'+clean(x.detail)+'</div></div></div>').join('');
- $("focus-profile").innerHTML=line(active.name,active.percent,active.passed+'/'+active.total+' critères intégraux acquis')+
-  '<details class="focus-criteria-detail"><summary>Voir les '+active.total+' critères (dont '+active.passed+' validés)</summary>'+statusList+'</details>'+
-  '<p class="note">'+clean(active.next)+'</p>';
+ const archive=f.profile,plan=f.certificationPlan;
+ const current=plan.current.name===archive.name?archive:plan.priorityProgress?.name===plan.current.name?plan.priorityProgress:{name:plan.current.name,checks:[]};
+ const detail=x=>'<div class="focus-check"><i style="color:'+(x.status==='ACQUIS'?'#89c19b':'#e4b76d')+'">'+(x.status==='ACQUIS'?'✓':'○')+'</i><div><b>'+clean(x.name)+'</b><div class="note">'+clean(x.detail)+'</div>'+(x.proof?'<a href="../../forge-of-heroes/QA/N1/'+encodeURIComponent(x.proof)+'">Voir la preuve</a>':'')+'</div></div>';
+ const heading=Number.isFinite(current.percent)?line(current.name,current.percent,current.passed+'/'+current.total+' critères acquis'):'<div class="focus-line"><strong>'+clean(current.name)+'</strong><span class="stat">En cours</span></div>';
+ $('focus-profile').innerHTML=heading+current.checks.filter(x=>x.status==='ACQUIS').map(detail).join('');
+ if(archive!==current)$('focus-profile').insertAdjacentHTML('beforeend','<details class="focus-criteria-detail" id="focus-certified"><summary>'+clean(archive.name)+' · '+archive.percent+' % · '+(archive.completed?'certifié':'preuves')+'</summary>'+archive.checks.map(detail).join('')+'</details>');
  const racesProofCurrent=f.peoplesEvidenceCurrent===true;
  $("focus-peoples").innerHTML='<p class="note">Les pourcentages indiquent les critères vérifiés pour chaque peuple sur la version publiée de Forge.</p>'+
    f.peoples.map(x=>'<div>'+line(x.name,x.percent,x.passed+'/'+x.total+' critères raciaux prouvés sur ce moteur')+
      '<details class="focus-criteria-detail"><summary>Voir les '+x.total+' critères de '+clean(x.name)+'</summary>'+
      x.checks.map(c=>'<div class="focus-check"><i style="color:'+(c.status==='ACQUIS'?'#89c19b':'#e4b76d')+'">'+(c.status==='ACQUIS'?'✓':'○')+'</i><div><b>'+clean(c.name)+'</b><div class="note">'+clean(c.detail)+'</div></div></div>').join('')+
      '</details></div>').join("");
- $("focus-open").innerHTML=active.checks.filter(x=>x.status!=="ACQUIS").map(x=>'<div class="focus-check"><i>○</i><div><b>'+clean(x.name)+'</b><div class="note">'+clean(x.detail)+'</div></div></div>').join("")||'<p class="note">Les 16 critères de l’Arquebusier sont validés. Le Barbare est le prochain profil à vérifier.</p>';
+ $('focus-open').innerHTML=current.checks.filter(x=>x.status!=='ACQUIS').map(detail).join('')||'<p class="note">Aucun critère ouvert dans le registre affiché.</p>';
  $("focus-queue").innerHTML=(plan.queue||[]).map(x=>'<span class="'+(x.status==="EN_COURS"?'':x.certified?'':'focus-pending')+'">'+(x.certified?'✓ ':x.status==="EN_COURS"?'◉ ':'○ ')+clean(x.name)+(x.status==="EN_COURS"&&x.percent!=null?' · '+x.percent+' %':'')+'</span>').join("");
  $("focus-stats").innerHTML='<div class="official-stat"><b>'+f.summary.profilesCertified+'/14</b>Profils certifiés</div><div class="official-stat"><b>'+f.summary.peoplesCertified+'/8</b>Peuples certifiés</div><div class="official-stat"><b>'+clean(plan.current.position)+'/14</b>Profil prioritaire</div>';
  $("focus-date").textContent='État signé : '+french(f.generatedAt)+' · barres calculées sur les seuls critères complètement prouvés. Aucun 100 % automatique sans toutes les preuves.';
