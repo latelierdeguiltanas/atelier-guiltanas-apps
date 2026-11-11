@@ -76,11 +76,12 @@ async function readLive(){
   if(who.access!=='admin')throw Error('Acces MJ requis');
   const admin=await api('bastide-inventory','admin',token);
   status.players=(admin.players||[]).length;
+  status.playerNames=(admin.players||[]).map(x=>String(x.display_name||'').slice(0,70)).filter(Boolean);
   status.shop=(admin.items||[]).filter(x=>x.active!==false).length;
   status.scenario=(admin.scenario||[]).length;
   status.maps=(admin.maps||[]).length;
   status.loaded=true;
-  if(area)area.textContent=status.players+' PJ actifs · '+status.shop+' articles Mila · '+status.scenario+' objets de scenario · '+status.maps+' cartes (etat actuel, lecture seule).';
+  if(area)area.textContent=status.players+' PJ actifs · '+status.shop+' articles Mila · '+status.scenario+' objets de scenario · '+status.maps+' cartes (etat actuel, lecture seule). Personnages : '+(status.playerNames||[]).join(', ')+'.';
  }catch(error){if(area)area.textContent='Non connecte : '+error.message;}
  finally{status.checking=false;}
 }
@@ -89,7 +90,7 @@ function homePanel(){
  section.innerHTML='<div class="eyebrow">TABLE EXISTANTE · NON MIGREEE</div><h2>La Bastide — ma table actuelle</h2>'+
  '<p>Retrouve exactement les donnees et les personnages de ton hub historique. Cette carte ouvre le vrai hub : pas de copie concurrente.</p>'+
  '<div class="actions"><a class="button primary" href="'+link('ile-aux-tempetes-bastide/mj/')+'" target="_blank" rel="noopener">Ouvrir mon hub Bastide</a>'+
- '<button class="button" data-integration="status">Verifier les donnees actuelles</button>'+
+ '<a class="button" target="_blank" rel="noopener" href="'+link('ile-aux-tempetes-bastide/mj/boutique/')+'">Boutique Mila · Bastide</a>'+ '<a class="button" target="_blank" rel="noopener" href="'+link('gestionnaire-combat-cof2/multi/?space=ba571de0-0000-4000-8000-000000000001&name=Ile%20aux%20Tempetes&format=campaign&pack=island&source=bastide')+'">Combat Bastide</a>'+ '<button class="button" data-integration="status">Verifier les donnees actuelles</button>'+
  '<button class="button" data-integration="import">Importer le scenario sans PJ</button></div>'+
  '<p class="note" id="bastide-live-data">Aucun acces serveur partage avec les nouvelles tables.</p>';
  return section;
