@@ -223,6 +223,10 @@ const percent=Math.round(100*verified/profileChecks.length);
 const priorityIndex=profileComplete?activeIndex+1:activeIndex;
 const queue=profileOrder.map((name,i)=>({name,position:i+1,status:i===activeIndex&&profileComplete?'CERTIFIE':i===priorityIndex?'EN_COURS':'EN_ATTENTE',percent:i===activeIndex?percent:null,certified:i===activeIndex&&profileComplete}));
 
+const barbareMatrix=optionalProof('pure-profile-fast-barbare.json');
+const barbareClick=optionalProof('barbare-choices-click.json');
+const barbarePdf=optionalProof('barbare-official-pdf.json');
+const barbareCurrent=barbareMatrix?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&barbareMatrix.profile==='Barbare'&&barbareMatrix.pass===4250&&barbareMatrix.failed===0&&barbareMatrix.rejected===0&&barbareMatrix.sourceHashes?.some(s=>s.file==='index.html'&&s.htmlSha256===productHash('index.html'))&&barbareClick?.status==='PASS'&&barbareClick.indexSha256===productHash('index.html')&&barbareClick.passed===3&&barbarePdf?.status==='PASS'&&barbarePdf.indexSha256===productHash('index.html')&&barbarePdf.exports?.length===12;
 const output={
  schema:'FOH_N1_PROFILE_AND_PEOPLES_SEPARATE',
  racialOptionsCurrent:{valid:!!racialOptionsCurrent,passed:racialOptionsCurrent?392:0,total:392,scope:'Options de caractéristiques des huit peuples croisees avec quatorze profils sur index.html; ne certifie ni les pouvoirs conditionnels ni toutes les restrictions de taille.'},
@@ -247,12 +251,12 @@ const output={
  },
  intent:'Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.',
  profile:{id:profile.profileId,name:'Arquebusier',priority:profileComplete?'CERTIFIE':'EN_COURS',completed:profileComplete,variantPrototypeReady:!!prototypeOK,variantIntegrated:!!deployed,passed:verified,total:profileChecks.length,percent:Math.round(100*verified/profileChecks.length),checks:profileChecks,paths:copyPaths,partialNumericValidated:numericPartial,
-  next:profileComplete?'Prochain profil à vérifier : Barbare.':profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
+  next:profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, 3 parcours mobiles et 12 PDF couvrant les cinq voies, dont Peau de pierre et Tatouages.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
  peoples,
  pausedProfiles:13,
  summary:{profilesCertified:profileComplete?1:0,profilesInProgress:1,profilesPending:profileComplete?12:13,peoplesCertified:peoples.filter(p=>p.certified).length},
  limitations:'Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.',
- sources:['QA/N1/arquebusier-history-professions.json','QA/N1/arquebusier-history-origins.json','QA/N1/official-people-equipment.json','QA/N1/arquebusier-grant-context.json','QA/N1/lot10/people-source.json','QA/N1/arquebusier-derived-source.json','QA/N1/arquebusier-powder-weapon-boundary.json','QA/N1/arquebusier-two-preferences.json','QA/N1/arquebusier-official-template.json',...(variant?['QA/N1/arquebusier-arbaletrier-source-audit.json']:[]),'COF2 Livre de base pp. 44-65','Règles avancées p.153 et historiques','QA/N1/arquebusier-pure-age-ranks.json','QA/N1/arquebusier-pdf-real-click.json','QA/N1/arquebusier-all-mechanics-probe.json','QA/N1/official-methods-cross.json','QA/N1/official-racial-options.json','QA/N1/lot10/people-source.json']
+ sources:[...(barbareCurrent?['QA/N1/pure-profile-fast-barbare.json','QA/N1/barbare-choices-click.json','QA/N1/barbare-official-pdf.json']:[]),'QA/N1/arquebusier-history-professions.json','QA/N1/arquebusier-history-origins.json','QA/N1/official-people-equipment.json','QA/N1/arquebusier-grant-context.json','QA/N1/lot10/people-source.json','QA/N1/arquebusier-derived-source.json','QA/N1/arquebusier-powder-weapon-boundary.json','QA/N1/arquebusier-two-preferences.json','QA/N1/arquebusier-official-template.json',...(variant?['QA/N1/arquebusier-arbaletrier-source-audit.json']:[]),'COF2 Livre de base pp. 44-65','Règles avancées p.153 et historiques','QA/N1/arquebusier-pure-age-ranks.json','QA/N1/arquebusier-pdf-real-click.json','QA/N1/arquebusier-all-mechanics-probe.json','QA/N1/official-methods-cross.json','QA/N1/official-racial-options.json','QA/N1/lot10/people-source.json']
 };
 const dest=path.resolve(root,'..','centre-synchronisation/forge-n1/focus.json');
 fs.writeFileSync(dest,JSON.stringify(output,null,2)+'\n');
