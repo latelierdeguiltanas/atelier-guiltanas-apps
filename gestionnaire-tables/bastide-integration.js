@@ -139,6 +139,7 @@ function toolsPanel(t){
  p.innerHTML='<h2>Outils relies a cette table</h2><div class="grid">'+
  '<article class="card"><h3>Combats COF2 · espace independant</h3><p>Le combat utilise son propre identifiant de table, aucun des six PJ Bastide n est installe. Les rencontres personnalisees sauvegardees peuvent etre reprises. Mode local sur cet appareil, pas encore partage aux joueurs.</p><button class="button primary" data-integration="combat">Ouvrir le combat de cette table</button></article>'+
  '<article class="card"><h3>La boutique de Mila · copie</h3><p>Consulte les articles et ajuste les stocks independamment dans Ressources. Les achats synchronises aux fiches arriveront avec le serveur multi-MJ.</p><button class="button" data-integration="show-resources">Ouvrir les ressources</button></article>'+
+ '<article class="card"><h3>Soundboard</h3><p>Ouvre le soundboard existant dans un autre onglet. Les sons restent geres dans cet outil et ne sont pas synchronises avec les tables.</p><a class="button" target="_blank" rel="noopener noreferrer" href="https://latelierdeguiltanas.github.io/soundboard/">Ouvrir le Soundboard</a></article>'+
  '</div></section>';
  return p;
 }
