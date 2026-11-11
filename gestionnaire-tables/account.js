@@ -145,7 +145,8 @@ function accountHomePanel(ctx){
  const p=document.createElement('section');p.className='mj-account-panel';
  p.innerHTML='<h2>Bienvenue dans ton espace MJ, '+esc(displayName)+'</h2><p>'+ctx.db.tables.length+' table(s) personnelles. Tes scénarios et les PJ de tes tables ne sont pas accessibles aux autres MJ.</p>'+
  '<div class="controls"><button data-mj-action="show-library" class="primary">Importer / choisir un scénario</button>'+
- (hasLegacy() ? '<button data-mj-action="legacy">Récupérer mes anciennes tables locales</button>' : '')+'</div>';
+ (hasLegacy() ? '<button data-mj-action="legacy">Récupérer mes anciennes tables locales</button>' : '')+
+ (!bastideLinked&&localStorage.getItem('iot_bastide_inventory_key_v1') ? '<button data-mj-action="link-bastide">Associer ma Bastide actuelle</button>' : '')+'</div>';
  return p;
 }
 function decorate(ctx){
@@ -218,6 +219,7 @@ document.addEventListener('click',async ev=>{
   if(action==='logout')await logout();
   if(action==='show-library')A.showLibrary();
   if(action==='legacy')migrateLegacy();
+  if(action==='link-bastide')await window.TableIntegration.associateLegacy();
   if(action==='share')await shareScenario(el.dataset.id);
   if(action==='redeem')await redeem();
   if(action==='copy-code'){const input=document.getElementById('mj-copy-code');await navigator.clipboard.writeText(input.value);A.notify('Code copié');}
