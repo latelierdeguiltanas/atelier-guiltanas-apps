@@ -76,7 +76,7 @@ function render(d){
  $('profile-name').textContent=p.name;
  $('profile-percent').textContent=scored?p.percent+' %':'En cours';
  $('profile-bar').style.width=scored?p.percent+'%':'0%';
- $('profile-recap').textContent=scored?p.passed+'/'+p.total+' règles du profil acquises.':'Contrôles vérifiés et points ouverts du profil en cours.';
+ $('profile-recap').textContent=scored?p.passed+'/'+p.total+' critères de validation prouvés.':'Contrôles vérifiés et points ouverts du profil en cours.';
  $('profile-checks').innerHTML=rows(p.checks);
  $('profile-paths').innerHTML=(p.paths||[]).map(x=>'<details><summary>'+e(x.name)+'</summary>'+
  x.abilities.map(a=>'<div class="detail"><b>Rang '+a.rank+' · '+e(a.name)+'</b><p>'+e(a.focus)+'</p><small class="'+(a.status==='CHIFFRE_VERIFIE_EFFETS_A_COMPLETER'?'valid':'')+'">'+e(a.calculation)+'</small></div>').join('')+'</details>').join('');

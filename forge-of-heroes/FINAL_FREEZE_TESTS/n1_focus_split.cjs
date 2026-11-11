@@ -221,7 +221,6 @@ if(profileOrder.length!==14||activeIndex!==0)throw Error('Certification séquent
 const profileComplete=verified===profileChecks.length;
 const percent=Math.round(100*verified/profileChecks.length);
 const priorityIndex=profileComplete?activeIndex+1:activeIndex;
-const queue=profileOrder.map((name,i)=>({name,position:i+1,status:i===activeIndex&&profileComplete?'CERTIFIE':i===priorityIndex?'EN_COURS':'EN_ATTENTE',percent:i===activeIndex?percent:null,certified:i===activeIndex&&profileComplete}));
 
 const barbareMatrix=optionalProof('pure-profile-fast-barbare.json');
 const barbareClick=optionalProof('barbare-choices-click.json');
@@ -251,6 +250,14 @@ const barbareProgress={
   {name:'Parcours restants',status:'A_VERIFIER',detail:'Étendre les tests au clic aux autres choix de voies, peuples et équipements.'}
  ]
 };
+barbareProgress.total=barbareProgress.checks.length;
+barbareProgress.passed=barbareProgress.checks.filter(check=>check.status==='ACQUIS').length;
+barbareProgress.percent=Math.round(100*barbareProgress.passed/barbareProgress.total);
+const priorityPercent=profileComplete?barbareProgress.percent:percent;
+const queue=profileOrder.map((name,i)=>({
+ name,position:i+1,status:i===activeIndex&&profileComplete?'CERTIFIE':i===priorityIndex?'EN_COURS':'EN_ATTENTE',
+ percent:i===priorityIndex?priorityPercent:i===activeIndex?percent:null,certified:i===activeIndex&&profileComplete
+}));
 const output={
  schema:'FOH_N1_PROFILE_AND_PEOPLES_SEPARATE',
  racialOptionsCurrent:{valid:!!racialOptionsCurrent,passed:racialOptionsCurrent?392:0,total:392,scope:'Options de caractéristiques des huit peuples croisees avec quatorze profils sur index.html; ne certifie ni les pouvoirs conditionnels ni toutes les restrictions de taille.'},
@@ -265,7 +272,7 @@ const output={
  certificationPlan:{
   policy:'UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100',
   target:{officialProfiles:14,officialPeoples:8,allMustReachPercent:100},
-  current:{name:profileOrder[priorityIndex],position:priorityIndex+1,percent:profileComplete?null:percent,certified:false},
+  current:{name:profileOrder[priorityIndex],position:priorityIndex+1,percent:priorityPercent,certified:false},
   next:{name:profileOrder[activeIndex+1],unlocked:profileComplete,condition:'profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF'},
   queue,
   priorityProgress:profileComplete?barbareProgress:null,
