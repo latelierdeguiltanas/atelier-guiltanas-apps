@@ -1,4 +1,4 @@
-/* COF2, Voies d'historique pp.172-177. Les contextes sont déclarés par le joueur/MJ.
+/* COF2, Voies d'historique pp.172-180. Les contextes sont déclarés par le joueur/MJ.
  * Aucun bonus social ou professionnel ne modifie une caractéristique permanente.
  */
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(root)root.FOH_HISTORY_CONTEXT_N1=api;})(typeof window!=='undefined'?window:null,function(){
@@ -77,6 +77,78 @@ for(const [origin,{page,ranks}] of Object.entries(originGroups)){
   rules[id]={title,id,page,situations};
  });
 }
+// Voies professionnelles, pp. 176–180. Permanent effects are computed by
+// Forge. These entries describe results for situations declared by the player.
+const professionGroups={
+ courtier:{page:176,ranks:[
+  ['Charmant',[['Séduire, baratiner ou mentir avec le CHA',({rank})=>({skillBonus:rank+2})]]],
+  null,null,
+  ['J’ai un ami…',[['Demander une entrevue à une personne d’importance moyenne, première utilisation du jour',{charismaDifficulty:10}],['Demander une entrevue à un grand représentant de mon milieu, première utilisation du jour',{charismaDifficulty:15}]]],
+  ['Plus d’une corde à son arc',[['Consulter le don choisi sur la fiche',{effect:'Une capacité de rang 1 à 3 de la famille des aventuriers, selon le choix enregistré.'}]]]
+ ]},
+ scholar:{page:177,ranks:[
+  ['Érudition',[['Faire un test dans mon domaine principal',({rank})=>({skillBonus:rank+2})],['Consulter les langues d’érudition',({rank})=>({effect:rank+' langue(s) supplémentaire(s), selon les choix de la fiche.'})]]],
+  null,
+  ['Domaine secondaire',[['Faire un test dans mon domaine secondaire',{skillBonus:3,effect:'Bonus de voie de peuple.'}]]],
+  ['Novice',[['Rechercher un document avec le novice',{workTimeMultiplier:0.5}],['Recevoir les premiers soins du novice, trois utilisations par jour au maximum',{effect:'Au choix, 1d4° PV ou 1 PM. Consulter le bloc du novice pour ses caractéristiques et son attaque.'}]]],
+  ['Sommité',[['Consulter les caractéristiques',{effect:'INT +1, compris dans la fiche.'}]]]
+ ]},
+ expert:{page:177,ranks:[
+  ['Professionnel',[['Faire un test lié à mon métier',({rank})=>({skillBonus:rank+2})],['Travailler une journée dans mon métier',({rank,character})=>({incomeSilver:rank*(character.level||1)})]]],
+  null,
+  ['Talent spécial',[['Utiliser le talent défini avec le MJ',{effect:'Appliquer la capacité définie avec le MJ pour le métier choisi.'}]]],
+  ['Maître en son domaine',[['Demander une entrevue à une personne puissante',{charismaDifficulty:10}],['Demander un service à une personne puissante',{charismaDifficulty:15}]]],
+  ['Caractéristique d’expert',[['Consulter la caractéristique choisie',{effect:'+1 à la caractéristique du métier, compris dans la fiche.'}]]]
+ ]},
+ commoner:{page:178,ranks:[
+  ['La vie est dure',[['Résister à un effort physique ou faire un test d’endurance',{skillBonus:3}],['Consulter les dés de récupération',({rank})=>({effect:rank>=4?'DR +1, compris dans la fiche.':'Le DR supplémentaire arrive au rang 4.'})]]],
+  ['J’ai un ami qui m’a dit…',[['Faire un test d’INT sur une rumeur ou une personne',({rank})=>({skillBonus:rank+2})]]],
+  ['On m’la fait pas à moi !',[['Résister à une illusion ou à une influence de l’esprit',{skillBonus:5}]]],
+  ['Ni vu ni connu',[['Disparaître dans une foule',{charismaDifficulty:10,effect:'Une capacité particulière peut permettre de retrouver le personnage.'}]]],
+  ['Résistance naturelle',[['Consulter les caractéristiques',{effect:'CON +1, compris dans la fiche.'}]]]
+ ]},
+ soldier:{page:178,ranks:[
+  ['Formation martiale',[['Consulter l’option de formation choisie',({character,id})=>character.creationInput?.abilityChoices?.[id]?.martialTraining==='DISARM_BONUS'?{skillBonus:3,effect:'Pour éviter d’être désarmé.'}:{effect:'Maîtrise de toutes les armes, comprise dans la fiche.'}]]],
+  ['Seconde peau',[['Consulter l’armure de prédilection',{effect:'Maîtrise de l’armure choisie et pénalité réduite de 1, selon l’armure équipée.'}]]],
+  ['Sentinelle infatigable',[['Effectuer un tour de garde la nuit',{effect:'Le tour de garde n’empêche pas de récupérer 1 DR.'}],['Tester ma vigilance ou résister à la fatigue pendant la garde',{skillBonus:3}]]],
+  ['Du rab à la cantoche',[['Manger une double ration et dépenser un DR en récupération rapide',{effect:'Résultat maximal du dé de récupération.'}]]],
+  ['Évaluer l’adversité',[['Évaluer une créature visible',{effect:'Test opposé d’attaque au contact. En cas de réussite, le MJ révèle la DEF et l’attaque de la cible. Un dé bonus sur un test d’attaque au choix contre elle.'}]]]
+ ]},
+ pauper:{page:179,ranks:[
+  ['Moins que rien',[['Interagir avec la bonne société',{effect:'Dé malus au test social.'}],['Résister à une privation ou passer inaperçu',{skillBonus:3}],['Passer la nuit en ville',{effect:'Récupération automatique de 1 DR, même dans la rue ou sans acheter à manger.'}]]],
+  ['Roi de la débrouille',[['Faire un test de métier physique',{skillBonus:3}],['Consulter l’initiative',{effect:'Initiative +3, comprise dans la fiche.'}]]],
+  ['Solidarité des démunis',[['Demander l’aide d’un autre miséreux',{effect:'1d6 : aide inconditionnelle sur 1 à 3. Le MJ lance aussi 1d6 en secret : sur 6, le PNJ prépare un mauvais coup.'}]]],
+  ['Corvée à merci',[['Faire un test de CON ou de FOR',{skillBonus:3}],['Consulter les points de vie',{effect:'PV +3, compris dans la fiche.'}]]],
+  ['L’énergie du désespoir',[['Tester FOR, AGI ou CON à la moitié de mes PV ou moins',{bonusDie:true}],['À 0 PV, sans mort évidente ni nouveau dommage',{effect:'Reste conscient et dispose d’une action de mouvement par tour. Un nouveau dommage rend inconscient.'}]]]
+ ]},
+ wealthy:{page:179,ranks:[
+  ['Plein aux as',[['Payer mes dépenses courantes du jour',({rank})=>({incomeSilver:10*rank,effect:'Le montant inutilisé ne s’ajoute pas aux économies.'})]]],
+  ['On ne prête qu’aux riches',[['Acheter un bien de grande valeur à crédit',{effect:'Délai de paiement d’un mois.'}],['Demander un mois supplémentaire',{charismaDifficulty:15}]]],
+  ['Pot-de-vin',Array.from({length:10},(_,i)=>['Dépenser '+(10*(i+1))+' pa de mon argent pour rattraper un test de CHA raté',{skillBonus:i+1,effect:'Les fonds de Plein aux as sont exclus. Ce bonus ne s’applique pas à Au-dessus des lois.'}])],
+  ['Garde du corps',[['Le garde du corps est à mon contact',{defenseBonus:2}],['Remplacer le garde au prochain niveau',{effect:'Engagement pour 500 pa si le précédent garde est mort.'}]]],
+  ['Au-dessus des lois',[
+   ...[['Délit',10],['Crime',15],['Acte odieux',20]].flatMap(([label,difficulty])=>[
+    [label+' sans contrarier un puissant',{charismaDifficulty:difficulty,effect:'Victime importante : capacité inefficace. Pot-de-vin exclu.'}],
+    [label+' en contrariant un puissant',{charismaDifficulty:difficulty+5,effect:'Victime importante : capacité inefficace. Pot-de-vin exclu.'}]
+   ])
+  ]]
+ ]},
+ nomad:{page:180,ranks:[
+  ['Sens de l’orientation',[['M’orienter ou prévoir la météo des prochaines 24 h',{skillBonus:3}]]],
+  ['Voyageur',[['Récupérer après une nuit à la belle étoile ou tester la PER pour un événement de voyage',{skillBonus:3}]]],
+  ['Chasseur-cueilleur',[['Me nourrir en avançant à allure normale',{selfForage:true,effect:'Un test de PER (Survie) réussi permet de nourrir une autre personne. Difficulté selon la région.'}]]],
+  ['Je suis déjà venu',[['Dépenser 1 DR ou 1 PC en arrivant dans la localité',{effect:'Le MJ indique les lieux connus et un contact de confiance. Rareté réduite d’un niveau pour les achats locaux, pendant cette aventure.'}]]],
+  ['Attentif',[['Consulter les caractéristiques',{effect:'PER +1, comprise dans la fiche.'}]]]
+ ]}
+};
+for(const [profession,{page,ranks}] of Object.entries(professionGroups)){
+ ranks.forEach((entry,index)=>{
+  if(!entry)return;
+  const [title,situations]=entry;
+  const id='ability:history:'+profession+':r'+(index+1);
+  rules[id]={title,id,page,situations};
+ });
+}
 const rows=c=>c?.abilities||c?.acquiredAbilities||[];
 const path=a=>a.pathId||a.path_id||'';
 const professional=c=>rows(c).find(a=>professions.some(p=>path(a)==='history:'+p)&&Number(a.rank)>=1);
@@ -85,16 +157,26 @@ function resolve(c,key,context={}){
  const rule=rules[key];if(!rule)throw Error('Règle historique inconnue : '+key);
  const out={rule:key,sourcePage:rule.page,owned:owned(c,key),applies:false,modifiers:{},requirements:[],limits:[],notes:[]};
  if(!out.owned){out.requirements.push('Capacité non acquise.');return out;}
+ const ability=rows(c).find(a=>a.id===rule.id);
+ const rank=ability?Math.max(Number(ability.rank),...rows(c).filter(a=>path(a)===path(ability)).map(a=>Number(a.rank))):0;
  if(rule.situations){
   const selected=Number.isInteger(context.situation)?rule.situations[context.situation]:null;
   if(!selected){out.requirements.push('Les conditions de cette capacité ne sont pas réunies.');return out;}
   const [,modifiers,note]=selected;
-  Object.assign(out.modifiers,modifiers);
+  Object.assign(out.modifiers,typeof modifiers==='function'?modifiers({character:c,rank,id:rule.id}):modifiers);
+  if(key==='ability:history:wealthy:r5'){
+   const previousUses=context.previousUses??0;
+   if(!Number.isSafeInteger(previousUses)||previousUses<0||context.importantVictim===true){
+    out.modifiers={};
+    out.requirements.push(context.importantVictim===true?'Capacité inefficace si la victime est importante.':'Nombre entier positif ou nul d’utilisations précédentes requis.');
+    return out;
+   }
+   out.modifiers.charismaDifficulty+=5*previousUses;
+  }
   if(note)out.notes.push(note);
   out.applies=true;
   return out;
  }
- const ability=rows(c).find(a=>a.id===rule.id),rank=ability?Math.max(Number(ability.rank),...rows(c).filter(a=>path(a)===path(ability)).map(a=>Number(a.rank))):0;
  if(key==='community'){
   if(context.socialInteraction!==true||context.sameProfessionalCommunity!==true){out.requirements.push('Interaction sociale avec un autre membre de la même communauté professionnelle requise.');return out;}
   out.modifiers.skillBonus=3;out.notes.push('Le test est généralement fondé sur le CHA ; le MJ choisit la caractéristique adaptée.');
@@ -112,5 +194,5 @@ function resolve(c,key,context={}){
  }
  out.applies=true;return out;
 }
-return Object.freeze({version:'FOH-HISTORY-CONTEXT-N1-2',rules,available:c=>Object.keys(rules).filter(k=>owned(c,k)),isOwned:owned,resolve});
+return Object.freeze({version:'FOH-HISTORY-CONTEXT-N1-3',rules,available:c=>Object.keys(rules).filter(k=>owned(c,k)),isOwned:owned,resolve});
 });

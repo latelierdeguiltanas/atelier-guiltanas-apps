@@ -36,7 +36,11 @@ jobs:
           assert(d.certificationPlan.queue.length===14);
           assert(d.peoples.length===8);
           assert(d.certificationPlan.queue.filter(x=>x.status==='EN_COURS').length===1);
-          assert(d.certificationPlan.current.name===d.profile.name);
+          assert(d.certificationPlan.current.name===d.certificationPlan.queue.find(x=>x.status==='EN_COURS').name);
+          if(d.profile.completed){
+            assert(d.certificationPlan.queue.some(x=>x.name===d.profile.name&&x.certified));
+            assert(d.certificationPlan.next.unlocked);
+          }
           assert(d.profile.percent===Math.round(d.profile.passed/d.profile.total*100));
           assert(d.peoples.every(x=>x.percent===Math.round(x.passed/x.total*100)));
           console.log('Copilote compilable : 1 profil actif, 13 en attente, 8 peuples, données et DOM cohérents');

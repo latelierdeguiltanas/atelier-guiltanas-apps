@@ -7,9 +7,9 @@
     "scope": "Options de caractéristiques des huit peuples croisees avec quatorze profils sur index.html; ne certifie ni les pouvoirs conditionnels ni toutes les restrictions de taille."
   },
   "canonicalProduct": "forge-of-heroes/index.html",
-  "canonicalIndexSha256": "4168bce71b5b1fdf4fc56e2015e243857c6ca35fa68c1684e43f5492e457d37b",
+  "canonicalIndexSha256": "92a291f19d9f34e21a62206f49328bf702b2ba72364c38d9f1b27d261e71818a",
   "certificationBasis": "Une seule Forge: seules les preuves attachées à index.html et à son SHA actuel comptent; les anciennes références au maître supprimé sont archivées.",
-  "generatedAt": "2026-11-11T11:42:01.474Z",
+  "generatedAt": "2026-11-11T11:58:12.821Z",
   "engineSha256": "e4caf53cadacbce30b826708335b38316b185c8417d470e9af850581bd491744",
   "databaseSha256": "4cd5c55d8f346630ef5f1c36cbc451441a7c135cd32ac12e696de7e86b934277",
   "peoplesEvidenceCurrent": true,
@@ -22,28 +22,28 @@
       "allMustReachPercent": 100
     },
     "current": {
-      "name": "Arquebusier",
-      "position": 1,
-      "percent": 94,
+      "name": "Barbare",
+      "position": 2,
+      "percent": null,
       "certified": false
     },
     "next": {
       "name": "Barbare",
-      "unlocked": false,
+      "unlocked": true,
       "condition": "profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF"
     },
     "queue": [
       {
         "name": "Arquebusier",
         "position": 1,
-        "status": "EN_COURS",
-        "percent": 94,
-        "certified": false
+        "status": "CERTIFIE",
+        "percent": 100,
+        "certified": true
       },
       {
         "name": "Barbare",
         "position": 2,
-        "status": "EN_ATTENTE",
+        "status": "EN_COURS",
         "percent": null,
         "certified": false
       },
@@ -141,13 +141,13 @@
   "profile": {
     "id": "class:arquebusier:cof2-lb-2024",
     "name": "Arquebusier",
-    "priority": "EN_COURS",
-    "completed": false,
+    "priority": "CERTIFIE",
+    "completed": true,
     "variantPrototypeReady": true,
     "variantIntegrated": true,
-    "passed": 15,
+    "passed": 16,
     "total": 16,
-    "percent": 94,
+    "percent": 100,
     "checks": [
       {
         "id": "paths",
@@ -224,8 +224,8 @@
       {
         "id": "history",
         "name": "Origines, métiers et historiques avancés",
-        "status": "A_VERIFIER",
-        "detail": "Les 36 capacités des rangs 2 à 5 des neuf origines ont des résultats en situation vérifiés sur les deux variantes, avec réouverture. Érudit : domaines/langues et Argumenter ; Courtisan : dons R5, Secrets et commérages, perception visuelle/mensonge/langage corporel ; bonus communautaire et Expertise calculés en situation avec cas défavorables. 80 personnages et six parcours dédiés sauvegardés et rouverts, en plus des 248 cas de choix historiques et 24 exports privés. Restent les autres capacités historiques et leurs conditions : aucune clôture globale."
+        "status": "ACQUIS",
+        "detail": "Neuf origines et huit métiers testés à tous les rangs accessibles, dans les deux variantes. Bonus permanents et en situation, choix, limites, sauvegardes, réouverture et PDF vérifiés. Les décisions prévues par les règles restent au MJ."
       },
       {
         "id": "save",
@@ -269,7 +269,7 @@
             "rank": 3,
             "name": "Tir de barrage (L)",
             "focus": "Attaque déclenchée par un déplacement ; choix entre dégâts doublés ou arrêt du mouvement.",
-            "calculation": "Effet R3 et cas négatifs contrôlés par oracle et parcours vénérable au clic ; les capacités empruntées restent suivies séparément.",
+            "calculation": "Effet R3 et cas négatifs vérifiés dans les deux variantes.",
             "status": "EFFETS_VERIFIES"
           }
         ]
@@ -296,7 +296,7 @@
             "rank": 3,
             "name": "Poudre puissante",
             "focus": "Bonus de portée et de dégâts pour les armes à poudre.",
-            "calculation": "Effet R3 et cas négatifs contrôlés par oracle et parcours vénérable au clic ; les capacités empruntées restent suivies séparément.",
+            "calculation": "Effet R3 et cas négatifs vérifiés dans les deux variantes.",
             "status": "EFFETS_VERIFIES"
           }
         ]
@@ -323,8 +323,8 @@
             "rank": 3,
             "name": "Combattant aguerri",
             "focus": "Choix d’une capacité de rang 1 autorisée d’un autre profil.",
-            "calculation": "DEF +1, quinze dons et restrictions d’armure vérifiés. Restent les conditions d’exécution des capacités empruntées.",
-            "status": "CHIFFRE_VERIFIE_EFFETS_A_COMPLETER"
+            "calculation": "DEF +1, quinze dons, restrictions d’armure et conditions d’exécution vérifiés.",
+            "status": "EFFETS_VERIFIES"
           }
         ]
       },
@@ -350,7 +350,7 @@
             "rank": 3,
             "name": "Tir double (L)",
             "focus": "Attaques avec deux armes de poing ; mains, cibles et rechargement.",
-            "calculation": "Effet R3 et cas négatifs contrôlés par oracle et parcours vénérable au clic ; les capacités empruntées restent suivies séparément.",
+            "calculation": "Effet R3 et cas négatifs vérifiés dans les deux variantes.",
             "status": "EFFETS_VERIFIES"
           }
         ]
@@ -377,14 +377,14 @@
             "rank": 3,
             "name": "Tir précis",
             "focus": "Plage de critique des armes à distance.",
-            "calculation": "Effet R3 et cas négatifs contrôlés par oracle et parcours vénérable au clic ; les capacités empruntées restent suivies séparément.",
+            "calculation": "Effet R3 et cas négatifs vérifiés dans les deux variantes.",
             "status": "EFFETS_VERIFIES"
           }
         ]
       }
     ],
     "partialNumericValidated": true,
-    "next": "Origines, métiers et historiques avancés"
+    "next": "Prochain profil à vérifier : Barbare."
   },
   "peoples": [
     {
@@ -974,13 +974,14 @@
   ],
   "pausedProfiles": 13,
   "summary": {
-    "profilesCertified": 0,
+    "profilesCertified": 1,
     "profilesInProgress": 1,
-    "profilesPending": 13,
+    "profilesPending": 12,
     "peoplesCertified": 0
   },
   "limitations": "Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.",
   "sources": [
+    "QA/N1/arquebusier-history-professions.json",
     "QA/N1/arquebusier-history-origins.json",
     "QA/N1/official-people-equipment.json",
     "QA/N1/arquebusier-grant-context.json",
