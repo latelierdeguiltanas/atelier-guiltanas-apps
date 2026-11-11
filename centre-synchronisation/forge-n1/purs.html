@@ -40,7 +40,7 @@ a{color:var(--gold)}.footer{font-size:11px;color:var(--muted);margin-top:19px}
 <p class="note" id="profile-recap">Lecture des règles…</p>
 <details id="details-profile"><summary>Voir les règles du profil acquises et à terminer</summary><div class="checks" id="profile-checks"></div></details>
 <details id="details-paths"><summary>Voir les pouvoirs des cinq voies (sans pourcentage par voie)</summary><div id="profile-paths"></div></details>
-<details id="profile-archive" hidden><summary id="profile-archive-title"></summary><div id="profile-archive-checks"></div></details>
+<details id="profile-archive" hidden><summary id="profile-archive-title"></summary><div id="profile-archive-checks"></div></details><div id="profile-archives-extra"></div>
 </section>
 <section class="panel" aria-label="Progression des peuples">
 <div class="kicker">VALIDATION RACIALE INDÉPENDANTE</div>
@@ -73,6 +73,7 @@ function render(d){
  $('profile-archive').hidden=p===archive;
  $('profile-archive-title').textContent=archive.name+' · '+archive.percent+' %'+(archive.completed?' · certifié':'');
  $('profile-archive-checks').innerHTML=rows(archive.checks);
+ $('profile-archives-extra').innerHTML=(plan.archivedProfiles||[]).map(entry=>'<details><summary>'+e(entry.name)+' · '+entry.percent+' % · certifié</summary>'+rows(entry.checks)+'</details>').join('');
  $('profile-name').textContent=p.name;
  $('profile-percent').textContent=scored?p.percent+' %':'En cours';
  $('profile-bar').style.width=scored?p.percent+'%':'0%';

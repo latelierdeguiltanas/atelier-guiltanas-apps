@@ -115,6 +115,9 @@ function renderFocus(){
  const heading=Number.isFinite(current.percent)?line(current.name,current.percent,current.passed+'/'+current.total+' critères acquis'):'<div class="focus-line"><strong>'+clean(current.name)+'</strong><span class="stat">En cours</span></div>';
  $('focus-profile').innerHTML=heading+current.checks.filter(x=>x.status==='ACQUIS').map(detail).join('');
  if(archive!==current)$('focus-profile').insertAdjacentHTML('beforeend','<details class="focus-criteria-detail" id="focus-certified"><summary>'+clean(archive.name)+' · '+archive.percent+' % · '+(archive.completed?'certifié':'preuves')+'</summary>'+archive.checks.map(detail).join('')+'</details>');
+ for(const entry of plan.archivedProfiles||[]){
+   $('focus-profile').insertAdjacentHTML('beforeend','<details class="focus-criteria-detail"><summary>'+clean(entry.name)+' · '+entry.percent+' % · certifié</summary>'+entry.checks.map(detail).join('')+'</details>');
+ }
  const racesProofCurrent=f.peoplesEvidenceCurrent===true;
  $("focus-peoples").innerHTML='<p class="note">Les pourcentages indiquent les critères vérifiés pour chaque peuple sur la version publiée de Forge.</p>'+
    f.peoples.map(x=>'<div>'+line(x.name,x.percent,x.passed+'/'+x.total+' critères raciaux prouvés sur ce moteur')+

@@ -220,7 +220,7 @@ const activeName='Arquebusier',activeIndex=profileOrder.indexOf(activeName);
 if(profileOrder.length!==14||activeIndex!==0)throw Error('Certification séquentielle : ordre de profils incohérent');
 const profileComplete=verified===profileChecks.length;
 const percent=Math.round(100*verified/profileChecks.length);
-const priorityIndex=profileComplete?activeIndex+1:activeIndex;
+const barbareIndex=activeIndex+1;
 
 const barbareMatrix=optionalProof('pure-profile-fast-barbare.json');
 const barbareClick=optionalProof('barbare-choices-click.json');
@@ -281,11 +281,36 @@ barbareProgress.passed=barbareProgress.checks.filter(check=>check.status==='ACQU
 barbareProgress.percent=Math.round(100*barbareProgress.passed/barbareProgress.total);
 const barbareComplete=profileComplete&&barbareProgress.passed===barbareProgress.total&&barbareCombatChromeCurrent;
 barbareProgress.completed=barbareComplete;
-const priorityPercent=profileComplete?barbareProgress.percent:percent;
-const queue=profileOrder.map((name,i)=>({
- name,position:i+1,status:(i===activeIndex&&profileComplete)||(i===priorityIndex&&barbareComplete)?'CERTIFIE':i===priorityIndex?'EN_COURS':'EN_ATTENTE',
- percent:i===priorityIndex?priorityPercent:i===activeIndex?percent:null,certified:(i===activeIndex&&profileComplete)||(i===priorityIndex&&barbareComplete)
-}));
+const bardeMatrix=optionalProof('pure-profile-fast-barde.json');
+const bardeMatrixCurrent=bardeMatrix?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&bardeMatrix.profile==='Barde'&&
+ bardeMatrix.pass===4250&&bardeMatrix.failed===0&&bardeMatrix.rejected===0&&
+ bardeMatrix.sourceHashes?.some(s=>s.file==='index.html'&&s.htmlSha256===productHash('index.html'));
+const bardeSource=optionalProof('barde-source-n1.json');
+const bardeNumericsCurrent=bardeSource?.indexSha256===productHash('index.html')&&bardeSource.checks?.length===6&&
+ bardeSource.checks.slice(0,5).every(c=>c.status==='PASS');
+const bardeProgress={name:'Barde',checks:[
+ {name:'Créations et réouvertures',status:bardeMatrixCurrent?'ACQUIS':'A_VERIFIER',
+  detail:bardeMatrixCurrent?bardeMatrix.pass+' créations et '+bardeMatrix.saves+' réouvertures dans le moteur.':'Rejouer la matrice du Barde pur.',
+  proof:'pure-profile-fast-barde.json'},
+ {name:'Calculs principaux des cinq voies',status:bardeNumericsCurrent?'ACQUIS':'A_VERIFIER',
+  detail:'Précision, PM des chants, Grâce féline en DEF et INIT, Dentelles avec et sans armure, cumul d’Éclectique.',
+  proof:'barde-source-n1.json'},
+ {name:'Effets conditionnels et mise en jeu',status:'A_VERIFIER',
+  detail:'Vérifier la Feinte, les chants en jeu et le bonus de Grâce féline aux tests de danse, mime et jonglerie.'},
+ {name:'Création et réouverture dans Chrome',status:'A_VERIFIER',detail:'Rejouer les voies, les peuples et les équipements par les contrôles de Forge.'},
+ {name:'Fiche PDF officielle',status:'A_VERIFIER',detail:'Contrôler l’export des cinq voies et leurs résumés.'}
+]};
+bardeProgress.total=bardeProgress.checks.length;
+bardeProgress.passed=bardeProgress.checks.filter(c=>c.status==='ACQUIS').length;
+bardeProgress.percent=Math.round(100*bardeProgress.passed/bardeProgress.total);
+const priorityIndex=barbareComplete?barbareIndex+1:profileComplete?barbareIndex:activeIndex;
+const priorityProgress=barbareComplete?bardeProgress:profileComplete?barbareProgress:null;
+const priorityPercent=priorityProgress?.percent??percent;
+const queue=profileOrder.map((name,i)=>{
+ const certified=(i===activeIndex&&profileComplete)||(i===barbareIndex&&barbareComplete);
+ return {name,position:i+1,status:certified?'CERTIFIE':i===priorityIndex?'EN_COURS':'EN_ATTENTE',
+  percent:i===priorityIndex?priorityPercent:i===activeIndex?percent:certified?barbareProgress.percent:null,certified};
+});
 const output={
  schema:'FOH_N1_PROFILE_AND_PEOPLES_SEPARATE',
  racialOptionsCurrent:{valid:!!racialOptionsCurrent,passed:racialOptionsCurrent?392:0,total:392,scope:'Options de caractéristiques des huit peuples croisees avec quatorze profils sur index.html; ne certifie ni les pouvoirs conditionnels ni toutes les restrictions de taille.'},
@@ -300,10 +325,11 @@ const output={
  certificationPlan:{
   policy:'UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100',
   target:{officialProfiles:14,officialPeoples:8,allMustReachPercent:100},
-  current:{name:profileOrder[priorityIndex],position:priorityIndex+1,percent:priorityPercent,certified:barbareComplete},
-  next:{name:profileOrder[barbareComplete?priorityIndex+1:activeIndex+1],unlocked:profileComplete,condition:'profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF'},
+  current:{name:profileOrder[priorityIndex],position:priorityIndex+1,percent:priorityPercent,certified:false},
+  next:{name:profileOrder[priorityIndex+1],unlocked:false,condition:'profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF'},
   queue,
-  priorityProgress:profileComplete?barbareProgress:null,
+  priorityProgress,
+  archivedProfiles:barbareComplete?[barbareProgress]:[],
   peoplesProgressRule:'Chaque critère de peuple est validé par une preuve liée à la version courante. Les effets conditionnels, les équipements, les âges et historiques et le parcours avec PDF sont suivis séparément.',
   remainingPeoplesPolicy:'Après les 14 profils, fermer les critères raciaux manquants un peuple à la fois',
   fullOfficialN1Closed:false,
@@ -311,10 +337,10 @@ const output={
  },
  intent:'Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.',
  profile:{id:profile.profileId,name:'Arquebusier',priority:profileComplete?'CERTIFIE':'EN_COURS',completed:profileComplete,variantPrototypeReady:!!prototypeOK,variantIntegrated:!!deployed,passed:verified,total:profileChecks.length,percent:Math.round(100*verified/profileChecks.length),checks:profileChecks,paths:copyPaths,partialNumericValidated:numericPartial,
-  next:barbareComplete?'Barbare N1 validé sur le périmètre du registre.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
+  next:barbareComplete?'Barde N1 en cours.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
  peoples,
- pausedProfiles:13,
- summary:{profilesCertified:barbareComplete?2:profileComplete?1:0,profilesInProgress:barbareComplete?0:1,profilesPending:profileComplete?12:13,peoplesCertified:peoples.filter(p=>p.certified).length},
+ pausedProfiles:queue.filter(p=>p.status==='EN_ATTENTE').length,
+ summary:{profilesCertified:queue.filter(p=>p.certified).length,profilesInProgress:1,profilesPending:queue.filter(p=>p.status==='EN_ATTENTE').length,peoplesCertified:peoples.filter(p=>p.certified).length},
  limitations:'Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.',
  sources:[...(barbareCurrent?['QA/N1/pure-profile-fast-barbare.json','QA/N1/barbare-choices-click.json','QA/N1/barbare-official-pdf.json']:[]),'QA/N1/arquebusier-history-professions.json','QA/N1/arquebusier-history-origins.json','QA/N1/official-people-equipment.json','QA/N1/arquebusier-grant-context.json','QA/N1/lot10/people-source.json','QA/N1/arquebusier-derived-source.json','QA/N1/arquebusier-powder-weapon-boundary.json','QA/N1/arquebusier-two-preferences.json','QA/N1/arquebusier-official-template.json',...(variant?['QA/N1/arquebusier-arbaletrier-source-audit.json']:[]),'COF2 Livre de base pp. 44-65','Règles avancées p.153 et historiques','QA/N1/arquebusier-pure-age-ranks.json','QA/N1/arquebusier-pdf-real-click.json','QA/N1/arquebusier-all-mechanics-probe.json','QA/N1/official-methods-cross.json','QA/N1/official-racial-options.json','QA/N1/lot10/people-source.json']
 };

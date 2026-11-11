@@ -1,0 +1,33 @@
+{
+  "status": "PARTIEL",
+  "source": "COF2 Livre de base, p. 66 à 69",
+  "indexSha256": "3358aa4fcbd516287f051f3707f8fdf59ac7544b8a69ebc1c072e9244c01e4cd",
+  "scope": "Cinq voies de Barde pur N1, rangs 1–2 sur un Humain mûr. Valeurs attendues issues du livre. Combat et export vérifiés séparément.",
+  "checks": [
+    {
+      "name": "Escrime · Précision sur la rapière et la dague au contact",
+      "status": "PASS"
+    },
+    {
+      "name": "Musicien · PM, coûts et bonus de chant au rang 2",
+      "status": "PASS"
+    },
+    {
+      "name": "Saltimbanque · DEF, initiative et acrobaties",
+      "status": "PASS"
+    },
+    {
+      "name": "Séduction · plafond de Dentelles avec et sans armure",
+      "status": "PASS"
+    },
+    {
+      "name": "Vagabond · exception de cumul et bonus de connaissance",
+      "status": "PASS"
+    },
+    {
+      "name": "Saltimbanque · danse, mime et jonglerie au rang 2",
+      "status": "FAIL",
+      "error": "Le bonus +4 de Grâce féline n’est pas projeté dans les compétences.\n\nundefined !== 4\n"
+    }
+  ]
+}

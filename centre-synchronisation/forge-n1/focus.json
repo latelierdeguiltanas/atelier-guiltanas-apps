@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "3358aa4fcbd516287f051f3707f8fdf59ac7544b8a69ebc1c072e9244c01e4cd",
   "certificationBasis": "Une seule Forge: seules les preuves attachées à index.html et à son SHA actuel comptent; les anciennes références au maître supprimé sont archivées.",
-  "generatedAt": "2026-11-11T21:10:16.802Z",
+  "generatedAt": "2026-11-11T21:16:31.657Z",
   "engineSha256": "1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd",
   "databaseSha256": "d0955396d6df4ea3e28ead0f8338ffec02ab6c1336f3260ff370f326fe992d88",
   "peoplesEvidenceCurrent": true,
@@ -22,14 +22,14 @@
       "allMustReachPercent": 100
     },
     "current": {
-      "name": "Barbare",
-      "position": 2,
-      "percent": 100,
-      "certified": true
+      "name": "Barde",
+      "position": 3,
+      "percent": 20,
+      "certified": false
     },
     "next": {
-      "name": "Barde",
-      "unlocked": true,
+      "name": "Chevalier",
+      "unlocked": false,
       "condition": "profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF"
     },
     "queue": [
@@ -50,8 +50,8 @@
       {
         "name": "Barde",
         "position": 3,
-        "status": "EN_ATTENTE",
-        "percent": null,
+        "status": "EN_COURS",
+        "percent": 20,
         "certified": false
       },
       {
@@ -133,62 +133,99 @@
       }
     ],
     "priorityProgress": {
-      "name": "Barbare",
+      "name": "Barde",
       "checks": [
         {
           "name": "Créations et réouvertures",
-          "status": "ACQUIS",
-          "detail": "4 250 créations, dont 326 réouvertures vérifiées.",
-          "proof": "pure-profile-fast-barbare.json"
+          "status": "A_VERIFIER",
+          "detail": "Rejouer la matrice du Barde pur.",
+          "proof": "pure-profile-fast-barde.json"
         },
         {
-          "name": "Peau de pierre, Tatouages et équipement",
+          "name": "Calculs principaux des cinq voies",
           "status": "ACQUIS",
-          "detail": "3 parcours mobiles, dont le Halfelin avec une hache simple approuvée par le MJ.",
-          "proof": "barbare-choices-click.json"
+          "detail": "Précision, PM des chants, Grâce féline en DEF et INIT, Dentelles avec et sans armure, cumul d’Éclectique.",
+          "proof": "barde-source-n1.json"
         },
         {
-          "name": "Rang 2 des cinq voies au clic",
-          "status": "ACQUIS",
-          "detail": "Cinq parcours mobiles Mûr. Acquisition, PV, DEF, initiative et réouverture vérifiés.",
-          "proof": "barbare-choices-click.json"
+          "name": "Effets conditionnels et mise en jeu",
+          "status": "A_VERIFIER",
+          "detail": "Vérifier la Feinte, les chants en jeu et le bonus de Grâce féline aux tests de danse, mime et jonglerie."
+        },
+        {
+          "name": "Création et réouverture dans Chrome",
+          "status": "A_VERIFIER",
+          "detail": "Rejouer les voies, les peuples et les équipements par les contrôles de Forge."
         },
         {
           "name": "Fiche PDF officielle",
-          "status": "ACQUIS",
-          "detail": "12 exports couvrant les cinq voies.",
-          "proof": "barbare-official-pdf.json"
-        },
-        {
-          "name": "Charge et Défier la mort en jeu",
-          "status": "ACQUIS",
-          "detail": "Charge, attaque létale, quota et réouverture vérifiés sur mobile.",
-          "proof": "barbare-parcours-chrome.json"
-        },
-        {
-          "name": "Cri de guerre, Rage et Armure de vent",
-          "status": "ACQUIS",
-          "detail": "Cibles du Cri, quota et fin de Rage, interaction avec Défier la mort et changement d’armure vérifiés sous Chrome mobile.",
-          "proof": "barbare-parcours-chrome.json"
-        },
-        {
-          "name": "Huit peuples et quatre âges dans le moteur",
-          "status": "ACQUIS",
-          "detail": "32 créations et réouvertures. Douze bonus conditionnels de rang vérifiés, dont Vigueur et Réflexes éclair.",
-          "proof": "barbare-peuples-moteur.json"
-        },
-        {
-          "name": "Parcours de création dans Chrome",
-          "status": "ACQUIS",
-          "detail": "32 parcours au clic sous Chrome, sauvegarde et réouverture vérifiées.",
-          "proof": "barbare-parcours-chrome.json"
+          "status": "A_VERIFIER",
+          "detail": "Contrôler l’export des cinq voies et leurs résumés."
         }
       ],
-      "total": 8,
-      "passed": 8,
-      "percent": 100,
-      "completed": true
+      "total": 5,
+      "passed": 1,
+      "percent": 20
     },
+    "archivedProfiles": [
+      {
+        "name": "Barbare",
+        "checks": [
+          {
+            "name": "Créations et réouvertures",
+            "status": "ACQUIS",
+            "detail": "4 250 créations, dont 326 réouvertures vérifiées.",
+            "proof": "pure-profile-fast-barbare.json"
+          },
+          {
+            "name": "Peau de pierre, Tatouages et équipement",
+            "status": "ACQUIS",
+            "detail": "3 parcours mobiles, dont le Halfelin avec une hache simple approuvée par le MJ.",
+            "proof": "barbare-choices-click.json"
+          },
+          {
+            "name": "Rang 2 des cinq voies au clic",
+            "status": "ACQUIS",
+            "detail": "Cinq parcours mobiles Mûr. Acquisition, PV, DEF, initiative et réouverture vérifiés.",
+            "proof": "barbare-choices-click.json"
+          },
+          {
+            "name": "Fiche PDF officielle",
+            "status": "ACQUIS",
+            "detail": "12 exports couvrant les cinq voies.",
+            "proof": "barbare-official-pdf.json"
+          },
+          {
+            "name": "Charge et Défier la mort en jeu",
+            "status": "ACQUIS",
+            "detail": "Charge, attaque létale, quota et réouverture vérifiés sur mobile.",
+            "proof": "barbare-parcours-chrome.json"
+          },
+          {
+            "name": "Cri de guerre, Rage et Armure de vent",
+            "status": "ACQUIS",
+            "detail": "Cibles du Cri, quota et fin de Rage, interaction avec Défier la mort et changement d’armure vérifiés sous Chrome mobile.",
+            "proof": "barbare-parcours-chrome.json"
+          },
+          {
+            "name": "Huit peuples et quatre âges dans le moteur",
+            "status": "ACQUIS",
+            "detail": "32 créations et réouvertures. Douze bonus conditionnels de rang vérifiés, dont Vigueur et Réflexes éclair.",
+            "proof": "barbare-peuples-moteur.json"
+          },
+          {
+            "name": "Parcours de création dans Chrome",
+            "status": "ACQUIS",
+            "detail": "32 parcours au clic sous Chrome, sauvegarde et réouverture vérifiées.",
+            "proof": "barbare-parcours-chrome.json"
+          }
+        ],
+        "total": 8,
+        "passed": 8,
+        "percent": 100,
+        "completed": true
+      }
+    ],
     "peoplesProgressRule": "Chaque critère de peuple est validé par une preuve liée à la version courante. Les effets conditionnels, les équipements, les âges et historiques et le parcours avec PDF sont suivis séparément.",
     "remainingPeoplesPolicy": "Après les 14 profils, fermer les critères raciaux manquants un peuple à la fois",
     "fullOfficialN1Closed": false,
@@ -441,7 +478,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Barbare N1 validé sur le périmètre du registre."
+    "next": "Barde N1 en cours."
   },
   "peoples": [
     {
@@ -1029,11 +1066,11 @@
       "certified": false
     }
   ],
-  "pausedProfiles": 13,
+  "pausedProfiles": 11,
   "summary": {
     "profilesCertified": 2,
-    "profilesInProgress": 0,
-    "profilesPending": 12,
+    "profilesInProgress": 1,
+    "profilesPending": 11,
     "peoplesCertified": 0
   },
   "limitations": "Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.",

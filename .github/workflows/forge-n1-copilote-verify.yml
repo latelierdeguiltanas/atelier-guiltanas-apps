@@ -44,7 +44,7 @@ jobs:
           assert.equal(selected?.percent,current.percent);
           if(d.profile.completed){
             assert(d.certificationPlan.queue.some(x=>x.name===d.profile.name&&x.certified));
-            assert(d.certificationPlan.next.unlocked);
+            assert(current.position>d.certificationPlan.queue.find(x=>x.name===d.profile.name).position);
           }
           assert(d.profile.percent===Math.round(d.profile.passed/d.profile.total*100));
           assert(d.peoples.every(x=>x.percent===Math.round(x.passed/x.total*100)));
