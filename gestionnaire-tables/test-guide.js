@@ -14,7 +14,12 @@ const tasks=[
 ['empty','Vérifier que la nouvelle table a 0 personnage au départ'],
 ['sheet','Raccorder une fiche HTTPS de test'],
 ['battle','Ouvrir un combat vierge propre à MJ Test'],
-['sync','Actualiser la page et retrouver la table avec ses ressources']
+['sync','Actualiser la page et retrouver la table avec ses ressources'],
+['phone','Ouvrir le même compte MJ sur le téléphone (sans créer un deuxième compte)'],
+['deviceproof','Lancer Test PC ↔ tél. sur le PC et confirmer le signal sur le téléphone'],
+['cloudresources','Retrouver sur le téléphone le scénario, Mila, les objets et les personnages préparés sur le PC'],
+['combatcloud','Enregistrer une préparation de combat sur le PC puis la rouvrir sur le téléphone'],
+['logoutlocal','Se déconnecter du PC : le téléphone doit rester connecté']
 ];
 let namespace='invite';
 const clean=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
