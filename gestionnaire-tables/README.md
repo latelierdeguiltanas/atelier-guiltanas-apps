@@ -70,3 +70,17 @@ Si la confirmation e-mail ouvre un autre onglet, le code peut être collé dans 
 - Existence des politiques RLS, absence de privilège SELECT pour les comptes anonymes sur les quatre tables.
 - Déploiement de la fonction sécurisée de consommation d'invitation.
 - La recette complète de deux comptes MJ avec confirmation d'e-mail et échanges entre appareils reste à réaliser avant commercialisation.
+
+
+## Correction des liens de confirmation e-mail (11 novembre 2026)
+
+Le 11 novembre 2026, l'e-mail de validation du compte MJ redirigeait vers `http://localhost:3000` même si le client demandait l'adresse du gestionnaire. Diagnostic : le retour GitHub Pages n'est pas autorisé dans Supabase Authentication. Le serveur a néanmoins confirmé le premier compte.
+
+**Configuration indispensable dans Supabase Dashboard, projet `jitatmdbipjkvjstcgdc` :**
+- Authentication → URL Configuration → **Site URL** : `https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/gestionnaire-tables/`
+- **Redirect URLs** : ajouter exactement `https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/gestionnaire-tables/`
+- Enregistrer. Les nouveaux liens doivent ensuite revenir à l'accueil du portail, pas à localhost.
+
+Le frontend exige à présent l'URL canonique lors de l'inscription et du renvoi du mail. Il fournit « Renvoyer le mail de confirmation » et permet de revenir directement à la connexion après un lien consommé. Une adresse déjà validée peut utiliser immédiatement « Se connecter » ; inutile de recréer le compte.
+
+**Important :** la configuration Authentication → URL Configuration relève du tableau de bord Supabase, et ne peut pas être changée via les outils de gestion de base/déploiement utilisés ici. La publication GitHub ne suffit pas à modifier les redirections Supabase. Aucun changement à la Bastide.
