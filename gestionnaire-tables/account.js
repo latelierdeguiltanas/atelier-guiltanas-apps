@@ -12,7 +12,7 @@ if(!A||!D||!gate||!window.supabase?.createClient){
 }
 const client=window.supabase.createClient(URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 window.MJCloudClient=client;
-let mode='login',uid='',displayName='',revision=0,dirty=false,syncing=false,conflict=false,syncTimer=0,loadSeq=0,lastSaved='',active=false;
+let mode='login',uid='',displayName='',bastideLinked=false,revision=0,dirty=false,syncing=false,conflict=false,syncTimer=0,loadSeq=0,lastSaved='',active=false;
 const state=()=>A.getDb();
 const syncEl=()=>document.getElementById('mj-cloud-status');
 function status(s,bad=false){const el=syncEl();if(el){el.textContent=s;el.style.color=bad?'#f5b6a6':'#d5e3cf'}}
@@ -51,7 +51,7 @@ async function openAccount(user){
  const seq=++loadSeq;active=false;showGate();gate.innerHTML='<section class="mj-auth-card"><h1>Ouverture de ton espace MJ</h1><p>Chargement des tables personnelles sécurisées…</p></section>';
  try{
   const id=user.id;
-  let profile=await client.from('guiltanas_mj_profiles').select('display_name').eq('user_id',id).maybeSingle();
+  let profile=await client.from('guiltanas_mj_profiles').select('display_name,bastide_linked').eq('user_id',id).maybeSingle();
   if(profile.error)throw profile.error;
   const nickname=String(user.user_metadata?.display_name||user.email?.split('@')[0]||'MJ').slice(0,80);
   if(!profile.data){const inserted=await client.from('guiltanas_mj_profiles').upsert({user_id:id,display_name:nickname},{onConflict:'user_id'}).select('display_name').single();if(inserted.error)throw inserted.error;profile.data=inserted.data}
@@ -64,7 +64,7 @@ async function openAccount(user){
    if(remote.error)throw remote.error;
   }
   if(seq!==loadSeq)return;
-  uid=id;displayName=profile.data.display_name;revision=remote.data.revision;dirty=false;conflict=false;
+  uid=id;displayName=profile.data.display_name;bastideLinked=!!profile.data.bastide_linked;revision=remote.data.revision;dirty=false;conflict=false;
   window.GuiltanasMJActiveStorage=scopedStorage(uid);
   A.loadAccountData(remote.data.payload);
   lastSaved=JSON.stringify(state());
@@ -92,6 +92,7 @@ async function getRemote(){
   status('Actualisé depuis le serveur ✓');
  }
 }
+async function markBastideLinked(){if(!active||!uid)return;const r=await client.from('guiltanas_mj_profiles').update({bastide_linked:true}).eq('user_id',uid);if(r.error)throw r.error;bastideLinked=true;A.refresh();}
 async function rename(){
  const name=prompt('Nom à afficher pour ce compte MJ :',displayName);
  if(!name||!name.trim())return;
@@ -232,5 +233,5 @@ client.auth.onAuthStateChange((evt,session)=>{
 });
 setInterval(()=>{if(active&&document.visibilityState==='visible'&&!dirty&&!syncing)getRemote()},45000);
 window.addEventListener('online',()=>{if(active){if(dirty)saveCloud();else getRemote();}});
-window.MJAccount={client,active:()=>active,shareScenario,redeem,refresh:getRemote};
+window.MJAccount={client,active:()=>active,hasLinkedBastide:()=>bastideLinked,markBastideLinked,shareScenario,redeem,refresh:getRemote};
 })();
