@@ -8,6 +8,22 @@ const examples={
  scholar_persuasion:[['Test de CHA pour convaincre',{test:'convince',characteristic:'cha'}],['Test d’INT : ce bonus ne s’applique pas',{test:'convince',characteristic:'int'}]],
  expert_work:[['Test ou travail dans mon métier',{relatesToChosenProfession:true}],['Activité étrangère à mon métier',{relatesToChosenProfession:false}]]
 };
+const labels={
+ attackBonus:'Bonus d’attaque',defenseBonus:'Bonus de DEF',extraDamage:'Dommages supplémentaires',extraTemporaryDamage:'Dommages temporaires supplémentaires',
+ extraTravelKm:'Kilomètres supplémentaires',armorPenaltyDivisor:'Diviseur de la pénalité d’armure',ignoreCrowdSlowdown:'Ignore le ralentissement dans la foule',
+ perceptionDifficulty:'Difficulté du test de PER',damageReduction:'Réduction des dommages',automaticShelter:'Abri trouvé automatiquement',
+ selfForage:'Se nourrit en avançant',forageThreshold:'Seuil du test de PER (Survie)',forageInterval:'Points au-dessus du seuil par personne supplémentaire',
+ normalTravelSpeed:'Vitesse de déplacement normale',movementMultiplier:'Multiplicateur de déplacement',ignoreClimbAndBalanceTests:'Sans test d’escalade ou d’équilibre',
+ directWayToSurface:'Chemin direct vers la surface',dimLightAsDay:'Voit dans la pénombre comme en plein jour',darkvisionMultiplier:'Multiplicateur de portée de vision dans le noir',
+ ignoreUnseenMeleePenalty:'Ignore le malus au contact contre un ennemi non visible',torchDamage:'Dommages de la torche',enemyMeleePenalty:'Malus d’attaque au contact de l’adversaire',
+ effectiveFog:'Brouillard pris en compte',automaticEscape:'Échappe automatiquement aux sables mouvants',damageDivisor:'Diviseur des dommages',
+ freeAction:'Action gratuite',rangeBonusMeters:'Portée supplémentaire en mètres',freeRangedAttack:'Attaque à distance gratuite',
+ ignoreWaterCombatPenalty:'Ignore les pénalités du combat dans l’eau',direction:'Direction connue'
+};
+function situations(key){
+ const options=API.rules[key]?.situations;
+ return options?[...options.map(([label],index)=>[label,{situation:index}]),['Conditions non réunies',{}]]:(examples[key]||[]);
+}
 let panel;const node=(parent,tag,text)=>{const el=document.createElement(tag);if(text)el.textContent=text;parent.appendChild(el);return el;};
 const character=()=>{const r=E.computeCharacterN1(P.buildState());return r.errors?.length?null:r.sticky?.characterState;};
 function render(){try{const host=document.getElementById('summary-content');if(!host||host.hidden)return;const c=character();if(!c)return;const owned=API.available(c);if(!owned.length){if(panel)panel.hidden=true;return;}
@@ -16,8 +32,8 @@ function render(){try{const host=document.getElementById('summary-content');if(!
   const label2=node(panel,'label','Situation : '),b=node(label2,'select');b.id='foh-history-example';
   for(const l of [label,label2])l.style.cssText='display:grid;gap:7px;margin:10px 0;min-width:0';for(const select of [a,b])select.style.cssText='width:100%;min-width:0;max-width:100%;box-sizing:border-box;padding:9px;background:#171511;color:white';
   const button=node(panel,'button','Calculer les effets');button.type='button';button.id='foh-history-run';const out=node(panel,'div');out.id='foh-history-result';out.setAttribute('aria-live','polite');out.style.cssText='white-space:pre-wrap;margin-top:10px';
-  a.addEventListener('change',()=>{b.replaceChildren();examples[a.value].forEach(([text],i)=>{const o=node(b,'option',text);o.value=String(i);});out.textContent='';});
-  button.addEventListener('click',()=>{try{const current=character();if(!current)throw Error('Fiche incomplète.');const r=API.resolve(current,a.value,examples[a.value][Number(b.value)][1]),lines=[r.applies?'Règle applicable dans cette situation.':'Règle NON applicable dans cette situation.'];if(r.modifiers.skillBonus!=null)lines.push('Bonus de compétence : +'+r.modifiers.skillBonus);if(r.modifiers.bonusDie)lines.push('Dé bonus : oui');if(r.modifiers.workTimeMultiplier!=null)lines.push('Temps de travail : × '+r.modifiers.workTimeMultiplier);for(const message of [...r.requirements,...r.notes])lines.push(message);lines.push('Référence : voies d’historique COF2, p. '+r.sourcePage+'.');out.textContent=lines.join('\n');}catch(e){out.textContent='Calcul impossible : '+e.message;}});
+  a.addEventListener('change',()=>{b.replaceChildren();situations(a.value).forEach(([text],i)=>{const o=node(b,'option',text);o.value=String(i);});out.textContent='';});
+  button.addEventListener('click',()=>{try{const current=character();if(!current)throw Error('Fiche incomplète.');const r=API.resolve(current,a.value,situations(a.value)[Number(b.value)]?.[1]||{}),lines=[r.applies?'Règle applicable dans cette situation.':'Règle NON applicable dans cette situation.'];if(r.modifiers.skillBonus!=null)lines.push('Bonus de compétence : +'+r.modifiers.skillBonus);if(r.modifiers.bonusDie)lines.push('Dé bonus : oui');if(r.modifiers.workTimeMultiplier!=null)lines.push('Temps de travail : × '+r.modifiers.workTimeMultiplier);for(const [key,label] of Object.entries(labels)){const value=r.modifiers[key];if(value!=null)lines.push(label+' : '+(value===true?'oui':value));}for(const message of [...r.requirements,...r.notes])lines.push(message);lines.push('Référence : voies d’historique COF2, p. '+r.sourcePage+'.');out.textContent=lines.join('\n');}catch(e){out.textContent='Calcul impossible : '+e.message;}});
   host.insertAdjacentElement('afterend',panel);
  }
  panel.hidden=false;const a=panel.querySelector('#foh-history-ability'),signature=owned.join('|');if(a.dataset.available!==signature){const previous=a.value;a.replaceChildren();for(const key of owned){const o=node(a,'option',API.rules[key].title);o.value=key;}a.dataset.available=signature;if(owned.includes(previous))a.value=previous;a.dispatchEvent(new Event('change'));}
