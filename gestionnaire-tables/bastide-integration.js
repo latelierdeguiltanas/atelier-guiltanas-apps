@@ -120,7 +120,7 @@ function resourceRows(t){
  '<div data-resource-panel="shop">'+shop+'</div><div data-resource-panel="objects" hidden>'+objs+'</div><div data-resource-panel="maps" hidden>'+maps+'</div><div data-resource-panel="npcs" hidden>'+npc+'</div></section>';
 }
 function combatUrl(t){
- return link('gestionnaire-combat-cof2/multi/')+'?space='+encodeURIComponent(t.id)+'&name='+encodeURIComponent(t.name)+'&format=campaign';
+ return link('gestionnaire-tables/combat/')+'?table='+encodeURIComponent(t.id);
 }
 function initCombat(t){
  if(!/^[a-f0-9-]{36}$/i.test(t.id))throw Error('Cette table a un ancien identifiant. Creer une table recente.');
@@ -137,7 +137,7 @@ function initCombat(t){
 function toolsPanel(t){
  const p=document.createElement('section');p.className='panel';p.id='table-isolated-tools';
  p.innerHTML='<h2>Outils relies a cette table</h2><div class="grid">'+
- '<article class="card"><h3>Combats COF2 · espace independant</h3><p>Le combat utilise son propre identifiant de table, aucun des six PJ Bastide n est installe. Les rencontres personnalisees sauvegardees peuvent etre reprises. Mode local sur cet appareil, pas encore partage aux joueurs.</p><button class="button primary" data-integration="combat">Ouvrir le combat de cette table</button></article>'+
+ '<article class="card"><h3>Combats COF2 · espace independant</h3><p>Le combat utilise son propre espace cloud de table et se retrouve sur tes autres appareils après connexion MJ. Aucun PJ Bastide n est installé. Les combats ne sont pas encore diffusés automatiquement aux joueurs.</p><button class="button primary" data-integration="combat">Ouvrir le combat de cette table</button></article>'+
  '<article class="card"><h3>La boutique de Mila · copie</h3><p>Consulte les articles et ajuste les stocks independamment dans Ressources. Les achats synchronises aux fiches arriveront avec le serveur multi-MJ.</p><button class="button" data-integration="show-resources">Ouvrir les ressources</button></article>'+
  '<article class="card"><h3>Soundboard</h3><p>Ouvre le soundboard existant dans un autre onglet. Les sons restent geres dans cet outil et ne sont pas synchronises avec les tables.</p><a class="button" target="_blank" rel="noopener noreferrer" href="https://latelierdeguiltanas.github.io/soundboard/">Ouvrir le Soundboard</a></article>'+
  '</div></section>';
