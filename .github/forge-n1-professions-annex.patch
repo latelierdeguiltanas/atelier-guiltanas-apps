@@ -1,0 +1,88 @@
+diff --git a/centre-synchronisation/forge-n1/index.html b/centre-synchronisation/forge-n1/index.html
+index e35121b..d1099aa 100644
+--- a/centre-synchronisation/forge-n1/index.html
++++ b/centre-synchronisation/forge-n1/index.html
+@@ -115,7 +115,7 @@ function renderFocus(){
+   '<details class="focus-criteria-detail"><summary>Voir les '+active.total+' critères (dont '+active.passed+' validés)</summary>'+statusList+'</details>'+
+   '<p class="note">'+clean(active.next)+'</p>';
+  const racesProofCurrent=f.peoplesEvidenceCurrent===true;
+- $("focus-peoples").innerHTML='<p class="note">Pourcentages recalculés sur la Forge publiée : actuellement quatre critères complets sur dix par peuple (catalogue, caractéristiques, options initiales et méthodes/sauvegarde). L’ancien 60 % reste archivé jusqu’à revalidation de ses autres critères.</p>'+
++ $("focus-peoples").innerHTML='<p class="note">Les pourcentages indiquent les critères vérifiés pour chaque peuple sur la version publiée de Forge.</p>'+
+    f.peoples.map(x=>'<div>'+line(x.name,x.percent,x.passed+'/'+x.total+' critères raciaux prouvés sur ce moteur')+
+      '<details class="focus-criteria-detail"><summary>Voir les '+x.total+' critères de '+clean(x.name)+'</summary>'+
+      x.checks.map(c=>'<div class="focus-check"><i style="color:'+(c.status==='ACQUIS'?'#89c19b':'#e4b76d')+'">'+(c.status==='ACQUIS'?'✓':'○')+'</i><div><b>'+clean(c.name)+'</b><div class="note">'+clean(c.detail)+'</div></div></div>').join('')+
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+index b47c32e..ff5716a 100644
+--- a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+@@ -151,7 +151,7 @@ const origins=optionalProof('arquebusier-history-origins.json');
+ const originsCurrent=origins?.status==='PASS'&&origins.indexSha256===productHash('index.html')&&origins.cases===90&&origins.reopened===90&&origins.positive===180&&origins.additionalSituations===104&&origins.negative===1440;
+ const originProgress=originsCurrent?'Les 36 capacités des rangs 2 à 5 des neuf origines ont des résultats en situation vérifiés sur les deux variantes, avec réouverture. ':'';
+ const professionsProof=optionalProof('arquebusier-history-professions.json');
+-const professionsCurrent=professionsProof?.status==='PASS'&&sameCurrentHashes(professionsProof.products)&&professionsProof.cases===80&&professionsProof.reopened===80&&professionsProof.refusals===800&&professionsProof.situations===368&&Object.keys(professionsProof.coverage||{}).length===40;
++const professionsCurrent=professionsProof?.status==='PASS'&&sameCurrentHashes(professionsProof.products)&&professionsProof.cases===80&&professionsProof.reopened===80&&professionsProof.pdfAnnexes===80&&professionsProof.companions===8&&professionsProof.refusals===800&&professionsProof.situations===368&&Object.keys(professionsProof.coverage||{}).length===40;
+ const historyComplete=originsCurrent&&professionsCurrent&&historyConditionsCurrent&&historyCrossPassed&&historyConditionsClick.cases.filter(c=>c.history==='wealthy').every(c=>c.steps.includes('weekly-justice-difficulty-verified'));
+ const profileChecks=[
+  mark('paths','Les cinq voies officielles',profile.powers.length===5,'Les cinq voies et leurs 15 rangs accessibles sont présents et référencés.','Vérifier les cinq voies du livre.'),
+@@ -214,7 +214,7 @@ const peoples=old.peoples.filter(x=>expectedNames.has(x.label)).map(p=>{
+  return{id:p.id,key:p.key,name:p.label,rules:lore[p.key],checks,passed:pass,total:checks.length,percent:Math.round(100*pass/checks.length),historicalPercent:Math.round(100*p.slots.filter(x=>x.status==='PASS').length/16),certified:pass===checks.length};
+ });
+ if(peoples.length!==8||peoples.some(x=>!x.rules))throw Error('8 race progress lines must be complete');
+-const copyPaths=profile.powers.map(p=>({name:p.name,page:p.page,abilities:p.abilities.map(a=>({rank:a.rank,name:a.name,focus:a.focus,calculation:a.rank===1&&r1Complete?'Effet R1 et conditions contrôlés par oracle et parcours réel au clic.':a.rank===2&&r2Complete?'Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.':a.rank===3&&r2Complete?(a.name==='Combattant aguerri'?'DEF +1, quinze dons et restrictions d’armure vérifiés. Restent les conditions d’exécution des capacités empruntées.':'Effet R3 et cas négatifs contrôlés par oracle et parcours vénérable au clic ; les capacités empruntées restent suivies séparément.'):a.calculation,status:a.rank===3&&r2Complete?(a.name==='Combattant aguerri'?'CHIFFRE_VERIFIE_EFFETS_A_COMPLETER':'EFFETS_VERIFIES'):a.rank===1&&r1Complete||a.rank===2&&r2Complete?'EFFETS_VERIFIES':a.status}))}));
++const copyPaths=profile.powers.map(p=>({name:p.name,page:p.page,abilities:p.abilities.map(a=>({rank:a.rank,name:a.name,focus:a.focus,calculation:a.rank===1&&r1Complete?'Effet R1 et conditions contrôlés par oracle et parcours réel au clic.':a.rank===2&&r2Complete?'Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.':a.rank===3&&r3EffectsCurrent?(a.name==='Combattant aguerri'?'DEF +1, quinze dons, restrictions d’armure et conditions d’exécution vérifiés.':'Effet R3 et cas négatifs vérifiés dans les deux variantes.'):a.calculation,status:a.rank===3&&r3EffectsCurrent?'EFFETS_VERIFIES':a.rank===1&&r1Complete||a.rank===2&&r2Complete?'EFFETS_VERIFIES':a.status}))}));
+ const profileOrder=['Arquebusier','Barbare','Barde','Chevalier','Druide','Ensorceleur','Forgesort','Guerrier','Magicien','Moine','Prêtre','Rôdeur','Sorcier','Voleur'];
+ const activeName='Arquebusier',activeIndex=profileOrder.indexOf(activeName);
+ if(profileOrder.length!==14||activeIndex!==0)throw Error('Certification séquentielle : ordre de profils incohérent');
+@@ -247,7 +247,7 @@ const output={
+  },
+  intent:'Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.',
+  profile:{id:profile.profileId,name:'Arquebusier',priority:profileComplete?'CERTIFIE':'EN_COURS',completed:profileComplete,variantPrototypeReady:!!prototypeOK,variantIntegrated:!!deployed,passed:verified,total:profileChecks.length,percent:Math.round(100*verified/profileChecks.length),checks:profileChecks,paths:copyPaths,partialNumericValidated:numericPartial,
+-  next:profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
++  next:profileComplete?'Prochain profil à vérifier : Barbare.':profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
+  peoples,
+  pausedProfiles:13,
+  summary:{profilesCertified:profileComplete?1:0,profilesInProgress:1,profilesPending:profileComplete?12:13,peoplesCertified:peoples.filter(p=>p.certified).length},
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs
+index 697179c..f87eb3e 100644
+--- a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs
+@@ -1,7 +1,10 @@
+ 'use strict';
+ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict'),F=require('./forge_product_runner'),API=require('../ENGINE/history_context_n1'),root=path.resolve(__dirname,'..'),copy=x=>JSON.parse(JSON.stringify(x));
+ const report={schema:'FOH_N1_HISTORY_CONDITIONS',at:new Date().toISOString(),source:'Voies d’historique pp.176–177',scope:'8 professions × 5 rangs × 2 variantes × le seul index.html ; communauté, Courtisan R2/R3, Érudit R2, Expert R2. Ne certifie pas tous les historiques.',products:[],expected:80,passed:0,failed:0,contexts:0,negativeChecks:0,failures:[],moduleSha256:crypto.createHash('sha256').update(fs.readFileSync(root+'/ENGINE/history_context_n1.js')).digest('hex')};
+-const professionalReport={status:'PENDING',cases:0,situations:0,reopened:0,refusals:0,coverage:{},products:report.products};
++const PDFLib=require('../progression/pdf-lib');
++require('../progression/official-pdf-engine');
++const pdf=global.FOHOfficialPDF.create({PDFLib,DB:require('../progression/pdf-labels.json')});
++const professionalReport={pdfAnnexes:0,companions:0,status:'PENDING',cases:0,situations:0,reopened:0,refusals:0,coverage:{},products:report.products};
+ const id=(profession,rank)=>'ability:history:'+profession+':r'+rank;
+ const boundaries={
+  courtier:[4,1,'charismaDifficulty',15],scholar:[3,0,'skillBonus',3],
+@@ -60,6 +63,27 @@ for(const file of ['index.html']){const{db,engine:E,html}=F.load(root+'/'+file);
+  if(pro==='nomad'&&rank===5)assert.equal(r.sticky.caracs.per,2);
+  if(pro==='pauper'&&rank>=2)assert.equal(r.sticky.INIT,14);
+  if(pro==='pauper'&&rank>=4)assert.equal(r.sticky.PV,11);
++ const professionalAnnex=pdf.annexPaths(s,r.sticky,{type:'standard'}).find(entry=>entry.pathId==='history:'+pro);
++ assert(professionalAnnex&&professionalAnnex.kind==='Historique professionnel');
++ assert.equal(professionalAnnex.rows.length,5);
++ for(const [index,entry] of professionalAnnex.rows.entries()){
++  const original=db.tables.history_abilities.find(row=>row.id===id(pro,index+1));
++  assert.equal(entry.rank,original.rank);
++  assert.equal(entry.desc,original.desc);
++ }
++ professionalReport.pdfAnnexes++;
++ if((pro==='scholar'||pro==='wealthy')&&rank>=4){
++  const novice=pro==='scholar';
++  const companion=c.companions.find(row=>row.companionId===(novice?'companion:scholar-novice':'companion:bodyguard'));
++  assert(companion);
++  assert.equal(companion.def,novice?11:16);
++  assert.equal(companion.pv,novice?11:4);
++  assert.equal(companion.init,novice?10:r.sticky.INIT);
++  assert.equal(companion.attack,1);
++  assert.equal(companion.damage,novice?'1d4°':'1d4°+2');
++  assert.deepEqual(copy(back.sticky.characterState.companions),copy(c.companions));
++  professionalReport.companions++;
++ }
+  professionalReport.cases++;
+  professionalReport.reopened++;
+  const switched=copy(s);switched.history.professionalPathId='history:commoner';if(switched.age)switched.age.spending=switched.age.spending.map(x=>({...x,pathId:'history:mountains'}));if(switched.age)switched.age.spending=[2,3,4,5].map(rank=>({pathId:'history:mountains',rank}));const changed=E.computeCharacterN1(switched);assert.equal(changed.errors.length,0);assert.deepEqual(API.available(changed.sticky.characterState).filter(key=>!API.rules[key].situations),['community']);
