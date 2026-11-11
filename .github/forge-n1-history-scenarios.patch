@@ -1,0 +1,59 @@
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+index 27635e4..2ae1fc9 100644
+--- a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+@@ -148,8 +148,8 @@ const grantContextCurrent=grantContext?.status==='PASS'&&sameCurrentHashes(grant
+ const borrowedMobileCurrent=r2Mobile&&advanced.cases?.some(c=>c.status==='PASS'&&c.steps?.includes('vivacite-condition-verified'));
+ const r3EffectsCurrent=contextualComplete&&grantContextCurrent&&borrowedMobileCurrent&&gearComplete&&pdfComplete;
+ const origins=optionalProof('arquebusier-history-origins.json');
+-const originsCurrent=origins?.status==='PASS'&&origins.indexSha256===productHash('index.html')&&origins.cases===90&&origins.reopened===90&&origins.positive===180&&origins.negative===1440;
+-const originProgress=originsCurrent?' Les 36 capacités des rangs 2 à 5 des neuf origines ont des résultats en situation vérifiés sur les deux variantes, avec réouverture.':'';
++const originsCurrent=origins?.status==='PASS'&&origins.indexSha256===productHash('index.html')&&origins.cases===90&&origins.reopened===90&&origins.positive===180&&origins.additionalSituations===104&&origins.negative===1440;
++const originProgress=originsCurrent?'Les 36 capacités des rangs 2 à 5 des neuf origines ont des résultats en situation vérifiés sur les deux variantes, avec réouverture. ':'';
+ const profileChecks=[
+  mark('paths','Les cinq voies officielles',profile.powers.length===5,'Les cinq voies et leurs 15 rangs accessibles sont présents et référencés.','Vérifier les cinq voies du livre.'),
+  mark('pairs','Toutes les paires de voies légales',tenPairsVerified,'Les dix choix possibles de deux voies du profil, avec chacun des huit peuples et les cinq modalités d’âge N1, sont créés, validés et conservés après sauvegarde. Les dix couples de l’Arbalétrier sont aussi éprouvés.','Les dix choix possibles de deux voies doivent fonctionner avec les équipements autorisés, y compris l’alternative Halfelin.'),
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_origins_oracle.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_origins_oracle.cjs
+index 982c6bd..fbecbc9 100644
+--- a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_origins_oracle.cjs
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_origins_oracle.cjs
+@@ -22,10 +22,15 @@ const otherScenarios=[
+  ['deserts',2,1,{perceptionDifficulty:15}],['deserts',2,2,{perceptionDifficulty:20}],
+  ['caves',2,2,{darkvisionMultiplier:2}],['caves',4,1,{torchDamage:'1d6 + AGI'}],
+  ['caves',4,2,{enemyMeleePenalty:-1}],['caves',4,3,{enemyMeleePenalty:-2}],
+- ['mountains',2,1,{damageDivisor:2}],['plains',3,1,{rangeBonusMeters:10}]
++ ['mountains',2,1,{damageDivisor:2}],['plains',3,1,{rangeBonusMeters:10}],
++ ['cities',2,1,{skillBonus:3}],['cities',3,1,{attackBonus:2,defenseBonus:2}],['cities',4,1,{skillBonus:5}],
++ ['forests',4,1,{defenseBonus:2}],['caves',2,1,{dimLightAsDay:true}],
++ ['marshes',3,1,{effectiveFog:'Brouillard léger'}],['marshes',3,2,{automaticEscape:true}],
++ ['plains',2,1,{freeAction:true}],['shores',4,1,{direction:'Étendue d’eau la plus proche'}]
+ ];
++assert.equal(otherScenarios.length+36,53);
+ const id=(origin,rank)=>'ability:history:'+origin+':r'+rank;
+-const report={status:'PASS',source:'Voies d’historique COF2 pp.172–175',indexSha256:createHash('sha256').update(html).digest('hex'),cases:0,positive:0,negative:0,reopened:0,matrix:{}};
++const report={status:'PASS',source:'Voies d’historique COF2 pp.172–175',indexSha256:createHash('sha256').update(html).digest('hex'),cases:0,positive:0,additionalSituations:0,negative:0,reopened:0,matrix:{}};
+ for(const variant of ['arquebusier','arbaletrier']){
+  const cls=db.tables.classes.find(c=>c.id.includes('class:'+variant+':'));
+  const profilePath=db.tables.paths_class.find(p=>p.classId===cls.id&&p.id.includes('artilleur'));
+@@ -62,7 +67,13 @@ for(const variant of ['arquebusier','arbaletrier']){
+    }
+   }
+   for(const [key,abilityRank,situation,modifiers] of otherScenarios){
+-   if(key===origin&&abilityRank<=rank)assert.deepEqual(API.resolve(character,id(key,abilityRank),{situation}).modifiers,modifiers);
++   if(key===origin&&abilityRank<=rank){
++    const resolved=API.resolve(character,id(key,abilityRank),{situation});
++    assert(resolved.applies);
++    assert.deepEqual(resolved.modifiers,modifiers);
++    assert.deepEqual(API.resolve(reopened.sticky.characterState,id(key,abilityRank),{situation}),resolved);
++    report.additionalSituations++;
++   }
+   }
+   assert.equal(JSON.stringify(character),before);
+   report.matrix[variant]??={};
+@@ -72,5 +83,6 @@ for(const variant of ['arquebusier','arbaletrier']){
+  }
+ }
+ assert.equal(report.cases,90);
++assert.equal(report.additionalSituations,2*otherScenarios.reduce((sum,[,rank])=>sum+6-rank,0));
+ fs.writeFileSync(root+'/QA/N1/arquebusier-history-origins.json',JSON.stringify(report,null,2)+'\n');
+ console.log(JSON.stringify(report));
