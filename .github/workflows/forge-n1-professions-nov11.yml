@@ -41,7 +41,7 @@ jobs:
           node centre-synchronisation/scripts/forge-global-progress.cjs
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add forge-of-heroes .github/workflows/forge-n1-copilote-verify.yml centre-synchronisation/forge-n1/index.html centre-synchronisation/forge-n1/focus.json centre-synchronisation/data/forge-global-progress.json
+          git add forge-of-heroes centre-synchronisation/forge-n1/index.html centre-synchronisation/forge-n1/focus.json centre-synchronisation/data/forge-global-progress.json
           git rm .github/forge-n1-professions.patch .github/forge-n1-professions-annex.patch
           git add -u .github/forge-n1-professions-template.json .github/forge-n1-professions-history.json
           git commit -m 'Valider les métiers et clôturer l’Arquebusier N1 [skip ci]'
