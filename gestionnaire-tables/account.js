@@ -12,6 +12,16 @@ if(!A||!D||!gate||!window.supabase?.createClient){
 }
 const client=window.supabase.createClient(URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 const testRegistration=new URLSearchParams(location.search).get('mode')==='test';
+const pendingInviteKey='guiltanas.mj.pending.invite.v1';
+function pendingInvite(){
+ try{const p=JSON.parse(localStorage.getItem(pendingInviteKey)||'null');if(p?.until>Date.now()&&/^[a-f0-9]{64}$/i.test(p.code||''))return p.code;}catch{}
+ localStorage.removeItem(pendingInviteKey);return '';
+}
+const incomingInvite=new URLSearchParams(location.hash.slice(1)).get('pack')||'';
+if(/^[a-f0-9]{64}$/i.test(incomingInvite)){
+ localStorage.setItem(pendingInviteKey,JSON.stringify({code:incomingInvite,until:Date.now()+48*60*60*1000}));
+}
+
 window.MJCloudClient=client;
 let mode='login',uid='',displayName='',bastideLinked=false,revision=0,dirty=false,syncing=false,conflict=false,syncTimer=0,loadSeq=0,lastSaved='',active=false;
 const state=()=>A.getDb();
@@ -76,9 +86,15 @@ async function openAccount(user){
   const requested=new URLSearchParams(location.search).get('table');
   if(requested&&state().tables.some(t=>t.id===requested))A.openTable(requested);
   status('Sauvegardé en ligne ✓');
-  const invite=new URLSearchParams(location.hash.slice(1)).get('pack');
-  if(invite&&/^[a-f0-9]{64}$/i.test(invite)){
-   try{await redeem(invite);history.replaceState(null,'',location.pathname+location.search);}catch(error){A.notify('Lien d’invitation : '+error.message);}
+  const invite=pendingInvite();
+  if(invite){
+   try{
+    await redeem(invite);
+    localStorage.removeItem(pendingInviteKey);
+    history.replaceState(null,'',location.pathname+location.search);
+   }catch(error){
+    A.notify('Import par invitation : '+error.message+'. Le code reste récupérable pendant 48 h dans ce navigateur.');
+   }
   }
  }catch(e){
   uid='';active=false;window.GuiltanasMJActiveStorage=null;authBody();notice('Impossible d’ouvrir cet espace : '+e.message+'. Les données des autres MJ ne sont pas affichées.');
