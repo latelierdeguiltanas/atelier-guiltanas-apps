@@ -5,6 +5,7 @@ const A=window.TableManagerAPI,D=window.TableDomain;
 const gate=document.getElementById('mj-account-gate');
 const URL='https://jitatmdbipjkvjstcgdc.supabase.co';
 const KEY='sb_publishable_XKVr4_kE2qsywCTgurH0CQ_GTXrEFeU';
+const EMAIL_RETURN_URL='https://latelierdeguiltanas.github.io/atelier-guiltanas-apps/gestionnaire-tables/';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 if(!A||!D||!gate||!window.supabase?.createClient){
   gate.innerHTML='<div class="mj-auth-card"><h1>Connexion indisponible</h1><p>Le module sécurisé n’a pas chargé. Vérifie la connexion Internet et actualise. Aucune table n’a été supprimée.</p></div>';
@@ -36,8 +37,9 @@ function authBody(){
  '<label>Adresse e-mail<input name="email" type="email" required autocomplete="email" maxlength="254"></label>'+
  '<label>Mot de passe<input name="password" type="password" minlength="8" required autocomplete="current-password"></label>'+
  '<button class="primary" id="mj-auth-submit" type="submit">Connexion</button></form>'+
- '<p class="message" id="mj-auth-message" role="status" hidden></p>'+
- '<p>Les nouveaux comptes peuvent nécessiter une confirmation par e-mail. Les mots de passe sont gérés par Supabase Auth, pas par le navigateur de cette application.</p>'+
+ '<p class="message" id="mj-auth-message" role="status" hidden></p>'+ 
+ '<button type="button" id="mj-resend-confirmation">Renvoyer le mail de confirmation</button>'+
+ '<p>Confirmation déjà effectuée ? Connecte-toi directement avec ton e-mail et ton mot de passe, même si le lien du mail affiche une page inaccessible. Les nouveaux liens doivent revenir vers le portail MJ.</p>'+
  (testRegistration ? '<p class="message"><b>PARCOURS TEST :</b> utilise une autre adresse e-mail que ton compte Mathieu. Ouvre idéalement cette page en navigation privée pour ne jamais transmettre ton accès Bastide à ce compte.</p>' : '') + '</section>';
  if(testRegistration){setMode('register');const field=gate.querySelector('[name="display_name"]');if(field)field.value='MJ Test';}
 }
@@ -368,23 +370,38 @@ document.addEventListener('click',async ev=>{
  finally{el.disabled=false;}
 });
 function bindGate(){
- gate.addEventListener('click',ev=>{if(ev.target?.id==='mj-mode-login')setMode('login');if(ev.target?.id==='mj-mode-register')setMode('register')});
+ gate.addEventListener('click',async ev=>{
+  if(ev.target?.id==='mj-mode-login')setMode('login');
+  if(ev.target?.id==='mj-mode-register')setMode('register');
+  if(ev.target?.id==='mj-resend-confirmation'){
+   const btn=ev.target;
+   const email=String(gate.querySelector('[name="email"]')?.value||'').trim();
+   if(!email||!email.includes('@')){notice('Indique ton adresse e-mail avant de renvoyer le message.');return}
+   btn.disabled=true;notice('Envoi du nouveau mail…');
+   try{
+    const r=await client.auth.resend({type:'signup',email,options:{emailRedirectTo:EMAIL_RETURN_URL}});
+    if(r.error)throw r.error;
+    notice('Si ton adresse attend encore une confirmation, un nouveau mail a été envoyé. Si elle est déjà confirmée, connecte-toi avec ton mot de passe. Le lien de retour nécessite l’autorisation de notre adresse GitHub Pages dans Supabase.');
+   }catch(e){notice('Réexpédition impossible : '+e.message)}
+   finally{btn.disabled=false}
+  }
+ });
  gate.addEventListener('submit',async ev=>{
   if(ev.target?.id!=='mj-auth-form')return;ev.preventDefault();const form=ev.target,fields=Object.fromEntries(new FormData(form));const btn=document.getElementById('mj-auth-submit');
   btn.disabled=true;notice('Vérification…');
   try{
    if(mode==='register'){
     const n=String(fields.display_name||'').trim();if(!n||n.length>80)throw Error('Indique un nom de MJ.');
-    const r=await client.auth.signUp({email:String(fields.email||'').trim(),password:String(fields.password||''),options:{data:{display_name:n},emailRedirectTo:location.origin+location.pathname}});
+    const r=await client.auth.signUp({email:String(fields.email||'').trim(),password:String(fields.password||''),options:{data:{display_name:n},emailRedirectTo:EMAIL_RETURN_URL}});
     if(r.error)throw r.error;
     if(r.data.session){await openAccount(r.data.user);return;}
-    notice('Compte demandé. Vérifie ta boîte e-mail et confirme ton adresse, puis reviens ici pour te connecter.');
+    setMode('login');notice('Inscription enregistrée. Vérifie le mail de confirmation si nécessaire, puis reconnecte-toi ici. Si le mail t’envoie vers une page inaccessible, reviens directement sur ce portail pour essayer la connexion.');
    }else{
     const r=await client.auth.signInWithPassword({email:String(fields.email||'').trim(),password:String(fields.password||'')});
     if(r.error)throw r.error;
     await openAccount(r.data.user);
    }
-  }catch(e){notice(e.message)}
+  }catch(e){notice(e.code==='email_not_confirmed'?'Adresse non confirmée : utilise « Renvoyer le mail de confirmation » après vérification de l’adresse.':e.message)}
   finally{btn.disabled=false;}
  });
 }
