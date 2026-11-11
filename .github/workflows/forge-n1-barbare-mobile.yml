@@ -1,0 +1,33 @@
+name: Forge N1 - parcours mobiles Barbare
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-barbare-mobile.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_barbare_choices_click.cjs'
+      - 'fiches-personnages/fiche/fiche.js'
+      - 'fiches-personnages/tests/barbare-combat.cjs'
+permissions:
+  contents: read
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Tester les choix et la réouverture sur mobile
+        run: |
+          npm install --prefix /tmp/forge-test --no-package-lock playwright
+          python3 -m http.server 4173 &
+          export NODE_PATH=/tmp/forge-test/node_modules
+          export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_barbare_choices_click.cjs
+          node fiches-personnages/tests/barbare-combat.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: barbare-choices-click
+          path: forge-of-heroes/QA/N1/barbare-choices-click.json

@@ -4,10 +4,19 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const {createHash}=require('node:crypto');
 const {chromium}=require('playwright');
+const rankTwo=[
+ {path:'brute',ability:'tour-de-force',label:'Tour de force',totals:[13,13,14]},
+ {path:'pagne',ability:'peau-de-pierre',label:'Peau de pierre',totals:[15,12,11]},
+ {path:'pourfendeur',ability:'charge',label:'Charge',totals:[13,13,14]},
+ {path:'primitif',ability:'armure-de-vent',label:'Armure de vent',totals:[14,13,11]},
+ {path:'rage',ability:'defier-la-mort',label:'Défier la mort',totals:[13,12,11]}
+];
+const pathIds={brute:'voie-de-la-brute',pagne:'voie-du-pagne',pourfendeur:'voie-du-pourfendeur',primitif:'voie-du-primitif',rage:'voie-de-la-rage'};
 const jobs=[
  {people:'humain',defense:'AGI',stats:[2,1,0,1,3,0,-1],tattoo:'FOR'},
  {people:'humain',defense:'CON',stats:[2,1,3,1,0,0,-1],tattoo:'CON'},
- {people:'halfelin',defense:'AGI',stats:[2,1,0,1,3,0,-1],tattoo:'PER'}
+ {people:'halfelin',defense:'AGI',stats:[2,1,0,1,3,0,-1],tattoo:'PER'},
+ ...rankTwo.map(r=>({people:'humain',defense:'AGI',stats:[2,1,0,1,3,0,-1],rankTwo:r.path}))
 ];
 const report={status:'FAIL',cases:[],indexSha256:createHash('sha256').update(fs.readFileSync('forge-of-heroes/index.html')).digest('hex')};
 
@@ -20,7 +29,7 @@ async function runCase(browser,job){
  const snapshot=()=>page.evaluate(()=>{
   const draft=window.__FOH_PRODUCT__.buildState();
   const r=window.__FOH_ENGINE__.computeCharacterN1(draft);
-  return {errors:r.errors,def:r.sticky.DEF,skills:r.sticky.skillBonuses,choices:draft.abilityChoices,attacks:r.sticky.attacks};
+  return {errors:r.errors,def:r.sticky.DEF,skills:r.sticky.skillBonuses,pv:r.sticky.PV,init:r.sticky.INIT,ranks:r.sticky.acquiredAbilities.map(a=>[a.id,a.rank]),choices:draft.abilityChoices,attacks:r.sticky.attacks};
  });
  const row={...job,status:'FAIL'};
  report.cases.push(row);
@@ -46,17 +55,21 @@ async function runCase(browser,job){
   }
   if(job.people==='humain')await page.locator('#human-stat-final').selectOption(job.defense==='CON'?'vol':'con');
   await next();
-  await page.locator('#age-category').selectOption('venerable');
+  await page.locator('#age-category').selectOption(job.tattoo?'venerable':'mature');
   await next();
-  await page.locator('#path-one').selectOption('classpath:voie-du-pagne:class-barbare:cof2-lb-2024');
-  await page.locator('#path-two').selectOption('classpath:voie-de-la-brute:class-barbare:cof2-lb-2024');
+  const primary=job.rankTwo||'pagne',secondary=primary==='brute'?'pourfendeur':'brute';
+  const selectPath=(slot,name)=>page.locator('#path-'+slot).selectOption('classpath:'+pathIds[name]+':class-barbare:cof2-lb-2024');
+  await selectPath('one',primary);
+  await selectPath('two',secondary);
   const path=name=>page.locator('article.choice').filter({hasText:new RegExp('voie.*'+name,'i')});
-  for(const name of ['pagne','pagne','brute'])await path(name).getByRole('button',{name:/Acquérir/}).first().tap();
-  await page.locator('.stone-skin-choice-buttons button[data-value="'+job.defense+'"]').tap();
-  const tattoo=page.locator('select[data-ability-choice$="|tattooStat"]');
-  const available=await tattoo.locator('option').evaluateAll(options=>options.filter(o=>o.value).map(o=>o.value));
-  assert.deepEqual(available,['FOR','CON','AGI','PER','CHA','INT','VOL']);
-  await tattoo.selectOption(job.tattoo);
+  for(const name of (job.tattoo?[primary,primary,secondary]:[primary,secondary]))await path(name).getByRole('button',{name:/Acquérir/}).first().tap();
+  if(primary==='pagne')await page.locator('.stone-skin-choice-buttons button[data-value="'+job.defense+'"]').tap();
+  if(job.tattoo){
+   const tattoo=page.locator('select[data-ability-choice$="|tattooStat"]');
+   const available=await tattoo.locator('option').evaluateAll(options=>options.filter(o=>o.value).map(o=>o.value));
+   assert.deepEqual(available,['FOR','CON','AGI','PER','CHA','INT','VOL']);
+   await tattoo.selectOption(job.tattoo);
+  }
   await next();
   if(job.people==='halfelin'){
    await page.locator('#equipment-swap-approved').check();
@@ -64,26 +77,33 @@ async function runCase(browser,job){
   }
   await next();
   await page.locator('#reveal-view').tap();
-  assert.match(await page.locator('[data-summary-ability^="ability:tatouages:"]').innerText(),new RegExp('\\+3 aux tests de '+job.tattoo));
+  const target=rankTwo.find(r=>r.path===job.rankTwo);
+  const ability=target?.ability||'tatouages';
+  const expected=target?/rang 2/:new RegExp('\\+3 aux tests de '+job.tattoo);
+  const verifySummary=async()=>assert.match(await page.locator('[data-summary-ability^="ability:'+ability+':"],[data-summary-ability^="ability:'+ability+'-"]').innerText(),expected);
+  await verifySummary();
   const before=await snapshot();
   assert.deepEqual(before.errors,[]);
-  assert.equal(before.def,job.defense==='CON'?14:job.people==='halfelin'?15:13);
-  const skill=before.skills.filter(s=>s.sourceAbilityId.includes('ability:tatouages:'));
-  assert.deepEqual(skill.map(s=>[s.tests,s.value]),[[[job.tattoo],3]]);
-  if(job.people==='halfelin'){
-   const attack=before.attacks.find(a=>a.weaponId==='weapon:axe');
-   assert.equal(attack.hands,2);
+  if(target){
+   assert.ok(before.ranks.some(([id,rank])=>id.startsWith('ability:'+ability)&&rank===2));
+   assert.equal(before.ranks.some(([,rank])=>rank>2),false);
+   assert.deepEqual([before.pv,before.def,before.init],target.totals);
+  }else{
+   assert.equal(before.def,job.defense==='CON'?14:job.people==='halfelin'?15:13);
+   const skill=before.skills.filter(s=>s.sourceAbilityId.includes('ability:tatouages:'));
+   assert.deepEqual(skill.map(s=>[s.tests,s.value]),[[[job.tattoo],3]]);
+   if(job.people==='halfelin')assert.equal(before.attacks.find(a=>a.weaponId==='weapon:axe').hands,2);
   }
   await page.getByRole('button',{name:'Enregistrer dans Mes héros',exact:true}).tap();
   await page.reload();
   await page.locator('#open-heroes').tap();
   await page.getByRole('button',{name:'Voir la fiche',exact:true}).first().tap();
-  assert.match(await page.locator('[data-summary-ability^="ability:tatouages:"]').innerText(),new RegExp('\\+3 aux tests de '+job.tattoo));
+  await verifySummary();
   const reopened=await snapshot();
   assert.deepEqual(reopened,before);
   assert.deepEqual(errors,[]);
   row.status='PASS';
-  row.result={defense:before.def,skill:skill[0].tests[0],bonus:skill[0].value};
+  row.result=target?{ability:target.label,rank:2,defense:before.def,pv:before.pv,initiative:before.init}:{defense:before.def,skill:job.tattoo,bonus:3};
  }catch(error){
   row.error=error.message;
   row.view=await page.locator('.step.active').innerText().then(s=>s.slice(0,500)).catch(()=>null);
