@@ -4,10 +4,10 @@
  * save/reload/reopen. Read-only inspection of the UI-created state.
  */
 const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs');
-const jobs=['Arquebusier','Arbalétrier'].flatMap(variant=>[{variant,history:'Courtisan',key:'courtier',rank:3},{variant,history:'Érudit',key:'scholar',rank:3},{variant,history:'Expert',key:'expert',rank:2}]);
+const jobs=['Arquebusier','Arbalétrier'].flatMap(variant=>[{variant,history:'Courtisan',key:'courtier',rank:3},{variant,history:'Érudit',key:'scholar',rank:3},{variant,history:'Expert',key:'expert',rank:2},{variant,history:'Fortuné',key:'wealthy',rank:5}]);
 const crypto=require('node:crypto');
 const shaIndex=crypto.createHash('sha256').update(fs.readFileSync('forge-of-heroes/index.html')).digest('hex');
-const report={indexSha256:shaIndex,schema:'FOH_N1_ARQ_HISTORY_CONDITIONS_REAL_CLICK',at:new Date().toISOString(),scope:'Six créations au clic : Courtisan R3, Érudit R3, Expert R2 sur deux variantes ; bonus communautaire, cinq règles contextuelles, situations favorables et défavorables, sauvegarde et reprise.',cases:[],status:'PENDING',passed:0,failed:0};
+const report={indexSha256:shaIndex,schema:'FOH_N1_ARQ_HISTORY_CONDITIONS_REAL_CLICK',at:new Date().toISOString(),scope:'Huit créations au clic : Courtisan R3, Érudit R3, Expert R2, Fortuné R5 sur deux variantes ; bonus communautaire, cinq règles contextuelles, situations favorables et défavorables, sauvegarde et reprise.',cases:[],status:'PENDING',passed:0,failed:0};
 (async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||undefined,args:['--no-sandbox']});
 try{
   for(const job of jobs){
@@ -26,7 +26,7 @@ try{
       const opt=await el.locator('option').evaluateAll((xs,v)=>xs.find(o=>parseInt(o.textContent)===v)?.value,value);
       assert.ok(opt,'Characteristic '+key+' '+value+' not allowed');await el.selectOption(opt);
     }
-    await choose('#human-stat-final','CON');await next();await choose('#history-geo','montagnes');await choose('#history-pro',job.history);if(job.rank>1)await page.locator('#age-category').selectOption('venerable');
+    await choose('#human-stat-final','CON');await next();await choose('#history-geo','montagnes');await page.locator('#history-pro').selectOption('history:'+job.key);if(job.rank>1)await page.locator('#age-category').selectOption('venerable');
     const profession=page.locator('#history-human-profession');if(await profession.isVisible())await profession.fill('Charpentier');await next();await choose('#path-one','artilleur');
     for(let n=1;n<job.rank;n++)await page.locator('button[data-rank-add="history:'+job.key+'"]').tap();
     for(let n=0;n<5-job.rank;n++)await page.locator('button[data-rank-add="history:mountains"]').tap();
@@ -49,9 +49,28 @@ try{
     assert.equal(after,before,'Save/reopen changed summary');rec.steps.push('save-reopen');
     const character=await page.evaluate(()=>{const r=window.__FOH_ENGINE__.computeCharacterN1(window.__FOH_PRODUCT__.buildState());return{errors:r.errors,skills:r.sticky?.skillBonuses,languages:r.sticky?.languages,abilities:r.sticky?.acquiredAbilities,PV:r.sticky?.PV,DEF:r.sticky?.DEF};});assert.equal(character.errors.length,0,character.errors.join('; '));
     const panel=page.locator('#foh-history-context');await panel.waitFor({state:'visible'});await panel.locator('summary').tap();
-    const expected=job.key==='courtier'?['community','courtier_secrets','courtier_details']:job.key==='scholar'?['community','scholar_persuasion']:['community','expert_work'];
+    const expected=job.key==='courtier'?['community','courtier_secrets','courtier_details']:job.key==='scholar'?['community','scholar_persuasion']:job.key==='expert'?['community','expert_work']:['community'];
     const originKeys=Array.from({length:5-job.rank},(_,index)=>'ability:history:mountains:r'+(index+2));
-    assert.deepEqual(await page.locator('#foh-history-ability option').evaluateAll(xs=>xs.map(x=>x.value)),[...expected,...originKeys]);
+    const aliases={courtier:[2,3],scholar:[2],expert:[2]};
+    const professionKeys=Array.from({length:job.rank},(_,index)=>index+1).filter(rank=>!aliases[job.key]?.includes(rank)).map(rank=>'ability:history:'+job.key+':r'+rank);
+    assert.deepEqual(await page.locator('#foh-history-ability option').evaluateAll(xs=>xs.map(x=>x.value)),[...expected,...originKeys,...professionKeys]);
+    await page.locator('#foh-history-ability').selectOption(professionKeys[0]);
+    await page.locator('#foh-history-run').tap();
+    const firstEffect=job.key==='wealthy'?'Pièces d’argent : 50':'Bonus de compétence : +'+(job.rank+2);
+    assert((await page.locator('#foh-history-result').innerText()).includes(firstEffect));
+    if(job.key==='wealthy'){
+     await page.locator('#foh-history-ability').selectOption('ability:history:wealthy:r5');
+     await page.locator('#foh-history-example').selectOption('5');
+     await panel.getByRole('spinbutton').fill('2');
+     await page.locator('#foh-history-run').tap();
+     assert.match(await page.locator('#foh-history-result').innerText(),/Difficulté du test de CHA : 35/);
+     rec.steps.push('weekly-justice-difficulty-verified');
+    }
+    const professionNegative=await page.locator('#foh-history-example option').count()-1;
+    await page.locator('#foh-history-example').selectOption(String(professionNegative));
+    await page.locator('#foh-history-run').tap();
+    assert.match(await page.locator('#foh-history-result').innerText(),/NON applicable/);
+    rec.steps.push('profession-positive-negative');
     const checks=[['Bonus de compétence : +3','Diviseur des dommages : 2'],['Réduction des dommages : 3'],['Bonus de DEF : 2']];
     for(const [index,key] of originKeys.entries()){
       await page.locator('#foh-history-ability').selectOption(key);
@@ -84,7 +103,7 @@ try{
    console.log(job.variant+' '+job.history+' R'+job.rank+': '+rec.status+(rec.message?' '+rec.message.slice(0,120):''));
   }
 }finally{await browser.close()}
-report.status=report.failed===0&&report.passed===6?'PASS':'FAIL';
+report.status=report.failed===0&&report.passed===8?'PASS':'FAIL';
 fs.writeFileSync('forge-of-heroes/QA/N1/arquebusier-history-conditions-click.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({status:report.status,passed:report.passed,failed:report.failed,failures:report.cases.filter(x=>x.status!=='PASS').slice(0,8)}).slice(0,5700));
 if(report.status!=='PASS')process.exitCode=1;
