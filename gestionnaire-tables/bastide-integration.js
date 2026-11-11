@@ -146,11 +146,11 @@ function toolsPanel(t){
 function decorate(ctx){
  const root=document.getElementById('app');if(!root)return;
  if(ctx.view==='home'){
-  const hero=root.querySelector('.hero');if(hero&&(!!key()||window.MJAccount?.hasLinkedBastide?.()))hero.after(homePanel());
+  const hero=root.querySelector('.hero');if(hero&&window.MJAccount?.hasLinkedBastide?.())hero.after(homePanel());
   return;
  }
  if(ctx.view==='library'){
-  const hero=root.querySelector('.hero');if(hero&&(!!key()||window.MJAccount?.hasLinkedBastide?.()))hero.after(packPanel());
+  const hero=root.querySelector('.hero');if(hero&&window.MJAccount?.hasLinkedBastide?.())hero.after(packPanel());
   return;
  }
  if(ctx.view!=='table'||!ctx.table)return;
@@ -172,7 +172,14 @@ function decorate(ctx){
  const action=root.querySelector('.row.between .actions');
  if(action){const b=document.createElement('button');b.className='button sm';b.textContent='Dupliquer sans PJ';b.dataset.integration='copy-clean';action.prepend(b);}
 }
-window.TableIntegration={decorate,buildPack};
+async function associateLegacy(){
+ const token=key();if(!token)throw Error('Ouvre d’abord ton lien MJ privé Bastide sur cet appareil.');
+ const who=await api('bastide-inventory','identity',token);
+ if(who.access!=='admin')throw Error('Accès MJ Bastide requis.');
+ await window.MJAccount?.markBastideLinked?.();
+ A.notify('Bastide associée à ton espace MJ, sans migration ni modification.');
+}
+window.TableIntegration={decorate,buildPack,associateLegacy};
 document.addEventListener('click',async ev=>{
  const b=ev.target.closest('[data-integration]');if(!b)return;
  const action=b.dataset.integration,t=A.selectedTable();
