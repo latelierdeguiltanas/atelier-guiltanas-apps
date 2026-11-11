@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import './domain.js';
+const D=globalThis.TableDomain;
+const initial=D.seed();assert.equal(initial.scenarios.length,1);
+const a=D.createTable(initial,{name:'Table A',system:'COF2',scenarioId:initial.scenarios[0].id});
+const b=D.createTable(initial,{name:'Table B',system:'COF2',scenarioId:initial.scenarios[0].id});
+assert.notEqual(a.id,b.id);assert.notEqual(a.scenario.modules[0].id,b.scenario.modules[0].id);
+a.scenario.modules[0].scenes[0].title='Titre modifié';assert.notEqual(a.scenario.modules[0].scenes[0].title,b.scenario.modules[0].scenes[0].title);
+a.completedScenes.push(a.scenario.modules[0].scenes[0].id);D.addSession(a,{title:'Séance 1'});D.addCharacter(a,{name:'Héroïne',sheetUrl:'https://example.com/fiche'});
+const clone=D.duplicateTable(initial,a.id);assert.equal(clone.sessions.length,0);assert.equal(clone.completedScenes.length,0);assert.equal(clone.characters.length,1);assert.notEqual(clone.characters[0].id,a.characters[0].id);assert.notEqual(clone.scenario.modules[0].scenes[0].id,a.scenario.modules[0].scenes[0].id);
+const stable=D.validateDb(initial);assert.equal(stable.tables.find(x=>x.id===a.id).scenario.modules[0].scenes[0].id,a.scenario.modules[0].scenes[0].id);
+assert.equal(stable.tables.find(x=>x.id===a.id).completedScenes[0],a.completedScenes[0]);
+assert.throws(()=>D.addCharacter(a,{name:'Malicieux',sheetUrl:'javascript:alert(1)'}),/HTTPS/);
+assert.throws(()=>D.createTable(initial,{name:'',scenarioId:initial.scenarios[0].id}),/obligatoire/);
+const fakeStore={v:new Map(),getItem(k){return this.v.get(k)||null},setItem(k,v){this.v.set(k,v)}};
+const persisted=D.persist(fakeStore,initial),restored=D.read(fakeStore);assert.equal(restored.tables.length,3);assert.equal(restored.tables[0].name,clone.name);
+assert.deepEqual(D.exportScenario(restored.tables[0]).modules.length,clone.scenario.modules.length);
+console.log('✓ 13 tests : copies isolées, séances, personnages, identifiants, validation, persistance, export');
