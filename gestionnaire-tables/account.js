@@ -11,6 +11,7 @@ if(!A||!D||!gate||!window.supabase?.createClient){
   return;
 }
 const client=window.supabase.createClient(URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const testRegistration=new URLSearchParams(location.search).get('mode')==='test';
 window.MJCloudClient=client;
 let mode='login',uid='',displayName='',bastideLinked=false,revision=0,dirty=false,syncing=false,conflict=false,syncTimer=0,loadSeq=0,lastSaved='',active=false;
 const state=()=>A.getDb();
@@ -25,7 +26,9 @@ function authBody(){
  '<label>Mot de passe<input name="password" type="password" minlength="8" required autocomplete="current-password"></label>'+
  '<button class="primary" id="mj-auth-submit" type="submit">Connexion</button></form>'+
  '<p class="message" id="mj-auth-message" role="status" hidden></p>'+
- '<p>Les nouveaux comptes peuvent nécessiter une confirmation par e-mail. Les mots de passe sont gérés par Supabase Auth, pas par le navigateur de cette application.</p></section>';
+ '<p>Les nouveaux comptes peuvent nécessiter une confirmation par e-mail. Les mots de passe sont gérés par Supabase Auth, pas par le navigateur de cette application.</p>'+
+ (testRegistration ? '<p class="message"><b>PARCOURS TEST :</b> utilise une autre adresse e-mail que ton compte Mathieu. Ouvre idéalement cette page en navigation privée pour ne jamais transmettre ton accès Bastide à ce compte.</p>' : '') + '</section>';
+ if(testRegistration){setMode('register');const field=gate.querySelector('[name="display_name"]');if(field)field.value='MJ Test';}
 }
 function showGate(){document.body.classList.add('mj-auth-locked');gate.hidden=false;document.getElementById('mj-account-bar')?.remove();}
 function hideGate(){gate.hidden=true;document.body.classList.remove('mj-auth-locked');}
