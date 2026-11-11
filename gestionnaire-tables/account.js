@@ -121,10 +121,31 @@ function libraryAccountPanel(){
  '<p class="note">Le pack « Île aux Tempêtes » reste privé et n’est pas proposé dans la boutique commerciale. Chaque MJ doit disposer des droits d’utilisation du scénario.</p>';
  return p;
 }
+function hasLegacy(){
+ try{const old=D.read(localStorage);return !!(old.tables.length || old.scenarios.some(s=>s.name!=='Le Phare des Brumes'));}
+ catch{return false}
+}
+function migrateLegacy(){
+ const old=D.read(localStorage);if(!hasLegacy())return;
+ if(!confirm('Importer une COPIE de tes anciennes tables et scénarios de ce navigateur dans ton compte MJ ? Aucune donnée existante ne sera remplacée.'))return;
+ const db=state();
+ for(const sc of old.scenarios){
+  if(sc.name==='Le Phare des Brumes')continue;
+  const newSc=D.normalizedScenario(sc);db.scenarios.push(newSc);
+ }
+ for(const oldTable of old.tables){
+  const valid=D.validateDb({version:1,scenarios:[],tables:[oldTable]}).tables[0];
+  valid.id=D.uid();valid.name=(valid.name+' — import local').slice(0,100);
+  valid.scenario=D.normalizedScenario(valid.scenario,{preserveIds:true});
+  db.tables.push(valid);
+ }
+ A.save();A.refresh();A.notify('Anciennes tables copiées dans ton compte. Pense à vérifier la sauvegarde cloud.');
+}
 function accountHomePanel(ctx){
  const p=document.createElement('section');p.className='mj-account-panel';
  p.innerHTML='<h2>Bienvenue dans ton espace MJ, '+esc(displayName)+'</h2><p>'+ctx.db.tables.length+' table(s) personnelles. Tes scénarios et les PJ de tes tables ne sont pas accessibles aux autres MJ.</p>'+
- '<div class="controls"><button data-mj-action="show-library" class="primary">Importer / choisir un scénario</button></div>';
+ '<div class="controls"><button data-mj-action="show-library" class="primary">Importer / choisir un scénario</button>'+
+ (hasLegacy() ? '<button data-mj-action="legacy">Récupérer mes anciennes tables locales</button>' : '')+'</div>';
  return p;
 }
 function decorate(ctx){
@@ -196,6 +217,7 @@ document.addEventListener('click',async ev=>{
   if(action==='sync'){if(dirty)await saveCloud();else await getRemote();}
   if(action==='logout')await logout();
   if(action==='show-library')A.showLibrary();
+  if(action==='legacy')migrateLegacy();
   if(action==='share')await shareScenario(el.dataset.id);
   if(action==='redeem')await redeem();
   if(action==='copy-code'){const input=document.getElementById('mj-copy-code');await navigator.clipboard.writeText(input.value);A.notify('Code copié');}
