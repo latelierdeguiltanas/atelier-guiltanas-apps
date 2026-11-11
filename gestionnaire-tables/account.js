@@ -131,10 +131,65 @@ async function openAccount(user){
   uid='';active=false;window.GuiltanasMJActiveStorage=null;authBody();notice('Impossible d’ouvrir cet espace : '+e.message+'. Les données des autres MJ ne sont pas affichées.');
  }
 }
+
+function localDeviceId(){
+ const k='guiltanas.mj.device-id.v1';
+ let v=localStorage.getItem(k);
+ if(!/^[0-9a-f-]{36}$/i.test(v||'')){v=crypto.randomUUID();localStorage.setItem(k,v)}
+ return v;
+}
+async function readDeviceProof(){
+ const r=await client.from('guiltanas_mj_device_proofs').select('challenge,sender_device,receiver_device,created_at,confirmed_at').eq('owner_id',uid).maybeSingle();
+ if(r.error)throw r.error;
+ return r.data;
+}
+async function showDeviceTest(){
+ if(!active||!uid)throw Error('Connecte-toi à ton compte MJ.');
+ let dialog=document.getElementById('mj-device-test');
+ if(!dialog){
+  dialog=document.createElement('dialog');dialog.id='mj-device-test';
+  dialog.style.cssText='max-width:min(600px,94vw);background:#192f21;color:#e8eddf;border:1px solid #d4ad5d;border-radius:16px;padding:22px;line-height:1.5';
+  document.body.append(dialog);
+ }
+ const proof=await readDeviceProof(),me=localDeviceId();
+ const role=!proof?'none':proof.sender_device===me?'sender':proof.receiver_device===me?'receiver':'other';
+ const finish=!!proof?.confirmed_at&&!!proof?.receiver_device&&proof.sender_device!==proof.receiver_device;
+ const details= !proof ? 'Aucun test en cours. Sur le PC où Camille prépare sa table, clique sur « Envoyer le signal ».'
+  : finish ? 'TEST REUSSI : le signal a été envoyé depuis un navigateur et confirmé depuis un autre. Les deux appareils ont écrit et lu le serveur du même compte MJ.'
+  : role==='sender' ? 'Signal en attente. Connecte le même compte MJ sur le téléphone puis clique sur « Confirmer depuis cet appareil ».'
+  : 'Signal disponible. Si tu es bien sur un autre appareil ou navigateur, clique sur « Confirmer depuis cet appareil ».';
+ dialog.innerHTML='<h2 style="color:#efd48e">Test PC ↔ téléphone</h2><p>Connecte le MÊME compte MJ sur les deux appareils. Ce test ne touche pas aux tables, aux personnages ou aux données de la Bastide.</p>'+
+ '<p style="border:1px solid #6b865c;border-radius:9px;padding:12px;background:#233e2a">'+esc(details)+'</p>'+
+ (proof?'<p>Code de vérification : <b style="color:#efd48e;font-size:23px;letter-spacing:.18em">'+esc(proof.challenge)+'</b></p>':'')+
+ (finish?'<p style="color:#a4e2ad"><b>Confirmation reçue ✓</b> — il reste à vérifier aussi l’ouverture de la table et des ressources sur le téléphone.</p>':'')+
+ '<div class="actions"><button class="button primary" data-mj-action="device-send">Envoyer un signal depuis cet appareil</button>'+
+ (proof&&!finish&&role!=='sender'?'<button class="button" data-mj-action="device-ack">Confirmer depuis cet appareil</button>':'')+
+ '<button class="button" data-mj-action="device-refresh">Vérifier la réponse</button>'+
+ '<button class="button" data-mj-action="device-close">Fermer</button></div>'+
+ '<p style="font-size:12px;color:#b9cab7">Le système refuse une confirmation depuis le même navigateur. Ne clique pas deux fois sur « Envoyer » : cela remplace le signal précédent.</p>';
+ if(!dialog.open)dialog.showModal();
+}
+async function sendDeviceProof(){
+ const bytes=crypto.getRandomValues(new Uint8Array(4));
+ const challenge=[...bytes].map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase();
+ const r=await client.from('guiltanas_mj_device_proofs').upsert({owner_id:uid,challenge,sender_device:localDeviceId(),receiver_device:null,created_at:new Date().toISOString(),confirmed_at:null},{onConflict:'owner_id'});
+ if(r.error)throw r.error;
+ await showDeviceTest();
+}
+async function ackDeviceProof(){
+ const proof=await readDeviceProof();
+ if(!proof)throw Error('Aucun signal en cours.');
+ if(proof.sender_device===localDeviceId())throw Error('Il faut un autre appareil ou une autre fenêtre privée.');
+ if(proof.receiver_device)throw Error('Ce signal a déjà été confirmé.');
+ const r=await client.from('guiltanas_mj_device_proofs').update({receiver_device:localDeviceId(),confirmed_at:new Date().toISOString()}).eq('owner_id',uid).eq('challenge',proof.challenge).is('receiver_device',null).select('challenge').maybeSingle();
+ if(r.error)throw r.error;
+ if(!r.data)throw Error('Le signal a changé. Actualise le test.');
+ await showDeviceTest();
+}
 function renderAccountBar(){
  document.getElementById('mj-account-bar')?.remove();
  const el=document.createElement('div');el.id='mj-account-bar';el.className='mj-account-bar';
- el.innerHTML='<span>Compte MJ : <b id="mj-profile-display">'+esc(displayName)+'</b></span><button data-mj-action="rename">Renommer</button><button data-mj-action="sync">Vérifier le cloud</button><button data-mj-action="recover" title="Exporter une copie locale puis choisir la version cloud">Secours / conflit</button><span class="sync" id="mj-cloud-status">Vérification…</span><button data-mj-action="logout">Déconnexion sur cet appareil</button>';
+ el.innerHTML='<span>Compte MJ : <b id="mj-profile-display">'+esc(displayName)+'</b></span><button data-mj-action="rename">Renommer</button><button data-mj-action="sync">Vérifier le cloud</button><button data-mj-action="device-open">Test PC ↔ tél.</button><button data-mj-action="recover" title="Exporter une copie locale puis choisir la version cloud">Secours / conflit</button><span class="sync" id="mj-cloud-status">Vérification…</span><button data-mj-action="logout">Déconnexion sur cet appareil</button>';
  document.querySelector('.workspace')?.prepend(el);
 }
 async function getRemote(){
@@ -282,6 +337,10 @@ document.addEventListener('click',async ev=>{
   if(action==='sync'){if(dirty&&!conflict)await saveCloud();else if(!conflict)await getRemote();else A.notify('Conflit : utilise le bouton Secours / conflit.');}
   if(action==='logout')await logout();
   if(action==='recover')await recoverCloud();
+  if(action==='device-open'||action==='device-refresh')await showDeviceTest();
+  if(action==='device-send')await sendDeviceProof();
+  if(action==='device-ack')await ackDeviceProof();
+  if(action==='device-close')document.getElementById('mj-device-test')?.close();
   if(action==='show-library')A.showLibrary();
   if(action==='legacy')migrateLegacy();
   if(action==='link-bastide')await window.TableIntegration.associateLegacy();
