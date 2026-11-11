@@ -50,7 +50,22 @@ try{
     const character=await page.evaluate(()=>{const r=window.__FOH_ENGINE__.computeCharacterN1(window.__FOH_PRODUCT__.buildState());return{errors:r.errors,skills:r.sticky?.skillBonuses,languages:r.sticky?.languages,abilities:r.sticky?.acquiredAbilities,PV:r.sticky?.PV,DEF:r.sticky?.DEF};});assert.equal(character.errors.length,0,character.errors.join('; '));
     const panel=page.locator('#foh-history-context');await panel.waitFor({state:'visible'});await panel.locator('summary').tap();
     const expected=job.key==='courtier'?['community','courtier_secrets','courtier_details']:job.key==='scholar'?['community','scholar_persuasion']:['community','expert_work'];
-    assert.deepEqual(await page.locator('#foh-history-ability option').evaluateAll(xs=>xs.map(x=>x.value)),expected);
+    const originKeys=Array.from({length:5-job.rank},(_,index)=>'ability:history:mountains:r'+(index+2));
+    assert.deepEqual(await page.locator('#foh-history-ability option').evaluateAll(xs=>xs.map(x=>x.value)),[...expected,...originKeys]);
+    const checks=[['Bonus de compétence : +3','Diviseur des dommages : 2'],['Réduction des dommages : 3'],['Bonus de DEF : 2']];
+    for(const [index,key] of originKeys.entries()){
+      await page.locator('#foh-history-ability').selectOption(key);
+      for(const [situation,value] of checks[index].entries()){
+        await page.locator('#foh-history-example').selectOption(String(situation));
+        await page.locator('#foh-history-run').tap();
+        assert((await page.locator('#foh-history-result').innerText()).includes(value));
+      }
+      const last=await page.locator('#foh-history-example option').count()-1;
+      await page.locator('#foh-history-example').selectOption(String(last));
+      await page.locator('#foh-history-run').tap();
+      assert.match(await page.locator('#foh-history-result').innerText(),/NON applicable/);
+      rec.steps.push('origin-positive-negative-'+key);
+    }
     for(const key of expected){
       await page.locator('#foh-history-ability').selectOption(key);
       await page.locator('#foh-history-example').selectOption('0');await page.locator('#foh-history-run').tap();
