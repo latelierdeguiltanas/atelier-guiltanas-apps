@@ -1,0 +1,156 @@
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_barbare_choices_click.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_barbare_choices_click.cjs
+new file mode 100644
+index 0000000..52ee63e
+--- /dev/null
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_barbare_choices_click.cjs
+@@ -0,0 +1,102 @@
++'use strict';
++
++const assert=require('node:assert/strict');
++const fs=require('node:fs');
++const {createHash}=require('node:crypto');
++const {chromium}=require('playwright');
++const jobs=[
++ {people:'humain',defense:'AGI',stats:[2,1,0,1,3,0,-1],tattoo:'FOR'},
++ {people:'humain',defense:'CON',stats:[2,1,3,1,0,0,-1],tattoo:'CON'},
++ {people:'halfelin',defense:'AGI',stats:[2,1,0,1,3,0,-1],tattoo:'PER'}
++];
++const report={status:'FAIL',cases:[],indexSha256:createHash('sha256').update(fs.readFileSync('forge-of-heroes/index.html')).digest('hex')};
++
++async function runCase(browser,job){
++ const ctx=await browser.newContext({viewport:{width:393,height:852},isMobile:true,hasTouch:true});
++ const page=await ctx.newPage(),errors=[];
++ page.on('pageerror',error=>errors.push(error.message));
++ page.setDefaultTimeout(9000);
++ const next=()=>page.locator('#next-btn').tap();
++ const snapshot=()=>page.evaluate(()=>{
++  const draft=window.__FOH_PRODUCT__.buildState();
++  const r=window.__FOH_ENGINE__.computeCharacterN1(draft);
++  return {errors:r.errors,def:r.sticky.DEF,skills:r.sticky.skillBonuses,choices:draft.abilityChoices,attacks:r.sticky.attacks};
++ });
++ const row={...job,status:'FAIL'};
++ report.cases.push(row);
++ try{
++  await page.goto('http://127.0.0.1:4173/forge-of-heroes/');
++  await page.locator('#start-classic').tap();
++  await page.locator('#mode-classic').tap();
++  await page.locator('#hero-name').fill('QA Barbare '+job.people+' '+job.defense);
++  await next();
++  await page.locator('#rule-age').tap();
++  await next();
++  await next();
++  await page.locator('#people-selector').selectOption('people:'+job.people+':cof2-lb-2024');
++  if(job.people==='halfelin')await page.locator('#people-bonus').selectOption('agi');
++  await next();
++  await page.locator('#profile-selector').selectOption('class:barbare:cof2-lb-2024');
++  await next();
++  for(const [i,key] of ['FOR','AGI','CON','PER','INT','VOL','CHA'].entries()){
++   const field=page.getByRole('combobox',{name:new RegExp('^'+key+' ')});
++   const value=await field.locator('option').evaluateAll((options,n)=>options.find(o=>parseInt(o.textContent)===n)?.value,job.stats[i]);
++   assert.ok(value,key);
++   await field.selectOption(value);
++  }
++  if(job.people==='humain')await page.locator('#human-stat-final').selectOption(job.defense==='CON'?'vol':'con');
++  await next();
++  await page.locator('#age-category').selectOption('venerable');
++  await next();
++  await page.locator('#path-one').selectOption('classpath:voie-du-pagne:class-barbare:cof2-lb-2024');
++  await page.locator('#path-two').selectOption('classpath:voie-de-la-brute:class-barbare:cof2-lb-2024');
++  const path=name=>page.locator('article.choice').filter({hasText:new RegExp('voie.*'+name,'i')});
++  for(const name of ['pagne','pagne','brute'])await path(name).getByRole('button',{name:/Acquérir/}).first().tap();
++  await page.locator('.stone-skin-choice-buttons button[data-value="'+job.defense+'"]').tap();
++  const tattoo=page.locator('select[data-ability-choice$="|tattooStat"]');
++  const available=await tattoo.locator('option').evaluateAll(options=>options.filter(o=>o.value).map(o=>o.value));
++  assert.deepEqual(available,['FOR','CON','AGI','PER','CHA','INT','VOL']);
++  await tattoo.selectOption(job.tattoo);
++  await next();
++  if(job.people==='halfelin'){
++   await page.locator('#equipment-swap-approved').check();
++   await page.locator('#equipment-swap-weapon-0').selectOption('weapon:axe');
++  }
++  await next();
++  await page.locator('#reveal-view').tap();
++  const before=await snapshot();
++  assert.deepEqual(before.errors,[]);
++  assert.equal(before.def,job.defense==='CON'?14:job.people==='halfelin'?15:13);
++  const skill=before.skills.filter(s=>s.sourceAbilityId.includes('ability:tatouages:'));
++  assert.deepEqual(skill.map(s=>[s.tests,s.value]),[[[job.tattoo],3]]);
++  if(job.people==='halfelin'){
++   const attack=before.attacks.find(a=>a.weaponId==='weapon:axe');
++   assert.equal(attack.hands,2);
++  }
++  await page.getByRole('button',{name:'Enregistrer dans Mes héros',exact:true}).tap();
++  await page.reload();
++  await page.locator('#open-heroes').tap();
++  await page.getByRole('button',{name:'Voir la fiche',exact:true}).first().tap();
++  assert.deepEqual(await snapshot(),before);
++  assert.deepEqual(errors,[]);
++  row.status='PASS';
++  row.result={defense:before.def,skill:skill[0].tests[0],bonus:skill[0].value};
++ }catch(error){
++  row.error=error.message;
++  row.view=await page.locator('.step.active').innerText().then(s=>s.slice(0,500)).catch(()=>null);
++  row.errors=errors;
++ }finally{
++  await ctx.close();
++ }
++}
++
++(async()=>{
++ const browser=await chromium.launch({executablePath:process.env.CHROME_BIN,args:['--no-sandbox']});
++ try{for(const job of jobs)await runCase(browser,job);}
++ finally{await browser.close();}
++ report.passed=report.cases.filter(c=>c.status==='PASS').length;
++ report.status=report.passed===jobs.length?'PASS':'FAIL';
++ fs.writeFileSync('forge-of-heroes/QA/N1/barbare-choices-click.json',JSON.stringify(report,null,2)+'\n');
++ console.log(JSON.stringify(report));
++ if(report.status!=='PASS')process.exitCode=1;
++})().catch(e=>{console.error(e);process.exitCode=1;});
+diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_barbare_tattoo.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_barbare_tattoo.cjs
+new file mode 100644
+index 0000000..29b1579
+--- /dev/null
++++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_barbare_tattoo.cjs
+@@ -0,0 +1,42 @@
++'use strict';
++
++const assert=require('node:assert/strict');
++const fs=require('node:fs');
++const {createHash}=require('node:crypto');
++const F=require('./forge_product_runner');
++const file='forge-of-heroes/index.html';
++const {html,db,engine}=F.load(file);
++const profile='class:barbare:cof2-lb-2024';
++const pagne='classpath:voie-du-pagne:class-barbare:cof2-lb-2024';
++const stone=db.tables.abilities_class.find(a=>a.path_id===pagne&&a.rank===2);
++const tattoo=db.tables.abilities_class.find(a=>a.path_id===pagne&&a.rank===3);
++const state=F.withRank(db,F.standardState(db,profile,pagne),pagne,3);
++state.abilityChoices[stone.id]={defenseStat:'AGI'};
++const expected=['FOR','CON','AGI','PER','CHA','INT','VOL'];
++const tattooBonuses=r=>r.sticky.skillBonuses.filter(x=>x.sourceAbilityId===tattoo.id).map(x=>[x.tests[0],x.value]);
++const copy=x=>JSON.parse(JSON.stringify(x));
++const options=engine.getPersistentChoicesForAbility(state,tattoo.id).find(x=>x.id==='tattooStat');
++assert.deepEqual(copy(options.options.map(x=>x.id)),expected);
++
++const legacy=engine.computeCharacterN1(state);
++assert.deepEqual(copy(legacy.errors),[]);
++assert.deepEqual(copy(tattooBonuses(legacy)),[]);
++
++for(const stat of expected){
++ state.abilityChoices[tattoo.id]={tattooStat:stat};
++ const result=engine.computeCharacterN1(state);
++ assert.deepEqual(copy(result.errors),[]);
++ assert.deepEqual(copy(tattooBonuses(result)),[[stat,3]]);
++ assert.deepEqual(copy(result.sticky.caracs),copy(legacy.sticky.caracs));
++ assert.deepEqual(copy(result.sticky.characterState.derived),copy(legacy.sticky.characterState.derived));
++ const saved=engine.createHeroSavePayload(state,result.sticky.characterState,{id:'barbare-tatouages'});
++ const reopened=engine.computeCharacterN1(engine.restoreHeroSavePayload(copy(saved)).draft);
++ assert.deepEqual(copy(reopened.errors),[]);
++ assert.deepEqual(copy(tattooBonuses(reopened)),[[stat,3]]);
++}
++state.abilityChoices[tattoo.id]={tattooStat:'INVALIDE'};
++assert.match(engine.computeCharacterN1(state).errors.join(' '),/Tatouages.*choix illégale/i);
++
++const report={status:'PASS',source:'COF2 Livre de base p.80',choices:expected,reopened:7,legacyWithoutChoice:true,invalidRejected:true,indexSha256:createHash('sha256').update(html).digest('hex')};
++fs.writeFileSync('forge-of-heroes/QA/N1/barbare-tattoo.json',JSON.stringify(report,null,2)+'\n');
++console.log(JSON.stringify(report));

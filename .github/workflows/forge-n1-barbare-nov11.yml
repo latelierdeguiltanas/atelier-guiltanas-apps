@@ -1,0 +1,62 @@
+name: Forge N1 - recette du Barbare
+on:
+  push:
+    branches: [forge-n1-barbare-nov11]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  checks:
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [regressions, raciaux, profil, calculs, mobile, historiques, mobile-0, mobile-1, mobile-2, mobile-3, barbare-mobile, barbare-calculs]
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: git apply .github/forge-n1-barbare-tests.patch
+      - run: python3 .github/forge-n1-barbare-apply.py
+      - name: Rejouer les preuves sur le produit corrigé
+        env:
+          SUITE: ${{ matrix.suite }}
+        run: |
+          run() { local script="$1"; shift; node "forge-of-heroes/FINAL_FREEZE_TESTS/$script.cjs" "$@"; }
+          case "$SUITE" in
+            regressions) run companion_people_v2_runner; run n1_regression_batch ;;
+            raciaux) run n1_people_source_runner; run n1_official_racial_options; run n1_official_methods_cross; run n1_people_equipment_oracle ;;
+            profil)
+              for script in n1_arq_context_publish n1_arq_pure_age_ranks n1_arq_all_pairs_current n1_arq_context_oracle n1_arq_history_people_cross n1_arq_equipment_oracle n1_arq_grant_armor n1_arq_granted_pdf_annex n1_arq_grant_context; do run "$script"; done ;;
+            calculs)
+              for script in n1_arq_thrower_oracle n1_arq_powder_weapon_oracle n1_arq_two_preferences_oracle n1_arq_derived_source_oracle; do run "$script"; done ;;
+            barbare-calculs) run n1_barbare_tattoo; run n1_pure_fast_batch --profile=Barbare ;;
+            mobile*|historiques|barbare-mobile)
+              npm install --prefix "$RUNNER_TEMP/foh-n1" playwright@1.55.0
+              export NODE_PATH="$RUNNER_TEMP/foh-n1/node_modules"
+              export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+              python3 -m http.server 4173 --bind 127.0.0.1 > "$RUNNER_TEMP/http.log" 2>&1 &
+              if [ "$SUITE" = mobile ]; then
+                for script in n1_arq_context_live_click n1_arq_twenty_real_mobile_clicks n1_arq_venerable_context_click n1_arq_thrower_click; do run "$script"; done
+              elif [ "$SUITE" = barbare-mobile ]; then
+                run n1_barbare_choices_click
+              elif [ "$SUITE" = historiques ]; then
+                for script in n1_history_choices_oracle n1_history_conditions_oracle n1_history_origins_oracle n1_history_choices_click n1_history_conditions_click; do run "$script"; done
+              else
+                CHOICES_SHARD="${SUITE#mobile-}" run n1_arq_choices_click
+              fi ;;
+          esac
+      - name: Extraire les rapports
+        if: always()
+        run: |
+          mkdir -p "$RUNNER_TEMP/proofs"
+          git ls-files -m -o --exclude-standard -z -- forge-of-heroes/QA/N1 | while IFS= read -r -d '' file; do
+            if [[ "$file" = *.json ]]; then cp --parents -- "$file" "$RUNNER_TEMP/proofs"; fi
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: preuves-${{ matrix.suite }}
+          path: ${{ runner.temp }}/proofs
