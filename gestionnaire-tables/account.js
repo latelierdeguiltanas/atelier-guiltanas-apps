@@ -129,7 +129,7 @@ async function logout(){
  if(dirty&&!conflict)await saveCloud();
  if(dirty&&!confirm('La sauvegarde en ligne n’est pas confirmée. Quitter quand même ?'))return;
  active=false;uid='';loadSeq++;window.GuiltanasMJActiveStorage=null;
- await client.auth.signOut();
+ await client.auth.signOut({scope:'local'});
  authBody();showGate();notice('');
 }
 function libraryAccountPanel(){
