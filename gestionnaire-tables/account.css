@@ -1,0 +1,30 @@
+
+body.mj-auth-locked .shell{display:none!important}
+.mj-gate{position:fixed;inset:0;overflow-y:auto;display:grid;place-items:center;z-index:90;background:radial-gradient(circle at 15% 12%,#375b38,transparent 40%),#0a1710;color:#e9f1e5;padding:20px;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+.mj-gate[hidden]{display:none!important}
+.mj-auth-card{width:min(480px,100%);background:#13251a;border:1px solid #59785a;border-radius:22px;padding:clamp(22px,5vw,38px);box-shadow:0 20px 60px #0008}
+.mj-auth-card h1{font:700 29px Georgia,serif;color:#e9d18c;margin:10px 0}
+.mj-auth-card p{color:#b8c9b8;line-height:1.5;font-size:13px}
+.mj-auth-card label{display:grid;gap:6px;margin:13px 0;font-size:13px;font-weight:700}
+.mj-auth-card input{width:100%;background:#0b1d13;color:#fff;border:1px solid #58735c;border-radius:10px;padding:12px}
+.mj-auth-card button{border-radius:9px;border:1px solid #5d765c;background:#274633;color:#fff;padding:10px 14px;cursor:pointer;min-height:40px}
+.mj-auth-card button.primary{background:#d6ad57;color:#162115;border-color:#d6ad57;font-weight:800}
+.mj-auth-card .toggle{display:flex;gap:8px;flex-wrap:wrap}
+.mj-auth-card .toggle button.active{background:#d6ad57;color:#101c12}
+.mj-auth-card .message{padding:10px;border-radius:8px;background:#263625;white-space:pre-wrap}
+.mj-account-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 12px;border-bottom:1px solid #46634a;background:#183122}
+.mj-account-bar b{color:#e9d18c}
+.mj-account-bar button{border:1px solid #547456;background:#213e2a;color:#edf2e9;border-radius:8px;padding:6px 9px;cursor:pointer}
+.mj-account-bar .sync{margin-left:auto;font-size:12px;color:#d5e3cf}
+.mj-code-panel{border:1px solid #987d43;background:#233321;border-radius:12px;padding:15px;margin:12px 0}
+.mj-code-panel input{width:100%;background:#0e1c13;color:#f4e6ba;border:1px solid #987d43;padding:12px;border-radius:9px;font-family:monospace;font-size:12px}
+.mj-code-panel .row{display:flex;gap:8px;margin:9px 0}
+.mj-account-panel{background:#1d3324;border:1px solid #587553;border-radius:14px;padding:16px;margin:13px 0}
+.mj-account-panel h2{font:700 19px Georgia,serif}
+.mj-account-panel input{background:#0e2014;color:#fff;border:1px solid #617a60;border-radius:9px;padding:10px;max-width:480px;width:100%}
+.mj-account-panel .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.mj-account-panel button{background:#294533;color:#fff;border:1px solid #638165;border-radius:9px;padding:10px 12px;cursor:pointer}
+.mj-account-panel button.primary{background:#d6ad57;color:#162115}
+#mj-share-dialog{max-width:min(550px,95vw);background:#162b1d;color:#edf3e8;border:1px solid #b49450;border-radius:15px;padding:22px}
+#mj-share-dialog input{width:100%;padding:12px;background:#0d2315;color:#edda9c;font-family:monospace;border:1px solid #7e7047}
+#mj-share-dialog::backdrop{background:#000b}
