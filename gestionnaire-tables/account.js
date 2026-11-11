@@ -215,7 +215,19 @@ async function recoverCloud(){
  clearDraft();clearTimeout(syncTimer);
  status('Version cloud rechargée et sauvegarde locale téléchargée.');
 }
-async function markBastideLinked(){if(!active||!uid)return;const r=await client.from('guiltanas_mj_profiles').update({bastide_linked:true}).eq('user_id',uid);if(r.error)throw r.error;bastideLinked=true;A.refresh();}
+async function markBastideLinked(){
+ if(!active||!uid)throw Error('Connecte-toi à ton compte MJ.');
+ const key=String(localStorage.getItem('iot_bastide_inventory_key_v1')||'').replace(/ /g,'+').trim();
+ if(!key)throw Error('Lien MJ Bastide absent sur cet appareil.');
+ const {data:{session}}=await client.auth.getSession();
+ if(!session?.access_token)throw Error('Connexion MJ expirée.');
+ const r=await fetch(URL+'/functions/v1/guiltanas-mj-claim-bastide',{method:'POST',
+  headers:{apikey:KEY,Authorization:'Bearer '+session.access_token,'x-bastide-key':key,'Content-Type':'application/json'},
+  body:JSON.stringify({source:'bastide'}),signal:AbortSignal.timeout(20000)});
+ let result={};try{result=await r.json()}catch{}
+ if(!r.ok)throw Error(result.error||'Association Bastide refusée');
+ bastideLinked=true;A.refresh();
+}
 async function rename(){
  const name=prompt('Nom à afficher pour ce compte MJ :',displayName);
  if(!name||!name.trim())return;
