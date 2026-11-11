@@ -23,7 +23,7 @@ if(/^[a-f0-9]{64}$/i.test(incomingInvite)){
 }
 
 window.MJCloudClient=client;
-let mode='login',uid='',displayName='',bastideLinked=false,revision=0,dirty=false,syncing=false,conflict=false,syncTimer=0,loadSeq=0,lastSaved='',active=false;
+let mode='login',uid='',displayName='',bastideLinked=false,revision=0,dirty=false,syncing=false,conflict=false,syncTimer=0,loadSeq=0,lastSaved='',active=false,retryMs=4500;
 const state=()=>A.getDb();
 const syncEl=()=>document.getElementById('mj-cloud-status');
 function status(s,bad=false){const el=syncEl();if(el){el.textContent=s;el.style.color=bad?'#f5b6a6':'#d5e3cf'}}
@@ -44,6 +44,20 @@ function showGate(){document.body.classList.add('mj-auth-locked');gate.hidden=fa
 function hideGate(){gate.hidden=true;document.body.classList.remove('mj-auth-locked');}
 function setMode(v){mode=v;document.getElementById('mj-mode-login').classList.toggle('active',v==='login');document.getElementById('mj-mode-register').classList.toggle('active',v==='register');document.getElementById('mj-name-wrap').hidden=v!=='register';document.getElementById('mj-auth-submit').textContent=v==='register'?'Créer mon compte MJ':'Connexion';document.querySelector('#mj-auth-form [name="password"]').setAttribute('autocomplete',v==='register'?'new-password':'current-password');notice('')}
 function scopedStorage(id){const prefix='guiltanas.mj.'+id+'.';return {getItem:k=>localStorage.getItem(prefix+k),setItem:(k,v)=>localStorage.setItem(prefix+k,v)};}
+const draftKey=id=>'guiltanas.mj.pending.cloud.'+id;
+function readDraft(id){
+ try{
+  const raw=JSON.parse(localStorage.getItem(draftKey(id))||'null');
+  return raw?.payload&&Number.isInteger(raw.baseRevision)&&raw.baseRevision>0?raw:null;
+ }catch{return null}
+}
+function preserveDraft(){
+ if(!active||!uid)return;
+ try{localStorage.setItem(draftKey(uid),JSON.stringify({baseRevision:revision,payload:state(),savedAt:new Date().toISOString()}))}
+ catch(error){status('Attention : impossible de garder la copie de secours ('+error.message+')',true)}
+}
+function clearDraft(){if(uid)localStorage.removeItem(draftKey(uid));}
+
 async function saveCloud(){
  if(!active||!uid||!dirty||syncing||conflict)return;
  syncing=true;status('Sauvegarde en ligne…');
@@ -54,11 +68,13 @@ async function saveCloud(){
   if(!result.data){conflict=true;status('Conflit entre appareils : aucune donnée écrasée. Exporter la sauvegarde avant de recharger.',true);return;}
   revision=result.data.revision;lastSaved=snapshot;
   dirty=JSON.stringify(state())!==snapshot;
+  retryMs=4500;
+  if(!dirty)clearDraft();else preserveDraft();
   status(dirty?'Nouveaux changements à envoyer':'Sauvegardé en ligne ✓');
- }catch(e){status('Sauvegarde distante indisponible — copie locale conservée : '+e.message,true)}
- finally{syncing=false;if(dirty&&!conflict){clearTimeout(syncTimer);syncTimer=setTimeout(saveCloud,3500)}}
+ }catch(e){status('Hors ligne ou erreur : sauvegarde locale conservée. '+e.message,true);retryMs=Math.min(60000,Math.round(retryMs*1.5))}
+ finally{syncing=false;if(dirty&&!conflict){clearTimeout(syncTimer);syncTimer=setTimeout(saveCloud,retryMs)}}
 }
-function schedule(){if(!active||!uid)return;dirty=true;status('Modifications en attente…');clearTimeout(syncTimer);syncTimer=setTimeout(saveCloud,950);}
+function schedule(){if(!active||!uid)return;dirty=true;preserveDraft();status('Modifications en attente…');clearTimeout(syncTimer);syncTimer=setTimeout(saveCloud,950);}
 window.addEventListener('guiltanas:tables-changed',schedule);
 async function openAccount(user){
  const seq=++loadSeq;active=false;showGate();gate.innerHTML='<section class="mj-auth-card"><h1>Ouverture de ton espace MJ</h1><p>Chargement des tables personnelles sécurisées…</p></section>';
@@ -77,15 +93,30 @@ async function openAccount(user){
    if(remote.error)throw remote.error;
   }
   if(seq!==loadSeq)return;
-  uid=id;displayName=profile.data.display_name;bastideLinked=!!profile.data.bastide_linked;revision=remote.data.revision;dirty=false;conflict=false;
+  uid=id;displayName=profile.data.display_name;bastideLinked=!!profile.data.bastide_linked;revision=remote.data.revision;dirty=false;conflict=false;retryMs=4500;
   window.GuiltanasMJActiveStorage=scopedStorage(uid);
-  A.loadAccountData(remote.data.payload);
-  lastSaved=JSON.stringify(state());
+  const draft=readDraft(uid);
+  if(draft){
+   try{
+    A.loadAccountData(draft.payload);
+    dirty=true;
+    conflict=draft.baseRevision!==revision;
+   }catch(error){
+    A.loadAccountData(remote.data.payload);
+    conflict=true;
+    dirty=true;
+    // Keep the unreadable draft on disk. No automatic remote overwrite.
+    console.error('Copie de secours illisible',error);
+   }
+  }else A.loadAccountData(remote.data.payload);
+  lastSaved=JSON.stringify(remote.data.payload);
   active=true;
   hideGate();renderAccountBar();A.refresh();
+  if(dirty&&!conflict){status('Copie locale retrouvée : sauvegarde vers le cloud…');clearTimeout(syncTimer);syncTimer=setTimeout(saveCloud,600)}
+  if(conflict)status('Conflit entre appareils : sauvegarde locale à exporter avant décision.',true);
   const requested=new URLSearchParams(location.search).get('table');
   if(requested&&state().tables.some(t=>t.id===requested))A.openTable(requested);
-  status('Sauvegardé en ligne ✓');
+  if(!dirty&&!conflict)status('Sauvegardé en ligne ✓');
   const invite=pendingInvite();
   if(invite){
    try{
@@ -103,7 +134,7 @@ async function openAccount(user){
 function renderAccountBar(){
  document.getElementById('mj-account-bar')?.remove();
  const el=document.createElement('div');el.id='mj-account-bar';el.className='mj-account-bar';
- el.innerHTML='<span>Compte MJ : <b id="mj-profile-display">'+esc(displayName)+'</b></span><button data-mj-action="rename">Renommer</button><button data-mj-action="sync">Synchroniser</button><span class="sync" id="mj-cloud-status">Connecté</span><button data-mj-action="logout">Déconnexion</button>';
+ el.innerHTML='<span>Compte MJ : <b id="mj-profile-display">'+esc(displayName)+'</b></span><button data-mj-action="rename">Renommer</button><button data-mj-action="sync">Vérifier le cloud</button><button data-mj-action="recover" title="Exporter une copie locale puis choisir la version cloud">Secours / conflit</button><span class="sync" id="mj-cloud-status">Vérification…</span><button data-mj-action="logout">Déconnexion sur cet appareil</button>';
  document.querySelector('.workspace')?.prepend(el);
 }
 async function getRemote(){
@@ -114,6 +145,20 @@ async function getRemote(){
   A.loadAccountData(r.data.payload);revision=r.data.revision;lastSaved=JSON.stringify(state());
   status('Actualisé depuis le serveur ✓');
  }
+}
+async function recoverCloud(){
+ if(!active||!uid)return;
+ const draft=readDraft(uid);
+ const localCopy=draft?.payload||state();
+ A.download('secours-mj-'+displayName+'-'+new Date().toISOString().slice(0,10)+'.json',{...localCopy,exportType:'backup'});
+ const choice=confirm('Une copie locale vient d’être téléchargée.\n\nOK : recharger la version du serveur (abandonne les changements locaux non sauvegardés).\nAnnuler : garder les données actuelles et examiner la copie téléchargée.');
+ if(!choice)return;
+ const remote=await client.from('guiltanas_mj_workspaces').select('payload,revision').eq('owner_id',uid).single();
+ if(remote.error)throw remote.error;
+ A.loadAccountData(remote.data.payload);
+ revision=remote.data.revision;lastSaved=JSON.stringify(state());dirty=false;conflict=false;retryMs=4500;
+ clearDraft();clearTimeout(syncTimer);
+ status('Version cloud rechargée et sauvegarde locale téléchargée.');
 }
 async function markBastideLinked(){if(!active||!uid)return;const r=await client.from('guiltanas_mj_profiles').update({bastide_linked:true}).eq('user_id',uid);if(r.error)throw r.error;bastideLinked=true;A.refresh();}
 async function rename(){
@@ -234,8 +279,9 @@ document.addEventListener('click',async ev=>{
  const action=el.dataset.mjAction;el.disabled=true;
  try{
   if(action==='rename')await rename();
-  if(action==='sync'){if(dirty)await saveCloud();else await getRemote();}
+  if(action==='sync'){if(dirty&&!conflict)await saveCloud();else if(!conflict)await getRemote();else A.notify('Conflit : utilise le bouton Secours / conflit.');}
   if(action==='logout')await logout();
+  if(action==='recover')await recoverCloud();
   if(action==='show-library')A.showLibrary();
   if(action==='legacy')migrateLegacy();
   if(action==='link-bastide')await window.TableIntegration.associateLegacy();
