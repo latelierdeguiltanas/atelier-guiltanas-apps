@@ -1,3 +1,10 @@
+## Table MJ sur un écran — 11 novembre 2026
+
+- Accueil par tâches : combat, récompenses, sacs et messages. Les commandes de connexion restent accessibles mais se replient après validation.
+- Économie MJ : quatre vues liées directement par URL (Envoyer, Sacs des PJ, Boutique Mila, Historique). Dans les sacs, « Envoyer à ce PJ » sélectionne uniquement ce joueur. Depuis la vue Envoyer, choix des destinataires, saisie d’un objet libre ou modèle Mila, monnaie facultative et confirmation explicite des quantités et des noms. La file de reprise existante est conservée.
+- Combat D&D : ouverture directe sur Combat ; barre courte avec retour Table MJ et accès à un tiroir d’envoi/sacs. Le tiroir reste chargé quand on le ferme : ni rechargement du combat ni perte de saisie dans le tiroir. Les ancrages de la barre de combat suivent la hauteur de l’en-tête. Moteur V18 et services inchangés.
+- Tests DOM : navigation des vues, consultation, préselection PJ, modèle Mila, confirmation et envoi objet + pièces, retour au combat sans rechargement. Aucun objet ni pièce envoyé en production. Contrôle visuel Chromium local non réalisé (démarrage bloqué dans cet environnement).
+
 # Île aux Tempêtes — ChatGPT Project Hub
 
 > Point d'entrée unique pour reprendre le projet sans recharger tout l'historique des chats.

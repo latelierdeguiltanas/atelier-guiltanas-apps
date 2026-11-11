@@ -1,6 +1,6 @@
 (()=>{'use strict';const source=document.currentScript.src,base=new URL('../',source),p=new URLSearchParams(location.search),admin=location.pathname.includes('/mj/')||p.get('mj')==='1';
 const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('assets/social.css?v=1',base);if(!document.querySelector('link[href*="social.css"]'))document.head.appendChild(css);
-if(!admin||document.querySelector('.ns-nav'))return;const nav=document.createElement('nav');nav.className='ns-nav';nav.setAttribute('aria-label','Rubriques du maître du jeu');
+if(!admin||p.get('atelier')==='1'||document.querySelector('.ns-nav'))return;const nav=document.createElement('nav');nav.className='ns-nav';nav.setAttribute('aria-label','Rubriques du maître du jeu');
 for(const[id,label]of [['accueil','Accueil'],['personnages','Personnages'],['objets','Objets'],['seance','Séance']]){const a=document.createElement('a');a.href=new URL('mj/#'+id,base);a.textContent=label;a.dataset.section=id;nav.appendChild(a);}
 const host=document.getElementById('mjcontent')||document.body;host.prepend(nav);
 const home=location.pathname===new URL('mj/',base).pathname||location.pathname===new URL('mj/index.html',base).pathname;
