@@ -40,7 +40,7 @@ function render(){
  '</div><p class="mj-test-progress">'+count+' / '+tasks.length+' étapes cochées</p>'+
  '<div class="mj-test-checks">'+tasks.map((t,i)=>'<label><input type="checkbox" data-test-step="'+t[0]+'" '+(checks[t[0]]?'checked':'')+'><span>'+(i+1)+'. '+clean(t[1])+'</span></label>').join('')+'</div>'+
  '<p class="mj-test-warning"><b>Séparation indispensable :</b> utilise une fenêtre privée pour MJ Test, avec une autre adresse e-mail. N’ouvre jamais ton lien MJ Bastide dans cette fenêtre. Seul le lien de partage du scénario doit y être utilisé.</p>'+
- '<div class="mj-test-actions"><a target="_blank" rel="noopener noreferrer" href="'+location.pathname+'?mode=test">Formulaire Compte MJ Test</a><button data-test="copy">Copier le bilan</button><button data-test="clear">Effacer les coches</button></div>';
+ '<div class="mj-test-actions"><button data-test="copy-link">Copier le lien du Compte MJ Test</button><button data-test="copy">Copier le bilan</button><button data-test="clear">Effacer les coches</button></div>';
 }
 async function openGuide(){
  try{const r=await account()?.client?.auth?.getSession?.();namespace=r?.data?.session?.user?.id||'invite';}catch{namespace='invite'}
@@ -56,6 +56,7 @@ dialog.addEventListener('change',event=>{const item=event.target.closest('[data-
 dialog.addEventListener('click',async event=>{
  const b=event.target.closest('[data-test]');if(!b)return;
  if(b.dataset.test==='close')dialog.close();
+ if(b.dataset.test==='copy-link'){try{await navigator.clipboard.writeText(location.origin+location.pathname+'?mode=test');app()?.notify?.('Lien de test copié. Ouvre-le dans une fenêtre privée.')}catch{app()?.notify?.('Copie indisponible')}}
  if(b.dataset.test==='clear'&&confirm('Réinitialiser seulement le suivi des essais de ce compte ?')){write({});render()}
  if(b.dataset.test==='copy'){
   const s=stats(),c=read();
