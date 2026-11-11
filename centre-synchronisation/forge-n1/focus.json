@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "3358aa4fcbd516287f051f3707f8fdf59ac7544b8a69ebc1c072e9244c01e4cd",
   "certificationBasis": "Une seule Forge: seules les preuves attachées à index.html et à son SHA actuel comptent; les anciennes références au maître supprimé sont archivées.",
-  "generatedAt": "2026-11-11T20:58:23.751Z",
+  "generatedAt": "2026-11-11T21:02:03.327Z",
   "engineSha256": "1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd",
   "databaseSha256": "d0955396d6df4ea3e28ead0f8338ffec02ab6c1336f3260ff370f326fe992d88",
   "peoplesEvidenceCurrent": true,
@@ -24,7 +24,7 @@
     "current": {
       "name": "Barbare",
       "position": 2,
-      "percent": 75,
+      "percent": 88,
       "certified": false
     },
     "next": {
@@ -44,7 +44,7 @@
         "name": "Barbare",
         "position": 2,
         "status": "EN_COURS",
-        "percent": 75,
+        "percent": 88,
         "certified": false
       },
       {
@@ -162,13 +162,14 @@
         {
           "name": "Charge et Défier la mort en jeu",
           "status": "ACQUIS",
-          "detail": "Charge à 5–10 m et hors contact. Défier la mort sur une attaque létale, quota par combat et sauvegarde des PV vérifiés sur mobile.",
-          "proof": "barbare-charge-defier-mort.json"
+          "detail": "Charge, attaque létale, quota et réouverture vérifiés dans la simulation du DOM.",
+          "proof": "barbare-combat-dom.json"
         },
         {
-          "name": "Autres effets en combat",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier les autres déclencheurs et durées en jeu, dont les cibles et le dé malus du Cri de guerre."
+          "name": "Cri de guerre, Rage et Armure de vent",
+          "status": "ACQUIS",
+          "detail": "Cibles du Cri, quota et fin de Rage, interaction avec Défier la mort et changement d’armure vérifiés dans la simulation du DOM.",
+          "proof": "barbare-combat-dom.json"
         },
         {
           "name": "Huit peuples et quatre âges dans le moteur",
@@ -183,8 +184,8 @@
         }
       ],
       "total": 8,
-      "passed": 6,
-      "percent": 75
+      "passed": 7,
+      "percent": 88
     },
     "peoplesProgressRule": "Chaque critère de peuple est validé par une preuve liée à la version courante. Les effets conditionnels, les équipements, les âges et historiques et le parcours avec PDF sont suivis séparément.",
     "remainingPeoplesPolicy": "Après les 14 profils, fermer les critères raciaux manquants un peuple à la fois",

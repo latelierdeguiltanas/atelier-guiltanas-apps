@@ -230,9 +230,14 @@ const barbarePeoplesEngineCurrent=barbarePeoplesEngine?.status==='PASS'&&barbare
  barbarePeoplesEngine.planSha256===productHash('FINAL_FREEZE_TESTS/n1_barbare_coverage.cjs')&&
  barbarePeoplesEngine.cases?.length===32&&barbarePeoplesEngine.rankChecks?.length===12;
 const barbareCombat=optionalProof('barbare-charge-defier-mort.json');
-const barbareCombatCurrent=barbareCombat?.status==='PASS'&&
+const barbareCombatMobileCurrent=barbareCombat?.status==='PASS'&&
  barbareCombat.sheetSha256===productHash('../fiches-personnages/fiche/fiche.js')&&
  barbareCombat.testSha256===productHash('../fiches-personnages/tests/barbare-combat.cjs');
+const barbareCombatDom=optionalProof('barbare-combat-dom.json');
+const barbareCombatDomCurrent=barbareCombatDom?.status==='PASS'&&barbareCombatDom.environment==='jsdom'&&
+ barbareCombatDom.sheetSha256===productHash('../fiches-personnages/fiche/fiche.js')&&
+ barbareCombatDom.testSha256===productHash('../fiches-personnages/tests/barbare-combat-dom.cjs')&&barbareCombatDom.checks?.length===5;
+const barbareCombatCurrent=barbareCombatMobileCurrent||barbareCombatDomCurrent;
 const barbareRankTwoPaths=['brute','pagne','pourfendeur','primitif','rage'];
 const barbareRankTwoCurrent=barbareClick?.status==='PASS'&&barbareClick.indexSha256===productHash('index.html')&&
  barbareRankTwoPaths.every(path=>barbareClick.cases?.some(row=>row.rankTwo===path&&row.status==='PASS'&&row.result?.rank===2));
@@ -244,8 +249,14 @@ const barbareProgress={
   {name:'Peau de pierre, Tatouages et équipement',status:barbareCurrent?'ACQUIS':'A_VERIFIER',detail:barbareCurrent?'3 parcours mobiles, dont le Halfelin avec une hache simple approuvée par le MJ.':'Rejouer les choix au clic et les sauvegardes.',proof:'barbare-choices-click.json'},
   {name:'Rang 2 des cinq voies au clic',status:barbareRankTwoCurrent?'ACQUIS':'A_VERIFIER',detail:barbareRankTwoCurrent?'Cinq parcours mobiles Mûr. Acquisition, PV, DEF, initiative et réouverture vérifiés.':'Rejouer l’acquisition du rang 2 de chaque voie et contrôler la réouverture.',proof:'barbare-choices-click.json'},
   {name:'Fiche PDF officielle',status:barbareCurrent?'ACQUIS':'A_VERIFIER',detail:barbareCurrent?'12 exports couvrant les cinq voies.':'Vérifier les exports des cinq voies.',proof:'barbare-official-pdf.json'},
-  {name:'Charge et Défier la mort en jeu',status:barbareCombatCurrent?'ACQUIS':'A_VERIFIER',detail:barbareCombatCurrent?'Charge à 5–10 m et hors contact. Défier la mort sur une attaque létale, quota par combat et sauvegarde des PV vérifiés sur mobile.':'Rejouer les deux capacités dans la fiche interactive.',proof:'barbare-charge-defier-mort.json'},
-  {name:'Autres effets en combat',status:'A_VERIFIER',detail:'Vérifier les autres déclencheurs et durées en jeu, dont les cibles et le dé malus du Cri de guerre.'},
+  {name:'Charge et Défier la mort en jeu',status:barbareCombatCurrent?'ACQUIS':'A_VERIFIER',
+   detail:barbareCombatMobileCurrent?'Charge, attaque létale, quota et réouverture vérifiés sur mobile.':
+    barbareCombatDomCurrent?'Charge, attaque létale, quota et réouverture vérifiés dans la simulation du DOM.':'Rejouer les deux capacités dans la fiche interactive.',
+   proof:barbareCombatDomCurrent?'barbare-combat-dom.json':'barbare-charge-defier-mort.json'},
+  {name:'Cri de guerre, Rage et Armure de vent',status:barbareCombatDomCurrent?'ACQUIS':'A_VERIFIER',
+   detail:barbareCombatDomCurrent?'Cibles du Cri, quota et fin de Rage, interaction avec Défier la mort et changement d’armure vérifiés dans la simulation du DOM.':
+    'Vérifier les cibles du Cri, les effets et la durée de Rage, et les changements d’armure.',
+   ...(barbareCombatDomCurrent?{proof:'barbare-combat-dom.json'}:{})},
   {name:'Huit peuples et quatre âges dans le moteur',status:barbarePeoplesEngineCurrent?'ACQUIS':'A_VERIFIER',detail:barbarePeoplesEngineCurrent?'32 créations et réouvertures. Douze bonus conditionnels de rang vérifiés, dont Vigueur et Réflexes éclair.':'Rejouer les créations par peuple et par âge.',proof:'barbare-peuples-moteur.json'},
   {name:'Parcours restants',status:'A_VERIFIER',detail:'Étendre les tests au clic aux autres choix de voies, peuples et équipements.'}
  ]
