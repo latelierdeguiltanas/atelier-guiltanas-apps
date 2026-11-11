@@ -226,6 +226,10 @@ const queue=profileOrder.map((name,i)=>({name,position:i+1,status:i===activeInde
 const barbareMatrix=optionalProof('pure-profile-fast-barbare.json');
 const barbareClick=optionalProof('barbare-choices-click.json');
 const barbarePdf=optionalProof('barbare-official-pdf.json');
+const barbarePeoplesEngine=optionalProof('barbare-peuples-moteur.json');
+const barbarePeoplesEngineCurrent=barbarePeoplesEngine?.status==='PASS'&&barbarePeoplesEngine.indexSha256===productHash('index.html')&&
+ barbarePeoplesEngine.planSha256===productHash('FINAL_FREEZE_TESTS/n1_barbare_coverage.cjs')&&
+ barbarePeoplesEngine.cases?.length===32&&barbarePeoplesEngine.rankChecks?.length===12;
 const barbareCombat=optionalProof('barbare-charge-defier-mort.json');
 const barbareCombatCurrent=barbareCombat?.status==='PASS'&&
  barbareCombat.sheetSha256===productHash('../fiches-personnages/fiche/fiche.js')&&
@@ -243,6 +247,7 @@ const barbareProgress={
   {name:'Fiche PDF officielle',status:barbareCurrent?'ACQUIS':'A_VERIFIER',detail:barbareCurrent?'12 exports couvrant les cinq voies.':'Vérifier les exports des cinq voies.',proof:'barbare-official-pdf.json'},
   {name:'Charge et Défier la mort en jeu',status:barbareCombatCurrent?'ACQUIS':'A_VERIFIER',detail:barbareCombatCurrent?'Charge à 5–10 m et hors contact. Défier la mort sur une attaque létale, quota par combat et sauvegarde des PV vérifiés sur mobile.':'Rejouer les deux capacités dans la fiche interactive.',proof:'barbare-charge-defier-mort.json'},
   {name:'Autres effets en combat',status:'A_VERIFIER',detail:'Vérifier les autres déclencheurs et durées en jeu, dont les cibles et le dé malus du Cri de guerre.'},
+  {name:'Huit peuples et quatre âges dans le moteur',status:barbarePeoplesEngineCurrent?'ACQUIS':'A_VERIFIER',detail:barbarePeoplesEngineCurrent?'32 créations et réouvertures. Douze bonus conditionnels de rang vérifiés, dont Vigueur et Réflexes éclair.':'Rejouer les créations par peuple et par âge.',proof:'barbare-peuples-moteur.json'},
   {name:'Parcours restants',status:'A_VERIFIER',detail:'Étendre les tests au clic aux autres choix de voies, peuples et équipements.'}
  ]
 };
