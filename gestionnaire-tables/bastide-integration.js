@@ -39,7 +39,7 @@ function buildPack(admin,npcs,combat){
   {name:'Rencontres et PNJ (catalogue)',duration:90,summary:'Descriptions et notes de rencontres disponibles dans le hub original.',
    scenes:encounters.map(n=>({title:n.name||'Rencontre',description:n.summary||'',gmNotes:n.mj_notes||'',encounters:[]}))}
  ];
- return D.normalizedScenario({name:'Île aux Tempêtes — pack Bastide (sans PJ)',category:'campaign',system:'COF2',copyright:'external-personal-use',
+ return D.normalizedScenario({name:'L’Île aux Tempêtes',category:'campaign',system:'COF2',copyright:'external-personal-use',
  description:'Copie privee des ressources du MJ Bastide : boutique de Mila, objets de scenario, cartes, PNJ et preparations de combats. Aucun personnage, aucune cle, aucun inventaire joueur. Les chapitres officiels du scenario sont a consulter dans votre exemplaire autorise.',
  modules,assets:{shop,scenarioItems,maps,encounters,combat:customCombat,source:'Bastide — lecture seule',importedAt:new Date().toISOString()}});
 }
@@ -63,7 +63,8 @@ async function importBastide(){
   const db=A.getDb();
   // Import sans remplacement de pack existant: aucun risque pour les anciennes tables.
   db.scenarios.push(pack);A.save();A.showLibrary();
-  A.notify('Pack Bastide importe sans aucun personnage. Cree une nouvelle table avec ce scenario.');
+  A.notify('L’Île aux Tempêtes est dans tes scénarios, sans aucun PJ.');
+  await window.MJAccount?.markBastideLinked?.();
  }catch(error){A.notify('Import Bastide impossible : '+error.message);}
  finally{importBusy=false;const b=document.querySelector('[data-integration="import"]');if(b)b.disabled=false;}
 }
@@ -144,11 +145,11 @@ function toolsPanel(t){
 function decorate(ctx){
  const root=document.getElementById('app');if(!root)return;
  if(ctx.view==='home'){
-  const hero=root.querySelector('.hero');if(hero)hero.after(homePanel());
+  const hero=root.querySelector('.hero');if(hero&&(!!key()||window.MJAccount?.hasLinkedBastide?.()))hero.after(homePanel());
   return;
  }
  if(ctx.view==='library'){
-  const hero=root.querySelector('.hero');if(hero)hero.after(packPanel());
+  const hero=root.querySelector('.hero');if(hero&&(!!key()||window.MJAccount?.hasLinkedBastide?.()))hero.after(packPanel());
   return;
  }
  if(ctx.view!=='table'||!ctx.table)return;
