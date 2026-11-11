@@ -73,6 +73,10 @@ async function openAccount(user){
   const requested=new URLSearchParams(location.search).get('table');
   if(requested&&state().tables.some(t=>t.id===requested))A.openTable(requested);
   status('Sauvegardé en ligne ✓');
+  const invite=new URLSearchParams(location.hash.slice(1)).get('pack');
+  if(invite&&/^[a-f0-9]{64}$/i.test(invite)){
+   try{await redeem(invite);history.replaceState(null,'',location.pathname+location.search);}catch(error){A.notify('Lien d’invitation : '+error.message);}
+  }
  }catch(e){
   uid='';active=false;window.GuiltanasMJActiveStorage=null;authBody();notice('Impossible d’ouvrir cet espace : '+e.message+'. Les données des autres MJ ne sont pas affichées.');
  }
@@ -164,12 +168,12 @@ async function shareScenario(id){
  const end=new Date(Date.now()+7*86400000).toISOString();
  const added=await client.from('guiltanas_mj_pack_shares').insert({owner_id:uid,pack_id:response.data.id,token_hash:hash,expires_at:end,max_uses:1});
  if(added.error)throw added.error;
- const dialog=document.getElementById('mj-share-dialog');dialog.innerHTML='<h2>Code de partage privé</h2><p>À communiquer uniquement au MJ destinataire. Un import, valable 7 jours ; aucune clé Bastide ni fiche PJ n’est transmise.</p><input readonly id="mj-copy-code" value="'+code+'"><div class="actions"><button class="button primary" data-mj-action="copy-code">Copier le code</button><button class="button" data-mj-action="close-code">Fermer</button></div>';
+ const dialog=document.getElementById('mj-share-dialog');dialog.innerHTML='<h2>Inviter un autre MJ</h2><p>Un import, valable 7 jours. Ton ami peut ouvrir le lien, créer son compte, puis importer automatiquement la copie sans PJ.</p><input readonly id="mj-copy-code" value="'+code+'"><div class="actions"><button class="button primary" data-mj-action="copy-link">Copier le lien d’invitation</button><button class="button" data-mj-action="copy-code">Copier le code</button><button class="button" data-mj-action="close-code">Fermer</button></div>';
  dialog.showModal();
 }
-async function redeem(){
+async function redeem(codeInput){
  const input=document.getElementById('mj-pack-import-code');
- const code=String(input?.value||'').toLowerCase().replace(/[-\s]/g,'');
+ const code=String(codeInput||input?.value||'').toLowerCase().replace(/[-\s]/g,'');
  if(!/^[a-f0-9]{64}$/.test(code))throw Error('Code privé de 64 caractères attendu.');
  const {data:{session}}=await client.auth.getSession();
  if(!session?.access_token)throw Error('Session expirée. Reconnecte-toi.');
@@ -195,6 +199,7 @@ document.addEventListener('click',async ev=>{
   if(action==='share')await shareScenario(el.dataset.id);
   if(action==='redeem')await redeem();
   if(action==='copy-code'){const input=document.getElementById('mj-copy-code');await navigator.clipboard.writeText(input.value);A.notify('Code copié');}
+  if(action==='copy-link'){const code=document.getElementById('mj-copy-code').value;await navigator.clipboard.writeText(location.origin+location.pathname+'#pack='+code);A.notify('Lien d’invitation copié');}
   if(action==='close-code')document.getElementById('mj-share-dialog').close();
  }catch(e){A.notify('Compte MJ : '+e.message);}
  finally{el.disabled=false;}
