@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102116">
+<title>Combat de ma table | L’Atelier de Guiltanas</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font:14px system-ui,-apple-system,Segoe UI,sans-serif;background:#0e1d14;color:#eef1e8}
+body{display:flex;flex-direction:column;height:100dvh}
+header{display:flex;gap:9px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:10px 14px;background:#193723;border-bottom:1px solid #51704d;min-height:66px}
+header h1{margin:2px 0;font:700 19px Georgia,serif;color:#edd38d}
+header p{margin:0;color:#b8ceb9;font-size:11px}
+#status{border:1px solid #6e915c;background:#27422b;padding:8px 12px;border-radius:999px;font-size:12px}
+#status.bad{border-color:#d6876a;background:#463027}
+a,button{color:#e8efe2;background:#244831;border:1px solid #638368;padding:9px 12px;border-radius:9px;text-decoration:none;cursor:pointer;white-space:nowrap}
+button:hover,a:hover{background:#365e41}
+#actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+main{flex:1;min-height:0;display:flex;flex-direction:column}
+#feedback{margin:15px auto;padding:14px;max-width:700px;line-height:1.6}
+#feedback.error{color:#ffdbcf}
+#battle{width:100%;border:0;flex:1;min-height:0;background:#102015}
+#battle[hidden]{display:none}
+@media(max-width:680px){header{padding:8px 9px}header h1{font-size:15px}header p{font-size:10px}#status{border-radius:9px}a,button{font-size:12px;padding:7px 8px}}
+</style>
+</head>
+<body>
+<header>
+<div><h1 id="heading">Combat de ma table</h1><p>Gestionnaire COF2 · sauvegarde indépendante · compte MJ</p></div>
+<span id="status" role="status">Connexion…</span>
+<div id="actions"><button id="reload" hidden>Recharger depuis le cloud</button><button id="backup">Exporter une copie</button><a id="return" href="../">← Mes tables</a></div>
+</header>
+<main>
+<div id="feedback">Vérification du compte MJ et chargement de ta préparation…</div>
+<iframe id="battle" title="Gestionnaire de combat COF2" hidden referrerpolicy="same-origin"></iframe>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4" crossorigin="anonymous"></script>
+<script src="bridge.js?v=1"></script>
+</body></html>
