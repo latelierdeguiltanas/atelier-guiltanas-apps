@@ -1,0 +1,393 @@
+{
+  "status": "PASS",
+  "environment": "jsdom",
+  "scope": "Parcours de création, sauvegarde et réouverture de la fiche par les contrôles du DOM. Exécution Chrome suivie séparément.",
+  "indexSha256": "3358aa4fcbd516287f051f3707f8fdf59ac7544b8a69ebc1c072e9244c01e4cd",
+  "testSha256": "7dc24eea49935e460123c2303b8d56f61129f1c0eb4f212d3df8df6b755f7168",
+  "cases": [
+    {
+      "people": "humain",
+      "age": "young",
+      "primary": "brute",
+      "secondary": "pagne",
+      "status": "PASS",
+      "result": {
+        "defense": 13,
+        "pv": 14,
+        "initiative": 11
+      }
+    },
+    {
+      "people": "nain",
+      "age": "young",
+      "primary": "pagne",
+      "secondary": "pourfendeur",
+      "status": "PASS",
+      "result": {
+        "defense": 13,
+        "pv": 12,
+        "initiative": 14
+      }
+    },
+    {
+      "people": "demi-elfe",
+      "age": "young",
+      "primary": "pourfendeur",
+      "secondary": "primitif",
+      "status": "PASS",
+      "result": {
+        "defense": 14,
+        "pv": 11,
+        "initiative": 15
+      }
+    },
+    {
+      "people": "demi-orc",
+      "age": "young",
+      "primary": "primitif",
+      "secondary": "rage",
+      "status": "PASS",
+      "result": {
+        "defense": 13,
+        "pv": 11,
+        "initiative": 11
+      }
+    },
+    {
+      "people": "elfe-haut",
+      "age": "young",
+      "primary": "rage",
+      "secondary": "brute",
+      "status": "PASS",
+      "result": {
+        "defense": 13,
+        "pv": 11,
+        "initiative": 11
+      }
+    },
+    {
+      "people": "elfe-sylvain",
+      "age": "young",
+      "primary": "brute",
+      "secondary": "pagne",
+      "status": "PASS",
+      "result": {
+        "defense": 14,
+        "pv": 12,
+        "initiative": 11
+      }
+    },
+    {
+      "people": "gnome",
+      "age": "young",
+      "primary": "pagne",
+      "secondary": "pourfendeur",
+      "status": "PASS",
+      "result": {
+        "defense": 15,
+        "pv": 11,
+        "initiative": 15
+      }
+    },
+    {
+      "people": "halfelin",
+      "age": "young",
+      "primary": "pourfendeur",
+      "secondary": "primitif",
+      "status": "PASS",
+      "result": {
+        "defense": 16,
+        "pv": 11,
+        "initiative": 14
+      }
+    },
+    {
+      "people": "humain",
+      "age": "very-young",
+      "primary": "pagne",
+      "secondary": "pourfendeur",
+      "status": "PASS",
+      "result": {
+        "defense": 14,
+        "pv": 12,
+        "initiative": 13
+      }
+    },
+    {
+      "people": "nain",
+      "age": "very-young",
+      "primary": "pourfendeur",
+      "secondary": "primitif",
+      "status": "PASS",
+      "result": {
+        "defense": 13,
+        "pv": 11,
+        "initiative": 13
+      }
+    },
+    {
+      "people": "demi-elfe",
+      "age": "very-young",
+      "primary": "primitif",
+      "secondary": "rage",
+      "status": "PASS",
+      "result": {
+        "defense": 13,
+        "pv": 10,
+        "initiative": 10
+      }
+    },
+    {
+      "people": "demi-orc",
+      "age": "very-young",
+      "primary": "rage",
+      "secondary": "brute",
+      "status": "PASS",
+      "result": {
+        "defense": 13,
+        "pv": 13,
+        "initiative": 10
+      }
+    },
+    {
+      "people": "elfe-haut",
+      "age": "very-young",
+      "primary": "brute",
+      "secondary": "pagne",
+      "status": "PASS",
+      "result": {
+        "defense": 13,
+        "pv": 12,
+        "initiative": 10
+      }
+    },
+    {
+      "people": "elfe-sylvain",
+      "age": "very-young",
+      "primary": "pagne",
+      "secondary": "pourfendeur",
+      "status": "PASS",
+      "result": {
+        "defense": 14,
+        "pv": 11,
+        "initiative": 14
+      }
+    },
+    {
+      "people": "gnome",
+      "age": "very-young",
+      "primary": "pourfendeur",
+      "secondary": "primitif",
+      "status": "PASS",
+      "result": {
+        "defense": 15,
+        "pv": 11,
+        "initiative": 15
+      }
+    },
+    {
+      "people": "halfelin",
+      "age": "very-young",
+      "primary": "primitif",
+      "secondary": "rage",
+      "status": "PASS",
+      "result": {
+        "defense": 14,
+        "pv": 11,
+        "initiative": 10
+      }
+    },
+    {
+      "people": "humain",
+      "age": "mature",
+      "primary": "pourfendeur",
+      "secondary": "primitif",
+      "status": "PASS",
+      "result": {
+        "defense": 14,
+        "pv": 12,
+        "initiative": 14
+      }
+    },
+    {
+      "people": "nain",
+      "age": "mature",
+      "primary": "primitif",
+      "secondary": "rage",
+      "status": "PASS",
+      "result": {
+        "defense": 12,
+        "pv": 12,
+        "initiative": 11
+      }
+    },
+    {
+      "people": "demi-elfe",
+      "age": "mature",
+      "primary": "rage",
+      "secondary": "brute",
+      "status": "PASS",
+      "result": {
+        "defense": 12,
+        "pv": 11,
+        "initiative": 12
+      }
+    },
+    {
+      "people": "demi-orc",
+      "age": "mature",
+      "primary": "brute",
+      "secondary": "pagne",
+      "status": "PASS",
+      "result": {
+        "defense": 13,
+        "pv": 15,
+        "initiative": 11
+      }
+    },
+    {
+      "people": "elfe-haut",
+      "age": "mature",
+      "primary": "pagne",
+      "secondary": "pourfendeur",
+      "status": "PASS",
+      "result": {
+        "defense": 14,
+        "pv": 12,
+        "initiative": 14
+      }
+    },
+    {
+      "people": "elfe-sylvain",
+      "age": "mature",
+      "primary": "pourfendeur",
+      "secondary": "primitif",
+      "status": "PASS",
+      "result": {
+        "defense": 15,
+        "pv": 11,
+        "initiative": 14
+      }
+    },
+    {
+      "people": "gnome",
+      "age": "mature",
+      "primary": "primitif",
+      "secondary": "rage",
+      "status": "PASS",
+      "result": {
+        "defense": 13,
+        "pv": 11,
+        "initiative": 11
+      }
+    },
+    {
+      "people": "halfelin",
+      "age": "mature",
+      "primary": "rage",
+      "secondary": "brute",
+      "status": "PASS",
+      "result": {
+        "defense": 14,
+        "pv": 11,
+        "initiative": 11
+      }
+    },
+    {
+      "people": "humain",
+      "age": "venerable",
+      "primary": "primitif",
+      "secondary": "rage",
+      "status": "PASS",
+      "result": {
+        "defense": 13,
+        "pv": 11,
+        "initiative": 11
+      }
+    },
+    {
+      "people": "nain",
+      "age": "venerable",
+      "primary": "rage",
+      "secondary": "brute",
+      "status": "PASS",
+      "result": {
+        "defense": 11,
+        "pv": 11,
+        "initiative": 11
+      }
+    },
+    {
+      "people": "demi-elfe",
+      "age": "venerable",
+      "primary": "brute",
+      "secondary": "pagne",
+      "status": "PASS",
+      "result": {
+        "defense": 13,
+        "pv": 12,
+        "initiative": 11
+      }
+    },
+    {
+      "people": "demi-orc",
+      "age": "venerable",
+      "primary": "pagne",
+      "secondary": "pourfendeur",
+      "status": "PASS",
+      "result": {
+        "defense": 14,
+        "pv": 13,
+        "initiative": 14
+      }
+    },
+    {
+      "people": "elfe-haut",
+      "age": "venerable",
+      "primary": "pourfendeur",
+      "secondary": "primitif",
+      "status": "PASS",
+      "result": {
+        "defense": 14,
+        "pv": 10,
+        "initiative": 14
+      }
+    },
+    {
+      "people": "elfe-sylvain",
+      "age": "venerable",
+      "primary": "primitif",
+      "secondary": "rage",
+      "status": "PASS",
+      "result": {
+        "defense": 13,
+        "pv": 10,
+        "initiative": 12
+      }
+    },
+    {
+      "people": "gnome",
+      "age": "venerable",
+      "primary": "rage",
+      "secondary": "brute",
+      "status": "PASS",
+      "result": {
+        "defense": 12,
+        "pv": 10,
+        "initiative": 12
+      }
+    },
+    {
+      "people": "halfelin",
+      "age": "venerable",
+      "primary": "brute",
+      "secondary": "pagne",
+      "status": "PASS",
+      "result": {
+        "defense": 14,
+        "pv": 12,
+        "initiative": 11
+      }
+    }
+  ]
+}

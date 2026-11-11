@@ -229,6 +229,10 @@ const barbarePeoplesEngine=optionalProof('barbare-peuples-moteur.json');
 const barbarePeoplesEngineCurrent=barbarePeoplesEngine?.status==='PASS'&&barbarePeoplesEngine.indexSha256===productHash('index.html')&&
  barbarePeoplesEngine.planSha256===productHash('FINAL_FREEZE_TESTS/n1_barbare_coverage.cjs')&&
  barbarePeoplesEngine.cases?.length===32&&barbarePeoplesEngine.rankChecks?.length===12;
+const barbarePathsDom=optionalProof('barbare-parcours-dom.json');
+const barbarePathsDomCurrent=barbarePathsDom?.status==='PASS'&&barbarePathsDom.environment==='jsdom'&&
+ barbarePathsDom.indexSha256===productHash('index.html')&&
+ barbarePathsDom.testSha256===productHash('FINAL_FREEZE_TESTS/n1_barbare_choices_click.cjs')&&barbarePathsDom.cases?.length===32;
 const barbareCombat=optionalProof('barbare-charge-defier-mort.json');
 const barbareCombatMobileCurrent=barbareCombat?.status==='PASS'&&
  barbareCombat.sheetSha256===productHash('../fiches-personnages/fiche/fiche.js')&&
@@ -258,7 +262,9 @@ const barbareProgress={
     'Vérifier les cibles du Cri, les effets et la durée de Rage, et les changements d’armure.',
    ...(barbareCombatDomCurrent?{proof:'barbare-combat-dom.json'}:{})},
   {name:'Huit peuples et quatre âges dans le moteur',status:barbarePeoplesEngineCurrent?'ACQUIS':'A_VERIFIER',detail:barbarePeoplesEngineCurrent?'32 créations et réouvertures. Douze bonus conditionnels de rang vérifiés, dont Vigueur et Réflexes éclair.':'Rejouer les créations par peuple et par âge.',proof:'barbare-peuples-moteur.json'},
-  {name:'Parcours restants',status:'A_VERIFIER',detail:'Étendre les tests au clic aux autres choix de voies, peuples et équipements.'}
+  {name:'Parcours de création dans Chrome',status:'A_VERIFIER',
+   detail:barbarePathsDomCurrent?'32 parcours réussis dans la simulation du DOM. Rejeu Chrome en attente.':'Rejouer les 32 parcours de création, équipement et réouverture dans Chrome.',
+   ...(barbarePathsDomCurrent?{proof:'barbare-parcours-dom.json'}:{})}
  ]
 };
 barbareProgress.total=barbareProgress.checks.length;
