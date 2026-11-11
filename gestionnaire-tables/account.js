@@ -3,7 +3,6 @@
 'use strict';
 const A=window.TableManagerAPI,D=window.TableDomain;
 const gate=document.getElementById('mj-account-gate');
-const message=document.getElementById('mj-auth-message');
 const URL='https://jitatmdbipjkvjstcgdc.supabase.co';
 const KEY='sb_publishable_XKVr4_kE2qsywCTgurH0CQ_GTXrEFeU';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -17,7 +16,7 @@ let mode='login',uid='',displayName='',revision=0,dirty=false,syncing=false,conf
 const state=()=>A.getDb();
 const syncEl=()=>document.getElementById('mj-cloud-status');
 function status(s,bad=false){const el=syncEl();if(el){el.textContent=s;el.style.color=bad?'#f5b6a6':'#d5e3cf'}}
-function notice(s){message.textContent=s;message.hidden=!s;}
+function notice(s){const message=document.getElementById('mj-auth-message');if(!message)return;message.textContent=s;message.hidden=!s;}
 function authBody(){
  gate.innerHTML='<section class="mj-auth-card"><div class="eyebrow">L’ATELIER DE GUILTANAS</div><h1>Mon espace Maître du jeu</h1><p>Un compte par MJ. Chaque table et chaque scénario restent privés et séparés des autres maîtres du jeu.</p>'+
  '<div class="toggle"><button id="mj-mode-login" type="button" class="active">Se connecter</button><button id="mj-mode-register" type="button">Créer un compte</button></div>'+
@@ -70,7 +69,7 @@ async function openAccount(user){
   A.loadAccountData(remote.data.payload);
   lastSaved=JSON.stringify(state());
   active=true;
-  hideGate();renderAccountBar();
+  hideGate();renderAccountBar();A.refresh();
   const requested=new URLSearchParams(location.search).get('table');
   if(requested&&state().tables.some(t=>t.id===requested))A.openTable(requested);
   status('Sauvegardé en ligne ✓');
@@ -107,7 +106,7 @@ async function logout(){
  if(dirty&&!confirm('La sauvegarde en ligne n’est pas confirmée. Quitter quand même ?'))return;
  active=false;uid='';loadSeq++;window.GuiltanasMJActiveStorage=null;
  await client.auth.signOut();
- A.loadAccountData(D.seed());authBody();showGate();notice('');
+ authBody();showGate();notice('');
 }
 function libraryAccountPanel(){
  const p=document.createElement('section');p.className='mj-account-panel';
