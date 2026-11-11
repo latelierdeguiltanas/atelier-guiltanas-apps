@@ -233,6 +233,15 @@ const barbarePathsDom=optionalProof('barbare-parcours-dom.json');
 const barbarePathsDomCurrent=barbarePathsDom?.status==='PASS'&&barbarePathsDom.environment==='jsdom'&&
  barbarePathsDom.indexSha256===productHash('index.html')&&
  barbarePathsDom.testSha256===productHash('FINAL_FREEZE_TESTS/n1_barbare_choices_click.cjs')&&barbarePathsDom.cases?.length===32;
+const barbarePathsChrome=optionalProof('barbare-parcours-chrome.json');
+const barbarePathsChromeCurrent=barbarePathsChrome?.status==='PASS'&&barbarePathsChrome.environment==='chromium'&&
+ barbarePathsChrome.indexSha256===productHash('index.html')&&
+ barbarePathsChrome.testSha256===productHash('FINAL_FREEZE_TESTS/n1_barbare_choices_click.cjs')&&
+ barbarePathsChrome.cases?.length===32&&barbarePathsChrome.cases.every(c=>c.status==='PASS')&&
+ new Set(barbarePathsChrome.cases.map(c=>c.people+'/'+c.age)).size===32;
+const barbareCombatChromeCurrent=barbarePathsChromeCurrent&&barbarePathsChrome.combat?.status==='PASS'&&
+ barbarePathsChrome.combat.sheetSha256===productHash('../fiches-personnages/fiche/fiche.js')&&
+ barbarePathsChrome.combat.testSha256===productHash('../fiches-personnages/tests/barbare-combat.cjs');
 const barbareCombat=optionalProof('barbare-charge-defier-mort.json');
 const barbareCombatMobileCurrent=barbareCombat?.status==='PASS'&&
  barbareCombat.sheetSha256===productHash('../fiches-personnages/fiche/fiche.js')&&
@@ -241,7 +250,7 @@ const barbareCombatDom=optionalProof('barbare-combat-dom.json');
 const barbareCombatDomCurrent=barbareCombatDom?.status==='PASS'&&barbareCombatDom.environment==='jsdom'&&
  barbareCombatDom.sheetSha256===productHash('../fiches-personnages/fiche/fiche.js')&&
  barbareCombatDom.testSha256===productHash('../fiches-personnages/tests/barbare-combat-dom.cjs')&&barbareCombatDom.checks?.length===5;
-const barbareCombatCurrent=barbareCombatMobileCurrent||barbareCombatDomCurrent;
+const barbareCombatCurrent=barbareCombatChromeCurrent||barbareCombatMobileCurrent||barbareCombatDomCurrent;
 const barbareRankTwoPaths=['brute','pagne','pourfendeur','primitif','rage'];
 const barbareRankTwoCurrent=barbareClick?.status==='PASS'&&barbareClick.indexSha256===productHash('index.html')&&
  barbareRankTwoPaths.every(path=>barbareClick.cases?.some(row=>row.rankTwo===path&&row.status==='PASS'&&row.result?.rank===2));
@@ -254,26 +263,28 @@ const barbareProgress={
   {name:'Rang 2 des cinq voies au clic',status:barbareRankTwoCurrent?'ACQUIS':'A_VERIFIER',detail:barbareRankTwoCurrent?'Cinq parcours mobiles Mûr. Acquisition, PV, DEF, initiative et réouverture vérifiés.':'Rejouer l’acquisition du rang 2 de chaque voie et contrôler la réouverture.',proof:'barbare-choices-click.json'},
   {name:'Fiche PDF officielle',status:barbareCurrent?'ACQUIS':'A_VERIFIER',detail:barbareCurrent?'12 exports couvrant les cinq voies.':'Vérifier les exports des cinq voies.',proof:'barbare-official-pdf.json'},
   {name:'Charge et Défier la mort en jeu',status:barbareCombatCurrent?'ACQUIS':'A_VERIFIER',
-   detail:barbareCombatMobileCurrent?'Charge, attaque létale, quota et réouverture vérifiés sur mobile.':
+   detail:(barbareCombatChromeCurrent||barbareCombatMobileCurrent)?'Charge, attaque létale, quota et réouverture vérifiés sur mobile.':
     barbareCombatDomCurrent?'Charge, attaque létale, quota et réouverture vérifiés dans la simulation du DOM.':'Rejouer les deux capacités dans la fiche interactive.',
-   proof:barbareCombatDomCurrent?'barbare-combat-dom.json':'barbare-charge-defier-mort.json'},
-  {name:'Cri de guerre, Rage et Armure de vent',status:barbareCombatDomCurrent?'ACQUIS':'A_VERIFIER',
-   detail:barbareCombatDomCurrent?'Cibles du Cri, quota et fin de Rage, interaction avec Défier la mort et changement d’armure vérifiés dans la simulation du DOM.':
+   proof:barbareCombatChromeCurrent?'barbare-parcours-chrome.json':barbareCombatDomCurrent?'barbare-combat-dom.json':'barbare-charge-defier-mort.json'},
+  {name:'Cri de guerre, Rage et Armure de vent',status:(barbareCombatChromeCurrent||barbareCombatDomCurrent)?'ACQUIS':'A_VERIFIER',
+   detail:barbareCombatChromeCurrent?'Cibles du Cri, quota et fin de Rage, interaction avec Défier la mort et changement d’armure vérifiés sous Chrome mobile.':barbareCombatDomCurrent?'Cibles du Cri, quota et fin de Rage, interaction avec Défier la mort et changement d’armure vérifiés dans la simulation du DOM.':
     'Vérifier les cibles du Cri, les effets et la durée de Rage, et les changements d’armure.',
-   ...(barbareCombatDomCurrent?{proof:'barbare-combat-dom.json'}:{})},
+   ...(barbareCombatChromeCurrent?{proof:'barbare-parcours-chrome.json'}:barbareCombatDomCurrent?{proof:'barbare-combat-dom.json'}:{})},
   {name:'Huit peuples et quatre âges dans le moteur',status:barbarePeoplesEngineCurrent?'ACQUIS':'A_VERIFIER',detail:barbarePeoplesEngineCurrent?'32 créations et réouvertures. Douze bonus conditionnels de rang vérifiés, dont Vigueur et Réflexes éclair.':'Rejouer les créations par peuple et par âge.',proof:'barbare-peuples-moteur.json'},
-  {name:'Parcours de création dans Chrome',status:'A_VERIFIER',
-   detail:barbarePathsDomCurrent?'32 parcours réussis dans la simulation du DOM. Rejeu Chrome en attente.':'Rejouer les 32 parcours de création, équipement et réouverture dans Chrome.',
-   ...(barbarePathsDomCurrent?{proof:'barbare-parcours-dom.json'}:{})}
+  {name:'Parcours de création dans Chrome',status:barbarePathsChromeCurrent?'ACQUIS':'A_VERIFIER',
+   detail:barbarePathsChromeCurrent?'32 parcours au clic sous Chrome, sauvegarde et réouverture vérifiées.':barbarePathsDomCurrent?'32 parcours réussis dans la simulation du DOM. Rejeu Chrome en attente.':'Rejouer les 32 parcours de création, équipement et réouverture dans Chrome.',
+   ...(barbarePathsChromeCurrent?{proof:'barbare-parcours-chrome.json'}:barbarePathsDomCurrent?{proof:'barbare-parcours-dom.json'}:{})}
  ]
 };
 barbareProgress.total=barbareProgress.checks.length;
 barbareProgress.passed=barbareProgress.checks.filter(check=>check.status==='ACQUIS').length;
 barbareProgress.percent=Math.round(100*barbareProgress.passed/barbareProgress.total);
+const barbareComplete=profileComplete&&barbareProgress.passed===barbareProgress.total&&barbareCombatChromeCurrent;
+barbareProgress.completed=barbareComplete;
 const priorityPercent=profileComplete?barbareProgress.percent:percent;
 const queue=profileOrder.map((name,i)=>({
- name,position:i+1,status:i===activeIndex&&profileComplete?'CERTIFIE':i===priorityIndex?'EN_COURS':'EN_ATTENTE',
- percent:i===priorityIndex?priorityPercent:i===activeIndex?percent:null,certified:i===activeIndex&&profileComplete
+ name,position:i+1,status:(i===activeIndex&&profileComplete)||(i===priorityIndex&&barbareComplete)?'CERTIFIE':i===priorityIndex?'EN_COURS':'EN_ATTENTE',
+ percent:i===priorityIndex?priorityPercent:i===activeIndex?percent:null,certified:(i===activeIndex&&profileComplete)||(i===priorityIndex&&barbareComplete)
 }));
 const output={
  schema:'FOH_N1_PROFILE_AND_PEOPLES_SEPARATE',
@@ -289,8 +300,8 @@ const output={
  certificationPlan:{
   policy:'UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100',
   target:{officialProfiles:14,officialPeoples:8,allMustReachPercent:100},
-  current:{name:profileOrder[priorityIndex],position:priorityIndex+1,percent:priorityPercent,certified:false},
-  next:{name:profileOrder[activeIndex+1],unlocked:profileComplete,condition:'profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF'},
+  current:{name:profileOrder[priorityIndex],position:priorityIndex+1,percent:priorityPercent,certified:barbareComplete},
+  next:{name:profileOrder[barbareComplete?priorityIndex+1:activeIndex+1],unlocked:profileComplete,condition:'profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF'},
   queue,
   priorityProgress:profileComplete?barbareProgress:null,
   peoplesProgressRule:'Chaque critère de peuple est validé par une preuve liée à la version courante. Les effets conditionnels, les équipements, les âges et historiques et le parcours avec PDF sont suivis séparément.',
@@ -300,10 +311,10 @@ const output={
  },
  intent:'Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.',
  profile:{id:profile.profileId,name:'Arquebusier',priority:profileComplete?'CERTIFIE':'EN_COURS',completed:profileComplete,variantPrototypeReady:!!prototypeOK,variantIntegrated:!!deployed,passed:verified,total:profileChecks.length,percent:Math.round(100*verified/profileChecks.length),checks:profileChecks,paths:copyPaths,partialNumericValidated:numericPartial,
-  next:profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
+  next:barbareComplete?'Barbare N1 validé sur le périmètre du registre.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
  peoples,
  pausedProfiles:13,
- summary:{profilesCertified:profileComplete?1:0,profilesInProgress:1,profilesPending:profileComplete?12:13,peoplesCertified:peoples.filter(p=>p.certified).length},
+ summary:{profilesCertified:barbareComplete?2:profileComplete?1:0,profilesInProgress:barbareComplete?0:1,profilesPending:profileComplete?12:13,peoplesCertified:peoples.filter(p=>p.certified).length},
  limitations:'Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.',
  sources:[...(barbareCurrent?['QA/N1/pure-profile-fast-barbare.json','QA/N1/barbare-choices-click.json','QA/N1/barbare-official-pdf.json']:[]),'QA/N1/arquebusier-history-professions.json','QA/N1/arquebusier-history-origins.json','QA/N1/official-people-equipment.json','QA/N1/arquebusier-grant-context.json','QA/N1/lot10/people-source.json','QA/N1/arquebusier-derived-source.json','QA/N1/arquebusier-powder-weapon-boundary.json','QA/N1/arquebusier-two-preferences.json','QA/N1/arquebusier-official-template.json',...(variant?['QA/N1/arquebusier-arbaletrier-source-audit.json']:[]),'COF2 Livre de base pp. 44-65','Règles avancées p.153 et historiques','QA/N1/arquebusier-pure-age-ranks.json','QA/N1/arquebusier-pdf-real-click.json','QA/N1/arquebusier-all-mechanics-probe.json','QA/N1/official-methods-cross.json','QA/N1/official-racial-options.json','QA/N1/lot10/people-source.json']
 };

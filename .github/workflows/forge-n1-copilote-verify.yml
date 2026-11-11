@@ -37,8 +37,11 @@ jobs:
           assert(d.certificationPlan.policy==='UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100');
           assert(d.certificationPlan.queue.length===14);
           assert(d.peoples.length===8);
-          assert(d.certificationPlan.queue.filter(x=>x.status==='EN_COURS').length===1);
-          assert(d.certificationPlan.current.name===d.certificationPlan.queue.find(x=>x.status==='EN_COURS').name);
+          const {current,queue}=d.certificationPlan;
+          assert.equal(queue.filter(x=>x.status==='EN_COURS').length,current.certified?0:1);
+          const selected=queue.find(x=>x.name===current.name);
+          assert.equal(selected?.status,current.certified?'CERTIFIE':'EN_COURS');
+          assert.equal(selected?.percent,current.percent);
           if(d.profile.completed){
             assert(d.certificationPlan.queue.some(x=>x.name===d.profile.name&&x.certified));
             assert(d.certificationPlan.next.unlocked);

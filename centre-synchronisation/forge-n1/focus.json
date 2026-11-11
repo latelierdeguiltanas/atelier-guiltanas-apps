@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "3358aa4fcbd516287f051f3707f8fdf59ac7544b8a69ebc1c072e9244c01e4cd",
   "certificationBasis": "Une seule Forge: seules les preuves attachées à index.html et à son SHA actuel comptent; les anciennes références au maître supprimé sont archivées.",
-  "generatedAt": "2026-11-11T21:06:20.403Z",
+  "generatedAt": "2026-11-11T21:09:28.669Z",
   "engineSha256": "1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd",
   "databaseSha256": "d0955396d6df4ea3e28ead0f8338ffec02ab6c1336f3260ff370f326fe992d88",
   "peoplesEvidenceCurrent": true,
@@ -24,11 +24,11 @@
     "current": {
       "name": "Barbare",
       "position": 2,
-      "percent": 88,
-      "certified": false
+      "percent": 100,
+      "certified": true
     },
     "next": {
-      "name": "Barbare",
+      "name": "Barde",
       "unlocked": true,
       "condition": "profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF"
     },
@@ -43,9 +43,9 @@
       {
         "name": "Barbare",
         "position": 2,
-        "status": "EN_COURS",
-        "percent": 88,
-        "certified": false
+        "status": "CERTIFIE",
+        "percent": 100,
+        "certified": true
       },
       {
         "name": "Barde",
@@ -162,14 +162,14 @@
         {
           "name": "Charge et Défier la mort en jeu",
           "status": "ACQUIS",
-          "detail": "Charge, attaque létale, quota et réouverture vérifiés dans la simulation du DOM.",
-          "proof": "barbare-combat-dom.json"
+          "detail": "Charge, attaque létale, quota et réouverture vérifiés sur mobile.",
+          "proof": "barbare-parcours-chrome.json"
         },
         {
           "name": "Cri de guerre, Rage et Armure de vent",
           "status": "ACQUIS",
-          "detail": "Cibles du Cri, quota et fin de Rage, interaction avec Défier la mort et changement d’armure vérifiés dans la simulation du DOM.",
-          "proof": "barbare-combat-dom.json"
+          "detail": "Cibles du Cri, quota et fin de Rage, interaction avec Défier la mort et changement d’armure vérifiés sous Chrome mobile.",
+          "proof": "barbare-parcours-chrome.json"
         },
         {
           "name": "Huit peuples et quatre âges dans le moteur",
@@ -179,14 +179,15 @@
         },
         {
           "name": "Parcours de création dans Chrome",
-          "status": "A_VERIFIER",
-          "detail": "32 parcours réussis dans la simulation du DOM. Rejeu Chrome en attente.",
-          "proof": "barbare-parcours-dom.json"
+          "status": "ACQUIS",
+          "detail": "32 parcours au clic sous Chrome, sauvegarde et réouverture vérifiées.",
+          "proof": "barbare-parcours-chrome.json"
         }
       ],
       "total": 8,
-      "passed": 7,
-      "percent": 88
+      "passed": 8,
+      "percent": 100,
+      "completed": true
     },
     "peoplesProgressRule": "Chaque critère de peuple est validé par une preuve liée à la version courante. Les effets conditionnels, les équipements, les âges et historiques et le parcours avec PDF sont suivis séparément.",
     "remainingPeoplesPolicy": "Après les 14 profils, fermer les critères raciaux manquants un peuple à la fois",
@@ -440,7 +441,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Barbare en cours : 4 250 créations vérifiées, 8 parcours mobiles et 12 PDF couvrant les cinq voies."
+    "next": "Barbare N1 validé sur le périmètre du registre."
   },
   "peoples": [
     {
@@ -1030,8 +1031,8 @@
   ],
   "pausedProfiles": 13,
   "summary": {
-    "profilesCertified": 1,
-    "profilesInProgress": 1,
+    "profilesCertified": 2,
+    "profilesInProgress": 0,
     "profilesPending": 12,
     "peoplesCertified": 0
   },
