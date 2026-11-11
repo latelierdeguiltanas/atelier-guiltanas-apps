@@ -3,7 +3,6 @@
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const {createHash}=require('node:crypto');
-const {chromium}=require('playwright');
 const rankTwo=[
  {path:'brute',ability:'tour-de-force',label:'Tour de force',totals:[13,13,14]},
  {path:'pagne',ability:'peau-de-pierre',label:'Peau de pierre',totals:[15,12,11]},
@@ -11,14 +10,17 @@ const rankTwo=[
  {path:'primitif',ability:'armure-de-vent',label:'Armure de vent',totals:[14,13,11]},
  {path:'rage',ability:'defier-la-mort',label:'Défier la mort',totals:[13,12,11]}
 ];
-const pathIds={brute:'voie-de-la-brute',pagne:'voie-du-pagne',pourfendeur:'voie-du-pourfendeur',primitif:'voie-du-primitif',rage:'voie-de-la-rage'};
-const jobs=[
+const {expandedJobs,pathIds}=require('./n1_barbare_coverage.cjs');
+const baseJobs=[
  {people:'humain',defense:'AGI',stats:[2,1,0,1,3,0,-1],tattoo:'FOR'},
  {people:'humain',defense:'CON',stats:[2,1,3,1,0,0,-1],tattoo:'CON'},
  {people:'halfelin',defense:'AGI',stats:[2,1,0,1,3,0,-1],tattoo:'PER'},
  ...rankTwo.map(r=>({people:'humain',defense:'AGI',stats:[2,1,0,1,3,0,-1],rankTwo:r.path}))
 ];
-const report={status:'FAIL',cases:[],indexSha256:createHash('sha256').update(fs.readFileSync('forge-of-heroes/index.html')).digest('hex')};
+const shard=process.env.BARBARE_SHARD==null?null:Number(process.env.BARBARE_SHARD);
+assert.ok(shard===null||[0,1,2,3].includes(shard));
+const jobs=shard===null?baseJobs:expandedJobs.filter((_,i)=>i%4===shard);
+const report={shard,status:'FAIL',cases:[],indexSha256:createHash('sha256').update(fs.readFileSync('forge-of-heroes/index.html')).digest('hex')};
 
 async function runCase(browser,job){
  const ctx=await browser.newContext({viewport:{width:393,height:852},isMobile:true,hasTouch:true});
@@ -29,7 +31,7 @@ async function runCase(browser,job){
  const snapshot=()=>page.evaluate(()=>{
   const draft=window.__FOH_PRODUCT__.buildState();
   const r=window.__FOH_ENGINE__.computeCharacterN1(draft);
-  return {errors:r.errors,def:r.sticky.DEF,skills:r.sticky.skillBonuses,pv:r.sticky.PV,init:r.sticky.INIT,ranks:r.sticky.acquiredAbilities.map(a=>[a.id,a.rank]),choices:draft.abilityChoices,attacks:r.sticky.attacks};
+  return {errors:r.errors,people:draft.peupleId,age:draft.age?.categoryId,resource:draft.age?.choice,equip:draft.equip,def:r.sticky.DEF,skills:r.sticky.skillBonuses,pv:r.sticky.PV,init:r.sticky.INIT,ranks:r.sticky.acquiredAbilities.map(a=>[a.id,a.rank]),choices:draft.abilityChoices,attacks:r.sticky.attacks};
  });
  const row={...job,status:'FAIL'};
  report.cases.push(row);
@@ -43,7 +45,14 @@ async function runCase(browser,job){
   await next();
   await next();
   await page.locator('#people-selector').selectOption('people:'+job.people+':cof2-lb-2024');
-  if(job.people==='halfelin')await page.locator('#people-bonus').selectOption('agi');
+  if(job.age){
+   for(const id of ['#people-bonus','#people-malus','#people-path','#gnome-granted-ability']){
+    const field=page.locator(id);
+    if(!await field.isVisible())continue;
+    const options=await field.locator('option').evaluateAll(nodes=>nodes.filter(o=>!o.disabled&&o.value).map(o=>o.value));
+    if(options.length)await field.selectOption(options[job.optionIndex%options.length]);
+   }
+  }else if(job.people==='halfelin')await page.locator('#people-bonus').selectOption('agi');
   await next();
   await page.locator('#profile-selector').selectOption('class:barbare:cof2-lb-2024');
   await next();
@@ -55,23 +64,27 @@ async function runCase(browser,job){
   }
   if(job.people==='humain')await page.locator('#human-stat-final').selectOption(job.defense==='CON'?'vol':'con');
   await next();
-  await page.locator('#age-category').selectOption(job.tattoo?'venerable':'mature');
+  await page.locator('#age-category').selectOption(job.age||(job.tattoo?'venerable':'mature'));
+  if(job.resource)await page.locator('#age-resource-choice').selectOption(job.resource);
   await next();
-  const primary=job.rankTwo||'pagne',secondary=primary==='brute'?'pourfendeur':'brute';
+  const primary=job.primary||job.rankTwo||'pagne',secondary=job.secondary||(primary==='brute'?'pourfendeur':'brute');
   const selectPath=(slot,name)=>page.locator('#path-'+slot).selectOption('classpath:'+pathIds[name]+':class-barbare:cof2-lb-2024');
   await selectPath('one',primary);
   await selectPath('two',secondary);
   const path=name=>page.locator('article.choice').filter({hasText:new RegExp('voie.*'+name,'i')});
-  for(const name of (job.tattoo?[primary,primary,secondary]:[primary,secondary]))await path(name).getByRole('button',{name:/Acquérir/}).first().tap();
-  if(primary==='pagne')await page.locator('.stone-skin-choice-buttons button[data-value="'+job.defense+'"]').tap();
-  if(job.tattoo){
-   const tattoo=page.locator('select[data-ability-choice$="|tattooStat"]');
+  const purchases=job.tattoo||job.age==='venerable'?[primary,primary,secondary]:
+   !job.age||job.age==='mature'?[primary,secondary]:[];
+  for(const name of purchases)await path(name).getByRole('button',{name:/Acquérir/}).first().tap();
+  const tattoo=page.locator('select[data-ability-choice$="|tattooStat"]');
+  const tattooStat=job.tattoo||(job.age==='venerable'&&primary==='pagne'?'VOL':null);
+  if(purchases.includes('pagne'))await page.locator('.stone-skin-choice-buttons button[data-value="'+job.defense+'"]').tap();
+  if(tattooStat){
    const available=await tattoo.locator('option').evaluateAll(options=>options.filter(o=>o.value).map(o=>o.value));
    assert.deepEqual(available,['FOR','CON','AGI','PER','CHA','INT','VOL']);
-   await tattoo.selectOption(job.tattoo);
+   await tattoo.selectOption(tattooStat);
   }
   await next();
-  if(job.people==='halfelin'){
+  if(job.people==='halfelin'||job.age&&['gnome','nain'].includes(job.people)){
    await page.locator('#equipment-swap-approved').check();
    await page.locator('#equipment-swap-weapon-0').selectOption('weapon:axe');
   }
@@ -80,11 +93,26 @@ async function runCase(browser,job){
   const target=rankTwo.find(r=>r.path===job.rankTwo);
   const ability=target?.ability||'tatouages';
   const expected=target?/rang 2/:new RegExp('\\+3 aux tests de '+job.tattoo);
-  const verifySummary=async()=>assert.match(await page.locator('[data-summary-ability^="ability:'+ability+':"],[data-summary-ability^="ability:'+ability+'-"]').innerText(),expected);
+  const verifySummary=async()=>{
+   if(job.age){
+    assert.match(await page.locator('#summary-content').innerText(),/Barbare/);
+    return;
+   }
+   assert.match(await page.locator('[data-summary-ability^="ability:'+ability+':"],[data-summary-ability^="ability:'+ability+'-"]').innerText(),expected);
+  };
   await verifySummary();
   const before=await snapshot();
   assert.deepEqual(before.errors,[]);
-  if(target){
+  if(job.age){
+   assert.equal(before.people,'people:'+job.people+':cof2-lb-2024');
+   assert.equal(before.age,job.age);
+   if(job.resource)assert.equal(before.resource,job.resource);
+   for(const [name,count] of Object.entries({[primary]:1+purchases.filter(x=>x===primary).length,[secondary]:1+purchases.filter(x=>x===secondary).length})){
+    assert.equal(Math.max(...before.ranks.filter(([id])=>id.includes('classpath:'+pathIds[name]+':class-barbare:')).map(([,rank])=>rank)),count);
+   }
+   if(tattooStat)assert.ok(before.skills.some(x=>x.sourceAbilityId.includes('ability:tatouages:')&&x.tests.includes(tattooStat)&&x.value===3));
+   if(['gnome','halfelin','nain'].includes(job.people))assert.ok(before.attacks.some(a=>a.weaponId==='weapon:axe'));
+  }else if(target){
    assert.ok(before.ranks.some(([id,rank])=>id.startsWith('ability:'+ability)&&rank===2));
    assert.equal(before.ranks.some(([,rank])=>rank>2),false);
    assert.deepEqual([before.pv,before.def,before.init],target.totals);
@@ -96,14 +124,14 @@ async function runCase(browser,job){
   }
   await page.getByRole('button',{name:'Enregistrer dans Mes héros',exact:true}).tap();
   await page.reload();
-  await page.locator('#open-heroes').tap();
+  await page.locator('#forge-main-menu [data-foh-route="heroes"]').tap();
   await page.getByRole('button',{name:'Voir la fiche',exact:true}).first().tap();
   await verifySummary();
   const reopened=await snapshot();
   assert.deepEqual(reopened,before);
   assert.deepEqual(errors,[]);
   row.status='PASS';
-  row.result=target?{ability:target.label,rank:2,defense:before.def,pv:before.pv,initiative:before.init}:{defense:before.def,skill:job.tattoo,bonus:3};
+  row.result=job.age?{defense:before.def,pv:before.pv,initiative:before.init}:target?{ability:target.label,rank:2,defense:before.def,pv:before.pv,initiative:before.init}:{defense:before.def,skill:job.tattoo,bonus:3};
  }catch(error){
   row.error=error.message;
   row.view=await page.locator('.step.active').innerText().then(s=>s.slice(0,500)).catch(()=>null);
@@ -113,13 +141,14 @@ async function runCase(browser,job){
  }
 }
 
-(async()=>{
+if(require.main===module)(async()=>{
+ const {chromium}=require('playwright');
  const browser=await chromium.launch({executablePath:process.env.CHROME_BIN,args:['--no-sandbox']});
  try{for(const job of jobs)await runCase(browser,job);}
  finally{await browser.close();}
  report.passed=report.cases.filter(c=>c.status==='PASS').length;
  report.status=report.passed===jobs.length?'PASS':'FAIL';
- fs.writeFileSync('forge-of-heroes/QA/N1/barbare-choices-click.json',JSON.stringify(report,null,2)+'\n');
+ fs.writeFileSync('forge-of-heroes/QA/N1/'+(shard===null?'barbare-choices-click':'barbare-choices-shard-'+shard)+'.json',JSON.stringify(report,null,2)+'\n');
  console.log(JSON.stringify(report));
  if(report.status!=='PASS')process.exitCode=1;
 })().catch(e=>{console.error(e);process.exitCode=1;});
