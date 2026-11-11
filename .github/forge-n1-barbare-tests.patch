@@ -1,9 +1,9 @@
 diff --git a/forge-of-heroes/FINAL_FREEZE_TESTS/n1_barbare_choices_click.cjs b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_barbare_choices_click.cjs
 new file mode 100644
-index 0000000..52ee63e
+index 0000000..c796688
 --- /dev/null
 +++ b/forge-of-heroes/FINAL_FREEZE_TESTS/n1_barbare_choices_click.cjs
-@@ -0,0 +1,102 @@
+@@ -0,0 +1,105 @@
 +'use strict';
 +
 +const assert=require('node:assert/strict');
@@ -70,6 +70,7 @@ index 0000000..52ee63e
 +  }
 +  await next();
 +  await page.locator('#reveal-view').tap();
++  assert.match(await page.locator('[data-summary-ability^="ability:tatouages:"]').innerText(),new RegExp('\\+3 aux tests de '+job.tattoo));
 +  const before=await snapshot();
 +  assert.deepEqual(before.errors,[]);
 +  assert.equal(before.def,job.defense==='CON'?14:job.people==='halfelin'?15:13);
@@ -83,7 +84,9 @@ index 0000000..52ee63e
 +  await page.reload();
 +  await page.locator('#open-heroes').tap();
 +  await page.getByRole('button',{name:'Voir la fiche',exact:true}).first().tap();
-+  assert.deepEqual(await snapshot(),before);
++  assert.match(await page.locator('[data-summary-ability^="ability:tatouages:"]').innerText(),new RegExp('\\+3 aux tests de '+job.tattoo));
++  const reopened=await snapshot();
++  assert.deepEqual(reopened,before);
 +  assert.deepEqual(errors,[]);
 +  row.status='PASS';
 +  row.result={defense:before.def,skill:skill[0].tests[0],bonus:skill[0].value};
@@ -154,3 +157,16 @@ index 0000000..29b1579
 +const report={status:'PASS',source:'COF2 Livre de base p.80',choices:expected,reopened:7,legacyWithoutChoice:true,invalidRejected:true,indexSha256:createHash('sha256').update(html).digest('hex')};
 +fs.writeFileSync('forge-of-heroes/QA/N1/barbare-tattoo.json',JSON.stringify(report,null,2)+'\n');
 +console.log(JSON.stringify(report));
+diff --git a/forge-of-heroes/progression/official-pdf-engine.js b/forge-of-heroes/progression/official-pdf-engine.js
+index 57ae27d..328c01e 100644
+--- a/forge-of-heroes/progression/official-pdf-engine.js
++++ b/forge-of-heroes/progression/official-pdf-engine.js
+@@ -251,7 +251,7 @@ async function appendPathAnnex(doc,st,s,d){const regular=await doc.embedFont(PDF
+  function ensure(height){if(!page||y-height<34)newPage(!!page);}
+  function paragraph(value,size=bodySize,font=regular,color=ink){for(const line of wrapText(value,font,size,maxWidth-5)){ensure(lineHeight);text(line,size,font,color);y-=lineHeight;}y-=5;}
+  for(const path of annexPaths(st,s,d)){currentRank='';currentPath=null;ensure(60);currentPath=path;band(path);if(path.retained)paragraph('La voie du mage remplace la voie de peuple, mais cette capacité de rang 1 reste acquise. Les autres rangs de cette voie de peuple ne sont pas accordés.',9,regular,muted);
+-  for(const a of path.rows){const rank=Number(a.rank),owned=acquired(s,path.pathId,rank,a,st)||path.retained&&rank===1,title=(owned?'[X] Acquis':'[ ] Non acquis')+' — Rang '+rank+' : '+String(a.label||'').replace(/^Rang\s+\d+\s*[—-]\s*/,''),desc=a.desc||'Description non disponible dans les données intégrées.';currentRank='';ensure(48);currentRank=title;paragraph(title,10,bold,ink);if(a.playSummary)paragraph('En pratique : '+a.playSummary,9,bold,muted);paragraph(desc);if(owned&&a.path_id==='history:scholar'&&[1,3].includes(rank)){for(const bonus of s.skillBonuses||[])if(bonus.sourceAbilityId==='ability:history:scholar:r'+rank)paragraph('Choix du personnage : '+(bonus.tests||[]).join(', ')+' (bonus +'+bonus.value+').',9,bold,muted);if(rank===1&&s.languages?.scholarLanguages?.length)paragraph('Langues supplémentaires choisies : '+s.languages.scholarLanguages.join(', ')+'.',9,regular,muted);}if(owned&&a.path_id==='history:courtier'&&rank===5){const id=(s.grantedAbilities||[]).find(g=>g.sourceAbilityId==='ability:history:courtier:r5')?.id,chosen=(s.acquiredAbilities||[]).find(g=>g.id===id);if(chosen)paragraph('Capacité choisie : '+chosen.label+' (rang '+chosen.rank+').',9,bold,muted);}y-=7;}
++  for(const a of path.rows){const rank=Number(a.rank),owned=acquired(s,path.pathId,rank,a,st)||path.retained&&rank===1,title=(owned?'[X] Acquis':'[ ] Non acquis')+' — Rang '+rank+' : '+String(a.label||'').replace(/^Rang\s+\d+\s*[—-]\s*/,''),desc=a.desc||'Description non disponible dans les données intégrées.';currentRank='';ensure(48);currentRank=title;paragraph(title,10,bold,ink);if(a.playSummary)paragraph('En pratique : '+a.playSummary,9,bold,muted);paragraph(desc);if(owned&&a.id?.startsWith('ability:tatouages:')){const stat=s.persistentChoices?.[a.id]?.tattooStat;if(stat)paragraph('Tatouage choisi : +3 aux tests de '+stat+'.',9,bold,muted);}if(owned&&a.path_id==='history:scholar'&&[1,3].includes(rank)){for(const bonus of s.skillBonuses||[])if(bonus.sourceAbilityId==='ability:history:scholar:r'+rank)paragraph('Choix du personnage : '+(bonus.tests||[]).join(', ')+' (bonus +'+bonus.value+').',9,bold,muted);if(rank===1&&s.languages?.scholarLanguages?.length)paragraph('Langues supplémentaires choisies : '+s.languages.scholarLanguages.join(', ')+'.',9,regular,muted);}if(owned&&a.path_id==='history:courtier'&&rank===5){const id=(s.grantedAbilities||[]).find(g=>g.sourceAbilityId==='ability:history:courtier:r5')?.id,chosen=(s.acquiredAbilities||[]).find(g=>g.id===id);if(chosen)paragraph('Capacité choisie : '+chosen.label+' (rang '+chosen.rank+').',9,bold,muted);}y-=7;}
+   y-=8;
+  }
+ }
