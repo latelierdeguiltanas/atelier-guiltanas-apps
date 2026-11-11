@@ -24,6 +24,7 @@ if(/^[a-f0-9]{64}$/i.test(incomingInvite)){
 
 window.MJCloudClient=client;
 let mode='login',uid='',displayName='',bastideLinked=false,revision=0,dirty=false,syncing=false,conflict=false,syncTimer=0,loadSeq=0,lastSaved='',active=false,retryMs=4500;
+let openingUser='';
 const state=()=>A.getDb();
 const syncEl=()=>document.getElementById('mj-cloud-status');
 function status(s,bad=false){const el=syncEl();if(el){el.textContent=s;el.style.color=bad?'#f5b6a6':'#d5e3cf'}}
@@ -77,6 +78,8 @@ async function saveCloud(){
 function schedule(){if(!active||!uid)return;dirty=true;preserveDraft();status('Modifications en attente…');clearTimeout(syncTimer);syncTimer=setTimeout(saveCloud,950);}
 window.addEventListener('guiltanas:tables-changed',schedule);
 async function openAccount(user){
+ if(!user?.id||openingUser===user.id)return;
+ openingUser=user.id;
  const seq=++loadSeq;active=false;showGate();gate.innerHTML='<section class="mj-auth-card"><h1>Ouverture de ton espace MJ</h1><p>Chargement des tables personnelles sécurisées…</p></section>';
  try{
   const id=user.id;
@@ -129,7 +132,7 @@ async function openAccount(user){
   }
  }catch(e){
   uid='';active=false;window.GuiltanasMJActiveStorage=null;authBody();notice('Impossible d’ouvrir cet espace : '+e.message+'. Les données des autres MJ ne sont pas affichées.');
- }
+ }finally{if(openingUser===user.id)openingUser='';}
 }
 
 function localDeviceId(){
