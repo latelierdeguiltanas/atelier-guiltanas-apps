@@ -295,6 +295,10 @@ const bardeChromeCurrent=bardeChrome?.status==='PASS'&&bardeChrome.indexSha256==
 const bardePdf=optionalProof('barde-official-pdf.json');
 const bardePdfCurrent=bardePdf?.status==='PASS'&&bardePdf.indexSha256===productHash('index.html')&&
  bardePdf.exports?.length===10&&bardePdf.exports.every(c=>c.status==='PASS');
+const bardeCombat=optionalProof('barde-combat-chrome.json');
+const bardeCombatCurrent=bardeCombat?.status==='PASS'&&bardeCombat.environment==='chromium'&&
+ bardeCombat.sheetSha256===productHash('../fiches-personnages/fiche/fiche.js')&&
+ bardeCombat.testSha256===productHash('../fiches-personnages/tests/barde-combat.cjs');
 const bardeProgress={name:'Barde',checks:[
  {name:'Créations et réouvertures',status:bardeMatrixCurrent?'ACQUIS':'A_VERIFIER',
   detail:bardeMatrixCurrent?bardeMatrix.pass+' créations et '+bardeMatrix.saves+' réouvertures dans le moteur.':'Rejouer la matrice du Barde pur.',
@@ -303,7 +307,8 @@ const bardeProgress={name:'Barde',checks:[
   detail:'Précision, PM des chants, Grâce féline en DEF et INIT, Dentelles avec et sans armure, cumul d’Éclectique.',
   proof:'barde-source-n1.json'},
  {name:'Effets conditionnels et mise en jeu',status:'A_VERIFIER',
-  detail:'Vérifier la Feinte, les chants en jeu et le bonus de Grâce féline aux tests de danse, mime et jonglerie.'},
+  detail:bardeCombatCurrent?'Feinte, chants et affichage de Grâce féline vérifiés sur Chrome mobile. La projection du bonus de Grâce féline dans le moteur reste ouverte.':'Vérifier la Feinte, les chants et Grâce féline en jeu.',
+  ...(bardeCombatCurrent?{proof:'barde-combat-chrome.json'}:{})},
  {name:'Création et réouverture dans Chrome',status:bardeChromeCurrent?'ACQUIS':'A_VERIFIER',detail:bardeChromeCurrent?'Huit peuples, cinq voies et rangs 2 acquis. Sauvegarde et réouverture vérifiées au clic.':'Rejouer les voies et les peuples au clic.',proof:'barde-choices-chrome.json'},
  {name:'Fiche PDF officielle',status:bardePdfCurrent?'ACQUIS':'A_VERIFIER',detail:bardePdfCurrent?'Dix exports contrôlés sur le formulaire officiel, avec les cinq voies, les champs chiffrés, les rangs cochés et les annexes.':'Contrôler l’export des cinq voies et leurs résumés.',proof:'barde-official-pdf.json'}
 ]};

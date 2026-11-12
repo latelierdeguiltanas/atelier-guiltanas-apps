@@ -231,6 +231,75 @@ function tourDeForceHtml(a){
  const die=evolvingDie();
  return `<div class="ability-actions"><label>Résultat du d${die} <input data-tour-de-force-roll type="number" inputmode="numeric" min="1" max="${die}" step="1"></label><button type="button" class="mini-button primary" data-tour-de-force="${esc(a.id)}">Déduire les PV</button></div>`;
 }
+function bardeAbility(a){
+ const path=slug(a.path),name=slug(a.name),rank=Number(a.rank);
+ if(path==='voie-de-l-escrime'&&rank===2&&/^feinte(?:-l)?$/.test(name))return'feinte';
+ if(path==='voie-du-musicien'&&rank===1&&/^chant-des-heros(?:-l)?$/.test(name))return'heros';
+ if(path==='voie-du-musicien'&&rank===2&&/^chant-de-reconfort(?:-l)?$/.test(name))return'reconfort';
+ return'';
+}
+function ownedPathRank(path){
+ return Math.max(0,...ownedAbilities().filter(a=>slug(a.path)===path).map(a=>Number(a.rank)||0));
+}
+function bardePlayHtml(a){
+ const kind=bardeAbility(a);
+ if(!kind)return'';
+ const key=esc(a.id),button=(command,label)=>`<button type="button" class="mini-button primary" data-barde-use="${key}" data-barde-command="${command}">${label}</button>`;
+ let controls='';
+ if(kind==='feinte'){
+  const f=S.feinte;
+  controls=f?`<p>${esc(f.target)} · ${f.ready?'Première attaque au contact de ce round : '+signed(f.bonus)+' à l’attaque'+(f.won?' et +2d'+evolvingDie()+' DM si elle touche.':'.'):'Effet au round suivant.'}</p>
+    ${f.ready?button('consume','Marquer la première attaque effectuée'):button('next','Passer au round suivant')}
+    ${button('end','Abandonner la feinte')}`:
+   `<label>Adversaire <input data-barde-target maxlength="80"></label>
+    <label><input type="checkbox" data-barde-won> Test opposé de CHA contre PER réussi</label>
+    ${button('start','Préparer la feinte')}`;
+ }else if(kind==='heros'){
+  const h=S.chantDesHeros;
+  controls=h?`<p>Bonus ${signed(h.bonus)} à tous les tests du barde et des alliés à portée de voix. Durée initiale : ${h.minutes} min en jeu. Fredonne pendant l’effet.</p>${button('end','Terminer le chant')}`:
+   button('start','Lancer le chant · 1 PM');
+ }else{
+  controls=S.chantDeReconfort?`<p>Termine les 30 min de récupération rapide en chantant. Les alliés à 10 m ou moins reçoivent aussi les soins.</p>
+   <label>Total des soins du barde <input type="number" inputmode="numeric" min="1" step="1" data-barde-heal></label>
+   ${button('heal','Appliquer les soins après les 30 min')}${button('end','Interrompre le chant')}`:
+   button('start','Commencer la récupération · 2 PM');
+ }
+ return `<div class="ability-actions">${controls}<p role="status" data-barde-result></p></div>`;
+}
+function resolveBarde(button){
+ const a=ownedAbilities().find(a=>a.id===button.dataset.bardeUse),kind=a&&bardeAbility(a);
+ if(!kind)return;
+ const cmd=button.dataset.bardeCommand,card=button.closest('.ability'),result=card.querySelector('[data-barde-result]');
+ if(kind==='feinte'){
+  if(cmd==='start'&&!S.feinte){
+   const target=card.querySelector('[data-barde-target]').value.trim();
+   if(!target){result.textContent='Indique l’adversaire visé.';return}
+   S.feinte={target,won:card.querySelector('[data-barde-won]').checked,bonus:2*ownedPathRank('voie-de-l-escrime'),ready:false};
+  }
+  if(cmd==='next'&&S.feinte)S.feinte.ready=true;
+  if(cmd==='consume'||cmd==='end')delete S.feinte;
+ }else{
+  const stateKey=kind==='heros'?'chantDesHeros':'chantDeReconfort';
+  if(cmd==='start'&&!S[stateKey]){
+   const cost=kind==='heros'?1:2;
+   if(rageActive()){result.textContent='La rage interdit de lancer un sort.';return}
+   if(S.pm<cost){result.textContent='Mana insuffisant : '+cost+' PM requis.';return}
+   const minutes=Number(D.stats.CHA)||0;
+   if(kind==='heros'&&minutes<=0){result.textContent='Le chant ne dure que si le CHA est positif.';return}
+   S.pm-=cost;
+   S[stateKey]=kind==='heros'?{minutes,bonus:ownedPathRank('voie-du-musicien')>=5?2:1}:true;
+  }
+  if(cmd==='heal'&&S[stateKey]){
+   const heal=Number(card.querySelector('[data-barde-heal]').value);
+   const dice=ownedPathRank('voie-du-musicien')>=4?2:1;
+   if(!Number.isInteger(heal)||heal<dice||heal>dice*evolvingDie()){result.textContent='Entre le total de '+dice+'d'+evolvingDie()+'.';return}
+   S.hp=Math.min(max.hp,S.hp+heal);
+   delete S[stateKey];
+  }
+  if(cmd==='end')delete S[stateKey];
+ }
+ updateAfterAction();
+}
 function usage(a){if(isRage(a))return{scope:'day',max:rageMax(),label:'Rage/jour'};if(isDefyDeath(a)||isWarCry(a))return{scope:'combat',max:1,label:'1 fois/combat'};if(a.manualUsage!=null)return{scope:'day',max:a.manualUsage,label:a.manualUsage+' utilisations'};if(id==='vivelame'&&a.path?.includes('explosif')&&a.rank>=2){const rank=Math.max(...(D.paths||[]).filter(p=>p.pathId?.includes('voie-des-explosifs')).flatMap(p=>p.ranks.filter(r=>r.owned).map(r=>r.rank)),2);return{scope:'day',max:rank,label:rank+' charges/jour',pool:'charges-explosives'}}const text=((a.name||'')+' '+(a.text||'')).toLowerCase();if(/une fois par (jour|journée) par rang/.test(text))return{scope:'day',max:Number(a.rank)||1,label:(Number(a.rank)||1)+' fois/jour'};if(/une fois par (jour|journée)|1 fois par (jour|journée)/.test(text))return{scope:'day',max:1,label:'1 fois/jour'};if(/une fois par combat|1 fois par combat/.test(text))return{scope:'combat',max:1,label:'1 fois/combat'};const m=text.match(/(\d+) fois par (jour|journée|combat)/);if(m)return{scope:m[2]==='combat'?'combat':'day',max:Number(m[1]),label:m[1]+' fois/'+(m[2]==='combat'?'combat':'jour')};return null}
 function usageKey(a){return usage(a)?.pool||a.id}
 function resourceCost(a){if(a.manualCost>0)return{kind:'pm',amount:a.manualCost,label:a.manualCost+' PM'};const text=(a.text||'');const pm=text.match(/(?:pour|coûte|dépense|dépenser)\s+(\d+)\s*PM/i);const pc=text.match(/(?:pour|coûte|dépense|dépenser)\s+(\d+)\s*(?:PC|points? de chance)/i);const dr=text.match(/(?:pour|coûte|dépense|dépenser)\s+(\d+)\s*DR/i);if(pm)return{kind:'pm',amount:+pm[1],label:pm[1]+' PM'};if(pc)return{kind:'pc',amount:+pc[1],label:pc[1]+' PC'};if(dr)return{kind:'dr',amount:+dr[1],label:dr[1]+' DR'};if(/\*/.test(a.name||''))return{kind:'pm',amount:Number(a.rank)||1,label:(Number(a.rank)||1)+' PM (rang du sort)'};return null}
@@ -271,7 +340,7 @@ function fullResourcesHtml(){S.hp=clamp(S.hp,0,max.hp);S.pc=clamp(S.pc,0,max.pc)
 function renderResources(){const full=fullResourcesHtml();$('#resources').innerHTML=sheetView==='complete'?full:`<div class="resource"><small>Points de vie</small><div class="counter"><button data-count="hp" data-delta="-1" aria-label="Retirer un point de vie">−</button><b>${S.hp}/${max.hp}</b><button data-count="hp" data-delta="1" aria-label="Ajouter un point de vie">+</button></div></div><div class="resource"><small>Défense</small><b>${esc(finalValue('def'))}</b></div><div class="resource"><small>Vitesse</small><b>${movement().meters} m</b></div><button class="resource resource-more" data-ui-modal="resources">Mana, chance<br>et récupération →</button>`;save();if(infoDialog.open&&uiTopic==='resources')drawInfo()}
 
 function attackHtml(a){const ammo=a.ammo||a.magazine;return`<article class="attack"><div class="attack-head"><h3>${esc(a.name)} · ${signed(a.attack)}</h3><span class="tag">${esc(a.type)}</span></div><p><b>${esc(a.damage)}${rageDamage(a.type)} DM</b> · ${esc(a.range||'—')} ${rageRestriction(a.type)}${a.damageType?' · '+esc(a.damageType):''}${a.special?' · '+esc(a.special):''}</p>${ammo?`<div class="ability-actions"><span class="tag">Munitions ${Number(S.ammo[a.id]??ammo.current??ammo.capacity)}/${esc(ammo.capacity)}</span><button class="mini-button" data-ammo="${esc(a.id)}" data-ammo-delta="-1">Tirer</button><button class="mini-button" data-ammo="${esc(a.id)}" data-ammo-delta="1">Recharger</button></div>`:''}</article>`}
-function abilityHtml(a){const type=actionType(a),u=usage(a),cost=resourceCost(a),used=Number(S.uses[usageKey(a)])||0,remaining=u?Math.max(0,u.max-used):null;return`<article class="ability"><div class="ability-head"><div><span class="tag action">${type}</span> <span class="tag">Rang ${a.rank}</span></div>${u?`<span class="tag ${remaining===0?'used':''}">${remaining}/${u.max} disponible</span>`:''}</div><h3>${esc(a.name)}</h3><p><b>${esc(a.path)}</b></p><p>${esc(a.text)}</p>${a.source?`<small class="source">${esc(a.source.edition||a.source.document||'Source')} · p. ${esc(a.source.printedPage||'—')}${a.source.bookId==='cof1-compagnon-2017'?' · adaptation vers COF2':''}</small>`:''}${!isDefyDeath(a)&&!isWarCry(a)&&!isRage(a)&&(u||cost)?`<div class="ability-actions">${u?`<button class="mini-button primary" data-use="${a.id}" ${remaining===0?'disabled':''}>Utiliser</button><button class="mini-button" data-refund="${a.id}" ${used===0?'disabled':''}>Annuler</button>`:cost?`<button class="mini-button primary" data-spend="${a.id}">Dépenser ${cost.label}</button>`:''}${cost?`<span class="tag">Coût : ${cost.label}</span>`:''}</div>`:''}${tourDeForceHtml(a)}${barbareCombatHtml(a)}${isDefyDeath(a)?'<p role="status" data-barbare-outcome></p>':''}</article>`}
+function abilityHtml(a){const type=actionType(a),u=usage(a),cost=resourceCost(a),used=Number(S.uses[usageKey(a)])||0,remaining=u?Math.max(0,u.max-used):null;return`<article class="ability"><div class="ability-head"><div><span class="tag action">${type}</span> <span class="tag">Rang ${a.rank}</span></div>${u?`<span class="tag ${remaining===0?'used':''}">${remaining}/${u.max} disponible</span>`:''}</div><h3>${esc(a.name)}</h3><p><b>${esc(a.path)}</b></p><p>${esc(a.text)}</p>${a.source?`<small class="source">${esc(a.source.edition||a.source.document||'Source')} · p. ${esc(a.source.printedPage||'—')}${a.source.bookId==='cof1-compagnon-2017'?' · adaptation vers COF2':''}</small>`:''}${!bardeAbility(a)&&!isDefyDeath(a)&&!isWarCry(a)&&!isRage(a)&&(u||cost)?`<div class="ability-actions">${u?`<button class="mini-button primary" data-use="${a.id}" ${remaining===0?'disabled':''}>Utiliser</button><button class="mini-button" data-refund="${a.id}" ${used===0?'disabled':''}>Annuler</button>`:cost?`<button class="mini-button primary" data-spend="${a.id}">Dépenser ${cost.label}</button>`:''}${cost?`<span class="tag">Coût : ${cost.label}</span>`:''}</div>`:''}${tourDeForceHtml(a)}${barbareCombatHtml(a)}${bardePlayHtml(a)}${isDefyDeath(a)?'<p role="status" data-barbare-outcome></p>':''}</article>`}
 function manaGuide(compact=false){if(max.pm<1)return'';return`<article class="mana-guide ${compact?'compact':''}"><div class="mana-title"><div><small>AIDE DU LANCEUR DE SORTS</small><h3>Mana : ${S.pm}/${max.pm} PM</h3></div><span class="tag mana-tag">${esc(D.profile||'Magie')}</span></div><div class="mana-steps"><p><b>1 · Lancer</b><span>Le coût normal d’un sort est égal à son rang. Retire ces PM après le lancement.</span></p><p><b>2 · Économiser</b><span>Un sort noté (A) peut devenir une action limitée (L) pour coûter 2 PM de moins.</span></p><p><b>3 · À court de mana</b><span>Brûlure : chaque PM manquant inflige ${esc(D.combat.recoveryDie)} DM, sans réduction. Impossible pour un sort de soin.</span></p><p><b>4 · Récupérer</b><span>La récupération rapide ne rend pas de PM. Une récupération complète de 8 h les remet au maximum, au plus une fois par jour.</span></p></div>${compact?'':`<div class="ability-actions"><button class="mini-button" data-page-jump="rest">Ouvrir la récupération</button></div>`}</article>`}
 function petoireStock(){const raw=S.ammo?.['petoire-stock'];if(raw==null||raw==='')return null;const n=Number(raw);return Number.isFinite(n)?clamp(Math.floor(n),0,999):null}
 function petoireCounter(){if(id!=='vivelame')return'';const n=petoireStock(),loaded=S.ammo?.['petoire-loaded'];return `<article class="card"><h3>Pétoire : ${loaded===true?'chargée · 1 tir prêt':loaded===false?'déchargée':'état à renseigner'}</h3><p>Après chaque tir, recharge avec une action limitée (L). Impossible de recharger avec un adversaire actif au contact. Le pistolero permet de tirer au contact, pas d’y recharger.</p><div class="ability-actions"><button class="mini-button primary" data-petoire-fire="true" ${loaded!==true||n===0?'disabled':''}>Tirer · arme déchargée ensuite</button><button class="mini-button" data-petoire-load="true" ${loaded===true?'disabled':''}>${loaded==null?'Marquer déjà chargée / recharger (L)':'Recharger (L)'}</button><button class="mini-button" data-petoire-empty="true" ${loaded===false?'disabled':''}>Corriger : déchargée</button></div><p>Règles COF2 : aucun quota de tirs par jour. Les munitions ordinaires ne sont normalement pas décomptées.</p><details><summary>Stock de munitions facultatif${n==null?' · non suivi':' · '+n+' restantes'}</summary><p>À utiliser seulement si le MJ fait suivre la réserve. Le livre indique 20 à 50 projectiles comme réserve usuelle en cas de suivi exceptionnel, sans imposer un stock initial. Le total inclut la munition chargée ; seul Tirer retire une munition.</p><label>Stock restant <input id="petoire-stock-value" type="number" min="0" max="999" step="1" value="${n??''}" inputmode="numeric"></label> <button class="mini-button" data-petoire-set="true">Enregistrer le stock</button><button class="mini-button" data-petoire-untrack="true">Ne pas suivre le stock</button></details><p><small>Livre de base, p. 185 et 187 ; artilleur rang 2, p. 63. Pas de chargeur à répétition acquis. Sauvegarde sur cet appareil. Les actions restent à gérer à la table.</small></p></article>`}
@@ -289,7 +358,7 @@ function actionBonuses(){
    // Keep the whole sentence: equipment, target and situational restrictions matter.
    if(/^Ce (?:bonus|dé)|^Cette capacité|^Il (?:doit|ne peut)/i.test(sentences[index+1]||''))sentence+=' '+sentences[index+1];
    const resolved=rank?sentence.replace(/(?:son|le) rang\s*\+\s*2/gi,`${rank+2} (rang ${rank} + 2)`):sentence;
-   const actions=[[/baratin/i,'Baratin'],[/sédu|séduction/i,'Séduction'],[/persuasion|convain/i,'Persuasion'],[/négoci/i,'Marchandage'],[/crochet/i,'Crochetage'],[/désamorc|piège/i,'Pièges'],[/pickpocket/i,'Pickpocket'],[/évaluer/i,'Estimation'],[/discr[ée]tion/i,'Discrétion'],[/déguis/i,'Déguisement'],[/cacher une arme/i,'Dissimulation'],[/intimid/i,'Intimidation'],[/esquive|déplacement|saut|course|équilibre|escalade/i,'Déplacements'],[/poison|toxine/i,'Poisons'],[/recherche|indice|preuve|déduction|aveu/i,'Enquête'],[/initiative/i,'Initiative'],[/tests? de CHA/i,'Tests de CHA'],[/tests? d’AGI/i,'Tests d’AGI']].filter(([pattern])=>pattern.test(sentence)).map(([,label])=>label);
+   const actions=[[/baratin/i,'Baratin'],[/sédu|séduction/i,'Séduction'],[/persuasion|convain/i,'Persuasion'],[/négoci/i,'Marchandage'],[/crochet/i,'Crochetage'],[/désamorc|piège/i,'Pièges'],[/pickpocket/i,'Pickpocket'],[/évaluer/i,'Estimation'],[/discr[ée]tion/i,'Discrétion'],[/déguis/i,'Déguisement'],[/cacher une arme/i,'Dissimulation'],[/intimid/i,'Intimidation'],[/esquive|déplacement|saut|course|équilibre|escalade/i,'Déplacements'],[/poison|toxine/i,'Poisons'],[/recherche|indice|preuve|déduction|aveu/i,'Enquête'],[/danse|jonglerie|mime/i,'Danse, mime et jonglerie'],[/initiative/i,'Initiative'],[/tests? de CHA/i,'Tests de CHA'],[/tests? d’AGI/i,'Tests d’AGI']].filter(([pattern])=>pattern.test(sentence)).map(([,label])=>label);
    rows.push({text:resolved,source,label:actions.join(' · ')||'Tests et actions'});
   });
  }
@@ -330,7 +399,7 @@ document.addEventListener('click',async event=>{const t=event.target.closest('bu
 document.addEventListener('change',async event=>{const field=event.target.dataset.itemField,profileKey=event.target.dataset.equipmentProfile!==undefined?event.target.value:'',weaponBonus=event.target.dataset.weaponBonus;if(!field&&!profileKey&&!weaponBonus)return;const holder=event.target.closest('[data-item]'),item=S.inventory.find(x=>x.id===holder?.dataset.item);if(!item)return;if(profileKey){const profile=EQUIPMENT_PROFILES[profileKey]||EQUIPMENT_PROFILES.none;item.equipment=JSON.parse(JSON.stringify(profile.equipment));if(profile.category)item.category=profile.category;if(profile.base)item.base=profile.base;if(profileKey==='none')item.equipped=false}else if(weaponBonus){const value=Number(event.target.value)||0;(item.equipment?.weapon?.modes||[]).forEach(mode=>mode[weaponBonus]=value)}else{item[field]=['quantity','charges','chargesMax'].includes(field)?Math.max(0,Number(event.target.value)||0):event.target.value;if(field==='chargesMax')item.charges=Math.min(item.charges,item.chargesMax);if(field==='charges')item.charges=item.chargesMax?Math.min(item.charges,item.chargesMax):item.charges}save();renderAll();await apiItem(item);toast(profileKey?'Profil d’équipement appliqué.':weaponBonus?'Bonus de l’arme appliqué.':'Objet mis à jour.');});
 function openMedia(url,title){const modal=document.createElement('div');modal.className='media-modal';modal.innerHTML=`<header><b>${esc(title)}</b><button aria-label="Fermer">×</button></header><div class="media-stage"><img src="${esc(url)}" alt="${esc(title)}"></div><p>Pince avec deux doigts ou utilise la molette pour zoomer.</p>`;document.body.appendChild(modal);const img=modal.querySelector('img'),stage=modal.querySelector('.media-stage');let scale=1;stage.addEventListener('wheel',e=>{e.preventDefault();scale=clamp(scale+(e.deltaY<0?.2:-.2),1,5);img.style.transform=`scale(${scale})`},{passive:false});modal.querySelector('button').onclick=()=>modal.remove()}
 let companionSaveTimer=null;document.addEventListener('input',event=>{if(event.target.id!=='companion-name'||id!=='faelar')return;S.companion.name=event.target.value.slice(0,80);save();clearTimeout(companionSaveTimer);companionSaveTimer=setTimeout(()=>apiCompanion(),500)});
-document.addEventListener('click',async event=>{const t=event.target.closest('button');if(!t)return;if(t.dataset.rageCommand){resolveRage(t);return}if(t.hasAttribute('data-war-cry-add')){
+document.addEventListener('click',async event=>{const t=event.target.closest('button');if(!t)return;if(t.dataset.bardeUse){resolveBarde(t);return}if(t.dataset.rageCommand){resolveRage(t);return}if(t.hasAttribute('data-war-cry-add')){
  t.closest('.ability').querySelector('[data-war-cry-targets]').insertAdjacentHTML('beforeend',warCryTargetHtml());
  return
 }if(t.dataset.barbareCombat){resolveBarbareCombat(t);return}if(t.dataset.tourDeForce){
@@ -353,7 +422,7 @@ document.addEventListener('click',async event=>{const t=event.target.closest('bu
   if(chosen!==value)toast('Tatouages : Étourdi devient Ralenti.');
  }
  return;
-}if(t.dataset.removeCondition){S.conditions=S.conditions.filter(x=>x!==t.dataset.removeCondition);save();renderPlay();if(infoDialog.open&&uiTopic==='states')drawInfo();return}if(t.id==='spend-dr'&&S.dr>0){S.dr--;toast('Dé de récupération dépensé. Ajuste les PV après ton lancer.');updateAfterAction();return}if(t.dataset.reset){delete S.warCryTargets;delete S.berserk;ownedAbilities().forEach(a=>{const u=usage(a);if(u&&(t.dataset.reset==='day'||u.scope==='combat'))S.uses[usageKey(a)]=0});if(t.dataset.reset==='day')S.pm=max.pm;toast(t.dataset.reset==='day'?(max.pm>0?'Récupération complète : mana et capacités restaurés.':'Capacités quotidiennes réactivées.'):'Capacités de combat réactivées.');updateAfterAction()}});
+}if(t.dataset.removeCondition){S.conditions=S.conditions.filter(x=>x!==t.dataset.removeCondition);save();renderPlay();if(infoDialog.open&&uiTopic==='states')drawInfo();return}if(t.id==='spend-dr'&&S.dr>0){S.dr--;toast('Dé de récupération dépensé. Ajuste les PV après ton lancer.');updateAfterAction();return}if(t.dataset.reset){delete S.feinte;if(t.dataset.reset==='day'){delete S.chantDesHeros;delete S.chantDeReconfort}delete S.warCryTargets;delete S.berserk;ownedAbilities().forEach(a=>{const u=usage(a);if(u&&(t.dataset.reset==='day'||u.scope==='combat'))S.uses[usageKey(a)]=0});if(t.dataset.reset==='day')S.pm=max.pm;toast(t.dataset.reset==='day'?(max.pm>0?'Récupération complète : mana et capacités restaurés.':'Capacités quotidiennes réactivées.'):'Capacités de combat réactivées.');updateAfterAction()}});
 document.addEventListener('input',event=>{const map={player:'player',ideal:'ideal',flaw:'flaw','notes-text':'notes'};if(map[event.target.id]){S[map[event.target.id]]=event.target.value;save()}});
 
 let sharedResource=null,resourcePending=0,resourceChain=Promise.resolve(),sessionData=null,initializingResource=false;
