@@ -288,6 +288,13 @@ const bardeMatrixCurrent=bardeMatrix?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERT
 const bardeSource=optionalProof('barde-source-n1.json');
 const bardeNumericsCurrent=bardeSource?.indexSha256===productHash('index.html')&&bardeSource.checks?.length===6&&
  bardeSource.checks.slice(0,5).every(c=>c.status==='PASS');
+const bardeChrome=optionalProof('barde-choices-chrome.json');
+const bardeChromeCurrent=bardeChrome?.status==='PASS'&&bardeChrome.indexSha256===productHash('index.html')&&
+ bardeChrome.testSha256===productHash('FINAL_FREEZE_TESTS/n1_barde_choices_click.cjs')&&bardeChrome.passed===8&&
+ new Set(bardeChrome.cases.filter(c=>c.status==='PASS').map(c=>c.people)).size===8;
+const bardePdf=optionalProof('barde-official-pdf.json');
+const bardePdfCurrent=bardePdf?.status==='PASS'&&bardePdf.indexSha256===productHash('index.html')&&
+ bardePdf.exports?.length===10&&bardePdf.exports.every(c=>c.status==='PASS');
 const bardeProgress={name:'Barde',checks:[
  {name:'Créations et réouvertures',status:bardeMatrixCurrent?'ACQUIS':'A_VERIFIER',
   detail:bardeMatrixCurrent?bardeMatrix.pass+' créations et '+bardeMatrix.saves+' réouvertures dans le moteur.':'Rejouer la matrice du Barde pur.',
@@ -297,8 +304,8 @@ const bardeProgress={name:'Barde',checks:[
   proof:'barde-source-n1.json'},
  {name:'Effets conditionnels et mise en jeu',status:'A_VERIFIER',
   detail:'Vérifier la Feinte, les chants en jeu et le bonus de Grâce féline aux tests de danse, mime et jonglerie.'},
- {name:'Création et réouverture dans Chrome',status:'A_VERIFIER',detail:'Rejouer les voies, les peuples et les équipements par les contrôles de Forge.'},
- {name:'Fiche PDF officielle',status:'A_VERIFIER',detail:'Contrôler l’export des cinq voies et leurs résumés.'}
+ {name:'Création et réouverture dans Chrome',status:bardeChromeCurrent?'ACQUIS':'A_VERIFIER',detail:bardeChromeCurrent?'Huit peuples, cinq voies et rangs 2 acquis. Sauvegarde et réouverture vérifiées au clic.':'Rejouer les voies et les peuples au clic.',proof:'barde-choices-chrome.json'},
+ {name:'Fiche PDF officielle',status:bardePdfCurrent?'ACQUIS':'A_VERIFIER',detail:bardePdfCurrent?'Dix exports contrôlés sur le formulaire officiel, avec les cinq voies, les champs chiffrés, les rangs cochés et les annexes.':'Contrôler l’export des cinq voies et leurs résumés.',proof:'barde-official-pdf.json'}
 ]};
 bardeProgress.total=bardeProgress.checks.length;
 bardeProgress.passed=bardeProgress.checks.filter(c=>c.status==='ACQUIS').length;

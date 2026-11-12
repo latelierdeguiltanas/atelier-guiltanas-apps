@@ -6,7 +6,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const {load,standardState}=require('./forge_product_runner');
 const root=path.resolve(__dirname,'..');
-const {db,engine,html}=load(path.join(root,'index.html'));
+const {db,engine,html}=load(process.env.FOH_BARDE_INDEX||path.join(root,'index.html'));
 const profile='class:barde:cof2-lb-2024';
 const pathId=name=>'classpath:voie-'+name+':class-barde:cof2-lb-2024';
 const armor=db.tables.armors.find(a=>/cuir simple/i.test(a.label||a.name)).id;
@@ -77,5 +77,5 @@ const report={status:checks.every(c=>c.status==='PASS')?'PASS':'PARTIEL',source:
  indexSha256:createHash('sha256').update(html).digest('hex'),
  scope:'Cinq voies de Barde pur N1, rangs 1–2 sur un Humain mûr. Valeurs attendues issues du livre. Combat et export vérifiés séparément.',
  checks};
-fs.writeFileSync(path.join(root,'QA/N1/barde-source-n1.json'),JSON.stringify(report,null,2)+'\n');
+fs.writeFileSync(process.env.FOH_BARDE_REPORT||path.join(root,'QA/N1/barde-source-n1.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report,null,2));

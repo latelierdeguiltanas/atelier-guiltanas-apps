@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "3358aa4fcbd516287f051f3707f8fdf59ac7544b8a69ebc1c072e9244c01e4cd",
   "certificationBasis": "Une seule Forge: seules les preuves attachées à index.html et à son SHA actuel comptent; les anciennes références au maître supprimé sont archivées.",
-  "generatedAt": "2026-11-11T21:18:10.885Z",
+  "generatedAt": "2026-11-12T06:07:02.007Z",
   "engineSha256": "1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd",
   "databaseSha256": "d0955396d6df4ea3e28ead0f8338ffec02ab6c1336f3260ff370f326fe992d88",
   "peoplesEvidenceCurrent": true,
@@ -24,7 +24,7 @@
     "current": {
       "name": "Barde",
       "position": 3,
-      "percent": 20,
+      "percent": 60,
       "certified": false
     },
     "next": {
@@ -51,7 +51,7 @@
         "name": "Barde",
         "position": 3,
         "status": "EN_COURS",
-        "percent": 20,
+        "percent": 60,
         "certified": false
       },
       {
@@ -154,18 +154,20 @@
         },
         {
           "name": "Création et réouverture dans Chrome",
-          "status": "A_VERIFIER",
-          "detail": "Rejouer les voies, les peuples et les équipements par les contrôles de Forge."
+          "status": "ACQUIS",
+          "detail": "Huit peuples, cinq voies et rangs 2 acquis. Sauvegarde et réouverture vérifiées au clic.",
+          "proof": "barde-choices-chrome.json"
         },
         {
           "name": "Fiche PDF officielle",
-          "status": "A_VERIFIER",
-          "detail": "Contrôler l’export des cinq voies et leurs résumés."
+          "status": "ACQUIS",
+          "detail": "Dix exports contrôlés sur le formulaire officiel, avec les cinq voies, les champs chiffrés, les rangs cochés et les annexes.",
+          "proof": "barde-official-pdf.json"
         }
       ],
       "total": 5,
-      "passed": 1,
-      "percent": 20
+      "passed": 3,
+      "percent": 60
     },
     "archivedProfiles": [
       {
