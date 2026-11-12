@@ -331,8 +331,35 @@ bardeProgress.percent=Math.round(100*bardeProgress.passed/bardeProgress.total);
 const bardeIndex=barbareIndex+1;
 const bardeComplete=barbareComplete&&bardeProgress.passed===bardeProgress.total;
 bardeProgress.completed=bardeComplete;
-const priorityIndex=barbareComplete?bardeIndex:profileComplete?barbareIndex:activeIndex;
-const priorityProgress=barbareComplete?bardeProgress:profileComplete?barbareProgress:null;
+const chevalierMatrix=optionalProof('pure-profile-fast-chevalier.json');
+const chevalierMatrixCurrent=chevalierMatrix?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&chevalierMatrix.profile==='Chevalier'&&
+ chevalierMatrix.pass===4250&&chevalierMatrix.failed===0&&chevalierMatrix.rejected===0&&
+ chevalierMatrix.sourceHashes?.some(x=>x.file==='index.html'&&x.htmlSha256===canonicalHash);
+const chevalierPdf=optionalProof('chevalier-official-pdf.json');
+const chevalierPdfCurrent=chevalierPdf?.status==='PASS'&&chevalierPdf.indexSha256===canonicalHash&&
+ chevalierPdf.exports?.length===10&&chevalierPdf.exports.every(c=>c.status==='PASS');
+const chevalierChrome=optionalProof('chevalier-choices-chrome.json');
+const chevalierChromeCurrent=chevalierChrome?.status==='PASS'&&chevalierChrome.indexSha256===canonicalHash&&chevalierChrome.passed===8&&
+ chevalierChrome.testSha256===productHash('FINAL_FREEZE_TESTS/n1_chevalier_choices_click.cjs')&&
+ new Set(chevalierChrome.cases.filter(c=>c.status==='PASS').map(c=>c.people)).size===8;
+const chevalierProgress={name:'Chevalier',checks:[
+ {name:'Créations et réouvertures',status:chevalierMatrixCurrent?'ACQUIS':'A_VERIFIER',
+  detail:chevalierMatrixCurrent?chevalierMatrix.pass+' créations et '+chevalierMatrix.saves+' réouvertures. Épée courte sans lance de cavalerie pour le Halfelin avec accord du MJ.':'Rejouer les paires de voies, les âges et les équipements légaux des huit peuples.',
+  proof:'pure-profile-fast-chevalier.json'},
+ {name:'Calculs principaux des cinq voies',status:'A_VERIFIER',detail:'Vérifier les projections de monture, armure, réduction de dégâts, protection et langue.'},
+ {name:'Effets conditionnels et mise en jeu',status:'A_VERIFIER',detail:'Vérifier notamment les transitions monté/à pied, la réaction d’Intercepter et le report des dégâts.'},
+ {name:'Création et réouverture dans Chrome',status:chevalierChromeCurrent?'ACQUIS':'A_VERIFIER',
+  detail:chevalierChromeCurrent?'Huit peuples, choix d’Éduqué, équipement halfelin et réouverture contrôlés au clic.':'Rejouer un scénario de rang 2 par peuple, avec choix de langue et équipement.',
+  proof:'chevalier-choices-chrome.json'},
+ {name:'Fiche PDF officielle',status:chevalierPdfCurrent?'ACQUIS':'A_VERIFIER',
+  detail:chevalierPdfCurrent?'Dix exports sur le formulaire officiel, cinq voies, champs chiffrés, rangs cochés et annexes.':'Contrôler les cinq voies et les annexes.',
+  proof:'chevalier-official-pdf.json'}
+]};
+chevalierProgress.total=chevalierProgress.checks.length;
+chevalierProgress.passed=chevalierProgress.checks.filter(c=>c.status==='ACQUIS').length;
+chevalierProgress.percent=Math.round(100*chevalierProgress.passed/chevalierProgress.total);
+const priorityIndex=bardeComplete?bardeIndex+1:barbareComplete?bardeIndex:profileComplete?barbareIndex:activeIndex;
+const priorityProgress=bardeComplete?chevalierProgress:barbareComplete?bardeProgress:profileComplete?barbareProgress:null;
 const priorityPercent=priorityProgress?.percent??percent;
 const queue=profileOrder.map((name,i)=>{
  const certified=(i===activeIndex&&profileComplete)||(i===barbareIndex&&barbareComplete)||(i===bardeIndex&&bardeComplete);
@@ -353,11 +380,11 @@ const output={
  certificationPlan:{
   policy:'UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100',
   target:{officialProfiles:14,officialPeoples:8,allMustReachPercent:100},
-  current:{name:profileOrder[priorityIndex],position:priorityIndex+1,percent:priorityPercent,certified:bardeComplete},
-  next:{name:profileOrder[priorityIndex+1],unlocked:bardeComplete,condition:'profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF'},
+  current:{name:profileOrder[priorityIndex],position:priorityIndex+1,percent:priorityPercent,certified:false},
+  next:{name:profileOrder[priorityIndex+1],unlocked:false,condition:'profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF'},
   queue,
   priorityProgress,
-  archivedProfiles:barbareComplete?[barbareProgress]:[],
+  archivedProfiles:bardeComplete?[barbareProgress,bardeProgress]:barbareComplete?[barbareProgress]:[],
   peoplesProgressRule:'Chaque critère de peuple est validé par une preuve liée à la version courante. Les effets conditionnels, les équipements, les âges et historiques et le parcours avec PDF sont suivis séparément.',
   remainingPeoplesPolicy:'Après les 14 profils, fermer les critères raciaux manquants un peuple à la fois',
   fullOfficialN1Closed:false,
@@ -365,7 +392,7 @@ const output={
  },
  intent:'Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.',
  profile:{id:profile.profileId,name:'Arquebusier',priority:profileComplete?'CERTIFIE':'EN_COURS',completed:profileComplete,variantPrototypeReady:!!prototypeOK,variantIntegrated:!!deployed,passed:verified,total:profileChecks.length,percent:Math.round(100*verified/profileChecks.length),checks:profileChecks,paths:copyPaths,partialNumericValidated:numericPartial,
-  next:bardeComplete?'Barde N1 validé sur le périmètre du registre.':barbareComplete?'Barde N1 en cours.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
+  next:bardeComplete?'Chevalier N1 en cours.':barbareComplete?'Barde N1 en cours.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
  peoples,
  pausedProfiles:queue.filter(p=>p.status==='EN_ATTENTE').length,
  summary:{profilesCertified:queue.filter(p=>p.certified).length,profilesInProgress:queue.filter(p=>p.status==='EN_COURS').length,profilesPending:queue.filter(p=>p.status==='EN_ATTENTE').length,peoplesCertified:peoples.filter(p=>p.certified).length},

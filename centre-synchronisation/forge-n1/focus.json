@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "250274e9d2879bc9acde9043b56bb670de6c697a4c9bb8920c371e1393951759",
   "certificationBasis": "Preuves liées au produit canonique. La comparaison octet par octet confirme le correctif isolé de Grâce féline et préserve les preuves des profils hors Barde.",
-  "generatedAt": "2026-11-12T06:32:22.340Z",
+  "generatedAt": "2026-11-12T06:38:24.759Z",
   "engineSha256": "1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd",
   "databaseSha256": "645f2c7f1f5aac50b8574310c638e7284e4eb90acc103f68ae431b17cf72c23e",
   "peoplesEvidenceCurrent": true,
@@ -22,14 +22,14 @@
       "allMustReachPercent": 100
     },
     "current": {
-      "name": "Barde",
-      "position": 3,
-      "percent": 100,
-      "certified": true
+      "name": "Chevalier",
+      "position": 4,
+      "percent": 20,
+      "certified": false
     },
     "next": {
-      "name": "Chevalier",
-      "unlocked": true,
+      "name": "Druide",
+      "unlocked": false,
       "condition": "profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF"
     },
     "queue": [
@@ -57,8 +57,8 @@
       {
         "name": "Chevalier",
         "position": 4,
-        "status": "EN_ATTENTE",
-        "percent": null,
+        "status": "EN_COURS",
+        "percent": 20,
         "certified": false
       },
       {
@@ -133,43 +133,40 @@
       }
     ],
     "priorityProgress": {
-      "name": "Barde",
+      "name": "Chevalier",
       "checks": [
         {
           "name": "Créations et réouvertures",
-          "status": "ACQUIS",
-          "detail": "4250 créations et 326 réouvertures dans le moteur.",
-          "proof": "pure-profile-fast-barde.json"
+          "status": "A_VERIFIER",
+          "detail": "Rejouer les paires de voies, les âges et les équipements légaux des huit peuples.",
+          "proof": "pure-profile-fast-chevalier.json"
         },
         {
           "name": "Calculs principaux des cinq voies",
-          "status": "ACQUIS",
-          "detail": "Précision, PM des chants, Grâce féline en DEF et INIT, Dentelles avec et sans armure, cumul d’Éclectique.",
-          "proof": "barde-source-n1.json"
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les projections de monture, armure, réduction de dégâts, protection et langue."
         },
         {
           "name": "Effets conditionnels et mise en jeu",
-          "status": "ACQUIS",
-          "detail": "Feinte et chants validés au clic. Grâce féline est calculée dans le moteur et affichée sur la fiche.",
-          "proof": "barde-combat-chrome.json"
+          "status": "A_VERIFIER",
+          "detail": "Vérifier notamment les transitions monté/à pied, la réaction d’Intercepter et le report des dégâts."
         },
         {
           "name": "Création et réouverture dans Chrome",
-          "status": "ACQUIS",
-          "detail": "Huit peuples, cinq voies et rangs 2 acquis. Sauvegarde et réouverture vérifiées au clic.",
-          "proof": "barde-choices-chrome.json"
+          "status": "A_VERIFIER",
+          "detail": "Rejouer un scénario de rang 2 par peuple, avec choix de langue et équipement.",
+          "proof": "chevalier-choices-chrome.json"
         },
         {
           "name": "Fiche PDF officielle",
           "status": "ACQUIS",
-          "detail": "Dix exports contrôlés sur le formulaire officiel, avec les cinq voies, les champs chiffrés, les rangs cochés et les annexes.",
-          "proof": "barde-official-pdf.json"
+          "detail": "Dix exports sur le formulaire officiel, cinq voies, champs chiffrés, rangs cochés et annexes.",
+          "proof": "chevalier-official-pdf.json"
         }
       ],
       "total": 5,
-      "passed": 5,
-      "percent": 100,
-      "completed": true
+      "passed": 1,
+      "percent": 20
     },
     "archivedProfiles": [
       {
@@ -226,6 +223,45 @@
         ],
         "total": 8,
         "passed": 8,
+        "percent": 100,
+        "completed": true
+      },
+      {
+        "name": "Barde",
+        "checks": [
+          {
+            "name": "Créations et réouvertures",
+            "status": "ACQUIS",
+            "detail": "4250 créations et 326 réouvertures dans le moteur.",
+            "proof": "pure-profile-fast-barde.json"
+          },
+          {
+            "name": "Calculs principaux des cinq voies",
+            "status": "ACQUIS",
+            "detail": "Précision, PM des chants, Grâce féline en DEF et INIT, Dentelles avec et sans armure, cumul d’Éclectique.",
+            "proof": "barde-source-n1.json"
+          },
+          {
+            "name": "Effets conditionnels et mise en jeu",
+            "status": "ACQUIS",
+            "detail": "Feinte et chants validés au clic. Grâce féline est calculée dans le moteur et affichée sur la fiche.",
+            "proof": "barde-combat-chrome.json"
+          },
+          {
+            "name": "Création et réouverture dans Chrome",
+            "status": "ACQUIS",
+            "detail": "Huit peuples, cinq voies et rangs 2 acquis. Sauvegarde et réouverture vérifiées au clic.",
+            "proof": "barde-choices-chrome.json"
+          },
+          {
+            "name": "Fiche PDF officielle",
+            "status": "ACQUIS",
+            "detail": "Dix exports contrôlés sur le formulaire officiel, avec les cinq voies, les champs chiffrés, les rangs cochés et les annexes.",
+            "proof": "barde-official-pdf.json"
+          }
+        ],
+        "total": 5,
+        "passed": 5,
         "percent": 100,
         "completed": true
       }
@@ -482,7 +518,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Barde N1 validé sur le périmètre du registre."
+    "next": "Chevalier N1 en cours."
   },
   "peoples": [
     {
@@ -1070,11 +1106,11 @@
       "certified": false
     }
   ],
-  "pausedProfiles": 11,
+  "pausedProfiles": 10,
   "summary": {
     "profilesCertified": 3,
-    "profilesInProgress": 0,
-    "profilesPending": 11,
+    "profilesInProgress": 1,
+    "profilesPending": 10,
     "peoplesCertified": 0
   },
   "limitations": "Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.",
