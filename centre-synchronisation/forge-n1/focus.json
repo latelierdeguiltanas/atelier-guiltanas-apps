@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d",
   "certificationBasis": "Correctif ciblé sur les Baies magiques et Forêt vivante. Les preuves de création, de fiche et de peuples restent liées aux périmètres testés.",
-  "generatedAt": "2026-11-12T12:54:24.195Z",
+  "generatedAt": "2026-11-12T12:59:56.585Z",
   "engineSha256": "fd729a741a223d89887779e2fa253ea398f62c5d7f95eee0ce7d2fdf6a0be1ee",
   "databaseSha256": "645f2c7f1f5aac50b8574310c638e7284e4eb90acc103f68ae431b17cf72c23e",
   "peoplesEvidenceCurrent": true,
@@ -22,14 +22,14 @@
       "allMustReachPercent": 100
     },
     "current": {
-      "name": "Druide",
-      "position": 5,
-      "percent": 100,
-      "certified": true
+      "name": "Ensorceleur",
+      "position": 6,
+      "percent": 40,
+      "certified": false
     },
     "next": {
-      "name": "Ensorceleur",
-      "unlocked": true,
+      "name": "Forgesort",
+      "unlocked": false,
       "condition": "profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF"
     },
     "queue": [
@@ -71,8 +71,8 @@
       {
         "name": "Ensorceleur",
         "position": 6,
-        "status": "EN_ATTENTE",
-        "percent": null,
+        "status": "EN_COURS",
+        "percent": 40,
         "certified": false
       },
       {
@@ -133,49 +133,42 @@
       }
     ],
     "priorityProgress": {
-      "name": "Druide",
+      "name": "Ensorceleur",
       "checks": [
         {
           "name": "Créations et réouvertures",
-          "status": "ACQUIS",
-          "detail": "4250 créations et 326 réouvertures dans le moteur.",
-          "proof": "pure-profile-fast-druide.json"
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les créations des huit peuples et les dépenses d’âge du mage.",
+          "proof": "pure-profile-fast-ensorceleur.json"
         },
         {
-          "name": "Calculs principaux des cinq voies",
+          "name": "Bonus, actions et mana des cinq voies",
           "status": "ACQUIS",
-          "detail": "Bonus de tests, défense du familier visible, initiative, caractéristiques de la panthère et coût des sorts.",
-          "proof": "druide-source-n1.json"
+          "detail": "DEF, initiative, bonus de tests, coût des sorts, quota de Sommeil et concentration de Choc.",
+          "proof": "ensorceleur-source-n1.json"
         },
         {
-          "name": "Effets en jeu dans la fiche interactive",
-          "status": "ACQUIS",
-          "detail": "Baies par bénéficiaire, rituel quotidien, terrain difficile, Peau d’écorce et défense du compagnon visible. Compteurs vérifiés après réouverture.",
-          "proof": "druide-combat-chrome.json"
-        },
-        {
-          "name": "Règles des sorts dans le moteur partagé et effets restants",
-          "status": "ACQUIS",
-          "detail": "Baies et Forêt vivante vérifiées dans le moteur. Prison végétale et récupération nocturne vérifiées au clic dans la fiche.",
-          "proof": "druide-runtime-n1.json"
+          "name": "Effets des sorts en partie",
+          "status": "A_VERIFIER",
+          "detail": "Contrôler notamment la décharge au contact et l’attaque de Sous tension, l’évitement d’Image décalée, ainsi que les cibles et durées de Sommeil et Choc."
         },
         {
           "name": "Création et réouverture dans Chrome",
-          "status": "ACQUIS",
-          "detail": "Huit peuples, cinq voies et acquisition des rangs 2 au clic. Sauvegarde et réouverture contrôlées.",
-          "proof": "druide-choices-chrome.json"
+          "status": "A_VERIFIER",
+          "detail": "Rejouer les choix du mage, l’âge Mûr et le Don étrange du Gnome.",
+          "proof": "ensorceleur-choices-chrome.json"
         },
         {
           "name": "Fiche PDF officielle",
           "status": "ACQUIS",
-          "detail": "Dix exports, champs chiffrés, rangs cochés et annexes sur les cinq voies.",
-          "proof": "druide-official-pdf.json"
+          "detail": "Dix exports, rangs 1 et 2, champs chiffrés et annexes des cinq voies.",
+          "proof": "ensorceleur-official-pdf.json"
         }
       ],
-      "total": 6,
-      "passed": 6,
-      "percent": 100,
-      "completed": true
+      "total": 5,
+      "passed": 2,
+      "percent": 40,
+      "completed": false
     },
     "archivedProfiles": [
       {
@@ -310,6 +303,51 @@
         ],
         "total": 5,
         "passed": 5,
+        "percent": 100,
+        "completed": true
+      },
+      {
+        "name": "Druide",
+        "checks": [
+          {
+            "name": "Créations et réouvertures",
+            "status": "ACQUIS",
+            "detail": "4250 créations et 326 réouvertures dans le moteur.",
+            "proof": "pure-profile-fast-druide.json"
+          },
+          {
+            "name": "Calculs principaux des cinq voies",
+            "status": "ACQUIS",
+            "detail": "Bonus de tests, défense du familier visible, initiative, caractéristiques de la panthère et coût des sorts.",
+            "proof": "druide-source-n1.json"
+          },
+          {
+            "name": "Effets en jeu dans la fiche interactive",
+            "status": "ACQUIS",
+            "detail": "Baies par bénéficiaire, rituel quotidien, terrain difficile, Peau d’écorce et défense du compagnon visible. Compteurs vérifiés après réouverture.",
+            "proof": "druide-combat-chrome.json"
+          },
+          {
+            "name": "Règles des sorts dans le moteur partagé et effets restants",
+            "status": "ACQUIS",
+            "detail": "Baies et Forêt vivante vérifiées dans le moteur. Prison végétale et récupération nocturne vérifiées au clic dans la fiche.",
+            "proof": "druide-runtime-n1.json"
+          },
+          {
+            "name": "Création et réouverture dans Chrome",
+            "status": "ACQUIS",
+            "detail": "Huit peuples, cinq voies et acquisition des rangs 2 au clic. Sauvegarde et réouverture contrôlées.",
+            "proof": "druide-choices-chrome.json"
+          },
+          {
+            "name": "Fiche PDF officielle",
+            "status": "ACQUIS",
+            "detail": "Dix exports, champs chiffrés, rangs cochés et annexes sur les cinq voies.",
+            "proof": "druide-official-pdf.json"
+          }
+        ],
+        "total": 6,
+        "passed": 6,
         "percent": 100,
         "completed": true
       }
@@ -566,7 +604,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Druide N1 en cours."
+    "next": "Ensorceleur N1 en cours."
   },
   "peoples": [
     {
@@ -1154,11 +1192,11 @@
       "certified": false
     }
   ],
-  "pausedProfiles": 9,
+  "pausedProfiles": 8,
   "summary": {
     "profilesCertified": 5,
-    "profilesInProgress": 0,
-    "profilesPending": 9,
+    "profilesInProgress": 1,
+    "profilesPending": 8,
     "peoplesCertified": 0
   },
   "limitations": "Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.",

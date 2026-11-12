@@ -428,9 +428,45 @@ druideProgress.total=druideProgress.checks.length;
 druideProgress.passed=druideProgress.checks.filter(c=>c.status==='ACQUIS').length;
 druideProgress.percent=Math.round(100*druideProgress.passed/druideProgress.total);
 druideProgress.completed=chevalierComplete&&druideProgress.passed===druideProgress.total;
+const ensorceleurIndex=chevalierIndex+2;
+const ensorceleurMatrix=optionalProof('pure-profile-fast-ensorceleur.json');
+const ensorceleurMatrixCurrent=ensorceleurMatrix?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&
+ ensorceleurMatrix.profile==='Ensorceleur'&&ensorceleurMatrix.pass===4250&&ensorceleurMatrix.failed===0&&ensorceleurMatrix.rejected===0&&
+ ensorceleurMatrix.sourceHashes?.some(x=>x.file==='index.html'&&x.htmlSha256===canonicalHash);
+const ensorceleurSource=optionalProof('ensorceleur-source-n1.json');
+const ensorceleurSourceCurrent=ensorceleurSource?.status==='PASS'&&ensorceleurSource.indexSha256===canonicalHash&&
+ ensorceleurSource.testSha256===productHash('FINAL_FREEZE_TESTS/n1_ensorceleur_source.cjs')&&
+ ensorceleurSource.checks?.length===5&&ensorceleurSource.checks.every(c=>c.status==='PASS');
+const ensorceleurPdf=optionalProof('ensorceleur-official-pdf.json');
+const ensorceleurPdfCurrent=ensorceleurPdf?.status==='PASS'&&ensorceleurPdf.indexSha256===canonicalHash&&
+ ensorceleurPdf.exports?.length===10&&ensorceleurPdf.exports.every(c=>c.status==='PASS');
+const ensorceleurChrome=optionalProof('ensorceleur-choices-chrome.json');
+const ensorceleurChromeCurrent=ensorceleurChrome?.status==='PASS'&&ensorceleurChrome.indexSha256===canonicalHash&&
+ ensorceleurChrome.testSha256===productHash('FINAL_FREEZE_TESTS/n1_ensorceleur_choices_click.cjs')&&ensorceleurChrome.passed===8&&
+ new Set(ensorceleurChrome.cases.filter(c=>c.status==='PASS').map(c=>c.people)).size===8;
+const ensorceleurProgress={name:'Ensorceleur',checks:[
+ {name:'Créations et réouvertures',status:ensorceleurMatrixCurrent?'ACQUIS':'A_VERIFIER',
+  detail:ensorceleurMatrixCurrent?ensorceleurMatrix.pass+' créations et '+ensorceleurMatrix.saves+' réouvertures sur les huit peuples, avec le rang 2 gratuit et les dépenses d’âge.':'Vérifier les créations des huit peuples et les dépenses d’âge du mage.',
+  proof:'pure-profile-fast-ensorceleur.json'},
+ {name:'Bonus, actions et mana des cinq voies',status:ensorceleurSourceCurrent?'ACQUIS':'A_VERIFIER',
+  detail:'DEF, initiative, bonus de tests, coût des sorts, quota de Sommeil et concentration de Choc.',
+  proof:'ensorceleur-source-n1.json'},
+ {name:'Effets des sorts en partie',status:'A_VERIFIER',
+  detail:'Contrôler notamment la décharge au contact et l’attaque de Sous tension, l’évitement d’Image décalée, ainsi que les cibles et durées de Sommeil et Choc.'},
+ {name:'Création et réouverture dans Chrome',status:ensorceleurChromeCurrent?'ACQUIS':'A_VERIFIER',
+  detail:ensorceleurChromeCurrent?'Huit peuples, cinq voies, rang 2 du mage, achats d’âge et réouverture au clic.':'Rejouer les choix du mage, l’âge Mûr et le Don étrange du Gnome.',
+  proof:'ensorceleur-choices-chrome.json'},
+ {name:'Fiche PDF officielle',status:ensorceleurPdfCurrent?'ACQUIS':'A_VERIFIER',
+  detail:ensorceleurPdfCurrent?'Dix exports, rangs 1 et 2, champs chiffrés et annexes des cinq voies.':'Contrôler les champs et les annexes des cinq voies.',
+  proof:'ensorceleur-official-pdf.json'}
+]};
+ensorceleurProgress.total=ensorceleurProgress.checks.length;
+ensorceleurProgress.passed=ensorceleurProgress.checks.filter(c=>c.status==='ACQUIS').length;
+ensorceleurProgress.percent=Math.round(100*ensorceleurProgress.passed/ensorceleurProgress.total);
+ensorceleurProgress.completed=druideProgress.completed&&ensorceleurProgress.passed===ensorceleurProgress.total;
 const progressByIndex=new Map([[barbareIndex,barbareProgress],[bardeIndex,bardeProgress],
- [chevalierIndex,chevalierProgress],[chevalierIndex+1,druideProgress]]);
-const priorityIndex=chevalierComplete?chevalierIndex+1:bardeComplete?chevalierIndex:barbareComplete?bardeIndex:profileComplete?barbareIndex:activeIndex;
+ [chevalierIndex,chevalierProgress],[chevalierIndex+1,druideProgress],[ensorceleurIndex,ensorceleurProgress]]);
+const priorityIndex=druideProgress.completed?ensorceleurIndex:chevalierComplete?chevalierIndex+1:bardeComplete?chevalierIndex:barbareComplete?bardeIndex:profileComplete?barbareIndex:activeIndex;
 const priorityProgress=progressByIndex.get(priorityIndex)||null;
 const priorityPercent=priorityProgress?.percent??percent;
 const queue=profileOrder.map((name,i)=>{
@@ -465,7 +501,7 @@ const output={
  },
  intent:'Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.',
  profile:{id:profile.profileId,name:'Arquebusier',priority:profileComplete?'CERTIFIE':'EN_COURS',completed:profileComplete,variantPrototypeReady:!!prototypeOK,variantIntegrated:!!deployed,passed:verified,total:profileChecks.length,percent:Math.round(100*verified/profileChecks.length),checks:profileChecks,paths:copyPaths,partialNumericValidated:numericPartial,
-  next:chevalierComplete?'Druide N1 en cours.':bardeComplete?'Chevalier N1 en cours.':barbareComplete?'Barde N1 en cours.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
+  next:druideProgress.completed?'Ensorceleur N1 en cours.':chevalierComplete?'Druide N1 en cours.':bardeComplete?'Chevalier N1 en cours.':barbareComplete?'Barde N1 en cours.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
  peoples,
  pausedProfiles:queue.filter(p=>p.status==='EN_ATTENTE').length,
  summary:{profilesCertified:queue.filter(p=>p.certified).length,profilesInProgress:queue.filter(p=>p.status==='EN_COURS').length,profilesPending:queue.filter(p=>p.status==='EN_ATTENTE').length,peoplesCertified:peoples.filter(p=>p.certified).length},
