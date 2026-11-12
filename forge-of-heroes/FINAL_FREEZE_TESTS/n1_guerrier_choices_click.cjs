@@ -18,7 +18,7 @@ async function runCase(browser,job){
  const snapshot=()=>page.evaluate(()=>{
   const draft=window.__FOH_PRODUCT__.buildState();
   const r=window.__FOH_ENGINE__.computeCharacterN1(draft);
-  return {errors:r.errors,people:draft.peupleId,age:draft.age?.categoryId,resource:draft.age?.choice,equip:draft.equip,def:r.sticky.DEF,skills:r.sticky.skillBonuses,pv:r.sticky.PV,init:r.sticky.INIT,ranks:r.sticky.acquiredAbilities.map(a=>[a.id,a.rank]),choices:draft.abilityChoices,attacks:r.sticky.attacks};
+  return {errors:r.errors,people:draft.peupleId,age:draft.age?.categoryId,resource:draft.age?.choice,preferred:draft.profileChoices.preferredWeaponCategory,equip:draft.equip,def:r.sticky.DEF,skills:r.sticky.skillBonuses,pv:r.sticky.PV,init:r.sticky.INIT,ranks:r.sticky.acquiredAbilities.map(a=>[a.id,a.rank]),choices:draft.abilityChoices,attacks:r.sticky.attacks};
  });
  const row={...job,status:'FAIL'};
  report.cases.push(row);
@@ -55,7 +55,7 @@ async function runCase(browser,job){
   for(const [slot,name] of [['one',job.primary],['two',job.secondary]])await page.locator('#path-'+slot).selectOption(pathId(name));
   for(const name of [job.primary,job.secondary])await page.locator('[data-rank-add="'+pathId(name)+'"][data-rank="2"]').tap();
   if([job.primary,job.secondary].includes('voie-du-maitre-d-armes')){
-   await page.locator('#preferred-weapon-direct [data-preferred-weapon="swords"]').tap();
+   await page.locator('[data-preferred-direct][data-value="axes"]:visible, [data-preferred-weapon="axes"]:visible').first().tap();
   }
   await next();
   if(job.people==='halfelin'){
@@ -69,6 +69,7 @@ async function runCase(browser,job){
   await verifySummary();
   const before=await snapshot();
   assert.deepEqual(before.errors,[]);
+  if([job.primary,job.secondary].includes('voie-du-maitre-d-armes'))assert.equal(before.preferred,'axes');
   if(job.people==='halfelin'){
    assert.ok(before.equip.gmApprovedSwap);
    assert.ok(before.attacks.some(a=>a.weaponId==='weapon:short-sword'));
