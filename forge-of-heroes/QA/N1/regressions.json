@@ -1,8 +1,8 @@
 {
   "schema": "FOH_N1_REGRESSION_BATCH",
   "scope": "N1 creation and advanced-age projections; no progression work; some high-rank reference projections remain in reused suites",
-  "indexSha256": "250274e9d2879bc9acde9043b56bb670de6c697a4c9bb8920c371e1393951759",
-  "finishedAt": "2026-11-12T06:33:48.597Z",
+  "indexSha256": "da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d",
+  "finishedAt": "2026-11-12T12:58:48.844Z",
   "passed": 37,
   "total": 37,
   "status": "PASS",
@@ -76,7 +76,7 @@
       "status": "PASS",
       "exitCode": 0,
       "runnerSha256": "4675ad40dfc156d809ae520c2d6c8df5f69a3b818f4ed267096d53c5c4a944ae",
-      "output": "{\n  \"schema\": \"FOH_N1_AGE_SOURCE_CHECK\",\n  \"sources\": [\n    {\n      \"file\": \"règles avancées.pdf\",\n      \"pdfPage\": 1,\n      \"printedPage\": 153,\n      \"visuallyRead\": true,\n      \"rule\": \"Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.\"\n    }\n  ],\n  \"cases\": [\n    {\n      \"id\": \"index.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:DR\",\n      \"status\": \"PASS\"\n    }\n  ],\n  \"replays\": 11,\n  \"failures\": [],\n  \"engineSha256\": \"1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd\",\n  \"status\": \"PASS\"\n}\n"
+      "output": "{\n  \"schema\": \"FOH_N1_AGE_SOURCE_CHECK\",\n  \"sources\": [\n    {\n      \"file\": \"règles avancées.pdf\",\n      \"pdfPage\": 1,\n      \"printedPage\": 153,\n      \"visuallyRead\": true,\n      \"rule\": \"Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.\"\n    }\n  ],\n  \"cases\": [\n    {\n      \"id\": \"index.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:DR\",\n      \"status\": \"PASS\"\n    }\n  ],\n  \"replays\": 11,\n  \"failures\": [],\n  \"engineSha256\": \"fd729a741a223d89887779e2fa253ea398f62c5d7f95eee0ce7d2fdf6a0be1ee\",\n  \"status\": \"PASS\"\n}\n"
     },
     {
       "file": "n1_size_equipment_runner.cjs",
