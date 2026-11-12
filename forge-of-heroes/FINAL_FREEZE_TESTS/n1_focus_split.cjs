@@ -512,9 +512,45 @@ forgesortProgress.total=forgesortProgress.checks.length;
 forgesortProgress.passed=forgesortProgress.checks.filter(c=>c.status==='ACQUIS').length;
 forgesortProgress.percent=Math.round(100*forgesortProgress.passed/forgesortProgress.total);
 forgesortProgress.completed=ensorceleurProgress.completed&&forgesortProgress.passed===forgesortProgress.total;
+const guerrierIndex=forgesortIndex+1;
+const guerrierMatrix=optionalProof('pure-profile-fast-guerrier.json');
+const guerrierMatrixCurrent=guerrierMatrix?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&
+ guerrierMatrix.profile==='Guerrier'&&guerrierMatrix.pass===4250&&guerrierMatrix.failed===0&&guerrierMatrix.rejected===0&&
+ guerrierMatrix.sourceHashes?.some(x=>x.file==='index.html'&&x.htmlSha256===canonicalHash);
+const guerrierSource=optionalProof('guerrier-source-n1.json');
+const guerrierSourceCurrent=guerrierSource?.status==='PASS'&&guerrierSource.indexSha256===canonicalHash&&
+ guerrierSource.testSha256===productHash('FINAL_FREEZE_TESTS/n1_guerrier_source.cjs')&&
+ guerrierSource.checks?.length===5&&guerrierSource.checks.every(c=>c.status==='PASS');
+const guerrierPdf=optionalProof('guerrier-official-pdf.json');
+const guerrierPdfCurrent=guerrierPdf?.status==='PASS'&&guerrierPdf.indexSha256===canonicalHash&&
+ guerrierPdf.exports?.length===10&&guerrierPdf.exports.every(c=>c.status==='PASS');
+const guerrierChrome=optionalProof('guerrier-choices-chrome.json');
+const guerrierChromeCurrent=guerrierChrome?.status==='PASS'&&guerrierChrome.indexSha256===canonicalHash&&
+ guerrierChrome.testSha256===productHash('FINAL_FREEZE_TESTS/n1_guerrier_choices_click.cjs')&&guerrierChrome.passed===8&&
+ new Set(guerrierChrome.cases.filter(c=>c.status==='PASS').map(c=>c.people)).size===8;
+const guerrierProgress={name:'Guerrier',checks:[
+ {name:'Créations et réouvertures',status:guerrierMatrixCurrent?'ACQUIS':'A_VERIFIER',
+  detail:guerrierMatrixCurrent?guerrierMatrix.pass+' créations et '+guerrierMatrix.saves+' réouvertures sur huit peuples.':'Rejouer la matrice avec la catégorie d’arme de prédilection et l’équipement du Halfelin.',
+  proof:'pure-profile-fast-guerrier.json'},
+ {name:'Bonus passifs et quotas des cinq voies',status:guerrierSourceCurrent?'ACQUIS':'A_VERIFIER',
+  detail:'Initiative, PV, résistance, attaque de prédilection et quotas par round.',
+  proof:'guerrier-source-n1.json'},
+ {name:'Effets des capacités en partie',status:'A_VERIFIER',
+  detail:'Corriger Science du critique : le seuil reste à 20 avec une arme de prédilection au lieu de 19–20. Vérifier aussi la parade, la protection d’un allié et les actions par round.'},
+ {name:'Création et réouverture dans Chrome',status:guerrierChromeCurrent?'ACQUIS':'A_VERIFIER',
+  detail:'Huit peuples, choix de prédilection, achats d’âge et réouverture.',
+  proof:'guerrier-choices-chrome.json'},
+ {name:'Fiche PDF officielle',status:guerrierPdfCurrent?'ACQUIS':'A_VERIFIER',
+  detail:'Dix exports, champs et annexes des cinq voies.',
+  proof:'guerrier-official-pdf.json'}
+]};
+guerrierProgress.total=guerrierProgress.checks.length;
+guerrierProgress.passed=guerrierProgress.checks.filter(c=>c.status==='ACQUIS').length;
+guerrierProgress.percent=Math.round(100*guerrierProgress.passed/guerrierProgress.total);
+guerrierProgress.completed=forgesortProgress.completed&&guerrierProgress.passed===guerrierProgress.total;
 const progressByIndex=new Map([[barbareIndex,barbareProgress],[bardeIndex,bardeProgress],
- [chevalierIndex,chevalierProgress],[chevalierIndex+1,druideProgress],[ensorceleurIndex,ensorceleurProgress],[forgesortIndex,forgesortProgress]]);
-const priorityIndex=ensorceleurProgress.completed?forgesortIndex:druideProgress.completed?ensorceleurIndex:chevalierComplete?chevalierIndex+1:bardeComplete?chevalierIndex:barbareComplete?bardeIndex:profileComplete?barbareIndex:activeIndex;
+ [chevalierIndex,chevalierProgress],[chevalierIndex+1,druideProgress],[ensorceleurIndex,ensorceleurProgress],[forgesortIndex,forgesortProgress],[guerrierIndex,guerrierProgress]]);
+const priorityIndex=forgesortProgress.completed?guerrierIndex:ensorceleurProgress.completed?forgesortIndex:druideProgress.completed?ensorceleurIndex:chevalierComplete?chevalierIndex+1:bardeComplete?chevalierIndex:barbareComplete?bardeIndex:profileComplete?barbareIndex:activeIndex;
 const priorityProgress=progressByIndex.get(priorityIndex)||null;
 const priorityPercent=priorityProgress?.percent??percent;
 const queue=profileOrder.map((name,i)=>{
@@ -549,7 +585,7 @@ const output={
  },
  intent:'Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.',
  profile:{id:profile.profileId,name:'Arquebusier',priority:profileComplete?'CERTIFIE':'EN_COURS',completed:profileComplete,variantPrototypeReady:!!prototypeOK,variantIntegrated:!!deployed,passed:verified,total:profileChecks.length,percent:Math.round(100*verified/profileChecks.length),checks:profileChecks,paths:copyPaths,partialNumericValidated:numericPartial,
-  next:ensorceleurProgress.completed?'Forgesort N1 en cours.':druideProgress.completed?'Ensorceleur N1 en cours.':chevalierComplete?'Druide N1 en cours.':bardeComplete?'Chevalier N1 en cours.':barbareComplete?'Barde N1 en cours.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
+  next:forgesortProgress.completed?'Guerrier N1 en cours.':ensorceleurProgress.completed?'Forgesort N1 en cours.':druideProgress.completed?'Ensorceleur N1 en cours.':chevalierComplete?'Druide N1 en cours.':bardeComplete?'Chevalier N1 en cours.':barbareComplete?'Barde N1 en cours.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
  peoples,
  pausedProfiles:queue.filter(p=>p.status==='EN_ATTENTE').length,
  summary:{profilesCertified:queue.filter(p=>p.certified).length,profilesInProgress:queue.filter(p=>p.status==='EN_COURS').length,profilesPending:queue.filter(p=>p.status==='EN_ATTENTE').length,peoplesCertified:peoples.filter(p=>p.certified).length},

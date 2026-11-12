@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d",
   "certificationBasis": "Correctif ciblé sur les Baies magiques et Forêt vivante. Les preuves de création, de fiche et de peuples restent liées aux périmètres testés.",
-  "generatedAt": "2026-11-12T13:55:02.664Z",
+  "generatedAt": "2026-11-12T13:56:43.783Z",
   "engineSha256": "fd729a741a223d89887779e2fa253ea398f62c5d7f95eee0ce7d2fdf6a0be1ee",
   "databaseSha256": "645f2c7f1f5aac50b8574310c638e7284e4eb90acc103f68ae431b17cf72c23e",
   "peoplesEvidenceCurrent": true,
@@ -22,14 +22,14 @@
       "allMustReachPercent": 100
     },
     "current": {
-      "name": "Forgesort",
-      "position": 7,
-      "percent": 100,
-      "certified": true
+      "name": "Guerrier",
+      "position": 8,
+      "percent": 40,
+      "certified": false
     },
     "next": {
-      "name": "Guerrier",
-      "unlocked": true,
+      "name": "Magicien",
+      "unlocked": false,
       "condition": "profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF"
     },
     "queue": [
@@ -85,8 +85,8 @@
       {
         "name": "Guerrier",
         "position": 8,
-        "status": "EN_ATTENTE",
-        "percent": null,
+        "status": "EN_COURS",
+        "percent": 40,
         "certified": false
       },
       {
@@ -133,43 +133,42 @@
       }
     ],
     "priorityProgress": {
-      "name": "Forgesort",
+      "name": "Guerrier",
       "checks": [
         {
           "name": "Créations et réouvertures",
-          "status": "ACQUIS",
-          "detail": "4250 créations et 326 réouvertures sur huit peuples.",
-          "proof": "pure-profile-fast-forgesort.json"
+          "status": "A_VERIFIER",
+          "detail": "Rejouer la matrice avec la catégorie d’arme de prédilection et l’équipement du Halfelin.",
+          "proof": "pure-profile-fast-guerrier.json"
         },
         {
-          "name": "Bonus, actions et mana des cinq voies",
+          "name": "Bonus passifs et quotas des cinq voies",
           "status": "ACQUIS",
-          "detail": "Bâton lié, alchimie, arme enflammée, PV via INT, caractéristiques du golem, INT et DEF des runes.",
-          "proof": "forgesort-source-n1.json"
+          "detail": "Initiative, PV, résistance, attaque de prédilection et quotas par round.",
+          "proof": "guerrier-source-n1.json"
         },
         {
           "name": "Effets des capacités en partie",
-          "status": "ACQUIS",
-          "detail": "Fortifiant, Feu grégeois, Morsure de la forge, Métal brûlant et Rune de puissance vérifiés au clic.",
-          "proof": "forgesort-combat-chrome.json"
+          "status": "A_VERIFIER",
+          "detail": "Corriger Science du critique : le seuil reste à 20 avec une arme de prédilection au lieu de 19–20. Vérifier aussi la parade, la protection d’un allié et les actions par round."
         },
         {
           "name": "Création et réouverture dans Chrome",
-          "status": "ACQUIS",
-          "detail": "Huit peuples, cinq voies, rang 2 du mage, achats d’âge et réouverture.",
-          "proof": "forgesort-choices-chrome.json"
+          "status": "A_VERIFIER",
+          "detail": "Huit peuples, choix de prédilection, achats d’âge et réouverture.",
+          "proof": "guerrier-choices-chrome.json"
         },
         {
           "name": "Fiche PDF officielle",
           "status": "ACQUIS",
           "detail": "Dix exports, champs et annexes des cinq voies.",
-          "proof": "forgesort-official-pdf.json"
+          "proof": "guerrier-official-pdf.json"
         }
       ],
       "total": 5,
-      "passed": 5,
-      "percent": 100,
-      "completed": true
+      "passed": 2,
+      "percent": 40,
+      "completed": false
     },
     "archivedProfiles": [
       {
@@ -384,6 +383,45 @@
             "status": "ACQUIS",
             "detail": "Dix exports, rangs 1 et 2, champs chiffrés et annexes des cinq voies.",
             "proof": "ensorceleur-official-pdf.json"
+          }
+        ],
+        "total": 5,
+        "passed": 5,
+        "percent": 100,
+        "completed": true
+      },
+      {
+        "name": "Forgesort",
+        "checks": [
+          {
+            "name": "Créations et réouvertures",
+            "status": "ACQUIS",
+            "detail": "4250 créations et 326 réouvertures sur huit peuples.",
+            "proof": "pure-profile-fast-forgesort.json"
+          },
+          {
+            "name": "Bonus, actions et mana des cinq voies",
+            "status": "ACQUIS",
+            "detail": "Bâton lié, alchimie, arme enflammée, PV via INT, caractéristiques du golem, INT et DEF des runes.",
+            "proof": "forgesort-source-n1.json"
+          },
+          {
+            "name": "Effets des capacités en partie",
+            "status": "ACQUIS",
+            "detail": "Fortifiant, Feu grégeois, Morsure de la forge, Métal brûlant et Rune de puissance vérifiés au clic.",
+            "proof": "forgesort-combat-chrome.json"
+          },
+          {
+            "name": "Création et réouverture dans Chrome",
+            "status": "ACQUIS",
+            "detail": "Huit peuples, cinq voies, rang 2 du mage, achats d’âge et réouverture.",
+            "proof": "forgesort-choices-chrome.json"
+          },
+          {
+            "name": "Fiche PDF officielle",
+            "status": "ACQUIS",
+            "detail": "Dix exports, champs et annexes des cinq voies.",
+            "proof": "forgesort-official-pdf.json"
           }
         ],
         "total": 5,
@@ -644,7 +682,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Forgesort N1 en cours."
+    "next": "Guerrier N1 en cours."
   },
   "peoples": [
     {
@@ -1232,11 +1270,11 @@
       "certified": false
     }
   ],
-  "pausedProfiles": 7,
+  "pausedProfiles": 6,
   "summary": {
     "profilesCertified": 7,
-    "profilesInProgress": 0,
-    "profilesPending": 7,
+    "profilesInProgress": 1,
+    "profilesPending": 6,
     "peoplesCertified": 0
   },
   "limitations": "Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.",

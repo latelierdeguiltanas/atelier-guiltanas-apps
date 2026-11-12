@@ -81,6 +81,13 @@ for(const file of ['index.html']){
        s.equip.gmApprovedSwap=true;
        s.equip.weaponIds=s.equip.weaponIds.filter(id=>id!=='weapon:cavalry-lance').map(id=>id==='weapon:long-sword'?'weapon:short-sword':id);
       }
+      if(cls.label==='Guerrier'){
+       if(s.voies.profilePathIds.some(id=>id.includes('voie-du-maitre-d-armes')))s.profileChoices.preferredWeaponCategory='swords';
+       if(race==='halfelin'){
+        s.equip.gmApprovedSwap=true;
+        s.equip.weaponIds=s.equip.weaponIds.filter(id=>id!=='weapon:great-sword').map(id=>id==='weapon:long-sword'?'weapon:short-sword':id);
+       }
+      }
       fill(E,T,s);
       const originalDraft=JSON.stringify(s),r=E.computeCharacterN1(s);
       if(r.errors?.length){report.rejected++;rp.rejected++;if(report.errors.length<75)report.errors.push({tag,kind:'REJECTED',error:r.errors});continue}
