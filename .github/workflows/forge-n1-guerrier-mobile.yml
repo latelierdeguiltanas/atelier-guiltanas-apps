@@ -1,9 +1,11 @@
 name: Forge N1 - parcours mobiles Guerrier
 on:
   workflow_dispatch:
-  push:
+  pull_request:
     paths:
       - '.github/workflows/forge-n1-guerrier-mobile.yml'
+      - 'forge-of-heroes/index.html'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_guerrier_critical.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_guerrier_choices_click.cjs'
 permissions:
   contents: read
@@ -16,6 +18,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Vérifier les règles et leurs régressions
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_guerrier_critical.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_guerrier_source.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/permanent_rules_runner.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/companion_people_v2_runner.cjs
       - name: Créer et rouvrir un Guerrier sur les huit peuples
         run: |
           npm install --prefix /tmp/forge-test --no-package-lock playwright
@@ -27,4 +35,19 @@ jobs:
         if: always()
         with:
           name: guerrier-choices-chrome
-          path: forge-of-heroes/QA/N1/guerrier-choices-chrome.json
+          path: forge-of-heroes/QA/N1/guerrier-*.json
+
+  matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_pure_fast_batch.cjs --profile=Guerrier
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: guerrier-matrix
+          path: forge-of-heroes/QA/N1/pure-profile-fast-guerrier.json
