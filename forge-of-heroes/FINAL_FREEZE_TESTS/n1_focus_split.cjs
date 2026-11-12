@@ -385,6 +385,10 @@ const druideSource=optionalProof('druide-source-n1.json');
 const druideSourceCurrent=druideSource?.status==='PASS'&&druideSource.indexSha256===canonicalHash&&
  druideSource.testSha256===productHash('FINAL_FREEZE_TESTS/n1_druide_source.cjs')&&
  druideSource.checks?.length===5&&druideSource.checks.every(c=>c.status==='PASS');
+const druideCombat=optionalProof('druide-combat-chrome.json');
+const druideCombatCurrent=druideCombat?.status==='PASS'&&druideCombat.environment==='chromium'&&
+ druideCombat.sheetSha256===productHash('../fiches-personnages/fiche/fiche.js')&&
+ druideCombat.testSha256===productHash('../fiches-personnages/tests/druide-combat.cjs')&&druideCombat.checks?.length===6;
 const druideProgress={name:'Druide',checks:[
  {name:'Créations et réouvertures',status:druideMatrixCurrent?'ACQUIS':'A_VERIFIER',
   detail:druideMatrixCurrent?druideMatrix.pass+' créations et '+druideMatrix.saves+' réouvertures dans le moteur.':'Rejouer les créations du Druide pur avec les huit peuples.',
@@ -392,8 +396,11 @@ const druideProgress={name:'Druide',checks:[
  {name:'Calculs principaux des cinq voies',status:druideSourceCurrent?'ACQUIS':'A_VERIFIER',
   detail:'Bonus de tests, défense du familier visible, initiative, caractéristiques de la panthère et coût des sorts.',
   proof:'druide-source-n1.json'},
- {name:'Effets conditionnels et mise en jeu',status:'A_VERIFIER',
-  detail:'La limite des Baies magiques est actuellement rattachée au lanceur, alors qu’elle s’applique à chaque bénéficiaire. Forêt vivante doit appliquer son rituel de 30 minutes et sa limite quotidienne. Vérifier aussi la Peau d’écorce et les Terrains difficiles dans la fiche.'},
+ {name:'Effets en jeu dans la fiche interactive',status:druideCombatCurrent?'ACQUIS':'A_VERIFIER',
+  detail:'Baies par bénéficiaire, rituel quotidien, terrain difficile, Peau d’écorce et défense du compagnon visible. Compteurs vérifiés après réouverture.',
+  ...(druideCombatCurrent?{proof:'druide-combat-chrome.json'}:{})},
+ {name:'Règles des sorts dans le moteur partagé et effets restants',status:'A_VERIFIER',
+  detail:'Aligner le moteur partagé sur le quota par bénéficiaire des Baies et le rituel quotidien de Forêt vivante. Vérifier aussi Prison végétale et la récupération nocturne.'},
  {name:'Création et réouverture dans Chrome',status:druideChromeCurrent?'ACQUIS':'A_VERIFIER',
   detail:druideChromeCurrent?'Huit peuples, cinq voies et acquisition des rangs 2 au clic. Sauvegarde et réouverture contrôlées.':'Rejouer un scénario de rang 2 par peuple et vérifier la réouverture.',
   proof:'druide-choices-chrome.json'},

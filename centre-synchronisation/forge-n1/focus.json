@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "250274e9d2879bc9acde9043b56bb670de6c697a4c9bb8920c371e1393951759",
   "certificationBasis": "Preuves liées au produit canonique. La comparaison octet par octet confirme le correctif isolé de Grâce féline et préserve les preuves des profils hors Barde.",
-  "generatedAt": "2026-11-12T07:19:41.920Z",
+  "generatedAt": "2026-11-12T07:33:04.499Z",
   "engineSha256": "1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd",
   "databaseSha256": "645f2c7f1f5aac50b8574310c638e7284e4eb90acc103f68ae431b17cf72c23e",
   "peoplesEvidenceCurrent": true,
@@ -24,7 +24,7 @@
     "current": {
       "name": "Druide",
       "position": 5,
-      "percent": 80,
+      "percent": 83,
       "certified": false
     },
     "next": {
@@ -65,7 +65,7 @@
         "name": "Druide",
         "position": 5,
         "status": "EN_COURS",
-        "percent": 80,
+        "percent": 83,
         "certified": false
       },
       {
@@ -148,9 +148,15 @@
           "proof": "druide-source-n1.json"
         },
         {
-          "name": "Effets conditionnels et mise en jeu",
+          "name": "Effets en jeu dans la fiche interactive",
+          "status": "ACQUIS",
+          "detail": "Baies par bénéficiaire, rituel quotidien, terrain difficile, Peau d’écorce et défense du compagnon visible. Compteurs vérifiés après réouverture.",
+          "proof": "druide-combat-chrome.json"
+        },
+        {
+          "name": "Règles des sorts dans le moteur partagé et effets restants",
           "status": "A_VERIFIER",
-          "detail": "La limite des Baies magiques est actuellement rattachée au lanceur, alors qu’elle s’applique à chaque bénéficiaire. Forêt vivante doit appliquer son rituel de 30 minutes et sa limite quotidienne. Vérifier aussi la Peau d’écorce et les Terrains difficiles dans la fiche."
+          "detail": "Aligner le moteur partagé sur le quota par bénéficiaire des Baies et le rituel quotidien de Forêt vivante. Vérifier aussi Prison végétale et la récupération nocturne."
         },
         {
           "name": "Création et réouverture dans Chrome",
@@ -165,9 +171,9 @@
           "proof": "druide-official-pdf.json"
         }
       ],
-      "total": 5,
-      "passed": 4,
-      "percent": 80,
+      "total": 6,
+      "passed": 5,
+      "percent": 83,
       "completed": false
     },
     "archivedProfiles": [
