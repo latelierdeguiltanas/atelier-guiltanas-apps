@@ -59,10 +59,15 @@ for(const file of ['index.html']){
       s.identite.nom='QA '+tag.slice(0,50);
       s.serieId=serie;s.baseCaracs={...base};s.voies.profilePathIds=[paths[i].id,paths[j].id];
       s.voies.peoplePathId=inherited.id;s.peupleChoices={...racial};
-      if(race==='gnome')s.peupleChoices.grantedAbilityId=T.abilities_class.find(a=>a.rank===1&&T.paths_class.some(q=>q.id===a.path_id&&q.classId.includes(':ensorceleur:')))?.id;
+      if(race==='gnome')s.peupleChoices.grantedAbilityId=T.abilities_class.find(a=>a.rank===1&&!s.voies.profilePathIds.includes(a.path_id)&&T.paths_class.some(q=>q.id===a.path_id&&q.classId.includes(':ensorceleur:')))?.id;
       s.advancedRules.age=true;
       const spending=age==='mature'?[{pathId:paths[i].id,rank:2},{pathId:paths[j].id,rank:2}]:age==='venerable'?[{pathId:paths[i].id,rank:2},{pathId:paths[i].id,rank:3},{pathId:paths[j].id,rank:2}]:[];
-      s.age={categoryId:age,choice:option,spending};
+      const mage=cls.familleId==='mage';
+      if(mage&&spending.length){
+       s.advancedRules.aLaCarte=true;
+       s.aLaCartePurchases=[{type:'skill',skill:'Acrobaties'}];
+      }
+      s.age={categoryId:age,choice:option,spending:mage?spending.filter(x=>x.pathId!==s.voies.mageRank2PathId||x.rank!==2):spending};
       assert(!s.hybrid?.enabled&&s.profileMode!=='NO_PROFILE','Accidental mixed profile');
       if(race==='halfelin'&&cls.label==='Barbare'){
        s.equip.gmApprovedSwap=true;
@@ -78,7 +83,7 @@ for(const file of ['index.html']){
       assert.equal(JSON.stringify(s),originalDraft,'Mutation of input');
       const st=r.sticky,cs=st?.characterState;assert(cs,'No character state');assert.equal(cs.profileId,cls.id,'Wrong profile');
       const gotRanks=new Map((cs.paths||[]).map(x=>[x.pathId,x.rank]));
-      assert.equal(gotRanks.get(paths[i].id),age==='venerable'?3:age==='mature'?2:1,'First rank mismatch');
+      assert.equal(gotRanks.get(paths[i].id),age==='venerable'?3:age==='mature'||mage?2:1,'First rank mismatch');
       assert.equal(gotRanks.get(paths[j].id),age==='venerable'||age==='mature'?2:1,'Second rank mismatch');
       for(const q of [paths[i],paths[j]])assert((st.acquiredAbilities||[]).some(a=>a.pathId===q.id&&a.rank===1),'Missing R1 '+q.label);
       for(const key of ['PV','PC','PM','DEF','INIT'])assert(Number.isFinite(cs.derived?.[key]),'Unbounded '+key);
