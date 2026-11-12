@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/forge-n1-chevalier-mobile.yml'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_chevalier_choices_click.cjs'
+      - 'fiches-personnages/tests/chevalier-combat.cjs'
 permissions:
   contents: read
 jobs:
@@ -22,6 +23,9 @@ jobs:
           python3 -m http.server 4173 &
           export NODE_PATH=/tmp/forge-test/node_modules
           export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+          node fiches-personnages/tests/chevalier-combat.cjs
+          node fiches-personnages/tests/barde-combat.cjs
+          node fiches-personnages/tests/barbare-combat.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_chevalier_choices_click.cjs
       - uses: actions/upload-artifact@v4
         if: always()

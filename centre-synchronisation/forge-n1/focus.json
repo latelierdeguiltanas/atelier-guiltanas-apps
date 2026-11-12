@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "250274e9d2879bc9acde9043b56bb670de6c697a4c9bb8920c371e1393951759",
   "certificationBasis": "Preuves liées au produit canonique. La comparaison octet par octet confirme le correctif isolé de Grâce féline et préserve les preuves des profils hors Barde.",
-  "generatedAt": "2026-11-12T06:50:28.047Z",
+  "generatedAt": "2026-11-12T06:51:27.485Z",
   "engineSha256": "1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd",
   "databaseSha256": "645f2c7f1f5aac50b8574310c638e7284e4eb90acc103f68ae431b17cf72c23e",
   "peoplesEvidenceCurrent": true,
@@ -24,12 +24,12 @@
     "current": {
       "name": "Chevalier",
       "position": 4,
-      "percent": 80,
-      "certified": false
+      "percent": 100,
+      "certified": true
     },
     "next": {
       "name": "Druide",
-      "unlocked": false,
+      "unlocked": true,
       "condition": "profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF"
     },
     "queue": [
@@ -57,9 +57,9 @@
       {
         "name": "Chevalier",
         "position": 4,
-        "status": "EN_COURS",
-        "percent": 80,
-        "certified": false
+        "status": "CERTIFIE",
+        "percent": 100,
+        "certified": true
       },
       {
         "name": "Druide",
@@ -149,8 +149,9 @@
         },
         {
           "name": "Effets conditionnels et mise en jeu",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier notamment les transitions monté/à pied, la réaction d’Intercepter et le report des dégâts."
+          "status": "ACQUIS",
+          "detail": "Selle, garde, réduction à distance, interception et report de dégâts contrôlés dans la fiche sur Chrome mobile.",
+          "proof": "chevalier-combat-chrome.json"
         },
         {
           "name": "Création et réouverture dans Chrome",
@@ -166,8 +167,9 @@
         }
       ],
       "total": 5,
-      "passed": 4,
-      "percent": 80
+      "passed": 5,
+      "percent": 100,
+      "completed": true
     },
     "archivedProfiles": [
       {
@@ -519,7 +521,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Chevalier N1 en cours."
+    "next": "Chevalier N1 validé sur le périmètre du registre."
   },
   "peoples": [
     {
@@ -1109,8 +1111,8 @@
   ],
   "pausedProfiles": 10,
   "summary": {
-    "profilesCertified": 3,
-    "profilesInProgress": 1,
+    "profilesCertified": 4,
+    "profilesInProgress": 0,
     "profilesPending": 10,
     "peoplesCertified": 0
   },
