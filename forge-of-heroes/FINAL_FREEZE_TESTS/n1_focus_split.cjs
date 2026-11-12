@@ -486,6 +486,11 @@ const forgesortChrome=optionalProof('forgesort-choices-chrome.json');
 const forgesortChromeCurrent=forgesortChrome?.status==='PASS'&&forgesortChrome.indexSha256===canonicalHash&&
  forgesortChrome.testSha256===productHash('FINAL_FREEZE_TESTS/n1_forgesort_choices_click.cjs')&&forgesortChrome.passed===8&&
  new Set(forgesortChrome.cases.filter(c=>c.status==='PASS').map(c=>c.people)).size===8;
+const forgesortCombat=optionalProof('forgesort-combat-chrome.json');
+const forgesortCombatCurrent=forgesortCombat?.status==='PASS'&&forgesortCombat.environment==='chromium'&&
+ forgesortCombat.sheetSha256===productHash('../fiches-personnages/fiche/fiche.js')&&
+ forgesortCombat.testSha256===productHash('../fiches-personnages/tests/forgesort-combat.cjs')&&
+ forgesortCombat.checks?.length===5;
 const forgesortProgress={name:'Forgesort',checks:[
  {name:'Créations et réouvertures',status:forgesortMatrixCurrent?'ACQUIS':'A_VERIFIER',
   detail:forgesortMatrixCurrent?forgesortMatrix.pass+' créations et '+forgesortMatrix.saves+' réouvertures sur huit peuples.':'Valider la matrice complète avec la condition d’INT des runes.',
@@ -493,8 +498,9 @@ const forgesortProgress={name:'Forgesort',checks:[
  {name:'Bonus, actions et mana des cinq voies',status:forgesortSourceCurrent?'ACQUIS':'A_VERIFIER',
   detail:'Bâton lié, alchimie, arme enflammée, PV via INT, caractéristiques du golem, INT et DEF des runes.',
   proof:'forgesort-source-n1.json'},
- {name:'Effets des capacités en partie',status:'A_VERIFIER',
-  detail:'Contrôler les élixirs, les effets du métal et le déclenchement de la Rune de puissance en partie.'},
+ {name:'Effets des capacités en partie',status:forgesortCombatCurrent?'ACQUIS':'A_VERIFIER',
+  detail:forgesortCombatCurrent?'Fortifiant, Feu grégeois, Morsure de la forge, Métal brûlant et Rune de puissance vérifiés au clic.':'Contrôler les élixirs, le métal et la Rune de puissance.',
+  ...(forgesortCombatCurrent?{proof:'forgesort-combat-chrome.json'}:{})},
  {name:'Création et réouverture dans Chrome',status:forgesortChromeCurrent?'ACQUIS':'A_VERIFIER',
   detail:'Huit peuples, cinq voies, rang 2 du mage, achats d’âge et réouverture.',
   proof:'forgesort-choices-chrome.json'},
