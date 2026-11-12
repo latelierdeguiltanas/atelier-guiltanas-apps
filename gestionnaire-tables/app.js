@@ -53,8 +53,8 @@ nav.addEventListener('click',event=>{const b=event.target.closest('[data-view]')
 app.addEventListener('submit',ev=>{ev.preventDefault();const form=ev.target,d=Object.fromEntries(new FormData(form));try{if(form.id==='create-table'){
  let scenarioId=d.scenarioId;
  if(scenarioId==='__new__'){
-  const sc=D.scenarioTemplate(d.templateKind,d.system,'Scénario — '+d.name.trim());
-  db.scenarios.push(sc);scenarioId=sc.id;
+  if(d.tool_scenario){const sc=D.scenarioTemplate(d.templateKind,d.system,'Scénario — '+d.name.trim());db.scenarios.push(sc);scenarioId=sc.id;}
+  else scenarioId=null;
  }
  const t=D.createTable(db,{...d,scenarioId,playerMode:d.playerMode,tools:Object.fromEntries(D.TOOL_LIST.map(k=>[k,!!d['tool_'+k]]))});
  if(d.playerMode==='linked')t.tools.players=true;
