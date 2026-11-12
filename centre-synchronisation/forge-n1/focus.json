@@ -7,10 +7,10 @@
     "scope": "Options de caractéristiques des huit peuples croisees avec quatorze profils sur index.html; ne certifie ni les pouvoirs conditionnels ni toutes les restrictions de taille."
   },
   "canonicalProduct": "forge-of-heroes/index.html",
-  "canonicalIndexSha256": "250274e9d2879bc9acde9043b56bb670de6c697a4c9bb8920c371e1393951759",
-  "certificationBasis": "Preuves liées au produit canonique. La comparaison octet par octet confirme le correctif isolé de Grâce féline et préserve les preuves des profils hors Barde.",
-  "generatedAt": "2026-11-12T12:53:30.095Z",
-  "engineSha256": "1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd",
+  "canonicalIndexSha256": "da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d",
+  "certificationBasis": "Correctif ciblé sur les Baies magiques et Forêt vivante. Les preuves de création, de fiche et de peuples restent liées aux périmètres testés.",
+  "generatedAt": "2026-11-12T12:53:28.591Z",
+  "engineSha256": "fd729a741a223d89887779e2fa253ea398f62c5d7f95eee0ce7d2fdf6a0be1ee",
   "databaseSha256": "645f2c7f1f5aac50b8574310c638e7284e4eb90acc103f68ae431b17cf72c23e",
   "peoplesEvidenceCurrent": true,
   "peoplesEvidenceSourceEngineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
@@ -24,12 +24,12 @@
     "current": {
       "name": "Druide",
       "position": 5,
-      "percent": 83,
-      "certified": false
+      "percent": 100,
+      "certified": true
     },
     "next": {
       "name": "Ensorceleur",
-      "unlocked": false,
+      "unlocked": true,
       "condition": "profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF"
     },
     "queue": [
@@ -64,9 +64,9 @@
       {
         "name": "Druide",
         "position": 5,
-        "status": "EN_COURS",
-        "percent": 83,
-        "certified": false
+        "status": "CERTIFIE",
+        "percent": 100,
+        "certified": true
       },
       {
         "name": "Ensorceleur",
@@ -155,8 +155,9 @@
         },
         {
           "name": "Règles des sorts dans le moteur partagé et effets restants",
-          "status": "A_VERIFIER",
-          "detail": "Aligner le moteur partagé sur le quota par bénéficiaire des Baies et le rituel quotidien de Forêt vivante. Vérifier aussi Prison végétale et la récupération nocturne."
+          "status": "ACQUIS",
+          "detail": "Baies et Forêt vivante vérifiées dans le moteur. Prison végétale et récupération nocturne vérifiées au clic dans la fiche.",
+          "proof": "druide-runtime-n1.json"
         },
         {
           "name": "Création et réouverture dans Chrome",
@@ -172,9 +173,9 @@
         }
       ],
       "total": 6,
-      "passed": 5,
-      "percent": 83,
-      "completed": false
+      "passed": 6,
+      "percent": 100,
+      "completed": true
     },
     "archivedProfiles": [
       {
@@ -1155,8 +1156,8 @@
   ],
   "pausedProfiles": 9,
   "summary": {
-    "profilesCertified": 4,
-    "profilesInProgress": 1,
+    "profilesCertified": 5,
+    "profilesInProgress": 0,
     "profilesPending": 9,
     "peoplesCertified": 0
   },

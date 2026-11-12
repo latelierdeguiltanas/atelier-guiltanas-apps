@@ -1,13 +1,13 @@
 {
   "schema": "FOH_GLOBAL_CERTIFICATION_V1",
-  "generatedAt": "2026-11-12T07:33:04.631Z",
+  "generatedAt": "2026-11-12T12:53:28.650Z",
   "sourceProduct": "forge-of-heroes/index.html",
   "source": {
-    "indexSha256": "250274e9d2879bc9acde9043b56bb670de6c697a4c9bb8920c371e1393951759",
-    "engineSha256": "1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd",
+    "indexSha256": "da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d",
+    "engineSha256": "fd729a741a223d89887779e2fa253ea398f62c5d7f95eee0ce7d2fdf6a0be1ee",
     "databaseSha256": "645f2c7f1f5aac50b8574310c638e7284e4eb90acc103f68ae431b17cf72c23e",
-    "focusSha256": "250274e9d2879bc9acde9043b56bb670de6c697a4c9bb8920c371e1393951759",
-    "focusAt": "2026-11-12T07:33:04.499Z"
+    "focusSha256": "da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d",
+    "focusAt": "2026-11-12T12:53:28.591Z"
   },
   "status": "MEASURED",
   "scope": "Forge COF2 Livre de base, N1 à N3, hybrides/sans profil, export PDF et liaison Hub. Compagnon et futur Guide du joueur hors dénominateur jusqu’à intégration et ajout explicite des critères.",
@@ -17,30 +17,23 @@
   "currentN1Profile": {
     "name": "Druide",
     "position": 5,
-    "percent": 83,
-    "certified": false
+    "percent": 100,
+    "certified": true
   },
-  "n1ProfilesCertified": 4,
+  "n1ProfilesCertified": 5,
   "percent": 15,
-  "exactPercent": 14.75,
+  "exactPercent": 14.92,
   "certified": false,
   "modules": [
     {
       "id": "n1-profils",
       "name": "N1 · 14 profils officiels",
-      "passed": 77.3333,
+      "passed": 80,
       "total": 224,
       "status": "SCORE_COURANT",
       "description": "Les 14 profils ont le même poids. Chaque profil contribue selon la part de ses critères N1 validés dans le registre.",
       "source": "forge-n1/focus.json",
-      "targetedProof": {
-        "label": "Familles de régression N1",
-        "passed": 37,
-        "total": 37,
-        "evidence": "forge-of-heroes/QA/N1/regressions.json",
-        "limitations": "Contrôles ciblés N1 sur index courant ; ne prouvent pas tous les effets R3/historiques ni 14/14 profils à 100 %."
-      },
-      "percent": 35,
+      "percent": 36,
       "complete": false
     },
     {
