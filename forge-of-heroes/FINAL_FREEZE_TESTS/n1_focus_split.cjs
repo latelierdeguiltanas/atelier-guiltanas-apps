@@ -538,7 +538,7 @@ const guerrierProgress={name:'Guerrier',checks:[
  {name:'Effets des capacités en partie',status:'A_VERIFIER',
   detail:'Corriger Science du critique : le seuil reste à 20 avec une arme de prédilection au lieu de 19–20. Vérifier aussi la parade, la protection d’un allié et les actions par round.'},
  {name:'Création et réouverture dans Chrome',status:guerrierChromeCurrent?'ACQUIS':'A_VERIFIER',
-  detail:'Huit peuples, choix de prédilection, achats d’âge et réouverture.',
+  detail:guerrierChromeCurrent?'Huit peuples, choix de prédilection, achats d’âge et réouverture.':'Le test mobile reproduit le retour du choix Haches vers Épées et le sélecteur absent pour le Halfelin.',
   proof:'guerrier-choices-chrome.json'},
  {name:'Fiche PDF officielle',status:guerrierPdfCurrent?'ACQUIS':'A_VERIFIER',
   detail:'Dix exports, champs et annexes des cinq voies.',

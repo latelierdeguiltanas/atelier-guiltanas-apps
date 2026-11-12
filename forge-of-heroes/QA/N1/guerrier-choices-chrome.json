@@ -1,0 +1,163 @@
+{
+  "status": "FAIL",
+  "environment": "chromium",
+  "testSha256": "23d73bf640fcd1b7cd44dcc2a658c883e344dd8b9cbd63cdf969e0b459f48d8c",
+  "cases": [
+    {
+      "people": "humain",
+      "primary": "voie-du-bouclier",
+      "secondary": "voie-du-combat",
+      "stats": [
+        2,
+        1,
+        0,
+        1,
+        3,
+        0,
+        -1
+      ],
+      "status": "PASS",
+      "result": {
+        "defense": 16,
+        "pv": 11,
+        "initiative": 14
+      }
+    },
+    {
+      "people": "nain",
+      "primary": "voie-du-combat",
+      "secondary": "voie-du-maitre-d-armes",
+      "stats": [
+        2,
+        1,
+        0,
+        1,
+        3,
+        0,
+        -1
+      ],
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\n'swords' !== 'axes'\n",
+      "view": "Valider et jouer — ma fiche interactive\nMes fiches de jeu\n\nPasser au niveau suivant →\n\nFiche de héros\n\nTon héros COF2 niveau 1, prêt à être consulté, sauvegardé et repris.\n\nModifier\nIdentité\nNom\nQA Guerrier nain\nPeuple\nNAIN\nProfil\nGuerrier\nFamille\nCombattant\nModifier\nCaractéristiques\nFOR\n+2\nAGI\n-1\nCON\n+1\nPER\n+1\nINT\n+3\nVOL\n+0\nCHA\n-1\nModifier\nValeurs de jeu\nPV\n11\nDEF\n15\nINIT\n14\nPC\n1\nPM\n0\nDR\n3d10\nAttaque au contact\n+3\nAttaque à distance\n+0\nAttaque magique\n+1\nModifier\nVoies et capacités\nVoie du comb",
+      "errors": []
+    },
+    {
+      "people": "demi-elfe",
+      "primary": "voie-du-maitre-d-armes",
+      "secondary": "voie-de-la-resistance",
+      "stats": [
+        2,
+        1,
+        0,
+        1,
+        3,
+        0,
+        -1
+      ],
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\n'swords' !== 'axes'\n",
+      "view": "Valider et jouer — ma fiche interactive\nMes fiches de jeu\n\nPasser au niveau suivant →\n\nFiche de héros\n\nTon héros COF2 niveau 1, prêt à être consulté, sauvegardé et repris.\n\nModifier\nIdentité\nNom\nQA Guerrier demi-elfe\nPeuple\nDEMI‑ELFE\nProfil\nGuerrier\nFamille\nCombattant\nModifier\nCaractéristiques\nFOR\n+1\nAGI\n+0\nCON\n+0\nPER\n+2\nINT\n+3\nVOL\n+0\nCHA\n-1\nModifier\nValeurs de jeu\nPV\n14\nDEF\n16\nINIT\n12\nPC\n1\nPM\n0\nDR\n2d10\nAttaque au contact\n+2\nAttaque à distance\n+1\nAttaque magique\n+1\nModifier\nVoies et capacités\nVo",
+      "errors": []
+    },
+    {
+      "people": "demi-orc",
+      "primary": "voie-de-la-resistance",
+      "secondary": "voie-du-soldat",
+      "stats": [
+        2,
+        1,
+        0,
+        1,
+        3,
+        0,
+        -1
+      ],
+      "status": "PASS",
+      "result": {
+        "defense": 16,
+        "pv": 14,
+        "initiative": 11
+      }
+    },
+    {
+      "people": "elfe-haut",
+      "primary": "voie-du-soldat",
+      "secondary": "voie-du-bouclier",
+      "stats": [
+        2,
+        1,
+        0,
+        1,
+        3,
+        0,
+        -1
+      ],
+      "status": "PASS",
+      "result": {
+        "defense": 16,
+        "pv": 10,
+        "initiative": 11
+      }
+    },
+    {
+      "people": "elfe-sylvain",
+      "primary": "voie-du-bouclier",
+      "secondary": "voie-du-combat",
+      "stats": [
+        2,
+        1,
+        0,
+        1,
+        3,
+        0,
+        -1
+      ],
+      "status": "PASS",
+      "result": {
+        "defense": 17,
+        "pv": 10,
+        "initiative": 14
+      }
+    },
+    {
+      "people": "gnome",
+      "primary": "voie-du-combat",
+      "secondary": "voie-du-maitre-d-armes",
+      "stats": [
+        2,
+        1,
+        0,
+        1,
+        3,
+        0,
+        -1
+      ],
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\n'swords' !== 'axes'\n",
+      "view": "Valider et jouer — ma fiche interactive\nMes fiches de jeu\n\nPasser au niveau suivant →\n\nFiche de héros\n\nTon héros COF2 niveau 1, prêt à être consulté, sauvegardé et repris.\n\nModifier\nIdentité\nNom\nQA Guerrier gnome\nPeuple\nGNOME\nProfil\nGuerrier\nFamille\nCombattant\nModifier\nCaractéristiques\nFOR\n+1\nAGI\n+0\nCON\n+0\nPER\n+1\nINT\n+4\nVOL\n+0\nCHA\n-1\nModifier\nValeurs de jeu\nPV\n10\nDEF\n17\nINIT\n15\nPC\n1\nPM\n1\nDR\n2d10\nAttaque au contact\n+2\nAttaque à distance\n+1\nAttaque magique\n+1\nModifier\nVoies et capacités\nVoie du co",
+      "errors": []
+    },
+    {
+      "people": "halfelin",
+      "primary": "voie-du-maitre-d-armes",
+      "secondary": "voie-de-la-resistance",
+      "stats": [
+        2,
+        1,
+        0,
+        1,
+        3,
+        0,
+        -1
+      ],
+      "status": "FAIL",
+      "error": "locator.tap: Timeout 9000ms exceeded.\nCall log:\n  - waiting for locator('[data-preferred-direct][data-value=\"axes\"]:visible, [data-preferred-weapon=\"axes\"]:visible').first()\n",
+      "view": "Voies et capacités\n\nLes rangs illégaux ne sont jamais proposés.\n\nVoie, rang, capacité\n\nUne voie est un domaine d’apprentissage. Son rang indique jusqu’où ton héros y progresse. Chaque rang donne une capacité. Ici, tu choisis les domaines que ton héros commence à développer.\n\nPremière voie\nVoie du bouclier\nVoie du combat\nVoie du maître d’armes\nVoie de la résistance\nVoie du soldat\nVoie du maître d’armes\nRang 1 : Armes de prédilection — Le guerrier choisit une catégorie d’armes de prédilection parm",
+      "errors": []
+    }
+  ],
+  "indexSha256": "da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d",
+  "passed": 4,
+  "workflow": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/43232452038",
+  "testedCommit": "495e88f6b9c87abd5b9bc8d0002d4177cc832cf7"
+}
