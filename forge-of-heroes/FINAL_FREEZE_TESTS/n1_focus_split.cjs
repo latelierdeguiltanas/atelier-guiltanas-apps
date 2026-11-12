@@ -444,6 +444,11 @@ const ensorceleurChrome=optionalProof('ensorceleur-choices-chrome.json');
 const ensorceleurChromeCurrent=ensorceleurChrome?.status==='PASS'&&ensorceleurChrome.indexSha256===canonicalHash&&
  ensorceleurChrome.testSha256===productHash('FINAL_FREEZE_TESTS/n1_ensorceleur_choices_click.cjs')&&ensorceleurChrome.passed===8&&
  new Set(ensorceleurChrome.cases.filter(c=>c.status==='PASS').map(c=>c.people)).size===8;
+const ensorceleurCombat=optionalProof('ensorceleur-combat-chrome.json');
+const ensorceleurCombatCurrent=ensorceleurCombat?.status==='PASS'&&ensorceleurCombat.environment==='chromium'&&
+ ensorceleurCombat.sheetSha256===productHash('../fiches-personnages/fiche/fiche.js')&&
+ ensorceleurCombat.testSha256===productHash('../fiches-personnages/tests/ensorceleur-combat.cjs')&&
+ ensorceleurCombat.checks?.length===5;
 const ensorceleurProgress={name:'Ensorceleur',checks:[
  {name:'Créations et réouvertures',status:ensorceleurMatrixCurrent?'ACQUIS':'A_VERIFIER',
   detail:ensorceleurMatrixCurrent?ensorceleurMatrix.pass+' créations et '+ensorceleurMatrix.saves+' réouvertures sur les huit peuples, avec le rang 2 gratuit et les dépenses d’âge.':'Vérifier les créations des huit peuples et les dépenses d’âge du mage.',
@@ -451,8 +456,9 @@ const ensorceleurProgress={name:'Ensorceleur',checks:[
  {name:'Bonus, actions et mana des cinq voies',status:ensorceleurSourceCurrent?'ACQUIS':'A_VERIFIER',
   detail:'DEF, initiative, bonus de tests, coût des sorts, quota de Sommeil et concentration de Choc.',
   proof:'ensorceleur-source-n1.json'},
- {name:'Effets des sorts en partie',status:'A_VERIFIER',
-  detail:'Harmoniser l’affichage du dé évolutif de Sous tension et de Choc entre les attaques et le détail des pouvoirs. Vérifier la décharge au contact, les durées et les effets sur les cibles.'},
+ {name:'Effets des sorts en partie',status:ensorceleurCombatCurrent?'ACQUIS':'A_VERIFIER',
+  detail:ensorceleurCombatCurrent?'Sous tension, Image décalée, Sommeil et Choc testés sur la fiche Chrome mobile. Coûts, portée, cibles, sauvegarde et dé évolutif vérifiés.':'Vérifier les effets de Sous tension, Image décalée, Sommeil et Choc sur la fiche interactive.',
+  ...(ensorceleurCombatCurrent?{proof:'ensorceleur-combat-chrome.json'}:{})},
  {name:'Création et réouverture dans Chrome',status:ensorceleurChromeCurrent?'ACQUIS':'A_VERIFIER',
   detail:ensorceleurChromeCurrent?'Huit peuples, cinq voies, rang 2 du mage, achats d’âge et réouverture au clic.':'Rejouer les choix du mage, l’âge Mûr et le Don étrange du Gnome.',
   proof:'ensorceleur-choices-chrome.json'},

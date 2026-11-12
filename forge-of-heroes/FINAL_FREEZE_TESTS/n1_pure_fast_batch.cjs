@@ -11,6 +11,10 @@ const root=path.resolve(__dirname,'..'),sha=s=>crypto.createHash('sha256').updat
 const profileLabel=process.argv.find(x=>x.startsWith('--profile='))?.split('=').slice(1).join('=')||'Arquebusier';
 const representative=process.argv.includes('--representative');
 const series={polyvalent:{for:2,agi:2,con:2,per:1,int:1,vol:0,cha:-1},expert:{for:3,agi:2,con:1,per:1,int:0,vol:0,cha:-1},specialiste:{for:4,agi:2,con:1,per:0,int:0,vol:-1,cha:-1}};
+if(profileLabel==='Forgesort'){
+ // Les Runes de défense exigent INT +1 après les ajustements de peuple.
+ for(const stats of Object.values(series))[stats.int,stats.for]=[stats.for,stats.int];
+}
 const races=['humain','nain','demi-elfe','demi-orc','elfe-haut','elfe-sylvain','gnome','halfelin'],stats=['for','agi','con','per','int','vol','cha'];
 const ages=[['young',null],['very-young','PC'],['very-young','DR'],['mature',null],['venerable',null]];
 const report={schema:'FOH_N1_PURE_BASE_COF2_FAST_BATCH',at:new Date().toISOString(),profile:profileLabel,pureOnly:true,hybridsExcluded:true,companionExcluded:true,scope:representative?'1 version publiée, 8 peuples, 10 paires de voies, 5 modalités d’âge. Une série et un choix de peuple/héritage représentatifs. Pour le Halfelin Barbare, hache simple avec accord du MJ.':'1 published build x 8 peoples x 10 profile-specific pure pairs x 5 age cases x 3 actual distinct book series x racial choices / hereditary paths. Includes acquired-rank and numeric fields with partial save/restore. A Chevalier halfelin uses a short sword and omits the cavalry lance after GM approval.',notCertified:['all stat arrangements','purchase and dice alternatives','all permanent and conditional special choices','all equipment restrictions','all histories','all real browser clicks','real official two-page PDF and annexes'],status:'PENDING',attempts:0,pass:0,rejected:0,failed:0,saves:0,byRace:{},errors:[],sourceHashes:[]};

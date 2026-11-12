@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d",
   "certificationBasis": "Correctif ciblé sur les Baies magiques et Forêt vivante. Les preuves de création, de fiche et de peuples restent liées aux périmètres testés.",
-  "generatedAt": "2026-11-12T13:02:46.500Z",
+  "generatedAt": "2026-11-12T13:41:23.217Z",
   "engineSha256": "fd729a741a223d89887779e2fa253ea398f62c5d7f95eee0ce7d2fdf6a0be1ee",
   "databaseSha256": "645f2c7f1f5aac50b8574310c638e7284e4eb90acc103f68ae431b17cf72c23e",
   "peoplesEvidenceCurrent": true,
@@ -24,12 +24,12 @@
     "current": {
       "name": "Ensorceleur",
       "position": 6,
-      "percent": 80,
-      "certified": false
+      "percent": 100,
+      "certified": true
     },
     "next": {
       "name": "Forgesort",
-      "unlocked": false,
+      "unlocked": true,
       "condition": "profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF"
     },
     "queue": [
@@ -71,9 +71,9 @@
       {
         "name": "Ensorceleur",
         "position": 6,
-        "status": "EN_COURS",
-        "percent": 80,
-        "certified": false
+        "status": "CERTIFIE",
+        "percent": 100,
+        "certified": true
       },
       {
         "name": "Forgesort",
@@ -149,8 +149,9 @@
         },
         {
           "name": "Effets des sorts en partie",
-          "status": "A_VERIFIER",
-          "detail": "Harmoniser l’affichage du dé évolutif de Sous tension et de Choc entre les attaques et le détail des pouvoirs. Vérifier la décharge au contact, les durées et les effets sur les cibles."
+          "status": "ACQUIS",
+          "detail": "Sous tension, Image décalée, Sommeil et Choc testés sur la fiche Chrome mobile. Coûts, portée, cibles, sauvegarde et dé évolutif vérifiés.",
+          "proof": "ensorceleur-combat-chrome.json"
         },
         {
           "name": "Création et réouverture dans Chrome",
@@ -166,9 +167,9 @@
         }
       ],
       "total": 5,
-      "passed": 4,
-      "percent": 80,
-      "completed": false
+      "passed": 5,
+      "percent": 100,
+      "completed": true
     },
     "archivedProfiles": [
       {
@@ -1194,8 +1195,8 @@
   ],
   "pausedProfiles": 8,
   "summary": {
-    "profilesCertified": 5,
-    "profilesInProgress": 1,
+    "profilesCertified": 6,
+    "profilesInProgress": 0,
     "profilesPending": 8,
     "peoplesCertified": 0
   },
