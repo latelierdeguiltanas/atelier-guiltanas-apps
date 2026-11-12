@@ -1,0 +1,30 @@
+name: Forge N1 - parcours mobiles Druide
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-druide-mobile.yml'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_druide_choices_click.cjs'
+permissions:
+  contents: read
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Créer et rouvrir un Druide sur les huit peuples
+        run: |
+          npm install --prefix /tmp/forge-test --no-package-lock playwright
+          python3 -m http.server 4178 &
+          export NODE_PATH=/tmp/forge-test/node_modules
+          export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_druide_choices_click.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: druide-choices-chrome
+          path: forge-of-heroes/QA/N1/druide-choices-chrome.json

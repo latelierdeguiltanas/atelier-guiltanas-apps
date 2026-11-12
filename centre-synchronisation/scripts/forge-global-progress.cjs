@@ -3,7 +3,7 @@
  * Cible unique : forge-of-heroes/index.html, SHA exigé pour chaque preuve.
  * Sept domaines de même poids ; pas de faux 100% via un seul profil.
  */
-const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const root=path.resolve(__dirname,'../..');
 const forge=path.join(root,'forge-of-heroes');
 const store=path.join(root,'centre-synchronisation');
@@ -28,12 +28,24 @@ const gateRegistry=JSON.parse(fs.readFileSync(gatesPath,'utf8'));
 const sourceCurrent=focus.canonicalIndexSha256===indexSha256&&focus.engineSha256===engineSha256&&focus.databaseSha256===databaseSha256;
 const hasRaceInputs=focus.racialOptionsCurrent?.valid===true&&focus.racialOptionsCurrent?.passed===392&&focus.racialOptionsCurrent?.total===392&&focus.peoplesEvidenceCurrent===true;
 const normalized=entry=>entry?.status==='ACQUIS';
-const profileRows=Array.isArray(focus.profile?.checks)?focus.profile.checks:[];
+const plan=focus.certificationPlan;
+const queue=plan?.queue||[];
+const profiles=[focus.profile,...(plan?.archivedProfiles||[]),plan?.priorityProgress].filter(Boolean);
+const profilesByName=new Map(profiles.map(profile=>[profile.name,profile]));
+const profileWeight=16;
 const raceRows=Array.isArray(focus.peoples)?focus.peoples:[];
-const profileShape=profileRows.length===16&&focus.profile?.name==='Arquebusier'&&focus.certificationPlan?.queue?.length===14;
+const profileShape=queue.length===14&&new Set(queue.map(row=>row.name)).size===14&&
+ profilesByName.size===profiles.length&&profiles.every(profile=>queue.some(row=>row.name===profile.name)&&
+  profile.checks?.length>0&&profile.total===profile.checks.length&&profile.passed===profile.checks.filter(normalized).length)&&
+ queue.every(row=>{
+  const profile=profilesByName.get(row.name);
+  return row.certified?profile?.completed===true&&profile.passed===profile.total:
+   !profile?.completed;
+ });
 const peoplesShape=raceRows.length===8&&raceRows.every(r=>r.total===10&&r.checks?.length===10&&r.passed===r.checks.filter(normalized).length);
 if(!profileShape||!peoplesShape)throw Error('Registre de critères N1 incomplet : aucun pourcentage global ne peut être inventé');
-const provenProfiles=sourceCurrent?profileRows.filter(normalized).length:0;
+const provenProfiles=sourceCurrent?Number(profiles.reduce((sum,profile)=>
+ sum+profileWeight*profile.passed/profile.total,0).toFixed(4)):0;
 const provenPeoples=sourceCurrent&&hasRaceInputs?raceRows.reduce((n,r)=>n+r.checks.filter(normalized).length,0):0;
 const gateSpecs=[
  {id:'n1-modes',name:'N1 · hybrides et sans profil',checks:[
@@ -101,7 +113,7 @@ if(fs.existsSync(regressionsPath)){
  }catch(e){console.warn('Rapport de régression N1 indisponible',e.message)}
 }
 const modules=[
- {id:'n1-profils',name:'N1 · 14 profils officiels',passed:provenProfiles,total:14*16,status:sourceCurrent?'SCORE_COURANT':'SOURCE_PERIMEE',description:'16 vérifications complètes par profil. Seul Arquebusier dispose d’un score de profil actuel intégralement étayé ; les anciens 69 % restent archivés.',source:'forge-n1/focus.json'},
+ {id:'n1-profils',name:'N1 · 14 profils officiels',passed:provenProfiles,total:queue.length*profileWeight,status:sourceCurrent?'SCORE_COURANT':'SOURCE_PERIMEE',description:'Les 14 profils ont le même poids. Chaque profil contribue selon la part de ses critères N1 validés dans le registre.',source:'forge-n1/focus.json'},
  {id:'n1-peuples',name:'N1 · 8 peuples officiels',passed:provenPeoples,total:8*10,status:sourceCurrent&&hasRaceInputs?'SCORE_COURANT':'PREUVES_INCOMPLETES',description:'10 vérifications par peuple : les choix raciaux et méthodes prouvés sont acquis ; les autres effets et contraintes restent ouverts.',source:'forge-n1/focus.json'},
  ...gateSpecs.map(m=>{
   const checks=m.checks.map(([id,name])=>({id,name,passed:validGate(id),evidence:listed.get(id)?.evidence||null}));

@@ -370,14 +370,52 @@ chevalierProgress.percent=Math.round(100*chevalierProgress.passed/chevalierProgr
 const chevalierIndex=bardeIndex+1;
 const chevalierComplete=bardeComplete&&chevalierProgress.passed===chevalierProgress.total;
 chevalierProgress.completed=chevalierComplete;
-const priorityIndex=bardeComplete?chevalierIndex:barbareComplete?bardeIndex:profileComplete?barbareIndex:activeIndex;
-const priorityProgress=bardeComplete?chevalierProgress:barbareComplete?bardeProgress:profileComplete?barbareProgress:null;
+const druideMatrix=optionalProof('pure-profile-fast-druide.json');
+const druideMatrixCurrent=druideMatrix?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&druideMatrix.profile==='Druide'&&
+ druideMatrix.pass===4250&&druideMatrix.failed===0&&druideMatrix.rejected===0&&
+ druideMatrix.sourceHashes?.some(x=>x.file==='index.html'&&x.htmlSha256===canonicalHash);
+const druidePdf=optionalProof('druide-official-pdf.json');
+const druidePdfCurrent=druidePdf?.status==='PASS'&&druidePdf.indexSha256===canonicalHash&&
+ druidePdf.exports?.length===10&&druidePdf.exports.every(c=>c.status==='PASS');
+const druideChrome=optionalProof('druide-choices-chrome.json');
+const druideChromeCurrent=druideChrome?.status==='PASS'&&druideChrome.indexSha256===canonicalHash&&
+ druideChrome.testSha256===productHash('FINAL_FREEZE_TESTS/n1_druide_choices_click.cjs')&&druideChrome.passed===8&&
+ new Set(druideChrome.cases.filter(c=>c.status==='PASS').map(c=>c.people)).size===8;
+const druideSource=optionalProof('druide-source-n1.json');
+const druideSourceCurrent=druideSource?.status==='PASS'&&druideSource.indexSha256===canonicalHash&&
+ druideSource.testSha256===productHash('FINAL_FREEZE_TESTS/n1_druide_source.cjs')&&
+ druideSource.checks?.length===5&&druideSource.checks.every(c=>c.status==='PASS');
+const druideProgress={name:'Druide',checks:[
+ {name:'Créations et réouvertures',status:druideMatrixCurrent?'ACQUIS':'A_VERIFIER',
+  detail:druideMatrixCurrent?druideMatrix.pass+' créations et '+druideMatrix.saves+' réouvertures dans le moteur.':'Rejouer les créations du Druide pur avec les huit peuples.',
+  proof:'pure-profile-fast-druide.json'},
+ {name:'Calculs principaux des cinq voies',status:druideSourceCurrent?'ACQUIS':'A_VERIFIER',
+  detail:'Bonus de tests, défense du familier visible, initiative, caractéristiques de la panthère et coût des sorts.',
+  proof:'druide-source-n1.json'},
+ {name:'Effets conditionnels et mise en jeu',status:'A_VERIFIER',
+  detail:'Vérifier notamment la Peau d’écorce, les Terrains difficiles, la limite par bénéficiaire des Baies magiques et le rituel quotidien de Forêt vivante.'},
+ {name:'Création et réouverture dans Chrome',status:druideChromeCurrent?'ACQUIS':'A_VERIFIER',
+  detail:druideChromeCurrent?'Huit peuples, cinq voies et acquisition des rangs 2 au clic. Sauvegarde et réouverture contrôlées.':'Rejouer un scénario de rang 2 par peuple et vérifier la réouverture.',
+  proof:'druide-choices-chrome.json'},
+ {name:'Fiche PDF officielle',status:druidePdfCurrent?'ACQUIS':'A_VERIFIER',
+  detail:druidePdfCurrent?'Dix exports, champs chiffrés, rangs cochés et annexes sur les cinq voies.':'Contrôler les exports et annexes des cinq voies.',
+  proof:'druide-official-pdf.json'}
+]};
+druideProgress.total=druideProgress.checks.length;
+druideProgress.passed=druideProgress.checks.filter(c=>c.status==='ACQUIS').length;
+druideProgress.percent=Math.round(100*druideProgress.passed/druideProgress.total);
+druideProgress.completed=chevalierComplete&&druideProgress.passed===druideProgress.total;
+const progressByIndex=new Map([[barbareIndex,barbareProgress],[bardeIndex,bardeProgress],
+ [chevalierIndex,chevalierProgress],[chevalierIndex+1,druideProgress]]);
+const priorityIndex=chevalierComplete?chevalierIndex+1:bardeComplete?chevalierIndex:barbareComplete?bardeIndex:profileComplete?barbareIndex:activeIndex;
+const priorityProgress=progressByIndex.get(priorityIndex)||null;
 const priorityPercent=priorityProgress?.percent??percent;
 const queue=profileOrder.map((name,i)=>{
- const certified=(i===activeIndex&&profileComplete)||(i===barbareIndex&&barbareComplete)||(i===bardeIndex&&bardeComplete)||(i===chevalierIndex&&chevalierComplete);
+ const certified=i===activeIndex?profileComplete:progressByIndex.get(i)?.completed===true;
  return {name,position:i+1,status:certified?'CERTIFIE':i===priorityIndex?'EN_COURS':'EN_ATTENTE',
   percent:i===priorityIndex?priorityPercent:i===activeIndex?percent:certified?100:null,certified};
 });
+const current=queue[priorityIndex];
 const output={
  schema:'FOH_N1_PROFILE_AND_PEOPLES_SEPARATE',
  racialOptionsCurrent:{valid:!!racialOptionsCurrent,passed:racialOptionsCurrent?392:0,total:392,scope:'Options de caractéristiques des huit peuples croisees avec quatorze profils sur index.html; ne certifie ni les pouvoirs conditionnels ni toutes les restrictions de taille.'},
@@ -392,11 +430,11 @@ const output={
  certificationPlan:{
   policy:'UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100',
   target:{officialProfiles:14,officialPeoples:8,allMustReachPercent:100},
-  current:{name:profileOrder[priorityIndex],position:priorityIndex+1,percent:priorityPercent,certified:chevalierComplete},
-  next:{name:profileOrder[priorityIndex+1],unlocked:chevalierComplete,condition:'profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF'},
+  current:{name:current.name,position:current.position,percent:current.percent,certified:current.certified},
+  next:{name:profileOrder[priorityIndex+1],unlocked:current.certified,condition:'profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF'},
   queue,
   priorityProgress,
-  archivedProfiles:bardeComplete?[barbareProgress,bardeProgress]:barbareComplete?[barbareProgress]:[],
+  archivedProfiles:[...progressByIndex.values()].filter(progress=>progress.completed&&progress!==priorityProgress),
   peoplesProgressRule:'Chaque critère de peuple est validé par une preuve liée à la version courante. Les effets conditionnels, les équipements, les âges et historiques et le parcours avec PDF sont suivis séparément.',
   remainingPeoplesPolicy:'Après les 14 profils, fermer les critères raciaux manquants un peuple à la fois',
   fullOfficialN1Closed:false,
@@ -404,7 +442,7 @@ const output={
  },
  intent:'Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.',
  profile:{id:profile.profileId,name:'Arquebusier',priority:profileComplete?'CERTIFIE':'EN_COURS',completed:profileComplete,variantPrototypeReady:!!prototypeOK,variantIntegrated:!!deployed,passed:verified,total:profileChecks.length,percent:Math.round(100*verified/profileChecks.length),checks:profileChecks,paths:copyPaths,partialNumericValidated:numericPartial,
-  next:chevalierComplete?'Chevalier N1 validé sur le périmètre du registre.':bardeComplete?'Chevalier N1 en cours.':barbareComplete?'Barde N1 en cours.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
+  next:chevalierComplete?'Druide N1 en cours.':bardeComplete?'Chevalier N1 en cours.':barbareComplete?'Barde N1 en cours.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
  peoples,
  pausedProfiles:queue.filter(p=>p.status==='EN_ATTENTE').length,
  summary:{profilesCertified:queue.filter(p=>p.certified).length,profilesInProgress:queue.filter(p=>p.status==='EN_COURS').length,profilesPending:queue.filter(p=>p.status==='EN_ATTENTE').length,peoplesCertified:peoples.filter(p=>p.certified).length},

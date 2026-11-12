@@ -32,9 +32,9 @@ a{color:var(--gold)}.footer{font-size:11px;color:var(--muted);margin-top:19px}
 <body><main>
 <div class="kicker">FORGE OF HEROES · CERTIFICATION NIVEAU 1</div>
 <h1>Un profil entier. Des peuples séparés.</h1>
-<p class="soft">On termine les cinq voies de l’Arquebusier, puis on passera au profil suivant. Les peuples possèdent chacun leur propre validation, indépendante du profil. Aucun pourcentage par voie ni par combinaison « profil + peuple ».</p>
+<p class="soft">Forge · <a id="forge-global" href="../">Voir la validation globale</a></p>
 <section class="panel" aria-label="Progression du profil">
-<div class="kicker">PROFIL À CERTIFIER · 13 AUTRES EN ATTENTE</div>
+<div class="kicker">PROFIL EN COURS</div>
 <div class="head"><div><h2 id="profile-name">Profil en cours</h2><p class="soft">Les cinq voies, tous les rangs disponibles au niveau 1 et leurs calculs</p></div><span class="big" id="profile-percent">—</span></div>
 <div class="track" id="profile-track"><span id="profile-bar" style="width:0"></span></div>
 <p class="note" id="profile-recap">Lecture des règles…</p>
@@ -45,7 +45,7 @@ a{color:var(--gold)}.footer{font-size:11px;color:var(--muted);margin-top:19px}
 <section class="panel" aria-label="Progression des peuples">
 <div class="kicker">VALIDATION RACIALE INDÉPENDANTE</div>
 <h2>Les 8 peuples officiels</h2>
-<p class="soft">Ces pourcentages concernent uniquement les règles de chaque peuple : caractéristiques, voie raciale, dons, âges et contraintes. Ils ne reprennent pas celui de l’Arquebusier.</p>
+<p class="soft">Chaque peuple a son propre suivi des caractéristiques, de la voie raciale, des dons, des âges et des contraintes.</p>
 <div class="columns" id="races"><p>Chargement…</p></div>
 <div class="raceinfo" id="race-detail" aria-live="polite"></div>
 </section>
@@ -88,6 +88,12 @@ function render(d){
  const chosen=new URLSearchParams(location.search).get('peuple')||'nain';
  showRace(d.peoples.find(p=>p.key===chosen)?.id||d.peoples[0].id);
 }
+fetch('../data/forge-global-progress.json',{cache:'no-store'}).then(response=>{
+ if(!response.ok)throw Error('Progression globale indisponible');
+ return response.json();
+}).then(data=>{
+ if(data.status==='MEASURED'&&Number.isFinite(data.percent))$('forge-global').textContent=data.percent+' % de validation globale';
+}).catch(()=>{});
 fetch('./focus.json?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('suivi indisponible');return r.json()}).then(d=>{
  if(!d.profile||d.profile.paths?.length!==5||!d.certificationPlan?.current||d.peoples?.length!==8)throw Error('suivi incomplet');render(d)
 }).catch(err=>{$('profile-recap').textContent='Le suivi ne peut pas être chargé : '+err.message;$('races').textContent='Données momentanément indisponibles.'});
