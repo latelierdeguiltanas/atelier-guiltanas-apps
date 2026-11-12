@@ -605,7 +605,7 @@ function ensorceleurPlayHtml(a){
  if(kind==='tension'){
   const active=S.ensorceleurTension;
   html=active?`<p>Chargé pour ${cha} min de jeu. Contact ou blessure au contact : 1d${die}° DM. Décharge (A) : attaque magique contre DEF à 10 m, 1d${die}°${signed(cha)} DM.</p>
-   ${button('touch','Résoudre un contact')}${button('discharge','Décharger',active.used)}
+   ${button('touch','Résoudre un contact')}${field('distance','Distance de la cible en mètres',0,10)}${button('discharge','Décharger',active.used)}
    ${button('round','Round suivant')}${button('expire','Terminer Sous tension')}`:
    button('cast',`Se charger · ${mana} PM`,disabled||cha<1);
  }
@@ -617,8 +617,16 @@ function ensorceleurPlayHtml(a){
  }
  if(kind==='sleep'){
   const rank=ownedPathRank('voie-de-l-envouteur'), limit=rank>=5?3:rank>=4?2:1;
+  const targets=S.ensorceleurSleepTargets||[];
   html=`<p>Zone de 10 m de diamètre à 20 m. Cibles vivantes de NC inférieur à ${limit}. Inconscience ${cha} min, réveil par une action d’attaque infligeant 1 DM.</p>
-   ${S.uses[usageKey(a)]?`<p>Déjà utilisé dans ce combat. Jusqu’à ${S.ensorceleurSleep??'—'} cible(s).</p>`:
+   ${S.uses[usageKey(a)]?`<p>Déjà utilisé dans ce combat. Jusqu’à ${S.ensorceleurSleep??'—'} cible(s).</p>
+   <p>Endormis : ${targets.filter(x=>x.asleep).map(x=>esc(x.name)).join(', ')||'aucun'}</p>
+   ${targets.length<S.ensorceleurSleep?`<label>Cible <input data-spell-target maxlength="80"></label>
+    <label><input type="checkbox" data-spell-living> Créature vivante dans la zone</label>
+    <label>NC <input type="number" min="0" step="any" data-spell-field="nc"></label>
+    ${button('sleep-target','Endormir la cible')}`:''}
+   ${targets.some(x=>x.asleep)?`<label>Cible endormie <select data-spell-wake>${targets.filter(x=>x.asleep).map(x=>`<option>${esc(x.name)}</option>`).join('')}</select></label>
+    ${button('wake','Réveiller · 1 DM')}`:''}`:
    field('roll','Dé évolutif de capacité',1,die)+button('cast',`Lancer Sommeil · ${mana} PM`,disabled||cha<1)}`;
  }
  if(kind==='shock'){
@@ -647,6 +655,8 @@ function resolveEnsorceleur(button){
   if(casting&&!S.ensorceleurTension&&cha>0)S.ensorceleurTension={used:false};
   if(action==='touch'&&S.ensorceleurTension)message='Contact : 1d'+die+'° DM à la créature.';
   if(action==='discharge'&&S.ensorceleurTension&&!S.ensorceleurTension.used){
+   const distance=field('distance');
+   if(!Number.isFinite(distance)||distance<0||distance>10){result.textContent='La décharge exige une cible à 10 m ou moins.';return}
    S.ensorceleurTension.used=true;
    message='Décharge : attaque magique contre DEF, 1d'+die+'°'+signed(cha)+' DM si elle touche.';
   }
@@ -670,6 +680,23 @@ function resolveEnsorceleur(button){
   if(!validRoll(die)){result.textContent='Saisis un résultat de dé valide.';return}
   S.uses[usageKey(a)]=1;
   S.ensorceleurSleep=roll+cha;
+  S.ensorceleurSleepTargets=[];
+ }
+ if(kind==='sleep'&&action==='sleep-target'&&S.uses[usageKey(a)]){
+  const target=card.querySelector('[data-spell-target]').value.trim(),nc=field('nc');
+  const rank=ownedPathRank('voie-de-l-envouteur'),limit=rank>=5?3:rank>=4?2:1;
+  const targets=S.ensorceleurSleepTargets||[];
+  if(!slug(target)||!card.querySelector('[data-spell-living]').checked||!Number.isFinite(nc)||nc<0||nc>=limit){
+   result.textContent='Choisis une créature vivante dans la zone avec un NC inférieur à '+limit+'.';
+   return;
+  }
+  if(targets.some(x=>slug(x.name)===slug(target))){result.textContent='Cette créature a déjà été comptée.';return}
+  if(targets.length<S.ensorceleurSleep)S.ensorceleurSleepTargets=[...targets,{name:target,asleep:true}];
+ }
+ if(kind==='sleep'&&action==='wake'){
+  const name=card.querySelector('[data-spell-wake]').value;
+  const target=(S.ensorceleurSleepTargets||[]).find(x=>x.name===name&&x.asleep);
+  if(target){target.asleep=false;message=name+' se réveille après une action d’attaque et 1 DM.'}
  }
  if(kind==='shock'&&casting){
   const distance=field('distance'),nc=field('nc'),hit=card.querySelector('[data-spell-hit]').checked;
@@ -772,7 +799,7 @@ document.addEventListener('click',async event=>{const t=event.target.closest('bu
   if(chosen!==value)toast('Tatouages : Étourdi devient Ralenti.');
  }
  return;
-}if(t.dataset.removeCondition){S.conditions=S.conditions.filter(x=>x!==t.dataset.removeCondition);save();renderPlay();if(infoDialog.open&&uiTopic==='states')drawInfo();return}if(t.id==='spend-dr'&&S.dr>0){S.dr--;toast('Dé de récupération dépensé. Ajuste les PV après ton lancer.');updateAfterAction();return}if(t.dataset.reset){delete S.ensorceleurImage;delete S.ensorceleurTension;delete S.ensorceleurSleep;delete S.druideTerrain;delete S.druidePrison;delete S.druidePrisonTargets;delete S.druidePrisonFreed;if(t.dataset.reset==='day'){delete S.druideBerryTargets;delete S.druideBark;delete S.druideNightUsed}S.hp=Math.max(0,S.hp-(Number(S.chevalierDeferred)||0));delete S.chevalierDeferred;delete S.chevalierIntercept;delete S.chevalierBraced;delete S.feinte;if(t.dataset.reset==='day'){delete S.chantDesHeros;delete S.chantDeReconfort}delete S.warCryTargets;delete S.berserk;ownedAbilities().forEach(a=>{const u=usage(a);if(u&&(t.dataset.reset==='day'||u.scope==='combat'))S.uses[usageKey(a)]=0});if(t.dataset.reset==='day')S.pm=max.pm;toast(t.dataset.reset==='day'?(max.pm>0?'Récupération complète : mana et capacités restaurés.':'Capacités quotidiennes réactivées.'):'Capacités de combat réactivées.');updateAfterAction()}});
+}if(t.dataset.removeCondition){S.conditions=S.conditions.filter(x=>x!==t.dataset.removeCondition);save();renderPlay();if(infoDialog.open&&uiTopic==='states')drawInfo();return}if(t.id==='spend-dr'&&S.dr>0){S.dr--;toast('Dé de récupération dépensé. Ajuste les PV après ton lancer.');updateAfterAction();return}if(t.dataset.reset){delete S.ensorceleurImage;delete S.ensorceleurTension;delete S.ensorceleurSleep;delete S.ensorceleurSleepTargets;delete S.druideTerrain;delete S.druidePrison;delete S.druidePrisonTargets;delete S.druidePrisonFreed;if(t.dataset.reset==='day'){delete S.druideBerryTargets;delete S.druideBark;delete S.druideNightUsed}S.hp=Math.max(0,S.hp-(Number(S.chevalierDeferred)||0));delete S.chevalierDeferred;delete S.chevalierIntercept;delete S.chevalierBraced;delete S.feinte;if(t.dataset.reset==='day'){delete S.chantDesHeros;delete S.chantDeReconfort}delete S.warCryTargets;delete S.berserk;ownedAbilities().forEach(a=>{const u=usage(a);if(u&&(t.dataset.reset==='day'||u.scope==='combat'))S.uses[usageKey(a)]=0});if(t.dataset.reset==='day')S.pm=max.pm;toast(t.dataset.reset==='day'?(max.pm>0?'Récupération complète : mana et capacités restaurés.':'Capacités quotidiennes réactivées.'):'Capacités de combat réactivées.');updateAfterAction()}});
 document.addEventListener('input',event=>{const map={player:'player',ideal:'ideal',flaw:'flaw','notes-text':'notes'};if(map[event.target.id]){S[map[event.target.id]]=event.target.value;save()}});
 
 let sharedResource=null,resourcePending=0,resourceChain=Promise.resolve(),sessionData=null,initializingResource=false;

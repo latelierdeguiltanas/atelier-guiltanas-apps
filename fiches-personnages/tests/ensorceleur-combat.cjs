@@ -40,6 +40,10 @@ const {load}=require('../../forge-of-heroes/FINAL_FREEZE_TESTS/forge_product_run
   assert.equal((await state()).pm,6);
   await click('touch');
   assert.match(await dialog.innerText(),/Contact : 1d4° DM/);
+  await fill('distance','11');
+  await click('discharge');
+  assert.match(await dialog.innerText(),/10 m ou moins/);
+  await fill('distance','10');
   await click('discharge');
   assert.equal(await btn('discharge').isDisabled(),true);
   assert.equal((await state()).pm,6);
@@ -72,6 +76,17 @@ const {load}=require('../../forge-of-heroes/FINAL_FREEZE_TESTS/forge_product_run
   assert.equal((await state()).ensorceleurSleep,5);
   assert.equal((await state()).pm,2);
   assert.equal(await btn('cast').count(),0);
+  await dialog.locator('[data-spell-target]').fill('Gobelin');
+  await dialog.locator('[data-spell-living]').check();
+  await fill('nc','1');
+  await click('sleep-target');
+  assert.match(await dialog.innerText(),/NC inférieur à 1/);
+  await fill('nc','0.5');
+  await click('sleep-target');
+  assert.deepEqual((await state()).ensorceleurSleepTargets,[{name:'Gobelin',asleep:true}]);
+  await click('wake');
+  assert.equal((await state()).ensorceleurSleepTargets[0].asleep,false);
+  assert.match(await dialog.innerText(),/1 DM/);
   await close();
 
   await open(/Choc/);
@@ -100,6 +115,6 @@ const {load}=require('../../forge-of-heroes/FINAL_FREEZE_TESTS/forge_product_run
   assert.deepEqual(errors,[]);
   const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
   console.log(JSON.stringify({status:'PASS',environment:'chromium',sheetSha256:sha('fiches-personnages/fiche/fiche.js'),
-   testSha256:sha(__filename),checks:['Sous tension : coût, contact, décharge et round','Image décalée : durée et seuil du d6','Sommeil : quota et capacité','Choc : portée, NC, FOR et concentration','Affichage du dé évolutif et sauvegarde']}));
+   testSha256:sha(__filename),checks:['Sous tension : coût, contact, décharge et round','Image décalée : durée et seuil du d6','Sommeil : quota, capacité, NC et réveil','Choc : portée, NC, FOR et concentration','Affichage du dé évolutif et sauvegarde']}));
  }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exitCode=1});
