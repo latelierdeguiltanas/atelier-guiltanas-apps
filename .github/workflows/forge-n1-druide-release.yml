@@ -1,0 +1,55 @@
+name: Forge N1 - publier le Druide vérifié
+on:
+  push:
+    branches: [qa-druide-final]
+    paths:
+      - '.github/workflows/forge-n1-druide-release.yml'
+      - 'forge-of-heroes/QA/N1/druide-runtime-n1.json'
+permissions:
+  contents: write
+concurrency:
+  group: forge-n1-release
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Assembler, vérifier et publier le lot validé
+        run: |
+          set -euo pipefail
+          base=7c6820764f56ca9d94958f3ad21a27df94ea6698
+          release_patch="$RUNNER_TEMP/forge-druide-release.patch"
+          git diff --binary "$base" "$GITHUB_SHA" -- .github/workflows/forge-n1-druide-final.yml fiches-personnages/fiche/ fiches-personnages/tests/druide-combat.cjs forge-of-heroes/rules/ability-runtime.js forge-of-heroes/FINAL_FREEZE_TESTS/n1_druide_runtime.cjs forge-of-heroes/FINAL_FREEZE_TESTS/n1_druide_runtime_bundle.cjs forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs forge-of-heroes/QA/N1/ > "$release_patch"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git switch --detach --discard-changes origin/main
+            git apply --index "$release_patch"
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_druide_runtime_bundle.cjs
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_druide_runtime.cjs
+            node forge-of-heroes/FINAL_FREEZE_TESTS/ability_runtime_runner.cjs
+            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
+            node centre-synchronisation/scripts/forge-global-progress.cjs
+            node - <<'NODE'
+          const a=require('node:assert/strict'),f=require('./centre-synchronisation/forge-n1/focus.json');
+          a.equal(f.summary.profilesCertified,5);
+          a.equal(f.certificationPlan.current.name,'Druide');
+          a.equal(f.certificationPlan.current.percent,100);
+          a.equal(f.certificationPlan.current.certified,true);
+          a.equal(f.certificationPlan.next.name,'Ensorceleur');
+          a.equal(f.certificationPlan.next.unlocked,true);
+          NODE
+            git add forge-of-heroes/index.html centre-synchronisation/forge-n1/focus.json centre-synchronisation/data/forge-global-progress.json
+            git diff --cached --check
+            git commit -m 'Valider le Druide N1 et ouvrir la validation de l’Ensorceleur'
+            if git push origin HEAD:refs/heads/qa-druide-release-ready; then exit 0; fi
+          done
+          exit 1

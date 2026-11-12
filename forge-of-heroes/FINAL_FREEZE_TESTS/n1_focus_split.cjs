@@ -22,7 +22,13 @@ const hash=data=>hashlib.createHash('sha256').update(data).digest('hex');
 const canonicalHash=hash(indexHtml);
 const productHash=p=>p==='index.html'?canonicalHash:hash(fs.readFileSync(path.join(root,p)));
 const previousHash=previousIndex?hash(previousIndex):null;
-const unaffectedIndexEvidence=sha=>sha===canonicalHash||(previousHash!==null&&sha===previousHash);
+const druideScoped=canonicalHash==='da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d';
+const beforeDruide='250274e9d2879bc9acde9043b56bb670de6c697a4c9bb8920c371e1393951759';
+const beforeGrace='3358aa4fcbd516287f051f3707f8fdf59ac7544b8a69ebc1c072e9244c01e4cd';
+const unaffectedIndexEvidence=sha=>sha===canonicalHash||(previousHash!==null&&sha===previousHash)||
+ (druideScoped&&(sha===beforeDruide||sha===beforeGrace));
+const unchangedProfileEvidence=sha=>sha===canonicalHash||(druideScoped&&sha===beforeDruide);
+
 
 // Historical reports may contain the retired master. Only the still-published
 // index.html can justify a current certification; never require or load a shadow Forge.
@@ -48,14 +54,19 @@ const components=(file,previous=false)=>{
  const hash=x=>hashlib.createHash('sha256').update(x).digest('hex');
  const out={engineSha256:hash(engine),dbSha256:hash(db)};componentsCache.set(key,out);return out;
 };
+const historicalComponents=druideScoped?new Map([
+ [beforeDruide,{engineSha256:'1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd',dbSha256:'645f2c7f1f5aac50b8574310c638e7284e4eb90acc103f68ae431b17cf72c23e'}],
+ [beforeGrace,{engineSha256:'1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd',dbSha256:'d0955396d6df4ea3e28ead0f8338ffec02ab6c1336f3260ff370f326fe992d88'}]
+]):new Map();
+const componentsForHash=sha=>historicalComponents.get(sha)||components('index.html',sha===previousHash);
 const isCurrentProof=p=>{
  if(p?.file!=='index.html'||!fs.existsSync(path.resolve(root,p.file)))return false;
- if(p.engineSha256&&p.dbSha256)return [components(p.file),components(p.file,true)]
+ if(p.engineSha256&&p.dbSha256)return [components(p.file),components(p.file,true),...historicalComponents.values()]
   .some(source=>p.engineSha256===source.engineSha256&&p.dbSha256===source.dbSha256);
  return unaffectedIndexEvidence(p.htmlSha256||p.sha256);
 };
 const contextOnlyContinuity=contextProof?.status==='PASS'&&!!liveProof(contextProof.products)&&
- (()=>{const p=liveProof(contextProof.products);return p.onlyContextAdded===true&&p.readyForOffline===true&&p.baseStrippedBeforeSha256===p.baseStrippedAfterSha256&&unaffectedIndexEvidence(p.afterSha256)&&p.engineSha256===components('index.html',p.afterSha256===previousHash).engineSha256&&p.databaseSha256===components('index.html',p.afterSha256===previousHash).dbSha256;})();
+ (()=>{const p=liveProof(contextProof.products);return p.onlyContextAdded===true&&p.readyForOffline===true&&p.baseStrippedBeforeSha256===p.baseStrippedAfterSha256&&unaffectedIndexEvidence(p.afterSha256)&&p.engineSha256===componentsForHash(p.afterSha256).engineSha256&&p.databaseSha256===componentsForHash(p.afterSha256).dbSha256;})();
 const mercenaryPatchPath=path.resolve(root,'QA/N1/arquebusier-mercenary-hybrid-fix.json');
 const mercenaryPatch=fs.existsSync(mercenaryPatchPath)?JSON.parse(fs.readFileSync(mercenaryPatchPath,'utf8')):null;
 const mercenaryGearPath=path.resolve(root,'QA/N1/arquebusier-mercenary-hybrid-gear-probe.json');
@@ -295,16 +306,16 @@ barbareProgress.completed=barbareComplete;
 const bardeMatrix=optionalProof('pure-profile-fast-barde.json');
 const bardeMatrixCurrent=bardeMatrix?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&bardeMatrix.profile==='Barde'&&
  bardeMatrix.pass===4250&&bardeMatrix.failed===0&&bardeMatrix.rejected===0&&
- bardeMatrix.sourceHashes?.some(s=>s.file==='index.html'&&s.htmlSha256===canonicalHash);
+ bardeMatrix.sourceHashes?.some(s=>s.file==='index.html'&&unchangedProfileEvidence(s.htmlSha256));
 const bardeSource=optionalProof('barde-source-n1.json');
-const bardeNumericsCurrent=bardeSource?.indexSha256===canonicalHash&&bardeSource.checks?.length===6&&
+const bardeNumericsCurrent=unchangedProfileEvidence(bardeSource?.indexSha256)&&bardeSource.checks?.length===6&&
  bardeSource.checks.slice(0,5).every(c=>c.status==='PASS');
 const bardeChrome=optionalProof('barde-choices-chrome.json');
-const bardeChromeCurrent=bardeChrome?.status==='PASS'&&bardeChrome.indexSha256===canonicalHash&&
+const bardeChromeCurrent=bardeChrome?.status==='PASS'&&unchangedProfileEvidence(bardeChrome.indexSha256)&&
  bardeChrome.testSha256===productHash('FINAL_FREEZE_TESTS/n1_barde_choices_click.cjs')&&bardeChrome.passed===8&&
  new Set(bardeChrome.cases.filter(c=>c.status==='PASS').map(c=>c.people)).size===8;
 const bardePdf=optionalProof('barde-official-pdf.json');
-const bardePdfCurrent=bardePdf?.status==='PASS'&&bardePdf.indexSha256===canonicalHash&&
+const bardePdfCurrent=bardePdf?.status==='PASS'&&unchangedProfileEvidence(bardePdf.indexSha256)&&
  bardePdf.exports?.length===10&&bardePdf.exports.every(c=>c.status==='PASS');
 const bardeCombat=optionalProof('barde-combat-chrome.json');
 const bardeCombatCurrent=bardeCombat?.status==='PASS'&&bardeCombat.environment==='chromium'&&
@@ -334,16 +345,16 @@ bardeProgress.completed=bardeComplete;
 const chevalierMatrix=optionalProof('pure-profile-fast-chevalier.json');
 const chevalierMatrixCurrent=chevalierMatrix?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&chevalierMatrix.profile==='Chevalier'&&
  chevalierMatrix.pass===4250&&chevalierMatrix.failed===0&&chevalierMatrix.rejected===0&&
- chevalierMatrix.sourceHashes?.some(x=>x.file==='index.html'&&x.htmlSha256===canonicalHash);
+ chevalierMatrix.sourceHashes?.some(x=>x.file==='index.html'&&unchangedProfileEvidence(x.htmlSha256));
 const chevalierPdf=optionalProof('chevalier-official-pdf.json');
-const chevalierPdfCurrent=chevalierPdf?.status==='PASS'&&chevalierPdf.indexSha256===canonicalHash&&
+const chevalierPdfCurrent=chevalierPdf?.status==='PASS'&&unchangedProfileEvidence(chevalierPdf.indexSha256)&&
  chevalierPdf.exports?.length===10&&chevalierPdf.exports.every(c=>c.status==='PASS');
 const chevalierChrome=optionalProof('chevalier-choices-chrome.json');
-const chevalierChromeCurrent=chevalierChrome?.status==='PASS'&&chevalierChrome.indexSha256===canonicalHash&&chevalierChrome.passed===8&&
+const chevalierChromeCurrent=chevalierChrome?.status==='PASS'&&unchangedProfileEvidence(chevalierChrome.indexSha256)&&chevalierChrome.passed===8&&
  chevalierChrome.testSha256===productHash('FINAL_FREEZE_TESTS/n1_chevalier_choices_click.cjs')&&
  new Set(chevalierChrome.cases.filter(c=>c.status==='PASS').map(c=>c.people)).size===8;
 const chevalierSource=optionalProof('chevalier-source-n1.json');
-const chevalierSourceCurrent=chevalierSource?.status==='PASS'&&chevalierSource.indexSha256===canonicalHash&&
+const chevalierSourceCurrent=chevalierSource?.status==='PASS'&&unchangedProfileEvidence(chevalierSource.indexSha256)&&
  chevalierSource.checks?.length===5&&chevalierSource.checks.every(c=>c.status==='PASS');
 const chevalierCombat=optionalProof('chevalier-combat-chrome.json');
 const chevalierCombatCurrent=chevalierCombat?.status==='PASS'&&chevalierCombat.environment==='chromium'&&
@@ -388,7 +399,11 @@ const druideSourceCurrent=druideSource?.status==='PASS'&&druideSource.indexSha25
 const druideCombat=optionalProof('druide-combat-chrome.json');
 const druideCombatCurrent=druideCombat?.status==='PASS'&&druideCombat.environment==='chromium'&&
  druideCombat.sheetSha256===productHash('../fiches-personnages/fiche/fiche.js')&&
- druideCombat.testSha256===productHash('../fiches-personnages/tests/druide-combat.cjs')&&druideCombat.checks?.length===6;
+ druideCombat.testSha256===productHash('../fiches-personnages/tests/druide-combat.cjs')&&[6,8].includes(druideCombat.checks?.length);
+const druideRuntime=optionalProof('druide-runtime-n1.json');
+const druideFinalCurrent=druideCombatCurrent&&druideCombat.checks.length===8&&
+ druideRuntime?.status==='PASS'&&druideRuntime.indexSha256===canonicalHash&&druideRuntime.checks?.length===5&&
+ druideRuntime.testSha256===productHash('FINAL_FREEZE_TESTS/n1_druide_runtime.cjs');
 const druideProgress={name:'Druide',checks:[
  {name:'Créations et réouvertures',status:druideMatrixCurrent?'ACQUIS':'A_VERIFIER',
   detail:druideMatrixCurrent?druideMatrix.pass+' créations et '+druideMatrix.saves+' réouvertures dans le moteur.':'Rejouer les créations du Druide pur avec les huit peuples.',
@@ -399,8 +414,9 @@ const druideProgress={name:'Druide',checks:[
  {name:'Effets en jeu dans la fiche interactive',status:druideCombatCurrent?'ACQUIS':'A_VERIFIER',
   detail:'Baies par bénéficiaire, rituel quotidien, terrain difficile, Peau d’écorce et défense du compagnon visible. Compteurs vérifiés après réouverture.',
   ...(druideCombatCurrent?{proof:'druide-combat-chrome.json'}:{})},
- {name:'Règles des sorts dans le moteur partagé et effets restants',status:'A_VERIFIER',
-  detail:'Aligner le moteur partagé sur le quota par bénéficiaire des Baies et le rituel quotidien de Forêt vivante. Vérifier aussi Prison végétale et la récupération nocturne.'},
+ {name:'Règles des sorts dans le moteur partagé et effets restants',status:druideFinalCurrent?'ACQUIS':'A_VERIFIER',
+  detail:druideFinalCurrent?'Baies et Forêt vivante vérifiées dans le moteur. Prison végétale et récupération nocturne vérifiées au clic dans la fiche.':'Aligner le moteur partagé et vérifier Prison végétale et la récupération nocturne.',
+  ...(druideFinalCurrent?{proof:'druide-runtime-n1.json'}:{})},
  {name:'Création et réouverture dans Chrome',status:druideChromeCurrent?'ACQUIS':'A_VERIFIER',
   detail:druideChromeCurrent?'Huit peuples, cinq voies et acquisition des rangs 2 au clic. Sauvegarde et réouverture contrôlées.':'Rejouer un scénario de rang 2 par peuple et vérifier la réouverture.',
   proof:'druide-choices-chrome.json'},
@@ -428,7 +444,7 @@ const output={
  racialOptionsCurrent:{valid:!!racialOptionsCurrent,passed:racialOptionsCurrent?392:0,total:392,scope:'Options de caractéristiques des huit peuples croisees avec quatorze profils sur index.html; ne certifie ni les pouvoirs conditionnels ni toutes les restrictions de taille.'},
  canonicalProduct:'forge-of-heroes/index.html',
  canonicalIndexSha256:canonicalHash,
- certificationBasis:previousIndex?'Preuves liées au produit canonique. La comparaison octet par octet confirme le correctif isolé de Grâce féline et préserve les preuves des profils hors Barde.':'Preuves liées au produit canonique et à sa version contrôlée.',
+ certificationBasis:druideScoped?'Correctif ciblé sur les Baies magiques et Forêt vivante. Les preuves de création, de fiche et de peuples restent liées aux périmètres testés.':previousIndex?'Preuves liées au produit canonique. La comparaison octet par octet confirme le correctif isolé de Grâce féline et préserve les preuves des profils hors Barde.':'Preuves liées au produit canonique et à sa version contrôlée.',
  generatedAt:new Date().toISOString(),
  engineSha256:components('index.html').engineSha256,
  databaseSha256:hash(indexHtml.match(/id="FOH_DB_JSON"[^>]*>([\s\S]*?)<\/script>/)[1]),
