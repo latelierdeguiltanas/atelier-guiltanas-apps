@@ -18,7 +18,7 @@ const shortcuts=[['scenario','Scénario','Chapitres, scènes et secrets','book-o
  ['players','Personnages','Fiches et joueurs facultatifs','users'],
  ['soundboard','Ambiance sonore','Soundboard autonome','music'],
  ['notes','Carnet MJ','Séances et notes privées','notebook-pen']];
-let currentTab='scenes',search='',zone='all',editing=null;
+let currentTab='scenes',search='',zone='all',editing=null,lastOuterTab='',lastTableId='';
 const client=()=>window.MJAccount?.client;
 const current=()=>A.selectedTable();
 const assets=t=>{if(!t.scenario.assets)t.scenario.assets=D.cleanPackAssets({});return t.scenario.assets};
@@ -151,6 +151,7 @@ function decorate(ctx){
  }
  if(ctx.view!=='table'||!ctx.table)return;
  const t=ctx.table;
+ if(t.id!==lastTableId){lastTableId=t.id;currentTab='scenes';search='';zone='all';lastOuterTab='';}
  const tools=t.tools||D.normalizeTools(null,t.system);
  if(ctx.tab==='overview'){
   const stats=document.querySelector('#app .statrow');
@@ -166,11 +167,12 @@ function decorate(ctx){
  const resTab=document.querySelector('#app .tabs [role="tab"][data-tab="resources"]');
  if(resTab){resTab.textContent='Ressources';if(!tools.shop&&!tools.scenario)resTab.remove();}
  if(ctx.tab==='scenario'||ctx.tab==='resources'||ctx.tab==='tools'){
-  if(ctx.tab==='scenario')currentTab='scenes';
-  if(ctx.tab==='resources'&&currentTab==='scenes')currentTab='shop';
+  if(ctx.tab==='scenario'&&lastOuterTab!=='scenario')currentTab='scenes';
+  if(ctx.tab==='resources'&&lastOuterTab!=='resources')currentTab=tools.shop?'shop':'scenarioItems';
   if(currentTab==='shop'&&!tools.shop)currentTab='scenarioItems';
   mount(t,ctx.tab);
  }
+ lastOuterTab=ctx.tab;
 }
 function input(label,name,value='',options={}){
  const type=options.type||'text',required=options.required?'required':'',limit=options.limit||180;
