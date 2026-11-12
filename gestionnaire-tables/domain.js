@@ -75,7 +75,7 @@ function validateDb(raw){
  return {version:1,scenarios,tables,createdAt:text(raw.createdAt,50)||iso(),updatedAt:iso()};
 }
 function createTable(db,{name,system,scenarioId,tools,playerMode}){
- const sc=db.scenarios.find(x=>x.id===scenarioId);if(!sc)throw Error('Scénario introuvable.');
+ const sc=scenarioId?db.scenarios.find(x=>x.id===scenarioId):scenarioTemplate('blank',system,'Scénario facultatif — '+String(name||'Ma table').slice(0,65));if(!sc)throw Error('Scénario introuvable.');
  const table={id:uid(),name:text(name,100),system:text(system||sc.system||'generic',40),tools:normalizeTools(tools,system),playerMode:playerMode==='linked'?'linked':'solo',scenario:normalizedScenario(sc),characters:[],sessions:[],completedScenes:[],notes:'',createdAt:iso(),updatedAt:iso()};
  if(!table.name)throw Error('Le nom de la table est obligatoire.'); db.tables.unshift(table);return table;
 }
