@@ -112,7 +112,7 @@ function entityCard(x,type,t){
 function renderStudio(t){
  const a=assets(t),areas=prepareAreas(t),kind=currentTab;
  const total=(a.maps?.length||0)+(a.encounters?.length||0)+(a.scenarioItems?.length||0)+(a.shop?.length||0);
- const head='<section class="studio-hero"><div class="eyebrow">STUDIO SCÉNARIO · MODIFIABLE ET PRIVÉ</div><h2>'+esc(t.scenario.name)+'</h2><p>'+esc(t.scenario.description||'Aucune description encore renseignée.')+'</p><div class="studio-hero-meta"><span>'+t.scenario.modules.length+' sections</span><span>'+areas.length+' zones</span><span>'+total+' ressources</span></div><div class="actions"><button class="button sm" data-st="edit-scenario">Modifier le scénario</button>'+(t.scenario.assets?.source?.toLowerCase().includes("bastide")&&!areas.length?'<button class="button sm primary" data-st="organize">Classer les ressources par zone</button>':'')+'<button class="button sm" data-st="export">Exporter ce scénario</button></div></section>';
+ const head='<section class="studio-hero"><div class="eyebrow">STUDIO SCÉNARIO · MODIFIABLE ET PRIVÉ</div><h2>'+esc(t.scenario.name)+'</h2><p>'+esc(t.scenario.description||'Aucune description encore renseignée.')+'</p><div class="studio-hero-meta"><span>'+t.scenario.modules.length+' sections</span><span>'+areas.length+' zones</span><span>'+total+' ressources</span></div><div class="actions"><button class="button sm" data-st="edit-scenario">Modifier le scénario</button><button class="button sm" data-st="attach">Choisir un autre scénario</button>'+(t.scenario.assets?.source?.toLowerCase().includes("bastide")&&!areas.length?'<button class="button sm primary" data-st="organize">Classer les ressources par zone</button>':'')+'<button class="button sm" data-st="export">Exporter ce scénario</button></div></section>';
  const nav='<div class="studio-nav">'+typeOptions(kind)+'</div>';
  const areaSelect=kind!=='scenes'&&kind!=='areas'?'<label class="field">Zone<select id="studio-zone"><option value="all">Toutes les zones</option><option value="none" '+(zone==='none'?'selected':'')+'>Sans zone</option>'+areas.map(x=>'<option value="'+esc(x.id)+'" '+(x.id===zone?'selected':'')+'>'+esc(x.name)+'</option>').join('')+'</select></label>':'';
  let content='';
@@ -234,6 +234,13 @@ function sceneForm(moduleId,id=''){
   textarea('Déroulement et secrets MJ','gmNotes',x.gmNotes||'')+imageFields(x),
   {action:'scene',id,moduleId});
 }
+function attachForm(){
+ const t=current();if(!t)return;
+ const options=A.getDb().scenarios.map(sc=>[sc.id,sc.name+' · '+sc.system]);
+ if(!options.length){A.notify('Aucun modèle : crée d’abord un scénario dans la bibliothèque.');return;}
+ dialog('Associer un scénario à cette table',selectField('Choisir un modèle personnel','scenarioId',options,options[0][0])+
+  '<p class="note">Cette opération remplace uniquement le scénario et remet ses scènes jouées à zéro. Les personnages et les séances de cette table restent en place. Les autres tables ne changent pas.</p>',{action:'attach'});
+}
 function scenarioForm(){
  const sc=current()?.scenario;if(!sc)return;
  dialog('Modifier le scénario',input('Nom','name',sc.name,{required:true,limit:100})+
@@ -293,6 +300,13 @@ async function saveForm(form){
   obj.description=String(data.description||'').slice(0,2500);
   obj.gmNotes=String(data.gmNotes||'').slice(0,4000);
   setImage(obj);if(!x)m.scenes.push(obj);
+ }else if(meta.action==='attach'){
+  const sc=A.getDb().scenarios.find(x=>x.id===data.scenarioId);
+  if(!sc)throw Error('Modèle introuvable.');
+  if(!confirm('Remplacer le scénario de cette table ? Les scènes jouées seront réinitialisées, mais les PJ et séances seront conservés.'))return;
+  t.scenario=D.normalizedScenario(sc);
+  t.completedScenes=[];
+  if(t.scenario.assets?.shop?.length)t.tools.shop=true;
  }else if(meta.action==='scenario'){
   t.scenario.name=String(data.name||'').trim().slice(0,100);
   if(!t.scenario.name)throw Error('Nom requis.');
@@ -332,6 +346,7 @@ document.addEventListener('click',async event=>{
   if(action==='add-entity')entityForm(b.dataset.kind);
   if(action==='edit-entity')entityForm(b.dataset.kind,b.dataset.id);
   if(action==='edit-scenario')scenarioForm();
+  if(action==='attach')attachForm();
   if(action==='close')$('studio-dialog')?.close();
   if(action==='delete'&&t&&editing?.id){
    if(!confirm('Supprimer définitivement cet élément de la copie de cette table ?'))return;
