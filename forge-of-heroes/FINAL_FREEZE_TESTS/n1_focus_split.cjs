@@ -452,7 +452,7 @@ const ensorceleurProgress={name:'Ensorceleur',checks:[
   detail:'DEF, initiative, bonus de tests, coût des sorts, quota de Sommeil et concentration de Choc.',
   proof:'ensorceleur-source-n1.json'},
  {name:'Effets des sorts en partie',status:'A_VERIFIER',
-  detail:'Contrôler notamment la décharge au contact et l’attaque de Sous tension, l’évitement d’Image décalée, ainsi que les cibles et durées de Sommeil et Choc.'},
+  detail:'Harmoniser l’affichage du dé évolutif de Sous tension et de Choc entre les attaques et le détail des pouvoirs. Vérifier la décharge au contact, les durées et les effets sur les cibles.'},
  {name:'Création et réouverture dans Chrome',status:ensorceleurChromeCurrent?'ACQUIS':'A_VERIFIER',
   detail:ensorceleurChromeCurrent?'Huit peuples, cinq voies, rang 2 du mage, achats d’âge et réouverture au clic.':'Rejouer les choix du mage, l’âge Mûr et le Don étrange du Gnome.',
   proof:'ensorceleur-choices-chrome.json'},
