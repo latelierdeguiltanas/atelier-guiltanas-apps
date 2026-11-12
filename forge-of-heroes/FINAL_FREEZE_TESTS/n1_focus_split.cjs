@@ -20,44 +20,48 @@ const indexHtml=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const previousIndex=previousForUnaffectedProfiles(indexHtml);
 const hash=data=>hashlib.createHash('sha256').update(data).digest('hex');
 const canonicalHash=hash(indexHtml);
-const productHash=p=>p==='index.html'?hash(previousIndex||indexHtml):hash(fs.readFileSync(path.join(root,p)));
+const productHash=p=>p==='index.html'?canonicalHash:hash(fs.readFileSync(path.join(root,p)));
+const previousHash=previousIndex?hash(previousIndex):null;
+const unaffectedIndexEvidence=sha=>sha===canonicalHash||(previousHash!==null&&sha===previousHash);
 
 // Historical reports may contain the retired master. Only the still-published
 // index.html can justify a current certification; never require or load a shadow Forge.
 const liveProof=arr=>{const hits=Array.isArray(arr)?arr.filter(x=>x?.file==='index.html'||x?.name==='index.html'):[];return hits.length===1?hits[0]:null;};
-const liveHashMatches=arr=>{const p=liveProof(arr);return !!p&&p.sha256===productHash('index.html');};
+const liveHashMatches=arr=>{const p=liveProof(arr);return !!p&&unaffectedIndexEvidence(p.sha256);};
 const pilierPath=path.resolve(root,'QA/N1/arquebusier-pilier-de-bar-fix.json');
 const pilier=fs.existsSync(pilierPath)?JSON.parse(fs.readFileSync(pilierPath,'utf8')):null;
 const currentRelease=liveHashMatches(releaseProducts);
 // Une preuve explicite de correction limitée assure la continuité du produit sans
 // attribuer à tort les anciens tests de clic à des changements plus vastes.
 const pilierContinuity=pilier?.status==='PASS'&&!!liveProof(pilier.products)&&!!liveProof(releaseProducts)&&
- (()=>{const p=liveProof(releaseProducts),fix=liveProof(pilier.products);return fix.changed===true&&fix.previous?.length>=1&&fix.previous.every(x=>x.formula==='1d4')&&fix.beforeSha256===p.sha256&&fix.afterSha256===productHash('index.html')&&fix.attack==='1d4°'&&fix.nonLethal===true&&fix.saveReload==='PASS';})();
+ (()=>{const p=liveProof(releaseProducts),fix=liveProof(pilier.products);return fix.changed===true&&fix.previous?.length>=1&&fix.previous.every(x=>x.formula==='1d4')&&fix.beforeSha256===p.sha256&&unaffectedIndexEvidence(fix.afterSha256)&&fix.attack==='1d4°'&&fix.nonLethal===true&&fix.saveReload==='PASS';})();
 const contextProofFile=path.resolve(root,'QA/N1/arquebusier-context-publish.json');
 const contextProof=fs.existsSync(contextProofFile)?JSON.parse(fs.readFileSync(contextProofFile,'utf8')):null;
 const componentsCache=new Map();
-const components=file=>{
- if(componentsCache.has(file))return componentsCache.get(file);
- const html=file==='index.html'?(previousIndex||indexHtml):fs.readFileSync(path.resolve(root,file),'utf8');
+const components=(file,previous=false)=>{
+ const key=previous?'previous:'+file:file;
+ if(componentsCache.has(key))return componentsCache.get(key);
+ const html=file==='index.html'?(previous?(previousIndex||indexHtml):indexHtml):fs.readFileSync(path.resolve(root,file),'utf8');
  const extract=id=>{const i=html.indexOf('id="'+id+'"');if(i<0)return null;const start=html.indexOf('>',i)+1,end=html.indexOf('</script>',start);return start>i&&end>start?html.slice(start,end):null};
  const engine=extract('FOH_ENGINE_BUNDLE'),db=extract('FOH_DB_JSON');
  if(!engine||!db)throw Error('Production bundle invalid '+file);
  const hash=x=>hashlib.createHash('sha256').update(x).digest('hex');
- const out={engineSha256:hash(engine),dbSha256:hash(db)};componentsCache.set(file,out);return out;
+ const out={engineSha256:hash(engine),dbSha256:hash(db)};componentsCache.set(key,out);return out;
 };
 const isCurrentProof=p=>{
  if(p?.file!=='index.html'||!fs.existsSync(path.resolve(root,p.file)))return false;
- if(p.engineSha256&&p.dbSha256)return p.engineSha256===components(p.file).engineSha256&&p.dbSha256===components(p.file).dbSha256;
- return productHash(p.file)===(p.htmlSha256||p.sha256);
+ if(p.engineSha256&&p.dbSha256)return [components(p.file),components(p.file,true)]
+  .some(source=>p.engineSha256===source.engineSha256&&p.dbSha256===source.dbSha256);
+ return unaffectedIndexEvidence(p.htmlSha256||p.sha256);
 };
 const contextOnlyContinuity=contextProof?.status==='PASS'&&!!liveProof(contextProof.products)&&
- (()=>{const p=liveProof(contextProof.products);return p.onlyContextAdded===true&&p.readyForOffline===true&&p.baseStrippedBeforeSha256===p.baseStrippedAfterSha256&&p.afterSha256===productHash('index.html')&&p.engineSha256===components('index.html').engineSha256&&p.databaseSha256===components('index.html').dbSha256;})();
+ (()=>{const p=liveProof(contextProof.products);return p.onlyContextAdded===true&&p.readyForOffline===true&&p.baseStrippedBeforeSha256===p.baseStrippedAfterSha256&&unaffectedIndexEvidence(p.afterSha256)&&p.engineSha256===components('index.html',p.afterSha256===previousHash).engineSha256&&p.databaseSha256===components('index.html',p.afterSha256===previousHash).dbSha256;})();
 const mercenaryPatchPath=path.resolve(root,'QA/N1/arquebusier-mercenary-hybrid-fix.json');
 const mercenaryPatch=fs.existsSync(mercenaryPatchPath)?JSON.parse(fs.readFileSync(mercenaryPatchPath,'utf8')):null;
 const mercenaryGearPath=path.resolve(root,'QA/N1/arquebusier-mercenary-hybrid-gear-probe.json');
 const mercenaryGear=fs.existsSync(mercenaryGearPath)?JSON.parse(fs.readFileSync(mercenaryGearPath,'utf8')):null;
 const mercenaryContinuity=mercenaryPatch?.status==='PASS'&&mercenaryPatch.twoCasesOnly===true&&!!liveProof(mercenaryPatch.changed)&&!!liveProof(contextProof?.products)&&
- (()=>{const p=liveProof(mercenaryPatch.changed),prior=liveProof(contextProof.products);return p.beforeSha256===prior.afterSha256&&p.afterSha256===productHash('index.html')&&p.dbSha256&&p.diffStatements===2;})()&&
+ (()=>{const p=liveProof(mercenaryPatch.changed),prior=liveProof(contextProof.products);return p.beforeSha256===prior.afterSha256&&unaffectedIndexEvidence(p.afterSha256)&&p.dbSha256&&p.diffStatements===2;})()&&
  mercenaryGear?.status==='PASS'&&mercenaryGear.accepted===32&&mercenaryGear.cases?.length===32&&mercenaryGear.faultyPowder?.length===0&&liveHashMatches(mercenaryGear.products);
 const deployed=release?.status==='INTEGRATED_NOT_CERTIFIED_FULL'&&(currentRelease||pilierContinuity||contextOnlyContinuity||mercenaryContinuity);
 const arbaletrierMissing=variant?.verdict==='VARIANTE_OFFICIELLE_NON_ENTIEREMENT_INTEGREE';
@@ -91,11 +95,11 @@ const contextClick=fs.existsSync(clickPath)?JSON.parse(fs.readFileSync(clickPath
 const twentyPath=path.resolve(root,'QA/N1/arquebusier-20-real-mobile-pairs.json');
 const twenty=fs.existsSync(twentyPath)?JSON.parse(fs.readFileSync(twentyPath,'utf8')):null;
 const allR1Names=['mecanismes','tir-de-grenaille-l','pilier-de-bar','plus-vite-que-son-ombre','joli-coup'];
-const r1RealClick=!!contextClick&&contextClick.indexSha256===productHash('index.html')&&contextClick.status==='PASS'&&contextClick.passed===4&&contextClick.failed===0&&allR1Names.every(slug=>contextClick.cases.some(c=>c.status==='PASS'&&c.checks.some(x=>x.ability===slug)));
+const r1RealClick=!!contextClick&&unaffectedIndexEvidence(contextClick.indexSha256)&&contextClick.status==='PASS'&&contextClick.passed===4&&contextClick.failed===0&&allR1Names.every(slug=>contextClick.cases.some(c=>c.status==='PASS'&&c.checks.some(x=>x.ability===slug)));
 const contextualComplete=!!contextual&&contextual.status==='PASS'&&contextual.failed===0&&contextual.passed>=55&&contextual.all15===true&&sameCurrentHashes(contextual.inputSha256);
 const hybridComplete=!!hybrid&&hybrid.status==='PASS'&&hybrid.passed===4&&hybrid.failed===0&&sameCurrentHashes(hybrid.products);
 const r1Complete=ageOK&&contextualComplete&&r1RealClick; // Current source oracle and real clicks supersede historical continuity.
-const twentyRealClick=!!twenty&&twenty.status==='PASS'&&twenty.passed===20&&twenty.failed===0&&twenty.indexSha256===productHash('index.html');
+const twentyRealClick=!!twenty&&twenty.status==='PASS'&&twenty.passed===20&&twenty.failed===0&&unaffectedIndexEvidence(twenty.indexSha256);
 
 // R2 closes from current source-bound oracles AND all five real age journeys,
 // rather than remaining permanently false after successful verification.
@@ -106,7 +110,7 @@ const r2Oracles=!!contextualComplete&&r2Names.every(slug=>
  contextual.cases.some(c=>c.status==='PASS'&&c.tag.startsWith(slug+'/{'))&&
  contextual.cases.some(c=>c.status==='PASS'&&c.tag===slug+'/no-context')&&
  contextual.cases.some(c=>c.status==='PASS'&&c.tag===slug+'/unowned'));
-const r2Mobile=!!advanced&&advanced.indexSha256===productHash('index.html')&&advanced.status==='PASS'&&advanced.passed===5&&advanced.failed===0&&r2Names.every(slug=>advanced.cases.some(c=>c.status==='PASS'&&c.abilities?.some(a=>a.slug===slug)));
+const r2Mobile=!!advanced&&unaffectedIndexEvidence(advanced.indexSha256)&&advanced.status==='PASS'&&advanced.passed===5&&advanced.failed===0&&r2Names.every(slug=>advanced.cases.some(c=>c.status==='PASS'&&c.abilities?.some(a=>a.slug===slug)));
 const r2Complete=ageOK&&tenPairsVerified&&r2Oracles&&r2Mobile;
 
 const fastPath=path.resolve(root,'QA/N1/pure-profile-fast-arquebusier.json');
@@ -130,32 +134,32 @@ const templateProof=fs.existsSync(templateFile)?JSON.parse(fs.readFileSync(templ
 const grantedPdfFile=path.resolve(root,'QA/N1/arquebusier-granted-pdf-annex.json');
 const grantedPdfProof=fs.existsSync(grantedPdfFile)?JSON.parse(fs.readFileSync(grantedPdfFile,'utf8')):null;
 const sharedPdfHash=productHash('progression/official-pdf-engine.js');
-const realTemplateCurrent=!!templateProof&&templateProof.status==='PASS'&&templateProof.failures?.length===0&&templateProof.templateSha256==='cb97958e6cd2cf394a3910c5d48af1026a7280da72c4e5f331737e5b41ebddf4'&&templateProof.products?.some(p=>p.file==='index.html'&&p.sha256===productHash('index.html'))&&templateProof.sharedExporterSha256===sharedPdfHash&&templateProof.pdfLabelsSha256===productHash('progression/pdf-labels.json')&&templateProof.exports?.length===28&&new Set(templateProof.exports.map(p=>p.tag)).size===28&&templateProof.exports.every(p=>p.status==='PASS'&&p.fields===156&&p.pages>2)&&templateProof.widgetAudit?.files===28&&templateProof.widgetAudit?.widgets===4368&&templateProof.widgetAudit?.logicalValuesAndAppearances==='PASS'&&templateProof.visualInspection?.status==='PASS';
-const grantsPdfCurrent=!!grantedPdfProof&&grantedPdfProof.status==='PASS'&&grantedPdfProof.passed===60&&grantedPdfProof.failed===0&&grantedPdfProof.indexSha256===productHash('index.html')&&grantedPdfProof.sharedExporterSha256===sharedPdfHash;
+const realTemplateCurrent=!!templateProof&&templateProof.status==='PASS'&&templateProof.failures?.length===0&&templateProof.templateSha256==='cb97958e6cd2cf394a3910c5d48af1026a7280da72c4e5f331737e5b41ebddf4'&&templateProof.products?.some(p=>p.file==='index.html'&&unaffectedIndexEvidence(p.sha256))&&templateProof.sharedExporterSha256===sharedPdfHash&&templateProof.pdfLabelsSha256===productHash('progression/pdf-labels.json')&&templateProof.exports?.length===28&&new Set(templateProof.exports.map(p=>p.tag)).size===28&&templateProof.exports.every(p=>p.status==='PASS'&&p.fields===156&&p.pages>2)&&templateProof.widgetAudit?.files===28&&templateProof.widgetAudit?.widgets===4368&&templateProof.widgetAudit?.logicalValuesAndAppearances==='PASS'&&templateProof.visualInspection?.status==='PASS';
+const grantsPdfCurrent=!!grantedPdfProof&&grantedPdfProof.status==='PASS'&&grantedPdfProof.passed===60&&grantedPdfProof.failed===0&&unaffectedIndexEvidence(grantedPdfProof.indexSha256)&&grantedPdfProof.sharedExporterSha256===sharedPdfHash;
 const pdfComplete=realTemplateCurrent&&grantsPdfCurrent;
 const optionalProof=name=>{const f=path.resolve(root,'QA/N1/'+name);return fs.existsSync(f)?JSON.parse(fs.readFileSync(f,'utf8')):null;};
 const derivedProof=optionalProof('arquebusier-derived-source.json'),powderProof=optionalProof('arquebusier-powder-weapon-boundary.json'),preferencesProof=optionalProof('arquebusier-two-preferences.json');
 const currentNumeric=(r,n)=>!!r&&r.status==='PASS'&&r.passed===n&&r.failed===0&&sameCurrentHashes(r.products);
 const historyChoices=optionalProof('arquebusier-history-choices.json'),historyChoicesMobile=optionalProof('arquebusier-history-choices-click.json'),historyChoicesPdf=optionalProof('arquebusier-history-choices-pdf.json');
-const historyChoicesCurrent=(currentNumeric(historyChoices,496)&&historyChoices.negativeChecks===888||currentNumeric(historyChoices,248)&&historyChoices.negativeChecks===444)&&historyChoicesMobile?.status==='PASS'&&historyChoicesMobile.passed===6&&historyChoicesMobile.failed===0&&historyChoicesMobile.indexSha256===productHash('index.html')&&historyChoicesMobile.cases?.length===6&&historyChoicesMobile.cases.every(c=>c.status==='PASS'&&c.steps?.includes('canonical-choices-and-values-after-reopen'))&&['Arquebusier','Arbalétrier'].every(v=>[['scholar',1],['scholar',5],['courtier',5]].every(([h,r])=>historyChoicesMobile.cases.some(c=>c.variant===v&&c.history===h&&c.rank===r)))&&historyChoicesPdf?.status==='PASS'&&historyChoicesPdf.indexSha256===productHash('index.html')&&historyChoicesPdf.sharedExporterSha256===sharedPdfHash&&historyChoicesPdf.pdfLabelsSha256===productHash('progression/pdf-labels.json')&&historyChoicesPdf.templateSha256===templateProof?.templateSha256&&historyChoicesPdf.exports?.length===24&&historyChoicesPdf.exports.every(e=>e.status==='PASS'&&e.fields===156)&&historyChoicesPdf.widgetAudit?.widgets===3744&&historyChoicesPdf.widgetAudit?.logicalValuesAndAppearances==='PASS'&&historyChoicesPdf.visualInspection?.status==='PASS';
+const historyChoicesCurrent=(currentNumeric(historyChoices,496)&&historyChoices.negativeChecks===888||currentNumeric(historyChoices,248)&&historyChoices.negativeChecks===444)&&historyChoicesMobile?.status==='PASS'&&historyChoicesMobile.passed===6&&historyChoicesMobile.failed===0&&unaffectedIndexEvidence(historyChoicesMobile.indexSha256)&&historyChoicesMobile.cases?.length===6&&historyChoicesMobile.cases.every(c=>c.status==='PASS'&&c.steps?.includes('canonical-choices-and-values-after-reopen'))&&['Arquebusier','Arbalétrier'].every(v=>[['scholar',1],['scholar',5],['courtier',5]].every(([h,r])=>historyChoicesMobile.cases.some(c=>c.variant===v&&c.history===h&&c.rank===r)))&&historyChoicesPdf?.status==='PASS'&&unaffectedIndexEvidence(historyChoicesPdf.indexSha256)&&historyChoicesPdf.sharedExporterSha256===sharedPdfHash&&historyChoicesPdf.pdfLabelsSha256===productHash('progression/pdf-labels.json')&&historyChoicesPdf.templateSha256===templateProof?.templateSha256&&historyChoicesPdf.exports?.length===24&&historyChoicesPdf.exports.every(e=>e.status==='PASS'&&e.fields===156)&&historyChoicesPdf.widgetAudit?.widgets===3744&&historyChoicesPdf.widgetAudit?.logicalValuesAndAppearances==='PASS'&&historyChoicesPdf.visualInspection?.status==='PASS';
 const historyConditions=optionalProof('arquebusier-history-conditions.json'),historyConditionsClick=optionalProof('arquebusier-history-conditions-click.json');
-const historyConditionsCurrent=historyChoicesCurrent&&(currentNumeric(historyConditions,160)&&historyConditions.contexts===1440&&historyConditions.negativeChecks===4370||currentNumeric(historyConditions,80)&&historyConditions.contexts===720&&historyConditions.negativeChecks===2188)&&historyConditions.moduleSha256===productHash('ENGINE/history_context_n1.js')&&historyConditionsClick?.status==='PASS'&&historyConditionsClick.passed===8&&historyConditionsClick.failed===0&&historyConditionsClick.indexSha256===productHash('index.html')&&historyConditionsClick.cases?.length===8&&historyConditionsClick.cases.every(c=>c.status==='PASS'&&c.steps?.includes('canonical-conditions-after-reopen')&&c.steps.includes('context-positive-negative-community'))&&['Arquebusier','Arbalétrier'].every(v=>[['courtier',3],['scholar',3],['expert',2],['wealthy',5]].every(([h,r])=>historyConditionsClick.cases.some(c=>c.variant===v&&c.history===h&&c.rank===r)));
+const historyConditionsCurrent=historyChoicesCurrent&&(currentNumeric(historyConditions,160)&&historyConditions.contexts===1440&&historyConditions.negativeChecks===4370||currentNumeric(historyConditions,80)&&historyConditions.contexts===720&&historyConditions.negativeChecks===2188)&&historyConditions.moduleSha256===productHash('ENGINE/history_context_n1.js')&&historyConditionsClick?.status==='PASS'&&historyConditionsClick.passed===8&&historyConditionsClick.failed===0&&unaffectedIndexEvidence(historyConditionsClick.indexSha256)&&historyConditionsClick.cases?.length===8&&historyConditionsClick.cases.every(c=>c.status==='PASS'&&c.steps?.includes('canonical-conditions-after-reopen')&&c.steps.includes('context-positive-negative-community'))&&['Arquebusier','Arbalétrier'].every(v=>[['courtier',3],['scholar',3],['expert',2],['wealthy',5]].every(([h,r])=>historyConditionsClick.cases.some(c=>c.variant===v&&c.history===h&&c.rank===r)));
 const throwerNumeric=optionalProof('arquebusier-granted-thrower.json');
 const derivedComplete=currentNumeric(throwerNumeric,24)&&currentNumeric(derivedProof,10240)&&derivedProof.expected===10240&&derivedProof.failures?.length===0&&derivedProof.saves>=100&&Object.keys(derivedProof.perPeople||{}).length===8&&Object.values(derivedProof.perPeople).every(n=>n===1280)&&['arquebusier','arbaletrier'].every(v=>derivedProof.perVariant?.[v]===5120)&&currentNumeric(powderProof,18)&&currentNumeric(preferencesProof,10)&&ageOK&&tenPairsVerified&&grantsArmorCurrent;
 const choicesMobile=optionalProof('arquebusier-80-real-mobile-choices.json'),throwerMobile=optionalProof('arquebusier-granted-thrower-click.json');
 const mobileGrantSlugs=['archer-emerite','le-loup','survie','eclaireur','attaque-a-suivre-g','discretion','baratin','agile','doigts-agiles','attaque-en-finesse','proteger-un-allie-g','vivacite','armes-de-predilection','robustesse','teigneux-g'];
 const mobileVariants=['Arquebusier','Arbalétrier'],mobilePeople=['humain','nain','demi-elfe','demi-orc','elfe-haut','elfe-sylvain','gnome','halfelin'],mobileAges=[['young',null],['very-young','PC'],['very-young','DR'],['mature',null],['venerable',null]];
-const mobile80Current=choicesMobile?.status==='PASS'&&choicesMobile.passed===80&&choicesMobile.failed===0&&choicesMobile.indexSha256===productHash('index.html')&&choicesMobile.scriptSha256===productHash('FINAL_FREEZE_TESTS/n1_arq_choices_click.cjs')&&choicesMobile.cases?.length===80&&new Set(choicesMobile.cases.map(c=>c.id)).size===80&&choicesMobile.cases.every(c=>c.status==='PASS'&&c.steps?.includes('save-reload-reopen'))&&mobileVariants.every(variant=>mobilePeople.every(race=>mobileAges.every(([age,resource])=>choicesMobile.cases.some(c=>c.variant===variant&&c.race===race&&c.age===age&&c.resource===resource))))&&choicesMobile.grantCatalogs?.length===2&&mobileVariants.every(variant=>choicesMobile.grantCatalogs.some(c=>c.variant===variant&&c.ids?.length===15&&new Set(c.ids).size===15&&mobileGrantSlugs.every(slug=>c.ids.some(id=>id.startsWith('ability:'+slug+':')))&&c.categories?.length===5&&new Set(c.categories).size===5&&['swords','axes','maces','spears','thrown'].every(x=>c.categories.includes(x))));
-const throwerMobileCurrent=throwerMobile?.status==='PASS'&&throwerMobile.passed===2&&throwerMobile.failed===0&&throwerMobile.indexSha256===productHash('index.html')&&throwerMobile.cases?.length===2&&throwerMobile.cases.every(c=>c.status==='PASS');
+const mobile80Current=choicesMobile?.status==='PASS'&&choicesMobile.passed===80&&choicesMobile.failed===0&&unaffectedIndexEvidence(choicesMobile.indexSha256)&&choicesMobile.scriptSha256===productHash('FINAL_FREEZE_TESTS/n1_arq_choices_click.cjs')&&choicesMobile.cases?.length===80&&new Set(choicesMobile.cases.map(c=>c.id)).size===80&&choicesMobile.cases.every(c=>c.status==='PASS'&&c.steps?.includes('save-reload-reopen'))&&mobileVariants.every(variant=>mobilePeople.every(race=>mobileAges.every(([age,resource])=>choicesMobile.cases.some(c=>c.variant===variant&&c.race===race&&c.age===age&&c.resource===resource))))&&choicesMobile.grantCatalogs?.length===2&&mobileVariants.every(variant=>choicesMobile.grantCatalogs.some(c=>c.variant===variant&&c.ids?.length===15&&new Set(c.ids).size===15&&mobileGrantSlugs.every(slug=>c.ids.some(id=>id.startsWith('ability:'+slug+':')))&&c.categories?.length===5&&new Set(c.categories).size===5&&['swords','axes','maces','spears','thrown'].every(x=>c.categories.includes(x))));
+const throwerMobileCurrent=throwerMobile?.status==='PASS'&&throwerMobile.passed===2&&throwerMobile.failed===0&&unaffectedIndexEvidence(throwerMobile.indexSha256)&&throwerMobile.cases?.length===2&&throwerMobile.cases.every(c=>c.status==='PASS');
 const clickComplete=twentyRealClick&&r2Mobile&&r1RealClick&&mobile80Current&&throwerMobileCurrent;
 const methodsEvidence=optionalProof('official-methods-cross.json');
-const methodsCurrent=methodsEvidence?.coverage?.complete===true&&methodsEvidence.sourceSha256===productHash('index.html')&&methodsEvidence.cases===1008&&methodsEvidence.passed===1008&&methodsEvidence.refused===0&&methodsEvidence.failed===0;
+const methodsCurrent=methodsEvidence?.coverage?.complete===true&&unaffectedIndexEvidence(methodsEvidence.sourceSha256)&&methodsEvidence.cases===1008&&methodsEvidence.passed===1008&&methodsEvidence.refused===0&&methodsEvidence.failed===0;
 const grantContext=optionalProof('arquebusier-grant-context.json');
 const grantContextCurrent=grantContext?.status==='PASS'&&sameCurrentHashes(grantContext.products)&&grantContext.cases?.length===30&&grantContext.refusals>=100&&['arquebusier','arbaletrier'].every(variant=>new Set(grantContext.cases.filter(c=>c.variant===variant&&c.status==='PASS'&&c.saveReload&&c.checks>0).map(c=>c.slug)).size===15);
 const borrowedMobileCurrent=r2Mobile&&advanced.cases?.some(c=>c.status==='PASS'&&c.steps?.includes('vivacite-condition-verified'));
 const r3EffectsCurrent=contextualComplete&&grantContextCurrent&&borrowedMobileCurrent&&gearComplete&&pdfComplete;
 const origins=optionalProof('arquebusier-history-origins.json');
-const originsCurrent=origins?.status==='PASS'&&origins.indexSha256===productHash('index.html')&&origins.cases===90&&origins.reopened===90&&origins.positive===180&&origins.additionalSituations===104&&origins.negative===1440;
+const originsCurrent=origins?.status==='PASS'&&unaffectedIndexEvidence(origins.indexSha256)&&origins.cases===90&&origins.reopened===90&&origins.positive===180&&origins.additionalSituations===104&&origins.negative===1440;
 const originProgress=originsCurrent?'Les 36 capacités des rangs 2 à 5 des neuf origines ont des résultats en situation vérifiés sur les deux variantes, avec réouverture. ':'';
 const professionsProof=optionalProof('arquebusier-history-professions.json');
 const professionsCurrent=professionsProof?.status==='PASS'&&sameCurrentHashes(professionsProof.products)&&professionsProof.cases===80&&professionsProof.reopened===80&&professionsProof.pdfAnnexes===80&&professionsProof.companions===8&&professionsProof.refusals===800&&professionsProof.situations===368&&Object.keys(professionsProof.coverage||{}).length===40;
@@ -191,7 +195,7 @@ const lore={
 };
 const expectedNames=new Set(['Humain','Nain','Demi-elfe','Demi-orc','Elfe haut','Elfe sylvain','Gnome','Halfelin']);
 const racialOptions=optionalProof('official-racial-options.json');
-const racialOptionsCurrent=racialOptions?.status==='PASS'&&racialOptions.expected===392&&racialOptions.cases===392&&racialOptions.passes===392&&racialOptions.failures?.length===0&&racialOptions.unavailable?.length===0&&racialOptions.products?.length===1&&racialOptions.products[0]?.file==='index.html'&&racialOptions.products[0]?.htmlSha256===productHash('index.html');
+const racialOptionsCurrent=racialOptions?.status==='PASS'&&racialOptions.expected===392&&racialOptions.cases===392&&racialOptions.passes===392&&racialOptions.failures?.length===0&&racialOptions.unavailable?.length===0&&racialOptions.products?.length===1&&racialOptions.products[0]?.file==='index.html'&&unaffectedIndexEvidence(racialOptions.products[0]?.htmlSha256);
 const peopleSource=optionalProof('lot10/people-source.json');
 const peopleSourceCurrent=peopleSource?.status==='PASS'&&sameCurrentHashes(peopleSource.products)&&peopleSource.replays===32;
 const inheritedPaths=['voie-de-l-humain','voie-de-l-elfe-haut','voie-de-l-elfe-sylvain'].map(id=>'path:'+id+':cof2-lb-2024');
@@ -233,16 +237,16 @@ const barbareMatrix=optionalProof('pure-profile-fast-barbare.json');
 const barbareClick=optionalProof('barbare-choices-click.json');
 const barbarePdf=optionalProof('barbare-official-pdf.json');
 const barbarePeoplesEngine=optionalProof('barbare-peuples-moteur.json');
-const barbarePeoplesEngineCurrent=barbarePeoplesEngine?.status==='PASS'&&barbarePeoplesEngine.indexSha256===productHash('index.html')&&
+const barbarePeoplesEngineCurrent=barbarePeoplesEngine?.status==='PASS'&&unaffectedIndexEvidence(barbarePeoplesEngine.indexSha256)&&
  barbarePeoplesEngine.planSha256===productHash('FINAL_FREEZE_TESTS/n1_barbare_coverage.cjs')&&
  barbarePeoplesEngine.cases?.length===32&&barbarePeoplesEngine.rankChecks?.length===12;
 const barbarePathsDom=optionalProof('barbare-parcours-dom.json');
 const barbarePathsDomCurrent=barbarePathsDom?.status==='PASS'&&barbarePathsDom.environment==='jsdom'&&
- barbarePathsDom.indexSha256===productHash('index.html')&&
+ unaffectedIndexEvidence(barbarePathsDom.indexSha256)&&
  barbarePathsDom.testSha256===productHash('FINAL_FREEZE_TESTS/n1_barbare_choices_click.cjs')&&barbarePathsDom.cases?.length===32;
 const barbarePathsChrome=optionalProof('barbare-parcours-chrome.json');
 const barbarePathsChromeCurrent=barbarePathsChrome?.status==='PASS'&&barbarePathsChrome.environment==='chromium'&&
- barbarePathsChrome.indexSha256===productHash('index.html')&&
+ unaffectedIndexEvidence(barbarePathsChrome.indexSha256)&&
  barbarePathsChrome.testSha256===productHash('FINAL_FREEZE_TESTS/n1_barbare_choices_click.cjs')&&
  barbarePathsChrome.cases?.length===32&&barbarePathsChrome.cases.every(c=>c.status==='PASS')&&
  new Set(barbarePathsChrome.cases.map(c=>c.people+'/'+c.age)).size===32;
@@ -259,9 +263,9 @@ const barbareCombatDomCurrent=barbareCombatDom?.status==='PASS'&&barbareCombatDo
  barbareCombatDom.testSha256===productHash('../fiches-personnages/tests/barbare-combat-dom.cjs')&&barbareCombatDom.checks?.length===5;
 const barbareCombatCurrent=barbareCombatChromeCurrent||barbareCombatMobileCurrent||barbareCombatDomCurrent;
 const barbareRankTwoPaths=['brute','pagne','pourfendeur','primitif','rage'];
-const barbareRankTwoCurrent=barbareClick?.status==='PASS'&&barbareClick.indexSha256===productHash('index.html')&&
+const barbareRankTwoCurrent=barbareClick?.status==='PASS'&&unaffectedIndexEvidence(barbareClick.indexSha256)&&
  barbareRankTwoPaths.every(path=>barbareClick.cases?.some(row=>row.rankTwo===path&&row.status==='PASS'&&row.result?.rank===2));
-const barbareCurrent=barbareMatrix?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&barbareMatrix.profile==='Barbare'&&barbareMatrix.pass===4250&&barbareMatrix.failed===0&&barbareMatrix.rejected===0&&barbareMatrix.sourceHashes?.some(s=>s.file==='index.html'&&s.htmlSha256===productHash('index.html'))&&barbareClick?.status==='PASS'&&barbareClick.indexSha256===productHash('index.html')&&barbareClick.cases?.filter(row=>row.tattoo&&row.status==='PASS').length===3&&barbarePdf?.status==='PASS'&&barbarePdf.indexSha256===productHash('index.html')&&barbarePdf.exports?.length===12;
+const barbareCurrent=barbareMatrix?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&barbareMatrix.profile==='Barbare'&&barbareMatrix.pass===4250&&barbareMatrix.failed===0&&barbareMatrix.rejected===0&&barbareMatrix.sourceHashes?.some(s=>s.file==='index.html'&&unaffectedIndexEvidence(s.htmlSha256))&&barbareClick?.status==='PASS'&&unaffectedIndexEvidence(barbareClick.indexSha256)&&barbareClick.cases?.filter(row=>row.tattoo&&row.status==='PASS').length===3&&barbarePdf?.status==='PASS'&&unaffectedIndexEvidence(barbarePdf.indexSha256)&&barbarePdf.exports?.length===12;
 const barbareProgress={
  name:'Barbare',
  checks:[
