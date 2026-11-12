@@ -154,6 +154,8 @@ function decorate(ctx){
  if(t.id!==lastTableId){lastTableId=t.id;currentTab='scenes';search='';zone='all';lastOuterTab='';}
  const tools=t.tools||D.normalizeTools(null,t.system);
  if(ctx.tab==='overview'){
+  if(!tools.players)document.querySelector('#app [data-tab="characters"]')?.closest('.panel')?.remove();
+  if(!tools.notes){document.querySelector('#app [data-tab="sessions"]')?.closest('.panel')?.remove();document.querySelector('#app #table-notes')?.closest('.panel')?.remove();}
   const stats=document.querySelector('#app .statrow');
   if(stats){
    const p=document.createElement('section');p.className='studio-overview';
