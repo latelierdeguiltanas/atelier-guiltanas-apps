@@ -403,6 +403,8 @@ function druideAbility(a){
   'foret-vivante':['voie-du-protecteur',2,'forest'],
   'terrains-difficiles':['voie-de-la-nature',2,'terrain'],
   'peau-d-ecorce-m':['voie-des-vegetaux',1,'bark'],
+  'prison-vegetale-l':['voie-des-vegetaux',2,'prison'],
+  'maitre-de-la-survie':['voie-de-la-nature',1,'night'],
   'petit-compagnon':['voie-des-animaux',2,'familiar']
  }[name];
  return rule&&rank===rule[1]&&slug(a.path)===rule[0]?rule[2]:'';
@@ -444,6 +446,21 @@ function druidePlayHtml(a){
   body=`<p>${S.druideBark?'Active. ':''}DEF +${bonus} pendant ${per} min · 1 PM.</p>
    ${S.druideBark?button('expire','Terminer la Peau d’écorce'):`<label><input type="checkbox" data-druide-protection> Autre sort de protection à la DEF actif (hors Masque du prédateur)</label>${button('bark','Activer la Peau d’écorce',per===0||S.pm<1)}`}`;
  }
+ if(kind==='prison'){
+  const targets=S.druidePrisonTargets||[];
+  body=`<p>Zone de 10 m de diamètre à 20 m · ${per} min · 2 PM. Ennemis uniquement. Se libérer (A) : FOR difficulté ${10+(Number(D.stats?.PER)||0)}.</p>
+   ${S.druidePrison?`<p>Immobilisés : ${targets.map(esc).join(', ')||'aucun'}</p>
+    <label>Ennemi dans la zone <input data-druide-target maxlength="80"></label>${button('trap','Immobiliser')}
+    <label>Ennemi <select data-druide-prison-target>${targets.map(x=>`<option>${esc(x)}</option>`).join('')}</select></label>
+    <label>Total du test de FOR <input type="number" inputmode="numeric" data-druide-roll></label>
+    ${button('escape','Résoudre le test',!targets.length)}${button('end-prison','Terminer la prison végétale')}`:
+    button('prison','Lancer Prison végétale',per===0||S.pm<2)}`;
+ }
+ if(kind==='night')body=`<p>Survie et test nocturne en milieu naturel : +${ownedPathRank('voie-de-la-nature')+2}.</p>
+  <label><input type="checkbox" data-druide-natural> Nuit passée en milieu naturel</label>
+  <label>Soin normal du DR <input type="number" min="0" step="1" data-druide-normal></label>
+  <label>Résultat du d${evolvingDie()} supplémentaire <input type="number" min="1" max="${evolvingDie()}" data-druide-roll></label>
+  ${button('night','Dépenser 1 DR et récupérer',S.dr<1||S.druideNightUsed)}`;
  if(kind==='familiar')body=`<p>${S.druideFamiliar?'Compagnon en vue : +2 DEF.':'Compagnon hors de vue.'}</p>${button('familiar',S.druideFamiliar?'Hors de vue':'Compagnon en vue')}`;
  return `<div class="ability-actions">${body}<p role="status" data-druide-result></p></div>`;
 }
@@ -473,6 +490,44 @@ function resolveDruide(t){
   if(!checked('ritual')){result.textContent='Confirme la fin du rituel de 30 minutes.';return}
   S.pm-=2;
   S.uses[a.id]=1;
+ }
+ if(kind==='prison'){
+  if(command==='prison'&&!S.druidePrison&&per>0&&S.pm>=2){
+   S.pm-=2;
+   S.druidePrison=true;
+   S.druidePrisonTargets=[];
+  }
+  if(command==='trap'&&S.druidePrison){
+   const name=card.querySelector('[data-druide-target]').value.trim(),target=slug(name);
+   if(!target){result.textContent='Indique un ennemi dans la zone.';return}
+   if((S.druidePrisonFreed||[]).includes(target)){result.textContent='Cet ennemi est immunisé pour le reste du combat.';return}
+   const targets=S.druidePrisonTargets||[];
+   if(!targets.some(x=>slug(x)===target))S.druidePrisonTargets=[...targets,name];
+  }
+  if(command==='escape'&&S.druidePrison){
+   const name=card.querySelector('[data-druide-prison-target]').value;
+   const total=card.querySelector('[data-druide-roll]').value;
+   if(!name||total===''||!Number.isSafeInteger(Number(total))){result.textContent='Choisis un ennemi et saisis le total de FOR.';return}
+   if(Number(total)<10+(Number(D.stats?.PER)||0)){result.textContent='Échec : cet ennemi reste immobilisé.';return}
+   S.druidePrisonTargets=S.druidePrisonTargets.filter(x=>x!==name);
+   S.druidePrisonFreed=[...(S.druidePrisonFreed||[]),slug(name)];
+  }
+  if(command==='end-prison'){
+   delete S.druidePrison;
+   delete S.druidePrisonTargets;
+  }
+ }
+ if(kind==='night'&&command==='night'&&S.dr>0&&!S.druideNightUsed){
+  const normal=card.querySelector('[data-druide-normal]').value;
+  const extra=Number(card.querySelector('[data-druide-roll]').value);
+  if(!checked('natural')||normal===''||!Number.isSafeInteger(Number(normal))||Number(normal)<0||
+     !Number.isSafeInteger(extra)||extra<1||extra>evolvingDie()){
+   result.textContent='Confirme la nuit en milieu naturel et saisis les deux résultats de soin.';
+   return;
+  }
+  S.dr--;
+  S.hp=Math.min(max.hp,S.hp+Number(normal)+extra);
+  S.druideNightUsed=true;
  }
  if(kind==='terrain'&&command==='terrain')S.druideTerrain=!S.druideTerrain;
  if(kind==='familiar'&&command==='familiar')S.druideFamiliar=!S.druideFamiliar;
@@ -609,7 +664,7 @@ document.addEventListener('click',async event=>{const t=event.target.closest('bu
   if(chosen!==value)toast('Tatouages : Étourdi devient Ralenti.');
  }
  return;
-}if(t.dataset.removeCondition){S.conditions=S.conditions.filter(x=>x!==t.dataset.removeCondition);save();renderPlay();if(infoDialog.open&&uiTopic==='states')drawInfo();return}if(t.id==='spend-dr'&&S.dr>0){S.dr--;toast('Dé de récupération dépensé. Ajuste les PV après ton lancer.');updateAfterAction();return}if(t.dataset.reset){delete S.druideTerrain;if(t.dataset.reset==='day'){delete S.druideBerryTargets;delete S.druideBark}S.hp=Math.max(0,S.hp-(Number(S.chevalierDeferred)||0));delete S.chevalierDeferred;delete S.chevalierIntercept;delete S.chevalierBraced;delete S.feinte;if(t.dataset.reset==='day'){delete S.chantDesHeros;delete S.chantDeReconfort}delete S.warCryTargets;delete S.berserk;ownedAbilities().forEach(a=>{const u=usage(a);if(u&&(t.dataset.reset==='day'||u.scope==='combat'))S.uses[usageKey(a)]=0});if(t.dataset.reset==='day')S.pm=max.pm;toast(t.dataset.reset==='day'?(max.pm>0?'Récupération complète : mana et capacités restaurés.':'Capacités quotidiennes réactivées.'):'Capacités de combat réactivées.');updateAfterAction()}});
+}if(t.dataset.removeCondition){S.conditions=S.conditions.filter(x=>x!==t.dataset.removeCondition);save();renderPlay();if(infoDialog.open&&uiTopic==='states')drawInfo();return}if(t.id==='spend-dr'&&S.dr>0){S.dr--;toast('Dé de récupération dépensé. Ajuste les PV après ton lancer.');updateAfterAction();return}if(t.dataset.reset){delete S.druideTerrain;delete S.druidePrison;delete S.druidePrisonTargets;delete S.druidePrisonFreed;if(t.dataset.reset==='day'){delete S.druideBerryTargets;delete S.druideBark;delete S.druideNightUsed}S.hp=Math.max(0,S.hp-(Number(S.chevalierDeferred)||0));delete S.chevalierDeferred;delete S.chevalierIntercept;delete S.chevalierBraced;delete S.feinte;if(t.dataset.reset==='day'){delete S.chantDesHeros;delete S.chantDeReconfort}delete S.warCryTargets;delete S.berserk;ownedAbilities().forEach(a=>{const u=usage(a);if(u&&(t.dataset.reset==='day'||u.scope==='combat'))S.uses[usageKey(a)]=0});if(t.dataset.reset==='day')S.pm=max.pm;toast(t.dataset.reset==='day'?(max.pm>0?'Récupération complète : mana et capacités restaurés.':'Capacités quotidiennes réactivées.'):'Capacités de combat réactivées.');updateAfterAction()}});
 document.addEventListener('input',event=>{const map={player:'player',ideal:'ideal',flaw:'flaw','notes-text':'notes'};if(map[event.target.id]){S[map[event.target.id]]=event.target.value;save()}});
 
 let sharedResource=null,resourcePending=0,resourceChain=Promise.resolve(),sessionData=null,initializingResource=false;

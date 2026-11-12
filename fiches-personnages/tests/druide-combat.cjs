@@ -80,8 +80,36 @@ const {load}=require('../../forge-of-heroes/FINAL_FREEZE_TESTS/forge_product_run
   await open(/Petit compagnon/);
   await click('familiar');
   assert.equal(await defense(),'17');
+  await close();
+  await open(/Prison végétale/);
+  await click('prison');
+  assert.equal((await state()).pm,1);
+  await dialog.locator('[data-druide-target]').fill('Orc');
+  await click('trap');
+  await dialog.locator('[data-druide-roll]').fill('12');
+  await click('escape');
+  assert.match(await dialog.innerText(),/reste immobilisé/);
+  await dialog.locator('[data-druide-roll]').fill('13');
+  await click('escape');
+  await dialog.locator('[data-druide-target]').fill('Orc');
+  await click('trap');
+  assert.match(await dialog.innerText(),/immunisé/);
+  await close();
+
+  for(let i=0;i<5;i++)await page.getByRole('button',{name:'Retirer un point de vie'}).tap();
+  await open(/Maître de la survie/);
+  await dialog.locator('[data-druide-normal]').fill('1');
+  await dialog.locator('[data-druide-roll]').fill('3');
+  await click('night');
+  assert.equal((await state()).dr,3);
+  await dialog.locator('[data-druide-natural]').check();
+  await click('night');
+  assert.equal((await state()).dr,2);
+  assert.equal((await state()).hp,8);
   await page.reload();
   assert.equal(await defense(),'17');
+  assert.equal((await state()).druideNightUsed,true);
+  assert.deepEqual((await state()).druidePrisonFreed,['orc']);
   await open(/Peau d’écorce/);
   await click('expire');
   assert.equal(await defense(),'15');
@@ -89,6 +117,7 @@ const {load}=require('../../forge-of-heroes/FINAL_FREEZE_TESTS/forge_product_run
   await page.locator('[data-page="rest"]').tap();
   await page.getByRole('button',{name:'Réinitialiser le combat'}).tap();
   assert.equal(await defense(),'14');
+  assert.equal((await state()).druidePrisonFreed,undefined);
   assert.equal((await state()).uses['voie-du-protecteur-2-foret-vivante'],1);
   await page.getByRole('button',{name:'Valider les 8 heures'}).tap();
   assert.equal((await state()).pm,8);
@@ -97,6 +126,6 @@ const {load}=require('../../forge-of-heroes/FINAL_FREEZE_TESTS/forge_product_run
   assert.deepEqual(errors,[]);
   const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
   console.log(JSON.stringify({status:'PASS',environment:'chromium',sheetSha256:sha('fiches-personnages/fiche/fiche.js'),
-   testSha256:sha(__filename),checks:['Baies et bénéficiaires','Rituel et quota','Déplacement, DEF, INIT et attaque','Peau et protection','Compagnon et réouverture','Récupération et compteurs']}));
+   testSha256:sha(__filename),checks:['Baies et bénéficiaires','Rituel et quota','Déplacement, DEF, INIT et attaque','Peau et protection','Compagnon et réouverture','Récupération et compteurs','Prison et immunité','Nuit en milieu naturel']}));
  }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exitCode=1});
