@@ -70,7 +70,12 @@ function panel(){
 const previous=legacy.decorate;
 legacy.decorate=function(ctx){
  previous?.(ctx);
+ if(ctx.view==='home'){
+  const oldButton=document.querySelector('#bastide-legacy-panel [data-integration="import"]');
+  if(oldButton){oldButton.removeAttribute('data-integration');oldButton.id='my-bastide-import';oldButton.textContent='Importer ma Bastide';}
+ }
  if(ctx.view!=='library'||!mj()?.active?.())return;
+ document.getElementById('bastide-pack-panel')?.remove();
  const hero=document.querySelector('#app .hero');
  if(hero)hero.after(panel());
  const shared=document.querySelector('#app #mj-pack-import-code');
