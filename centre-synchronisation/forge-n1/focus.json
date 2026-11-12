@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d",
   "certificationBasis": "Correctif ciblé sur les Baies magiques et Forêt vivante. Les preuves de création, de fiche et de peuples restent liées aux périmètres testés.",
-  "generatedAt": "2026-11-12T13:41:48.570Z",
+  "generatedAt": "2026-11-12T13:44:03.509Z",
   "engineSha256": "fd729a741a223d89887779e2fa253ea398f62c5d7f95eee0ce7d2fdf6a0be1ee",
   "databaseSha256": "645f2c7f1f5aac50b8574310c638e7284e4eb90acc103f68ae431b17cf72c23e",
   "peoplesEvidenceCurrent": true,
@@ -22,14 +22,14 @@
       "allMustReachPercent": 100
     },
     "current": {
-      "name": "Ensorceleur",
-      "position": 6,
-      "percent": 100,
-      "certified": true
+      "name": "Forgesort",
+      "position": 7,
+      "percent": 60,
+      "certified": false
     },
     "next": {
-      "name": "Forgesort",
-      "unlocked": true,
+      "name": "Guerrier",
+      "unlocked": false,
       "condition": "profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF"
     },
     "queue": [
@@ -78,8 +78,8 @@
       {
         "name": "Forgesort",
         "position": 7,
-        "status": "EN_ATTENTE",
-        "percent": null,
+        "status": "EN_COURS",
+        "percent": 60,
         "certified": false
       },
       {
@@ -133,43 +133,42 @@
       }
     ],
     "priorityProgress": {
-      "name": "Ensorceleur",
+      "name": "Forgesort",
       "checks": [
         {
           "name": "Créations et réouvertures",
           "status": "ACQUIS",
-          "detail": "4250 créations et 326 réouvertures sur les huit peuples, avec le rang 2 gratuit et les dépenses d’âge.",
-          "proof": "pure-profile-fast-ensorceleur.json"
+          "detail": "4250 créations et 326 réouvertures sur huit peuples.",
+          "proof": "pure-profile-fast-forgesort.json"
         },
         {
           "name": "Bonus, actions et mana des cinq voies",
           "status": "ACQUIS",
-          "detail": "DEF, initiative, bonus de tests, coût des sorts, quota de Sommeil et concentration de Choc.",
-          "proof": "ensorceleur-source-n1.json"
+          "detail": "Bâton lié, alchimie, arme enflammée, PV via INT, caractéristiques du golem, INT et DEF des runes.",
+          "proof": "forgesort-source-n1.json"
         },
         {
-          "name": "Effets des sorts en partie",
-          "status": "ACQUIS",
-          "detail": "Sous tension, Image décalée, Sommeil et Choc testés sur la fiche Chrome mobile. Coûts, portée, cibles, sauvegarde et dé évolutif vérifiés.",
-          "proof": "ensorceleur-combat-chrome.json"
+          "name": "Effets des capacités en partie",
+          "status": "A_VERIFIER",
+          "detail": "Contrôler les élixirs, les effets du métal et le déclenchement de la Rune de puissance en partie."
         },
         {
           "name": "Création et réouverture dans Chrome",
-          "status": "ACQUIS",
-          "detail": "Huit peuples, cinq voies, rang 2 du mage, achats d’âge et réouverture au clic.",
-          "proof": "ensorceleur-choices-chrome.json"
+          "status": "A_VERIFIER",
+          "detail": "Huit peuples, cinq voies, rang 2 du mage, achats d’âge et réouverture.",
+          "proof": "forgesort-choices-chrome.json"
         },
         {
           "name": "Fiche PDF officielle",
           "status": "ACQUIS",
-          "detail": "Dix exports, rangs 1 et 2, champs chiffrés et annexes des cinq voies.",
-          "proof": "ensorceleur-official-pdf.json"
+          "detail": "Dix exports, champs et annexes des cinq voies.",
+          "proof": "forgesort-official-pdf.json"
         }
       ],
       "total": 5,
-      "passed": 5,
-      "percent": 100,
-      "completed": true
+      "passed": 3,
+      "percent": 60,
+      "completed": false
     },
     "archivedProfiles": [
       {
@@ -349,6 +348,45 @@
         ],
         "total": 6,
         "passed": 6,
+        "percent": 100,
+        "completed": true
+      },
+      {
+        "name": "Ensorceleur",
+        "checks": [
+          {
+            "name": "Créations et réouvertures",
+            "status": "ACQUIS",
+            "detail": "4250 créations et 326 réouvertures sur les huit peuples, avec le rang 2 gratuit et les dépenses d’âge.",
+            "proof": "pure-profile-fast-ensorceleur.json"
+          },
+          {
+            "name": "Bonus, actions et mana des cinq voies",
+            "status": "ACQUIS",
+            "detail": "DEF, initiative, bonus de tests, coût des sorts, quota de Sommeil et concentration de Choc.",
+            "proof": "ensorceleur-source-n1.json"
+          },
+          {
+            "name": "Effets des sorts en partie",
+            "status": "ACQUIS",
+            "detail": "Sous tension, Image décalée, Sommeil et Choc testés sur la fiche Chrome mobile. Coûts, portée, cibles, sauvegarde et dé évolutif vérifiés.",
+            "proof": "ensorceleur-combat-chrome.json"
+          },
+          {
+            "name": "Création et réouverture dans Chrome",
+            "status": "ACQUIS",
+            "detail": "Huit peuples, cinq voies, rang 2 du mage, achats d’âge et réouverture au clic.",
+            "proof": "ensorceleur-choices-chrome.json"
+          },
+          {
+            "name": "Fiche PDF officielle",
+            "status": "ACQUIS",
+            "detail": "Dix exports, rangs 1 et 2, champs chiffrés et annexes des cinq voies.",
+            "proof": "ensorceleur-official-pdf.json"
+          }
+        ],
+        "total": 5,
+        "passed": 5,
         "percent": 100,
         "completed": true
       }
@@ -605,7 +643,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Ensorceleur N1 en cours."
+    "next": "Forgesort N1 en cours."
   },
   "peoples": [
     {
@@ -1193,11 +1231,11 @@
       "certified": false
     }
   ],
-  "pausedProfiles": 8,
+  "pausedProfiles": 7,
   "summary": {
     "profilesCertified": 6,
-    "profilesInProgress": 0,
-    "profilesPending": 8,
+    "profilesInProgress": 1,
+    "profilesPending": 7,
     "peoplesCertified": 0
   },
   "limitations": "Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.",

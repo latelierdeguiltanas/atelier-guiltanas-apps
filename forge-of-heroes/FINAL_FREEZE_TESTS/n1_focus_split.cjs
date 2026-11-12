@@ -470,9 +470,45 @@ ensorceleurProgress.total=ensorceleurProgress.checks.length;
 ensorceleurProgress.passed=ensorceleurProgress.checks.filter(c=>c.status==='ACQUIS').length;
 ensorceleurProgress.percent=Math.round(100*ensorceleurProgress.passed/ensorceleurProgress.total);
 ensorceleurProgress.completed=druideProgress.completed&&ensorceleurProgress.passed===ensorceleurProgress.total;
+const forgesortIndex=ensorceleurIndex+1;
+const forgesortMatrix=optionalProof('pure-profile-fast-forgesort.json');
+const forgesortMatrixCurrent=forgesortMatrix?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&
+ forgesortMatrix.profile==='Forgesort'&&forgesortMatrix.pass===4250&&forgesortMatrix.failed===0&&forgesortMatrix.rejected===0&&
+ forgesortMatrix.sourceHashes?.some(x=>x.file==='index.html'&&x.htmlSha256===canonicalHash);
+const forgesortSource=optionalProof('forgesort-source-n1.json');
+const forgesortSourceCurrent=forgesortSource?.status==='PASS'&&forgesortSource.indexSha256===canonicalHash&&
+ forgesortSource.testSha256===productHash('FINAL_FREEZE_TESTS/n1_forgesort_source.cjs')&&
+ forgesortSource.checks?.length===5&&forgesortSource.checks.every(c=>c.status==='PASS');
+const forgesortPdf=optionalProof('forgesort-official-pdf.json');
+const forgesortPdfCurrent=forgesortPdf?.status==='PASS'&&forgesortPdf.indexSha256===canonicalHash&&
+ forgesortPdf.exports?.length===10&&forgesortPdf.exports.every(c=>c.status==='PASS');
+const forgesortChrome=optionalProof('forgesort-choices-chrome.json');
+const forgesortChromeCurrent=forgesortChrome?.status==='PASS'&&forgesortChrome.indexSha256===canonicalHash&&
+ forgesortChrome.testSha256===productHash('FINAL_FREEZE_TESTS/n1_forgesort_choices_click.cjs')&&forgesortChrome.passed===8&&
+ new Set(forgesortChrome.cases.filter(c=>c.status==='PASS').map(c=>c.people)).size===8;
+const forgesortProgress={name:'Forgesort',checks:[
+ {name:'Créations et réouvertures',status:forgesortMatrixCurrent?'ACQUIS':'A_VERIFIER',
+  detail:forgesortMatrixCurrent?forgesortMatrix.pass+' créations et '+forgesortMatrix.saves+' réouvertures sur huit peuples.':'Valider la matrice complète avec la condition d’INT des runes.',
+  proof:'pure-profile-fast-forgesort.json'},
+ {name:'Bonus, actions et mana des cinq voies',status:forgesortSourceCurrent?'ACQUIS':'A_VERIFIER',
+  detail:'Bâton lié, alchimie, arme enflammée, PV via INT, caractéristiques du golem, INT et DEF des runes.',
+  proof:'forgesort-source-n1.json'},
+ {name:'Effets des capacités en partie',status:'A_VERIFIER',
+  detail:'Contrôler les élixirs, les effets du métal et le déclenchement de la Rune de puissance en partie.'},
+ {name:'Création et réouverture dans Chrome',status:forgesortChromeCurrent?'ACQUIS':'A_VERIFIER',
+  detail:'Huit peuples, cinq voies, rang 2 du mage, achats d’âge et réouverture.',
+  proof:'forgesort-choices-chrome.json'},
+ {name:'Fiche PDF officielle',status:forgesortPdfCurrent?'ACQUIS':'A_VERIFIER',
+  detail:'Dix exports, champs et annexes des cinq voies.',
+  proof:'forgesort-official-pdf.json'}
+]};
+forgesortProgress.total=forgesortProgress.checks.length;
+forgesortProgress.passed=forgesortProgress.checks.filter(c=>c.status==='ACQUIS').length;
+forgesortProgress.percent=Math.round(100*forgesortProgress.passed/forgesortProgress.total);
+forgesortProgress.completed=ensorceleurProgress.completed&&forgesortProgress.passed===forgesortProgress.total;
 const progressByIndex=new Map([[barbareIndex,barbareProgress],[bardeIndex,bardeProgress],
- [chevalierIndex,chevalierProgress],[chevalierIndex+1,druideProgress],[ensorceleurIndex,ensorceleurProgress]]);
-const priorityIndex=druideProgress.completed?ensorceleurIndex:chevalierComplete?chevalierIndex+1:bardeComplete?chevalierIndex:barbareComplete?bardeIndex:profileComplete?barbareIndex:activeIndex;
+ [chevalierIndex,chevalierProgress],[chevalierIndex+1,druideProgress],[ensorceleurIndex,ensorceleurProgress],[forgesortIndex,forgesortProgress]]);
+const priorityIndex=ensorceleurProgress.completed?forgesortIndex:druideProgress.completed?ensorceleurIndex:chevalierComplete?chevalierIndex+1:bardeComplete?chevalierIndex:barbareComplete?bardeIndex:profileComplete?barbareIndex:activeIndex;
 const priorityProgress=progressByIndex.get(priorityIndex)||null;
 const priorityPercent=priorityProgress?.percent??percent;
 const queue=profileOrder.map((name,i)=>{
@@ -507,7 +543,7 @@ const output={
  },
  intent:'Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.',
  profile:{id:profile.profileId,name:'Arquebusier',priority:profileComplete?'CERTIFIE':'EN_COURS',completed:profileComplete,variantPrototypeReady:!!prototypeOK,variantIntegrated:!!deployed,passed:verified,total:profileChecks.length,percent:Math.round(100*verified/profileChecks.length),checks:profileChecks,paths:copyPaths,partialNumericValidated:numericPartial,
-  next:druideProgress.completed?'Ensorceleur N1 en cours.':chevalierComplete?'Druide N1 en cours.':bardeComplete?'Chevalier N1 en cours.':barbareComplete?'Barde N1 en cours.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
+  next:ensorceleurProgress.completed?'Forgesort N1 en cours.':druideProgress.completed?'Ensorceleur N1 en cours.':chevalierComplete?'Druide N1 en cours.':bardeComplete?'Chevalier N1 en cours.':barbareComplete?'Barde N1 en cours.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
  peoples,
  pausedProfiles:queue.filter(p=>p.status==='EN_ATTENTE').length,
  summary:{profilesCertified:queue.filter(p=>p.certified).length,profilesInProgress:queue.filter(p=>p.status==='EN_COURS').length,profilesPending:queue.filter(p=>p.status==='EN_ATTENTE').length,peoplesCertified:peoples.filter(p=>p.certified).length},
