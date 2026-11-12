@@ -47,7 +47,7 @@ async function runCase(browser,job){
    assert.ok(value,key);
    await field.selectOption(value);
   }
-  if(job.people==='humain')await page.locator('#human-stat-final').selectOption('con');
+  if(job.people==='humain')await page.locator('#human-stat-final').selectOption('for');
   await next();
   await page.locator('#age-category').selectOption('mature');
   await next();

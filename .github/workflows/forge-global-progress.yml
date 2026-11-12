@@ -34,6 +34,13 @@ jobs:
           const a=require('node:assert/strict'),r=require('./centre-synchronisation/data/forge-global-progress.json');
           a.equal(r.modules.length,7);a.equal(r.sourceProduct,'forge-of-heroes/index.html');
           if(r.status==='MEASURED'){
+            const f=require('./centre-synchronisation/forge-n1/focus.json');
+            const {archivedProfiles,priorityProgress,current,queue}=f.certificationPlan;
+            const profiles=[f.profile,...archivedProfiles,priorityProgress].filter(Boolean);
+            const weight=profiles.reduce((sum,p)=>sum+16*p.checks.filter(c=>c.status==='ACQUIS').length/p.checks.length,0);
+            a.equal(r.modules[0].passed,Number(weight.toFixed(4)));
+            a.deepEqual(r.currentN1Profile,current);
+            a.equal(r.n1ProfilesCertified,queue.filter(p=>p.certified).length);
             a.equal(r.modules[0].total,224);a.equal(r.modules[1].total,80);
             a.equal(r.certified,r.modules.every(m=>m.passed===m.total));
             a.equal(r.percent,Math.round(r.modules.reduce((n,m)=>n+m.passed/m.total,0)/7*100));
@@ -50,12 +57,22 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add centre-synchronisation/data/forge-global-progress.json
-          if git diff --cached --quiet; then
-            echo 'Score global deja a jour'
-            exit 0
-          fi
-          git commit -m 'data(copilote): mise a jour couverture globale Forge [skip ci]'
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
+          report=centre-synchronisation/data/forge-global-progress.json
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            node centre-synchronisation/scripts/forge-global-progress.cjs
+            node - "$report" <<'NODE'
+          const fs=require('node:fs'),cp=require('node:child_process'),file=process.argv[2];
+          const before=cp.execFileSync('git',['show','HEAD:'+file],{encoding:'utf8'});
+          const previous=JSON.parse(before),current=JSON.parse(fs.readFileSync(file,'utf8'));
+          delete previous.generatedAt;
+          delete current.generatedAt;
+          if(JSON.stringify(previous)===JSON.stringify(current))fs.writeFileSync(file,before);
+          NODE
+            git add "$report"
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m 'data(copilote): mise a jour couverture globale Forge [skip ci]'
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1

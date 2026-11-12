@@ -31,6 +31,9 @@ const data=JSON.parse(fs.readFileSync('centre-synchronisation/data/forge-global-
   await tile.tap();
   await page.locator('.forge-global-overview').waitFor();
   check('un clic ouvre le détail de progression',await page.locator('.forge-global-overview h3').innerText()==='Avancement global de l’application');
+  const currentProfile=data.currentN1Profile;
+  check('profil prioritaire et score individuel dans la fiche Forge',currentProfile&&
+   (await page.locator('.forge-current-profile a').innerText())===currentProfile.name+' N1 · '+currentProfile.percent+' %');
   await page.locator('.forge-global-breakdown > summary').tap();
   check('sept domaines visibles',await page.locator('.forge-global-module').count()===7);
   check('N2 identifié parmi les domaines',(await page.locator('.forge-global-module').allInnerTexts()).some(t=>t.includes('Passage N1 → N2')));
@@ -52,6 +55,10 @@ const data=JSON.parse(fs.readFileSync('centre-synchronisation/data/forge-global-
   check('critères du profil certifié accessibles',await detail.locator('.focus-check').count()===focus.profile.checks.length);
   check('huit peuples, dix critères chacun',await p.locator('#focus-peoples .focus-line').count()===8&&await p.locator('#focus-peoples .focus-criteria-detail').count()===8);
   check('pas d’erreur JS dans le registre N1',errs.length===0);
+  await p.goto(ROOT+'/centre-synchronisation/forge-n1/purs.html');
+  await p.locator('#profile-name').filter({hasText:current.name}).waitFor();
+  await p.locator('#forge-global').filter({hasText:data.percent+' %'}).waitFor();
+  check('scores global et individuel sur la même page',(await p.locator('#profile-percent').innerText())===current.percent+' %');
   result.status='PASS';await context.close();
  }catch(e){result.errors.push(String(e.stack||e));result.status='FAIL'}finally{await browser.close()}
  fs.writeFileSync(out,JSON.stringify(result,null,2)+'\n');

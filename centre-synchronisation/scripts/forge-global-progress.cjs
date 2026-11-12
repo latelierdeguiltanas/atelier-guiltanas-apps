@@ -139,6 +139,8 @@ const output={
  measure:'Couverture des critères de certification, pas % de code écrit ni probabilité d’absence de bug.',
  scoring:'Sept domaines de même poids. Chaque domaine vaut 1/7 du total et progresse selon ses propres critères intégralement prouvés. Aucune moyenne de tests automatisés ne vaut certificat.',
  moduleCount:modules.length,
+ currentN1Profile:sourceCurrent?plan.current:null,
+ n1ProfilesCertified:sourceCurrent?queue.filter(row=>row.certified).length:null,
  percent:exact===null?null:Math.round(exact),
  exactPercent:exact===null?null:Math.round(exact*100)/100,
  certified:sourceCurrent&&complete,

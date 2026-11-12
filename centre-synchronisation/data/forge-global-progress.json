@@ -1,27 +1,34 @@
 {
   "schema": "FOH_GLOBAL_CERTIFICATION_V1",
-  "generatedAt": "2026-11-12T07:13:27.141Z",
+  "generatedAt": "2026-11-12T07:16:15.875Z",
   "sourceProduct": "forge-of-heroes/index.html",
   "source": {
     "indexSha256": "250274e9d2879bc9acde9043b56bb670de6c697a4c9bb8920c371e1393951759",
     "engineSha256": "1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd",
     "databaseSha256": "645f2c7f1f5aac50b8574310c638e7284e4eb90acc103f68ae431b17cf72c23e",
     "focusSha256": "250274e9d2879bc9acde9043b56bb670de6c697a4c9bb8920c371e1393951759",
-    "focusAt": "2026-11-12T07:13:26.915Z"
+    "focusAt": "2026-11-12T07:16:15.523Z"
   },
   "status": "MEASURED",
   "scope": "Forge COF2 Livre de base, N1 à N3, hybrides/sans profil, export PDF et liaison Hub. Compagnon et futur Guide du joueur hors dénominateur jusqu’à intégration et ajout explicite des critères.",
   "measure": "Couverture des critères de certification, pas % de code écrit ni probabilité d’absence de bug.",
   "scoring": "Sept domaines de même poids. Chaque domaine vaut 1/7 du total et progresse selon ses propres critères intégralement prouvés. Aucune moyenne de tests automatisés ne vaut certificat.",
   "moduleCount": 7,
-  "percent": 14,
-  "exactPercent": 14.31,
+  "currentN1Profile": {
+    "name": "Druide",
+    "position": 5,
+    "percent": 60,
+    "certified": false
+  },
+  "n1ProfilesCertified": 4,
+  "percent": 15,
+  "exactPercent": 14.52,
   "certified": false,
   "modules": [
     {
       "id": "n1-profils",
       "name": "N1 · 14 profils officiels",
-      "passed": 70.4,
+      "passed": 73.6,
       "total": 224,
       "status": "SCORE_COURANT",
       "description": "Les 14 profils ont le même poids. Chaque profil contribue selon la part de ses critères N1 validés dans le registre.",
@@ -33,7 +40,7 @@
         "evidence": "forge-of-heroes/QA/N1/regressions.json",
         "limitations": "Contrôles ciblés N1 sur index courant ; ne prouvent pas tous les effets R3/historiques ni 14/14 profils à 100 %."
       },
-      "percent": 31,
+      "percent": 33,
       "complete": false
     },
     {
