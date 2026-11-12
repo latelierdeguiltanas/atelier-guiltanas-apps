@@ -112,7 +112,7 @@ function entityCard(x,type,t){
 function renderStudio(t){
  const a=assets(t),areas=prepareAreas(t),kind=currentTab;
  const total=(a.maps?.length||0)+(a.encounters?.length||0)+(a.scenarioItems?.length||0)+(a.shop?.length||0);
- const head='<section class="studio-hero"><div class="eyebrow">STUDIO SCÉNARIO · MODIFIABLE ET PRIVÉ</div><h2>'+esc(t.scenario.name)+'</h2><p>'+esc(t.scenario.description||'Aucune description encore renseignée.')+'</p><div class="studio-hero-meta"><span>'+t.scenario.modules.length+' sections</span><span>'+areas.length+' zones</span><span>'+total+' ressources</span></div><div class="actions"><button class="button sm" data-st="edit-scenario">Modifier le scénario</button><button class="button sm" data-st="export">Exporter ce scénario</button></div></section>';
+ const head='<section class="studio-hero"><div class="eyebrow">STUDIO SCÉNARIO · MODIFIABLE ET PRIVÉ</div><h2>'+esc(t.scenario.name)+'</h2><p>'+esc(t.scenario.description||'Aucune description encore renseignée.')+'</p><div class="studio-hero-meta"><span>'+t.scenario.modules.length+' sections</span><span>'+areas.length+' zones</span><span>'+total+' ressources</span></div><div class="actions"><button class="button sm" data-st="edit-scenario">Modifier le scénario</button>'+(t.scenario.assets?.source?.toLowerCase().includes("bastide")&&!areas.length?'<button class="button sm primary" data-st="organize">Classer les ressources par zone</button>':'')+'<button class="button sm" data-st="export">Exporter ce scénario</button></div></section>';
  const nav='<div class="studio-nav">'+typeOptions(kind)+'</div>';
  const areaSelect=kind!=='scenes'&&kind!=='areas'?'<label class="field">Zone<select id="studio-zone"><option value="all">Toutes les zones</option><option value="none" '+(zone==='none'?'selected':'')+'>Sans zone</option>'+areas.map(x=>'<option value="'+esc(x.id)+'" '+(x.id===zone?'selected':'')+'>'+esc(x.name)+'</option>').join('')+'</select></label>':'';
  let content='';
@@ -194,7 +194,7 @@ function imageFields(x){
 function dialog(titleText,fields,metadata){
  const d=$('studio-dialog');if(!d)return;
  editing=metadata;
- d.innerHTML='<h2>'+esc(titleText)+'</h2><form id="studio-form">'+fields+'<div class="form-actions"><button type="submit" class="button primary">Enregistrer</button><button type="button" class="button" data-st="close">Annuler</button></div></form>';
+ d.innerHTML='<h2>'+esc(titleText)+'</h2><form id="studio-form">'+fields+'<div class="form-actions"><button type="submit" class="button primary">Enregistrer</button>'+(metadata?.id?'<button type="button" class="button danger" data-st="delete">Supprimer</button>':'')+'<button type="button" class="button" data-st="close">Annuler</button></div></form>';
  if(!d.open)d.showModal();
 }
 function entityForm(kind,id=''){
@@ -324,6 +324,7 @@ document.addEventListener('click',async event=>{
    t.tools[k]=!t.tools[k];
    A.save();if(k==='scenario'&&t.tools[k])A.setTab('scenario');else A.refresh();return;
   }
+  if(action==='organize'&&t){organize(t.scenario);A.save();A.refresh();A.notify('Ressources classées par zones proposées.');}
   if(action==='add-module')moduleForm();
   if(action==='edit-module')moduleForm(b.dataset.id);
   if(action==='add-scene')sceneForm(b.dataset.module);
@@ -332,6 +333,16 @@ document.addEventListener('click',async event=>{
   if(action==='edit-entity')entityForm(b.dataset.kind,b.dataset.id);
   if(action==='edit-scenario')scenarioForm();
   if(action==='close')$('studio-dialog')?.close();
+  if(action==='delete'&&t&&editing?.id){
+   if(!confirm('Supprimer définitivement cet élément de la copie de cette table ?'))return;
+   const meta=editing;
+   if(meta.action==='entity'){
+    const a=assets(t);a[meta.kind]=(a[meta.kind]||[]).filter(x=>x.id!==meta.id);
+    if(meta.kind==='areas')for(const k of ['maps','encounters','scenarioItems','shop'])for(const x of a[k]||[])if(x.zoneId===meta.id)x.zoneId='';
+   }else if(meta.action==='module')t.scenario.modules=t.scenario.modules.filter(x=>x.id!==meta.id);
+   else if(meta.action==='scene'){const m=t.scenario.modules.find(x=>x.id===meta.moduleId);if(m)m.scenes=m.scenes.filter(x=>x.id!==meta.id);}
+   A.save();$('studio-dialog')?.close();A.refresh();A.notify('Élément supprimé de cette table seulement.');
+  }
   if(action==='export'&&t)A.download('scenario-'+t.scenario.name+'.json',D.exportScenario(t));
   if(action==='scene-toggle'&&t){const i=t.completedScenes.indexOf(b.dataset.id);if(i<0)t.completedScenes.push(b.dataset.id);else t.completedScenes.splice(i,1);A.save();A.refresh();}
   if(action==='template'){
