@@ -4,7 +4,7 @@ const fold=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLo
 function ruleSet(a){const p=(a.path_id||a.pathId||'').split(':')[1],r=Number(a.rank),name=fold(a.label),rules=[];const add=(key,formula,legacy=0,when=null)=>rules.push({kind:'derived',key,formula,legacy,when});const gain=values=>rules.push({kind:'stats',values});
  const heroic={'force heroique':'for','agilite heroique':'agi','dexterite heroique':'agi','constitution heroique':'con','perception heroique':'per','charisme heroique':'cha','volonte heroique':'vol','ego heroique':'cha'};
  if(heroic[name]){gain({[heroic[name]]:1});rules.push({kind:'bonus_die',stat:heroic[name]});}
- const multi={'voie-du-halfelin':['agi','con'],'voie-du-nain':['con','vol'],'voie-du-demi-orc':['for','con'],'voie-de-l-elfe-sylvain':['agi','per'],'voie-du-gnome':['con','cha'],'voie-de-lâme-forgée':['con','for'],'voie-du-centaure':['con','per'],'voie-du-demi-ogre':['con','for'],'voie-du-gobelin':['agi','con'],'voie-du-kobold':['agi','per'],'voie-de-letre-feerique':['per','cha'],'voie-du-minotaure':['con','for']};
+ const multi={'voie-du-halfelin':['agi','con'],'voie-du-nain':['con','vol'],'voie-du-demi-orc':['for','con'],'voie-de-l-elfe-sylvain':['agi','per'],'voie-du-gnome':['con','cha'],'voie-de-lâme-forgée':['con','for'],'voie-du-centaure':['con','per'],'voie-du-demi-ogre':['con','for'],'voie-du-gobelin':['agi','con'],'voie-du-kobold':['agi','per'],'voie-de-letre-feerique':['cha','vol'],'voie-de-la-fee':['per','cha'],'voie-du-minotaure':['con','for']};
  if(r===5&&(a.path_id||'').startsWith('path:')&&multi[p])gain(Object.fromEntries(multi[p].map(k=>[k,1])));
  if(a.path_id==='history:nomad'&&r===5)gain({per:1});
  if(a.path_id==='history:scholar'&&r===5)gain({int:1});
@@ -54,6 +54,7 @@ function ruleSet(a){const p=(a.path_id||a.pathId||'').split(':')[1],r=Number(a.r
  if(p==='voie-du-gnome'&&r===4)rules.push({kind:'weapon_bonus',match:'crossbow_powder',damage:'AGI',mastery:true});
  if(p==='voie-du-roublard'&&r===1)rules.push({kind:'weapon_bonus',match:'thrown_knife',damage:'RANG>=5?3:RANG>=3?2:1',legacyDamage:1});
  if(p==='voie-du-maitre-d-armes'&&String(a.path_id).includes(':class-arbaletrier:')&&r===2)rules.push({kind:'critical',match:'crossbow',amount:'1'});if(p==='voie-du-maitre-d-armes'&&String(a.path_id).includes(':class-arbaletrier:')&&r===3)rules.push({kind:'weapon_bonus',match:'crossbow',damage:'1'});if(p==='voie-de-la-precision'&&r===3)rules.push({kind:'critical',match:'ranged',amount:'RANG>=5?2:1'});
+ if(p==='voie-du-maitre-d-armes'&&String(a.path_id).includes(':class-guerrier:')&&r===2)rules.push({kind:'critical',match:'preferred',amount:'1'});
  if(p==='voie-du-spadassin'&&r===3)rules.push({kind:'critical',match:'light_melee',amount:'2'});
  if(p==='voie-de-la-maitrise'&&r===3)rules.push({kind:'critical',match:'unarmed',amount:'1'});
  if(p==='voie-de-la-brute'&&r===5)rules.push({kind:'critical',match:'melee',amount:'1'});
@@ -95,6 +96,8 @@ function projectPeopleBonuses(s,state){
  const historyRules=s.historyPath?.ancestryRules||[],hasHistory=type=>historyRules.some(r=>r.type===type);
  function skill(a,tests,value,condition=null,excludes=[]){const entry={sourceAbilityId:a.id,tests,value,scope:'self',bonusType:'people',...(condition?{condition}:{}),...(excludes.length?{excludes}:{}),sourceRule:'Voie de peuple, rang '+a.rank};s.skillBonuses=s.skillBonuses||[];const key=a.id+'|'+JSON.stringify(tests);if(seen.has(key))return;seen.add(key);const index=s.skillBonuses.findIndex(x=>x.sourceAbilityId===a.id&&JSON.stringify(x.tests)===JSON.stringify(tests));if(index>=0)s.skillBonuses[index]=entry;else s.skillBonuses.push(entry);}
  function feature(a,value){s.passiveFeatures.push({...value,sourceAbilityId:a.id});}
+ const tiny=["people:lutin:addon-comp2017-cof2","people:fee:addon-comp2017-cof2"].includes(s.peupleId);
+ if(tiny)skill({id:s.peupleId,rank:0},['discrétion'],5);
  for(const a of rows){const path=a.pathId||a.path_id,p=path?.split(':')[1],r=Number(a.rank);if(!String(path).startsWith('path:'))continue;
  if(r===1){
   if(p==='voie-du-halfelin')skill(a,['discrétion','subtilisation'],3);
@@ -105,7 +108,17 @@ function projectPeopleBonuses(s,state){
   if(p==='voie-du-gnome')skill(a,['sciences ordinaires','sciences occultes'],3);
   if(p==='voie-du-gobelin')skill(a,['discrétion'],3);
   if(p==='voie-du-kobold')skill(a,['discrétion','embuscade'],3);
-  if(p==='voie-de-letre-feerique'){skill(a,['comprendre les animaux','calmer les animaux','communiquer avec les animaux'],3);feature(a,{kind:'animal_language'});}
+  if(['voie-de-letre-feerique','voie-de-la-fee'].includes(p)){
+   s.traits.darkvisionMeters=20;
+   s.traits.damageReduction=[{types:['weapon'],exceptMaterial:'cold_iron',value:rank(path)}];
+   if(p==='voie-de-la-fee')s.traits.flight={action:'movement',distanceMeters:10};
+   else s.traits.teleport={action:'movement',distanceMeters:10,lineOfSight:true};
+  }
+  if(p==='voie-de-lâme-forgée'){
+   s.traits.darkvisionMeters=10;
+   s.traits.damageReduction=[{types:['fire','cold','life_drain'],value:5}];
+   s.traits.immunities=[...new Set([...(s.traits.immunities||[]),'bleeding'])];
+  }
   if(p==='voie-du-demi-ogre')skill(a,['VOL'],5,'résister ou mettre fin à sa Réaction violente');
   if(p==='mage')skill(a,['connaissance de la magie','érudition occulte'],rank(path)+2);
   if(['voie-du-nain','voie-du-demi-orc','voie-du-gnome'].includes(p))feature(a,{kind:'vision',meters:p==='voie-du-gnome'?10:30,darkness:'pénombre dans le noir total'});
@@ -141,8 +154,8 @@ function apply(s,state,db){const rows=ownedRules(s,db,state),before={...s.caracs
  if(r.kind==='mana_stat_choice'&&spells){const choice=String(bag[r.id]||r.default).toLowerCase();if(!r.values.includes(choice))errors.push(x.ability.label+' : choix de caractéristique de mana illégal.');else{s.PM+=s.caracs[choice]-s.caracs.vol;}}
  if(r.kind==='damage_reduction')s.passiveFeatures.push({...r,value:r.value??numeric(r.formula,values),sourceAbilityId:x.ability.id});}}
  for(const a of s.attacks||[]){if(Number(a.damageBonus)){a.damage=damagePlus(a.damage,Number(a.damageBonus));a.appliedFlatDamageBonus=Number(a.damageBonus);delete a.damageBonus;}const w=(db.tables||db).weapons_n1.find(w=>w.id===a.weaponId)||{},atkStat=a.attackCharacteristic||(a.type==='distance'?'agi':a.type==='magique'?'vol':'for');if(a.attackBonus!=null)a.attackBonus+=delta[atkStat]||0;
-  const damageStat=a.damageCharacteristic||(!a.abilityId&&a.type==='contact'?'for':null);if(damageStat)a.damage=damagePlus(a.damage,delta[damageStat]||0);
-  let crit=Number(a.criticalThreshold||((w.properties||[]).includes('critical_19_20')?19:20));for(const x of rows){for(const r of x.rules){if(r.kind==='mounted_damage'&&state.semanticContext?.mounted===true&&a.type==='contact')a.damage=damagePlus(a.damage,x.rank>=5?2:1);if(r.kind==='weapon_bonus'&&weaponMatch(r.match,a,w)){if(r.attack)a.attackBonus+=r.attack;if(r.damage)a.damage=damagePlus(a.damage,numeric(r.damage,{...baseValues,RANG:x.rank})-Number(r.legacyDamage||0));if(r.mastery)a.mastered=true;}if(r.kind==='critical'&&weaponMatch(r.match,a,w)){crit-=numeric(r.amount,{...baseValues,RANG:x.rank});if(r.mastery)a.mastered=true;}}}a.criticalThreshold=Math.max(16,crit);
+  const damageStat=a.properties?.includes('tiny_weapon_damage')?null:a.damageCharacteristic||(!a.abilityId&&a.type==='contact'?'for':null);if(damageStat)a.damage=damagePlus(a.damage,delta[damageStat]||0);
+  let crit=Number(a.criticalThreshold||((w.properties||[]).includes('critical_19_20')?19:20));for(const x of rows){for(const r of x.rules){if(r.kind==='mounted_damage'&&state.semanticContext?.mounted===true&&a.type==='contact')a.damage=damagePlus(a.damage,x.rank>=5?2:1);if(r.kind==='weapon_bonus'&&weaponMatch(r.match,a,w)){if(r.attack)a.attackBonus+=r.attack;if(r.damage)a.damage=damagePlus(a.damage,numeric(r.damage,{...baseValues,RANG:x.rank})-Number(r.legacyDamage||0));if(r.mastery)a.mastered=true;}if(r.kind==='critical'&&(r.match==='preferred'?rows.some(origin=>origin.ability.path_id===x.ability.path_id&&origin.ability.rank===1&&(()=>{const category=state.abilityChoices?.[origin.ability.id]?.preferredWeaponCategory||state.profileChoices?.preferredWeaponCategory;return !!category&&w.preferredCategory===category;})()):weaponMatch(r.match,a,w))){crit-=numeric(r.amount,{...baseValues,RANG:x.rank});if(r.mastery)a.mastered=true;}}}a.criticalThreshold=Math.max(16,crit);
  }
  const activeIds=new Set(state.semanticContext?.activeAbilities||[]),rageRows=rows.filter(x=>activeIds.has(x.ability.id)&&(x.ability.path_id||'').includes('voie-de-la-rage:')&&[3,5].includes(x.ability.rank));if(rageRows.length>1)errors.push('La rage et la furie ne se cumulent pas.');if(rageRows.length===1){const rage=rageRows[0],fury=rage.ability.rank===5;s.DEF-=fury?4:2;s.activeFeatures=s.activeFeatures||[];s.activeFeatures.push({sourceAbilityId:rage.ability.id,kind:'berserk',cannotFleeVoluntarily:true,cannotCastSpells:true,willBonusDie:true,endingDifficulty:fury?20:15});for(const a of s.attacks||[]){if(a.type==='contact')a.damage+=' + '+(fury?'2d4°':'1d4°');if(a.type==='distance')a.disabledReason='Attaque à distance interdite pendant la rage.';}}
  for(const x of rows)if(activeIds.has(x.ability.id)&&(x.ability.path_id||'').includes('voie-du-controle-corporel:')&&x.ability.rank===5){s.DEF+=3;s.INIT+=5;s.activeFeatures=s.activeFeatures||[];s.activeFeatures.push({kind:'extra_action',options:['A','M'],count:1,sourceAbilityId:x.ability.id});}
