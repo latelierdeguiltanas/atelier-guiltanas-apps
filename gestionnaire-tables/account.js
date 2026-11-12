@@ -342,7 +342,7 @@ async function redeem(codeInput){
  if(!response.ok)throw Error(result.error||'Import non autorisé');
  const sc=D.normalizedScenario(result.scenario);
  const db=state();db.scenarios.push(sc);
- const table=D.createTable(db,{name:'Ma table — '+sc.name.replace(/\s*[—-].*$/,'').slice(0,65),system:sc.system,scenarioId:sc.id});
+ const table=D.createTable(db,{name:'Ma table — '+sc.name.replace(/\s*[—-].*$/,'').slice(0,65),system:sc.system,scenarioId:sc.id,playerMode:'solo',tools:{scenario:true,combat:sc.system==='COF2',shop:!!sc.assets?.shop?.length,players:true,soundboard:false,notes:true}});
  A.save();A.openTable(table.id);
  A.notify('Scénario importé dans ton compte ; table créée avec 0 PJ.');
 }
