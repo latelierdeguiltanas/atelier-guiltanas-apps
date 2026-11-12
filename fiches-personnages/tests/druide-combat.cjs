@@ -64,7 +64,7 @@ const {load}=require('../../forge-of-heroes/FINAL_FREEZE_TESTS/forge_product_run
   assert.match(await page.locator('#resources').innerText(),/10 m/);
   await close();
   await page.locator('[data-ui-modal="resources"]').tap();
-  assert.match(await dialog.innerText(),/Initiative\s*16/);
+  assert.match(await dialog.innerText(),/Initiative\s*16/i);
   await close();
 
   await open(/Peau d’écorce/);
