@@ -258,7 +258,7 @@ async function saveForm(form){
  if(!t||!meta)return;
  const file=form.querySelector('[name="imageFile"]')?.files?.[0];
  let rawImage=file?await uploadImage(file,t,meta.id||D.uid()):safeUri(data.image_url);
- const setImage=(obj)=>{if(rawImage)obj.image_url=rawImage;else if(data.image_url==='')obj.image_url='';};
+ const setImage=(obj)=>{if(rawImage)obj.image_url=rawImage;else if(data.image_url===''&&!/^mjmedia:\/\//.test(obj.image_url||''))obj.image_url='';};
  if(meta.action==='entity'){
   const list=meta.kind==='areas'?prepareAreas(t):assets(t)[meta.kind];
   const x=list.find(y=>y.id===meta.id),obj=x||{id:D.uid()};
