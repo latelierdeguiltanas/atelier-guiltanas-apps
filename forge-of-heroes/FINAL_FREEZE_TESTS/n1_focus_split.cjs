@@ -342,11 +342,14 @@ const chevalierChrome=optionalProof('chevalier-choices-chrome.json');
 const chevalierChromeCurrent=chevalierChrome?.status==='PASS'&&chevalierChrome.indexSha256===canonicalHash&&chevalierChrome.passed===8&&
  chevalierChrome.testSha256===productHash('FINAL_FREEZE_TESTS/n1_chevalier_choices_click.cjs')&&
  new Set(chevalierChrome.cases.filter(c=>c.status==='PASS').map(c=>c.people)).size===8;
+const chevalierSource=optionalProof('chevalier-source-n1.json');
+const chevalierSourceCurrent=chevalierSource?.status==='PASS'&&chevalierSource.indexSha256===canonicalHash&&
+ chevalierSource.checks?.length===5&&chevalierSource.checks.every(c=>c.status==='PASS');
 const chevalierProgress={name:'Chevalier',checks:[
  {name:'Créations et réouvertures',status:chevalierMatrixCurrent?'ACQUIS':'A_VERIFIER',
   detail:chevalierMatrixCurrent?chevalierMatrix.pass+' créations et '+chevalierMatrix.saves+' réouvertures. Épée courte sans lance de cavalerie pour le Halfelin avec accord du MJ.':'Rejouer les paires de voies, les âges et les équipements légaux des huit peuples.',
   proof:'pure-profile-fast-chevalier.json'},
- {name:'Calculs principaux des cinq voies',status:'A_VERIFIER',detail:'Vérifier les projections de monture, armure, réduction de dégâts, protection et langue.'},
+ {name:'Calculs principaux des cinq voies',status:chevalierSourceCurrent?'ACQUIS':'A_VERIFIER',detail:'Monture et dégâts en selle, pénalité d’armure, quota du Preux, peur, langue et écuyer.',proof:'chevalier-source-n1.json'},
  {name:'Effets conditionnels et mise en jeu',status:'A_VERIFIER',detail:'Vérifier notamment les transitions monté/à pied, la réaction d’Intercepter et le report des dégâts.'},
  {name:'Création et réouverture dans Chrome',status:chevalierChromeCurrent?'ACQUIS':'A_VERIFIER',
   detail:chevalierChromeCurrent?'Huit peuples, choix d’Éduqué, équipement halfelin et réouverture contrôlés au clic.':'Rejouer un scénario de rang 2 par peuple, avec choix de langue et équipement.',

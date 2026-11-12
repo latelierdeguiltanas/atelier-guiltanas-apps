@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "250274e9d2879bc9acde9043b56bb670de6c697a4c9bb8920c371e1393951759",
   "certificationBasis": "Preuves liées au produit canonique. La comparaison octet par octet confirme le correctif isolé de Grâce féline et préserve les preuves des profils hors Barde.",
-  "generatedAt": "2026-11-12T06:38:59.667Z",
+  "generatedAt": "2026-11-12T06:42:52.754Z",
   "engineSha256": "1ab516f8250394467e10599f665f2dc8bce4bf8e5f6eb25d02362a8074c9e5fd",
   "databaseSha256": "645f2c7f1f5aac50b8574310c638e7284e4eb90acc103f68ae431b17cf72c23e",
   "peoplesEvidenceCurrent": true,
@@ -24,7 +24,7 @@
     "current": {
       "name": "Chevalier",
       "position": 4,
-      "percent": 20,
+      "percent": 80,
       "certified": false
     },
     "next": {
@@ -58,7 +58,7 @@
         "name": "Chevalier",
         "position": 4,
         "status": "EN_COURS",
-        "percent": 20,
+        "percent": 80,
         "certified": false
       },
       {
@@ -137,14 +137,15 @@
       "checks": [
         {
           "name": "Créations et réouvertures",
-          "status": "A_VERIFIER",
-          "detail": "Rejouer les paires de voies, les âges et les équipements légaux des huit peuples.",
+          "status": "ACQUIS",
+          "detail": "4250 créations et 326 réouvertures. Épée courte sans lance de cavalerie pour le Halfelin avec accord du MJ.",
           "proof": "pure-profile-fast-chevalier.json"
         },
         {
           "name": "Calculs principaux des cinq voies",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier les projections de monture, armure, réduction de dégâts, protection et langue."
+          "status": "ACQUIS",
+          "detail": "Monture et dégâts en selle, pénalité d’armure, quota du Preux, peur, langue et écuyer.",
+          "proof": "chevalier-source-n1.json"
         },
         {
           "name": "Effets conditionnels et mise en jeu",
@@ -153,8 +154,8 @@
         },
         {
           "name": "Création et réouverture dans Chrome",
-          "status": "A_VERIFIER",
-          "detail": "Rejouer un scénario de rang 2 par peuple, avec choix de langue et équipement.",
+          "status": "ACQUIS",
+          "detail": "Huit peuples, choix d’Éduqué, équipement halfelin et réouverture contrôlés au clic.",
           "proof": "chevalier-choices-chrome.json"
         },
         {
@@ -165,8 +166,8 @@
         }
       ],
       "total": 5,
-      "passed": 1,
-      "percent": 20
+      "passed": 4,
+      "percent": 80
     },
     "archivedProfiles": [
       {
