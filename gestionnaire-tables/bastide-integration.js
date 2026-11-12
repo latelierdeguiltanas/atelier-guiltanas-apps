@@ -58,6 +58,7 @@ async function importBastide(){
    api('bastide-session','combat-library',token)
   ]);
   const pack=buildPack(admin,npcs,combat);
+  window.TableStudio?.organize?.(pack);
   const assets=pack.assets;
   if(!confirm('Importer ce modele prive en LECTURE SEULE ?\n\n'+assets.shop.length+' articles de Mila\n'+assets.scenarioItems.length+' objets de scenario\n'+assets.maps.length+' cartes\n'+assets.encounters.length+' rencontres/PNJ\n'+assets.combat.length+' preparation(s) de combat\n\n0 PJ, 0 inventaire de PJ, 0 cle.\n\nLa Bastide ne sera pas modifiee.'))return;
   const db=A.getDb();
