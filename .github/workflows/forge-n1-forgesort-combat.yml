@@ -1,0 +1,33 @@
+name: Forge N1 - effets du Forgesort
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/forge-n1-forgesort-combat.yml'
+      - 'fiches-personnages/tests/druide-combat.cjs'
+      - 'fiches-personnages/tests/ensorceleur-combat.cjs'
+      - 'fiches-personnages/tests/forgesort-combat.cjs'
+      - 'fiches-personnages/fiche/fiche.js'
+permissions:
+  contents: read
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Vérifier les effets au clic
+        run: |
+          npm install --prefix /tmp/forge-test --no-package-lock playwright
+          python3 -m http.server 4173 &
+          export NODE_PATH=/tmp/forge-test/node_modules
+          export CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+          node fiches-personnages/tests/forgesort-combat.cjs
+          node fiches-personnages/tests/ensorceleur-combat.cjs
+          node fiches-personnages/tests/druide-combat.cjs
+          node fiches-personnages/tests/chevalier-combat.cjs
+          node fiches-personnages/tests/barde-combat.cjs
+          node fiches-personnages/tests/barbare-combat.cjs
