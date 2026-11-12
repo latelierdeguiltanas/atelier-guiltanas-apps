@@ -1,8 +1,8 @@
 {
-  "status": "PARTIEL",
+  "status": "PASS",
   "source": "COF2 Livre de base, p. 66 à 69",
-  "indexSha256": "3358aa4fcbd516287f051f3707f8fdf59ac7544b8a69ebc1c072e9244c01e4cd",
-  "scope": "Cinq voies de Barde pur N1, rangs 1–2 sur un Humain mûr. Valeurs attendues issues du livre. Combat et export vérifiés séparément.",
+  "indexSha256": "250274e9d2879bc9acde9043b56bb670de6c697a4c9bb8920c371e1393951759",
+  "scope": "Cinq voies de Barde pur N1, rangs 1–2 et Grâce féline au rang 3. Valeurs attendues issues du livre. Combat et export vérifiés séparément.",
   "checks": [
     {
       "name": "Escrime · Précision sur la rapière et la dague au contact",
@@ -25,9 +25,8 @@
       "status": "PASS"
     },
     {
-      "name": "Saltimbanque · danse, mime et jonglerie au rang 2",
-      "status": "FAIL",
-      "error": "Le bonus +4 de Grâce féline n’est pas projeté dans les compétences.\n\nundefined !== 4\n"
+      "name": "Saltimbanque · danse, mime et jonglerie aux rangs 2 et 3",
+      "status": "PASS"
     }
   ]
 }

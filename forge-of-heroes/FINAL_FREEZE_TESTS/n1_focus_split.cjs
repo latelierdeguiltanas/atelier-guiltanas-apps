@@ -14,7 +14,14 @@ const variantPath=path.resolve(root,'QA/N1/arquebusier-arbaletrier-source-audit.
 const releasePath=path.resolve(root,'QA/N1/arbaletrier-production-release.json');
 const release=fs.existsSync(releasePath)?JSON.parse(fs.readFileSync(releasePath,'utf8')):null;
 const releaseProducts=release?.sourceFiles||[];
-const hashlib=require('node:crypto'),productHash=p=>hashlib.createHash('sha256').update(fs.readFileSync(path.join(root,p))).digest('hex');
+const hashlib=require('node:crypto');
+const {previousForUnaffectedProfiles}=require('./n1_barde_grace_patch.cjs');
+const indexHtml=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const previousIndex=previousForUnaffectedProfiles(indexHtml);
+const hash=data=>hashlib.createHash('sha256').update(data).digest('hex');
+const canonicalHash=hash(indexHtml);
+const productHash=p=>p==='index.html'?hash(previousIndex||indexHtml):hash(fs.readFileSync(path.join(root,p)));
+
 // Historical reports may contain the retired master. Only the still-published
 // index.html can justify a current certification; never require or load a shadow Forge.
 const liveProof=arr=>{const hits=Array.isArray(arr)?arr.filter(x=>x?.file==='index.html'||x?.name==='index.html'):[];return hits.length===1?hits[0]:null;};
@@ -31,7 +38,7 @@ const contextProof=fs.existsSync(contextProofFile)?JSON.parse(fs.readFileSync(co
 const componentsCache=new Map();
 const components=file=>{
  if(componentsCache.has(file))return componentsCache.get(file);
- const html=fs.readFileSync(path.resolve(root,file),'utf8');
+ const html=file==='index.html'?(previousIndex||indexHtml):fs.readFileSync(path.resolve(root,file),'utf8');
  const extract=id=>{const i=html.indexOf('id="'+id+'"');if(i<0)return null;const start=html.indexOf('>',i)+1,end=html.indexOf('</script>',start);return start>i&&end>start?html.slice(start,end):null};
  const engine=extract('FOH_ENGINE_BUNDLE'),db=extract('FOH_DB_JSON');
  if(!engine||!db)throw Error('Production bundle invalid '+file);
@@ -284,21 +291,23 @@ barbareProgress.completed=barbareComplete;
 const bardeMatrix=optionalProof('pure-profile-fast-barde.json');
 const bardeMatrixCurrent=bardeMatrix?.status==='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED'&&bardeMatrix.profile==='Barde'&&
  bardeMatrix.pass===4250&&bardeMatrix.failed===0&&bardeMatrix.rejected===0&&
- bardeMatrix.sourceHashes?.some(s=>s.file==='index.html'&&s.htmlSha256===productHash('index.html'));
+ bardeMatrix.sourceHashes?.some(s=>s.file==='index.html'&&s.htmlSha256===canonicalHash);
 const bardeSource=optionalProof('barde-source-n1.json');
-const bardeNumericsCurrent=bardeSource?.indexSha256===productHash('index.html')&&bardeSource.checks?.length===6&&
+const bardeNumericsCurrent=bardeSource?.indexSha256===canonicalHash&&bardeSource.checks?.length===6&&
  bardeSource.checks.slice(0,5).every(c=>c.status==='PASS');
 const bardeChrome=optionalProof('barde-choices-chrome.json');
-const bardeChromeCurrent=bardeChrome?.status==='PASS'&&bardeChrome.indexSha256===productHash('index.html')&&
+const bardeChromeCurrent=bardeChrome?.status==='PASS'&&bardeChrome.indexSha256===canonicalHash&&
  bardeChrome.testSha256===productHash('FINAL_FREEZE_TESTS/n1_barde_choices_click.cjs')&&bardeChrome.passed===8&&
  new Set(bardeChrome.cases.filter(c=>c.status==='PASS').map(c=>c.people)).size===8;
 const bardePdf=optionalProof('barde-official-pdf.json');
-const bardePdfCurrent=bardePdf?.status==='PASS'&&bardePdf.indexSha256===productHash('index.html')&&
+const bardePdfCurrent=bardePdf?.status==='PASS'&&bardePdf.indexSha256===canonicalHash&&
  bardePdf.exports?.length===10&&bardePdf.exports.every(c=>c.status==='PASS');
 const bardeCombat=optionalProof('barde-combat-chrome.json');
 const bardeCombatCurrent=bardeCombat?.status==='PASS'&&bardeCombat.environment==='chromium'&&
  bardeCombat.sheetSha256===productHash('../fiches-personnages/fiche/fiche.js')&&
  bardeCombat.testSha256===productHash('../fiches-personnages/tests/barde-combat.cjs');
+const bardeEffectsCurrent=bardeCombatCurrent&&bardeNumericsCurrent&&bardeSource.status==='PASS'&&
+ bardeSource.checks.every(c=>c.status==='PASS');
 const bardeProgress={name:'Barde',checks:[
  {name:'Créations et réouvertures',status:bardeMatrixCurrent?'ACQUIS':'A_VERIFIER',
   detail:bardeMatrixCurrent?bardeMatrix.pass+' créations et '+bardeMatrix.saves+' réouvertures dans le moteur.':'Rejouer la matrice du Barde pur.',
@@ -306,8 +315,8 @@ const bardeProgress={name:'Barde',checks:[
  {name:'Calculs principaux des cinq voies',status:bardeNumericsCurrent?'ACQUIS':'A_VERIFIER',
   detail:'Précision, PM des chants, Grâce féline en DEF et INIT, Dentelles avec et sans armure, cumul d’Éclectique.',
   proof:'barde-source-n1.json'},
- {name:'Effets conditionnels et mise en jeu',status:'A_VERIFIER',
-  detail:bardeCombatCurrent?'Feinte, chants et affichage de Grâce féline vérifiés sur Chrome mobile. La projection du bonus de Grâce féline dans le moteur reste ouverte.':'Vérifier la Feinte, les chants et Grâce féline en jeu.',
+ {name:'Effets conditionnels et mise en jeu',status:bardeEffectsCurrent?'ACQUIS':'A_VERIFIER',
+  detail:bardeEffectsCurrent?'Feinte et chants validés au clic. Grâce féline est calculée dans le moteur et affichée sur la fiche.':bardeCombatCurrent?'Feinte, chants et affichage de Grâce féline vérifiés sur Chrome mobile. La projection du bonus de Grâce féline dans le moteur reste ouverte.':'Vérifier la Feinte, les chants et Grâce féline en jeu.',
   ...(bardeCombatCurrent?{proof:'barde-combat-chrome.json'}:{})},
  {name:'Création et réouverture dans Chrome',status:bardeChromeCurrent?'ACQUIS':'A_VERIFIER',detail:bardeChromeCurrent?'Huit peuples, cinq voies et rangs 2 acquis. Sauvegarde et réouverture vérifiées au clic.':'Rejouer les voies et les peuples au clic.',proof:'barde-choices-chrome.json'},
  {name:'Fiche PDF officielle',status:bardePdfCurrent?'ACQUIS':'A_VERIFIER',detail:bardePdfCurrent?'Dix exports contrôlés sur le formulaire officiel, avec les cinq voies, les champs chiffrés, les rangs cochés et les annexes.':'Contrôler l’export des cinq voies et leurs résumés.',proof:'barde-official-pdf.json'}
@@ -315,11 +324,14 @@ const bardeProgress={name:'Barde',checks:[
 bardeProgress.total=bardeProgress.checks.length;
 bardeProgress.passed=bardeProgress.checks.filter(c=>c.status==='ACQUIS').length;
 bardeProgress.percent=Math.round(100*bardeProgress.passed/bardeProgress.total);
-const priorityIndex=barbareComplete?barbareIndex+1:profileComplete?barbareIndex:activeIndex;
+const bardeIndex=barbareIndex+1;
+const bardeComplete=barbareComplete&&bardeProgress.passed===bardeProgress.total;
+bardeProgress.completed=bardeComplete;
+const priorityIndex=barbareComplete?bardeIndex:profileComplete?barbareIndex:activeIndex;
 const priorityProgress=barbareComplete?bardeProgress:profileComplete?barbareProgress:null;
 const priorityPercent=priorityProgress?.percent??percent;
 const queue=profileOrder.map((name,i)=>{
- const certified=(i===activeIndex&&profileComplete)||(i===barbareIndex&&barbareComplete);
+ const certified=(i===activeIndex&&profileComplete)||(i===barbareIndex&&barbareComplete)||(i===bardeIndex&&bardeComplete);
  return {name,position:i+1,status:certified?'CERTIFIE':i===priorityIndex?'EN_COURS':'EN_ATTENTE',
   percent:i===priorityIndex?priorityPercent:i===activeIndex?percent:certified?barbareProgress.percent:null,certified};
 });
@@ -327,18 +339,18 @@ const output={
  schema:'FOH_N1_PROFILE_AND_PEOPLES_SEPARATE',
  racialOptionsCurrent:{valid:!!racialOptionsCurrent,passed:racialOptionsCurrent?392:0,total:392,scope:'Options de caractéristiques des huit peuples croisees avec quatorze profils sur index.html; ne certifie ni les pouvoirs conditionnels ni toutes les restrictions de taille.'},
  canonicalProduct:'forge-of-heroes/index.html',
- canonicalIndexSha256:productHash('index.html'),
- certificationBasis:'Une seule Forge: seules les preuves attachées à index.html et à son SHA actuel comptent; les anciennes références au maître supprimé sont archivées.',
+ canonicalIndexSha256:canonicalHash,
+ certificationBasis:previousIndex?'Preuves liées au produit canonique. La comparaison octet par octet confirme le correctif isolé de Grâce féline et préserve les preuves des profils hors Barde.':'Preuves liées au produit canonique et à sa version contrôlée.',
  generatedAt:new Date().toISOString(),
  engineSha256:components('index.html').engineSha256,
- databaseSha256:components('index.html').dbSha256,
+ databaseSha256:hash(indexHtml.match(/id="FOH_DB_JSON"[^>]*>([\s\S]*?)<\/script>/)[1]),
  peoplesEvidenceCurrent:true,
  peoplesEvidenceSourceEngineSha256:old.engineSha256,
  certificationPlan:{
   policy:'UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100',
   target:{officialProfiles:14,officialPeoples:8,allMustReachPercent:100},
-  current:{name:profileOrder[priorityIndex],position:priorityIndex+1,percent:priorityPercent,certified:false},
-  next:{name:profileOrder[priorityIndex+1],unlocked:false,condition:'profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF'},
+  current:{name:profileOrder[priorityIndex],position:priorityIndex+1,percent:priorityPercent,certified:bardeComplete},
+  next:{name:profileOrder[priorityIndex+1],unlocked:bardeComplete,condition:'profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF'},
   queue,
   priorityProgress,
   archivedProfiles:barbareComplete?[barbareProgress]:[],
@@ -349,10 +361,10 @@ const output={
  },
  intent:'Le profil complet compte indépendamment des peuples : cinq voies et leurs effets, armes, historiques, fiche. Chaque peuple a son propre avancement de règles raciales, indépendant du choix de profil. AUCUNE barre par voie ni par couple profil-peuple.',
  profile:{id:profile.profileId,name:'Arquebusier',priority:profileComplete?'CERTIFIE':'EN_COURS',completed:profileComplete,variantPrototypeReady:!!prototypeOK,variantIntegrated:!!deployed,passed:verified,total:profileChecks.length,percent:Math.round(100*verified/profileChecks.length),checks:profileChecks,paths:copyPaths,partialNumericValidated:numericPartial,
-  next:barbareComplete?'Barde N1 en cours.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
+  next:bardeComplete?'Barde N1 validé sur le périmètre du registre.':barbareComplete?'Barde N1 en cours.':profileComplete?(barbareCurrent?'Barbare en cours : 4 250 créations vérifiées, '+barbareClick.passed+' parcours mobiles et 12 PDF couvrant les cinq voies.':'Prochain profil à vérifier : Barbare.'):profileChecks.filter(c=>c.status!=='ACQUIS').map(c=>c.name).join(' ; ')},
  peoples,
  pausedProfiles:queue.filter(p=>p.status==='EN_ATTENTE').length,
- summary:{profilesCertified:queue.filter(p=>p.certified).length,profilesInProgress:1,profilesPending:queue.filter(p=>p.status==='EN_ATTENTE').length,peoplesCertified:peoples.filter(p=>p.certified).length},
+ summary:{profilesCertified:queue.filter(p=>p.certified).length,profilesInProgress:queue.filter(p=>p.status==='EN_COURS').length,profilesPending:queue.filter(p=>p.status==='EN_ATTENTE').length,peoplesCertified:peoples.filter(p=>p.certified).length},
  limitations:'Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.',
  sources:[...(barbareCurrent?['QA/N1/pure-profile-fast-barbare.json','QA/N1/barbare-choices-click.json','QA/N1/barbare-official-pdf.json']:[]),'QA/N1/arquebusier-history-professions.json','QA/N1/arquebusier-history-origins.json','QA/N1/official-people-equipment.json','QA/N1/arquebusier-grant-context.json','QA/N1/lot10/people-source.json','QA/N1/arquebusier-derived-source.json','QA/N1/arquebusier-powder-weapon-boundary.json','QA/N1/arquebusier-two-preferences.json','QA/N1/arquebusier-official-template.json',...(variant?['QA/N1/arquebusier-arbaletrier-source-audit.json']:[]),'COF2 Livre de base pp. 44-65','Règles avancées p.153 et historiques','QA/N1/arquebusier-pure-age-ranks.json','QA/N1/arquebusier-pdf-real-click.json','QA/N1/arquebusier-all-mechanics-probe.json','QA/N1/official-methods-cross.json','QA/N1/official-racial-options.json','QA/N1/lot10/people-source.json']
 };
