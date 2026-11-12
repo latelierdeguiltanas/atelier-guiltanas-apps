@@ -581,8 +581,116 @@ function toast(message){const el=$('#toast');el.textContent=message;el.classList
 function fullResourcesHtml(){S.hp=clamp(S.hp,0,max.hp);S.pc=clamp(S.pc,0,max.pc);S.pm=clamp(S.pm,0,max.pm);S.dr=clamp(S.dr,0,max.dr);S.silver=Math.max(0,Number(S.silver)||0);const rows=[['hp','PV',max.hp],['pc','Chance',max.pc],['pm','Mana',max.pm],['dr','Récup.',max.dr]],move=movement();return rows.map(([k,label,m])=>`<div class="resource"><small>${label}</small><div class="counter"><button data-count="${k}" data-delta="-1" aria-label="Retirer 1 ${label}">−</button><b>${S[k]}/${m}</b><button data-count="${k}" data-delta="1" aria-label="Ajouter 1 ${label}">+</button></div></div>`).join('')+`<div class="resource"><small>Défense</small><b>${esc(finalValue('def'))}</b></div><div class="resource"><small>Initiative</small><b>${esc(finalValue('init'))}</b></div><div class="resource"><small>Vitesse</small><b>${move.meters} m</b><em>${move.cases} cases</em></div>`}
 function renderResources(){const full=fullResourcesHtml();$('#resources').innerHTML=sheetView==='complete'?full:`<div class="resource"><small>Points de vie</small><div class="counter"><button data-count="hp" data-delta="-1" aria-label="Retirer un point de vie">−</button><b>${S.hp}/${max.hp}</b><button data-count="hp" data-delta="1" aria-label="Ajouter un point de vie">+</button></div></div><div class="resource"><small>Défense</small><b>${esc(finalValue('def'))}</b></div><div class="resource"><small>Vitesse</small><b>${movement().meters} m</b></div><button class="resource resource-more" data-ui-modal="resources">Mana, chance<br>et récupération →</button>`;save();if(infoDialog.open&&uiTopic==='resources')drawInfo()}
 
-function attackHtml(a){const ammo=a.ammo||a.magazine;return`<article class="attack"><div class="attack-head"><h3>${esc(a.name)} · ${signed((Number(a.attack)||0)+druideTerrainBonus())}</h3><span class="tag">${esc(a.type)}</span></div><p><b>${esc(a.damage)}${rageDamage(a.type)}${mountedDamage(a.type)} DM</b> · ${esc(a.range||'—')} ${rageRestriction(a.type)}${a.damageType?' · '+esc(a.damageType):''}${a.special?' · '+esc(a.special):''}</p>${ammo?`<div class="ability-actions"><span class="tag">Munitions ${Number(S.ammo[a.id]??ammo.current??ammo.capacity)}/${esc(ammo.capacity)}</span><button class="mini-button" data-ammo="${esc(a.id)}" data-ammo-delta="-1">Tirer</button><button class="mini-button" data-ammo="${esc(a.id)}" data-ammo-delta="1">Recharger</button></div>`:''}</article>`}
-function abilityHtml(a){const type=actionType(a),u=usage(a),cost=resourceCost(a),used=Number(S.uses[usageKey(a)])||0,remaining=u?Math.max(0,u.max-used):null;return`<article class="ability"><div class="ability-head"><div><span class="tag action">${type}</span> <span class="tag">Rang ${a.rank}</span></div>${u?`<span class="tag ${remaining===0?'used':''}">${remaining}/${u.max} disponible</span>`:''}</div><h3>${esc(a.name)}</h3><p><b>${esc(a.path)}</b></p><p>${esc(a.text)}</p>${a.source?`<small class="source">${esc(a.source.edition||a.source.document||'Source')} · p. ${esc(a.source.printedPage||'—')}${a.source.bookId==='cof1-compagnon-2017'?' · adaptation vers COF2':''}</small>`:''}${!druideAbility(a)&&!chevalierAbility(a)&&!bardeAbility(a)&&!isDefyDeath(a)&&!isWarCry(a)&&!isRage(a)&&(u||cost)?`<div class="ability-actions">${u?`<button class="mini-button primary" data-use="${a.id}" ${remaining===0?'disabled':''}>Utiliser</button><button class="mini-button" data-refund="${a.id}" ${used===0?'disabled':''}>Annuler</button>`:cost?`<button class="mini-button primary" data-spend="${a.id}">Dépenser ${cost.label}</button>`:''}${cost?`<span class="tag">Coût : ${cost.label}</span>`:''}</div>`:''}${tourDeForceHtml(a)}${barbareCombatHtml(a)}${bardePlayHtml(a)}${chevalierPlayHtml(a)}${druidePlayHtml(a)}${isDefyDeath(a)?'<p role="status" data-barbare-outcome></p>':''}</article>`}
+const ensorceleurSpells={
+ 'sous-tension-m':'tension',
+ 'image-decalee-m':'image',
+ 'sommeil-l':'sleep',
+ 'choc-a':'shock'
+};
+function ensorceleurAbility(a){
+ return ensorceleurSpells[slug(a.name).replace(/^rang-\d+-/,'')]||'';
+}
+function ensorceleurAttackDamage(a){
+ return ['tension','shock'].includes(ensorceleurAbility(a))
+  ?'1d'+evolvingDie()+'°'+signed(Number(D.stats?.CHA)||0):a.damage;
+}
+function ensorceleurPlayHtml(a){
+ const kind=ensorceleurAbility(a);
+ if(!kind)return'';
+ const cha=Number(D.stats?.CHA)||0, die=evolvingDie(), mana=resourceCost(a)?.amount||Number(a.rank);
+ const disabled=S.pm<mana||rageActive();
+ const button=(action,label,off=false)=>`<button type="button" class="mini-button" data-ensorceleur="${esc(a.id)}" data-spell-action="${action}" ${off?'disabled':''}>${label}</button>`;
+ const field=(name,label,min,max='')=>`<label>${label} <input type="number" step="1" inputmode="numeric" data-spell-field="${name}" min="${min}" ${max===''?'':'max="'+max+'"'}></label>`;
+ let html='';
+ if(kind==='tension'){
+  const active=S.ensorceleurTension;
+  html=active?`<p>Chargé pour ${cha} min de jeu. Contact ou blessure au contact : 1d${die}° DM. Décharge (A) : attaque magique contre DEF à 10 m, 1d${die}°${signed(cha)} DM.</p>
+   ${button('touch','Résoudre un contact')}${button('discharge','Décharger',active.used)}
+   ${button('round','Round suivant')}${button('expire','Terminer Sous tension')}`:
+   button('cast',`Se charger · ${mana} PM`,disabled||cha<1);
+ }
+ if(kind==='image'){
+  html=S.ensorceleurImage>0?`<p>${S.ensorceleurImage} round(s) restant(s). Sur 5 ou 6 au d6, l’attaque qui touche n’inflige aucun DM.</p>
+   ${field('roll','Résultat du d6',1,6)}${button('evade','Résoudre une attaque')}
+   ${button('round','Round suivant')}`:
+   `${field('roll','Résultat du d4 de durée',1,4)}${button('cast',`Créer les images · ${mana} PM`,disabled)}`;
+ }
+ if(kind==='sleep'){
+  const rank=ownedPathRank('voie-de-l-envouteur'), limit=rank>=5?3:rank>=4?2:1;
+  html=`<p>Zone de 10 m de diamètre à 20 m. Cibles vivantes de NC inférieur à ${limit}. Inconscience ${cha} min, réveil par une action d’attaque infligeant 1 DM.</p>
+   ${S.uses[usageKey(a)]?`<p>Déjà utilisé dans ce combat. Jusqu’à ${S.ensorceleurSleep??'—'} cible(s).</p>`:
+   field('roll','Dé évolutif de capacité',1,die)+button('cast',`Lancer Sommeil · ${mana} PM`,disabled||cha<1)}`;
+ }
+ if(kind==='shock'){
+  html=`<p>À 20 m, attaque magique contre DEF : 1d${die}°${signed(cha)} DM.</p>
+   ${field('distance','Distance en mètres',0,20)}
+   <label><input type="checkbox" data-spell-hit> Attaque magique réussie</label>
+   <label>NC de la cible <input type="number" step="any" min="0" data-spell-field="nc"></label>
+   ${field('force','Total du test de FOR si requis',-20)}
+   ${button('cast',`Lancer Choc · ${mana} PM`,disabled)}
+   ${button('concentrate','Lancer Choc en action limitée · 0 PM',rageActive())}`;
+ }
+ return `<div class="ability-actions">${html}<p role="status" data-spell-result></p></div>`;
+}
+function resolveEnsorceleur(button){
+ const a=ownedAbilities().find(x=>x.id===button.dataset.ensorceleur);
+ if(!a)return;
+ const kind=ensorceleurAbility(a),action=button.dataset.spellAction,card=button.closest('.ability');
+ const result=card.querySelector('[data-spell-result]'),cha=Number(D.stats?.CHA)||0,die=evolvingDie();
+ const field=name=>{const value=card.querySelector('[data-spell-field="'+name+'"]')?.value;return value?Number(value):NaN;};
+ const roll=field('roll'),validRoll=max=>Number.isSafeInteger(roll)&&roll>=1&&roll<=max;
+ const cost=action==='concentrate'?0:resourceCost(a)?.amount||Number(a.rank);
+ const casting=action==='cast'||action==='concentrate';
+ if(casting&&(rageActive()||S.pm<cost))return;
+ let message='';
+ if(kind==='tension'){
+  if(casting&&!S.ensorceleurTension&&cha>0)S.ensorceleurTension={used:false};
+  if(action==='touch'&&S.ensorceleurTension)message='Contact : 1d'+die+'° DM à la créature.';
+  if(action==='discharge'&&S.ensorceleurTension&&!S.ensorceleurTension.used){
+   S.ensorceleurTension.used=true;
+   message='Décharge : attaque magique contre DEF, 1d'+die+'°'+signed(cha)+' DM si elle touche.';
+  }
+  if(action==='round'&&S.ensorceleurTension)S.ensorceleurTension.used=false;
+  if(action==='expire')delete S.ensorceleurTension;
+ }
+ if(kind==='image'){
+  if(casting){
+   if(!validRoll(4)||roll+cha<1){result.textContent='Saisis un d4 valide et vérifie la durée.';return}
+   S.ensorceleurImage=roll+cha;
+  }
+  if(action==='round'&&S.ensorceleurImage>0)S.ensorceleurImage--;
+  if(action==='evade'&&S.ensorceleurImage>0){
+   if(!validRoll(6)){result.textContent='Saisis le résultat du d6.';return}
+   result.textContent=roll>=5?'Image touchée : aucun DM.':'L’attaque inflige ses DM normalement.';
+   return;
+  }
+ }
+ if(kind==='sleep'&&casting){
+  if(S.uses[usageKey(a)]||cha<1)return;
+  if(!validRoll(die)){result.textContent='Saisis un résultat de dé valide.';return}
+  S.uses[usageKey(a)]=1;
+  S.ensorceleurSleep=roll+cha;
+ }
+ if(kind==='shock'&&casting){
+  const distance=field('distance'),nc=field('nc'),hit=card.querySelector('[data-spell-hit]').checked;
+  const force=field('force'),needsTest=hit&&nc<ownedPathRank('voie-de-l-invocation');
+  if(!Number.isFinite(distance)||distance<0||distance>20){result.textContent='La cible doit être à 20 m ou moins.';return}
+  if(hit&&(!Number.isFinite(nc)||nc<0||needsTest&&!Number.isSafeInteger(force))){
+   result.textContent='Saisis le NC de la cible et le résultat de FOR si requis.';return;
+  }
+  message=hit?'1d'+die+'°'+signed(cha)+' DM. '+(needsTest&&force<10?'La cible est renversée.':'La cible reste debout.'):'Attaque manquée.';
+ }
+ if(casting)S.pm-=cost;
+ updateAfterAction();
+ if(message){
+  const updated=document.querySelector('dialog [data-spell-result]');
+  if(updated)updated.textContent=message;
+  toast(message);
+ }
+}
+
+function attackHtml(a){const ammo=a.ammo||a.magazine;return`<article class="attack"><div class="attack-head"><h3>${esc(a.name)} · ${signed((Number(a.attack)||0)+druideTerrainBonus())}</h3><span class="tag">${esc(a.type)}</span></div><p><b>${esc(ensorceleurAttackDamage(a))}${rageDamage(a.type)}${mountedDamage(a.type)} DM</b> · ${esc(a.range||'—')} ${rageRestriction(a.type)}${a.damageType?' · '+esc(a.damageType):''}${a.special?' · '+esc(a.special):''}</p>${ammo?`<div class="ability-actions"><span class="tag">Munitions ${Number(S.ammo[a.id]??ammo.current??ammo.capacity)}/${esc(ammo.capacity)}</span><button class="mini-button" data-ammo="${esc(a.id)}" data-ammo-delta="-1">Tirer</button><button class="mini-button" data-ammo="${esc(a.id)}" data-ammo-delta="1">Recharger</button></div>`:''}</article>`}
+function abilityHtml(a){const type=actionType(a),u=usage(a),cost=resourceCost(a),used=Number(S.uses[usageKey(a)])||0,remaining=u?Math.max(0,u.max-used):null;return`<article class="ability"><div class="ability-head"><div><span class="tag action">${type}</span> <span class="tag">Rang ${a.rank}</span></div>${u?`<span class="tag ${remaining===0?'used':''}">${remaining}/${u.max} disponible</span>`:''}</div><h3>${esc(a.name)}</h3><p><b>${esc(a.path)}</b></p><p>${esc(a.text)}</p>${a.source?`<small class="source">${esc(a.source.edition||a.source.document||'Source')} · p. ${esc(a.source.printedPage||'—')}${a.source.bookId==='cof1-compagnon-2017'?' · adaptation vers COF2':''}</small>`:''}${!ensorceleurAbility(a)&&!druideAbility(a)&&!chevalierAbility(a)&&!bardeAbility(a)&&!isDefyDeath(a)&&!isWarCry(a)&&!isRage(a)&&(u||cost)?`<div class="ability-actions">${u?`<button class="mini-button primary" data-use="${a.id}" ${remaining===0?'disabled':''}>Utiliser</button><button class="mini-button" data-refund="${a.id}" ${used===0?'disabled':''}>Annuler</button>`:cost?`<button class="mini-button primary" data-spend="${a.id}">Dépenser ${cost.label}</button>`:''}${cost?`<span class="tag">Coût : ${cost.label}</span>`:''}</div>`:''}${tourDeForceHtml(a)}${barbareCombatHtml(a)}${bardePlayHtml(a)}${chevalierPlayHtml(a)}${druidePlayHtml(a)}${ensorceleurPlayHtml(a)}${isDefyDeath(a)?'<p role="status" data-barbare-outcome></p>':''}</article>`}
 function manaGuide(compact=false){if(max.pm<1)return'';return`<article class="mana-guide ${compact?'compact':''}"><div class="mana-title"><div><small>AIDE DU LANCEUR DE SORTS</small><h3>Mana : ${S.pm}/${max.pm} PM</h3></div><span class="tag mana-tag">${esc(D.profile||'Magie')}</span></div><div class="mana-steps"><p><b>1 · Lancer</b><span>Le coût normal d’un sort est égal à son rang. Retire ces PM après le lancement.</span></p><p><b>2 · Économiser</b><span>Un sort noté (A) peut devenir une action limitée (L) pour coûter 2 PM de moins.</span></p><p><b>3 · À court de mana</b><span>Brûlure : chaque PM manquant inflige ${esc(D.combat.recoveryDie)} DM, sans réduction. Impossible pour un sort de soin.</span></p><p><b>4 · Récupérer</b><span>La récupération rapide ne rend pas de PM. Une récupération complète de 8 h les remet au maximum, au plus une fois par jour.</span></p></div>${compact?'':`<div class="ability-actions"><button class="mini-button" data-page-jump="rest">Ouvrir la récupération</button></div>`}</article>`}
 function petoireStock(){const raw=S.ammo?.['petoire-stock'];if(raw==null||raw==='')return null;const n=Number(raw);return Number.isFinite(n)?clamp(Math.floor(n),0,999):null}
 function petoireCounter(){if(id!=='vivelame')return'';const n=petoireStock(),loaded=S.ammo?.['petoire-loaded'];return `<article class="card"><h3>Pétoire : ${loaded===true?'chargée · 1 tir prêt':loaded===false?'déchargée':'état à renseigner'}</h3><p>Après chaque tir, recharge avec une action limitée (L). Impossible de recharger avec un adversaire actif au contact. Le pistolero permet de tirer au contact, pas d’y recharger.</p><div class="ability-actions"><button class="mini-button primary" data-petoire-fire="true" ${loaded!==true||n===0?'disabled':''}>Tirer · arme déchargée ensuite</button><button class="mini-button" data-petoire-load="true" ${loaded===true?'disabled':''}>${loaded==null?'Marquer déjà chargée / recharger (L)':'Recharger (L)'}</button><button class="mini-button" data-petoire-empty="true" ${loaded===false?'disabled':''}>Corriger : déchargée</button></div><p>Règles COF2 : aucun quota de tirs par jour. Les munitions ordinaires ne sont normalement pas décomptées.</p><details><summary>Stock de munitions facultatif${n==null?' · non suivi':' · '+n+' restantes'}</summary><p>À utiliser seulement si le MJ fait suivre la réserve. Le livre indique 20 à 50 projectiles comme réserve usuelle en cas de suivi exceptionnel, sans imposer un stock initial. Le total inclut la munition chargée ; seul Tirer retire une munition.</p><label>Stock restant <input id="petoire-stock-value" type="number" min="0" max="999" step="1" value="${n??''}" inputmode="numeric"></label> <button class="mini-button" data-petoire-set="true">Enregistrer le stock</button><button class="mini-button" data-petoire-untrack="true">Ne pas suivre le stock</button></details><p><small>Livre de base, p. 185 et 187 ; artilleur rang 2, p. 63. Pas de chargeur à répétition acquis. Sauvegarde sur cet appareil. Les actions restent à gérer à la table.</small></p></article>`}
@@ -641,7 +749,7 @@ document.addEventListener('click',async event=>{const t=event.target.closest('bu
 document.addEventListener('change',async event=>{const field=event.target.dataset.itemField,profileKey=event.target.dataset.equipmentProfile!==undefined?event.target.value:'',weaponBonus=event.target.dataset.weaponBonus;if(!field&&!profileKey&&!weaponBonus)return;const holder=event.target.closest('[data-item]'),item=S.inventory.find(x=>x.id===holder?.dataset.item);if(!item)return;if(profileKey){const profile=EQUIPMENT_PROFILES[profileKey]||EQUIPMENT_PROFILES.none;item.equipment=JSON.parse(JSON.stringify(profile.equipment));if(profile.category)item.category=profile.category;if(profile.base)item.base=profile.base;if(profileKey==='none')item.equipped=false}else if(weaponBonus){const value=Number(event.target.value)||0;(item.equipment?.weapon?.modes||[]).forEach(mode=>mode[weaponBonus]=value)}else{item[field]=['quantity','charges','chargesMax'].includes(field)?Math.max(0,Number(event.target.value)||0):event.target.value;if(field==='chargesMax')item.charges=Math.min(item.charges,item.chargesMax);if(field==='charges')item.charges=item.chargesMax?Math.min(item.charges,item.chargesMax):item.charges}save();renderAll();await apiItem(item);toast(profileKey?'Profil d’équipement appliqué.':weaponBonus?'Bonus de l’arme appliqué.':'Objet mis à jour.');});
 function openMedia(url,title){const modal=document.createElement('div');modal.className='media-modal';modal.innerHTML=`<header><b>${esc(title)}</b><button aria-label="Fermer">×</button></header><div class="media-stage"><img src="${esc(url)}" alt="${esc(title)}"></div><p>Pince avec deux doigts ou utilise la molette pour zoomer.</p>`;document.body.appendChild(modal);const img=modal.querySelector('img'),stage=modal.querySelector('.media-stage');let scale=1;stage.addEventListener('wheel',e=>{e.preventDefault();scale=clamp(scale+(e.deltaY<0?.2:-.2),1,5);img.style.transform=`scale(${scale})`},{passive:false});modal.querySelector('button').onclick=()=>modal.remove()}
 let companionSaveTimer=null;document.addEventListener('input',event=>{if(event.target.id!=='companion-name'||id!=='faelar')return;S.companion.name=event.target.value.slice(0,80);save();clearTimeout(companionSaveTimer);companionSaveTimer=setTimeout(()=>apiCompanion(),500)});
-document.addEventListener('click',async event=>{const t=event.target.closest('button');if(!t)return;if(t.dataset.druideUse){resolveDruide(t);return}if(t.dataset.chevalierUse){resolveChevalier(t);return}if(t.dataset.bardeUse){resolveBarde(t);return}if(t.dataset.rageCommand){resolveRage(t);return}if(t.hasAttribute('data-war-cry-add')){
+document.addEventListener('click',async event=>{const t=event.target.closest('button');if(!t)return;if(t.dataset.ensorceleur){resolveEnsorceleur(t);return}if(t.dataset.druideUse){resolveDruide(t);return}if(t.dataset.chevalierUse){resolveChevalier(t);return}if(t.dataset.bardeUse){resolveBarde(t);return}if(t.dataset.rageCommand){resolveRage(t);return}if(t.hasAttribute('data-war-cry-add')){
  t.closest('.ability').querySelector('[data-war-cry-targets]').insertAdjacentHTML('beforeend',warCryTargetHtml());
  return
 }if(t.dataset.barbareCombat){resolveBarbareCombat(t);return}if(t.dataset.tourDeForce){
@@ -664,7 +772,7 @@ document.addEventListener('click',async event=>{const t=event.target.closest('bu
   if(chosen!==value)toast('Tatouages : Étourdi devient Ralenti.');
  }
  return;
-}if(t.dataset.removeCondition){S.conditions=S.conditions.filter(x=>x!==t.dataset.removeCondition);save();renderPlay();if(infoDialog.open&&uiTopic==='states')drawInfo();return}if(t.id==='spend-dr'&&S.dr>0){S.dr--;toast('Dé de récupération dépensé. Ajuste les PV après ton lancer.');updateAfterAction();return}if(t.dataset.reset){delete S.druideTerrain;delete S.druidePrison;delete S.druidePrisonTargets;delete S.druidePrisonFreed;if(t.dataset.reset==='day'){delete S.druideBerryTargets;delete S.druideBark;delete S.druideNightUsed}S.hp=Math.max(0,S.hp-(Number(S.chevalierDeferred)||0));delete S.chevalierDeferred;delete S.chevalierIntercept;delete S.chevalierBraced;delete S.feinte;if(t.dataset.reset==='day'){delete S.chantDesHeros;delete S.chantDeReconfort}delete S.warCryTargets;delete S.berserk;ownedAbilities().forEach(a=>{const u=usage(a);if(u&&(t.dataset.reset==='day'||u.scope==='combat'))S.uses[usageKey(a)]=0});if(t.dataset.reset==='day')S.pm=max.pm;toast(t.dataset.reset==='day'?(max.pm>0?'Récupération complète : mana et capacités restaurés.':'Capacités quotidiennes réactivées.'):'Capacités de combat réactivées.');updateAfterAction()}});
+}if(t.dataset.removeCondition){S.conditions=S.conditions.filter(x=>x!==t.dataset.removeCondition);save();renderPlay();if(infoDialog.open&&uiTopic==='states')drawInfo();return}if(t.id==='spend-dr'&&S.dr>0){S.dr--;toast('Dé de récupération dépensé. Ajuste les PV après ton lancer.');updateAfterAction();return}if(t.dataset.reset){delete S.ensorceleurImage;delete S.ensorceleurTension;delete S.ensorceleurSleep;delete S.druideTerrain;delete S.druidePrison;delete S.druidePrisonTargets;delete S.druidePrisonFreed;if(t.dataset.reset==='day'){delete S.druideBerryTargets;delete S.druideBark;delete S.druideNightUsed}S.hp=Math.max(0,S.hp-(Number(S.chevalierDeferred)||0));delete S.chevalierDeferred;delete S.chevalierIntercept;delete S.chevalierBraced;delete S.feinte;if(t.dataset.reset==='day'){delete S.chantDesHeros;delete S.chantDeReconfort}delete S.warCryTargets;delete S.berserk;ownedAbilities().forEach(a=>{const u=usage(a);if(u&&(t.dataset.reset==='day'||u.scope==='combat'))S.uses[usageKey(a)]=0});if(t.dataset.reset==='day')S.pm=max.pm;toast(t.dataset.reset==='day'?(max.pm>0?'Récupération complète : mana et capacités restaurés.':'Capacités quotidiennes réactivées.'):'Capacités de combat réactivées.');updateAfterAction()}});
 document.addEventListener('input',event=>{const map={player:'player',ideal:'ideal',flaw:'flaw','notes-text':'notes'};if(map[event.target.id]){S[map[event.target.id]]=event.target.value;save()}});
 
 let sharedResource=null,resourcePending=0,resourceChain=Promise.resolve(),sessionData=null,initializingResource=false;
