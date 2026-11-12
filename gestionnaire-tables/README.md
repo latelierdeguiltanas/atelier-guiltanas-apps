@@ -84,3 +84,38 @@ Le 11 novembre 2026, l'e-mail de validation du compte MJ redirigeait vers `http:
 Le frontend exige à présent l'URL canonique lors de l'inscription et du renvoi du mail. Il fournit « Renvoyer le mail de confirmation » et permet de revenir directement à la connexion après un lien consommé. Une adresse déjà validée peut utiliser immédiatement « Se connecter » ; inutile de recréer le compte.
 
 **Important :** la configuration Authentication → URL Configuration relève du tableau de bord Supabase, et ne peut pas être changée via les outils de gestion de base/déploiement utilisés ici. La publication GitHub ne suffit pas à modifier les redirections Supabase. Aucun changement à la Bastide.
+
+
+## Architecture modulaire — version 0.5 (12 novembre 2026)
+
+Le produit n'est plus une déclinaison forcée de L'Île aux Tempêtes. C'est un gestionnaire de tables **neutre et extensible**.
+
+### Parcours recommandé
+1. Un compte MJ (e-mail + mot de passe) puis **Mes tables** ; création de table affichée en premier pour un nouveau compte.
+2. Le MJ nomme sa table, choisit éventuellement un système (COF2, D&D5 ou libre), un scénario existant ou une trame originale, et active les modules.
+3. Les modules sont réversibles : Scénario, Combat COF2 (sur table COF2), Boutique, Fiches PJ, Soundboard, Carnet et séances.
+4. Aucune obligation d'activer les fiches, d'inviter des joueurs ou de renseigner un scénario. Les tables combat-seul ou notes-seules ne créent pas de modèle parasite en bibliothèque.
+5. Le scénario peut être associé ou remplacé **après** la création de la table ; les liens PJ et les séances sont préservés, seules les scènes jouées sont réinitialisées.
+
+### Studio Scénario
+- Trames originales libres : one-shot à 3 actes, campagne à 3 chapitres, exploration par zones, page vierge.
+- Gestion de sections et scènes avec narration et notes réservées au MJ.
+- Ressources visuelles dans le même espace : zones/lieux, PNJ/rencontres, cartes, objets de scénario, boutique. Recherche et filtres par zone.
+- Création, modification et suppression contrôlée (concerne seulement la table ouverte).
+- Images par URL HTTPS ou import de fichier JPG/PNG/WebP jusqu'à 5 Mo dans le bucket privé `guiltanas-mj-media`. Les médias privés sont réservés au propriétaire via RLS ; un lien signé temporaire est utilisé à l'affichage.
+- Les médias privés chargés par un MJ **ne sont pas encore recopiés dans le compte d'un MJ destinataire lors du partage**. Les liens d'images publiques HTTPS fonctionnent sur des copies de scénario ; une synchronisation sécurisée inter-MJ des médias reste à développer.
+- Les ressources importées depuis la Bastide peuvent être regroupées automatiquement sous des zones proposées : Le Repos du Dragon, La côte et l'épave, Les grottes de Poussemer, L'observatoire de la Falaise et Autres lieux. Ce classement est une proposition modifiable ; il n'invente pas le déroulement des scènes.
+- La bibliothèque de packs ne contient aucune aventure sous licence installée automatiquement. L'import depuis la Bastide exige une autorisation MJ et est uniquement en lecture.
+
+### Concernant le combat COF2
+Le bouton ouvre le moteur COF2 existant avec un espace cloud indépendant par compte MJ et par table. Les PJ de la Bastide ne sont **jamais** copiés. Les **rencontres originales préconfigurées du pack Île aux Tempêtes** ne sont pas encore toutes injectées dans la copie privée : la source actuelle enregistre surtout les définitions personnalisées. Ne pas confondre l'accès au moteur et un pack de combats 100 % prêt à jouer.
+
+### Fonctionnalités encore non terminées
+- Véritable espace joueur distant et partage sécurisé des cartes/PNJ.
+- Liaison transactionnelle des fiches, inventaires, boutique et combat aux PJ.
+- Import complet de la bibliothèque de combats de l'aventure dans une nouvelle table.
+- Partage portable des images privées entre deux comptes MJ.
+- Recette de bout en bout multi-navigateurs à deux comptes réels et paramétrage final des URL de confirmation e-mail dans Supabase.
+- Distribution/licensing commercial du produit distinct du code public de démonstration.
+
+La Bastide historique, ses personnages et ses données n'ont pas été modifiés par cette évolution.
