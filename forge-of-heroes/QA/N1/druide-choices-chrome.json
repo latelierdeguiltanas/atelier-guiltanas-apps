@@ -1,0 +1,170 @@
+{
+  "status": "PASS",
+  "environment": "chromium",
+  "testSha256": "0f6f18f6c540acaaaa8765e7772e0f361a2c391c3a67209a106fb22241b05fcc",
+  "cases": [
+    {
+      "people": "humain",
+      "primary": "voie-des-animaux",
+      "secondary": "voie-du-fauve",
+      "stats": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        -1
+      ],
+      "status": "PASS",
+      "result": {
+        "defense": 13,
+        "pv": 10,
+        "initiative": 16
+      }
+    },
+    {
+      "people": "nain",
+      "primary": "voie-du-fauve",
+      "secondary": "voie-de-la-nature",
+      "stats": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        -1
+      ],
+      "status": "PASS",
+      "result": {
+        "defense": 12,
+        "pv": 11,
+        "initiative": 16
+      }
+    },
+    {
+      "people": "demi-elfe",
+      "primary": "voie-de-la-nature",
+      "secondary": "voie-du-protecteur",
+      "stats": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        -1
+      ],
+      "status": "PASS",
+      "result": {
+        "defense": 12,
+        "pv": 10,
+        "initiative": 14
+      }
+    },
+    {
+      "people": "demi-orc",
+      "primary": "voie-du-protecteur",
+      "secondary": "voie-des-vegetaux",
+      "stats": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        -1
+      ],
+      "status": "PASS",
+      "result": {
+        "defense": 12,
+        "pv": 10,
+        "initiative": 13
+      }
+    },
+    {
+      "people": "elfe-haut",
+      "primary": "voie-des-vegetaux",
+      "secondary": "voie-des-animaux",
+      "stats": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        -1
+      ],
+      "status": "PASS",
+      "result": {
+        "defense": 12,
+        "pv": 10,
+        "initiative": 13
+      }
+    },
+    {
+      "people": "elfe-sylvain",
+      "primary": "voie-des-animaux",
+      "secondary": "voie-du-fauve",
+      "stats": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        -1
+      ],
+      "status": "PASS",
+      "result": {
+        "defense": 14,
+        "pv": 10,
+        "initiative": 16
+      }
+    },
+    {
+      "people": "gnome",
+      "primary": "voie-du-fauve",
+      "secondary": "voie-de-la-nature",
+      "stats": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        -1
+      ],
+      "status": "PASS",
+      "result": {
+        "defense": 14,
+        "pv": 10,
+        "initiative": 17
+      }
+    },
+    {
+      "people": "halfelin",
+      "primary": "voie-de-la-nature",
+      "secondary": "voie-du-protecteur",
+      "stats": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        -1
+      ],
+      "status": "PASS",
+      "result": {
+        "defense": 14,
+        "pv": 10,
+        "initiative": 13
+      }
+    }
+  ],
+  "indexSha256": "250274e9d2879bc9acde9043b56bb670de6c697a4c9bb8920c371e1393951759",
+  "passed": 8,
+  "workflow": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/43174094590"
+}

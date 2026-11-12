@@ -393,7 +393,7 @@ const druideProgress={name:'Druide',checks:[
   detail:'Bonus de tests, défense du familier visible, initiative, caractéristiques de la panthère et coût des sorts.',
   proof:'druide-source-n1.json'},
  {name:'Effets conditionnels et mise en jeu',status:'A_VERIFIER',
-  detail:'Vérifier notamment la Peau d’écorce, les Terrains difficiles, la limite par bénéficiaire des Baies magiques et le rituel quotidien de Forêt vivante.'},
+  detail:'La limite des Baies magiques est actuellement rattachée au lanceur, alors qu’elle s’applique à chaque bénéficiaire. Forêt vivante doit appliquer son rituel de 30 minutes et sa limite quotidienne. Vérifier aussi la Peau d’écorce et les Terrains difficiles dans la fiche.'},
  {name:'Création et réouverture dans Chrome',status:druideChromeCurrent?'ACQUIS':'A_VERIFIER',
   detail:druideChromeCurrent?'Huit peuples, cinq voies et acquisition des rangs 2 au clic. Sauvegarde et réouverture contrôlées.':'Rejouer un scénario de rang 2 par peuple et vérifier la réouverture.',
   proof:'druide-choices-chrome.json'},
