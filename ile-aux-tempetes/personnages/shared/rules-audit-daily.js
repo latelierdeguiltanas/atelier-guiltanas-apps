@@ -45,7 +45,8 @@
     m('ran-speak-animals','Communication avec les animaux','1 action ou rituel','Soi','10 min','V, S',false,true,'Permet de comprendre les bêtes et de communiquer verbalement avec elles pendant la durée.')
   ];
 
-  const CATALOG=DATA.id==='hammerz'?PALADIN:RANGER;
+  /* Châtiment divin est toujours préparé à partir du niveau 2, jamais un choix de préparation quotidien. */
+  const CATALOG=DATA.id==='hammerz'?PALADIN.filter(s=>s.id!=='pal-divine-smite'):RANGER;
   const initial=DATA.id==='hammerz'?['searing-smite','heroism']:['cure-wounds','ensnaring-strike'];
   for(const s of CATALOG){
     const old=DATA.spells.find(x=>x.id===s.id);
