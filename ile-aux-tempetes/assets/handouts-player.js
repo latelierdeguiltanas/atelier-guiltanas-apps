@@ -177,8 +177,15 @@
   };
   updateAlertButton();
   const token = window.IAT_HANDOUTS.captureToken(tokenKey);
+  function hidePrivatePanel() {
+    // Aucun accès privé ? La page de personnage reste entièrement jouable.
+    // Ne pas afficher un faux blocage ni réclamer un lien à tous les joueurs.
+    panel.hidden = true;
+    const shortcut = quickNav && Array.from(quickNav.querySelectorAll('a')).find(a => a.getAttribute('href') === '#decouvertes');
+    if (shortcut) shortcut.remove();
+  }
   if (!token) {
-    document.getElementById('handoutList').innerHTML = '<div class="emptyFinds">Ton espace de découvertes n’est pas encore activé sur cet appareil. Ouvre une première fois le lien personnel envoyé par le MJ.</div>';
+    hidePrivatePanel();
     return;
   }
   window.IAT_HANDOUTS.request('list', token, { query: { player: playerId } })
@@ -192,7 +199,14 @@
       render(handouts);
     })
     .catch(function (error) {
-      if (error.status === 401) localStorage.removeItem(tokenKey);
-      document.getElementById('handoutList').innerHTML = '<div class="emptyFinds">' + (error.status === 401 ? 'Ce lien personnel n’est plus valable. Demande au MJ de t’en envoyer un nouveau.' : 'Impossible de charger les découvertes pour le moment.') + '</div>';
+      if (error.status === 401 || error.status === 403) {
+        // Erreur d'authentification : aucune fuite de contenu privé.
+        // Un ancien accès ne doit jamais masquer les autres menus de la fiche.
+        if (error.status === 401) localStorage.removeItem(tokenKey);
+        hidePrivatePanel();
+        return;
+      }
+      document.getElementById('handoutList').innerHTML =
+        '<div class="emptyFinds">Découvertes temporairement indisponibles. Le reste de la fiche fonctionne normalement.</div>';
     });
 })();
