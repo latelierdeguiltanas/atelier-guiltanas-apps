@@ -18,6 +18,57 @@
    if(typeof showPage==='function')showPage('combat');
    updateToolbar();
  };
+window.nespressoEditPollux=function(){
+ const i=typeof fighters!=="undefined"?fighters.findIndex(x=>x.id==="pollux-ally"||String(x.name||"").toLowerCase()==="pollux"):-1;
+ if(i<0)return alert("Pollux absent du combat.");
+ const f=fighters[i];
+ const html='<div class="subcard">'+
+ '<label>PV actuels</label><input id="ns-pollux-hp" type="number" min="0" value="'+f.pv+'">'+
+ '<label>PV max</label><input id="ns-pollux-max" type="number" min="1" value="'+f.max+'">'+
+ '<label>CA</label><input id="ns-pollux-ac" type="number" min="1" value="'+f.ca+'">'+
+ '<label>Initiative</label><input id="ns-pollux-init" type="number" value="'+(f.init||0)+'">'+
+ '<button class="good" onclick="nespressoSavePollux()">Enregistrer Pollux</button></div>';
+ if(typeof modal==="function")modal("🦉 Pollux — allié contrôlé par le MJ",html);
+};
+window.nespressoSavePollux=function(){
+ const i=fighters.findIndex(x=>x.id==="pollux-ally"||String(x.name||"").toLowerCase()==="pollux");
+ if(i<0)return;
+ const f=fighters[i],get=id=>Number(document.getElementById(id)?.value);
+ const max=get("ns-pollux-max"),pv=get("ns-pollux-hp"),ca=get("ns-pollux-ac"),init=get("ns-pollux-init");
+ if(!Number.isInteger(max)||max<1||max>250||!Number.isInteger(pv)||pv<0||pv>max||
+    !Number.isInteger(ac)||ac<1||ac>35||!Number.isInteger(init)||Math.abs(init)>50)
+   return alert("Valeurs invalides pour Pollux.");
+ f.max=max;f.pv=pv;f.ca=ac;f.init=init;
+ saveAll();renderFighters();if(typeof closeModal==="function")closeModal();
+};
+window.nsPolluxInfo=()=>openMonster("hibours");
+function injectPolluxMini(){
+ const zone=document.querySelector(".combatLive .v7PlayerZone .pjBar");
+ if(!zone||typeof fighters==="undefined")return;
+ const i=fighters.findIndex(x=>x.id==="pollux-ally"||String(x.name||"").toLowerCase()==="pollux");
+ if(i<0)return;
+ const f=fighters[i];
+ if(!zone.querySelector("[data-pollux-mini]")){
+  const el=document.createElement("div");el.className="pjMini ally";el.setAttribute("data-pollux-mini","");
+  el.style.cssText="border:2px solid #70b68c;background:#183329;padding:8px;cursor:default";
+  el.innerHTML='<b>🦉 Pollux</b> <small>allié MJ</small>'+
+   '<div class="pjState">PV '+f.pv+'/'+f.max+' · CA '+f.ca+' · Init '+(f.init||0)+'</div>'+
+   '<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:5px">'+
+   '<button onclick="setTurn('+i+')">▶ Tour</button>'+
+   '<button onclick="nespressoEditPollux()">✏️ Modifier</button>'+
+   '<button onclick="nsPolluxInfo()">Fiche hibours</button></div>';
+  zone.appendChild(el);
+ }
+ document.querySelectorAll(".v7MonsterZone .mobCard.ally").forEach(el=>{
+  if(el.querySelector(".mobTitle")?.textContent?.toLowerCase().includes("pollux"))el.style.display="none";
+ });
+}
+const beforePolluxRender=renderFighters;
+renderFighters=function(...args){
+ const result=beforePolluxRender(...args);
+ setTimeout(injectPolluxMini,0);
+ return result;
+};
  const STATS=[
    {name:'Hammerz',old:12,max:24,ca:18},
    {name:'Lelio',old:10,max:20,ca:14},
