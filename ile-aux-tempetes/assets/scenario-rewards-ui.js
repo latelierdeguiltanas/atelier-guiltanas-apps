@@ -181,6 +181,16 @@ $('connect').addEventListener('submit',async e=>{
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>openTab(b.dataset.tab));
 $('pack-search').oninput=drawPackList;
 $('pack-list').addEventListener('click',e=>{const b=e.target.closest('[data-pack]');if(!b)return;current=b.dataset.pack;drawPack();});
+$('pack-assign-all').onclick=()=>{
+ const to=$('pack-target-all').value;
+ if(!to)return message('Choisis d’abord un destinataire.','error');
+ let count=0;
+ getPack().items.forEach(row=>{
+   const sel=document.querySelector('[data-recipient="'+row.id+'"]'),check=document.querySelector('[data-include="'+row.id+'"]');
+   if(sel&&!sel.disabled){sel.value=to;check.checked=true;count++;}
+ });
+ message(count+' ligne(s) du pack affectée(s) à '+pnames[to]+'. Vérifie puis confirme l’envoi.','ok');
+};
 $('send-pack').onclick=sendPack;
 $('retry-pack').onclick=runQueue;
 $('shop-search').oninput=drawShop;
