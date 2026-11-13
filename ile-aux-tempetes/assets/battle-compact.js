@@ -27,15 +27,16 @@
  function upgradePlayers(ask=false){
    if(typeof fighters==='undefined'||!Array.isArray(fighters))return;
    if(combatStarted){if(ask)alert('Un combat est actif : termine le combat avant de mettre les PV max des joueurs à jour.');return;}
+   const matchName=(f,p)=>{const name=String(f.name||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();return name.includes(p.name.toLowerCase())||(p.name==='Loris'&&name.includes('promethee'));};
    const pending=fighters.filter(f=>f.kind==='pj'&&STATS.some(p=>
-     (f.name||'').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').includes(p.name.toLowerCase())&&Number(f.max)===p.old));
+     matchName(f,p)&&Number(f.max)===p.old));
    if(!pending.length){if(ask)alert('Les PJ présents ont déjà leurs maxima niveau 2, ou aucun ancien profil n’est détecté.');return;}
    if(ask&&!confirm('Mettre les PV maximum des '+pending.length+' PJ au niveau 2 ? Les blessures déjà subies seront conservées.'))return;
    for(const f of pending){
-     const p=STATS.find(p=>(f.name||'').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').includes(p.name.toLowerCase())&&Number(f.max)===p.old);
+     const p=STATS.find(p=>matchName(f,p)&&Number(f.max)===p.old);
      if(!p)continue;
      if(f.pv>0)f.pv=Math.min(p.max,Number(f.pv)+(p.max-p.old));
-     f.max=p.max;f.ca=p.ca;f.notes=String(f.notes||'').replace(/\\b1\\b/g,'2');
+     f.max=p.max;f.ca=p.ca;f.notes=String(f.notes||'').replace(/\b1\b/g,'2');
    }
    saveAll();renderFighters();
  }
