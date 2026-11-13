@@ -69,9 +69,14 @@ async function sendPack(){
  catch(e){return message(e.message,'error');}
  const list=dispatch.map(d=>pnames[d.playerId]+' : '+d.labels.join(', ')).join('\n');
  const pending=dispatch.filter(d=>state?.players?.find(p=>p.id===d.playerId)?.initialized===false).map(d=>pnames[d.playerId]);
- const warn=(state?.events||[]).some(e=>e.action==='send')?'\nATTENTION : des envois MJ antérieurs existent déjà. Vérifie que ce n’est pas une remise en double.\n':'';
+ const previousPotions=p.id==='runara-cadeaux'?(state?.players||[]).filter(x=>
+   (x.state?.inventory||[]).some(item=>/potion (?:de (?:vie|soins)|de vie)/i.test(String(item.name||'')))
+ ).map(x=>pnames[x.id]||x.display_name):[];
+ const previousGiftWarning=previousPotions.length?
+   '\\n⚠ ATTENTION : une potion est DÉJÀ ENREGISTRÉE dans les sacs serveur de : '+previousPotions.join(', ')+'. Ne renvoie pas les cadeaux de la dernière séance.\\n':'';
+ const warn=(state?.events||[]).some(e=>e.action==='send')?'\\nATTENTION : des envois MJ antérieurs existent déjà. Vérifie que ce n’est pas une remise en double.\\n':'';
  const risk=pending.length?'\nSacs non initialisés : '+pending.join(', ')+'. La remise sera enregistrée côté serveur mais restera à récupérer.':'';
- if(!confirm('Distribuer « '+p.title+' » ?\n\n'+list+warn+risk+'\n\nValider envoi réel ?'))return;
+ if(!confirm('Distribuer « '+p.title+' » ?\n\n'+list+previousGiftWarning+warn+risk+'\n\nValider envoi réel ?'))return;
  const lines=dispatch.map(d=>({playerId:d.playerId,body:d.body,requestId:crypto.randomUUID(),rows:d.keys.map(key=>{
    const a=assignments.find(v=>key===p.id+':'+v.lineId+':'+v.playerId);return{key,qty:a.qty};
  })}));
