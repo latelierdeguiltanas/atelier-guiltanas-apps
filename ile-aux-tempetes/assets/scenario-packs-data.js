@@ -147,7 +147,7 @@ window.IAT_SCENARIO_PACKS=[
         "type": "item",
         "name": "Élixir de santé",
         "qty": 1,
-        "notes": "Potion magique obtenue par Tarak à partir de la morille rubis. Selon l’objet de scénario, soigne une maladie, supprime l’état empoisonné et confère une protection temporaire contre le poison.",
+        "notes": "Potion magique obtenue par Tarak à partir de la morille rubis. Selon l’objet de scénario, L’élixir de santé (règles D&D 2024) soigne toute contagion magique et met fin aux états Aveuglé, Assourdi, Empoisonné et Paralysé. Ne restaure pas de PV.",
         "category": "Potion magique",
         "valuePO": null
       }
