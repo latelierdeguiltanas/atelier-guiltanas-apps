@@ -18,7 +18,9 @@
       const qty=normalizeQty(a.qty,row.qty);
       const lineKey=pack.id+':'+row.id+':'+a.playerId;
       if(seen.has(lineKey))throw new Error('Ligne envoyée deux fois dans ce lot.');
+      const consumed=Object.entries(already).filter(([key])=>key.startsWith(pack.id+':'+row.id+':')).reduce((sum,[,record])=>sum+Math.max(0,Number(record?.qty??record)||0),0);
       if(already[lineKey])throw new Error('Déjà envoyé à '+a.playerId+' : '+row.name+'.');
+      if(qty+consumed>row.qty)throw new Error('Quantité déjà distribuée pour '+row.name+' : '+consumed+'/'+row.qty+'.');
       seen.add(lineKey);
       if(!groups.has(a.playerId))groups.set(a.playerId,{playerId:a.playerId,items:[],money:Object.fromEntries(COINS.map(c=>[c,0])),keys:[],labels:[]});
       const g=groups.get(a.playerId);
