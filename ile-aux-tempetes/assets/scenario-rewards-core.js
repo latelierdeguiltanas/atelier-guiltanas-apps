@@ -10,7 +10,7 @@
   function buildDraft(pack,assignments,already={}){
     if(!pack||!Array.isArray(pack.items))throw new Error('Pack inconnu.');
     if(!Array.isArray(assignments))throw new Error('Choix de distribution incorrects.');
-    const groups=new Map(),seen=new Set();
+    const groups=new Map(),seen=new Set(),draftUsed=new Map();
     for(const a of assignments){
       const row=pack.items.find(x=>x.id===a.lineId);
       if(!row)throw new Error('Objet inconnu dans le pack.');
@@ -20,7 +20,9 @@
       if(seen.has(lineKey))throw new Error('Ligne envoyée deux fois dans ce lot.');
       const consumed=Object.entries(already).filter(([key])=>key.startsWith(pack.id+':'+row.id+':')).reduce((sum,[,record])=>sum+Math.max(0,Number(record?.qty??record)||0),0);
       if(already[lineKey])throw new Error('Déjà envoyé à '+a.playerId+' : '+row.name+'.');
-      if(qty+consumed>row.qty)throw new Error('Quantité déjà distribuée pour '+row.name+' : '+consumed+'/'+row.qty+'.');
+      const inDraft=draftUsed.get(pack.id+':'+row.id)||0;
+      if(qty+consumed+inDraft>row.qty)throw new Error('Quantité totale dépassée pour '+row.name+' : '+(consumed+inDraft+qty)+'/'+row.qty+'.');
+      draftUsed.set(pack.id+':'+row.id,inDraft+qty);
       seen.add(lineKey);
       if(!groups.has(a.playerId))groups.set(a.playerId,{playerId:a.playerId,items:[],money:Object.fromEntries(COINS.map(c=>[c,0])),keys:[],labels:[]});
       const g=groups.get(a.playerId);
