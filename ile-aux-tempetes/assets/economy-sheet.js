@@ -10,11 +10,13 @@
  const bag=document.getElementById('bag');
 
  function sheetCopy(saved=false){
+   const currentGear=window.NespressoEquipmentRules?.compute(DATA,S.inventory||[]);
    A.report({saved,snapshot:{name:DATA.name,class:DATA.class,level:DATA.level,
      maxHP:DATA.maxHP,hp:S.hp,tempHP:S.tempHP,conditions:S.conditions,
      concentration:S.concentration,
      prepared:(S.prepared||[]).map(id=>DATA.spells.find(s=>s.id===id)?.name||id),
      resources:(DATA.resources||[]).map(r=>({label:r.label,max:r.max,used:Number(S.resources?.[r.id]||0)})),
+     gear:currentGear?{ac:currentGear.ac,formula:currentGear.formula,defenseConfirmed:currentGear.defenseConfirmed,attacks:currentGear.attacks,equippedNames:currentGear.gear}:null,
      log:(S.log||[]).slice(-100)}});
  }
  function scheduleCopy(){
