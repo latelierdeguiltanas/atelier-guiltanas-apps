@@ -18,6 +18,28 @@
    if(typeof showPage==='function')showPage('combat');
    updateToolbar();
  };
+ const STATS=[
+   {name:'Hammerz',old:12,max:24,ca:18},
+   {name:'Lelio',old:10,max:20,ca:14},
+   {name:'Loris',old:8,max:16,ca:12},
+   {name:'Vax',old:11,max:22,ca:15}
+ ];
+ function upgradePlayers(ask=false){
+   if(typeof fighters==='undefined'||!Array.isArray(fighters))return;
+   if(combatStarted){if(ask)alert('Un combat est actif : termine le combat avant de mettre les PV max des joueurs à jour.');return;}
+   const pending=fighters.filter(f=>f.kind==='pj'&&STATS.some(p=>
+     (f.name||'').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').includes(p.name.toLowerCase())&&Number(f.max)===p.old));
+   if(!pending.length){if(ask)alert('Les PJ présents ont déjà leurs maxima niveau 2, ou aucun ancien profil n’est détecté.');return;}
+   if(ask&&!confirm('Mettre les PV maximum des '+pending.length+' PJ au niveau 2 ? Les blessures déjà subies seront conservées.'))return;
+   for(const f of pending){
+     const p=STATS.find(p=>(f.name||'').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').includes(p.name.toLowerCase())&&Number(f.max)===p.old);
+     if(!p)continue;
+     if(f.pv>0)f.pv=Math.min(p.max,Number(f.pv)+(p.max-p.old));
+     f.max=p.max;f.ca=p.ca;f.notes=String(f.notes||'').replace(/\\b1\\b/g,'2');
+   }
+   saveAll();renderFighters();
+ }
+ window.nespressoUpgradePlayers=()=>upgradePlayers(true);
  function makeButton(label,id,action,style){
    const b=document.createElement('button');
    b.id=id;b.type='button';b.textContent=label;
@@ -33,6 +55,7 @@
    const left=document.createElement('div');left.style.cssText='display:flex;gap:5px;flex-wrap:wrap;align-items:center';
    left.append(
      makeButton('🦉 Ajouter Pollux','ns-quick-pollux',window.addPolluxMJ),
+     makeButton('↻ PJ niveau 2','ns-quick-upgrade',window.nespressoUpgradePlayers),
      makeButton('▶ Tour suivant','ns-quick-next',()=>{if(typeof nextTurn==='function')nextTurn();}),
      makeButton('🎁 Packs','ns-quick-packs',()=>location.assign('../packs/'))
    );
@@ -48,7 +71,7 @@
    const note=document.createElement('p');note.id='ns-pollux-help';
    note.textContent='Pollux : allié contrôlé par le MJ ; bloc officiel de hibours, FP 3. Non compté comme ennemi pour l’XP. Rééquilibre ses attaques si nécessaire.';
    bar.after(note);
-   updateToolbar();
+   upgradePlayers(false);updateToolbar();
  }
  function updateToolbar(){
    const status=$('ns-compact-status');
