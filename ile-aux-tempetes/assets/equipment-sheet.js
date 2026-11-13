@@ -6,6 +6,7 @@ const Rules=window.NespressoEquipmentRules;
 if(!Rules||typeof DATA==='undefined'||typeof S==='undefined')return;
 const escText=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const baseWeapons=DATA.weapons.map(w=>({...w}));
+let sharedReady=false;
 const fmtBonus=n=>n>=0?'+'+n:String(n);
 const report=()=>Rules.compute(DATA,S.inventory||[]);
 function refreshWeapons(){
@@ -66,7 +67,27 @@ function augmentBag(){
  host.insertAdjacentHTML('afterbegin','<div class="section ns-gear" style="padding:9px;background:#14232a;border:1px solid #b9975d;border-radius:10px;margin:8px 0"><b>Équipement et combat</b>'+
  '<p>CA actuelle selon équipement déclaré : <b>'+g.ac+'</b>. '+escText(g.defenseConfirmed?'Armure/bouclier déclarés.':'Équipement défensif non confirmé : CA du PDF conservée.')+'</p>'+
  '<p class="tapnote">Ouvre un objet dans le sac partagé puis clique « Équiper/Déséquiper ». La fiche Combat met à jour les bonus et la CA. La préparation des armes en main reste soumise aux règles D&D 2024.</p></div>');
+ if(!sharedReady){
+   const available=(S.inventory||[]).map((item,i)=>({item,i,type:Rules.classify(item).kind}))
+     .filter(x=>Number(x.item.qty)>0&&['weapon','armor','shield','unknownWeapon'].includes(x.type));
+   if(available.length)host.insertAdjacentHTML('beforeend','<div class="section ns-gear" style="background:#14232a;padding:9px;border:1px solid #657f79;border-radius:10px">'+
+     '<h3>Équipement local — avant synchronisation du sac</h3><p class="tapnote">Ces choix sont sauvegardés sur ce téléphone. Une fois le sac synchronisé, utilise les boutons du sac partagé.</p>'+
+     available.map(({item,i})=>'<button class="item" onclick="NSEquipLocal('+i+')"><strong>'+escText(item.equipped?'✓ Équipé — '+item.name:'Équiper — '+item.name)+'</strong></button>').join('')+'</div>');
+ }
+
 }
+window.NSEquipLocal=function(index){
+ if(sharedReady)return info('Sac synchronisé','Utilise les boutons Équiper/Déséquiper du sac partagé pour modifier l’équipement sur le serveur.');
+ const item=S.inventory?.[index],t=Rules.classify(item);
+ if(!item||!['weapon','armor','shield','unknownWeapon'].includes(t.kind))return;
+ const next=!item.equipped;
+ if(next&&['armor','shield'].includes(t.kind)&&S.inventory.some((v,i)=>i!==index&&v.equipped&&Rules.classify(v).kind===t.kind))
+   return info('Équipement incompatible','Déséquipe l’ancienne armure ou le bouclier avant de choisir le nouveau.');
+ if(next&&t.kind==='weapon'&&t.twoHands&&S.inventory.some(x=>x.equipped&&Rules.classify(x).kind==='shield'))
+   return info('Équipement incompatible','Cette arme nécessite deux mains : retire le bouclier avant.');
+ if(!confirm((next?'Équiper ':'Déséquiper ')+item.name+' dans ton sac local ?'))return;
+ item.equipped=next;save();renderBag();
+};
 const oldHome=renderHome,oldCombat=renderCombat,oldBag=renderBag;
 renderHome=function(){oldHome();augmentHome();};
 renderCombat=function(){refreshWeapons();oldCombat();augmentCombat();};
@@ -80,6 +101,7 @@ explain=function(kind){
 window.NespressoGearSummary=()=>report();
 window.addEventListener('nespresso-economy',e=>{
  if(e.detail?.player_id!==DATA.id||!e.detail.initialized)return;
+ sharedReady=true;
  // economy-sheet a déjà récupéré le sac dans S. L'écran actif doit suivre.
  const page=document.querySelector('.page.active')?.id||'home';
  if(['home','combat','bag'].includes(page))render(page);
