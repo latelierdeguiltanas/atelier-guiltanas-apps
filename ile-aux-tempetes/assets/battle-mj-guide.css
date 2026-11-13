@@ -1,0 +1,19 @@
+/* Volet d'aide MJ compact, sans effacer les cartes de combat. */
+#ns-mj-guide{margin:7px 0!important;padding:7px 10px!important;background:#17232b!important;border:1px solid #b9975d!important;border-radius:12px!important;color:#f6eddf!important}
+#ns-mj-guide>summary{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;min-height:36px;cursor:pointer}
+#ns-mj-guide>summary b{color:#f5d595}#ns-mj-guide>summary .mini{font-size:.72rem;color:#c6d6d2}
+#ns-mj-guide .mg-choices{display:flex;flex-wrap:wrap;gap:5px;margin:9px 0}
+#ns-mj-guide button{background:#283941;border:1px solid #a3936a;color:#fff5e6;border-radius:8px;padding:7px 10px;font-size:.76rem;cursor:pointer}
+#ns-mj-guide .mg-head{display:flex;justify-content:space-between;align-items:baseline;gap:6px;flex-wrap:wrap}
+#ns-mj-guide .mg-head h3{color:#f5d595;font-size:1.15rem;margin:6px 0}
+#ns-mj-guide .mg-hint{padding:10px;border-left:4px solid #e7bd6d;background:#293136;white-space:pre-wrap;line-height:1.4;margin:8px 0}
+#ns-mj-guide .mg-block{border:1px solid #49565a;border-radius:9px;padding:9px;margin:7px 0;background:#142127}
+#ns-mj-guide .mg-block>summary{font-weight:800;color:#f6dfaa;cursor:pointer}
+#ns-mj-guide .mg-spell{padding:8px;border-bottom:1px solid #36454a}
+#ns-mj-guide .mg-spell>summary{cursor:pointer;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+#ns-mj-guide .mg-spell small{color:#f0bd77}#ns-mj-guide .mg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:8px}
+#ns-mj-guide .mg-line{padding:8px;border:1px solid #3a5155;border-radius:8px}
+#ns-mj-guide .mg-warn{color:#f4be79}#ns-mj-guide .mg-link{color:#ffdf8a;display:inline-block;margin:8px 0}
+#ns-mj-guide .mg-legal{font-size:.7rem;color:#abb7b7}
+@media(min-width:1000px){#ns-mj-guide[open]{position:fixed!important;z-index:250!important;right:10px;top:48px;width:min(650px,46vw);max-height:calc(100vh - 56px);overflow:auto;box-shadow:0 0 0 100vw #0005,0 20px 65px #000c}}
+@media(max-width:999px){#ns-mj-guide[open]{position:fixed!important;z-index:250!important;left:5px;right:5px;top:5px;max-height:calc(100vh - 12px);overflow:auto;box-shadow:0 0 0 100vw #000a}}
