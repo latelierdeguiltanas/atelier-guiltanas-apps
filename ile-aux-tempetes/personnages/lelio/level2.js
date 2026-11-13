@@ -22,6 +22,10 @@
  if(!S.lelioLevel2Migrated){
    const before=Number(S.hp);
    if(Number.isFinite(before)&&before>0)S.hp=Math.max(0,Math.min(DATA.maxHP,before+10));
+   // Niveau 2 : cinq sorts préparés (contre quatre au niveau 1).
+   // Les anciens choix restent sélectionnés ; la liste doit être complétée puis verrouillée.
+   if(!Array.isArray(S.prepared))S.prepared=[];
+   if(S.prepared.length<DATA.prepCount){S.prepLocked=false;S.prepSwapAvailable=false;}
    S.lelioLevel2Migrated=true;
    save();
  }
@@ -221,14 +225,21 @@
      (S.wildCompanion?'<p>Familier actuel : '+safe(S.wildCompanion.name)+'</p>':'')+
      '<button class="btn primary" onclick="openWildCompanion()">Gérer le familier</button></div>');
  };
- const prevShortRest=shortRest;
+ // Repos court : règle D&D 2024 (une Forme sauvage restaurée) et dés de vie conservés.
  shortRest=function(){
-   // Le gestionnaire commun demande confirmation et peut dépenser des dés de vie.
-   // Un appel annulé ne doit jamais rendre de Forme sauvage.
-   const prior=save;let didSave=false;
-   save=function(){didSave=true;return prior();};
-   try{prevShortRest();}finally{save=prior;}
-   if(didSave){S.resources.wildShape=Math.max(0,(S.resources.wildShape||0)-1);save();render();}
+   if(S.hp<=0)return info('Repos court impossible','Il faut au moins 1 PV pour commencer un repos court.');
+   if(!confirm('Appliquer un repos court d’au moins 1 heure ?'))return;
+   DATA.resources.filter(r=>r.rest==='short').forEach(r=>S.resources[r.id]=0);
+   const before=freeShape();
+   S.resources.wildShape=Math.max(0,(S.resources.wildShape||0)-1);
+   let msg='Rugissement intimidant récupéré. Forme sauvage : '+freeShape()+'/2 utilisations ('+(freeShape()>before?'+1':'déjà au maximum')+').';
+   if(S.hp<DATA.maxHP&&S.hitDiceUsed<DATA.level&&confirm('Dépenser 1 dé de vie d8 pour récupérer des PV ?')){
+     const roll=1+Math.floor(Math.random()*8),heal=Math.max(1,roll+(DATA.abilities?.CON?.[1]||0)),old=S.hp;
+     S.hp=Math.min(DATA.maxHP,S.hp+heal);
+     S.hitDiceUsed=(S.hitDiceUsed||0)+1;
+     msg+='<br><br>Dé de vie : '+roll+' + '+(DATA.abilities?.CON?.[1]||0)+' CON = '+heal+' PV ('+(S.hp-old)+' effectivement récupérés).';
+   }
+   save();render();info('Repos court terminé',msg);
  };
  const prevLongRest=longRest;
  longRest=function(){
