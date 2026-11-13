@@ -29,6 +29,10 @@ function refreshWeapons(){
 }
 function summary(gear){
  const b=gear.bonuses;
+ const passives=(S.inventory||[]).filter(x=>x?.equipped&&Number(x.qty)>0&&
+   !['armor','shield','weapon'].includes(Rules.classify(x).kind)&&
+   (/(magique|bottes|anneau|amulette|cape|talisman|collier)/i.test(String(x.name||'')+' '+String(x.category||''))||
+    /(avantage|résistance|bonus|sort|discrétion)/i.test(String(x.notes||''))));
  return '<div class="section ns-gear" style="border:1px solid #b9975d;border-radius:12px;padding:12px;margin:12px 0;background:#14232a">'+
  '<h2>🛡️ Équipement actuel • calcul D&D</h2>'+
  '<div class="stats"><div class="stat"><b>'+gear.ac+'</b><span>CA calculée</span></div>'+
@@ -42,6 +46,7 @@ function summary(gear){
  '<div class="item"><strong>'+escText(a.name)+(a.unknown?'':' • '+fmtBonus(a.attack)+' pour toucher')+'</strong>'+
  '<small>'+(a.unknown?escText(a.note):escText(a.damage+' dégâts'+(a.versatile?' • deux mains : '+a.versatile:'')+(a.mastery?' • maîtrise '+a.mastery:'')))+'</small></div>').join('')+'</div>':
  '<p class="tapnote">Aucune arme encore déclarée équipée : les armes ci-dessous restent les références du PDF.</p>')+
+ (passives.length?'<details class="card"><summary>✨ Effets des objets magiques équipés</summary>'+passives.map(x=>'<p><b>'+escText(x.name)+'</b> : '+escText((x.notes||'Effet à confirmer avec le MJ.').slice(0,350))+'</p>').join('')+'<small>Les effets conditionnels (comme l’avantage en Discrétion) restent à appliquer lors du test approprié.</small></details>':'')+
  (gear.warnings.length?'<div class="tapnote" style="color:#f7c78c">'+gear.warnings.map(escText).join('<br>')+'</div>':'')+
  '<button class="btn" style="margin-top:8px" onclick="nav(\'bag\')">🎒 Équiper ou retirer dans mon sac</button></div>';
 }
