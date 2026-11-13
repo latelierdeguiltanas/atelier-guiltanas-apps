@@ -69,7 +69,7 @@ function augmentBag(){
 }
 const oldHome=renderHome,oldCombat=renderCombat,oldBag=renderBag;
 renderHome=function(){oldHome();augmentHome();};
-renderCombat=function(){oldCombat();augmentCombat();};
+renderCombat=function(){refreshWeapons();oldCombat();augmentCombat();};
 renderBag=function(){oldBag();augmentBag();};
 const oldExplain=explain;
 explain=function(kind){
