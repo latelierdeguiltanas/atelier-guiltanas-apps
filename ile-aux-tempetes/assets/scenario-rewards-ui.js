@@ -38,7 +38,7 @@ function drawPack(){
    return '<div class="reward"><div><label><input type="checkbox" data-include="'+esc(r.id)+'" '+checked+' '+disabled+'> <b style="display:inline">'+esc(r.name)+'</b></label><small>'+esc(r.notes||'')+val+'</small>'+
       (used?'<div class="done">✓ '+used+'/'+r.qty+' déjà remis · '+esc(spent.join(', '))+'</div>':'')+'</div>'+
       '<div><label>Destinataire<select data-recipient="'+esc(r.id)+'" '+disabled+'>'+options+'</select></label></div>'+
-      '<div><label>'+(r.type==='money'?'PO':'Quantité')+'<input type="number" min="1" max="'+remain+'" value="'+(remain||0)+'" data-qty="'+esc(r.id)+'" '+disabled+'></label></div></div>';
+      '<div><label>'+(r.type==='money'?esc(r.currency||'Pièces'):'Quantité')+'<input type="number" min="1" max="'+remain+'" value="'+(remain||0)+'" data-qty="'+esc(r.id)+'" '+disabled+'></label></div></div>';
  }).join('');
  $('pack-progress').textContent=json(QUEUE,null)?'Envoi interrompu à reprendre avant tout nouvel envoi.':'';
  $('send-pack').disabled=busy||!!json(QUEUE,null);
@@ -104,11 +104,11 @@ function drawHistory(){
  const rows=Object.entries(ledger).sort((a,b)=>String(b[1]?.at).localeCompare(String(a[1]?.at)));
  const pending=json(QUEUE,null);
  let out=pending?'<p class="warntext">⚠ Envoi en attente pour '+pending.lines.length+' PJ. Reprendre depuis « Packs » pour éviter les doublons.</p>':'';
- if(!rows.length)out+='<p>Aucune distribution de pack confirmée sur ce navigateur.</p>';
+ if(!rows.length)out+='<p>Aucune distribution de pack confirmée sur ce navigateur. Les envois MJ antérieurs figurent dans l’historique serveur.</p>';
  else out+='<div class="stock-list">'+rows.map(([key,v])=>{
    const pack=PACKS.find(p=>p.id===v.packId)||{},row=pack.items?.find(r=>key===pack.id+':'+r.id+':'+v.to);
    const p=state?.players?.find(x=>x.id===v.to);
-   return '<div class="stock-item"><div><b>'+esc(row?.name||key)+'</b><small>'+esc(pack.title||v.packId)+' · '+esc(pnames[v.to])+' · '+esc(v.at?new Date(v.at).toLocaleString('fr-FR'):'')+'</small></div><span class="'+(p?.initialized?'done':'warntext')+'">'+(p?.initialized?'Sac serveur actif':'En attente de synchronisation')+'</span><b>× '+Number(v.qty||1)+'</b></div>';
+   return '<div class="stock-item"><div><b>'+esc(row?.name||key)+'</b><small>'+esc(pack.title||v.packId)+' · '+esc(pnames[v.to])+' · '+esc(v.at?new Date(v.at).toLocaleString('fr-FR'):'')+'</small></div><span class="'+(p?.initialized?'done':'warntext')+'">'+(p?.initialized?'Sac serveur initialisé · vérifier réception':'En attente de synchronisation')+'</span><b>× '+Number(v.qty||1)+'</b></div>';
  }).join('')+'</div>';
  const activity=(state?.events||[]).filter(e=>e.action==='send').slice(0,12);
  out+='<h3>Dernières opérations MJ côté serveur</h3>'+(activity.length?activity.map(e=>'<p><small>'+esc(new Date(e.created_at).toLocaleString('fr-FR'))+' · '+esc(pnames[e.player_id]||e.player_id)+' · '+esc(e.summary)+'</small></p>').join(''):'<p class="muted">Aucune opération remontée par le serveur.</p>');
