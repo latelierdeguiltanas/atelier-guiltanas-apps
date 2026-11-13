@@ -1,0 +1,45 @@
+/* Table de combat Nespresso — écran unique 2026-11-13.
+   Styles complémentaires : aucune suppression de logique ou de sauvegarde. */
+@media(min-width:950px){
+  .combatLive main{max-width:1680px!important;padding:8px 12px!important}
+  .combatLive #combatLayout{display:block!important}
+  .combatLive #activeColumn{width:100%!important;max-width:none!important}
+  .combatLive #fighters{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(240px,310px)!important;grid-template-areas:"init init" "turn players" "monsters players" "journal journal"!important;column-gap:9px!important;row-gap:7px!important;align-items:start!important;padding:0!important}
+  .combatLive .v7InitZone{grid-area:init!important;position:sticky!important;top:50px!important;z-index:30!important;background:#0e1922!important;padding:4px 7px!important;margin:0!important}
+  .combatLive .v7TurnZone{grid-area:turn!important;margin:0!important;min-width:0!important;padding:7px!important}
+  .combatLive .v7MonsterZone{grid-area:monsters!important;margin:0!important;min-width:0!important;padding:7px!important}
+  .combatLive .v7PlayerZone{grid-area:players!important;margin:0!important;min-width:0!important;padding:7px!important;position:sticky!important;top:153px!important;max-height:calc(100vh - 175px)!important;overflow-y:auto!important}
+  .combatLive .v7JournalZone{grid-area:journal!important;margin:0!important;min-width:0!important;padding:7px!important}
+  .combatLive .v7TurnZone .activeBox{padding:6px!important}
+  .combatLive .v7TurnName{font-size:1.08rem!important}
+  .combatLive .v7TurnMeta{font-size:.69rem!important}
+  .combatLive .v7InitZone .stripShell{display:block!important;overflow:visible!important}
+  .combatLive .v7InitZone .stripBtn{display:none!important}
+  .combatLive .v7InitZone .initStrip{display:flex!important;flex-wrap:wrap!important;overflow:visible!important;gap:4px!important;min-height:0!important;padding:3px!important}
+  .combatLive .v7InitZone .initChip{flex:1 1 92px!important;max-width:170px!important;min-width:80px!important;min-height:44px!important;height:auto!important;padding:4px 6px!important;font-size:.72rem!important;line-height:1.2!important}
+  .combatLive .v7InitZone .initChip>span{display:block!important;font-size:.66rem!important;line-height:1.25!important}
+  .combatLive .v7MonsterZone .mobGrid{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(155px,1fr))!important;gap:5px!important}
+  .combatLive .v7PlayerZone .pjBar{display:flex!important;flex-direction:column!important;gap:6px!important}
+  .combatLive .v7PlayerZone .pjMini{min-width:0!important;width:100%!important;max-width:none!important}
+  .combatLive .v7JournalZone .liveLog{max-height:85px!important;overflow:auto!important;font-size:.72rem!important}
+  .combatLive .v7TurnZone button,.combatLive .v7MonsterZone button,.combatLive .v7PlayerZone button{font-size:.75rem!important;padding:4px 7px!important}
+  .combatLive #xpCombatControls{display:none!important}
+  .combatLive #xpPanel{padding:5px 10px!important;margin:4px 0!important}
+}
+@media(max-width:949px){
+  .combatLive #fighters{display:flex!important;flex-direction:column!important;gap:5px!important}
+  .combatLive .v7TurnZone{order:1!important;width:100%!important}
+  .combatLive .v7InitZone{order:0!important;width:100%!important;position:sticky!important;top:42px!important;z-index:20!important}
+  .combatLive .v7MonsterZone{order:2!important;width:100%!important}
+  .combatLive .v7PlayerZone{order:3!important;width:100%!important}
+  .combatLive .v7JournalZone{order:4!important;width:100%!important}
+  .combatLive .v7InitZone .initStrip{display:flex!important;overflow-x:auto!important;gap:4px!important;scrollbar-width:thin}
+  .combatLive .v7InitZone .initChip{flex:0 0 110px!important;min-height:46px!important;font-size:.72rem!important}
+}
+#ns-compact-toolbar{display:flex;position:sticky;top:0;z-index:120;gap:6px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#111c23;padding:6px 8px;border:1px solid #8d7549;border-radius:10px;margin:3px 0 8px;box-shadow:0 3px 15px #0008}
+#ns-compact-toolbar button{min-height:34px;background:#26363a;color:#f6eddc;border:1px solid #806f50;border-radius:8px;padding:5px 8px;font-weight:800;font-size:.76rem;cursor:pointer}
+#ns-compact-toolbar button.primary{background:#dbb778;color:#171717;border-color:#dbb778}
+#ns-compact-toolbar button:disabled{opacity:.45;cursor:not-allowed}
+#ns-compact-status{font-size:.7rem;color:#c6d3d2;max-width:240px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.initChip.ally{border:2px solid #6aa789!important;color:#bff8cc!important}
+#ns-pollux-help{margin:0 0 6px;font-size:.72rem;color:#b7c1bf}
