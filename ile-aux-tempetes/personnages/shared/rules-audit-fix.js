@@ -35,7 +35,7 @@
       if(S.prepLocked)note.innerHTML=`Tes <b>${DATA.prepCount}</b> sorts de Druide sont préparés. À la fin du prochain repos long, tu pourras remplacer <b>autant de sorts que tu veux</b> dans cette liste.`;
       else note.innerHTML=`Fenêtre de préparation après repos long : compose librement une liste de <b>${DATA.prepCount}</b> sorts. Tant que tu n'as pas validé la liste, les sorts de Druide niveau 1 ne sont pas utilisables en combat.`;
     }
-    if(section&&!S.prepLocked&&S.prepared.length===DATA.prepCount)section.insertAdjacentHTML('beforeend','<button class="btn primary" style="width:100%;margin-top:10px" onclick="lockDruidPrep()">✓ VALIDER CES 4 SORTS POUR LA JOURNÉE</button>');
+    if(section&&!S.prepLocked&&S.prepared.length===DATA.prepCount)section.insertAdjacentHTML('beforeend',`<button class="btn primary" style="width:100%;margin-top:10px" onclick="lockDruidPrep()">✓ VALIDER CES ${DATA.prepCount} SORTS POUR LA JOURNÉE</button>`);
   };
 
   longRest=function(){
@@ -46,7 +46,7 @@
     S.turn={action:null,bonus:null,reaction:null,moveLeft:speedCases(),moveMax:speedCases(),slotSpellThisTurn:false};
     if(DATA.magicMode==='prepare4'){S.prepLocked=false;S.prepSwapAvailable=false;S.prepSwapRemoved=null;}
     save();render();
-    setTimeout(()=>info('Repos long terminé',`PV restaurés à <b>${DATA.maxHP}</b>, PV temporaires retirés, dés de vie et ressources récupérés.${DATA.magicMode==='prepare4'?'<br><br><b>Druide :</b> va dans Magie et valide ta liste de 4 sorts. Tu peux en remplacer autant que tu veux maintenant.':''}`),0);
+    setTimeout(()=>info('Repos long terminé',`PV restaurés à <b>${DATA.maxHP}</b>, PV temporaires retirés, dés de vie et ressources récupérés.${DATA.magicMode==='prepare4'?`<br><br><b>Druide :</b> va dans Magie et valide ta liste de ${DATA.prepCount} sorts. Tu peux en remplacer autant que tu veux maintenant.`:''}`),0);
   };
 
   const priorCommitSpellUse=commitSpellUse;
