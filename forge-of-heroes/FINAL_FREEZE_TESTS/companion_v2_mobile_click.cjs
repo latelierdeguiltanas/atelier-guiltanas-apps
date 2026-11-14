@@ -1,0 +1,21 @@
+'use strict';
+const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto');
+const html=fs.readFileSync('forge-of-heroes/index.html','utf8');
+const db=JSON.parse(html.match(/<script[^>]+id=["']FOH_DB_JSON["'][^>]*>([\s\S]*?)<\/script>/i)[1]);
+const people=db.tables.peoples.filter(x=>x.id.endsWith(':compagnon-cof2'));
+const report={schema:'FOH_COMPANION_V2_MOBILE_CLICK',indexSha256:crypto.createHash('sha256').update(html).digest('hex'),scope:'N1, un Voleur jeune par nouveau peuple, Chromium tactile simulé, création et réouverture ; pas Android physique ni PDF.',cases:[],pass:0,failed:0};
+(async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||undefined,args:['--no-sandbox']});
+try{for(const p of people){const ctx=await browser.newContext({viewport:{width:393,height:852},hasTouch:true,isMobile:true});const page=await ctx.newPage(),errors=[],name='QA '+p.label;
+page.on('pageerror',e=>errors.push(String(e)));page.setDefaultTimeout(10000);const next=()=>page.locator('#next-btn').tap();
+const choose=async(sel,part)=>{const el=page.locator(sel),option=await el.locator('option').evaluateAll((oo,v)=>oo.find(o=>o.textContent.toLowerCase().includes(v.toLowerCase()))?.value,part);assert.ok(option,sel+' '+part);await el.selectOption(option);};
+const rec={people:p.id,name,status:'FAIL',steps:[]};report.cases.push(rec);
+try{await page.goto('http://127.0.0.1:4173/forge-of-heroes/',{waitUntil:'domcontentloaded'});await page.locator('#start-classic').tap();await page.locator('#mode-classic').tap();await page.locator('#hero-name').fill(name);await next();await next();await next();
+await page.locator('#people-selector').selectOption(p.id);if(await page.locator('#people-bonus').isVisible())await page.locator('#people-bonus').selectOption(p.schema.bonus.options[0]);if(await page.locator('#people-malus').isVisible())await page.locator('#people-malus').selectOption(p.schema.malus.options[0]);if(await page.locator('#human-origin-id').isVisible())await page.locator('#human-origin-id').selectOption('riverain');
+rec.steps.push('people');await next();await choose('#profile-selector','Voleur');await next();
+for(const [n,key]of ['FOR','AGI','CON','PER','INT','VOL','CHA'].entries()){const value=[2,1,0,1,3,0,-1][n],el=page.getByRole('combobox',{name:new RegExp('^'+key+' ')});const opt=await el.locator('option').evaluateAll((xs,v)=>xs.find(o=>parseInt(o.textContent)===v)?.value,value);assert.ok(opt,'Characteristic '+key+' '+value+' not allowed');await el.selectOption(opt);}
+await next();await next();await choose('#path-one','assassin');await choose('#path-two','roublard');await next();await next();await page.locator('#reveal-view').tap();
+const before=await page.locator('#summary-content').innerText();assert(before.toLowerCase().includes(p.label.toLowerCase())&&before.includes(name));for(const field of ['PV','DEF','INIT'])assert(new RegExp('(?:^|\\n)'+field+'(?:\\n|\\s)').test(before),'Derived field '+field+' absent');rec.steps.push('summary');
+await page.getByRole('button',{name:'Enregistrer dans Mes héros',exact:true}).tap();await page.reload({waitUntil:'domcontentloaded'});await page.locator('#open-heroes').tap();await page.getByRole('button',{name:'Voir la fiche',exact:true}).first().tap();assert.equal(await page.locator('#summary-content').innerText(),before);rec.steps.push('save-reopen');await page.locator('#native-play-sheet').tap();await page.frameLocator('#sheet').getByRole('heading',{name,exact:true}).waitFor();rec.steps.push('sheet');assert.deepEqual(errors,[]);rec.status='PASS';report.pass++;
+}catch(e){rec.error=String(e.stack||e).slice(0,1300);rec.view=await page.locator('.step.active').innerText().then(s=>s.slice(0,1000)).catch(()=>null);rec.jsErrors=errors;report.failed++;}finally{await ctx.close()}console.log(p.label+' '+rec.status+(rec.error?' '+rec.error.slice(0,200):''));
+}}finally{await browser.close()}report.status=report.failed?'FAIL':'PASS';fs.mkdirSync('forge-of-heroes/QA/N1',{recursive:true});fs.writeFileSync('forge-of-heroes/QA/N1/compagnon-v2-mobile-click.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));if(report.failed)process.exitCode=1;
+})().catch(e=>{console.error(e);process.exitCode=1});

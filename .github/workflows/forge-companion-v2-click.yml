@@ -1,0 +1,35 @@
+name: Forge N1 - Compagnon V2 vrais clics
+on:
+  workflow_dispatch:
+  push:
+    branches: [qa/compagnon-v2-certification-rangs, main]
+    paths:
+      - 'forge-of-heroes/index.html'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/companion_v2_mobile_click.cjs'
+      - '.github/workflows/forge-companion-v2-click.yml'
+permissions:
+  contents: read
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Engine matrix and racial oracle
+        run: |
+          node forge-of-heroes/FINAL_FREEZE_TESTS/companion_v2_people_matrix.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/companion_drakonide_runner.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_people_source_runner.cjs
+      - name: Chromium tactile - dix créations
+        run: |
+          npm install --prefix "$RUNNER_TEMP/foh-v2" playwright@1.55.0
+          python3 -m http.server 4173 --bind 127.0.0.1 > "$RUNNER_TEMP/http.log" 2>&1 &
+          NODE_PATH="$RUNNER_TEMP/foh-v2/node_modules" CHROME_BIN="$(command -v google-chrome)" node forge-of-heroes/FINAL_FREEZE_TESTS/companion_v2_mobile_click.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: compagnon-v2-mobile-report
+          path: forge-of-heroes/QA/N1/compagnon-v2-mobile-click.json

@@ -123,13 +123,38 @@
     },
     "testedHTMLBlob": "bb15787532fb128ec07a25157aeaab061d4a8354",
     "certification": "OPEN",
-    "production": "unchanged",
+    "production": "catalogue_merged_728ea804f5cb28d2a139852688a8e864b98faf72",
     "limits": [
-      "Descriptions résumées depuis les photographies, pas une transcription exhaustive certifiée",
-      "Automatisation de tous les effets R2–R5 et règles transversales encore ouverte",
-      "Toutes les paires de voies et tous hybrides non couverts",
-      "Recette navigateur Android et vrais exports PDF non réalisés",
-      "Migrations des sauvegardes et régression globale non réalisées"
-    ]
+      "Textes résumés, comparaison intégrale non certifiée",
+      "Acquisition R1–R3 prouvée sur un profil témoin ; effets exhaustifs et paires de voies non certifiés",
+      "Mécanique d’ascendance, sorts raciaux à choix, progression R4–R5 et effets contextuels restant à contrôler",
+      "Navigateur tactile et PDF à exécuter ; Android physique non testé",
+      "Migration des sauvegardes historiques et du Hub non exécutée"
+    ],
+    "currentEvidence": {
+      "htmlBlob": "e6af79a9788112a6db5595985c49bfc24610f01d",
+      "path": "QA/N1/compagnon-v2-ranks-current.json",
+      "cataloguePaths": 18,
+      "rankRecords": 90,
+      "matrix": {
+        "attempts": 620,
+        "valid": 608,
+        "expectedRefusals": 12,
+        "failures": 0,
+        "replays": 608
+      },
+      "drakonide": {
+        "attempts": 30,
+        "pass": 30,
+        "replays": 26
+      },
+      "rankAcquisition": {
+        "attempts": 54,
+        "pass": 54,
+        "replays": 54
+      },
+      "fixedSpellChecks": 3,
+      "certification": "OPEN"
+    }
   }
 }
