@@ -1,17 +1,17 @@
 {
   "schema": "FOH_N1_PROFILE_AND_PEOPLES_SEPARATE",
   "racialOptionsCurrent": {
-    "valid": true,
-    "passed": 392,
+    "valid": false,
+    "passed": 0,
     "total": 392,
     "scope": "Options de caractéristiques des huit peuples croisees avec quatorze profils sur index.html; ne certifie ni les pouvoirs conditionnels ni toutes les restrictions de taille."
   },
   "canonicalProduct": "forge-of-heroes/index.html",
-  "canonicalIndexSha256": "da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d",
-  "certificationBasis": "Correctif ciblé sur les Baies magiques et Forêt vivante. Les preuves de création, de fiche et de peuples restent liées aux périmètres testés.",
-  "generatedAt": "2026-11-14T16:54:51.650Z",
-  "engineSha256": "fd729a741a223d89887779e2fa253ea398f62c5d7f95eee0ce7d2fdf6a0be1ee",
-  "databaseSha256": "645f2c7f1f5aac50b8574310c638e7284e4eb90acc103f68ae431b17cf72c23e",
+  "canonicalIndexSha256": "a1c1cb9360a967733b08ab182119cd8fbe44551016902672eb76dd6a516704d2",
+  "certificationBasis": "Preuves liées au produit canonique et à sa version contrôlée.",
+  "generatedAt": "2026-11-14T17:05:05.208Z",
+  "engineSha256": "07727b7ee4c643ec2f828d9836937afb795fb8ecaa86f487ad028e0227fcdbb6",
+  "databaseSha256": "7ce3e85762d1e843e02273d67648c82c88eb57cfe30a8f6e22b259033585a80b",
   "peoplesEvidenceCurrent": true,
   "peoplesEvidenceSourceEngineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
   "certificationPlan": {
@@ -22,13 +22,13 @@
       "allMustReachPercent": 100
     },
     "current": {
-      "name": "Guerrier",
-      "position": 8,
-      "percent": 60,
+      "name": "Arquebusier",
+      "position": 1,
+      "percent": 6,
       "certified": false
     },
     "next": {
-      "name": "Magicien",
+      "name": "Barbare",
       "unlocked": false,
       "condition": "profil actif 100 % et certificat de gel fondé sur les règles, les clics et le PDF"
     },
@@ -36,57 +36,57 @@
       {
         "name": "Arquebusier",
         "position": 1,
-        "status": "CERTIFIE",
-        "percent": 100,
-        "certified": true
+        "status": "EN_COURS",
+        "percent": 6,
+        "certified": false
       },
       {
         "name": "Barbare",
         "position": 2,
-        "status": "CERTIFIE",
-        "percent": 100,
-        "certified": true
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
       },
       {
         "name": "Barde",
         "position": 3,
-        "status": "CERTIFIE",
-        "percent": 100,
-        "certified": true
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
       },
       {
         "name": "Chevalier",
         "position": 4,
-        "status": "CERTIFIE",
-        "percent": 100,
-        "certified": true
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
       },
       {
         "name": "Druide",
         "position": 5,
-        "status": "CERTIFIE",
-        "percent": 100,
-        "certified": true
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
       },
       {
         "name": "Ensorceleur",
         "position": 6,
-        "status": "CERTIFIE",
-        "percent": 100,
-        "certified": true
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
       },
       {
         "name": "Forgesort",
         "position": 7,
-        "status": "CERTIFIE",
-        "percent": 100,
-        "certified": true
+        "status": "EN_ATTENTE",
+        "percent": null,
+        "certified": false
       },
       {
         "name": "Guerrier",
         "position": 8,
-        "status": "EN_COURS",
-        "percent": 60,
+        "status": "EN_ATTENTE",
+        "percent": null,
         "certified": false
       },
       {
@@ -132,304 +132,8 @@
         "certified": false
       }
     ],
-    "priorityProgress": {
-      "name": "Guerrier",
-      "checks": [
-        {
-          "name": "Créations et réouvertures",
-          "status": "ACQUIS",
-          "detail": "4250 créations et 326 réouvertures sur huit peuples.",
-          "proof": "pure-profile-fast-guerrier.json"
-        },
-        {
-          "name": "Bonus passifs et quotas des cinq voies",
-          "status": "ACQUIS",
-          "detail": "Initiative, PV, résistance, attaque de prédilection et quotas par round.",
-          "proof": "guerrier-source-n1.json"
-        },
-        {
-          "name": "Effets des capacités en partie",
-          "status": "A_VERIFIER",
-          "detail": "Corriger Science du critique : le seuil reste à 20 avec une arme de prédilection au lieu de 19–20. Vérifier aussi la parade, la protection d’un allié et les actions par round."
-        },
-        {
-          "name": "Création et réouverture dans Chrome",
-          "status": "A_VERIFIER",
-          "detail": "Le test mobile reproduit le retour du choix Haches vers Épées et le sélecteur absent pour le Halfelin.",
-          "proof": "guerrier-choices-chrome.json"
-        },
-        {
-          "name": "Fiche PDF officielle",
-          "status": "ACQUIS",
-          "detail": "Dix exports, champs et annexes des cinq voies.",
-          "proof": "guerrier-official-pdf.json"
-        }
-      ],
-      "total": 5,
-      "passed": 3,
-      "percent": 60,
-      "completed": false
-    },
-    "archivedProfiles": [
-      {
-        "name": "Barbare",
-        "checks": [
-          {
-            "name": "Créations et réouvertures",
-            "status": "ACQUIS",
-            "detail": "4 250 créations, dont 326 réouvertures vérifiées.",
-            "proof": "pure-profile-fast-barbare.json"
-          },
-          {
-            "name": "Peau de pierre, Tatouages et équipement",
-            "status": "ACQUIS",
-            "detail": "3 parcours mobiles, dont le Halfelin avec une hache simple approuvée par le MJ.",
-            "proof": "barbare-choices-click.json"
-          },
-          {
-            "name": "Rang 2 des cinq voies au clic",
-            "status": "ACQUIS",
-            "detail": "Cinq parcours mobiles Mûr. Acquisition, PV, DEF, initiative et réouverture vérifiés.",
-            "proof": "barbare-choices-click.json"
-          },
-          {
-            "name": "Fiche PDF officielle",
-            "status": "ACQUIS",
-            "detail": "12 exports couvrant les cinq voies.",
-            "proof": "barbare-official-pdf.json"
-          },
-          {
-            "name": "Charge et Défier la mort en jeu",
-            "status": "ACQUIS",
-            "detail": "Charge, attaque létale, quota et réouverture vérifiés sur mobile.",
-            "proof": "barbare-parcours-chrome.json"
-          },
-          {
-            "name": "Cri de guerre, Rage et Armure de vent",
-            "status": "ACQUIS",
-            "detail": "Cibles du Cri, quota et fin de Rage, interaction avec Défier la mort et changement d’armure vérifiés sous Chrome mobile.",
-            "proof": "barbare-parcours-chrome.json"
-          },
-          {
-            "name": "Huit peuples et quatre âges dans le moteur",
-            "status": "ACQUIS",
-            "detail": "32 créations et réouvertures. Douze bonus conditionnels de rang vérifiés, dont Vigueur et Réflexes éclair.",
-            "proof": "barbare-peuples-moteur.json"
-          },
-          {
-            "name": "Parcours de création dans Chrome",
-            "status": "ACQUIS",
-            "detail": "32 parcours au clic sous Chrome, sauvegarde et réouverture vérifiées.",
-            "proof": "barbare-parcours-chrome.json"
-          }
-        ],
-        "total": 8,
-        "passed": 8,
-        "percent": 100,
-        "completed": true
-      },
-      {
-        "name": "Barde",
-        "checks": [
-          {
-            "name": "Créations et réouvertures",
-            "status": "ACQUIS",
-            "detail": "4250 créations et 326 réouvertures dans le moteur.",
-            "proof": "pure-profile-fast-barde.json"
-          },
-          {
-            "name": "Calculs principaux des cinq voies",
-            "status": "ACQUIS",
-            "detail": "Précision, PM des chants, Grâce féline en DEF et INIT, Dentelles avec et sans armure, cumul d’Éclectique.",
-            "proof": "barde-source-n1.json"
-          },
-          {
-            "name": "Effets conditionnels et mise en jeu",
-            "status": "ACQUIS",
-            "detail": "Feinte et chants validés au clic. Grâce féline est calculée dans le moteur et affichée sur la fiche.",
-            "proof": "barde-combat-chrome.json"
-          },
-          {
-            "name": "Création et réouverture dans Chrome",
-            "status": "ACQUIS",
-            "detail": "Huit peuples, cinq voies et rangs 2 acquis. Sauvegarde et réouverture vérifiées au clic.",
-            "proof": "barde-choices-chrome.json"
-          },
-          {
-            "name": "Fiche PDF officielle",
-            "status": "ACQUIS",
-            "detail": "Dix exports contrôlés sur le formulaire officiel, avec les cinq voies, les champs chiffrés, les rangs cochés et les annexes.",
-            "proof": "barde-official-pdf.json"
-          }
-        ],
-        "total": 5,
-        "passed": 5,
-        "percent": 100,
-        "completed": true
-      },
-      {
-        "name": "Chevalier",
-        "checks": [
-          {
-            "name": "Créations et réouvertures",
-            "status": "ACQUIS",
-            "detail": "4250 créations et 326 réouvertures. Épée courte sans lance de cavalerie pour le Halfelin avec accord du MJ.",
-            "proof": "pure-profile-fast-chevalier.json"
-          },
-          {
-            "name": "Calculs principaux des cinq voies",
-            "status": "ACQUIS",
-            "detail": "Monture et dégâts en selle, pénalité d’armure, quota du Preux, peur, langue et écuyer.",
-            "proof": "chevalier-source-n1.json"
-          },
-          {
-            "name": "Effets conditionnels et mise en jeu",
-            "status": "ACQUIS",
-            "detail": "Selle, garde, réduction à distance, interception et report de dégâts contrôlés dans la fiche sur Chrome mobile.",
-            "proof": "chevalier-combat-chrome.json"
-          },
-          {
-            "name": "Création et réouverture dans Chrome",
-            "status": "ACQUIS",
-            "detail": "Huit peuples, choix d’Éduqué, équipement halfelin et réouverture contrôlés au clic.",
-            "proof": "chevalier-choices-chrome.json"
-          },
-          {
-            "name": "Fiche PDF officielle",
-            "status": "ACQUIS",
-            "detail": "Dix exports sur le formulaire officiel, cinq voies, champs chiffrés, rangs cochés et annexes.",
-            "proof": "chevalier-official-pdf.json"
-          }
-        ],
-        "total": 5,
-        "passed": 5,
-        "percent": 100,
-        "completed": true
-      },
-      {
-        "name": "Druide",
-        "checks": [
-          {
-            "name": "Créations et réouvertures",
-            "status": "ACQUIS",
-            "detail": "4250 créations et 326 réouvertures dans le moteur.",
-            "proof": "pure-profile-fast-druide.json"
-          },
-          {
-            "name": "Calculs principaux des cinq voies",
-            "status": "ACQUIS",
-            "detail": "Bonus de tests, défense du familier visible, initiative, caractéristiques de la panthère et coût des sorts.",
-            "proof": "druide-source-n1.json"
-          },
-          {
-            "name": "Effets en jeu dans la fiche interactive",
-            "status": "ACQUIS",
-            "detail": "Baies par bénéficiaire, rituel quotidien, terrain difficile, Peau d’écorce et défense du compagnon visible. Compteurs vérifiés après réouverture.",
-            "proof": "druide-combat-chrome.json"
-          },
-          {
-            "name": "Règles des sorts dans le moteur partagé et effets restants",
-            "status": "ACQUIS",
-            "detail": "Baies et Forêt vivante vérifiées dans le moteur. Prison végétale et récupération nocturne vérifiées au clic dans la fiche.",
-            "proof": "druide-runtime-n1.json"
-          },
-          {
-            "name": "Création et réouverture dans Chrome",
-            "status": "ACQUIS",
-            "detail": "Huit peuples, cinq voies et acquisition des rangs 2 au clic. Sauvegarde et réouverture contrôlées.",
-            "proof": "druide-choices-chrome.json"
-          },
-          {
-            "name": "Fiche PDF officielle",
-            "status": "ACQUIS",
-            "detail": "Dix exports, champs chiffrés, rangs cochés et annexes sur les cinq voies.",
-            "proof": "druide-official-pdf.json"
-          }
-        ],
-        "total": 6,
-        "passed": 6,
-        "percent": 100,
-        "completed": true
-      },
-      {
-        "name": "Ensorceleur",
-        "checks": [
-          {
-            "name": "Créations et réouvertures",
-            "status": "ACQUIS",
-            "detail": "4250 créations et 326 réouvertures sur les huit peuples, avec le rang 2 gratuit et les dépenses d’âge.",
-            "proof": "pure-profile-fast-ensorceleur.json"
-          },
-          {
-            "name": "Bonus, actions et mana des cinq voies",
-            "status": "ACQUIS",
-            "detail": "DEF, initiative, bonus de tests, coût des sorts, quota de Sommeil et concentration de Choc.",
-            "proof": "ensorceleur-source-n1.json"
-          },
-          {
-            "name": "Effets des sorts en partie",
-            "status": "ACQUIS",
-            "detail": "Sous tension, Image décalée, Sommeil et Choc testés sur la fiche Chrome mobile. Coûts, portée, cibles, sauvegarde et dé évolutif vérifiés.",
-            "proof": "ensorceleur-combat-chrome.json"
-          },
-          {
-            "name": "Création et réouverture dans Chrome",
-            "status": "ACQUIS",
-            "detail": "Huit peuples, cinq voies, rang 2 du mage, achats d’âge et réouverture au clic.",
-            "proof": "ensorceleur-choices-chrome.json"
-          },
-          {
-            "name": "Fiche PDF officielle",
-            "status": "ACQUIS",
-            "detail": "Dix exports, rangs 1 et 2, champs chiffrés et annexes des cinq voies.",
-            "proof": "ensorceleur-official-pdf.json"
-          }
-        ],
-        "total": 5,
-        "passed": 5,
-        "percent": 100,
-        "completed": true
-      },
-      {
-        "name": "Forgesort",
-        "checks": [
-          {
-            "name": "Créations et réouvertures",
-            "status": "ACQUIS",
-            "detail": "4250 créations et 326 réouvertures sur huit peuples.",
-            "proof": "pure-profile-fast-forgesort.json"
-          },
-          {
-            "name": "Bonus, actions et mana des cinq voies",
-            "status": "ACQUIS",
-            "detail": "Bâton lié, alchimie, arme enflammée, PV via INT, caractéristiques du golem, INT et DEF des runes.",
-            "proof": "forgesort-source-n1.json"
-          },
-          {
-            "name": "Effets des capacités en partie",
-            "status": "ACQUIS",
-            "detail": "Fortifiant, Feu grégeois, Morsure de la forge, Métal brûlant et Rune de puissance vérifiés au clic.",
-            "proof": "forgesort-combat-chrome.json"
-          },
-          {
-            "name": "Création et réouverture dans Chrome",
-            "status": "ACQUIS",
-            "detail": "Huit peuples, cinq voies, rang 2 du mage, achats d’âge et réouverture.",
-            "proof": "forgesort-choices-chrome.json"
-          },
-          {
-            "name": "Fiche PDF officielle",
-            "status": "ACQUIS",
-            "detail": "Dix exports, champs et annexes des cinq voies.",
-            "proof": "forgesort-official-pdf.json"
-          }
-        ],
-        "total": 5,
-        "passed": 5,
-        "percent": 100,
-        "completed": true
-      }
-    ],
+    "priorityProgress": null,
+    "archivedProfiles": [],
     "peoplesProgressRule": "Chaque critère de peuple est validé par une preuve liée à la version courante. Les effets conditionnels, les équipements, les âges et historiques et le parcours avec PDF sont suivis séparément.",
     "remainingPeoplesPolicy": "Après les 14 profils, fermer les critères raciaux manquants un peuple à la fois",
     "fullOfficialN1Closed": false,
@@ -439,13 +143,13 @@
   "profile": {
     "id": "class:arquebusier:cof2-lb-2024",
     "name": "Arquebusier",
-    "priority": "CERTIFIE",
-    "completed": true,
+    "priority": "EN_COURS",
+    "completed": false,
     "variantPrototypeReady": true,
-    "variantIntegrated": true,
-    "passed": 16,
+    "variantIntegrated": false,
+    "passed": 1,
     "total": 16,
-    "percent": 100,
+    "percent": 6,
     "checks": [
       {
         "id": "paths",
@@ -456,92 +160,92 @@
       {
         "id": "pairs",
         "name": "Toutes les paires de voies légales",
-        "status": "ACQUIS",
-        "detail": "Les dix choix possibles de deux voies du profil, avec chacun des huit peuples et les cinq modalités d’âge N1, sont créés, validés et conservés après sauvegarde. Les dix couples de l’Arbalétrier sont aussi éprouvés."
+        "status": "A_VERIFIER",
+        "detail": "Les dix choix possibles de deux voies doivent fonctionner avec les équipements autorisés, y compris l’alternative Halfelin."
       },
       {
         "id": "r1",
         "name": "Recevoir les capacités de rang 1",
-        "status": "ACQUIS",
-        "detail": "Les cinq rangs 1 sont attribués et sauvegardés dans les créations de référence."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier les cinq rangs 1."
       },
       {
         "id": "r2",
         "name": "Recevoir les capacités de rang 2",
-        "status": "ACQUIS",
-        "detail": "Les cinq rangs 2 obtenus à N1 par l’âge mûr sont attribués et sauvegardés."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier les cinq rangs 2."
       },
       {
         "id": "r3",
         "name": "Recevoir les capacités de rang 3",
-        "status": "ACQUIS",
-        "detail": "Les cinq rangs 3 obtenus à N1 par l’âge vénérable sont attribués et sauvegardés."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier les cinq rangs 3."
       },
       {
         "id": "age",
         "name": "Dépenses de rangs selon l’âge",
-        "status": "ACQUIS",
-        "detail": "Très jeune, jeune, mûr et vénérable : rangs supplémentaires et restrictions vérifiés."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier tous les choix d’âge."
       },
       {
         "id": "methods",
         "name": "Méthodes de répartition des caractéristiques",
-        "status": "ACQUIS",
-        "detail": "8 500/8 500 créations de profil pur testées sur le moteur courant : huit peuples, dix paires de voies, cinq options d’âge, trois séries distinctes et variantes raciales. Les autres méthodes conservent leurs preuves antérieures."
+        "status": "A_VERIFIER",
+        "detail": "Contrôler les méthodes du profil."
       },
       {
         "id": "derived",
         "name": "PV, DEF, initiative, chance, mana, attaques et dommages",
-        "status": "ACQUIS",
-        "detail": "10 240 comparaisons arithmétiques indépendantes : deux variantes, huit peuples, vingt paires ordonnées, cinq modalités d’âge, deux séries et deux armures, quinze dons et échange PC/DR. Attaques, dégâts, portée, critique, pouvoirs permanents et sauvegardes. 18 contrôles des frontières poudre/arbalètes et 10 doubles choix de prédilection. Les activations de combat restent au critère R3."
+        "status": "A_VERIFIER",
+        "detail": "Compléter les preuves arithmétiques indépendantes sur le seul index publié, toutes les attaques et les dons ; refuser tout rapport partiel ou périmé."
       },
       {
         "id": "r1effects",
         "name": "Tous les effets des cinq capacités de rang 1",
-        "status": "ACQUIS",
-        "detail": "Cinq capacités R1 calculées selon contexte dans l’interface réelle : mécanismes et armes de siège, grenaille en cône, Pilier de bar 1d4° et résistance non létale, initiative armée chargée, couvert, sans faire intervenir les hybrides. Plus de 60 cas oracle historiques + quatre situations réelles au clic sur la Forge publiée."
+        "status": "A_VERIFIER",
+        "detail": "Compléter les preuves sur les 5 effets R1, les cas négatifs, le vrai parcours au clic sur la version courante ; aucun test hybride requis."
       },
       {
         "id": "r2effects",
         "name": "Tous les effets des cinq capacités de rang 2",
-        "status": "ACQUIS",
-        "detail": "Cinq capacités R2 contrôlées par oracles contextuels (cas applicables, absence de contexte et capacité non acquise) et cinq créations vénérables au clic sur la version courante. Chargeurs calculés depuis les rangs acquis, rechargement, charges/préparation de Démolition, NC/critique de Mort ou vif, cible/délai d’Ajuster le tir et préparation/DEF/RD de Défaut dans la cuirasse. Rangs et sauvegardes croisés aux huit peuples."
+        "status": "A_VERIFIER",
+        "detail": "Chargeur 2 + INT validé ; restent le rechargement, la démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse."
       },
       {
         "id": "r3effects",
         "name": "Tous les effets des cinq capacités de rang 3",
-        "status": "ACQUIS",
-        "detail": "Calcul des cinq capacités R3, plus les 15 dons de Combattant aguerri dans les deux variantes. Conditions, restrictions d’armure, réouverture et non-application vérifiées. Vivacité testée au clic dans les deux situations."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier les cinq capacités et les dons de Combattant aguerri avec leurs restrictions, sur la fiche et au clic."
       },
       {
         "id": "gear",
         "name": "Toutes les armes, armures et variante Arbalétrier",
-        "status": "ACQUIS",
-        "detail": "100 contrôles des frontières d’équipement sur la Forge publiée (200 dans l’ancien rapport comprenant le maître supprimé) : 41 armes, sept armures, deux boucliers et deux variantes, avec sauvegardes. Variante sans poudre : pétoire et mousquet refusés. 120 contrôles des dons et plafonds d’armure sur la Forge publiée et vingt créations réelles au clic. Les restrictions raciales de taille restent suivies dans les critères propres aux peuples."
+        "status": "A_VERIFIER",
+        "detail": "Maîtrises, armure maximum, boucliers, armes à poudre, équipements alternatifs et Arbalétrier sans poudre."
       },
       {
         "id": "history",
         "name": "Origines, métiers et historiques avancés",
-        "status": "ACQUIS",
-        "detail": "Neuf origines et huit métiers testés à tous les rangs accessibles, dans les deux variantes. Bonus permanents et en situation, choix, limites, sauvegardes, réouverture et PDF vérifiés. Les décisions prévues par les règles restent au MJ."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier les preuves courantes des métiers, des situations au clic et des exports."
       },
       {
         "id": "save",
         "name": "Enregistrer et reprendre les pouvoirs obtenus",
-        "status": "ACQUIS",
-        "detail": "Les états de référence des rangs 1, 2 et 3 avec l’âge ont été enregistrés et restaurés à l’identique."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier la sauvegarde et la reprise."
       },
       {
         "id": "pdf",
         "name": "Fiche officielle et annexes",
-        "status": "ACQUIS",
-        "detail": "28 exports sur le vrai modèle officiel : cinq voies et rangs R1–R3 des deux variantes, deux exporteurs, bonus de Doigts agiles actif/inactif selon l’armure. 4 368 widgets relus (valeurs et apparences), fiche et annexe inspectées visuellement. Quinze dons contrôlés dans 60 annexes, uniquement leurs rangs acquis et textes intégraux. Les exports propres aux peuples et historiques restent suivis séparément."
+        "status": "A_VERIFIER",
+        "detail": "Test réel Chrome et smartphone des exports des deux variantes : 4 PDF de 6 pages, nom et profil présents sur les deux premières pages, PDF sans champs étranger refusé. Empreinte du modèle COF2 reconnue en simulation ; restent le rendu sur le PDF officiel réel et la vérification exhaustive des champs, textes et annexes."
       },
       {
         "id": "click",
         "name": "Créer, sauvegarder et rouvrir au clic sur mobile",
-        "status": "ACQUIS",
-        "detail": "80 créations tactiles des huit peuples × cinq modalités d’âge × deux variantes : jeune, très jeune PC/DR, mûr et vénérable. Fiches, valeurs et attaques identiques après sauvegarde/rechargement/réouverture. Quinze dons de Combattant aguerri et cinq catégories de prédilection sélectionnés dans chaque variante. Complète les vingt paires, les cinq voies vénérables et les situations contextuelles déjà vérifiées au clic."
+        "status": "A_VERIFIER",
+        "detail": "Compléter les quatre-vingts parcours des peuples et âges, le choix PC/DR visible, les quinze dons et les reprises sur les empreintes de production courantes. Les hybrides restent hors de cette campagne."
       }
     ],
     "paths": [
@@ -553,22 +257,22 @@
             "rank": 1,
             "name": "Mécanismes",
             "focus": "Bonus rang + 2 aux réparations et mécanismes ; dé bonus avec les armes de siège.",
-            "calculation": "Effet R1 et conditions contrôlés par oracle et parcours réel au clic.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           },
           {
             "rank": 2,
             "name": "Arme à répétition",
             "focus": "Chargeur de 2 + INT projectiles ; recharge par action limitée ; bonus lié aux rangs 3.",
-            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           },
           {
             "rank": 3,
             "name": "Tir de barrage (L)",
             "focus": "Attaque déclenchée par un déplacement ; choix entre dégâts doublés ou arrêt du mouvement.",
-            "calculation": "Effet R3 et cas négatifs vérifiés dans les deux variantes.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           }
         ]
       },
@@ -580,22 +284,22 @@
             "rank": 1,
             "name": "Tir de grenaille (L)",
             "focus": "Attaque de zone avec une arme à poudre ; moitié des dégâts et bonus d’artificier.",
-            "calculation": "Effet R1 et conditions contrôlés par oracle et parcours réel au clic.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           },
           {
             "rank": 2,
             "name": "Démolition",
             "focus": "Dégâts d’explosif sur une structure, temps de préparation et réduction des protections.",
-            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           },
           {
             "rank": 3,
             "name": "Poudre puissante",
             "focus": "Bonus de portée et de dégâts pour les armes à poudre.",
-            "calculation": "Effet R3 et cas négatifs vérifiés dans les deux variantes.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           }
         ]
       },
@@ -607,22 +311,22 @@
             "rank": 1,
             "name": "Pilier de bar",
             "focus": "Bonus rang + 2 aux interactions dans les tavernes ou auberges.",
-            "calculation": "Effet R1 et conditions contrôlés par oracle et parcours réel au clic.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           },
           {
             "rank": 2,
             "name": "Mort ou vif (L)",
             "focus": "Attaque spéciale au contact ou à distance avec dégâts supplémentaires.",
-            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           },
           {
             "rank": 3,
             "name": "Combattant aguerri",
             "focus": "Choix d’une capacité de rang 1 autorisée d’un autre profil.",
-            "calculation": "DEF +1, quinze dons, restrictions d’armure et conditions d’exécution vérifiés.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           }
         ]
       },
@@ -634,22 +338,22 @@
             "rank": 1,
             "name": "Plus vite que son ombre",
             "focus": "Bonus d’initiative de +5 si l’arme à poudre est chargée et tenue.",
-            "calculation": "Effet R1 et conditions contrôlés par oracle et parcours réel au clic.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           },
           {
             "rank": 2,
             "name": "Ajuster le tir",
             "focus": "Bonus conditionnel au tir qui suit une attaque à distance ratée.",
-            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           },
           {
             "rank": 3,
             "name": "Tir double (L)",
             "focus": "Attaques avec deux armes de poing ; mains, cibles et rechargement.",
-            "calculation": "Effet R3 et cas négatifs vérifiés dans les deux variantes.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           }
         ]
       },
@@ -661,28 +365,28 @@
             "rank": 1,
             "name": "Joli coup",
             "focus": "Ignore une pénalité liée à une couverture partielle.",
-            "calculation": "Effet R1 et conditions contrôlés par oracle et parcours réel au clic.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           },
           {
             "rank": 2,
             "name": "Défaut dans la cuirasse (A)",
             "focus": "Action de préparation et tir visant la faiblesse d’une cible.",
-            "calculation": "Effet R2 et cas négatifs contrôlés par oracle et parcours vénérable au clic.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           },
           {
             "rank": 3,
             "name": "Tir précis",
             "focus": "Plage de critique des armes à distance.",
-            "calculation": "Effet R3 et cas négatifs vérifiés dans les deux variantes.",
-            "status": "EFFETS_VERIFIES"
+            "calculation": "Effet complet et conditions de la capacité encore à vérifier avec Arquebusier Nain",
+            "status": "EFFETS_A_VERIFIER"
           }
         ]
       }
     ],
     "partialNumericValidated": true,
-    "next": "Guerrier N1 en cours."
+    "next": "Toutes les paires de voies légales ; Recevoir les capacités de rang 1 ; Recevoir les capacités de rang 2 ; Recevoir les capacités de rang 3 ; Dépenses de rangs selon l’âge ; Méthodes de répartition des caractéristiques ; PV, DEF, initiative, chance, mana, attaques et dommages ; Tous les effets des cinq capacités de rang 1 ; Tous les effets des cinq capacités de rang 2 ; Tous les effets des cinq capacités de rang 3 ; Toutes les armes, armures et variante Arbalétrier ; Origines, métiers et historiques avancés ; Enregistrer et reprendre les pouvoirs obtenus ; Fiche officielle et annexes ; Créer, sauvegarder et rouvrir au clic sur mobile"
   },
   "peoples": [
     {
@@ -694,44 +398,44 @@
         {
           "id": "catalogue",
           "name": "Peuple officiel et voie raciale",
-          "status": "ACQUIS",
-          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier sa voie."
         },
         {
           "id": "caracs",
           "name": "Bonus et malus de caractéristiques",
-          "status": "ACQUIS",
-          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les bonus et malus raciaux."
         },
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "ACQUIS",
-          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les choix raciaux."
         },
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "ACQUIS",
-          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 1 de la voie raciale."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "ACQUIS",
-          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 2 de la voie raciale."
         },
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "ACQUIS",
-          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Valider les variantes et sauvegardes des caractéristiques."
         },
         {
           "id": "ages",
           "name": "Tous les âges et historiques avec ce peuple",
           "status": "A_VERIFIER",
-          "detail": "Les associations origine géographique + métier ont été acceptées, leurs rangs et sauvegardes vérifiés au niveau 1 avec un personnage vénérable. Restent les variantes d’âge et les effets historiques conditionnels."
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
         },
         {
           "id": "conditional",
@@ -742,8 +446,8 @@
         {
           "id": "gear",
           "name": "Équipements et contraintes de taille",
-          "status": "ACQUIS",
-          "detail": "41 armes du livre de base, sept armures et deux boucliers évalués avec un profil Guerrier. Les contraintes raciales du Halfelin et la sauvegarde sont contrôlées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
         },
         {
           "id": "sheet",
@@ -752,9 +456,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 7,
+      "passed": 0,
       "total": 10,
-      "percent": 70,
+      "percent": 0,
       "historicalPercent": 69,
       "certified": false
     },
@@ -767,44 +471,44 @@
         {
           "id": "catalogue",
           "name": "Peuple officiel et voie raciale",
-          "status": "ACQUIS",
-          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier sa voie."
         },
         {
           "id": "caracs",
           "name": "Bonus et malus de caractéristiques",
-          "status": "ACQUIS",
-          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les bonus et malus raciaux."
         },
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "ACQUIS",
-          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les choix raciaux."
         },
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "ACQUIS",
-          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 1 de la voie raciale."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "ACQUIS",
-          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 2 de la voie raciale."
         },
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "ACQUIS",
-          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Valider les variantes et sauvegardes des caractéristiques."
         },
         {
           "id": "ages",
           "name": "Tous les âges et historiques avec ce peuple",
           "status": "A_VERIFIER",
-          "detail": "Les associations origine géographique + métier ont été acceptées, leurs rangs et sauvegardes vérifiés au niveau 1 avec un personnage vénérable. Restent les variantes d’âge et les effets historiques conditionnels."
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
         },
         {
           "id": "conditional",
@@ -815,8 +519,8 @@
         {
           "id": "gear",
           "name": "Équipements et contraintes de taille",
-          "status": "ACQUIS",
-          "detail": "41 armes du livre de base, sept armures et deux boucliers évalués avec un profil Guerrier. Les contraintes raciales du Halfelin et la sauvegarde sont contrôlées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
         },
         {
           "id": "sheet",
@@ -825,9 +529,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 7,
+      "passed": 0,
       "total": 10,
-      "percent": 70,
+      "percent": 0,
       "historicalPercent": 69,
       "certified": false
     },
@@ -840,44 +544,44 @@
         {
           "id": "catalogue",
           "name": "Peuple officiel et voie raciale",
-          "status": "ACQUIS",
-          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier sa voie."
         },
         {
           "id": "caracs",
           "name": "Bonus et malus de caractéristiques",
-          "status": "ACQUIS",
-          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les bonus et malus raciaux."
         },
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "ACQUIS",
-          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les choix raciaux."
         },
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "ACQUIS",
-          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 1 de la voie raciale."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "ACQUIS",
-          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 2 de la voie raciale."
         },
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "ACQUIS",
-          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Valider les variantes et sauvegardes des caractéristiques."
         },
         {
           "id": "ages",
           "name": "Tous les âges et historiques avec ce peuple",
           "status": "A_VERIFIER",
-          "detail": "Les associations origine géographique + métier ont été acceptées, leurs rangs et sauvegardes vérifiés au niveau 1 avec un personnage vénérable. Restent les variantes d’âge et les effets historiques conditionnels."
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
         },
         {
           "id": "conditional",
@@ -888,8 +592,8 @@
         {
           "id": "gear",
           "name": "Équipements et contraintes de taille",
-          "status": "ACQUIS",
-          "detail": "41 armes du livre de base, sept armures et deux boucliers évalués avec un profil Guerrier. Les contraintes raciales du Halfelin et la sauvegarde sont contrôlées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
         },
         {
           "id": "sheet",
@@ -898,9 +602,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 7,
+      "passed": 0,
       "total": 10,
-      "percent": 70,
+      "percent": 0,
       "historicalPercent": 69,
       "certified": false
     },
@@ -913,44 +617,44 @@
         {
           "id": "catalogue",
           "name": "Peuple officiel et voie raciale",
-          "status": "ACQUIS",
-          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier sa voie."
         },
         {
           "id": "caracs",
           "name": "Bonus et malus de caractéristiques",
-          "status": "ACQUIS",
-          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les bonus et malus raciaux."
         },
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "ACQUIS",
-          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les choix raciaux."
         },
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "ACQUIS",
-          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 1 de la voie raciale."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "ACQUIS",
-          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 2 de la voie raciale."
         },
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "ACQUIS",
-          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Valider les variantes et sauvegardes des caractéristiques."
         },
         {
           "id": "ages",
           "name": "Tous les âges et historiques avec ce peuple",
           "status": "A_VERIFIER",
-          "detail": "Règle confirmée pour l’Elfe sylvain (COF2 p.172) : origines Cités et Campagnes interdites en mode historique. Toutes les autres combinaisons d’historiques ciblées ont été acceptées et sauvegardées. Restent les autres effets selon les âges."
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
         },
         {
           "id": "conditional",
@@ -961,8 +665,8 @@
         {
           "id": "gear",
           "name": "Équipements et contraintes de taille",
-          "status": "ACQUIS",
-          "detail": "41 armes du livre de base, sept armures et deux boucliers évalués avec un profil Guerrier. Les contraintes raciales du Halfelin et la sauvegarde sont contrôlées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
         },
         {
           "id": "sheet",
@@ -971,9 +675,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 7,
+      "passed": 0,
       "total": 10,
-      "percent": 70,
+      "percent": 0,
       "historicalPercent": 69,
       "certified": false
     },
@@ -986,44 +690,44 @@
         {
           "id": "catalogue",
           "name": "Peuple officiel et voie raciale",
-          "status": "ACQUIS",
-          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier sa voie."
         },
         {
           "id": "caracs",
           "name": "Bonus et malus de caractéristiques",
-          "status": "ACQUIS",
-          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les bonus et malus raciaux."
         },
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "ACQUIS",
-          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les choix raciaux."
         },
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "ACQUIS",
-          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 1 de la voie raciale."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "ACQUIS",
-          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 2 de la voie raciale."
         },
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "ACQUIS",
-          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Valider les variantes et sauvegardes des caractéristiques."
         },
         {
           "id": "ages",
           "name": "Tous les âges et historiques avec ce peuple",
           "status": "A_VERIFIER",
-          "detail": "Les associations origine géographique + métier ont été acceptées, leurs rangs et sauvegardes vérifiés au niveau 1 avec un personnage vénérable. Restent les variantes d’âge et les effets historiques conditionnels."
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
         },
         {
           "id": "conditional",
@@ -1034,8 +738,8 @@
         {
           "id": "gear",
           "name": "Équipements et contraintes de taille",
-          "status": "ACQUIS",
-          "detail": "41 armes du livre de base, sept armures et deux boucliers évalués avec un profil Guerrier. Les contraintes raciales du Halfelin et la sauvegarde sont contrôlées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
         },
         {
           "id": "sheet",
@@ -1044,9 +748,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 7,
+      "passed": 0,
       "total": 10,
-      "percent": 70,
+      "percent": 0,
       "historicalPercent": 69,
       "certified": false
     },
@@ -1059,44 +763,44 @@
         {
           "id": "catalogue",
           "name": "Peuple officiel et voie raciale",
-          "status": "ACQUIS",
-          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier sa voie."
         },
         {
           "id": "caracs",
           "name": "Bonus et malus de caractéristiques",
-          "status": "ACQUIS",
-          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les bonus et malus raciaux."
         },
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "ACQUIS",
-          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les choix raciaux."
         },
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "ACQUIS",
-          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 1 de la voie raciale."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "ACQUIS",
-          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 2 de la voie raciale."
         },
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "ACQUIS",
-          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Valider les variantes et sauvegardes des caractéristiques."
         },
         {
           "id": "ages",
           "name": "Tous les âges et historiques avec ce peuple",
           "status": "A_VERIFIER",
-          "detail": "Les associations origine géographique + métier ont été acceptées, leurs rangs et sauvegardes vérifiés au niveau 1 avec un personnage vénérable. Restent les variantes d’âge et les effets historiques conditionnels."
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
         },
         {
           "id": "conditional",
@@ -1108,7 +812,7 @@
           "id": "gear",
           "name": "Équipements et contraintes de taille",
           "status": "A_VERIFIER",
-          "detail": "Rapière : p. 55, exception à une main ; p. 183, DM 1d6. Arbitrage à vérifier."
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
         },
         {
           "id": "sheet",
@@ -1117,9 +821,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 6,
+      "passed": 0,
       "total": 10,
-      "percent": 60,
+      "percent": 0,
       "historicalPercent": 69,
       "certified": false
     },
@@ -1132,44 +836,44 @@
         {
           "id": "catalogue",
           "name": "Peuple officiel et voie raciale",
-          "status": "ACQUIS",
-          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier sa voie."
         },
         {
           "id": "caracs",
           "name": "Bonus et malus de caractéristiques",
-          "status": "ACQUIS",
-          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les bonus et malus raciaux."
         },
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "ACQUIS",
-          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les choix raciaux."
         },
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "ACQUIS",
-          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 1 de la voie raciale."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "ACQUIS",
-          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 2 de la voie raciale."
         },
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "ACQUIS",
-          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Valider les variantes et sauvegardes des caractéristiques."
         },
         {
           "id": "ages",
           "name": "Tous les âges et historiques avec ce peuple",
           "status": "A_VERIFIER",
-          "detail": "Les associations origine géographique + métier ont été acceptées, leurs rangs et sauvegardes vérifiés au niveau 1 avec un personnage vénérable. Restent les variantes d’âge et les effets historiques conditionnels."
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
         },
         {
           "id": "conditional",
@@ -1180,8 +884,8 @@
         {
           "id": "gear",
           "name": "Équipements et contraintes de taille",
-          "status": "ACQUIS",
-          "detail": "41 armes du livre de base, sept armures et deux boucliers évalués avec un profil Guerrier. Les contraintes raciales du Halfelin et la sauvegarde sont contrôlées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
         },
         {
           "id": "sheet",
@@ -1190,9 +894,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 7,
+      "passed": 0,
       "total": 10,
-      "percent": 70,
+      "percent": 0,
       "historicalPercent": 69,
       "certified": false
     },
@@ -1205,44 +909,44 @@
         {
           "id": "catalogue",
           "name": "Peuple officiel et voie raciale",
-          "status": "ACQUIS",
-          "detail": "Race et voie raciale référencées dans le livre et dans Forge."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier sa voie."
         },
         {
           "id": "caracs",
           "name": "Bonus et malus de caractéristiques",
-          "status": "ACQUIS",
-          "detail": "Bonus et malus de création comparés aux caractéristiques de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les bonus et malus raciaux."
         },
         {
           "id": "options",
           "name": "Tous les choix raciaux de départ",
-          "status": "ACQUIS",
-          "detail": "Choix de caractéristiques et héritages de départ vérifiés dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier les choix raciaux."
         },
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "ACQUIS",
-          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 1 de la voie raciale."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "ACQUIS",
-          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier le rang 2 de la voie raciale."
         },
         {
           "id": "methods",
           "name": "Caractéristiques et sauvegarde des choix",
-          "status": "ACQUIS",
-          "detail": "Répartition et reprise des caractéristiques raciales vérifiées."
+          "status": "A_VERIFIER",
+          "detail": "Valider les variantes et sauvegardes des caractéristiques."
         },
         {
           "id": "ages",
           "name": "Tous les âges et historiques avec ce peuple",
           "status": "A_VERIFIER",
-          "detail": "Les associations origine géographique + métier ont été acceptées, leurs rangs et sauvegardes vérifiés au niveau 1 avec un personnage vénérable. Restent les variantes d’âge et les effets historiques conditionnels."
+          "detail": "Prouver les choix d’âge et d’historique pour le peuple, sans dépendre d’un seul profil."
         },
         {
           "id": "conditional",
@@ -1253,8 +957,8 @@
         {
           "id": "gear",
           "name": "Équipements et contraintes de taille",
-          "status": "ACQUIS",
-          "detail": "41 armes du livre de base, sept armures et deux boucliers évalués avec un profil Guerrier. Les contraintes raciales du Halfelin et la sauvegarde sont contrôlées."
+          "status": "A_VERIFIER",
+          "detail": "Vérifier toutes les restrictions raciales, les armes et les échanges autorisés."
         },
         {
           "id": "sheet",
@@ -1263,25 +967,22 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 7,
+      "passed": 0,
       "total": 10,
-      "percent": 70,
+      "percent": 0,
       "historicalPercent": 69,
       "certified": false
     }
   ],
-  "pausedProfiles": 6,
+  "pausedProfiles": 13,
   "summary": {
-    "profilesCertified": 7,
+    "profilesCertified": 0,
     "profilesInProgress": 1,
-    "profilesPending": 6,
+    "profilesPending": 13,
     "peoplesCertified": 0
   },
   "limitations": "Pourcentage de critères complets, non proportion de tests ni preuve exhaustive de tous les personnages. Un effet chiffré peut être validé sans que le rang complet le soit.",
   "sources": [
-    "QA/N1/pure-profile-fast-barbare.json",
-    "QA/N1/barbare-choices-click.json",
-    "QA/N1/barbare-official-pdf.json",
     "QA/N1/arquebusier-history-professions.json",
     "QA/N1/arquebusier-history-origins.json",
     "QA/N1/official-people-equipment.json",
