@@ -1,11 +1,11 @@
 {
   "schema": "FOH_N1_PEOPLE_SOURCE",
-  "scope": "16 people/Mage paths, R1/R2, permanent values and save/reload. Âme-forgée, Fée and Farfadet use the COF2 Compagnon; other expansion peoples retain their adaptation.",
+  "scope": "16 people/Mage paths, R1/R2, permanent values and save/reload. Âme-forgée, Fée and Farfadet use the COF2 Compagnon; Demi-ogre, Gobelin, Kobold and Minotaure use COF2 V2; Centaure retains its adaptation.",
   "products": [
     {
       "file": "index.html",
-      "sha256": "da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d",
-      "engineSha256": "fd729a741a223d89887779e2fa253ea398f62c5d7f95eee0ce7d2fdf6a0be1ee"
+      "sha256": "8ea60302fdf583bf11b278336fd1737f025b801759852f817f947547e2309033",
+      "engineSha256": "eb96d6c028bc45ea68c0c78560587f1d7ef19fa868e09abb5050b0dc29724e59"
     }
   ],
   "cases": [
@@ -357,16 +357,16 @@
       "path": "path:voie-du-demi-ogre:addon-comp2017-cof2",
       "rank": 1,
       "source": {
-        "document": "Compagnon COF1, adaptation Forge",
-        "printedPage": 13,
-        "officialCOF2": false
+        "document": "Compagnon COF2",
+        "printedPage": 12,
+        "officialCOF2": true
       },
       "expected": {
-        "PV": 8,
-        "DEF": 11,
+        "PV": 9,
+        "DEF": 10,
         "INIT": 11,
-        "PC": 2,
-        "ATM": 1
+        "PC": 1,
+        "ATM": 0
       },
       "status": "PASS"
     },
@@ -376,16 +376,16 @@
       "path": "path:voie-du-demi-ogre:addon-comp2017-cof2",
       "rank": 2,
       "source": {
-        "document": "Compagnon COF1, adaptation Forge",
-        "printedPage": 13,
-        "officialCOF2": false
+        "document": "Compagnon COF2",
+        "printedPage": 12,
+        "officialCOF2": true
       },
       "expected": {
-        "PV": 8,
-        "DEF": 10,
+        "PV": 9,
+        "DEF": 9,
         "INIT": 11,
-        "PC": 2,
-        "ATM": 1
+        "PC": 1,
+        "ATM": 0
       },
       "status": "PASS"
     },
@@ -395,35 +395,35 @@
       "path": "path:voie-du-gobelin:addon-comp2017-cof2",
       "rank": 1,
       "source": {
-        "document": "Compagnon COF1, adaptation Forge",
-        "printedPage": 15,
-        "officialCOF2": false
-      },
-      "expected": {
-        "PV": 8,
-        "DEF": 13,
-        "INIT": 14,
-        "PC": 1,
-        "ATM": 1
-      },
-      "status": "PASS"
-    },
-    {
-      "file": "index.html",
-      "people": "gobelin",
-      "path": "path:voie-du-gobelin:addon-comp2017-cof2",
-      "rank": 2,
-      "source": {
-        "document": "Compagnon COF1, adaptation Forge",
-        "printedPage": 15,
-        "officialCOF2": false
+        "document": "Compagnon COF2",
+        "printedPage": 23,
+        "officialCOF2": true
       },
       "expected": {
         "PV": 8,
         "DEF": 12,
-        "INIT": 14,
-        "PC": 1,
-        "ATM": 1
+        "INIT": 15,
+        "PC": 2,
+        "ATM": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "index.html",
+      "people": "gobelin",
+      "path": "path:voie-du-gobelin:addon-comp2017-cof2",
+      "rank": 2,
+      "source": {
+        "document": "Compagnon COF2",
+        "printedPage": 23,
+        "officialCOF2": true
+      },
+      "expected": {
+        "PV": 8,
+        "DEF": 11,
+        "INIT": 15,
+        "PC": 2,
+        "ATM": 0
       },
       "status": "PASS"
     },
@@ -433,14 +433,14 @@
       "path": "path:voie-du-kobold:addon-comp2017-cof2",
       "rank": 1,
       "source": {
-        "document": "Compagnon COF1, adaptation Forge",
-        "printedPage": 17,
-        "officialCOF2": false
+        "document": "Compagnon COF2",
+        "printedPage": 25,
+        "officialCOF2": true
       },
       "expected": {
         "PV": 7,
-        "DEF": 13,
-        "INIT": 11,
+        "DEF": 12,
+        "INIT": 12,
         "PC": 2,
         "ATM": 1
       },
@@ -452,14 +452,14 @@
       "path": "path:voie-du-kobold:addon-comp2017-cof2",
       "rank": 2,
       "source": {
-        "document": "Compagnon COF1, adaptation Forge",
-        "printedPage": 17,
-        "officialCOF2": false
+        "document": "Compagnon COF2",
+        "printedPage": 25,
+        "officialCOF2": true
       },
       "expected": {
         "PV": 7,
-        "DEF": 14,
-        "INIT": 11,
+        "DEF": 12,
+        "INIT": 12,
         "PC": 2,
         "ATM": 1
       },
@@ -547,16 +547,16 @@
       "path": "path:voie-du-minotaure:addon-comp2017-cof2",
       "rank": 1,
       "source": {
-        "document": "Compagnon COF1, adaptation Forge",
-        "printedPage": 21,
-        "officialCOF2": false
+        "document": "Compagnon COF2",
+        "printedPage": 30,
+        "officialCOF2": true
       },
       "expected": {
         "PV": 8,
         "DEF": 11,
         "INIT": 11,
-        "PC": 1,
-        "ATM": 1
+        "PC": 0,
+        "ATM": 2
       },
       "status": "PASS"
     },
@@ -566,16 +566,16 @@
       "path": "path:voie-du-minotaure:addon-comp2017-cof2",
       "rank": 2,
       "source": {
-        "document": "Compagnon COF1, adaptation Forge",
-        "printedPage": 21,
-        "officialCOF2": false
+        "document": "Compagnon COF2",
+        "printedPage": 30,
+        "officialCOF2": true
       },
       "expected": {
         "PV": 8,
         "DEF": 10,
         "INIT": 11,
-        "PC": 1,
-        "ATM": 1
+        "PC": 0,
+        "ATM": 2
       },
       "status": "PASS"
     },
