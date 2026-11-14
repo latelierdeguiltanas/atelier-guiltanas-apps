@@ -1,0 +1,20 @@
+// Regression: a mature Drakonide chevalier/prêtre can buy R2 of its secondary path.
+const assert=require('node:assert/strict');
+const {load,standardState}=require('./forge_product_runner');
+const {db,engine}=load(),T=db.tables;
+const primary='class:chevalier:cof2-lb-2024',secondary='class:pretre:cof2-lb-2024',p=T.paths_class.find(x=>x.classId===primary&&x.label==='Voie de la guerre').id,q=T.paths_class.find(x=>x.classId===secondary&&x.label==='Voie de la guerre sainte').id;
+const s=standardState(db,primary,p,'people:drakonide:compagnon-cof2');
+s.voies.profilePathIds=[p,q];s.hybrid={enabled:true,gmApproved:true,primaryProfileId:primary,secondaryProfileId:secondary,primaryPathId:p,secondaryPathId:q};
+s.advancedRules.age=true;s.age={categoryId:'mature',spending:[{pathId:q,rank:2},{pathId:s.voies.peoplePathId,rank:2}]};s.peupleChoices={};s.equip.gmApprovedSwap=true;
+s.abilityChoices['ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2']={drakonideBreath:'fire'};
+const clone=x=>JSON.parse(JSON.stringify(x));
+const check=state=>{const r=engine.computeCharacterN1(state);assert.equal(r.errors.length,0,JSON.stringify(r.errors));return r.sticky};
+const r=check(s);assert.equal(r.capacityBudget.age.spent,2);assert.equal(r.capacityBudget.age.remaining,0);assert.equal(r.profilePaths.find(a=>a.pathId===q).rank,2);
+for(const [id,rank] of [[p,1],[q,1],[q,2],[s.voies.peoplePathId,1],[s.voies.peoplePathId,2]])assert.equal(r.acquiredAbilities.filter(x=>x.pathId===id&&x.rank===rank).length,1);
+assert.equal(r.capacityBudget.standard.freeAssignments.filter(x=>x.pathId===q&&x.rank===1).length,1);
+const rev=clone(s);rev.age.spending.reverse();check(rev);
+const bad=clone(s);bad.age.spending[0].pathId=T.paths_class.find(x=>x.classId===secondary&&x.id!==q).id;assert.ok(engine.computeCharacterN1(bad).errors.length);
+const skip=clone(s);skip.age.spending[0].rank=3;assert.ok(engine.computeCharacterN1(skip).errors.length);
+const young=clone(s);young.age={categoryId:'young',spending:[]};check(young);
+const copy=clone(r.characterState.creationInput);check(copy);
+console.log('PASS hybrid mature Drakonide: 6 scenarios (4 legal, 2 illegal).');
