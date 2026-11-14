@@ -1,9 +1,9 @@
 {
   "schema": "FOH_N1_REGRESSION_BATCH",
   "scope": "N1 creation and advanced-age projections; no progression work; some high-rank reference projections remain in reused suites",
-  "indexSha256": "a1c1cb9360a967733b08ab182119cd8fbe44551016902672eb76dd6a516704d2",
-  "finishedAt": "2026-11-14T17:08:37.785Z",
-  "passed": 34,
+  "indexSha256": "8ea60302fdf583bf11b278336fd1737f025b801759852f817f947547e2309033",
+  "finishedAt": "2026-11-14T17:21:33.068Z",
+  "passed": 33,
   "total": 37,
   "status": "FAIL",
   "browserClicks": false,
@@ -76,7 +76,7 @@
       "status": "PASS",
       "exitCode": 0,
       "runnerSha256": "4675ad40dfc156d809ae520c2d6c8df5f69a3b818f4ed267096d53c5c4a944ae",
-      "output": "{\n  \"schema\": \"FOH_N1_AGE_SOURCE_CHECK\",\n  \"sources\": [\n    {\n      \"file\": \"règles avancées.pdf\",\n      \"pdfPage\": 1,\n      \"printedPage\": 153,\n      \"visuallyRead\": true,\n      \"rule\": \"Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.\"\n    }\n  ],\n  \"cases\": [\n    {\n      \"id\": \"index.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:DR\",\n      \"status\": \"PASS\"\n    }\n  ],\n  \"replays\": 11,\n  \"failures\": [],\n  \"engineSha256\": \"07727b7ee4c643ec2f828d9836937afb795fb8ecaa86f487ad028e0227fcdbb6\",\n  \"status\": \"PASS\"\n}\n"
+      "output": "{\n  \"schema\": \"FOH_N1_AGE_SOURCE_CHECK\",\n  \"sources\": [\n    {\n      \"file\": \"règles avancées.pdf\",\n      \"pdfPage\": 1,\n      \"printedPage\": 153,\n      \"visuallyRead\": true,\n      \"rule\": \"Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.\"\n    }\n  ],\n  \"cases\": [\n    {\n      \"id\": \"index.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:DR\",\n      \"status\": \"PASS\"\n    }\n  ],\n  \"replays\": 11,\n  \"failures\": [],\n  \"engineSha256\": \"eb96d6c028bc45ea68c0c78560587f1d7ef19fa868e09abb5050b0dc29724e59\",\n  \"status\": \"PASS\"\n}\n"
     },
     {
       "file": "n1_size_equipment_runner.cjs",
@@ -122,10 +122,10 @@
     },
     {
       "file": "grants_attacks_companions_runner.cjs",
-      "status": "PASS",
-      "exitCode": 0,
+      "status": "FAIL",
+      "exitCode": 1,
       "runnerSha256": "2696cae3055c61e1e7c75b84d420d7503ff6eedca834f5b1667fa0176e0297a5",
-      "output": "PASS 78 creation/replay cases: attack/damage stat separation, R2/R3 dice, grant choices/duplicates/PM, eight asset paths and contextual familiar stacking; 50 sorcerer/monk hybrids.\n"
+      "output": "/home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/grants_attacks_companions_runner.cjs:27\nlet gob=standardState(db,cls('voleur'),undefined,'people:gobelin:addon-comp2017-cof2');age(gob,'mature',[['path:voie-du-gobelin:addon-comp2017-cof2',2],[gob.voies.profilePathIds[0],2]]);const gobr=ok(gob),worg=gobr.companions.find(a=>a.companionId==='companion:young-worg');assert.equal(worg.def,14);assert.equal(worg.pv,4);assert.equal(worg.init,gobr.INIT);assert.equal(worg.attack,1);\n                                                                                                                                                                                                                                                                                                    ^\n\nTypeError: Cannot read properties of undefined (reading 'def')\n    at Object.<anonymous> (/home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/grants_attacks_companions_runner.cjs:27:293)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10)\n    at Module.load (node:internal/modules/cjs/loader:1505:32)\n    at Function._load (node:internal/modules/cjs/loader:1309:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)\n    at node:internal/main/run_main_module:36:49\n\nNode.js v22.23.4\n"
     },
     {
       "file": "grant_prerequisites_runner.cjs",
