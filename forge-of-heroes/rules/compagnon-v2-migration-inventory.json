@@ -1,0 +1,135 @@
+{
+  "source": {
+    "file": "compagnon v2 races.pdf",
+    "printedPages": "6–38",
+    "pdfPages": 33,
+    "bookId": "cof2-compagnon-v2"
+  },
+  "scope": "Inventaire de migration, distinct de la certification de production",
+  "newPeoples": [
+    {
+      "name": "Cambion",
+      "pages": "8–10",
+      "status": "catalogue_and_targeted_N1_engine_tests_passed"
+    },
+    {
+      "name": "Drakonide",
+      "pages": "13–14",
+      "status": "catalogue_and_targeted_N1_engine_tests_passed"
+    },
+    {
+      "name": "Elfe pâle",
+      "pages": "14–16",
+      "status": "catalogue_and_targeted_N1_engine_tests_passed"
+    },
+    {
+      "name": "Elfe des profondeurs",
+      "pages": "16–17",
+      "status": "catalogue_and_targeted_N1_engine_tests_passed"
+    },
+    {
+      "name": "Félis",
+      "pages": "18–19",
+      "status": "catalogue_and_targeted_N1_engine_tests_passed"
+    },
+    {
+      "name": "Frouïn",
+      "pages": "20–21",
+      "status": "catalogue_and_targeted_N1_engine_tests_passed"
+    },
+    {
+      "name": "Nephilim",
+      "pages": "30–33",
+      "status": "catalogue_and_targeted_N1_engine_tests_passed"
+    },
+    {
+      "name": "Ophidien",
+      "pages": "33–35",
+      "status": "catalogue_and_targeted_N1_engine_tests_passed"
+    },
+    {
+      "name": "Satyre",
+      "pages": "34–36",
+      "status": "catalogue_and_targeted_N1_engine_tests_passed"
+    },
+    {
+      "name": "Wolfer",
+      "pages": "36–38",
+      "status": "catalogue_and_targeted_N1_engine_tests_passed"
+    }
+  ],
+  "existingAdaptationsToReplace": [
+    {
+      "name": "Demi-ogre",
+      "status": "V2_data_replaced_in_branch_N1_matrix_passed",
+      "oldSaveMigration": "pending"
+    },
+    {
+      "name": "Gobelin",
+      "status": "V2_data_replaced_in_branch_N1_matrix_passed",
+      "oldSaveMigration": "pending"
+    },
+    {
+      "name": "Kobold",
+      "status": "V2_data_replaced_in_branch_N1_matrix_passed",
+      "oldSaveMigration": "pending"
+    },
+    {
+      "name": "Minotaure",
+      "status": "V2_data_replaced_in_branch_N1_matrix_passed",
+      "oldSaveMigration": "pending"
+    }
+  ],
+  "existingV2ToReaudit": [
+    {
+      "name": "Âme-forgée",
+      "status": "R1_and_pure_profiles_regression_passed"
+    },
+    {
+      "name": "Lutin · Fée",
+      "status": "R1_and_pure_profiles_regression_passed"
+    },
+    {
+      "name": "Lutin · Farfadet",
+      "status": "R1_and_pure_profiles_regression_passed"
+    }
+  ],
+  "additionalPath": {
+    "name": "Voie optionnelle du Demi-elfe",
+    "status": "added_and_N1_targeted_matrix_passed"
+  },
+  "sharedRulesToIntegrate": [
+    "Sorts de voie de peuple et caractéristique de magie (p.6)",
+    "Ascendance non humaine (p.8)"
+  ],
+  "legacyNotCovered": [
+    "Centaure"
+  ],
+  "policy": "Ne pas supprimer les anciennes sauvegardes ou modifier les héros Bastide sans migration explicite. Ne pas compter un peuple comme certifié sur la seule présence de ses textes. Préserver les preuves antérieures, réexécuter les suites sur la nouvelle base.",
+  "progress": {
+    "catalogue": {
+      "new": 10,
+      "totalNew": 10,
+      "forms": 17,
+      "totalForms": 17,
+      "optionalPaths": 1
+    },
+    "executed": {
+      "attempts": 692,
+      "valid": 680,
+      "expectedRefusals": 12,
+      "unexpectedFailures": 0,
+      "replays": 680
+    },
+    "testedHTMLBlob": "bb15787532fb128ec07a25157aeaab061d4a8354",
+    "certification": "OPEN",
+    "production": "unchanged",
+    "limits": [
+      "Descriptions résumées depuis les photographies, pas une transcription exhaustive certifiée",
+      "Automatisation de tous les effets R2–R5 et règles transversales encore ouverte",
+      "Toutes les paires de voies et tous hybrides non couverts",
+      "Recette navigateur Android et vrais exports PDF non réalisés",
+      "Migrations des sauvegardes et régression globale non réalisées"
+    ]
+  }
+}

@@ -369,181 +369,170 @@
       "id": "people:demi-ogre:addon-comp2017-cof2",
       "label": "DEMI-OGRE",
       "group": "Compagnon",
-      "bonuses_raw": "FOH adapté COF2 : +1 FOR ou CON ; -1 INT ou CHA.",
+      "bonuses_raw": "+2 FOR ; +1 CON ; −1 AGI, INT, CHA et VOL",
       "schema": {
         "type": "stat_mods",
         "bonus": {
-          "value": 1,
-          "mode": "choice",
+          "mode": "fixed",
           "options": [
-            "for",
-            "con"
-          ]
+            "for"
+          ],
+          "value": 2
         },
         "malus": {
-          "value": -1,
-          "mode": "choice",
+          "mode": "fixed",
           "options": [
-            "int",
-            "cha"
-          ]
+            "agi"
+          ],
+          "value": -1
         },
-        "raw": "FOH adapté COF2 : +1 FOR ou CON ; -1 INT ou CHA."
+        "extra": {
+          "con": 1,
+          "int": -1,
+          "cha": -1,
+          "vol": -1
+        },
+        "raw": "+2 FOR ; +1 CON ; −1 AGI, INT, CHA et VOL"
       },
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "Chroniques Oubliées Fantasy 1re édition",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
         "printedPage": 12,
-        "chapter": "Nouveaux peuples",
+        "chapter": "Peuples optionnels",
         "section": "DEMI-OGRE"
       },
       "certification": {
         "scope": "n1_extension",
-        "sourceStatus": "official_cof1_source_located",
-        "ruleTextStatus": "present_non_certified",
-        "conversionStatus": "FOH_VALIDATED",
-        "functionalStatus": "tested_n1",
-        "enabledInCertifiedN1": true,
-        "origin": "official_cof1",
-        "conversion": "foh_cof2_canonical",
-        "balanceStatus": "validated_lot_a_fix67",
-        "legacyAdaptationStatus": "candidate_not_oracle",
-        "validatedBy": "FIX67"
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
       }
     },
     {
       "id": "people:gobelin:addon-comp2017-cof2",
       "label": "GOBELIN",
       "group": "Compagnon",
-      "bonuses_raw": "FOH adapté COF2 : +1 AGI ou INT ; -1 CHA.",
+      "bonuses_raw": "+1 AGI et PER ; −1 FOR et VOL",
       "schema": {
         "type": "stat_mods",
         "bonus": {
-          "value": 1,
-          "mode": "choice",
-          "options": [
-            "agi",
-            "int"
-          ]
-        },
-        "malus": {
-          "value": -1,
           "mode": "fixed",
           "options": [
-            "cha"
-          ]
+            "agi"
+          ],
+          "value": 1
         },
-        "raw": "FOH adapté COF2 : +1 AGI ou INT ; -1 CHA."
+        "malus": {
+          "mode": "fixed",
+          "options": [
+            "for"
+          ],
+          "value": -1
+        },
+        "extra": {
+          "per": 1,
+          "vol": -1
+        },
+        "raw": "+1 AGI et PER ; −1 FOR et VOL"
       },
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "Chroniques Oubliées Fantasy 1re édition",
-        "printedPage": 14,
-        "chapter": "Nouveaux peuples",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 23,
+        "chapter": "Peuples optionnels",
         "section": "GOBELIN"
       },
       "certification": {
         "scope": "n1_extension",
-        "sourceStatus": "official_cof1_source_located",
-        "ruleTextStatus": "present_non_certified",
-        "conversionStatus": "FOH_VALIDATED",
-        "functionalStatus": "tested_n1",
-        "enabledInCertifiedN1": true,
-        "origin": "official_cof1",
-        "conversion": "foh_cof2_canonical",
-        "balanceStatus": "validated_lot_a_fix67",
-        "legacyAdaptationStatus": "candidate_not_oracle",
-        "validatedBy": "FIX67"
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
       }
     },
     {
       "id": "people:kobold:addon-comp2017-cof2",
       "label": "KOBOLD",
       "group": "Compagnon",
-      "bonuses_raw": "FOH adapté COF2 : +1 AGI ou INT ; -1 CON.",
+      "bonuses_raw": "+1 AGI et PER ; −1 FOR et CON",
       "schema": {
         "type": "stat_mods",
         "bonus": {
-          "value": 1,
-          "mode": "choice",
-          "options": [
-            "agi",
-            "int"
-          ]
-        },
-        "malus": {
-          "value": -1,
           "mode": "fixed",
           "options": [
-            "con"
-          ]
+            "agi"
+          ],
+          "value": 1
         },
-        "raw": "FOH adapté COF2 : +1 AGI ou INT ; -1 CON."
+        "malus": {
+          "mode": "fixed",
+          "options": [
+            "for"
+          ],
+          "value": -1
+        },
+        "extra": {
+          "per": 1,
+          "con": -1
+        },
+        "raw": "+1 AGI et PER ; −1 FOR et CON"
       },
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "Chroniques Oubliées Fantasy 1re édition",
-        "printedPage": 16,
-        "chapter": "Nouveaux peuples",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 25,
+        "chapter": "Peuples optionnels",
         "section": "KOBOLD"
       },
       "certification": {
         "scope": "n1_extension",
-        "sourceStatus": "official_cof1_source_extracted",
-        "ruleTextStatus": "certified_source_text",
-        "conversionStatus": "FOH_VALIDATED",
-        "functionalStatus": "tested_n1",
-        "enabledInCertifiedN1": true,
-        "origin": "official_cof1",
-        "conversion": "foh_cof2_canonical",
-        "balanceStatus": "validated_lot_b_fix68",
-        "legacyAdaptationStatus": "replaced",
-        "validatedBy": "FIX68"
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
       }
     },
     {
       "id": "people:minotaure:addon-comp2017-cof2",
       "label": "MINOTAURE",
       "group": "Compagnon",
-      "bonuses_raw": "FOH adapté COF2 : +1 FOR ou CON ; -1 CHA.",
+      "bonuses_raw": "+2 FOR ; +1 VOL ; −2 INT et CHA",
       "schema": {
         "type": "stat_mods",
         "bonus": {
-          "value": 1,
-          "mode": "choice",
-          "options": [
-            "for",
-            "con"
-          ]
-        },
-        "malus": {
-          "value": -1,
           "mode": "fixed",
           "options": [
-            "cha"
-          ]
+            "for"
+          ],
+          "value": 2
         },
-        "raw": "FOH adapté COF2 : +1 FOR ou CON ; -1 CHA."
+        "malus": {
+          "mode": "fixed",
+          "options": [
+            "int"
+          ],
+          "value": -2
+        },
+        "extra": {
+          "vol": 1,
+          "cha": -2
+        },
+        "raw": "+2 FOR ; +1 VOL ; −2 INT et CHA"
       },
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "Chroniques Oubliées Fantasy 1re édition",
-        "printedPage": 20,
-        "chapter": "Nouveaux peuples",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 30,
+        "chapter": "Peuples optionnels",
         "section": "MINOTAURE"
       },
       "certification": {
         "scope": "n1_extension",
-        "sourceStatus": "official_cof1_source_extracted",
-        "ruleTextStatus": "certified_source_text",
-        "conversionStatus": "FOH_VALIDATED",
-        "functionalStatus": "tested_n1",
-        "enabledInCertifiedN1": true,
-        "origin": "official_cof1",
-        "conversion": "foh_cof2_canonical",
-        "balanceStatus": "validated_lot_b_fix68",
-        "legacyAdaptationStatus": "replaced",
-        "validatedBy": "FIX68"
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
       }
     },
     {
@@ -622,6 +611,403 @@
         "scope": "n1_extension",
         "sourceStatus": "official_cof2",
         "enabledInCertifiedN1": true
+      }
+    },
+    {
+      "id": "people:drakonide:compagnon-cof2",
+      "label": "DRAKONIDE",
+      "group": "Compagnon",
+      "bonuses_raw": "+1 FOR et +1 VOL ; −1 AGI et −1 PER",
+      "schema": {
+        "type": "stat_mods",
+        "bonus": {
+          "mode": "fixed",
+          "options": [
+            "for"
+          ],
+          "value": 1
+        },
+        "malus": {
+          "mode": "fixed",
+          "options": [
+            "agi"
+          ],
+          "value": -1
+        },
+        "extra": {
+          "vol": 1,
+          "per": -1
+        },
+        "raw": "+1 FOR et +1 VOL ; −1 AGI et −1 PER"
+      },
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 14,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Drakonide"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "people:cambion:compagnon-cof2",
+      "label": "CAMBION",
+      "group": "Compagnon",
+      "bonuses_raw": "+1 VOL ou CON ; −1 CHA",
+      "schema": {
+        "type": "stat_mods",
+        "bonus": {
+          "mode": "choice",
+          "options": [
+            "vol",
+            "con"
+          ],
+          "value": 1
+        },
+        "malus": {
+          "mode": "fixed",
+          "options": [
+            "cha"
+          ],
+          "value": -1
+        },
+        "extra": {},
+        "raw": "+1 VOL ou CON ; −1 CHA"
+      },
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 9,
+        "chapter": "Peuples optionnels",
+        "section": "Cambion"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "people:elfe-pale:compagnon-cof2",
+      "label": "ELFE PÂLE",
+      "group": "Compagnon",
+      "bonuses_raw": "+1 PER ou VOL ; −1 FOR",
+      "schema": {
+        "type": "stat_mods",
+        "bonus": {
+          "mode": "choice",
+          "options": [
+            "per",
+            "vol"
+          ],
+          "value": 1
+        },
+        "malus": {
+          "mode": "fixed",
+          "options": [
+            "for"
+          ],
+          "value": -1
+        },
+        "extra": {},
+        "raw": "+1 PER ou VOL ; −1 FOR"
+      },
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 15,
+        "chapter": "Peuples optionnels",
+        "section": "Elfe pâle"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "people:elfe-profondeurs:compagnon-cof2",
+      "label": "ELFE DES PROFONDEURS",
+      "group": "Compagnon",
+      "bonuses_raw": "+1 AGI ou VOL ; −1 FOR",
+      "schema": {
+        "type": "stat_mods",
+        "bonus": {
+          "mode": "choice",
+          "options": [
+            "agi",
+            "vol"
+          ],
+          "value": 1
+        },
+        "malus": {
+          "mode": "fixed",
+          "options": [
+            "for"
+          ],
+          "value": -1
+        },
+        "extra": {},
+        "raw": "+1 AGI ou VOL ; −1 FOR"
+      },
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 17,
+        "chapter": "Peuples optionnels",
+        "section": "Elfe des profondeurs"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "people:felis:compagnon-cof2",
+      "label": "FÉLIS",
+      "group": "Compagnon",
+      "bonuses_raw": "+1 AGI ou PER ; −1 FOR ou INT",
+      "schema": {
+        "type": "stat_mods",
+        "bonus": {
+          "mode": "choice",
+          "options": [
+            "agi",
+            "per"
+          ],
+          "value": 1
+        },
+        "malus": {
+          "mode": "choice",
+          "options": [
+            "for",
+            "int"
+          ],
+          "value": -1
+        },
+        "extra": {},
+        "raw": "+1 AGI ou PER ; −1 FOR ou INT"
+      },
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 18,
+        "chapter": "Peuples optionnels",
+        "section": "Félis"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "people:frouin:compagnon-cof2",
+      "label": "FROUÏN",
+      "group": "Compagnon",
+      "bonuses_raw": "+1 AGI ou PER ; −1 FOR; +1 CON; −1 CHA",
+      "schema": {
+        "type": "stat_mods",
+        "bonus": {
+          "mode": "choice",
+          "options": [
+            "agi",
+            "per"
+          ],
+          "value": 1
+        },
+        "malus": {
+          "mode": "fixed",
+          "options": [
+            "for"
+          ],
+          "value": -1
+        },
+        "extra": {
+          "con": 1,
+          "cha": -1
+        },
+        "raw": "+1 AGI ou PER ; −1 FOR; +1 CON; −1 CHA"
+      },
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 21,
+        "chapter": "Peuples optionnels",
+        "section": "Frouïn"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "people:nephilim:compagnon-cof2",
+      "label": "NEPHILIM",
+      "group": "Compagnon",
+      "bonuses_raw": "+1 CHA ou CON ; −1 PER",
+      "schema": {
+        "type": "stat_mods",
+        "bonus": {
+          "mode": "choice",
+          "options": [
+            "cha",
+            "con"
+          ],
+          "value": 1
+        },
+        "malus": {
+          "mode": "fixed",
+          "options": [
+            "per"
+          ],
+          "value": -1
+        },
+        "extra": {},
+        "raw": "+1 CHA ou CON ; −1 PER"
+      },
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 32,
+        "chapter": "Peuples optionnels",
+        "section": "Nephilim"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "people:ophidien:compagnon-cof2",
+      "label": "OPHIDIEN",
+      "group": "Compagnon",
+      "bonuses_raw": "+1 INT ou VOL ; −1 CON",
+      "schema": {
+        "type": "stat_mods",
+        "bonus": {
+          "mode": "choice",
+          "options": [
+            "int",
+            "vol"
+          ],
+          "value": 1
+        },
+        "malus": {
+          "mode": "fixed",
+          "options": [
+            "con"
+          ],
+          "value": -1
+        },
+        "extra": {},
+        "raw": "+1 INT ou VOL ; −1 CON"
+      },
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 33,
+        "chapter": "Peuples optionnels",
+        "section": "Ophidien"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "people:satyre:compagnon-cof2",
+      "label": "SATYRE",
+      "group": "Compagnon",
+      "bonuses_raw": "+1 PER ou CHA ; −1 VOL ou INT",
+      "schema": {
+        "type": "stat_mods",
+        "bonus": {
+          "mode": "choice",
+          "options": [
+            "per",
+            "cha"
+          ],
+          "value": 1
+        },
+        "malus": {
+          "mode": "choice",
+          "options": [
+            "vol",
+            "int"
+          ],
+          "value": -1
+        },
+        "extra": {},
+        "raw": "+1 PER ou CHA ; −1 VOL ou INT"
+      },
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 36,
+        "chapter": "Peuples optionnels",
+        "section": "Satyre"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "people:wolfer:compagnon-cof2",
+      "label": "WOLFER",
+      "group": "Compagnon",
+      "bonuses_raw": "+1 PER ou VOL ; −1 INT",
+      "schema": {
+        "type": "stat_mods",
+        "bonus": {
+          "mode": "choice",
+          "options": [
+            "per",
+            "vol"
+          ],
+          "value": 1
+        },
+        "malus": {
+          "mode": "fixed",
+          "options": [
+            "int"
+          ],
+          "value": -1
+        },
+        "extra": {},
+        "raw": "+1 PER ou VOL ; −1 INT"
+      },
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 37,
+        "chapter": "Peuples optionnels",
+        "section": "Wolfer"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
       }
     }
   ],
@@ -3358,23 +3744,18 @@
       "label": "VOIE DU DEMI-OGRE",
       "people_id": "people:demi-ogre:addon-comp2017-cof2",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "Chroniques Oubliées Fantasy 1re édition",
-        "printedPage": 13,
-        "chapter": "Nouveaux peuples",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 12,
+        "chapter": "Peuples optionnels",
         "section": "VOIE DU DEMI-OGRE"
       },
       "certification": {
         "scope": "n1_extension",
-        "sourceStatus": "official_cof1_source_located",
-        "ruleTextStatus": "present_non_certified",
-        "conversionStatus": "FOH_VALIDATED",
-        "functionalStatus": "tested_n1",
-        "enabledInCertifiedN1": true,
-        "origin": "official_cof1",
-        "conversion": "foh_cof2_canonical",
-        "balanceStatus": "validated_lot_a_fix67",
-        "validatedBy": "FIX67"
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
       },
       "group": "Compagnon"
     },
@@ -3383,23 +3764,18 @@
       "label": "VOIE DU GOBELIN",
       "people_id": "people:gobelin:addon-comp2017-cof2",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "Chroniques Oubliées Fantasy 1re édition",
-        "printedPage": 15,
-        "chapter": "Nouveaux peuples",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 23,
+        "chapter": "Peuples optionnels",
         "section": "VOIE DU GOBELIN"
       },
       "certification": {
         "scope": "n1_extension",
-        "sourceStatus": "official_cof1_source_located",
-        "ruleTextStatus": "present_non_certified",
-        "conversionStatus": "FOH_VALIDATED",
-        "functionalStatus": "tested_n1",
-        "enabledInCertifiedN1": true,
-        "origin": "official_cof1",
-        "conversion": "foh_cof2_canonical",
-        "balanceStatus": "validated_lot_a_fix67",
-        "validatedBy": "FIX67"
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
       },
       "group": "Compagnon"
     },
@@ -3408,24 +3784,18 @@
       "label": "VOIE DU KOBOLD",
       "people_id": "people:kobold:addon-comp2017-cof2",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "Chroniques Oubliées Fantasy 1re édition",
-        "printedPage": 17,
-        "chapter": "Nouveaux peuples",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 25,
+        "chapter": "Peuples optionnels",
         "section": "VOIE DU KOBOLD"
       },
       "certification": {
         "scope": "n1_extension",
-        "sourceStatus": "official_cof1_source_extracted",
-        "ruleTextStatus": "certified_source_text",
-        "conversionStatus": "FOH_VALIDATED",
-        "functionalStatus": "tested_n1",
-        "enabledInCertifiedN1": true,
-        "origin": "official_cof1",
-        "conversion": "foh_cof2_canonical",
-        "balanceStatus": "validated_lot_b_fix68",
-        "legacyAdaptationStatus": "replaced",
-        "validatedBy": "FIX68"
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
       },
       "group": "Compagnon"
     },
@@ -3434,24 +3804,18 @@
       "label": "VOIE DU MINOTAURE",
       "people_id": "people:minotaure:addon-comp2017-cof2",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "Chroniques Oubliées Fantasy 1re édition",
-        "printedPage": 21,
-        "chapter": "Nouveaux peuples",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 30,
+        "chapter": "Peuples optionnels",
         "section": "VOIE DU MINOTAURE"
       },
       "certification": {
         "scope": "n1_extension",
-        "sourceStatus": "official_cof1_source_extracted",
-        "ruleTextStatus": "certified_source_text",
-        "conversionStatus": "FOH_VALIDATED",
-        "functionalStatus": "tested_n1",
-        "enabledInCertifiedN1": true,
-        "origin": "official_cof1",
-        "conversion": "foh_cof2_canonical",
-        "balanceStatus": "validated_lot_b_fix68",
-        "legacyAdaptationStatus": "replaced",
-        "validatedBy": "FIX68"
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
       },
       "group": "Compagnon"
     },
@@ -3504,6 +3868,216 @@
         "scope": "n1_extension",
         "sourceStatus": "official_cof2",
         "enabledInCertifiedN1": true
+      }
+    },
+    {
+      "id": "path:voie-du-drakonide:compagnon-cof2",
+      "label": "VOIE DU DRAKONIDE",
+      "people_id": "people:drakonide:compagnon-cof2",
+      "group": "Compagnon",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 14,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Drakonide"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "path:voie-du-cambion:compagnon-cof2",
+      "label": "VOIE DU CAMBION",
+      "people_id": "people:cambion:compagnon-cof2",
+      "group": "Compagnon",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 10,
+        "chapter": "Peuples optionnels",
+        "section": "Cambion"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "path:voie-de-l-elfe-pale:compagnon-cof2",
+      "label": "VOIE DE L’ELFE PÂLE",
+      "people_id": "people:elfe-pale:compagnon-cof2",
+      "group": "Compagnon",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 15,
+        "chapter": "Peuples optionnels",
+        "section": "Elfe pâle"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "label": "VOIE DE L’ELFE DES PROFONDEURS",
+      "people_id": "people:elfe-profondeurs:compagnon-cof2",
+      "group": "Compagnon",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 17,
+        "chapter": "Peuples optionnels",
+        "section": "Elfe des profondeurs"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "path:voie-du-felis:compagnon-cof2",
+      "label": "VOIE DU FÉLIS",
+      "people_id": "people:felis:compagnon-cof2",
+      "group": "Compagnon",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 19,
+        "chapter": "Peuples optionnels",
+        "section": "Félis"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "path:voie-du-frouin:compagnon-cof2",
+      "label": "VOIE DU FROUÏN",
+      "people_id": "people:frouin:compagnon-cof2",
+      "group": "Compagnon",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 21,
+        "chapter": "Peuples optionnels",
+        "section": "Frouïn"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "path:voie-du-nephilim:compagnon-cof2",
+      "label": "VOIE DU NEPHILIM",
+      "people_id": "people:nephilim:compagnon-cof2",
+      "group": "Compagnon",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 32,
+        "chapter": "Peuples optionnels",
+        "section": "Nephilim"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "path:voie-de-l-ophidien:compagnon-cof2",
+      "label": "VOIE DE L’OPHIDIEN",
+      "people_id": "people:ophidien:compagnon-cof2",
+      "group": "Compagnon",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 34,
+        "chapter": "Peuples optionnels",
+        "section": "Ophidien"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "path:voie-du-satyre:compagnon-cof2",
+      "label": "VOIE DU SATYRE",
+      "people_id": "people:satyre:compagnon-cof2",
+      "group": "Compagnon",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 36,
+        "chapter": "Peuples optionnels",
+        "section": "Satyre"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "path:voie-du-wolfer:compagnon-cof2",
+      "label": "VOIE DU WOLFER",
+      "people_id": "people:wolfer:compagnon-cof2",
+      "group": "Compagnon",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 38,
+        "chapter": "Peuples optionnels",
+        "section": "Wolfer"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
+    },
+    {
+      "id": "path:voie-du-demi-elfe:compagnon-cof2",
+      "label": "VOIE DU DEMI-ELFE",
+      "people_id": "people:demi-elfe:cof2-lb-2024",
+      "group": "Compagnon",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 10,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Demi-elfe"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
       }
     }
   ],
@@ -21379,44 +21953,54 @@
       "id": "ability:sang-froid:path:voie-du-demi-ogre:addon-comp2017-cof2:rank1:cof2-lb-2024",
       "path_id": "path:voie-du-demi-ogre:addon-comp2017-cof2",
       "rank": 1,
-      "label": "Sang-froid",
-      "desc": "Le demi-ogre obtient un bonus de +5 aux tests de VOL pour résister ou mettre fin à sa Réaction violente. En cas d’échec, sa durée est réduite à 1d4 tours et les DM volontaires pour y mettre fin sont réduits à 1d4 par tour restant.",
+      "label": "Réaction violente",
+      "desc": "Moquerie ou provocation sur origine/apparence : test VOL difficulté 10−rang ; échec : crise 1d6 rounds, +2 attaque et DM, attaque cible et intervenants. Peut arrêter la crise en subissant immédiatement 1d4° DM par round restant. Vision dans le noir total comme en pénombre jusqu’à 30 m.",
+      "playSummary": "Moquerie ou provocation sur origine/apparence : test VOL difficulté 10−rang ; échec : crise 1d6 rounds, +2 attaque et DM, attaque cible et intervenants. Peut arrêter la crise en subissant immédiatement 1d4° DM par round restant. Vision dans le noir total comme en pénombre jusqu’à 30 m.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 13,
-        "chapter": "Nouveaux peuples",
-        "section": "Sang-froid"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 12,
+        "chapter": "Peuples optionnels",
+        "section": "Réaction violente"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Adaptation N1 déjà en place conservée ; texte original complet joint."
-        ]
-      }
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Réaction violente",
+      "r1_desc": "Moquerie ou provocation sur origine/apparence : test VOL difficulté 10−rang ; échec : crise 1d6 rounds, +2 attaque et DM, attaque cible et intervenants. Peut arrêter la crise en subissant immédiatement 1d4° DM par round restant. Vision dans le noir total comme en pénombre jusqu’à 30 m."
     },
     {
       "id": "ability:violence-cibl-e:path:voie-du-demi-ogre:addon-comp2017-cof2:rank2:cof2-lb-2024",
       "path_id": "path:voie-du-demi-ogre:addon-comp2017-cof2",
       "rank": 2,
       "label": "Violence ciblée",
-      "desc": "À chaque fois qu’il résiste à une crise de réaction violente, le demi-ogre gagne un point de violence. Il peut dépenser ce point par une action gratuite au moment de son choix dans la même journée pour obtenir les effets d’une réaction violente (1d4 tours) contre une cible de son choix. Il ne gagne aucun point de violence si un allié le provoque délibérément.",
+      "desc": "Chaque résistance à une crise donne un point de violence, à dépenser en action gratuite le même jour pour déclencher une crise 1d4 rounds contre une cible choisie. Aucun point si provocation délibérée par un allié.",
+      "playSummary": "Chaque résistance à une crise donne un point de violence, à dépenser en action gratuite le même jour pour déclencher une crise 1d4 rounds contre une cible choisie. Aucun point si provocation délibérée par un allié.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 13,
-        "chapter": "Nouveaux peuples",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 12,
+        "chapter": "Peuples optionnels",
         "section": "Violence ciblée"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
@@ -21424,43 +22008,51 @@
       "path_id": "path:voie-du-demi-ogre:addon-comp2017-cof2",
       "rank": 3,
       "label": "Vorace",
-      "desc": "Le demi-ogre peut manger des quantités astronomiques. Une fois par jour, lors d’un repas, s’il avale à lui seul un sanglier ou l’équivalent (un chevreuil, un demi-bœuf, etc.), il récupère (3d6 + niveau) PV. Cela correspond à un repas d’auberge d’une valeur en Pa égale au nombre de PV récupérés.",
+      "desc": "Une fois par jour, en mangeant seul un sanglier ou équivalent, récupère 3d4° PV ; prix d’auberge en PA égal aux PV récupérés.",
+      "playSummary": "Une fois par jour, en mangeant seul un sanglier ou équivalent, récupère 3d4° PV ; prix d’auberge en PA égal aux PV récupérés.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 13,
-        "chapter": "Nouveaux peuples",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 12,
+        "chapter": "Peuples optionnels",
         "section": "Vorace"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
       "id": "ability:grand:path:voie-du-demi-ogre:addon-comp2017-cof2:rank4:cof2-lb-2024",
       "path_id": "path:voie-du-demi-ogre:addon-comp2017-cof2",
       "rank": 4,
-      "label": "Toujours plus gros",
-      "desc": "Désormais, le demi-ogre inflige 2d6 DM avec une arme à deux mains tenue à une main et 3d6 DM avec une arme à deux mains à sa mesure. Lorsqu’il utilise une arme de cette façon, il ignore la réduction des DM (RD) imposée par la Voie du colosse.",
+      "label": "Toujours plus lourd",
+      "desc": "2d6 DM avec une arme à deux mains tenue à une main, 1d10 DM avec la vivelame, 3d6 DM avec une arme à deux mains adaptée à sa taille ; ignore la RD des grandes créatures avec une telle arme.",
+      "playSummary": "2d6 DM avec une arme à deux mains tenue à une main, 1d10 DM avec la vivelame, 3d6 DM avec une arme à deux mains adaptée à sa taille ; ignore la RD des grandes créatures avec une telle arme.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 13,
-        "chapter": "Nouveaux peuples",
-        "section": "Toujours plus gros"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 12,
+        "chapter": "Peuples optionnels",
+        "section": "Toujours plus lourd"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
@@ -21468,110 +22060,131 @@
       "path_id": "path:voie-du-demi-ogre:addon-comp2017-cof2",
       "rank": 5,
       "label": "Monumental",
-      "desc": "Le demi-ogre est une montagne de muscle, il augmente ses valeurs de CON et de FOR de +1.",
+      "desc": "+1 CON et +1 FOR.",
+      "playSummary": "+1 CON et +1 FOR.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
         "printedPage": 13,
-        "chapter": "Nouveaux peuples",
+        "chapter": "Peuples optionnels",
         "section": "Monumental"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2.",
-          "Gain de caractéristique +2 COF1 remplacé par +1 COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
       "id": "ability:rapide:path:voie-du-gobelin:addon-comp2017-cof2:rank1:cof2-lb-2024",
       "path_id": "path:voie-du-gobelin:addon-comp2017-cof2",
       "rank": 1,
-      "label": "Rapide comme son ombre",
-      "desc": "Le gobelin obtient un bonus de +3 aux tests de discrétion et en Initiative.",
+      "label": "Vivacité gobeline",
+      "desc": "+3 initiative et à tous les tests de discrétion ; vision dans le noir total comme en pénombre jusqu’à 30 m.",
+      "playSummary": "+3 initiative et à tous les tests de discrétion ; vision dans le noir total comme en pénombre jusqu’à 30 m.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 15,
-        "chapter": "Nouveaux peuples",
-        "section": "Rapide comme son ombre"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 23,
+        "chapter": "Peuples optionnels",
+        "section": "Vivacité gobeline"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Adaptation N1 déjà en place conservée ; texte original complet joint."
-        ]
-      }
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Vivacité gobeline",
+      "r1_desc": "+3 initiative et à tous les tests de discrétion ; vision dans le noir total comme en pénombre jusqu’à 30 m."
     },
     {
       "id": "ability:jeune-worg:path:voie-du-gobelin:addon-comp2017-cof2:rank2:cof2-lb-2024",
       "path_id": "path:voie-du-gobelin:addon-comp2017-cof2",
       "rank": 2,
-      "label": "Jeune worg",
-      "desc": "Le gobelin dresse un jeune worg et il peut le chevaucher. À dos de worg, il peut agir normalement sans pénalité. Il peut donner l’ordre à sa monture d’attaquer au prix d’une action de mouvement (il peut utiliser sa seconde action pour la faire se déplacer de 20 mètres ou pour faire lui-même une action d’attaque). Jeune worg : Init [= gobelin], DEF 14, PV [niveau × 4], attaque au contact = [niveau du gobelin], DM 1d6+1, FOR +1, AGI +1, CON +1*, INT -3, PER +2*, CHA -3",
+      "label": "Attaque groupée",
+      "desc": "+2 en attaque au contact contre la même cible qu’un allié (ou sa monture au rang 4).",
+      "playSummary": "+2 en attaque au contact contre la même cible qu’un allié (ou sa monture au rang 4).",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 15,
-        "chapter": "Nouveaux peuples",
-        "section": "Jeune worg"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 23,
+        "chapter": "Peuples optionnels",
+        "section": "Attaque groupée"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
       "id": "ability:miam:path:voie-du-gobelin:addon-comp2017-cof2:rank3:cof2-lb-2024",
       "path_id": "path:voie-du-gobelin:addon-comp2017-cof2",
       "rank": 3,
-      "label": "Miam",
-      "desc": "Un gobelin est capable de manger tout et n’importe quoi, une chaussure, une armure de cuir, l’écorce d’un arbre et, bien entendu, des mets avariés. Il obtient un bonus de +5 à tous les tests pour résister aux poisons et aux toxines ingérées et il ne souffre de pénalité pour cause de faim que si aucune matière organique n’est disponible. Enfin, à la place d’une attaque à mains nues, il peut infliger une attaque de morsure qui inflige [1d4 + FOR] DM létaux.",
+      "label": "Kafouiller",
+      "desc": "Dé bonus et +1d4° DM sur les attaques au contact ou à distance contre une créature renversée.",
+      "playSummary": "Dé bonus et +1d4° DM sur les attaques au contact ou à distance contre une créature renversée.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 15,
-        "chapter": "Nouveaux peuples",
-        "section": "Miam"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 23,
+        "chapter": "Peuples optionnels",
+        "section": "Kafouiller"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
       "id": "ability:grand:path:voie-du-gobelin:addon-comp2017-cof2:rank4:cof2-lb-2024",
       "path_id": "path:voie-du-gobelin:addon-comp2017-cof2",
       "rank": 4,
-      "label": "Grand worg",
-      "desc": "Le worg devient plus grand et puissant. Désormais, lorsqu’il est en selle, le gobelin peut faire attaquer son worg une fois par tour en action gratuite, à la même initiative que lui. Grand worg : Init [= gobelin], DEF 17, PV [niveau × 4], attaque au contact = [niveau du gobelin+2], DM 1d6+5, FOR +1, AGI +1, CON +1*, INT -3, PER +2*, CHA -3",
+      "label": "Worg",
+      "desc": "Monture worg ; monté, peut ordonner une morsure gratuite une fois par round en plus de ses autres actions ; déplacement du worg avec ses propres actions de mouvement. Worg : AGI +1*, CON +5*, FOR +5, PER +2, CHA −2, INT −4, VOL +2, DEF 17, PV = niveau × 5, initiative du gobelin, morsure : attaque magique du gobelin +2, DM 1d4°+5.",
+      "playSummary": "Monture worg ; monté, peut ordonner une morsure gratuite une fois par round en plus de ses autres actions ; déplacement du worg avec ses propres actions de mouvement. Worg : AGI +1*, CON +5*, FOR +5, PER +2, CHA −2, INT −4, VOL +2, DEF 17, PV = niveau × 5, initiative du gobelin, morsure : attaque magique du gobelin +2, DM 1d4°+5.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 15,
-        "chapter": "Nouveaux peuples",
-        "section": "Grand worg"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 23,
+        "chapter": "Peuples optionnels",
+        "section": "Worg"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
@@ -21579,66 +22192,79 @@
       "path_id": "path:voie-du-gobelin:addon-comp2017-cof2",
       "rank": 5,
       "label": "Vif et alerte",
-      "desc": "Le gobelin est plus agile et résistant aux mauvais traitements que jamais. Il pousse son instinct de survie à son paroxysme et augmente ses valeurs de AGI et de CON de +1.",
+      "desc": "+1 AGI et +1 PER.",
+      "playSummary": "+1 AGI et +1 PER.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 15,
-        "chapter": "Nouveaux peuples",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 23,
+        "chapter": "Peuples optionnels",
         "section": "Vif et alerte"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2.",
-          "Gain de caractéristique +2 COF1 remplacé par +1 COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
       "id": "ability:se-planquer:path:voie-du-kobold:addon-comp2017-cof2:rank1:cof2-lb-2024",
       "path_id": "path:voie-du-kobold:addon-comp2017-cof2",
       "rank": 1,
-      "label": "Se planquer",
-      "desc": "Le kobold gagne +1 en DEF et +3 aux tests de discrétion et d’embuscade.",
+      "label": "Ruse kobold",
+      "desc": "+3 aux tests pour concevoir, fabriquer ou détecter les pièges. Vision dans le noir total comme en pénombre jusqu’à 30 m. Peut remplacer une attaque à mains nues par une morsure : 1d4+FOR DM létaux.",
+      "playSummary": "+3 aux tests pour concevoir, fabriquer ou détecter les pièges. Vision dans le noir total comme en pénombre jusqu’à 30 m. Peut remplacer une attaque à mains nues par une morsure : 1d4+FOR DM létaux.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 17,
-        "chapter": "Nouveaux peuples",
-        "section": "Se planquer"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 25,
+        "chapter": "Peuples optionnels",
+        "section": "Ruse kobold"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Adaptation N1 déjà en place conservée ; texte original complet joint."
-        ]
-      }
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Ruse kobold",
+      "r1_desc": "+3 aux tests pour concevoir, fabriquer ou détecter les pièges. Vision dans le noir total comme en pénombre jusqu’à 30 m. Peut remplacer une attaque à mains nues par une morsure : 1d4+FOR DM létaux."
     },
     {
       "id": "ability:cailles:path:voie-du-kobold:addon-comp2017-cof2:rank2:cof2-lb-2024",
       "path_id": "path:voie-du-kobold:addon-comp2017-cof2",
       "rank": 2,
-      "label": "Écailles",
-      "desc": "La petite taille et la peau écailleuse du kobold lui confèrent un bonus de +2 en DEF. Ce bonus passe à +3 au rang 4 de la Voie.",
+      "label": "Chétif",
+      "desc": "+1 DEF et +3 aux tests de discrétion.",
+      "playSummary": "+1 DEF et +3 aux tests de discrétion.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 17,
-        "chapter": "Nouveaux peuples",
-        "section": "Écailles"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 25,
+        "chapter": "Peuples optionnels",
+        "section": "Chétif"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
@@ -21646,66 +22272,77 @@
       "path_id": "path:voie-du-kobold:addon-comp2017-cof2",
       "rank": 4,
       "label": "Attaque vicieuse",
-      "desc": "Lorsqu’il attaque par surprise ou s’il combat le même ennemi que d’autres alliés à son contact, le kobold obtient +2 en attaque et +1d6 aux DM. Cette capacité peut être cumulée à une attaque sournoise.",
+      "desc": "+2 attaque et +1d4° DM si attaque par surprise ou si combat au contact le même ennemi que des alliés ; cumulable avec Attaque sournoise.",
+      "playSummary": "+2 attaque et +1d4° DM si attaque par surprise ou si combat au contact le même ennemi que des alliés ; cumulable avec Attaque sournoise.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 17,
-        "chapter": "Nouveaux peuples",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 25,
+        "chapter": "Peuples optionnels",
         "section": "Attaque vicieuse"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
       "id": "ability:pi-ge-improvis:path:voie-du-kobold:addon-comp2017-cof2:rank3:cof2-lb-2024",
       "path_id": "path:voie-du-kobold:addon-comp2017-cof2",
       "rank": 3,
-      "label": "Piège improvisé",
-      "desc": "Le kobold est capable de construire des pièges en un instant. Il peut en installer un au prix d’une action limitée en réussissant un test de AGI difficulté 15 (ou Diff. 10 avec le bonus racial de +5). S’il prend dix minutes, le succès est automatique. Le piège affecte une surface de 2 mètres de côté et une créature qui pénètre dans la zone piégée doit faire un test de AGI ou de PER (au choix) difficulté [10 + Mod. d’INT du kobold] pour l’éviter. En cas d’échec, elle est victime d’un effet parmi les trois suivants (à indiquer lorsque le piège est posé) : elle subit 2d6 DM, elle est Immobilisée pendant 1 tour ou elle est Ralentie pendant 1d4 tours. Si une créature a vu le kobold installer le dispositif, elle évite automatiquement le piège.",
+      "label": "Piège improvisé (L)",
+      "desc": "Action limitée avec test AGI difficulté 10 (bonus de Ruse kobold inclus), ou 10 min avec réussite automatique. Zone carrée de 2 m. Une créature y entrant doit réussir PER ou AGI difficulté 10+rang ; échec : 2d4° DM, immobilisée 1 round ou ralentie 1d4 rounds (choix à la pose). Si elle a vu poser le piège, elle l’évite.",
+      "playSummary": "Action limitée avec test AGI difficulté 10 (bonus de Ruse kobold inclus), ou 10 min avec réussite automatique. Zone carrée de 2 m. Une créature y entrant doit réussir PER ou AGI difficulté 10+rang ; échec : 2d4° DM, immobilisée 1 round ou ralentie 1d4 rounds (choix à la pose). Si elle a vu poser le piège, elle l’évite.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 17,
-        "chapter": "Nouveaux peuples",
-        "section": "Piège improvisé"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 25,
+        "chapter": "Peuples optionnels",
+        "section": "Piège improvisé (L)"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
       "id": "ability:ruse-instinctive:path:voie-du-kobold:addon-comp2017-cof2:rank5:cof2-lb-2024",
       "path_id": "path:voie-du-kobold:addon-comp2017-cof2",
       "rank": 5,
-      "label": "Ruse Instinctive",
-      "desc": "Le kobold est plus rapide et rusé que jamais. Il augmente de +1 sa AGI et sa PER.",
+      "label": "Ruse instinctive",
+      "desc": "+1 AGI et +1 PER.",
+      "playSummary": "+1 AGI et +1 PER.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 17,
-        "chapter": "Nouveaux peuples",
-        "section": "Ruse Instinctive"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 25,
+        "chapter": "Peuples optionnels",
+        "section": "Ruse instinctive"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2.",
-          "Gain de caractéristique +2 COF1 remplacé par +1 COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
@@ -21855,66 +22492,80 @@
       "id": "ability:charge-l:path-voie-du-minotaure-addon-comp2017-cof2:r1:addon-comp2017-cof2",
       "path_id": "path:voie-du-minotaure:addon-comp2017-cof2",
       "rank": 1,
-      "label": "Charge brutale (L)",
-      "desc": "Une fois par tour, le minotaure se déplace d’au moins 10 m en ligne droite (20 m au maximum), puis réalise une attaque au contact avec +2 au test et +1d6 DM. Elle ne se cumule avec aucune autre capacité de charge.",
+      "label": "Coup de corne",
+      "desc": "Attaque de corne : 1d4°+FOR DM à la place d’une attaque normale. En action limitée, attaque normale avec une arme de contact plus attaque de corne. +3 aux tests d’orientation.",
+      "playSummary": "Attaque de corne : 1d4°+FOR DM à la place d’une attaque normale. En action limitée, attaque normale avec une arme de contact plus attaque de corne. +3 aux tests d’orientation.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 21,
-        "chapter": "Nouveaux peuples",
-        "section": "Charge (L)"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 30,
+        "chapter": "Peuples optionnels",
+        "section": "Coup de corne"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Adaptation N1 déjà en place conservée ; texte original complet joint."
-        ]
-      }
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Coup de corne",
+      "r1_desc": "Attaque de corne : 1d4°+FOR DM à la place d’une attaque normale. En action limitée, attaque normale avec une arme de contact plus attaque de corne. +3 aux tests d’orientation."
     },
     {
       "id": "ability:frenesie:path-voie-du-minotaure-addon-comp2017-cof2:r2:addon-comp2017-cof2",
       "path_id": "path:voie-du-minotaure:addon-comp2017-cof2",
       "rank": 2,
-      "label": "Frénésie",
-      "desc": "Après avoir reçu une blessure, le minotaure peut entrer en frénésie (action gratuite), il gagne un bonus de +2 en attaque au contact et aux DM, mais subit un malus de -2 en DEF pour 1d6 tours. Ces bonus/malus ne sont pas cumulables à la rage du barbare.",
+      "label": "Charge puissante",
+      "desc": "Au moins 5 m en ligne droite avant l’attaque de corne : 2d4°+FOR DM ; cible de taille moyenne ou moins : FOR difficulté 10+rang ou renversée. Pas de charge sur cible déjà au contact d’un adversaire.",
+      "playSummary": "Au moins 5 m en ligne droite avant l’attaque de corne : 2d4°+FOR DM ; cible de taille moyenne ou moins : FOR difficulté 10+rang ou renversée. Pas de charge sur cible déjà au contact d’un adversaire.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 21,
-        "chapter": "Nouveaux peuples",
-        "section": "Frénésie"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 30,
+        "chapter": "Peuples optionnels",
+        "section": "Charge puissante"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
       "id": "ability:orientation-infaillible:path-voie-du-minotaure-addon-comp2017-cof2:r3:addon-comp2017-cof2",
       "path_id": "path:voie-du-minotaure:addon-comp2017-cof2",
       "rank": 3,
-      "label": "Orientation infaillible",
-      "desc": "Désormais, le minotaure ne se perd jamais et il connaît toujours le plus court chemin vers la sortie ou la surface.",
+      "label": "Frénésie",
+      "desc": "Après une blessure, action gratuite : +2 attaque et RD 3 contre tous les DM, −3 DEF jusqu’à fin du combat.",
+      "playSummary": "Après une blessure, action gratuite : +2 attaque et RD 3 contre tous les DM, −3 DEF jusqu’à fin du combat.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 21,
-        "chapter": "Nouveaux peuples",
-        "section": "Orientation infaillible"
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 30,
+        "chapter": "Peuples optionnels",
+        "section": "Frénésie"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
@@ -21922,21 +22573,25 @@
       "path_id": "path:voie-du-minotaure:addon-comp2017-cof2",
       "rank": 4,
       "label": "Encorner",
-      "desc": "Le minotaure peut désormais réaliser une attaque de corne en action gratuite une fois par tour.",
+      "desc": "Une attaque de corne gratuite par round ; au maximum une attaque de corne par round.",
+      "playSummary": "Une attaque de corne gratuite par round ; au maximum une attaque de corne par round.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 21,
-        "chapter": "Nouveaux peuples",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 30,
+        "chapter": "Peuples optionnels",
         "section": "Encorner"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
@@ -21944,22 +22599,25 @@
       "path_id": "path:voie-du-minotaure:addon-comp2017-cof2",
       "rank": 5,
       "label": "Colosse",
-      "desc": "Le minotaure est une montagne de muscles, il augmente ses valeurs de CON et de FOR de +1.",
+      "desc": "+1 CON et +1 FOR.",
+      "playSummary": "+1 CON et +1 FOR.",
       "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 21,
-        "chapter": "Nouveaux peuples",
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 30,
+        "chapter": "Peuples optionnels",
         "section": "Colosse"
       },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2.",
-          "Gain de caractéristique +2 COF1 remplacé par +1 COF2."
-        ]
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
       }
     },
     {
@@ -22184,6 +22842,1446 @@
         "enabledInCertifiedN1": true
       },
       "playSummary": "+1 PER et +1 CHA.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:drakonide-r1:path:voie-du-drakonide:compagnon-cof2",
+      "path_id": "path:voie-du-drakonide:compagnon-cof2",
+      "rank": 1,
+      "label": "Sang dragon",
+      "desc": "Dans le noir total, le drakonide voit comme dans la pénombre jusqu’à 30 m. De plus, il bénéficie de +3 à tous ses tests d’intimidation.",
+      "playSummary": "Dans le noir total, le drakonide voit comme dans la pénombre jusqu’à 30 m. De plus, il bénéficie de +3 à tous ses tests d’intimidation.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 14,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Drakonide"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Sang dragon",
+      "r1_desc": "Dans le noir total, le drakonide voit comme dans la pénombre jusqu’à 30 m. De plus, il bénéficie de +3 à tous ses tests d’intimidation."
+    },
+    {
+      "id": "ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2",
+      "path_id": "path:voie-du-drakonide:compagnon-cof2",
+      "rank": 2,
+      "label": "Souffle (L)",
+      "desc": "Choisir feu, froid, électricité ou acide. Une fois par combat, le souffle inflige 3d4° DM + 1d4° DM par rang (5d4° au rang 2) dans un cône de 10 m de long sur 5 m de large. Chaque créature affectée peut diviser les DM par deux en réussissant un test d’AGI difficulté 10.",
+      "playSummary": "Choisir feu, froid, électricité ou acide. Une fois par combat, le souffle inflige 3d4° DM + 1d4° DM par rang (5d4° au rang 2) dans un cône de 10 m de long sur 5 m de large. Chaque créature affectée peut diviser les DM par deux en réussissant un test d’AGI difficulté 10.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 14,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Drakonide"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "active",
+        "choices": [
+          {
+            "id": "drakonideBreath",
+            "label": "Élément du souffle",
+            "type": "enum",
+            "values": [
+              "fire",
+              "cold",
+              "lightning",
+              "acid"
+            ],
+            "valueLabels": {
+              "fire": "Feu",
+              "cold": "Froid",
+              "lightning": "Électricité",
+              "acid": "Acide"
+            },
+            "persist": true,
+            "required": true
+          }
+        ],
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:drakonide-r3:path:voie-du-drakonide:compagnon-cof2",
+      "path_id": "path:voie-du-drakonide:compagnon-cof2",
+      "rank": 3,
+      "label": "Écailles robustes",
+      "desc": "Le drakonide bénéficie de +1 en DEF et d’une RD égale au rang atteint dans la voie contre l’élément correspondant à son souffle.",
+      "playSummary": "Le drakonide bénéficie de +1 en DEF et d’une RD égale au rang atteint dans la voie contre l’élément correspondant à son souffle.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 14,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Drakonide"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:drakonide-r4:path:voie-du-drakonide:compagnon-cof2",
+      "path_id": "path:voie-du-drakonide:compagnon-cof2",
+      "rank": 4,
+      "label": "Fureur drakonide/Ailes puissantes",
+      "desc": "Choisir une capacité. Fureur drakonide : après un critique subi ou le passage sous la moitié des PV max, +1 en attaque et aux DM jusqu’à la fin du combat. Ailes puissantes : vol de 10 m par action de mouvement, au maximum 30 m avant de se poser ; vol à nouveau possible dès le round suivant.",
+      "playSummary": "Choisir une capacité. Fureur drakonide : après un critique subi ou le passage sous la moitié des PV max, +1 en attaque et aux DM jusqu’à la fin du combat. Ailes puissantes : vol de 10 m par action de mouvement, au maximum 30 m avant de se poser ; vol à nouveau possible dès le round suivant.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 14,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Drakonide"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "choices": [
+          {
+            "id": "drakonideGift",
+            "label": "Capacité drakonide",
+            "type": "enum",
+            "values": [
+              "fury",
+              "wings"
+            ],
+            "valueLabels": {
+              "fury": "Fureur drakonide",
+              "wings": "Ailes puissantes"
+            },
+            "persist": true,
+            "required": true
+          }
+        ],
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:drakonide-r5:path:voie-du-drakonide:compagnon-cof2",
+      "path_id": "path:voie-du-drakonide:compagnon-cof2",
+      "rank": 5,
+      "label": "Héritage draconique",
+      "desc": "Le drakonide augmente ses valeurs de CON et de CHA de +1.",
+      "playSummary": "Le drakonide augmente ses valeurs de CON et de CHA de +1.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 14,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Drakonide"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:cambion-r1:path:voie-du-cambion:compagnon-cof2",
+      "path_id": "path:voie-du-cambion:compagnon-cof2",
+      "rank": 1,
+      "label": "Ami des ombres",
+      "desc": "+3 aux tests pour mentir ou se déguiser ; vision dans le noir total comme en pénombre jusqu’à 30 m.",
+      "playSummary": "+3 aux tests pour mentir ou se déguiser ; vision dans le noir total comme en pénombre jusqu’à 30 m.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 10,
+        "chapter": "Peuples optionnels",
+        "section": "Ami des ombres"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Ami des ombres",
+      "r1_desc": "+3 aux tests pour mentir ou se déguiser ; vision dans le noir total comme en pénombre jusqu’à 30 m."
+    },
+    {
+      "id": "ability:cambion-r2:path:voie-du-cambion:compagnon-cof2",
+      "path_id": "path:voie-du-cambion:compagnon-cof2",
+      "rank": 2,
+      "label": "Enfant des ténèbres",
+      "desc": "Obtient le sort Ténèbres du sorcier et le PM correspondant ; utilisable en armure, sans le bonus de compétence associé. Si le sort est déjà acquis, le lancer devient une action gratuite.",
+      "playSummary": "Obtient le sort Ténèbres du sorcier et le PM correspondant ; utilisable en armure, sans le bonus de compétence associé. Si le sort est déjà acquis, le lancer devient une action gratuite.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 10,
+        "chapter": "Peuples optionnels",
+        "section": "Enfant des ténèbres"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:cambion-r3:path:voie-du-cambion:compagnon-cof2",
+      "path_id": "path:voie-du-cambion:compagnon-cof2",
+      "rank": 3,
+      "label": "Résistances",
+      "desc": "RD 5 contre le feu, le froid et l’électricité.",
+      "playSummary": "RD 5 contre le feu, le froid et l’électricité.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 10,
+        "chapter": "Peuples optionnels",
+        "section": "Résistances"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:cambion-r4:path:voie-du-cambion:compagnon-cof2",
+      "path_id": "path:voie-du-cambion:compagnon-cof2",
+      "rank": 4,
+      "label": "La belle et la bête",
+      "desc": "Beauté de la succube une fois par jour, sans gain ni dépense de PM, quelle que soit l’armure ; dès le niveau 10, Aspect du démon une fois par jour, sans limitation d’armure.",
+      "playSummary": "Beauté de la succube une fois par jour, sans gain ni dépense de PM, quelle que soit l’armure ; dès le niveau 10, Aspect du démon une fois par jour, sans limitation d’armure.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 10,
+        "chapter": "Peuples optionnels",
+        "section": "La belle et la bête"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:cambion-r5:path:voie-du-cambion:compagnon-cof2",
+      "path_id": "path:voie-du-cambion:compagnon-cof2",
+      "rank": 5,
+      "label": "Forgé par les ténèbres",
+      "desc": "+1 CON et +1 VOL.",
+      "playSummary": "+1 CON et +1 VOL.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 10,
+        "chapter": "Peuples optionnels",
+        "section": "Forgé par les ténèbres"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:elfe-pale-r1:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "path_id": "path:voie-de-l-elfe-pale:compagnon-cof2",
+      "rank": 1,
+      "label": "Natif de la Forêt sombre",
+      "desc": "Vision comme en pénombre jusqu’à 20 m dans l’obscurité ; aucun malus en pénombre ou brouillard léger jusqu’à 20 m ; +3 aux tests de vigilance pour éviter une embuscade.",
+      "playSummary": "Vision comme en pénombre jusqu’à 20 m dans l’obscurité ; aucun malus en pénombre ou brouillard léger jusqu’à 20 m ; +3 aux tests de vigilance pour éviter une embuscade.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 15,
+        "chapter": "Peuples optionnels",
+        "section": "Natif de la Forêt sombre"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Natif de la Forêt sombre",
+      "r1_desc": "Vision comme en pénombre jusqu’à 20 m dans l’obscurité ; aucun malus en pénombre ou brouillard léger jusqu’à 20 m ; +3 aux tests de vigilance pour éviter une embuscade."
+    },
+    {
+      "id": "ability:elfe-pale-r2:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "path_id": "path:voie-de-l-elfe-pale:compagnon-cof2",
+      "rank": 2,
+      "label": "Résistance au poison",
+      "desc": "Dé bonus aux tests pour résister aux poisons ; les dégâts ou la durée des effets des poisons sont divisés par deux.",
+      "playSummary": "Dé bonus aux tests pour résister aux poisons ; les dégâts ou la durée des effets des poisons sont divisés par deux.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 15,
+        "chapter": "Peuples optionnels",
+        "section": "Résistance au poison"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:elfe-pale-r3:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "path_id": "path:voie-de-l-elfe-pale:compagnon-cof2",
+      "rank": 3,
+      "label": "Fléau des morts",
+      "desc": "+1d4° DM initiaux par attaque contre les morts-vivants, hors dégâts sur la durée.",
+      "playSummary": "+1d4° DM initiaux par attaque contre les morts-vivants, hors dégâts sur la durée.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 15,
+        "chapter": "Peuples optionnels",
+        "section": "Fléau des morts"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:elfe-pale-r4:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "path_id": "path:voie-de-l-elfe-pale:compagnon-cof2",
+      "rank": 4,
+      "label": "Provoquer la chance",
+      "desc": "Ajoute sa PER ou sa VOL, au choix, à son nombre de PC.",
+      "playSummary": "Ajoute sa PER ou sa VOL, au choix, à son nombre de PC.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 15,
+        "chapter": "Peuples optionnels",
+        "section": "Provoquer la chance"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:elfe-pale-r5:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "path_id": "path:voie-de-l-elfe-pale:compagnon-cof2",
+      "rank": 5,
+      "label": "Supériorité elfique",
+      "desc": "+1 PER et +1 VOL.",
+      "playSummary": "+1 PER et +1 VOL.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 16,
+        "chapter": "Peuples optionnels",
+        "section": "Supériorité elfique"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:elfe-profondeurs-r1:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "path_id": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "rank": 1,
+      "label": "Enfant des ténèbres",
+      "desc": "Aucune pénalité dans le noir total ou la pénombre jusqu’à 30 m ; +3 en initiative dans ces conditions.",
+      "playSummary": "Aucune pénalité dans le noir total ou la pénombre jusqu’à 30 m ; +3 en initiative dans ces conditions.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 17,
+        "chapter": "Peuples optionnels",
+        "section": "Enfant des ténèbres"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Enfant des ténèbres",
+      "r1_desc": "Aucune pénalité dans le noir total ou la pénombre jusqu’à 30 m ; +3 en initiative dans ces conditions."
+    },
+    {
+      "id": "ability:elfe-profondeurs-r2:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "path_id": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "rank": 2,
+      "label": "Lames et sorcellerie",
+      "desc": "Choisit une capacité R1 de sorcier ou guerrier ; si c’est un sort, gagne 1 PM et peut le lancer en armure. Au rang 4, capacité supplémentaire R2 de l’un de ces profils. Ces capacités ne sont pas utilisables en plein soleil, sauf protection procurant au moins de l’ombre.",
+      "playSummary": "Choisit une capacité R1 de sorcier ou guerrier ; si c’est un sort, gagne 1 PM et peut le lancer en armure. Au rang 4, capacité supplémentaire R2 de l’un de ces profils. Ces capacités ne sont pas utilisables en plein soleil, sauf protection procurant au moins de l’ombre.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 17,
+        "chapter": "Peuples optionnels",
+        "section": "Lames et sorcellerie"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:elfe-profondeurs-r3:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "path_id": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "rank": 3,
+      "label": "Combat à deux armes",
+      "desc": "Obtient Droite-gauche du rôdeur ; si déjà acquise, aucun malus lorsqu’il attaque avec une dague en action gratuite.",
+      "playSummary": "Obtient Droite-gauche du rôdeur ; si déjà acquise, aucun malus lorsqu’il attaque avec une dague en action gratuite.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 17,
+        "chapter": "Peuples optionnels",
+        "section": "Combat à deux armes"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:elfe-profondeurs-r4:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "path_id": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "rank": 4,
+      "label": "Maîtrise des arbalètes",
+      "desc": "Critique sur 19–20 avec une arbalète de poing ou légère ; sait manier ces arbalètes quel que soit son profil.",
+      "playSummary": "Critique sur 19–20 avec une arbalète de poing ou légère ; sait manier ces arbalètes quel que soit son profil.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 17,
+        "chapter": "Peuples optionnels",
+        "section": "Maîtrise des arbalètes"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:elfe-profondeurs-r5:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "path_id": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "rank": 5,
+      "label": "Supériorité elfique",
+      "desc": "+1 AGI et +1 VOL.",
+      "playSummary": "+1 AGI et +1 VOL.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 17,
+        "chapter": "Peuples optionnels",
+        "section": "Supériorité elfique"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:felis-r1:path:voie-du-felis:compagnon-cof2",
+      "path_id": "path:voie-du-felis:compagnon-cof2",
+      "rank": 1,
+      "label": "Âme féline",
+      "desc": "Sous les étoiles, la nuit est considérée comme de la pénombre ; +3 aux tests d’AGI liés à l’escalade, aux sauts et à la course de vitesse, pas à l’endurance.",
+      "playSummary": "Sous les étoiles, la nuit est considérée comme de la pénombre ; +3 aux tests d’AGI liés à l’escalade, aux sauts et à la course de vitesse, pas à l’endurance.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 19,
+        "chapter": "Peuples optionnels",
+        "section": "Âme féline"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Âme féline",
+      "r1_desc": "Sous les étoiles, la nuit est considérée comme de la pénombre ; +3 aux tests d’AGI liés à l’escalade, aux sauts et à la course de vitesse, pas à l’endurance."
+    },
+    {
+      "id": "ability:felis-r2:path:voie-du-felis:compagnon-cof2",
+      "path_id": "path:voie-du-felis:compagnon-cof2",
+      "rank": 2,
+      "label": "Armes naturelles",
+      "desc": "Armes naturelles : 1d4 + FOR DM létaux. En action limitée, peut remplacer FOR par AGI aux attaques et DM ; Attaque éclair ajoute +1d4° DM ; avec Poing de fer, AGI remplace FOR aux DM à chaque attaque, pas aux tests d’attaque.",
+      "playSummary": "Armes naturelles : 1d4 + FOR DM létaux. En action limitée, peut remplacer FOR par AGI aux attaques et DM ; Attaque éclair ajoute +1d4° DM ; avec Poing de fer, AGI remplace FOR aux DM à chaque attaque, pas aux tests d’attaque.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 19,
+        "chapter": "Peuples optionnels",
+        "section": "Armes naturelles"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:felis-r3:path:voie-du-felis:compagnon-cof2",
+      "path_id": "path:voie-du-felis:compagnon-cof2",
+      "rank": 3,
+      "label": "Vif et discret",
+      "desc": "+3 en initiative et aux tests de discrétion ; dans les Terres d’Osgild, +3 soit en jonglerie et acrobaties (saltimbanque), soit en survie forestière.",
+      "playSummary": "+3 en initiative et aux tests de discrétion ; dans les Terres d’Osgild, +3 soit en jonglerie et acrobaties (saltimbanque), soit en survie forestière.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 19,
+        "chapter": "Peuples optionnels",
+        "section": "Vif et discret"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:felis-r4:path:voie-du-felis:compagnon-cof2",
+      "path_id": "path:voie-du-felis:compagnon-cof2",
+      "rank": 4,
+      "label": "Métamorphose féline (L)",
+      "desc": "Forme de panthère pendant au plus une heure par niveau ; première transformation quotidienne gratuite, suivantes avant récupération complète : 1 DR. Retour volontaire par action de mouvement ; si PV à zéro, retour à la forme humaine. Déplacement 15 m par action, voyage +3 km par période. Panthère : AGI +4*, CON du PJ, FOR +2*, PER +2*, CHA/INT/VOL du PJ ; DEF 17 (18 niv.9, 19 niv.12, 20 niv.15), PV du PJ, Init. 15 ; morsure/griffes : attaque de contact du PJ, 2d4°+2 DM.",
+      "playSummary": "Forme de panthère pendant au plus une heure par niveau ; première transformation quotidienne gratuite, suivantes avant récupération complète : 1 DR. Retour volontaire par action de mouvement ; si PV à zéro, retour à la forme humaine. Déplacement 15 m par action, voyage +3 km par période. Panthère : AGI +4*, CON du PJ, FOR +2*, PER +2*, CHA/INT/VOL du PJ ; DEF 17 (18 niv.9, 19 niv.12, 20 niv.15), PV du PJ, Init. 15 ; morsure/griffes : attaque de contact du PJ, 2d4°+2 DM.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 19,
+        "chapter": "Peuples optionnels",
+        "section": "Métamorphose féline (L)"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:felis-r5:path:voie-du-felis:compagnon-cof2",
+      "path_id": "path:voie-du-felis:compagnon-cof2",
+      "rank": 5,
+      "label": "Nature féline",
+      "desc": "+1 AGI et +1 PER.",
+      "playSummary": "+1 AGI et +1 PER.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 19,
+        "chapter": "Peuples optionnels",
+        "section": "Nature féline"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:frouin-r1:path:voie-du-frouin:compagnon-cof2",
+      "path_id": "path:voie-du-frouin:compagnon-cof2",
+      "rank": 1,
+      "label": "Avarié",
+      "desc": "Besoin alimentaire divisé par trois ; peut manger avarié sans tomber malade ; +3 pour résister aux maladies et poisons ; présence du frouïn : –1 aux tests sociaux (CHA) de ses compagnons ; vision dans le noir total comme en pénombre jusqu’à 30 m.",
+      "playSummary": "Besoin alimentaire divisé par trois ; peut manger avarié sans tomber malade ; +3 pour résister aux maladies et poisons ; présence du frouïn : –1 aux tests sociaux (CHA) de ses compagnons ; vision dans le noir total comme en pénombre jusqu’à 30 m.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 21,
+        "chapter": "Peuples optionnels",
+        "section": "Avarié"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Avarié",
+      "r1_desc": "Besoin alimentaire divisé par trois ; peut manger avarié sans tomber malade ; +3 pour résister aux maladies et poisons ; présence du frouïn : –1 aux tests sociaux (CHA) de ses compagnons ; vision dans le noir total comme en pénombre jusqu’à 30 m."
+    },
+    {
+      "id": "ability:frouin-r2:path:voie-du-frouin:compagnon-cof2",
+      "path_id": "path:voie-du-frouin:compagnon-cof2",
+      "rank": 2,
+      "label": "Minus",
+      "desc": "+3 discrétion ; +1 DEF, puis +2 au rang 4.",
+      "playSummary": "+3 discrétion ; +1 DEF, puis +2 au rang 4.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 21,
+        "chapter": "Peuples optionnels",
+        "section": "Minus"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:frouin-r3:path:voie-du-frouin:compagnon-cof2",
+      "path_id": "path:voie-du-frouin:compagnon-cof2",
+      "rank": 3,
+      "label": "Parano",
+      "desc": "+3 initiative et aux tests pour éviter la surprise ; moitié des DM des attaques sournoises ou autres bonus de DM liés à la surprise.",
+      "playSummary": "+3 initiative et aux tests pour éviter la surprise ; moitié des DM des attaques sournoises ou autres bonus de DM liés à la surprise.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 21,
+        "chapter": "Peuples optionnels",
+        "section": "Parano"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:frouin-r4:path:voie-du-frouin:compagnon-cof2",
+      "path_id": "path:voie-du-frouin:compagnon-cof2",
+      "rank": 4,
+      "label": "Attaque simultanée",
+      "desc": "En décalant son initiative pour attaquer avec un allié, au choix dé bonus en attaque ou +1d4° DM ; cumulable avec Attaque sournoise.",
+      "playSummary": "En décalant son initiative pour attaquer avec un allié, au choix dé bonus en attaque ou +1d4° DM ; cumulable avec Attaque sournoise.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 21,
+        "chapter": "Peuples optionnels",
+        "section": "Attaque simultanée"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:frouin-r5:path:voie-du-frouin:compagnon-cof2",
+      "path_id": "path:voie-du-frouin:compagnon-cof2",
+      "rank": 5,
+      "label": "Champion de la survie",
+      "desc": "+1 CON ; +1 AGI ou PER au choix.",
+      "playSummary": "+1 CON ; +1 AGI ou PER au choix.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 21,
+        "chapter": "Peuples optionnels",
+        "section": "Champion de la survie"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:nephilim-r1:path:voie-du-nephilim:compagnon-cof2",
+      "path_id": "path:voie-du-nephilim:compagnon-cof2",
+      "rank": 1,
+      "label": "Photosensible",
+      "desc": "Sous les étoiles voit comme en plein jour ; rayon de toutes les sources lumineuses doublé ; +3 aux tests de deux domaines associés à son origine géographique ou sociale comme l’humain.",
+      "playSummary": "Sous les étoiles voit comme en plein jour ; rayon de toutes les sources lumineuses doublé ; +3 aux tests de deux domaines associés à son origine géographique ou sociale comme l’humain.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 32,
+        "chapter": "Peuples optionnels",
+        "section": "Photosensible"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Photosensible",
+      "r1_desc": "Sous les étoiles voit comme en plein jour ; rayon de toutes les sources lumineuses doublé ; +3 aux tests de deux domaines associés à son origine géographique ou sociale comme l’humain."
+    },
+    {
+      "id": "ability:nephilim-r2:path:voie-du-nephilim:compagnon-cof2",
+      "path_id": "path:voie-du-nephilim:compagnon-cof2",
+      "rank": 2,
+      "label": "Enfant de la lumière",
+      "desc": "Obtient Lumière (magicien, magie universelle) et le PM correspondant ; utilisable en armure. Si déjà acquis, lancement en action gratuite.",
+      "playSummary": "Obtient Lumière (magicien, magie universelle) et le PM correspondant ; utilisable en armure. Si déjà acquis, lancement en action gratuite.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 32,
+        "chapter": "Peuples optionnels",
+        "section": "Enfant de la lumière"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:nephilim-r3:path:voie-du-nephilim:compagnon-cof2",
+      "path_id": "path:voie-du-nephilim:compagnon-cof2",
+      "rank": 3,
+      "label": "Résistances",
+      "desc": "RD 5 contre acide, froid et électricité.",
+      "playSummary": "RD 5 contre acide, froid et électricité.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 32,
+        "chapter": "Peuples optionnels",
+        "section": "Résistances"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:nephilim-r4:path:voie-du-nephilim:compagnon-cof2",
+      "path_id": "path:voie-du-nephilim:compagnon-cof2",
+      "rank": 4,
+      "label": "La plume et l’acier",
+      "desc": "Ailes célestes une fois par jour, deux à partir du niveau 10, sans gain ni dépense de PM et sans restriction d’armure ; +3 contre corruption mentale et affaiblissement.",
+      "playSummary": "Ailes célestes une fois par jour, deux à partir du niveau 10, sans gain ni dépense de PM et sans restriction d’armure ; +3 contre corruption mentale et affaiblissement.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 32,
+        "chapter": "Peuples optionnels",
+        "section": "La plume et l’acier"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:nephilim-r5:path:voie-du-nephilim:compagnon-cof2",
+      "path_id": "path:voie-du-nephilim:compagnon-cof2",
+      "rank": 5,
+      "label": "Forgé par la lumière",
+      "desc": "+1 CON et +1 CHA.",
+      "playSummary": "+1 CON et +1 CHA.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 32,
+        "chapter": "Peuples optionnels",
+        "section": "Forgé par la lumière"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:ophidien-r1:path:voie-de-l-ophidien:compagnon-cof2",
+      "path_id": "path:voie-de-l-ophidien:compagnon-cof2",
+      "rank": 1,
+      "label": "Sang des anciens",
+      "desc": "+3 aux tests d’histoire, +3 aux tests de CHA pour mentir, bluffer ou soutirer des informations ; vision dans le noir total comme en pénombre jusqu’à 30 m.",
+      "playSummary": "+3 aux tests d’histoire, +3 aux tests de CHA pour mentir, bluffer ou soutirer des informations ; vision dans le noir total comme en pénombre jusqu’à 30 m.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 34,
+        "chapter": "Peuples optionnels",
+        "section": "Sang des anciens"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Sang des anciens",
+      "r1_desc": "+3 aux tests d’histoire, +3 aux tests de CHA pour mentir, bluffer ou soutirer des informations ; vision dans le noir total comme en pénombre jusqu’à 30 m."
+    },
+    {
+      "id": "ability:ophidien-r2:path:voie-de-l-ophidien:compagnon-cof2",
+      "path_id": "path:voie-de-l-ophidien:compagnon-cof2",
+      "rank": 2,
+      "label": "Regard hypnotique*",
+      "desc": "Injonction une fois par combat ; au rang 4, Sommeil une fois par jour ; sans gain ni dépense de PM, en armure autorisée ; 1 PE par rang dans la voie.",
+      "playSummary": "Injonction une fois par combat ; au rang 4, Sommeil une fois par jour ; sans gain ni dépense de PM, en armure autorisée ; 1 PE par rang dans la voie.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 34,
+        "chapter": "Peuples optionnels",
+        "section": "Regard hypnotique*"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:ophidien-r3:path:voie-de-l-ophidien:compagnon-cof2",
+      "path_id": "path:voie-de-l-ophidien:compagnon-cof2",
+      "rank": 3,
+      "label": "Crachat (A)",
+      "desc": "Une fois par combat, attaque à distance à 3 m, 1d4°+PER DM ; sur réussite, AGI difficulté 10 ou aveuglement 1d4 rounds.",
+      "playSummary": "Une fois par combat, attaque à distance à 3 m, 1d4°+PER DM ; sur réussite, AGI difficulté 10 ou aveuglement 1d4 rounds.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 34,
+        "chapter": "Peuples optionnels",
+        "section": "Crachat (A)"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:ophidien-r4:path:voie-de-l-ophidien:compagnon-cof2",
+      "path_id": "path:voie-de-l-ophidien:compagnon-cof2",
+      "rank": 4,
+      "label": "Mutation serpentine (L)",
+      "desc": "Tête et cou de serpent ; morsure gratuite une fois par round (attaque au contact) : 1d4° DM ; CON difficulté 10 ou +1d4° DM de poison. Forme à volonté ; retour humain en action limitée.",
+      "playSummary": "Tête et cou de serpent ; morsure gratuite une fois par round (attaque au contact) : 1d4° DM ; CON difficulté 10 ou +1d4° DM de poison. Forme à volonté ; retour humain en action limitée.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 34,
+        "chapter": "Peuples optionnels",
+        "section": "Mutation serpentine (L)"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:ophidien-r5:path:voie-de-l-ophidien:compagnon-cof2",
+      "path_id": "path:voie-de-l-ophidien:compagnon-cof2",
+      "rank": 5,
+      "label": "Forme de serpent (L)",
+      "desc": "Serpent constricteur à volonté (4 m, 80 kg) : AGI +0, CON +4, FOR +4*, PER +0*, CHA −2, INT/VOL/PV du PJ, DEF 17 (18 niv.9, 19 niv.12, 20 niv.15), Init.13 ; morsure sur attaque magique du PJ, 1d4°+4 DM et poison R4. Après une attaque réussie, test opposé FOR contre FOR ou AGI ; réussite : immobilisation et +1d4° DM par tour ; libération une fois par round en mouvement, FOR difficulté 14.",
+      "playSummary": "Serpent constricteur à volonté (4 m, 80 kg) : AGI +0, CON +4, FOR +4*, PER +0*, CHA −2, INT/VOL/PV du PJ, DEF 17 (18 niv.9, 19 niv.12, 20 niv.15), Init.13 ; morsure sur attaque magique du PJ, 1d4°+4 DM et poison R4. Après une attaque réussie, test opposé FOR contre FOR ou AGI ; réussite : immobilisation et +1d4° DM par tour ; libération une fois par round en mouvement, FOR difficulté 14.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 34,
+        "chapter": "Peuples optionnels",
+        "section": "Forme de serpent (L)"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:satyre-r1:path:voie-du-satyre:compagnon-cof2",
+      "path_id": "path:voie-du-satyre:compagnon-cof2",
+      "rank": 1,
+      "label": "Bonne nature",
+      "desc": "+3 survie et dissimulation en forêt, où il trouve toujours à manger ; +3 chant, danse, instrument ; nuit sous les étoiles considérée comme pénombre.",
+      "playSummary": "+3 survie et dissimulation en forêt, où il trouve toujours à manger ; +3 chant, danse, instrument ; nuit sous les étoiles considérée comme pénombre.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 36,
+        "chapter": "Peuples optionnels",
+        "section": "Bonne nature"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Bonne nature",
+      "r1_desc": "+3 survie et dissimulation en forêt, où il trouve toujours à manger ; +3 chant, danse, instrument ; nuit sous les étoiles considérée comme pénombre."
+    },
+    {
+      "id": "ability:satyre-r2:path:voie-du-satyre:compagnon-cof2",
+      "path_id": "path:voie-du-satyre:compagnon-cof2",
+      "rank": 2,
+      "label": "Encorner et ruer",
+      "desc": "Cornes ou sabots : 1d4°+FOR DM létaux. Action limitée : deux attaques, une de chaque. Dès R4, avec une attaque d’arme au contact, coup de corne gratuit une fois par round.",
+      "playSummary": "Cornes ou sabots : 1d4°+FOR DM létaux. Action limitée : deux attaques, une de chaque. Dès R4, avec une attaque d’arme au contact, coup de corne gratuit une fois par round.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 36,
+        "chapter": "Peuples optionnels",
+        "section": "Encorner et ruer"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:satyre-r3:path:voie-du-satyre:compagnon-cof2",
+      "path_id": "path:voie-du-satyre:compagnon-cof2",
+      "rank": 3,
+      "label": "Compagnon de voyage",
+      "desc": "En fin de journée de voyage, les compagnons testent PER contre dangerosité de la zone ; réussite : +1 DR à dépenser immédiatement ou durant la nuit.",
+      "playSummary": "En fin de journée de voyage, les compagnons testent PER contre dangerosité de la zone ; réussite : +1 DR à dépenser immédiatement ou durant la nuit.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 36,
+        "chapter": "Peuples optionnels",
+        "section": "Compagnon de voyage"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:satyre-r4:path:voie-du-satyre:compagnon-cof2",
+      "path_id": "path:voie-du-satyre:compagnon-cof2",
+      "rank": 4,
+      "label": "Magie sauvage",
+      "desc": "Choisit un sort R3 ou deux sorts R1–R2 de barde, druide ou ensorceleur ; chaque sort une fois par jour, sans PM gagné ou dépensé, quelle que soit l’armure.",
+      "playSummary": "Choisit un sort R3 ou deux sorts R1–R2 de barde, druide ou ensorceleur ; chaque sort une fois par jour, sans PM gagné ou dépensé, quelle que soit l’armure.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 36,
+        "chapter": "Peuples optionnels",
+        "section": "Magie sauvage"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:satyre-r5:path:voie-du-satyre:compagnon-cof2",
+      "path_id": "path:voie-du-satyre:compagnon-cof2",
+      "rank": 5,
+      "label": "Ascendance naturelle",
+      "desc": "+1 PER et +1 CHA.",
+      "playSummary": "+1 PER et +1 CHA.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 36,
+        "chapter": "Peuples optionnels",
+        "section": "Ascendance naturelle"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:wolfer-r1:path:voie-du-wolfer:compagnon-cof2",
+      "path_id": "path:voie-du-wolfer:compagnon-cof2",
+      "rank": 1,
+      "label": "Chasseur né",
+      "desc": "+3 aux tests de PER pour pister, chasser, détecter créature ou piège en nature ; +3 marche et course d’endurance ; −3 équitation ; vision dans le noir total comme en pénombre jusqu’à 30 m.",
+      "playSummary": "+3 aux tests de PER pour pister, chasser, détecter créature ou piège en nature ; +3 marche et course d’endurance ; −3 équitation ; vision dans le noir total comme en pénombre jusqu’à 30 m.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 38,
+        "chapter": "Peuples optionnels",
+        "section": "Chasseur né"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Chasseur né",
+      "r1_desc": "+3 aux tests de PER pour pister, chasser, détecter créature ou piège en nature ; +3 marche et course d’endurance ; −3 équitation ; vision dans le noir total comme en pénombre jusqu’à 30 m."
+    },
+    {
+      "id": "ability:wolfer-r2:path:voie-du-wolfer:compagnon-cof2",
+      "path_id": "path:voie-du-wolfer:compagnon-cof2",
+      "rank": 2,
+      "label": "Griffes et crocs",
+      "desc": "Armes naturelles : 1d4°+FOR DM ; deux attaques en action limitée. Dès R4, une attaque naturelle gratuite par round en plus des autres attaques.",
+      "playSummary": "Armes naturelles : 1d4°+FOR DM ; deux attaques en action limitée. Dès R4, une attaque naturelle gratuite par round en plus des autres attaques.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 38,
+        "chapter": "Peuples optionnels",
+        "section": "Griffes et crocs"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:wolfer-r3:path:voie-du-wolfer:compagnon-cof2",
+      "path_id": "path:voie-du-wolfer:compagnon-cof2",
+      "rank": 3,
+      "label": "Loi de la meute",
+      "desc": "+1 attaque et DEF lorsque le wolfer combat le même ennemi que des alliés. Peut calculer ses PC avec 2+PER au lieu de 2+CHA.",
+      "playSummary": "+1 attaque et DEF lorsque le wolfer combat le même ennemi que des alliés. Peut calculer ses PC avec 2+PER au lieu de 2+CHA.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 38,
+        "chapter": "Peuples optionnels",
+        "section": "Loi de la meute"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:wolfer-r4:path:voie-du-wolfer:compagnon-cof2",
+      "path_id": "path:voie-du-wolfer:compagnon-cof2",
+      "rank": 4,
+      "label": "Forme de loup (L)",
+      "desc": "Forme de loup jusqu’à 1 h/niveau ; première transformation quotidienne gratuite, suivantes avant récupération complète : 1 DR ; voyage +5 km par période. Loup : AGI +2, CON du PJ, FOR +3, PER +2*, CHA/INT/VOL et PV du PJ ; DEF 17 (18 niv.9, 19 niv.12, 20 niv.15), Init.15 ; morsure sur attaque de contact du PJ, 2d4°+3 DM.",
+      "playSummary": "Forme de loup jusqu’à 1 h/niveau ; première transformation quotidienne gratuite, suivantes avant récupération complète : 1 DR ; voyage +5 km par période. Loup : AGI +2, CON du PJ, FOR +3, PER +2*, CHA/INT/VOL et PV du PJ ; DEF 17 (18 niv.9, 19 niv.12, 20 niv.15), Init.15 ; morsure sur attaque de contact du PJ, 2d4°+3 DM.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 38,
+        "chapter": "Peuples optionnels",
+        "section": "Forme de loup (L)"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:wolfer-r5:path:voie-du-wolfer:compagnon-cof2",
+      "path_id": "path:voie-du-wolfer:compagnon-cof2",
+      "rank": 5,
+      "label": "Esprit du loup",
+      "desc": "+1 PER et +1 VOL.",
+      "playSummary": "+1 PER et +1 VOL.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 38,
+        "chapter": "Peuples optionnels",
+        "section": "Esprit du loup"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:demi-elfe-v2-r1:path:voie-du-demi-elfe:compagnon-cof2",
+      "path_id": "path:voie-du-demi-elfe:compagnon-cof2",
+      "rank": 1,
+      "label": "Héritages",
+      "desc": "Sous les étoiles, obscurité comme pénombre jusqu’à 20 m ; +3 aux tests de deux domaines liés à son origine géographique ou sociale, comme pour les humains.",
+      "playSummary": "Sous les étoiles, obscurité comme pénombre jusqu’à 20 m ; +3 aux tests de deux domaines liés à son origine géographique ou sociale, comme pour les humains.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 10,
+        "chapter": "Peuples optionnels",
+        "section": "Héritages"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Héritages",
+      "r1_desc": "Sous les étoiles, obscurité comme pénombre jusqu’à 20 m ; +3 aux tests de deux domaines liés à son origine géographique ou sociale, comme pour les humains."
+    },
+    {
+      "id": "ability:demi-elfe-v2-r2:path:voie-du-demi-elfe:compagnon-cof2",
+      "path_id": "path:voie-du-demi-elfe:compagnon-cof2",
+      "rank": 2,
+      "label": "Nomade",
+      "desc": "Choisit Survie (rôdeur) ou Éclectique (barde), bonus porté à +2 au rang 4 de cette voie.",
+      "playSummary": "Choisit Survie (rôdeur) ou Éclectique (barde), bonus porté à +2 au rang 4 de cette voie.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 10,
+        "chapter": "Peuples optionnels",
+        "section": "Nomade"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:demi-elfe-v2-r3:path:voie-du-demi-elfe:compagnon-cof2",
+      "path_id": "path:voie-du-demi-elfe:compagnon-cof2",
+      "rank": 3,
+      "label": "Capacité d’apprentissage",
+      "desc": "Dé évolutif augmenté d’une catégorie : d6 jusqu’au niveau 5, d8 dès niveau 6, et 2d6 au niveau 15 au lieu de d12.",
+      "playSummary": "Dé évolutif augmenté d’une catégorie : d6 jusqu’au niveau 5, d8 dès niveau 6, et 2d6 au niveau 15 au lieu de d12.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 10,
+        "chapter": "Peuples optionnels",
+        "section": "Capacité d’apprentissage"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:demi-elfe-v2-r4:path:voie-du-demi-elfe:compagnon-cof2",
+      "path_id": "path:voie-du-demi-elfe:compagnon-cof2",
+      "rank": 4,
+      "label": "Sang féerique",
+      "desc": "Choisit un sort R1–R3 d’ensorceleur (ascendance elfe haut) ou druide (elfe sylvain). En armure sans pénalité, sans gain de PM : 3 fois/jour R1, 2 fois/jour R2, 1 fois/jour R3. Un lanceur de sorts peut en plus dépenser des PM en respectant la limitation d’armure.",
+      "playSummary": "Choisit un sort R1–R3 d’ensorceleur (ascendance elfe haut) ou druide (elfe sylvain). En armure sans pénalité, sans gain de PM : 3 fois/jour R1, 2 fois/jour R2, 1 fois/jour R3. Un lanceur de sorts peut en plus dépenser des PM en respectant la limitation d’armure.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 10,
+        "chapter": "Peuples optionnels",
+        "section": "Sang féerique"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:demi-elfe-v2-r5:path:voie-du-demi-elfe:compagnon-cof2",
+      "path_id": "path:voie-du-demi-elfe:compagnon-cof2",
+      "rank": 5,
+      "label": "Empathie fantastique",
+      "desc": "+1 PER et +1 CHA.",
+      "playSummary": "+1 PER et +1 CHA.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 11,
+        "chapter": "Peuples optionnels",
+        "section": "Empathie fantastique"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2_visual_summary",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false,
+        "legacyMigrationPending": true
+      },
       "mechanics": {
         "kind": "passive_or_contextual",
         "effects": []
