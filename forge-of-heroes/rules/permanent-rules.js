@@ -4,7 +4,8 @@ const fold=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLo
 function ruleSet(a){const p=(a.path_id||a.pathId||'').split(':')[1],r=Number(a.rank),name=fold(a.label),rules=[];const add=(key,formula,legacy=0,when=null)=>rules.push({kind:'derived',key,formula,legacy,when});const gain=values=>rules.push({kind:'stats',values});
  const heroic={'force heroique':'for','agilite heroique':'agi','dexterite heroique':'agi','constitution heroique':'con','perception heroique':'per','charisme heroique':'cha','volonte heroique':'vol','ego heroique':'cha'};
  if(heroic[name]){gain({[heroic[name]]:1});rules.push({kind:'bonus_die',stat:heroic[name]});}
- const multi={'voie-du-halfelin':['agi','con'],'voie-du-nain':['con','vol'],'voie-du-demi-orc':['for','con'],'voie-de-l-elfe-sylvain':['agi','per'],'voie-du-gnome':['con','cha'],'voie-de-lâme-forgée':['con','for'],'voie-du-centaure':['con','per'],'voie-du-demi-ogre':['con','for'],'voie-du-gobelin':['agi','con'],'voie-du-kobold':['agi','per'],'voie-de-letre-feerique':['per','cha'],'voie-du-minotaure':['con','for']};
+ const multi={'voie-du-halfelin':['agi','con'],'voie-du-nain':['con','vol'],'voie-du-demi-orc':['for','con'],'voie-de-l-elfe-sylvain':['agi','per'],'voie-du-gnome':['con','cha'],'voie-de-lâme-forgée':['con','for'],'voie-du-centaure':['con','per'],'voie-du-demi-ogre':['con','for'],'voie-du-gobelin':['agi','con'],'voie-du-kobold':['agi','per'],'voie-de-letre-feerique':['per','cha'],'voie-du-minotaure':['con','for'],'voie-du-drakonide':['con','cha']};
+ if(p==='voie-du-drakonide'&&r===3)add('DEF','1');
  if(r===5&&(a.path_id||'').startsWith('path:')&&multi[p])gain(Object.fromEntries(multi[p].map(k=>[k,1])));
  if(a.path_id==='history:nomad'&&r===5)gain({per:1});
  if(a.path_id==='history:scholar'&&r===5)gain({int:1});
@@ -100,6 +101,7 @@ function projectPeopleBonuses(s,state){
   if(p==='voie-du-halfelin')skill(a,['discrétion','subtilisation'],3);
   if(p==='voie-du-nain'){skill(a,['pierre','architecture','mines'],3);skill(a,['passages secrets','pièges'],3,'dans les murs et parois rocheuses');}
   if(p==='voie-du-demi-orc')skill(a,['intimidation'],3);
+  if(p==='voie-du-drakonide'){skill(a,['intimidation'],3);s.traits.darkvisionMeters=30;feature(a,{kind:'vision',meters:30,darkness:'pénombre dans le noir total'});}
   if(p==='voie-de-l-elfe-haut')skill(a,['érudition','arts'],3);
   if(p==='voie-de-l-elfe-sylvain'&&!hasHistory('sylvan_history'))skill(a,['escalade','discrétion','chasse','survie'],3,'en forêt');
   if(p==='voie-du-gnome')skill(a,['sciences ordinaires','sciences occultes'],3);
@@ -110,6 +112,11 @@ function projectPeopleBonuses(s,state){
   if(p==='mage')skill(a,['connaissance de la magie','érudition occulte'],rank(path)+2);
   if(['voie-du-nain','voie-du-demi-orc','voie-du-gnome'].includes(p))feature(a,{kind:'vision',meters:p==='voie-du-gnome'?10:30,darkness:'pénombre dans le noir total'});
   if(['voie-de-l-elfe-haut','voie-de-l-elfe-sylvain'].includes(p))feature(a,{kind:'vision',condition:'nuit sous la lumière des étoiles',darkness:'pénombre'});
+ }
+ if(p==='voie-du-drakonide'){
+  if(r===2){const element=state?.abilityChoices?.[a.id]?.drakonideBreath;if(['fire','cold','lightning','acid'].includes(element))feature(a,{kind:'breath',element,action:'limited',usesPerCombat:1,damageDice:(3+rank(path))+'d4°',coneMeters:10,coneWidthMeters:5,save:{stat:'agi',difficulty:10,success:'half_damage'}});}
+  if(r===3){const element=state?.abilityChoices?.['ability:drakonide-r2:'+path]?.drakonideBreath;if(['fire','cold','lightning','acid'].includes(element))s.traits.damageReduction=[...(s.traits.damageReduction||[]),{types:[element],value:rank(path)}];}
+  if(r===4){const gift=state?.abilityChoices?.[a.id]?.drakonideGift;if(gift==='wings')s.traits.flight={action:'movement',distanceMeters:10,maxContinuousMeters:30};if(gift==='fury')feature(a,{kind:'conditional_combat_bonus',condition:'critique subi ou passage sous la moitié des PV max',attackBonus:1,damageBonus:1,duration:'fin du combat'});}
  }
  if(r===2){
   if(['voie-du-halfelin','voie-de-l-elfe-haut'].includes(p))skill(a,['attaque magique opposée'],rank(path),'résister à un sort');
