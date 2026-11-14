@@ -3698,23 +3698,6 @@
       }
     },
     {
-      "id": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
-      "label": "Voie de l’Âme-forgée",
-      "people_id": "people:ame-forgee:addon-comp2017-cof2",
-      "group": "Compagnon",
-      "source": {
-        "bookId": "cof2-compagnon-v2",
-        "edition": "COF2",
-        "printedPage": 7,
-        "chapter": "Peuples optionnels"
-      },
-      "certification": {
-        "scope": "n1_extension",
-        "sourceStatus": "official_cof2",
-        "enabledInCertifiedN1": true
-      }
-    },
-    {
       "id": "path:voie-du-centaure:addon-comp2017-cof2",
       "label": "VOIE DU CENTAURE",
       "people_id": "people:centaure:addon-comp2017-cof2",
@@ -3738,6 +3721,40 @@
         "validatedBy": "FIX67"
       },
       "group": "Compagnon"
+    },
+    {
+      "id": "path:mage:cof2-lb-2024",
+      "label": "VOIE DU MAGE",
+      "people_id": "",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "Chroniques Oubliées Fantasy 2e édition",
+        "printedPage": 60,
+        "chapter": "Création du personnage",
+        "section": "Voie du Mage"
+      },
+      "certification": {
+        "scope": "n1",
+        "sourceStatus": "reference_migrated_content_pending",
+        "functionalStatus": "not_tested"
+      }
+    },
+    {
+      "id": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
+      "label": "Voie de l’Âme-forgée",
+      "people_id": "people:ame-forgee:addon-comp2017-cof2",
+      "group": "Compagnon",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 7,
+        "chapter": "Peuples optionnels"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "enabledInCertifiedN1": true
+      }
     },
     {
       "id": "path:voie-du-demi-ogre:addon-comp2017-cof2",
@@ -3818,23 +3835,6 @@
         "legacyMigrationPending": true
       },
       "group": "Compagnon"
-    },
-    {
-      "id": "path:mage:cof2-lb-2024",
-      "label": "VOIE DU MAGE",
-      "people_id": "",
-      "source": {
-        "bookId": "cof2-livre-base-2024",
-        "edition": "Chroniques Oubliées Fantasy 2e édition",
-        "printedPage": 60,
-        "chapter": "Création du personnage",
-        "section": "Voie du Mage"
-      },
-      "certification": {
-        "scope": "n1",
-        "sourceStatus": "reference_migrated_content_pending",
-        "functionalStatus": "not_tested"
-      }
     },
     {
       "id": "path:voie-de-letre-feerique:addon-comp2017-cof2",
@@ -21687,6 +21687,210 @@
       }
     },
     {
+      "id": "ability:charge:path:voie-du-centaure:addon-comp2017-cof2:rank1:cof2-lb-2024",
+      "path_id": "path:voie-du-centaure:addon-comp2017-cof2",
+      "rank": 1,
+      "label": "Charge au galop",
+      "desc": "Une fois par tour, après un déplacement d’au moins 10 mètres en ligne droite, le centaure peut effectuer une attaque au contact avec un bonus de +2 au test d’attaque et +1d6 DM en cas de réussite.",
+      "source": {
+        "bookId": "cof1-compagnon-2017",
+        "edition": "COF1",
+        "printedPage": 11,
+        "chapter": "Nouveaux peuples",
+        "section": "Charge au galop"
+      },
+      "conversion": {
+        "policyId": "FOH_COMPANION_COF2_V1",
+        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
+        "playtestStatus": "NOT_PLAYTESTED",
+        "decisions": [
+          "Adaptation N1 déjà en place conservée ; texte original complet joint."
+        ]
+      }
+    },
+    {
+      "id": "ability:tir-en-mouvement:path:voie-du-centaure:addon-comp2017-cof2:rank2:cof2-lb-2024",
+      "path_id": "path:voie-du-centaure:addon-comp2017-cof2",
+      "rank": 2,
+      "label": "Tir en mouvement",
+      "desc": "Une fois par tour, le centaure peut combiner un déplacement de 20 mètres et une attaque à distance (avec un arc ou un javelot) au prix d’une action d’attaque. Il ne peut réaliser une telle action s’il fuit ou tourne le dos à sa cible. À partir du rang 4, il peut combiner dans un même tour un tir en mouvement et une charge au galop.",
+      "source": {
+        "bookId": "cof1-compagnon-2017",
+        "edition": "COF1",
+        "printedPage": 11,
+        "chapter": "Nouveaux peuples",
+        "section": "Tir en mouvement"
+      },
+      "conversion": {
+        "policyId": "FOH_COMPANION_COF2_V1",
+        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
+        "playtestStatus": "NOT_PLAYTESTED",
+        "decisions": [
+          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
+        ]
+      }
+    },
+    {
+      "id": "ability:ma-trise:path:voie-du-centaure:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "path_id": "path:voie-du-centaure:addon-comp2017-cof2",
+      "rank": 3,
+      "label": "Maîtrise de la ruade",
+      "desc": "Désormais, le centaure peut réaliser une attaque de sabot en action gratuite s’il ne s’est pas déplacé à ce tour.",
+      "source": {
+        "bookId": "cof1-compagnon-2017",
+        "edition": "COF1",
+        "printedPage": 11,
+        "chapter": "Nouveaux peuples",
+        "section": "Maîtrise de la ruade"
+      },
+      "conversion": {
+        "policyId": "FOH_COMPANION_COF2_V1",
+        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
+        "playtestStatus": "NOT_PLAYTESTED",
+        "decisions": [
+          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
+        ]
+      }
+    },
+    {
+      "id": "ability:renverser:path:voie-du-centaure:addon-comp2017-cof2:rank4:cof2-lb-2024",
+      "path_id": "path:voie-du-centaure:addon-comp2017-cof2",
+      "rank": 4,
+      "label": "Renversé",
+      "desc": "Lorsqu’il réussit une charge au galop ou une attaque de sabot, le centaure peut faire un test de FOR opposé (avec son bonus de +3) pour renverser sa cible si elle est de taille moyenne ou inférieure.",
+      "source": {
+        "bookId": "cof1-compagnon-2017",
+        "edition": "COF1",
+        "printedPage": 11,
+        "chapter": "Nouveaux peuples",
+        "section": "Renverser"
+      },
+      "conversion": {
+        "policyId": "FOH_COMPANION_COF2_V1",
+        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
+        "playtestStatus": "NOT_PLAYTESTED",
+        "decisions": [
+          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
+        ]
+      }
+    },
+    {
+      "id": "ability:parfaitement:path:voie-du-centaure:addon-comp2017-cof2:rank5:cof2-lb-2024",
+      "path_id": "path:voie-du-centaure:addon-comp2017-cof2",
+      "rank": 5,
+      "label": "Parfaitement adapté",
+      "desc": "Le personnage est un parangon d’adaptation en milieu naturel, endurant et attentif à dame nature. Il augmente ses valeurs de CON et de PER de +1.",
+      "source": {
+        "bookId": "cof1-compagnon-2017",
+        "edition": "COF1",
+        "printedPage": 11,
+        "chapter": "Nouveaux peuples",
+        "section": "Parfaitement adapté"
+      },
+      "conversion": {
+        "policyId": "FOH_COMPANION_COF2_V1",
+        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
+        "playtestStatus": "NOT_PLAYTESTED",
+        "decisions": [
+          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2.",
+          "Gain de caractéristique +2 COF1 remplacé par +1 COF2."
+        ]
+      }
+    },
+    {
+      "id": "ability:capacite-de-peuple-plus-occultisme:path-mage-cof2-lb-2024:r1:cof2-lb-2024",
+      "path_id": "path:mage:cof2-lb-2024",
+      "rank": 1,
+      "label": "Capacité de peuple + occultisme",
+      "desc": "Le mage conserve sa capacité de peuple de rang 1. De plus, il ajoute son rang + 2 aux tests de connaissance et d’érudition en rapport avec la magie.",
+      "playSummary": "Conserve la capacité de peuple R1 ; ajoute rang +2 aux tests de connaissances et d’érudition liés à la magie.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 60,
+        "chapter": "Création du personnage",
+        "section": "Capacité de peuple + occultisme"
+      }
+    },
+    {
+      "id": "ability:maitrise-de-la-magie-l:path-mage-cof2-lb-2024:r2:cof2-lb-2024",
+      "path_id": "path:mage:cof2-lb-2024",
+      "rank": 2,
+      "label": "Maîtrise de la magie (L)*",
+      "desc": "Le mage peut détecter la présence de magie (y compris la présence d’objets magiques) dans un rayon de 10 m. Un test d’INT difficulté [10 + rang du sort] permet de déterminer la fonction générale de l’enchantement. Il peut aussi tenter de dissiper un sort non permanent d’un rang maximal égal à ceux qu’il est capable de lancer en emportant un test opposé d’attaque magique contre l’auteur du sort.",
+      "playSummary": "Détecte la magie à 10 m ; INT difficulté 10 + rang du sort pour l’identifier. Dissipe un sort non permanent accessible : attaque magique opposée.",
+      "mechanics": {
+        "kind": "spell",
+        "action": "L",
+        "cost": {
+          "resource": "PM",
+          "value": 2
+        },
+        "rangeMeters": 10,
+        "effects": [
+          {
+            "type": "detect_magic"
+          },
+          {
+            "type": "dispel",
+            "test": "opposed_ATM"
+          }
+        ]
+      },
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 60,
+        "chapter": "Création du personnage",
+        "section": "Maîtrise de la magie (L)*"
+      }
+    },
+    {
+      "id": "ability:tour-de-magie-g:path-mage-cof2-lb-2024:r3:cof2-lb-2024",
+      "path_id": "path:mage:cof2-lb-2024",
+      "rank": 3,
+      "label": "Tour de magie (G)*",
+      "desc": "Le mage peut réaliser un tour de magie (portée 10 m) par round en action gratuite sans dépenser aucun PM. Par exemple, fermer une porte à distance, éteindre ou allumer une bougie en claquant des doigts. Il ne peut réaliser aucune action qui nécessite une valeur de caractéristique supérieure à 0 (par exemple, s’il faut au moins +1 ou un test de FOR pour pousser une porte lourde, ce sort ne permet pas de la fermer). Cette capacité ne peut produire aucun DM direct. De plus, le mage gagne +1 en DEF et +2 PM (en plus de celui gagné avec cette capacité ; au total, en apprenant ce sort, le mage acquiert donc 3 PM d’un coup).",
+      "playSummary": "1 tour de magie gratuit par round à 10 m, sans DM ni effort supérieur à une caractéristique +0. Bonus permanents : DEF +1 ; ce rang apporte 3 PM au total.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 60,
+        "chapter": "Création du personnage",
+        "section": "Tour de magie (G)*"
+      }
+    },
+    {
+      "id": "ability:esprit-superieur:path-mage-cof2-lb-2024:r4:cof2-lb-2024",
+      "path_id": "path:mage:cof2-lb-2024",
+      "rank": 4,
+      "label": "Esprit supérieur",
+      "desc": "Le mage augmente son INT et sa VOL de +1. Désormais, il obtient un dé bonus aux tests d’INT.",
+      "playSummary": "INT +1 et VOL +1 ; dé bonus aux tests d’INT.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 60,
+        "chapter": "Création du personnage",
+        "section": "Esprit supérieur"
+      }
+    },
+    {
+      "id": "ability:tempete-de-mana:path-mage-cof2-lb-2024:r5:cof2-lb-2024",
+      "path_id": "path:mage:cof2-lb-2024",
+      "rank": 5,
+      "label": "Tempête de mana",
+      "desc": "Lorsqu’il lance un sort, le mage peut augmenter les DM de +1d4° (en cas de DM sur la durée, une seule fois) en payant +1 PM pour un sort à cible unique ou +3 PM pour un sort de zone (Explosion de feu, Foudre, etc.).",
+      "playSummary": "En lançant un sort : +1d4° DM contre +1 PM sur une cible, ou +3 PM en zone. Pour un sort durable, ce supplément de DM ne s’applique qu’une fois.",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 60,
+        "chapter": "Création du personnage",
+        "section": "Tempête de mana"
+      }
+    },
+    {
       "id": "ability:main-lourde:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank1:cof2-lb-2024",
       "path_id": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
       "rank": 1,
@@ -21836,117 +22040,6 @@
       "mechanics": {
         "kind": "passive_or_contextual",
         "effects": []
-      }
-    },
-    {
-      "id": "ability:charge:path:voie-du-centaure:addon-comp2017-cof2:rank1:cof2-lb-2024",
-      "path_id": "path:voie-du-centaure:addon-comp2017-cof2",
-      "rank": 1,
-      "label": "Charge au galop",
-      "desc": "Une fois par tour, après un déplacement d’au moins 10 mètres en ligne droite, le centaure peut effectuer une attaque au contact avec un bonus de +2 au test d’attaque et +1d6 DM en cas de réussite.",
-      "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 11,
-        "chapter": "Nouveaux peuples",
-        "section": "Charge au galop"
-      },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Adaptation N1 déjà en place conservée ; texte original complet joint."
-        ]
-      }
-    },
-    {
-      "id": "ability:tir-en-mouvement:path:voie-du-centaure:addon-comp2017-cof2:rank2:cof2-lb-2024",
-      "path_id": "path:voie-du-centaure:addon-comp2017-cof2",
-      "rank": 2,
-      "label": "Tir en mouvement",
-      "desc": "Une fois par tour, le centaure peut combiner un déplacement de 20 mètres et une attaque à distance (avec un arc ou un javelot) au prix d’une action d’attaque. Il ne peut réaliser une telle action s’il fuit ou tourne le dos à sa cible. À partir du rang 4, il peut combiner dans un même tour un tir en mouvement et une charge au galop.",
-      "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 11,
-        "chapter": "Nouveaux peuples",
-        "section": "Tir en mouvement"
-      },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
-      }
-    },
-    {
-      "id": "ability:ma-trise:path:voie-du-centaure:addon-comp2017-cof2:rank3:cof2-lb-2024",
-      "path_id": "path:voie-du-centaure:addon-comp2017-cof2",
-      "rank": 3,
-      "label": "Maîtrise de la ruade",
-      "desc": "Désormais, le centaure peut réaliser une attaque de sabot en action gratuite s’il ne s’est pas déplacé à ce tour.",
-      "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 11,
-        "chapter": "Nouveaux peuples",
-        "section": "Maîtrise de la ruade"
-      },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
-      }
-    },
-    {
-      "id": "ability:renverser:path:voie-du-centaure:addon-comp2017-cof2:rank4:cof2-lb-2024",
-      "path_id": "path:voie-du-centaure:addon-comp2017-cof2",
-      "rank": 4,
-      "label": "Renversé",
-      "desc": "Lorsqu’il réussit une charge au galop ou une attaque de sabot, le centaure peut faire un test de FOR opposé (avec son bonus de +3) pour renverser sa cible si elle est de taille moyenne ou inférieure.",
-      "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 11,
-        "chapter": "Nouveaux peuples",
-        "section": "Renverser"
-      },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2."
-        ]
-      }
-    },
-    {
-      "id": "ability:parfaitement:path:voie-du-centaure:addon-comp2017-cof2:rank5:cof2-lb-2024",
-      "path_id": "path:voie-du-centaure:addon-comp2017-cof2",
-      "rank": 5,
-      "label": "Parfaitement adapté",
-      "desc": "Le personnage est un parangon d’adaptation en milieu naturel, endurant et attentif à dame nature. Il augmente ses valeurs de CON et de PER de +1.",
-      "source": {
-        "bookId": "cof1-compagnon-2017",
-        "edition": "COF1",
-        "printedPage": 11,
-        "chapter": "Nouveaux peuples",
-        "section": "Parfaitement adapté"
-      },
-      "conversion": {
-        "policyId": "FOH_COMPANION_COF2_V1",
-        "status": "HOUSE_CONVERSION_NOT_OFFICIAL",
-        "playtestStatus": "NOT_PLAYTESTED",
-        "decisions": [
-          "Renommage DEX/AGI et SAG/PER ; ressources de famille COF2.",
-          "Gain de caractéristique +2 COF1 remplacé par +1 COF2."
-        ]
       }
     },
     {
@@ -22621,99 +22714,6 @@
       }
     },
     {
-      "id": "ability:capacite-de-peuple-plus-occultisme:path-mage-cof2-lb-2024:r1:cof2-lb-2024",
-      "path_id": "path:mage:cof2-lb-2024",
-      "rank": 1,
-      "label": "Capacité de peuple + occultisme",
-      "desc": "Le mage conserve sa capacité de peuple de rang 1. De plus, il ajoute son rang + 2 aux tests de connaissance et d’érudition en rapport avec la magie.",
-      "playSummary": "Conserve la capacité de peuple R1 ; ajoute rang +2 aux tests de connaissances et d’érudition liés à la magie.",
-      "source": {
-        "bookId": "cof2-livre-base-2024",
-        "edition": "COF2",
-        "printedPage": 60,
-        "chapter": "Création du personnage",
-        "section": "Capacité de peuple + occultisme"
-      }
-    },
-    {
-      "id": "ability:maitrise-de-la-magie-l:path-mage-cof2-lb-2024:r2:cof2-lb-2024",
-      "path_id": "path:mage:cof2-lb-2024",
-      "rank": 2,
-      "label": "Maîtrise de la magie (L)*",
-      "desc": "Le mage peut détecter la présence de magie (y compris la présence d’objets magiques) dans un rayon de 10 m. Un test d’INT difficulté [10 + rang du sort] permet de déterminer la fonction générale de l’enchantement. Il peut aussi tenter de dissiper un sort non permanent d’un rang maximal égal à ceux qu’il est capable de lancer en emportant un test opposé d’attaque magique contre l’auteur du sort.",
-      "playSummary": "Détecte la magie à 10 m ; INT difficulté 10 + rang du sort pour l’identifier. Dissipe un sort non permanent accessible : attaque magique opposée.",
-      "mechanics": {
-        "kind": "spell",
-        "action": "L",
-        "cost": {
-          "resource": "PM",
-          "value": 2
-        },
-        "rangeMeters": 10,
-        "effects": [
-          {
-            "type": "detect_magic"
-          },
-          {
-            "type": "dispel",
-            "test": "opposed_ATM"
-          }
-        ]
-      },
-      "source": {
-        "bookId": "cof2-livre-base-2024",
-        "edition": "COF2",
-        "printedPage": 60,
-        "chapter": "Création du personnage",
-        "section": "Maîtrise de la magie (L)*"
-      }
-    },
-    {
-      "id": "ability:tour-de-magie-g:path-mage-cof2-lb-2024:r3:cof2-lb-2024",
-      "path_id": "path:mage:cof2-lb-2024",
-      "rank": 3,
-      "label": "Tour de magie (G)*",
-      "desc": "Le mage peut réaliser un tour de magie (portée 10 m) par round en action gratuite sans dépenser aucun PM. Par exemple, fermer une porte à distance, éteindre ou allumer une bougie en claquant des doigts. Il ne peut réaliser aucune action qui nécessite une valeur de caractéristique supérieure à 0 (par exemple, s’il faut au moins +1 ou un test de FOR pour pousser une porte lourde, ce sort ne permet pas de la fermer). Cette capacité ne peut produire aucun DM direct. De plus, le mage gagne +1 en DEF et +2 PM (en plus de celui gagné avec cette capacité ; au total, en apprenant ce sort, le mage acquiert donc 3 PM d’un coup).",
-      "playSummary": "1 tour de magie gratuit par round à 10 m, sans DM ni effort supérieur à une caractéristique +0. Bonus permanents : DEF +1 ; ce rang apporte 3 PM au total.",
-      "source": {
-        "bookId": "cof2-livre-base-2024",
-        "edition": "COF2",
-        "printedPage": 60,
-        "chapter": "Création du personnage",
-        "section": "Tour de magie (G)*"
-      }
-    },
-    {
-      "id": "ability:esprit-superieur:path-mage-cof2-lb-2024:r4:cof2-lb-2024",
-      "path_id": "path:mage:cof2-lb-2024",
-      "rank": 4,
-      "label": "Esprit supérieur",
-      "desc": "Le mage augmente son INT et sa VOL de +1. Désormais, il obtient un dé bonus aux tests d’INT.",
-      "playSummary": "INT +1 et VOL +1 ; dé bonus aux tests d’INT.",
-      "source": {
-        "bookId": "cof2-livre-base-2024",
-        "edition": "COF2",
-        "printedPage": 60,
-        "chapter": "Création du personnage",
-        "section": "Esprit supérieur"
-      }
-    },
-    {
-      "id": "ability:tempete-de-mana:path-mage-cof2-lb-2024:r5:cof2-lb-2024",
-      "path_id": "path:mage:cof2-lb-2024",
-      "rank": 5,
-      "label": "Tempête de mana",
-      "desc": "Lorsqu’il lance un sort, le mage peut augmenter les DM de +1d4° (en cas de DM sur la durée, une seule fois) en payant +1 PM pour un sort à cible unique ou +3 PM pour un sort de zone (Explosion de feu, Foudre, etc.).",
-      "playSummary": "En lançant un sort : +1d4° DM contre +1 PM sur une cible, ou +3 PM en zone. Pour un sort durable, ce supplément de DM ne s’applique qu’une fois.",
-      "source": {
-        "bookId": "cof2-livre-base-2024",
-        "edition": "COF2",
-        "printedPage": 60,
-        "chapter": "Création du personnage",
-        "section": "Tempête de mana"
-      }
-    },
-    {
       "id": "ability:fee-r1:path:voie-de-la-fee:compagnon-cof2",
       "path_id": "path:voie-de-la-fee:compagnon-cof2",
       "rank": 1,
@@ -23061,7 +23061,38 @@
       },
       "mechanics": {
         "kind": "passive_or_contextual",
-        "effects": []
+        "effects": [
+          {
+            "label": "Ténèbres (L)",
+            "manaGain": 1,
+            "duplicateAction": "G",
+            "omitAssociatedSkill": true,
+            "type": "racial_fixed_spell",
+            "abilityId": "ability-r1-class-sorcier-sombre-magie-tenebres-cof2-lb-2024",
+            "sourceMagicStat": "int"
+          }
+        ],
+        "choices": [
+          {
+            "id": "racialMagicStat",
+            "label": "Caractéristique de magie (voie de peuple)",
+            "type": "enum",
+            "values": [
+              "int",
+              "vol",
+              "con"
+            ],
+            "valueLabels": {
+              "int": "Intelligence",
+              "cha": "Charisme",
+              "vol": "Volonté",
+              "con": "Constitution"
+            },
+            "persist": true,
+            "required": false,
+            "default": "int"
+          }
+        ]
       }
     },
     {
@@ -23111,7 +23142,48 @@
       },
       "mechanics": {
         "kind": "passive_or_contextual",
-        "effects": []
+        "effects": [
+          {
+            "label": "Beauté de la succube",
+            "dailyUses": 1,
+            "manaGain": 0,
+            "manaCost": 0,
+            "type": "racial_fixed_spell",
+            "abilityId": "ability:beaute-de-la-succube-l-:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024",
+            "sourceMagicStat": "int"
+          },
+          {
+            "label": "Aspect du démon",
+            "dailyUses": 1,
+            "manaGain": 0,
+            "manaCost": 0,
+            "minLevel": 10,
+            "type": "racial_fixed_spell",
+            "abilityId": "ability:reference:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank4",
+            "sourceMagicStat": "int"
+          }
+        ],
+        "choices": [
+          {
+            "id": "racialMagicStat",
+            "label": "Caractéristique de magie (voie de peuple)",
+            "type": "enum",
+            "values": [
+              "int",
+              "vol",
+              "con"
+            ],
+            "valueLabels": {
+              "int": "Intelligence",
+              "cha": "Charisme",
+              "vol": "Volonté",
+              "con": "Constitution"
+            },
+            "persist": true,
+            "required": false,
+            "default": "int"
+          }
+        ]
       }
     },
     {
@@ -23238,7 +23310,24 @@
       },
       "mechanics": {
         "kind": "passive_or_contextual",
-        "effects": []
+        "effects": [],
+        "choices": [
+          {
+            "id": "paleLuckStat",
+            "label": "Caractéristique ajoutée aux PC",
+            "type": "enum",
+            "values": [
+              "per",
+              "vol"
+            ],
+            "valueLabels": {
+              "per": "Perception",
+              "vol": "Volonté"
+            },
+            "persist": true,
+            "required": true
+          }
+        ]
       }
     },
     {
@@ -23467,7 +23556,24 @@
       },
       "mechanics": {
         "kind": "passive_or_contextual",
-        "effects": []
+        "effects": [],
+        "choices": [
+          {
+            "id": "felisBackground",
+            "label": "Talent du Félis (Terres d’Osgild)",
+            "type": "enum",
+            "values": [
+              "acrobatics",
+              "forest"
+            ],
+            "valueLabels": {
+              "acrobatics": "Jonglerie et acrobaties",
+              "forest": "Survie en forêt"
+            },
+            "persist": true,
+            "required": true
+          }
+        ]
       }
     },
     {
@@ -23644,7 +23750,24 @@
       },
       "mechanics": {
         "kind": "passive_or_contextual",
-        "effects": []
+        "effects": [],
+        "choices": [
+          {
+            "id": "frouinStat",
+            "label": "Caractéristique supplémentaire",
+            "type": "enum",
+            "values": [
+              "agi",
+              "per"
+            ],
+            "valueLabels": {
+              "agi": "Agilité",
+              "per": "Perception"
+            },
+            "persist": true,
+            "required": true
+          }
+        ]
       }
     },
     {
@@ -23696,7 +23819,37 @@
       },
       "mechanics": {
         "kind": "passive_or_contextual",
-        "effects": []
+        "effects": [
+          {
+            "label": "Lumière (L)",
+            "manaGain": 1,
+            "duplicateAction": "G",
+            "type": "racial_fixed_spell",
+            "abilityId": "ability:lumiere:classpath-voie-de-la-magie-universelle-class-magicien-cof2-lb-2024:r1",
+            "sourceMagicStat": "int"
+          }
+        ],
+        "choices": [
+          {
+            "id": "racialMagicStat",
+            "label": "Caractéristique de magie (voie de peuple)",
+            "type": "enum",
+            "values": [
+              "int",
+              "vol",
+              "con"
+            ],
+            "valueLabels": {
+              "int": "Intelligence",
+              "cha": "Charisme",
+              "vol": "Volonté",
+              "con": "Constitution"
+            },
+            "persist": true,
+            "required": false,
+            "default": "int"
+          }
+        ]
       }
     },
     {
@@ -23746,7 +23899,39 @@
       },
       "mechanics": {
         "kind": "passive_or_contextual",
-        "effects": []
+        "effects": [
+          {
+            "label": "Ailes célestes",
+            "dailyUses": 1,
+            "dailyUsesAt10": 2,
+            "manaGain": 0,
+            "manaCost": 0,
+            "type": "racial_fixed_spell",
+            "abilityId": "ability:reference:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:rank4",
+            "sourceMagicStat": "cha"
+          }
+        ],
+        "choices": [
+          {
+            "id": "racialMagicStat",
+            "label": "Caractéristique de magie (voie de peuple)",
+            "type": "enum",
+            "values": [
+              "cha",
+              "vol",
+              "con"
+            ],
+            "valueLabels": {
+              "int": "Intelligence",
+              "cha": "Charisme",
+              "vol": "Volonté",
+              "con": "Constitution"
+            },
+            "persist": true,
+            "required": false,
+            "default": "cha"
+          }
+        ]
       }
     },
     {
@@ -23823,7 +24008,49 @@
       },
       "mechanics": {
         "kind": "passive_or_contextual",
-        "effects": []
+        "effects": [
+          {
+            "label": "Injonction (A)",
+            "usesPerCombat": 1,
+            "manaGain": 0,
+            "manaCost": 0,
+            "type": "racial_fixed_spell",
+            "abilityId": "ability-r1-class-ensorceleur-envouteur-injonction-cof2-lb-2024",
+            "sourceMagicStat": "cha"
+          },
+          {
+            "label": "Sommeil (L)",
+            "dailyUses": 1,
+            "manaGain": 0,
+            "manaCost": 0,
+            "minRank": 4,
+            "type": "racial_fixed_spell",
+            "abilityId": "ability:sommeil:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+            "sourceMagicStat": "cha"
+          }
+        ],
+        "choices": [
+          {
+            "id": "racialMagicStat",
+            "label": "Caractéristique de magie (voie de peuple)",
+            "type": "enum",
+            "values": [
+              "cha",
+              "vol",
+              "con"
+            ],
+            "valueLabels": {
+              "int": "Intelligence",
+              "cha": "Charisme",
+              "vol": "Volonté",
+              "con": "Constitution"
+            },
+            "persist": true,
+            "required": false,
+            "default": "cha"
+          }
+        ],
+        "manaFreeRacial": true
       }
     },
     {
@@ -24102,7 +24329,25 @@
       },
       "mechanics": {
         "kind": "passive_or_contextual",
-        "effects": []
+        "effects": [],
+        "choices": [
+          {
+            "id": "wolferLuckStat",
+            "label": "Caractéristique utilisée pour les PC",
+            "type": "enum",
+            "values": [
+              "cha",
+              "per"
+            ],
+            "valueLabels": {
+              "cha": "Charisme",
+              "per": "Perception"
+            },
+            "persist": true,
+            "required": false,
+            "default": "cha"
+          }
+        ]
       }
     },
     {
