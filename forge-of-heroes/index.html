@@ -735,12 +735,12 @@ window.__FOH_ENGINE_FACTORY__ = function(dbObj){
       getPathsPeopleByPeuple:(peupleId)=>{
         const pid=String(peupleId||"");
         let res=paths_people.filter(p=>p.people_id===pid || (Array.isArray(p.allowedPeopleIds)&&p.allowedPeopleIds.includes(pid)));
-        if(res.length===0){
+        if(res.length===0||pid==="people:demi-elfe:cof2-lb-2024"){
           if(pid==="people:demi-elfe:cof2-lb-2024"){
             res=[].concat(
               paths_people.filter(p=>p.people_id==="people:humain:cof2-lb-2024"),
               paths_people.filter(p=>p.people_id==="people:elfe-sylvain:cof2-lb-2024"),
-              paths_people.filter(p=>p.people_id==="people:elfe-haut:cof2-lb-2024")
+              paths_people.filter(p=>p.people_id==="people:elfe-haut:cof2-lb-2024"),paths_people.filter(p=>p.people_id===pid)
             );
           } else if(pid==="people:demi-orc:cof2-lb-2024"){
             res=[].concat(
