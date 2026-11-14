@@ -1,6 +1,6 @@
 {
   "schema": "FOH_COMPANION_V2_TRACKING",
-  "scope": "Dix nouveaux peuples ; score de couverture de 8 critères, pas garantie de fonctionnement exhaustif",
+  "scope": "Dix nouveaux peuples — couverture de neuf critères distincts ; non équivalente à une certification complète des règles",
   "indexBlob": "e6af79a9788112a6db5595985c49bfc24610f01d",
   "proof": "forge-of-heroes/QA/N1/compagnon-v2-ranks-current.json",
   "criteria": [
@@ -29,7 +29,12 @@
       "passed": false
     },
     {
-      "name": "Tests navigateur et export officiel",
+      "name": "Parcours au clic mobile Chromium (un Voleur jeune par peuple)",
+      "passed": true,
+      "evidence": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/43620046027"
+    },
+    {
+      "name": "Export PDF officiel et Android physique",
       "passed": false
     },
     {
@@ -40,75 +45,77 @@
   "peoples": [
     {
       "name": "Cambion",
-      "passed": 5,
-      "total": 8,
-      "percent": 62.5,
+      "passed": 6,
+      "total": 9,
+      "percent": 66.7,
       "certified": false
     },
     {
       "name": "Drakonide",
-      "passed": 5,
-      "total": 8,
-      "percent": 62.5,
+      "passed": 6,
+      "total": 9,
+      "percent": 66.7,
       "certified": false
     },
     {
       "name": "Elfe pâle",
-      "passed": 5,
-      "total": 8,
-      "percent": 62.5,
+      "passed": 6,
+      "total": 9,
+      "percent": 66.7,
       "certified": false
     },
     {
       "name": "Elfe des profondeurs",
-      "passed": 5,
-      "total": 8,
-      "percent": 62.5,
+      "passed": 6,
+      "total": 9,
+      "percent": 66.7,
       "certified": false
     },
     {
       "name": "Félis",
-      "passed": 5,
-      "total": 8,
-      "percent": 62.5,
+      "passed": 6,
+      "total": 9,
+      "percent": 66.7,
       "certified": false
     },
     {
       "name": "Frouïn",
-      "passed": 5,
-      "total": 8,
-      "percent": 62.5,
+      "passed": 6,
+      "total": 9,
+      "percent": 66.7,
       "certified": false
     },
     {
       "name": "Nephilim",
-      "passed": 5,
-      "total": 8,
-      "percent": 62.5,
+      "passed": 6,
+      "total": 9,
+      "percent": 66.7,
       "certified": false
     },
     {
       "name": "Ophidien",
-      "passed": 5,
-      "total": 8,
-      "percent": 62.5,
+      "passed": 6,
+      "total": 9,
+      "percent": 66.7,
       "certified": false
     },
     {
       "name": "Satyre",
-      "passed": 5,
-      "total": 8,
-      "percent": 62.5,
+      "passed": 6,
+      "total": 9,
+      "percent": 66.7,
       "certified": false
     },
     {
       "name": "Wolfer",
-      "passed": 5,
-      "total": 8,
-      "percent": 62.5,
+      "passed": 6,
+      "total": 9,
+      "percent": 66.7,
       "certified": false
     }
   ],
-  "percent": 62.5,
-  "certified": false
+  "percent": 66.7,
+  "certified": false,
+  "mobileProof": "forge-of-heroes/QA/N1/compagnon-v2-mobile-click.json",
+  "mobilePass": 10
 }

@@ -123,12 +123,12 @@
     },
     "testedHTMLBlob": "bb15787532fb128ec07a25157aeaab061d4a8354",
     "certification": "OPEN",
-    "production": "catalogue_merged_728ea804f5cb28d2a139852688a8e864b98faf72",
+    "production": "merged_9cd8f7837b68f3e6f4df0e7cbf7f5906871bf96f",
     "limits": [
       "Textes résumés, comparaison intégrale non certifiée",
       "Acquisition R1–R3 prouvée sur un profil témoin ; effets exhaustifs et paires de voies non certifiés",
       "Mécanique d’ascendance, sorts raciaux à choix, progression R4–R5 et effets contextuels restant à contrôler",
-      "Navigateur tactile et PDF à exécuter ; Android physique non testé",
+      "Chromium tactile 10 parcours validés ; PDF réel et Android physique non testés",
       "Migration des sauvegardes historiques et du Hub non exécutée"
     ],
     "currentEvidence": {
@@ -154,7 +154,14 @@
         "replays": 54
       },
       "fixedSpellChecks": 3,
-      "certification": "OPEN"
+      "certification": "OPEN",
+      "mobile": {
+        "pass": 10,
+        "failed": 0,
+        "scope": "N1, un Voleur jeune par nouveau peuple, Chromium tactile simulé, création et réouverture ; pas Android physique ni PDF.",
+        "run": "https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/43620046027",
+        "path": "QA/N1/compagnon-v2-mobile-click.json"
+      }
     }
   }
 }
