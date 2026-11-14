@@ -1,0 +1,40 @@
+{
+  "status": "STRUCTURE_ONLY_NOT_CERTIFIED",
+  "baseBlob": "5ff69cbfdce56570188c97c0f869bf4e4d597410",
+  "source": {
+    "bookId": "cof2-compagnon-v2",
+    "edition": "COF2",
+    "printedPage": 14,
+    "chapter": "Peuples optionnels",
+    "section": "Voie du Drakonide"
+  },
+  "peopleId": "people:drakonide:compagnon-cof2",
+  "checks": {
+    "oneNewPeople": true,
+    "onePath": true,
+    "fiveRanks": true,
+    "oneR1": true,
+    "statMods": {
+      "for": 1,
+      "agi": -1,
+      "vol": 1,
+      "per": -1
+    },
+    "breathChoices": [
+      "fire",
+      "cold",
+      "lightning",
+      "acid"
+    ],
+    "fourthRankChoices": [
+      "fury",
+      "wings"
+    ]
+  },
+  "remaining": [
+    "Exécuter moteur et clics réels",
+    "Vérifier propagation des choix et effets R2–R5",
+    "Synchroniser catalogues PDF externes",
+    "Non-régression et revue des autres peuples"
+  ]
+}
