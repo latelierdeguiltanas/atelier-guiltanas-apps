@@ -1,34 +1,39 @@
 {
   "schema": "FOH_GLOBAL_CERTIFICATION_V1",
-  "generatedAt": "2026-11-14T17:05:01.418Z",
+  "generatedAt": "2026-11-14T17:08:24.319Z",
   "sourceProduct": "forge-of-heroes/index.html",
   "source": {
     "indexSha256": "a1c1cb9360a967733b08ab182119cd8fbe44551016902672eb76dd6a516704d2",
     "engineSha256": "07727b7ee4c643ec2f828d9836937afb795fb8ecaa86f487ad028e0227fcdbb6",
     "databaseSha256": "7ce3e85762d1e843e02273d67648c82c88eb57cfe30a8f6e22b259033585a80b",
-    "focusSha256": "da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d",
-    "focusAt": "2026-11-14T16:54:51.650Z"
+    "focusSha256": "a1c1cb9360a967733b08ab182119cd8fbe44551016902672eb76dd6a516704d2",
+    "focusAt": "2026-11-14T17:08:22.506Z"
   },
-  "status": "SOURCE_STALE",
+  "status": "MEASURED",
   "scope": "Forge COF2 Livre de base, N1 à N3, hybrides/sans profil, export PDF et liaison Hub. Compagnon et futur Guide du joueur hors dénominateur jusqu’à intégration et ajout explicite des critères.",
   "measure": "Couverture des critères de certification, pas % de code écrit ni probabilité d’absence de bug.",
   "scoring": "Sept domaines de même poids. Chaque domaine vaut 1/7 du total et progresse selon ses propres critères intégralement prouvés. Aucune moyenne de tests automatisés ne vaut certificat.",
   "moduleCount": 7,
-  "currentN1Profile": null,
-  "n1ProfilesCertified": null,
-  "percent": null,
-  "exactPercent": null,
+  "currentN1Profile": {
+    "name": "Arquebusier",
+    "position": 1,
+    "percent": 38,
+    "certified": false
+  },
+  "n1ProfilesCertified": 0,
+  "percent": 0,
+  "exactPercent": 0.38,
   "certified": false,
   "modules": [
     {
       "id": "n1-profils",
       "name": "N1 · 14 profils officiels",
-      "passed": 0,
+      "passed": 6,
       "total": 224,
-      "status": "SOURCE_PERIMEE",
+      "status": "SCORE_COURANT",
       "description": "Les 14 profils ont le même poids. Chaque profil contribue selon la part de ses critères N1 validés dans le registre.",
       "source": "forge-n1/focus.json",
-      "percent": 0,
+      "percent": 3,
       "complete": false
     },
     {
