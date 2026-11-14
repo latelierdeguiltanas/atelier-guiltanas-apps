@@ -4,3 +4,6 @@
 
 .sheet-simple .equipped-attack{background:#fffdf5;color:#263728}.sheet-info-dialog .rules details div{color:#46533f}.sheet-info-dialog .condition-form select{font:inherit;max-width:100%;padding:12px}
 
+
+/* Quick view: available on every tab, collapsed by choice only. */
+#quick-bonus-overview:empty{display:none}#quick-bonus-overview{padding-bottom:0}.quick-bonus-panel{margin:8px 0 12px;padding:10px;border:1px solid #bca970;border-radius:12px;background:#f6ecd0;color:#453518}.quick-bonus-panel summary{font-weight:800;cursor:pointer;color:#70551b}.quick-bonus-panel>.action-bonuses{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:7px;margin:8px 0}.quick-bonus-panel .quick-bonus-item{display:block;white-space:normal;line-height:1.3;padding:8px;border-radius:8px;background:#fff9e9;color:#40331a;border:1px solid #d4c494}.quick-bonus-item b{color:#286341;float:right}.quick-bonus-item small{display:block;clear:both;font-size:.74rem;overflow-wrap:anywhere;font-weight:400;margin-top:4px}.quick-bonus-item .quick-bonus-source{color:#70551b}.quick-bonus-panel>small{font-size:.74rem}
