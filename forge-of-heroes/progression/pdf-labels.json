@@ -623,6 +623,47 @@
         "sourceStatus": "official_cof2",
         "enabledInCertifiedN1": true
       }
+    },
+    {
+      "id": "people:drakonide:compagnon-cof2",
+      "label": "DRAKONIDE",
+      "group": "Compagnon",
+      "bonuses_raw": "+1 FOR et +1 VOL ; −1 AGI et −1 PER",
+      "schema": {
+        "type": "stat_mods",
+        "bonus": {
+          "mode": "fixed",
+          "options": [
+            "for"
+          ],
+          "value": 1
+        },
+        "malus": {
+          "mode": "fixed",
+          "options": [
+            "agi"
+          ],
+          "value": -1
+        },
+        "extra": {
+          "vol": 1,
+          "per": -1
+        },
+        "raw": "+1 FOR et +1 VOL ; −1 AGI et −1 PER"
+      },
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 14,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Drakonide"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      }
     }
   ],
   "classes": [
@@ -3504,6 +3545,25 @@
         "scope": "n1_extension",
         "sourceStatus": "official_cof2",
         "enabledInCertifiedN1": true
+      }
+    },
+    {
+      "id": "path:voie-du-drakonide:compagnon-cof2",
+      "label": "VOIE DU DRAKONIDE",
+      "people_id": "people:drakonide:compagnon-cof2",
+      "group": "Compagnon",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 14,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Drakonide"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
       }
     }
   ],
@@ -22184,6 +22244,171 @@
         "enabledInCertifiedN1": true
       },
       "playSummary": "+1 PER et +1 CHA.",
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:drakonide-r1:path:voie-du-drakonide:compagnon-cof2",
+      "path_id": "path:voie-du-drakonide:compagnon-cof2",
+      "rank": 1,
+      "label": "Sang dragon",
+      "desc": "Dans le noir total, le drakonide voit comme dans la pénombre jusqu’à 30 m. De plus, il bénéficie de +3 à tous ses tests d’intimidation.",
+      "playSummary": "Dans le noir total, le drakonide voit comme dans la pénombre jusqu’à 30 m. De plus, il bénéficie de +3 à tous ses tests d’intimidation.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 14,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Drakonide"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      },
+      "r1_title": "Sang dragon",
+      "r1_desc": "Dans le noir total, le drakonide voit comme dans la pénombre jusqu’à 30 m. De plus, il bénéficie de +3 à tous ses tests d’intimidation."
+    },
+    {
+      "id": "ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2",
+      "path_id": "path:voie-du-drakonide:compagnon-cof2",
+      "rank": 2,
+      "label": "Souffle (L)",
+      "desc": "Choisir feu, froid, électricité ou acide. Une fois par combat, le souffle inflige 3d4° DM + 1d4° DM par rang (5d4° au rang 2) dans un cône de 10 m de long sur 5 m de large. Chaque créature affectée peut diviser les DM par deux en réussissant un test d’AGI difficulté 10.",
+      "playSummary": "Choisir feu, froid, électricité ou acide. Une fois par combat, le souffle inflige 3d4° DM + 1d4° DM par rang (5d4° au rang 2) dans un cône de 10 m de long sur 5 m de large. Chaque créature affectée peut diviser les DM par deux en réussissant un test d’AGI difficulté 10.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 14,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Drakonide"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "active",
+        "choices": [
+          {
+            "id": "drakonideBreath",
+            "label": "Élément du souffle",
+            "type": "enum",
+            "values": [
+              "fire",
+              "cold",
+              "lightning",
+              "acid"
+            ],
+            "valueLabels": {
+              "fire": "Feu",
+              "cold": "Froid",
+              "lightning": "Électricité",
+              "acid": "Acide"
+            },
+            "persist": true,
+            "required": true
+          }
+        ],
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:drakonide-r3:path:voie-du-drakonide:compagnon-cof2",
+      "path_id": "path:voie-du-drakonide:compagnon-cof2",
+      "rank": 3,
+      "label": "Écailles robustes",
+      "desc": "Le drakonide bénéficie de +1 en DEF et d’une RD égale au rang atteint dans la voie contre l’élément correspondant à son souffle.",
+      "playSummary": "Le drakonide bénéficie de +1 en DEF et d’une RD égale au rang atteint dans la voie contre l’élément correspondant à son souffle.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 14,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Drakonide"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:drakonide-r4:path:voie-du-drakonide:compagnon-cof2",
+      "path_id": "path:voie-du-drakonide:compagnon-cof2",
+      "rank": 4,
+      "label": "Fureur drakonide/Ailes puissantes",
+      "desc": "Choisir une capacité. Fureur drakonide : après un critique subi ou le passage sous la moitié des PV max, +1 en attaque et aux DM jusqu’à la fin du combat. Ailes puissantes : vol de 10 m par action de mouvement, au maximum 30 m avant de se poser ; vol à nouveau possible dès le round suivant.",
+      "playSummary": "Choisir une capacité. Fureur drakonide : après un critique subi ou le passage sous la moitié des PV max, +1 en attaque et aux DM jusqu’à la fin du combat. Ailes puissantes : vol de 10 m par action de mouvement, au maximum 30 m avant de se poser ; vol à nouveau possible dès le round suivant.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 14,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Drakonide"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
+      "mechanics": {
+        "kind": "passive_or_contextual",
+        "choices": [
+          {
+            "id": "drakonideGift",
+            "label": "Capacité drakonide",
+            "type": "enum",
+            "values": [
+              "fury",
+              "wings"
+            ],
+            "valueLabels": {
+              "fury": "Fureur drakonide",
+              "wings": "Ailes puissantes"
+            },
+            "persist": true,
+            "required": true
+          }
+        ],
+        "effects": []
+      }
+    },
+    {
+      "id": "ability:drakonide-r5:path:voie-du-drakonide:compagnon-cof2",
+      "path_id": "path:voie-du-drakonide:compagnon-cof2",
+      "rank": 5,
+      "label": "Héritage draconique",
+      "desc": "Le drakonide augmente ses valeurs de CON et de CHA de +1.",
+      "playSummary": "Le drakonide augmente ses valeurs de CON et de CHA de +1.",
+      "source": {
+        "bookId": "cof2-compagnon-v2",
+        "edition": "COF2",
+        "printedPage": 14,
+        "chapter": "Peuples optionnels",
+        "section": "Voie du Drakonide"
+      },
+      "certification": {
+        "scope": "n1_extension",
+        "sourceStatus": "official_cof2",
+        "functionalStatus": "not_tested",
+        "enabledInCertifiedN1": false
+      },
       "mechanics": {
         "kind": "passive_or_contextual",
         "effects": []
