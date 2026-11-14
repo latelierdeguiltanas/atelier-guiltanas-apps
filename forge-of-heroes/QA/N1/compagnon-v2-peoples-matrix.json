@@ -1,0 +1,100 @@
+{
+  "blob": "bb15787532fb128ec07a25157aeaab061d4a8354",
+  "schema": "FOH_COMPANION_V2_SOURCE_MATRIX",
+  "scope": "N1 : caractéristiques, R1, attaques naturelles, choix d'origine, profils purs et deux montages ciblés hybride/sans profil, sauvegardes et refus d'équipement",
+  "total": 620,
+  "pass": 608,
+  "refused": 12,
+  "replays": 608,
+  "failures": [],
+  "byPeople": {
+    "DRAKONIDE": {
+      "pass": 20,
+      "refused": 0,
+      "fail": 0
+    },
+    "CAMBION": {
+      "pass": 40,
+      "refused": 0,
+      "fail": 0
+    },
+    "ELFE PÂLE": {
+      "pass": 40,
+      "refused": 0,
+      "fail": 0
+    },
+    "ELFE DES PROFONDEURS": {
+      "pass": 40,
+      "refused": 0,
+      "fail": 0
+    },
+    "FÉLIS": {
+      "pass": 80,
+      "refused": 0,
+      "fail": 0
+    },
+    "FROUÏN": {
+      "pass": 34,
+      "refused": 6,
+      "fail": 0
+    },
+    "NEPHILIM": {
+      "pass": 40,
+      "refused": 0,
+      "fail": 0
+    },
+    "OPHIDIEN": {
+      "pass": 40,
+      "refused": 0,
+      "fail": 0
+    },
+    "SATYRE": {
+      "pass": 80,
+      "refused": 0,
+      "fail": 0
+    },
+    "WOLFER": {
+      "pass": 40,
+      "refused": 0,
+      "fail": 0
+    },
+    "GOBELIN": {
+      "pass": 17,
+      "refused": 3,
+      "fail": 0
+    },
+    "KOBOLD": {
+      "pass": 17,
+      "refused": 3,
+      "fail": 0
+    },
+    "MINOTAURE": {
+      "pass": 20,
+      "refused": 0,
+      "fail": 0
+    },
+    "DEMI-OGRE": {
+      "pass": 20,
+      "refused": 0,
+      "fail": 0
+    },
+    "DEMI‑ELFE": {
+      "pass": 80,
+      "refused": 0,
+      "fail": 0
+    }
+  },
+  "modes": {
+    "pure": 558,
+    "hybrid": 31,
+    "noProfile": 31
+  },
+  "originChecks": 120,
+  "naturalChecks": 37,
+  "limits": [
+    "Une paire de voies par profil pur ; hybride et sans profil ciblés seulement",
+    "Rangs supérieurs à vérifier",
+    "Pas de clic navigateur réel ni export PDF effectif",
+    "Migrations sauvegardes historiques et non-régression complète non exécutées"
+  ]
+}
