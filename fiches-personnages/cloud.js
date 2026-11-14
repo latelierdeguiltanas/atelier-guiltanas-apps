@@ -72,6 +72,7 @@ async function sync({quiet=false}={}){
  if(busy){pending=true;return;}
  const config=nowConfig();
  if(!config?.key)return;
+ if(navigator.onLine===false){summary('○ Hors connexion : modifications conservées sur cet appareil. Reprise au retour du réseau.');return;}
  busy=true;
  try{
   const remote=await api('pull',{key:config.key});
@@ -128,6 +129,7 @@ function setup(){
  document.getElementById('play-sync').onclick=()=>{conflicted=false;sync({quiet:false});};
  document.getElementById('play-library').onclick=()=>{history.pushState(null,'',new URL('./',location.href));window.dispatchEvent(new Event('popstate'));};
  window.addEventListener('online',()=>{if(nowConfig()?.key)sync({quiet:false})});
+ window.addEventListener('offline',()=>{summary('○ Hors connexion : modifications conservées sur cet appareil.');});
  window.addEventListener('visibilitychange',()=>{if(!document.hidden&&nowConfig()?.key)sync({quiet:true})});
  const address=new root.URL(location.href),incoming=new URLSearchParams(address.hash.slice(1)).get('vault');
  const fromForge=address.searchParams.get('fromForge')==='1';address.searchParams.delete('fromForge');history.replaceState(null,'',address.href);

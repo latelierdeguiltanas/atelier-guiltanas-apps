@@ -6,3 +6,5 @@
 #play-cloud-toolbar button{width:32px;height:29px;min-height:0;border:1px solid #7d805e;border-radius:6px;padding:0;background:#2a4931;color:#e9deac;font-size:18px}
 #cloud-play-status{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #cloud-play-status.error{color:#f4a69b}
+
+#play-cloud-toolbar{height:auto;min-height:50px;padding:4px 8px;padding-top:max(4px,env(safe-area-inset-top));gap:8px}#play-cloud-toolbar button{width:44px;height:44px;min-height:44px;flex:0 0 44px}#cloud-play-status{font-size:12px}#offlineStatus,#offlineMenuStatus{overflow-wrap:anywhere}#home{padding-bottom:max(24px,env(safe-area-inset-bottom))}
