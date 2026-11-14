@@ -18,6 +18,14 @@ async function api(action,body){
   return d;
  }finally{clearTimeout(timer)}
 }
+// Merge additions only, never overwrite a concurrent edit to an existing sheet.
+function mergeNewEntries(base,local,remote){
+ if(!base?.entries||!local?.entries||!remote?.entries)return null;
+ const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b),out=JSON.parse(JSON.stringify(remote));
+ for(const [id,old] of Object.entries(base.entries))if(!same(old,local.entries[id])||!Object.prototype.hasOwnProperty.call(remote.entries,id))return null;
+ for(const [id,entry] of Object.entries(local.entries)){if(Object.prototype.hasOwnProperty.call(base.entries,id))continue;if(Object.prototype.hasOwnProperty.call(remote.entries,id)&&!same(remote.entries[id],entry))return null;out.entries[id]=entry;}
+ return out;
+}
 let busy=false,delayed=null,pending=false,conflicted=false;
 async function create(){
  if(busy)return;busy=true;
@@ -55,7 +63,7 @@ async function sync({quiet=false}={}){
   const remote=await api('pull',{key:config.key});
   const local= L.read().data,actual=fingerprint(),dirty=actual!==config.fingerprint;
   if(remote.revision!==config.revision){
-   if(dirty){conflicted=true;throw new Error('CONFLIT : la fiche a été modifiée sur deux appareils. Aucun contenu n’a été écrasé. Fais une sauvegarde JSON locale avant toute restauration.');}
+   if(dirty){let base;try{base=JSON.parse(config.fingerprint)}catch{}const merged=mergeNewEntries(base,local,remote.payload);if(!merged){conflicted=true;throw new Error('CONFLIT : la fiche a été modifiée sur deux appareils. Aucun contenu n’a été écrasé. Fais une sauvegarde JSON locale avant toute restauration.');}if(fingerprint()!==actual)throw Error('Les fiches locales ont changé pendant la synchronisation. Réessaie.');L.restore(merged);const mergedFingerprint=fingerprint();const answer=await api('push',{key:config.key,expectedRevision:remote.revision,payload:merged});setConfig({...config,revision:answer.revision,fingerprint:mergedFingerprint});summary('✓ Nouvelle fiche ajoutée au coffre sans écraser les autres modifications.');root.dispatchEvent(new CustomEvent('guiltanas-player-cloud-updated'));render();return;}
    L.restore(remote.payload);
    setConfig({...config,revision:remote.revision,fingerprint:fingerprint()});
    if(!quiet)summary('✓ Fiches actualisées depuis le serveur.');
@@ -108,5 +116,5 @@ function setup(){
  else if(nowConfig()?.key)sync({quiet:false});
  else if(fromForge)create();
 }
-root.GuiltanasPlayerCloud={create,connect,sync,trigger,render,setup,config:nowConfig};
+root.GuiltanasPlayerCloud={create,connect,sync,trigger,render,setup,config:nowConfig,mergeNewEntries};
 })(window);
