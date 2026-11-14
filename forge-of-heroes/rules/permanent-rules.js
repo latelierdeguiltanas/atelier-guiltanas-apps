@@ -4,8 +4,9 @@ const fold=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLo
 function ruleSet(a){const p=(a.path_id||a.pathId||'').split(':')[1],r=Number(a.rank),name=fold(a.label),rules=[];const add=(key,formula,legacy=0,when=null)=>rules.push({kind:'derived',key,formula,legacy,when});const gain=values=>rules.push({kind:'stats',values});
  const heroic={'force heroique':'for','agilite heroique':'agi','dexterite heroique':'agi','constitution heroique':'con','perception heroique':'per','charisme heroique':'cha','volonte heroique':'vol','ego heroique':'cha'};
  if(heroic[name]){gain({[heroic[name]]:1});rules.push({kind:'bonus_die',stat:heroic[name]});}
- const multi={'voie-du-halfelin':['agi','con'],'voie-du-nain':['con','vol'],'voie-du-demi-orc':['for','con'],'voie-de-l-elfe-sylvain':['agi','per'],'voie-du-gnome':['con','cha'],'voie-de-lâme-forgée':['con','for'],'voie-du-centaure':['con','per'],'voie-du-demi-ogre':['con','for'],'voie-du-gobelin':['agi','con'],'voie-du-kobold':['agi','per'],'voie-de-letre-feerique':['per','cha'],'voie-du-minotaure':['con','for'],'voie-du-drakonide':['con','cha'],"voie-du-cambion":["con","vol"],"voie-de-l-elfe-pale":["per","vol"],"voie-de-l-elfe-des-profondeurs":["agi","vol"],"voie-du-felis":["agi","per"],"voie-du-nephilim":["con","cha"],"voie-du-satyre":["per","cha"],"voie-du-wolfer":["per","vol"]};
+ const multi={'voie-du-halfelin':['agi','con'],'voie-du-nain':['con','vol'],'voie-du-demi-orc':['for','con'],'voie-de-l-elfe-sylvain':['agi','per'],'voie-du-gnome':['con','cha'],'voie-de-lâme-forgée':['con','for'],'voie-du-centaure':['con','per'],'voie-du-demi-ogre':['con','for'],'voie-du-gobelin':['agi','per'],'voie-du-kobold':['agi','per'],'voie-du-demi-elfe':['per','cha'],'voie-de-letre-feerique':['per','cha'],'voie-du-minotaure':['con','for'],'voie-du-drakonide':['con','cha'],"voie-du-cambion":["con","vol"],"voie-de-l-elfe-pale":["per","vol"],"voie-de-l-elfe-des-profondeurs":["agi","vol"],"voie-du-felis":["agi","per"],"voie-du-nephilim":["con","cha"],"voie-du-satyre":["per","cha"],"voie-du-wolfer":["per","vol"]};
  if(p==='voie-du-frouin'&&r===2)add('DEF','RANG>=4?2:1');
+ if(p==='voie-du-kobold'&&r===2)add('DEF','1');
  if(p==='voie-du-frouin'&&r===3)add('INIT','3');
  if(p==='voie-du-felis'&&r===3)add('INIT','3');
  if(p==='voie-du-frouin'&&r===5){gain({con:1});rules.push({kind:'stat_choice',id:'frouinStat',values:['agi','per'],amount:1,required:true});}
@@ -119,15 +120,18 @@ function projectPeopleBonuses(s,state){
   if(p==='voie-de-l-elfe-sylvain'&&!hasHistory('sylvan_history'))skill(a,['escalade','discrétion','chasse','survie'],3,'en forêt');
   if(p==='voie-du-gnome')skill(a,['sciences ordinaires','sciences occultes'],3);
   if(p==='voie-du-gobelin')skill(a,['discrétion'],3);
-  if(p==='voie-du-kobold')skill(a,['discrétion','embuscade'],3);
+  if(p==='voie-du-kobold'){skill(a,['concevoir des pièges','fabriquer des pièges','détecter des pièges'],3);s.traits.darkvisionMeters=30;feature(a,{kind:'natural_attack',name:'Morsure',damage:'1d4+FOR',lethal:true});}
+  if(p==='voie-du-minotaure'){skill(a,['orientation'],3);feature(a,{kind:'natural_attack',name:'Coup de corne',damage:'1d4°+FOR',combinedAction:'limited'});}
+  if(p==='voie-du-demi-elfe'){feature(a,{kind:'vision',meters:20,condition:'nuit sous les étoiles'});feature(a,{kind:'origin_domains',count:2,value:3,choicePending:true});}
   if(p==='voie-de-letre-feerique'){skill(a,['comprendre les animaux','calmer les animaux','communiquer avec les animaux'],3);feature(a,{kind:'animal_language'});}
-  if(p==='voie-du-demi-ogre')skill(a,['VOL'],5,'résister ou mettre fin à sa Réaction violente');
+  if(p==='voie-du-demi-ogre')feature(a,{kind:'violent_reaction',difficulty:10-rank(path),attackBonus:2,damageBonus:2,duration:'1d6 rounds',stopCost:'1d4° DM par round restant'});
   if(p==='mage')skill(a,['connaissance de la magie','érudition occulte'],rank(path)+2);
   if(['voie-du-nain','voie-du-demi-orc','voie-du-gnome'].includes(p))feature(a,{kind:'vision',meters:p==='voie-du-gnome'?10:30,darkness:'pénombre dans le noir total'});
   if(['voie-de-l-elfe-haut','voie-de-l-elfe-sylvain'].includes(p))feature(a,{kind:'vision',condition:'nuit sous la lumière des étoiles',darkness:'pénombre'});
  }
  if(r===3&&['voie-du-cambion','voie-du-nephilim'].includes(p))s.traits.damageReduction=[...(s.traits.damageReduction||[]),{types:p==='voie-du-cambion'?['fire','cold','lightning']:['acid','cold','lightning'],value:5}];
  if(p==='voie-du-frouin'&&r===2)skill(a,['discrétion'],3);
+ if(p==='voie-du-kobold'&&r===2)skill(a,['discrétion'],3);
  if(p==='voie-du-frouin'&&r===3)skill(a,['éviter la surprise'],3);
  if(p==='voie-du-felis'&&r===3)skill(a,['discrétion'],3);
  if(p==='voie-du-drakonide'){
