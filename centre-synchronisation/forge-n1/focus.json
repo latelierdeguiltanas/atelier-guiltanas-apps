@@ -7,11 +7,11 @@
     "scope": "Options de caractéristiques des huit peuples croisees avec quatorze profils sur index.html; ne certifie ni les pouvoirs conditionnels ni toutes les restrictions de taille."
   },
   "canonicalProduct": "forge-of-heroes/index.html",
-  "canonicalIndexSha256": "a1c1cb9360a967733b08ab182119cd8fbe44551016902672eb76dd6a516704d2",
+  "canonicalIndexSha256": "8ea60302fdf583bf11b278336fd1737f025b801759852f817f947547e2309033",
   "certificationBasis": "Preuves liées au produit canonique et à sa version contrôlée.",
-  "generatedAt": "2026-11-14T17:13:36.698Z",
-  "engineSha256": "07727b7ee4c643ec2f828d9836937afb795fb8ecaa86f487ad028e0227fcdbb6",
-  "databaseSha256": "7ce3e85762d1e843e02273d67648c82c88eb57cfe30a8f6e22b259033585a80b",
+  "generatedAt": "2026-11-14T17:17:08.652Z",
+  "engineSha256": "eb96d6c028bc45ea68c0c78560587f1d7ef19fa868e09abb5050b0dc29724e59",
+  "databaseSha256": "09bfd6316ed420e59f177738a1a402f849a91dd74f3b01dd7bb17d28f8fb44cb",
   "peoplesEvidenceCurrent": true,
   "peoplesEvidenceSourceEngineSha256": "a2071ea68b93c543bda1331104cb69b6ec4018efcf3f1b3804cf635e57abdb79",
   "certificationPlan": {
@@ -24,7 +24,7 @@
     "current": {
       "name": "Arquebusier",
       "position": 1,
-      "percent": 38,
+      "percent": 6,
       "certified": false
     },
     "next": {
@@ -37,7 +37,7 @@
         "name": "Arquebusier",
         "position": 1,
         "status": "EN_COURS",
-        "percent": 38,
+        "percent": 6,
         "certified": false
       },
       {
@@ -147,9 +147,9 @@
     "completed": false,
     "variantPrototypeReady": true,
     "variantIntegrated": false,
-    "passed": 6,
+    "passed": 1,
     "total": 16,
-    "percent": 38,
+    "percent": 6,
     "checks": [
       {
         "id": "paths",
@@ -166,26 +166,26 @@
       {
         "id": "r1",
         "name": "Recevoir les capacités de rang 1",
-        "status": "ACQUIS",
-        "detail": "Les cinq rangs 1 sont attribués et sauvegardés dans les créations de référence."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier les cinq rangs 1."
       },
       {
         "id": "r2",
         "name": "Recevoir les capacités de rang 2",
-        "status": "ACQUIS",
-        "detail": "Les cinq rangs 2 obtenus à N1 par l’âge mûr sont attribués et sauvegardés."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier les cinq rangs 2."
       },
       {
         "id": "r3",
         "name": "Recevoir les capacités de rang 3",
-        "status": "ACQUIS",
-        "detail": "Les cinq rangs 3 obtenus à N1 par l’âge vénérable sont attribués et sauvegardés."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier les cinq rangs 3."
       },
       {
         "id": "age",
         "name": "Dépenses de rangs selon l’âge",
-        "status": "ACQUIS",
-        "detail": "Très jeune, jeune, mûr et vénérable : rangs supplémentaires et restrictions vérifiés."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier tous les choix d’âge."
       },
       {
         "id": "methods",
@@ -209,7 +209,7 @@
         "id": "r2effects",
         "name": "Tous les effets des cinq capacités de rang 2",
         "status": "A_VERIFIER",
-        "detail": "Chargeur 2 + INT validé ; restent le rechargement, la démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse."
+        "detail": "15 capacités R1–R3 contrôlées dans les deux bases, et chargeur 2+INT validé. Plusieurs rangs R2 restent des effets à interpréter en combat ; rechargement, Démolition, Mort ou vif, Ajuster le tir et Défaut dans la cuirasse non certifiés en exécution."
       },
       {
         "id": "r3effects",
@@ -232,8 +232,8 @@
       {
         "id": "save",
         "name": "Enregistrer et reprendre les pouvoirs obtenus",
-        "status": "ACQUIS",
-        "detail": "Les états de référence des rangs 1, 2 et 3 avec l’âge ont été enregistrés et restaurés à l’identique."
+        "status": "A_VERIFIER",
+        "detail": "Vérifier la sauvegarde et la reprise."
       },
       {
         "id": "pdf",
@@ -386,7 +386,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Toutes les paires de voies légales ; Méthodes de répartition des caractéristiques ; PV, DEF, initiative, chance, mana, attaques et dommages ; Tous les effets des cinq capacités de rang 1 ; Tous les effets des cinq capacités de rang 2 ; Tous les effets des cinq capacités de rang 3 ; Toutes les armes, armures et variante Arbalétrier ; Origines, métiers et historiques avancés ; Fiche officielle et annexes ; Créer, sauvegarder et rouvrir au clic sur mobile"
+    "next": "Toutes les paires de voies légales ; Recevoir les capacités de rang 1 ; Recevoir les capacités de rang 2 ; Recevoir les capacités de rang 3 ; Dépenses de rangs selon l’âge ; Méthodes de répartition des caractéristiques ; PV, DEF, initiative, chance, mana, attaques et dommages ; Tous les effets des cinq capacités de rang 1 ; Tous les effets des cinq capacités de rang 2 ; Tous les effets des cinq capacités de rang 3 ; Toutes les armes, armures et variante Arbalétrier ; Origines, métiers et historiques avancés ; Enregistrer et reprendre les pouvoirs obtenus ; Fiche officielle et annexes ; Créer, sauvegarder et rouvrir au clic sur mobile"
   },
   "peoples": [
     {
@@ -416,14 +416,14 @@
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 1 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 2 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
         },
         {
           "id": "methods",
@@ -456,9 +456,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 0,
+      "passed": 2,
       "total": 10,
-      "percent": 0,
+      "percent": 20,
       "historicalPercent": 69,
       "certified": false
     },
@@ -489,14 +489,14 @@
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 1 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 2 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
         },
         {
           "id": "methods",
@@ -529,9 +529,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 0,
+      "passed": 2,
       "total": 10,
-      "percent": 0,
+      "percent": 20,
       "historicalPercent": 69,
       "certified": false
     },
@@ -562,14 +562,14 @@
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 1 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 2 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
         },
         {
           "id": "methods",
@@ -602,9 +602,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 0,
+      "passed": 2,
       "total": 10,
-      "percent": 0,
+      "percent": 20,
       "historicalPercent": 69,
       "certified": false
     },
@@ -635,14 +635,14 @@
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 1 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 2 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
         },
         {
           "id": "methods",
@@ -675,9 +675,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 0,
+      "passed": 2,
       "total": 10,
-      "percent": 0,
+      "percent": 20,
       "historicalPercent": 69,
       "certified": false
     },
@@ -708,14 +708,14 @@
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 1 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 2 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
         },
         {
           "id": "methods",
@@ -748,9 +748,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 0,
+      "passed": 2,
       "total": 10,
-      "percent": 0,
+      "percent": 20,
       "historicalPercent": 69,
       "certified": false
     },
@@ -781,14 +781,14 @@
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 1 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 2 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
         },
         {
           "id": "methods",
@@ -821,9 +821,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 0,
+      "passed": 2,
       "total": 10,
-      "percent": 0,
+      "percent": 20,
       "historicalPercent": 69,
       "certified": false
     },
@@ -854,14 +854,14 @@
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 1 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 2 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
         },
         {
           "id": "methods",
@@ -894,9 +894,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 0,
+      "passed": 2,
       "total": 10,
-      "percent": 0,
+      "percent": 20,
       "historicalPercent": 69,
       "certified": false
     },
@@ -927,14 +927,14 @@
         {
           "id": "r1",
           "name": "Voie raciale de rang 1",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 1 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Acquisition de la capacité et ses valeurs raciales principales vérifiées."
         },
         {
           "id": "r2",
           "name": "Voie raciale de rang 2",
-          "status": "A_VERIFIER",
-          "detail": "Vérifier le rang 2 de la voie raciale."
+          "status": "ACQUIS",
+          "detail": "Rang 2 accessible avec les règles avancées vérifié dans les cas de référence."
         },
         {
           "id": "methods",
@@ -967,9 +967,9 @@
           "detail": "Vérifier fiche et annexes puis création au clic pour le peuple, sans restriction à un profil donné."
         }
       ],
-      "passed": 0,
+      "passed": 2,
       "total": 10,
-      "percent": 0,
+      "percent": 20,
       "historicalPercent": 69,
       "certified": false
     }
