@@ -1,0 +1,85 @@
+{
+  "blob": "bb15787532fb128ec07a25157aeaab061d4a8354",
+  "tested": 72,
+  "passed": 72,
+  "replays": 72,
+  "failures": [],
+  "races": {
+    "soul": {
+      "schema": {
+        "type": "stat_mods",
+        "bonus": {
+          "mode": "fixed",
+          "options": [
+            "con"
+          ],
+          "value": 1
+        },
+        "malus": {
+          "mode": "choice",
+          "options": [
+            "cha",
+            "int"
+          ],
+          "value": -1
+        },
+        "raw": "+1 CON ; −1 CHA ou INT"
+      },
+      "rankCount": 5,
+      "pass": 36
+    },
+    "fairy": {
+      "schema": {
+        "type": "stat_mods",
+        "bonus": {
+          "mode": "fixed",
+          "options": [
+            "agi"
+          ],
+          "value": 1
+        },
+        "malus": {
+          "mode": "fixed",
+          "options": [
+            "con"
+          ],
+          "value": -1
+        },
+        "extra": {
+          "cha": 1,
+          "for": -2
+        },
+        "raw": "+1 AGI et CHA ; −1 CON ; −2 FOR"
+      },
+      "rankCount": 5,
+      "pass": 18
+    },
+    "sprite": {
+      "schema": {
+        "type": "stat_mods",
+        "bonus": {
+          "mode": "fixed",
+          "options": [
+            "agi"
+          ],
+          "value": 1
+        },
+        "malus": {
+          "mode": "fixed",
+          "options": [
+            "con"
+          ],
+          "value": -1
+        },
+        "extra": {
+          "per": 1,
+          "for": -2
+        },
+        "raw": "+1 AGI et PER ; −1 CON ; −2 FOR"
+      },
+      "rankCount": 5,
+      "pass": 18
+    }
+  },
+  "limits": "Cas de N1 et premier rang ; profils purs, pas de migration des PJ live."
+}
