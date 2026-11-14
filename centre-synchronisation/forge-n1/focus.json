@@ -9,7 +9,7 @@
   "canonicalProduct": "forge-of-heroes/index.html",
   "canonicalIndexSha256": "a1c1cb9360a967733b08ab182119cd8fbe44551016902672eb76dd6a516704d2",
   "certificationBasis": "Preuves liées au produit canonique et à sa version contrôlée.",
-  "generatedAt": "2026-11-14T17:05:05.208Z",
+  "generatedAt": "2026-11-14T17:08:22.506Z",
   "engineSha256": "07727b7ee4c643ec2f828d9836937afb795fb8ecaa86f487ad028e0227fcdbb6",
   "databaseSha256": "7ce3e85762d1e843e02273d67648c82c88eb57cfe30a8f6e22b259033585a80b",
   "peoplesEvidenceCurrent": true,
@@ -24,7 +24,7 @@
     "current": {
       "name": "Arquebusier",
       "position": 1,
-      "percent": 6,
+      "percent": 38,
       "certified": false
     },
     "next": {
@@ -37,7 +37,7 @@
         "name": "Arquebusier",
         "position": 1,
         "status": "EN_COURS",
-        "percent": 6,
+        "percent": 38,
         "certified": false
       },
       {
@@ -147,9 +147,9 @@
     "completed": false,
     "variantPrototypeReady": true,
     "variantIntegrated": false,
-    "passed": 1,
+    "passed": 6,
     "total": 16,
-    "percent": 6,
+    "percent": 38,
     "checks": [
       {
         "id": "paths",
@@ -166,26 +166,26 @@
       {
         "id": "r1",
         "name": "Recevoir les capacités de rang 1",
-        "status": "A_VERIFIER",
-        "detail": "Vérifier les cinq rangs 1."
+        "status": "ACQUIS",
+        "detail": "Les cinq rangs 1 sont attribués et sauvegardés dans les créations de référence."
       },
       {
         "id": "r2",
         "name": "Recevoir les capacités de rang 2",
-        "status": "A_VERIFIER",
-        "detail": "Vérifier les cinq rangs 2."
+        "status": "ACQUIS",
+        "detail": "Les cinq rangs 2 obtenus à N1 par l’âge mûr sont attribués et sauvegardés."
       },
       {
         "id": "r3",
         "name": "Recevoir les capacités de rang 3",
-        "status": "A_VERIFIER",
-        "detail": "Vérifier les cinq rangs 3."
+        "status": "ACQUIS",
+        "detail": "Les cinq rangs 3 obtenus à N1 par l’âge vénérable sont attribués et sauvegardés."
       },
       {
         "id": "age",
         "name": "Dépenses de rangs selon l’âge",
-        "status": "A_VERIFIER",
-        "detail": "Vérifier tous les choix d’âge."
+        "status": "ACQUIS",
+        "detail": "Très jeune, jeune, mûr et vénérable : rangs supplémentaires et restrictions vérifiés."
       },
       {
         "id": "methods",
@@ -232,8 +232,8 @@
       {
         "id": "save",
         "name": "Enregistrer et reprendre les pouvoirs obtenus",
-        "status": "A_VERIFIER",
-        "detail": "Vérifier la sauvegarde et la reprise."
+        "status": "ACQUIS",
+        "detail": "Les états de référence des rangs 1, 2 et 3 avec l’âge ont été enregistrés et restaurés à l’identique."
       },
       {
         "id": "pdf",
@@ -386,7 +386,7 @@
       }
     ],
     "partialNumericValidated": true,
-    "next": "Toutes les paires de voies légales ; Recevoir les capacités de rang 1 ; Recevoir les capacités de rang 2 ; Recevoir les capacités de rang 3 ; Dépenses de rangs selon l’âge ; Méthodes de répartition des caractéristiques ; PV, DEF, initiative, chance, mana, attaques et dommages ; Tous les effets des cinq capacités de rang 1 ; Tous les effets des cinq capacités de rang 2 ; Tous les effets des cinq capacités de rang 3 ; Toutes les armes, armures et variante Arbalétrier ; Origines, métiers et historiques avancés ; Enregistrer et reprendre les pouvoirs obtenus ; Fiche officielle et annexes ; Créer, sauvegarder et rouvrir au clic sur mobile"
+    "next": "Toutes les paires de voies légales ; Méthodes de répartition des caractéristiques ; PV, DEF, initiative, chance, mana, attaques et dommages ; Tous les effets des cinq capacités de rang 1 ; Tous les effets des cinq capacités de rang 2 ; Tous les effets des cinq capacités de rang 3 ; Toutes les armes, armures et variante Arbalétrier ; Origines, métiers et historiques avancés ; Fiche officielle et annexes ; Créer, sauvegarder et rouvrir au clic sur mobile"
   },
   "peoples": [
     {
