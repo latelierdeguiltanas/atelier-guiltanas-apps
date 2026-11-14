@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const root={FOHPlayerLibrary:{}};new Function('window',fs.readFileSync(path.join(__dirname,'../cloud.js'),'utf8'))(root);
+const merge=root.GuiltanasPlayerCloud.mergeVault,entry=(id,n,level=1)=>({id,system:'cof2',character:{name:id,level,n},play:{hp:n},revision:1,updatedAt:'a'}),pack=entries=>({format:'GUILTANAS_PLAYER_LIBRARY',version:1,entries});
+const A=entry('a',1),B=entry('b',1),P=entry('paladin',1),A2=entry('a',2),A3=entry('a',3),B2=entry('b',2);
+let p=merge(pack({a:A,b:B}),pack({a:A2,b:B,p:P}),pack({a:A,b:B2}));assert.equal(p.conflicts.length,0);assert.deepEqual(p.remote.entries,{a:A2,b:B2,p:P});
+p=merge(pack({a:A,b:B}),pack({a:A2,b:B,p:P}),pack({a:A3,b:B2}));assert.equal(p.conflicts.length,1);assert.deepEqual(p.remote.entries,{a:A3,b:B2,p:P});assert.deepEqual(p.device.entries,{a:A2,b:B2,p:P});assert.deepEqual(p.baseline.entries.a,A);
+p=merge(p.baseline,p.device,p.remote);assert.equal(p.conflicts.length,1);assert.deepEqual(p.remote.entries.a,A3);
+p=merge(pack({a:A}),pack({a:{...A,revision:2,updatedAt:'later'},p:P}),pack({a:A3}));assert.equal(p.conflicts.length,0);assert.deepEqual(p.remote.entries.a,A3);
+p=merge(pack({a:A}),pack({a:A,p:P}),pack({a:A}));assert.deepEqual(p.remote.entries.p,P);
+p=merge(pack({a:A,p:P}),pack({a:A,p:P}),pack({a:A}));assert.deepEqual(p.remote.entries.p,P);
+p=merge(pack({}),pack({a:A2}),pack({a:A3}));assert.equal(p.conflicts.length,1);assert.deepEqual(p.device.entries.a,A2);
+p=merge(pack({a:A}),pack({a:entry('a',1,2)}),pack({a:A2}));assert.equal(p.conflicts.length,1);
+p=merge(pack({a:A}),pack({a:{...A,character:{n:1,level:1,name:'a'}}}),pack({a:A}));assert.equal(p.conflicts.length,0);
+console.log('PASS 9 vault merge scenarios: independent additions, overlapping edits, stale baseline and canonical ordering.');

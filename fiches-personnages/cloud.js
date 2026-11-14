@@ -18,20 +18,34 @@ async function api(action,body){
   return d;
  }finally{clearTimeout(timer)}
 }
-// Merge additions only, never overwrite a concurrent edit to an existing sheet.
-function mergeNewEntries(base,local,remote){
- if(!base?.entries||!local?.entries||!remote?.entries)return null;
- const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b),out=JSON.parse(JSON.stringify(remote));
- for(const [id,old] of Object.entries(base.entries))if(!same(old,local.entries[id])||!Object.prototype.hasOwnProperty.call(remote.entries,id))return null;
- for(const [id,entry] of Object.entries(local.entries)){if(Object.prototype.hasOwnProperty.call(base.entries,id))continue;if(Object.prototype.hasOwnProperty.call(remote.entries,id)&&!same(remote.entries[id],entry))return null;out.entries[id]=entry;}
- return out;
+// Compare JSON values independently of JSONB key ordering. Ignore only bookkeeping metadata.
+function canonical(v){if(Array.isArray(v))return '['+v.map(canonical).join(',')+']';if(v&&typeof v==='object')return '{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+canonical(v[k])).join(',')+'}';return JSON.stringify(v);}
+function content(e){if(!e)return null;const {updatedAt,createdAt,revision,playRevision,...rest}=e;return rest;}
+const sameEntry=(a,b)=>canonical(content(a))===canonical(content(b));
+function mergeVault(base,local,remote){
+ if(!base?.entries||!local?.entries||!remote?.entries)throw Error('Impossible de comparer les versions du coffre.');
+ const next=JSON.parse(JSON.stringify(remote)),device=JSON.parse(JSON.stringify(local)),baseline=JSON.parse(JSON.stringify(remote)),conflicts=[];
+ const keys=new Set([...Object.keys(base.entries),...Object.keys(local.entries),...Object.keys(remote.entries)]);
+ for(const id of keys){const b=base.entries[id],l=local.entries[id],r=remote.entries[id];let chosen;
+  // No deletion operation exists in this library: preserve entries present on either side.
+  if(!l&&!r)continue;
+  if(!l||!r)chosen=l||r;
+  else if(sameEntry(l,r))chosen=(Number(l.revision||0)>Number(r.revision||0)||Number(l.playRevision||0)>Number(r.playRevision||0))?l:r;
+  else if(b&&sameEntry(l,b)&&r.character.level>=l.character.level)chosen=r;
+  else if(b&&sameEntry(r,b)&&l.character.level>=r.character.level)chosen=l;
+  else{conflicts.push({id,name:l.character?.name||r.character?.name||id});if(b)baseline.entries[id]=b;else delete baseline.entries[id];continue;}
+  next.entries[id]=chosen;device.entries[id]=chosen;baseline.entries[id]=chosen;
+ }
+ return {remote:next,device,baseline,conflicts};
 }
+// Compatibility helper for older QA scripts; a genuine overlap remains a conflict.
+function mergeNewEntries(base,local,remote){const result=mergeVault(base,local,remote);return result.conflicts.length?null:result.remote;}
 let busy=false,delayed=null,pending=false,conflicted=false;
 async function create(){
  if(busy)return;busy=true;
  try{
   const initial=L.read().data,code=randomCode(),result=await api('create',{key:code,payload:initial});
-  setConfig({key:code,revision:result.revision,fingerprint:fingerprint()});
+  setConfig({key:code,revision:result.revision,fingerprint:JSON.stringify(initial)});
   const area=document.getElementById('cloud-code');
   if(area){area.hidden=false;area.value=codeFormat(code);area.select();}
   summary('✓ Coffre personnel créé en ligne. Copie et conserve ton code privé pour ouvrir tes fiches sur un autre appareil.');
@@ -48,7 +62,7 @@ async function connect(text){
   const local=L.read().data;
   if(Object.keys(local.entries).length&&!confirm('Importer les fiches en ligne sur cet appareil ? Les fiches portant le même identifiant seront remplacées uniquement si elles ne sont pas de niveau supérieur.'))return;
   L.restore(cloud.payload);
-  setConfig({key:code,revision:cloud.revision,fingerprint:fingerprint()});
+  setConfig({key:code,revision:cloud.revision,fingerprint:JSON.stringify(cloud.payload)});
   summary('✓ Appareil relié. '+Object.keys(cloud.payload.entries).length+' fiche(s) récupérée(s) depuis Supabase.');
   render();root.dispatchEvent(new CustomEvent('guiltanas-player-cloud-updated'));
  }catch(e){summary('Connexion au coffre impossible : '+e.message+'. Fiches locales conservées.',true)}
@@ -61,24 +75,29 @@ async function sync({quiet=false}={}){
  busy=true;
  try{
   const remote=await api('pull',{key:config.key});
-  const local= L.read().data,actual=fingerprint(),dirty=actual!==config.fingerprint;
-  if(remote.revision!==config.revision){
-   if(dirty){let base;try{base=JSON.parse(config.fingerprint)}catch{}const merged=mergeNewEntries(base,local,remote.payload);if(!merged){conflicted=true;throw new Error('CONFLIT : la fiche a été modifiée sur deux appareils. Aucun contenu n’a été écrasé. Fais une sauvegarde JSON locale avant toute restauration.');}if(fingerprint()!==actual)throw Error('Les fiches locales ont changé pendant la synchronisation. Réessaie.');L.restore(merged);const mergedFingerprint=fingerprint();const answer=await api('push',{key:config.key,expectedRevision:remote.revision,payload:merged});setConfig({...config,revision:answer.revision,fingerprint:mergedFingerprint});summary('✓ Nouvelle fiche ajoutée au coffre sans écraser les autres modifications.');root.dispatchEvent(new CustomEvent('guiltanas-player-cloud-updated'));render();return;}
-   L.restore(remote.payload);
-   setConfig({...config,revision:remote.revision,fingerprint:fingerprint()});
-   if(!quiet)summary('✓ Fiches actualisées depuis le serveur.');
-   root.dispatchEvent(new CustomEvent('guiltanas-player-cloud-updated'));
-  }else if(dirty){
-   const answer=await api('push',{key:config.key,expectedRevision:config.revision,payload:local});
-   setConfig({...config,revision:answer.revision,fingerprint:actual});
-   if(!quiet)summary('✓ Modifications sauvegardées sur Supabase · version '+answer.revision+'.');
-  }else if(!quiet)summary('✓ À jour sur cet appareil et sur le serveur.');
-  render();
+  if(nowConfig()?.key!==config.key)throw Error('Le coffre a changé pendant la synchronisation.');
+  const local=L.read().data,actual=JSON.stringify(local);let base;
+  try{base=JSON.parse(config.fingerprint)}catch{}
+  // A missing historical snapshot cannot prove that a differing sheet is safe to replace.
+  if(!base?.entries)base={...local,entries:{}};
+  const plan=mergeVault(base,local,remote.payload);
+  const changed=canonical(plan.remote)!==canonical(remote.payload);
+  let revision=remote.revision;
+  if(changed){const answer=await api('push',{key:config.key,expectedRevision:remote.revision,payload:plan.remote});revision=answer.revision;}
+  if(nowConfig()?.key!==config.key||fingerprint()!==actual){pending=true;throw Error('Des fiches ont changé pendant la synchronisation. Les modifications sont conservées ; nouvelle vérification nécessaire.');}
+  if(canonical(plan.device)!==canonical(local))L.restore(plan.device);
+  // Keep the old common ancestor for unresolved per-sheet conflicts, even at the new revision.
+  setConfig({...config,revision,fingerprint:JSON.stringify(plan.baseline)});
+  conflicted=plan.conflicts.length>0;
+  if(conflicted){summary('⚠ '+(changed?'Les fiches sans conflit ont été sauvegardées. ':'Les fiches sans conflit sont à jour. ')+'Versions à vérifier : '+plan.conflicts.map(x=>x.name).join(', ')+'. Les deux versions sont conservées. Fais une sauvegarde JSON avant toute restauration.',true);}
+  else if(!quiet||changed)summary(changed?'✓ Modifications sauvegardées sur Supabase · version '+revision+'.':'✓ À jour sur cet appareil et sur le serveur.');
+  render();if(canonical(plan.device)!==canonical(local))root.dispatchEvent(new CustomEvent('guiltanas-player-cloud-updated'));
+
  }catch(e){
   summary('⚠ Synchronisation non confirmée : '+e.message+' Tes données locales restent disponibles.',true);
- }finally{busy=false;if(pending&&!conflicted){pending=false;trigger();}}
+ }finally{busy=false;if(pending){pending=false;trigger();}}
 }
-function trigger(){if(!nowConfig()?.key||conflicted)return;pending=false;clearTimeout(delayed);delayed=setTimeout(()=>sync({quiet:false}),1600);}
+function trigger(){if(!nowConfig()?.key)return;pending=false;clearTimeout(delayed);delayed=setTimeout(()=>sync({quiet:false}),1600);}
 function render(){
  const config=nowConfig(),connected=!!config?.key;
  for(const [id,show] of [['cloud-create',!connected],['cloud-link',!connected],['cloud-sync',connected],['cloud-disconnect',connected],['cloud-copy',connected]]){
@@ -108,13 +127,13 @@ function setup(){
  render();
  document.getElementById('play-sync').onclick=()=>{conflicted=false;sync({quiet:false});};
  document.getElementById('play-library').onclick=()=>{history.pushState(null,'',new URL('./',location.href));window.dispatchEvent(new Event('popstate'));};
- window.addEventListener('online',()=>{if(nowConfig()?.key&&!conflicted)sync({quiet:false})});
- window.addEventListener('visibilitychange',()=>{if(!document.hidden&&nowConfig()?.key&&!conflicted)sync({quiet:true})});
+ window.addEventListener('online',()=>{if(nowConfig()?.key)sync({quiet:false})});
+ window.addEventListener('visibilitychange',()=>{if(!document.hidden&&nowConfig()?.key)sync({quiet:true})});
  const address=new root.URL(location.href),incoming=new URLSearchParams(address.hash.slice(1)).get('vault');
  const fromForge=address.searchParams.get('fromForge')==='1';address.searchParams.delete('fromForge');history.replaceState(null,'',address.href);
  if(incoming){if(!/^[a-f0-9]{64}$/.test(incoming)){summary('Lien personnel invalide.',true);return;}if(nowConfig()?.key===incoming)sync({quiet:false});else connect(incoming);}
  else if(nowConfig()?.key)sync({quiet:false});
  else if(fromForge)create();
 }
-root.GuiltanasPlayerCloud={create,connect,sync,trigger,render,setup,config:nowConfig,mergeNewEntries};
+root.GuiltanasPlayerCloud={create,connect,sync,trigger,render,setup,config:nowConfig,mergeNewEntries,mergeVault};
 })(window);
