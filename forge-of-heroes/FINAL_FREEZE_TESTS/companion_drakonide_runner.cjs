@@ -1,0 +1,16 @@
+'use strict';
+const {load}=require('./forge_product_runner');
+function run(db,E){
+ const T=db.tables,pid="people:drakonide:compagnon-cof2",path="path:voie-du-drakonide:compagnon-cof2",aid="ability:drakonide-r2:"+path;
+ const clone=x=>JSON.parse(JSON.stringify(x)),same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+ const make=p=>{const paths=T.paths_class.filter(x=>x.classId===p.id&&!x.additionalMagePath),rule=T.profile_rules.find(x=>x.profileId===p.id),pack=rule.initialEquipment.packages[0];return {identite:{nom:"Drakonide QA"},familleId:p.familleId,classeId:p.id,peupleId:pid,serieId:"expert",baseCaracs:{for:2,agi:1,con:0,per:1,int:3,vol:0,cha:-1},characteristicMethod:{type:"STANDARD_SERIES",rolls:[2,7,12]},peupleChoices:{},voies:{peoplePathId:path,keepPeoplePathId:"",profilePathIds:paths.slice(0,2).map(x=>x.id),mageRank2PathId:p.familleId==="mage"?paths[0].id:""},equip:{initialPackageId:pack.id,armorId:rule.initialEquipment.requiredArmorId||"",shieldId:pack.shieldId||"",weaponIds:[...(pack.weaponIds||[])]},profileChoices:p.id.includes(":pretre:")?{priestMode:"generalist"}:{},abilityChoices:{},options:{},advancedRules:{modelVersion:"FIX78",age:false,histories:false,additionalMagePaths:false},narrative:{ideal:"",flaw:""}}};
+ const check=(condition,msg)=>{if(!condition)throw Error(msg)};
+ const report={cases:[],replays:0,failures:[]};
+ function test(label,fn){try{fn();report.cases.push({label,pass:true})}catch(e){report.cases.push({label,pass:false});report.failures.push({label,error:String(e)})}}
+ function replay(s,r){const save=E.createHeroSavePayload(s,r.sticky.characterState,{id:"drakonide-test"}),back=E.computeCharacterN1(E.restoreHeroSavePayload(clone(save)).draft);check(!back.errors.length,back.errors.join(" | "));for(const key of ["derived","paths","persistentChoices"])check(same(back.sticky.characterState[key]??null,r.sticky.characterState[key]??null),"Replay "+key);report.replays++}
+ for(const p of T.classes)test("N1 "+p.label,()=>{const s=make(p),r=E.computeCharacterN1(s);check(!r.errors.length,r.errors.join(" | "));const a=r.sticky;check(a.traits.darkvisionMeters===30,"vision");check(a.skillBonuses.some(b=>b.sourceAbilityId==="ability:drakonide-r1:"+path&&b.value===3),"intimidation");replay(s,r)});
+ const p=T.classes.find(x=>x.id==="class:barbare:cof2-lb-2024");
+ for(const rank of [2,3])for(const element of [null,"fire","cold","lightning","acid","invalid"])test("Barbare "+rank+" "+element,()=>{const s=make(p);s.advancedRules.age=true;s.age={categoryId:rank===2?"mature":"venerable",choice:null,spending:[{pathId:path,rank:2},...(rank===3?[{pathId:path,rank:3}]:[]),{pathId:s.voies.profilePathIds[0],rank:2}]};if(element)s.abilityChoices={[aid]:{drakonideBreath:element}};const r=E.computeCharacterN1(s);if(!element||element==="invalid"){check(r.errors.some(x=>x.includes("Souffle (L)")),"refus attendu");return}check(!r.errors.length,r.errors.join(" | "));const a=r.sticky;check(a.passiveFeatures.some(x=>x.kind==="breath"&&x.element===element&&x.damageDice===(3+rank)+"d4°"),"souffle");if(rank===3)check(a.traits.damageReduction.some(x=>x.value===rank&&x.types.includes(element))&&a.DEF===12,"écailles");replay(s,r)});
+ return report;
+}
+const {db,engine}=load();const report=run(db,engine);console.log(JSON.stringify(report,null,2));if(report.failures.length)process.exitCode=1;
