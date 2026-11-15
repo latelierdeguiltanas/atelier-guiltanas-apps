@@ -1,0 +1,116 @@
+{
+  "schema": "FOH_N1_HYBRID_PATH_MATRIX",
+  "date": "2026-11-15",
+  "productionBlob": "ff3ec9147d17a2bf4b3f8cebd2c39816217737f5",
+  "profilePairs": {
+    "passed": 306,
+    "total": 306
+  },
+  "pathPairs": {
+    "passed": 7650,
+    "total": 7650,
+    "firstPass": 7560,
+    "targetedRechecks": 90,
+    "unexpectedFailures": 0,
+    "byPrimaryProfile": [
+      {
+        "name": "Arquebusier",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Barde",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Rôdeur",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Voleur",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Barbare",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Chevalier",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Guerrier",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Ensorceleur",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Forgesort",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Magicien",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Sorcier",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Invocateur",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Psionique",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Druide",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Moine",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Prêtre",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Samouraï",
+        "passed": 425,
+        "total": 425
+      },
+      {
+        "name": "Arbalétrier",
+        "passed": 425,
+        "total": 425
+      }
+    ]
+  },
+  "execution": "Production embedded engine executed in V8; human, advanced point buy fixture, ordered distinct profile pairs and all five regular paths per profile; targeted fixes to fixture weapon selection and category choice.",
+  "limits": [
+    "One human and characteristic fixture per path pair",
+    "GM-approved equipment swaps on mercenary; alternate equipment UI not verified",
+    "Numeric totals finite, not checked against independent source oracle",
+    "No browser, PDF, Hub, N2/N3 or no-profile tests in this run"
+  ],
+  "certified": false
+}
