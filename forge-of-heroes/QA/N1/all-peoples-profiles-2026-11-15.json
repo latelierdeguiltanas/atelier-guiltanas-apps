@@ -1,0 +1,166 @@
+{
+  "schema": "FOH_N1_ALL_PEOPLES_PROFILES_SMOKE",
+  "date": "2026-11-15",
+  "productionBlob": "ff3ec9147d17a2bf4b3f8cebd2c39816217737f5",
+  "catalogue": {
+    "peoples": 26,
+    "profiles": 18,
+    "profilePaths": 95,
+    "peoplePaths": 27,
+    "historyPaths": 17,
+    "prestigePaths": 10,
+    "abilities": 745,
+    "missingRanks": 0,
+    "duplicateRanks": 0,
+    "emptyDescriptions": 0,
+    "profilePeopleRanks": 610,
+    "oldAuditRows": 525,
+    "untrackedRanks": 85
+  },
+  "matrix": {
+    "passed": 468,
+    "total": 468,
+    "replays": 468,
+    "failed": 0,
+    "byPeople": [
+      {
+        "name": "Demi-elfe",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Demi-orc",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Elfe haut",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Elfe sylvain",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Gnome",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Halfelin",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Humain",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Nain",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Âme-forgée",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Centaure",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Demi-ogre",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Gobelin",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Kobold",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Minotaure",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Lutin · Farfadet",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Lutin · Fée",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Drakonide",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Cambion",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Elfe pâle",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Elfe des profondeurs",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Félis",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Frouïn",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Nephilim",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Ophidien",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Satyre",
+        "passed": 18,
+        "total": 18
+      },
+      {
+        "name": "Wolfer",
+        "passed": 18,
+        "total": 18
+      }
+    ]
+  },
+  "method": "Production embedded engine executed directly in V8, standardState fixture per pair; required choices filled, priest generalist, small-size equipment swaps with GM approval, centaur alternative paths, fairy/farfadet valid base stats and fitted equipment. All five primary numeric totals finite. Save and restore full sticky deep comparison excluding only heroLibraryId and object key order.",
+  "limitations": [
+    "One valid build per pair, no exhaustive path choices or independent numeric oracle",
+    "No real browser clicks, PDF, Hub or level progression",
+    "Catalogue structure only, not source-text verification",
+    "85 missing audit rows remain unclassified"
+  ],
+  "certified": false
+}
