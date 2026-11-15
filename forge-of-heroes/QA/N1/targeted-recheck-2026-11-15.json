@@ -1,0 +1,42 @@
+{
+  "schema": "FOH_N1_TARGETED_RECHECK",
+  "date": "2026-11-15",
+  "productionBlob": "ff3ec9147d17a2bf4b3f8cebd2c39816217737f5",
+  "previousReport": "QA/N1/regressions.json",
+  "previousBatch": {
+    "passed": 33,
+    "total": 37
+  },
+  "execution": "Production HTML embedded database and engine executed in V8; GitHub runner sources evaluated using local assertion and path/require adapters; engine not mocked.",
+  "results": [
+    {
+      "file": "n1_size_equipment_runner.cjs",
+      "status": "PASS",
+      "cases": 66
+    },
+    {
+      "file": "permanent_rules_runner.cjs",
+      "status": "PASS",
+      "cases": 28
+    },
+    {
+      "file": "path_calculations_runner.cjs",
+      "status": "PASS"
+    },
+    {
+      "file": "grants_attacks_companions_runner.cjs",
+      "status": "PASS",
+      "cases": 78
+    }
+  ],
+  "targetedPassed": 4,
+  "targetedTotal": 4,
+  "certified": false,
+  "limits": [
+    "Other 33 suites not re-executed in this run",
+    "No native Node CI or browser clicks in this run",
+    "No new engine change; obsolete tests aligned to migrated COF2 rules",
+    "All 26 race entries and N2/N3, PDF, Hub still require full certification",
+    "Worg rank 4 positive acquisition not established by this targeted N1 recheck"
+  ]
+}
