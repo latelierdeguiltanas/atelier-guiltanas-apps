@@ -135,7 +135,7 @@ function setup(){
  const fromForge=address.searchParams.get('fromForge')==='1';address.searchParams.delete('fromForge');history.replaceState(null,'',address.href);
  if(incoming){if(!/^[a-f0-9]{64}$/.test(incoming)){summary('Lien personnel invalide.',true);return;}if(nowConfig()?.key===incoming)sync({quiet:false});else connect(incoming);}
  else if(nowConfig()?.key)sync({quiet:false});
- else if(fromForge)create();
+ else if(fromForge)summary('✓ Fiche enregistrée sur cet appareil. Le coffre en ligne est facultatif : crée-le depuis Mes personnages pour synchroniser tes fiches.');
 }
 root.GuiltanasPlayerCloud={create,connect,sync,trigger,render,setup,config:nowConfig,mergeNewEntries,mergeVault};
 })(window);
