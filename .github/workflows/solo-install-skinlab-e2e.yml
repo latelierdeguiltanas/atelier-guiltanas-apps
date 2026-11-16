@@ -1,0 +1,27 @@
+name: Fiches COF2 - installation et SkinLab au clic
+on:
+  push:
+    paths:
+      - 'fiches-personnages/**'
+      - 'fiches-installations/**'
+      - 'hub-configurable/**'
+      - '.github/workflows/solo-install-skinlab-e2e.yml'
+  workflow_dispatch:
+jobs:
+  chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - run: |
+          mkdir -p /tmp/skinlab-site
+          ln -s "$PWD" /tmp/skinlab-site/atelier-guiltanas-apps
+          python3 -m http.server 4173 --directory /tmp/skinlab-site >/tmp/skinlab-http.log 2>&1 &
+          sleep 2
+          node fiches-personnages/tests/install-skinlab-e2e.cjs
