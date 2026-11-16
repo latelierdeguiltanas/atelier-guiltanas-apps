@@ -14,9 +14,9 @@ await af.locator('.identity h1').waitFor();await bf.locator('.identity h1').wait
 assert.equal(await af.locator('.identity h1').innerText(),'Arelas');assert.equal(await bf.locator('.identity h1').innerText(),'Voltor');
 const defense=async()=>Number(await bf.locator('#resources .resource').filter({hasText:'Défense'}).locator('b').innerText());
 assert.equal(await defense(),9);
-assert.match(await bf.locator('.quick-bonus-panel').innerText(),/Crochetage/);
+assert.equal(await bf.locator('#quick-bonus-overview details').getAttribute('open'),null);assert.match(await bf.locator('.quick-preview').innerText(),/Crochetage/);await bf.locator('#quick-bonus-overview summary').click();assert.match(await bf.locator('.quick-bonus-panel').innerText(),/Crochetage/);
 assert.match(await bf.locator('.quick-bonus-panel').innerText(),/Discrétion/);
-await bf.locator('[data-quick-bonus-search]').fill('crochetage');assert.equal(await bf.locator('.quick-bonus-item strong').getByText('Crochetage',{exact:true}).count(),1);await bf.locator('[data-quick-bonus-search]').fill('');
+await bf.locator('[data-quick-bonus-search]').fill('crochetage');assert.equal(await bf.locator('.quick-bonus-item strong').getByText('Crochetage',{exact:true}).count(),1);await bf.locator('[data-quick-bonus-search]').fill('');await bf.locator('#quick-bonus-overview summary').click();await bf.locator('[data-view="complete"]').click();assert.equal(await bf.locator('[data-view="complete"]').getAttribute('aria-pressed'),'true');await bf.locator('#sheet-text').selectOption('large');assert.equal(await bf.locator('body').evaluate(e=>e.classList.contains('sheet-large')),true);await bf.locator('#sheet-text').selectOption('normal');await bf.locator('[data-view="simple"]').click();
 await bf.locator('[data-page="bag"]').click();
 const item=name=>bf.locator('.inventory-item summary strong').getByText(name,{exact:true}).locator('xpath=ancestor::details[1]');
 async function equip(name){const card=item(name);if(!(await card.getAttribute('open')!==null))await card.locator('summary').click();await card.locator('[data-equip]').click();}
