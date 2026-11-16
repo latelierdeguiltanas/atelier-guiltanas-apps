@@ -12,3 +12,4 @@ p=merge(pack({}),pack({a:A2}),pack({a:A3}));assert.equal(p.conflicts.length,1);a
 p=merge(pack({a:A}),pack({a:entry('a',1,2)}),pack({a:A2}));assert.equal(p.conflicts.length,1);
 p=merge(pack({a:A}),pack({a:{...A,character:{n:1,level:1,name:'a'}}}),pack({a:A}));assert.equal(p.conflicts.length,0);
 console.log('PASS 9 vault merge scenarios: independent additions, overlapping edits, stale baseline and canonical ordering.');
+const base=entry('mix',1),local={...base,play:{hp:0}},remote={...base,appearance:{portrait:'test'}};p=merge(pack({mix:base}),pack({mix:local}),pack({mix:remote}));assert.equal(p.conflicts.length,0);assert.equal(p.device.entries.mix.play.hp,0);assert.equal(p.remote.entries.mix.appearance.portrait,'test');p=merge(pack({mix:base}),pack({mix:{...base,play:{hp:0}}}),pack({mix:{...base,play:{hp:2}}}));assert.equal(p.conflicts.length,1);console.log('PASS | indépendance apparence/partie, conflit vrai conservé');
