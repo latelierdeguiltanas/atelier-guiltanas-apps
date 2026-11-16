@@ -24,4 +24,5 @@ jobs:
           ln -s "$PWD" /tmp/skinlab-site/atelier-guiltanas-apps
           python3 -m http.server 4173 --directory /tmp/skinlab-site >/tmp/skinlab-http.log 2>&1 &
           sleep 2
+          node fiches-personnages/tests/vault-merge.cjs
           node fiches-personnages/tests/install-skinlab-e2e.cjs
