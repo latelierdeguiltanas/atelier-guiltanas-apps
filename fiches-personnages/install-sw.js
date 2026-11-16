@@ -1,6 +1,6 @@
-const CACHE='guiltanas-player-v5';
+const CACHE='guiltanas-player-v6';
 const BASE=new URL('./',self.location);
-const ASSETS=['./','./index.html','./manifest.webmanifest','./app.js?v=20261116-skin-slots','./library.js?v=20261116-skin-slots','../fiches-installations/slots.js?v=1','./cloud.js?v=20261114-mobile','./style.css?v=20261114-mobile','./icon.svg','../guiltanas-install/hero-192.png','../guiltanas-install/hero-512.png','./fiche/','./fiche/index.html','./fiche/skinlab.js?v=20261116-skin-slots','./fiche/fiche.js?v=20261114-bonus','./fiche/fiche.css','./fiche/ergonomie.css?v=20261114-bonus','./fiche/mana.css','./fiche/inventaire.css'];
+const ASSETS=['./','./index.html','./manifest.webmanifest','./app.js?v=20261116-skin-slots','./library.js?v=20261116-skin-slots','../fiches-installations/slots.js?v=1','./cloud.js?v=20261114-mobile','./style.css?v=20261114-mobile','./icon.svg','../guiltanas-install/hero-192.png','../guiltanas-install/hero-512.png','./fiche/','./fiche/index.html','./fiche/skinlab.js?v=20261116-skin-slots','./fiche/fiche.js?v=20261116-hub','./fiche/fiche.css','./fiche/ergonomie.css?v=20261114-bonus','./fiche/mana.css','./fiche/inventaire.css'];
 const URLS=ASSETS.map(x=>new URL(x,BASE).href);
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(URLS.map(u=>new Request(u,{cache:'reload'})))).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(Promise.all([caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('guiltanas-player-')&&k!==CACHE).map(k=>caches.delete(k)))),self.clients.claim()]));});
