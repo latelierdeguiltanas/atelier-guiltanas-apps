@@ -16,9 +16,9 @@ const defense=async()=>Number(await bf.locator('#resources .resource').filter({h
 assert.equal(await defense(),9);
 assert.match(await bf.locator('.quick-bonus-panel').innerText(),/Crochetage/);
 assert.match(await bf.locator('.quick-bonus-panel').innerText(),/Discrétion/);
-await bf.locator('[data-quick-bonus-search]').fill('crochetage');assert.equal(await bf.locator('.quick-bonus-item').filter({has:bf.locator('strong').getByText('Crochetage',{exact:true})}).count(),1);await bf.locator('[data-quick-bonus-search]').fill('');
+await bf.locator('[data-quick-bonus-search]').fill('crochetage');assert.equal(await bf.locator('.quick-bonus-item strong').getByText('Crochetage',{exact:true}).count(),1);await bf.locator('[data-quick-bonus-search]').fill('');
 await bf.locator('[data-page="bag"]').click();
-const item=name=>bf.locator('.inventory-item').filter({has:bf.locator('summary strong').getByText(name,{exact:true})});
+const item=name=>bf.locator('.inventory-item').filter({hasText:name});
 async function equip(name){const card=item(name);if(!(await card.getAttribute('open')!==null))await card.locator('summary').click();await card.locator('[data-equip]').click();}
 await equip('Cotte de mailles');assert.equal(await defense(),14);
 await equip('Grand bouclier');assert.equal(await defense(),16);
