@@ -1,7 +1,7 @@
 importScripts('./icon-store.js?v=1');
-const CACHE='guiltanas-player-v12';
+const CACHE='guiltanas-player-v13';
 const BASE=new URL('./',self.location);
-const ASSETS=['./','./index.html','./manifest.webmanifest','./app.js?v=20261116-app-icons','./icon-store.js?v=1','./icon-ui.js?v=1','./library.js?v=20261116-gear-wallet2','../fiches-installations/slots.js?v=1','./cloud.js?v=20261116-optin','./style.css?v=20261114-mobile','./icon.svg','../guiltanas-install/hero-192.png','../guiltanas-install/hero-512.png','./fiche/','./fiche/index.html','./fiche/skinlab.js?v=20261116-skin-slots','./fiche/fiche.js?v=20261116-catalog','./fiche/fiche.css','./fiche/ergonomie.css?v=20261116-compact-faith','./fiche/mana.css','./fiche/inventaire.css?v=20261116-catalog'];
+const ASSETS=['./','./index.html','./manifest.webmanifest','./app.js?v=20261116-app-icons','./icon-store.js?v=1','./icon-ui.js?v=1','./library.js?v=20261116-gear-wallet2','../fiches-installations/slots.js?v=1','./cloud.js?v=20261116-optin','./style.css?v=20261114-mobile','./icon.svg','../guiltanas-install/hero-192.png','../guiltanas-install/hero-512.png','./fiche/','./fiche/index.html','./fiche/skinlab.js?v=20261116-skin-slots','./fiche/fiche.js?v=20261116-fold-resources','./fiche/fiche.css','./fiche/ergonomie.css?v=20261116-fold-resources','./fiche/mana.css','./fiche/inventaire.css?v=20261116-catalog'];
 const URLS=ASSETS.map(x=>new URL(x,BASE).href);
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(URLS.map(u=>new Request(u,{cache:'reload'})))).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(Promise.all([caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('guiltanas-player-')&&k!==CACHE).map(k=>caches.delete(k)))),self.clients.claim()]));});
