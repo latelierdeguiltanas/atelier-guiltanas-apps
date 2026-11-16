@@ -1,0 +1,7 @@
+(function(root){'use strict';
+const KEY='guiltanas_install_slots_v1',MAX=32;
+function read(storage){let m;try{m=JSON.parse(storage.getItem(KEY)||'{}')}catch{throw Error('Index des installations illisible. Aucune association écrasée.')}if(!m||Array.isArray(m)||typeof m!=='object'||Object.entries(m).some(([s,id])=>!/^\d{2}$/.test(s)||+s<1||+s>MAX||typeof id!=='string'))throw Error('Index des installations invalide.');return m;}
+function reserve(id,storage,preferred){if(typeof id!=='string'||!id||id.length>300)throw Error('Identité de personnage invalide.');const m=read(storage),existing=Object.keys(m).find(s=>m[s]===id);if(existing){if(preferred&&preferred!==existing)throw Error('Ce personnage possède déjà une autre adresse d’installation.');return existing;}let slot=preferred||Array.from({length:MAX},(_,i)=>String(i+1).padStart(2,'0')).find(s=>!m[s]);if(!slot||!/^\d{2}$/.test(slot)||+slot<1||+slot>MAX)throw Error('Les 32 emplacements d’installation sont utilisés.');if(m[slot]&&m[slot]!==id)throw Error('Cet emplacement appartient déjà à un autre personnage.');m[slot]=id;storage.setItem(KEY,JSON.stringify(m));return slot;}
+function urlFor(id,name,base,storage){const slot=reserve(id,storage),u=new URL(slot+'/',base);u.searchParams.set('hero',id);u.searchParams.set('name',String(name||'Ma fiche').slice(0,100));return u.href;}
+const api={KEY,MAX,read,reserve,urlFor};root.GuiltanasInstallSlots=api;if(typeof module!=='undefined')module.exports=api;
+})(typeof window==='undefined'?globalThis:window);
