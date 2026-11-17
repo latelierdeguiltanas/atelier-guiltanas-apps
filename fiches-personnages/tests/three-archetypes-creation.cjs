@@ -22,7 +22,7 @@ for(const [key,people,profile,peopleId,profileId] of cases){
 (async()=>{const browser=await chromium.launch({headless:true});try{for(const {key,c,ranks}of samples){
  const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(c=>{window.parent.saveSoloSheet=()=>{};sessionStorage.setItem('guiltanas-player-open',JSON.stringify({character:c,play:null,appearance:null}));},c);
- await page.goto('http://127.0.0.1:4173/atelier-guiltanas-apps/fiches-personnages/fiche/');await page.locator('#play').waitFor();
+ await page.goto('http://127.0.0.1:4173/atelier-guiltanas-apps/fiches-personnages/fiche/');await page.waitForTimeout(250);if(errors.length)throw Error(key+' erreur initialisation : '+errors.join(' | '));if(!(await page.locator('#play').isVisible()))throw Error(key+' vue masquée : '+JSON.stringify(await page.evaluate(()=>({body:document.body.innerText.slice(0,650),active:document.querySelector('.page.active')?.id,classes:document.body.className}))));
  assert.equal(await page.locator('.identity h1').innerText(),c.name);
  await page.locator('[data-page=abilities]').click();assert.equal(await page.locator('#abilities [data-ui-ability]').count(),ranks,key+' capacités simples');
  await page.locator('[data-view=complete]').click();assert.equal(await page.locator('#abilities .rank').count(),ranks,key+' capacités détaillées');
