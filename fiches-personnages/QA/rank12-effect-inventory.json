@@ -1,0 +1,4527 @@
+{
+  "schema": "FOH_RANK12_AUDIT_V1",
+  "description": "Inventaire mécanique exhaustif des rangs 1 et 2 présents dans le catalogue Forge. Statut A_VERIFIER = aucune certification d'automatisation émise, non une preuve d'erreur.",
+  "source": "forge-of-heroes/progression/catalog.json",
+  "counts": {
+    "total": 268,
+    "paths": 134,
+    "managed": 15,
+    "byPriority": {
+      "P0": 30,
+      "P1": 43,
+      "P2": 17,
+      "P3": 178
+    },
+    "unknownDef": [
+      {
+        "path": "Voie des explosifs",
+        "rank": 1,
+        "name": "Tir de grenaille (L)"
+      },
+      {
+        "path": "Voie de la précision",
+        "rank": 2,
+        "name": "Défaut dans la cuirasse (A)"
+      },
+      {
+        "path": "Voie du saltimbanque",
+        "rank": 2,
+        "name": "Grâce féline"
+      },
+      {
+        "path": "Voie de la séduction",
+        "rank": 2,
+        "name": "Dentelles et rapière"
+      },
+      {
+        "path": "Voie du compagnon animal",
+        "rank": 1,
+        "name": "Le loup"
+      },
+      {
+        "path": "Voie du déplacement",
+        "rank": 1,
+        "name": "Agile"
+      },
+      {
+        "path": "Voie du spadassin",
+        "rank": 2,
+        "name": "Esquive fatale (G)"
+      },
+      {
+        "path": "Voie de l’air",
+        "rank": 1,
+        "name": "Murmures dans le vent (G)*"
+      },
+      {
+        "path": "Voie de l’air",
+        "rank": 2,
+        "name": "Sous tension (M)*"
+      },
+      {
+        "path": "Voie de la divination",
+        "rank": 1,
+        "name": "Divination (L)*"
+      },
+      {
+        "path": "Voie de l’invocation",
+        "rank": 1,
+        "name": "Choc (A)*"
+      },
+      {
+        "path": "VOIE DU HALFELIN",
+        "rank": 1,
+        "name": "Petite taille"
+      },
+      {
+        "path": "VOIE DE L’HUMAIN",
+        "rank": 2,
+        "name": "Instinct de survie"
+      },
+      {
+        "path": "Voie du fauve",
+        "rank": 1,
+        "name": "Vitesse du félin"
+      },
+      {
+        "path": "Voie du fauve",
+        "rank": 2,
+        "name": "Panthère"
+      },
+      {
+        "path": "Voie du démon",
+        "rank": 2,
+        "name": "Beauté de la succube (L)*"
+      },
+      {
+        "path": "Voie de la maîtrise",
+        "rank": 1,
+        "name": "Agilité du singe"
+      },
+      {
+        "path": "Voie du poing",
+        "rank": 2,
+        "name": "Peau de fer"
+      },
+      {
+        "path": "Voie du vent",
+        "rank": 2,
+        "name": "Course du vent"
+      },
+      {
+        "path": "Voie du pagne",
+        "rank": 2,
+        "name": "Peau de pierre"
+      },
+      {
+        "path": "Voie du pourfendeur",
+        "rank": 1,
+        "name": "Réflexes éclair"
+      },
+      {
+        "path": "Voie du cavalier",
+        "rank": 1,
+        "name": "Fidèle monture"
+      },
+      {
+        "path": "Voie du cavalier",
+        "rank": 2,
+        "name": "Cavalier émérite"
+      },
+      {
+        "path": "Voie de la guerre",
+        "rank": 1,
+        "name": "Armure sur mesure"
+      },
+      {
+        "path": "Voie de la guerre",
+        "rank": 2,
+        "name": "Encaisser un coup (M)"
+      },
+      {
+        "path": "Voie du meneur d’homme",
+        "rank": 2,
+        "name": "Intercepter (G)"
+      },
+      {
+        "path": "Voie de la noblesse",
+        "rank": 2,
+        "name": "Écuyer"
+      },
+      {
+        "path": "Voie du bouclier",
+        "rank": 1,
+        "name": "Protéger un allié (G)"
+      },
+      {
+        "path": "Voie du métal",
+        "rank": 2,
+        "name": "Métal brûlant (M)*"
+      },
+      {
+        "path": "Voie du golem",
+        "rank": 2,
+        "name": "Golem"
+      },
+      {
+        "path": "Voie des runes",
+        "rank": 1,
+        "name": "Runes de défense"
+      },
+      {
+        "path": "Voie de l’entité",
+        "rank": 1,
+        "name": "Invocation d’une entité"
+      },
+      {
+        "path": "Voie des mutations",
+        "rank": 2,
+        "name": "Mutation protectrice"
+      },
+      {
+        "path": "Voie de l’arc et du cheval",
+        "rank": 1,
+        "name": "Monture loyale"
+      },
+      {
+        "path": "Voie de l’attaque mentale",
+        "rank": 2,
+        "name": "Bouclier psi"
+      },
+      {
+        "path": "Voie de l’empathie",
+        "rank": 2,
+        "name": "Défense intuitive"
+      },
+      {
+        "path": "Voie de la télékinésie",
+        "rank": 2,
+        "name": "Champ de protection"
+      },
+      {
+        "path": "Voie des arcanes oubliés",
+        "rank": 2,
+        "name": "Bouclier de mana (G)*"
+      },
+      {
+        "path": "Voie des arcanes obscurs",
+        "rank": 1,
+        "name": "Contact vampirique (L)*"
+      },
+      {
+        "path": "Voie de l’Âme-forgée",
+        "rank": 1,
+        "name": "Métallique"
+      },
+      {
+        "path": "VOIE DU KOBOLD",
+        "rank": 2,
+        "name": "Chétif"
+      },
+      {
+        "path": "VOIE DU FROUÏN",
+        "rank": 2,
+        "name": "Minus"
+      }
+    ]
+  },
+  "entries": [
+    {
+      "pathId": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
+      "path": "Voie de l’artilleur",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Mécanismes",
+      "source": "COF2",
+      "page": 62,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024",
+      "path": "Voie de l’artilleur",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Arme à répétition",
+      "source": "COF2",
+      "page": 62,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024",
+      "path": "Voie des explosifs",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Tir de grenaille (L)",
+      "source": "COF2",
+      "page": 63,
+      "signals": [
+        "DEF",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024",
+      "path": "Voie des explosifs",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:demolition:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Démolition",
+      "source": "COF2",
+      "page": 63,
+      "signals": [
+        "PM",
+        "QUOTIDIEN_RITUEL"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+      "path": "Voie du mercenaire",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Pilier de bar",
+      "source": "COF2",
+      "page": 64,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024",
+      "path": "Voie du mercenaire",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Mort ou vif (L)",
+      "source": "COF2",
+      "page": 64,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024",
+      "path": "Voie du pistolero",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Plus vite que son ombre",
+      "source": "COF2",
+      "page": 65,
+      "signals": [
+        "INIT",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024",
+      "path": "Voie du pistolero",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Ajuster le tir",
+      "source": "COF2",
+      "page": 65,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024",
+      "path": "Voie de la précision",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:joli-coup:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Joli coup",
+      "source": "COF2",
+      "page": 65,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024",
+      "path": "Voie de la précision",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Défaut dans la cuirasse (A)",
+      "source": "COF2",
+      "page": 65,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-l-escrime:class-barde:cof2-lb-2024",
+      "path": "Voie de l’escrime",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:precision:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Précision",
+      "source": "COF2",
+      "page": 66,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-escrime:class-barde:cof2-lb-2024",
+      "path": "Voie de l’escrime",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:feinte-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Feinte (L)",
+      "source": "COF2",
+      "page": 66,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+      "path": "Voie du musicien",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:chant-des-heros-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Chant des héros (L)*",
+      "source": "COF2",
+      "page": 67,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-du-musicien:class-barde:cof2-lb-2024",
+      "path": "Voie du musicien",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:chant-de-reconfort-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Chant de réconfort (L)*",
+      "source": "COF2",
+      "page": 67,
+      "signals": [
+        "PV",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024",
+      "path": "Voie du saltimbanque",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:acrobate:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Acrobate",
+      "source": "COF2",
+      "page": 67,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024",
+      "path": "Voie du saltimbanque",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:grace-feline:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Grâce féline",
+      "source": "COF2",
+      "page": 68,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-la-seduction:class-barde:cof2-lb-2024",
+      "path": "Voie de la séduction",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:charmant:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Charmant",
+      "source": "COF2",
+      "page": 68,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-seduction:class-barde:cof2-lb-2024",
+      "path": "Voie de la séduction",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:dentelles-et-rapiere:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Dentelles et rapière",
+      "source": "COF2",
+      "page": 68,
+      "signals": [
+        "DEF",
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-du-vagabond:class-barde:cof2-lb-2024",
+      "path": "Voie du vagabond",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:rumeurs-et-legendes:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Rumeurs et légendes",
+      "source": "COF2",
+      "page": 68,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-vagabond:class-barde:cof2-lb-2024",
+      "path": "Voie du vagabond",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:eclectique:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Éclectique",
+      "source": "COF2",
+      "page": 69,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
+      "path": "Voie de l’archer",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Archer émérite",
+      "source": "COF2",
+      "page": 70,
+      "signals": [
+        "INIT",
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024",
+      "path": "Voie de l’archer",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:tir-chirurgical:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Tir chirurgical",
+      "source": "COF2",
+      "page": 70,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024",
+      "path": "Voie du compagnon animal",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:le-loup:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Le loup",
+      "source": "COF2",
+      "page": 71,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PV",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024",
+      "path": "Voie du compagnon animal",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:travail-dequipe:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Travail d’équipe",
+      "source": "COF2",
+      "page": 71,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024",
+      "path": "Voie de la survie",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:survie:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Survie",
+      "source": "COF2",
+      "page": 72,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024",
+      "path": "Voie de la survie",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:nature-nourriciere:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Nature nourricière",
+      "source": "COF2",
+      "page": 72,
+      "signals": [
+        "PM",
+        "QUOTIDIEN_RITUEL",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024",
+      "path": "Voie du traqueur",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:eclaireur:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Éclaireur",
+      "source": "COF2",
+      "page": 72,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024",
+      "path": "Voie du traqueur",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:attaque-eclair-l:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Attaque éclair (L)",
+      "source": "COF2",
+      "page": 72,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+      "path": "Voie du combat à deux armes",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:attaque-a-suivre-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Attaque à suivre (G)",
+      "source": "COF2",
+      "page": 73,
+      "signals": [
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024",
+      "path": "Voie du combat à deux armes",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:parade-croisee:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Parade croisée",
+      "source": "COF2",
+      "page": 73,
+      "signals": [
+        "DEF",
+        "PM"
+      ],
+      "status": "GESTION_DYNAMIQUE",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+      "path": "Voie de l’assassin",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Discrétion",
+      "source": "COF2",
+      "page": 74,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+      "path": "Voie de l’assassin",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:attaque-sournoise-l:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Attaque sournoise (L)",
+      "source": "COF2",
+      "page": 74,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024",
+      "path": "Voie de l’aventurier",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:baratin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Baratin",
+      "source": "COF2",
+      "page": 75,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024",
+      "path": "Voie de l’aventurier",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:provocation-l:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Provocation (L)",
+      "source": "COF2",
+      "page": 75,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-deplacement:class-voleur:cof2-lb-2024",
+      "path": "Voie du déplacement",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:agile:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Agile",
+      "source": "COF2",
+      "page": 75,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-du-deplacement:class-voleur:cof2-lb-2024",
+      "path": "Voie du déplacement",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:reflexes-felins:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Réflexes félins",
+      "source": "COF2",
+      "page": 76,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-roublard:class-voleur:cof2-lb-2024",
+      "path": "Voie du roublard",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:doigts-agiles:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Doigts agiles",
+      "source": "COF2",
+      "page": 76,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-roublard:class-voleur:cof2-lb-2024",
+      "path": "Voie du roublard",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:aux-aguets:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Aux aguets",
+      "source": "COF2",
+      "page": 76,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-spadassin:class-voleur:cof2-lb-2024",
+      "path": "Voie du spadassin",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:attaque-en-finesse:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Attaque en finesse",
+      "source": "COF2",
+      "page": 77,
+      "signals": [
+        "INIT",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-spadassin:class-voleur:cof2-lb-2024",
+      "path": "Voie du spadassin",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:esquive-fatale-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Esquive fatale (G)",
+      "source": "COF2",
+      "page": 77,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024",
+      "path": "Voie de l’air",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024",
+      "name": "Murmures dans le vent (G)*",
+      "source": "COF2",
+      "page": 93,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024",
+      "path": "Voie de l’air",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:sous-tension:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Sous tension (M)*",
+      "source": "COF2",
+      "page": 93,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024",
+      "path": "Voie de la divination",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-ensorceleur-divination-divination-cof2-lb-2024",
+      "name": "Divination (L)*",
+      "source": "COF2",
+      "page": 93,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PV",
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024",
+      "path": "Voie de la divination",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:detection-invisible:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Détection de l’invisible (L)*",
+      "source": "COF2",
+      "page": 93,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024",
+      "path": "Voie de l’envoûteur",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-ensorceleur-envouteur-injonction-cof2-lb-2024",
+      "name": "Injonction (A)*",
+      "source": "COF2",
+      "page": 94,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024",
+      "path": "Voie de l’envoûteur",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:sommeil:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Sommeil (L)*",
+      "source": "COF2",
+      "page": 94,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+      "path": "Voie des illusions",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-ensorceleur-illusions-mirage-cof2-lb-2024",
+      "name": "Mirage (L)*",
+      "source": "COF2",
+      "page": 95,
+      "signals": [
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024",
+      "path": "Voie des illusions",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:image-decalee:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Image décalée (M)*",
+      "source": "COF2",
+      "page": 95,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024",
+      "path": "Voie de l’invocation",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-ensorceleur-invocation-choc-cof2-lb-2024",
+      "name": "Choc (A)*",
+      "source": "COF2",
+      "page": 96,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024",
+      "path": "Voie de l’invocation",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:serviteur-invisible:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Serviteur invisible (L)*",
+      "source": "COF2",
+      "page": 96,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024",
+      "path": "Voie de la foi",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:foi:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:r1",
+      "name": "Prédicateur",
+      "source": "COF2",
+      "page": 122,
+      "signals": [
+        "PV",
+        "PM",
+        "QUOTIDIEN_RITUEL"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024",
+      "path": "Voie de la foi",
+      "kind": "profile",
+      "rank": 2,
+      "id": "classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:progression-r2",
+      "name": "Miracle mineur (A)*",
+      "source": "COF2",
+      "page": 122,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024",
+      "path": "Voie de la guerre sainte",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:guerre-sainte:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:r1",
+      "name": "Arme bénie (A)*",
+      "source": "COF2",
+      "page": 123,
+      "signals": [
+        "PM",
+        "QUOTIDIEN_RITUEL",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024",
+      "path": "Voie de la guerre sainte",
+      "kind": "profile",
+      "rank": 2,
+      "id": "classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:progression-r2",
+      "name": "Bouclier de la foi",
+      "source": "COF2",
+      "page": 123,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "GESTION_EQUIPEMENT",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024",
+      "path": "Voie de la prière",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:priere:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:r1",
+      "name": "Bénédiction (L)*",
+      "source": "COF2",
+      "page": 124,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024",
+      "path": "Voie de la prière",
+      "kind": "profile",
+      "rank": 2,
+      "id": "classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:progression-r2",
+      "name": "Sanctuaire (L)*",
+      "source": "COF2",
+      "page": 124,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-soins:class-pretre:cof2-lb-2024",
+      "path": "Voie des soins",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:soins:classpath:voie-des-soins:class-pretre:cof2-lb-2024:r1",
+      "name": "Récupération mineure (A)*",
+      "source": "COF2",
+      "page": 124,
+      "signals": [
+        "PV",
+        "PM",
+        "QUOTIDIEN_RITUEL"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "classpath:voie-des-soins:class-pretre:cof2-lb-2024",
+      "path": "Voie des soins",
+      "kind": "profile",
+      "rank": 2,
+      "id": "classpath:voie-des-soins:class-pretre:cof2-lb-2024:progression-r2",
+      "name": "Vigueur divine (L)*",
+      "source": "COF2",
+      "page": 124,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024",
+      "path": "Voie de la spiritualité",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:spiritualite:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:r1",
+      "name": "Vêtements sacrés",
+      "source": "COF2",
+      "page": 125,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "GESTION_EQUIPEMENT",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024",
+      "path": "Voie de la spiritualité",
+      "kind": "profile",
+      "rank": 2,
+      "id": "classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:progression-r2",
+      "name": "Augure (L)*",
+      "source": "COF2",
+      "page": 125,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-halfelin:cof2-lb-2024",
+      "path": "VOIE DU HALFELIN",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:petite-taille:path:voie-du-halfelin:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Petite taille",
+      "source": "COF2",
+      "page": 55,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "path:voie-du-halfelin:cof2-lb-2024",
+      "path": "VOIE DU HALFELIN",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:r-sistance-l-gendaire:path:voie-du-halfelin:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Résistance légendaire",
+      "source": "COF2",
+      "page": 55,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-de-l-humain:cof2-lb-2024",
+      "path": "VOIE DE L’HUMAIN",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:diversit:path:voie-de-l-humain:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Diversité",
+      "source": "COF2",
+      "page": 57,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-de-l-humain:cof2-lb-2024",
+      "path": "VOIE DE L’HUMAIN",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:instinct-de-survie:path:voie-de-l-humain:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Instinct de survie",
+      "source": "COF2",
+      "page": 57,
+      "signals": [
+        "DEF",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "path:voie-de-l-elfe-sylvain:cof2-lb-2024",
+      "path": "VOIE DE L’ELFE SYLVAIN",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:lumi-re-des-toiles:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Lumière des étoiles",
+      "source": "COF2",
+      "page": 52,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-de-l-elfe-sylvain:cof2-lb-2024",
+      "path": "VOIE DE L’ELFE SYLVAIN",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:enfant-de-la-for-t:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Enfant de la forêt",
+      "source": "COF2",
+      "page": 52,
+      "signals": [
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:mountains",
+      "path": "Voie des montagnes",
+      "kind": "history",
+      "rank": 1,
+      "id": "history:mountains:rank:1",
+      "name": "Habitant des montagnes",
+      "source": null,
+      "page": 174,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:mountains",
+      "path": "Voie des montagnes",
+      "kind": "history",
+      "rank": 2,
+      "id": "history:mountains:rank:2",
+      "name": "Grimpeur",
+      "source": null,
+      "page": 174,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:nomad",
+      "path": "Voie du nomade",
+      "kind": "history",
+      "rank": 1,
+      "id": "history:nomad:rank:1",
+      "name": "Sens de l’orientation",
+      "source": null,
+      "page": 180,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:nomad",
+      "path": "Voie du nomade",
+      "kind": "history",
+      "rank": 2,
+      "id": "history:nomad:rank:2",
+      "name": "Voyageur",
+      "source": null,
+      "page": 180,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-animaux:class-druide:cof2-lb-2024",
+      "path": "Voie des animaux",
+      "kind": "gift",
+      "rank": 1,
+      "id": "ability:langage-des-animaux:classpath-voie-des-animaux-class-druide-cof2-lb-2024:r1",
+      "name": "Langage des animaux",
+      "source": "COF2",
+      "page": 114,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-animaux:class-druide:cof2-lb-2024",
+      "path": "Voie des animaux",
+      "kind": "gift",
+      "rank": 2,
+      "id": "ability:reference:classpath:voie-des-animaux:class-druide:cof2-lb-2024:rank2",
+      "name": "Petit compagnon",
+      "source": "COF2",
+      "page": 114,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PV",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "GESTION_VISIBILITE",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-du-fauve:class-druide:cof2-lb-2024",
+      "path": "Voie du fauve",
+      "kind": "gift",
+      "rank": 1,
+      "id": "ability:vitesse-du-felin:classpath-voie-du-fauve-class-druide-cof2-lb-2024:r1",
+      "name": "Vitesse du félin",
+      "source": "COF2",
+      "page": 115,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-du-fauve:class-druide:cof2-lb-2024",
+      "path": "Voie du fauve",
+      "kind": "gift",
+      "rank": 2,
+      "id": "ability:reference:classpath:voie-du-fauve:class-druide:cof2-lb-2024:rank2",
+      "name": "Panthère",
+      "source": "COF2",
+      "page": 115,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PV",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-la-nature:class-druide:cof2-lb-2024",
+      "path": "Voie de la nature",
+      "kind": "gift",
+      "rank": 1,
+      "id": "ability:maitre-de-la-survie:classpath-voie-de-la-nature-class-druide-cof2-lb-2024:r1",
+      "name": "Maître de la survie",
+      "source": "COF2",
+      "page": 116,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-nature:class-druide:cof2-lb-2024",
+      "path": "Voie de la nature",
+      "kind": "gift",
+      "rank": 2,
+      "id": "ability:reference:classpath:voie-de-la-nature:class-druide:cof2-lb-2024:rank2",
+      "name": "Terrains difficiles",
+      "source": "COF2",
+      "page": 116,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PM"
+      ],
+      "status": "GESTION_DYNAMIQUE",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-du-protecteur:class-druide:cof2-lb-2024",
+      "path": "Voie du protecteur",
+      "kind": "gift",
+      "rank": 1,
+      "id": "ability:baies-magiques:classpath-voie-du-protecteur-class-druide-cof2-lb-2024:r1",
+      "name": "Baies magiques (L)*",
+      "source": "COF2",
+      "page": 116,
+      "signals": [
+        "PM",
+        "QUOTIDIEN_RITUEL"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "classpath:voie-du-protecteur:class-druide:cof2-lb-2024",
+      "path": "Voie du protecteur",
+      "kind": "gift",
+      "rank": 2,
+      "id": "ability:reference:classpath:voie-du-protecteur:class-druide:cof2-lb-2024:rank2",
+      "name": "Forêt vivante*",
+      "source": "COF2",
+      "page": 116,
+      "signals": [
+        "PM",
+        "QUOTIDIEN_RITUEL",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "classpath:voie-des-vegetaux:class-druide:cof2-lb-2024",
+      "path": "Voie des végétaux",
+      "kind": "gift",
+      "rank": 1,
+      "id": "ability:peau-d-ecorce:classpath-voie-des-vegetaux-class-druide-cof2-lb-2024:r1",
+      "name": "Peau d’écorce (M)*",
+      "source": "COF2",
+      "page": 117,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "GESTION_DYNAMIQUE",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-des-vegetaux:class-druide:cof2-lb-2024",
+      "path": "Voie des végétaux",
+      "kind": "gift",
+      "rank": 2,
+      "id": "ability:reference:classpath:voie-des-vegetaux:class-druide:cof2-lb-2024:rank2",
+      "name": "Prison végétale (L)*",
+      "source": "COF2",
+      "page": 117,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-du-demon:class-sorcier:cof2-lb-2024",
+      "path": "Voie du démon",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-sorcier-demon-malediction-cof2-lb-2024",
+      "name": "Malédiction (M) ou (L)*",
+      "source": "COF2",
+      "page": 108,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-demon:class-sorcier:cof2-lb-2024",
+      "path": "Voie du démon",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:beaute-de-la-succube-l-:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Beauté de la succube (L)*",
+      "source": "COF2",
+      "page": 108,
+      "signals": [
+        "DEF",
+        "PV",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024",
+      "path": "Voie de la mort",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-sorcier-mort-siphon-des-ames-cof2-lb-2024",
+      "name": "Siphon des âmes",
+      "source": "COF2",
+      "page": 108,
+      "signals": [
+        "PV",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024",
+      "path": "Voie de la mort",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:masque-mortuaire-m-:classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Masque mortuaire (M)*",
+      "source": "COF2",
+      "page": 109,
+      "signals": [
+        "PV",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024",
+      "path": "Voie de l’outre-tombe",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-sorcier-outre-tombe-un-pied-dans-la-tombe-cof2-lb-2024",
+      "name": "Un pied dans la tombe (A)*",
+      "source": "COF2",
+      "page": 109,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024",
+      "path": "Voie de l’outre-tombe",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:armure-d-os:classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Armure d’os",
+      "source": "COF2",
+      "page": 109,
+      "signals": [
+        "DEF",
+        "PM",
+        "QUOTIDIEN_RITUEL",
+        "EQUIPEMENT"
+      ],
+      "status": "GESTION_DYNAMIQUE",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-du-sang:class-sorcier:cof2-lb-2024",
+      "path": "Voie du sang",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-sorcier-sang-saignements-cof2-lb-2024",
+      "name": "Saignements (A)*",
+      "source": "COF2",
+      "page": 110,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-du-sang:class-sorcier:cof2-lb-2024",
+      "path": "Voie du sang",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:sang-mordant-m-:classpath:voie-du-sang:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Sang mordant (M)*",
+      "source": "COF2",
+      "page": 110,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+      "path": "Voie de la sombre magie",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-sorcier-sombre-magie-tenebres-cof2-lb-2024",
+      "name": "Ténèbres (L)*",
+      "source": "COF2",
+      "page": 111,
+      "signals": [
+        "PM",
+        "QUOTIDIEN_RITUEL",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024",
+      "path": "Voie de la sombre magie",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:reptation-m-:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Reptation (M)*",
+      "source": "COF2",
+      "page": 111,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+      "path": "Voie de l’énergie vitale",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1",
+      "name": "Mains d’énergie (L)",
+      "source": "COF2",
+      "page": 119,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024",
+      "path": "Voie de l’énergie vitale",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:reference:classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024:rank2",
+      "name": "Projection du ki (L)",
+      "source": "COF2",
+      "page": 119,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024",
+      "path": "Voie de la maîtrise",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:agilite-du-singe:classpath-voie-de-la-maitrise-class-moine-cof2-lb-2024:r1",
+      "name": "Agilité du singe",
+      "source": "COF2",
+      "page": 119,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024",
+      "path": "Voie de la maîtrise",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:reference:classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024:rank2",
+      "name": "Griffes du tigre",
+      "source": "COF2",
+      "page": 119,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024",
+      "path": "Voie de la méditation",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:pacifisme:classpath-voie-de-la-meditation-class-moine-cof2-lb-2024:r1",
+      "name": "Pacifisme",
+      "source": "COF2",
+      "page": 120,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "GESTION_DYNAMIQUE",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-la-meditation:class-moine:cof2-lb-2024",
+      "path": "Voie de la méditation",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:reference:classpath:voie-de-la-meditation:class-moine:cof2-lb-2024:rank2",
+      "name": "Transe de guérison",
+      "source": "COF2",
+      "page": 120,
+      "signals": [
+        "PV",
+        "PM",
+        "QUOTIDIEN_RITUEL",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "classpath:voie-du-poing:class-moine:cof2-lb-2024",
+      "path": "Voie du poing",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:poings-de-fer:classpath-voie-du-poing-class-moine-cof2-lb-2024:r1",
+      "name": "Poings de fer",
+      "source": "COF2",
+      "page": 121,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-poing:class-moine:cof2-lb-2024",
+      "path": "Voie du poing",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:reference:classpath:voie-du-poing:class-moine:cof2-lb-2024:rank2",
+      "name": "Peau de fer",
+      "source": "COF2",
+      "page": 121,
+      "signals": [
+        "DEF",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-du-vent:class-moine:cof2-lb-2024",
+      "path": "Voie du vent",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:pas-du-vent:classpath-voie-du-vent-class-moine-cof2-lb-2024:r1",
+      "name": "Pas du vent",
+      "source": "COF2",
+      "page": 121,
+      "signals": [
+        "INIT",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-vent:class-moine:cof2-lb-2024",
+      "path": "Voie du vent",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:reference:classpath:voie-du-vent:class-moine:cof2-lb-2024:rank2",
+      "name": "Course du vent",
+      "source": "COF2",
+      "page": 121,
+      "signals": [
+        "DEF",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "path:mage:cof2-lb-2024",
+      "path": "VOIE DU MAGE",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:capacite-de-peuple-plus-occultisme:path-mage-cof2-lb-2024:r1:cof2-lb-2024",
+      "name": "Capacité de peuple + occultisme",
+      "source": "COF2",
+      "page": 60,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:mage:cof2-lb-2024",
+      "path": "VOIE DU MAGE",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:maitrise-de-la-magie-l:path-mage-cof2-lb-2024:r2:cof2-lb-2024",
+      "name": "Maîtrise de la magie (L)*",
+      "source": "COF2",
+      "page": 60,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+      "path": "Voie de la brute",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:argument-de-taille:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Argument de taille",
+      "source": "COF2",
+      "page": 79,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-brute:class-barbare:cof2-lb-2024",
+      "path": "Voie de la brute",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:tour-de-force-g:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Tour de force (G)",
+      "source": "COF2",
+      "page": 79,
+      "signals": [
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "GESTION_DYNAMIQUE",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-pagne:class-barbare:cof2-lb-2024",
+      "path": "Voie du pagne",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:vigueur:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Vigueur",
+      "source": "COF2",
+      "page": 80,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-pagne:class-barbare:cof2-lb-2024",
+      "path": "Voie du pagne",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:peau-de-pierre:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Peau de pierre",
+      "source": "COF2",
+      "page": 80,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+      "path": "Voie du pourfendeur",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:reflexes-eclair:classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Réflexes éclair",
+      "source": "COF2",
+      "page": 81,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024",
+      "path": "Voie du pourfendeur",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:charge-l:classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Charge (L)",
+      "source": "COF2",
+      "page": 81,
+      "signals": [
+        "PM"
+      ],
+      "status": "GESTION_DYNAMIQUE",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-primitif:class-barbare:cof2-lb-2024",
+      "path": "Voie du primitif",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:proche-de-la-nature:classpath:voie-du-primitif:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Proche de la nature",
+      "source": "COF2",
+      "page": 81,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-primitif:class-barbare:cof2-lb-2024",
+      "path": "Voie du primitif",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:armure-de-vent:classpath:voie-du-primitif:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Armure de vent",
+      "source": "COF2",
+      "page": 81,
+      "signals": [
+        "DEF",
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "GESTION_EQUIPEMENT",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-la-rage:class-barbare:cof2-lb-2024",
+      "path": "Voie de la rage",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:cri-de-guerre-g:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Cri de guerre (G)",
+      "source": "COF2",
+      "page": 82,
+      "signals": [
+        "PM"
+      ],
+      "status": "GESTION_DYNAMIQUE",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-rage:class-barbare:cof2-lb-2024",
+      "path": "Voie de la rage",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:defier-la-mort:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Défier la mort",
+      "source": "COF2",
+      "page": 82,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+      "path": "Voie du cavalier",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:fidele-monture:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Fidèle monture",
+      "source": "COF2",
+      "page": 83,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PV",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024",
+      "path": "Voie du cavalier",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:cavalier-emerite:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Cavalier émérite",
+      "source": "COF2",
+      "page": 83,
+      "signals": [
+        "DEF",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024",
+      "path": "Voie de la guerre",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:armure-sur-mesure:classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Armure sur mesure",
+      "source": "COF2",
+      "page": 84,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024",
+      "path": "Voie de la guerre",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:encaisser-un-coup-m:classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Encaisser un coup (M)",
+      "source": "COF2",
+      "page": 85,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-du-preux:class-chevalier:cof2-lb-2024",
+      "path": "Voie du preux",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:ignorer-la-douleur-g:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Ignorer la douleur (G)",
+      "source": "COF2",
+      "page": 85,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-preux:class-chevalier:cof2-lb-2024",
+      "path": "Voie du preux",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:piqures-d-insectes:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Piqûres d’insectes",
+      "source": "COF2",
+      "page": 85,
+      "signals": [
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024",
+      "path": "Voie du meneur d’homme",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:sans-peur:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Sans peur",
+      "source": "COF2",
+      "page": 85,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024",
+      "path": "Voie du meneur d’homme",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:intercepter-g:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Intercepter (G)",
+      "source": "COF2",
+      "page": 85,
+      "signals": [
+        "DEF",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024",
+      "path": "Voie de la noblesse",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:eduque:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Éduqué",
+      "source": "COF2",
+      "page": 86,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024",
+      "path": "Voie de la noblesse",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:ecuyer:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Écuyer",
+      "source": "COF2",
+      "page": 86,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PV",
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+      "path": "Voie du bouclier",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:proteger-un-allie-g:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Protéger un allié (G)",
+      "source": "COF2",
+      "page": 87,
+      "signals": [
+        "DEF",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024",
+      "path": "Voie du bouclier",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:parer-un-coup-m:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Parer un coup (M)",
+      "source": "COF2",
+      "page": 87,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+      "path": "Voie du combat",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:vivacite:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Vivacité",
+      "source": "COF2",
+      "page": 88,
+      "signals": [
+        "INIT",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-combat:class-guerrier:cof2-lb-2024",
+      "path": "Voie du combat",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:manoeuvre:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Manœuvre",
+      "source": "COF2",
+      "page": 88,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024",
+      "path": "Voie du maître d’armes",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Armes de prédilection",
+      "source": "COF2",
+      "page": 88,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024",
+      "path": "Voie du maître d’armes",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Science du critique",
+      "source": "COF2",
+      "page": 89,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024",
+      "path": "Voie de la résistance",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:robustesse:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Robustesse",
+      "source": "COF2",
+      "page": 89,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024",
+      "path": "Voie de la résistance",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:resilient:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Résilient",
+      "source": "COF2",
+      "page": 90,
+      "signals": [
+        "PM",
+        "QUOTIDIEN_RITUEL"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "classpath:voie-du-soldat:class-guerrier:cof2-lb-2024",
+      "path": "Voie du soldat",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:teigneux-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Teigneux (G)",
+      "source": "COF2",
+      "page": 90,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-soldat:class-guerrier:cof2-lb-2024",
+      "path": "Voie du soldat",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:prouesse-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Prouesse (G)",
+      "source": "COF2",
+      "page": 90,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024",
+      "path": "Voie des artefacts",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-forgesort-artefacts-baton-de-mage-cof2-lb-2024",
+      "name": "Bâton de mage",
+      "source": "COF2",
+      "page": 97,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024",
+      "path": "Voie des artefacts",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:ouverture-fermeture-m:classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Ouverture - fermeture (M)*",
+      "source": "COF2",
+      "page": 98,
+      "signals": [
+        "PM",
+        "QUOTIDIEN_RITUEL",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024",
+      "path": "Voie des élixirs",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-forgesort-elixirs-fortifiant-cof2-lb-2024",
+      "name": "Fortifiant (L)",
+      "source": "COF2",
+      "page": 98,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024",
+      "path": "Voie des élixirs",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:feu-gregeois-l:classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Feu grégeois (L)",
+      "source": "COF2",
+      "page": 98,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-metal:class-forgesort:cof2-lb-2024",
+      "path": "Voie du métal",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-forgesort-metal-morsure-de-la-forge-cof2-lb-2024",
+      "name": "Morsure de la forge (M)*",
+      "source": "COF2",
+      "page": 99,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-metal:class-forgesort:cof2-lb-2024",
+      "path": "Voie du métal",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:metal-brulant-m:classpath:voie-du-metal:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Métal brûlant (M)*",
+      "source": "COF2",
+      "page": 99,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-du-golem:class-forgesort:cof2-lb-2024",
+      "path": "Voie du golem",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-forgesort-golem-grosse-tete-cof2-lb-2024",
+      "name": "Grosse tête",
+      "source": "COF2",
+      "page": 100,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-golem:class-forgesort:cof2-lb-2024",
+      "path": "Voie du golem",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:golem:classpath:voie-du-golem:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Golem",
+      "source": "COF2",
+      "page": 100,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-des-runes:class-forgesort:cof2-lb-2024",
+      "path": "Voie des runes",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-forgesort-runes-runes-de-defense-cof2-lb-2024",
+      "name": "Runes de défense",
+      "source": "COF2",
+      "page": 101,
+      "signals": [
+        "DEF",
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-des-runes:class-forgesort:cof2-lb-2024",
+      "path": "Voie des runes",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:rune-de-puissance-l:classpath:voie-des-runes:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Rune de puissance (L)*",
+      "source": "COF2",
+      "page": 101,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024",
+      "path": "Voie de la magie des arcanes",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+      "name": "Projectile de mana (A)*",
+      "source": "COF2",
+      "page": 103,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024",
+      "path": "Voie de la magie des arcanes",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:levitation-m:classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Lévitation (M)*",
+      "source": "COF2",
+      "page": 103,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024",
+      "path": "Voie de la magie destructrice",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:arc-de-feu:classpath-voie-de-la-magie-destructrice-class-magicien-cof2-lb-2024:r1",
+      "name": "Arc de feu (A)*",
+      "source": "COF2",
+      "page": 103,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024",
+      "path": "Voie de la magie destructrice",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:saper-les-forces-a:classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Saper les forces (A)*",
+      "source": "COF2",
+      "page": 103,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024",
+      "path": "Voie de la magie élémentaire",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:asphyxie:classpath-voie-de-la-magie-elementaire-class-magicien-cof2-lb-2024:r1",
+      "name": "Asphyxie (A)*",
+      "source": "COF2",
+      "page": 104,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024",
+      "path": "Voie de la magie élémentaire",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:maitrise-des-elements-m:classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Maîtrise des éléments (M)*",
+      "source": "COF2",
+      "page": 104,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024",
+      "path": "Voie de la magie protectrice",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:armure-de-mana:classpath-voie-de-la-magie-protectrice-class-magicien-cof2-lb-2024:r1",
+      "name": "Armure de mana (M)*",
+      "source": "COF2",
+      "page": 105,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "GESTION_DYNAMIQUE",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024",
+      "path": "Voie de la magie protectrice",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:chute-ralentie-g:classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Chute ralentie (G)*",
+      "source": "COF2",
+      "page": 105,
+      "signals": [
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024",
+      "path": "Voie de la magie universelle",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:lumiere:classpath-voie-de-la-magie-universelle-class-magicien-cof2-lb-2024:r1",
+      "name": "Lumière (L)*",
+      "source": "COF2",
+      "page": 106,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024",
+      "path": "Voie de la magie universelle",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:familier-a:classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Familier (A)*",
+      "source": "COF2",
+      "page": 106,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PV",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "GESTION_VISIBILITE",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024",
+      "path": "Voie de la conjuration",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:conjuration-de-predateur:classpath-voie-de-la-conjuration-class-invocateur-addon-compagnon-2024:r1",
+      "name": "Conjuration de prédateur",
+      "source": "COF1",
+      "page": 24,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-conjuration:class-invocateur:addon-compagnon-2024",
+      "path": "Voie de la conjuration",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:invocateur:voie-de-la-conjuration:r2",
+      "name": "Conjuration renforcée",
+      "source": "COF1",
+      "page": 24,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024",
+      "path": "Voie de l’entité",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:invocation-d-une-entite:classpath-voie-de-l-entite-class-invocateur-addon-compagnon-2024:r1",
+      "name": "Invocation d’une entité",
+      "source": "COF1",
+      "page": 25,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PV",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-l-entite:class-invocateur:addon-compagnon-2024",
+      "path": "Voie de l’entité",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:invocateur:voie-de-l-entite:r2",
+      "name": "Lien magique",
+      "source": "COF1",
+      "page": 26,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-familier:class-invocateur:addon-compagnon-2024",
+      "path": "Voie du familier",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:familier:classpath-voie-du-familier-class-invocateur-addon-compagnon-2024:r1",
+      "name": "Familier",
+      "source": "COF1",
+      "page": 26,
+      "signals": [
+        "DEF",
+        "INIT",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "GESTION_VISIBILITE",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-du-familier:class-invocateur:addon-compagnon-2024",
+      "path": "Voie du familier",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:invocateur:voie-du-familier:r2",
+      "name": "Résistance",
+      "source": "COF1",
+      "page": 27,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024",
+      "path": "Voie des mutations",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:mutation-offensive:classpath-voie-des-mutations-class-invocateur-addon-compagnon-2024:r1",
+      "name": "Mutation offensive",
+      "source": "COF1",
+      "page": 27,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-mutations:class-invocateur:addon-compagnon-2024",
+      "path": "Voie des mutations",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:invocateur:voie-des-mutations:r2",
+      "name": "Mutation protectrice",
+      "source": "COF1",
+      "page": 27,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-des-portes:class-invocateur:addon-compagnon-2024",
+      "path": "Voie des portes",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:raccourci:classpath-voie-des-portes-class-invocateur-addon-compagnon-2024:r1",
+      "name": "Raccourci",
+      "source": "COF1",
+      "page": 28,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-portes:class-invocateur:addon-compagnon-2024",
+      "path": "Voie des portes",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:invocateur:voie-des-portes:r2",
+      "name": "Porte artificielle",
+      "source": "COF1",
+      "page": 28,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-arc-et-du-cheval:class-samourai:addon-compagnon-2024",
+      "path": "Voie de l’arc et du cheval",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-samourai-arc-cheval-monture-loyale-addon-compagnon-2024",
+      "name": "Monture loyale",
+      "source": "COF1",
+      "page": 30,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-de-l-arc-et-du-cheval:class-samourai:addon-compagnon-2024",
+      "path": "Voie de l’arc et du cheval",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:samourai:voie-de-l-arc-et-du-cheval:r2",
+      "name": "Tir en mouvement",
+      "source": "COF1",
+      "page": 30,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024",
+      "path": "Voie du dirigeant",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-samourai-dirigeant-eduque-addon-compagnon-2024",
+      "name": "Éduqué",
+      "source": "COF1",
+      "page": 31,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-dirigeant:class-samourai:addon-compagnon-2024",
+      "path": "Voie du dirigeant",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:samourai:voie-du-dirigeant:r2",
+      "name": "Homme de cour",
+      "source": "COF1",
+      "page": 31,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024",
+      "path": "Voie de l’honneur",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-samourai-honneur-chef-ne-addon-compagnon-2024",
+      "name": "Chef né",
+      "source": "COF1",
+      "page": 32,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-honneur:class-samourai:addon-compagnon-2024",
+      "path": "Voie de l’honneur",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:samourai:voie-de-l-honneur:r2",
+      "name": "Défi",
+      "source": "COF1",
+      "page": 32,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
+      "path": "Voie du ki",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-samourai-ki-esprit-vide-addon-compagnon-2024",
+      "name": "Esprit vide",
+      "source": "COF1",
+      "page": 32,
+      "signals": [
+        "INIT",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-ki:class-samourai:addon-compagnon-2024",
+      "path": "Voie du ki",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:samourai:voie-du-ki:r2",
+      "name": "Main vide",
+      "source": "COF1",
+      "page": 32,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-sabre:class-samourai:addon-compagnon-2024",
+      "path": "Voie du sabre",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-samourai-sabre-technique-du-sabre-addon-compagnon-2024",
+      "name": "Technique du sabre",
+      "source": "COF1",
+      "page": 33,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-sabre:class-samourai:addon-compagnon-2024",
+      "path": "Voie du sabre",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:samourai:voie-du-sabre:r2",
+      "name": "Frappe du vide",
+      "source": "COF1",
+      "page": 33,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024",
+      "path": "Voie de l’attaque mentale",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-psionique-attaque-mentale-attaque-mentale-addon-compagnon-2024",
+      "name": "Attaque mentale",
+      "source": "COF1",
+      "page": 34,
+      "signals": [
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-attaque-mentale:class-psionique:addon-compagnon-2024",
+      "path": "Voie de l’attaque mentale",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:psionique:voie-de-l-attaque-mentale:r2",
+      "name": "Bouclier psi",
+      "source": "COF1",
+      "page": 34,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024",
+      "path": "Voie du contrôle corporel",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-psionique-controle-corporel-proprioception-addon-compagnon-2024",
+      "name": "Proprioception",
+      "source": "COF1",
+      "page": 34,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024",
+      "path": "Voie du contrôle corporel",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:psionique:voie-du-controle-corporel:r2",
+      "name": "Transe de régénération",
+      "source": "COF1",
+      "page": 34,
+      "signals": [
+        "PM",
+        "QUOTIDIEN_RITUEL",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "classpath:voie-de-l-empathie:class-psionique:addon-compagnon-2024",
+      "path": "Voie de l’empathie",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-psionique-perception-perception-extra-sensorielle-addon-compagnon-2024",
+      "name": "Perception extra-sensorielle",
+      "source": "COF1",
+      "page": 34,
+      "signals": [
+        "INIT",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-l-empathie:class-psionique:addon-compagnon-2024",
+      "path": "Voie de l’empathie",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:psionique:voie-de-l-empathie:r2",
+      "name": "Défense intuitive",
+      "source": "COF1",
+      "page": 35,
+      "signals": [
+        "DEF",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024",
+      "path": "Voie de la télékinésie",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-psionique-telekinesie-manipulation-a-distance-addon-compagnon-2024",
+      "name": "Manipulation à distance",
+      "source": "COF1",
+      "page": 36,
+      "signals": [
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-de-la-telekinesie:class-psionique:addon-compagnon-2024",
+      "path": "Voie de la télékinésie",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:psionique:voie-de-la-telekinesie:r2",
+      "name": "Champ de protection",
+      "source": "COF1",
+      "page": 36,
+      "signals": [
+        "DEF",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024",
+      "path": "Voie de la télépathie",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability-r1-class-psionique-telepathie-telepathie-addon-compagnon-2024",
+      "name": "Télépathie",
+      "source": "COF1",
+      "page": 37,
+      "signals": [
+        "PV",
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-la-telepathie:class-psionique:addon-compagnon-2024",
+      "path": "Voie de la télépathie",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:foh81:psionique:voie-de-la-telepathie:r2",
+      "name": "Radar mental",
+      "source": "COF1",
+      "page": 37,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-arcanes-exhumed:fix77-advanced",
+      "path": "Voie des arcanes exhumés",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:arcanes-exhumed:r1:fix77",
+      "name": "Message magique (L)*",
+      "source": "COF2",
+      "page": 165,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-arcanes-exhumed:fix77-advanced",
+      "path": "Voie des arcanes exhumés",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:arcanes-exhumed:r2:fix77",
+      "name": "Toiles (L)*",
+      "source": "COF2",
+      "page": 166,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-des-arcanes-forgotten:fix77-advanced",
+      "path": "Voie des arcanes oubliés",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:arcanes-forgotten:r1:fix77",
+      "name": "Ventriloquie (G) ou (M)*",
+      "source": "COF2",
+      "page": 166,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-arcanes-forgotten:fix77-advanced",
+      "path": "Voie des arcanes oubliés",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:arcanes-forgotten:r2:fix77",
+      "name": "Bouclier de mana (G)*",
+      "source": "COF2",
+      "page": 166,
+      "signals": [
+        "DEF",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-des-arcanes-lost:fix77-advanced",
+      "path": "Voie des arcanes perdus",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:arcanes-lost:r1:fix77",
+      "name": "Disque de transport (L)*",
+      "source": "COF2",
+      "page": 167,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-des-arcanes-lost:fix77-advanced",
+      "path": "Voie des arcanes perdus",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:arcanes-lost:r2:fix77",
+      "name": "Fuite rapide (M)*",
+      "source": "COF2",
+      "page": 167,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "classpath:voie-des-arcanes-dark:fix77-advanced",
+      "path": "Voie des arcanes obscurs",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:arcanes-dark:r1:fix77",
+      "name": "Contact vampirique (L)*",
+      "source": "COF2",
+      "page": 168,
+      "signals": [
+        "DEF",
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P0"
+    },
+    {
+      "pathId": "classpath:voie-des-arcanes-dark:fix77-advanced",
+      "path": "Voie des arcanes obscurs",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:arcanes-dark:r2:fix77",
+      "name": "Tentation du démon (A)*",
+      "source": "COF2",
+      "page": 168,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "classpath:voie-de-la-corruption:fix77-advanced",
+      "path": "Voie de la corruption",
+      "kind": "profile",
+      "rank": 1,
+      "id": "ability:corruption:r1:fix77",
+      "name": "Blessure mineure (A)*",
+      "source": "COF2",
+      "page": 169,
+      "signals": [
+        "PM",
+        "QUOTIDIEN_RITUEL"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "classpath:voie-de-la-corruption:fix77-advanced",
+      "path": "Voie de la corruption",
+      "kind": "profile",
+      "rank": 2,
+      "id": "ability:corruption:r2:fix77",
+      "name": "Poison (A)",
+      "source": "COF2",
+      "page": 169,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-demi-orc:cof2-lb-2024",
+      "path": "VOIE DU DEMI‑ORC",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:impressionnant:path:voie-du-demi-orc:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Impressionnant",
+      "source": "COF2",
+      "page": 48,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-demi-orc:cof2-lb-2024",
+      "path": "VOIE DU DEMI‑ORC",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:talent-pour-la-violence:path:voie-du-demi-orc:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Talent pour la violence",
+      "source": "COF2",
+      "page": 48,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-de-l-elfe-haut:cof2-lb-2024",
+      "path": "VOIE DE L’ELFE HAUT",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:lumi-re-int-rieure:path:voie-de-l-elfe-haut:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Lumière intérieure",
+      "source": "COF2",
+      "page": 50,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-de-l-elfe-haut:cof2-lb-2024",
+      "path": "VOIE DE L’ELFE HAUT",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:force-d-me:path:voie-de-l-elfe-haut:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Force d’âme",
+      "source": "COF2",
+      "page": 50,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-gnome:cof2-lb-2024",
+      "path": "VOIE DU GNOME",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:don-trange:path:voie-du-gnome:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Don étrange",
+      "source": "COF2",
+      "page": 53,
+      "signals": [
+        "PM",
+        "QUOTIDIEN_RITUEL",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "path:voie-du-gnome:cof2-lb-2024",
+      "path": "VOIE DU GNOME",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:petit-pote:path:voie-du-gnome:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Petit pote",
+      "source": "COF2",
+      "page": 54,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-nain:cof2-lb-2024",
+      "path": "VOIE DU NAIN",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:habitant-des-tunnels:path:voie-du-nain:cof2-lb-2024:rank1:cof2-lb-2024",
+      "name": "Habitant des tunnels",
+      "source": "COF2",
+      "page": 59,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-nain:cof2-lb-2024",
+      "path": "VOIE DU NAIN",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:haches-et-marteaux:path:voie-du-nain:cof2-lb-2024:rank2:cof2-lb-2024",
+      "name": "Haches et marteaux",
+      "source": "COF2",
+      "page": 59,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-centaure:addon-comp2017-cof2",
+      "path": "VOIE DU CENTAURE",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:charge:path:voie-du-centaure:addon-comp2017-cof2:rank1:cof2-lb-2024",
+      "name": "Charge au galop",
+      "source": "COF1",
+      "page": 11,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-centaure:addon-comp2017-cof2",
+      "path": "VOIE DU CENTAURE",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:tir-en-mouvement:path:voie-du-centaure:addon-comp2017-cof2:rank2:cof2-lb-2024",
+      "name": "Tir en mouvement",
+      "source": "COF1",
+      "page": 11,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:campaigns",
+      "path": "Voie des campagnes",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:campaigns:r1",
+      "name": "Habitant des campagnes",
+      "source": null,
+      "page": 172,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:campaigns",
+      "path": "Voie des campagnes",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:campaigns:r2",
+      "name": "C’est pas tout prêt",
+      "source": null,
+      "page": 172,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:cities",
+      "path": "Voie des cités",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:cities:r1",
+      "name": "Habitant des cités",
+      "source": null,
+      "page": 172,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:cities",
+      "path": "Voie des cités",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:cities:r2",
+      "name": "Survie dans les coupe-gorge",
+      "source": null,
+      "page": 172,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:deserts",
+      "path": "Voie des déserts",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:deserts:r1",
+      "name": "Habitant des déserts",
+      "source": null,
+      "page": 173,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:deserts",
+      "path": "Voie des déserts",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:deserts:r2",
+      "name": "À boire !",
+      "source": null,
+      "page": 173,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:forests",
+      "path": "Voie des forêts",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:forests:r1",
+      "name": "Habitant des forêts",
+      "source": null,
+      "page": 173,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:forests",
+      "path": "Voie des forêts",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:forests:r2",
+      "name": "Nature généreuse",
+      "source": null,
+      "page": 173,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:caves",
+      "path": "Voie des grottes",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:caves:r1",
+      "name": "Habitant des souterrains",
+      "source": null,
+      "page": 174,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:caves",
+      "path": "Voie des grottes",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:caves:r2",
+      "name": "Sens de l’orientation",
+      "source": null,
+      "page": 174,
+      "signals": [
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:marshes",
+      "path": "Voie des marais",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:marshes:r1",
+      "name": "Habitant des marais",
+      "source": null,
+      "page": 174,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:marshes",
+      "path": "Voie des marais",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:marshes:r2",
+      "name": "Résistance aux miasmes",
+      "source": null,
+      "page": 174,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:plains",
+      "path": "Voie des plaines",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:plains:r1",
+      "name": "Habitant des plaines",
+      "source": null,
+      "page": 175,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:plains",
+      "path": "Voie des plaines",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:plains:r2",
+      "name": "Cavalier",
+      "source": null,
+      "page": 175,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:shores",
+      "path": "Voie des rivages",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:shores:r1",
+      "name": "Habitant des rivages",
+      "source": null,
+      "page": 175,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:shores",
+      "path": "Voie des rivages",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:shores:r2",
+      "name": "Nature généreuse",
+      "source": null,
+      "page": 175,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:courtier",
+      "path": "Voie du courtisan",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:courtier:r1",
+      "name": "Charmant",
+      "source": null,
+      "page": 176,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:courtier",
+      "path": "Voie du courtisan",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:courtier:r2",
+      "name": "Secrets et commérages",
+      "source": null,
+      "page": 176,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:scholar",
+      "path": "Voie de l’érudit",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:scholar:r1",
+      "name": "Érudition",
+      "source": null,
+      "page": 177,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:scholar",
+      "path": "Voie de l’érudit",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:scholar:r2",
+      "name": "Argumenter",
+      "source": null,
+      "page": 177,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:expert",
+      "path": "Voie de l’expert",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:expert:r1",
+      "name": "Professionnel",
+      "source": null,
+      "page": 177,
+      "signals": [
+        "PM",
+        "QUOTIDIEN_RITUEL"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "history:expert",
+      "path": "Voie de l’expert",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:expert:r2",
+      "name": "Expertise",
+      "source": null,
+      "page": 177,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:commoner",
+      "path": "Voie de l’homme du peuple",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:commoner:r1",
+      "name": "La vie est dure",
+      "source": null,
+      "page": 178,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:commoner",
+      "path": "Voie de l’homme du peuple",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:commoner:r2",
+      "name": "J’ai un ami qui m’a dit…",
+      "source": null,
+      "page": 178,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:soldier",
+      "path": "Voie de l’homme d’armes",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:soldier:r1",
+      "name": "Formation martiale",
+      "source": null,
+      "page": 178,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:soldier",
+      "path": "Voie de l’homme d’armes",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:soldier:r2",
+      "name": "Seconde peau",
+      "source": null,
+      "page": 178,
+      "signals": [
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:pauper",
+      "path": "Voie du miséreux",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:pauper:r1",
+      "name": "Moins que rien",
+      "source": null,
+      "page": 179,
+      "signals": [
+        "PV",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:pauper",
+      "path": "Voie du miséreux",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:pauper:r2",
+      "name": "Roi de la débrouille",
+      "source": null,
+      "page": 179,
+      "signals": [
+        "INIT",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "history:wealthy",
+      "path": "Voie du nanti",
+      "kind": "history",
+      "rank": 1,
+      "id": "ability:history:wealthy:r1",
+      "name": "Plein aux as",
+      "source": null,
+      "page": 179,
+      "signals": [
+        "PM",
+        "QUOTIDIEN_RITUEL"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "history:wealthy",
+      "path": "Voie du nanti",
+      "kind": "history",
+      "rank": 2,
+      "id": "ability:history:wealthy:r2",
+      "name": "On ne prête qu’aux riches",
+      "source": null,
+      "page": 179,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
+      "path": "Voie de l’Âme-forgée",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:main-lourde:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank1:cof2-lb-2024",
+      "name": "Métallique",
+      "source": "COF2",
+      "page": 7,
+      "signals": [
+        "DEF",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "path:voie-de-lâme-forgée:addon-comp2017-cof2",
+      "path": "Voie de l’Âme-forgée",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:choc-lectrique:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank2:cof2-lb-2024",
+      "name": "Choc électrique",
+      "source": "COF2",
+      "page": 7,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-demi-ogre:addon-comp2017-cof2",
+      "path": "VOIE DU DEMI-OGRE",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:sang-froid:path:voie-du-demi-ogre:addon-comp2017-cof2:rank1:cof2-lb-2024",
+      "name": "Réaction violente",
+      "source": "COF2",
+      "page": 12,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-demi-ogre:addon-comp2017-cof2",
+      "path": "VOIE DU DEMI-OGRE",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:violence-cibl-e:path:voie-du-demi-ogre:addon-comp2017-cof2:rank2:cof2-lb-2024",
+      "name": "Violence ciblée",
+      "source": "COF2",
+      "page": 12,
+      "signals": [
+        "PM",
+        "CONDITION"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+      "path": "VOIE DU GOBELIN",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:rapide:path:voie-du-gobelin:addon-comp2017-cof2:rank1:cof2-lb-2024",
+      "name": "Vivacité gobeline",
+      "source": "COF2",
+      "page": 23,
+      "signals": [
+        "INIT",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-gobelin:addon-comp2017-cof2",
+      "path": "VOIE DU GOBELIN",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:jeune-worg:path:voie-du-gobelin:addon-comp2017-cof2:rank2:cof2-lb-2024",
+      "name": "Attaque groupée",
+      "source": "COF2",
+      "page": 23,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-kobold:addon-comp2017-cof2",
+      "path": "VOIE DU KOBOLD",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:se-planquer:path:voie-du-kobold:addon-comp2017-cof2:rank1:cof2-lb-2024",
+      "name": "Ruse kobold",
+      "source": "COF2",
+      "page": 25,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-kobold:addon-comp2017-cof2",
+      "path": "VOIE DU KOBOLD",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:cailles:path:voie-du-kobold:addon-comp2017-cof2:rank2:cof2-lb-2024",
+      "name": "Chétif",
+      "source": "COF2",
+      "page": 25,
+      "signals": [
+        "DEF",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "path:voie-du-minotaure:addon-comp2017-cof2",
+      "path": "VOIE DU MINOTAURE",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:charge-l:path-voie-du-minotaure-addon-comp2017-cof2:r1:addon-comp2017-cof2",
+      "name": "Coup de corne",
+      "source": "COF2",
+      "page": 30,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-minotaure:addon-comp2017-cof2",
+      "path": "VOIE DU MINOTAURE",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:frenesie:path-voie-du-minotaure-addon-comp2017-cof2:r2:addon-comp2017-cof2",
+      "name": "Charge puissante",
+      "source": "COF2",
+      "page": 30,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+      "path": "Voie du Farfadet",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:langage-des-animaux:path:voie-de-letre-feerique:addon-comp2017-cof2:r1:foh-cof2-v1",
+      "name": "Né d’un chou",
+      "source": "COF2",
+      "page": 28,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-de-letre-feerique:addon-comp2017-cof2",
+      "path": "Voie du Farfadet",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:etre-feerique-r2:path:voie-de-letre-feerique:addon-comp2017-cof2:r2:foh-cof2-v1",
+      "name": "Langage des animaux",
+      "source": "COF2",
+      "page": 28,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "path:voie-de-la-fee:compagnon-cof2",
+      "path": "Voie de la Fée",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:fee-r1:path:voie-de-la-fee:compagnon-cof2",
+      "name": "Née d’une fleur",
+      "source": "COF2",
+      "page": 27,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-de-la-fee:compagnon-cof2",
+      "path": "Voie de la Fée",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:fee-r2:path:voie-de-la-fee:compagnon-cof2",
+      "name": "Pirouette",
+      "source": "COF2",
+      "page": 27,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-drakonide:compagnon-cof2",
+      "path": "VOIE DU DRAKONIDE",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:drakonide-r1:path:voie-du-drakonide:compagnon-cof2",
+      "name": "Sang dragon",
+      "source": "COF2",
+      "page": 14,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-drakonide:compagnon-cof2",
+      "path": "VOIE DU DRAKONIDE",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2",
+      "name": "Souffle (L)",
+      "source": "COF2",
+      "page": 14,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-cambion:compagnon-cof2",
+      "path": "VOIE DU CAMBION",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:cambion-r1:path:voie-du-cambion:compagnon-cof2",
+      "name": "Ami des ombres",
+      "source": "COF2",
+      "page": 10,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-cambion:compagnon-cof2",
+      "path": "VOIE DU CAMBION",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:cambion-r2:path:voie-du-cambion:compagnon-cof2",
+      "name": "Enfant des ténèbres",
+      "source": "COF2",
+      "page": 10,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "path:voie-de-l-elfe-pale:compagnon-cof2",
+      "path": "VOIE DE L’ELFE PÂLE",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:elfe-pale-r1:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "name": "Natif de la Forêt sombre",
+      "source": "COF2",
+      "page": 15,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-de-l-elfe-pale:compagnon-cof2",
+      "path": "VOIE DE L’ELFE PÂLE",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:elfe-pale-r2:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "name": "Résistance au poison",
+      "source": "COF2",
+      "page": 15,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "path": "VOIE DE L’ELFE DES PROFONDEURS",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:elfe-profondeurs-r1:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "name": "Enfant des ténèbres",
+      "source": "COF2",
+      "page": 17,
+      "signals": [
+        "INIT",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "path": "VOIE DE L’ELFE DES PROFONDEURS",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:elfe-profondeurs-r2:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "name": "Lames et sorcellerie",
+      "source": "COF2",
+      "page": 17,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "path:voie-du-felis:compagnon-cof2",
+      "path": "VOIE DU FÉLIS",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:felis-r1:path:voie-du-felis:compagnon-cof2",
+      "name": "Âme féline",
+      "source": "COF2",
+      "page": 19,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-felis:compagnon-cof2",
+      "path": "VOIE DU FÉLIS",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:felis-r2:path:voie-du-felis:compagnon-cof2",
+      "name": "Armes naturelles",
+      "source": "COF2",
+      "page": 19,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-frouin:compagnon-cof2",
+      "path": "VOIE DU FROUÏN",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:frouin-r1:path:voie-du-frouin:compagnon-cof2",
+      "name": "Avarié",
+      "source": "COF2",
+      "page": 21,
+      "signals": [
+        "PV",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-frouin:compagnon-cof2",
+      "path": "VOIE DU FROUÏN",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:frouin-r2:path:voie-du-frouin:compagnon-cof2",
+      "name": "Minus",
+      "source": "COF2",
+      "page": 21,
+      "signals": [
+        "DEF",
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "path:voie-du-nephilim:compagnon-cof2",
+      "path": "VOIE DU NEPHILIM",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:nephilim-r1:path:voie-du-nephilim:compagnon-cof2",
+      "name": "Photosensible",
+      "source": "COF2",
+      "page": 32,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-nephilim:compagnon-cof2",
+      "path": "VOIE DU NEPHILIM",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:nephilim-r2:path:voie-du-nephilim:compagnon-cof2",
+      "name": "Enfant de la lumière",
+      "source": "COF2",
+      "page": 32,
+      "signals": [
+        "PM",
+        "CONDITION",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P1"
+    },
+    {
+      "pathId": "path:voie-de-l-ophidien:compagnon-cof2",
+      "path": "VOIE DE L’OPHIDIEN",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:ophidien-r1:path:voie-de-l-ophidien:compagnon-cof2",
+      "name": "Sang des anciens",
+      "source": "COF2",
+      "page": 34,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-de-l-ophidien:compagnon-cof2",
+      "path": "VOIE DE L’OPHIDIEN",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:ophidien-r2:path:voie-de-l-ophidien:compagnon-cof2",
+      "name": "Regard hypnotique*",
+      "source": "COF2",
+      "page": 34,
+      "signals": [
+        "PM",
+        "QUOTIDIEN_RITUEL",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P2"
+    },
+    {
+      "pathId": "path:voie-du-satyre:compagnon-cof2",
+      "path": "VOIE DU SATYRE",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:satyre-r1:path:voie-du-satyre:compagnon-cof2",
+      "name": "Bonne nature",
+      "source": "COF2",
+      "page": 36,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-satyre:compagnon-cof2",
+      "path": "VOIE DU SATYRE",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:satyre-r2:path:voie-du-satyre:compagnon-cof2",
+      "name": "Encorner et ruer",
+      "source": "COF2",
+      "page": 36,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-wolfer:compagnon-cof2",
+      "path": "VOIE DU WOLFER",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:wolfer-r1:path:voie-du-wolfer:compagnon-cof2",
+      "name": "Chasseur né",
+      "source": "COF2",
+      "page": 38,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-wolfer:compagnon-cof2",
+      "path": "VOIE DU WOLFER",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:wolfer-r2:path:voie-du-wolfer:compagnon-cof2",
+      "name": "Griffes et crocs",
+      "source": "COF2",
+      "page": 38,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-demi-elfe:compagnon-cof2",
+      "path": "VOIE DU DEMI-ELFE",
+      "kind": "people",
+      "rank": 1,
+      "id": "ability:demi-elfe-v2-r1:path:voie-du-demi-elfe:compagnon-cof2",
+      "name": "Héritages",
+      "source": "COF2",
+      "page": 10,
+      "signals": [
+        "PM"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    },
+    {
+      "pathId": "path:voie-du-demi-elfe:compagnon-cof2",
+      "path": "VOIE DU DEMI-ELFE",
+      "kind": "people",
+      "rank": 2,
+      "id": "ability:demi-elfe-v2-r2:path:voie-du-demi-elfe:compagnon-cof2",
+      "name": "Nomade",
+      "source": "COF2",
+      "page": 10,
+      "signals": [
+        "PM",
+        "EQUIPEMENT"
+      ],
+      "status": "A_VERIFIER",
+      "priority": "P3"
+    }
+  ]
+}

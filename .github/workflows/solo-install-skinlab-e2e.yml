@@ -6,6 +6,8 @@ on:
       - 'fiches-installations/**'
       - 'hub-configurable/**'
       - '.github/workflows/solo-install-skinlab-e2e.yml'
+      - 'forge-of-heroes/native-progression.js'
+      - 'forge-of-heroes/progression/catalog.json'
   workflow_dispatch:
 jobs:
   chromium:
@@ -24,6 +26,7 @@ jobs:
           ln -s "$PWD" /tmp/skinlab-site/atelier-guiltanas-apps
           python3 -m http.server 4173 --directory /tmp/skinlab-site >/tmp/skinlab-http.log 2>&1 &
           sleep 2
+          node fiches-personnages/tests/rank12-audit.cjs
           node fiches-personnages/tests/vault-merge.cjs
           node fiches-personnages/tests/bone-armor-probe.cjs
           node fiches-personnages/tests/bone-armor-clicks.cjs
