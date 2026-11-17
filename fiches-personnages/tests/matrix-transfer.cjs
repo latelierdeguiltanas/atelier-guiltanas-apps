@@ -12,7 +12,7 @@ for(const profile of T.classes||[])for(const people of T.peoples||[]){
   const result=engine.computeCharacterN1(state);
   if(result.errors?.length){skipped++;for(const e of result.errors.slice(0,2))reasons.set(String(e).slice(0,160),(reasons.get(String(e).slice(0,160))||0)+1);continue;}
   const character=N.toCharacter({id:'m-'+(tested+skipped+failures.length),name:'QA',people:people.label||'Peuple',profile:profile.label||'Profil',draft:{}},{state,result},{paths:[],profiles:[]},db);
-  if(!L.validCharacter(character))throw Error('export incompatible');
+  if(!L.validCharacter(character))throw Error('export incompatible : '+JSON.stringify({id:character.id,stats:character.stats,combat:character.combat,invalidRanks:character.paths.flatMap(p=>p.ranks).filter(r=>typeof r.text!=='string'||typeof r.name!=='string').map(r=>({name:r.name,rank:r.rank,textType:typeof r.text})),attacksArray:Array.isArray(character.attacks),equipmentArray:Array.isArray(character.equipment)}).slice(0,420));
   const acquired=result.sticky.acquiredAbilities||[],owned=character.paths.flatMap(p=>p.ranks);
   if(acquired.length!==owned.length||owned.some(r=>!r.owned||!r.name||!r.text?.trim()))throw Error('rangs omis ou sans texte');
   if(JSON.stringify(character.skillBonuses)!==JSON.stringify(result.sticky.skillBonuses||[]))throw Error('bonus de compétence perdus');
