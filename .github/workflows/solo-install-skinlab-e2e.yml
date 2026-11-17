@@ -27,6 +27,7 @@ jobs:
           python3 -m http.server 4173 --directory /tmp/skinlab-site >/tmp/skinlab-http.log 2>&1 &
           sleep 2
           node fiches-personnages/tests/rank12-audit.cjs
+          node fiches-personnages/tests/rank12-passive-defenses.cjs
           node fiches-personnages/tests/vault-merge.cjs
           node fiches-personnages/tests/bone-armor-probe.cjs
           node fiches-personnages/tests/bone-armor-clicks.cjs
