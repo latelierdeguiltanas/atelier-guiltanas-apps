@@ -27,7 +27,7 @@ for(const [key,people,profile,peopleId,profileId] of cases){
  await page.locator('[data-page=abilities]').click();assert.equal(await page.locator('#abilities [data-ui-ability]').count(),ranks,key+' capacités simples');
  await page.locator('[data-view=complete]').click();assert.equal(await page.locator('#abilities .rank').count(),ranks,key+' capacités détaillées');
  const currentDef=Number(await page.locator('#resources .resource').filter({hasText:'Défense'}).locator('b').innerText());assert.equal(currentDef,c.combat.def,key+' DEF à la création');
- await page.locator('[data-page=stats]').click();if(c.passiveFeatures?.length)assert.match(await page.locator('#stats').innerText(),/Effets passifs enregistrés par Forge/);
+ await page.locator('[data-page=stats]').click();if(c.passiveFeatures?.length)assert.match(await page.locator('#stats').innerText(),/Effets passifs enregistrés par Forge/i);
  await page.locator('[data-page=play]').click();const play=await page.locator('#play').innerText();
  if(key==='halfelin-arquebusier'){assert.match(play,/Armes à poudre et petite taille/);if(/p[ée]toire/i.test(c.equipment.join(' ')+c.attacks.map(a=>a.name).join(' ')))assert(await page.locator('[data-petoire-load]').count()>0);}
  if(key==='demi-ogre-barbare')assert.match(play,/Demi-ogre/);
