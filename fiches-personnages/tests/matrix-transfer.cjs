@@ -11,7 +11,7 @@ for(const profile of T.classes||[])for(const people of T.peoples||[]){
   for(const ability of engine.previewAcquiredAbilities(state))for(const c of engine.getPersistentChoicesForAbility(state,ability.id))if(c.options?.length)(state.abilityChoices[ability.id]??={})[c.id]=c.options[0].id;
   const result=engine.computeCharacterN1(state);
   if(result.errors?.length){skipped++;for(const e of result.errors.slice(0,2))reasons.set(String(e).slice(0,160),(reasons.get(String(e).slice(0,160))||0)+1);continue;}
-  const character=N.toCharacter({id:'matrix-'+profile.id+'-'+people.id,name:'QA',people:people.label||'Peuple',profile:profile.label||'Profil',draft:{}},{state,result},{paths:[],profiles:[]},db);
+  const character=N.toCharacter({id:'m-'+(tested+skipped+failures.length),name:'QA',people:people.label||'Peuple',profile:profile.label||'Profil',draft:{}},{state,result},{paths:[],profiles:[]},db);
   if(!L.validCharacter(character))throw Error('export incompatible');
   const acquired=result.sticky.acquiredAbilities||[],owned=character.paths.flatMap(p=>p.ranks);
   if(acquired.length!==owned.length||owned.some(r=>!r.owned||!r.name||!r.text?.trim()))throw Error('rangs omis ou sans texte');
