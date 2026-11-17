@@ -16,8 +16,15 @@ function character(profile,pattern,age=false){const profileId=T.classes.find(x=>
  console.log('PASS | moine Pacifisme : DEF conditionnelle et réinitialisation entre combats');await page.close();
 }
 {
- const c=character('Prêtre','spiritualite'),{page,def,errors}=await open(c),base=c.combat.def;console.log('PRIEST_DIAG',JSON.stringify({base,initial:await def(),equipment:c.equipment,ledger:c.forgeSnapshot?.ruleCompletionLedger,traits:c.paths.flatMap(p=>p.ranks).map(r=>r.name)}));
- await page.locator('[data-page=bag]').click();await page.locator('.basic-catalog summary').click();await page.locator('[data-catalog-item=armor2]').click();const armor=page.locator('#bag .inventory-item').filter({hasText:'Cuir simple'}).first();if((await armor.getAttribute('open'))===null)await armor.locator('summary').click();await armor.locator('[data-equip]').click();console.log('PRIEST_AFTER',JSON.stringify({def:await def(),defDetail:await page.locator('#resources .resource').filter({hasText:'Défense'}).innerText()}));assert.equal(await def(),base,'Cuir +2 doit remplacer les vêtements sacrés +2, pas se cumuler');await armor.locator('[data-equip]').click();assert.equal(await def(),base);assert.deepEqual(errors,[]);
+ const c=character('Prêtre','spiritualite'),{page,def,errors}=await open(c),base=c.combat.def;
+ assert.equal(await def(),base,'La chemise de mailles initiale donne bien sa DEF');
+ await page.locator('[data-page=bag]').click();
+ const mail=page.locator('#bag .inventory-item').filter({hasText:'Chemise de mailles'}).first();if((await mail.getAttribute('open'))===null)await mail.locator('summary').click();await mail.locator('[data-equip]').click();
+ assert.equal(await def(),base-2,'Sans armure : perte du +4 de maille, gain du +2 de Vêtements sacrés');
+ await page.locator('.basic-catalog summary').click();await page.locator('[data-catalog-item=armor2]').click();const armor=page.locator('#bag .inventory-item').filter({hasText:'Cuir simple'}).first();if((await armor.getAttribute('open'))===null)await armor.locator('summary').click();await armor.locator('[data-equip]').click();assert.equal(await def(),base-2,'Cuir +2 remplace Vêtements sacrés +2, sans cumul');
+ await armor.locator('[data-equip]').click();assert.equal(await def(),base-2,'Retirer le cuir réactive les vêtements sacrés');
+ await mail.locator('[data-equip]').click();assert.equal(await def(),base,'Rééquiper la maille rétablit le bonus initial');
+ assert.deepEqual(errors,[]);
  console.log('PASS | prêtre Vêtements sacrés : bonus non cumulé avec armure ordinaire');await page.close();
 }
 {
