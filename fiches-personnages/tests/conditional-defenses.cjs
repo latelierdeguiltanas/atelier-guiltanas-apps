@@ -30,7 +30,7 @@ function character(profile,pattern,age=false){const profileId=T.classes.find(x=>
 {
  const c=character('Magicien','magie-universelle'),{page,def,errors}=await open(c),base=await def(),initiative=c.combat.init;
  assert.equal(await page.locator('#play [data-personal-familiar=existing]').count(),1);await page.locator('#play [data-personal-familiar=existing]').click();assert.equal(await def(),base+2);
- await page.locator('[data-page=stats]').click();assert.match(await page.locator('#stats').innerText(),new RegExp('INIT\\s*'+String(initiative+2)));
+ await page.locator('[data-view=complete]').click();await page.locator('[data-page=stats]').click();assert.match(await page.locator('#stats').innerText(),new RegExp('INIT\\s*'+String(initiative+2)));
  await page.locator('[data-page=play]').click();await page.locator('#play [data-personal-familiar=sight]').click();assert.equal(await def(),base);assert.deepEqual(errors,[]);console.log('PASS | magicien Familier R2 : DEF et initiative seulement en vue');await page.close();
 }
 }finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1});
