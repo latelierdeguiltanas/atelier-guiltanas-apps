@@ -23,7 +23,7 @@ function character(profile,pattern,age=false){const profileId=T.classes.find(x=>
  assert.equal(await def(),base-2,'Sans armure : perte du +4 de maille, gain du +2 de Vêtements sacrés');
  await page.locator('.basic-catalog summary').click();await page.locator('[data-catalog-item=armor2]').click();const armor=page.locator('#bag .inventory-item').filter({hasText:'Cuir simple'}).first();if((await armor.getAttribute('open'))===null)await armor.locator('summary').click();await armor.locator('[data-equip]').click();assert.equal(await def(),base-2,'Cuir +2 remplace Vêtements sacrés +2, sans cumul');
  await armor.locator('[data-equip]').click();assert.equal(await def(),base-2,'Retirer le cuir réactive les vêtements sacrés');
- await mail.locator('[data-equip]').click();assert.equal(await def(),base,'Rééquiper la maille rétablit le bonus initial');
+ await mail.locator('[data-equip]').click();const last=await def();if(last!==base){const diag=await page.evaluate(id=>{const entry=JSON.parse(localStorage.getItem('cof2_solo_play_'+id)||'{}');return entry.inventory?.map(x=>({name:x.name,equipped:x.equipped,slot:x.equipment?.slot,armor:x.equipment?.bonuses?.armorDef}));},c.id);console.log('DIAGNOSTIC PRÊTRE',JSON.stringify({expected:base,actual:last,items:diag,defense:await page.locator('#resources .resource').filter({hasText:'Défense'}).innerText()}));}assert.equal(last,base,'Rééquiper la maille rétablit le bonus initial');
  assert.deepEqual(errors,[]);
  console.log('PASS | prêtre Vêtements sacrés : bonus non cumulé avec armure ordinaire');await page.close();
 }
