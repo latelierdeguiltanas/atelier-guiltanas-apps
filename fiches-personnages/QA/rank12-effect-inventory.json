@@ -5,7 +5,7 @@
   "counts": {
     "total": 268,
     "paths": 134,
-    "managed": 17,
+    "managed": 18,
     "byPriority": {
       "P0": 30,
       "P1": 43,
@@ -87,11 +87,6 @@
         "path": "Voie du fauve",
         "rank": 2,
         "name": "Panthère"
-      },
-      {
-        "path": "Voie du démon",
-        "rank": 2,
-        "name": "Beauté de la succube (L)*"
       },
       {
         "path": "Voie de la maîtrise",
@@ -1551,8 +1546,10 @@
         "PM",
         "CONDITION"
       ],
-      "status": "A_VERIFIER",
-      "priority": "P0"
+      "status": "GESTION_DYNAMIQUE",
+      "priority": "P0",
+      "proof": "tests/succubus-spell-clicks.cjs",
+      "verifiedScope": "R2 : lancement 2 PM, dé bonus CHA signalé, contact magique et dégâts indiqués, PV réellement retirés à la cible, plafonnement des PV soignés, durée INT minutes, expiration et sauvegarde"
     },
     {
       "pathId": "classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024",
