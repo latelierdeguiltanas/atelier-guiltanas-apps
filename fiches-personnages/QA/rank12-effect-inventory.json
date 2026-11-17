@@ -5,7 +5,7 @@
   "counts": {
     "total": 268,
     "paths": 134,
-    "managed": 15,
+    "managed": 17,
     "byPriority": {
       "P0": 30,
       "P1": 43,
@@ -174,19 +174,9 @@
         "name": "Invocation d’une entité"
       },
       {
-        "path": "Voie des mutations",
-        "rank": 2,
-        "name": "Mutation protectrice"
-      },
-      {
         "path": "Voie de l’arc et du cheval",
         "rank": 1,
         "name": "Monture loyale"
-      },
-      {
-        "path": "Voie de l’attaque mentale",
-        "rank": 2,
-        "name": "Bouclier psi"
       },
       {
         "path": "Voie de l’empathie",
@@ -2835,8 +2825,10 @@
         "PM",
         "CONDITION"
       ],
-      "status": "A_VERIFIER",
-      "priority": "P0"
+      "status": "GESTION_DYNAMIQUE",
+      "priority": "P0",
+      "proof": "tests/mutation-protectrice-clicks.cjs",
+      "verifiedScope": "Activation Cuirasse DEF +rang, 2 PM, durée, expiration, persistance; autres mutations descriptives"
     },
     {
       "pathId": "classpath:voie-des-portes:class-invocateur:addon-compagnon-2024",
@@ -3056,8 +3048,10 @@
         "PM",
         "CONDITION"
       ],
-      "status": "A_VERIFIER",
-      "priority": "P0"
+      "status": "CALCUL_CONDITIONNEL",
+      "priority": "P0",
+      "proof": "tests/psi-shield-clicks.cjs",
+      "verifiedScope": "DEF mentale +5 contextuelle, DEF physique inchangée; moitié des dégâts signalée"
     },
     {
       "pathId": "classpath:voie-du-controle-corporel:class-psionique:addon-compagnon-2024",
