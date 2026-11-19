@@ -1,19 +1,17 @@
-name: Forge N1 - actualiser certificat du profil prioritaire
-# Regénération après preuves de clic et correctif N1 du 4 novembre.
+name: Forge N1 - verifier le registre courant
 on:
   workflow_dispatch:
   push:
     paths:
       - '.github/workflows/forge-n1-focus-refresh.yml'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs'
-      - 'forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json'
-      - 'forge-of-heroes/QA/N1/arquebusier-pdf-real-click.json'
-      - 'forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json'
-      - 'forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_certification_register.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_register_contract.cjs'
+      - 'forge-of-heroes/QA/N1/lot-2026-11-19/**'
 permissions:
-  contents: write
+  contents: read
 jobs:
-  focus:
+  register:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
@@ -21,48 +19,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Regénérer les 14 places et huit peuples sans faux 100 pour cent
+      - name: Regenerate from dependency-matched proofs and reject false certificates
         run: |
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_r2_gate.cjs
-      - name: Exiger l’ordre des profils et la réalité des preuves
-        run: |
-          node - <<'NODE'
-          const f=require('./centre-synchronisation/forge-n1/focus.json');
-          const complete=f.profile.checks.every(check=>check.status==='ACQUIS');
-          if(f.profile.percent!==Math.round(100*f.profile.passed/f.profile.total)||f.profile.completed!==complete||f.summary.profilesCertified!==f.certificationPlan.queue.filter(p=>p.certified).length)throw Error('Le taux doit correspondre aux critères validés');
-          const {current,queue}=f.certificationPlan;
-          const selected=queue.find(p=>p.name===current.name);
-          if(selected?.status!==(current.certified?'CERTIFIE':'EN_COURS')||selected.percent!==current.percent)throw Error('Le profil affiché ne correspond pas à la file de validation');
-          if(f.certificationPlan.queue.length!==14||f.peoples.length!==8)throw Error('Couverture incorrecte');
-          console.log('Priorité stricte : Arquebusier '+f.profile.passed+'/'+f.profile.total+' critères, huit peuples et certificat non artificiel');
-          NODE
-      - name: Publier uniquement la progression étayée
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for attempt in 1 2 3 4 5; do
-            git fetch origin main
-            # Isolated CI checkout: recompute against the latest product and proofs.
-            git reset --hard origin/main
-            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
-            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_r2_gate.cjs
-            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_gear_gate.cjs
-            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_gate.cjs
-            node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_derived_gate.cjs
-            node - <<'NODE'
-          const cp=require('node:child_process'),f=require('./centre-synchronisation/forge-n1/focus.json');
-          if(f.profile.checks.find(c=>c.id==='click')?.status==='ACQUIS')cp.execFileSync(process.execPath,['forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_click_gate.cjs'],{stdio:'inherit'});
-          NODE
-            node - <<'NODE'
-          const fs=require('node:fs'),cp=require('node:child_process'),file='centre-synchronisation/forge-n1/focus.json';
-          const before=cp.execFileSync('git',['show','HEAD:'+file],{encoding:'utf8'}),a=JSON.parse(before),b=JSON.parse(fs.readFileSync(file,'utf8'));
-          delete a.generatedAt;delete b.generatedAt;
-          if(JSON.stringify(a)===JSON.stringify(b))fs.writeFileSync(file,before);
-          NODE
-            git add centre-synchronisation/forge-n1/focus.json
-            if git diff --cached --quiet; then exit 0; fi
-            git commit -m "docs(cockpit): preuves actuelles Arquebusier sans faux 100 % [skip ci]"
-            if git push origin HEAD:main; then exit 0; fi
-          done
-          exit 1
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_register_contract.cjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: forge-n1-current-register
+          path: |
+            forge-of-heroes/QA/N1/lot-2026-11-19/coverage-register.json
+            centre-synchronisation/forge-n1/focus.json

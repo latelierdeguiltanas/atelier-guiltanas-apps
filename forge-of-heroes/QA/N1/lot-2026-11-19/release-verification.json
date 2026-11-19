@@ -29,7 +29,8 @@
     "scenarios": 6,
     "scope": "desktop/mobile emulation of existing N1 pages, Forge tile and project drawer; no physical phone claim",
     "workflowRun": 44485258433,
-    "job": 135427004957
+    "job": 135427004957,
+    "latestSuccessfulRun": 44486597789
   },
   "boneDOM": {
     "status": "PASS",
@@ -37,8 +38,11 @@
     "report": "bone-armor.json"
   },
   "boneBrowser": {
-    "status": "PENDING",
-    "scope": "dedicated four-scenario CI recipe; initial installation failed on unsupported Ubuntu26, corrected recipe uses preinstalled Chrome"
+    "status": "PASS",
+    "workflowRun": 44486597936,
+    "previousSuccessfulRun": 44485258226,
+    "scenarios": 4,
+    "scope": "Chromium desktop and mobile emulation × bone armour selected/unselected at creation; transitions and reload. No physical Android or full wizard/PDF claim."
   },
   "playerDataModified": false,
   "unclosed": [
@@ -48,5 +52,7 @@
     "official PDF and annexes",
     "physical Android recipe",
     "targeted progression not executed in this lot"
-  ]
+  ],
+  "latestVerifiedProductCommit": "5e9690a2ed60ebd5b699c3771981270194d8c101",
+  "legacyWorkflowCorrection": "Retired sequential refresh contract replaced with exact-source per-rule contract and six rejected false-green mutations; old R2 gates retained as historical tests, not promoted to current PASS."
 }

@@ -76,3 +76,8 @@ Commit de recette publié : `59fcc192148d41580a7a79af35e2889b9e58f7ad`. Déploie
 Recette Chromium Copilote `44485258433`, job `135427004957` : **six scénarios bureau/mobile PASS** (deux pages N1, carte et détail projet). Ce sont des contrôles du suivi, pas des créations de PJ ni une recette matérielle Android. L’ancienne recette de progression séquentielle a été remplacée par le contrat du catalogue courant, pas simplement supprimée.
 
 Les trois anciens producteurs de registres redirigent maintenant vers le générateur courant ; ils ne peuvent plus restaurer les 8 peuples/14 profils et l’attente séquentielle à l’occasion d’un ancien workflow. Le générateur global conserve le résumé N1 à dépendances identiques. Ces protections ont été vérifiées par régénération effective.
+
+
+Recette finale Armure d’os : workflows `44485258226` puis `44486597936` PASS, **quatre scénarios Chromium bureau/mobile**, armure sélectionnée ou non dans Forge, transitions et rechargement. Les 22 tests numériques/DOM passent également dans CI. Les six scénarios du Copilote sont PASS sur le même lot. Voir `release-verification.json`.
+
+L’ancien rafraîchissement séquentiel exécutait un oracle de certificat R2 attaché à un autre contexte de preuves. Il n’a pas été forcé au vert : ce workflow vérifie désormais le registre courant, ses empreintes et six mutations anti-faux-vert (numérateur, dénominateur, empreinte, doublon, règle incomplète, PASS sans preuve). Les tests historiques R2 sont conservés comme tels. Les protections de générateur sont compatibles avec les anciennes évaluations VM dépourvues de `process`.

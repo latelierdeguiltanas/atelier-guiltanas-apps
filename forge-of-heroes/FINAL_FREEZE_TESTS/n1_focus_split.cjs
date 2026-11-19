@@ -1,7 +1,7 @@
 'use strict';
 // The active directive uses a shared per-rule register. Legacy producers may
 // retain their historical implementation but must never overwrite it.
-if(require('node:fs').existsSync(require('node:path').resolve(__dirname,'../QA/N1/lot-2026-11-19/coverage-register.json'))){
+if(typeof process!=='undefined'&&require('node:fs').existsSync(require('node:path').resolve(__dirname,'../QA/N1/lot-2026-11-19/coverage-register.json'))){
  require('./n1_certification_register.cjs');
  process.exit(0);
 }
