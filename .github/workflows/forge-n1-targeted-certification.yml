@@ -10,7 +10,7 @@ permissions:
   contents: read
 jobs:
   bone-armor:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -29,8 +29,11 @@ jobs:
         run: |
           python3 -m http.server 4173 --directory .. >/tmp/forge-http.log 2>&1 &
           node fiches-personnages/tests/bone-armor-certification-browser.cjs
+          FOH_QA_PREFIX=/atelier-guiltanas-apps node centre-synchronisation/forge-n1/qa_reconciliation_browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: forge-n1-bone-armor-evidence
-          path: forge-of-heroes/QA/N1/lot-2026-11-19/bone*.json
+          path: |
+            forge-of-heroes/QA/N1/lot-2026-11-19/bone*.json
+            centre-synchronisation/forge-n1/qa-reconciliation-browser.json

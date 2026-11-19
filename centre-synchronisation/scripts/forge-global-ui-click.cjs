@@ -4,6 +4,7 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),{chromium}=requ
 const ROOT='http://127.0.0.1:4173';
 const out='centre-synchronisation/data/forge-global-ui-click.json';
 const data=JSON.parse(fs.readFileSync('centre-synchronisation/data/forge-global-progress.json','utf8'));
+if(data.n1Certification){require('../forge-n1/qa_reconciliation_browser.cjs');}else{
 (async()=>{
  const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||undefined,args:['--no-sandbox']});
  const result={schema:'FOH_GLOBAL_UI_CLICK_V1',at:new Date().toISOString(),sourceSha256:data.source.indexSha256,score:data.percent,checks:[],errors:[],status:'FAIL'};
@@ -65,3 +66,5 @@ const data=JSON.parse(fs.readFileSync('centre-synchronisation/data/forge-global-
  console.log(JSON.stringify({status:result.status,checks:result.checks.length,errors:result.errors,score:result.score}));
  if(result.status!=='PASS')process.exitCode=1;
 })().catch(e=>{console.error(e);process.exitCode=1});
+
+}

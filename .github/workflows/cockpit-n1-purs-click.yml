@@ -35,4 +35,6 @@ jobs:
         with:
           name: cockpit-n1-purs-real-click
           if-no-files-found: warn
-          path: forge-n1-pure-click-result.json
+          path: |
+            forge-n1-pure-click-result.json
+            centre-synchronisation/forge-n1/qa-reconciliation-browser.json

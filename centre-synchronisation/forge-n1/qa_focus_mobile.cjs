@@ -1,4 +1,6 @@
 'use strict';
+if(require('./focus.json').reconciliation){require('./qa_reconciliation_browser.cjs');}else{
+'use strict';
 const fs=require('fs'),assert=require('node:assert/strict'),{chromium}=require('playwright');
 const f=JSON.parse(fs.readFileSync('centre-synchronisation/forge-n1/focus.json','utf8'));
 const current=f.certificationPlan.current;
@@ -29,3 +31,4 @@ report.steps.push({test:'profil prioritaire et progression',pass:true},{test:'8 
 fs.writeFileSync('centre-synchronisation/forge-n1/qa-focus-mobile-result.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({status:report.status,steps:report.steps,errors:report.errors}));
 })().catch(e=>{console.error(e);process.exitCode=1});
+}

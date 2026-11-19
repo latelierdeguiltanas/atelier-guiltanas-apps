@@ -1,4 +1,6 @@
 'use strict';
+if(require('./focus.json').reconciliation){require('./qa_reconciliation_browser.cjs');}else{
+'use strict';
 const {chromium}=require('playwright');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
@@ -59,3 +61,4 @@ const racePercent=name=>{const row=focus.peoples.find(x=>x.name===name);assert(r
  }catch(e){const out={status:'FAIL',checks,error:String(e?.stack||e),pageErrors:errors};fs.writeFileSync('forge-n1-pure-click-result.json',JSON.stringify(out,null,2));console.log(JSON.stringify(out));process.exitCode=1}
  finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exitCode=1});
+}

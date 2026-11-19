@@ -44,7 +44,7 @@ Les deux fichiers ont été réalignés **octet pour octet sur leurs modules de 
 
 Les mêmes fichiers officiels reçoivent un champ `reconciliation` ; les champs anciens restent archivés. Les vues existantes privilégient ce registre. Aucune troisième application de suivi.
 
-Dénominateur : 451 × 10 obligations individuelles + 244 revues d’accès exceptionnel + 35 contrôles moteur/interactions/intégration = **4789**. Numérateur documenté à ce lot : **113**, soit **2,36 %**. Il s’agit du **minimum déjà rattaché aux nouvelles obligations**, pas d’une estimation de fiabilité ni d’une remise à zéro des preuves historiques. Leur rattachement fin reste ouvert ; les 14 candidats à dépendances correspondantes sont conservés.
+Dénominateur : 451 × 10 obligations individuelles + 244 revues d’accès exceptionnel + 35 contrôles moteur/interactions/intégration = **4789**. Numérateur documenté à ce lot : **203**, soit **4,24 %**. Il s’agit du **minimum déjà rattaché aux nouvelles obligations**, pas d’une estimation de fiabilité ni d’une remise à zéro des preuves historiques. Leur rattachement fin reste ouvert ; les 14 candidats à dépendances correspondantes sont conservés.
 
 Une règle est close mécaniquement dans ce lot : Armure d’os N1. Aucun nouveau profil, peuple ou certificat fonctionnel complet n’est déclaré. Les dix obligations de cette règle sont fermées dans le périmètre mécanique/DOM ; les contrôles transverses de moteur partagé, PDF et navigateur restent ouverts.
 
@@ -66,3 +66,5 @@ Chromium local : BLOQUÉ, `socket() failed: Operation not permitted`. Test réel
 2. Fermer les effets/conditions des 51 rangs nouveaux avec oracles source et témoins réduits ; examiner les accès exceptionnels supérieurs.
 3. Mutualiser les définitions de pouvoirs entre moteur et fiche : la formule d’Armure d’os reste dupliquée, cette architecture n’est pas certifiée par ce correctif de transfert.
 4. Exécuter la recette navigateur réelle, PDF officiel/annexes et passage N2/N3/N4 ciblé sur simulations de bases vérifiées. Aucun PJ réel ne sert de fixture.
+
+Reprise de preuves effectuée : 32 capacités de peuple R1/R2 et 15 capacités Arquebusier R1–R3 ont leurs acquisitions et sauvegardes rattachées aux obligations exactes (90 points supplémentaires, doublons dédupliqués). Leurs chiffres vérifiés sont enregistrés en preuves partielles ; aucune condition non assertée n’est déclarée close. Le générateur global conserve désormais le registre N1 à dépendances identiques.

@@ -34,21 +34,14 @@ jobs:
           for(const id of ['focus-priority','focus-stats','focus-profile','focus-peoples','focus-open','focus-queue','focus-date'])assert(html.includes('id="'+id+'"'),id+' manque');
           assert(html.includes('readJson("./focus.json")'),'La vue ne charge pas les preuves actives');
           const d=JSON.parse(fs.readFileSync(root+'focus.json'));
-          assert(d.certificationPlan.policy==='UN_SEUL_PROFIL_A_LA_FOIS_JUSQU_A_100');
-          assert(d.certificationPlan.queue.length===14);
-          assert(d.peoples.length===8);
-          const {current,queue}=d.certificationPlan;
-          assert.equal(queue.filter(x=>x.status==='EN_COURS').length,current.certified?0:1);
-          const selected=queue.find(x=>x.name===current.name);
-          assert.equal(selected?.status,current.certified?'CERTIFIE':'EN_COURS');
-          assert.equal(selected?.percent,current.percent);
-          if(d.profile.completed){
-            assert(d.certificationPlan.queue.some(x=>x.name===d.profile.name&&x.certified));
-            assert(current.position>d.certificationPlan.queue.find(x=>x.name===d.profile.name).position);
-          }
-          assert(d.profile.percent===Math.round(d.profile.passed/d.profile.total*100));
-          assert(d.peoples.every(x=>x.percent===Math.round(x.passed/x.total*100)));
-          console.log('Copilote compilable : 1 profil actif, 13 en attente, 8 peuples, données et DOM cohérents');
+          const {load}=require('./forge-of-heroes/FINAL_FREEZE_TESTS/forge_product_runner');
+          const {db}=load(),r=d.reconciliation;
+          assert(r,'Current certification register missing');
+          assert.equal(r.profiles.length,db.tables.classes.length);
+          assert.equal(r.peoples.length,db.tables.peoples.length);
+          assert.equal(r.summary.criteriaTotal,4789);
+          assert.equal(r.summary.certified,false);
+          console.log('Current Copilote contract: catalogue, exact denominator, no sequential gate');
           NODE
       - name: Installer le client et tester réellement les clics mobile
         run: |
@@ -64,4 +57,6 @@ jobs:
         if: always()
         with:
           name: forge-n1-copilote-real-mobile
-          path: centre-synchronisation/forge-n1/qa-focus-mobile-result.json
+          path: |
+            centre-synchronisation/forge-n1/qa-focus-mobile-result.json
+            centre-synchronisation/forge-n1/qa-reconciliation-browser.json

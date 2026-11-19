@@ -31,9 +31,9 @@ jobs:
           const g=require('./centre-synchronisation/data/forge-global-progress.json');
           const sha=crypto.createHash('sha256').update(fs.readFileSync('forge-of-heroes/index.html')).digest('hex');
           assert.equal(g.source.indexSha256,sha);
-          assert.equal(g.status,'MEASURED');
+          if(g.n1Certification){assert.equal(g.n1Certification.inputs.indexSha256,sha);assert(g.n1Certification.summary.criteriaTotal>0);}else assert.equal(g.status,'MEASURED');
           assert.equal(g.modules.length,7);
-          assert(g.percent>=0&&g.percent<100);
+          if(!g.n1Certification)assert(g.percent>=0&&g.percent<100);
           NODE
       - name: Installer Playwright et Chromium
         run: |
@@ -48,4 +48,6 @@ jobs:
         if: always()
         with:
           name: forge-global-copilote-mobile-click
-          path: centre-synchronisation/data/forge-global-ui-click.json
+          path: |
+            centre-synchronisation/data/forge-global-ui-click.json
+            centre-synchronisation/forge-n1/qa-reconciliation-browser.json

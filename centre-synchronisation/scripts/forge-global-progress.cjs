@@ -148,5 +148,8 @@ const output={
  openModules:modules.filter(m=>!m.complete).map(m=>m.id),
  limitations:['88% d’un profil n’est pas 88% de toute l’application.','0% de certification sur un module signifie preuve globale manquante, non absence de code fonctionnel.','Après toute modification de index.html, les preuves périmées sont neutralisées avant nouveau score.','Les nouveaux livres/règles devront élargir le périmètre et le dénominateur dès leur intégration.']
 };
+// Keep the current N1 reconciliation when its actual dependencies still match.
+const n1=focus.reconciliation;
+if(n1&&n1.inputs.indexSha256===indexSha256&&n1.inputs.sheetSha256===sha(fs.readFileSync(path.join(root,'fiches-personnages/fiche/fiche.js'))))output.n1Certification=n1;
 fs.writeFileSync(dest,JSON.stringify(output,null,2)+'\n');
 console.log(JSON.stringify({status:output.status,global:output.percent,exact:output.exactPercent,canonical:indexSha256,modules:modules.map(m=>[m.id,m.passed,m.total,m.percent])},null,2));
