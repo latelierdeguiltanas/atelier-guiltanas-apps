@@ -1,4 +1,11 @@
 'use strict';
+// The active directive uses a shared per-rule register. Legacy producers may
+// retain their historical implementation but must never overwrite it.
+if(require('node:fs').existsSync(require('node:path').resolve(__dirname,'../QA/N1/lot-2026-11-19/coverage-register.json'))){
+ require('./n1_certification_register.cjs');
+ process.exit(0);
+}
+
 /*
  Two entirely independent N1 progress lines:
  1. An official pure profile, all of its five pathways with every rank reachable at N1.

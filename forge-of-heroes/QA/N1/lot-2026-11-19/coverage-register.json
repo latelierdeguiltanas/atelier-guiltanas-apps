@@ -1,8 +1,8 @@
 {
   "schema": "FOH_N1_CERTIFICATION_REGISTER_V1",
-  "generatedAt": "2026-11-19T08:07:34.756Z",
+  "generatedAt": "2026-11-19T08:12:05.839Z",
   "inputs": {
-    "commit": "ed55c4d41b26cb736c0645e070b318b11627773d",
+    "commit": "59fcc192148d41580a7a79af35e2889b9e58f7ad",
     "indexBlob": "ff3ec9147d17a2bf4b3f8cebd2c39816217737f5",
     "indexSha256": "79bee1e8b4ce222cd2847d49ea7f56d8a22d8f667a1db04e4635a9fb594f9f2d",
     "engineSha256": "195a96fa8d6bc87d3a919be27787f56100ab2e69615d4b8c4bc1419a652d0181",
@@ -18097,13 +18097,13 @@
       "n1Applicability": "IN_SCOPE",
       "applicabilityBasis": "Ordinary N1 + mage/age/grants, advanced rules p153",
       "classification": {
-        "candidateTypes": [
-          "permanent",
-          "consommable"
-        ],
         "behavior": "mixte",
-        "review": "AUTO_CLASSIFIED_REQUIRES_REVIEW",
-        "evidence": "Catalogue text/mechanics signals, not a functional verdict"
+        "candidateTypes": [
+          "passif contextuel",
+          "permanent"
+        ],
+        "review": "SOURCE_REVIEWED",
+        "evidence": "COF2 Livre de base p109, own fabrication and daily 10-minute upkeep"
       },
       "partialHistoricalNumerics": null,
       "declaredCatalogueStatus": "N1_CERTIFIED",

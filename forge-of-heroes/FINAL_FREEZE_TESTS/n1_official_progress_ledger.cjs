@@ -1,4 +1,11 @@
 'use strict';
+// The active directive uses a shared per-rule register. Legacy producers may
+// retain their historical implementation but must never overwrite it.
+if(require('node:fs').existsSync(require('node:path').resolve(__dirname,'../QA/N1/lot-2026-11-19/coverage-register.json'))){
+ require('./n1_certification_register.cjs');
+ process.exit(0);
+}
+
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),qa=path.join(root,'QA/N1'),read=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
 const native=read('QA/N1/native-items.json'),peopleSrc=read('QA/N1/lot10/people-source.json'),reg=read('QA/N1/regressions.json'),matrix=read('QA/N1/matrix.json'),cp=read('QA/N1/profile-checkpoint.json'),parity=read('QA/N1/version-parity.json');

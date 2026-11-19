@@ -68,3 +68,11 @@ Chromium local : BLOQUÉ, `socket() failed: Operation not permitted`. Test réel
 4. Exécuter la recette navigateur réelle, PDF officiel/annexes et passage N2/N3/N4 ciblé sur simulations de bases vérifiées. Aucun PJ réel ne sert de fixture.
 
 Reprise de preuves effectuée : 32 capacités de peuple R1/R2 et 15 capacités Arquebusier R1–R3 ont leurs acquisitions et sauvegardes rattachées aux obligations exactes (90 points supplémentaires, doublons dédupliqués). Leurs chiffres vérifiés sont enregistrés en preuves partielles ; aucune condition non assertée n’est déclarée close. Le générateur global conserve désormais le registre N1 à dépendances identiques.
+
+## Recette publiée et conservation du suivi
+
+Commit de recette publié : `59fcc192148d41580a7a79af35e2889b9e58f7ad`. Déploiement Pages `44485258135` PASS ; parité publique contrôlée pour l’index, la fiche JS et la vue de réconciliation. Les deux registres publics affichent bien 203/4789 après régénération automatique.
+
+Recette Chromium Copilote `44485258433`, job `135427004957` : **six scénarios bureau/mobile PASS** (deux pages N1, carte et détail projet). Ce sont des contrôles du suivi, pas des créations de PJ ni une recette matérielle Android. L’ancienne recette de progression séquentielle a été remplacée par le contrat du catalogue courant, pas simplement supprimée.
+
+Les trois anciens producteurs de registres redirigent maintenant vers le générateur courant ; ils ne peuvent plus restaurer les 8 peuples/14 profils et l’attente séquentielle à l’occasion d’un ancien workflow. Le générateur global conserve le résumé N1 à dépendances identiques. Ces protections ont été vérifiées par régénération effective.

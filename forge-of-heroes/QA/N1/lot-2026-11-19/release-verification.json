@@ -1,0 +1,52 @@
+{
+  "schema": "FOH_RELEASE_VERIFICATION_V1",
+  "checkedAt": "2026-11-19T08:18:35.046539+00:00",
+  "testedCommit": "59fcc192148d41580a7a79af35e2889b9e58f7ad",
+  "publication": "GitHub Pages deployment 44485258135 SUCCESS",
+  "publicResources": [
+    {
+      "path": "forge-of-heroes/index.html",
+      "sha256": "79bee1e8b4ce222cd2847d49ea7f56d8a22d8f667a1db04e4635a9fb594f9f2d",
+      "publicBytesMatch": true
+    },
+    {
+      "path": "fiches-personnages/fiche/fiche.js",
+      "sha256": "49d0a77b3612917a5c6ce32e39850abf82219a5bd729450d0d8a26cb020a72e7",
+      "publicBytesMatch": true
+    },
+    {
+      "path": "centre-synchronisation/forge-n1/reconciliation-view.js",
+      "sha256": "9b6018c5c9b10dc27731f2409a322a7f0702e5f9c7be8473a7993a0d3bb2606e",
+      "publicBytesMatch": true
+    }
+  ],
+  "copilote": {
+    "criteriaPassed": 203,
+    "criteriaTotal": 4789,
+    "publicFocusMatches": true,
+    "publicGlobalMatches": true,
+    "realBrowser": "PASS",
+    "scenarios": 6,
+    "scope": "desktop/mobile emulation of existing N1 pages, Forge tile and project drawer; no physical phone claim",
+    "workflowRun": 44485258433,
+    "job": 135427004957
+  },
+  "boneDOM": {
+    "status": "PASS",
+    "checks": 22,
+    "report": "bone-armor.json"
+  },
+  "boneBrowser": {
+    "status": "PENDING",
+    "scope": "dedicated four-scenario CI recipe; initial installation failed on unsupported Ubuntu26, corrected recipe uses preinstalled Chrome"
+  },
+  "playerDataModified": false,
+  "unclosed": [
+    "shared per-ability formulas",
+    "remaining exact-effect oracles and special-access review",
+    "full creation browser coverage",
+    "official PDF and annexes",
+    "physical Android recipe",
+    "targeted progression not executed in this lot"
+  ]
+}
