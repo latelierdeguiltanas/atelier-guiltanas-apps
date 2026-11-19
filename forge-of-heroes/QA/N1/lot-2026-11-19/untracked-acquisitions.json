@@ -1,0 +1,4252 @@
+{
+  "schema": "FOH_UNTRACKED_ACQUISITION_V1",
+  "generatedAt": "2026-11-19T07:55:20.366Z",
+  "indexSha256": "79bee1e8b4ce222cd2847d49ea7f56d8a22d8f667a1db04e4635a9fb594f9f2d",
+  "scope": "85 missing audit entries. This is NOT a mechanical effects certificate.",
+  "counts": {
+    "PASS": 51,
+    "REFUS LÉGAL": 0,
+    "FAIL": 0,
+    "BLOQUÉ": 0,
+    "NON TESTÉ": 34
+  },
+  "cases": [
+    {
+      "id": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+            "repeatingWeapons": [
+              "weapon:dagger"
+            ]
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+            "repeatingWeapons": [
+              "weapon:dagger"
+            ]
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:canon-double:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+      "pathId": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:couleuvrine-l:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+      "pathId": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+            "repeatingWeapons": [
+              "weapon:dagger"
+            ]
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024": {
+            "combattantAguerriAbility": "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024"
+          },
+          "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+            "repeatingWeapons": [
+              "weapon:dagger"
+            ]
+          },
+          "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024": {
+            "throwerVariant": false
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:constitution-heroique:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+      "pathId": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:combat-de-masse:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+      "pathId": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+            "repeatingWeapons": [
+              "weapon:dagger"
+            ]
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:tir-double-l:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+            "repeatingWeapons": [
+              "weapon:dagger"
+            ]
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:agilite-heroique:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+      "pathId": "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:as-de-la-gachette:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+      "pathId": "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:joli-coup:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+            "repeatingWeapons": [
+              "weapon:dagger"
+            ]
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:tir-precis:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+            "repeatingWeapons": [
+              "weapon:dagger"
+            ]
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:tireur-delite-l:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+      "pathId": "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:tir-fatal-l:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+      "pathId": "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {
+          "preferredWeaponCategory": "crossbows"
+        },
+        "abilityChoices": {
+          "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024": {
+            "preferredWeaponCategory": "crossbows"
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {
+          "preferredWeaponCategory": "crossbows"
+        },
+        "abilityChoices": {
+          "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024": {
+            "preferredWeaponCategory": "crossbows"
+          },
+          "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+            "repeatingWeapons": [
+              "weapon:dagger"
+            ]
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:specialisation:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:arbaletrier:cof2-variant-2024",
+        "peupleId": "people:humain:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "humainStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-humain:cof2-lb-2024",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+            "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "arbaletrier-standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {
+          "preferredWeaponCategory": "crossbows"
+        },
+        "abilityChoices": {
+          "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024": {
+            "preferredWeaponCategory": "crossbows"
+          },
+          "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+            "repeatingWeapons": [
+              "weapon:dagger"
+            ]
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:attaque-parfaite-l:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+      "pathId": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:riposte-g:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+      "pathId": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:fee-r1:path:voie-de-la-fee:compagnon-cof2",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:fee:addon-comp2017-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": -1,
+          "agi": 2,
+          "con": 1,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": 0
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {},
+        "voies": {
+          "peoplePathId": "path:voie-de-la-fee:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:fee-r2:path:voie-de-la-fee:compagnon-cof2",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:fee:addon-comp2017-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": -1,
+          "agi": 2,
+          "con": 1,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": 0
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {},
+        "voies": {
+          "peoplePathId": "path:voie-de-la-fee:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "path:voie-de-la-fee:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:fee-r3:path:voie-de-la-fee:compagnon-cof2",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:fee:addon-comp2017-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": -1,
+          "agi": 2,
+          "con": 1,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": 0
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {},
+        "voies": {
+          "peoplePathId": "path:voie-de-la-fee:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:fee-r3:path:voie-de-la-fee:compagnon-cof2": {
+            "fairyDustAbility": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1"
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "path:voie-de-la-fee:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "path:voie-de-la-fee:compagnon-cof2",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:fee-r4:path:voie-de-la-fee:compagnon-cof2",
+      "pathId": "path:voie-de-la-fee:compagnon-cof2",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:fee-r5:path:voie-de-la-fee:compagnon-cof2",
+      "pathId": "path:voie-de-la-fee:compagnon-cof2",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:drakonide-r1:path:voie-du-drakonide:compagnon-cof2",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:drakonide:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {},
+        "voies": {
+          "peoplePathId": "path:voie-du-drakonide:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:drakonide:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {},
+        "voies": {
+          "peoplePathId": "path:voie-du-drakonide:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2": {
+            "drakonideBreath": "fire"
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "path:voie-du-drakonide:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:drakonide-r3:path:voie-du-drakonide:compagnon-cof2",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:drakonide:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {},
+        "voies": {
+          "peoplePathId": "path:voie-du-drakonide:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2": {
+            "drakonideBreath": "fire"
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "path:voie-du-drakonide:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "path:voie-du-drakonide:compagnon-cof2",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:drakonide-r4:path:voie-du-drakonide:compagnon-cof2",
+      "pathId": "path:voie-du-drakonide:compagnon-cof2",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:drakonide-r5:path:voie-du-drakonide:compagnon-cof2",
+      "pathId": "path:voie-du-drakonide:compagnon-cof2",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:cambion-r1:path:voie-du-cambion:compagnon-cof2",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:cambion:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "vol"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-cambion:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:cambion-r2:path:voie-du-cambion:compagnon-cof2",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:cambion:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "vol"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-cambion:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:cambion-r2:path:voie-du-cambion:compagnon-cof2": {
+            "racialMagicStat": "int"
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "path:voie-du-cambion:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:cambion-r3:path:voie-du-cambion:compagnon-cof2",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:cambion:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "vol"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-cambion:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:cambion-r2:path:voie-du-cambion:compagnon-cof2": {
+            "racialMagicStat": "int"
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "path:voie-du-cambion:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "path:voie-du-cambion:compagnon-cof2",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:cambion-r4:path:voie-du-cambion:compagnon-cof2",
+      "pathId": "path:voie-du-cambion:compagnon-cof2",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:cambion-r5:path:voie-du-cambion:compagnon-cof2",
+      "pathId": "path:voie-du-cambion:compagnon-cof2",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:elfe-pale-r1:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:elfe-pale:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "per"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-elfe-pale:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:elfe-pale-r2:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:elfe-pale:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "per"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-elfe-pale:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "path:voie-de-l-elfe-pale:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:elfe-pale-r3:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:elfe-pale:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "per"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-elfe-pale:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "path:voie-de-l-elfe-pale:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "path:voie-de-l-elfe-pale:compagnon-cof2",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:elfe-pale-r4:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "pathId": "path:voie-de-l-elfe-pale:compagnon-cof2",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:elfe-pale-r5:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "pathId": "path:voie-de-l-elfe-pale:compagnon-cof2",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:elfe-profondeurs-r1:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:elfe-profondeurs:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "agi"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:elfe-profondeurs-r2:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:elfe-profondeurs:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "agi"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:elfe-profondeurs-r3:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:elfe-profondeurs:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "agi"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:elfe-profondeurs-r4:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "pathId": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:elfe-profondeurs-r5:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "pathId": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:felis-r1:path:voie-du-felis:compagnon-cof2",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:felis:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "agi",
+          "malusStat": "for"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-felis:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:felis-r2:path:voie-du-felis:compagnon-cof2",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:felis:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "agi",
+          "malusStat": "for"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-felis:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "path:voie-du-felis:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:felis-r3:path:voie-du-felis:compagnon-cof2",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:felis:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "agi",
+          "malusStat": "for"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-felis:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:felis-r3:path:voie-du-felis:compagnon-cof2": {
+            "felisBackground": "acrobatics"
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "path:voie-du-felis:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "path:voie-du-felis:compagnon-cof2",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:felis-r4:path:voie-du-felis:compagnon-cof2",
+      "pathId": "path:voie-du-felis:compagnon-cof2",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:felis-r5:path:voie-du-felis:compagnon-cof2",
+      "pathId": "path:voie-du-felis:compagnon-cof2",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:frouin-r1:path:voie-du-frouin:compagnon-cof2",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:frouin:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "agi"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-frouin:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:frouin-r2:path:voie-du-frouin:compagnon-cof2",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:frouin:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "agi"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-frouin:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "path:voie-du-frouin:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:frouin-r3:path:voie-du-frouin:compagnon-cof2",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:frouin:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "agi"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-frouin:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "path:voie-du-frouin:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "path:voie-du-frouin:compagnon-cof2",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:frouin-r4:path:voie-du-frouin:compagnon-cof2",
+      "pathId": "path:voie-du-frouin:compagnon-cof2",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:frouin-r5:path:voie-du-frouin:compagnon-cof2",
+      "pathId": "path:voie-du-frouin:compagnon-cof2",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:nephilim-r1:path:voie-du-nephilim:compagnon-cof2",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:nephilim:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-nephilim:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:nephilim-r2:path:voie-du-nephilim:compagnon-cof2",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:nephilim:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-nephilim:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:nephilim-r2:path:voie-du-nephilim:compagnon-cof2": {
+            "racialMagicStat": "int"
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "path:voie-du-nephilim:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:nephilim-r3:path:voie-du-nephilim:compagnon-cof2",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:nephilim:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "cha"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-nephilim:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:nephilim-r2:path:voie-du-nephilim:compagnon-cof2": {
+            "racialMagicStat": "int"
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "path:voie-du-nephilim:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "path:voie-du-nephilim:compagnon-cof2",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:nephilim-r4:path:voie-du-nephilim:compagnon-cof2",
+      "pathId": "path:voie-du-nephilim:compagnon-cof2",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:nephilim-r5:path:voie-du-nephilim:compagnon-cof2",
+      "pathId": "path:voie-du-nephilim:compagnon-cof2",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:ophidien-r1:path:voie-de-l-ophidien:compagnon-cof2",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:ophidien:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "int"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-ophidien:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:ophidien-r2:path:voie-de-l-ophidien:compagnon-cof2",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:ophidien:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "int"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-ophidien:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:ophidien-r2:path:voie-de-l-ophidien:compagnon-cof2": {
+            "racialMagicStat": "cha"
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "path:voie-de-l-ophidien:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:ophidien-r3:path:voie-de-l-ophidien:compagnon-cof2",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:ophidien:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "int"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-de-l-ophidien:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:ophidien-r2:path:voie-de-l-ophidien:compagnon-cof2": {
+            "racialMagicStat": "cha"
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "path:voie-de-l-ophidien:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "path:voie-de-l-ophidien:compagnon-cof2",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:ophidien-r4:path:voie-de-l-ophidien:compagnon-cof2",
+      "pathId": "path:voie-de-l-ophidien:compagnon-cof2",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:ophidien-r5:path:voie-de-l-ophidien:compagnon-cof2",
+      "pathId": "path:voie-de-l-ophidien:compagnon-cof2",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:satyre-r1:path:voie-du-satyre:compagnon-cof2",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:satyre:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "per",
+          "malusStat": "vol"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-satyre:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:satyre-r2:path:voie-du-satyre:compagnon-cof2",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:satyre:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "per",
+          "malusStat": "vol"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-satyre:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "path:voie-du-satyre:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:satyre-r3:path:voie-du-satyre:compagnon-cof2",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:satyre:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "per",
+          "malusStat": "vol"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-satyre:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "path:voie-du-satyre:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "path:voie-du-satyre:compagnon-cof2",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:satyre-r4:path:voie-du-satyre:compagnon-cof2",
+      "pathId": "path:voie-du-satyre:compagnon-cof2",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:satyre-r5:path:voie-du-satyre:compagnon-cof2",
+      "pathId": "path:voie-du-satyre:compagnon-cof2",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:wolfer-r1:path:voie-du-wolfer:compagnon-cof2",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:wolfer:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "per"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-wolfer:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:wolfer-r2:path:voie-du-wolfer:compagnon-cof2",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:wolfer:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "per"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-wolfer:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "path:voie-du-wolfer:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:wolfer-r3:path:voie-du-wolfer:compagnon-cof2",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:wolfer:compagnon-cof2",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "per"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-wolfer:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {
+          "ability:wolfer-r3:path:voie-du-wolfer:compagnon-cof2": {
+            "wolferLuckStat": "cha"
+          }
+        },
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "path:voie-du-wolfer:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "path:voie-du-wolfer:compagnon-cof2",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:wolfer-r4:path:voie-du-wolfer:compagnon-cof2",
+      "pathId": "path:voie-du-wolfer:compagnon-cof2",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:wolfer-r5:path:voie-du-wolfer:compagnon-cof2",
+      "pathId": "path:voie-du-wolfer:compagnon-cof2",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:demi-elfe-v2-r1:path:voie-du-demi-elfe:compagnon-cof2",
+      "rank": 1,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:demi-elfe:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "per",
+          "malusStat": "for"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-demi-elfe:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": false,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        }
+      }
+    },
+    {
+      "id": "ability:demi-elfe-v2-r2:path:voie-du-demi-elfe:compagnon-cof2",
+      "rank": 2,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:demi-elfe:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "per",
+          "malusStat": "for"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-demi-elfe:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "mature",
+          "spending": [
+            {
+              "pathId": "path:voie-du-demi-elfe:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:demi-elfe-v2-r3:path:voie-du-demi-elfe:compagnon-cof2",
+      "rank": 3,
+      "status": "PASS",
+      "scope": "Acquisition + deterministic JSON state replay only",
+      "input": {
+        "identite": {
+          "nom": "Convergence produit"
+        },
+        "familleId": "aventurier",
+        "classeId": "class:voleur:cof2-lb-2024",
+        "peupleId": "people:demi-elfe:cof2-lb-2024",
+        "serieId": "expert",
+        "baseCaracs": {
+          "for": 2,
+          "agi": 1,
+          "con": 0,
+          "per": 1,
+          "int": 3,
+          "vol": 0,
+          "cha": -1
+        },
+        "characteristicMethod": {
+          "type": "STANDARD_SERIES",
+          "rolls": [
+            2,
+            7,
+            12
+          ]
+        },
+        "peupleChoices": {
+          "bonusStat": "per",
+          "malusStat": "for"
+        },
+        "voies": {
+          "peoplePathId": "path:voie-du-demi-elfe:compagnon-cof2",
+          "keepPeoplePathId": "",
+          "profilePathIds": [
+            "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+            "classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024"
+          ],
+          "mageRank2PathId": ""
+        },
+        "equip": {
+          "initialPackageId": "standard",
+          "armorId": "",
+          "shieldId": "",
+          "weaponIds": [
+            "weapon:dagger"
+          ],
+          "gmApprovedSwap": true
+        },
+        "profileChoices": {},
+        "abilityChoices": {},
+        "options": {},
+        "advancedRules": {
+          "modelVersion": "FIX78",
+          "age": true,
+          "histories": false,
+          "additionalMagePaths": false
+        },
+        "narrative": {
+          "ideal": "",
+          "flaw": ""
+        },
+        "age": {
+          "categoryId": "venerable",
+          "spending": [
+            {
+              "pathId": "path:voie-du-demi-elfe:compagnon-cof2",
+              "rank": 2
+            },
+            {
+              "pathId": "path:voie-du-demi-elfe:compagnon-cof2",
+              "rank": 3
+            },
+            {
+              "pathId": "classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024",
+              "rank": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ability:demi-elfe-v2-r4:path:voie-du-demi-elfe:compagnon-cof2",
+      "pathId": "path:voie-du-demi-elfe:compagnon-cof2",
+      "rank": 4,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    },
+    {
+      "id": "ability:demi-elfe-v2-r5:path:voie-du-demi-elfe:compagnon-cof2",
+      "pathId": "path:voie-du-demi-elfe:compagnon-cof2",
+      "rank": 5,
+      "status": "NON TESTÉ",
+      "reason": "Above ordinary N1 age cap; special access needs source review. Not certified inaccessible."
+    }
+  ]
+}

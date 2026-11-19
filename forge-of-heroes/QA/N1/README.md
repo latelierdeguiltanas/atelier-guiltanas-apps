@@ -1,3 +1,9 @@
+# Point courant — 19 novembre 2026
+
+Lire [le lot de réconciliation](lot-2026-11-19/README.md) et son [registre](lot-2026-11-19/coverage-register.json). Les anciennes campagnes ci-dessous sont conservées ; leur reprise dépend des empreintes et du périmètre réellement asserté. La stratégie courante couvre le moteur, les capacités et les interactions sur tout le catalogue exposé. Les urgences de progression ciblée ne sont plus suspendues à la fermeture globale N1.
+
+---
+
 # Validation de la création N1
 
 **Phase active : clôture N1, certification globale encore ouverte. Urgences autorisées en parallèle : six PJ Bastide N3 et sorcier/moine N1→N2 (voir `../N3/2026-10-30.md`).**

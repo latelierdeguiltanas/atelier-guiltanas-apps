@@ -1,3 +1,13 @@
+# Directive courante — 19 novembre 2026
+
+La stratégie profil par profil est remplacée par moteur commun → capacités → interactions. Périmètre exposé : 26 peuples, 18 profils. Deux pistes autorisées : certification N1 globale et progression N2/N3/N4 ciblée sur bases individuellement vérifiées. Aucun niveau ni choix attribué automatiquement.
+
+Lot reproductible : [réconciliation et corrections](QA/N1/lot-2026-11-19/README.md). Le moteur/index publié reste inchangé (`79bee1e8…f9f2d`). Armure d’os : correction de la DEF résiduelle/doublée après transfert d’une armure sélectionnée dans Forge. Deux sources de modules réalignées sur le moteur embarqué. Copilote : nouveau registre inséré dans les fichiers existants ; chiffres historiques conservés comme archives, sans réutilisation abusive de certificats.
+
+Les sections ci-dessous sont historiques. Leurs anciennes interdictions de poursuivre les niveaux et leur ordre profil par profil ne sont plus applicables.
+
+---
+
 # Contrôle des pourcentages — 5 novembre 2026
 
 **Statut actuel : Arquebusier/Arbalétrier 14/16 (88 %)** sur le seul `index.html` ; deux critères complets restent ouverts (R3 accordés et effets historiques). Sur ce même index : 1 008/1 008 méthodes, 392/392 options raciales et 1 152 historiques dont 1 120 réussis/32 refus légaux (zéro échec). Les 69 % des autres profils et 60 % des peuples sont des acquis historiques sur un ancien moteur, **pas un certificat courant**. Document signé : [Réconciliation Forge unique](QA/N1/RECONCILIATION_FORGE_UNIQUE_2026-11-05.md).

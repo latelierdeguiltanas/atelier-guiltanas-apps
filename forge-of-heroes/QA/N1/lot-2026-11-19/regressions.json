@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-11-19T08:00:37.939Z",
+  "results": [
+    {
+      "runner": "forge-of-heroes/FINAL_FREEZE_TESTS/n1_size_equipment_runner.cjs",
+      "sha256": "de66a1b718d81b64aeaa13e85966d3a8b29340e83d0b18516ddfd8b3400b222a",
+      "status": "PASS",
+      "output": "PASS 66 size/equipment cases across the production engine: 2d6 rejected, d8 at two hands without shield, hand count/damage/save/reload, no-profile racial limits, d4/d6 for Fée and Farfadet and ordinary-human regression. Sources COF2 Livre de base p.55 (PDF p.57), Compagnon pp.15,17; Compagnon COF2 p.27.\n\n"
+    },
+    {
+      "runner": "forge-of-heroes/FINAL_FREEZE_TESTS/permanent_rules_runner.cjs",
+      "sha256": "4aaaa245ae283640a5382e850a437dadc5acceb5ea348e3cef7cdb1bac6a46b1",
+      "status": "PASS",
+      "output": "PASS 28 permanent-rule cases plus heroic/ancestry projections: rank scaling, negative modifiers, armor/shield changes, retroactive CON PV, stat choices and N1 rank guard.\n\n"
+    },
+    {
+      "runner": "forge-of-heroes/FINAL_FREEZE_TESTS/path_calculations_runner.cjs",
+      "sha256": "6e336f948e57c7a560a2b0028083626a12f81f36f59e7a26875e0ae142a3aed7",
+      "status": "PASS",
+      "output": "PASS arithmetic isolation, unresolved target context, dice unchanged, monk permanent DEF/PV/INIT and speed, kobold DEF, save/replay, 80 people texts, companion characteristic conversions and honest coverage.\n\n"
+    },
+    {
+      "runner": "forge-of-heroes/FINAL_FREEZE_TESTS/grants_attacks_companions_runner.cjs",
+      "sha256": "838dd0b4caa3c472055eec4609d75d0428ee5b26229ac8cb07a3f587e756c1b5",
+      "status": "PASS",
+      "output": "PASS 78 creation/replay cases: attack/damage stat separation, R2/R3 dice, grant choices/duplicates/PM, eight asset paths and contextual familiar stacking; 50 sorcerer/monk hybrids.\n\n"
+    },
+    {
+      "runner": "forge-of-heroes/FINAL_FREEZE_TESTS/equipment_runtime_companions_runner.cjs",
+      "sha256": "52437d1f7ab9babbc597819f36bb5515c6e8198a648888b0fe4236956903e16a",
+      "status": "PASS",
+      "output": "PASS 8 creation/replay fixtures; 30 entity distributions; canonical armor permissions and spell surcharge, target quotas, shared rage/fury pool, lifetime counters, native high-rank companions and strict corruption checks.\n\n"
+    },
+    {
+      "runner": "forge-of-heroes/FINAL_FREEZE_TESTS/n1_half_orc_hybrid_defence.cjs",
+      "sha256": "c11a6a913159cf57e7cac1d8e0c15221a2f8e6b764444ba76ff52bbf00988335",
+      "status": "PASS",
+      "output": "8 PASS — demi-orc hybride, quatre choix raciaux, avec et sans cuir, deux versions.\n\n"
+    }
+  ]
+}

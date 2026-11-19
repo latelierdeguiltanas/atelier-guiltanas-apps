@@ -1,0 +1,115 @@
+{
+  "schema": "FOH_BONE_ARMOR_CERTIFICATION_V1",
+  "generatedAt": "2026-11-19T07:53:10.712Z",
+  "source": {
+    "book": "COF2 Livre de base",
+    "printedPage": 109,
+    "pdfSha256": null
+  },
+  "inputs": {
+    "indexSha256": "79bee1e8b4ce222cd2847d49ea7f56d8a22d8f667a1db04e4635a9fb594f9f2d",
+    "nativeSha256": "da574699d19adcc219b8c455e70f4d49767952dffce4e0ef9cd88151e0c1b753",
+    "sheetSha256": "08a69d6bcbc9fc760277b730885aa86fa5c92683314b4e524cbd65d14472efdb",
+    "runnerSha256": "722c466cc98dffbc441990d008f1dea5d6ff8f9b0d608b4dd668822a5c0257e5"
+  },
+  "execution": "Node + JSDOM, real production engine, native transfer, complete unmodified sheet script and DOM handlers. No browser or physical-device claim.",
+  "cases": [
+    {
+      "id": "transfer-false",
+      "status": "PASS"
+    },
+    {
+      "id": "inactive-false",
+      "status": "PASS"
+    },
+    {
+      "id": "crafted-false",
+      "status": "PASS"
+    },
+    {
+      "id": "maintained-false",
+      "status": "PASS"
+    },
+    {
+      "id": "reload-active-false",
+      "status": "PASS"
+    },
+    {
+      "id": "wear-ABA-false",
+      "status": "PASS"
+    },
+    {
+      "id": "new-game-day-false",
+      "status": "PASS"
+    },
+    {
+      "id": "physical-conflict-false",
+      "status": "PASS"
+    },
+    {
+      "id": "lost-and-reload-false",
+      "status": "PASS"
+    },
+    {
+      "id": "removed-acquisition-false",
+      "status": "PASS"
+    },
+    {
+      "id": "transfer-true",
+      "status": "PASS"
+    }
+  ],
+  "failures": [
+    {
+      "id": "inactive-true",
+      "status": "FAIL",
+      "message": "10 + AGI 1 ; aucune fabrication ni entretien confirmés\n\n14 !== 11\n"
+    },
+    {
+      "id": "crafted-true",
+      "status": "FAIL",
+      "message": "Expected values to be strictly equal:\n\n14 !== 11\n"
+    },
+    {
+      "id": "maintained-true",
+      "status": "FAIL",
+      "message": "Expected values to be strictly equal:\n\n17 !== 14\n"
+    },
+    {
+      "id": "reload-active-true",
+      "status": "FAIL",
+      "message": "Expected values to be strictly equal:\n\n17 !== 14\n"
+    },
+    {
+      "id": "wear-ABA-true",
+      "status": "FAIL",
+      "message": "Expected values to be strictly equal:\n\n14 !== 11\n"
+    },
+    {
+      "id": "new-game-day-true",
+      "status": "FAIL",
+      "message": "Expected values to be strictly equal:\n\n14 !== 11\n"
+    },
+    {
+      "id": "physical-conflict-true",
+      "status": "FAIL",
+      "message": "Expected values to be strictly equal:\n\n16 !== 13\n"
+    },
+    {
+      "id": "lost-and-reload-true",
+      "status": "FAIL",
+      "message": "Expected values to be strictly equal:\n\n16 !== 11\n"
+    },
+    {
+      "id": "removed-acquisition-true",
+      "status": "FAIL",
+      "message": "Expected values to be strictly equal:\n\n14 !== 11\n"
+    }
+  ],
+  "status": "FAIL",
+  "limits": [
+    "R4 scaling requires separate progression witness",
+    "No official PDF or real browser replay in this report",
+    "Shared formula architecture remains to be unified"
+  ]
+}

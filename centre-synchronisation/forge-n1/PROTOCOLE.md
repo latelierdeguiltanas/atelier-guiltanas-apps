@@ -1,3 +1,18 @@
+# Protocole courant — 19 novembre 2026
+
+1. Périmètre = catalogue réellement exposé : 26 peuples, 18 profils, variantes et extensions incluses. Conserver leur provenance ; intégration ne signifie pas conformité certifiée.
+2. Certifier le moteur commun, puis chaque capacité, puis les interactions à risque. Supprimer l’attente obligatoire profil par profil.
+3. `focus.json`, `progress.json` et `purs.json` contiennent `reconciliation`, le registre courant résumé. Les autres champs sont conservés comme archives. La vue actuelle et l’accueil utilisent ce résumé ; aucun couple peuple/profil à l’accueil.
+4. Génération : `node forge-of-heroes/FINAL_FREEZE_TESTS/n1_certification_register.cjs`. Elle refuse des preuves Armure d’os/acquisitions périmées et les divergences source/bundle. Dénominateur et obligations figurent dans `QA/N1/lot-2026-11-19/coverage-register.json`.
+5. La première mesure est un minimum documenté : 113/4789 obligations rattachées, reprise historique en cours. Les rapports à dépendances identiques sont conservés et réutilisables dans leur périmètre ; ils ne certifient pas silencieusement les effets non assertés. Ce score ne constitue ni une régression estimée ni une mesure de fiabilité.
+6. Chaque rang supérieur à la limite ordinaire reste soumis à revue d’accès exceptionnel avant exclusion. Toute exception découverte étend le dénominateur.
+7. Piste A : N1 global. Piste B : N2/N3/N4 ciblé autorisé après vérification individuelle ; la fermeture globale N1 n’est plus un préalable absolu. Aucun PJ réel modifié pour tester.
+8. Les preuves navigateur, PDF, dépendances de fiche et appareil physique sont distinctes. JSDOM ne vaut pas navigateur. Le workflow ciblé archive son résultat sans réécrire les sauvegardes ni les certificats.
+
+Les procédures ci-dessous sont des archives. En cas de conflit, ce protocole et la directive utilisateur du 19 novembre prévalent.
+
+---
+
 # DIRECTIVE DE CERTIFICATION N1 — PRIORITÉ ABSOLUE (02/11/2026)
 
 **Cible finale : 14/14 profils et 8/8 peuples officiels du Livre de base COF2 CERTIFIÉS à 100 %, puis certification séparée des extensions.** Aucun taux global, série massive, simple acquisition de rang ou moyenne de tests ne remplace les preuves individuelles.

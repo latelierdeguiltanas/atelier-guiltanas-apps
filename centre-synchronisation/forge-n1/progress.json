@@ -3196,5 +3196,559 @@
     "source": "../../forge-of-heroes/QA/N1/profile-checkpoint.json",
     "parity": "../../forge-of-heroes/QA/N1/version-parity.json"
   },
-  "knownLimit": "L’écart vers 100 % mesure les obligations manquantes ; ne pas assimiler 100 % de ces contrôles à une preuve mathématique de tous les parcours imaginables."
+  "knownLimit": "L’écart vers 100 % mesure les obligations manquantes ; ne pas assimiler 100 % de ces contrôles à une preuve mathématique de tous les parcours imaginables.",
+  "reconciliation": {
+    "schema": "FOH_N1_RECONCILED_SUMMARY_V1",
+    "generatedAt": "2026-11-19T08:01:30.855Z",
+    "inputs": {
+      "commit": "8bbc4fe5a1401c3a58f3c24c27aec130e4520797",
+      "indexBlob": "ff3ec9147d17a2bf4b3f8cebd2c39816217737f5",
+      "indexSha256": "79bee1e8b4ce222cd2847d49ea7f56d8a22d8f667a1db04e4635a9fb594f9f2d",
+      "engineSha256": "195a96fa8d6bc87d3a919be27787f56100ab2e69615d4b8c4bc1419a652d0181",
+      "databaseSha256": "09bfd6316ed420e59f177738a1a402f849a91dd74f3b01dd7bb17d28f8fb44cb",
+      "nativeSha256": "da574699d19adcc219b8c455e70f4d49767952dffce4e0ef9cd88151e0c1b753",
+      "bridgeSha256": "aae1e6b0445fe463b544e25c1192b292c02345f494c7845a0abb85d745dd42b2",
+      "sheetSha256": "49d0a77b3612917a5c6ce32e39850abf82219a5bd729450d0d8a26cb020a72e7"
+    },
+    "summary": {
+      "catalogue": {
+        "peoples": 26,
+        "profiles": 18,
+        "profilePaths": 95,
+        "peoplePaths": 27,
+        "historyPaths": 17,
+        "referencePrestigeRanks": 50
+      },
+      "inventoriedRules": 695,
+      "applicableRules": 451,
+      "specialAccessReviews": 244,
+      "mechanicallyClosedRules": 1,
+      "fullyCertifiedRules": 0,
+      "criteriaPassed": 113,
+      "criteriaTotal": 4789,
+      "percent": 2.36,
+      "profilesCertified": 0,
+      "peoplesCertified": 0,
+      "certified": false,
+      "denominatorPolicy": "451 ordinary N1 candidate ranks × 10 obligations + 244 exceptional-reachability reviews + 35 engine/interaction/integration gates. Each review discovering an N1 exception adds its 10 obligations; historical witness mapping may credit existing proofs. This first reconciliation is a documented lower bound, not an estimated failure rate.",
+      "reuseCandidates": 14
+    },
+    "profiles": [
+      {
+        "id": "class:arquebusier:cof2-lb-2024",
+        "name": "Arquebusier",
+        "total": 150,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:barde:cof2-lb-2024",
+        "name": "Barde",
+        "total": 150,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:rodeur:cof2-lb-2024",
+        "name": "Rôdeur",
+        "total": 150,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:voleur:cof2-lb-2024",
+        "name": "Voleur",
+        "total": 150,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:barbare:cof2-lb-2024",
+        "name": "Barbare",
+        "total": 150,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:chevalier:cof2-lb-2024",
+        "name": "Chevalier",
+        "total": 150,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:guerrier:cof2-lb-2024",
+        "name": "Guerrier",
+        "total": 150,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:ensorceleur:cof2-lb-2024",
+        "name": "Ensorceleur",
+        "total": 150,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:forgesort:cof2-lb-2024",
+        "name": "Forgesort",
+        "total": 150,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:magicien:cof2-lb-2024",
+        "name": "Magicien",
+        "total": 240,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 24,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:sorcier:cof2-lb-2024",
+        "name": "Sorcier",
+        "total": 180,
+        "passed": 10,
+        "percent": 5.56,
+        "certified": false,
+        "ruleCount": 18,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:invocateur:addon-compagnon-2024",
+        "name": "Invocateur",
+        "total": 150,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:psionique:addon-compagnon-2024",
+        "name": "Psionique",
+        "total": 150,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:druide:cof2-lb-2024",
+        "name": "Druide",
+        "total": 150,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:moine:cof2-lb-2024",
+        "name": "Moine",
+        "total": 150,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:pretre:cof2-lb-2024",
+        "name": "Prêtre",
+        "total": 180,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 18,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:samourai:addon-compagnon-2024",
+        "name": "Samouraï",
+        "total": 150,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "class:arbaletrier:cof2-variant-2024",
+        "name": "Arbalétrier",
+        "total": 150,
+        "passed": 30,
+        "percent": 20,
+        "certified": false,
+        "ruleCount": 15,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      }
+    ],
+    "peoples": [
+      {
+        "id": "people:demi-elfe:cof2-lb-2024",
+        "name": "DEMI‑ELFE",
+        "total": 30,
+        "passed": 6,
+        "percent": 20,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:demi-orc:cof2-lb-2024",
+        "name": "DEMI‑ORC",
+        "total": 30,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:elfe-haut:cof2-lb-2024",
+        "name": "ELFE HAUT",
+        "total": 30,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:elfe-sylvain:cof2-lb-2024",
+        "name": "ELFE SYLVAIN",
+        "total": 30,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:gnome:cof2-lb-2024",
+        "name": "GNOME",
+        "total": 30,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:halfelin:cof2-lb-2024",
+        "name": "HALFELIN",
+        "total": 30,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:humain:cof2-lb-2024",
+        "name": "HUMAIN",
+        "total": 30,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:nain:cof2-lb-2024",
+        "name": "NAIN",
+        "total": 30,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:ame-forgee:addon-comp2017-cof2",
+        "name": "Âme-forgée",
+        "total": 30,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:centaure:addon-comp2017-cof2",
+        "name": "CENTAURE",
+        "total": 30,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:demi-ogre:addon-comp2017-cof2",
+        "name": "DEMI-OGRE",
+        "total": 30,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:gobelin:addon-comp2017-cof2",
+        "name": "GOBELIN",
+        "total": 30,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:kobold:addon-comp2017-cof2",
+        "name": "KOBOLD",
+        "total": 30,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:minotaure:addon-comp2017-cof2",
+        "name": "MINOTAURE",
+        "total": 30,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:lutin:addon-comp2017-cof2",
+        "name": "Lutin · Farfadet",
+        "total": 30,
+        "passed": 0,
+        "percent": 0,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:fee:addon-comp2017-cof2",
+        "name": "Lutin · Fée",
+        "total": 30,
+        "passed": 6,
+        "percent": 20,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:drakonide:compagnon-cof2",
+        "name": "DRAKONIDE",
+        "total": 30,
+        "passed": 6,
+        "percent": 20,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:cambion:compagnon-cof2",
+        "name": "CAMBION",
+        "total": 30,
+        "passed": 6,
+        "percent": 20,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:elfe-pale:compagnon-cof2",
+        "name": "ELFE PÂLE",
+        "total": 30,
+        "passed": 6,
+        "percent": 20,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:elfe-profondeurs:compagnon-cof2",
+        "name": "ELFE DES PROFONDEURS",
+        "total": 30,
+        "passed": 6,
+        "percent": 20,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:felis:compagnon-cof2",
+        "name": "FÉLIS",
+        "total": 30,
+        "passed": 6,
+        "percent": 20,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:frouin:compagnon-cof2",
+        "name": "FROUÏN",
+        "total": 30,
+        "passed": 6,
+        "percent": 20,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:nephilim:compagnon-cof2",
+        "name": "NEPHILIM",
+        "total": 30,
+        "passed": 6,
+        "percent": 20,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:ophidien:compagnon-cof2",
+        "name": "OPHIDIEN",
+        "total": 30,
+        "passed": 6,
+        "percent": 20,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:satyre:compagnon-cof2",
+        "name": "SATYRE",
+        "total": 30,
+        "passed": 6,
+        "percent": 20,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      },
+      {
+        "id": "people:wolfer:compagnon-cof2",
+        "name": "WOLFER",
+        "total": 30,
+        "passed": 6,
+        "percent": 20,
+        "certified": false,
+        "ruleCount": 3,
+        "checks": [],
+        "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
+      }
+    ],
+    "nextAction": "Relier les preuves réutilisables aux règles et fermer les conditions des 51 rangs nouvellement suivis ; mutualiser Armure d’os et rejouer au navigateur.",
+    "blockers": [
+      {
+        "id": "shared-effects",
+        "status": "BLOQUÉ",
+        "detail": "Bone/other conditional formulas still duplicated between creation and sheet; shared engine integration not certified."
+      },
+      {
+        "id": "browser",
+        "status": "BLOQUÉ",
+        "detail": "Local Chromium launch: socket() Operation not permitted. JSDOM is not browser or phone evidence."
+      },
+      {
+        "id": "historical-mapping",
+        "status": "NON TESTÉ",
+        "detail": "Map exact dependency-matched historical assertions to per-rule obligations before increasing certification."
+      },
+      {
+        "id": "source-exceptions",
+        "status": "NON TESTÉ",
+        "detail": "Review 244 high-rank exceptions and remaining conditional classifications."
+      }
+    ],
+    "tracks": {
+      "A": "Global N1 certification remains OPEN",
+      "B": "Individually verified N2/N3/N4 progression allowed; no global N1 gate and no automatic player choice"
+    },
+    "evidencePath": "../../forge-of-heroes/QA/N1/lot-2026-11-19/coverage-register.json"
+  },
+  "legacyStatus": "HISTORICAL_DETAIL_RETAINED_NOT_CURRENT_CERTIFICATE"
 }

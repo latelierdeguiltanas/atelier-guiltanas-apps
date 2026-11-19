@@ -1,0 +1,971 @@
+{
+  "inputs": {
+    "commit": "8bbc4fe5a1401c3a58f3c24c27aec130e4520797",
+    "indexBlob": "ff3ec9147d17a2bf4b3f8cebd2c39816217737f5",
+    "indexSha256": "79bee1e8b4ce222cd2847d49ea7f56d8a22d8f667a1db04e4635a9fb594f9f2d",
+    "engineSha256": "195a96fa8d6bc87d3a919be27787f56100ab2e69615d4b8c4bc1419a652d0181",
+    "databaseSha256": "09bfd6316ed420e59f177738a1a402f849a91dd74f3b01dd7bb17d28f8fb44cb",
+    "nativeSha256": "da574699d19adcc219b8c455e70f4d49767952dffce4e0ef9cd88151e0c1b753",
+    "bridgeSha256": "aae1e6b0445fe463b544e25c1192b292c02345f494c7845a0abb85d745dd42b2",
+    "sheetSha256": "49d0a77b3612917a5c6ce32e39850abf82219a5bd729450d0d8a26cb020a72e7"
+  },
+  "groups": [
+    {
+      "pathId": "classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024",
+      "ranks": [
+        {
+          "id": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+          "rank": 1,
+          "name": "Mécanismes",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "permanent"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+          "rank": 2,
+          "name": "Arme à répétition",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+          "rank": 3,
+          "name": "Tir de barrage (L)",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "activable",
+            "passif contextuel",
+            "temporaire"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:canon-double:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+          "rank": 4,
+          "name": "Canon double",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "consommable"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:couleuvrine-l:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+          "rank": 5,
+          "name": "Couleuvrine (L)",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "activable",
+            "passif contextuel",
+            "temporaire"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024",
+      "ranks": [
+        {
+          "id": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+          "rank": 1,
+          "name": "Pilier de bar",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "permanent",
+            "passif contextuel"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+          "rank": 2,
+          "name": "Mort ou vif (L)",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "activable",
+            "passif contextuel",
+            "temporaire"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+          "rank": 3,
+          "name": "Combattant aguerri",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "permanent",
+            "passif contextuel"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:constitution-heroique:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+          "rank": 4,
+          "name": "Constitution héroïque",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:combat-de-masse:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+          "rank": 5,
+          "name": "Combat de masse",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "passif contextuel"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024",
+      "ranks": [
+        {
+          "id": "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+          "rank": 1,
+          "name": "Plus vite que son ombre",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "passif contextuel"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+          "rank": 2,
+          "name": "Ajuster le tir",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "passif contextuel",
+            "temporaire"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:tir-double-l:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+          "rank": 3,
+          "name": "Tir double (L)",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "activable"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:agilite-heroique:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+          "rank": 4,
+          "name": "Agilité héroïque",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:as-de-la-gachette:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+          "rank": 5,
+          "name": "As de la gâchette",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024",
+      "ranks": [
+        {
+          "id": "ability:joli-coup:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+          "rank": 1,
+          "name": "Joli coup",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "permanent"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+          "rank": 2,
+          "name": "Défaut dans la cuirasse (A)",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "activable",
+            "passif contextuel",
+            "temporaire"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:tir-precis:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+          "rank": 3,
+          "name": "Tir précis",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:tireur-delite-l:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+          "rank": 4,
+          "name": "Tireur d’élite (L)",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "activable"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:tir-fatal-l:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+          "rank": 5,
+          "name": "Tir fatal (L)",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "activable"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024",
+      "ranks": [
+        {
+          "id": "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+          "rank": 1,
+          "name": "Armes de prédilection",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "permanent"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+          "rank": 2,
+          "name": "Science du critique",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:specialisation:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+          "rank": 3,
+          "name": "Spécialisation",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "permanent",
+            "passif contextuel"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:attaque-parfaite-l:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank4:cof2-lb-2024",
+          "rank": 4,
+          "name": "Attaque parfaite (L)",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "activable"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:riposte-g:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank5:cof2-lb-2024",
+          "rank": 5,
+          "name": "Riposte (G)",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "activable",
+            "passif contextuel",
+            "temporaire",
+            "réactif"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "path:voie-de-la-fee:compagnon-cof2",
+      "ranks": [
+        {
+          "id": "ability:fee-r1:path:voie-de-la-fee:compagnon-cof2",
+          "rank": 1,
+          "name": "Née d’une fleur",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:fee-r2:path:voie-de-la-fee:compagnon-cof2",
+          "rank": 2,
+          "name": "Pirouette",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:fee-r3:path:voie-de-la-fee:compagnon-cof2",
+          "rank": 3,
+          "name": "Poudre de fée",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "consommable"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:fee-r4:path:voie-de-la-fee:compagnon-cof2",
+          "rank": 4,
+          "name": "Fée révérée",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "temporaire",
+            "consommable"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:fee-r5:path:voie-de-la-fee:compagnon-cof2",
+          "rank": 5,
+          "name": "Lady fée",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "path:voie-du-drakonide:compagnon-cof2",
+      "ranks": [
+        {
+          "id": "ability:drakonide-r1:path:voie-du-drakonide:compagnon-cof2",
+          "rank": 1,
+          "name": "Sang dragon",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2",
+          "rank": 2,
+          "name": "Souffle (L)",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "activable"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:drakonide-r3:path:voie-du-drakonide:compagnon-cof2",
+          "rank": 3,
+          "name": "Écailles robustes",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:drakonide-r4:path:voie-du-drakonide:compagnon-cof2",
+          "rank": 4,
+          "name": "Fureur drakonide/Ailes puissantes",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "temporaire"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:drakonide-r5:path:voie-du-drakonide:compagnon-cof2",
+          "rank": 5,
+          "name": "Héritage draconique",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "path:voie-du-cambion:compagnon-cof2",
+      "ranks": [
+        {
+          "id": "ability:cambion-r1:path:voie-du-cambion:compagnon-cof2",
+          "rank": 1,
+          "name": "Ami des ombres",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:cambion-r2:path:voie-du-cambion:compagnon-cof2",
+          "rank": 2,
+          "name": "Enfant des ténèbres",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "passif contextuel"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:cambion-r3:path:voie-du-cambion:compagnon-cof2",
+          "rank": 3,
+          "name": "Résistances",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:cambion-r4:path:voie-du-cambion:compagnon-cof2",
+          "rank": 4,
+          "name": "La belle et la bête",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "consommable"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:cambion-r5:path:voie-du-cambion:compagnon-cof2",
+          "rank": 5,
+          "name": "Forgé par les ténèbres",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "path:voie-de-l-elfe-pale:compagnon-cof2",
+      "ranks": [
+        {
+          "id": "ability:elfe-pale-r1:path:voie-de-l-elfe-pale:compagnon-cof2",
+          "rank": 1,
+          "name": "Natif de la Forêt sombre",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:elfe-pale-r2:path:voie-de-l-elfe-pale:compagnon-cof2",
+          "rank": 2,
+          "name": "Résistance au poison",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:elfe-pale-r3:path:voie-de-l-elfe-pale:compagnon-cof2",
+          "rank": 3,
+          "name": "Fléau des morts",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:elfe-pale-r4:path:voie-de-l-elfe-pale:compagnon-cof2",
+          "rank": 4,
+          "name": "Provoquer la chance",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:elfe-pale-r5:path:voie-de-l-elfe-pale:compagnon-cof2",
+          "rank": 5,
+          "name": "Supériorité elfique",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "ranks": [
+        {
+          "id": "ability:elfe-profondeurs-r1:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+          "rank": 1,
+          "name": "Enfant des ténèbres",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:elfe-profondeurs-r2:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+          "rank": 2,
+          "name": "Lames et sorcellerie",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "passif contextuel"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:elfe-profondeurs-r3:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+          "rank": 3,
+          "name": "Combat à deux armes",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "passif contextuel",
+            "réactif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:elfe-profondeurs-r4:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+          "rank": 4,
+          "name": "Maîtrise des arbalètes",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:elfe-profondeurs-r5:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+          "rank": 5,
+          "name": "Supériorité elfique",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "path:voie-du-felis:compagnon-cof2",
+      "ranks": [
+        {
+          "id": "ability:felis-r1:path:voie-du-felis:compagnon-cof2",
+          "rank": 1,
+          "name": "Âme féline",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:felis-r2:path:voie-du-felis:compagnon-cof2",
+          "rank": 2,
+          "name": "Armes naturelles",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:felis-r3:path:voie-du-felis:compagnon-cof2",
+          "rank": 3,
+          "name": "Vif et discret",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:felis-r4:path:voie-du-felis:compagnon-cof2",
+          "rank": 4,
+          "name": "Métamorphose féline (L)",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "activable",
+            "passif contextuel",
+            "temporaire"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:felis-r5:path:voie-du-felis:compagnon-cof2",
+          "rank": 5,
+          "name": "Nature féline",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "path:voie-du-frouin:compagnon-cof2",
+      "ranks": [
+        {
+          "id": "ability:frouin-r1:path:voie-du-frouin:compagnon-cof2",
+          "rank": 1,
+          "name": "Avarié",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:frouin-r2:path:voie-du-frouin:compagnon-cof2",
+          "rank": 2,
+          "name": "Minus",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:frouin-r3:path:voie-du-frouin:compagnon-cof2",
+          "rank": 3,
+          "name": "Parano",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:frouin-r4:path:voie-du-frouin:compagnon-cof2",
+          "rank": 4,
+          "name": "Attaque simultanée",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:frouin-r5:path:voie-du-frouin:compagnon-cof2",
+          "rank": 5,
+          "name": "Champion de la survie",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "path:voie-du-nephilim:compagnon-cof2",
+      "ranks": [
+        {
+          "id": "ability:nephilim-r1:path:voie-du-nephilim:compagnon-cof2",
+          "rank": 1,
+          "name": "Photosensible",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:nephilim-r2:path:voie-du-nephilim:compagnon-cof2",
+          "rank": 2,
+          "name": "Enfant de la lumière",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "passif contextuel"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:nephilim-r3:path:voie-du-nephilim:compagnon-cof2",
+          "rank": 3,
+          "name": "Résistances",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:nephilim-r4:path:voie-du-nephilim:compagnon-cof2",
+          "rank": 4,
+          "name": "La plume et l’acier",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "consommable"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:nephilim-r5:path:voie-du-nephilim:compagnon-cof2",
+          "rank": 5,
+          "name": "Forgé par la lumière",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "path:voie-de-l-ophidien:compagnon-cof2",
+      "ranks": [
+        {
+          "id": "ability:ophidien-r1:path:voie-de-l-ophidien:compagnon-cof2",
+          "rank": 1,
+          "name": "Sang des anciens",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:ophidien-r2:path:voie-de-l-ophidien:compagnon-cof2",
+          "rank": 2,
+          "name": "Regard hypnotique*",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "consommable"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:ophidien-r3:path:voie-de-l-ophidien:compagnon-cof2",
+          "rank": 3,
+          "name": "Crachat (A)",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "activable",
+            "temporaire"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:ophidien-r4:path:voie-de-l-ophidien:compagnon-cof2",
+          "rank": 4,
+          "name": "Mutation serpentine (L)",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "activable",
+            "temporaire"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:ophidien-r5:path:voie-de-l-ophidien:compagnon-cof2",
+          "rank": 5,
+          "name": "Forme de serpent (L)",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "activable",
+            "temporaire"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "path:voie-du-satyre:compagnon-cof2",
+      "ranks": [
+        {
+          "id": "ability:satyre-r1:path:voie-du-satyre:compagnon-cof2",
+          "rank": 1,
+          "name": "Bonne nature",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:satyre-r2:path:voie-du-satyre:compagnon-cof2",
+          "rank": 2,
+          "name": "Encorner et ruer",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "temporaire"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:satyre-r3:path:voie-du-satyre:compagnon-cof2",
+          "rank": 3,
+          "name": "Compagnon de voyage",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "temporaire"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:satyre-r4:path:voie-du-satyre:compagnon-cof2",
+          "rank": 4,
+          "name": "Magie sauvage",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "consommable"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:satyre-r5:path:voie-du-satyre:compagnon-cof2",
+          "rank": 5,
+          "name": "Ascendance naturelle",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "path:voie-du-wolfer:compagnon-cof2",
+      "ranks": [
+        {
+          "id": "ability:wolfer-r1:path:voie-du-wolfer:compagnon-cof2",
+          "rank": 1,
+          "name": "Chasseur né",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:wolfer-r2:path:voie-du-wolfer:compagnon-cof2",
+          "rank": 2,
+          "name": "Griffes et crocs",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "temporaire"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:wolfer-r3:path:voie-du-wolfer:compagnon-cof2",
+          "rank": 3,
+          "name": "Loi de la meute",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "passif contextuel"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:wolfer-r4:path:voie-du-wolfer:compagnon-cof2",
+          "rank": 4,
+          "name": "Forme de loup (L)",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "activable"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:wolfer-r5:path:voie-du-wolfer:compagnon-cof2",
+          "rank": 5,
+          "name": "Esprit du loup",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    },
+    {
+      "pathId": "path:voie-du-demi-elfe:compagnon-cof2",
+      "ranks": [
+        {
+          "id": "ability:demi-elfe-v2-r1:path:voie-du-demi-elfe:compagnon-cof2",
+          "rank": 1,
+          "name": "Héritages",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:demi-elfe-v2-r2:path:voie-du-demi-elfe:compagnon-cof2",
+          "rank": 2,
+          "name": "Nomade",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:demi-elfe-v2-r3:path:voie-du-demi-elfe:compagnon-cof2",
+          "rank": 3,
+          "name": "Capacité d’apprentissage",
+          "applicability": "IN_SCOPE",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "PASS"
+        },
+        {
+          "id": "ability:demi-elfe-v2-r4:path:voie-du-demi-elfe:compagnon-cof2",
+          "rank": 4,
+          "name": "Sang féerique",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        },
+        {
+          "id": "ability:demi-elfe-v2-r5:path:voie-du-demi-elfe:compagnon-cof2",
+          "rank": 5,
+          "name": "Empathie fantastique",
+          "applicability": "SPECIAL_ACCESS_REVIEW",
+          "types": [
+            "descriptif"
+          ],
+          "acquisition": "NON TESTÉ"
+        }
+      ]
+    }
+  ]
+}
