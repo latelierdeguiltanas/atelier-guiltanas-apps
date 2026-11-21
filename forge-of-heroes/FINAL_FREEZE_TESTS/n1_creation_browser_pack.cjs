@@ -61,9 +61,36 @@ async function run(browser,n){
   if(n===5||n===6){await click('[data-pistol-count="1"]');if(n===5){await click('[data-pistol-count="2"]');await click('[data-pistol-count="3"]');assert.match(await p.locator('#repeating-pistol-status').innerText(),/maximum 2/);await click('[data-pistol-count="1"]');}}
   await next();await click('#reveal-view');
   const summary=()=>p.locator('#summary-content').innerText();const verify=async()=>{const text=await summary();for(const [i,k] of ['PV','DEF','INIT','PC','PM'].entries())assert.match(text,new RegExp('(?:^|\\n)'+k+'\\n'+expected[i]+'(?:\\n|$)'));return text};
-  const before=await verify();await p.getByRole('button',{name:'Enregistrer dans Mes héros',exact:true}).tap();await p.reload();await click('#open-heroes');await p.getByRole('button',{name:'Voir la fiche',exact:true}).first().tap();assert.equal(await verify(),before);
-  await click('#native-play-sheet');const sheet=p.frameLocator('#sheet');await sheet.getByRole('heading',{name:'Recette '+n,exact:true}).waitFor();await p.reload();await sheet.getByRole('heading',{name:'Recette '+n,exact:true}).waitFor();assert.equal(await sheet.getByText(expected[0]+'/'+expected[0],{exact:true}).count(),1);
-  return {n,status:'PASS',expected};
+  const abilities=async()=>p.locator('[data-summary-ability]').evaluateAll(nodes=>nodes.map(node=>({
+   id:node.dataset.summaryAbility,
+   label:node.textContent.split(/ \(rang \d+\)/)[0].trim()
+  })));
+  const before=await verify(), acquired=await abilities();
+  assert.ok(acquired.length>0,'Création avec des capacités acquises');
+  assert.equal(new Set(acquired.map(a=>a.id)).size,acquired.length,'Identifiants de capacités uniques');
+  await p.getByRole('button',{name:'Enregistrer dans Mes héros',exact:true}).tap();
+  await p.reload();
+  await click('#open-heroes');
+  const saved=p.locator('.saved-hero').filter({has:p.getByText('Recette '+n,{exact:true})});
+  assert.equal(await saved.count(),1,'Une seule entrée pour le héros sauvegardé');
+  await saved.getByRole('button',{name:'Voir la fiche',exact:true}).tap();
+  assert.equal(await verify(),before);
+  assert.deepEqual(await abilities(),acquired,'Les capacités et leurs identifiants survivent à la réouverture');
+  await click('#native-play-sheet');
+  const sheet=p.frameLocator('#sheet');
+  async function verifySheet(){
+   await sheet.getByRole('heading',{name:'Recette '+n,exact:true}).waitFor();
+   assert.equal(await sheet.getByText(expected[0]+'/'+expected[0],{exact:true}).count(),1);
+   await sheet.getByRole('button',{name:'Capacités',exact:true}).tap();
+   await sheet.locator('#abilities [data-ui-ability] strong').first().waitFor();
+   const labels=(await sheet.locator('#abilities [data-ui-ability] strong').allTextContents()).map(x=>x.trim());
+   for(const ability of acquired)assert.ok(labels.includes(ability.label),'Capacité absente de la fiche interactive : '+ability.label);
+   return labels;
+  }
+  const sheetBefore=await verifySheet();
+  await p.reload();
+  assert.deepEqual(await verifySheet(),sheetBefore,'Les capacités restent sur la fiche interactive après actualisation');
+  return {n,status:'PASS',expected,acquired:acquired.map(a=>a.id),sheetAbilityCount:sheetBefore.length};
  }catch(e){return {n,status:'FAIL',message:e.message,screen:await p.locator('.step.active').innerText().catch(()=>'')};}finally{await ctx.close();}
 }
 (async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||undefined,args:['--no-sandbox']});let results=[];try{for(const n of process.argv.slice(2).map(Number).length?process.argv.slice(2).map(Number):scenarios.map((_,i)=>i+1)){const r=await run(browser,n);console.log(n,r.status,r.message?.slice(0,180)||'');results.push(r);}}finally{await browser.close();}fs.writeFileSync(process.env.CLICK_REPORT||'n1-click-results.json',JSON.stringify(results,null,2));if(results.some(x=>x.status==='FAIL'))process.exitCode=1;})().catch(e=>{console.error(e);process.exitCode=1});
