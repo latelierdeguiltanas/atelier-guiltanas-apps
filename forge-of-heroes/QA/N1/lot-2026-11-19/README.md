@@ -117,3 +117,7 @@ Les 244 critères de revue d'accès passent. Le registre atteint 1159 / 4789 (24
 L'oracle Guerrier signalait un seuil de 20 avec l'épée de prédilection, alors que le Livre de base p. 89 prescrit une amélioration d'un point. Le moteur applique désormais cette amélioration au R2 de la voie du maître d'armes du Guerrier sur la catégorie choisie. Le récapitulatif de création affiche la plage de critique. Le contrôle impose 19 sur l'épée de prédilection et 20 sur la dague ou après changement de prédilection. Voir [guerrier-source-n1.json](../guerrier-source-n1.json).
 
 Les rapports d'acquisition, d'accès aux rangs hauts, de peuples, d'Arquebusier, d'Armure d'os et de Souffle ont été rejoués sur ce moteur pour conserver les preuves liées à son empreinte.
+
+## Choix à valeurs finies
+
+[Recette des choix](finite-choices.json) : 23 capacités, 79 valeurs légales projetées et relues après sauvegarde, plus un rejet hors domaine par champ. Chaque série s'appuie sur un personnage N1 légal. Cette preuve couvre les valeurs scalaires implémentées. Les choix dynamiques, composés et multiples, ainsi que leurs conséquences en jeu, restent des contrôles distincts. Une capacité (Souffle du Drakonide) avait déjà ce critère à PASS. Le gain net est de 22 critères, soit 1182 / 4789 (24,68 %).

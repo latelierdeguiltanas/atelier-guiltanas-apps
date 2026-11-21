@@ -11,6 +11,9 @@ const batchCurrent=batch.inputs.indexSha256===inputs.indexSha256&&batch.inputs.n
  batch.inputs.librarySha256===hash(fs.readFileSync(root+'/fiches-personnages/library.js'));
 const highRankProof=read('forge-of-heroes/QA/N1/lot-2026-11-19/high-rank-access.json');
 const highRankCurrent=highRankProof.status==='PASS'&&highRankProof.inputs.indexSha256===inputs.indexSha256;
+const finiteChoices=read('forge-of-heroes/QA/N1/lot-2026-11-19/finite-choices.json');
+const finiteChoicesCurrent=finiteChoices.inputs.indexSha256===inputs.indexSha256&&
+ finiteChoices.inputs.runnerSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_finite_choices.cjs'));
 const breathProof=read('forge-of-heroes/QA/N1/lot-2026-11-19/drakonide-breath-dom.json');
 const breathCurrent=breathProof.status==='PASS'&&
  breathProof.inputs.indexSha256===inputs.indexSha256&&breathProof.inputs.nativeSha256===inputs.nativeSha256&&
@@ -44,6 +47,9 @@ const rows=[...T.abilities_class,...T.abilities_people,...T.history_abilities].m
  }
  if(criticalCurrent&&a.rank===2&&a.path_id==='classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024')
   checks.numericEffects={status:'PASS',evidence:'../guerrier-source-n1.json',scope:'COF2 p.89: threshold 19 on the preferred sword; 20 on the dagger and after switching preference to axes.'};
+ const choices=finiteChoicesCurrent&&finiteChoices.cases[a.id];
+ if(choices?.status==='PASS'&&choices.verified.length&&choices.rejectedOutsideDomain>0)
+  checks.choices={status:'PASS',evidence:'finite-choices.json',scope:'Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected.'};
  if(breathCurrent&&a.id==='ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2'){
   const scopes={
    choices:'All four elements projected from Forge to the interactive card.',

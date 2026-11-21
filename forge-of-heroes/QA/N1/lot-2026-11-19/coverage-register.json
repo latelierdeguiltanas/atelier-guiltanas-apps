@@ -1,8 +1,8 @@
 {
   "schema": "FOH_N1_CERTIFICATION_REGISTER_V1",
-  "generatedAt": "2026-11-21T13:47:55.950Z",
+  "generatedAt": "2026-11-21T14:04:48.033Z",
   "inputs": {
-    "commit": "db2b4c8d28ff5c9cb2b34bc604eef42cdd3df846",
+    "commit": "4e90e7c4a282d853f6458ad5887d5e59ec93a10e",
     "indexBlob": "5583f1c9d60c3c1da374000c950a53e2ffc6804a",
     "indexSha256": "bf4b21430c8aadb064dba761081f1763924aa2a9e1a2ea524795cb830353093a",
     "engineSha256": "5445de9424678fa040ac6461e9947a7ad606a2a33b794359343a95c73808e2ed",
@@ -26,14 +26,14 @@
     "specialAccessReviewed": 244,
     "mechanicallyClosedRules": 1,
     "fullyCertifiedRules": 0,
-    "criteriaPassed": 1160,
+    "criteriaPassed": 1182,
     "criteriaTotal": 4789,
-    "percent": 24.22,
+    "percent": 24.68,
     "profilesCertified": 0,
     "peoplesCertified": 0,
     "certified": false,
     "denominatorPolicy": "451 ordinary N1 candidate ranks × 10 obligations + 244 exceptional-reachability reviews + 35 engine/interaction/integration gates. Each review discovering an N1 exception adds its 10 obligations; historical witness mapping may credit existing proofs. This first reconciliation is a documented lower bound, not an estimated failure rate.",
-    "reuseCandidates": 3
+    "reuseCandidates": 11
   },
   "obligations": [
     "acquisition",
@@ -4003,8 +4003,9 @@
           "scope": "Verified canonical acquisition: ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -5167,8 +5168,9 @@
           "scope": "Verified canonical acquisition: ability:eclaireur:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -8351,8 +8353,9 @@
           "scope": "Verified canonical acquisition: ability:peau-de-pierre:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -8427,8 +8430,9 @@
           "scope": "Verified canonical acquisition: ability:tatouages:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -12538,8 +12542,9 @@
           "scope": "Verified canonical acquisition: ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -13079,8 +13084,9 @@
           "scope": "Verified canonical acquisition: ability:armure-lourde:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -13785,8 +13791,9 @@
           "scope": "Verified canonical acquisition: ability:invocation-d-une-entite:classpath-voie-de-l-entite-class-invocateur-addon-compagnon-2024:r1"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -14480,8 +14487,9 @@
           "scope": "Verified canonical acquisition: ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -14711,8 +14719,9 @@
           "scope": "Verified canonical acquisition: ability:poings-de-fer:classpath-voie-du-poing-class-moine-cof2-lb-2024:r1"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -15171,8 +15180,9 @@
           "scope": "Verified canonical acquisition: ability:spiritualite:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:r1"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -16247,8 +16257,9 @@
           "scope": "Verified canonical acquisition: ability-r1-class-forgesort-golem-grosse-tete-cof2-lb-2024"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -17486,8 +17497,9 @@
           "scope": "Verified canonical acquisition: ability-r1-class-samourai-sabre-technique-du-sabre-addon-compagnon-2024"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -36781,8 +36793,9 @@
           "scope": "Verified canonical acquisition: ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -44100,8 +44113,9 @@
           "scope": "Verified canonical acquisition: ability:cambion-r2:path:voie-du-cambion:compagnon-cof2"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -45329,8 +45343,9 @@
           "scope": "Verified canonical acquisition: ability:felis-r3:path:voie-du-felis:compagnon-cof2"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -46023,8 +46038,9 @@
           "scope": "Verified canonical acquisition: ability:nephilim-r2:path:voie-du-nephilim:compagnon-cof2"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -46407,8 +46423,9 @@
           "scope": "Verified canonical acquisition: ability:ophidien-r2:path:voie-de-l-ophidien:compagnon-cof2"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -47254,8 +47271,9 @@
           "scope": "Verified canonical acquisition: ability:wolfer-r3:path:voie-du-wolfer:compagnon-cof2"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -51829,8 +51847,9 @@
           "scope": "Verified canonical acquisition: ability:history:scholar:r3"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -52361,8 +52380,9 @@
           "scope": "Verified canonical acquisition: ability:history:expert:r5"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -52817,8 +52837,9 @@
           "scope": "Verified canonical acquisition: ability:history:soldier:r1"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -52893,8 +52914,9 @@
           "scope": "Verified canonical acquisition: ability:history:soldier:r2"
         },
         "choices": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "finite-choices.json",
+          "scope": "Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected."
         },
         "permanentEffects": {
           "status": "NON TESTÉ",
@@ -54525,8 +54547,8 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json",
-      "reportSha256": "c1f5f67ad95a91b36acc3e0c8d0ff2ac462729e557bd55d758ca70f9caa9d75e",
-      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "reportSha256": "978f7641d83fb06f9acf5de8dabbf3c1c3b9293cf3fb75fb49fb0d20ec8fc400",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -54537,8 +54559,8 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json",
-      "reportSha256": "722f734d9c467eb1326eae3103798cba2e12f0397b84857308ad3315316f56ff",
-      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "reportSha256": "8a068e9e6a4199b4349fedc8443c35de7116ea88940cee1795eb07fa26bf3434",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -54597,8 +54619,8 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/arquebusier-context-real-click.json",
-      "reportSha256": "7239dd572bfd2318007e51f3024990f9249edc128218481f0a366b388057d3ab",
-      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "reportSha256": "549aafb0fddaaa9d9a8cb99596cee24ec7a2c07a23acd92af907c1f53a295da0",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -54741,8 +54763,8 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-gear-probe.json",
-      "reportSha256": "cf53f5a8647bfc4619f1eed1c7473cae62c55da9f3effe42c985c0fae374bd2d",
-      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "reportSha256": "11b62e8e1d20988bae96a5770acc0d0a46a9bd4413fcd1b0a65ea079f2fd8447",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -54825,8 +54847,8 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json",
-      "reportSha256": "800e8b07bae4cfb5f90951bbbb523879004d594e44760e72092d49fc39c8cd00",
-      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "reportSha256": "533e5134dc5af2d3ae4eb40a72d6d41c3054af5e23c6bd5c8fe37a9d5f83f33f",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -55401,8 +55423,8 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/native-items.json",
-      "reportSha256": "e560e0515c21c66b692531147e08724ed0b5d2d413a19f26db77dc1207f0c8a9",
-      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "reportSha256": "d9acf37eeb1bda7776018efc67d4e067ff11030b1c1852831eacf3893530a304",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -55527,8 +55549,8 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/regressions.json",
-      "reportSha256": "ed2c8faa26c7db1dfd1469c757e01dba9bda46b1448a6be9082b30370bb9791e",
-      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "reportSha256": "ede58bc70b516d688c3ae11127214a7d05228181a36eade586b88af5550ecf6e",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -55599,8 +55621,8 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/version-parity.json",
-      "reportSha256": "3a9d2fbc6d55341bfffbf0e8fa45d5647cc9aeb48a6b596aac463f4009f972b6",
-      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "reportSha256": "32823ef1c2bddb9ed7beaeefd9c666926dde92a32d5f141eade1e7f22e065ab4",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {

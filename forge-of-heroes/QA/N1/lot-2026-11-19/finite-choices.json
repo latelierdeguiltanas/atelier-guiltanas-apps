@@ -1,0 +1,487 @@
+{
+  "schema": "FOH_N1_FINITE_CHOICES_V1",
+  "inputs": {
+    "indexSha256": "bf4b21430c8aadb064dba761081f1763924aa2a9e1a2ea524795cb830353093a",
+    "runnerSha256": "0cdea04245914c0ab936d94cc514f726ac4372baf108b6de00bd27a3e3c8e6cd"
+  },
+  "scope": "All implemented finite scalar values in a legal level-one witness per ability. Checks projection, official save/reopen, and rejection of an out-of-domain input per field. Mixed, dynamic and multiselect choices are excluded.",
+  "cases": {
+    "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Archer émérite",
+      "verified": [
+        [
+          "throwerVariant",
+          false
+        ],
+        [
+          "throwerVariant",
+          true
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:eclaireur:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Éclaireur",
+      "verified": [
+        [
+          "traqueurSwap",
+          false
+        ],
+        [
+          "traqueurSwap",
+          true
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:peau-de-pierre:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Peau de pierre",
+      "verified": [
+        [
+          "defenseStat",
+          "AGI"
+        ],
+        [
+          "defenseStat",
+          "CON"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:tatouages:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Tatouages",
+      "verified": [
+        [
+          "tattooStat",
+          "FOR"
+        ],
+        [
+          "tattooStat",
+          "CON"
+        ],
+        [
+          "tattooStat",
+          "AGI"
+        ],
+        [
+          "tattooStat",
+          "PER"
+        ],
+        [
+          "tattooStat",
+          "CHA"
+        ],
+        [
+          "tattooStat",
+          "INT"
+        ],
+        [
+          "tattooStat",
+          "VOL"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Armes de prédilection",
+      "verified": [
+        [
+          "preferredWeaponCategory",
+          "swords"
+        ],
+        [
+          "preferredWeaponCategory",
+          "axes"
+        ],
+        [
+          "preferredWeaponCategory",
+          "maces"
+        ],
+        [
+          "preferredWeaponCategory",
+          "spears"
+        ],
+        [
+          "preferredWeaponCategory",
+          "thrown"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:armure-lourde:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Armure lourde",
+      "verified": [
+        [
+          "heavyArmorChoice",
+          "DEF_PLUS_1"
+        ],
+        [
+          "heavyArmorChoice",
+          "PLATE_MASTERY"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:invocation-d-une-entite:classpath-voie-de-l-entite-class-invocateur-addon-compagnon-2024:r1": {
+      "status": "PASS",
+      "label": "Rang 1 — Invocation d’une entité",
+      "verified": [
+        [
+          "entityStrength",
+          "0"
+        ],
+        [
+          "entityStrength",
+          "1"
+        ],
+        [
+          "entityStrength",
+          "2"
+        ],
+        [
+          "entityStrength",
+          "3"
+        ],
+        [
+          "entityStrength",
+          "4"
+        ],
+        [
+          "entityMind",
+          "int2"
+        ],
+        [
+          "entityMind",
+          "per2"
+        ],
+        [
+          "entityMind",
+          "cha2"
+        ],
+        [
+          "entityMind",
+          "int1per1"
+        ],
+        [
+          "entityMind",
+          "int1cha1"
+        ],
+        [
+          "entityMind",
+          "per1cha1"
+        ]
+      ],
+      "rejectedOutsideDomain": 2
+    },
+    "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1": {
+      "status": "PASS",
+      "label": "Rang 1 — Mains d’énergie (L)",
+      "verified": [
+        [
+          "unarmedDamageStat",
+          "FOR"
+        ],
+        [
+          "unarmedDamageStat",
+          "VOL"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:poings-de-fer:classpath-voie-du-poing-class-moine-cof2-lb-2024:r1": {
+      "status": "PASS",
+      "label": "Rang 1 — Poings de fer",
+      "verified": [
+        [
+          "unarmedAttackStat",
+          "FOR"
+        ],
+        [
+          "unarmedAttackStat",
+          "AGI"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:spiritualite:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:r1": {
+      "status": "PASS",
+      "label": "Rang 1 — Vêtements sacrés",
+      "verified": [
+        [
+          "sacredVestments",
+          "VESTMENTS"
+        ],
+        [
+          "sacredVestments",
+          "WARRIOR_MAIL"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability-r1-class-forgesort-golem-grosse-tete-cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Grosse tête",
+      "verified": [
+        [
+          "useIntForPV",
+          false
+        ],
+        [
+          "useIntForPV",
+          true
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability-r1-class-samourai-sabre-technique-du-sabre-addon-compagnon-2024": {
+      "status": "PASS",
+      "label": "Rang 1 — Technique du sabre",
+      "verified": [
+        [
+          "sabreAttackStat",
+          "AUTO"
+        ],
+        [
+          "sabreAttackStat",
+          "FOR"
+        ],
+        [
+          "sabreAttackStat",
+          "AGI"
+        ],
+        [
+          "sabreDamageStat",
+          "AUTO"
+        ],
+        [
+          "sabreDamageStat",
+          "FOR"
+        ],
+        [
+          "sabreDamageStat",
+          "RANG"
+        ]
+      ],
+      "rejectedOutsideDomain": 2
+    },
+    "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Armes de prédilection",
+      "verified": [
+        [
+          "preferredWeaponCategory",
+          "crossbows"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2": {
+      "status": "PASS",
+      "label": "Souffle (L)",
+      "verified": [
+        [
+          "drakonideBreath",
+          "fire"
+        ],
+        [
+          "drakonideBreath",
+          "cold"
+        ],
+        [
+          "drakonideBreath",
+          "lightning"
+        ],
+        [
+          "drakonideBreath",
+          "acid"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:cambion-r2:path:voie-du-cambion:compagnon-cof2": {
+      "status": "PASS",
+      "label": "Enfant des ténèbres",
+      "verified": [
+        [
+          "racialMagicStat",
+          "int"
+        ],
+        [
+          "racialMagicStat",
+          "vol"
+        ],
+        [
+          "racialMagicStat",
+          "con"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:felis-r3:path:voie-du-felis:compagnon-cof2": {
+      "status": "PASS",
+      "label": "Vif et discret",
+      "verified": [
+        [
+          "felisBackground",
+          "acrobatics"
+        ],
+        [
+          "felisBackground",
+          "forest"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:nephilim-r2:path:voie-du-nephilim:compagnon-cof2": {
+      "status": "PASS",
+      "label": "Enfant de la lumière",
+      "verified": [
+        [
+          "racialMagicStat",
+          "int"
+        ],
+        [
+          "racialMagicStat",
+          "vol"
+        ],
+        [
+          "racialMagicStat",
+          "con"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:ophidien-r2:path:voie-de-l-ophidien:compagnon-cof2": {
+      "status": "PASS",
+      "label": "Regard hypnotique*",
+      "verified": [
+        [
+          "racialMagicStat",
+          "cha"
+        ],
+        [
+          "racialMagicStat",
+          "vol"
+        ],
+        [
+          "racialMagicStat",
+          "con"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:wolfer-r3:path:voie-du-wolfer:compagnon-cof2": {
+      "status": "PASS",
+      "label": "Loi de la meute",
+      "verified": [
+        [
+          "wolferLuckStat",
+          "cha"
+        ],
+        [
+          "wolferLuckStat",
+          "per"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:history:scholar:r3": {
+      "status": "PASS",
+      "label": "Domaine secondaire",
+      "verified": [
+        [
+          "scholarSecondaryDomain",
+          "occultism_magic"
+        ],
+        [
+          "scholarSecondaryDomain",
+          "science_technology"
+        ],
+        [
+          "scholarSecondaryDomain",
+          "plants_creatures"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:history:expert:r5": {
+      "status": "PASS",
+      "label": "Caractéristique d’expert",
+      "verified": [
+        [
+          "expertStat",
+          "for"
+        ],
+        [
+          "expertStat",
+          "agi"
+        ],
+        [
+          "expertStat",
+          "int"
+        ],
+        [
+          "expertStat",
+          "cha"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:history:soldier:r1": {
+      "status": "PASS",
+      "label": "Formation martiale",
+      "verified": [
+        [
+          "martialTraining",
+          "ALL_WEAPONS"
+        ],
+        [
+          "martialTraining",
+          "DISARM_BONUS"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    },
+    "ability:history:soldier:r2": {
+      "status": "PASS",
+      "label": "Seconde peau",
+      "verified": [
+        [
+          "preferredArmorId",
+          "armor:tissu-matelasse:cof2-lb-2024"
+        ],
+        [
+          "preferredArmorId",
+          "armor:cuir-simple:cof2-lb-2024"
+        ],
+        [
+          "preferredArmorId",
+          "armor:cuir-renforce:cof2-lb-2024"
+        ],
+        [
+          "preferredArmorId",
+          "armor:chemise-de-mailles:cof2-lb-2024"
+        ],
+        [
+          "preferredArmorId",
+          "armor:cotte-de-mailles:cof2-lb-2024"
+        ],
+        [
+          "preferredArmorId",
+          "armor:plaques:cof2-lb-2024"
+        ],
+        [
+          "preferredArmorId",
+          "armor:plaque-complete:cof2-lb-2024"
+        ]
+      ],
+      "rejectedOutsideDomain": 1
+    }
+  }
+}
