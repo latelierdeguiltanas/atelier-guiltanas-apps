@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - '.github/workflows/forge-n1-arq-source-fixes.yml'
       - 'forge-of-heroes/ENGINE/arquebusier_context_n1.js'
       - 'forge-of-heroes/ENGINE/arquebusier_context_ui_n1.js'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_oracle.cjs'
@@ -48,8 +49,6 @@ jobs:
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -57,20 +56,6 @@ jobs:
         run: |
           npm install --prefix "$RUNNER_TEMP/foh-source" playwright@1.55.0
           echo "NODE_PATH=$RUNNER_TEMP/foh-source/node_modules" >> "$GITHUB_ENV"
-      - name: Construire les deux produits
-        run: |
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arbaletrier_powderless_fix.cjs --write
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_doigts_agiles_knives_fix.cjs --write
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_granted_pdf_annex_fix.cjs --write
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_summaries.cjs --write
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_powder_category_fix.cjs --write
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_preferences_fix.cjs --write
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_archer_thrower_fix.cjs --write
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_rank_bonus_fix.cjs --write
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_very_young_choice_fix.cjs --write
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_choices_fix.cjs --write
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_fix.cjs --write
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_context_publish.cjs --write
       - name: Démarrer le serveur de recette mobile
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/foh-source-http.log 2>&1 &
@@ -140,36 +125,6 @@ jobs:
             forge-of-heroes/QA/N1/arquebusier-granted-pdf-annex.json
             forge-of-heroes/QA/N1/arquebusier-equipment-source.json
             forge-of-heroes/QA/N1/arquebusier-arbaletrier-source-audit.json
-      - name: Publier uniquement après réussite des calculs et clics
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add forge-of-heroes/QA/N1/arquebusier-history-conditions.json forge-of-heroes/QA/N1/arquebusier-history-conditions-click.json forge-of-heroes/QA/N1/arquebusier-history-choices.json forge-of-heroes/QA/N1/arquebusier-history-choices-click.json forge-of-heroes/QA/N1/arquebusier-history-people-cross.json forge-of-heroes/QA/N1/very-young-resource-renderer.json forge-of-heroes/QA/N1/arquebusier-history-rank-bonus.json forge-of-heroes/QA/N1/arquebusier-history-rank-click.json forge-of-heroes/QA/N1/arquebusier-granted-thrower.json forge-of-heroes/QA/N1/arquebusier-granted-thrower-click.json forge-of-heroes/QA/N1/arquebusier-derived-source.json forge-of-heroes/QA/N1/arquebusier-powder-weapon-boundary.json forge-of-heroes/QA/N1/arquebusier-two-preferences.json forge-of-heroes/QA/N1/arquebusier-granted-pdf-annex.json forge-of-heroes/progression/pdf-labels.json forge-of-heroes/QA/N1/arquebusier-grants-weapons.json forge-of-heroes/QA/N1/arquebusier-equipment-source.json forge-of-heroes/QA/N1/arquebusier-arbaletrier-source-audit.json forge-of-heroes/progression/official-pdf-engine.js forge-of-heroes/QA/N1/arquebusier-grants-armor.json forge-of-heroes/index.html forge-of-heroes/QA/N1/arquebusier-context-canonical.json forge-of-heroes/QA/N1/arquebusier-context-publish.json forge-of-heroes/QA/N1/arquebusier-context-real-click.json forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json forge-of-heroes/QA/N1/arquebusier-all-pairs-current.json forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json centre-synchronisation/forge-n1/focus.json centre-synchronisation/forge-n1/purs.json
-          if ! git diff --cached --quiet; then
-            git commit -m 'fix(forge): dons et bonus historiques calculés et conservés au clic [skip ci]'
-            git restore --worktree .
-            for attempt in 1 2 3 4 5; do
-              git fetch origin main
-              if ! git rebase origin/main; then
-                # Only timestamp/evidence conflicts may use this run's tested reports.
-                # Never resolve a product or source conflict automatically.
-                mapfile -t conflicts < <(git diff --name-only --diff-filter=U)
-                for file in "${conflicts[@]}"; do
-                  case "$file" in
-                    forge-of-heroes/QA/N1/*.json|centre-synchronisation/forge-n1/*.json)
-                      git checkout --theirs -- "$file"
-                      git add -- "$file"
-                      ;;
-                    *) git rebase --abort; exit 1 ;;
-                  esac
-                done
-                GIT_EDITOR=true git rebase --continue
-              fi
-              if git push origin HEAD:main; then exit 0; fi
-            done
-            exit 1
-          fi
-
   choices-mobile:
     needs: verify-publish
     runs-on: ubuntu-latest
@@ -180,8 +135,6 @@ jobs:
         shard: [0, 1, 2, 3]
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
