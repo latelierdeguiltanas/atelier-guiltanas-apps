@@ -6,6 +6,7 @@ on:
       - '.github/workflows/forge-n1-focus-refresh.yml'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_certification_register.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_batch_rank_persistence.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_register_contract.cjs'
       - 'forge-of-heroes/QA/N1/lot-2026-11-19/**'
 permissions:
@@ -21,6 +22,8 @@ jobs:
           node-version: '22'
       - name: Regenerate from dependency-matched proofs and reject false certificates
         run: |
+          FOH_BATCH_RANK_REPORT="$RUNNER_TEMP/rank-persistence-batch.json" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_batch_rank_persistence.cjs
+          cmp "$RUNNER_TEMP/rank-persistence-batch.json" forge-of-heroes/QA/N1/lot-2026-11-19/rank-persistence-batch.json
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_register_contract.cjs
       - uses: actions/upload-artifact@v4

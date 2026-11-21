@@ -1,0 +1,1817 @@
+{
+  "schema": "FOH_N1_RANK_PERSISTENCE_BATCH_V1",
+  "inputs": {
+    "indexSha256": "79bee1e8b4ce222cd2847d49ea7f56d8a22d8f667a1db04e4635a9fb594f9f2d",
+    "nativeSha256": "2726731c7a6cdc228943cab77e3151003b91a1d07c65e503572630abdbddfbea",
+    "librarySha256": "efbedeb0873c2d7e1a46b9cdb6fac8b12a4b51857f74b94647e589a4ca98ad47"
+  },
+  "scope": "A legal level-one acquisition witness, official Forge save/reopen and native vault transfer/reopen per credited rank. Effect mechanics and browser UI are independent.",
+  "targetCount": 451,
+  "witnesses": {
+    "ability:diversit:path:voie-de-l-humain:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "actualId": "ability:diversite:path-voie-de-l-humain-cof2-lb-2024:r1:cof2-lb-2024"
+    },
+    "ability:mecanismes:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "actualId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024"
+    },
+    "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "actualId": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024"
+    },
+    "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "actualId": "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024"
+    },
+    "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "actualId": "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024"
+    },
+    "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024"
+    },
+    "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024"
+    },
+    "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "actualId": "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024"
+    },
+    "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "actualId": "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024"
+    },
+    "ability:tir-double-l:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:tir-double-l:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:tir-double-l:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024"
+    },
+    "ability:joli-coup:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:joli-coup:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "actualId": "ability:joli-coup:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024"
+    },
+    "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "actualId": "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024"
+    },
+    "ability:tir-precis:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:tir-precis:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:tir-precis:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024"
+    },
+    "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+      "actualId": "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024"
+    },
+    "ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+      "actualId": "ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024"
+    },
+    "ability:specialisation:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:specialisation:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:specialisation:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024"
+    },
+    "ability:baratin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:fee-r1:path:voie-de-la-fee:compagnon-cof2",
+      "actualId": "ability:baratin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:fee-r1:path:voie-de-la-fee:compagnon-cof2",
+      "actualId": "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:fee-r1:path:voie-de-la-fee:compagnon-cof2": {
+      "scenario": "ability:fee-r1:path:voie-de-la-fee:compagnon-cof2",
+      "actualId": "ability:fee-r1:path:voie-de-la-fee:compagnon-cof2"
+    },
+    "ability:attaque-sournoise-l:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:fee-r2:path:voie-de-la-fee:compagnon-cof2",
+      "actualId": "ability:attaque-sournoise-l:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:fee-r2:path:voie-de-la-fee:compagnon-cof2": {
+      "scenario": "ability:fee-r2:path:voie-de-la-fee:compagnon-cof2",
+      "actualId": "ability:fee-r2:path:voie-de-la-fee:compagnon-cof2"
+    },
+    "ability:fee-r3:path:voie-de-la-fee:compagnon-cof2": {
+      "scenario": "ability:fee-r3:path:voie-de-la-fee:compagnon-cof2",
+      "actualId": "ability:fee-r3:path:voie-de-la-fee:compagnon-cof2"
+    },
+    "ability:drakonide-r1:path:voie-du-drakonide:compagnon-cof2": {
+      "scenario": "ability:drakonide-r1:path:voie-du-drakonide:compagnon-cof2",
+      "actualId": "ability:drakonide-r1:path:voie-du-drakonide:compagnon-cof2"
+    },
+    "ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2": {
+      "scenario": "ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2",
+      "actualId": "ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2"
+    },
+    "ability:drakonide-r3:path:voie-du-drakonide:compagnon-cof2": {
+      "scenario": "ability:drakonide-r3:path:voie-du-drakonide:compagnon-cof2",
+      "actualId": "ability:drakonide-r3:path:voie-du-drakonide:compagnon-cof2"
+    },
+    "ability:cambion-r1:path:voie-du-cambion:compagnon-cof2": {
+      "scenario": "ability:cambion-r1:path:voie-du-cambion:compagnon-cof2",
+      "actualId": "ability:cambion-r1:path:voie-du-cambion:compagnon-cof2"
+    },
+    "ability:cambion-r2:path:voie-du-cambion:compagnon-cof2": {
+      "scenario": "ability:cambion-r2:path:voie-du-cambion:compagnon-cof2",
+      "actualId": "ability:cambion-r2:path:voie-du-cambion:compagnon-cof2"
+    },
+    "ability:cambion-r3:path:voie-du-cambion:compagnon-cof2": {
+      "scenario": "ability:cambion-r3:path:voie-du-cambion:compagnon-cof2",
+      "actualId": "ability:cambion-r3:path:voie-du-cambion:compagnon-cof2"
+    },
+    "ability:elfe-pale-r1:path:voie-de-l-elfe-pale:compagnon-cof2": {
+      "scenario": "ability:elfe-pale-r1:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "actualId": "ability:elfe-pale-r1:path:voie-de-l-elfe-pale:compagnon-cof2"
+    },
+    "ability:elfe-pale-r2:path:voie-de-l-elfe-pale:compagnon-cof2": {
+      "scenario": "ability:elfe-pale-r2:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "actualId": "ability:elfe-pale-r2:path:voie-de-l-elfe-pale:compagnon-cof2"
+    },
+    "ability:elfe-pale-r3:path:voie-de-l-elfe-pale:compagnon-cof2": {
+      "scenario": "ability:elfe-pale-r3:path:voie-de-l-elfe-pale:compagnon-cof2",
+      "actualId": "ability:elfe-pale-r3:path:voie-de-l-elfe-pale:compagnon-cof2"
+    },
+    "ability:elfe-profondeurs-r1:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2": {
+      "scenario": "ability:elfe-profondeurs-r1:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "actualId": "ability:elfe-profondeurs-r1:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2"
+    },
+    "ability:elfe-profondeurs-r2:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2": {
+      "scenario": "ability:elfe-profondeurs-r2:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "actualId": "ability:elfe-profondeurs-r2:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2"
+    },
+    "ability:elfe-profondeurs-r3:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2": {
+      "scenario": "ability:elfe-profondeurs-r3:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2",
+      "actualId": "ability:elfe-profondeurs-r3:path:voie-de-l-elfe-des-profondeurs:compagnon-cof2"
+    },
+    "ability:felis-r1:path:voie-du-felis:compagnon-cof2": {
+      "scenario": "ability:felis-r1:path:voie-du-felis:compagnon-cof2",
+      "actualId": "ability:felis-r1:path:voie-du-felis:compagnon-cof2"
+    },
+    "ability:felis-r2:path:voie-du-felis:compagnon-cof2": {
+      "scenario": "ability:felis-r2:path:voie-du-felis:compagnon-cof2",
+      "actualId": "ability:felis-r2:path:voie-du-felis:compagnon-cof2"
+    },
+    "ability:felis-r3:path:voie-du-felis:compagnon-cof2": {
+      "scenario": "ability:felis-r3:path:voie-du-felis:compagnon-cof2",
+      "actualId": "ability:felis-r3:path:voie-du-felis:compagnon-cof2"
+    },
+    "ability:frouin-r1:path:voie-du-frouin:compagnon-cof2": {
+      "scenario": "ability:frouin-r1:path:voie-du-frouin:compagnon-cof2",
+      "actualId": "ability:frouin-r1:path:voie-du-frouin:compagnon-cof2"
+    },
+    "ability:frouin-r2:path:voie-du-frouin:compagnon-cof2": {
+      "scenario": "ability:frouin-r2:path:voie-du-frouin:compagnon-cof2",
+      "actualId": "ability:frouin-r2:path:voie-du-frouin:compagnon-cof2"
+    },
+    "ability:frouin-r3:path:voie-du-frouin:compagnon-cof2": {
+      "scenario": "ability:frouin-r3:path:voie-du-frouin:compagnon-cof2",
+      "actualId": "ability:frouin-r3:path:voie-du-frouin:compagnon-cof2"
+    },
+    "ability:nephilim-r1:path:voie-du-nephilim:compagnon-cof2": {
+      "scenario": "ability:nephilim-r1:path:voie-du-nephilim:compagnon-cof2",
+      "actualId": "ability:nephilim-r1:path:voie-du-nephilim:compagnon-cof2"
+    },
+    "ability:nephilim-r2:path:voie-du-nephilim:compagnon-cof2": {
+      "scenario": "ability:nephilim-r2:path:voie-du-nephilim:compagnon-cof2",
+      "actualId": "ability:nephilim-r2:path:voie-du-nephilim:compagnon-cof2"
+    },
+    "ability:nephilim-r3:path:voie-du-nephilim:compagnon-cof2": {
+      "scenario": "ability:nephilim-r3:path:voie-du-nephilim:compagnon-cof2",
+      "actualId": "ability:nephilim-r3:path:voie-du-nephilim:compagnon-cof2"
+    },
+    "ability:ophidien-r1:path:voie-de-l-ophidien:compagnon-cof2": {
+      "scenario": "ability:ophidien-r1:path:voie-de-l-ophidien:compagnon-cof2",
+      "actualId": "ability:ophidien-r1:path:voie-de-l-ophidien:compagnon-cof2"
+    },
+    "ability:ophidien-r2:path:voie-de-l-ophidien:compagnon-cof2": {
+      "scenario": "ability:ophidien-r2:path:voie-de-l-ophidien:compagnon-cof2",
+      "actualId": "ability:ophidien-r2:path:voie-de-l-ophidien:compagnon-cof2"
+    },
+    "ability:ophidien-r3:path:voie-de-l-ophidien:compagnon-cof2": {
+      "scenario": "ability:ophidien-r3:path:voie-de-l-ophidien:compagnon-cof2",
+      "actualId": "ability:ophidien-r3:path:voie-de-l-ophidien:compagnon-cof2"
+    },
+    "ability:satyre-r1:path:voie-du-satyre:compagnon-cof2": {
+      "scenario": "ability:satyre-r1:path:voie-du-satyre:compagnon-cof2",
+      "actualId": "ability:satyre-r1:path:voie-du-satyre:compagnon-cof2"
+    },
+    "ability:satyre-r2:path:voie-du-satyre:compagnon-cof2": {
+      "scenario": "ability:satyre-r2:path:voie-du-satyre:compagnon-cof2",
+      "actualId": "ability:satyre-r2:path:voie-du-satyre:compagnon-cof2"
+    },
+    "ability:satyre-r3:path:voie-du-satyre:compagnon-cof2": {
+      "scenario": "ability:satyre-r3:path:voie-du-satyre:compagnon-cof2",
+      "actualId": "ability:satyre-r3:path:voie-du-satyre:compagnon-cof2"
+    },
+    "ability:wolfer-r1:path:voie-du-wolfer:compagnon-cof2": {
+      "scenario": "ability:wolfer-r1:path:voie-du-wolfer:compagnon-cof2",
+      "actualId": "ability:wolfer-r1:path:voie-du-wolfer:compagnon-cof2"
+    },
+    "ability:wolfer-r2:path:voie-du-wolfer:compagnon-cof2": {
+      "scenario": "ability:wolfer-r2:path:voie-du-wolfer:compagnon-cof2",
+      "actualId": "ability:wolfer-r2:path:voie-du-wolfer:compagnon-cof2"
+    },
+    "ability:wolfer-r3:path:voie-du-wolfer:compagnon-cof2": {
+      "scenario": "ability:wolfer-r3:path:voie-du-wolfer:compagnon-cof2",
+      "actualId": "ability:wolfer-r3:path:voie-du-wolfer:compagnon-cof2"
+    },
+    "ability:demi-elfe-v2-r1:path:voie-du-demi-elfe:compagnon-cof2": {
+      "scenario": "ability:demi-elfe-v2-r1:path:voie-du-demi-elfe:compagnon-cof2",
+      "actualId": "ability:demi-elfe-v2-r1:path:voie-du-demi-elfe:compagnon-cof2"
+    },
+    "ability:demi-elfe-v2-r2:path:voie-du-demi-elfe:compagnon-cof2": {
+      "scenario": "ability:demi-elfe-v2-r2:path:voie-du-demi-elfe:compagnon-cof2",
+      "actualId": "ability:demi-elfe-v2-r2:path:voie-du-demi-elfe:compagnon-cof2"
+    },
+    "ability:demi-elfe-v2-r3:path:voie-du-demi-elfe:compagnon-cof2": {
+      "scenario": "ability:demi-elfe-v2-r3:path:voie-du-demi-elfe:compagnon-cof2",
+      "actualId": "ability:demi-elfe-v2-r3:path:voie-du-demi-elfe:compagnon-cof2"
+    },
+    "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:demolition:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:demolition:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:poudre-puissante:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:poudre-puissante:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:poudre-puissante:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:tir-double-l:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:tir-double-l:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:tir-double-l:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:tir-double-l:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:tir-double-l:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:tir-precis:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:joli-coup:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:tir-precis:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:joli-coup:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:tir-precis:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:tir-precis:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:tir-precis:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:chant-de-reconfort-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:intelligence-du-combat-m:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:chant-de-reconfort-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:chant-des-heros-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:intelligence-du-combat-m:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:chant-des-heros-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:feinte-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:intelligence-du-combat-m:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:feinte-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:intelligence-du-combat-m:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:intelligence-du-combat-m:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:intelligence-du-combat-m:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:precision:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:intelligence-du-combat-m:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:precision:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:attaque-sonore-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:attaque-sonore-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:attaque-sonore-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:acrobate:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:lanceur-de-couteau-g:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:acrobate:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:grace-feline:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:lanceur-de-couteau-g:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:grace-feline:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:lanceur-de-couteau-g:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:lanceur-de-couteau-g:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:lanceur-de-couteau-g:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:baratineur-de-genie:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:baratineur-de-genie:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:baratineur-de-genie:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:charmant:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:baratineur-de-genie:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:charmant:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:dentelles-et-rapiere:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:baratineur-de-genie:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:dentelles-et-rapiere:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:attirail:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:attirail:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:attirail:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:eclectique:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:attirail:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:eclectique:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:rumeurs-et-legendes:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:attirail:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:rumeurs-et-legendes:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:dans-le-mille:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:dans-le-mille:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:dans-le-mille:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:le-loup:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:dans-le-mille:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:le-loup:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:tir-chirurgical:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:dans-le-mille:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:tir-chirurgical:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:travail-dequipe:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:dans-le-mille:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:travail-dequipe:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:lien-empathique-l:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:lien-empathique-l:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:lien-empathique-l:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:grand-pas-g:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:grand-pas-g:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:grand-pas-g:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:nature-nourriciere:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:grand-pas-g:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:nature-nourriciere:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:survie:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:grand-pas-g:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:survie:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:attaque-eclair-l:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:chasseur-emerite:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:attaque-eclair-l:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:chasseur-emerite:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:chasseur-emerite:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:chasseur-emerite:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:eclaireur:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:chasseur-emerite:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:eclaireur:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:attaque-a-suivre-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:droite-gauche-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:attaque-a-suivre-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:droite-gauche-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:droite-gauche-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:droite-gauche-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:parade-croisee:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:droite-gauche-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:parade-croisee:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:attaque-par-surprise-a:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:attaque-par-surprise-a:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:attaque-par-surprise-a:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:provocation-l:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:attaque-par-surprise-a:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:provocation-l:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:souplesse-du-felin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:souplesse-du-felin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:souplesse-du-felin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:acrobaties-g:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:acrobaties-g:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:acrobaties-g:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:agile:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:acrobaties-g:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:agile:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:reflexes-felins:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:acrobaties-g:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:reflexes-felins:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:aux-aguets:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:feindre-la-mort-g:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:aux-aguets:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:doigts-agiles:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:feindre-la-mort-g:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:doigts-agiles:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:feindre-la-mort-g:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:feindre-la-mort-g:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:feindre-la-mort-g:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:attaque-en-finesse:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:frappe-chirurgicale:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:attaque-en-finesse:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:esquive-fatale-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:frappe-chirurgicale:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:esquive-fatale-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:frappe-chirurgicale:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:frappe-chirurgicale:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:frappe-chirurgicale:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:argument-de-taille:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:attaque-brutale-l:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:argument-de-taille:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:attaque-brutale-l:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:attaque-brutale-l:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:attaque-brutale-l:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:peau-de-pierre:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:attaque-brutale-l:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:peau-de-pierre:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:tour-de-force-g:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:attaque-brutale-l:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:tour-de-force-g:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:vigueur:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:attaque-brutale-l:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:vigueur:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:tatouages:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:tatouages:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:tatouages:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:charge-l:classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:enchainement:classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:charge-l:classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:enchainement:classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:enchainement:classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:enchainement:classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:reflexes-eclair:classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:enchainement:classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:reflexes-eclair:classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:armure-de-vent:classpath:voie-du-primitif:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:vigilance:classpath:voie-du-primitif:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:armure-de-vent:classpath:voie-du-primitif:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:proche-de-la-nature:classpath:voie-du-primitif:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:vigilance:classpath:voie-du-primitif:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:proche-de-la-nature:classpath:voie-du-primitif:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:vigilance:classpath:voie-du-primitif:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:vigilance:classpath:voie-du-primitif:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:vigilance:classpath:voie-du-primitif:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:cri-de-guerre-g:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:rage-du-berserk-l:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:cri-de-guerre-g:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:defier-la-mort:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:rage-du-berserk-l:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:defier-la-mort:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:rage-du-berserk-l:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:rage-du-berserk-l:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:rage-du-berserk-l:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:armure-sur-mesure:classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:charge-l:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:armure-sur-mesure:classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:cavalier-emerite:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:charge-l:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:cavalier-emerite:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:charge-l:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:charge-l:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:charge-l:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:encaisser-un-coup-m:classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:charge-l:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:encaisser-un-coup-m:classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:fidele-monture:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:charge-l:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:fidele-monture:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:frappe-du-justicier-l:classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:frappe-du-justicier-l:classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:frappe-du-justicier-l:classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:ignorer-la-douleur-g:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:laissez-le-moi:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:ignorer-la-douleur-g:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:laissez-le-moi:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:laissez-le-moi:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:laissez-le-moi:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:piqures-d-insectes:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:laissez-le-moi:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:piqures-d-insectes:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:exemplaire-g:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:exemplaire-g:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:exemplaire-g:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:intercepter-g:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:exemplaire-g:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:intercepter-g:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:sans-peur:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:exemplaire-g:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:sans-peur:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:autorite-naturelle:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:autorite-naturelle:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:autorite-naturelle:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:ecuyer:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:autorite-naturelle:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:ecuyer:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:eduque:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:autorite-naturelle:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:eduque:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:defense-au-bouclier:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:defense-au-bouclier:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:defense-au-bouclier:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:manoeuvre:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:defense-au-bouclier:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:manoeuvre:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:parer-un-coup-m:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:defense-au-bouclier:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:parer-un-coup-m:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:proteger-un-allie-g:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:defense-au-bouclier:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:proteger-un-allie-g:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:vivacite:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:defense-au-bouclier:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:vivacite:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:attaque-puissante:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:attaque-puissante:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:attaque-puissante:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:specialisation:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:specialisation:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:specialisation:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:specialisation:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:specialisation:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:armure-lourde:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:armure-lourde:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:armure-lourde:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:resilient:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:armure-lourde:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:resilient:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:robustesse:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:armure-lourde:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:robustesse:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability:piqure-de-rappel-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:piqure-de-rappel-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:piqure-de-rappel-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:prouesse-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:piqure-de-rappel-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:prouesse-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:teigneux-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:piqure-de-rappel-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:teigneux-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024"
+    },
+    "ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024": {
+      "scenario": "ability:telekinesie:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024"
+    },
+    "ability-r1-class-ensorceleur-divination-divination-cof2-lb-2024": {
+      "scenario": "ability:telekinesie:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability-r1-class-ensorceleur-divination-divination-cof2-lb-2024"
+    },
+    "ability:detection-invisible:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:telekinesie:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:detection-invisible:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:instinct-de-survie:path:voie-de-l-humain:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:telekinesie:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:instinct-de-survie:path:voie-de-l-humain:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:sous-tension:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:telekinesie:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:sous-tension:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:telekinesie:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:telekinesie:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:telekinesie:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank3"
+    },
+    "ability-r1-class-ensorceleur-envouteur-injonction-cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank3",
+      "actualId": "ability-r1-class-ensorceleur-envouteur-injonction-cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank3"
+    },
+    "ability:sommeil:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank3",
+      "actualId": "ability:sommeil:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability-r1-class-ensorceleur-illusions-mirage-cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank3",
+      "actualId": "ability-r1-class-ensorceleur-illusions-mirage-cof2-lb-2024"
+    },
+    "ability:image-decalee:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank3",
+      "actualId": "ability:image-decalee:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank3"
+    },
+    "ability-r1-class-ensorceleur-invocation-choc-cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank3",
+      "actualId": "ability-r1-class-ensorceleur-invocation-choc-cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank3"
+    },
+    "ability:serviteur-invisible:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank3",
+      "actualId": "ability:serviteur-invisible:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability-r1-class-forgesort-artefacts-baton-de-mage-cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability-r1-class-forgesort-artefacts-baton-de-mage-cof2-lb-2024"
+    },
+    "ability-r1-class-forgesort-elixirs-fortifiant-cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability-r1-class-forgesort-elixirs-fortifiant-cof2-lb-2024"
+    },
+    "ability:feu-gregeois-l:classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability:feu-gregeois-l:classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:ouverture-fermeture-m:classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability:ouverture-fermeture-m:classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024:rank3"
+    },
+    "ability:reference:classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024:rank3"
+    },
+    "ability-r1-class-forgesort-metal-morsure-de-la-forge-cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-du-metal:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability-r1-class-forgesort-metal-morsure-de-la-forge-cof2-lb-2024"
+    },
+    "ability:metal-brulant-m:classpath:voie-du-metal:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-du-metal:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability:metal-brulant-m:classpath:voie-du-metal:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-du-metal:class-forgesort:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-du-metal:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-du-metal:class-forgesort:cof2-lb-2024:rank3"
+    },
+    "ability-r1-class-forgesort-golem-grosse-tete-cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-du-golem:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability-r1-class-forgesort-golem-grosse-tete-cof2-lb-2024"
+    },
+    "ability:golem:classpath:voie-du-golem:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-du-golem:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability:golem:classpath:voie-du-golem:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-du-golem:class-forgesort:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-du-golem:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-du-golem:class-forgesort:cof2-lb-2024:rank3"
+    },
+    "ability-r1-class-forgesort-runes-runes-de-defense-cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-des-runes:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability-r1-class-forgesort-runes-runes-de-defense-cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-des-runes:class-forgesort:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-des-runes:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-des-runes:class-forgesort:cof2-lb-2024:rank3"
+    },
+    "ability:rune-de-puissance-l:classpath:voie-des-runes:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-des-runes:class-forgesort:cof2-lb-2024:rank3",
+      "actualId": "ability:rune-de-puissance-l:classpath:voie-des-runes:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:arc-de-feu:classpath-voie-de-la-magie-destructrice-class-magicien-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:arc-de-feu:classpath-voie-de-la-magie-destructrice-class-magicien-cof2-lb-2024:r1"
+    },
+    "ability:levitation-m:classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:levitation-m:classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1"
+    },
+    "ability:reference:classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024:rank3"
+    },
+    "ability:saper-les-forces-a:classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:saper-les-forces-a:classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024:rank3"
+    },
+    "ability:asphyxie:classpath-voie-de-la-magie-elementaire-class-magicien-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:asphyxie:classpath-voie-de-la-magie-elementaire-class-magicien-cof2-lb-2024:r1"
+    },
+    "ability:maitrise-des-elements-m:classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:maitrise-des-elements-m:classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024:rank3"
+    },
+    "ability:armure-de-mana:classpath-voie-de-la-magie-protectrice-class-magicien-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:armure-de-mana:classpath-voie-de-la-magie-protectrice-class-magicien-cof2-lb-2024:r1"
+    },
+    "ability:chute-ralentie-g:classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:chute-ralentie-g:classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024:rank3"
+    },
+    "ability:familier-a:classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:familier-a:classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:lumiere:classpath-voie-de-la-magie-universelle-class-magicien-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:lumiere:classpath-voie-de-la-magie-universelle-class-magicien-cof2-lb-2024:r1"
+    },
+    "ability:reference:classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024:rank3"
+    },
+    "ability-r1-class-sorcier-demon-malediction-cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability-r1-class-sorcier-demon-malediction-cof2-lb-2024"
+    },
+    "ability-r1-class-sorcier-mort-siphon-des-ames-cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability-r1-class-sorcier-mort-siphon-des-ames-cof2-lb-2024"
+    },
+    "ability:beaute-de-la-succube-l-:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability:beaute-de-la-succube-l-:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:masque-mortuaire-m-:classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability:masque-mortuaire-m-:classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank3"
+    },
+    "ability:reference:classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024:rank3"
+    },
+    "ability-r1-class-sorcier-outre-tombe-un-pied-dans-la-tombe-cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability-r1-class-sorcier-outre-tombe-un-pied-dans-la-tombe-cof2-lb-2024"
+    },
+    "ability:armure-d-os:classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability:armure-d-os:classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024:rank3"
+    },
+    "ability-r1-class-sorcier-sang-saignements-cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-du-sang:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability-r1-class-sorcier-sang-saignements-cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-du-sang:class-sorcier:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-du-sang:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-du-sang:class-sorcier:cof2-lb-2024:rank3"
+    },
+    "ability:sang-mordant-m-:classpath:voie-du-sang:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-du-sang:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability:sang-mordant-m-:classpath:voie-du-sang:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability-r1-class-sorcier-sombre-magie-tenebres-cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability-r1-class-sorcier-sombre-magie-tenebres-cof2-lb-2024"
+    },
+    "ability:reference:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank3"
+    },
+    "ability:reptation-m-:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:reference:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank3",
+      "actualId": "ability:reptation-m-:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:langage-des-animaux:classpath-voie-des-animaux-class-druide-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-des-animaux:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:langage-des-animaux:classpath-voie-des-animaux-class-druide-cof2-lb-2024:r1"
+    },
+    "ability:reference:classpath:voie-des-animaux:class-druide:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-des-animaux:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-des-animaux:class-druide:cof2-lb-2024:rank2"
+    },
+    "ability:reference:classpath:voie-des-animaux:class-druide:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-des-animaux:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-des-animaux:class-druide:cof2-lb-2024:rank3"
+    },
+    "ability:reference:classpath:voie-du-fauve:class-druide:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-des-animaux:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-du-fauve:class-druide:cof2-lb-2024:rank2"
+    },
+    "ability:vitesse-du-felin:classpath-voie-du-fauve-class-druide-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-des-animaux:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:vitesse-du-felin:classpath-voie-du-fauve-class-druide-cof2-lb-2024:r1"
+    },
+    "ability:reference:classpath:voie-du-fauve:class-druide:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-du-fauve:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-du-fauve:class-druide:cof2-lb-2024:rank3"
+    },
+    "ability:maitre-de-la-survie:classpath-voie-de-la-nature-class-druide-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-de-la-nature:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:maitre-de-la-survie:classpath-voie-de-la-nature-class-druide-cof2-lb-2024:r1"
+    },
+    "ability:reference:classpath:voie-de-la-nature:class-druide:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-de-la-nature:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-nature:class-druide:cof2-lb-2024:rank2"
+    },
+    "ability:reference:classpath:voie-de-la-nature:class-druide:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-nature:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-nature:class-druide:cof2-lb-2024:rank3"
+    },
+    "ability:baies-magiques:classpath-voie-du-protecteur-class-druide-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-du-protecteur:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:baies-magiques:classpath-voie-du-protecteur-class-druide-cof2-lb-2024:r1"
+    },
+    "ability:reference:classpath:voie-du-protecteur:class-druide:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-du-protecteur:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-du-protecteur:class-druide:cof2-lb-2024:rank2"
+    },
+    "ability:reference:classpath:voie-du-protecteur:class-druide:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-du-protecteur:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-du-protecteur:class-druide:cof2-lb-2024:rank3"
+    },
+    "ability:peau-d-ecorce:classpath-voie-des-vegetaux-class-druide-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-des-vegetaux:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:peau-d-ecorce:classpath-voie-des-vegetaux-class-druide-cof2-lb-2024:r1"
+    },
+    "ability:reference:classpath:voie-des-vegetaux:class-druide:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-des-vegetaux:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-des-vegetaux:class-druide:cof2-lb-2024:rank2"
+    },
+    "ability:reference:classpath:voie-des-vegetaux:class-druide:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-des-vegetaux:class-druide:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-des-vegetaux:class-druide:cof2-lb-2024:rank3"
+    },
+    "ability:agilite-du-singe:classpath-voie-de-la-maitrise-class-moine-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:agilite-du-singe:classpath-voie-de-la-maitrise-class-moine-cof2-lb-2024:r1"
+    },
+    "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1"
+    },
+    "ability:reference:classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024:rank2"
+    },
+    "ability:reference:classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024:rank3"
+    },
+    "ability:reference:classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-de-l-energie-vitale:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024:rank2"
+    },
+    "ability:reference:classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-maitrise:class-moine:cof2-lb-2024:rank3"
+    },
+    "ability:pacifisme:classpath-voie-de-la-meditation-class-moine-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-de-la-meditation:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:pacifisme:classpath-voie-de-la-meditation-class-moine-cof2-lb-2024:r1"
+    },
+    "ability:reference:classpath:voie-de-la-meditation:class-moine:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-de-la-meditation:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-meditation:class-moine:cof2-lb-2024:rank2"
+    },
+    "ability:reference:classpath:voie-de-la-meditation:class-moine:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-meditation:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-meditation:class-moine:cof2-lb-2024:rank3"
+    },
+    "ability:poings-de-fer:classpath-voie-du-poing-class-moine-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-du-poing:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:poings-de-fer:classpath-voie-du-poing-class-moine-cof2-lb-2024:r1"
+    },
+    "ability:reference:classpath:voie-du-poing:class-moine:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-du-poing:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-du-poing:class-moine:cof2-lb-2024:rank2"
+    },
+    "ability:reference:classpath:voie-du-poing:class-moine:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-du-poing:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-du-poing:class-moine:cof2-lb-2024:rank3"
+    },
+    "ability:pas-du-vent:classpath-voie-du-vent-class-moine-cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-du-vent:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:pas-du-vent:classpath-voie-du-vent-class-moine-cof2-lb-2024:r1"
+    },
+    "ability:reference:classpath:voie-du-vent:class-moine:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-du-vent:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-du-vent:class-moine:cof2-lb-2024:rank2"
+    },
+    "ability:reference:classpath:voie-du-vent:class-moine:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-du-vent:class-moine:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-du-vent:class-moine:cof2-lb-2024:rank3"
+    },
+    "ability:foi:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:foi:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:r1"
+    },
+    "ability:guerre-sainte:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:guerre-sainte:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:r1"
+    },
+    "ability:reference:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:rank2"
+    },
+    "ability:reference:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:rank3"
+    },
+    "ability:reference:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:rank2"
+    },
+    "ability:reference:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:rank3"
+    },
+    "ability:priere:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:priere:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:r1"
+    },
+    "ability:reference:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:rank2"
+    },
+    "ability:reference:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:rank3"
+    },
+    "ability:reference:classpath:voie-des-soins:class-pretre:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-des-soins:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-des-soins:class-pretre:cof2-lb-2024:rank2"
+    },
+    "ability:reference:classpath:voie-des-soins:class-pretre:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-des-soins:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-des-soins:class-pretre:cof2-lb-2024:rank3"
+    },
+    "ability:soins:classpath:voie-des-soins:class-pretre:cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-des-soins:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:soins:classpath:voie-des-soins:class-pretre:cof2-lb-2024:r1"
+    },
+    "ability:reference:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:rank2": {
+      "scenario": "ability:reference:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:rank2"
+    },
+    "ability:reference:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:rank3": {
+      "scenario": "ability:reference:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:reference:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:rank3"
+    },
+    "ability:spiritualite:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:r1": {
+      "scenario": "ability:reference:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:rank3",
+      "actualId": "ability:spiritualite:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:r1"
+    },
+    "ability:conjuration-de-predateur:classpath-voie-de-la-conjuration-class-invocateur-addon-compagnon-2024:r1": {
+      "scenario": "ability:foh81:invocateur:voie-de-la-conjuration:r3",
+      "actualId": "ability:conjuration-de-predateur:classpath-voie-de-la-conjuration-class-invocateur-addon-compagnon-2024:r1"
+    },
+    "ability:foh81:invocateur:voie-de-l-entite:r2": {
+      "scenario": "ability:foh81:invocateur:voie-de-la-conjuration:r3",
+      "actualId": "ability:foh81:invocateur:voie-de-l-entite:r2"
+    },
+    "ability:foh81:invocateur:voie-de-la-conjuration:r2": {
+      "scenario": "ability:foh81:invocateur:voie-de-la-conjuration:r3",
+      "actualId": "ability:foh81:invocateur:voie-de-la-conjuration:r2"
+    },
+    "ability:foh81:invocateur:voie-de-la-conjuration:r3": {
+      "scenario": "ability:foh81:invocateur:voie-de-la-conjuration:r3",
+      "actualId": "ability:foh81:invocateur:voie-de-la-conjuration:r3"
+    },
+    "ability:invocation-d-une-entite:classpath-voie-de-l-entite-class-invocateur-addon-compagnon-2024:r1": {
+      "scenario": "ability:foh81:invocateur:voie-de-la-conjuration:r3",
+      "actualId": "ability:invocation-d-une-entite:classpath-voie-de-l-entite-class-invocateur-addon-compagnon-2024:r1"
+    },
+    "ability:foh81:invocateur:voie-de-l-entite:r3": {
+      "scenario": "ability:foh81:invocateur:voie-de-l-entite:r3",
+      "actualId": "ability:foh81:invocateur:voie-de-l-entite:r3"
+    },
+    "ability:familier:classpath-voie-du-familier-class-invocateur-addon-compagnon-2024:r1": {
+      "scenario": "ability:foh81:invocateur:voie-du-familier:r3",
+      "actualId": "ability:familier:classpath-voie-du-familier-class-invocateur-addon-compagnon-2024:r1"
+    },
+    "ability:foh81:invocateur:voie-du-familier:r2": {
+      "scenario": "ability:foh81:invocateur:voie-du-familier:r3",
+      "actualId": "ability:foh81:invocateur:voie-du-familier:r2"
+    },
+    "ability:foh81:invocateur:voie-du-familier:r3": {
+      "scenario": "ability:foh81:invocateur:voie-du-familier:r3",
+      "actualId": "ability:foh81:invocateur:voie-du-familier:r3"
+    },
+    "ability:foh81:invocateur:voie-des-mutations:r2": {
+      "scenario": "ability:foh81:invocateur:voie-des-mutations:r3",
+      "actualId": "ability:foh81:invocateur:voie-des-mutations:r2"
+    },
+    "ability:foh81:invocateur:voie-des-mutations:r3": {
+      "scenario": "ability:foh81:invocateur:voie-des-mutations:r3",
+      "actualId": "ability:foh81:invocateur:voie-des-mutations:r3"
+    },
+    "ability:mutation-offensive:classpath-voie-des-mutations-class-invocateur-addon-compagnon-2024:r1": {
+      "scenario": "ability:foh81:invocateur:voie-des-mutations:r3",
+      "actualId": "ability:mutation-offensive:classpath-voie-des-mutations-class-invocateur-addon-compagnon-2024:r1"
+    },
+    "ability:foh81:invocateur:voie-des-portes:r2": {
+      "scenario": "ability:foh81:invocateur:voie-des-portes:r3",
+      "actualId": "ability:foh81:invocateur:voie-des-portes:r2"
+    },
+    "ability:foh81:invocateur:voie-des-portes:r3": {
+      "scenario": "ability:foh81:invocateur:voie-des-portes:r3",
+      "actualId": "ability:foh81:invocateur:voie-des-portes:r3"
+    },
+    "ability:raccourci:classpath-voie-des-portes-class-invocateur-addon-compagnon-2024:r1": {
+      "scenario": "ability:foh81:invocateur:voie-des-portes:r3",
+      "actualId": "ability:raccourci:classpath-voie-des-portes-class-invocateur-addon-compagnon-2024:r1"
+    },
+    "ability-r1-class-samourai-arc-cheval-monture-loyale-addon-compagnon-2024": {
+      "scenario": "ability:foh81:samourai:voie-de-l-arc-et-du-cheval:r3",
+      "actualId": "ability-r1-class-samourai-arc-cheval-monture-loyale-addon-compagnon-2024"
+    },
+    "ability-r1-class-samourai-dirigeant-eduque-addon-compagnon-2024": {
+      "scenario": "ability:foh81:samourai:voie-de-l-arc-et-du-cheval:r3",
+      "actualId": "ability-r1-class-samourai-dirigeant-eduque-addon-compagnon-2024"
+    },
+    "ability:foh81:samourai:voie-de-l-arc-et-du-cheval:r2": {
+      "scenario": "ability:foh81:samourai:voie-de-l-arc-et-du-cheval:r3",
+      "actualId": "ability:foh81:samourai:voie-de-l-arc-et-du-cheval:r2"
+    },
+    "ability:foh81:samourai:voie-de-l-arc-et-du-cheval:r3": {
+      "scenario": "ability:foh81:samourai:voie-de-l-arc-et-du-cheval:r3",
+      "actualId": "ability:foh81:samourai:voie-de-l-arc-et-du-cheval:r3"
+    },
+    "ability:foh81:samourai:voie-du-dirigeant:r2": {
+      "scenario": "ability:foh81:samourai:voie-de-l-arc-et-du-cheval:r3",
+      "actualId": "ability:foh81:samourai:voie-du-dirigeant:r2"
+    },
+    "ability:foh81:samourai:voie-du-dirigeant:r3": {
+      "scenario": "ability:foh81:samourai:voie-du-dirigeant:r3",
+      "actualId": "ability:foh81:samourai:voie-du-dirigeant:r3"
+    },
+    "ability-r1-class-samourai-honneur-chef-ne-addon-compagnon-2024": {
+      "scenario": "ability:foh81:samourai:voie-de-l-honneur:r3",
+      "actualId": "ability-r1-class-samourai-honneur-chef-ne-addon-compagnon-2024"
+    },
+    "ability:foh81:samourai:voie-de-l-honneur:r2": {
+      "scenario": "ability:foh81:samourai:voie-de-l-honneur:r3",
+      "actualId": "ability:foh81:samourai:voie-de-l-honneur:r2"
+    },
+    "ability:foh81:samourai:voie-de-l-honneur:r3": {
+      "scenario": "ability:foh81:samourai:voie-de-l-honneur:r3",
+      "actualId": "ability:foh81:samourai:voie-de-l-honneur:r3"
+    },
+    "ability-r1-class-samourai-ki-esprit-vide-addon-compagnon-2024": {
+      "scenario": "ability:foh81:samourai:voie-du-ki:r3",
+      "actualId": "ability-r1-class-samourai-ki-esprit-vide-addon-compagnon-2024"
+    },
+    "ability:foh81:samourai:voie-du-ki:r2": {
+      "scenario": "ability:foh81:samourai:voie-du-ki:r3",
+      "actualId": "ability:foh81:samourai:voie-du-ki:r2"
+    },
+    "ability:foh81:samourai:voie-du-ki:r3": {
+      "scenario": "ability:foh81:samourai:voie-du-ki:r3",
+      "actualId": "ability:foh81:samourai:voie-du-ki:r3"
+    },
+    "ability-r1-class-samourai-sabre-technique-du-sabre-addon-compagnon-2024": {
+      "scenario": "ability:foh81:samourai:voie-du-sabre:r3",
+      "actualId": "ability-r1-class-samourai-sabre-technique-du-sabre-addon-compagnon-2024"
+    },
+    "ability:foh81:samourai:voie-du-sabre:r2": {
+      "scenario": "ability:foh81:samourai:voie-du-sabre:r3",
+      "actualId": "ability:foh81:samourai:voie-du-sabre:r2"
+    },
+    "ability:foh81:samourai:voie-du-sabre:r3": {
+      "scenario": "ability:foh81:samourai:voie-du-sabre:r3",
+      "actualId": "ability:foh81:samourai:voie-du-sabre:r3"
+    },
+    "ability-r1-class-psionique-attaque-mentale-attaque-mentale-addon-compagnon-2024": {
+      "scenario": "ability:foh81:psionique:voie-de-l-attaque-mentale:r3",
+      "actualId": "ability-r1-class-psionique-attaque-mentale-attaque-mentale-addon-compagnon-2024"
+    },
+    "ability-r1-class-psionique-controle-corporel-proprioception-addon-compagnon-2024": {
+      "scenario": "ability:foh81:psionique:voie-de-l-attaque-mentale:r3",
+      "actualId": "ability-r1-class-psionique-controle-corporel-proprioception-addon-compagnon-2024"
+    },
+    "ability:foh81:psionique:voie-de-l-attaque-mentale:r2": {
+      "scenario": "ability:foh81:psionique:voie-de-l-attaque-mentale:r3",
+      "actualId": "ability:foh81:psionique:voie-de-l-attaque-mentale:r2"
+    },
+    "ability:foh81:psionique:voie-de-l-attaque-mentale:r3": {
+      "scenario": "ability:foh81:psionique:voie-de-l-attaque-mentale:r3",
+      "actualId": "ability:foh81:psionique:voie-de-l-attaque-mentale:r3"
+    },
+    "ability:foh81:psionique:voie-du-controle-corporel:r2": {
+      "scenario": "ability:foh81:psionique:voie-de-l-attaque-mentale:r3",
+      "actualId": "ability:foh81:psionique:voie-du-controle-corporel:r2"
+    },
+    "ability:foh81:psionique:voie-du-controle-corporel:r3": {
+      "scenario": "ability:foh81:psionique:voie-du-controle-corporel:r3",
+      "actualId": "ability:foh81:psionique:voie-du-controle-corporel:r3"
+    },
+    "ability-r1-class-psionique-perception-perception-extra-sensorielle-addon-compagnon-2024": {
+      "scenario": "ability:foh81:psionique:voie-de-l-empathie:r3",
+      "actualId": "ability-r1-class-psionique-perception-perception-extra-sensorielle-addon-compagnon-2024"
+    },
+    "ability:foh81:psionique:voie-de-l-empathie:r2": {
+      "scenario": "ability:foh81:psionique:voie-de-l-empathie:r3",
+      "actualId": "ability:foh81:psionique:voie-de-l-empathie:r2"
+    },
+    "ability:foh81:psionique:voie-de-l-empathie:r3": {
+      "scenario": "ability:foh81:psionique:voie-de-l-empathie:r3",
+      "actualId": "ability:foh81:psionique:voie-de-l-empathie:r3"
+    },
+    "ability-r1-class-psionique-telekinesie-manipulation-a-distance-addon-compagnon-2024": {
+      "scenario": "ability:foh81:psionique:voie-de-la-telekinesie:r3",
+      "actualId": "ability-r1-class-psionique-telekinesie-manipulation-a-distance-addon-compagnon-2024"
+    },
+    "ability:foh81:psionique:voie-de-la-telekinesie:r2": {
+      "scenario": "ability:foh81:psionique:voie-de-la-telekinesie:r3",
+      "actualId": "ability:foh81:psionique:voie-de-la-telekinesie:r2"
+    },
+    "ability:foh81:psionique:voie-de-la-telekinesie:r3": {
+      "scenario": "ability:foh81:psionique:voie-de-la-telekinesie:r3",
+      "actualId": "ability:foh81:psionique:voie-de-la-telekinesie:r3"
+    },
+    "ability-r1-class-psionique-telepathie-telepathie-addon-compagnon-2024": {
+      "scenario": "ability:foh81:psionique:voie-de-la-telepathie:r3",
+      "actualId": "ability-r1-class-psionique-telepathie-telepathie-addon-compagnon-2024"
+    },
+    "ability:foh81:psionique:voie-de-la-telepathie:r2": {
+      "scenario": "ability:foh81:psionique:voie-de-la-telepathie:r3",
+      "actualId": "ability:foh81:psionique:voie-de-la-telepathie:r2"
+    },
+    "ability:foh81:psionique:voie-de-la-telepathie:r3": {
+      "scenario": "ability:foh81:psionique:voie-de-la-telepathie:r3",
+      "actualId": "ability:foh81:psionique:voie-de-la-telepathie:r3"
+    },
+    "ability:arcanes-exhumed:r1:fix77": {
+      "scenario": "ability:arcanes-exhumed:r3:fix77",
+      "actualId": "ability:arcanes-exhumed:r1:fix77"
+    },
+    "ability:arcanes-exhumed:r2:fix77": {
+      "scenario": "ability:arcanes-exhumed:r3:fix77",
+      "actualId": "ability:arcanes-exhumed:r2:fix77"
+    },
+    "ability:arcanes-exhumed:r3:fix77": {
+      "scenario": "ability:arcanes-exhumed:r3:fix77",
+      "actualId": "ability:arcanes-exhumed:r3:fix77"
+    },
+    "ability:arcanes-forgotten:r1:fix77": {
+      "scenario": "ability:arcanes-forgotten:r3:fix77",
+      "actualId": "ability:arcanes-forgotten:r1:fix77"
+    },
+    "ability:arcanes-forgotten:r2:fix77": {
+      "scenario": "ability:arcanes-forgotten:r3:fix77",
+      "actualId": "ability:arcanes-forgotten:r2:fix77"
+    },
+    "ability:arcanes-forgotten:r3:fix77": {
+      "scenario": "ability:arcanes-forgotten:r3:fix77",
+      "actualId": "ability:arcanes-forgotten:r3:fix77"
+    },
+    "ability:arcanes-lost:r1:fix77": {
+      "scenario": "ability:arcanes-lost:r3:fix77",
+      "actualId": "ability:arcanes-lost:r1:fix77"
+    },
+    "ability:arcanes-lost:r2:fix77": {
+      "scenario": "ability:arcanes-lost:r3:fix77",
+      "actualId": "ability:arcanes-lost:r2:fix77"
+    },
+    "ability:arcanes-lost:r3:fix77": {
+      "scenario": "ability:arcanes-lost:r3:fix77",
+      "actualId": "ability:arcanes-lost:r3:fix77"
+    },
+    "ability:arcanes-dark:r1:fix77": {
+      "scenario": "ability:arcanes-dark:r3:fix77",
+      "actualId": "ability:arcanes-dark:r1:fix77"
+    },
+    "ability:arcanes-dark:r2:fix77": {
+      "scenario": "ability:arcanes-dark:r3:fix77",
+      "actualId": "ability:arcanes-dark:r2:fix77"
+    },
+    "ability:arcanes-dark:r3:fix77": {
+      "scenario": "ability:arcanes-dark:r3:fix77",
+      "actualId": "ability:arcanes-dark:r3:fix77"
+    },
+    "ability:corruption:r1:fix77": {
+      "scenario": "ability:corruption:r3:fix77",
+      "actualId": "ability:corruption:r1:fix77"
+    },
+    "ability:corruption:r2:fix77": {
+      "scenario": "ability:corruption:r3:fix77",
+      "actualId": "ability:corruption:r2:fix77"
+    },
+    "ability:corruption:r3:fix77": {
+      "scenario": "ability:corruption:r3:fix77",
+      "actualId": "ability:corruption:r3:fix77"
+    },
+    "ability:critique-brutal:path:voie-du-demi-orc:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:critique-brutal:path:voie-du-demi-orc:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:critique-brutal:path:voie-du-demi-orc:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:impressionnant:path:voie-du-demi-orc:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:critique-brutal:path:voie-du-demi-orc:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:impressionnant:path-voie-du-demi-orc-cof2-lb-2024:r1:cof2-lb-2024"
+    },
+    "ability:talent-pour-la-violence:path:voie-du-demi-orc:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:critique-brutal:path:voie-du-demi-orc:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:talent-pour-la-violence:path:voie-du-demi-orc:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:force-d-me:path:voie-de-l-elfe-haut:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:talent-pour-la-magie:path:voie-de-l-elfe-haut:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:force-d-me:path:voie-de-l-elfe-haut:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:lumi-re-int-rieure:path:voie-de-l-elfe-haut:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:talent-pour-la-magie:path:voie-de-l-elfe-haut:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:lumiere-interieure:path-voie-de-l-elfe-haut-cof2-lb-2024:r1:cof2-lb-2024"
+    },
+    "ability:talent-pour-la-magie:path:voie-de-l-elfe-haut:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:talent-pour-la-magie:path:voie-de-l-elfe-haut:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:talent-pour-la-magie:path:voie-de-l-elfe-haut:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:archer-m-rite:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:archer-m-rite:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:archer-m-rite:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:enfant-de-la-for-t:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:archer-m-rite:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:enfant-de-la-for-t:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:lumi-re-des-toiles:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:archer-m-rite:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:lumiere-des-etoiles:path-voie-de-l-elfe-sylvain-cof2-lb-2024:r1:cof2-lb-2024"
+    },
+    "ability:don-trange:path:voie-du-gnome:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:insignifiant:path:voie-du-gnome:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:don-etrange:path-voie-du-gnome-cof2-lb-2024:r1:cof2-lb-2024"
+    },
+    "ability:insignifiant:path:voie-du-gnome:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:insignifiant:path:voie-du-gnome:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:insignifiant:path:voie-du-gnome:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:petit-pote:path:voie-du-gnome:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:insignifiant:path:voie-du-gnome:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:petit-pote:path:voie-du-gnome:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:bon-pour-le-moral:path:voie-du-halfelin:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:bon-pour-le-moral:path:voie-du-halfelin:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:bon-pour-le-moral:path:voie-du-halfelin:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:petite-taille:path:voie-du-halfelin:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:bon-pour-le-moral:path:voie-du-halfelin:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:petite-taille:path-voie-du-halfelin-cof2-lb-2024:r1:cof2-lb-2024"
+    },
+    "ability:r-sistance-l-gendaire:path:voie-du-halfelin:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:bon-pour-le-moral:path:voie-du-halfelin:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:r-sistance-l-gendaire:path:voie-du-halfelin:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:touche-tout:path:voie-de-l-humain:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:touche-tout:path:voie-de-l-humain:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:touche-tout:path:voie-de-l-humain:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:habitant-des-tunnels:path:voie-du-nain:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "scenario": "ability:r-sistance-la-magie:path:voie-du-nain:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:habitant-des-tunnels:path-voie-du-nain-cof2-lb-2024:r1:cof2-lb-2024"
+    },
+    "ability:haches-et-marteaux:path:voie-du-nain:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "scenario": "ability:r-sistance-la-magie:path:voie-du-nain:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:haches-et-marteaux:path:voie-du-nain:cof2-lb-2024:rank2:cof2-lb-2024"
+    },
+    "ability:r-sistance-la-magie:path:voie-du-nain:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "scenario": "ability:r-sistance-la-magie:path:voie-du-nain:cof2-lb-2024:rank3:cof2-lb-2024",
+      "actualId": "ability:r-sistance-la-magie:path:voie-du-nain:cof2-lb-2024:rank3:cof2-lb-2024"
+    },
+    "ability:camouflage:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank3:cof2-lb-2024": {
+      "scenario": "ability:camouflage:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:camouflage:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank3:cof2-lb-2024"
+    },
+    "ability:choc-lectrique:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank2:cof2-lb-2024": {
+      "scenario": "ability:camouflage:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:choc-lectrique:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank2:cof2-lb-2024"
+    },
+    "ability:main-lourde:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank1:cof2-lb-2024": {
+      "scenario": "ability:camouflage:path:voie-de-lâme-forgée:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:main-lourde:path-path-voie-de-lâme-forgée-addon-comp2017-cof2:r1:addon-comp2017-cof2"
+    },
+    "ability:charge:path:voie-du-centaure:addon-comp2017-cof2:rank1:cof2-lb-2024": {
+      "scenario": "ability:ma-trise:path:voie-du-centaure:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:charge-au-galop:path-path-voie-du-centaure-addon-comp2017-cof2:r1:addon-comp2017-cof2"
+    },
+    "ability:ma-trise:path:voie-du-centaure:addon-comp2017-cof2:rank3:cof2-lb-2024": {
+      "scenario": "ability:ma-trise:path:voie-du-centaure:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:ma-trise:path:voie-du-centaure:addon-comp2017-cof2:rank3:cof2-lb-2024"
+    },
+    "ability:tir-en-mouvement:path:voie-du-centaure:addon-comp2017-cof2:rank2:cof2-lb-2024": {
+      "scenario": "ability:ma-trise:path:voie-du-centaure:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:tir-en-mouvement:path:voie-du-centaure:addon-comp2017-cof2:rank2:cof2-lb-2024"
+    },
+    "ability:sang-froid:path:voie-du-demi-ogre:addon-comp2017-cof2:rank1:cof2-lb-2024": {
+      "scenario": "ability:vorace:path:voie-du-demi-ogre:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:sang-froid:path-path-voie-du-demi-ogre-addon-comp2017-cof2:r1:addon-comp2017-cof2"
+    },
+    "ability:violence-cibl-e:path:voie-du-demi-ogre:addon-comp2017-cof2:rank2:cof2-lb-2024": {
+      "scenario": "ability:vorace:path:voie-du-demi-ogre:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:violence-cibl-e:path:voie-du-demi-ogre:addon-comp2017-cof2:rank2:cof2-lb-2024"
+    },
+    "ability:vorace:path:voie-du-demi-ogre:addon-comp2017-cof2:rank3:cof2-lb-2024": {
+      "scenario": "ability:vorace:path:voie-du-demi-ogre:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:vorace:path:voie-du-demi-ogre:addon-comp2017-cof2:rank3:cof2-lb-2024"
+    },
+    "ability:jeune-worg:path:voie-du-gobelin:addon-comp2017-cof2:rank2:cof2-lb-2024": {
+      "scenario": "ability:miam:path:voie-du-gobelin:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:jeune-worg:path:voie-du-gobelin:addon-comp2017-cof2:rank2:cof2-lb-2024"
+    },
+    "ability:miam:path:voie-du-gobelin:addon-comp2017-cof2:rank3:cof2-lb-2024": {
+      "scenario": "ability:miam:path:voie-du-gobelin:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:miam:path:voie-du-gobelin:addon-comp2017-cof2:rank3:cof2-lb-2024"
+    },
+    "ability:rapide:path:voie-du-gobelin:addon-comp2017-cof2:rank1:cof2-lb-2024": {
+      "scenario": "ability:miam:path:voie-du-gobelin:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:rapide-comme-son-ombre:path-path-voie-du-gobelin-addon-comp2017-cof2:r1:addon-comp2017-cof2"
+    },
+    "ability:cailles:path:voie-du-kobold:addon-comp2017-cof2:rank2:cof2-lb-2024": {
+      "scenario": "ability:pi-ge-improvis:path:voie-du-kobold:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:cailles:path:voie-du-kobold:addon-comp2017-cof2:rank2:cof2-lb-2024"
+    },
+    "ability:pi-ge-improvis:path:voie-du-kobold:addon-comp2017-cof2:rank3:cof2-lb-2024": {
+      "scenario": "ability:pi-ge-improvis:path:voie-du-kobold:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:pi-ge-improvis:path:voie-du-kobold:addon-comp2017-cof2:rank3:cof2-lb-2024"
+    },
+    "ability:se-planquer:path:voie-du-kobold:addon-comp2017-cof2:rank1:cof2-lb-2024": {
+      "scenario": "ability:pi-ge-improvis:path:voie-du-kobold:addon-comp2017-cof2:rank3:cof2-lb-2024",
+      "actualId": "ability:se-planquer:path-path-voie-du-kobold-addon-comp2017-cof2:r1:addon-comp2017-cof2"
+    },
+    "ability:charge-l:path-voie-du-minotaure-addon-comp2017-cof2:r1:addon-comp2017-cof2": {
+      "scenario": "ability:orientation-infaillible:path-voie-du-minotaure-addon-comp2017-cof2:r3:addon-comp2017-cof2",
+      "actualId": "ability:charge-l:path-voie-du-minotaure-addon-comp2017-cof2:r1:addon-comp2017-cof2"
+    },
+    "ability:frenesie:path-voie-du-minotaure-addon-comp2017-cof2:r2:addon-comp2017-cof2": {
+      "scenario": "ability:orientation-infaillible:path-voie-du-minotaure-addon-comp2017-cof2:r3:addon-comp2017-cof2",
+      "actualId": "ability:frenesie:path-voie-du-minotaure-addon-comp2017-cof2:r2:addon-comp2017-cof2"
+    },
+    "ability:orientation-infaillible:path-voie-du-minotaure-addon-comp2017-cof2:r3:addon-comp2017-cof2": {
+      "scenario": "ability:orientation-infaillible:path-voie-du-minotaure-addon-comp2017-cof2:r3:addon-comp2017-cof2",
+      "actualId": "ability:orientation-infaillible:path-voie-du-minotaure-addon-comp2017-cof2:r3:addon-comp2017-cof2"
+    },
+    "ability:capacite-de-peuple-plus-occultisme:path-mage-cof2-lb-2024:r1:cof2-lb-2024": {
+      "scenario": "ability:tour-de-magie-g:path-mage-cof2-lb-2024:r3:cof2-lb-2024",
+      "actualId": "ability:capacite-de-peuple-plus-occultisme:path-mage-cof2-lb-2024:r1:cof2-lb-2024"
+    },
+    "ability:maitrise-de-la-magie-l:path-mage-cof2-lb-2024:r2:cof2-lb-2024": {
+      "scenario": "ability:tour-de-magie-g:path-mage-cof2-lb-2024:r3:cof2-lb-2024",
+      "actualId": "ability:maitrise-de-la-magie-l:path-mage-cof2-lb-2024:r2:cof2-lb-2024"
+    },
+    "ability:tour-de-magie-g:path-mage-cof2-lb-2024:r3:cof2-lb-2024": {
+      "scenario": "ability:tour-de-magie-g:path-mage-cof2-lb-2024:r3:cof2-lb-2024",
+      "actualId": "ability:tour-de-magie-g:path-mage-cof2-lb-2024:r3:cof2-lb-2024"
+    },
+    "ability:etre-feerique-r2:path:voie-de-letre-feerique:addon-comp2017-cof2:r2:foh-cof2-v1": {
+      "scenario": "ability:etre-feerique-r3:path:voie-de-letre-feerique:addon-comp2017-cof2:r3:foh-cof2-v1",
+      "actualId": "ability:etre-feerique-r2:path:voie-de-letre-feerique:addon-comp2017-cof2:r2:foh-cof2-v1"
+    },
+    "ability:etre-feerique-r3:path:voie-de-letre-feerique:addon-comp2017-cof2:r3:foh-cof2-v1": {
+      "scenario": "ability:etre-feerique-r3:path:voie-de-letre-feerique:addon-comp2017-cof2:r3:foh-cof2-v1",
+      "actualId": "ability:etre-feerique-r3:path:voie-de-letre-feerique:addon-comp2017-cof2:r3:foh-cof2-v1"
+    },
+    "ability:langage-des-animaux:path:voie-de-letre-feerique:addon-comp2017-cof2:r1:foh-cof2-v1": {
+      "scenario": "ability:etre-feerique-r3:path:voie-de-letre-feerique:addon-comp2017-cof2:r3:foh-cof2-v1",
+      "actualId": "ability:langage-des-animaux:path:voie-de-letre-feerique:addon-comp2017-cof2:r1:foh-cof2-v1"
+    },
+    "ability:history:campaigns:r1": {
+      "scenario": "ability:history:campaigns:r5",
+      "actualId": "ability:history:campaigns:r1"
+    },
+    "ability:history:campaigns:r2": {
+      "scenario": "ability:history:campaigns:r5",
+      "actualId": "ability:history:campaigns:r2"
+    },
+    "ability:history:campaigns:r3": {
+      "scenario": "ability:history:campaigns:r5",
+      "actualId": "ability:history:campaigns:r3"
+    },
+    "ability:history:campaigns:r4": {
+      "scenario": "ability:history:campaigns:r5",
+      "actualId": "ability:history:campaigns:r4"
+    },
+    "ability:history:campaigns:r5": {
+      "scenario": "ability:history:campaigns:r5",
+      "actualId": "ability:history:campaigns:r5"
+    },
+    "ability:history:courtier:r1": {
+      "scenario": "ability:history:campaigns:r5",
+      "actualId": "ability:history:courtier:r1"
+    },
+    "ability:history:cities:r1": {
+      "scenario": "ability:history:cities:r5",
+      "actualId": "ability:history:cities:r1"
+    },
+    "ability:history:cities:r2": {
+      "scenario": "ability:history:cities:r5",
+      "actualId": "ability:history:cities:r2"
+    },
+    "ability:history:cities:r3": {
+      "scenario": "ability:history:cities:r5",
+      "actualId": "ability:history:cities:r3"
+    },
+    "ability:history:cities:r4": {
+      "scenario": "ability:history:cities:r5",
+      "actualId": "ability:history:cities:r4"
+    },
+    "ability:history:cities:r5": {
+      "scenario": "ability:history:cities:r5",
+      "actualId": "ability:history:cities:r5"
+    },
+    "ability:history:deserts:r1": {
+      "scenario": "ability:history:deserts:r5",
+      "actualId": "ability:history:deserts:r1"
+    },
+    "ability:history:deserts:r2": {
+      "scenario": "ability:history:deserts:r5",
+      "actualId": "ability:history:deserts:r2"
+    },
+    "ability:history:deserts:r3": {
+      "scenario": "ability:history:deserts:r5",
+      "actualId": "ability:history:deserts:r3"
+    },
+    "ability:history:deserts:r4": {
+      "scenario": "ability:history:deserts:r5",
+      "actualId": "ability:history:deserts:r4"
+    },
+    "ability:history:deserts:r5": {
+      "scenario": "ability:history:deserts:r5",
+      "actualId": "ability:history:deserts:r5"
+    },
+    "ability:history:forests:r1": {
+      "scenario": "ability:history:forests:r5",
+      "actualId": "ability:history:forests:r1"
+    },
+    "ability:history:forests:r2": {
+      "scenario": "ability:history:forests:r5",
+      "actualId": "ability:history:forests:r2"
+    },
+    "ability:history:forests:r3": {
+      "scenario": "ability:history:forests:r5",
+      "actualId": "ability:history:forests:r3"
+    },
+    "ability:history:forests:r4": {
+      "scenario": "ability:history:forests:r5",
+      "actualId": "ability:history:forests:r4"
+    },
+    "ability:history:forests:r5": {
+      "scenario": "ability:history:forests:r5",
+      "actualId": "ability:history:forests:r5"
+    },
+    "ability:history:caves:r1": {
+      "scenario": "ability:history:caves:r5",
+      "actualId": "ability:history:caves:r1"
+    },
+    "ability:history:caves:r2": {
+      "scenario": "ability:history:caves:r5",
+      "actualId": "ability:history:caves:r2"
+    },
+    "ability:history:caves:r3": {
+      "scenario": "ability:history:caves:r5",
+      "actualId": "ability:history:caves:r3"
+    },
+    "ability:history:caves:r4": {
+      "scenario": "ability:history:caves:r5",
+      "actualId": "ability:history:caves:r4"
+    },
+    "ability:history:caves:r5": {
+      "scenario": "ability:history:caves:r5",
+      "actualId": "ability:history:caves:r5"
+    },
+    "ability:history:marshes:r1": {
+      "scenario": "ability:history:marshes:r5",
+      "actualId": "ability:history:marshes:r1"
+    },
+    "ability:history:marshes:r2": {
+      "scenario": "ability:history:marshes:r5",
+      "actualId": "ability:history:marshes:r2"
+    },
+    "ability:history:marshes:r3": {
+      "scenario": "ability:history:marshes:r5",
+      "actualId": "ability:history:marshes:r3"
+    },
+    "ability:history:marshes:r4": {
+      "scenario": "ability:history:marshes:r5",
+      "actualId": "ability:history:marshes:r4"
+    },
+    "ability:history:marshes:r5": {
+      "scenario": "ability:history:marshes:r5",
+      "actualId": "ability:history:marshes:r5"
+    },
+    "ability:history:mountains:r1": {
+      "scenario": "ability:history:mountains:r5",
+      "actualId": "ability:history:mountains:r1"
+    },
+    "ability:history:mountains:r2": {
+      "scenario": "ability:history:mountains:r5",
+      "actualId": "ability:history:mountains:r2"
+    },
+    "ability:history:mountains:r3": {
+      "scenario": "ability:history:mountains:r5",
+      "actualId": "ability:history:mountains:r3"
+    },
+    "ability:history:mountains:r4": {
+      "scenario": "ability:history:mountains:r5",
+      "actualId": "ability:history:mountains:r4"
+    },
+    "ability:history:mountains:r5": {
+      "scenario": "ability:history:mountains:r5",
+      "actualId": "ability:history:mountains:r5"
+    },
+    "ability:history:plains:r1": {
+      "scenario": "ability:history:plains:r5",
+      "actualId": "ability:history:plains:r1"
+    },
+    "ability:history:plains:r2": {
+      "scenario": "ability:history:plains:r5",
+      "actualId": "ability:history:plains:r2"
+    },
+    "ability:history:plains:r3": {
+      "scenario": "ability:history:plains:r5",
+      "actualId": "ability:history:plains:r3"
+    },
+    "ability:history:plains:r4": {
+      "scenario": "ability:history:plains:r5",
+      "actualId": "ability:history:plains:r4"
+    },
+    "ability:history:plains:r5": {
+      "scenario": "ability:history:plains:r5",
+      "actualId": "ability:history:plains:r5"
+    },
+    "ability:history:shores:r1": {
+      "scenario": "ability:history:shores:r5",
+      "actualId": "ability:history:shores:r1"
+    },
+    "ability:history:shores:r2": {
+      "scenario": "ability:history:shores:r5",
+      "actualId": "ability:history:shores:r2"
+    },
+    "ability:history:shores:r3": {
+      "scenario": "ability:history:shores:r5",
+      "actualId": "ability:history:shores:r3"
+    },
+    "ability:history:shores:r4": {
+      "scenario": "ability:history:shores:r5",
+      "actualId": "ability:history:shores:r4"
+    },
+    "ability:history:shores:r5": {
+      "scenario": "ability:history:shores:r5",
+      "actualId": "ability:history:shores:r5"
+    },
+    "ability:history:courtier:r2": {
+      "scenario": "ability:history:courtier:r5",
+      "actualId": "ability:history:courtier:r2"
+    },
+    "ability:history:courtier:r3": {
+      "scenario": "ability:history:courtier:r5",
+      "actualId": "ability:history:courtier:r3"
+    },
+    "ability:history:courtier:r4": {
+      "scenario": "ability:history:courtier:r5",
+      "actualId": "ability:history:courtier:r4"
+    },
+    "ability:history:courtier:r5": {
+      "scenario": "ability:history:courtier:r5",
+      "actualId": "ability:history:courtier:r5"
+    },
+    "ability:history:scholar:r1": {
+      "scenario": "ability:history:scholar:r5",
+      "actualId": "ability:history:scholar:r1"
+    },
+    "ability:history:scholar:r2": {
+      "scenario": "ability:history:scholar:r5",
+      "actualId": "ability:history:scholar:r2"
+    },
+    "ability:history:scholar:r3": {
+      "scenario": "ability:history:scholar:r5",
+      "actualId": "ability:history:scholar:r3"
+    },
+    "ability:history:scholar:r4": {
+      "scenario": "ability:history:scholar:r5",
+      "actualId": "ability:history:scholar:r4"
+    },
+    "ability:history:scholar:r5": {
+      "scenario": "ability:history:scholar:r5",
+      "actualId": "ability:history:scholar:r5"
+    },
+    "ability:history:expert:r1": {
+      "scenario": "ability:history:expert:r5",
+      "actualId": "ability:history:expert:r1"
+    },
+    "ability:history:expert:r2": {
+      "scenario": "ability:history:expert:r5",
+      "actualId": "ability:history:expert:r2"
+    },
+    "ability:history:expert:r3": {
+      "scenario": "ability:history:expert:r5",
+      "actualId": "ability:history:expert:r3"
+    },
+    "ability:history:expert:r4": {
+      "scenario": "ability:history:expert:r5",
+      "actualId": "ability:history:expert:r4"
+    },
+    "ability:history:expert:r5": {
+      "scenario": "ability:history:expert:r5",
+      "actualId": "ability:history:expert:r5"
+    },
+    "ability:history:commoner:r1": {
+      "scenario": "ability:history:commoner:r5",
+      "actualId": "ability:history:commoner:r1"
+    },
+    "ability:history:commoner:r2": {
+      "scenario": "ability:history:commoner:r5",
+      "actualId": "ability:history:commoner:r2"
+    },
+    "ability:history:commoner:r3": {
+      "scenario": "ability:history:commoner:r5",
+      "actualId": "ability:history:commoner:r3"
+    },
+    "ability:history:commoner:r4": {
+      "scenario": "ability:history:commoner:r5",
+      "actualId": "ability:history:commoner:r4"
+    },
+    "ability:history:commoner:r5": {
+      "scenario": "ability:history:commoner:r5",
+      "actualId": "ability:history:commoner:r5"
+    },
+    "ability:history:soldier:r1": {
+      "scenario": "ability:history:soldier:r5",
+      "actualId": "ability:history:soldier:r1"
+    },
+    "ability:history:soldier:r2": {
+      "scenario": "ability:history:soldier:r5",
+      "actualId": "ability:history:soldier:r2"
+    },
+    "ability:history:soldier:r3": {
+      "scenario": "ability:history:soldier:r5",
+      "actualId": "ability:history:soldier:r3"
+    },
+    "ability:history:soldier:r4": {
+      "scenario": "ability:history:soldier:r5",
+      "actualId": "ability:history:soldier:r4"
+    },
+    "ability:history:soldier:r5": {
+      "scenario": "ability:history:soldier:r5",
+      "actualId": "ability:history:soldier:r5"
+    },
+    "ability:history:pauper:r1": {
+      "scenario": "ability:history:pauper:r5",
+      "actualId": "ability:history:pauper:r1"
+    },
+    "ability:history:pauper:r2": {
+      "scenario": "ability:history:pauper:r5",
+      "actualId": "ability:history:pauper:r2"
+    },
+    "ability:history:pauper:r3": {
+      "scenario": "ability:history:pauper:r5",
+      "actualId": "ability:history:pauper:r3"
+    },
+    "ability:history:pauper:r4": {
+      "scenario": "ability:history:pauper:r5",
+      "actualId": "ability:history:pauper:r4"
+    },
+    "ability:history:pauper:r5": {
+      "scenario": "ability:history:pauper:r5",
+      "actualId": "ability:history:pauper:r5"
+    },
+    "ability:history:wealthy:r1": {
+      "scenario": "ability:history:wealthy:r5",
+      "actualId": "ability:history:wealthy:r1"
+    },
+    "ability:history:wealthy:r2": {
+      "scenario": "ability:history:wealthy:r5",
+      "actualId": "ability:history:wealthy:r2"
+    },
+    "ability:history:wealthy:r3": {
+      "scenario": "ability:history:wealthy:r5",
+      "actualId": "ability:history:wealthy:r3"
+    },
+    "ability:history:wealthy:r4": {
+      "scenario": "ability:history:wealthy:r5",
+      "actualId": "ability:history:wealthy:r4"
+    },
+    "ability:history:wealthy:r5": {
+      "scenario": "ability:history:wealthy:r5",
+      "actualId": "ability:history:wealthy:r5"
+    },
+    "ability:history:nomad:r1": {
+      "scenario": "ability:history:nomad:r5",
+      "actualId": "ability:history:nomad:r1"
+    },
+    "ability:history:nomad:r2": {
+      "scenario": "ability:history:nomad:r5",
+      "actualId": "ability:history:nomad:r2"
+    },
+    "ability:history:nomad:r3": {
+      "scenario": "ability:history:nomad:r5",
+      "actualId": "ability:history:nomad:r3"
+    },
+    "ability:history:nomad:r4": {
+      "scenario": "ability:history:nomad:r5",
+      "actualId": "ability:history:nomad:r4"
+    },
+    "ability:history:nomad:r5": {
+      "scenario": "ability:history:nomad:r5",
+      "actualId": "ability:history:nomad:r5"
+    }
+  },
+  "unresolved": []
+}

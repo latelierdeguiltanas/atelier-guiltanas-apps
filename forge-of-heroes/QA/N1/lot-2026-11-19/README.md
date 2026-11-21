@@ -93,3 +93,11 @@ Le transfert natif conservait déjà le choix de Souffle, mais la carte interact
 La [recette Chrome mobile émulée](../real-chrome-current.json) renforcée passe sur les douze parcours. Elle compare les identifiants des capacités avant et après réouverture du héros, puis les libellés effectivement affichés dans la fiche interactive avant et après actualisation. Le workflow [44907600091](https://github.com/latelierdeguiltanas/atelier-guiltanas-apps/actions/runs/44907600091) a exécuté ces parcours sur le commit `755084c7fe8a`, index `79bee1e8b4ce…f9f2d`.
 
 La matrice `node fiches-personnages/tests/matrix-transfer.cjs` couvre **468/468** couples (18 profils, 26 peuples), avec un témoin valide par couple. Elle vérifie les identifiants et le texte des rangs, les bonus de compétence, les effets passifs et la restitution intégrale de la fiche par le coffre local. Les cas Petite taille, Fée/Farfadet, Prêtre et Centaure reçoivent des choix de test légaux. Les 53 transitions moteur aller-retour et 13 contrôles ciblés de résidus passent également. Le pourcentage de certification des règles reste à 207/4789, ces preuves concernent des parcours et des témoins de transfert.
+
+## Acquisition et persistance par lots
+
+Les 451 rangs candidats N1 ont désormais un témoin légal enregistré dans [rank-persistence-batch.json](rank-persistence-batch.json). Chaque témoin passe par le moteur, la sauvegarde officielle Forge, la réouverture, le transfert natif puis le coffre de fiches. Les identifiants acquis sont comparés sur toute la chaîne. Douze rangs de peuple utilisent l'identifiant actuel de leur capacité de rang 1, vérifié par voie et libellé. Les identifiants actuels sont consignés dans le rapport.
+
+Le lot a révélé que les rangs d'historique récupéraient le texte de leur voie sans transmettre l'identifiant reconnu par le moteur Forge. Le transfert de la fiche conserve désormais cet identifiant. Les 468 couples peuple/profil, le personnage sans profil avec historiques, Armure d'os et Souffle du Drakonide passent également.
+
+Le registre passe de 207 à 915 critères sur 4789 (19,11 %), soit 708 preuves supplémentaires. Le lot couvre l'acquisition et la persistance. La vérification des effets en jeu, des accès exceptionnels et des PDF reste suivie dans les critères dédiés.
