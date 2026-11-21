@@ -4,7 +4,7 @@ const report={schema:'FOH_N1_HISTORY_CONDITIONS',at:new Date().toISOString(),sou
 const PDFLib=require('../progression/pdf-lib');
 require('../progression/official-pdf-engine');
 const pdf=global.FOHOfficialPDF.create({PDFLib,DB:require('../progression/pdf-labels.json')});
-const professionalReport={pdfAnnexes:0,companions:0,status:'PENDING',cases:0,situations:0,reopened:0,refusals:0,coverage:{},products:report.products};
+const professionalReport={pdfAnnexes:0,companions:0,status:'PENDING',cases:0,situations:0,reopened:0,refusals:0,coverage:{},byAbility:{},runnerSha256:crypto.createHash('sha256').update(fs.readFileSync(__filename)).digest('hex'),moduleSha256:report.moduleSha256,products:report.products};
 const id=(profession,rank)=>'ability:history:'+profession+':r'+rank;
 const boundaries={
  courtier:[4,1,'charismaDifficulty',15],scholar:[3,0,'skillBonus',3],
@@ -34,13 +34,20 @@ for(const file of ['index.html']){const{db,engine:E,html}=F.load(root+'/'+file);
   assert.equal(API.isOwned(c,key),abilityRank<=rank);
   assert.equal(API.resolve(c,key,{situation:-1}).applies,false);
   assert.equal(API.resolve({abilities:[]},key,{situation:0}).applies,false);
-  professionalReport.refusals+=2;
+  const proof=professionalReport.byAbility[rule.id]||={owned:0,unowned:0,invalidSituation:0,positiveSituations:0,reopenedSituations:0};
+  assert.equal(API.resolve(c,key,{situation:99}).applies,false);
+  proof.invalidSituation+=2;
+  if(abilityRank>rank){assert.equal(API.resolve(c,key,{situation:0}).applies,false);proof.unowned++;}
+  else proof.owned++;
+  professionalReport.refusals+=3;
   if(abilityRank>rank)continue;
   professionalReport.coverage[key]=true;
   for(const [situation] of (rule.situations||[]).entries()){
    const effect=API.resolve(c,key,{situation});
    assert(effect.applies&&Object.keys(effect.modifiers).length);
    assert.deepEqual(API.resolve(back.sticky.characterState,key,{situation}),effect);
+   proof.positiveSituations++;
+   proof.reopenedSituations++;
    professionalReport.situations++;
   }
  }
@@ -91,8 +98,8 @@ for(const file of ['index.html']){const{db,engine:E,html}=F.load(root+'/'+file);
  }catch(e){report.failed++;if(report.failures.length<12)report.failures.push({tag,error:String(e.stack||e).slice(0,1500)});}
 }}
 for(const key of Object.keys(API.rules).filter(key=>!API.rules[key].situations)){assert.equal(API.resolve({abilities:[]},key,{}).applies,false);report.negativeChecks++;}assert.throws(()=>API.resolve({},'unknown'));report.negativeChecks++;
-report.status=report.passed===report.expected&&!report.failed?'PASS':'FAIL';fs.writeFileSync(root+'/QA/N1/arquebusier-history-conditions.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
+report.status=report.passed===report.expected&&!report.failed?'PASS':'FAIL';fs.writeFileSync(process.env.FOH_PRO_CONDITIONS_REPORT||root+'/QA/N1/arquebusier-history-conditions.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
 professionalReport.status=report.status==='PASS'&&professionalReport.cases===80&&Object.keys(professionalReport.coverage).length===40?'PASS':'FAIL';
-fs.writeFileSync(root+'/QA/N1/arquebusier-history-professions.json',JSON.stringify(professionalReport,null,2)+'\n');
+fs.writeFileSync(process.env.FOH_PROFESSIONS_REPORT||root+'/QA/N1/arquebusier-history-professions.json',JSON.stringify(professionalReport,null,2)+'\n');
 if(professionalReport.status!=='PASS')process.exitCode=1;
 if(report.status!=='PASS')process.exitCode=1;

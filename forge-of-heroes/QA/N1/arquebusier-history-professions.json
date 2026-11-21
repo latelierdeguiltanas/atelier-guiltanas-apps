@@ -5,7 +5,7 @@
   "cases": 80,
   "situations": 368,
   "reopened": 80,
-  "refusals": 800,
+  "refusals": 1200,
   "coverage": {
     "ability:history:courtier:r1": true,
     "courtier_secrets": true,
@@ -48,10 +48,294 @@
     "ability:history:nomad:r4": true,
     "ability:history:nomad:r5": true
   },
+  "byAbility": {
+    "ability:history:courtier:r1": {
+      "owned": 10,
+      "unowned": 0,
+      "invalidSituation": 20,
+      "positiveSituations": 10,
+      "reopenedSituations": 10
+    },
+    "ability:history:courtier:r2": {
+      "owned": 8,
+      "unowned": 2,
+      "invalidSituation": 20,
+      "positiveSituations": 0,
+      "reopenedSituations": 0
+    },
+    "ability:history:courtier:r3": {
+      "owned": 6,
+      "unowned": 4,
+      "invalidSituation": 20,
+      "positiveSituations": 0,
+      "reopenedSituations": 0
+    },
+    "ability:history:courtier:r4": {
+      "owned": 4,
+      "unowned": 6,
+      "invalidSituation": 20,
+      "positiveSituations": 8,
+      "reopenedSituations": 8
+    },
+    "ability:history:courtier:r5": {
+      "owned": 2,
+      "unowned": 8,
+      "invalidSituation": 20,
+      "positiveSituations": 2,
+      "reopenedSituations": 2
+    },
+    "ability:history:scholar:r1": {
+      "owned": 10,
+      "unowned": 0,
+      "invalidSituation": 20,
+      "positiveSituations": 20,
+      "reopenedSituations": 20
+    },
+    "ability:history:scholar:r2": {
+      "owned": 8,
+      "unowned": 2,
+      "invalidSituation": 20,
+      "positiveSituations": 0,
+      "reopenedSituations": 0
+    },
+    "ability:history:scholar:r3": {
+      "owned": 6,
+      "unowned": 4,
+      "invalidSituation": 20,
+      "positiveSituations": 6,
+      "reopenedSituations": 6
+    },
+    "ability:history:scholar:r4": {
+      "owned": 4,
+      "unowned": 6,
+      "invalidSituation": 20,
+      "positiveSituations": 8,
+      "reopenedSituations": 8
+    },
+    "ability:history:scholar:r5": {
+      "owned": 2,
+      "unowned": 8,
+      "invalidSituation": 20,
+      "positiveSituations": 2,
+      "reopenedSituations": 2
+    },
+    "ability:history:expert:r1": {
+      "owned": 10,
+      "unowned": 0,
+      "invalidSituation": 20,
+      "positiveSituations": 20,
+      "reopenedSituations": 20
+    },
+    "ability:history:expert:r2": {
+      "owned": 8,
+      "unowned": 2,
+      "invalidSituation": 20,
+      "positiveSituations": 0,
+      "reopenedSituations": 0
+    },
+    "ability:history:expert:r3": {
+      "owned": 6,
+      "unowned": 4,
+      "invalidSituation": 20,
+      "positiveSituations": 6,
+      "reopenedSituations": 6
+    },
+    "ability:history:expert:r4": {
+      "owned": 4,
+      "unowned": 6,
+      "invalidSituation": 20,
+      "positiveSituations": 8,
+      "reopenedSituations": 8
+    },
+    "ability:history:expert:r5": {
+      "owned": 2,
+      "unowned": 8,
+      "invalidSituation": 20,
+      "positiveSituations": 2,
+      "reopenedSituations": 2
+    },
+    "ability:history:commoner:r1": {
+      "owned": 10,
+      "unowned": 0,
+      "invalidSituation": 20,
+      "positiveSituations": 20,
+      "reopenedSituations": 20
+    },
+    "ability:history:commoner:r2": {
+      "owned": 8,
+      "unowned": 2,
+      "invalidSituation": 20,
+      "positiveSituations": 8,
+      "reopenedSituations": 8
+    },
+    "ability:history:commoner:r3": {
+      "owned": 6,
+      "unowned": 4,
+      "invalidSituation": 20,
+      "positiveSituations": 6,
+      "reopenedSituations": 6
+    },
+    "ability:history:commoner:r4": {
+      "owned": 4,
+      "unowned": 6,
+      "invalidSituation": 20,
+      "positiveSituations": 4,
+      "reopenedSituations": 4
+    },
+    "ability:history:commoner:r5": {
+      "owned": 2,
+      "unowned": 8,
+      "invalidSituation": 20,
+      "positiveSituations": 2,
+      "reopenedSituations": 2
+    },
+    "ability:history:soldier:r1": {
+      "owned": 10,
+      "unowned": 0,
+      "invalidSituation": 20,
+      "positiveSituations": 10,
+      "reopenedSituations": 10
+    },
+    "ability:history:soldier:r2": {
+      "owned": 8,
+      "unowned": 2,
+      "invalidSituation": 20,
+      "positiveSituations": 8,
+      "reopenedSituations": 8
+    },
+    "ability:history:soldier:r3": {
+      "owned": 6,
+      "unowned": 4,
+      "invalidSituation": 20,
+      "positiveSituations": 12,
+      "reopenedSituations": 12
+    },
+    "ability:history:soldier:r4": {
+      "owned": 4,
+      "unowned": 6,
+      "invalidSituation": 20,
+      "positiveSituations": 4,
+      "reopenedSituations": 4
+    },
+    "ability:history:soldier:r5": {
+      "owned": 2,
+      "unowned": 8,
+      "invalidSituation": 20,
+      "positiveSituations": 2,
+      "reopenedSituations": 2
+    },
+    "ability:history:pauper:r1": {
+      "owned": 10,
+      "unowned": 0,
+      "invalidSituation": 20,
+      "positiveSituations": 30,
+      "reopenedSituations": 30
+    },
+    "ability:history:pauper:r2": {
+      "owned": 8,
+      "unowned": 2,
+      "invalidSituation": 20,
+      "positiveSituations": 16,
+      "reopenedSituations": 16
+    },
+    "ability:history:pauper:r3": {
+      "owned": 6,
+      "unowned": 4,
+      "invalidSituation": 20,
+      "positiveSituations": 6,
+      "reopenedSituations": 6
+    },
+    "ability:history:pauper:r4": {
+      "owned": 4,
+      "unowned": 6,
+      "invalidSituation": 20,
+      "positiveSituations": 8,
+      "reopenedSituations": 8
+    },
+    "ability:history:pauper:r5": {
+      "owned": 2,
+      "unowned": 8,
+      "invalidSituation": 20,
+      "positiveSituations": 4,
+      "reopenedSituations": 4
+    },
+    "ability:history:wealthy:r1": {
+      "owned": 10,
+      "unowned": 0,
+      "invalidSituation": 20,
+      "positiveSituations": 10,
+      "reopenedSituations": 10
+    },
+    "ability:history:wealthy:r2": {
+      "owned": 8,
+      "unowned": 2,
+      "invalidSituation": 20,
+      "positiveSituations": 16,
+      "reopenedSituations": 16
+    },
+    "ability:history:wealthy:r3": {
+      "owned": 6,
+      "unowned": 4,
+      "invalidSituation": 20,
+      "positiveSituations": 60,
+      "reopenedSituations": 60
+    },
+    "ability:history:wealthy:r4": {
+      "owned": 4,
+      "unowned": 6,
+      "invalidSituation": 20,
+      "positiveSituations": 8,
+      "reopenedSituations": 8
+    },
+    "ability:history:wealthy:r5": {
+      "owned": 2,
+      "unowned": 8,
+      "invalidSituation": 20,
+      "positiveSituations": 12,
+      "reopenedSituations": 12
+    },
+    "ability:history:nomad:r1": {
+      "owned": 10,
+      "unowned": 0,
+      "invalidSituation": 20,
+      "positiveSituations": 10,
+      "reopenedSituations": 10
+    },
+    "ability:history:nomad:r2": {
+      "owned": 8,
+      "unowned": 2,
+      "invalidSituation": 20,
+      "positiveSituations": 8,
+      "reopenedSituations": 8
+    },
+    "ability:history:nomad:r3": {
+      "owned": 6,
+      "unowned": 4,
+      "invalidSituation": 20,
+      "positiveSituations": 6,
+      "reopenedSituations": 6
+    },
+    "ability:history:nomad:r4": {
+      "owned": 4,
+      "unowned": 6,
+      "invalidSituation": 20,
+      "positiveSituations": 4,
+      "reopenedSituations": 4
+    },
+    "ability:history:nomad:r5": {
+      "owned": 2,
+      "unowned": 8,
+      "invalidSituation": 20,
+      "positiveSituations": 2,
+      "reopenedSituations": 2
+    }
+  },
+  "runnerSha256": "58cd32c36695749fd475addea5a41fc9321163d10696bdbc833bfbda8efccf07",
+  "moduleSha256": "3cfa17fd97df3f25595b5d9c5fab9122d0ebfb00320b3b4f3678a4b75c339c50",
   "products": [
     {
       "file": "index.html",
-      "sha256": "3358aa4fcbd516287f051f3707f8fdf59ac7544b8a69ebc1c072e9244c01e4cd"
+      "sha256": "e50556164adb62c9c0679fcd911e36af02a687237c4303aea7cb9111d1029483"
     }
   ]
 }

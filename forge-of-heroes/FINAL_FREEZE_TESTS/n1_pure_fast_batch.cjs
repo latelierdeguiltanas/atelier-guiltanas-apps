@@ -61,6 +61,7 @@ for(const file of ['index.html']){
     try{
       const s=standardState(db,cls.id,paths[i].id,p.id);
       s.identite.nom='QA '+tag.slice(0,50);
+      if(cls.id==='class:pretre:cof2-lb-2024')s.profileChoices.priestMode='generalist';
       s.serieId=serie;s.baseCaracs={...base};s.voies.profilePathIds=[paths[i].id,paths[j].id];
       s.voies.peoplePathId=inherited.id;s.peupleChoices={...racial};
       if(race==='gnome')s.peupleChoices.grantedAbilityId=T.abilities_class.find(a=>a.rank===1&&!s.voies.profilePathIds.includes(a.path_id)&&T.paths_class.some(q=>q.id===a.path_id&&q.classId.includes(':ensorceleur:')))?.id;

@@ -1,7 +1,10 @@
 'use strict';
 const assert=require('node:assert/strict'),{load,standardState}=require('../../forge-of-heroes/FINAL_FREEZE_TESTS/forge_product_runner'),N=require('../../forge-of-heroes/native-progression.js'),L=require('../library.js');
-const {db,engine}=load(),T=db.tables;
-let tested=0;const failures=[],profiles=new Set(),peoples=new Set();
+const fs=require('node:fs'), path=require('node:path'), crypto=require('node:crypto');
+const {db,engine,html}=load(),T=db.tables;
+const sha=data=>crypto.createHash('sha256').update(data).digest('hex');
+const dependency=file=>sha(fs.readFileSync(path.resolve(__dirname,file)));
+let tested=0;const failures=[],profiles=new Set(),peoples=new Set(),pairs=[];
 const dagger=T.weapons_n1.find(w=>/^dague$/i.test(w.label||w.name));
 for(const profile of T.classes||[])for(const people of T.peoples||[]){
  try{
@@ -32,16 +35,30 @@ for(const profile of T.classes||[])for(const people of T.peoples||[]){
   const acquired=result.sticky.acquiredAbilities||[],owned=character.paths.flatMap(p=>p.ranks);
   if(acquired.length!==owned.length||owned.some(r=>!r.owned||!r.name||!r.text?.trim()))throw Error('rangs omis ou sans texte');
   assert.deepEqual(owned.map(a=>a.abilityId).sort(),Array.from(acquired,a=>a.id).sort());
+  for(const [field,value] of Object.entries(result.sticky.characterState.characteristics)){
+   assert.equal(character.stats[field.toUpperCase()],value,'Caractéristique perdue : '+field);
+  }
+  assert.equal(character.combat.pvMax,result.sticky.PV);
+  assert.equal(character.combat.def,result.sticky.DEF);
+  assert.equal(character.combat.init,result.sticky.INIT);
   const local=new Map();
   const storage={getItem:key=>local.get(key)??null,setItem:(key,value)=>local.set(key,value)};
   const entry=L.upsert(character,{heroId:character.id,storage});
   assert.deepEqual(L.read(storage).data.entries[entry.id].character,entry.character);
   if(JSON.stringify(character.skillBonuses)!==JSON.stringify(result.sticky.skillBonuses||[]))throw Error('bonus de compétence perdus');
   if(JSON.stringify(character.passiveFeatures)!==JSON.stringify(result.sticky.passiveFeatures||[]))throw Error('effets passifs perdus');
-  profiles.add(profile.id);peoples.add(people.id);tested++;
+  profiles.add(profile.id);peoples.add(people.id);pairs.push([profile.id,people.id]);tested++;
  }catch(e){failures.push({profile:profile.label,people:people.label,error:e.message})}
 }
 const total=T.classes.length*T.peoples.length;
 console.log('MATRIX | exports valides='+tested+'/'+total+' | profils='+profiles.size+' | peuples='+peoples.size);
 if(failures.length){console.error('MATRIX FAIL | '+JSON.stringify(failures));process.exitCode=1;}
 assert.equal(tested,total,'Un témoin valide par couple peuple/profil est requis');
+
+if(process.env.FOH_N1_TRANSFER_REPORT){
+ const report={schema:'FOH_N1_PAIR_TRANSFER_V1',status:'PASS',tested,pairs,
+  inputs:{indexSha256:sha(html),runnerSha256:sha(fs.readFileSync(__filename)),
+   nativeSha256:dependency('../../forge-of-heroes/native-progression.js'),librarySha256:dependency('../library.js')},
+  scope:'One legal N1 creation per profile/people pair; native model transfer and vault reopening. No browser UI claim.'};
+ fs.writeFileSync(process.env.FOH_N1_TRANSFER_REPORT,JSON.stringify(report,null,2)+'\n');
+}

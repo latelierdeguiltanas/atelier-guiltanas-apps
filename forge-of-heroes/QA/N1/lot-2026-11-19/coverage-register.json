@@ -1,15 +1,15 @@
 {
   "schema": "FOH_N1_CERTIFICATION_REGISTER_V1",
-  "generatedAt": "2026-11-21T14:30:27.799Z",
+  "generatedAt": "2026-11-21T14:56:34.386Z",
   "inputs": {
-    "commit": "1688aa5a1a611225537074964121384c94423f0c",
+    "commit": "05056d7c2dce06e1967ffaa716ebe6fd1447e0dc",
     "indexBlob": "c581fce886a4c77ecfa05da80f928263330ca221",
     "indexSha256": "e50556164adb62c9c0679fcd911e36af02a687237c4303aea7cb9111d1029483",
     "engineSha256": "c498ce3deed8492c56ea62d708d80c187de972df4c8b0f8382b87fd30025b46f",
     "databaseSha256": "09bfd6316ed420e59f177738a1a402f849a91dd74f3b01dd7bb17d28f8fb44cb",
     "nativeSha256": "2726731c7a6cdc228943cab77e3151003b91a1d07c65e503572630abdbddfbea",
     "bridgeSha256": "aae1e6b0445fe463b544e25c1192b292c02345f494c7845a0abb85d745dd42b2",
-    "sheetSha256": "5167ef39880a7cd85ebcd010796e79895c7f2019de66bfe86f133bbc51091042"
+    "sheetSha256": "678b95a4819904fb2e381f13a1af4c3107ae0742a3ec79e969fff6c277e56fe6"
   },
   "summary": {
     "catalogue": {
@@ -26,14 +26,14 @@
     "specialAccessReviewed": 244,
     "mechanicallyClosedRules": 1,
     "fullyCertifiedRules": 0,
-    "criteriaPassed": 1314,
+    "criteriaPassed": 1378,
     "criteriaTotal": 4789,
-    "percent": 27.44,
+    "percent": 28.77,
     "profilesCertified": 0,
     "peoplesCertified": 0,
     "certified": false,
     "denominatorPolicy": "451 ordinary N1 candidate ranks × 10 obligations + 244 exceptional-reachability reviews + 35 engine/interaction/integration gates. Each review discovering an N1 exception adds its 10 obligations; historical witness mapping may credit existing proofs. This first reconciliation is a documented lower bound, not an estimated failure rate.",
-    "reuseCandidates": 11
+    "reuseCandidates": 17
   },
   "obligations": [
     "acquisition",
@@ -3008,8 +3008,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "activation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Owned ability: player records a use in the sheet and cannot record another before reset. Attack/test resolution remains manual."
         },
         "numericEffects": {
           "status": "NON TESTÉ",
@@ -3024,8 +3025,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "deactivation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Usage counter stays spent on reopening, then clears on a round reset or at the end of combat."
         },
         "restrictions": {
           "status": "NON TESTÉ",
@@ -5570,8 +5572,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "activation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Owned ability: player records a use in the sheet and cannot record another before reset. Attack/test resolution remains manual."
         },
         "numericEffects": {
           "status": "NON TESTÉ",
@@ -5586,8 +5589,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "deactivation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Usage counter stays spent on reopening, then clears on a round reset or at the end of combat."
         },
         "restrictions": {
           "status": "NON TESTÉ",
@@ -5726,8 +5730,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "activation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Owned ability: player records a use in the sheet and cannot record another before reset. Attack/test resolution remains manual."
         },
         "numericEffects": {
           "status": "NON TESTÉ",
@@ -5742,8 +5747,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "deactivation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Usage counter stays spent on reopening, then clears on a round reset or at the end of combat."
         },
         "restrictions": {
           "status": "NON TESTÉ",
@@ -6890,8 +6896,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "activation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Owned ability: player records a use in the sheet and cannot record another before reset. Attack/test resolution remains manual."
         },
         "numericEffects": {
           "status": "NON TESTÉ",
@@ -6906,8 +6913,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "deactivation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Usage counter stays spent on reopening, then clears on a round reset or at the end of combat."
         },
         "restrictions": {
           "status": "NON TESTÉ",
@@ -13335,8 +13343,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "activation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Owned ability: player records a use in the sheet and cannot record another before reset. Attack/test resolution remains manual."
         },
         "numericEffects": {
           "status": "NON TESTÉ",
@@ -13351,8 +13360,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "deactivation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Usage counter stays spent on reopening, then clears on a round reset or at the end of combat."
         },
         "restrictions": {
           "status": "NON TESTÉ",
@@ -13491,8 +13501,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "activation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Owned ability: player records a use in the sheet and cannot record another before reset. Attack/test resolution remains manual."
         },
         "numericEffects": {
           "status": "NON TESTÉ",
@@ -13507,8 +13518,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "deactivation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Usage counter stays spent on reopening, then clears on a round reset or at the end of combat."
         },
         "restrictions": {
           "status": "NON TESTÉ",
@@ -24338,24 +24350,27 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "activation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Records legal trance uses on a transferred sheet through the daily limit at path R2 and R3."
         },
         "numericEffects": {
           "status": "NON TESTÉ",
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "costs": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Each recorded trance debits 2 PM under the Forge conversion."
         },
         "duration": {
           "status": "NON TESTÉ",
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "deactivation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Daily limit survives reload and the end of combat; full recovery resets it."
         },
         "restrictions": {
           "status": "NON TESTÉ",
@@ -40514,8 +40529,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "activation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Owned ability: player records a use in the sheet and cannot record another before reset. Attack/test resolution remains manual."
         },
         "numericEffects": {
           "status": "NON TESTÉ",
@@ -40530,8 +40546,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "deactivation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Usage counter stays spent on reopening, then clears on a round reset or at the end of combat."
         },
         "restrictions": {
           "status": "NON TESTÉ",
@@ -40600,8 +40617,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "activation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Owned ability: player records a use in the sheet and cannot record another before reset. Attack/test resolution remains manual."
         },
         "numericEffects": {
           "status": "NON TESTÉ",
@@ -40616,8 +40634,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "deactivation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Usage counter stays spent on reopening, then clears on a round reset or at the end of combat."
         },
         "restrictions": {
           "status": "NON TESTÉ",
@@ -43105,24 +43124,27 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "activation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Owned ability: player records a use in the sheet and cannot record another before reset. Attack/test resolution remains manual."
         },
         "numericEffects": {
           "status": "NON TESTÉ",
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "costs": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Tour de magie can be recorded with 0 PM remaining. No PM consumed."
         },
         "duration": {
           "status": "NON TESTÉ",
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "deactivation": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "round-power-uses.json",
+          "scope": "Usage counter stays spent on reopening, then clears on a round reset or at the end of combat."
         },
         "restrictions": {
           "status": "NON TESTÉ",
@@ -51473,8 +51495,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -51701,8 +51724,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -51778,8 +51802,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -51855,8 +51880,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -52008,8 +52034,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -52084,8 +52111,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -52160,8 +52188,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -52236,8 +52265,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -52388,8 +52418,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -52464,8 +52495,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -52541,8 +52573,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -52617,8 +52650,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -52693,8 +52727,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -52769,8 +52804,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -52845,8 +52881,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -52921,8 +52958,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -52998,8 +53036,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -53075,8 +53114,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -53151,8 +53191,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -53227,8 +53268,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -53303,8 +53345,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -53379,8 +53422,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -53455,8 +53499,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -53531,8 +53576,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -53607,8 +53653,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -53683,8 +53730,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -53759,8 +53807,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -53835,8 +53884,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -53911,8 +53961,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -53988,8 +54039,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -54065,8 +54117,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -54142,8 +54195,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -54219,8 +54273,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -54296,8 +54351,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -54373,8 +54429,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -54450,8 +54507,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "restrictions": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../arquebusier-history-professions.json",
+          "scope": "Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants."
         },
         "persistence": {
           "status": "PASS",
@@ -54465,11 +54523,15 @@
   "extra": [
     {
       "id": "engine:initialStats",
-      "status": "NON TESTÉ"
+      "status": "PASS",
+      "evidence": "../lot2/characteristic-methods.json",
+      "scope": "All finite point-buy ledgers, all allocations of the three standard series and all semirandom dice triples; legal and rejected inputs asserted against an independent source oracle."
     },
     {
       "id": "engine:racialStats",
-      "status": "NON TESTÉ"
+      "status": "PASS",
+      "evidence": "ancestry-stats.json",
+      "scope": "54 legal ancestry modifier combinations across all 26 peoples; all characteristics compared to the catalogued rules, before and after reopening."
     },
     {
       "id": "engine:derivedStats",
@@ -54525,7 +54587,9 @@
     },
     {
       "id": "interaction:peopleProfile",
-      "status": "NON TESTÉ"
+      "status": "PASS",
+      "evidence": "pair-transfer.json",
+      "scope": "468 legal N1 creations, one per people/profile pair; exact characteristics, PV, DEF, INIT, ranks, passive features and skill bonuses in native transfer and vault reopening."
     },
     {
       "id": "interaction:peoplePath",
@@ -54533,7 +54597,9 @@
     },
     {
       "id": "interaction:sameProfilePaths",
-      "status": "NON TESTÉ"
+      "status": "PASS",
+      "evidence": "pair-numerics.json",
+      "scope": "230 same-profile cases across 85 main paths, including both R2 choices for mages; exact baseline numeric interaction checks."
     },
     {
       "id": "interaction:hybrids",
@@ -54541,7 +54607,9 @@
     },
     {
       "id": "interaction:noProfile",
-      "status": "NON TESTÉ"
+      "status": "PASS",
+      "evidence": "pair-numerics.json",
+      "scope": "3,570 distinct pair cases across 85 main paths, with 60 source-expected shield refusals; exact baseline numeric interaction checks."
     },
     {
       "id": "interaction:ageRank",
@@ -54573,7 +54641,9 @@
     },
     {
       "id": "integration:forgeToSheet",
-      "status": "NON TESTÉ"
+      "status": "PASS",
+      "evidence": "pair-transfer.json",
+      "scope": "468 legal N1 creations, one per people/profile pair; exact characteristics, PV, DEF, INIT, ranks, passive features and skill bonuses in native transfer and vault reopening."
     },
     {
       "id": "integration:importExport",
@@ -54847,8 +54917,8 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/arquebusier-history-conditions.json",
-      "reportSha256": "8df0632b96727a6e18bc96c6553ac9ad9f489e7bc8ec96b28a7a5d3fcafcc46c",
-      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "reportSha256": "fd8d2872d2b4e3412704d2cc43337a1e48fc1866660a1d5a094896ad301c0e3a",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -54865,8 +54935,8 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/arquebusier-history-professions.json",
-      "reportSha256": "50928644a9b5fd05e6f3b4d24e3099f7c639d5af0d0dbd3a8de7e93f573ff1ec",
-      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "reportSha256": "0604b240fdc764be3cd22f36d66d7b1e106acc38a31969e905ad9f7ce653aa89",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -55357,8 +55427,8 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/lot2/characteristic-methods.json",
-      "reportSha256": "c87da09dd636d70eb975ab55d87482bfcb38b528b48a4db9d8b0c20ada471119",
-      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "reportSha256": "8d523a252506b2c0e6c334113ab22243d15acd683595b9823811c9ae78d33550",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -55567,8 +55637,8 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/official-methods-cross.json",
-      "reportSha256": "7bb4e655d8a00e588e81fea979ed85bac6f6175c94264106adf4d4c982338121",
-      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "reportSha256": "64979bd099fe5413b85f1fed6cb99db11d48c9a89f2d503871d227f280c03daa",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -55603,8 +55673,8 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/pure-profile-fast-arquebusier.json",
-      "reportSha256": "4a437b9cd0fbded6024062969c0772a13955085f979d213516a3289c5dc785dd",
-      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "reportSha256": "da28d35c23bd7114831a9cd835eba9097090f1c1f7fb105d9b0d43e6d040f6b4",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -55665,6 +55735,12 @@
       "path": "forge-of-heroes/QA/N1/pure-profile-sample-forgesort.json",
       "reportSha256": "7fcd7eff7104ab98a569de6df1d8de7aec4dbcb3d476bf844e1416b3ac0504c5",
       "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
+    },
+    {
+      "path": "forge-of-heroes/QA/N1/pure-profile-sample-pretre.json",
+      "reportSha256": "75392c3ec1a6c1ae00ddf87c69954c5726435e495ec21ec175512252c9608139",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {

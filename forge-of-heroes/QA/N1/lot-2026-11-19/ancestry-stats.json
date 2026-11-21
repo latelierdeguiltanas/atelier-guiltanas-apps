@@ -1,0 +1,822 @@
+{
+  "schema": "FOH_N1_ANCESTRY_STATS_V1",
+  "status": "PASS",
+  "indexSha256": "e50556164adb62c9c0679fcd911e36af02a687237c4303aea7cb9111d1029483",
+  "runnerSha256": "28e3c9571e3a1f37c1c1b9dffd828cbad263c8bbaaaf4f1052a9220f87a48fb9",
+  "fixtureSha256": "a5c78efa677900a59556249dac09b2c352952caf1f4f935b64f44c133c37f1b2",
+  "scope": "All combinations of configured ancestry modifiers on one legal N1 template per ancestry; expected independently from catalogue. Save/reopen included.",
+  "cases": [
+    {
+      "people": "people:demi-elfe:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "per",
+        "malusStat": "for"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 1,
+        "con": 0,
+        "per": 2,
+        "int": 3,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:demi-elfe:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "per",
+        "malusStat": "con"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": -1,
+        "per": 2,
+        "int": 3,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:demi-elfe:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "cha",
+        "malusStat": "for"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": 0
+      }
+    },
+    {
+      "people": "people:demi-elfe:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "cha",
+        "malusStat": "con"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": -1,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": 0
+      }
+    },
+    {
+      "people": "people:demi-orc:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "for",
+        "malusStat": "cha"
+      },
+      "expected": {
+        "for": 3,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": -2
+      }
+    },
+    {
+      "people": "people:demi-orc:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "for",
+        "malusStat": "int"
+      },
+      "expected": {
+        "for": 3,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 2,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:demi-orc:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "con",
+        "malusStat": "cha"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 1,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": -2
+      }
+    },
+    {
+      "people": "people:demi-orc:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "con",
+        "malusStat": "int"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 1,
+        "per": 1,
+        "int": 2,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:elfe-haut:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "int"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 4,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:elfe-haut:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "cha"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": 0
+      }
+    },
+    {
+      "people": "people:elfe-sylvain:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "agi"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 2,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:elfe-sylvain:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "per"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 1,
+        "con": 0,
+        "per": 2,
+        "int": 3,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:gnome:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "int"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 4,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:gnome:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "per"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 1,
+        "con": 0,
+        "per": 2,
+        "int": 3,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:halfelin:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "agi"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 2,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:halfelin:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "vol"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 1,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:humain:cof2-lb-2024",
+      "choices": {
+        "humainStat": "con"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 1,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:humain:cof2-lb-2024",
+      "choices": {
+        "humainStat": "vol"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 1,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:humain:cof2-lb-2024",
+      "choices": {
+        "humainStat": "cha"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": 0
+      }
+    },
+    {
+      "people": "people:nain:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "con"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 0,
+        "con": 1,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:nain:cof2-lb-2024",
+      "choices": {
+        "bonusStat": "vol"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 0,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 1,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:ame-forgee:addon-comp2017-cof2",
+      "choices": {
+        "malusStat": "cha"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 1,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": -2
+      }
+    },
+    {
+      "people": "people:ame-forgee:addon-comp2017-cof2",
+      "choices": {
+        "malusStat": "int"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 1,
+        "per": 1,
+        "int": 2,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:centaure:addon-comp2017-cof2",
+      "choices": {
+        "bonusStat": "con"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 1,
+        "per": 1,
+        "int": 2,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:centaure:addon-comp2017-cof2",
+      "choices": {
+        "bonusStat": "for"
+      },
+      "expected": {
+        "for": 3,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 2,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:demi-ogre:addon-comp2017-cof2",
+      "choices": {},
+      "expected": {
+        "for": 4,
+        "agi": 0,
+        "con": 1,
+        "per": 1,
+        "int": 2,
+        "vol": -1,
+        "cha": -2
+      }
+    },
+    {
+      "people": "people:gobelin:addon-comp2017-cof2",
+      "choices": {},
+      "expected": {
+        "for": 1,
+        "agi": 2,
+        "con": 0,
+        "per": 2,
+        "int": 3,
+        "vol": -1,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:kobold:addon-comp2017-cof2",
+      "choices": {},
+      "expected": {
+        "for": 1,
+        "agi": 2,
+        "con": -1,
+        "per": 2,
+        "int": 3,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:minotaure:addon-comp2017-cof2",
+      "choices": {},
+      "expected": {
+        "for": 4,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 1,
+        "vol": 1,
+        "cha": -3
+      }
+    },
+    {
+      "people": "people:lutin:addon-comp2017-cof2",
+      "choices": {},
+      "expected": {
+        "for": -3,
+        "agi": 3,
+        "con": 0,
+        "per": 2,
+        "int": 3,
+        "vol": 0,
+        "cha": 0
+      }
+    },
+    {
+      "people": "people:fee:addon-comp2017-cof2",
+      "choices": {},
+      "expected": {
+        "for": -3,
+        "agi": 3,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": 1
+      }
+    },
+    {
+      "people": "people:drakonide:compagnon-cof2",
+      "choices": {},
+      "expected": {
+        "for": 3,
+        "agi": 0,
+        "con": 0,
+        "per": 0,
+        "int": 3,
+        "vol": 1,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:cambion:compagnon-cof2",
+      "choices": {
+        "bonusStat": "vol"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 1,
+        "cha": -2
+      }
+    },
+    {
+      "people": "people:cambion:compagnon-cof2",
+      "choices": {
+        "bonusStat": "con"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 1,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": -2
+      }
+    },
+    {
+      "people": "people:elfe-pale:compagnon-cof2",
+      "choices": {
+        "bonusStat": "per"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 1,
+        "con": 0,
+        "per": 2,
+        "int": 3,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:elfe-pale:compagnon-cof2",
+      "choices": {
+        "bonusStat": "vol"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 1,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:elfe-profondeurs:compagnon-cof2",
+      "choices": {
+        "bonusStat": "agi"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 2,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:elfe-profondeurs:compagnon-cof2",
+      "choices": {
+        "bonusStat": "vol"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 1,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:felis:compagnon-cof2",
+      "choices": {
+        "bonusStat": "agi",
+        "malusStat": "for"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 2,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:felis:compagnon-cof2",
+      "choices": {
+        "bonusStat": "agi",
+        "malusStat": "int"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 2,
+        "con": 0,
+        "per": 1,
+        "int": 2,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:felis:compagnon-cof2",
+      "choices": {
+        "bonusStat": "per",
+        "malusStat": "for"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 1,
+        "con": 0,
+        "per": 2,
+        "int": 3,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:felis:compagnon-cof2",
+      "choices": {
+        "bonusStat": "per",
+        "malusStat": "int"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 0,
+        "per": 2,
+        "int": 2,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:frouin:compagnon-cof2",
+      "choices": {
+        "bonusStat": "agi"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 2,
+        "con": 1,
+        "per": 1,
+        "int": 3,
+        "vol": 0,
+        "cha": -2
+      }
+    },
+    {
+      "people": "people:frouin:compagnon-cof2",
+      "choices": {
+        "bonusStat": "per"
+      },
+      "expected": {
+        "for": 1,
+        "agi": 1,
+        "con": 1,
+        "per": 2,
+        "int": 3,
+        "vol": 0,
+        "cha": -2
+      }
+    },
+    {
+      "people": "people:nephilim:compagnon-cof2",
+      "choices": {
+        "bonusStat": "cha"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 0,
+        "per": 0,
+        "int": 3,
+        "vol": 0,
+        "cha": 0
+      }
+    },
+    {
+      "people": "people:nephilim:compagnon-cof2",
+      "choices": {
+        "bonusStat": "con"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 1,
+        "per": 0,
+        "int": 3,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:ophidien:compagnon-cof2",
+      "choices": {
+        "bonusStat": "int"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": -1,
+        "per": 1,
+        "int": 4,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:ophidien:compagnon-cof2",
+      "choices": {
+        "bonusStat": "vol"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": -1,
+        "per": 1,
+        "int": 3,
+        "vol": 1,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:satyre:compagnon-cof2",
+      "choices": {
+        "bonusStat": "per",
+        "malusStat": "vol"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 0,
+        "per": 2,
+        "int": 3,
+        "vol": -1,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:satyre:compagnon-cof2",
+      "choices": {
+        "bonusStat": "per",
+        "malusStat": "int"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 0,
+        "per": 2,
+        "int": 2,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:satyre:compagnon-cof2",
+      "choices": {
+        "bonusStat": "cha",
+        "malusStat": "vol"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 3,
+        "vol": -1,
+        "cha": 0
+      }
+    },
+    {
+      "people": "people:satyre:compagnon-cof2",
+      "choices": {
+        "bonusStat": "cha",
+        "malusStat": "int"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 2,
+        "vol": 0,
+        "cha": 0
+      }
+    },
+    {
+      "people": "people:wolfer:compagnon-cof2",
+      "choices": {
+        "bonusStat": "per"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 0,
+        "per": 2,
+        "int": 2,
+        "vol": 0,
+        "cha": -1
+      }
+    },
+    {
+      "people": "people:wolfer:compagnon-cof2",
+      "choices": {
+        "bonusStat": "vol"
+      },
+      "expected": {
+        "for": 2,
+        "agi": 1,
+        "con": 0,
+        "per": 1,
+        "int": 2,
+        "vol": 1,
+        "cha": -1
+      }
+    }
+  ]
+}

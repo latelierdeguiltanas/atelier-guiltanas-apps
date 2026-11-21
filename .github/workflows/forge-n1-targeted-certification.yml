@@ -6,6 +6,8 @@ on:
       - '.github/workflows/forge-n1-targeted-certification.yml'
       - 'fiches-personnages/tests/bone-armor-certification*.cjs'
       - 'fiches-personnages/tests/drakonide-breath-dom.cjs'
+      - 'fiches-personnages/tests/round-power-uses.cjs'
+      - 'fiches-personnages/fiche/index.html'
       - 'fiches-personnages/fiche/fiche.js'
 permissions:
   contents: read
@@ -27,6 +29,8 @@ jobs:
         run: |
           node fiches-personnages/tests/bone-armor-certification.cjs
           node fiches-personnages/tests/drakonide-breath-dom.cjs
+          FOH_ROUND_REPORT="$RUNNER_TEMP/round-power-uses.json" node fiches-personnages/tests/round-power-uses.cjs
+          cmp "$RUNNER_TEMP/round-power-uses.json" forge-of-heroes/QA/N1/lot-2026-11-19/round-power-uses.json
       - name: Real browser transitions on isolated sheets
         env:
           NODE_PATH: /tmp/forge-qa-deps/node_modules

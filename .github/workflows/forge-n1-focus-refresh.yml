@@ -12,15 +12,23 @@ on:
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_dynamic_choices.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_multi_choices.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_origins_oracle.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs'
+      - 'forge-of-heroes/QA/N1/arquebusier-history-professions.json'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_base_spell_costs.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_register_contract.cjs'
       - 'forge-of-heroes/QA/N1/lot-2026-11-19/**'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_pair_numeric_oracle.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_ancestry_stat_gate.cjs'
+      - 'forge-of-heroes/QA/N1/lot2/characteristic-methods.json'
+      - 'fiches-personnages/tests/matrix-transfer.cjs'
+      - 'fiches-personnages/library.js'
+      - 'forge-of-heroes/native-progression.js'
 permissions:
   contents: read
 jobs:
   register:
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -42,6 +50,14 @@ jobs:
           cmp "$RUNNER_TEMP/multi-choices.json" forge-of-heroes/QA/N1/lot-2026-11-19/multi-choices.json
           FOH_N1_HISTORY_ORIGINS_REPORT="$RUNNER_TEMP/history-origins.json" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_origins_oracle.cjs
           cmp "$RUNNER_TEMP/history-origins.json" forge-of-heroes/QA/N1/arquebusier-history-origins.json
+          FOH_PRO_CONDITIONS_REPORT="$RUNNER_TEMP/history-conditions.json" FOH_PROFESSIONS_REPORT="$RUNNER_TEMP/history-professions.json" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs
+          cmp "$RUNNER_TEMP/history-professions.json" forge-of-heroes/QA/N1/arquebusier-history-professions.json
+          FOH_N1_TRANSFER_REPORT="$RUNNER_TEMP/pair-transfer.json" node fiches-personnages/tests/matrix-transfer.cjs
+          cmp "$RUNNER_TEMP/pair-transfer.json" forge-of-heroes/QA/N1/lot-2026-11-19/pair-transfer.json
+          FOH_ORACLE_REPORT="$RUNNER_TEMP/pair-numerics.json" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_pair_numeric_oracle.cjs
+          cmp "$RUNNER_TEMP/pair-numerics.json" forge-of-heroes/QA/N1/lot-2026-11-19/pair-numerics.json
+          FOH_N1_ANCESTRY_STAT_REPORT="$RUNNER_TEMP/ancestry-stats.json" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_ancestry_stat_gate.cjs
+          cmp "$RUNNER_TEMP/ancestry-stats.json" forge-of-heroes/QA/N1/lot-2026-11-19/ancestry-stats.json
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_register_contract.cjs
       - uses: actions/upload-artifact@v4

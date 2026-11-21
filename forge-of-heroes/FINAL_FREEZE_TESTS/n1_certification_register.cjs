@@ -29,12 +29,23 @@ const originProof=read('forge-of-heroes/QA/N1/arquebusier-history-origins.json')
 const originsCurrent=originProof.status==='PASS'&&originProof.indexSha256===inputs.indexSha256&&
  originProof.runnerSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_origins_oracle.cjs'))&&
  originProof.contextSha256===hash(fs.readFileSync(root+'/forge-of-heroes/ENGINE/history_context_n1.js'));
+const professionProof=read('forge-of-heroes/QA/N1/arquebusier-history-professions.json');
+const professionsCurrent=professionProof.status==='PASS'&&professionProof.cases===80&&
+ professionProof.products.some(product=>product.file==='index.html'&&product.sha256===inputs.indexSha256)&&
+ professionProof.runnerSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_conditions_oracle.cjs'))&&
+ professionProof.moduleSha256===hash(fs.readFileSync(root+'/forge-of-heroes/ENGINE/history_context_n1.js'));
 const breathProof=read('forge-of-heroes/QA/N1/lot-2026-11-19/drakonide-breath-dom.json');
 const breathCurrent=breathProof.status==='PASS'&&
  breathProof.inputs.indexSha256===inputs.indexSha256&&breathProof.inputs.nativeSha256===inputs.nativeSha256&&
  breathProof.inputs.sheetSha256===inputs.sheetSha256&&
  breathProof.inputs.sheetHtmlSha256===hash(fs.readFileSync(root+'/fiches-personnages/fiche/index.html'))&&
  ['fire','cold','lightning','acid'].every(element=>breathProof.cases.some(c=>c.element===element&&c.status==='PASS'));
+const roundProof=read('forge-of-heroes/QA/N1/lot-2026-11-19/round-power-uses.json');
+const roundCurrent=roundProof.status==='PASS'&&roundProof.inputs.indexSha256===inputs.indexSha256&&
+ roundProof.inputs.sheetSha256===inputs.sheetSha256&&roundProof.inputs.nativeSha256===inputs.nativeSha256&&
+ roundProof.inputs.sheetHtmlSha256===hash(fs.readFileSync(root+'/fiches-personnages/fiche/index.html'))&&
+ roundProof.inputs.runnerSha256===hash(fs.readFileSync(root+'/fiches-personnages/tests/round-power-uses.cjs'))&&
+ roundProof.inputs.fixtureSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_batch_rank_persistence.cjs'));
 const warriorProof=read('forge-of-heroes/QA/N1/guerrier-source-n1.json');
 const criticalCurrent=warriorProof.indexSha256===inputs.indexSha256&&
  warriorProof.testSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_guerrier_source.cjs'))&&
@@ -83,6 +94,25 @@ const rows=[...T.abilities_class,...T.abilities_people,...T.history_abilities].m
  if(contextualOrigin?.status==='PASS'&&contextualOrigin.verified===2*(6-a.rank)*contextualOrigin.situations.length&&
   contextualOrigin.situations.some(item=>Object.values(item.modifiers).some(v=>typeof v==='number'||typeof v==='string'&&/\d/.test(v))))
   checks.numericEffects={status:'PASS',evidence:'../arquebusier-history-origins.json',scope:'All catalogued context resolver situations and their exact modifiers, checked after save/reopen. Interactive actions remain a separate gate.'};
+ const profession=professionsCurrent&&professionProof.byAbility[a.id];
+ if(profession?.owned===2*(6-a.rank)&&profession.unowned===2*(a.rank-1)&&
+  profession.invalidSituation===20&&profession.positiveSituations>0&&
+  profession.reopenedSituations===profession.positiveSituations)
+  checks.restrictions={status:'PASS',evidence:'../arquebusier-history-professions.json',scope:'Profession resolver: owned ranks accepted in catalogued situations; insufficient rank, missing profession and out-of-range situations denied across both variants.'};
+ const round=roundCurrent&&roundProof.cases.find(row=>row.id===a.id);
+ if(round?.use&&round.limit&&round.reopen){
+  checks.activation={status:'PASS',evidence:'round-power-uses.json',scope:'Owned ability: player records a use in the sheet and cannot record another before reset. Attack/test resolution remains manual.'};
+  if(round.roundReset&&round.combatReset)
+   checks.deactivation={status:'PASS',evidence:'round-power-uses.json',scope:'Usage counter stays spent on reopening, then clears on a round reset or at the end of combat.'};
+  if(round.free&&a.id.startsWith('ability:tour-de-magie-g:'))
+   checks.costs={status:'PASS',evidence:'round-power-uses.json',scope:'Tour de magie can be recorded with 0 PM remaining. No PM consumed.'};
+ }
+ if(roundCurrent&&a.id==='ability:foh81:psionique:voie-du-controle-corporel:r2'&&
+  [2,3].every(rank=>roundProof.tranceChecks.some(c=>c.rank===rank&&c.uses===rank))){
+  checks.activation={status:'PASS',evidence:'round-power-uses.json',scope:'Records legal trance uses on a transferred sheet through the daily limit at path R2 and R3.'};
+  checks.costs={status:'PASS',evidence:'round-power-uses.json',scope:'Each recorded trance debits 2 PM under the Forge conversion.'};
+  checks.deactivation={status:'PASS',evidence:'round-power-uses.json',scope:'Daily limit survives reload and the end of combat; full recovery resets it.'};
+ }
  if(breathCurrent&&a.id==='ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2'){
   const scopes={
    choices:'All four elements projected from Forge to the interactive card.',
@@ -98,8 +128,54 @@ const rows=[...T.abilities_class,...T.abilities_people,...T.history_abilities].m
 });
 const evidence=[];function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,e.name);if(p===out)continue;if(e.isDirectory())walk(p);else if(e.name.endsWith('.json')){let j;try{j=JSON.parse(fs.readFileSync(p,'utf8'))}catch{continue;}const text=JSON.stringify(j),indexMatch=text.includes(inputs.indexSha256)||text.includes(inputs.indexBlob),componentsMatch=text.includes(inputs.engineSha256)&&text.includes(inputs.databaseSha256);evidence.push({path:path.relative(root,p),reportSha256:hash(fs.readFileSync(p)),dependencyStatus:indexMatch?'EXACT_INDEX_SCOPE_REUSABLE':componentsMatch?'ENGINE_DATABASE_SCOPE_REUSABLE':'DEPENDENCY_REVIEW_REQUIRED',note:'Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient.'});}}}walk(root+'/forge-of-heroes/QA/N1');
 const applicable=rows.filter(r=>r.n1Applicability==='IN_SCOPE'),special=rows.filter(r=>r.n1Applicability!=='IN_SCOPE');
+const pairTransferPath='forge-of-heroes/QA/N1/lot-2026-11-19/pair-transfer.json';
+const pairTransfer=read(pairTransferPath);
+const pairKeys=new Set(pairTransfer.pairs.map(pair=>JSON.stringify(pair)));
+const pairTransferCurrent=pairTransfer.status==='PASS'&&
+ pairTransfer.inputs.indexSha256===inputs.indexSha256&&pairTransfer.inputs.nativeSha256===inputs.nativeSha256&&
+ pairTransfer.inputs.runnerSha256===hash(fs.readFileSync(root+'/fiches-personnages/tests/matrix-transfer.cjs'))&&
+ pairTransfer.inputs.librarySha256===hash(fs.readFileSync(root+'/fiches-personnages/library.js'))&&
+ pairTransfer.tested===T.classes.length*T.peoples.length&&pairTransfer.pairs.length===pairTransfer.tested&&
+ pairKeys.size===pairTransfer.tested&&T.classes.every(profile=>T.peoples.every(people=>pairKeys.has(JSON.stringify([profile.id,people.id]))));
 const common=['initialStats','racialStats','derivedStats','resources','attacks','sizeEquipment','prerequisites','rankBudget','ageHistory','stacking','roundingBounds','saveRestore','choiceABA','sourceBundleParity','sharedFormula'],interactions=['peopleProfile','peoplePath','sameProfilePaths','hybrids','noProfile','ageRank','equipmentAbility','racialAbility','twoConditions','historyAbility','choiceReplacement','threeFactorRisks'],integration=['forgeToSheet','importExport','legacyMigration','officialPDF','annexes','desktopBrowser','mobileBrowser','publicParity'];
 const extra=[...common.map(id=>({id:'engine:'+id,status:id==='sourceBundleParity'?'PASS':'NON TESTÉ'})),...interactions.map(id=>({id:'interaction:'+id,status:'NON TESTÉ'})),...integration.map(id=>({id:'integration:'+id,status:'NON TESTÉ'}))];
+if(pairTransferCurrent){
+ const scope='468 legal N1 creations, one per people/profile pair; exact characteristics, PV, DEF, INIT, ranks, passive features and skill bonuses in native transfer and vault reopening.';
+ for(const gate of extra.filter(g=>['interaction:peopleProfile','integration:forgeToSheet'].includes(g.id))){
+  Object.assign(gate,{status:'PASS',evidence:'pair-transfer.json',scope});
+ }
+}
+const pairNumerics=read('forge-of-heroes/QA/N1/lot-2026-11-19/pair-numerics.json');
+if(pairNumerics.status==='PASS'&&pairNumerics.inputs['index.html']===inputs.indexSha256&&
+ pairNumerics.runnerSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_pair_numeric_oracle.cjs'))&&
+ pairNumerics.failures.length===0&&pairNumerics.counts['no-profile']===3570&&pairNumerics.counts.expectedShieldRefusals===60&&
+ pairNumerics.counts.standard===110&&pairNumerics.counts['standard-mage-r2']===120){
+ const scopes={
+  'interaction:noProfile':'3,570 distinct pair cases across 85 main paths, with 60 source-expected shield refusals; exact baseline numeric interaction checks.',
+  'interaction:sameProfilePaths':'230 same-profile cases across 85 main paths, including both R2 choices for mages; exact baseline numeric interaction checks.'
+ };
+ for(const gate of extra.filter(g=>Object.hasOwn(scopes,g.id))){
+  Object.assign(gate,{status:'PASS',evidence:'pair-numerics.json',scope:scopes[gate.id]});
+ }
+}
+const methods=read('forge-of-heroes/QA/N1/lot2/characteristic-methods.json');
+if(methods.status==='PASS'&&methods.indexSha256===inputs.indexSha256&&methods.engineSha256===inputs.engineSha256&&
+ methods.counts.pointBuy===6**7&&methods.counts.classicCreations===2940&&
+ methods.counts.semiTriples===11**3&&methods.counts.balancedLowCreations===64){
+ Object.assign(extra.find(g=>g.id==='engine:initialStats'),{status:'PASS',
+  evidence:'../lot2/characteristic-methods.json',
+  scope:'All finite point-buy ledgers, all allocations of the three standard series and all semirandom dice triples; legal and rejected inputs asserted against an independent source oracle.'});
+}
+const ancestryStats=read('forge-of-heroes/QA/N1/lot-2026-11-19/ancestry-stats.json');
+const ancestryPeople=new Set(ancestryStats.cases.map(c=>c.people));
+if(ancestryStats.status==='PASS'&&ancestryStats.indexSha256===inputs.indexSha256&&
+ ancestryStats.runnerSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_ancestry_stat_gate.cjs'))&&
+ ancestryStats.fixtureSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_batch_rank_persistence.cjs'))&&
+ ancestryStats.cases.length===54&&T.peoples.every(people=>ancestryPeople.has(people.id))){
+ Object.assign(extra.find(g=>g.id==='engine:racialStats'),{status:'PASS',
+  evidence:'ancestry-stats.json',
+  scope:'54 legal ancestry modifier combinations across all 26 peoples; all characteristics compared to the catalogued rules, before and after reopening.'});
+}
 // Partial R4/R5 rows each contribute one mandatory reachability review, not ten
 // fabricated gameplay requirements. An exception expands its ten obligations.
 const specialReviewed=special.filter(row=>row.reachability?.status==='PASS').length;
