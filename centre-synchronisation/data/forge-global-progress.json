@@ -1,10 +1,10 @@
 {
   "schema": "FOH_GLOBAL_CERTIFICATION_V1",
-  "generatedAt": "2026-11-21T14:07:54.259Z",
+  "generatedAt": "2026-11-21T14:21:29.277Z",
   "sourceProduct": "forge-of-heroes/index.html",
   "source": {
-    "indexSha256": "bf4b21430c8aadb064dba761081f1763924aa2a9e1a2ea524795cb830353093a",
-    "engineSha256": "5445de9424678fa040ac6461e9947a7ad606a2a33b794359343a95c73808e2ed",
+    "indexSha256": "e50556164adb62c9c0679fcd911e36af02a687237c4303aea7cb9111d1029483",
+    "engineSha256": "c498ce3deed8492c56ea62d708d80c187de972df4c8b0f8382b87fd30025b46f",
     "databaseSha256": "09bfd6316ed420e59f177738a1a402f849a91dd74f3b01dd7bb17d28f8fb44cb",
     "focusSha256": "79bee1e8b4ce222cd2847d49ea7f56d8a22d8f667a1db04e4635a9fb594f9f2d",
     "focusAt": "2026-11-14T19:11:33.002Z"
@@ -28,13 +28,6 @@
       "status": "SOURCE_PERIMEE",
       "description": "Les 14 profils ont le même poids. Chaque profil contribue selon la part de ses critères N1 validés dans le registre.",
       "source": "forge-n1/focus.json",
-      "targetedProof": {
-        "label": "Familles de régression N1",
-        "passed": 37,
-        "total": 37,
-        "evidence": "forge-of-heroes/QA/N1/regressions.json",
-        "limitations": "Contrôles ciblés N1 sur index courant ; ne prouvent pas tous les effets R3/historiques ni 14/14 profils à 100 %."
-      },
       "percent": 0,
       "complete": false
     },
@@ -259,9 +252,9 @@
   ],
   "n1Certification": {
     "schema": "FOH_N1_RECONCILED_SUMMARY_V1",
-    "generatedAt": "2026-11-21T14:20:18.117Z",
+    "generatedAt": "2026-11-21T14:21:21.236Z",
     "inputs": {
-      "commit": "8f2d8b8c75cae756d5eb087252796939d8952b87",
+      "commit": "839c8d2c3b7859898a4846bbf0b8c04a58b65174",
       "indexBlob": "c581fce886a4c77ecfa05da80f928263330ca221",
       "indexSha256": "e50556164adb62c9c0679fcd911e36af02a687237c4303aea7cb9111d1029483",
       "engineSha256": "c498ce3deed8492c56ea62d708d80c187de972df4c8b0f8382b87fd30025b46f",
@@ -292,7 +285,7 @@
       "peoplesCertified": 0,
       "certified": false,
       "denominatorPolicy": "451 ordinary N1 candidate ranks × 10 obligations + 244 exceptional-reachability reviews + 35 engine/interaction/integration gates. Each review discovering an N1 exception adds its 10 obligations; historical witness mapping may credit existing proofs. This first reconciliation is a documented lower bound, not an estimated failure rate.",
-      "reuseCandidates": 3
+      "reuseCandidates": 4
     },
     "profiles": [
       {
