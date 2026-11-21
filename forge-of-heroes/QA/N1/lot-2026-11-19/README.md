@@ -101,3 +101,7 @@ Les 451 rangs candidats N1 ont désormais un témoin légal enregistré dans [ra
 Le lot a révélé que les rangs d'historique récupéraient le texte de leur voie sans transmettre l'identifiant reconnu par le moteur Forge. Le transfert de la fiche conserve désormais cet identifiant. Les 468 couples peuple/profil, le personnage sans profil avec historiques, Armure d'os et Souffle du Drakonide passent également.
 
 Le registre passe de 207 à 915 critères sur 4789 (19,11 %), soit 708 preuves supplémentaires. Le lot couvre l'acquisition et la persistance. La vérification des effets en jeu, des accès exceptionnels et des PDF reste suivie dans les critères dédiés.
+
+## Annexes et résumés PDF
+
+La [recette du formulaire officiel](../lot10/pdf-summary-layout-current.json) vérifie 123 descriptions complètes dans quatre PDF générés. Elle couvre la voie du Mage et le rang de peuple conservé, un hybride et un Forgesort standard. Le contrôle de mise en page utilise les rectangles du modèle fourni. Sur 695 résumés examinés, seul Métamorphose féline R4 déborde. Ce rang reste dans la revue des accès exceptionnels. La preuve d'annexe porte sur les quatre PDF cités.

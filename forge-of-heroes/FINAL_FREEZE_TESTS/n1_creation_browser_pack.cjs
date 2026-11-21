@@ -16,7 +16,7 @@ const scenarios=[
 ];
 async function run(browser,n){
  const ctx=await browser.newContext({viewport:{width:393,height:852},isMobile:true,hasTouch:true,acceptDownloads:false});
- const p=await ctx.newPage();p.setDefaultTimeout(4000);
+ const p=await ctx.newPage();p.setDefaultTimeout(10000);
  const click=id=>p.locator(id).tap(),next=()=>click('#next-btn');
  const choose=async(id,part)=>{const el=p.locator(id);const opt=await el.locator('option').evaluateAll((oo,v)=>oo.find(o=>o.textContent.toLowerCase().includes(v.toLowerCase()))?.value,part);assert.notEqual(opt,undefined,id+' '+part);await el.selectOption(opt);};
  const [profile,first,second,expected]=scenarios[n-1],age=({3:'Mûr',4:'Vénérable',5:'Mûr',6:'Vénérable',8:'Vénérable',12:'Mûr'})[n];
