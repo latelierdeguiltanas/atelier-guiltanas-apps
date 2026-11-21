@@ -2,14 +2,16 @@
   "schema": "FOH_N1_PDF_MODES",
   "status": "PASS",
   "scope": "Six legal N1 creation states, native/shared official fields, narrative, hybrid labels, stale template purge, widget appearances, nonmutation. Not UI clicks or universal N1 certification.",
-  "indexSha256": "834d41af988ac1ce254b4f361b024425f22c51bb8ab2da4e2b709c8e19e78a3c",
+  "indexSha256": "79bee1e8b4ce222cd2847d49ea7f56d8a22d8f667a1db04e4635a9fb594f9f2d",
+  "templateSha256": "cb97958e6cd2cf394a3910c5d48af1026a7280da72c4e5f331737e5b41ebddf4",
+  "sharedExporterSha256": "30f3103cea91324a633d89d88af2630fc337a390565e92c45e559229e24a561d",
   "exports": 12,
   "rows": [
     {
       "mode": "classic",
       "exporter": "native",
       "profile": "Voleur",
-      "pages": 11,
+      "pages": 6,
       "fields": 156,
       "expected": {
         "PV": 9,
@@ -22,7 +24,7 @@
       "mode": "classic",
       "exporter": "shared",
       "profile": "Voleur",
-      "pages": 12,
+      "pages": 7,
       "fields": 156,
       "expected": {
         "PV": 9,
@@ -35,7 +37,7 @@
       "mode": "mage",
       "exporter": "native",
       "profile": "Magicien",
-      "pages": 11,
+      "pages": 6,
       "fields": 156,
       "expected": {
         "PV": 7,
@@ -48,7 +50,7 @@
       "mode": "mage",
       "exporter": "shared",
       "profile": "Magicien",
-      "pages": 12,
+      "pages": 7,
       "fields": 156,
       "expected": {
         "PV": 7,
@@ -61,7 +63,7 @@
       "mode": "sorcier-moine",
       "exporter": "native",
       "profile": "Sorcier / Moine",
-      "pages": 12,
+      "pages": 7,
       "fields": 156,
       "expected": {
         "PV": 8,
@@ -74,7 +76,7 @@
       "mode": "sorcier-moine",
       "exporter": "shared",
       "profile": "Sorcier / Moine",
-      "pages": 13,
+      "pages": 8,
       "fields": 156,
       "expected": {
         "PV": 8,
@@ -87,7 +89,7 @@
       "mode": "moine-sorcier",
       "exporter": "native",
       "profile": "Moine / Sorcier",
-      "pages": 12,
+      "pages": 7,
       "fields": 156,
       "expected": {
         "PV": 8,
@@ -100,7 +102,7 @@
       "mode": "moine-sorcier",
       "exporter": "shared",
       "profile": "Moine / Sorcier",
-      "pages": 13,
+      "pages": 8,
       "fields": 156,
       "expected": {
         "PV": 8,
@@ -113,7 +115,7 @@
       "mode": "barbare-forgesort",
       "exporter": "native",
       "profile": "Barbare / Forgesort",
-      "pages": 11,
+      "pages": 6,
       "fields": 156,
       "expected": {
         "PV": 10,
@@ -126,7 +128,7 @@
       "mode": "barbare-forgesort",
       "exporter": "shared",
       "profile": "Barbare / Forgesort",
-      "pages": 12,
+      "pages": 7,
       "fields": 156,
       "expected": {
         "PV": 10,
@@ -139,7 +141,7 @@
       "mode": "no-profile",
       "exporter": "native",
       "profile": "Sans profil",
-      "pages": 9,
+      "pages": 4,
       "fields": 156,
       "expected": {
         "PV": 11,
@@ -152,7 +154,7 @@
       "mode": "no-profile",
       "exporter": "shared",
       "profile": "Sans profil",
-      "pages": 10,
+      "pages": 5,
       "fields": 156,
       "expected": {
         "PV": 11,
