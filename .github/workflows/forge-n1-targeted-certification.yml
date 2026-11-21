@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/forge-n1-targeted-certification.yml'
       - 'fiches-personnages/tests/bone-armor-certification*.cjs'
+      - 'fiches-personnages/tests/drakonide-breath-dom.cjs'
       - 'fiches-personnages/fiche/fiche.js'
 permissions:
   contents: read
@@ -23,7 +24,9 @@ jobs:
       - name: Numerical and DOM regression
         env:
           NODE_PATH: /tmp/forge-qa-deps/node_modules
-        run: node fiches-personnages/tests/bone-armor-certification.cjs
+        run: |
+          node fiches-personnages/tests/bone-armor-certification.cjs
+          node fiches-personnages/tests/drakonide-breath-dom.cjs
       - name: Real browser transitions on isolated sheets
         env:
           NODE_PATH: /tmp/forge-qa-deps/node_modules

@@ -6,6 +6,12 @@ const inputs={commit:process.env.GITHUB_SHA||cp.execSync('git rev-parse HEAD',{c
 for(const f of ['ability-runtime.js','permanent-rules.js','path-calculations.js','prestige-rules.js'])if(!html.includes(fs.readFileSync(root+'/forge-of-heroes/rules/'+f,'utf8').trimEnd()))throw Error('Source/bundle drift: '+f);
 const old=read('forge-of-heroes/rules/completion-audit.json'),known=new Set(old.rows.map(r=>r.abilityId)),acq=read('forge-of-heroes/QA/N1/lot-2026-11-19/untracked-acquisitions.json'),bone=read('forge-of-heroes/QA/N1/lot-2026-11-19/bone-armor.json');
 if(acq.indexSha256!==inputs.indexSha256||bone.inputs.indexSha256!==inputs.indexSha256||bone.inputs.sheetSha256!==inputs.sheetSha256)throw Error('Stale evidence');
+const breathProof=read('forge-of-heroes/QA/N1/lot-2026-11-19/drakonide-breath-dom.json');
+const breathCurrent=breathProof.status==='PASS'&&
+ breathProof.inputs.indexSha256===inputs.indexSha256&&breathProof.inputs.nativeSha256===inputs.nativeSha256&&
+ breathProof.inputs.sheetSha256===inputs.sheetSha256&&
+ breathProof.inputs.sheetHtmlSha256===hash(fs.readFileSync(root+'/fiches-personnages/fiche/index.html'))&&
+ ['fire','cold','lightning','acid'].every(element=>breathProof.cases.some(c=>c.element===element&&c.status==='PASS'));
 const peopleProof=read('forge-of-heroes/QA/N1/lot10/people-source.json'),arqProof=read('forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json');
 const exactReport=j=>JSON.stringify(j.products||[]).includes(inputs.indexSha256);
 const obligations=['acquisition','choices','permanentEffects','activation','numericEffects','costs','duration','deactivation','restrictions','persistence'];
@@ -18,6 +24,16 @@ const rows=[...T.abilities_class,...T.abilities_people,...T.history_abilities].m
  const oldPeople=exactReport(peopleProof)&&peopleProof.cases.find(c=>c.path===a.path_id&&c.rank===a.rank&&c.status==='PASS');
  const oldArq=exactReport(arqProof)&&arqProof.complete===true&&arqProof.failed===0&&a.rank<=3&&a.path_id.includes(':class-arquebusier:');
  if(oldPeople||oldArq)for(const k of ['acquisition','persistence'])checks[k]={status:'PASS',evidence:oldPeople?'../lot10/people-source.json':'../arquebusier-pure-age-ranks.json',scope:'REUSED exact-index assertions: owned rank and official payload save/reopen. Does not close all effects or new sheet dependencies.'};
+ if(breathCurrent&&a.id==='ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2'){
+  const scopes={
+   choices:'All four elements projected from Forge to the interactive card.',
+   activation:'Ownership gated; player activates the limited action and one use is recorded.',
+   costs:'Exactly one use consumed; PM, PC and DR unchanged.',
+   deactivation:'Use remains spent until a new combat resets the counter.',
+   persistence:'Transfer to the interactive sheet and reload preserve the spent use.'
+  };
+  for(const [key,scope] of Object.entries(scopes))checks[key]={status:'PASS',evidence:'drakonide-breath-dom.json',scope};
+ }
  if(isBone&&bone.status==='PASS')for(const k of obligations)checks[k]={status:'PASS',evidence:'bone-armor.json',scope:'N1 mechanical/DOM scope, COF2 LB p109; no PM/action cost or timed spell invented. Physical browser/PDF/shared formula are separate gates.'};
  return {id:a.id,pathId:a.path_id,path:p?.label||p?.name||a.path_id,rank:a.rank,name:a.label,kind,ownerId:p?.classId||p?.people_id||null,source:a.source||null,descriptionSha256:hash(a.desc||''),untrackedByOldAudit:!known.has(a.id)&&kind!=='history',n1Applicability:applicable?'IN_SCOPE':'SPECIAL_ACCESS_REVIEW',applicabilityBasis:kind==='history'?'Historical ranks 1–5, four venerable PCap, pp170–171':a.rank<=3?'Ordinary N1 + mage/age/grants, advanced rules p153':'Above ordinary creation cap3. Must review exceptions before exclusion.',classification:isBone?{behavior:'mixte',candidateTypes:['passif contextuel','permanent'],review:'SOURCE_REVIEWED',evidence:'COF2 Livre de base p109, own fabrication and daily 10-minute upkeep'}:classification(a),partialHistoricalNumerics:oldPeople?{evidence:'../lot10/people-source.json',expected:oldPeople.expected,scope:'Exact PV/DEF/INIT/PC/ATM and listed skill/trait assertions; not a complete effects certificate'}:oldArq?{evidence:'../arquebusier-pure-age-ranks.json',scope:'Age/racial derived stats and explicitly named numerical assertions; remaining contexts open'}:null,declaredCatalogueStatus:a.certification?.functionalStatus||null,checks,mechanicallyClosed:applicable&&Object.values(checks).every(x=>x.status==='PASS')};
 });

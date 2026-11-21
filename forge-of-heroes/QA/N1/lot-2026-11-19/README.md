@@ -81,3 +81,9 @@ Les trois anciens producteurs de registres redirigent maintenant vers le génér
 Recette finale Armure d’os : workflows `44485258226` puis `44486597936` PASS, **quatre scénarios Chromium bureau/mobile**, armure sélectionnée ou non dans Forge, transitions et rechargement. Les 22 tests numériques/DOM passent également dans CI. Les six scénarios du Copilote sont PASS sur le même lot. Voir `release-verification.json`.
 
 L’ancien rafraîchissement séquentiel exécutait un oracle de certificat R2 attaché à un autre contexte de preuves. Il n’a pas été forcé au vert : ce workflow vérifie désormais le registre courant, ses empreintes et six mutations anti-faux-vert (numérateur, dénominateur, empreinte, doublon, règle incomplète, PASS sans preuve). Les tests historiques R2 sont conservés comme tels. Les protections de générateur sont compatibles avec les anciennes évaluations VM dépourvues de `process`.
+
+## Fiche Drakonide — 21 novembre
+
+Le transfert natif conservait déjà le choix de Souffle, mais la carte interactive n’affichait que le texte générique. La fiche lit désormais le paramétrage calculé par Forge : élément, dés, cône, sauvegarde adverse et nombre d’usages. L’usage est sauvegardé et revient au nouveau combat. La RD issue d’Écailles robustes apparaît dans les caractéristiques. Les dégâts, les sauvegardes adverses et l’application de la RD restent gérés à table.
+
+[Preuve DOM](drakonide-breath-dom.json) : quatre éléments, R2/R3, utilisation, réouverture, remise à zéro et ressources intactes. La comparaison des chiffres repose sur le catalogue Compagnon COF2 intégré, page 14. Le PDF Compagnon fourni est une autre édition et ne sert pas de preuve primaire pour ce rang. Quatre obligations supplémentaires sont rattachées au registre, pour 207/4789. Les 22 contrôles DOM d’Armure d’os passent sur la même fiche.
