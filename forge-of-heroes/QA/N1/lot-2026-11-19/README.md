@@ -121,3 +121,7 @@ Les rapports d'acquisition, d'accès aux rangs hauts, de peuples, d'Arquebusier,
 ## Choix à valeurs finies
 
 [Recette des choix](finite-choices.json) : 23 capacités, 79 valeurs légales projetées et relues après sauvegarde, plus un rejet hors domaine par champ. Chaque série s'appuie sur un personnage N1 légal. Cette preuve couvre les valeurs scalaires implémentées. Les choix dynamiques, composés et multiples, ainsi que leurs conséquences en jeu, restent des contrôles distincts. Une capacité (Souffle du Drakonide) avait déjà ce critère à PASS. Le gain net est de 22 critères, soit 1182 / 4789 (24,68 %).
+
+## Coûts de mana standards
+
+[Recette des coûts](standard-spell-costs.json) : 67 capacités du Livre de base ont été lancées dans le moteur partagé, à partir de témoins N1 légaux. Le budget de test isole le coût du sort. Le coût normal, la concentration lorsque l'action d'attaque le permet, ainsi que le refus sans mutation en cas de mana insuffisant sont comparés à la règle p. 228. Strangulation a un coût particulier et reste séparée. Ce lot ne valide pas l'activation dans chaque fiche interactive. Les 67 critères supplémentaires portent le score à 1249 / 4789 (26,08 %).

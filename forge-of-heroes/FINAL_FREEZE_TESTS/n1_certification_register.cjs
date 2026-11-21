@@ -14,6 +14,10 @@ const highRankCurrent=highRankProof.status==='PASS'&&highRankProof.inputs.indexS
 const finiteChoices=read('forge-of-heroes/QA/N1/lot-2026-11-19/finite-choices.json');
 const finiteChoicesCurrent=finiteChoices.inputs.indexSha256===inputs.indexSha256&&
  finiteChoices.inputs.runnerSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_finite_choices.cjs'));
+const standardCosts=read('forge-of-heroes/QA/N1/lot-2026-11-19/standard-spell-costs.json');
+const standardCostsCurrent=standardCosts.inputs.indexSha256===inputs.indexSha256&&
+ standardCosts.inputs.runtimeSha256===hash(fs.readFileSync(root+'/forge-of-heroes/rules/ability-runtime.js'))&&
+ standardCosts.inputs.runnerSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_base_spell_costs.cjs'));
 const breathProof=read('forge-of-heroes/QA/N1/lot-2026-11-19/drakonide-breath-dom.json');
 const breathCurrent=breathProof.status==='PASS'&&
  breathProof.inputs.indexSha256===inputs.indexSha256&&breathProof.inputs.nativeSha256===inputs.nativeSha256&&
@@ -50,6 +54,9 @@ const rows=[...T.abilities_class,...T.abilities_people,...T.history_abilities].m
  const choices=finiteChoicesCurrent&&finiteChoices.cases[a.id];
  if(choices?.status==='PASS'&&choices.verified.length&&choices.rejectedOutsideDomain>0)
   checks.choices={status:'PASS',evidence:'finite-choices.json',scope:'Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected.'};
+ const spellCost=standardCostsCurrent&&standardCosts.cases[a.id];
+ if(spellCost?.status==='PASS'&&spellCost.standard===a.rank&&spellCost.insufficientManaRejected)
+  checks.costs={status:'PASS',evidence:'standard-spell-costs.json',scope:'COF2 p.228: standard mana, concentration when available and atomic refusal for insufficient mana, in the shared runtime.'};
  if(breathCurrent&&a.id==='ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2'){
   const scopes={
    choices:'All four elements projected from Forge to the interactive card.',

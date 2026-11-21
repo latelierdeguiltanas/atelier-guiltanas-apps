@@ -9,6 +9,7 @@ on:
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_batch_rank_persistence.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_high_rank_access.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_finite_choices.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_base_spell_costs.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_register_contract.cjs'
       - 'forge-of-heroes/QA/N1/lot-2026-11-19/**'
 permissions:
@@ -30,6 +31,8 @@ jobs:
           cmp "$RUNNER_TEMP/high-rank-access.json" forge-of-heroes/QA/N1/lot-2026-11-19/high-rank-access.json
           FOH_N1_CHOICE_REPORT="$RUNNER_TEMP/finite-choices.json" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_finite_choices.cjs
           cmp "$RUNNER_TEMP/finite-choices.json" forge-of-heroes/QA/N1/lot-2026-11-19/finite-choices.json
+          FOH_N1_MANA_REPORT="$RUNNER_TEMP/standard-spell-costs.json" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_base_spell_costs.cjs
+          cmp "$RUNNER_TEMP/standard-spell-costs.json" forge-of-heroes/QA/N1/lot-2026-11-19/standard-spell-costs.json
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_register_contract.cjs
       - uses: actions/upload-artifact@v4
