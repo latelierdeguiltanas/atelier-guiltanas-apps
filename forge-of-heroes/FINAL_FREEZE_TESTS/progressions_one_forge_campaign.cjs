@@ -20,7 +20,7 @@ const rows=[];for(const item of cases){
  rows.push(row);console.log(row.id+' '+row.status);
  if(sha(source)!==before){row.status='FAIL';row.stderrTail+=' / FATAL : index.html modifié pendant le test';break}
 }
-const report={schema:'FOH_PROGRESSIONS_TARGETED_TESTS_V1',at:new Date().toISOString(),sourceProduct:'forge-of-heroes/index.html',indexSha256:before,sourceUnchanged:sha(source)===before,scope:'N2/N3 actuels : six personnages Bastide et Halfelin Moine/Sorcier. Aucune preuve de couverture universelle de tous les peuples, 14 profils, hybrides, PDF et mobile.',passed:rows.filter(x=>x.status==='PASS').length,failed:rows.filter(x=>x.status==='FAIL').length,total:cases.length,cases:rows};
+const report={schema:'FOH_PROGRESSIONS_TARGETED_TESTS_V1',at:new Date().toISOString(),sourceProduct:'forge-of-heroes/index.html',indexSha256:before,catalogSha256:sha(path.join(root,'progression/catalog.json')),coreSha256:sha(path.join(root,'progression/core.js')),sourceUnchanged:sha(source)===before,scope:'N2/N3 actuels : six personnages Bastide et Halfelin Moine/Sorcier. Aucune preuve de couverture universelle de tous les peuples, 14 profils, hybrides, PDF et mobile.',passed:rows.filter(x=>x.status==='PASS').length,failed:rows.filter(x=>x.status==='FAIL').length,total:cases.length,cases:rows};
 fs.mkdirSync(path.join(root,'QA/N3/lot2'),{recursive:true});fs.writeFileSync(path.join(root,'QA/N3/lot2/forge-unique-progression-retest.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({passed:report.passed,total:report.total,failed:report.failed,indexSha256:before}));
 if(report.failed||report.passed!==cases.length||!report.sourceUnchanged)process.exitCode=1;

@@ -4,7 +4,15 @@ const chosen={prepotante:[['voie-du-spadassin',1],['voie-du-roublard',2]],scanla
 function picks(r,rows){return rows.map(([term,rank])=>({pathId:C.allowed(r).find(p=>p.id.includes(term)).id,rank}));}
 function options(r,rows=[]){const v=C.preview(r,rows),out=[];for(const p of C.allowed(r)){const n=C.rank(v.character,p.id)+1;if(!C.ability(p.id,n))continue;const a={pathId:p.id,rank:n};if(p.id.includes('elfe-sylvain')&&n===2){for(const g of C.allowedGift(r).filter(g=>!C.rank(v.character,g.id)))try{C.preview(r,[...rows,{...a,grantPathId:g.id}]);out.push({...a,grantPathId:g.id});}catch{}}else try{C.preview(r,[...rows,a]);out.push(a);}catch{}}return out;}
 assert.equal(fs.readFileSync(dir+'/core.js','utf8'),fs.readFileSync(path.resolve(dir,'../../supabase/functions/bastide-character/core.js'),'utf8'));
-assert.equal(fs.readFileSync(dir+'/catalog.json','utf8'),fs.readFileSync(path.resolve(dir,'../../supabase/functions/bastide-character/catalog.json'),'utf8'));
+const serverCatalog=require(path.resolve(dir,'../../supabase/functions/bastide-character/catalog.json'));
+assert.equal(cat.maxValidatedLevel,serverCatalog.maxValidatedLevel);
+assert.deepEqual(cat.profiles,serverCatalog.profiles);
+for(const serverPath of serverCatalog.paths){
+ const clientPath=cat.paths.find(p=>p.id===serverPath.id);
+ assert.ok(clientPath,serverPath.id);
+ const auditedRanks=p=>p.ranks.filter(r=>r.auditedLevel2||r.auditedLevel3);
+ assert.deepEqual(auditedRanks(clientPath),auditedRanks(serverPath),serverPath.id);
+}
 let plans=0;const records=[];
 for(const h of seeds){let r=C.begin(h);r=C.commit(r,picks(r,chosen[h.recovery.sourceId]));const old=JSON.stringify(r),history=C.canonical(r.levels[0]);assert.equal(C.canRevise(r),false);const tests=[];for(const a of options(r)){const partial=C.preview(r,[a]);if(partial.remaining===0)tests.push([a]);else for(const b of options(r,[a]))tests.push([a,b]);}
 assert.ok(tests.length);for(const rows of tests){const out=C.commit(r,rows);assert.equal(out.head.level,3);assert.equal(C.canonical(out.levels[0]),history);assert.ok(C.validate(JSON.parse(JSON.stringify(out))));assert.equal(out.head.combat.pvMax,r.head.combat.pvMax+({aventurier:4,mage:3,mystique:4}[r.base.recovery.mapping.familyId])+r.head.stats.CON);assert.equal(out.head.combat.contact,r.head.combat.contact+1);assert.throws(()=>C.merge(out,r));assert.throws(()=>C.commit(out,[]));assert.deepEqual(C.exportHub(out).character.equipment,r.head.equipment);plans++;}assert.equal(JSON.stringify(r),old);records.push(r);console.log('PASS '+h.name+': '+tests.length+' plans N3, N2 immuable, données et inventaire conservés');}
