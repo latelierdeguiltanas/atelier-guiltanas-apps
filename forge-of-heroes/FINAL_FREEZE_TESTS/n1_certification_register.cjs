@@ -18,6 +18,10 @@ const standardCosts=read('forge-of-heroes/QA/N1/lot-2026-11-19/standard-spell-co
 const standardCostsCurrent=standardCosts.inputs.indexSha256===inputs.indexSha256&&
  standardCosts.inputs.runtimeSha256===hash(fs.readFileSync(root+'/forge-of-heroes/rules/ability-runtime.js'))&&
  standardCosts.inputs.runnerSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_base_spell_costs.cjs'));
+const dynamicChoices=read('forge-of-heroes/QA/N1/lot-2026-11-19/dynamic-choices.json');
+const dynamicChoicesCurrent=dynamicChoices.inputs.indexSha256===inputs.indexSha256&&
+ dynamicChoices.inputs.runnerSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_dynamic_choices.cjs'))&&
+ dynamicChoices.inputs.fixtureSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_batch_rank_persistence.cjs'));
 const breathProof=read('forge-of-heroes/QA/N1/lot-2026-11-19/drakonide-breath-dom.json');
 const breathCurrent=breathProof.status==='PASS'&&
  breathProof.inputs.indexSha256===inputs.indexSha256&&breathProof.inputs.nativeSha256===inputs.nativeSha256&&
@@ -54,9 +58,12 @@ const rows=[...T.abilities_class,...T.abilities_people,...T.history_abilities].m
  const choices=finiteChoicesCurrent&&finiteChoices.cases[a.id];
  if(choices?.status==='PASS'&&choices.verified.length&&choices.rejectedOutsideDomain>0)
   checks.choices={status:'PASS',evidence:'finite-choices.json',scope:'Finite scalar options in a legal N1 witness: each value applied and reloaded, out-of-domain value rejected.'};
+ const dynamic=dynamicChoicesCurrent&&dynamicChoices.cases[a.id];
+ if(dynamic?.status==='PASS'&&dynamic.verified.length&&dynamic.refused.some(row=>row.value==='qa-outside-domain'))
+  checks.choices={status:'PASS',evidence:'dynamic-choices.json',scope:'All options offered in a legal N1 witness, rejected duplicates and unknown input, exact grant or racial permission after save and reload.'};
  const spellCost=standardCostsCurrent&&standardCosts.cases[a.id];
  if(spellCost?.status==='PASS'&&spellCost.standard===a.rank&&spellCost.insufficientManaRejected)
-  checks.costs={status:'PASS',evidence:'standard-spell-costs.json',scope:'COF2 p.228: standard mana, concentration when available and atomic refusal for insufficient mana, in the shared runtime.'};
+  checks.costs={status:'PASS',evidence:'standard-spell-costs.json',scope:spellCost.upkeep===1?'COF2 pp.111,228: cast, concentration, 1 PM per upkeep round (movement action), insufficient mana and inactive upkeep denied.':'COF2 p.228: standard mana, concentration when available and atomic refusal for insufficient mana, in the shared runtime.'};
  if(breathCurrent&&a.id==='ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2'){
   const scopes={
    choices:'All four elements projected from Forge to the interactive card.',

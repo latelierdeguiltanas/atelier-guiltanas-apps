@@ -13,7 +13,8 @@ const powers=tables.abilities_class.filter(a=>a.rank<=3&&a.label.includes('*')&&
 const cases={},exceptions=[];
 for(const power of powers){
  const descriptor=runtime.descriptor(power);
- if(descriptor.manaByAction||descriptor.manaByNC||descriptor.manaEscalation||descriptor.upkeep||descriptor.costNotes){
+ const strangulation=power.rank===3&&power.path_id.startsWith('classpath:voie-de-la-sombre-magie:')&&power.label.startsWith('Strangulation');
+ if(descriptor.manaByAction||descriptor.manaByNC||descriptor.manaEscalation||descriptor.upkeep&&!strangulation||descriptor.costNotes){
   exceptions.push({id:power.id,label:power.label});
   continue;
  }
@@ -24,7 +25,7 @@ for(const power of powers){
  const funded={...character,resources:{...character.resources,mana:{max:20,current:20}}};
  const before=JSON.stringify(funded);
  const options={targetId:'témoin',livingPlant:true,perception:1,ritualMinutesElapsed:30};
- const paid=runtime.use(funded,power.id,db,options);
+ const paid=runtime.use(funded,power.id,db,{...options,activate:strangulation});
  assert.equal(20-paid.resources.mana.current,power.rank,power.id);
  const low={...funded,resources:{...funded.resources,mana:{max:20,current:power.rank-1}}};
  const lowBefore=JSON.stringify(low);
@@ -36,13 +37,24 @@ for(const power of powers){
   concentration=Math.max(0,power.rank-2);
   assert.equal(20-cast.resources.mana.current,concentration,power.id+' avec concentration');
  }
+ let upkeep=null;
+ if(strangulation){
+  assert.deepEqual(descriptor.upkeep,{period:'round',action:'M',amount:1},power.id);
+  const maintained=runtime.maintain(paid,power.id,db);
+  upkeep=paid.resources.mana.current-maintained.resources.mana.current;
+  assert.equal(upkeep,1,power.id);
+  const inactive=runtime.deactivate(maintained,power.id,db);
+  assert.throws(()=>runtime.maintain(inactive,power.id,db),/sort non actif/i);
+  const empty={...maintained,resources:{...maintained.resources,mana:{max:20,current:0}}};
+  assert.throws(()=>runtime.maintain(empty,power.id,db),/mana insuffisants/i);
+ }
  assert.equal(JSON.stringify(funded),before,power.id);
- cases[power.id]={status:'PASS',label:power.label,standard:power.rank,concentration,insufficientManaRejected:true};
+ cases[power.id]={status:'PASS',label:power.label,standard:power.rank,concentration,upkeep,insufficientManaRejected:true};
 }
 const report={schema:'FOH_N1_STANDARD_SPELL_COSTS_V1',inputs:{
  indexSha256:sha(html),runtimeSha256:sha(fs.readFileSync(path.resolve(__dirname,'../rules/ability-runtime.js'))),
  runnerSha256:sha(fs.readFileSync(__filename))
-},source:'COF2 Livre de base, p. 228',scope:'Normal and concentrated mana, where applicable, in the shared runtime, standard legal N1 witnesses; dedicated variable and upkeep costs excluded.',cases,exceptions};
+},source:'COF2 Livre de base, p. 228 et p. 111 (Strangulation)',scope:'Normal and concentrated mana, where applicable, in the shared runtime, standard legal N1 witnesses; Strangulation upkeep included; other variable costs excluded.',cases,exceptions};
 const output=process.env.FOH_N1_MANA_REPORT||path.resolve(__dirname,'../QA/N1/lot-2026-11-19/standard-spell-costs.json');
 fs.writeFileSync(output,JSON.stringify(report,null,2)+'\n');
 console.log(Object.keys(cases).length+' coûts standards vérifiés, '+exceptions.length+' exception à traiter.');

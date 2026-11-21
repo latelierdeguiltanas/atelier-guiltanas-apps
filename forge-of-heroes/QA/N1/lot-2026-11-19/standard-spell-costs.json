@@ -3,16 +3,17 @@
   "inputs": {
     "indexSha256": "bf4b21430c8aadb064dba761081f1763924aa2a9e1a2ea524795cb830353093a",
     "runtimeSha256": "fbaa30acc389f6869e36efadc3223de6be41448551bf205050afb4e490cc2f91",
-    "runnerSha256": "1862c618753924d40d1bcd835cf77e46182f9c1361062e84697ac15032e0c291"
+    "runnerSha256": "e91fe7bf24fe6d30e759eed6b8f012f7be32887efb79e728ec048343619b7c6a"
   },
-  "source": "COF2 Livre de base, p. 228",
-  "scope": "Normal and concentrated mana, where applicable, in the shared runtime, standard legal N1 witnesses; dedicated variable and upkeep costs excluded.",
+  "source": "COF2 Livre de base, p. 228 et p. 111 (Strangulation)",
+  "scope": "Normal and concentrated mana, where applicable, in the shared runtime, standard legal N1 witnesses; Strangulation upkeep included; other variable costs excluded.",
   "cases": {
     "ability:chant-des-heros-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank1:cof2-lb-2024": {
       "status": "PASS",
       "label": "Chant des héros (L)*",
       "standard": 1,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:chant-de-reconfort-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -20,6 +21,7 @@
       "label": "Chant de réconfort (L)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:attaque-sonore-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank3:cof2-lb-2024": {
@@ -27,6 +29,7 @@
       "label": "Attaque sonore (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:baies-magiques:classpath-voie-du-protecteur-class-druide-cof2-lb-2024:r1": {
@@ -34,6 +37,7 @@
       "label": "Rang 1 — Baies magiques (L)*",
       "standard": 1,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:peau-d-ecorce:classpath-voie-des-vegetaux-class-druide-cof2-lb-2024:r1": {
@@ -41,6 +45,7 @@
       "label": "Rang 1 — Peau d’écorce (M)*",
       "standard": 1,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:guerre-sainte:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:r1": {
@@ -48,6 +53,7 @@
       "label": "Rang 1 — Arme bénie (A)*",
       "standard": 1,
       "concentration": 0,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:priere:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:r1": {
@@ -55,6 +61,7 @@
       "label": "Rang 1 — Bénédiction (L)*",
       "standard": 1,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:soins:classpath:voie-des-soins:class-pretre:cof2-lb-2024:r1": {
@@ -62,6 +69,7 @@
       "label": "Rang 1 — Récupération mineure (A)*",
       "standard": 1,
       "concentration": 0,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1": {
@@ -69,6 +77,7 @@
       "label": "Rang 1 — Projectile de mana (A)*",
       "standard": 1,
       "concentration": 0,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:arc-de-feu:classpath-voie-de-la-magie-destructrice-class-magicien-cof2-lb-2024:r1": {
@@ -76,6 +85,7 @@
       "label": "Rang 1 — Arc de feu (A)*",
       "standard": 1,
       "concentration": 0,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:asphyxie:classpath-voie-de-la-magie-elementaire-class-magicien-cof2-lb-2024:r1": {
@@ -83,6 +93,7 @@
       "label": "Rang 1 — Asphyxie (A)*",
       "standard": 1,
       "concentration": 0,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:armure-de-mana:classpath-voie-de-la-magie-protectrice-class-magicien-cof2-lb-2024:r1": {
@@ -90,6 +101,7 @@
       "label": "Rang 1 — Armure de mana (M)*",
       "standard": 1,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:lumiere:classpath-voie-de-la-magie-universelle-class-magicien-cof2-lb-2024:r1": {
@@ -97,6 +109,7 @@
       "label": "Rang 1 — Lumière (L)*",
       "standard": 1,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability-r1-class-ensorceleur-air-murmures-dans-le-vent-cof2-lb-2024": {
@@ -104,6 +117,7 @@
       "label": "Murmures dans le vent (G)*",
       "standard": 1,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability-r1-class-ensorceleur-divination-divination-cof2-lb-2024": {
@@ -111,6 +125,7 @@
       "label": "Divination (L)*",
       "standard": 1,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability-r1-class-ensorceleur-envouteur-injonction-cof2-lb-2024": {
@@ -118,6 +133,7 @@
       "label": "Injonction (A)*",
       "standard": 1,
       "concentration": 0,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability-r1-class-ensorceleur-illusions-mirage-cof2-lb-2024": {
@@ -125,6 +141,7 @@
       "label": "Mirage (L)*",
       "standard": 1,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability-r1-class-ensorceleur-invocation-choc-cof2-lb-2024": {
@@ -132,6 +149,7 @@
       "label": "Choc (A)*",
       "standard": 1,
       "concentration": 0,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability-r1-class-forgesort-metal-morsure-de-la-forge-cof2-lb-2024": {
@@ -139,6 +157,7 @@
       "label": "Morsure de la forge (M)*",
       "standard": 1,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability-r1-class-sorcier-demon-malediction-cof2-lb-2024": {
@@ -146,6 +165,7 @@
       "label": "Malédiction (M) ou (L)*",
       "standard": 1,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability-r1-class-sorcier-outre-tombe-un-pied-dans-la-tombe-cof2-lb-2024": {
@@ -153,6 +173,7 @@
       "label": "Un pied dans la tombe (A)*",
       "standard": 1,
       "concentration": 0,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability-r1-class-sorcier-sang-saignements-cof2-lb-2024": {
@@ -160,6 +181,7 @@
       "label": "Saignements (A)*",
       "standard": 1,
       "concentration": 0,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability-r1-class-sorcier-sombre-magie-tenebres-cof2-lb-2024": {
@@ -167,6 +189,7 @@
       "label": "Ténèbres (L)*",
       "standard": 1,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:sous-tension:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -174,6 +197,7 @@
       "label": "Sous tension (M)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:telekinesie:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank3:cof2-lb-2024": {
@@ -181,6 +205,7 @@
       "label": "Télékinésie (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:serviteur-invisible:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -188,6 +213,7 @@
       "label": "Serviteur invisible (L)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:detection-invisible:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -195,6 +221,7 @@
       "label": "Détection de l’invisible (L)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:sommeil:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -202,6 +229,7 @@
       "label": "Sommeil (L)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:image-decalee:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -209,6 +237,7 @@
       "label": "Image décalée (M)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:ouverture-fermeture-m:classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -216,6 +245,7 @@
       "label": "Ouverture - fermeture (M)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:metal-brulant-m:classpath:voie-du-metal:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -223,6 +253,7 @@
       "label": "Métal brûlant (M)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:rune-de-puissance-l:classpath:voie-des-runes:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -230,6 +261,7 @@
       "label": "Rune de puissance (L)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:levitation-m:classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -237,6 +269,7 @@
       "label": "Lévitation (M)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:saper-les-forces-a:classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -244,6 +277,7 @@
       "label": "Saper les forces (A)*",
       "standard": 2,
       "concentration": 0,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:maitrise-des-elements-m:classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -251,6 +285,7 @@
       "label": "Maîtrise des éléments (M)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:chute-ralentie-g:classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -258,6 +293,7 @@
       "label": "Chute ralentie (G)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:familier-a:classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -265,6 +301,7 @@
       "label": "Familier (A)*",
       "standard": 2,
       "concentration": 0,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:beaute-de-la-succube-l-:classpath:voie-du-demon:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -272,6 +309,7 @@
       "label": "Beauté de la succube (L)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:masque-mortuaire-m-:classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -279,6 +317,7 @@
       "label": "Masque mortuaire (M)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:sang-mordant-m-:classpath:voie-du-sang:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -286,6 +325,7 @@
       "label": "Sang mordant (M)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reptation-m-:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank2:cof2-lb-2024": {
@@ -293,6 +333,7 @@
       "label": "Reptation (M)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank3": {
@@ -300,6 +341,7 @@
       "label": "Clairvoyance (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank3": {
@@ -307,6 +349,7 @@
       "label": "Confusion (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank3": {
@@ -314,6 +357,7 @@
       "label": "Sort illusoire (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank3": {
@@ -321,6 +365,7 @@
       "label": "Arme de mana (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-du-metal:class-forgesort:cof2-lb-2024:rank3": {
@@ -328,6 +373,7 @@
       "label": "Magnétisme (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-des-runes:class-forgesort:cof2-lb-2024:rank3": {
@@ -335,6 +381,7 @@
       "label": "Rune de protection (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024:rank3": {
@@ -342,6 +389,7 @@
       "label": "Forme gazeuse (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024:rank3": {
@@ -349,6 +397,7 @@
       "label": "Flèche de feu (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024:rank3": {
@@ -356,6 +405,7 @@
       "label": "Arme élémentaire (A) ou (L)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024:rank3": {
@@ -363,6 +413,7 @@
       "label": "Déphasage (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024:rank3": {
@@ -370,6 +421,7 @@
       "label": "Invisibilité (A)* ou (L)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-la-mort:class-sorcier:cof2-lb-2024:rank3": {
@@ -377,6 +429,7 @@
       "label": "Baiser du vampire (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-l-outre-tombe:class-sorcier:cof2-lb-2024:rank3": {
@@ -384,6 +437,15 @@
       "label": "Animation des morts (L)*",
       "standard": 3,
       "concentration": null,
+      "upkeep": null,
+      "insufficientManaRejected": true
+    },
+    "ability:reference:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank3": {
+      "status": "PASS",
+      "label": "Strangulation (A)*",
+      "standard": 3,
+      "concentration": 1,
+      "upkeep": 1,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-des-animaux:class-druide:cof2-lb-2024:rank3": {
@@ -391,6 +453,7 @@
       "label": "Nuée d’insectes (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-du-protecteur:class-druide:cof2-lb-2024:rank2": {
@@ -398,6 +461,7 @@
       "label": "Forêt vivante*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-du-protecteur:class-druide:cof2-lb-2024:rank3": {
@@ -405,6 +469,7 @@
       "label": "Régénération*",
       "standard": 3,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-des-vegetaux:class-druide:cof2-lb-2024:rank2": {
@@ -412,6 +477,7 @@
       "label": "Prison végétale (L)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-des-vegetaux:class-druide:cof2-lb-2024:rank3": {
@@ -419,6 +485,7 @@
       "label": "Flèche vivante (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:rank2": {
@@ -426,6 +493,7 @@
       "label": "Miracle mineur (A)*",
       "standard": 2,
       "concentration": 0,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:rank3": {
@@ -433,6 +501,7 @@
       "label": "Arme de lumière (M)* ou (L)*",
       "standard": 3,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:rank2": {
@@ -440,6 +509,7 @@
       "label": "Sanctuaire (L)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:rank3": {
@@ -447,6 +517,7 @@
       "label": "Destruction du mal (A)*",
       "standard": 3,
       "concentration": 1,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-des-soins:class-pretre:cof2-lb-2024:rank2": {
@@ -454,6 +525,7 @@
       "label": "Vigueur divine (L)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-des-soins:class-pretre:cof2-lb-2024:rank3": {
@@ -461,6 +533,7 @@
       "label": "Récupération majeure (L)*",
       "standard": 3,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:rank2": {
@@ -468,6 +541,7 @@
       "label": "Augure (L)*",
       "standard": 2,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     },
     "ability:reference:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:rank3": {
@@ -475,13 +549,9 @@
       "label": "Délivrance (L)*",
       "standard": 3,
       "concentration": null,
+      "upkeep": null,
       "insufficientManaRejected": true
     }
   },
-  "exceptions": [
-    {
-      "id": "ability:reference:classpath:voie-de-la-sombre-magie:class-sorcier:cof2-lb-2024:rank3",
-      "label": "Strangulation (A)*"
-    }
-  ]
+  "exceptions": []
 }

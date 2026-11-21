@@ -125,3 +125,11 @@ Les rapports d'acquisition, d'accès aux rangs hauts, de peuples, d'Arquebusier,
 ## Coûts de mana standards
 
 [Recette des coûts](standard-spell-costs.json) : 67 capacités du Livre de base ont été lancées dans le moteur partagé, à partir de témoins N1 légaux. Le budget de test isole le coût du sort. Le coût normal, la concentration lorsque l'action d'attaque le permet, ainsi que le refus sans mutation en cas de mana insuffisant sont comparés à la règle p. 228. Strangulation a un coût particulier et reste séparée. Ce lot ne valide pas l'activation dans chaque fiche interactive. Les 67 critères supplémentaires portent le score à 1249 / 4789 (26,08 %).
+
+## Choix dynamiques et Strangulation
+
+La [recette dynamique](dynamic-choices.json) parcourt toutes les options exposées pour chacun de onze témoins N1, soit 316 choix acceptés et relus après sauvegarde. Quatorze entrées sont rejetées, dont les choix inconnus et trois acquisitions en doublon de Touche-à-tout. Le contrôle vérifie la présence unique de la capacité accordée, ou de la permission rattachée à son pouvoir racial. Certaines combinaisons d'armure, de profil et les choix multiples restent à vérifier.
+
+Le [coût de Strangulation](standard-spell-costs.json) est étendu à son entretien : 3 PM au lancement standard, 1 avec concentration, 1 par round d'entretien avec action de mouvement. Après désactivation ou sans mana, le moteur refuse l'entretien. La résolution de portée et de la cible n'est pas couverte par cette preuve de coût.
+
+Les douze critères additionnels portent le registre à 1261 / 4789 (26,33 %).

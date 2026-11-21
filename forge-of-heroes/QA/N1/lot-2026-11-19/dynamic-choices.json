@@ -1,0 +1,521 @@
+{
+  "schema": "FOH_N1_DYNAMIC_CHOICES_V1",
+  "inputs": {
+    "indexSha256": "bf4b21430c8aadb064dba761081f1763924aa2a9e1a2ea524795cb830353093a",
+    "runnerSha256": "935d4ed503c657e57b58de182fababa4a608cf2f3fafa5fc6bf7a8d10b9b3c3b",
+    "fixtureSha256": "a5c78efa677900a59556249dac09b2c352952caf1f4f935b64f44c133c37f1b2"
+  },
+  "scope": "Every option offered in one legal witness per choice; ordinary grants or source-linked racial permissions, explicit duplicate and unknown rejection, Forge save/reopen. Other characters, armor contexts and multiselects remain separate.",
+  "cases": {
+    "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Combattant aguerri",
+      "choiceId": "combattantAguerriAbility",
+      "racial": false,
+      "verified": [
+        "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:le-loup:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:survie:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:eclaireur:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:attaque-a-suivre-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:baratin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:agile:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:doigts-agiles:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:attaque-en-finesse:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:proteger-un-allie-g:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:vivacite:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:robustesse:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:teigneux-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024"
+      ],
+      "refused": [
+        {
+          "value": "qa-outside-domain",
+          "reasons": [
+            "Combattant aguerri : capacité accordée illégale avec cet équipement."
+          ]
+        }
+      ]
+    },
+    "ability:eduque:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Éduqué",
+      "choiceId": "extraLanguage",
+      "racial": false,
+      "verified": [
+        "sylvestre",
+        "runique",
+        "noir-parle",
+        "draconique",
+        "abyssal",
+        "celestien",
+        "argotien",
+        "profond",
+        "aquarien"
+      ],
+      "refused": [
+        {
+          "value": "qa-outside-domain",
+          "reasons": [
+            "Langues : choix illégal ou déjà automatique."
+          ]
+        }
+      ]
+    },
+    "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Combattant aguerri",
+      "choiceId": "combattantAguerriAbility",
+      "racial": false,
+      "verified": [
+        "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:le-loup:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:survie:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:eclaireur:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:attaque-a-suivre-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:baratin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:agile:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:doigts-agiles:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:attaque-en-finesse:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:proteger-un-allie-g:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:vivacite:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:robustesse:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:teigneux-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024"
+      ],
+      "refused": [
+        {
+          "value": "qa-outside-domain",
+          "reasons": [
+            "Combattant aguerri : capacité accordée illégale avec cet équipement."
+          ]
+        }
+      ]
+    },
+    "ability:talent-pour-la-violence:path:voie-du-demi-orc:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Talent pour la violence",
+      "choiceId": "violenceTalentAbility",
+      "racial": false,
+      "verified": [
+        "ability:argument-de-taille:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:vigueur:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:reflexes-eclair:classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:proche-de-la-nature:classpath:voie-du-primitif:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:cri-de-guerre-g:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:proteger-un-allie-g:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:vivacite:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:robustesse:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:teigneux-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024"
+      ],
+      "refused": [
+        {
+          "value": "qa-outside-domain",
+          "reasons": [
+            "Talent pour la violence : capacité accordée illégale avec cet équipement."
+          ]
+        }
+      ]
+    },
+    "ability:talent-pour-la-magie:path:voie-de-l-elfe-haut:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Talent pour la magie",
+      "choiceId": "talentMagicAbility",
+      "racial": false,
+      "verified": [
+        "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+        "ability:arc-de-feu:classpath-voie-de-la-magie-destructrice-class-magicien-cof2-lb-2024:r1",
+        "ability:asphyxie:classpath-voie-de-la-magie-elementaire-class-magicien-cof2-lb-2024:r1",
+        "ability:lumiere:classpath-voie-de-la-magie-universelle-class-magicien-cof2-lb-2024:r1",
+        "ability-r1-class-ensorceleur-envouteur-injonction-cof2-lb-2024",
+        "ability-r1-class-ensorceleur-illusions-mirage-cof2-lb-2024",
+        "ability-r1-class-ensorceleur-invocation-choc-cof2-lb-2024",
+        "ability:sous-tension:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:serviteur-invisible:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:detection-invisible:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:sommeil:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:image-decalee:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:levitation-m:classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:saper-les-forces-a:classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:maitrise-des-elements-m:classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:chute-ralentie-g:classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:familier-a:classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024"
+      ],
+      "refused": [
+        {
+          "value": "qa-outside-domain",
+          "reasons": [
+            "Talent pour la magie : capacité accordée illégale avec cet équipement."
+          ]
+        }
+      ]
+    },
+    "ability:enfant-de-la-for-t:path:voie-de-l-elfe-sylvain:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Enfant de la forêt",
+      "choiceId": "forestChildAbility",
+      "racial": false,
+      "verified": [
+        "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:le-loup:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:survie:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:eclaireur:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:attaque-a-suivre-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:langage-des-animaux:classpath-voie-des-animaux-class-druide-cof2-lb-2024:r1",
+        "ability:vitesse-du-felin:classpath-voie-du-fauve-class-druide-cof2-lb-2024:r1",
+        "ability:maitre-de-la-survie:classpath-voie-de-la-nature-class-druide-cof2-lb-2024:r1",
+        "ability:baies-magiques:classpath-voie-du-protecteur-class-druide-cof2-lb-2024:r1",
+        "ability:peau-d-ecorce:classpath-voie-des-vegetaux-class-druide-cof2-lb-2024:r1"
+      ],
+      "refused": [
+        {
+          "value": "qa-outside-domain",
+          "reasons": [
+            "Enfant de la forêt : capacité accordée illégale avec cet équipement."
+          ]
+        }
+      ]
+    },
+    "ability:touche-tout:path:voie-de-l-humain:cof2-lb-2024:rank3:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Touche-à-tout",
+      "choiceId": "jackOfAllTradesAbility",
+      "racial": false,
+      "verified": [
+        "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:demolition:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:joli-coup:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:precision:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:feinte-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:chant-des-heros-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:chant-de-reconfort-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:acrobate:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:grace-feline:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:charmant:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:dentelles-et-rapiere:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:rumeurs-et-legendes:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:eclectique:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:tir-chirurgical:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:le-loup:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:travail-dequipe:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:survie:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:nature-nourriciere:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:eclaireur:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:attaque-eclair-l:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:attaque-a-suivre-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:parade-croisee:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:provocation-l:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:agile:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:reflexes-felins:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:doigts-agiles:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:aux-aguets:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:attaque-en-finesse:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:esquive-fatale-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:argument-de-taille:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:tour-de-force-g:classpath:voie-de-la-brute:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:vigueur:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:peau-de-pierre:classpath:voie-du-pagne:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:reflexes-eclair:classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:charge-l:classpath:voie-du-pourfendeur:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:proche-de-la-nature:classpath:voie-du-primitif:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:armure-de-vent:classpath:voie-du-primitif:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:cri-de-guerre-g:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:defier-la-mort:classpath:voie-de-la-rage:class-barbare:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:fidele-monture:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:cavalier-emerite:classpath:voie-du-cavalier:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:armure-sur-mesure:classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:encaisser-un-coup-m:classpath:voie-de-la-guerre:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:ignorer-la-douleur-g:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:piqures-d-insectes:classpath:voie-du-preux:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:sans-peur:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:intercepter-g:classpath:voie-du-meneur-d-homme:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:eduque:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:ecuyer:classpath:voie-de-la-noblesse:class-chevalier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:proteger-un-allie-g:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:parer-un-coup-m:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:vivacite:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:manoeuvre:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:robustesse:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:resilient:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:teigneux-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:prouesse-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:conjuration-de-predateur:classpath-voie-de-la-conjuration-class-invocateur-addon-compagnon-2024:r1",
+        "ability:invocation-d-une-entite:classpath-voie-de-l-entite-class-invocateur-addon-compagnon-2024:r1",
+        "ability:familier:classpath-voie-du-familier-class-invocateur-addon-compagnon-2024:r1",
+        "ability:mutation-offensive:classpath-voie-des-mutations-class-invocateur-addon-compagnon-2024:r1",
+        "ability:raccourci:classpath-voie-des-portes-class-invocateur-addon-compagnon-2024:r1",
+        "ability:langage-des-animaux:classpath-voie-des-animaux-class-druide-cof2-lb-2024:r1",
+        "ability:vitesse-du-felin:classpath-voie-du-fauve-class-druide-cof2-lb-2024:r1",
+        "ability:maitre-de-la-survie:classpath-voie-de-la-nature-class-druide-cof2-lb-2024:r1",
+        "ability:baies-magiques:classpath-voie-du-protecteur-class-druide-cof2-lb-2024:r1",
+        "ability:peau-d-ecorce:classpath-voie-des-vegetaux-class-druide-cof2-lb-2024:r1",
+        "ability:mains-d-energie:classpath-voie-de-l-energie-vitale-class-moine-cof2-lb-2024:r1",
+        "ability:poings-de-fer:classpath-voie-du-poing-class-moine-cof2-lb-2024:r1",
+        "ability:pas-du-vent:classpath-voie-du-vent-class-moine-cof2-lb-2024:r1",
+        "ability:foi:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:r1",
+        "ability:guerre-sainte:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:r1",
+        "ability:priere:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:r1",
+        "ability:soins:classpath:voie-des-soins:class-pretre:cof2-lb-2024:r1",
+        "ability:spiritualite:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:r1",
+        "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+        "ability:arc-de-feu:classpath-voie-de-la-magie-destructrice-class-magicien-cof2-lb-2024:r1",
+        "ability:asphyxie:classpath-voie-de-la-magie-elementaire-class-magicien-cof2-lb-2024:r1",
+        "ability:lumiere:classpath-voie-de-la-magie-universelle-class-magicien-cof2-lb-2024:r1",
+        "ability-r1-class-ensorceleur-envouteur-injonction-cof2-lb-2024",
+        "ability-r1-class-ensorceleur-illusions-mirage-cof2-lb-2024",
+        "ability-r1-class-ensorceleur-invocation-choc-cof2-lb-2024",
+        "ability-r1-class-forgesort-artefacts-baton-de-mage-cof2-lb-2024",
+        "ability-r1-class-forgesort-elixirs-fortifiant-cof2-lb-2024",
+        "ability-r1-class-forgesort-metal-morsure-de-la-forge-cof2-lb-2024",
+        "ability-r1-class-forgesort-golem-grosse-tete-cof2-lb-2024",
+        "ability-r1-class-forgesort-runes-runes-de-defense-cof2-lb-2024",
+        "ability-r1-class-sorcier-demon-malediction-cof2-lb-2024",
+        "ability-r1-class-sorcier-mort-siphon-des-ames-cof2-lb-2024",
+        "ability-r1-class-sorcier-outre-tombe-un-pied-dans-la-tombe-cof2-lb-2024",
+        "ability-r1-class-sorcier-sang-saignements-cof2-lb-2024",
+        "ability-r1-class-sorcier-sombre-magie-tenebres-cof2-lb-2024",
+        "ability-r1-class-psionique-attaque-mentale-attaque-mentale-addon-compagnon-2024",
+        "ability-r1-class-psionique-controle-corporel-proprioception-addon-compagnon-2024",
+        "ability-r1-class-psionique-perception-perception-extra-sensorielle-addon-compagnon-2024",
+        "ability-r1-class-psionique-telekinesie-manipulation-a-distance-addon-compagnon-2024",
+        "ability-r1-class-psionique-telepathie-telepathie-addon-compagnon-2024",
+        "ability-r1-class-samourai-arc-cheval-monture-loyale-addon-compagnon-2024",
+        "ability-r1-class-samourai-dirigeant-eduque-addon-compagnon-2024",
+        "ability-r1-class-samourai-honneur-chef-ne-addon-compagnon-2024",
+        "ability-r1-class-samourai-ki-esprit-vide-addon-compagnon-2024",
+        "ability-r1-class-samourai-sabre-technique-du-sabre-addon-compagnon-2024",
+        "ability:ouverture-fermeture-m:classpath:voie-des-artefacts:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:feu-gregeois-l:classpath:voie-des-elixirs:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:metal-brulant-m:classpath:voie-du-metal:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:golem:classpath:voie-du-golem:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:rune-de-puissance-l:classpath:voie-des-runes:class-forgesort:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:foh81:samourai:voie-de-l-arc-et-du-cheval:r2",
+        "ability:foh81:samourai:voie-du-dirigeant:r2",
+        "ability:foh81:samourai:voie-de-l-honneur:r2",
+        "ability:foh81:samourai:voie-du-ki:r2",
+        "ability:foh81:samourai:voie-du-sabre:r2",
+        "ability:foh81:psionique:voie-de-l-attaque-mentale:r2",
+        "ability:foh81:psionique:voie-du-controle-corporel:r2",
+        "ability:foh81:psionique:voie-de-l-empathie:r2",
+        "ability:foh81:psionique:voie-de-la-telekinesie:r2",
+        "ability:foh81:psionique:voie-de-la-telepathie:r2",
+        "ability:reference:classpath:voie-des-animaux:class-druide:cof2-lb-2024:rank2",
+        "ability:reference:classpath:voie-du-fauve:class-druide:cof2-lb-2024:rank2",
+        "ability:reference:classpath:voie-de-la-nature:class-druide:cof2-lb-2024:rank2",
+        "ability:reference:classpath:voie-du-protecteur:class-druide:cof2-lb-2024:rank2",
+        "ability:reference:classpath:voie-des-vegetaux:class-druide:cof2-lb-2024:rank2",
+        "ability:reference:classpath:voie-de-la-foi:class-pretre:cof2-lb-2024:rank2",
+        "ability:reference:classpath:voie-de-la-guerre-sainte:class-pretre:cof2-lb-2024:rank2",
+        "ability:reference:classpath:voie-de-la-priere:class-pretre:cof2-lb-2024:rank2",
+        "ability:reference:classpath:voie-des-soins:class-pretre:cof2-lb-2024:rank2",
+        "ability:reference:classpath:voie-de-la-spiritualite:class-pretre:cof2-lb-2024:rank2",
+        "ability:mecanismes:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+        "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+        "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+        "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+        "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+        "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+        "ability:joli-coup:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+        "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+        "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+        "ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024"
+      ],
+      "refused": [
+        {
+          "value": "ability:discretion:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+          "reasons": [
+            "Touche-à-tout : capacité déjà acquise, choisir une autre capacité."
+          ]
+        },
+        {
+          "value": "ability:attaque-sournoise-l:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+          "reasons": [
+            "Dépense PCap : capacité déjà possédée."
+          ]
+        },
+        {
+          "value": "ability:baratin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+          "reasons": [
+            "Touche-à-tout : capacité déjà acquise, choisir une autre capacité."
+          ]
+        },
+        {
+          "value": "qa-outside-domain",
+          "reasons": [
+            "Touche-à-tout : capacité accordée illégale avec cet équipement."
+          ]
+        }
+      ]
+    },
+    "ability:etre-feerique-r2:path:voie-de-letre-feerique:addon-comp2017-cof2:r2:foh-cof2-v1": {
+      "status": "PASS",
+      "label": "Langage des animaux",
+      "choiceId": "spriteAnimals",
+      "racial": true,
+      "verified": [
+        "ability:langage-des-animaux:classpath-voie-des-animaux-class-druide-cof2-lb-2024:r1"
+      ],
+      "refused": [
+        {
+          "value": "qa-outside-domain",
+          "reasons": [
+            "Langage des animaux : option illégale."
+          ]
+        }
+      ]
+    },
+    "ability:etre-feerique-r3:path:voie-de-letre-feerique:addon-comp2017-cof2:r3:foh-cof2-v1": {
+      "status": "PASS",
+      "label": "Invisibilité (L)",
+      "choiceId": "spriteInvisibility",
+      "racial": true,
+      "verified": [
+        "ability:reference:classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024:rank3"
+      ],
+      "refused": [
+        {
+          "value": "qa-outside-domain",
+          "reasons": [
+            "Invisibilité (L) : option illégale."
+          ]
+        }
+      ]
+    },
+    "ability:fee-r3:path:voie-de-la-fee:compagnon-cof2": {
+      "status": "PASS",
+      "label": "Poudre de fée",
+      "choiceId": "fairyDustAbility",
+      "racial": true,
+      "verified": [
+        "ability:projectile-de-mana:classpath-voie-de-la-magie-des-arcanes-class-magicien-cof2-lb-2024:r1",
+        "ability:arc-de-feu:classpath-voie-de-la-magie-destructrice-class-magicien-cof2-lb-2024:r1",
+        "ability:asphyxie:classpath-voie-de-la-magie-elementaire-class-magicien-cof2-lb-2024:r1",
+        "ability:lumiere:classpath-voie-de-la-magie-universelle-class-magicien-cof2-lb-2024:r1",
+        "ability-r1-class-ensorceleur-envouteur-injonction-cof2-lb-2024",
+        "ability-r1-class-ensorceleur-illusions-mirage-cof2-lb-2024",
+        "ability-r1-class-ensorceleur-invocation-choc-cof2-lb-2024",
+        "ability:sous-tension:classpath:voie-de-l-air:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:serviteur-invisible:classpath:voie-de-l-invocation:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:detection-invisible:classpath:voie-de-la-divination:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:sommeil:classpath:voie-de-l-envouteur:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:image-decalee:classpath:voie-des-illusions:class-ensorceleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:levitation-m:classpath:voie-de-la-magie-des-arcanes:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:saper-les-forces-a:classpath:voie-de-la-magie-destructrice:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:maitrise-des-elements-m:classpath:voie-de-la-magie-elementaire:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:chute-ralentie-g:classpath:voie-de-la-magie-protectrice:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:familier-a:classpath:voie-de-la-magie-universelle:class-magicien:cof2-lb-2024:rank2:cof2-lb-2024"
+      ],
+      "refused": [
+        {
+          "value": "qa-outside-domain",
+          "reasons": [
+            "Poudre de fée : option illégale."
+          ]
+        }
+      ]
+    },
+    "ability:history:courtier:r5": {
+      "status": "PASS",
+      "label": "Plus d’une corde à son arc",
+      "choiceId": "courtierGrantedAbility",
+      "racial": false,
+      "verified": [
+        "ability:mecanismes:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:tir-de-grenaille-l:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:demolition:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:poudre-puissante:classpath:voie-des-explosifs:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:tir-double-l:classpath:voie-du-pistolero:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:joli-coup:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:tir-precis:classpath:voie-de-la-precision:class-arquebusier:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:precision:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:feinte-l:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:intelligence-du-combat-m:classpath:voie-de-l-escrime:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:chant-des-heros-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:chant-de-reconfort-l:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:attaque-sonore-a:classpath:voie-du-musicien:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:acrobate:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:grace-feline:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:lanceur-de-couteau-g:classpath:voie-du-saltimbanque:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:charmant:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:dentelles-et-rapiere:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:baratineur-de-genie:classpath:voie-de-la-seduction:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:rumeurs-et-legendes:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:eclectique:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:attirail:classpath:voie-du-vagabond:class-barde:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:archer-emerite:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:tir-chirurgical:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:dans-le-mille:classpath:voie-de-l-archer:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:le-loup:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:travail-dequipe:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:lien-empathique-l:classpath:voie-du-compagnon-animal:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:survie:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:nature-nourriciere:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:grand-pas-g:classpath:voie-de-la-survie:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:eclaireur:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:attaque-eclair-l:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:chasseur-emerite:classpath:voie-du-traqueur:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:attaque-a-suivre-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:parade-croisee:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:droite-gauche-g:classpath:voie-du-combat-a-deux-armes:class-rodeur:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:attaque-sournoise-l:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:attaque-par-surprise-a:classpath:voie-de-l-assassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:baratin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:provocation-l:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:souplesse-du-felin:classpath:voie-de-l-aventurier:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:agile:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:reflexes-felins:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:acrobaties-g:classpath:voie-du-deplacement:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:doigts-agiles:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:aux-aguets:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:feindre-la-mort-g:classpath:voie-du-roublard:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:attaque-en-finesse:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank1:cof2-lb-2024",
+        "ability:esquive-fatale-g:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank2:cof2-lb-2024",
+        "ability:frappe-chirurgicale:classpath:voie-du-spadassin:class-voleur:cof2-lb-2024:rank3:cof2-lb-2024",
+        "ability:mecanismes:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+        "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+        "ability:tir-de-barrage-l:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+        "ability:pilier-de-bar:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+        "ability:mort-ou-vif-l:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+        "ability:combattant-aguerri:classpath:voie-du-mercenaire:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+        "ability:plus-vite-que-son-ombre:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+        "ability:ajuster-le-tir:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+        "ability:tir-double-l:classpath:voie-du-pistolero:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+        "ability:joli-coup:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+        "ability:defaut-dans-la-cuirasse-a:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+        "ability:tir-precis:classpath:voie-de-la-precision:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024",
+        "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank1:cof2-lb-2024",
+        "ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024",
+        "ability:specialisation:classpath:voie-du-maitre-d-armes:class-arbaletrier:cof2-variant-2024:rank3:cof2-lb-2024"
+      ],
+      "refused": [
+        {
+          "value": "qa-outside-domain",
+          "reasons": [
+            "Plus d’une corde à son arc : capacité accordée illégale avec cet équipement."
+          ]
+        }
+      ]
+    }
+  }
+}

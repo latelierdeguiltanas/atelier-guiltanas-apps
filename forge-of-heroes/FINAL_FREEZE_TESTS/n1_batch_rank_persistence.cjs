@@ -104,7 +104,7 @@ function make(pathRow,kind,rank){
  }
  return fill(state);
 }
-module.exports={make};
+module.exports={make,fill};
 if(require.main===module){
 for(const c of sourceInputs.cases.filter(x=>x.status==='PASS')){
  const errors=witness(c.input,c.id);
