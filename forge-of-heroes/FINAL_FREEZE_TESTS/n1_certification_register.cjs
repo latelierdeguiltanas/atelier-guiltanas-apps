@@ -22,6 +22,9 @@ const dynamicChoices=read('forge-of-heroes/QA/N1/lot-2026-11-19/dynamic-choices.
 const dynamicChoicesCurrent=dynamicChoices.inputs.indexSha256===inputs.indexSha256&&
  dynamicChoices.inputs.runnerSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_dynamic_choices.cjs'))&&
  dynamicChoices.inputs.fixtureSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_batch_rank_persistence.cjs'));
+const multipleChoices=read('forge-of-heroes/QA/N1/lot-2026-11-19/multi-choices.json');
+const multipleChoicesCurrent=multipleChoices.inputs.indexSha256===inputs.indexSha256&&
+ multipleChoices.inputs.runnerSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_multi_choices.cjs'));
 const breathProof=read('forge-of-heroes/QA/N1/lot-2026-11-19/drakonide-breath-dom.json');
 const breathCurrent=breathProof.status==='PASS'&&
  breathProof.inputs.indexSha256===inputs.indexSha256&&breathProof.inputs.nativeSha256===inputs.nativeSha256&&
@@ -61,6 +64,9 @@ const rows=[...T.abilities_class,...T.abilities_people,...T.history_abilities].m
  const dynamic=dynamicChoicesCurrent&&dynamicChoices.cases[a.id];
  if(dynamic?.status==='PASS'&&dynamic.verified.length&&dynamic.refused.some(row=>row.value==='qa-outside-domain'))
   checks.choices={status:'PASS',evidence:'dynamic-choices.json',scope:'All options offered in a legal N1 witness, rejected duplicates and unknown input, exact grant or racial permission after save and reload.'};
+ const multiple=multipleChoicesCurrent&&multipleChoices.cases[a.id];
+ if(multiple?.status==='PASS'&&multiple.valid.length&&multiple.refused.length)
+  checks.choices={status:'PASS',evidence:'multi-choices.json',scope:'Legal N1 choice witnesses; supported selections projected and reloaded, malformed input and over-limit lists rejected.'};
  const spellCost=standardCostsCurrent&&standardCosts.cases[a.id];
  if(spellCost?.status==='PASS'&&spellCost.standard===a.rank&&spellCost.insufficientManaRejected)
   checks.costs={status:'PASS',evidence:'standard-spell-costs.json',scope:spellCost.upkeep===1?'COF2 pp.111,228: cast, concentration, 1 PM per upkeep round (movement action), insufficient mana and inactive upkeep denied.':'COF2 p.228: standard mana, concentration when available and atomic refusal for insufficient mana, in the shared runtime.'};

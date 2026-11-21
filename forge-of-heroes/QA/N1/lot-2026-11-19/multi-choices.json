@@ -1,0 +1,307 @@
+{
+  "schema": "FOH_N1_MULTI_CHOICES_V1",
+  "inputs": {
+    "indexSha256": "e50556164adb62c9c0679fcd911e36af02a687237c4303aea7cb9111d1029483",
+    "runnerSha256": "68e2424cd92fe0bb96c8dfe0583489027954f0617d4efd2be90804f52e7cea68"
+  },
+  "scope": "Legal N1 witnesses: one and two repeating weapons, scalar branches of mixed choices, every singleton in multiselect domains, invalid input structures and limits, save/reopen.",
+  "cases": {
+    "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arquebusier:cof2-lb-2024:rank2:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Arme à répétition",
+      "valid": [
+        {
+          "field": "repeatingWeapons",
+          "value": [
+            "weapon:powder-pistol"
+          ]
+        },
+        {
+          "field": "repeatingWeapons",
+          "value": [
+            "weapon:powder-pistol",
+            "weapon:powder-pistol"
+          ]
+        }
+      ],
+      "refused": [
+        {
+          "field": "repeatingWeapons",
+          "value": "weapon:powder-pistol"
+        },
+        {
+          "field": "repeatingWeapons",
+          "value": []
+        },
+        {
+          "field": "repeatingWeapons",
+          "value": [
+            "weapon:powder-pistol",
+            "weapon:powder-pistol",
+            "weapon:powder-pistol"
+          ]
+        },
+        {
+          "field": "repeatingWeapons",
+          "value": [
+            "qa-unknown-weapon"
+          ]
+        }
+      ]
+    },
+    "ability:foh81:invocateur:voie-de-l-entite:r3": {
+      "status": "PASS",
+      "label": "Rang 3 — Amélioration",
+      "valid": [
+        {
+          "field": "entityUpgrades",
+          "value": [
+            "weapons"
+          ]
+        },
+        {
+          "field": "entityUpgrades",
+          "value": [
+            "armor"
+          ]
+        },
+        {
+          "field": "entityUpgrades",
+          "value": [
+            "size"
+          ]
+        },
+        {
+          "field": "entityUpgrades",
+          "value": [
+            "ranged"
+          ]
+        },
+        {
+          "field": "entityUpgrades",
+          "value": [
+            "strong"
+          ]
+        },
+        {
+          "field": "entityUpgrades",
+          "value": [
+            "resistant"
+          ]
+        },
+        {
+          "field": "entityUpgrades",
+          "value": [
+            "superior"
+          ]
+        },
+        {
+          "field": "entityUpgrades",
+          "value": [
+            "swift"
+          ]
+        },
+        {
+          "field": "entityUpgrades",
+          "value": [
+            "flight"
+          ]
+        },
+        {
+          "field": "entityResistance",
+          "value": "fire"
+        },
+        {
+          "field": "entityResistance",
+          "value": "cold"
+        },
+        {
+          "field": "entityResistance",
+          "value": "acid"
+        },
+        {
+          "field": "entityResistance",
+          "value": "electricity"
+        }
+      ],
+      "refused": [
+        {
+          "field": "entityUpgrades",
+          "value": "qa-invalid"
+        },
+        {
+          "field": "entityUpgrades",
+          "value": [
+            "qa-invalid"
+          ]
+        },
+        {
+          "field": "entityUpgrades",
+          "value": [
+            "weapons",
+            "armor",
+            "size",
+            "ranged",
+            "strong"
+          ]
+        },
+        {
+          "field": "entityUpgrades",
+          "value": [
+            "weapons",
+            "weapons",
+            "weapons",
+            "weapons"
+          ]
+        },
+        {
+          "field": "entityResistance",
+          "value": "qa-invalid"
+        }
+      ]
+    },
+    "ability:arme-a-repetition:classpath:voie-de-l-artilleur:class-arbaletrier:cof2-variant-2024:rank2:cof2-lb-2024": {
+      "status": "PASS",
+      "label": "Arme à répétition",
+      "valid": [
+        {
+          "field": "repeatingWeapons",
+          "value": [
+            "weapon:hand-crossbow"
+          ]
+        },
+        {
+          "field": "repeatingWeapons",
+          "value": [
+            "weapon:hand-crossbow",
+            "weapon:hand-crossbow"
+          ]
+        }
+      ],
+      "refused": [
+        {
+          "field": "repeatingWeapons",
+          "value": "weapon:hand-crossbow"
+        },
+        {
+          "field": "repeatingWeapons",
+          "value": []
+        },
+        {
+          "field": "repeatingWeapons",
+          "value": [
+            "weapon:hand-crossbow",
+            "weapon:hand-crossbow",
+            "weapon:hand-crossbow"
+          ]
+        },
+        {
+          "field": "repeatingWeapons",
+          "value": [
+            "qa-unknown-weapon"
+          ]
+        }
+      ]
+    },
+    "ability:history:scholar:r1": {
+      "status": "PASS",
+      "label": "Érudition",
+      "valid": [
+        {
+          "field": "scholarDomain",
+          "value": "history_geography"
+        },
+        {
+          "field": "scholarDomain",
+          "value": "occultism_magic"
+        },
+        {
+          "field": "scholarDomain",
+          "value": "science_technology"
+        },
+        {
+          "field": "scholarDomain",
+          "value": "plants_creatures"
+        },
+        {
+          "field": "scholarLanguages",
+          "value": [
+            "sylvestre"
+          ]
+        },
+        {
+          "field": "scholarLanguages",
+          "value": [
+            "runique"
+          ]
+        },
+        {
+          "field": "scholarLanguages",
+          "value": [
+            "noir-parle"
+          ]
+        },
+        {
+          "field": "scholarLanguages",
+          "value": [
+            "draconique"
+          ]
+        },
+        {
+          "field": "scholarLanguages",
+          "value": [
+            "abyssal"
+          ]
+        },
+        {
+          "field": "scholarLanguages",
+          "value": [
+            "celestien"
+          ]
+        },
+        {
+          "field": "scholarLanguages",
+          "value": [
+            "profond"
+          ]
+        },
+        {
+          "field": "scholarLanguages",
+          "value": [
+            "aquarien"
+          ]
+        }
+      ],
+      "refused": [
+        {
+          "field": "scholarDomain",
+          "value": "qa-invalid"
+        },
+        {
+          "field": "scholarLanguages",
+          "value": "qa-invalid"
+        },
+        {
+          "field": "scholarLanguages",
+          "value": [
+            "qa-invalid"
+          ]
+        },
+        {
+          "field": "scholarLanguages",
+          "value": [
+            "sylvestre",
+            "runique"
+          ]
+        },
+        {
+          "field": "scholarLanguages",
+          "value": [
+            "sylvestre",
+            "sylvestre"
+          ]
+        }
+      ]
+    }
+  }
+}
