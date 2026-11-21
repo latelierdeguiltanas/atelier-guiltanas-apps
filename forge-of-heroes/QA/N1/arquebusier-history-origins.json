@@ -1,7 +1,637 @@
 {
   "status": "PASS",
   "source": "Voies d’historique COF2 pp.172–175",
-  "indexSha256": "3358aa4fcbd516287f051f3707f8fdf59ac7544b8a69ebc1c072e9244c01e4cd",
+  "indexSha256": "e50556164adb62c9c0679fcd911e36af02a687237c4303aea7cb9111d1029483",
+  "runnerSha256": "e420f9227a02701b725eed5b47eefe06e151c5101125eddc3373c1bba7f1cf8d",
+  "firstRanks": {
+    "ability:history:campaigns:r1": {
+      "tests": [
+        "météo",
+        "animaux domestiques"
+      ],
+      "value": 3,
+      "verified": 10,
+      "status": "PASS"
+    },
+    "ability:history:cities:r1": {
+      "tests": [
+        "discrétion urbaine",
+        "commerce"
+      ],
+      "value": 3,
+      "verified": 10,
+      "status": "PASS"
+    },
+    "ability:history:deserts:r1": {
+      "tests": [
+        "discrétion désert",
+        "survie désert"
+      ],
+      "value": 3,
+      "verified": 10,
+      "status": "PASS"
+    },
+    "ability:history:forests:r1": {
+      "tests": [
+        "discrétion forêt",
+        "survie forêt"
+      ],
+      "value": 3,
+      "verified": 10,
+      "status": "PASS"
+    },
+    "ability:history:caves:r1": {
+      "tests": [
+        "discrétion souterrain",
+        "survie souterrain"
+      ],
+      "value": 3,
+      "verified": 10,
+      "status": "PASS"
+    },
+    "ability:history:marshes:r1": {
+      "tests": [
+        "discrétion marais",
+        "survie marais"
+      ],
+      "value": 3,
+      "verified": 10,
+      "status": "PASS"
+    },
+    "ability:history:mountains:r1": {
+      "tests": [
+        "discrétion montagne",
+        "survie montagne"
+      ],
+      "value": 3,
+      "verified": 10,
+      "status": "PASS"
+    },
+    "ability:history:plains:r1": {
+      "tests": [
+        "équitation",
+        "survie plaines"
+      ],
+      "value": 3,
+      "verified": 10,
+      "status": "PASS"
+    },
+    "ability:history:shores:r1": {
+      "tests": [
+        "natation",
+        "navigation"
+      ],
+      "value": 3,
+      "verified": 10,
+      "status": "PASS"
+    }
+  },
+  "contextSha256": "3cfa17fd97df3f25595b5d9c5fab9122d0ebfb00320b3b4f3678a4b75c339c50",
+  "abilities": {
+    "ability:history:campaigns:r2": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "skillBonus": 5
+          }
+        }
+      ],
+      "verified": 8,
+      "status": "PASS"
+    },
+    "ability:history:campaigns:r3": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "attackBonus": 1
+          }
+        }
+      ],
+      "verified": 6,
+      "status": "PASS"
+    },
+    "ability:history:campaigns:r4": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "extraTravelKm": 2,
+            "armorPenaltyDivisor": 2
+          }
+        }
+      ],
+      "verified": 4,
+      "status": "PASS"
+    },
+    "ability:history:campaigns:r5": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "extraDamage": "1d4°"
+          }
+        }
+      ],
+      "verified": 2,
+      "status": "PASS"
+    },
+    "ability:history:cities:r2": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "skillBonus": 3
+          }
+        },
+        {
+          "situation": 1,
+          "modifiers": {
+            "skillBonus": 3
+          }
+        }
+      ],
+      "verified": 16,
+      "status": "PASS"
+    },
+    "ability:history:cities:r3": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "ignoreCrowdSlowdown": true
+          }
+        },
+        {
+          "situation": 1,
+          "modifiers": {
+            "attackBonus": 2,
+            "defenseBonus": 2
+          }
+        }
+      ],
+      "verified": 12,
+      "status": "PASS"
+    },
+    "ability:history:cities:r4": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "skillBonus": 5
+          }
+        },
+        {
+          "situation": 1,
+          "modifiers": {
+            "skillBonus": 5
+          }
+        }
+      ],
+      "verified": 8,
+      "status": "PASS"
+    },
+    "ability:history:cities:r5": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "extraTemporaryDamage": "1d4°"
+          }
+        }
+      ],
+      "verified": 2,
+      "status": "PASS"
+    },
+    "ability:history:deserts:r2": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "perceptionDifficulty": 10
+          }
+        },
+        {
+          "situation": 1,
+          "modifiers": {
+            "perceptionDifficulty": 15
+          }
+        },
+        {
+          "situation": 2,
+          "modifiers": {
+            "perceptionDifficulty": 20
+          }
+        }
+      ],
+      "verified": 24,
+      "status": "PASS"
+    },
+    "ability:history:deserts:r3": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "damageReduction": 3
+          }
+        }
+      ],
+      "verified": 6,
+      "status": "PASS"
+    },
+    "ability:history:deserts:r4": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "automaticShelter": true
+          }
+        }
+      ],
+      "verified": 4,
+      "status": "PASS"
+    },
+    "ability:history:deserts:r5": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "extraDamage": "1d4°"
+          }
+        }
+      ],
+      "verified": 2,
+      "status": "PASS"
+    },
+    "ability:history:forests:r2": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "selfForage": true,
+            "forageThreshold": 10,
+            "forageInterval": 5
+          }
+        }
+      ],
+      "verified": 8,
+      "status": "PASS"
+    },
+    "ability:history:forests:r3": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "extraDamage": "1d4°"
+          }
+        }
+      ],
+      "verified": 6,
+      "status": "PASS"
+    },
+    "ability:history:forests:r4": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "normalTravelSpeed": true
+          }
+        },
+        {
+          "situation": 1,
+          "modifiers": {
+            "defenseBonus": 2
+          }
+        }
+      ],
+      "verified": 8,
+      "status": "PASS"
+    },
+    "ability:history:forests:r5": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "movementMultiplier": 0.5,
+            "ignoreClimbAndBalanceTests": true
+          }
+        }
+      ],
+      "verified": 2,
+      "status": "PASS"
+    },
+    "ability:history:caves:r2": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "directWayToSurface": true
+          }
+        },
+        {
+          "situation": 2,
+          "modifiers": {
+            "darkvisionMultiplier": 2
+          }
+        },
+        {
+          "situation": 1,
+          "modifiers": {
+            "dimLightAsDay": true
+          }
+        }
+      ],
+      "verified": 24,
+      "status": "PASS"
+    },
+    "ability:history:caves:r3": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "attackBonus": 2
+          }
+        }
+      ],
+      "verified": 6,
+      "status": "PASS"
+    },
+    "ability:history:caves:r4": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "ignoreUnseenMeleePenalty": true
+          }
+        },
+        {
+          "situation": 1,
+          "modifiers": {
+            "torchDamage": "1d6 + AGI"
+          }
+        },
+        {
+          "situation": 2,
+          "modifiers": {
+            "enemyMeleePenalty": -1
+          }
+        },
+        {
+          "situation": 3,
+          "modifiers": {
+            "enemyMeleePenalty": -2
+          }
+        }
+      ],
+      "verified": 16,
+      "status": "PASS"
+    },
+    "ability:history:caves:r5": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "extraDamage": "1d4°"
+          }
+        }
+      ],
+      "verified": 2,
+      "status": "PASS"
+    },
+    "ability:history:marshes:r2": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "skillBonus": 3
+          }
+        }
+      ],
+      "verified": 8,
+      "status": "PASS"
+    },
+    "ability:history:marshes:r3": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "effectiveFog": "Aucun brouillard"
+          }
+        },
+        {
+          "situation": 1,
+          "modifiers": {
+            "effectiveFog": "Brouillard léger"
+          }
+        },
+        {
+          "situation": 2,
+          "modifiers": {
+            "automaticEscape": true
+          }
+        }
+      ],
+      "verified": 18,
+      "status": "PASS"
+    },
+    "ability:history:marshes:r4": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "damageReduction": 3
+          }
+        }
+      ],
+      "verified": 4,
+      "status": "PASS"
+    },
+    "ability:history:marshes:r5": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "extraDamage": "1d4°"
+          }
+        }
+      ],
+      "verified": 2,
+      "status": "PASS"
+    },
+    "ability:history:mountains:r2": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "skillBonus": 3
+          }
+        },
+        {
+          "situation": 1,
+          "modifiers": {
+            "damageDivisor": 2
+          }
+        }
+      ],
+      "verified": 16,
+      "status": "PASS"
+    },
+    "ability:history:mountains:r3": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "damageReduction": 3
+          }
+        }
+      ],
+      "verified": 6,
+      "status": "PASS"
+    },
+    "ability:history:mountains:r4": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "attackBonus": 2,
+            "defenseBonus": 2
+          }
+        }
+      ],
+      "verified": 4,
+      "status": "PASS"
+    },
+    "ability:history:mountains:r5": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "defenseBonus": 2,
+            "extraDamage": "1d4°"
+          }
+        }
+      ],
+      "verified": 2,
+      "status": "PASS"
+    },
+    "ability:history:plains:r2": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "attackBonus": 1
+          }
+        },
+        {
+          "situation": 1,
+          "modifiers": {
+            "freeAction": true
+          }
+        }
+      ],
+      "verified": 16,
+      "status": "PASS"
+    },
+    "ability:history:plains:r3": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "skillBonus": 5
+          }
+        },
+        {
+          "situation": 1,
+          "modifiers": {
+            "rangeBonusMeters": 10
+          }
+        }
+      ],
+      "verified": 12,
+      "status": "PASS"
+    },
+    "ability:history:plains:r4": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "freeRangedAttack": true
+          }
+        }
+      ],
+      "verified": 4,
+      "status": "PASS"
+    },
+    "ability:history:plains:r5": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "extraDamage": "1d4°"
+          }
+        }
+      ],
+      "verified": 2,
+      "status": "PASS"
+    },
+    "ability:history:shores:r2": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "selfForage": true,
+            "forageThreshold": 10,
+            "forageInterval": 5
+          }
+        }
+      ],
+      "verified": 8,
+      "status": "PASS"
+    },
+    "ability:history:shores:r3": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "ignoreWaterCombatPenalty": true
+          }
+        }
+      ],
+      "verified": 6,
+      "status": "PASS"
+    },
+    "ability:history:shores:r4": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "direction": "Terre la plus proche"
+          }
+        },
+        {
+          "situation": 1,
+          "modifiers": {
+            "direction": "Étendue d’eau la plus proche"
+          }
+        }
+      ],
+      "verified": 8,
+      "status": "PASS"
+    },
+    "ability:history:shores:r5": {
+      "situations": [
+        {
+          "situation": 0,
+          "modifiers": {
+            "extraDamage": "1d4°"
+          }
+        }
+      ],
+      "verified": 2,
+      "status": "PASS"
+    }
+  },
   "cases": 90,
   "positive": 180,
   "additionalSituations": 104,

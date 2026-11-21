@@ -18,6 +18,14 @@ const expected={
  plains:[{attackBonus:1},{skillBonus:5},{freeRangedAttack:true},{extraDamage:'1d4°'}],
  shores:[{selfForage:true,forageThreshold:10,forageInterval:5},{ignoreWaterCombatPenalty:true},{direction:'Terre la plus proche'},{extraDamage:'1d4°'}]
 };
+// R1 geographical tests, COF2 histories pp.172–175. These are the tests covered by the persistent bonus.
+const firstRankTests={
+ campaigns:['météo','animaux domestiques'],cities:['discrétion urbaine','commerce'],
+ deserts:['discrétion désert','survie désert'],forests:['discrétion forêt','survie forêt'],
+ caves:['discrétion souterrain','survie souterrain'],marshes:['discrétion marais','survie marais'],
+ mountains:['discrétion montagne','survie montagne'],plains:['équitation','survie plaines'],
+ shores:['natation','navigation']
+};
 const otherScenarios=[
  ['deserts',2,1,{perceptionDifficulty:15}],['deserts',2,2,{perceptionDifficulty:20}],
  ['caves',2,2,{darkvisionMultiplier:2}],['caves',4,1,{torchDamage:'1d6 + AGI'}],
@@ -30,7 +38,19 @@ const otherScenarios=[
 ];
 assert.equal(otherScenarios.length+36,53);
 const id=(origin,rank)=>'ability:history:'+origin+':r'+rank;
-const report={status:'PASS',source:'Voies d’historique COF2 pp.172–175',indexSha256:createHash('sha256').update(html).digest('hex'),cases:0,positive:0,additionalSituations:0,negative:0,reopened:0,matrix:{}};
+assert(html.includes(fs.readFileSync(root+'/ENGINE/history_context_n1.js','utf8')));
+const abilities={};
+const firstRanks=Object.fromEntries(Object.entries(firstRankTests).map(([origin,tests])=>[id(origin,1),{tests,value:3,verified:0}]));
+
+for(const [origin,rankEffects] of Object.entries(expected))for(let index=0;index<rankEffects.length;index++){
+ const rank=index+2,abilityId=id(origin,rank);
+ const situations=[{situation:0,modifiers:rankEffects[index]},...otherScenarios
+  .filter(([key,r])=>key===origin&&r===rank)
+  .map(([, ,situation,modifiers])=>({situation,modifiers}))];
+ assert.deepEqual(situations.map(x=>x.situation).sort((a,b)=>a-b),API.rules[abilityId].situations.map((_,i)=>i),abilityId);
+ abilities[abilityId]={situations,verified:0};
+}
+const report={status:'PASS',source:'Voies d’historique COF2 pp.172–175',indexSha256:createHash('sha256').update(html).digest('hex'),runnerSha256:createHash('sha256').update(fs.readFileSync(__filename)).digest('hex'),firstRanks,contextSha256:createHash('sha256').update(fs.readFileSync(root+'/ENGINE/history_context_n1.js')).digest('hex'),abilities,cases:0,positive:0,additionalSituations:0,negative:0,reopened:0,matrix:{}};
 for(const variant of ['arquebusier','arbaletrier']){
  const cls=db.tables.classes.find(c=>c.id.includes('class:'+variant+':'));
  const profilePath=db.tables.paths_class.find(p=>p.classId===cls.id&&p.id.includes('artilleur'));
@@ -49,6 +69,12 @@ for(const variant of ['arquebusier','arbaletrier']){
   const saved=E.createHeroSavePayload(draft,character,{id:'origin-'+origin});
   const reopened=E.computeCharacterN1(E.restoreHeroSavePayload(JSON.parse(JSON.stringify(saved))).draft);
   assert.equal(reopened.errors.length,0);
+  const firstId=id(origin,1),first=firstRanks[firstId];
+  const matching=sheet=>JSON.parse(JSON.stringify(sheet.skillBonuses.filter(b=>b.sourceAbilityId===firstId)));
+  const expectedSkill=[{sourceAbilityId:firstId,tests:first.tests,value:first.value,scope:'self'}];
+  assert.deepEqual(matching(computed.sticky),expectedSkill);
+  assert.deepEqual(matching(reopened.sticky),expectedSkill);
+  first.verified++;
   for(const [index,modifiers] of rankEffects.entries()){
    const abilityRank=index+2,key=id(origin,abilityRank);
    const source=db.tables.history_abilities.find(a=>a.id===key);
@@ -59,6 +85,7 @@ for(const variant of ['arquebusier','arbaletrier']){
     assert(resolved.applies);
     assert.deepEqual(resolved.modifiers,modifiers);
     assert.deepEqual(API.resolve(reopened.sticky.characterState,key,{situation:0}),resolved);
+    abilities[key].verified++;
     report.positive++;
    }else assert.deepEqual(API.resolve(character,key,{situation:0}).modifiers,{});
    for(const context of [{},{situation:-1},{situation:99},{situation:'0'}]){
@@ -72,6 +99,7 @@ for(const variant of ['arquebusier','arbaletrier']){
     assert(resolved.applies);
     assert.deepEqual(resolved.modifiers,modifiers);
     assert.deepEqual(API.resolve(reopened.sticky.characterState,id(key,abilityRank),{situation}),resolved);
+    abilities[id(key,abilityRank)].verified++;
     report.additionalSituations++;
    }
   }
@@ -84,5 +112,14 @@ for(const variant of ['arquebusier','arbaletrier']){
 }
 assert.equal(report.cases,90);
 assert.equal(report.additionalSituations,2*otherScenarios.reduce((sum,[,rank])=>sum+6-rank,0));
-fs.writeFileSync(root+'/QA/N1/arquebusier-history-origins.json',JSON.stringify(report,null,2)+'\n');
-console.log(JSON.stringify(report));
+for(const first of Object.values(firstRanks)){
+ assert.equal(first.verified,10);
+ first.status='PASS';
+}
+for(const [key,entry] of Object.entries(abilities)){
+ const rank=Number(key.slice(-1));
+ assert.equal(entry.verified,2*(6-rank)*entry.situations.length,key);
+ entry.status='PASS';
+}
+fs.writeFileSync(process.env.FOH_N1_HISTORY_ORIGINS_REPORT||root+'/QA/N1/arquebusier-history-origins.json',JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({status:report.status,cases:report.cases,abilities:Object.keys(abilities).length,positive:report.positive,additionalSituations:report.additionalSituations,negative:report.negative}));

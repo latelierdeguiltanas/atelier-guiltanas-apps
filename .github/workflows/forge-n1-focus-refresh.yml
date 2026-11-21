@@ -11,6 +11,7 @@ on:
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_finite_choices.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_dynamic_choices.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_multi_choices.cjs'
+      - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_origins_oracle.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_base_spell_costs.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_register_contract.cjs'
       - 'forge-of-heroes/QA/N1/lot-2026-11-19/**'
@@ -39,6 +40,8 @@ jobs:
           cmp "$RUNNER_TEMP/dynamic-choices.json" forge-of-heroes/QA/N1/lot-2026-11-19/dynamic-choices.json
           FOH_N1_MULTI_CHOICE_REPORT="$RUNNER_TEMP/multi-choices.json" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_multi_choices.cjs
           cmp "$RUNNER_TEMP/multi-choices.json" forge-of-heroes/QA/N1/lot-2026-11-19/multi-choices.json
+          FOH_N1_HISTORY_ORIGINS_REPORT="$RUNNER_TEMP/history-origins.json" node forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_origins_oracle.cjs
+          cmp "$RUNNER_TEMP/history-origins.json" forge-of-heroes/QA/N1/arquebusier-history-origins.json
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_register_contract.cjs
       - uses: actions/upload-artifact@v4

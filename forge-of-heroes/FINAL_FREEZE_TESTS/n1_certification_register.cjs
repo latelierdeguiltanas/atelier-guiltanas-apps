@@ -25,6 +25,10 @@ const dynamicChoicesCurrent=dynamicChoices.inputs.indexSha256===inputs.indexSha2
 const multipleChoices=read('forge-of-heroes/QA/N1/lot-2026-11-19/multi-choices.json');
 const multipleChoicesCurrent=multipleChoices.inputs.indexSha256===inputs.indexSha256&&
  multipleChoices.inputs.runnerSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_multi_choices.cjs'));
+const originProof=read('forge-of-heroes/QA/N1/arquebusier-history-origins.json');
+const originsCurrent=originProof.status==='PASS'&&originProof.indexSha256===inputs.indexSha256&&
+ originProof.runnerSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_history_origins_oracle.cjs'))&&
+ originProof.contextSha256===hash(fs.readFileSync(root+'/forge-of-heroes/ENGINE/history_context_n1.js'));
 const breathProof=read('forge-of-heroes/QA/N1/lot-2026-11-19/drakonide-breath-dom.json');
 const breathCurrent=breathProof.status==='PASS'&&
  breathProof.inputs.indexSha256===inputs.indexSha256&&breathProof.inputs.nativeSha256===inputs.nativeSha256&&
@@ -70,6 +74,15 @@ const rows=[...T.abilities_class,...T.abilities_people,...T.history_abilities].m
  const spellCost=standardCostsCurrent&&standardCosts.cases[a.id];
  if(spellCost?.status==='PASS'&&spellCost.standard===a.rank&&spellCost.insufficientManaRejected)
   checks.costs={status:'PASS',evidence:'standard-spell-costs.json',scope:spellCost.upkeep===1?'COF2 pp.111,228: cast, concentration, 1 PM per upkeep round (movement action), insufficient mana and inactive upkeep denied.':'COF2 p.228: standard mana, concentration when available and atomic refusal for insufficient mana, in the shared runtime.'};
+ const firstOrigin=originsCurrent&&originProof.firstRanks[a.id];
+ const contextualOrigin=originsCurrent&&originProof.abilities[a.id];
+ if(firstOrigin?.status==='PASS'&&firstOrigin.verified===10){
+  checks.numericEffects={status:'PASS',evidence:'../arquebusier-history-origins.json',scope:'Exact +3 on both source tests at R1–R5, both variants.'};
+  checks.permanentEffects={status:'PASS',evidence:'../arquebusier-history-origins.json',scope:'Source-linked persistent skill bonuses present after Forge calculation and save/reopen.'};
+ }
+ if(contextualOrigin?.status==='PASS'&&contextualOrigin.verified===2*(6-a.rank)*contextualOrigin.situations.length&&
+  contextualOrigin.situations.some(item=>Object.values(item.modifiers).some(v=>typeof v==='number'||typeof v==='string'&&/\d/.test(v))))
+  checks.numericEffects={status:'PASS',evidence:'../arquebusier-history-origins.json',scope:'All catalogued context resolver situations and their exact modifiers, checked after save/reopen. Interactive actions remain a separate gate.'};
  if(breathCurrent&&a.id==='ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2'){
   const scopes={
    choices:'All four elements projected from Forge to the interactive card.',
