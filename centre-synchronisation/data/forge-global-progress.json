@@ -1,6 +1,6 @@
 {
   "schema": "FOH_GLOBAL_CERTIFICATION_V1",
-  "generatedAt": "2026-11-21T13:49:06.865Z",
+  "generatedAt": "2026-11-21T14:05:47.701Z",
   "sourceProduct": "forge-of-heroes/index.html",
   "source": {
     "indexSha256": "bf4b21430c8aadb064dba761081f1763924aa2a9e1a2ea524795cb830353093a",
@@ -28,6 +28,13 @@
       "status": "SOURCE_PERIMEE",
       "description": "Les 14 profils ont le même poids. Chaque profil contribue selon la part de ses critères N1 validés dans le registre.",
       "source": "forge-n1/focus.json",
+      "targetedProof": {
+        "label": "Familles de régression N1",
+        "passed": 37,
+        "total": 37,
+        "evidence": "forge-of-heroes/QA/N1/regressions.json",
+        "limitations": "Contrôles ciblés N1 sur index courant ; ne prouvent pas tous les effets R3/historiques ni 14/14 profils à 100 %."
+      },
       "percent": 0,
       "complete": false
     },
