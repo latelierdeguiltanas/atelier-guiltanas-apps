@@ -1,11 +1,11 @@
 {
   "schema": "FOH_N1_CERTIFICATION_REGISTER_V1",
-  "generatedAt": "2026-11-21T13:43:17.534Z",
+  "generatedAt": "2026-11-21T13:47:55.950Z",
   "inputs": {
-    "commit": "eb1818041c19a7fb762fc6cfeb94634b4eccee47",
-    "indexBlob": "ff3ec9147d17a2bf4b3f8cebd2c39816217737f5",
-    "indexSha256": "79bee1e8b4ce222cd2847d49ea7f56d8a22d8f667a1db04e4635a9fb594f9f2d",
-    "engineSha256": "195a96fa8d6bc87d3a919be27787f56100ab2e69615d4b8c4bc1419a652d0181",
+    "commit": "db2b4c8d28ff5c9cb2b34bc604eef42cdd3df846",
+    "indexBlob": "5583f1c9d60c3c1da374000c950a53e2ffc6804a",
+    "indexSha256": "bf4b21430c8aadb064dba761081f1763924aa2a9e1a2ea524795cb830353093a",
+    "engineSha256": "5445de9424678fa040ac6461e9947a7ad606a2a33b794359343a95c73808e2ed",
     "databaseSha256": "09bfd6316ed420e59f177738a1a402f849a91dd74f3b01dd7bb17d28f8fb44cb",
     "nativeSha256": "2726731c7a6cdc228943cab77e3151003b91a1d07c65e503572630abdbddfbea",
     "bridgeSha256": "aae1e6b0445fe463b544e25c1192b292c02345f494c7845a0abb85d745dd42b2",
@@ -26,14 +26,14 @@
     "specialAccessReviewed": 244,
     "mechanicallyClosedRules": 1,
     "fullyCertifiedRules": 0,
-    "criteriaPassed": 1159,
+    "criteriaPassed": 1160,
     "criteriaTotal": 4789,
-    "percent": 24.2,
+    "percent": 24.22,
     "profilesCertified": 0,
     "peoplesCertified": 0,
     "certified": false,
     "denominatorPolicy": "451 ordinary N1 candidate ranks × 10 obligations + 244 exceptional-reachability reviews + 35 engine/interaction/integration gates. Each review discovering an N1 exception adds its 10 obligations; historical witness mapping may credit existing proofs. This first reconciliation is a documented lower bound, not an estimated failure rate.",
-    "reuseCandidates": 17
+    "reuseCandidates": 3
   },
   "obligations": [
     "acquisition",
@@ -12626,8 +12626,9 @@
           "reason": "Historical proof mapping remains open; no old proof discarded"
         },
         "numericEffects": {
-          "status": "NON TESTÉ",
-          "reason": "Historical proof mapping remains open; no old proof discarded"
+          "status": "PASS",
+          "evidence": "../guerrier-source-n1.json",
+          "scope": "COF2 p.89: threshold 19 on the preferred sword; 20 on the dagger and after switching preference to axes."
         },
         "costs": {
           "status": "NON TESTÉ",
@@ -54501,7 +54502,7 @@
     {
       "path": "forge-of-heroes/QA/N1/all-peoples-profiles-2026-11-15.json",
       "reportSha256": "bcaf3bf020b9400bba593771bcb8089ed418b626586c85bbb77990f42d688d27",
-      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -54525,7 +54526,7 @@
     {
       "path": "forge-of-heroes/QA/N1/arquebusier-20-real-mobile-pairs.json",
       "reportSha256": "c1f5f67ad95a91b36acc3e0c8d0ff2ac462729e557bd55d758ca70f9caa9d75e",
-      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -54537,7 +54538,7 @@
     {
       "path": "forge-of-heroes/QA/N1/arquebusier-all-mechanics-probe.json",
       "reportSha256": "722f734d9c467eb1326eae3103798cba2e12f0397b84857308ad3315316f56ff",
-      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -54597,7 +54598,7 @@
     {
       "path": "forge-of-heroes/QA/N1/arquebusier-context-real-click.json",
       "reportSha256": "7239dd572bfd2318007e51f3024990f9249edc128218481f0a366b388057d3ab",
-      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -54741,7 +54742,7 @@
     {
       "path": "forge-of-heroes/QA/N1/arquebusier-mercenary-hybrid-gear-probe.json",
       "reportSha256": "cf53f5a8647bfc4619f1eed1c7473cae62c55da9f3effe42c985c0fae374bd2d",
-      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -54782,7 +54783,7 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json",
-      "reportSha256": "7983b298839eac40de311340d7b1104be1c0f4424a253652f94ba7a82c7f27c1",
+      "reportSha256": "e154e065cb398a44e5f8899e6801242c45ecfa128d5c16975f34016b3902c96d",
       "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
@@ -54825,7 +54826,7 @@
     {
       "path": "forge-of-heroes/QA/N1/arquebusier-venerable-context-click.json",
       "reportSha256": "800e8b07bae4cfb5f90951bbbb523879004d594e44760e72092d49fc39c8cd00",
-      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -55070,14 +55071,14 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/guerrier-source-n1.json",
-      "reportSha256": "320122c5e3006c6e427af898662d9669ae9fa169b3e85d263ab7d72c06a85d5a",
-      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
+      "reportSha256": "842b5c35e97ca2e2917c3c4eefc5c63b9c5f1bf655d9942f552b5fd1ad9b5621",
+      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
       "path": "forge-of-heroes/QA/N1/hybrid-path-matrix-2026-11-15.json",
       "reportSha256": "43823d6ae2fd11016d25e65df72c09b424dddf9c37faf1f588e986a1e70d5da4",
-      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -55101,7 +55102,7 @@
     {
       "path": "forge-of-heroes/QA/N1/lot10/pair-numeric-current.json",
       "reportSha256": "fb903c1cd7389c646908ca2c1f7c56568032668e72f2d2ee0837facb59929d45",
-      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -55113,13 +55114,13 @@
     {
       "path": "forge-of-heroes/QA/N1/lot10/pdf-modes.json",
       "reportSha256": "0a7f83a8ae5c9dade07d4476ddce5d371dcae5511a93205486c566efa0b16ba2",
-      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
       "path": "forge-of-heroes/QA/N1/lot10/pdf-summary-layout-current.json",
       "reportSha256": "35710529aad0c1497f0dfdfd9e37d4cfd1d445aa0ad7786c0c7baf496a906462",
-      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -55142,7 +55143,7 @@
     },
     {
       "path": "forge-of-heroes/QA/N1/lot10/people-source.json",
-      "reportSha256": "e2111571f8d238e5a1017d0faa966efdc4e0d0efa9698039dd3f78dc5714a35e",
+      "reportSha256": "f49ca2998e8885c1e70d9930ad6b9bf7dd8176d094a00cc515a30c0f844ed229",
       "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
@@ -55401,7 +55402,7 @@
     {
       "path": "forge-of-heroes/QA/N1/native-items.json",
       "reportSha256": "e560e0515c21c66b692531147e08724ed0b5d2d413a19f26db77dc1207f0c8a9",
-      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -55443,7 +55444,7 @@
     {
       "path": "forge-of-heroes/QA/N1/pure-path-cross-matrix-2026-11-15.json",
       "reportSha256": "6f8f091e5e72a2a8a44aa974bdc4f9c1b93e4e35e66c0a365af3166c3540be44",
-      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -55527,7 +55528,7 @@
     {
       "path": "forge-of-heroes/QA/N1/regressions.json",
       "reportSha256": "ed2c8faa26c7db1dfd1469c757e01dba9bda46b1448a6be9082b30370bb9791e",
-      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
@@ -55593,13 +55594,13 @@
     {
       "path": "forge-of-heroes/QA/N1/targeted-recheck-2026-11-15.json",
       "reportSha256": "cf1e470b16b636f364e1db87e1154cdcb07cbf84e502c35c2d05681225a76519",
-      "dependencyStatus": "EXACT_INDEX_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {
       "path": "forge-of-heroes/QA/N1/version-parity.json",
       "reportSha256": "3a9d2fbc6d55341bfffbf0e8fa45d5647cc9aeb48a6b596aac463f4009f972b6",
-      "dependencyStatus": "ENGINE_DATABASE_SCOPE_REUSABLE",
+      "dependencyStatus": "DEPENDENCY_REVIEW_REQUIRED",
       "note": "Reuse is limited to actual assertions and tested resources. Sheet flows require matching native/bridge/sheet dependencies; a PASS label alone is insufficient."
     },
     {

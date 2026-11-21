@@ -65,6 +65,7 @@ async function run(browser,n){
    id:node.dataset.summaryAbility,
    label:node.textContent.split(/ \(rang \d+\)/)[0].trim()
   })));
+  if(n===4)await p.locator('#summary-content .attacks').getByText(/Critique 19–20/).first().waitFor();
   const before=await verify(), acquired=await abilities();
   assert.ok(acquired.length>0,'Création avec des capacités acquises');
   assert.equal(new Set(acquired.map(a=>a.id)).size,acquired.length,'Identifiants de capacités uniques');

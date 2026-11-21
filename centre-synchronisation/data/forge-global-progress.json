@@ -271,12 +271,12 @@
   ],
   "n1Certification": {
     "schema": "FOH_N1_RECONCILED_SUMMARY_V1",
-    "generatedAt": "2026-11-21T13:43:17.534Z",
+    "generatedAt": "2026-11-21T13:47:55.950Z",
     "inputs": {
-      "commit": "eb1818041c19a7fb762fc6cfeb94634b4eccee47",
-      "indexBlob": "ff3ec9147d17a2bf4b3f8cebd2c39816217737f5",
-      "indexSha256": "79bee1e8b4ce222cd2847d49ea7f56d8a22d8f667a1db04e4635a9fb594f9f2d",
-      "engineSha256": "195a96fa8d6bc87d3a919be27787f56100ab2e69615d4b8c4bc1419a652d0181",
+      "commit": "db2b4c8d28ff5c9cb2b34bc604eef42cdd3df846",
+      "indexBlob": "5583f1c9d60c3c1da374000c950a53e2ffc6804a",
+      "indexSha256": "bf4b21430c8aadb064dba761081f1763924aa2a9e1a2ea524795cb830353093a",
+      "engineSha256": "5445de9424678fa040ac6461e9947a7ad606a2a33b794359343a95c73808e2ed",
       "databaseSha256": "09bfd6316ed420e59f177738a1a402f849a91dd74f3b01dd7bb17d28f8fb44cb",
       "nativeSha256": "2726731c7a6cdc228943cab77e3151003b91a1d07c65e503572630abdbddfbea",
       "bridgeSha256": "aae1e6b0445fe463b544e25c1192b292c02345f494c7845a0abb85d745dd42b2",
@@ -297,14 +297,14 @@
       "specialAccessReviewed": 244,
       "mechanicallyClosedRules": 1,
       "fullyCertifiedRules": 0,
-      "criteriaPassed": 1159,
+      "criteriaPassed": 1160,
       "criteriaTotal": 4789,
-      "percent": 24.2,
+      "percent": 24.22,
       "profilesCertified": 0,
       "peoplesCertified": 0,
       "certified": false,
       "denominatorPolicy": "451 ordinary N1 candidate ranks × 10 obligations + 244 exceptional-reachability reviews + 35 engine/interaction/integration gates. Each review discovering an N1 exception adds its 10 obligations; historical witness mapping may credit existing proofs. This first reconciliation is a documented lower bound, not an estimated failure rate.",
-      "reuseCandidates": 17
+      "reuseCandidates": 3
     },
     "profiles": [
       {
@@ -377,8 +377,8 @@
         "id": "class:guerrier:cof2-lb-2024",
         "name": "Guerrier",
         "total": 150,
-        "passed": 30,
-        "percent": 20,
+        "passed": 31,
+        "percent": 20.67,
         "certified": false,
         "ruleCount": 15,
         "checks": [],

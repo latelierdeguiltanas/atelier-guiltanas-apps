@@ -1,15 +1,8 @@
 {
   "status": "PASS",
   "source": "COF2 Livre de base, p. 87–90",
-  "indexSha256": "da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d",
-  "testSha256": "61b2ed2b36dd9a8e76a5d9f20ad65c94d8ada15c7d9ac9de502ab16f5884cf46",
-  "observations": [
-    {
-      "ability": "Science du critique",
-      "expectedThreshold": 19,
-      "actualThreshold": 20
-    }
-  ],
+  "indexSha256": "bf4b21430c8aadb064dba761081f1763924aa2a9e1a2ea524795cb830353093a",
+  "testSha256": "5a3694e90fff546c33930b73f94a2818bafc018af0ff6d4913a851cff993f999",
   "checks": [
     {
       "name": "Bouclier · éviter la surprise",
@@ -21,6 +14,10 @@
     },
     {
       "name": "Maître d’armes · bonus d’attaque de prédilection",
+      "status": "PASS"
+    },
+    {
+      "name": "Science du critique · un point sur les armes de prédilection uniquement",
       "status": "PASS"
     },
     {

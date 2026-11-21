@@ -17,6 +17,10 @@ const breathCurrent=breathProof.status==='PASS'&&
  breathProof.inputs.sheetSha256===inputs.sheetSha256&&
  breathProof.inputs.sheetHtmlSha256===hash(fs.readFileSync(root+'/fiches-personnages/fiche/index.html'))&&
  ['fire','cold','lightning','acid'].every(element=>breathProof.cases.some(c=>c.element===element&&c.status==='PASS'));
+const warriorProof=read('forge-of-heroes/QA/N1/guerrier-source-n1.json');
+const criticalCurrent=warriorProof.indexSha256===inputs.indexSha256&&
+ warriorProof.testSha256===hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_guerrier_source.cjs'))&&
+ warriorProof.checks.some(c=>c.name==='Science du critique · un point sur les armes de prédilection uniquement'&&c.status==='PASS');
 const peopleProof=read('forge-of-heroes/QA/N1/lot10/people-source.json'),arqProof=read('forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json');
 const exactReport=j=>JSON.stringify(j.products||[]).includes(inputs.indexSha256);
 const obligations=['acquisition','choices','permanentEffects','activation','numericEffects','costs','duration','deactivation','restrictions','persistence'];
@@ -38,6 +42,8 @@ const rows=[...T.abilities_class,...T.abilities_people,...T.history_abilities].m
   checks.acquisition={status:'PASS',evidence:'rank-persistence-batch.json',scope:'Verified canonical acquisition: '+witness.actualId};
   checks.persistence={status:'PASS',evidence:'rank-persistence-batch.json',scope:'Forge save and reopen, native sheet transfer, vault save and reopen; exact IDs checked'};
  }
+ if(criticalCurrent&&a.rank===2&&a.path_id==='classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024')
+  checks.numericEffects={status:'PASS',evidence:'../guerrier-source-n1.json',scope:'COF2 p.89: threshold 19 on the preferred sword; 20 on the dagger and after switching preference to axes.'};
  if(breathCurrent&&a.id==='ability:drakonide-r2:path:voie-du-drakonide:compagnon-cof2'){
   const scopes={
    choices:'All four elements projected from Forge to the interactive card.',

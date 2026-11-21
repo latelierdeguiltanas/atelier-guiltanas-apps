@@ -111,3 +111,9 @@ La [recette du formulaire officiel](../lot10/pdf-summary-layout-current.json) v�
 Le plafond de l'âge vénérable est le rang 3 pour les voies ordinaires (Règles avancées, p. 153). Le [rapport](high-rank-access.json) teste une base R3 légale sur chaque voie concernée, puis tente d'acheter le R4 et la chaîne R4–R5. Les 244 tentatives sont rejetées au plafond d'âge. Dix sources de dons sont contrôlées, ainsi que la substitution divine de Linnarré R4. Le Courtier historique est testé en contre-épreuve positive au R5.
 
 Les 244 critères de revue d'accès passent. Le registre atteint 1159 / 4789 (24,20 %). Ce verdict concerne les règles d'acquisition N1 ordinaires et les voies alternatives présentes dans le catalogue testé.
+
+## Guerrier — Science du critique
+
+L'oracle Guerrier signalait un seuil de 20 avec l'épée de prédilection, alors que le Livre de base p. 89 prescrit une amélioration d'un point. Le moteur applique désormais cette amélioration au R2 de la voie du maître d'armes du Guerrier sur la catégorie choisie. Le récapitulatif de création affiche la plage de critique. Le contrôle impose 19 sur l'épée de prédilection et 20 sur la dague ou après changement de prédilection. Voir [guerrier-source-n1.json](../guerrier-source-n1.json).
+
+Les rapports d'acquisition, d'accès aux rangs hauts, de peuples, d'Arquebusier, d'Armure d'os et de Souffle ont été rejoués sur ce moteur pour conserver les preuves liées à son empreinte.

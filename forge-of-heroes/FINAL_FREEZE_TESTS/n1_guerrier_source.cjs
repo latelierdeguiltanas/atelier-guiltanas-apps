@@ -8,10 +8,10 @@ const profile='class:guerrier:cof2-lb-2024';
 const pathId=name=>'classpath:voie-'+name+':class-guerrier:cof2-lb-2024';
 const checks=[];
 
-function project(name,partner='du-bouclier'){
+function project(name,partner='du-bouclier',preferred='swords'){
  const id=pathId(name),state=standardState(db,profile,id);
  state.voies.profilePathIds[1]=pathId(partner);
- state.profileChoices.preferredWeaponCategory='swords';
+ state.profileChoices.preferredWeaponCategory=preferred;
  const {sticky,errors}=engine.computeCharacterN1(withRank(db,state,id,2));
  assert.equal(errors.length,0,Array.from(errors).join(' | '));
  return sticky;
@@ -40,6 +40,14 @@ check('Maître d’armes · bonus d’attaque de prédilection',()=>{
  assert.equal(sword(s).attackBonus,sword(base).attackBonus+1);
  assert.equal(s.attacks.find(x=>x.weaponId==='weapon:dagger').attackBonus,base.attacks.find(x=>x.weaponId==='weapon:dagger').attackBonus);
 });
+check('Science du critique · un point sur les armes de prédilection uniquement',()=>{
+ const chosen=project('du-maitre-d-armes');
+ const base=project('du-soldat');
+ assert.equal(sword(base).criticalThreshold,20);
+ assert.equal(sword(chosen).criticalThreshold,19);
+ assert.equal(chosen.attacks.find(a=>a.weaponId==='weapon:dagger').criticalThreshold,20);
+ assert.equal(sword(project('du-maitre-d-armes','du-bouclier','axes')).criticalThreshold,20);
+});
 check('Résistance · PV et effort physique',()=>{
  const s=project('de-la-resistance'),base=project('du-soldat');
  assert.equal(s.PV,base.PV+4);
@@ -58,7 +66,6 @@ const report={status:checks.every(c=>c.status==='PASS')?'PASS':'PARTIEL',
  source:'COF2 Livre de base, p. 87–90',
  indexSha256:createHash('sha256').update(html).digest('hex'),
  testSha256:createHash('sha256').update(fs.readFileSync(__filename)).digest('hex'),
- observations:[{ability:'Science du critique',expectedThreshold:19,actualThreshold:sword(project('du-maitre-d-armes')).criticalThreshold}],
  checks};
 fs.writeFileSync(path.resolve(__dirname,'../QA/N1/guerrier-source-n1.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report));
