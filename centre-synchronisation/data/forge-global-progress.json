@@ -1,6 +1,6 @@
 {
   "schema": "FOH_GLOBAL_CERTIFICATION_V1",
-  "generatedAt": "2026-11-19T08:12:05.965Z",
+  "generatedAt": "2026-11-21T08:49:53.533Z",
   "sourceProduct": "forge-of-heroes/index.html",
   "source": {
     "indexSha256": "79bee1e8b4ce222cd2847d49ea7f56d8a22d8f667a1db04e4635a9fb594f9f2d",
@@ -110,6 +110,13 @@
           "evidence": null
         }
       ],
+      "targetedProof": {
+        "label": "Tests ciblés N2",
+        "passed": 3,
+        "total": 3,
+        "evidence": "forge-of-heroes/QA/N3/lot2/forge-unique-progression-retest.json",
+        "limitations": "Campagnes fonctionnelles ciblées ; ni certificat universel N2/N3, ni preuve PDF réel/mobile ni serveur en ligne."
+      },
       "percent": 0,
       "complete": false
     },
@@ -152,6 +159,13 @@
           "evidence": null
         }
       ],
+      "targetedProof": {
+        "label": "Tests ciblés N3",
+        "passed": 5,
+        "total": 5,
+        "evidence": "forge-of-heroes/QA/N3/lot2/forge-unique-progression-retest.json",
+        "limitations": "Campagnes fonctionnelles ciblées ; ni certificat universel N2/N3, ni preuve PDF réel/mobile ni serveur en ligne."
+      },
       "percent": 0,
       "complete": false
     },
