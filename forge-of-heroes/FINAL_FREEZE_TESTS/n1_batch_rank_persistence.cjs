@@ -104,6 +104,8 @@ function make(pathRow,kind,rank){
  }
  return fill(state);
 }
+module.exports={make};
+if(require.main===module){
 for(const c of sourceInputs.cases.filter(x=>x.status==='PASS')){
  const errors=witness(c.input,c.id);
  assert.deepEqual(errors,[],c.id);
@@ -127,3 +129,4 @@ const output=process.env.FOH_BATCH_RANK_REPORT||path.join(root,'forge-of-heroes/
 fs.writeFileSync(output,JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({covered:Object.keys(witnesses).length,total:candidates.length,unresolved:report.unresolved},null,2));
 assert.equal(Object.keys(witnesses).length,candidates.length,'Chaque rang candidat doit avoir un témoin');
+}

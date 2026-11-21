@@ -105,3 +105,9 @@ Le registre passe de 207 à 915 critères sur 4789 (19,11 %), soit 708 preuves s
 ## Annexes et résumés PDF
 
 La [recette du formulaire officiel](../lot10/pdf-summary-layout-current.json) vérifie 123 descriptions complètes dans quatre PDF générés. Elle couvre la voie du Mage et le rang de peuple conservé, un hybride et un Forgesort standard. Le contrôle de mise en page utilise les rectangles du modèle fourni. Sur 695 résumés examinés, seul Métamorphose féline R4 déborde. Ce rang reste dans la revue des accès exceptionnels. La preuve d'annexe porte sur les quatre PDF cités.
+
+## Accès aux rangs 4 et 5 en création
+
+Le plafond de l'âge vénérable est le rang 3 pour les voies ordinaires (Règles avancées, p. 153). Le [rapport](high-rank-access.json) teste une base R3 légale sur chaque voie concernée, puis tente d'acheter le R4 et la chaîne R4–R5. Les 244 tentatives sont rejetées au plafond d'âge. Dix sources de dons sont contrôlées, ainsi que la substitution divine de Linnarré R4. Le Courtier historique est testé en contre-épreuve positive au R5.
+
+Les 244 critères de revue d'accès passent. Le registre atteint 1159 / 4789 (24,20 %). Ce verdict concerne les règles d'acquisition N1 ordinaires et les voies alternatives présentes dans le catalogue testé.

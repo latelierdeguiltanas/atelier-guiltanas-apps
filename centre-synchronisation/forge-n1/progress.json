@@ -3199,9 +3199,9 @@
   "knownLimit": "L’écart vers 100 % mesure les obligations manquantes ; ne pas assimiler 100 % de ces contrôles à une preuve mathématique de tous les parcours imaginables.",
   "reconciliation": {
     "schema": "FOH_N1_RECONCILED_SUMMARY_V1",
-    "generatedAt": "2026-11-21T13:25:16.755Z",
+    "generatedAt": "2026-11-21T13:43:17.534Z",
     "inputs": {
-      "commit": "87f288225e9f24d83efcbbfc58273d7a86db054f",
+      "commit": "eb1818041c19a7fb762fc6cfeb94634b4eccee47",
       "indexBlob": "ff3ec9147d17a2bf4b3f8cebd2c39816217737f5",
       "indexSha256": "79bee1e8b4ce222cd2847d49ea7f56d8a22d8f667a1db04e4635a9fb594f9f2d",
       "engineSha256": "195a96fa8d6bc87d3a919be27787f56100ab2e69615d4b8c4bc1419a652d0181",
@@ -3222,16 +3222,17 @@
       "inventoriedRules": 695,
       "applicableRules": 451,
       "specialAccessReviews": 244,
+      "specialAccessReviewed": 244,
       "mechanicallyClosedRules": 1,
       "fullyCertifiedRules": 0,
-      "criteriaPassed": 915,
+      "criteriaPassed": 1159,
       "criteriaTotal": 4789,
-      "percent": 19.11,
+      "percent": 24.2,
       "profilesCertified": 0,
       "peoplesCertified": 0,
       "certified": false,
       "denominatorPolicy": "451 ordinary N1 candidate ranks × 10 obligations + 244 exceptional-reachability reviews + 35 engine/interaction/integration gates. Each review discovering an N1 exception adds its 10 obligations; historical witness mapping may credit existing proofs. This first reconciliation is a documented lower bound, not an estimated failure rate.",
-      "reuseCandidates": 14
+      "reuseCandidates": 17
     },
     "profiles": [
       {
@@ -3721,7 +3722,7 @@
         "scope": "Per-rule proof mapping in progress; shared and integration gates additionally required"
       }
     ],
-    "nextAction": "Contrôler les effets, choix et coûts des rangs par familles de règles ; certifier les annexes PDF et qualifier les accès exceptionnels.",
+    "nextAction": "Contrôler les effets, choix et coûts des rangs par familles de règles ; élargir les recettes d’annexes PDF.",
     "blockers": [
       {
         "id": "shared-effects",
@@ -3740,8 +3741,8 @@
       },
       {
         "id": "source-exceptions",
-        "status": "NON TESTÉ",
-        "detail": "Review 244 high-rank exceptions and remaining conditional classifications."
+        "status": "PASS",
+        "detail": "244 / 244 R4/R5 reviews verified; conditional classifications remain separate."
       }
     ],
     "tracks": {
