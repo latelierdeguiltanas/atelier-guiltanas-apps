@@ -1,11 +1,11 @@
 {
   "schema": "FOH_N1_REGRESSION_BATCH",
   "scope": "N1 creation and advanced-age projections; no progression work; some high-rank reference projections remain in reused suites",
-  "indexSha256": "79bee1e8b4ce222cd2847d49ea7f56d8a22d8f667a1db04e4635a9fb594f9f2d",
-  "finishedAt": "2026-11-14T19:14:44.466Z",
-  "passed": 33,
+  "indexSha256": "bf4b21430c8aadb064dba761081f1763924aa2a9e1a2ea524795cb830353093a",
+  "finishedAt": "2026-11-21T13:51:55.869Z",
+  "passed": 37,
   "total": 37,
-  "status": "FAIL",
+  "status": "PASS",
   "browserClicks": false,
   "suites": [
     {
@@ -76,14 +76,14 @@
       "status": "PASS",
       "exitCode": 0,
       "runnerSha256": "4675ad40dfc156d809ae520c2d6c8df5f69a3b818f4ed267096d53c5c4a944ae",
-      "output": "{\n  \"schema\": \"FOH_N1_AGE_SOURCE_CHECK\",\n  \"sources\": [\n    {\n      \"file\": \"règles avancées.pdf\",\n      \"pdfPage\": 1,\n      \"printedPage\": 153,\n      \"visuallyRead\": true,\n      \"rule\": \"Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.\"\n    }\n  ],\n  \"cases\": [\n    {\n      \"id\": \"index.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:DR\",\n      \"status\": \"PASS\"\n    }\n  ],\n  \"replays\": 11,\n  \"failures\": [],\n  \"engineSha256\": \"195a96fa8d6bc87d3a919be27787f56100ab2e69615d4b8c4bc1419a652d0181\",\n  \"status\": \"PASS\"\n}\n"
+      "output": "{\n  \"schema\": \"FOH_N1_AGE_SOURCE_CHECK\",\n  \"sources\": [\n    {\n      \"file\": \"règles avancées.pdf\",\n      \"pdfPage\": 1,\n      \"printedPage\": 153,\n      \"visuallyRead\": true,\n      \"rule\": \"Very young: INIT -1 and PC +1 or DR +1; young unchanged; mature AGI -1 and 2 points rank cap2; venerable AGI/CON -1 and 4 points rank cap3.\"\n    }\n  ],\n  \"cases\": [\n    {\n      \"id\": \"index.html:very-young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:very-young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:young:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:mature:DR\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:null\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:PC\",\n      \"status\": \"PASS\"\n    },\n    {\n      \"id\": \"index.html:venerable:DR\",\n      \"status\": \"PASS\"\n    }\n  ],\n  \"replays\": 11,\n  \"failures\": [],\n  \"engineSha256\": \"5445de9424678fa040ac6461e9947a7ad606a2a33b794359343a95c73808e2ed\",\n  \"status\": \"PASS\"\n}\n"
     },
     {
       "file": "n1_size_equipment_runner.cjs",
-      "status": "FAIL",
-      "exitCode": 1,
-      "runnerSha256": "2997e45f915949a849bbe279c4232c15f0b4338266d09b88a38dc16c2cdda76b",
-      "output": "node:assert:150\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n'1d8+1' !== '1d8+2'\n\n    at Object.<anonymous> (/home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/n1_size_equipment_runner.cjs:16:255)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10)\n    at Module.load (node:internal/modules/cjs/loader:1505:32)\n    at Function._load (node:internal/modules/cjs/loader:1309:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)\n    at node:internal/main/run_main_module:36:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: '1d8+1',\n  expected: '1d8+2',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.23.4\n"
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "de66a1b718d81b64aeaa13e85966d3a8b29340e83d0b18516ddfd8b3400b222a",
+      "output": "PASS 66 size/equipment cases across the production engine: 2d6 rejected, d8 at two hands without shield, hand count/damage/save/reload, no-profile racial limits, d4/d6 for Fée and Farfadet and ordinary-human regression. Sources COF2 Livre de base p.55 (PDF p.57), Compagnon pp.15,17; Compagnon COF2 p.27.\n"
     },
     {
       "file": "n1_rejection_review_runner.cjs",
@@ -115,17 +115,17 @@
     },
     {
       "file": "permanent_rules_runner.cjs",
-      "status": "FAIL",
-      "exitCode": 1,
-      "runnerSha256": "8c43159a6c0c2f437791d34d9d07f699250894c58dabdbbb37386f54cb3ae790",
-      "output": "node:assert:150\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n2 !== 3\n\n    at Object.<anonymous> (/home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/permanent_rules_runner.cjs:21:362)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10)\n    at Module.load (node:internal/modules/cjs/loader:1505:32)\n    at Function._load (node:internal/modules/cjs/loader:1309:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)\n    at node:internal/main/run_main_module:36:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 2,\n  expected: 3,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.23.4\n"
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "4aaaa245ae283640a5382e850a437dadc5acceb5ea348e3cef7cdb1bac6a46b1",
+      "output": "PASS 28 permanent-rule cases plus heroic/ancestry projections: rank scaling, negative modifiers, armor/shield changes, retroactive CON PV, stat choices and N1 rank guard.\n"
     },
     {
       "file": "grants_attacks_companions_runner.cjs",
-      "status": "FAIL",
-      "exitCode": 1,
-      "runnerSha256": "2696cae3055c61e1e7c75b84d420d7503ff6eedca834f5b1667fa0176e0297a5",
-      "output": "/home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/grants_attacks_companions_runner.cjs:27\nlet gob=standardState(db,cls('voleur'),undefined,'people:gobelin:addon-comp2017-cof2');age(gob,'mature',[['path:voie-du-gobelin:addon-comp2017-cof2',2],[gob.voies.profilePathIds[0],2]]);const gobr=ok(gob),worg=gobr.companions.find(a=>a.companionId==='companion:young-worg');assert.equal(worg.def,14);assert.equal(worg.pv,4);assert.equal(worg.init,gobr.INIT);assert.equal(worg.attack,1);\n                                                                                                                                                                                                                                                                                                    ^\n\nTypeError: Cannot read properties of undefined (reading 'def')\n    at Object.<anonymous> (/home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/grants_attacks_companions_runner.cjs:27:293)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10)\n    at Module.load (node:internal/modules/cjs/loader:1505:32)\n    at Function._load (node:internal/modules/cjs/loader:1309:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)\n    at node:internal/main/run_main_module:36:49\n\nNode.js v22.23.4\n"
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "838dd0b4caa3c472055eec4609d75d0428ee5b26229ac8cb07a3f587e756c1b5",
+      "output": "PASS 78 creation/replay cases: attack/damage stat separation, R2/R3 dice, grant choices/duplicates/PM, eight asset paths and contextual familiar stacking; 50 sorcerer/monk hybrids.\n"
     },
     {
       "file": "grant_prerequisites_runner.cjs",
@@ -157,10 +157,10 @@
     },
     {
       "file": "path_calculations_runner.cjs",
-      "status": "FAIL",
-      "exitCode": 1,
-      "runnerSha256": "c1d9912baa12e741288557cc5fb5cadedecaa8d486713ff42a296fe7858ba4cc",
-      "output": "node:assert:150\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 2\n\n    at Object.<anonymous> (/home/runner/work/atelier-guiltanas-apps/atelier-guiltanas-apps/forge-of-heroes/FINAL_FREEZE_TESTS/path_calculations_runner.cjs:7:376)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Object..js (node:internal/modules/cjs/loader:1913:10)\n    at Module.load (node:internal/modules/cjs/loader:1505:32)\n    at Function._load (node:internal/modules/cjs/loader:1309:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)\n    at node:internal/main/run_main_module:36:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 1,\n  expected: 2,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.23.4\n"
+      "status": "PASS",
+      "exitCode": 0,
+      "runnerSha256": "6e336f948e57c7a560a2b0028083626a12f81f36f59e7a26875e0ae142a3aed7",
+      "output": "PASS arithmetic isolation, unresolved target context, dice unchanged, monk permanent DEF/PV/INIT and speed, kobold DEF, save/replay, 80 people texts, companion characteristic conversions and honest coverage.\n"
     },
     {
       "file": "ability_runtime_runner.cjs",
