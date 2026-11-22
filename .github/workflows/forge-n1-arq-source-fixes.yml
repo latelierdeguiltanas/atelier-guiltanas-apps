@@ -41,7 +41,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: forge-n1-arq-source-fixes
+  group: forge-n1-arq-source-fixes-${{ github.sha }}
   cancel-in-progress: true
 jobs:
   verify-publish:
@@ -126,7 +126,6 @@ jobs:
             forge-of-heroes/QA/N1/arquebusier-equipment-source.json
             forge-of-heroes/QA/N1/arquebusier-arbaletrier-source-audit.json
   choices-mobile:
-    needs: verify-publish
     runs-on: ubuntu-latest
     timeout-minutes: 20
     strategy:
@@ -157,7 +156,7 @@ jobs:
           overwrite: true
           path: forge-of-heroes/QA/N1/arquebusier-choices-shard-${{ matrix.shard }}.json
   consolidate-choices:
-    needs: choices-mobile
+    needs: [verify-publish, choices-mobile]
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
