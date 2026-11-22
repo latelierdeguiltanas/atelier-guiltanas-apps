@@ -94,6 +94,10 @@ const rows=[...T.abilities_class,...T.abilities_people,...T.history_abilities].m
  if(contextualOrigin?.status==='PASS'&&contextualOrigin.verified===2*(6-a.rank)*contextualOrigin.situations.length&&
   contextualOrigin.situations.some(item=>Object.values(item.modifiers).some(v=>typeof v==='number'||typeof v==='string'&&/\d/.test(v))))
   checks.numericEffects={status:'PASS',evidence:'../arquebusier-history-origins.json',scope:'All catalogued context resolver situations and their exact modifiers, checked after save/reopen. Interactive actions remain a separate gate.'};
+ if(contextualOrigin?.status==='PASS'&&originProof.cases===90&&originProof.reopened===90&&originProof.negative===1440&&
+  contextualOrigin.verified===2*(6-a.rank)*contextualOrigin.situations.length){
+  checks.restrictions={status:'PASS',evidence:'../arquebusier-history-origins.json',scope:'Geographic resolver: availability by owned rank; unowned ranks yield no modifiers and malformed or out-of-range situations are refused.'};
+ }
  const profession=professionsCurrent&&professionProof.byAbility[a.id];
  if(profession?.owned===2*(6-a.rank)&&profession.unowned===2*(a.rank-1)&&
   profession.invalidSituation===20&&profession.positiveSituations>0&&
@@ -139,6 +143,10 @@ const pairTransferCurrent=pairTransfer.status==='PASS'&&
  pairKeys.size===pairTransfer.tested&&T.classes.every(profile=>T.peoples.every(people=>pairKeys.has(JSON.stringify([profile.id,people.id]))));
 const common=['initialStats','racialStats','derivedStats','resources','attacks','sizeEquipment','prerequisites','rankBudget','ageHistory','stacking','roundingBounds','saveRestore','choiceABA','sourceBundleParity','sharedFormula'],interactions=['peopleProfile','peoplePath','sameProfilePaths','hybrids','noProfile','ageRank','equipmentAbility','racialAbility','twoConditions','historyAbility','choiceReplacement','threeFactorRisks'],integration=['forgeToSheet','importExport','legacyMigration','officialPDF','annexes','desktopBrowser','mobileBrowser','publicParity'];
 const extra=[...common.map(id=>({id:'engine:'+id,status:id==='sourceBundleParity'?'PASS':'NON TESTÉ'})),...interactions.map(id=>({id:'interaction:'+id,status:'NON TESTÉ'})),...integration.map(id=>({id:'integration:'+id,status:'NON TESTÉ'}))];
+if(batchCurrent&&batch.targetCount===applicable.length&&batch.unresolved.length===0&&applicable.every(row=>Object.hasOwn(batch.witnesses,row.id))){
+ Object.assign(extra.find(gate=>gate.id==='engine:saveRestore'),{status:'PASS',evidence:'rank-persistence-batch.json',
+  scope:'451 rank witnesses retain exact acquired IDs through Forge reopening, native transfer and vault reopening.'});
+}
 if(pairTransferCurrent){
  const scope='468 legal N1 creations, one per people/profile pair; exact characteristics, PV, DEF, INIT, ranks, passive features and skill bonuses in native transfer and vault reopening.';
  for(const gate of extra.filter(g=>['interaction:peopleProfile','integration:forgeToSheet'].includes(g.id))){
