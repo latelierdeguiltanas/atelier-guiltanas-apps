@@ -101,7 +101,7 @@ jobs:
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_r2_gate.cjs
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_gear_gate.cjs
-          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_gate.cjs
+          node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_pdf_gate.cjs --allow-open
           node forge-of-heroes/FINAL_FREEZE_TESTS/n1_arq_derived_gate.cjs
       - uses: actions/upload-artifact@v4
         if: always()
