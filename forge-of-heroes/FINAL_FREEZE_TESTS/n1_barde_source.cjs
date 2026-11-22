@@ -79,6 +79,7 @@ check('Saltimbanque · danse, mime et jonglerie aux rangs 2 et 3',()=>{
 
 const report={status:checks.every(c=>c.status==='PASS')?'PASS':'PARTIEL',source:'COF2 Livre de base, p. 66 à 69',
  indexSha256:createHash('sha256').update(html).digest('hex'),
+ testSha256:createHash('sha256').update(fs.readFileSync(__filename)).digest('hex'),
  scope:'Cinq voies de Barde pur N1, rangs 1–2 et Grâce féline au rang 3. Valeurs attendues issues du livre. Combat et export vérifiés séparément.',
  checks};
 fs.writeFileSync(process.env.FOH_BARDE_REPORT||path.join(root,'QA/N1/barde-source-n1.json'),JSON.stringify(report,null,2)+'\n');

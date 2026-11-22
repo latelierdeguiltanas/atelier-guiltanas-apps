@@ -52,6 +52,18 @@ const criticalCurrent=warriorProof.indexSha256===inputs.indexSha256&&
  warriorProof.checks.some(c=>c.name==='Science du critique · un point sur les armes de prédilection uniquement'&&c.status==='PASS');
 const peopleProof=read('forge-of-heroes/QA/N1/lot10/people-source.json'),arqProof=read('forge-of-heroes/QA/N1/arquebusier-pure-age-ranks.json');
 const exactReport=j=>JSON.stringify(j.products||[]).includes(inputs.indexSha256);
+const numericProfileProofs=[
+ {profile:'barde',path:'voie-du-saltimbanque',rank:2,checks:['Saltimbanque · DEF, initiative et acrobaties','Saltimbanque · danse, mime et jonglerie aux rangs 2 et 3'],scope:'Grâce féline: DEF and CHA-based initiative, plus exact dance, mime and juggling bonuses at R2/R3.'},
+ {profile:'guerrier',path:'voie-de-la-resistance',rank:1,checks:['Résistance · PV et effort physique'],scope:'Robustesse: exact bonus to maximum HP, physical effort and resistance to natural heat and cold at the tested N1 rank.'},
+ {profile:'druide',path:'voie-du-fauve',rank:1,checks:['Fauve · vitesse et caractéristiques de la panthère'],scope:'Vitesse du félin: exact initiative, defence and running, climbing and jumping bonuses in the tested N1 state.'}
+].flatMap(rule=>{
+ const evidence=rule.profile+'-source-n1.json';
+ const proof=read('forge-of-heroes/QA/N1/'+evidence);
+ const runnerHash=hash(fs.readFileSync(root+'/forge-of-heroes/FINAL_FREEZE_TESTS/n1_'+rule.profile+'_source.cjs'));
+ if(proof.status!=='PASS'||proof.indexSha256!==inputs.indexSha256||proof.testSha256!==runnerHash||
+  !rule.checks.every(name=>proof.checks.some(check=>check.name===name&&check.status==='PASS')))return [];
+ return [{...rule,pathId:'classpath:'+rule.path+':class-'+rule.profile+':cof2-lb-2024',evidence:'../'+evidence}];
+});
 const obligations=['acquisition','choices','permanentEffects','activation','numericEffects','costs','duration','deactivation','restrictions','persistence'];
 const paths=new Map([...T.paths_class,...T.paths_people,...T.history_paths].map(p=>[p.id,p]));
 function classification(a){const txt=a.desc||'',m=a.mechanics||{},tags=new Set();if(m.kind==='passive')tags.add('permanent');if(m.kind==='active'||m.kind==='spell'||/\([ALMG]\)/.test(a.label))tags.add('activable');if(/si |lorsqu|tant que|à condition|lors de/i.test(txt))tags.add('passif contextuel');if(/minutes?|rounds?|heures?|journée/i.test(txt))tags.add('temporaire');if(/par jour|utilisation|consomm|sacrifi/i.test(txt))tags.add('consommable');if(/réaction|en réaction|lorsqu.*attaque/i.test(txt))tags.add('réactif');if(!tags.size)tags.add('descriptif');return {candidateTypes:[...tags],behavior:tags.size>1?'mixte':[...tags][0],review:'AUTO_CLASSIFIED_REQUIRES_REVIEW',evidence:'Catalogue text/mechanics signals, not a functional verdict'};}
@@ -85,6 +97,8 @@ const rows=[...T.abilities_class,...T.abilities_people,...T.history_abilities].m
  const spellCost=standardCostsCurrent&&standardCosts.cases[a.id];
  if(spellCost?.status==='PASS'&&spellCost.standard===a.rank&&spellCost.insufficientManaRejected)
   checks.costs={status:'PASS',evidence:'standard-spell-costs.json',scope:spellCost.upkeep===1?'COF2 pp.111,228: cast, concentration, 1 PM per upkeep round (movement action), insufficient mana and inactive upkeep denied.':'COF2 p.228: standard mana, concentration when available and atomic refusal for insufficient mana, in the shared runtime.'};
+ const numericProfile=numericProfileProofs.find(rule=>rule.pathId===a.path_id&&rule.rank===a.rank);
+ if(numericProfile)checks.numericEffects={status:'PASS',evidence:numericProfile.evidence,scope:numericProfile.scope};
  const firstOrigin=originsCurrent&&originProof.firstRanks[a.id];
  const contextualOrigin=originsCurrent&&originProof.abilities[a.id];
  if(firstOrigin?.status==='PASS'&&firstOrigin.verified===10){
