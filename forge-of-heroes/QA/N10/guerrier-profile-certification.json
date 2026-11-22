@@ -1,0 +1,551 @@
+{
+  "schema": "FOH_GUERRIER_PROFILE_N1_N10_V2",
+  "status": "ENGINE_DOM_PASS",
+  "scope": "Les 25 capacités des cinq voies du profil guerrier pur, création et progression N1–N10, export PDF et fiche interactive",
+  "limits": [
+    "Ne certifie pas la progression des voies de peuple ou historique, ni les profils hybrides.",
+    "Les résultats des dés sont saisis par le joueur ; les effets sur un autre acteur sont affichés pour application à la table, sans modifier sa fiche distante.",
+    "Ce contrôle ne prouve pas toutes les créations ou tous les objets personnalisés."
+  ],
+  "inputs": {
+    "indexSha256": "ce1fb03820036339c6790ab3d823d1ada8e49eaf7fe986380d74a05ea44f1180",
+    "sheetSha256": "427ec647eedae869d36d892f66429b0e0af589630ce29605859168abe2fa12ac",
+    "combatSha256": "5322fdf6335f027efb1e051766db5aa53985d60fb991ffc6d6dd18285e71a4ab"
+  },
+  "counts": {
+    "abilities": 25,
+    "progressionTrajectories": 80,
+    "progressionTransitions": 8534,
+    "weaponCases": 230,
+    "combatCases": 29,
+    "domCases": 80,
+    "pdfCases": 10
+  },
+  "rows": [
+    {
+      "code": "shield:1",
+      "abilityId": "ability:proteger-un-allie-g:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "path": "Voie du bouclier",
+      "rank": 1,
+      "label": "Protéger un allié (G)",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 87,
+        "chapter": "Profils",
+        "section": "Protéger un allié (G)"
+      },
+      "mechanism": "Protection allié et annonce avant résultat, surprise, bouclier, quota",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "shield:2",
+      "abilityId": "ability:parer-un-coup-m:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "path": "Voie du bouclier",
+      "rank": 2,
+      "label": "Parer un coup (M)",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 87,
+        "chapter": "Profils",
+        "section": "Parer un coup (M)"
+      },
+      "mechanism": "Préparation, FOR/AGI, opposition, égalité, demi-DM grandes tailles, parade gratuite R5",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "shield:3",
+      "abilityId": "ability:defense-au-bouclier:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "path": "Voie du bouclier",
+      "rank": 3,
+      "label": "Défense au bouclier",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 88,
+        "chapter": "Profils",
+        "section": "Défense au bouclier"
+      },
+      "mechanism": "DEF conditionnelle au bouclier et réduction des DM de zone",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "shield:4",
+      "abilityId": "ability:absorber-un-sort:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank4:cof2-lb-2024",
+      "path": "Voie du bouclier",
+      "rank": 4,
+      "label": "Absorber un sort",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 88,
+        "chapter": "Profils",
+        "section": "Absorber un sort"
+      },
+      "mechanism": "Absorption avec posture et quota partagé avec parade",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "shield:5",
+      "abilityId": "ability:renvoi-de-sort-g:classpath:voie-du-bouclier:class-guerrier:cof2-lb-2024:rank5:cof2-lb-2024",
+      "path": "Voie du bouclier",
+      "rank": 5,
+      "label": "Renvoi de sort (G)",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 88,
+        "chapter": "Profils",
+        "section": "Renvoi de sort (G)"
+      },
+      "mechanism": "Renvoi immédiat hors zone, absence de double renvoi",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "combat:1",
+      "abilityId": "ability:vivacite:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "path": "Voie du combat",
+      "rank": 1,
+      "label": "Vivacité",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 88,
+        "chapter": "Profils",
+        "section": "Vivacité"
+      },
+      "mechanism": "INIT et tests +3, mouvement supplémentaire limité par combat",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "combat:2",
+      "abilityId": "ability:manoeuvre:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "path": "Voie du combat",
+      "rank": 2,
+      "label": "Manœuvre",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 88,
+        "chapter": "Profils",
+        "section": "Manœuvre"
+      },
+      "mechanism": "Manœuvres avec dé bonus et malus cumulatif de répétition",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "combat:3",
+      "abilityId": "ability:attaque-puissante:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "path": "Voie du combat",
+      "rank": 3,
+      "label": "Attaque puissante",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 88,
+        "chapter": "Profils",
+        "section": "Attaque puissante"
+      },
+      "mechanism": "Puissance A/L et dés évolutifs",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "combat:4",
+      "abilityId": "ability:double-attaque-l:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank4:cof2-lb-2024",
+      "path": "Voie du combat",
+      "rank": 4,
+      "label": "Double attaque (L)",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 88,
+        "chapter": "Profils",
+        "section": "Double attaque (L)"
+      },
+      "mechanism": "Deux attaques, −2 chacune, combinaison Puissance",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "combat:5",
+      "abilityId": "ability:attaque-circulaire-l:classpath:voie-du-combat:class-guerrier:cof2-lb-2024:rank5:cof2-lb-2024",
+      "path": "Voie du combat",
+      "rank": 5,
+      "label": "Attaque circulaire (L)",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 88,
+        "chapter": "Profils",
+        "section": "Attaque circulaire (L)"
+      },
+      "mechanism": "Une attaque par adversaire au contact, DEF individuelles, −2",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "master:1",
+      "abilityId": "ability:armes-de-predilection:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "path": "Voie du maître d’armes",
+      "rank": 1,
+      "label": "Armes de prédilection",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 88,
+        "chapter": "Profils",
+        "section": "Armes de prédilection"
+      },
+      "mechanism": "Prédilection par catégorie, armes acquises après création",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "master:2",
+      "abilityId": "ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "path": "Voie du maître d’armes",
+      "rank": 2,
+      "label": "Science du critique",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 89,
+        "chapter": "Profils",
+        "section": "Science du critique"
+      },
+      "mechanism": "Critiques, dague jet et pique, propriété native rapière",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "master:3",
+      "abilityId": "ability:specialisation:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "path": "Voie du maître d’armes",
+      "rank": 3,
+      "label": "Spécialisation",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 89,
+        "chapter": "Profils",
+        "section": "Spécialisation"
+      },
+      "mechanism": "DM et choix de spécialisation à chaque voie R5",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "master:4",
+      "abilityId": "ability:attaque-parfaite-l:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank4:cof2-lb-2024",
+      "path": "Voie du maître d’armes",
+      "rank": 4,
+      "label": "Attaque parfaite (L)",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 89,
+        "chapter": "Profils",
+        "section": "Attaque parfaite (L)"
+      },
+      "mechanism": "Parfaite, Puissance combinée, désarmement avec NC strict",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "master:5",
+      "abilityId": "ability:riposte-g:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank5:cof2-lb-2024",
+      "path": "Voie du maître d’armes",
+      "rank": 5,
+      "label": "Riposte (G)",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 89,
+        "chapter": "Profils",
+        "section": "Riposte (G)"
+      },
+      "mechanism": "Riposte après attaque de contact ratée, quota",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "resistance:1",
+      "abilityId": "ability:robustesse:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "path": "Voie de la résistance",
+      "rank": 1,
+      "label": "Robustesse",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 89,
+        "chapter": "Profils",
+        "section": "Robustesse"
+      },
+      "mechanism": "PV et tests au rang atteint",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "resistance:2",
+      "abilityId": "ability:resilient:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "path": "Voie de la résistance",
+      "rank": 2,
+      "label": "Résilient",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 90,
+        "chapter": "Profils",
+        "section": "Résilient"
+      },
+      "mechanism": "Temps de récupération et bonus de résistance aux états",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "resistance:3",
+      "abilityId": "ability:armure-lourde:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "path": "Voie de la résistance",
+      "rank": 3,
+      "label": "Armure lourde",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 90,
+        "chapter": "Profils",
+        "section": "Armure lourde"
+      },
+      "mechanism": "Choix DEF/plaque sauvegardé ; équipement non accordé gratuitement",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "resistance:4",
+      "abilityId": "ability:constitution-heroique:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank4:cof2-lb-2024",
+      "path": "Voie de la résistance",
+      "rank": 4,
+      "label": "Constitution héroïque",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 90,
+        "chapter": "Profils",
+        "section": "Constitution héroïque"
+      },
+      "mechanism": "CON, PV rétroactifs, DR, dé bonus aux tests de CON",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "resistance:5",
+      "abilityId": "ability:dur-a-cuire:classpath:voie-de-la-resistance:class-guerrier:cof2-lb-2024:rank5:cof2-lb-2024",
+      "path": "Voie de la résistance",
+      "rank": 5,
+      "label": "Dur à cuire",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 90,
+        "chapter": "Profils",
+        "section": "Dur à cuire"
+      },
+      "mechanism": "DEF, dernier round à 0 PV, inconscience, immobilisé/étourdi",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "soldier:1",
+      "abilityId": "ability:teigneux-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank1:cof2-lb-2024",
+      "path": "Voie du soldat",
+      "rank": 1,
+      "label": "Teigneux (G)",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 90,
+        "chapter": "Profils",
+        "section": "Teigneux (G)"
+      },
+      "mechanism": "Teigneux déclenché au départ du contact et compétences au rang atteint",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "soldier:2",
+      "abilityId": "ability:prouesse-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",
+      "path": "Voie du soldat",
+      "rank": 2,
+      "label": "Prouesse (G)",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 90,
+        "chapter": "Profils",
+        "section": "Prouesse (G)"
+      },
+      "mechanism": "Sacrifice réel du d4° en PV, bonus +5 FOR/CON, quota",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "soldier:3",
+      "abilityId": "ability:piqure-de-rappel-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
+      "path": "Voie du soldat",
+      "rank": 3,
+      "label": "Piqûre de rappel (G)",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 90,
+        "chapter": "Profils",
+        "section": "Piqûre de rappel (G)"
+      },
+      "mechanism": "Autre cible, INT négative, DM positifs, quota",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "soldier:4",
+      "abilityId": "ability:force-heroique:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank4:cof2-lb-2024",
+      "path": "Voie du soldat",
+      "rank": 4,
+      "label": "Force héroïque",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 90,
+        "chapter": "Profils",
+        "section": "Force héroïque"
+      },
+      "mechanism": "FOR et contact/DM permanents, dé bonus au test de FOR",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    },
+    {
+      "code": "soldier:5",
+      "abilityId": "ability:rempart:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank5:cof2-lb-2024",
+      "path": "Voie du soldat",
+      "rank": 5,
+      "label": "Rempart",
+      "source": {
+        "bookId": "cof2-livre-base-2024",
+        "edition": "COF2",
+        "printedPage": 90,
+        "chapter": "Profils",
+        "section": "Rempart"
+      },
+      "mechanism": "DEF, adversaires distincts AGI+2, mouvement stoppé",
+      "status": "PASS",
+      "evidence": [
+        "QA/N10/guerrier-integral-combat.json",
+        "QA/N10/guerrier-integral-dom.json",
+        "QA/N10/guerrier.json"
+      ]
+    }
+  ]
+}
