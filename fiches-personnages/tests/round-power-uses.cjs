@@ -63,6 +63,10 @@ for(const [slug,kind] of powers){
  const starting={uses:{'qa-daily-use':2},pm:0};
  let w=open(character,JSON.stringify(starting));
  try{
+  if(ability.path_id.includes(':class-guerrier:')){
+   const action=slug==='teigneux-g'?'teigneux':'reminder',show=()=>{const control=[...w.document.querySelectorAll('#play [data-ui-ability]')].find(b=>b.querySelector('strong')?.textContent===rank.name);assert(control);control.click();return w.document.querySelector('dialog[open] .warrior-ability');},prepare=()=>{const card=show();const values={target:'Orc',inContact:true,rolls:'20',defense:1,...(action==='teigneux'?{leaving:true}:{attacksOther:true,targetInt:-1,damageDealt:1})};for(const[k,v]of Object.entries(values)){const el=card.querySelector('[data-warrior-field='+k+']');assert(el,k);if(el.type==='checkbox')el.checked=v;else el.value=String(v);}return card.querySelector('[data-warrior-action='+action+']');};
+   assert(!prepare().disabled);prepare().click();let saved=w.localStorage.getItem(key),play=JSON.parse(saved);assert.equal(play.warrior.roundUses[action],1);assert.equal(play.uses['qa-daily-use'],2);assert.equal(play.pm,0);assert(prepare().disabled);w.close();w=open(character,saved);assert(prepare().disabled);button(w,'dialog[open] [data-ui-close]').click();button(w,'#play [data-warrior-reset=round]').click();assert(!prepare().disabled);prepare().click();button(w,'dialog[open] [data-ui-close]').click();button(w,'nav [data-page=rest]').click();button(w,'#rest [data-reset=combat]').click();assert.equal(JSON.parse(w.localStorage.getItem(key)).warrior.roundUses[action],undefined);cases.push({id:ability.id,actualId:rank.abilityId,use:true,limit:true,reopen:true,roundReset:true,combatReset:true,free:true,controller:'warrior'});continue;
+  }
   if(slug==='droite-gauche-g'){
    const former=[...w.document.querySelectorAll('#play [data-ui-ability]')].find(b=>b.textContent.includes('Attaque à suivre'));
    assert(former);

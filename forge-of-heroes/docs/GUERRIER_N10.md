@@ -32,3 +32,15 @@ Ce lot ne certifie pas tous les guerriers possibles. Les nouveaux rangs de peupl
 La demande « absolument tout » n'est pas clôturée : nouveaux rangs de peuple/historique, hybrides, extensions et toutes les interactions d'équipement restent hors certification N10. Les pouvoirs déclenchés gardent leurs textes complets et se résolvent avec les dés physiques ; la fiche n'automatise pas toutes leurs conditions de combat.
 
 Parcours urgent : créer un guerrier classique, terminer sa fiche N1, choisir « Passer au niveau suivant », puis valider les neuf montées. Le carnet garde les décisions ; « Sauvegarder le carnet » exporte la sauvegarde, et « Ouvrir ma fiche interactive » ouvre la fiche du niveau acquis.
+
+## Complément — capacités du profil dans la fiche interactive
+
+Les 25 capacités de guerrier possèdent désormais une présentation propre avec calculs et contrôles des conditions. Le module partagé `ENGINE/guerrier-combat.js` est embarqué à l'identique dans la fiche ; `scripts/sync-guerrier-combat.cjs --check` empêche une divergence.
+
+Parade et absorption : préparation, choix FOR/AGI, comparaison des jets, égalité à relancer, dommages, exception énorme/colossal et parade gratuite R5 avec dé malus. L'absorption et la parade partagent leur résolution par round ; le renvoi exige une absorption immédiatement précédente et refuse les sorts de zone. Le bonus de protection d'un allié reste un résultat à appliquer à cet allié, sans modifier sa fiche distante.
+
+Attaques : puissance A/L, double, circulaire avec DEF par adversaire, parfaite et désarmement, riposte, Teigneux/Rempart et Piqûre de rappel. Les déclencheurs doivent être confirmés. Les dés évolutifs, dés bonus/malus, pénalités, critiques et bonus de dégâts sont calculés. Les résultats des dés physiques sont saisis ; les dégâts des adversaires restent gérés à la table.
+
+Résistance : Prouesse retire réellement le résultat du dé évolutif aux PV. Les tests héroïques restent distincts des attaques. Dur à cuire permet le dernier round à 0 PV, puis le bouton de fin du dernier round applique l'inconscience si aucun soin n'est intervenu. Les états, quotas, postures et résultats sont conservés dans la sauvegarde de jeu. Les armes ajoutées à l'inventaire bénéficient aussi des prédilections ; la pique et la dague utilisée à distance ont été corrigées dans le moteur N1.
+
+Les tests de cette passe sont `guerrier_integral_combat.cjs`, `guerrier_weapons.cjs` et `fiches-personnages/tests/guerrier-integral.cjs`. La couverture de ces tests porte sur les **25 capacités du profil guerrier pur N1–10**. Elle ne clôture pas les voies de peuple/d'historique, profils hybrides, règles de prestige ni interactions de tous les autres profils. Les données de création N1 et le catalogue de progression conservent leurs limites explicites.

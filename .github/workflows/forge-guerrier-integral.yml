@@ -1,0 +1,35 @@
+name: Forge guerrier N1-N10 - capacites et fiche
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'forge-of-heroes/**'
+      - 'fiches-personnages/**'
+      - '.github/workflows/forge-guerrier-integral.yml'
+permissions:
+  contents: read
+jobs:
+  guerrier:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --prefix /tmp/guerrier-qa jsdom@26 --no-audit --no-fund
+      - run: node --check fiches-personnages/fiche/fiche.js
+      - run: node forge-of-heroes/scripts/sync-guerrier-combat.cjs --check
+      - run: node forge-of-heroes/FINAL_FREEZE_TESTS/guerrier_integral_combat.cjs
+      - run: node forge-of-heroes/FINAL_FREEZE_TESTS/guerrier_weapons.cjs
+      - run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_guerrier_source.cjs
+      - run: node forge-of-heroes/FINAL_FREEZE_TESTS/native_progression_runner.cjs
+      - run: node forge-of-heroes/FINAL_FREEZE_TESTS/level3_runner.cjs
+      - run: NODE_PATH=/tmp/guerrier-qa/node_modules node fiches-personnages/tests/guerrier-integral.cjs
+      - run: NODE_PATH=/tmp/guerrier-qa/node_modules node fiches-personnages/tests/guerrier-n10.cjs
+      - run: NODE_PATH=/tmp/guerrier-qa/node_modules node fiches-personnages/tests/round-power-uses.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: guerrier-integral-${{ github.run_id }}-${{ github.run_attempt }}
+          path: forge-of-heroes/QA/N10/
