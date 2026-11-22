@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "date": "2026-11-22",
+  "environment": "Navigateur cloud Chrome, vraie Forge GitHub Pages, actions CUA",
+  "testedCommit": "a19db04d1671efcd4acc2d4193873a6ae596ade6",
+  "scope": "Une création humaine guerrier pur ; neuf passages N2 à N10 ; Armure lourde +1 DEF ; prédilection épées ; améliorations épées puis haches",
+  "actions": [
+    "Création classique au clic, répartition de série et bonus humain",
+    "Révélation puis sauvegarde N1 automatique",
+    "Rechargement et ouverture depuis Mes héros",
+    "Ouverture du carnet et gel du N1",
+    "N2 Robustesse + Résilient",
+    "N3 Armure lourde +1 DEF, dialogue confirmé",
+    "N4 Armes de prédilection épées + Science du critique, dialogue confirmé",
+    "N5 Constitution héroïque",
+    "N6 Spécialisation",
+    "N7 Dur à cuire, amélioration épées confirmée",
+    "N8 Attaque parfaite",
+    "N9 Riposte, nouvelle prédilection haches confirmée",
+    "N10 Parer un coup + Teigneux",
+    "Ouverture automatique de la fiche interactive N10",
+    "Retour au carnet avec niveau 10 conservé"
+  ],
+  "observed": {
+    "level": 10,
+    "FOR": 3,
+    "CON": 3,
+    "pvMax": 92,
+    "def": 19,
+    "recoveryMax": 5,
+    "recoveryDie": "D10",
+    "contact": 13,
+    "swordAttack": 14,
+    "swordDamage": "1d8+5",
+    "swordCritical": "19–20",
+    "recoveryMinutes": 5,
+    "preferredWeapons": {
+      "swords": 2,
+      "axes": 1
+    }
+  },
+  "limits": [
+    "Pas un test Android physique",
+    "Nouveaux rangs de peuple et d’historique exclus de cette progression N10",
+    "Profil hybride exclu",
+    "Dés et conditions des capacités actifs suivis à la table ; pas un simulateur automatique de combat"
+  ]
+}

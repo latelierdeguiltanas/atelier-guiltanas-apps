@@ -19,3 +19,16 @@ Ce lot ne certifie pas tous les guerriers possibles. Les nouveaux rangs de peupl
 ## Preuves
 
 `QA/N10/guerrier.json` : 80 parcours complets (8 peuples du livre de base × 5 voies prioritaires × 2 branches d'Armure lourde), sauvegarde/rechargement et export de fiche, plus exploration des répartitions de rangs des cinq voies. Oracle de PV, caractéristiques, DEF, initiative, attaques, dégâts et critique indépendant des fonctions de calcul de production. Ces répartitions ne représentent pas toutes les combinaisons de peuples, équipement et options. Les preuves au clic et PDF sont enregistrées séparément.
+
+## Vérifications du 22 novembre 2026
+
+- 80 parcours N1→N10 : huit peuples du livre de base, chacune des cinq voies prioritaire, deux branches d'Armure lourde. Les rangs de peuple restent ceux de la création.
+- 8 534 transitions vérifiées, 1 681 configurations de rangs/étapes explorées depuis une base témoin ; 25 capacités de profil exercées. Cette couverture n'est pas une preuve de toutes les permutations ni de tous les équipements.
+- Oracles indépendants : PV et CON rétroactive, FOR, trois attaques, DEF, initiative, DR, épée longue, critique et spécialisation.
+- Dix véritables PDF N10 générés depuis le modèle officiel privé : caractéristiques, ressources, DEF/INIT et coches de rangs vérifiés. Le modèle privé n'est pas publié.
+- Une création humaine puis neuf montées de niveau réalisées au clic sur GitHub Pages : dialogues, sauvegardes et ouverture de la fiche interactive N10. Résultat témoin : 92 PV, DEF 19, CON +3, 5 DR d10, épée +14 / 1d8+5 / critique 19–20.
+- Non-régression : bases Bastide N2, 156 options N3, neuf profils natifs N2 ; 22 contrôles d'armure d'os et neuf pouvoirs à usages limités.
+
+La demande « absolument tout » n'est pas clôturée : nouveaux rangs de peuple/historique, hybrides, extensions et toutes les interactions d'équipement restent hors certification N10. Les pouvoirs déclenchés gardent leurs textes complets et se résolvent avec les dés physiques ; la fiche n'automatise pas toutes leurs conditions de combat.
+
+Parcours urgent : créer un guerrier classique, terminer sa fiche N1, choisir « Passer au niveau suivant », puis valider les neuf montées. Le carnet garde les décisions ; « Sauvegarder le carnet » exporte la sauvegarde, et « Ouvrir ma fiche interactive » ouvre la fiche du niveau acquis.
