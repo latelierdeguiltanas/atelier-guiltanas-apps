@@ -19,6 +19,7 @@ jobs:
           node-version: '22'
       - run: npm install --prefix /tmp/guerrier-qa jsdom@26 --no-audit --no-fund
       - run: NODE_PATH=/tmp/guerrier-qa/node_modules node fiches-personnages/tests/library-optional-dates.cjs
+      - run: NODE_PATH=/tmp/guerrier-qa/node_modules node fiches-personnages/tests/carnet-recovery.cjs
       - run: node --check fiches-personnages/fiche/fiche.js
       - run: node forge-of-heroes/scripts/sync-guerrier-combat.cjs --check
       - run: node forge-of-heroes/scripts/sync-guerrier-prestige.cjs --check

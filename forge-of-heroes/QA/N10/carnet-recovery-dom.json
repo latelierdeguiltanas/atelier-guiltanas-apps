@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "scope": "Récupération non destructive des carnets illisibles ou incohérents, y compris depuis une fiche personnelle",
+  "sourceSha256": "1995e3ff69d25be97c2d405efab3262e36b74921a53ec881a504f8daaf464978",
+  "cases": [
+    {
+      "name": "Carnet incohérent : export exact et aucune réécriture depuis accueil",
+      "status": "PASS"
+    },
+    {
+      "name": "Carnet incohérent : export exact et aucune réécriture depuis fiche",
+      "status": "PASS"
+    },
+    {
+      "name": "JSON illisible exporté sans transformation",
+      "status": "PASS"
+    },
+    {
+      "name": "Export de récupération utilise le dernier contenu de stockage",
+      "status": "PASS"
+    },
+    {
+      "name": "Bibliothèque valide : export normal et carnet N10 disponible",
+      "status": "PASS"
+    },
+    {
+      "name": "Échec réseau sans sauvegarde : aucun faux export disponible",
+      "status": "PASS"
+    }
+  ]
+}
