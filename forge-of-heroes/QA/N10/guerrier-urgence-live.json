@@ -1,0 +1,92 @@
+{
+  "schema": "FOH_GUERRIER_URGENCE_LIVE_V1",
+  "status": "PASS",
+  "testedCodeCommit": "ae870de22e175c5c6cc0781147130bc6404838fd",
+  "scope": "Recette au clic sur GitHub Pages avec un guerrier humain synthétique : reprise après ancien erratum, import N4 sur un appareil sans ce héros, achats N5–N10, fiche finale et sauvegarde",
+  "checks": [
+    {
+      "id": "historical-source-text",
+      "status": "PASS",
+      "details": "Ancien carnet réellement exporté accepté ; base, historique et statistiques inchangés."
+    },
+    {
+      "id": "restore-native-n4",
+      "status": "PASS",
+      "details": "Carnet importé sans héros préexistant ; confirmation visible de la vérification."
+    },
+    {
+      "id": "purchase-n5-through-n10",
+      "status": "PASS",
+      "levels": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "expertSources": [
+        "chevalier:voie-de-la-noblesse:1",
+        "barbare:voie-de-la-brute:2",
+        "barbare:voie-du-pagne:3"
+      ]
+    },
+    {
+      "id": "bridge-and-reload",
+      "status": "PASS",
+      "details": "Ouverture automatique de la fiche N10 puis rechargement ; PV 57/65 après sacrifice."
+    },
+    {
+      "id": "feat-hp",
+      "status": "PASS",
+      "damagePaid": 8,
+      "hpBefore": 65,
+      "hpAfter": 57,
+      "testBonus": 10
+    },
+    {
+      "id": "tattoo-test",
+      "status": "PASS",
+      "stat": "CON",
+      "roll": 10,
+      "characteristic": 1,
+      "bonus": 3,
+      "total": 14
+    },
+    {
+      "id": "export-and-independent-oracle",
+      "status": "PASS",
+      "combat": {
+        "pvMax": 65,
+        "pcMax": 3,
+        "pmMax": 0,
+        "recoveryMax": 3,
+        "recoveryDie": "D10",
+        "init": 14,
+        "def": 20,
+        "contact": 13,
+        "distance": 12,
+        "magic": 10,
+        "speedMeters": 10
+      },
+      "immutableBase": true,
+      "immutablePreviousLevels": true,
+      "downloadSha256": "96d6ae458208dd95475f2afc6749ab1ec03047a1b6a9b9a78dcf6635d8251b80"
+    }
+  ],
+  "limits": [
+    "La recette commence avec un carnet N4 ; elle ne constitue pas une création N1 entièrement rejouée au clic.",
+    "Elle porte sur un guerrier humain et une sélection des capacités de l’Expert.",
+    "La certification générale reste partielle : Familier R5/R6, nouveaux rangs de peuple/historique et hybrides non validés N10."
+  ],
+  "validationRuns": {
+    "warrior": {
+      "id": 45219521119,
+      "conclusion": "success"
+    },
+    "pages": {
+      "id": 45219520897,
+      "conclusion": "success"
+    }
+  }
+}

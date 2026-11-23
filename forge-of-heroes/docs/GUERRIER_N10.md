@@ -22,6 +22,12 @@ Un carnet personnel Forge valide peut aussi être importé sur un autre appareil
 
 Preuves : `FINAL_FREEZE_TESTS/carnet_isolation.cjs` et `fiches-personnages/tests/carnet-recovery.cjs`. Le serveur de campagne conserve ses limites précédentes et le statut de certification intégrale reste partiel.
 
+## Recette en ligne de la reprise Expert
+
+La version `ae870de22e175c5c6cc0781147130bc6404838fd` a passé la chaîne guerrier (`45219521119`) et son déploiement Pages (`45219520897`). Une recette manuelle sur le site a importé un carnet humain N4 sans héros préalablement enregistré, acheté les six niveaux suivants, puis ouvert automatiquement la fiche N10. Les trois emprunts étaient Éduqué, Tour de force et Tatouages (CON), chacun dans une voie distincte. Langue, choix et progression ont été conservés après reprise.
+
+Le carnet N10 réellement téléchargé a ensuite été vérifié séparément : 65 PV maximum, DEF 20, INIT 14, attaques 13/12/10, base N1 et décisions N2–N4 inchangées. Tour de force a prélevé 8 PV (57/65 après rechargement) ; le test du tatouage CON a donné 10 + 1 + 3 = 14. Cette recette part du N4, elle ne certifie pas un parcours complet N1–N10 au clic ni toutes les combinaisons de peuple et d’Expert. Preuve : `QA/N10/guerrier-urgence-live.json`.
+
 ## Utilisation
 
 Créer et sauvegarder le guerrier dans la Forge habituelle. Depuis Mes héros, choisir le passage de niveau, vérifier la base N1, puis dépenser deux points et valider chacun des niveaux jusqu'à N10. Le carnet reste ouvert entre les niveaux pour accélérer cette préparation. « Ouvrir ma fiche interactive » et le téléchargement PDF sont disponibles à partir du N2. Au N10, la fiche interactive s'ouvre automatiquement. Exporter le carnet pour conserver une sauvegarde transférable.
