@@ -3,6 +3,10 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - 'forge-of-heroes/index.html'
+      - 'forge-of-heroes/rules/*.js'
+      - 'fiches-personnages/fiche/fiche.js'
+      - 'fiches-personnages/fiche/index.html'
       - '.github/workflows/forge-n1-focus-refresh.yml'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_focus_split.cjs'
       - 'forge-of-heroes/FINAL_FREEZE_TESTS/n1_certification_register.cjs'

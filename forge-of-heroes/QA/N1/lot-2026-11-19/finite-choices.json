@@ -1,7 +1,7 @@
 {
   "schema": "FOH_N1_FINITE_CHOICES_V1",
   "inputs": {
-    "indexSha256": "e50556164adb62c9c0679fcd911e36af02a687237c4303aea7cb9111d1029483",
+    "indexSha256": "58643f0bd07b419e2ef7353d8816ec15ffc6c26cc799120c050728da67ad4e11",
     "runnerSha256": "0cdea04245914c0ab936d94cc514f726ac4372baf108b6de00bd27a3e3c8e6cd"
   },
   "scope": "All implemented finite scalar values in a legal level-one witness per ability. Checks projection, official save/reopen, and rejection of an out-of-domain input per field. Mixed, dynamic and multiselect choices are excluded.",
@@ -109,6 +109,10 @@
         [
           "preferredWeaponCategory",
           "thrown"
+        ],
+        [
+          "preferredWeaponCategory",
+          "unarmed"
         ]
       ],
       "rejectedOutsideDomain": 1

@@ -2,11 +2,11 @@
   "schema": "FOH_N1_ROUND_POWER_USES_V1",
   "status": "PASS",
   "inputs": {
-    "indexSha256": "e50556164adb62c9c0679fcd911e36af02a687237c4303aea7cb9111d1029483",
-    "sheetSha256": "678b95a4819904fb2e381f13a1af4c3107ae0742a3ec79e969fff6c277e56fe6",
-    "sheetHtmlSha256": "c951b0727e5c8f3b215a55d2330ea9e6dee0fec1bd6e8a21a46a84516f686abe",
-    "runnerSha256": "c45b89caba2de205d4b9ab9724812a2f9db077eafb14a9c08899c884df1bef69",
-    "nativeSha256": "2726731c7a6cdc228943cab77e3151003b91a1d07c65e503572630abdbddfbea",
+    "indexSha256": "58643f0bd07b419e2ef7353d8816ec15ffc6c26cc799120c050728da67ad4e11",
+    "sheetSha256": "8e257003238854b725a055968a67e34d1882ecd6a7b94f54e61732e42736efa6",
+    "sheetHtmlSha256": "8896504ae6d763bd46cfc428b2938d2f0e04838369b4e0d599bea988dfff769d",
+    "runnerSha256": "25071e823f6238974876ea9162c8c969624a13746158474191506553a43a3319",
+    "nativeSha256": "c506a9b722e8cbed0513b063ab1535758274c39473953cc61a0b9e01f2abdf6d",
     "fixtureSha256": "a5c78efa677900a59556249dac09b2c352952caf1f4f935b64f44c133c37f1b2"
   },
   "cases": [
@@ -68,7 +68,8 @@
       "reopen": true,
       "roundReset": true,
       "combatReset": true,
-      "free": true
+      "free": true,
+      "controller": "warrior"
     },
     {
       "id": "ability:piqure-de-rappel-g:classpath:voie-du-soldat:class-guerrier:cof2-lb-2024:rank3:cof2-lb-2024",
@@ -78,7 +79,8 @@
       "reopen": true,
       "roundReset": true,
       "combatReset": true,
-      "free": true
+      "free": true,
+      "controller": "warrior"
     },
     {
       "id": "ability:charge:path:voie-du-centaure:addon-comp2017-cof2:rank1:cof2-lb-2024",
