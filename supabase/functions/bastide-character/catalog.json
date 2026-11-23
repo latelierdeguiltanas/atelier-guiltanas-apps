@@ -7040,7 +7040,7 @@
           "auditedLevel2": false,
           "auditedLevel3": false,
           "name": "Armes de prédilection",
-          "text": "Le guerrier choisit une catégorie d’armes de prédilection parmi épées, haches, masses, lances (épieu, lance, pique) et enfin armes de jet (dague de lancer, javelot, etc.), et il gagne +1 en attaque lorsqu’il l’utilise une arme de cette catégorie. De plus, vous ajoutez votre rang + 2 à tous les tests destinés à estimer la valeur d’une arme ou la réputation martiale d’un adversaire.",
+          "text": "Le guerrier choisit une catégorie d’armes de prédilection parmi épées, haches, masses, lances (épieu, lance, pique) et enfin armes de jet (dague de lancer, javelot, etc.), et il gagne +1 en attaque lorsqu’il l’utilise une arme de cette catégorie. De plus, vous ajoutez votre rang + 2 à tous les tests destinés à estimer la valeur d’une arme ou la réputation martiale d’un adversaire. Correction de l’auteur : la catégorie mains nues est également disponible.",
           "spell": false,
           "source": {
             "bookId": "cof2-livre-base-2024",
@@ -7049,7 +7049,13 @@
             "chapter": "Profils",
             "section": "Armes de prédilection"
           },
-          "canonicalNativeProgression": true
+          "canonicalNativeProgression": true,
+          "errata": [
+            {
+              "url": "https://black-book-editions.fr/forums.php?topic_id=80411",
+              "checkedAt": "2026-11-23"
+            }
+          ]
         },
         {
           "id": "ability:science-du-critique:classpath:voie-du-maitre-d-armes:class-guerrier:cof2-lb-2024:rank2:cof2-lb-2024",

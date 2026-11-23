@@ -14,7 +14,7 @@ Les capacités conditionnelles conservent leurs textes et quotas. Les dés sont 
 
 ## Limites explicites
 
-Ce lot ne certifie pas tous les guerriers possibles. Les nouveaux rangs de peuple et d'historique sont bloqués dans ce parcours N10 en attendant leur audit. Les hybrides et voies de prestige ne sont pas ouverts au N10. Les tests multi-peuples conservent les capacités de peuple N1 ; ils n'attestent pas une progression de ces voies. Les fiches personnelles se sauvegardent sur l'appareil ; le serveur de campagne Bastide garde sa limite N3. La certification générale N1 n'est pas modifiée par ce lot.
+Ce lot ne certifie pas tous les guerriers possibles. Les nouveaux rangs de peuple et d'historique sont bloqués dans ce parcours N10 en attendant leur audit. Les hybrides restent fermés ; les treize voies de prestige ouvertes sont détaillées plus bas. Les tests multi-peuples conservent les capacités de peuple N1 ; ils n'attestent pas une progression de ces voies. Les fiches personnelles se sauvegardent sur l'appareil ; le serveur de campagne Bastide garde sa limite N3. La certification générale N1 n'est pas modifiée par ce lot.
 
 ## Preuves
 
@@ -56,3 +56,17 @@ Les transformations utilisent leur propre vue de combat. L'ours conserve des PV 
 **La demande de certification intégrale reste ouverte.** Expert et familier fantastique sont affichés mais bloqués : leurs capacités empruntées/pouvoirs de familiers demandent encore leur intégration. Chevalier dragon et guerrier-mage exigent respectivement un parcours avec cavalier/drake et un parcours combattant/mage, en dehors du guerrier pur. Les nouveaux rangs de peuple/historique et les hybrides restent également hors de la certification N10 précédente. Aucun pourcentage global de certification n'est augmenté artificiellement.
 
 Preuves reproductibles : `FINAL_FREEZE_TESTS/guerrier_prestige.cjs`, `fiches-personnages/tests/guerrier-prestige.cjs`, `FINAL_FREEZE_TESTS/guerrier_prestige_pdf.cjs`. Rapports : `QA/N10/guerrier-prestige*.json`. Le test PDF exige le modèle officiel fourni par l'utilisateur, qui n'est pas publié dans le dépôt.
+
+## Complément du 23 novembre — mains nues, équipement et reprise des carnets
+
+La correction de l’auteur sur le forum Black Book (sujet 80411, Laurent Kegron Bernasconi) ajoute les mains nues aux catégories de prédilection. La sixième catégorie est proposée dès la création et pendant la progression. Les attaques à mains nues portent leurs bonus de prédilection, critique et spécialisation, y compris quand elles sont choisies après N1. Elles apparaissent dans les trois emplacements du PDF officiel lorsqu’elles sont choisies en prédilection. Leur caractère temporaire et leur critique amélioré sont imprimés.
+
+Spécialiste AGI respecte le plafond de DEF de l’armure. Colosse améliore aussi le dé des attaques à mains nues dans le carnet et le PDF. Les carnets anciens ne sont corrigés que si leur tête correspond exactement au résultat historique de ces deux erreurs : la base N1 et les choix restent figés, toute autre divergence est refusée. Au niveau 10, le bouton d’actualisation personnelle réexporte la fiche corrigée et conserve inventaire, notes et ressources de jeu.
+
+L’arme liée reconnaît l’exemplaire original après équipement ou attribution d’un profil mécanique. Un exemplaire identique acheté ensuite ne bénéficie pas automatiquement du lien. Le changement exige la confirmation du rituel et est limité à une fois par niveau, sans recharger les pouvoirs dépensés. Le niveau d’acquisition est extrait de l’historique validé.
+
+Le repos complet restitue un DR, sans dépasser le maximum ; la guérison reste saisie par le joueur après son jet. La récupération rapide terminée réactive les usages de guerrier et de prestige, sans régénération de ressources. Les formes expirent selon leur durée. Un dernier round à 0 PV se termine par l’inconscience si aucun soin n’a été reçu.
+
+Preuves supplémentaires : `guerrier_suite.cjs` (144 contrôles, dont 80 parcours mains nues N1–10), `fiches-personnages/tests/guerrier-suite.cjs` (11 scénarios sur la vraie fiche et la vraie bibliothèque personnelle), `guerrier_suite_pdf.cjs` (5 PDF officiels N10). Les tests de régression du profil et des treize voies ouvertes restent distincts. Les prérequis et choix d’Expert disposent de contrôles préparatoires, mais Expert reste bloqué : cela ne valide pas encore les capacités empruntées. Les quatre voies précédemment bloquées ne sont pas ouvertes par ce complément.
+
+Référence de l’erratum : https://black-book-editions.fr/forums.php?topic_id=80411
