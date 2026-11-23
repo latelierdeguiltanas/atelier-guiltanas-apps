@@ -1,0 +1,50 @@
+{
+  "schema": "FOH_GUERRIER_PRESTIGE_LIVE_V1",
+  "date": "2026-11-23",
+  "testedCommit": "78d15f3cbad9e3fbf020834be219620c5ef5b315",
+  "status": "PASS",
+  "scope": "Recette ciblée des 13 voies intégrées en production ; certification intégrale toujours PARTIAL",
+  "versionObserved": "20261123-guerrier-prestige-1",
+  "ci": {
+    "run": 45127126855,
+    "conclusion": "success"
+  },
+  "deployment": {
+    "run": 45127126767,
+    "conclusion": "success"
+  },
+  "browser": {
+    "environment": "Chrome distant",
+    "pathsOpened": 13,
+    "ownedPrestigeCardsOpened": 39,
+    "allTextsVisible": true
+  },
+  "checks": [
+    {
+      "action": "Souffle rang 6, 20 DM",
+      "observed": "AGI 14, cône 5 m ; seconde utilisation refusée, quota conservé après rechargement."
+    },
+    {
+      "action": "Forme hybride, morsure d20=16 contre DEF 15",
+      "observed": "Total 29, dégâts 1d8+3 + 1d8 ; forme et usage conservés après rechargement."
+    },
+    {
+      "action": "Métamorphose avec chemise de mailles",
+      "observed": "Refus : cuir renforcé au maximum."
+    },
+    {
+      "action": "Métamorphose après retrait de l’armure",
+      "observed": "Ours DEF 18, INIT 11, attaque +10, dégâts 2d4+6, PV séparés 30/30."
+    },
+    {
+      "action": "10 DM subis sous forme d’ours puis rechargement",
+      "observed": "PV de forme 20/30 conservés, PV humains 82/82 conservés."
+    }
+  ],
+  "limits": [
+    "Lecture des 39 cartes dans Chrome ; toutes les résolutions ne sont pas rejouées dans Chrome, consulter les tests moteur/DOM.",
+    "Expert et familier fantastique encore bloqués ; chevalier dragon et guerrier-mage exigent d’autres voies.",
+    "Nouveaux rangs de peuple/historique et hybrides non certifiés N10.",
+    "Aucun essai matériel Android ajouté."
+  ]
+}
