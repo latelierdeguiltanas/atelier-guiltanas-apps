@@ -6,6 +6,8 @@
     "cataloguePaths": 17,
     "sourceAbilities": 85,
     "integratedPaths": 13,
+    "partiallyIntegratedPaths": 1,
+    "additionalInitialRankAbilities": 1,
     "prestigeAbilitiesThroughN10": 39,
     "mechanicalCases": 32,
     "domCases": 57,
@@ -17,6 +19,7 @@
       "name": "Voie de l’expert",
       "status": "BLOCKED",
       "reason": "Les capacités empruntées aux autres profils attendent leur audit de progression N10.",
+      "availableRanks": [],
       "ranksThroughN10": [
         4,
         5,
@@ -28,6 +31,11 @@
       "name": "Voie du spécialiste",
       "status": "ENGINE_DOM_PDF_PASS",
       "reason": null,
+      "availableRanks": [
+        4,
+        5,
+        6
+      ],
       "ranksThroughN10": [
         4,
         5,
@@ -39,6 +47,11 @@
       "name": "Voie du lycanthrope",
       "status": "ENGINE_DOM_PDF_PASS",
       "reason": null,
+      "availableRanks": [
+        4,
+        5,
+        6
+      ],
       "ranksThroughN10": [
         4,
         5,
@@ -50,6 +63,11 @@
       "name": "Voie du sang‑dragon",
       "status": "ENGINE_DOM_PDF_PASS",
       "reason": null,
+      "availableRanks": [
+        4,
+        5,
+        6
+      ],
       "ranksThroughN10": [
         4,
         5,
@@ -59,8 +77,11 @@
     {
       "id": "prestigepath:familier-fantastique:cof2-lb-2024",
       "name": "Voie du familier fantastique",
-      "status": "BLOCKED",
-      "reason": "Les pouvoirs propres aux familiers fantastiques attendent leur intégration interactive.",
+      "status": "PARTIAL_R3",
+      "reason": "Rang 3 disponible ; pouvoirs mineurs et sorts des rangs 4 et suivants encore bloqués.",
+      "availableRanks": [
+        3
+      ],
       "ranksThroughN10": [
         3,
         4,
@@ -73,6 +94,11 @@
       "name": "Voie des armes à deux mains",
       "status": "ENGINE_DOM_PDF_PASS",
       "reason": null,
+      "availableRanks": [
+        4,
+        5,
+        6
+      ],
       "ranksThroughN10": [
         4,
         5,
@@ -84,6 +110,11 @@
       "name": "Voie de l’arme liée",
       "status": "ENGINE_DOM_PDF_PASS",
       "reason": null,
+      "availableRanks": [
+        4,
+        5,
+        6
+      ],
       "ranksThroughN10": [
         4,
         5,
@@ -95,6 +126,7 @@
       "name": "Voie du chevalier dragon",
       "status": "BLOCKED",
       "reason": "Monture fantastique et drake au niveau 9 requis : cette voie concerne un parcours avec voie du cavalier.",
+      "availableRanks": [],
       "ranksThroughN10": [
         4,
         5,
@@ -106,6 +138,11 @@
       "name": "Voie du combattant des tunnels",
       "status": "ENGINE_DOM_PDF_PASS",
       "reason": null,
+      "availableRanks": [
+        4,
+        5,
+        6
+      ],
       "ranksThroughN10": [
         4,
         5,
@@ -117,6 +154,11 @@
       "name": "Voie du combat du mal",
       "status": "ENGINE_DOM_PDF_PASS",
       "reason": null,
+      "availableRanks": [
+        4,
+        5,
+        6
+      ],
       "ranksThroughN10": [
         4,
         5,
@@ -128,6 +170,11 @@
       "name": "Voie du colosse",
       "status": "ENGINE_DOM_PDF_PASS",
       "reason": null,
+      "availableRanks": [
+        4,
+        5,
+        6
+      ],
       "ranksThroughN10": [
         4,
         5,
@@ -139,6 +186,11 @@
       "name": "Voie du danseur de guerre",
       "status": "ENGINE_DOM_PDF_PASS",
       "reason": null,
+      "availableRanks": [
+        4,
+        5,
+        6
+      ],
       "ranksThroughN10": [
         4,
         5,
@@ -150,6 +202,11 @@
       "name": "Voie de l’écorcheur",
       "status": "ENGINE_DOM_PDF_PASS",
       "reason": null,
+      "availableRanks": [
+        4,
+        5,
+        6
+      ],
       "ranksThroughN10": [
         4,
         5,
@@ -161,6 +218,7 @@
       "name": "Voie du guerrier‑mage",
       "status": "BLOCKED",
       "reason": "Une voie de mage et une voie de combattant sont requises : ce parcours hybride reste à auditer.",
+      "availableRanks": [],
       "ranksThroughN10": [
         4,
         5,
@@ -172,6 +230,11 @@
       "name": "Voie de l’ours",
       "status": "ENGINE_DOM_PDF_PASS",
       "reason": null,
+      "availableRanks": [
+        4,
+        5,
+        6
+      ],
       "ranksThroughN10": [
         4,
         5,
@@ -183,6 +246,11 @@
       "name": "Voie du porteur de bouclier",
       "status": "ENGINE_DOM_PDF_PASS",
       "reason": null,
+      "availableRanks": [
+        4,
+        5,
+        6
+      ],
       "ranksThroughN10": [
         4,
         5,
@@ -194,6 +262,11 @@
       "name": "Voie du tueur de géants",
       "status": "ENGINE_DOM_PDF_PASS",
       "reason": null,
+      "availableRanks": [
+        4,
+        5,
+        6
+      ],
       "ranksThroughN10": [
         4,
         5,
@@ -202,18 +275,21 @@
     }
   ],
   "limits": [
-    "Expert et familier fantastique restent à intégrer.",
+    "Expert reste bloqué. Le Familier fantastique est limité au rang 3 ; rangs 4–6 bloqués.",
     "Chevalier dragon et guerrier-mage nécessitent des voies hors du guerrier pur.",
     "Les nouveaux rangs de peuple/historique et les hybrides ne sont pas certifiés N10.",
     "Dés physiques et effets sur les autres acteurs appliqués à la table."
   ],
   "evidence": [
+    "familier-fantastique-r3.json",
+    "familier-fantastique-r3-dom.json",
+    "familier-fantastique-r3-pdf.json",
     "guerrier-prestige.json",
     "guerrier-prestige-dom.json",
     "guerrier-prestige-pdf.json"
   ],
   "inputs": {
-    "sheetSha256": "2ed63f47dcc257624ada50669ab87645e73ad984dd456b1cf4b3b0156fd23d62",
+    "sheetSha256": "36181894a2a7f0f92c74c6ad190ca9a0e366b05c1a95c86030b9b27626357d1d",
     "engineSha256": "27b878ae7faa2e9cbaa3ab5869cbf9535f517be0315b70db843f4d281df2c174"
   }
 }
