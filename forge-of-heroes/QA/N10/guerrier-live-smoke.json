@@ -1,0 +1,43 @@
+{
+  "schema": "FOH_GUERRIER_LIVE_SMOKE_V1",
+  "date": "2026-11-23",
+  "testedCommit": "308d421493b2b8db3751413c3ae1a23bd4bcadb8",
+  "status": "PASS",
+  "scope": "Essais ciblés dans Chrome sur la fiche en production, complémentaires aux tests moteur et DOM des 25 capacités",
+  "deployment": {
+    "run": 45059808300,
+    "conclusion": "success"
+  },
+  "ci": {
+    "run": 45059808274,
+    "conclusion": "success"
+  },
+  "versionObserved": "20261122-guerrier-integral-2",
+  "checks": [
+    {
+      "action": "Absorber un sort après préparation, AGI, d20=20, opposition=10",
+      "observed": "Test 31 contre 10, sort absorbé, aucun PV retiré, quota partagé 0/1"
+    },
+    {
+      "action": "Renvoi immédiat du sort absorbé hors zone",
+      "observed": "Le sort absorbé est renvoyé sur son lanceur"
+    },
+    {
+      "action": "Rechargement de la fiche",
+      "observed": "Résultat conservé, absorption et préparation désactivées à 0/1"
+    },
+    {
+      "action": "Prouesse au niveau 10, sacrifice saisi=4",
+      "observed": "−4 PV, +5 au test de FOR, quota 0/1"
+    },
+    {
+      "action": "Rechargement après Prouesse",
+      "observed": "PV 61/65 et utilisation 0/1 conservés"
+    }
+  ],
+  "limits": [
+    "Essais ciblés, pas une recette navigateur exhaustive de chaque capacité.",
+    "Ne certifie pas les nouveaux rangs de peuple/historique ni les hybrides.",
+    "Chrome distant ; aucune certification matérielle Android ajoutée."
+  ]
+}
