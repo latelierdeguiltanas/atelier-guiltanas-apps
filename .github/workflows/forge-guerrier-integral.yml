@@ -21,6 +21,9 @@ jobs:
       - run: NODE_PATH=/tmp/guerrier-qa/node_modules node fiches-personnages/tests/library-optional-dates.cjs
       - run: NODE_PATH=/tmp/guerrier-qa/node_modules node fiches-personnages/tests/carnet-recovery.cjs
       - run: node forge-of-heroes/FINAL_FREEZE_TESTS/carnet_isolation.cjs
+      - run: node forge-of-heroes/FINAL_FREEZE_TESTS/gnome_expert.cjs
+      - run: node forge-of-heroes/FINAL_FREEZE_TESTS/guerrier_people_prestige.cjs
+      - run: NODE_PATH=/tmp/guerrier-qa/node_modules node fiches-personnages/tests/guerrier-people-prestige.cjs
       - run: node --check fiches-personnages/fiche/fiche.js
       - run: node forge-of-heroes/scripts/sync-guerrier-combat.cjs --check
       - run: node forge-of-heroes/scripts/sync-guerrier-prestige.cjs --check

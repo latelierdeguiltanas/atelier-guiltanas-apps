@@ -28,6 +28,14 @@ La version `ae870de22e175c5c6cc0781147130bc6404838fd` a passé la chaîne guerri
 
 Le carnet N10 réellement téléchargé a ensuite été vérifié séparément : 65 PV maximum, DEF 20, INIT 14, attaques 13/12/10, base N1 et décisions N2–N4 inchangées. Tour de force a prélevé 8 PV (57/65 après rechargement) ; le test du tatouage CON a donné 10 + 1 + 3 = 14. Cette recette part du N4, elle ne certifie pas un parcours complet N1–N10 au clic ni toutes les combinaisons de peuple et d’Expert. Preuve : `QA/N10/guerrier-urgence-live.json`.
 
+## Vérification des peuples et correction du gnome Expert
+
+La matrice représente les 26 peuples intégrés, les 14 prestiges complets et les deux branches d’Armure lourde : 724 parcours légaux N1–N10 et quatre refus légitimes de Colosse (Fée et Lutin, FOR insuffisante avec la série témoin), soit 6 552 transitions. Un oracle indépendant vérifie les valeurs permanentes à chaque niveau ; la base N1 et les rangs de peuple acquis restent conservés. Une série, un choix racial et des équipements autorisés représentatifs sont utilisés : cette matrice ne certifie pas toutes les options des peuples ni la montée de leurs voies.
+
+Elle a révélé un blocage du gnome : Don étrange projetait sa capacité d’ensorceleur comme une voie de profil et faisait refuser l’Expert. L’exception concerne désormais exclusivement le don racial de rang 1 présent dans le N1 figé, prouvé par la voie du gnome. Les véritables hybrides, les voies hors famille ajoutées ensuite et les rangs supplémentaires dans cette voie restent refusés. Les cinq dons possibles et quatre refus de contournement sont testés.
+
+La fiche Expert N10 a aussi passé 26 scénarios DOM, un par peuple : DEF initiale, capacité accessible, coût réel de 8 PV pour Tour de force, bonus +10 et sauvegarde/rechargement. Preuves : `QA/N10/gnome-expert.json`, `guerrier-people-prestige.json` et `guerrier-people-prestige-dom.json`. Le statut global reste partiel, en particulier pour le Familier R5/R6 et les parcours hybrides.
+
 ## Utilisation
 
 Créer et sauvegarder le guerrier dans la Forge habituelle. Depuis Mes héros, choisir le passage de niveau, vérifier la base N1, puis dépenser deux points et valider chacun des niveaux jusqu'à N10. Le carnet reste ouvert entre les niveaux pour accélérer cette préparation. « Ouvrir ma fiche interactive » et le téléchargement PDF sont disponibles à partir du N2. Au N10, la fiche interactive s'ouvre automatiquement. Exporter le carnet pour conserver une sauvegarde transférable.
