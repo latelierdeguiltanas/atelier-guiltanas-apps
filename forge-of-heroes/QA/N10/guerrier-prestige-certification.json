@@ -1,25 +1,32 @@
 {
-  "schema": "FOH_GUERRIER_PRESTIGE_CERTIFICATION_V1",
+  "schema": "FOH_GUERRIER_PRESTIGE_CERTIFICATION_V2",
   "status": "PARTIAL",
-  "scope": "Guerrier pur N1–10 avec les 13 voies COF2 intégrées, rangs 4–6 ; ne clôture pas la demande de guerrier intégral",
+  "scope": "Guerrier pur N1–10 : 14 voies complètes R4–6, Familier R3/R4 ; ne clôture pas la demande intégrale",
   "counts": {
     "cataloguePaths": 17,
     "sourceAbilities": 85,
-    "integratedPaths": 13,
+    "integratedPaths": 14,
     "partiallyIntegratedPaths": 1,
-    "additionalInitialRankAbilities": 1,
-    "prestigeAbilitiesThroughN10": 39,
-    "mechanicalCases": 32,
-    "domCases": 57,
-    "pdfCases": 13
+    "prestigeAbilitiesThroughN10": 44,
+    "expertSourceAbilities": 45,
+    "expertTrajectories": 45,
+    "expertMechanicalCases": 60,
+    "expertProgressionDomCases": 45,
+    "familiarR4MechanicalCases": 28,
+    "additionalSheetDomCases": 60,
+    "additionalPdfCases": 58
   },
   "paths": [
     {
       "id": "prestigepath:expert:cof2-lb-2024",
       "name": "Voie de l’expert",
-      "status": "BLOCKED",
-      "reason": "Les capacités empruntées aux autres profils attendent leur audit de progression N10.",
-      "availableRanks": [],
+      "status": "ENGINE_DOM_PDF_PASS",
+      "reason": null,
+      "availableRanks": [
+        4,
+        5,
+        6
+      ],
       "ranksThroughN10": [
         4,
         5,
@@ -77,10 +84,11 @@
     {
       "id": "prestigepath:familier-fantastique:cof2-lb-2024",
       "name": "Voie du familier fantastique",
-      "status": "PARTIAL_R3",
-      "reason": "Rang 3 disponible ; pouvoirs mineurs et sorts des rangs 4 et suivants encore bloqués.",
+      "status": "PARTIAL_R3_R4",
+      "reason": "Rangs 3 et 4 disponibles ; le choix de sort du rang 5 reste en cours d’intégration.",
       "availableRanks": [
-        3
+        3,
+        4
       ],
       "ranksThroughN10": [
         3,
@@ -275,21 +283,29 @@
     }
   ],
   "limits": [
-    "Expert reste bloqué. Le Familier fantastique est limité au rang 3 ; rangs 4–6 bloqués.",
+    "Familier : rangs 3 et 4 ouverts, rangs 5 et 6 non validés et bloqués.",
     "Chevalier dragon et guerrier-mage nécessitent des voies hors du guerrier pur.",
     "Les nouveaux rangs de peuple/historique et les hybrides ne sont pas certifiés N10.",
-    "Dés physiques et effets sur les autres acteurs appliqués à la table."
+    "Dés physiques et effets sur les autres acteurs appliqués à la table.",
+    "Le serveur de campagne Bastide conserve sa limite N3 ; N10 concerne la bibliothèque personnelle."
   ],
   "evidence": [
+    "guerrier-prestige.json",
+    "guerrier-prestige-dom.json",
+    "guerrier-prestige-pdf.json",
     "familier-fantastique-r3.json",
     "familier-fantastique-r3-dom.json",
     "familier-fantastique-r3-pdf.json",
-    "guerrier-prestige.json",
-    "guerrier-prestige-dom.json",
-    "guerrier-prestige-pdf.json"
+    "familier-fantastique-r4.json",
+    "guerrier-expert.json",
+    "guerrier-expert-progression-dom.json",
+    "guerrier-urgence-dom.json",
+    "guerrier-urgence-pdf.json"
   ],
   "inputs": {
-    "sheetSha256": "5d2322f28a89013aceddb5a434b2c29902393d58a64a7508dc31e98f645a15c8",
-    "engineSha256": "27b878ae7faa2e9cbaa3ab5869cbf9535f517be0315b70db843f4d281df2c174"
+    "sheetSha256": "74760981a64f6de310b93e3f4e1a338c3e17a822497b788a3603ea89698a24f5",
+    "engineSha256": "27b878ae7faa2e9cbaa3ab5869cbf9535f517be0315b70db843f4d281df2c174",
+    "expertSha256": "678b6502383e4fffb2d5a750f40dea944c90904ede4273d78fb59e0d76e30f7b",
+    "familiarMagicSha256": "4d0ce877474d310251d28ea9256af7f92a2a4011bbd5906b967a7543987797be"
   }
 }

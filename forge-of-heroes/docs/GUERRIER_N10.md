@@ -2,19 +2,29 @@
 
 Le carnet accepte désormais un guerrier pur sauvegardé dans Forge, dans ses cinq voies de profil. Les autres profils gardent leurs limites précédentes. Aucun personnage existant n'est monté automatiquement.
 
+## État actuel — 23 novembre 2026
+
+Les 25 capacités du guerrier pur sont couvertes jusqu’au N10. Quatorze voies de prestige sont intégrées jusqu’au rang 6 : les treize précédentes et **Expert**. L’Expert propose 45 capacités sources de barbare, chevalier et guerrier, avec voies distinctes, rang source R1/R2/R3, rang de résolution de l’Expert et compétences évolutives plafonnées à +7. Les choix d’arme, armure lourde, tatouage et langue sont sauvegardés et exportés. Les compétences, PV, DEF, initiative, critiques, rage, compagnons, réactions et récupérations empruntées ont leur contrôleur ou projection propre dans la fiche.
+
+Le **Familier fantastique est ouvert aux rangs 3 et 4**, pour treize variantes. Son pouvoir mineur suit portées, conditions, durées, quotas et sauvegarde. Les rangs 5 et 6 restent bloqués : le choix et les effets du sort appris au rang 5 ne sont pas certifiés. Chevalier dragon et Guerrier-mage restent hors du parcours du guerrier pur. Les progressions de peuple/historique et les hybrides ne sont pas certifiées N10. **La demande intégrale n’est donc pas à 100 %.**
+
+Le gain de PV applique la vigueur propre à la voie de prestige lorsqu’un de ses rangs est acheté (Livre de base p.42) : 4 pour le Familier, au lieu de 5 pour le Guerrier. Les anciens carnets Familier R3 ne sont corrigés que si leur tête correspond exactement à l’ancien résultat ; leur base et leurs décisions restent immuables.
+
+Preuves supplémentaires : `QA/N10/guerrier-expert.json`, `guerrier-expert-progression-dom.json`, `familier-fantastique-r4.json`, `guerrier-urgence-dom.json` et `guerrier-urgence-pdf.json`. Ce dernier contrôle 58 PDF officiels N10 : 45 Expert et 13 Familier R4. Les vérifications précédentes et les limites ci-dessous restent pertinentes ; leurs mentions d’Expert bloqué ou du familier limité à R3 décrivent les versions antérieures.
+
 ## Utilisation
 
 Créer et sauvegarder le guerrier dans la Forge habituelle. Depuis Mes héros, choisir le passage de niveau, vérifier la base N1, puis dépenser deux points et valider chacun des niveaux jusqu'à N10. Le carnet reste ouvert entre les niveaux pour accélérer cette préparation. « Ouvrir ma fiche interactive » et le téléchargement PDF sont disponibles à partir du N2. Au N10, la fiche interactive s'ouvre automatiquement. Exporter le carnet pour conserver une sauvegarde transférable.
 
 ## Règles intégrées
 
-Source : Livre de base COF2 fourni, pages imprimées 39 et 87–90. R1/R2 coûtent un point, R3/R4/R5 deux points ; niveaux minimaux 1/2/3/5/7. Gain par niveau : 5 + CON ; progression des trois attaques jusqu'au N10. Constitution héroïque recalcule les PV rétroactivement et les dés de récupération. Force héroïque modifie contact et dégâts de contact. Robustesse et les compétences suivent le rang courant. Bouclier, Dur à cuire, Rempart et le choix +1 DEF d'Armure lourde modifient la défense. L'autre choix donne la maîtrise des plaques sans créer ni équiper une armure gratuitement. Prédilection, critique, spécialisation, nouvelles catégories et bonus supplémentaires lors des rangs 5 sont persistés.
+Source : Livre de base COF2 fourni, pages imprimées 39 et 87–90. R1/R2 coûtent un point, R3/R4/R5 deux points ; niveaux minimaux 1/2/3/5/7. Gain par niveau : vigueur du guerrier (5) ou de la voie de prestige acquise ce niveau (Familier : 4), puis CON ; progression des trois attaques jusqu'au N10. Constitution héroïque recalcule les PV rétroactivement et les dés de récupération. Force héroïque modifie contact et dégâts de contact. Robustesse et les compétences suivent le rang courant. Bouclier, Dur à cuire, Rempart et le choix +1 DEF d'Armure lourde modifient la défense. L'autre choix donne la maîtrise des plaques sans créer ni équiper une armure gratuitement. Prédilection, critique, spécialisation, nouvelles catégories et bonus supplémentaires lors des rangs 5 sont persistés.
 
 Les capacités conditionnelles conservent leurs textes et quotas. Les dés sont lancés à la main, les conditions et coûts d'utilisation doivent être appliqués selon leur texte. La défense de référence suppose le bouclier manié : les armes à deux mains affichées sont des alternatives à cette configuration.
 
 ## Limites explicites
 
-Ce lot ne certifie pas tous les guerriers possibles. Les nouveaux rangs de peuple et d'historique sont bloqués dans ce parcours N10 en attendant leur audit. Les hybrides restent fermés ; les treize voies de prestige ouvertes sont détaillées plus bas. Les tests multi-peuples conservent les capacités de peuple N1 ; ils n'attestent pas une progression de ces voies. Les fiches personnelles se sauvegardent sur l'appareil ; le serveur de campagne Bastide garde sa limite N3. La certification générale N1 n'est pas modifiée par ce lot.
+Ce lot ne certifie pas tous les guerriers possibles. Les nouveaux rangs de peuple et d'historique sont bloqués dans ce parcours N10 en attendant leur audit. Les hybrides restent fermés ; les quatorze voies de prestige complètes et le familier partiel sont détaillés plus bas. Les tests multi-peuples conservent les capacités de peuple N1 ; ils n'attestent pas une progression de ces voies. Les fiches personnelles se sauvegardent sur l'appareil ; le serveur de campagne Bastide garde sa limite N3. La certification générale N1 n'est pas modifiée par ce lot.
 
 ## Preuves
 

@@ -23,6 +23,10 @@ jobs:
       - run: node forge-of-heroes/scripts/sync-guerrier-combat.cjs --check
       - run: node forge-of-heroes/scripts/sync-guerrier-prestige.cjs --check
       - run: node forge-of-heroes/scripts/sync-familier-fantastique.cjs --check
+      - run: node forge-of-heroes/scripts/sync-familier-magic.cjs --check
+      - run: node forge-of-heroes/scripts/sync-expert.cjs --check
+      - run: NODE_PATH=/tmp/guerrier-qa/node_modules node fiches-personnages/tests/guerrier-urgence.cjs
+      - run: NODE_PATH=/tmp/guerrier-qa/node_modules node fiches-personnages/tests/expert-progression.cjs
       - run: NODE_PATH=/tmp/guerrier-qa/node_modules node fiches-personnages/tests/familier-fantastique.cjs
       - run: node forge-of-heroes/FINAL_FREEZE_TESTS/guerrier_suite.cjs
       - run: NODE_PATH=/tmp/guerrier-qa/node_modules node fiches-personnages/tests/guerrier-suite.cjs
