@@ -1,0 +1,48 @@
+{
+  "schema": "FOH_GUERRIER_FAMILIER_R3_LIVE_V1",
+  "status": "PASS_TARGETED_LIVE",
+  "testedCommit": "08e9a6f4ad283b298d27a60e9cca9a55746ba8e1",
+  "version": "20261123-familier-r3-2",
+  "environment": "Navigateur Chromium public GitHub Pages, fiches synthétiques importées par Restaurer mes fiches ; aucune connexion au coffre",
+  "checks": [
+    {
+      "name": "Bibliothèque après import sans dates",
+      "result": "13 familiers affichés après correction du tri ; sauvegardes existantes conservées"
+    },
+    {
+      "name": "Pantin, poison puis dégâts physiques",
+      "result": "20 DM de poison retirent 0 PV ; 8 DM physiques retirent 3 PV grâce à RD 5 ; maître 82/82 PV"
+    },
+    {
+      "name": "Persistance du familier",
+      "result": "17/20 PV après rechargement réel de la page"
+    },
+    {
+      "name": "Récupération rapide",
+      "result": "Familier 20/20 PV ; maître toujours 82/82 PV"
+    },
+    {
+      "name": "Strige",
+      "result": "Attaque 20 + 10 = 30, agrippement ; 8 DM au premier round ; seconde application refusée ; 5 DM après Nouveau round de prestige"
+    },
+    {
+      "name": "Guerrier mains nues, lot précédent",
+      "result": "Version guerrier-suite-2, attaque parfaite combinée à puissante : d20 20 + 13, critique, (1d3+5) x 2 + 3d8"
+    }
+  ],
+  "limits": [
+    "Ce test vivant importe des fiches synthétiques N10 déjà produites par le moteur ; il ne constitue pas une création N1–N10 intégralement rejouée au clic.",
+    "Ne certifie que les contrôles décrits, sur navigateur de bureau, sans essai physique Android.",
+    "Familier limité au R3 ; R4–6, remplacement d’un Familier préexistant, Expert, hybrides et nouveaux rangs de peuple/historique non certifiés."
+  ],
+  "automation": {
+    "warriorWorkflowRun": 45167856586,
+    "pagesWorkflowRun": 45167855666
+  },
+  "evidence": [
+    "familier-fantastique-r3.json",
+    "familier-fantastique-r3-dom.json",
+    "familier-fantastique-r3-pdf.json",
+    "guerrier-prestige-certification.json"
+  ]
+}
