@@ -6,6 +6,7 @@ const fold=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerC
 function create(catalog,options={}){
  const universal=options.universal;
  const warrior=root.FOHWarriorProgression||(typeof require==='function'?require('./warrior.js'):null);
+ catalog={...catalog,paths:[...catalog.paths,...(warrior?.prestige?.paths||[]).filter(p=>!catalog.paths.some(x=>x.id===p.id))]};
  const isWarrior=rec=>!!warrior?.supports(rec);
  const warriorOptions=(rec,c,pick)=>isWarrior(rec)?warrior.options(rec,c,pick,catalog):null;
  const maxLevel=rec=>isWarrior(rec)?10:rec.base?.nativeCreationState?2:catalog.maxValidatedLevel;
@@ -22,11 +23,11 @@ function create(catalog,options={}){
   return true;
  }
  function begin(h){if(!validBase(h))fail('Base niveau 1 invalide ou non prise en charge. Aucun verrou créé.');const b=clone(h);return{format:'FOH_PROGRESSION',version:1,key:identity(b),base:b,baseCanonical:canonical(b),lockedAt:new Date().toISOString(),revision:0,levels:[],pending:[],head:clone(b.recovery.character)};}
- function allowed(rec){if(rec.base.nativeCreationState){if(!universal)fail('Le moteur général de progression doit être chargé.');return universal.allowed(rec,catalog);}const owned=new Set(rec.base.recovery.character.paths.filter(p=>rank(rec.base.recovery.character,p.pathId)>0).map(p=>p.pathId));return catalog.paths.filter(p=>(p.kind==='profile'&&!p.additionalMagePath&&(rec.base.recovery.mapping.profileIds||[rec.base.recovery.mapping.profileId]).includes(p.classId))||((p.kind==='people'||p.kind==='history')&&owned.has(p.id)&&(!rec.base.recovery.mapping.selectedPeoplePathId||p.kind!=='people'||p.id===rec.base.recovery.mapping.selectedPeoplePathId)));}
+ function allowed(rec){if(isWarrior(rec)){const owned=new Set(rec.head.paths.filter(p=>rank(rec.head,p.pathId)>0).map(p=>p.pathId));return catalog.paths.filter(p=>p.classId==='class:guerrier:cof2-lb-2024'||p.kind==='prestige'||owned.has(p.id));}if(rec.base.nativeCreationState){if(!universal)fail('Le moteur général de progression doit être chargé.');return universal.allowed(rec,catalog);}const owned=new Set(rec.base.recovery.character.paths.filter(p=>rank(rec.base.recovery.character,p.pathId)>0).map(p=>p.pathId));return catalog.paths.filter(p=>(p.kind==='profile'&&!p.additionalMagePath&&(rec.base.recovery.mapping.profileIds||[rec.base.recovery.mapping.profileId]).includes(p.classId))||((p.kind==='people'||p.kind==='history')&&owned.has(p.id)&&(!rec.base.recovery.mapping.selectedPeoplePathId||p.kind!=='people'||p.id===rec.base.recovery.mapping.selectedPeoplePathId)));}
  function repeatableWeapons(c){return(c.attacks||[]).map((a,i)=>({id:a.id||'attack-'+i,name:a.name||a.label||'',type:a.type||''})).filter(a=>fold(a.type).includes('distance')&&/arbalete|petoire|mousquet|pistolet|tromblon|arquebuse/.test(fold(a.name)));}
  function allowedGift(rec){return catalog.paths.filter(p=>p.classId==='class:druide:cof2-lb-2024'||p.classId==='class:rodeur:cof2-lb-2024').filter(p=>p.ranks.some(a=>a.rank===1));}
  function cost(id,r){return paths.get(id)?.kind==='history'?1:r<=2?1:2;}
- function minimum(id,r){return paths.get(id)?.kind==='history'?2:[0,1,2,3,5,7][r];}
+ function minimum(id,r){if(paths.get(id)?.kind==='prestige')return warrior.prestige.minimum(r);return paths.get(id)?.kind==='history'?2:[0,1,2,3,5,7][r];}
  function put(c,id,r){const p=paths.get(id),a=ability(id,r);if(!a?.text)fail('Texte de capacité manquant.');let cp=c.paths.find(v=>v.pathId===id);if(!cp){cp={pathId:id,name:p.name,kind:p.kind==='gift'?'granted':p.kind,ranks:[]};c.paths.push(cp);}const old=cp.ranks.find(v=>v.rank===r),v={rank:r,owned:true,name:a.name,text:a.text,abilityId:a.id,spell:a.spell};if(old)Object.assign(old,v);else cp.ranks.push(v);cp.ranks.sort((a,b)=>a.rank-b.rank);}
  function preview(rec,picks,complete=false){
   if(isWarrior(rec))return warrior.preview(rec,picks,complete,catalog);

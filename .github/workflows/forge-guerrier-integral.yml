@@ -20,6 +20,9 @@ jobs:
       - run: npm install --prefix /tmp/guerrier-qa jsdom@26 --no-audit --no-fund
       - run: node --check fiches-personnages/fiche/fiche.js
       - run: node forge-of-heroes/scripts/sync-guerrier-combat.cjs --check
+      - run: node forge-of-heroes/scripts/sync-guerrier-prestige.cjs --check
+      - run: node forge-of-heroes/FINAL_FREEZE_TESTS/guerrier_prestige.cjs
+      - run: NODE_PATH=/tmp/guerrier-qa/node_modules node fiches-personnages/tests/guerrier-prestige.cjs
       - run: node forge-of-heroes/FINAL_FREEZE_TESTS/guerrier_integral_combat.cjs
       - run: node forge-of-heroes/FINAL_FREEZE_TESTS/guerrier_weapons.cjs
       - run: node forge-of-heroes/FINAL_FREEZE_TESTS/n1_guerrier_source.cjs
