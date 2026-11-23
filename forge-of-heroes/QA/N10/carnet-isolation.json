@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "scope": "Stockage client avec isolement non destructif des carnets invalides, validation stricte et concurrence conservées",
+  "cases": [
+    {
+      "name": "Lecture stricte inchangée, isolation réservée au client",
+      "status": "PASS"
+    },
+    {
+      "name": "Sauvegarde valide sans effacer ni corriger le carnet isolé",
+      "status": "PASS"
+    },
+    {
+      "name": "Remplacement du carnet isolé refusé même si fourni explicitement",
+      "status": "PASS"
+    },
+    {
+      "name": "Modification illégale d’un carnet valide refusée sans écriture",
+      "status": "PASS"
+    },
+    {
+      "name": "Conflit entre onglets refusé sans écraser la version récente",
+      "status": "PASS"
+    },
+    {
+      "name": "Écriture non confirmée signalée",
+      "status": "PASS"
+    },
+    {
+      "name": "Formats et JSON illisibles ne sont pas acceptés par isolation",
+      "status": "PASS"
+    },
+    {
+      "name": "Identité incorrecte isolée, aucune adoption automatique",
+      "status": "PASS"
+    },
+    {
+      "name": "Clés spéciales conservées sans modifier les prototypes",
+      "status": "PASS"
+    },
+    {
+      "name": "Bibliothèque entièrement valide : contrat original conservé",
+      "status": "PASS"
+    },
+    {
+      "name": "Ancien texte de règle : actualisation sans modifier base, niveaux ou calculs",
+      "status": "PASS"
+    },
+    {
+      "name": "Le rafraîchissement des textes ne tolère aucune modification des coûts ou quotas",
+      "status": "PASS"
+    }
+  ],
+  "sourceSha256": "d9c05d1e2600c06204b97aedc84774d5ab966172d577c9d1ddf597ad98888ead"
+}

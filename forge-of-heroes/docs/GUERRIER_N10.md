@@ -12,6 +12,16 @@ Le gain de PV applique la vigueur propre à la voie de prestige lorsqu’un de s
 
 Preuves supplémentaires : `QA/N10/guerrier-expert.json`, `guerrier-expert-progression-dom.json`, `familier-fantastique-r4.json`, `guerrier-urgence-dom.json` et `guerrier-urgence-pdf.json`. Ce dernier contrôle 58 PDF officiels N10 : 45 Expert et 13 Familier R4. Les vérifications précédentes et les limites ci-dessous restent pertinentes ; leurs mentions d’Expert bloqué ou du familier limité à R3 décrivent les versions antérieures.
 
+## Reprise des anciens carnets et import sur un autre appareil
+
+Un texte historique du catalogue des capacités pouvait faire rejeter un carnet dont tous les calculs et décisions étaient corrects, notamment après l’erratum des armes de prédilection à mains nues. Le contrôle actualise maintenant ce texte dérivé comme les descriptions des voies. Coûts de mana, quotas, identifiants, caractéristiques, combat, base N1 et historique restent contrôlés ; les textes ne permettent pas de masquer une modification mécanique.
+
+Un carnet effectivement incohérent est conservé, signalé et bloqué individuellement. Les autres héros restent accessibles et peuvent évoluer ; leurs sauvegardes conservent intégralement les carnets bloqués. L’export de récupération reprend le contenu complet, même si le JSON est illisible. Un import ne peut pas remplacer un carnet bloqué sans récupération explicite. Les conflits entre onglets restent refusés.
+
+Un carnet personnel Forge valide peut aussi être importé sur un autre appareil sans héros préalablement créé sur cet appareil. La fiche de départ est récupérée dans le carnet validé et reste disponible après rechargement. Les niveaux précédemment validés ne peuvent pas être remplacés.
+
+Preuves : `FINAL_FREEZE_TESTS/carnet_isolation.cjs` et `fiches-personnages/tests/carnet-recovery.cjs`. Le serveur de campagne conserve ses limites précédentes et le statut de certification intégrale reste partiel.
+
 ## Utilisation
 
 Créer et sauvegarder le guerrier dans la Forge habituelle. Depuis Mes héros, choisir le passage de niveau, vérifier la base N1, puis dépenser deux points et valider chacun des niveaux jusqu'à N10. Le carnet reste ouvert entre les niveaux pour accélérer cette préparation. « Ouvrir ma fiche interactive » et le téléchargement PDF sont disponibles à partir du N2. Au N10, la fiche interactive s'ouvre automatiquement. Exporter le carnet pour conserver une sauvegarde transférable.
