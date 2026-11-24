@@ -97,4 +97,4 @@ fetch('../data/forge-global-progress.json',{cache:'no-store'}).then(response=>{
 fetch('./focus.json?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('suivi indisponible');return r.json()}).then(d=>{
  if(!d.profile||d.profile.paths?.length!==5||!d.certificationPlan?.current||d.peoples?.length!==8)throw Error('suivi incomplet');render(d)
 }).catch(err=>{$('profile-recap').textContent='Le suivi ne peut pas être chargé : '+err.message;$('races').textContent='Données momentanément indisponibles.'});
-</script><script src="reconciliation-view.js?v=20261124-purs-transfer"></script></body></html>
+</script><script src="reconciliation-view.js?v=20261124-purs-mage"></script></body></html>

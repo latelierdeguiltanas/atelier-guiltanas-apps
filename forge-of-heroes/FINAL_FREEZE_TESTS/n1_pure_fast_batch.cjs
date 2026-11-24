@@ -10,6 +10,8 @@ const {load,standardState}=require('./forge_product_runner');
 const root=path.resolve(__dirname,'..'),sha=s=>crypto.createHash('sha256').update(s).digest('hex');
 const profileLabel=process.argv.find(x=>x.startsWith('--profile='))?.split('=').slice(1).join('=')||'Arquebusier';
 const representative=process.argv.includes('--representative');
+const magePathTest=process.argv.includes('--mage-path');
+const magePath='path:mage:cof2-lb-2024';
 const verifyTransfer=process.argv.includes('--verify-transfer');
 const native=require('../native-progression');
 const library=require('../../fiches-personnages/library');
@@ -88,7 +90,13 @@ for(const file of ['index.html']){
       s.advancedRules.age=true;
       const spending=age==='mature'?[{pathId:paths[i].id,rank:2},{pathId:paths[j].id,rank:2}]:age==='venerable'?[{pathId:paths[i].id,rank:2},{pathId:paths[i].id,rank:3},{pathId:paths[j].id,rank:2}]:[];
       const mage=cls.familleId==='mage';
-      if(mage&&spending.length){
+      if(magePathTest){
+       assert(mage,'The mage path matrix requires a mage profile');
+       s.voies.keepPeoplePathId=inherited.id;
+       s.voies.peoplePathId=magePath;
+       s.voies.mageRank2PathId=magePath;
+      }
+      if(mage&&!magePathTest&&spending.length){
        s.advancedRules.aLaCarte=true;
        s.aLaCartePurchases=[{type:'skill',skill:'Acrobaties'}];
       }
@@ -114,8 +122,15 @@ for(const file of ['index.html']){
       if(r.errors?.length){report.rejected++;rp.rejected++;if(report.errors.length<75)report.errors.push({tag,kind:'REJECTED',error:r.errors});continue}
       assert.equal(JSON.stringify(s),originalDraft,'Mutation of input');
       const st=r.sticky,cs=st?.characterState;assert(cs,'No character state');assert.equal(cs.profileId,cls.id,'Wrong profile');
+      if(magePathTest){
+       const owned=Array.from(st.acquiredAbilities);
+       const retained=owned.filter(a=>a.pathId===inherited.id);
+       assert.deepEqual(retained.map(a=>a.rank),[1],'Retained ancestry must grant exactly rank 1');
+       assert.deepEqual(owned.filter(a=>a.pathId===magePath).map(a=>a.rank).sort(),[1,2],'Mage path ranks must be granted exactly once');
+       assert.equal(new Set(owned.map(a=>a.id)).size,owned.length,'Duplicate acquired ability');
+      }
       const gotRanks=new Map((cs.paths||[]).map(x=>[x.pathId,x.rank]));
-      assert.equal(gotRanks.get(paths[i].id),age==='venerable'?3:age==='mature'||mage?2:1,'First rank mismatch');
+      assert.equal(gotRanks.get(paths[i].id),age==='venerable'?3:age==='mature'||(mage&&!magePathTest)?2:1,'First rank mismatch');
       assert.equal(gotRanks.get(paths[j].id),age==='venerable'||age==='mature'?2:1,'Second rank mismatch');
       for(const q of [paths[i],paths[j]])assert((st.acquiredAbilities||[]).some(a=>a.pathId===q.id&&a.rank===1),'Missing R1 '+q.label);
       for(const key of ['PV','PC','PM','DEF','INIT'])assert(Number.isFinite(cs.derived?.[key]),'Unbounded '+key);
@@ -152,7 +167,11 @@ if(report.sourceHashes.some(source=>source.dbSha256!==report.sourceHashes[0].dbS
 else report.status=report.failed||report.rejected?'FAILED':'PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED';
 const name=profileLabel.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 if(verifyTransfer){report.transfers=report.saves;report.transferDependencies={nativeSha256:sha(fs.readFileSync(require.resolve('../native-progression'))),librarySha256:sha(fs.readFileSync(require.resolve('../../fiches-personnages/library')))};}
-const dest=path.join(root,'QA/N1/pure-profile-'+(representative?'sample-':'fast-')+name+'.json');
+if(magePathTest){
+ report.scope+=' Livre de base p. 60 : conservation du R1 de peuple, R1 et R2 du mage, unicité des capacités acquises.';
+ report.magePath=true;
+}
+const dest=path.join(root,'QA/N1/pure-profile-'+(magePathTest?'mage-path-':'')+(representative?'sample-':'fast-')+name+'.json');
 fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({profile:profileLabel,status:report.status,pass:report.pass,attempts:report.attempts,failed:report.failed,rejected:report.rejected,saves:report.saves,sourceHashes:report.sourceHashes,errors:report.errors.slice(0,6)}).slice(0,5000));
 if(report.status!=='PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED')process.exitCode=1;
