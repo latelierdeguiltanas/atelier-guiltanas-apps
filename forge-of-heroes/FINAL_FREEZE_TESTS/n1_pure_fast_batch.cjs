@@ -10,6 +10,26 @@ const {load,standardState}=require('./forge_product_runner');
 const root=path.resolve(__dirname,'..'),sha=s=>crypto.createHash('sha256').update(s).digest('hex');
 const profileLabel=process.argv.find(x=>x.startsWith('--profile='))?.split('=').slice(1).join('=')||'Arquebusier';
 const representative=process.argv.includes('--representative');
+const verifyTransfer=process.argv.includes('--verify-transfer');
+const native=require('../native-progression');
+const library=require('../../fiches-personnages/library');
+function verifySheet(draft,result,db,id){
+ const {sticky}=result;
+ const character=native.toCharacter({id,name:draft.identite.nom,people:sticky.peupleLabel,profile:sticky.profileLabel,draft:{}},{state:draft,result},{paths:[],profiles:[]},db);
+ assert(library.validCharacter(character),'Invalid interactive sheet');
+ assert.deepEqual(character.paths.flatMap(path=>path.ranks.map(rank=>rank.abilityId)).sort(),Array.from(sticky.acquiredAbilities,ability=>ability.id).sort());
+ for(const [stat,value] of Object.entries(sticky.characterState.characteristics))assert.equal(character.stats[stat.toUpperCase()],value,stat);
+ assert.equal(character.combat.pvMax,sticky.PV);
+ assert.equal(character.combat.def,sticky.DEF);
+ assert.equal(character.combat.init,sticky.INIT);
+ assert.deepEqual(character.skillBonuses,clone(sticky.skillBonuses||[]));
+ assert.deepEqual(character.passiveFeatures,clone(sticky.passiveFeatures||[]));
+ const data=new Map();
+ const storage={getItem:key=>data.get(key)??null,setItem:(key,value)=>data.set(key,value)};
+ const entry=library.upsert(character,{heroId:character.id,storage});
+ assert.deepEqual(library.read(storage).data.entries[entry.id].character,entry.character);
+}
+
 const series={polyvalent:{for:2,agi:2,con:2,per:1,int:1,vol:0,cha:-1},expert:{for:3,agi:2,con:1,per:1,int:0,vol:0,cha:-1},specialiste:{for:4,agi:2,con:1,per:0,int:0,vol:-1,cha:-1}};
 if(profileLabel==='Forgesort'){
  // Les Runes de défense exigent INT +1 après les ajustements de peuple.
@@ -113,12 +133,14 @@ for(const file of ['index.html']){
       }else if(cls.label==='Arquebusier'){
         assert.equal(st.PV,8+expected.con,'Wrong base Arquebusier PV');
       }
-      if(report.attempts%13===0){
+      if(verifyTransfer||report.attempts%13===0){
         const saved=E.createHeroSavePayload(s,cs,{id:'fast-'+sha(tag).slice(0,12)});
         const restored=E.restoreHeroSavePayload(clone(saved));
         const replay=E.computeCharacterN1(restored.draft);
         assert.equal(replay.errors.length,0,'Saved hero refused on restoration');
         assert.deepEqual(clone(replay.sticky.characterState.derived),clone(cs.derived),'Derived fields lost on restoration');
+        assert.deepEqual(Array.from(replay.sticky.acquiredAbilities,a=>a.id).sort(),Array.from(st.acquiredAbilities,a=>a.id).sort(),'Acquired abilities lost on restoration');
+        if(verifyTransfer)verifySheet(restored.draft,replay,db,'pure-'+sha(tag).slice(0,12));
         report.saves++;
       }
       report.pass++;rp.pass++;
@@ -129,6 +151,7 @@ for(const file of ['index.html']){
 if(report.sourceHashes.some(source=>source.dbSha256!==report.sourceHashes[0].dbSha256||source.engineSha256!==report.sourceHashes[0].engineSha256))report.status='FAILED_PARITY';
 else report.status=report.failed||report.rejected?'FAILED':'PASS_NARROW_PURE_MATRIX_NOT_CERTIFIED';
 const name=profileLabel.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+if(verifyTransfer){report.transfers=report.saves;report.transferDependencies={nativeSha256:sha(fs.readFileSync(require.resolve('../native-progression'))),librarySha256:sha(fs.readFileSync(require.resolve('../../fiches-personnages/library')))};}
 const dest=path.join(root,'QA/N1/pure-profile-'+(representative?'sample-':'fast-')+name+'.json');
 fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({profile:profileLabel,status:report.status,pass:report.pass,attempts:report.attempts,failed:report.failed,rejected:report.rejected,saves:report.saves,sourceHashes:report.sourceHashes,errors:report.errors.slice(0,6)}).slice(0,5000));

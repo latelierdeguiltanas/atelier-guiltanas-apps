@@ -5,7 +5,7 @@ function pureCoverageMarkup(report){
  const checked=report.profiles.reduce((total,profile)=>total+profile.passed,0);
  return '<details open><summary>Création N1 · profils purs du livre de base</summary>'+
  '<p><strong>'+checked+' créations réussies</strong> sur '+report.profiles.reduce((total,profile)=>total+profile.attempted,0)+' scénarios. Chaque profil couvre cinq modalités d’âge, huit peuples du livre de base et dix paires de voies, avec une série de caractéristiques représentative.</p>'+
- '<ul>'+report.profiles.map(p=>'<li><strong>'+escape(p.name)+'</strong> · '+p.passed+'/'+p.attempted+' réussites · '+p.saved+' sauvegardes rouvertes'+(p.failed||p.rejected?' · '+(p.failed+p.rejected)+' échecs ou refus':'')+'</li>').join('')+'</ul>'+
+ '<ul>'+report.profiles.map(p=>'<li><strong>'+escape(p.name)+'</strong> · '+p.passed+'/'+p.attempted+' réussites · '+p.saved+' sauvegardes rouvertes'+(Number.isInteger(p.transferred)?' · '+p.transferred+' fiches transférées et rouvertes':'')+(p.failed||p.rejected?' · '+(p.failed+p.rejected)+' échecs ou refus':'')+'</li>').join('')+'</ul>'+
  '<p>Les pourcentages de certification des règles figurent dans la section Profils.</p><p><a href="pure-scenarios.json">Résultats de la matrice</a></p></details>';
 }
 root.FOHN1ReconciliationMarkup=markup;

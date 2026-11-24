@@ -1,6 +1,6 @@
 {
   "schema": "FOH_N1_PURE_BASE_COF2_FAST_BATCH",
-  "at": "2026-11-12T13:40:21.381Z",
+  "at": "2026-11-24T10:32:49.295Z",
   "profile": "Forgesort",
   "pureOnly": true,
   "hybridsExcluded": true,
@@ -20,7 +20,7 @@
   "pass": 400,
   "rejected": 0,
   "failed": 0,
-  "saves": 30,
+  "saves": 400,
   "byRace": {
     "humain": {
       "attempts": 50,
@@ -75,9 +75,14 @@
   "sourceHashes": [
     {
       "file": "index.html",
-      "htmlSha256": "da9a2897d72ee30e1fb35865710fc020996befd987dd8a83d919b203ca4b986d",
-      "engineSha256": "fd729a741a223d89887779e2fa253ea398f62c5d7f95eee0ce7d2fdf6a0be1ee",
-      "dbSha256": "645f2c7f1f5aac50b8574310c638e7284e4eb90acc103f68ae431b17cf72c23e"
+      "htmlSha256": "58643f0bd07b419e2ef7353d8816ec15ffc6c26cc799120c050728da67ad4e11",
+      "engineSha256": "cff5ea47cebe680a7287448fd138046eeddccc39e69a2535bfafacdee7893ad5",
+      "dbSha256": "51d84179d4168f63ece8edbbbf0d211732fdfd93e38c6da01e63fec572f59553"
     }
-  ]
+  ],
+  "transfers": 400,
+  "transferDependencies": {
+    "nativeSha256": "c506a9b722e8cbed0513b063ab1535758274c39473953cc61a0b9e01f2abdf6d",
+    "librarySha256": "efbedeb0873c2d7e1a46b9cdb6fac8b12a4b51857f74b94647e589a4ca98ad47"
+  }
 }
