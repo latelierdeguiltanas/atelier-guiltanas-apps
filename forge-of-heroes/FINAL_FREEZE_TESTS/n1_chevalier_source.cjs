@@ -70,6 +70,7 @@ check('Noblesse · langue d’Éduqué et caractéristiques de l’écuyer',()=>
 });
 const report={status:checks.every(c=>c.status==='PASS')?'PASS':'PARTIEL',source:'COF2 Livre de base, p. 83–86',
  indexSha256:createHash('sha256').update(html).digest('hex'),
+ testSha256:createHash('sha256').update(fs.readFileSync(__filename)).digest('hex'),
  scope:'Projections et métadonnées ciblées des cinq voies du Chevalier pur N1. Les déclencheurs en partie sont contrôlés séparément.',
  checks};
 fs.writeFileSync(path.join(root,'QA/N1/chevalier-source-n1.json'),JSON.stringify(report,null,2)+'\n');

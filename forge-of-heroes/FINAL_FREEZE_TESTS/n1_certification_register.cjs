@@ -55,7 +55,11 @@ const exactReport=j=>JSON.stringify(j.products||[]).includes(inputs.indexSha256)
 const numericProfileProofs=[
  {profile:'barde',path:'voie-du-saltimbanque',rank:2,checks:['Saltimbanque · DEF, initiative et acrobaties','Saltimbanque · danse, mime et jonglerie aux rangs 2 et 3'],scope:'Grâce féline: DEF and CHA-based initiative, plus exact dance, mime and juggling bonuses at R2/R3.'},
  {profile:'guerrier',path:'voie-de-la-resistance',rank:1,checks:['Résistance · PV et effort physique'],scope:'Robustesse: exact bonus to maximum HP, physical effort and resistance to natural heat and cold at the tested N1 rank.'},
- {profile:'druide',path:'voie-du-fauve',rank:1,checks:['Fauve · vitesse et caractéristiques de la panthère'],scope:'Vitesse du félin: exact initiative, defence and running, climbing and jumping bonuses in the tested N1 state.'}
+ {profile:'druide',path:'voie-du-fauve',rank:1,checks:['Fauve · vitesse et caractéristiques de la panthère'],scope:'Vitesse du félin: exact initiative, defence and running, climbing and jumping bonuses in the tested N1 state.'},
+ {profile:'barde',path:'voie-du-vagabond',rank:1,checks:['Vagabond · exception de cumul et bonus de connaissance'],scope:'Rumeurs et légendes : bonus de connaissance de +4 au rang de voie 2.'},
+ {profile:'barde',path:'voie-de-la-seduction',rank:2,checks:['Séduction · plafond de Dentelles avec et sans armure'],scope:'Dentelles et rapière : comparaison de la DEF sans armure et avec armure dans le scénario de référence.'},
+ {profile:'chevalier',path:'voie-de-la-guerre',rank:1,checks:['Guerre · armure de départ et pénalité d’Armure sur mesure'],scope:'Armure sur mesure : coefficient de pénalité 0,5 et DEF totale 17 dans le scénario équipé.'},
+ {profile:'forgesort',path:'voie-des-runes',rank:1,checks:['Runes · condition d’INT, DEF et quota de Rune de puissance'],scope:'Runes de défense : +2 en DEF dans le scénario pur de référence.'}
 ].flatMap(rule=>{
  const evidence=rule.profile+'-source-n1.json';
  const proof=read('forge-of-heroes/QA/N1/'+evidence);
